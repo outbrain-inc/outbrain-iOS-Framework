@@ -224,7 +224,10 @@ if([posts isEqual:_posts]) return;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    /*
     return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height - self.navigationController.navigationBar.frame.size.height - STATUS_BAR_HEIGHT);
+     */
+    return self.collectionView.frame.size;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -239,7 +242,7 @@ if([posts isEqual:_posts]) return;
 {
     CGFloat offset = scrollView.contentOffset.x / scrollView.frame.size.width;
     
-    if(fmod(offset, 1.f) == 0.f || abs(_currentIndex - offset) >= 1) {
+    if(fmod(offset, 1.f) == 0.f || fabs(_currentIndex - offset) >= 1) {
         // set current index
         [self setCurrentIndex:roundf(offset)];
     }
