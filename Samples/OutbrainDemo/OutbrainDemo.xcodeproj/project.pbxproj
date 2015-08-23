@@ -1306,7 +1306,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}",
-					/Users/danielgorlovetsky/dev/outbrain/trunk/OBiOSSDK,
 					/Users/oded/dev/OBiOSSDK/Samples/OutbrainDemo,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1333,7 +1332,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}",
-					/Users/danielgorlovetsky/dev/outbrain/trunk/OBiOSSDK,
 					/Users/oded/dev/OBiOSSDK/Samples/OutbrainDemo,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

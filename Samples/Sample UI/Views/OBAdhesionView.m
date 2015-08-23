@@ -251,7 +251,7 @@
     {
         
         // This gives us the pulling effect like in control center when you pull up too far
-        NSInteger yDiff = abs(initialYOff - translatedPoint.y);
+        NSInteger yDiff = fabs(initialYOff - translatedPoint.y);
         if(initialYOff != translatedPoint.y) {
             
             translatedPoint.y += ((yDiff * .1) * (initialYOff < translatedPoint.y ? -1 : 1));
