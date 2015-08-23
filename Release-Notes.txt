@@ -1,0 +1,22 @@
+1.0:
+	- Formal beta release.
+
+1.1:
+	- Organic clicks and paid clicks are now treated the same.
+
+1.2:
+	- User-agent is now sent as it would appear in a mobile browser
+
+1.3:
+	- Fixed leak in fetchRecommendations functions
+
+1.4:
+	- Added correct handling for empty JSON response.
+
+1.5:
+	- Added support for iOS 8, Xcode 6, Swift.
+	- Removed usage of the the device ID.
+	- Compliance with Apple’s Advertising Identifier (IDFA).
+	- Support Test mode, a special mode that you should used when developing applications using Outbrain SDK.
+
+1.5.1:	- Fix a defect where If the user set "Limit Ad Tracking" to "on" on  iOS device (“Settings->Privacy->Advertising->Limit Ad Tracking”), use of outbrain SDK delete other cookies stored by the same app.
