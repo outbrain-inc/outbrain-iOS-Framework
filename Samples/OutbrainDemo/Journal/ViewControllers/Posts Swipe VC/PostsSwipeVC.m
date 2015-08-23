@@ -25,6 +25,9 @@
 
 @implementation PostsSwipeVC
 
+#define STATUS_BAR_HEIGHT 20.0
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -221,7 +224,7 @@ if([posts isEqual:_posts]) return;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.collectionView.frame.size;
+    return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height - self.navigationController.navigationBar.frame.size.height - STATUS_BAR_HEIGHT);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
