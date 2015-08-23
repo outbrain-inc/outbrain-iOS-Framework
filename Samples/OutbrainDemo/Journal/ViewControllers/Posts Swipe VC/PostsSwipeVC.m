@@ -36,8 +36,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(self.currentIndex != NSNotFound)
+    if (self.currentIndex != NSNotFound) {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    }
+    
     self.collectionView.scrollsToTop = NO;
     
     // We don't want to be able to backswipe while we're in here
