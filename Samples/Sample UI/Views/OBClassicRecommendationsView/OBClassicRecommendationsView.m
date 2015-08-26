@@ -360,10 +360,13 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
 -(CGFloat) calculateHightForRecommandation:(OBRecommendation *)recommenationItem {
     CGFloat height = 0;
     
-    // add image height
-    UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
-    CGSize itemSize = l.itemSize;
-    height += itemSize.height;
+    if (self.showImages) {
+        // add image height
+        UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
+        CGSize itemSize = l.itemSize;
+        height += itemSize.height;
+    }
+    
     
     // add titleLabel height
     CGFloat labelWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation) ? 3.f : 2.f);
