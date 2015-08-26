@@ -257,7 +257,7 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     
     cell.titleLabel = [UILabel new];
     cell.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
-    cell.titleLabel.numberOfLines = 0;
+    cell.titleLabel.numberOfLines = 3;
     cell.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.titleLabel.backgroundColor = [UIColor clearColor];
     cell.titleLabel.textColor = [UIColor blackColor];
@@ -268,7 +268,7 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     cell.sourceLabel.backgroundColor = [UIColor clearColor];
     cell.sourceLabel.font = [UIFont systemFontOfSize:12];
     cell.sourceLabel.textColor = [UIColor darkGrayColor];
-    cell.sourceLabel.numberOfLines = 0;
+    cell.sourceLabel.numberOfLines = 2;
     cell.sourceLabel.lineBreakMode = NSLineBreakByWordWrapping;
 
     [cell.contentView addSubview:cell.sourceLabel];
@@ -369,12 +369,12 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     CGFloat labelWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation) ? 3.f : 2.f);
     
     labelWidth -= 30.0;
-
+    NSString *longText = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.";
     
     UILabel *gettingSizeLabel = [[UILabel alloc] init];
     gettingSizeLabel.font = [UIFont boldSystemFontOfSize:14];
-    gettingSizeLabel.text = recommenationItem.content;
-    gettingSizeLabel.numberOfLines = 0;
+    gettingSizeLabel.text = longText;
+    gettingSizeLabel.numberOfLines = 3;
     gettingSizeLabel.lineBreakMode = NSLineBreakByWordWrapping;
     CGSize maximumLabelSize = CGSizeMake(labelWidth, 9999);
     CGSize expectSize = [gettingSizeLabel sizeThatFits:maximumLabelSize];
@@ -384,8 +384,8 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     // add sourceLabel height
     gettingSizeLabel = [[UILabel alloc] init];
     gettingSizeLabel.font = [UIFont systemFontOfSize:12];
-    gettingSizeLabel.text = recommenationItem.source;
-    gettingSizeLabel.numberOfLines = 0;
+    gettingSizeLabel.text = longText;
+    gettingSizeLabel.numberOfLines = 2;
     gettingSizeLabel.lineBreakMode = NSLineBreakByWordWrapping;
     maximumLabelSize = CGSizeMake(labelWidth, 9999);
     expectSize = [gettingSizeLabel sizeThatFits:maximumLabelSize];
