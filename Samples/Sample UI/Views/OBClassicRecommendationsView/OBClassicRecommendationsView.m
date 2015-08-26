@@ -371,7 +371,8 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     // add titleLabel height
     CGFloat labelWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation) ? 3.f : 2.f);
     
-    labelWidth -= 30.0;
+    labelWidth -= 30.0; // width of the cell minus the padding between cells (20.0) and the padding the label has on each side (10.0)
+    
     NSString *longText = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.";
     
     UILabel *gettingSizeLabel = [[UILabel alloc] init];
