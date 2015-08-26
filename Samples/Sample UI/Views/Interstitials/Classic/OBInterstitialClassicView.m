@@ -189,7 +189,7 @@
         sourceLabel.text = @"SourceLabel";
         sourceLabel.textColor = [UIColor orangeColor];
         sourceLabel.numberOfLines = 1;
-        sourceLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        sourceLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         sourceLabel.backgroundColor = cell.backgroundColor;
         sourceLabel.tag = 102;
         [cell.contentView addSubview:sourceLabel];
@@ -209,6 +209,7 @@
     [titleLabel sizeToFit];
     
     [sourceLabel sizeToFit];
+    sourceLabel.frame = CGRectMake(0,0, cell.bounds.size.width, CGRectGetHeight(sourceLabel.frame));
     sourceLabel.frame = CGRectOffset(sourceLabel.bounds, 0, CGRectGetMaxY(titleLabel.frame));
     
     typeof(iv) __weak __iv = iv;
