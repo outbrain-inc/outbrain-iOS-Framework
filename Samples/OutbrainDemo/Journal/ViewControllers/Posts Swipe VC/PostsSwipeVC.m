@@ -226,10 +226,10 @@ if([posts isEqual:_posts]) return;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    /*
     return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height - self.navigationController.navigationBar.bounds.size.height - STATUS_BAR_HEIGHT);
-    
-    //return self.collectionView.frame.size;
+    */
+    return self.collectionView.frame.size;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
