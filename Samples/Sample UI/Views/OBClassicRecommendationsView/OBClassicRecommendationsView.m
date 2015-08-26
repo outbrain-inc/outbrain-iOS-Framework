@@ -69,7 +69,7 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     self.layoutType = OBClassicRecommendationsViewLayoutTypeList;
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRotate:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -206,6 +206,7 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     [cell.titleLabel sizeToFit];
     cell.titleLabel.center = CGPointMake(xOff + CGRectGetMidX(cell.titleLabel.bounds),yOff + CGRectGetMidY(cell.titleLabel.bounds));
     
+    cell.sourceLabel.frame = CGRectMake(xOff + 5.f, yOff, cell.frame.size.width - xOff - 5.f, cell.bounds.size.height);
     [cell.sourceLabel sizeToFit];
     cell.sourceLabel.center = CGPointMake(xOff + CGRectGetMidX(cell.sourceLabel.bounds), CGRectGetMidY(cell.sourceLabel.bounds) + CGRectGetMaxY(cell.titleLabel.frame));
     
@@ -230,7 +231,9 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     
     if(self.layoutType == OBClassicRecommendationsViewLayoutTypeGrid)
     {
-        height = (self.showImages ? 120 : 70.f);
+        OBRecommendation * recommendation = self.recommendationResponse.recommendations[indexPath.row];
+        height = [self calculateHightForRecommandation:recommendation];
+        
         // Portrait is 2 accross, landscape is 3
         maxWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation) ? 3.f : 2.f);
     }
@@ -254,7 +257,7 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     
     cell.titleLabel = [UILabel new];
     cell.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
-    cell.titleLabel.numberOfLines = 2;
+    cell.titleLabel.numberOfLines = 3;
     cell.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.titleLabel.backgroundColor = [UIColor clearColor];
     cell.titleLabel.textColor = [UIColor blackColor];
@@ -265,6 +268,9 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     cell.sourceLabel.backgroundColor = [UIColor clearColor];
     cell.sourceLabel.font = [UIFont systemFontOfSize:12];
     cell.sourceLabel.textColor = [UIColor darkGrayColor];
+    cell.sourceLabel.numberOfLines = 2;
+    cell.sourceLabel.lineBreakMode = NSLineBreakByWordWrapping;
+
     [cell.contentView addSubview:cell.sourceLabel];
     
     cell.initialized = YES;
@@ -345,12 +351,61 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
 
 
 #pragma mark - Rotation
-
 - (void)willRotate:(NSNotification *)note
 {
     [self.internalCollectionView.collectionViewLayout invalidateLayout];
 }
 
+#pragma mark - Private
+-(CGFloat) calculateHightForRecommandation:(OBRecommendation *)recommenationItem {
+    CGFloat height = 0;
+    
+    if (self.showImages) {
+        // add image height
+        UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
+        CGSize itemSize = l.itemSize;
+        height += itemSize.height;
+    }
+    
+    
+    // add titleLabel height
+    CGFloat labelWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation) ? 3.f : 2.f);
+    
+    labelWidth -= 30.0; // width of the cell minus the padding between cells (20.0) and the padding the label has on each side (10.0)
+    
+    NSString *longText = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.";
+    
+    UILabel *gettingSizeLabel = [[UILabel alloc] init];
+    gettingSizeLabel.font = [UIFont boldSystemFontOfSize:14];
+    gettingSizeLabel.text = longText;
+    gettingSizeLabel.numberOfLines = 3;
+    gettingSizeLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    CGSize maximumLabelSize = CGSizeMake(labelWidth, 9999);
+    CGSize expectSize = [gettingSizeLabel sizeThatFits:maximumLabelSize];
+    height += expectSize.height + 5.0; // + yOffset
+
+    
+    // add sourceLabel height
+    gettingSizeLabel = [[UILabel alloc] init];
+    gettingSizeLabel.font = [UIFont systemFontOfSize:12];
+    gettingSizeLabel.text = longText;
+    gettingSizeLabel.numberOfLines = 2;
+    gettingSizeLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    maximumLabelSize = CGSizeMake(labelWidth, 9999);
+    expectSize = [gettingSizeLabel sizeThatFits:maximumLabelSize];
+    
+    height += expectSize.height;
+    
+    
+    if (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation)) {
+        height += 25.0;
+    }
+    else {
+        height += 10.0;
+    }
+    
+    return height;
+}
 
 #pragma mark - Cleanup
 
