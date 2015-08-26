@@ -25,6 +25,7 @@
 
 @implementation PostsSwipeVC
 
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define STATUS_BAR_HEIGHT 20.0
 
 
@@ -226,8 +227,13 @@ if([posts isEqual:_posts]) return;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
+        return self.collectionView.frame.size;
+    }
+    else {
+        return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height - self.navigationController.navigationBar.bounds.size.height - STATUS_BAR_HEIGHT);
+    }
     
-    return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height - self.navigationController.navigationBar.bounds.size.height - STATUS_BAR_HEIGHT);
     
     //return self.collectionView.frame.size;
 }
