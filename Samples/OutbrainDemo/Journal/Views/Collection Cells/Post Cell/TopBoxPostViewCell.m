@@ -215,7 +215,7 @@
         [self.textView addSubview:imageContainerView];
         imageContainerView.clipsToBounds = YES;
         
-        NSInteger imageRangeStart = NSMaxRange([self.textView.attributedText.string rangeOfString:[self _dateStringFromDate:post.date]]);
+        NSInteger imageRangeStart = NSMaxRange([self.textView.attributedText.string rangeOfString:[OBDemoDataHelper _dateStringFromDate:post.date]]);
         NSInteger imageRangeEnd = NSMaxRange([self.textView.attributedText.string rangeOfString:IMAGE_SPACING]);
         
         __block CGRect rect = self.textView.bounds;
