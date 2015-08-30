@@ -13,7 +13,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Interstitial";
+    self.title = @"Classic Grid";
 
     // This is all you have to do for the interstitials
     // Since the requests are controlled within the interstitial themselves

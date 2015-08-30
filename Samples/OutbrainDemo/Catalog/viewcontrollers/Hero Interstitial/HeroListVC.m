@@ -13,6 +13,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Hero Interstitial";
+    
     // Since our interstitials handle loading for us, all we do is set the request properties
     OBRequest * recommendationsRequest = [OBRequest requestWithURL:kOBRecommendationLink widgetID:kOBWidgetID];
     [self.interstitialView setRequest:recommendationsRequest];

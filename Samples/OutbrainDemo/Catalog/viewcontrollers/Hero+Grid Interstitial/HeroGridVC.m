@@ -13,7 +13,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Hero grid";
+    self.title = @"Hero + Grid";
 
     // This is all you have to do for the interstitials
     // Since the requests are controlled within the interstitial themselves
