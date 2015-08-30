@@ -14,7 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Classic without images";
+    self.title = @"List Without Images";
     
     self.recommendationsView.alpha = 0;
     

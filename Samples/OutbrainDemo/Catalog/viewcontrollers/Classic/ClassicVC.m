@@ -14,7 +14,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Classic";
+    self.title = @"List With Images";
 
     self.recommendationsView.alpha = 0;
     self.recommendationsView.widgetDelegate = self;

@@ -14,7 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Classic grid";
+    self.title = @"Grid With Images";
     
     self.recommendationsView.alpha = 0;
     
