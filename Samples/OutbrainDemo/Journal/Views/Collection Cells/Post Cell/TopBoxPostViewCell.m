@@ -356,7 +356,7 @@
     [super prepareForReuse];
     self.mainScrollView.delegate = nil;
     self.mainScrollView.scrollsToTop = NO;
-//    self.mainScrollView.contentOffset = CGPointZero;
+    self.mainScrollView.contentOffset = CGPointZero;
     
     _previousScrollYOffset = 0;
     
