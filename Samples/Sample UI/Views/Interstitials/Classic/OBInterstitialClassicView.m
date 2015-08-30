@@ -178,7 +178,7 @@
         titleLabel.frame = CGRectMake(0, CGRectGetMaxY(iv.frame) + 5.f, cell.bounds.size.width, 30);
         titleLabel.text = @"TitleLabel";
         titleLabel.numberOfLines = 2;
-        titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         titleLabel.backgroundColor = cell.backgroundColor;
         titleLabel.tag = 101;
         [cell.contentView addSubview:titleLabel];
