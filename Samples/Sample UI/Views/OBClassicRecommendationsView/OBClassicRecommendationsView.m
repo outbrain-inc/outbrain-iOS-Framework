@@ -31,6 +31,7 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
 @property (nonatomic, strong) UILabel * sourceLabel;
 @property (nonatomic, assign, getter = isInitialized) BOOL initialized;
 @end
+
 @implementation OBRecommendationCell @end
 
 
@@ -40,6 +41,11 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
  *      This is our actual recommendationsView implementation
  **/
 @implementation OBClassicRecommendationsView
+
+
+NSInteger const kCellTitleLabelNumberOfLines = 3;
+NSInteger const kCellSourceLabelNumberOfLines = 2;
+NSInteger const kNumberOfLinesAsNeeded = 0;
 
 
 #pragma mark - Initialize
@@ -217,6 +223,14 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     return cell;
 }
 
+- (CGFloat) getWidthForTitleLabelAndSourceLabel {
+    UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
+    CGSize itemSize = l.itemSize;
+    CGFloat xOff = (_layoutType == OBClassicRecommendationsViewLayoutTypeGrid || !self.showImages) ? 5.f : itemSize.height + 5.f;
+    return itemSize.width - xOff - 5.f;
+    
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     CGSize size = CGSizeMake(self.bounds.size.width - 20.f, 30);
@@ -226,14 +240,12 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    OBRecommendation * recommendation = self.recommendationResponse.recommendations[indexPath.row];
     CGFloat maxWidth = self.bounds.size.width;
-    CGFloat height = 60.f;
+    CGFloat height = [self calculateHightForRecommandation:recommendation];
     
-    if(self.layoutType == OBClassicRecommendationsViewLayoutTypeGrid)
+    if (self.layoutType == OBClassicRecommendationsViewLayoutTypeGrid)
     {
-        OBRecommendation * recommendation = self.recommendationResponse.recommendations[indexPath.row];
-        height = [self calculateHightForRecommandation:recommendation];
-        
         // Portrait is 2 accross, landscape is 3
         maxWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation) ? 3.f : 2.f);
     }
@@ -257,8 +269,8 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     
     cell.titleLabel = [UILabel new];
     cell.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
-    cell.titleLabel.numberOfLines = 3;
-    cell.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.titleLabel.numberOfLines = kCellTitleLabelNumberOfLines;
+    cell.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     cell.titleLabel.backgroundColor = [UIColor clearColor];
     cell.titleLabel.textColor = [UIColor blackColor];
     cell.titleLabel.font = [UIFont boldSystemFontOfSize:14];
@@ -268,8 +280,8 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     cell.sourceLabel.backgroundColor = [UIColor clearColor];
     cell.sourceLabel.font = [UIFont systemFontOfSize:12];
     cell.sourceLabel.textColor = [UIColor darkGrayColor];
-    cell.sourceLabel.numberOfLines = 2;
-    cell.sourceLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.sourceLabel.numberOfLines = kCellSourceLabelNumberOfLines;
+    cell.sourceLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 
     [cell.contentView addSubview:cell.sourceLabel];
     
@@ -359,8 +371,10 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
 #pragma mark - Private
 -(CGFloat) calculateHightForRecommandation:(OBRecommendation *)recommenationItem {
     CGFloat height = 0;
+    CGFloat labelWidth = 0;
+    BOOL isLayoutTypeGrid = (_layoutType == OBClassicRecommendationsViewLayoutTypeGrid);
     
-    if (self.showImages) {
+    if (self.showImages && (self.layoutType == OBClassicRecommendationsViewLayoutTypeGrid)) {
         // add image height
         UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
         CGSize itemSize = l.itemSize;
@@ -369,17 +383,29 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     
     
     // add titleLabel height
-    CGFloat labelWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation) ? 3.f : 2.f);
-    
-    labelWidth -= 30.0; // width of the cell minus the padding between cells (20.0) and the padding the label has on each side (10.0)
+    if (isLayoutTypeGrid) {
+        labelWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation) ? 3.f : 2.f);
+
+        labelWidth -= 30.0; // width of the cell minus the padding between cells (20.0) and the padding the label has on each side (10.0)
+    }
+    else {
+       labelWidth = [self getWidthForTitleLabelAndSourceLabel];
+    }
     
     NSString *longText = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.";
     
     UILabel *gettingSizeLabel = [[UILabel alloc] init];
     gettingSizeLabel.font = [UIFont boldSystemFontOfSize:14];
-    gettingSizeLabel.text = longText;
-    gettingSizeLabel.numberOfLines = 3;
-    gettingSizeLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    if (isLayoutTypeGrid) {
+        gettingSizeLabel.text = longText;
+        gettingSizeLabel.numberOfLines = kCellTitleLabelNumberOfLines;
+    }
+    else {
+        gettingSizeLabel.text = recommenationItem.content;
+        gettingSizeLabel.numberOfLines = kNumberOfLinesAsNeeded;
+    }
+    
+    gettingSizeLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     CGSize maximumLabelSize = CGSizeMake(labelWidth, 9999);
     CGSize expectSize = [gettingSizeLabel sizeThatFits:maximumLabelSize];
     height += expectSize.height + 5.0; // + yOffset
@@ -388,22 +414,29 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
     // add sourceLabel height
     gettingSizeLabel = [[UILabel alloc] init];
     gettingSizeLabel.font = [UIFont systemFontOfSize:12];
-    gettingSizeLabel.text = longText;
-    gettingSizeLabel.numberOfLines = 2;
-    gettingSizeLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    if (isLayoutTypeGrid) {
+        gettingSizeLabel.text = longText;
+        gettingSizeLabel.numberOfLines = kCellSourceLabelNumberOfLines;
+    }
+    else {
+        gettingSizeLabel.text = recommenationItem.source;
+        gettingSizeLabel.numberOfLines = kNumberOfLinesAsNeeded;
+    }
+    
+    gettingSizeLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     maximumLabelSize = CGSizeMake(labelWidth, 9999);
     expectSize = [gettingSizeLabel sizeThatFits:maximumLabelSize];
     
     height += expectSize.height;
     
     
-    if (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation)) {
+    if (isLayoutTypeGrid && UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation)) {
         height += 25.0;
     }
     else {
         height += 10.0;
     }
-    
+ 
     return height;
 }
 
