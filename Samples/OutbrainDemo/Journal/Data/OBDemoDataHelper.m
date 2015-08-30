@@ -405,6 +405,39 @@ const struct OBDCodingKeys OBDCodingKeys = {
     });
 }
 
++ (NSString *)_dateStringFromDate:(NSDate *)date
+{
+    // Next the date
+    static NSDateFormatter * formatter = nil;
+    if(!formatter)
+    {
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"EEEE, MMMM d, yyyy hh:mm"];
+    }
+    return [formatter stringFromDate:date];
+}
+
++ (NSAttributedString *)_buildArticleAttributedStringWithPost:(Post *)post
+{
+    NSString * postTitle = post.title;
+    NSString * dateString = [self _dateStringFromDate:post.date];
+    NSString * bodyString = [post.body stringByStrippingHTML];
+    bodyString = [bodyString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString * articleString = [NSString stringWithFormat:@"%@\n%@\n%@%@", postTitle, dateString, post.imageURL?IMAGE_SPACING:@"", bodyString];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 10.f;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.paragraphSpacing = 15.f;
+    paragraphStyle.paragraphSpacingBefore = 10.f;
+    
+    UIColor * lightGrayTextColor = [UIColor colorWithRed:0.475 green:0.475 blue:0.475 alpha:1.000];
+    NSMutableAttributedString * articleAttributedString = [[NSMutableAttributedString alloc] initWithString:articleString attributes:@{NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:lightGrayTextColor}];
+    
+    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName:[UIColor blackColor]} range:[articleString rangeOfString:postTitle]];
+    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont italicSystemFontOfSize:11]} range:[articleString rangeOfString:dateString]];
+    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} range:[articleString rangeOfString:bodyString]];
+    return articleAttributedString;
+}
 
 #pragma mark - Cache Evicting
 

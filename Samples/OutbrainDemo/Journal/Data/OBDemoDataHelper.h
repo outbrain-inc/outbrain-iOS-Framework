@@ -15,6 +15,7 @@
 #define OBDemoWidgetID2     @"APP_2"
 #define OBDemoWidgetID3     @"APP_3"
 
+#define IMAGE_SPACING @"\n\n\n\n\n"
 
 @class Post;
 
@@ -56,6 +57,13 @@
  *  Use to fetch an image
  **/
 + (void)fetchImageWithURL:(NSURL *)url withCallback:(void(^)(UIImage * image))callback;
+
+
+/**
+ *  Common Methods for settings the text on the Post Page for both PostViewCell and TopBoxPostViewCell
+ **/
++ (NSString *)_dateStringFromDate:(NSDate *)date;
++ (NSAttributedString *)_buildArticleAttributedStringWithPost:(Post *)post;
 
 @end
 

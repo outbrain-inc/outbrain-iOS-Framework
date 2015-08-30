@@ -60,42 +60,6 @@
 
 #pragma mark - Helpers
 
-- (NSString *)_dateStringFromDate:(NSDate *)date
-{
-    // Next the date
-    static NSDateFormatter * formatter = nil;
-    if(!formatter)
-    {
-        formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"EEEE, MMMM d, yyyy hh:mm a z"];
-    }
-    return [formatter stringFromDate:date];
-}
-
-
-#define IMAGE_SPACING @"\n\n\n\n\n"
-
-- (NSAttributedString *)_buildArticleAttributedStringWithPost:(Post *)post
-{
-    NSString * postTitle = post.title;
-    NSString * dateString = [self _dateStringFromDate:post.date];
-    NSString * bodyString = [post.body stringByStrippingHTML];
-    bodyString = [bodyString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString * articleString = [NSString stringWithFormat:@"%@\n%@\n%@%@", postTitle, dateString, post.imageURL?IMAGE_SPACING:@"", bodyString];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 10.f;
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraphStyle.paragraphSpacing = 15.f;
-    paragraphStyle.paragraphSpacingBefore = 10.f;
-    
-    UIColor * lightGrayTextColor = [UIColor colorWithRed:0.475 green:0.475 blue:0.475 alpha:1.000];
-    NSMutableAttributedString * articleAttributedString = [[NSMutableAttributedString alloc] initWithString:articleString attributes:@{NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:lightGrayTextColor}];
-    
-    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName:[UIColor blackColor]} range:[articleString rangeOfString:postTitle]];
-    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} range:[articleString rangeOfString:bodyString]];
-    return articleAttributedString;
-}
-
 - (void)_animateHoverViewToPeekAmount
 {
     _adhesionLocked = YES;
@@ -116,7 +80,7 @@
     
     // Setup the view here
     self.textView.contentInset = UIEdgeInsetsZero;
-    self.textView.attributedText = [self _buildArticleAttributedStringWithPost:post];
+    self.textView.attributedText = [OBDemoDataHelper _buildArticleAttributedStringWithPost:post];
     
     [[self.textView viewWithTag:200] removeFromSuperview];
     
@@ -134,7 +98,7 @@
         [self.textView addSubview:imageContainerView];
         imageContainerView.clipsToBounds = YES;
         
-        NSInteger imageRangeStart = NSMaxRange([self.textView.attributedText.string rangeOfString:[self _dateStringFromDate:post.date]]);
+        NSInteger imageRangeStart = NSMaxRange([self.textView.attributedText.string rangeOfString:[OBDemoDataHelper _dateStringFromDate:post.date]]);
         NSInteger imageRangeEnd = NSMaxRange([self.textView.attributedText.string rangeOfString:IMAGE_SPACING]);
         
         __block CGRect rect = self.textView.bounds;

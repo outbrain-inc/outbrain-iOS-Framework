@@ -178,45 +178,6 @@
     [Outbrain fetchRecommendationsForRequest:request withDelegate:self];
 }
 
-
-#pragma mark - Helpers
-
-- (NSString *)_dateStringFromDate:(NSDate *)date
-{
-    // Next the date
-    static NSDateFormatter * formatter = nil;
-    if(!formatter)
-    {
-        formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"EEEE, MMMM d, yyyy hh:mm a z"];
-    }
-    return [formatter stringFromDate:date];
-}
-
-
-#define IMAGE_SPACING @"\n\n\n\n\n"
-
-- (NSAttributedString *)_buildArticleAttributedStringWithPost:(Post *)post
-{
-    NSString * postTitle = post.title;
-    NSString * dateString = [self _dateStringFromDate:post.date];
-    NSString * bodyString = [post.body stringByStrippingHTML];
-    bodyString = [bodyString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString * articleString = [NSString stringWithFormat:@"%@\n%@\n%@%@", postTitle, dateString, post.imageURL?IMAGE_SPACING:@"", bodyString];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 10.f;
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraphStyle.paragraphSpacing = 15.f;
-    paragraphStyle.paragraphSpacingBefore = 10.f;
-    
-    UIColor * lightGrayTextColor = [UIColor colorWithRed:0.475 green:0.475 blue:0.475 alpha:1.000];
-    NSMutableAttributedString * articleAttributedString = [[NSMutableAttributedString alloc] initWithString:articleString attributes:@{NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:lightGrayTextColor}];
-    
-    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName:[UIColor blackColor]} range:[articleString rangeOfString:postTitle]];
-    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} range:[articleString rangeOfString:bodyString]];
-    return articleAttributedString;
-}
-
 #pragma mark - Setters
 
 - (void)setPost:(Post *)post
@@ -235,12 +196,11 @@
     // Setup the view here
     self.mainScrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     self.mainScrollView.contentInset = UIEdgeInsetsZero;
-    self.textView.attributedText = [self _buildArticleAttributedStringWithPost:post];
+    self.textView.attributedText = [OBDemoDataHelper _buildArticleAttributedStringWithPost:post];
     self.topBoxView.frame = CGRectOffset(self.topBoxView.bounds, 0, -self.topBoxView.frame.size.height);
 
     // We handle the fetching ourself
-    CGRect textSize = [self.textView textRectForBounds:CGRectMake(10, 0, self.frame.size.width - 20, CGFLOAT_MAX) limitedToNumberOfLines:0];
-    
+    CGRect textSize = [self.textView textRectForBounds:CGRectMake(10, 8, self.frame.size.width - 20, CGFLOAT_MAX) limitedToNumberOfLines:0];    
     self.textView.frame = textSize;
     self.mainScrollView.contentSize = CGSizeMake(textSize.size.width, textSize.size.height);
     
@@ -381,7 +341,7 @@
     self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.contentSize.width, self.mainScrollView.contentSize.height + self.topBoxView.frame.size.height);
     NSLog(@"DOCKING TOP BOX");
     [UIView animateWithDuration:.25f animations:^{
-        self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.topBoxView.frame.size.height, self.textView.frame.size.width, self.textView.frame.size.height);
+        self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.topBoxView.frame.size.height + 10, self.textView.frame.size.width, self.textView.frame.size.height);
         self.topBoxView.frame = CGRectMake(0,0,self.topBoxView.frame.size.width, self.topBoxView.frame.size.height);
     }];
     [self.mainScrollView addSubview:self.topBoxView];

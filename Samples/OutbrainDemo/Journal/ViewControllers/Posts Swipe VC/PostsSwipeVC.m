@@ -183,7 +183,7 @@ if([posts isEqual:_posts]) return;
         cell = (TopBoxPostViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:TopBoxPostCellID forIndexPath:indexPath];
     }
     else {
-        cell = (PostViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:indexIsRecommendation?RecommendationCellID:PostCellID forIndexPath:indexPath];
+        cell = (PostViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:(indexIsRecommendation ? RecommendationCellID : PostCellID) forIndexPath:indexPath];
     }
     if(!indexIsRecommendation)
     {
