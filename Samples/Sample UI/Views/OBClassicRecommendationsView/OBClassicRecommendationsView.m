@@ -258,6 +258,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
 // Setup our (images,labels,colors, etc...) if necessary
 - (void)_setupSubviewsForCell:(OBRecommendationCell *)cell
 {
+    BOOL isLayoutTypeGrid = (_layoutType == OBClassicRecommendationsViewLayoutTypeGrid);
     UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
     CGSize itemSize = l.itemSize;
     
@@ -269,7 +270,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     
     cell.titleLabel = [UILabel new];
     cell.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
-    cell.titleLabel.numberOfLines = kCellTitleLabelNumberOfLines;
+    cell.titleLabel.numberOfLines = isLayoutTypeGrid ? kCellTitleLabelNumberOfLines : kNumberOfLinesAsNeeded;
     cell.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     cell.titleLabel.backgroundColor = [UIColor clearColor];
     cell.titleLabel.textColor = [UIColor blackColor];
@@ -280,7 +281,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     cell.sourceLabel.backgroundColor = [UIColor clearColor];
     cell.sourceLabel.font = [UIFont systemFontOfSize:12];
     cell.sourceLabel.textColor = [UIColor darkGrayColor];
-    cell.sourceLabel.numberOfLines = kCellSourceLabelNumberOfLines;
+    cell.sourceLabel.numberOfLines = isLayoutTypeGrid ? kCellSourceLabelNumberOfLines : kNumberOfLinesAsNeeded;
     cell.sourceLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 
     [cell.contentView addSubview:cell.sourceLabel];
@@ -373,11 +374,12 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     CGFloat height = 0;
     CGFloat labelWidth = 0;
     BOOL isLayoutTypeGrid = (_layoutType == OBClassicRecommendationsViewLayoutTypeGrid);
+    UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
+    CGSize itemSize = l.itemSize;
+    CGFloat minHeight = itemSize.height;
     
     if (self.showImages && (self.layoutType == OBClassicRecommendationsViewLayoutTypeGrid)) {
         // add image height
-        UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
-        CGSize itemSize = l.itemSize;
         height += itemSize.height;
     }
     
@@ -436,8 +438,8 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     else {
         height += 10.0;
     }
- 
-    return height;
+
+    return (height < minHeight) ? minHeight : height;
 }
 
 #pragma mark - Cleanup
