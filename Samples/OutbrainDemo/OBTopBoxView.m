@@ -38,6 +38,7 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.scrollEnabled = NO;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self addSubview:_tableView];
     
 //    typeof(self) __weak __self = self;
