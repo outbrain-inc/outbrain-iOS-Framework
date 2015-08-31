@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1ez-ca-2ry">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="1ez-ca-2ry">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -25,7 +25,7 @@
             <objects>
                 <tableViewController id="95Z-w9-r1F" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="AGk-It-ads">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -337,7 +337,7 @@
                             <tableViewSection id="Rvw-Ny-XXQ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="86" id="oVb-V4-3Xn">
-                                        <rect key="frame" x="0.0" y="670" width="320" height="86"/>
+                                        <rect key="frame" x="0.0" y="820" width="320" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oVb-V4-3Xn" id="QN3-xE-rpH">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="86"/>
@@ -354,7 +354,7 @@
                                                             <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOREM IPSUM" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4uK-5X-tZS">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4uK-5X-tZS">
                                                             <rect key="frame" x="20" y="29" width="280" height="48"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -369,7 +369,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" editingAccessoryType="disclosureIndicator" textLabel="B1y-bQ-1Eb" style="IBUITableViewCellStyleDefault" id="qJb-Mh-8Yy">
-                                        <rect key="frame" x="0.0" y="756" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="906" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qJb-Mh-8Yy" id="kFn-fk-jub">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
@@ -417,7 +417,7 @@
             <objects>
                 <viewController id="VP9-Ob-HhF" customClass="ClassicInterstitialVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K5g-Vn-byH">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="pQg-tt-Bu5" customClass="OBInterstitialClassicView">
@@ -443,7 +443,7 @@
             <objects>
                 <viewController id="rUs-SO-dqT" customClass="ClassicVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BJV-Hn-uZk">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="qV7-Cl-Mcs" customClass="OBClassicRecommendationsView">
@@ -469,7 +469,7 @@
             <objects>
                 <tableViewController id="ohF-2S-E80" customClass="InStreamVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="HBn-jV-KRG">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -477,7 +477,7 @@
                                 <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iAH-WL-yZg" id="M6E-eJ-108">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NsV-hI-tfJ">
@@ -501,7 +501,7 @@
                                 <rect key="frame" x="0.0" y="102" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KBl-1N-lBh" id="gMp-WD-HAl">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -522,7 +522,7 @@
             <objects>
                 <viewController id="2Ob-3y-KiM" customClass="HeroGridVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HgY-I2-lq5">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="sD8-g2-HlR" customClass="OBInterstitialHeroGridView">
@@ -548,7 +548,7 @@
             <objects>
                 <viewController id="Fb7-oL-75d" customClass="AdhesionVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qm0-Um-CJj">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="q9Z-oh-M0r">
@@ -589,7 +589,7 @@
             <objects>
                 <viewController id="2nI-Aq-KLf" customClass="HeroListVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J7H-ZO-u8l">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="uwE-xk-ZN4" customClass="OBInterstitialHeroView">
@@ -615,7 +615,7 @@
             <objects>
                 <viewController id="FFc-VY-2Pq" customClass="ClassicVCNoImages" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pja-hm-0De">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Rzg-1K-3pG" customClass="OBClassicRecommendationsView">
@@ -641,7 +641,7 @@
             <objects>
                 <viewController id="ElH-ul-fCU" customClass="ClassicGridVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A64-XE-VSF">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="AfJ-Aj-412" customClass="OBClassicRecommendationsView">
@@ -798,11 +798,6 @@
         <image name="close" width="20" height="20"/>
         <image name="logo.png" width="140" height="39"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="EQg-j4-u9g"/>
         <segue reference="Gmq-tS-uNd"/>
