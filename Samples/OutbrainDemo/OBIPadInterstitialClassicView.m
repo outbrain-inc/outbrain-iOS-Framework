@@ -56,6 +56,9 @@
 
 @implementation OBIPadInterstitialClassicView
 
+NSInteger const kActivityIndicatorTag = 222;
+
+
 #pragma mark - Initialize
 
 - (void)commonInit
@@ -100,6 +103,7 @@
     UIActivityIndicatorView * indy = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     indy.center = CGPointMake(loadingLabel.center.x, CGRectGetMaxY(loadingLabel.frame) + 50.f);
     indy.hidesWhenStopped = YES;
+    indy.tag = kActivityIndicatorTag;
     [indy startAnimating];
     [v addSubview:indy];
     
@@ -193,7 +197,8 @@ static float maxCellHeight = 0;
     OBRecommendation * rec = self.recommendations[indexPath.section][indexPath.row];
     CGSize cellSize = [OBIPadInterstitialClassicViewCell sizeForRec:rec collectionViewWidth:self.internalCollectionView.frame.size.width];
     maxCellHeight = MAX(maxCellHeight, cellSize.height);
-    return CGSizeMake(cellSize.width, maxCellHeight);
+    //return CGSizeMake(cellSize.width, maxCellHeight);
+    return CGSizeMake(100, 100);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -222,11 +227,11 @@ static float maxCellHeight = 0;
     _loading = loading;
     
     UIButton * b = (UIButton *)[self.loadMoreFooterView viewWithTag:101];
-    UIActivityIndicatorView * indy = (UIActivityIndicatorView *)[self.loadMoreFooterView viewWithTag:102];
+    UIActivityIndicatorView * indy = (UIActivityIndicatorView *)[self.loadingView viewWithTag:kActivityIndicatorTag];
     
-    loading?[indy startAnimating]:[indy stopAnimating];
+    loading ? [indy startAnimating] : [indy stopAnimating];
     [UIView animateWithDuration:.25f animations:^{
-        b.alpha = _loading?0:1.f;
+        b.alpha = _loading ? 0 : 1.f;
     }];
     
     if(_loading && self.recommendations.count == 0)
