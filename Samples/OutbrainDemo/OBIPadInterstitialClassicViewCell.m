@@ -133,7 +133,7 @@
 }
 
 + (CGSize)sizeForRec:(OBRecommendation *)rec collectionViewWidth:(CGFloat)width {
-    CGSize cellSize;
+    CGSize cellSize = CGSizeMake(0, 0);
     cellSize.width = (width - 6*CELL_HORIZONTAL_SPACING) / 3;
     UILabel *titleLabel = [self makeTitleLabelWithText:rec.content toFit:cellSize.width - 2*CELL_LABELS_SIDE_PADDING];
     UILabel *sourceLabel = [self makeSourceLabelWithText:[NSString stringWithFormat:@"(%@)",rec.source] toFit:cellSize.width - 2*CELL_LABELS_SIDE_PADDING];

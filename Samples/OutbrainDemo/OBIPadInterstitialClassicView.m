@@ -197,8 +197,7 @@ static float maxCellHeight = 0;
     OBRecommendation * rec = self.recommendations[indexPath.section][indexPath.row];
     CGSize cellSize = [OBIPadInterstitialClassicViewCell sizeForRec:rec collectionViewWidth:self.internalCollectionView.frame.size.width];
     maxCellHeight = MAX(maxCellHeight, cellSize.height);
-    //return CGSizeMake(cellSize.width, maxCellHeight);
-    return CGSizeMake(100, 100);
+    return CGSizeMake(cellSize.width, maxCellHeight);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
