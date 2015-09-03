@@ -61,7 +61,6 @@
 		D8DCCA6118883DED00E038EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DCCA6018883DED00E038EE /* main.m */; };
 		D8DCCA6518883DED00E038EE /* OBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DCCA6418883DED00E038EE /* OBAppDelegate.m */; };
 		D8DCCA6818883DED00E038EE /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA6618883DED00E038EE /* Main_iPhone.storyboard */; };
-		D8DCCA7018883DED00E038EE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA6F18883DED00E038EE /* Images.xcassets */; };
 		D8DCCA7618883DED00E038EE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5925A186376B1009422D5 /* XCTest.framework */; };
 		D8DCCA7718883DED00E038EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923C186376B1009422D5 /* Foundation.framework */; };
 		D8DCCA7818883DED00E038EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
@@ -91,7 +90,6 @@
 		FC66EBD118F137C7005FA944 /* tiny-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8318D9DD41009081B6 /* tiny-logo.png */; };
 		FC66EBD218F137C7005FA944 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8118D9DD41009081B6 /* logo.png */; };
 		FC66EBD318F137C7005FA944 /* tiny-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8418D9DD41009081B6 /* tiny-logo@2x.png */; };
-		FC66EBD418F137C7005FA944 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA6F18883DED00E038EE /* Images.xcassets */; };
 		FC66EBD518F137C7005FA944 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8218D9DD41009081B6 /* logo@2x.png */; };
 		FC66EBD718F137C7005FA944 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA5D18883DED00E038EE /* InfoPlist.strings */; };
 		FC66EBDF18F14594005FA944 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC66EB9C18F13789005FA944 /* Images.xcassets */; };
@@ -111,6 +109,7 @@
 		FC9BEE311998BFBF00D545FE /* OBRecommendationWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D87BC2E51889D29A006D1173 /* OBRecommendationWebVC.m */; };
 		FCF0FE851A91C23D008FC34E /* TopBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF0FE841A91C23D008FC34E /* TopBoxViewController.m */; };
 		FCF0FE891A91C2F0008FC34E /* OBTopBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF0FE881A91C2F0008FC34E /* OBTopBoxView.m */; };
+		FF0BB5D11B9843DE00AF9F2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA6F18883DED00E038EE /* Images.xcassets */; };
 		FFEDF9F01B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEDF9EF1B89BAD800BEEFCB /* OutbrainSDK.framework */; };
 		FFEDF9F11B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEDF9EF1B89BAD800BEEFCB /* OutbrainSDK.framework */; };
 		FFEDF9F21B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEDF9EF1B89BAD800BEEFCB /* OutbrainSDK.framework */; };
@@ -1042,10 +1041,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8448EE4189C2FC2005696E7 /* OBConfig.plist in Resources */,
+				FF0BB5D11B9843DE00AF9F2E /* Images.xcassets in Resources */,
 				D8D85B8A18D9DD41009081B6 /* tiny-logo.png in Resources */,
 				D8D85B8618D9DD41009081B6 /* logo.png in Resources */,
 				D8D85B8C18D9DD41009081B6 /* tiny-logo@2x.png in Resources */,
-				D8DCCA7018883DED00E038EE /* Images.xcassets in Resources */,
 				D8D85B8818D9DD41009081B6 /* logo@2x.png in Resources */,
 				D8DCCA6818883DED00E038EE /* Main_iPhone.storyboard in Resources */,
 				D8DCCA5F18883DED00E038EE /* InfoPlist.strings in Resources */,
@@ -1070,7 +1069,6 @@
 				FC66EBD118F137C7005FA944 /* tiny-logo.png in Resources */,
 				FC66EBD218F137C7005FA944 /* logo.png in Resources */,
 				FC66EBD318F137C7005FA944 /* tiny-logo@2x.png in Resources */,
-				FC66EBD418F137C7005FA944 /* Images.xcassets in Resources */,
 				FC66EBD518F137C7005FA944 /* logo@2x.png in Resources */,
 				FC66EBD718F137C7005FA944 /* InfoPlist.strings in Resources */,
 			);
@@ -1477,7 +1475,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}",
-					/Users/oded/dev/OBiOSSDK/Samples/OutbrainDemo,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Catalog/Catalog-Prefix.pch";
@@ -1507,7 +1504,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}",
-					/Users/oded/dev/OBiOSSDK/Samples/OutbrainDemo,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Catalog/Catalog-Prefix.pch";
