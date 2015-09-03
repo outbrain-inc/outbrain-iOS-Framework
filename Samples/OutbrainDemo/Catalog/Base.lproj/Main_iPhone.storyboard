@@ -81,7 +81,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="rUs-SO-dqT" kind="push" id="4eS-rT-vCT"/>
+                                            <segue destination="rUs-SO-dqT" kind="push" identifier="ClassicVCSegue" id="4eS-rT-vCT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" editingAccessoryType="disclosureIndicator" textLabel="BTm-xO-83m" style="IBUITableViewCellStyleDefault" id="8uM-gu-dcT">
@@ -101,7 +101,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="FFc-VY-2Pq" kind="push" id="VJ7-bF-YIv"/>
+                                            <segue destination="FFc-VY-2Pq" kind="push" identifier="ClassicVC-NoImagesSegue" id="VJ7-bF-YIv"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" editingAccessoryType="disclosureIndicator" textLabel="StU-qW-ONc" style="IBUITableViewCellStyleDefault" id="Y5v-1B-Oq3">
@@ -121,7 +121,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="ElH-ul-fCU" kind="push" id="VJC-t0-aOe"/>
+                                            <segue destination="ElH-ul-fCU" kind="push" identifier="gridVCSegue" id="VJC-t0-aOe"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -177,7 +177,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="2nI-Aq-KLf" kind="push" id="aLn-OP-biJ"/>
+                                            <segue destination="2nI-Aq-KLf" kind="push" identifier="HeroListVCSegue" id="aLn-OP-biJ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" editingAccessoryType="disclosureIndicator" textLabel="aj7-gY-APx" style="IBUITableViewCellStyleDefault" id="cDH-mh-I4o">
@@ -197,7 +197,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="VP9-Ob-HhF" kind="push" id="tza-pG-It0"/>
+                                            <segue destination="VP9-Ob-HhF" kind="push" identifier="classicInterstitialVCSegue" id="tza-pG-It0"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" editingAccessoryType="disclosureIndicator" textLabel="Wqa-BW-MJh" style="IBUITableViewCellStyleDefault" id="MAB-MT-a3u">
@@ -217,7 +217,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="2Ob-3y-KiM" kind="push" id="uji-qF-Xi9"/>
+                                            <segue destination="2Ob-3y-KiM" kind="push" identifier="heroVCGridSegue" id="uji-qF-Xi9"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -273,7 +273,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Fb7-oL-75d" kind="push" id="tMQ-gI-nEQ"/>
+                                            <segue destination="Fb7-oL-75d" kind="push" identifier="AdhesionVCSegue" id="tMQ-gI-nEQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -329,7 +329,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="ohF-2S-E80" kind="push" id="Rpb-Cw-cuB"/>
+                                            <segue destination="ohF-2S-E80" kind="push" identifier="instreamSegue" id="Rpb-Cw-cuB"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -385,7 +385,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="QqE-jd-IxU" kind="push" id="7yv-4w-eHI"/>
+                                            <segue destination="QqE-jd-IxU" kind="push" identifier="topboxSegue" id="7yv-4w-eHI"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -431,7 +431,7 @@
                     <navigationItem key="navigationItem" id="O1j-Rb-Tq0"/>
                     <connections>
                         <outlet property="classicInterstitialView" destination="pQg-tt-Bu5" id="9IX-K4-v1U"/>
-                        <segue destination="kwk-8i-O7z" kind="modal" id="hhw-k4-445"/>
+                        <segue destination="kwk-8i-O7z" kind="modal" identifier="navSegue" id="hhw-k4-445"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YuH-C1-NJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -457,7 +457,7 @@
                     <navigationItem key="navigationItem" id="KPa-09-wun"/>
                     <connections>
                         <outlet property="recommendationsView" destination="qV7-Cl-Mcs" id="FdA-Gc-HVT"/>
-                        <segue destination="kwk-8i-O7z" kind="modal" id="9Bc-8A-Jq7"/>
+                        <segue destination="kwk-8i-O7z" kind="modal" identifier="navSegue2" id="9Bc-8A-Jq7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHh-rB-yIG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -536,7 +536,7 @@
                     <navigationItem key="navigationItem" id="eoY-2e-uIo"/>
                     <connections>
                         <outlet property="interstitialView" destination="sD8-g2-HlR" id="18g-g9-axc"/>
-                        <segue destination="kwk-8i-O7z" kind="modal" id="SJk-C8-utO"/>
+                        <segue destination="kwk-8i-O7z" kind="modal" identifier="navSegue3" id="SJk-C8-utO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WEA-PO-aCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -577,7 +577,7 @@
                     <navigationItem key="navigationItem" id="gK5-CU-sQ8"/>
                     <connections>
                         <outlet property="adhesionView" destination="9x8-UB-vXO" id="chs-Ig-cN4"/>
-                        <segue destination="kwk-8i-O7z" kind="modal" id="Gmq-tS-uNd"/>
+                        <segue destination="kwk-8i-O7z" kind="modal" identifier="navSegue4" id="Gmq-tS-uNd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kkN-vP-AA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -603,7 +603,7 @@
                     <navigationItem key="navigationItem" id="pgr-pM-IhE"/>
                     <connections>
                         <outlet property="interstitialView" destination="uwE-xk-ZN4" id="OLI-mz-WSZ"/>
-                        <segue destination="kwk-8i-O7z" kind="modal" id="We5-we-7XE"/>
+                        <segue destination="kwk-8i-O7z" kind="modal" identifier="navSegue5" id="We5-we-7XE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WY-0D-maZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -629,7 +629,7 @@
                     <navigationItem key="navigationItem" id="bgb-SV-jwN"/>
                     <connections>
                         <outlet property="recommendationsView" destination="Rzg-1K-3pG" id="cfP-8m-qm6"/>
-                        <segue destination="kwk-8i-O7z" kind="modal" id="Jg6-Yu-lYc"/>
+                        <segue destination="kwk-8i-O7z" kind="modal" identifier="navSegue6" id="Jg6-Yu-lYc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgm-ei-Tfs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -655,7 +655,7 @@
                     <navigationItem key="navigationItem" id="ddx-3Q-EcY"/>
                     <connections>
                         <outlet property="recommendationsView" destination="AfJ-Aj-412" id="DLs-Ge-SAJ"/>
-                        <segue destination="kwk-8i-O7z" kind="modal" id="KxB-qF-b89"/>
+                        <segue destination="kwk-8i-O7z" kind="modal" identifier="navSegue7" id="KxB-qF-b89"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eML-Lf-bB9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -785,7 +785,7 @@
                         <outlet property="mainTextView" destination="R1B-pF-YLt" id="GN7-sZ-RfD"/>
                         <outlet property="topBoxView" destination="LQ8-lO-Lze" id="Ik3-Rm-h6m"/>
                         <outlet property="view" destination="VvJ-pt-fjd" id="ZyO-SG-ahz"/>
-                        <segue destination="95Z-w9-r1F" kind="push" id="EQg-j4-u9g"/>
+                        <segue destination="95Z-w9-r1F" kind="push" identifier="tableViewSegue" id="EQg-j4-u9g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uB-8h-rEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -800,7 +800,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="EQg-j4-u9g"/>
-        <segue reference="Gmq-tS-uNd"/>
+        <segue reference="KxB-qF-b89"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.4238500932" blue="0.13888211" alpha="1" colorSpace="calibratedRGB"/>
 </document>
