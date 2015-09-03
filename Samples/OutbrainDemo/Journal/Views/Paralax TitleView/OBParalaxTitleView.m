@@ -89,6 +89,9 @@
     if([titles isEqual:_titles]) return;
     _titles = [titles copy];
     
+    // Clear all of the current subviews
+    [[_scrollContainer subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
     NSInteger index = 0;
     for(NSString * title in titles)
     {
