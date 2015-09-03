@@ -18,33 +18,33 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
+      "filename" : "ipad-splash-vertical-1.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "ipad-splash-vertical-1.png",
       "scale" : "1x"
     },
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
+      "filename" : "ipad-splash-horizontal.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "ipad-splash-horizontal.png",
       "scale" : "1x"
     },
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
+      "filename" : "ipad-splash-vertical.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "ipad-splash-vertical.png",
       "scale" : "2x"
     },
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
+      "filename" : "ipad-splash-horizontal-1.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "ipad-splash-horizontal-1.png",
       "scale" : "2x"
     },
     {
