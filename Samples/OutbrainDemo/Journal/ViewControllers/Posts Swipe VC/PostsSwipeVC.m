@@ -231,7 +231,15 @@ if([posts isEqual:_posts]) return;
         return self.collectionView.frame.size;
     }
     else {
-        return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height - self.navigationController.navigationBar.bounds.size.height - STATUS_BAR_HEIGHT);
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenHeight = screenRect.size.height;
+        
+        if (screenHeight > self.collectionView.frame.size.height) {
+            return self.collectionView.frame.size;
+        }
+        else {
+            return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height - self.navigationController.navigationBar.bounds.size.height - STATUS_BAR_HEIGHT);            
+        }
     }
     
     
