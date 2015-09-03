@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="mgt-so-C3v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="mgt-so-C3v">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -19,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-2863" y="-37"/>
         </scene>
-        <!--Pad In StreamVC-->
+        <!--iPad In StreamVC-->
         <scene sceneID="QA3-Wj-Xpa">
             <objects>
                 <viewController id="qws-lL-DE0" customClass="IPadInStreamVC" sceneMemberID="viewController">
@@ -38,14 +39,14 @@
                     <navigationItem key="navigationItem" id="Wme-J1-Y3I"/>
                     <connections>
                         <outlet property="recommendationsView" destination="Bsh-bQ-bqk" id="aGx-o7-Xeg"/>
-                        <segue destination="sBF-ug-5qH" kind="modal" id="XGb-07-FrY"/>
+                        <segue destination="sBF-ug-5qH" kind="modal" identifier="navSegue" id="XGb-07-FrY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUI-KJ-k2N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="283" y="-2341"/>
         </scene>
-        <!--Pad ClassicVC-->
+        <!--iPad ClassicVC-->
         <scene sceneID="953-zb-ReL">
             <objects>
                 <viewController id="zyN-44-dVq" customClass="IPadClassicVC" sceneMemberID="viewController">
@@ -68,14 +69,14 @@
                     <size key="freeformSize" width="768" height="1024"/>
                     <connections>
                         <outlet property="recommendationsView" destination="ab4-uQ-egU" id="MTV-F0-R0O"/>
-                        <segue destination="sBF-ug-5qH" kind="modal" id="ajj-jZ-HxW"/>
+                        <segue destination="sBF-ug-5qH" kind="modal" identifier="nav2Segue" id="ajj-jZ-HxW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHO-FX-x0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="283" y="-1168"/>
         </scene>
-        <!--Pad Classic InterstitialVC-->
+        <!--iPad Classic InterstitialVC-->
         <scene sceneID="2Fb-3R-MxK">
             <objects>
                 <viewController id="kbY-1Q-jVv" customClass="IPadClassicInterstitialVC" sceneMemberID="viewController">
@@ -94,7 +95,7 @@
                     <navigationItem key="navigationItem" id="7x5-kA-qfk"/>
                     <connections>
                         <outlet property="classicInterstitialView" destination="UoR-mz-DAE" id="eqd-7n-U4q"/>
-                        <segue destination="sBF-ug-5qH" kind="modal" id="WAD-y7-f6R"/>
+                        <segue destination="sBF-ug-5qH" kind="modal" identifier="nav3Segue" id="WAD-y7-f6R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9O-fq-Unj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -150,11 +151,11 @@
                                         <rect key="frame" x="0.0" y="185" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IXJ-zD-jXp" id="Anu-Ce-TFw">
-                                            <rect key="frame" x="0.0" y="0.0" width="735" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="682" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Footer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EzH-4e-ZcG">
-                                                    <rect key="frame" x="15" y="0.0" width="718" height="44"/>
+                                                    <rect key="frame" x="68" y="0.0" width="614" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -163,7 +164,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="zyN-44-dVq" kind="push" id="Ycb-oo-7o9"/>
+                                            <segue destination="zyN-44-dVq" kind="push" identifier="classicVCSegue" id="Ycb-oo-7o9"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -207,11 +208,11 @@
                                         <rect key="frame" x="0.0" y="344" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QpI-R1-aYt" id="jGs-j9-fNJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="735" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="682" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Shelf" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZLR-TR-HEV">
-                                                    <rect key="frame" x="15" y="0.0" width="718" height="44"/>
+                                                    <rect key="frame" x="68" y="0.0" width="614" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -220,7 +221,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="2Zs-gD-h1J" kind="push" id="hTG-93-b9p"/>
+                                            <segue destination="2Zs-gD-h1J" kind="push" identifier="shelfVCSegue" id="hTG-93-b9p"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -264,11 +265,11 @@
                                         <rect key="frame" x="0.0" y="494" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hRn-r0-ndf" id="5QN-en-2kG">
-                                            <rect key="frame" x="0.0" y="0.0" width="735" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="682" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="In Stream" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ayd-Jf-Lpe">
-                                                    <rect key="frame" x="15" y="0.0" width="718" height="44"/>
+                                                    <rect key="frame" x="68" y="0.0" width="614" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -277,7 +278,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qws-lL-DE0" kind="push" id="1LY-zD-0Tr"/>
+                                            <segue destination="qws-lL-DE0" kind="push" identifier="streamSegue" id="1LY-zD-0Tr"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -321,7 +322,7 @@
                                         <rect key="frame" x="0.0" y="644" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vFw-3H-PUm" id="1TR-RR-lh8">
-                                            <rect key="frame" x="0.0" y="0.0" width="735" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="682" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Interstitial" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kaa-wI-GIG">
@@ -334,7 +335,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="kbY-1Q-jVv" kind="push" id="vbb-Aq-hPa"/>
+                                            <segue destination="kbY-1Q-jVv" kind="push" identifier="classicInterstitialSegue" id="vbb-Aq-hPa"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -348,7 +349,7 @@
                     <navigationItem key="navigationItem" id="eU6-nr-Bvi">
                         <nil key="title"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9dW-W4-g9S">
-                            <rect key="frame" x="307" y="5" width="154" height="35"/>
+                            <rect key="frame" x="307" y="4.5" width="154" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" image="logo.png">
@@ -392,7 +393,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="shelfView" destination="3AT-G2-GnT" id="WgG-dW-iFJ"/>
-                        <segue destination="sBF-ug-5qH" kind="modal" id="z4Z-wJ-YKv"/>
+                        <segue destination="sBF-ug-5qH" kind="modal" identifier="nav4Segue" id="z4Z-wJ-YKv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MqZ-Gk-siN" userLabel="First Responder" sceneMemberID="firstResponder"/>
