@@ -59,7 +59,7 @@
         // we've scrolled down a little alread
         if(yOff < _previousScrollYOffset && scrollView.contentOffset.y > 10.f)
         {
-            NSLog(@"GO UP");
+            //NSLog(@"GO UP");
             // We only scroll the hover view in when scrolling up
             CGRect r = _topBoxView.frame;
             r.origin.y += (_previousScrollYOffset - yOff) * paralaxRate;
@@ -74,7 +74,7 @@
             // If we've already scrolled up some then we should scroll down at the same paralax rate vs. locking at the bottom
             if(CGRectGetMinY(_topBoxView.frame) >= 0 && _previousScrollYOffset < yOff)
             {
-                NSLog(@"GO DOWN");
+                //NSLog(@"GO DOWN");
                 CGRect r = _topBoxView.frame;
                 r.origin.y += (_previousScrollYOffset - yOff) * paralaxRate;
                 
@@ -97,12 +97,12 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    NSLog(@"Scroll view did end dragging");
+    //NSLog(@"Scroll view did end dragging");
     if (_topBoxDocked) return;
     
-    NSLog(@"contentOffset = %@", CGPointCreateDictionaryRepresentation(scrollView.contentOffset));
-    NSLog(@"maxY = %.2f", CGRectGetMinY(_topBoxView.frame));
-    NSLog(@"_topBoxLocked = %@", _topBoxLocked ? @"YES" : @"NO");
+    //NSLog(@"contentOffset = %@", CGPointCreateDictionaryRepresentation(scrollView.contentOffset));
+    //NSLog(@"maxY = %.2f", CGRectGetMinY(_topBoxView.frame));
+    //NSLog(@"_topBoxLocked = %@", _topBoxLocked ? @"YES" : @"NO");
     
     if (_topBoxLocked && scrollView.contentOffset.y <= CGRectGetMinY(_topBoxView.frame)) {
         [self dockTopBox];
@@ -125,10 +125,10 @@
     CGFloat adhesionYOff = CGRectGetMinY(self.topBoxView.frame);
     CGFloat scrollYOff = self.mainScrollView.contentOffset.y;
     
-    NSLog(@"did end decelerating");
+    //NSLog(@"did end decelerating");
     if(adhesionYOff > (scrollYOff - self.topBoxView.frame.size.height) && adhesionYOff < scrollYOff)
     {
-        NSLog(@"did end decelerating with animation");
+        //NSLog(@"did end decelerating with animation");
         [self _animateHoverViewToPeekAmount];
     }
     else {
@@ -150,8 +150,8 @@
     _topBoxLocked = YES;
     mainScrollView.contentSize = CGSizeMake(mainScrollView.contentSize.width, mainScrollView.contentSize.height + _topBoxView.frame.size.height);
     
-    NSLog(@"animate hover");
-    NSLog(@"FRAME = %@", CGRectCreateDictionaryRepresentation(self.topBoxView.frame));
+    //NSLog(@"animate hover");
+    //NSLog(@"FRAME = %@", CGRectCreateDictionaryRepresentation(self.topBoxView.frame));
     
     [UIView animateWithDuration:.25f animations:^{
         self.topBoxView.frame = CGRectMake(0,0,_topBoxView.frame.size.width, _topBoxView.frame.size.height);
