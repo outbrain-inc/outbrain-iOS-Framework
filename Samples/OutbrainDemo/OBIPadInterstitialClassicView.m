@@ -56,6 +56,8 @@
 
 @implementation OBIPadInterstitialClassicView
 
+@synthesize recommendationResponse;
+
 NSInteger const kActivityIndicatorTag = 222;
 
 

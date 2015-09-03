@@ -182,9 +182,7 @@
 - (BOOL)shouldShowRecommendationForIndex:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     
-    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-
-    if (UIDeviceOrientationIsPortrait(interfaceOrientation)) {
+    if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)) {
         return !(row == 1 || row == 2 || row == 5);
     }
     else {

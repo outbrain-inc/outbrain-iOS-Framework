@@ -24,13 +24,14 @@ typedef void(^OBWRecommendationTappedHandler)(OBRecommendation * recommendation)
 // Some widgets have branding attached to them.  These branding areas are clickable by the user.
 // Here you can redirect them to the oubrain about page.
 - (void)widgetViewTappedBranding:(UIView<OBWidgetViewProtocol> *)widgetView;
+
 @end
 
 
 /**
  *  This is an advanced configuration helper for creating your own Outbrain Recommendations UI's.
- *  Below is a protocol that your UI Widget should conform to.  We've also included a helper macro
- *  for adhering to the protocol without having to copy and paste everything.
+ *  Below is a protocol that your UI Widget should conform to.
+ *
  *
  *  Example:
  *
@@ -39,7 +40,7 @@ typedef void(^OBWRecommendationTappedHandler)(OBRecommendation * recommendation)
  *
  *  @interface MyCustomWidgetView : UIControl <OBWidgetViewProtocol>        <-- Says `MyCustomWidgetView` should conform to the `OBWidgetViewProtocol`
  *
- *  AdhereToOBWidgetViewProtocol        <-- This is our helper macro.  It defines all the properties for your class so you don't have to
+ *  
  *
  *  @end
  *
@@ -72,25 +73,21 @@ typedef void(^OBWRecommendationTappedHandler)(OBRecommendation * recommendation)
  **/
 @property (nonatomic, strong) OBRecommendationResponse * recommendationResponse;
 
+
+
+
+@optional
+
 /**
  *  Discussion:
  *      This is where we attempt to fetch the images.  If you want to fetch images yourself then override this method
  **/
 - (void)fetchImageForURL:(NSURL *)url withCallback:(void(^)(UIImage * image))callback;
 
+
+
 @end
 
-
-/**
- *  Discussion: 
- *      Helper macro for having your widget conform to the OBWidgetViewProtocol.  
- *      Nobody likes repetitive declarations.
- **/
-#define AdhereToOBWidgetViewProtocol \
-    @property (nonatomic, copy) OBWRecommendationTappedHandler recommendationTapHandler; \
-    - (void)setRecommendationTapHandler:(OBWRecommendationTappedHandler)tapHandler; \
-    @property (nonatomic, strong) OBRecommendationResponse * recommendationResponse; \
-    @property (nonatomic, weak) IBOutlet id <OBWidgetViewDelegate> widgetDelegate;
 
 
 

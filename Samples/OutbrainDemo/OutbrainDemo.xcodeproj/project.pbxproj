@@ -994,6 +994,9 @@
 					D8DCCA7418883DED00E038EE = {
 						TestTargetID = D8B59238186376B1009422D5;
 					};
+					FC66EBB618F137C7005FA944 = {
+						DevelopmentTeam = 97R2B46745;
+					};
 				};
 			};
 			buildConfigurationList = D8B59234186376B1009422D5 /* Build configuration list for PBXProject "OutbrainDemo" */;
@@ -1468,8 +1471,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Gorlovetsky (9DZ5NV65R8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Gorlovetsky (9DZ5NV65R8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eran Guttentag (7J944Z3232)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Eran Guttentag (7J944Z3232)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}",
@@ -1486,7 +1490,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.catalog-ipad";
 				PRODUCT_NAME = "Catalog-iPad";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cc49e7c1-de79-4579-b6a3-38213ad64abf";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1497,8 +1501,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: OUTBRAIN INCORPORATED";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OUTBRAIN INCORPORATED";
+				CODE_SIGN_IDENTITY = "iPhone Developer: oded regev (MP2742Y79L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}",

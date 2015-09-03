@@ -25,8 +25,8 @@ typedef void(^OBWRecommendationTappedHandler)(OBRecommendation * recommendation)
 
 /**
  *  This is an advanced configuration helper for creating your own Outbrain Recommendations UI's.
- *  Below is a protocol that your UI Widget should conform to.  We've also included a helper macro
- *  for adhering to the protocol without having to copy and paste everything.
+ *  Below is a protocol that your UI Widget should conform to.
+ *  
  *
  *  Example:
  *
@@ -35,7 +35,7 @@ typedef void(^OBWRecommendationTappedHandler)(OBRecommendation * recommendation)
  *
  *  @interface MyCustomWidgetView : UIControl <OBWidgetViewProtocol>        <-- Says `MyCustomWidgetView` should conform to the `OBWidgetViewProtocol`
  *
- *  AdhereToOBWidgetViewProtocol        <-- This is our helper macro.  It defines all the properties for your class so you don't have to
+ *
  *
  *  @end
  *
@@ -85,19 +85,6 @@ typedef void(^OBWRecommendationTappedHandler)(OBRecommendation * recommendation)
 - (void)fetchImageForURL:(NSURL *)url withCallback:(void(^)(UIImage * image))callback;
 
 @end
-
-
-/**
- *  Discussion:
- *      Helper macro for having your widget conform to the OBWidgetViewProtocol.
- *      Nobody likes repetitive declarations.
- **/
-#define AdhereToOBInterstitialViewProtocol  \
-@property (nonatomic, copy) OBWRecommendationTappedHandler recommendationTapHandler; \
-- (void)setRecommendationTapHandler:(OBWRecommendationTappedHandler)tapHandler; \
-@property (nonatomic, weak) id <OBInterstitialViewDelegate> widgetDelegate; \
-@property (nonatomic, strong) OBRequest * request; \
-@property (nonatomic, strong) UIView * loadingView;
 
 
 
