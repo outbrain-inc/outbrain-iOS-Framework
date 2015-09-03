@@ -11,7 +11,7 @@
 #import <OutbrainSDK/OutbrainSDK.h>
 #import "OBTopBoxView.h"
 
-@interface TopBoxPostViewCell : UICollectionViewCell  <UIScrollViewDelegate, OBWidgetViewDelegate> {
+@interface TopBoxPostViewCell : UICollectionViewCell  <UIScrollViewDelegate> {
     IBOutlet UIScrollView   *mainScrollView;
     IBOutlet UILabel        *textView;
 }
