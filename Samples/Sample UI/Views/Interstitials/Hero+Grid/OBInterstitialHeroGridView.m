@@ -222,7 +222,9 @@
     
     cell.heroUnit = (indexPath.row == 0);
     cell.titleLabel.text = recommendation.content;
+    [cell.titleLabel sizeToFit];
     cell.sourceLabel.text = [NSString stringWithFormat:@"(%@)",recommendation.author?:recommendation.source];
+    cell.imageView.image = nil;
     typeof(cell.imageView) __weak __iv = cell.imageView;
     [self fetchImageForURL:recommendation.image.url withCallback:^(UIImage *image) {
         [__iv setImage:image];
