@@ -339,7 +339,7 @@
     [self.topBoxView removeFromSuperview];
     
     self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.contentSize.width, self.mainScrollView.contentSize.height + self.topBoxView.frame.size.height);
-    NSLog(@"DOCKING TOP BOX");
+    // NSLog(@"DOCKING TOP BOX");
     [UIView animateWithDuration:.25f animations:^{
         self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.topBoxView.frame.size.height + 10, self.textView.frame.size.width, self.textView.frame.size.height);
         self.topBoxView.frame = CGRectMake(0,0,self.topBoxView.frame.size.width, self.topBoxView.frame.size.height);
