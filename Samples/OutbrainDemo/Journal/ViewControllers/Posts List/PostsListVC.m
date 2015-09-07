@@ -42,7 +42,7 @@
     UIRefreshControl * refreshControl = [self refreshControl];
     [refreshControl addTarget:self action:@selector(refreshPostsList) forControlEvents:UIControlEventValueChanged];
     
-#if 0 // Only for internal debug purposes
+#ifdef COOKIES // Only for internal debug purposes
     UIBarButtonItem *addCookiesButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCookies)];
 
     UIBarButtonItem *removeCookiesButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clearAllCookies)];
