@@ -137,7 +137,8 @@ if([posts isEqual:_posts]) return;
     NSMutableArray * tmp = [posts mutableCopy];
     __block NSMutableArray * titles = [NSMutableArray array];
     [tmp enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [titles addObject:[NSString stringWithFormat:@"Article %u", idx+1]];
+        NSNumber *idxNum = @(idx+1);
+        [titles addObject:[NSString stringWithFormat:@"Article %@", idxNum]];
     }];
     
     // Insert interstitial slots based on frequency
