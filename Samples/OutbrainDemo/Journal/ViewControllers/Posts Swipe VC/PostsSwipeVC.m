@@ -310,7 +310,12 @@ if([posts isEqual:_posts]) return;
                 }
                 else
                 {
-                    [tmp addObject:obj];
+                    if (__self.currentIndex != [__self.posts count] - 1) {
+                        [tmp addObject:obj];
+                    }
+                    else {
+                        [tmp insertObject:obj atIndex:0];
+                    }  
                 }
                 
                 // Remove all the interstitial tmp components if any

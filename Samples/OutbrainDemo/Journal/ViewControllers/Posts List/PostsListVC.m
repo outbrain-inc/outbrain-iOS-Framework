@@ -287,6 +287,7 @@
                 PostsSwipeVC * postsVc = [__self.view.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"postsSwipeVC"];
                 [self.navigationController pushViewController:postsVc animated:YES];
                 postsVc.posts = @[postObject];
+                postsVc.currentIndex = 0;
             }
         }];
     }
