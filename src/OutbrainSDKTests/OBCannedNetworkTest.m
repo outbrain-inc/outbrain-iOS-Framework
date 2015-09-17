@@ -57,14 +57,15 @@
     // Do the request
     OBRequest * request = [OBRequest requestWithURL:kOBValidTestLink widgetID:kOBValidWidgetID];
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
-        STAssertNotNil(response, @"Response should be valid");
-        STAssertNotNil(response.error, @"Response should have error");
-        STAssertTrue((response.error.code == OBNoRecommendationsErrorCode), @"Codes should equal");
-        STAssertEqualObjects(response.error.domain, OBZeroRecommendationseErrorDomain, @"Domains should equal");
+        XCTAssertNotNil(response, @"Response should be valid");
+        XCTAssertTrue(([response.recommendations count] == 0), @"Recommandations should be zero");
+        XCTAssertNotNil(response.error, @"Response should have error");
+        XCTAssertTrue((response.error.code == OBNoRecommendationsErrorCode), @"Codes should equal");
+        XCTAssertEqual(response.error.domain, OBZeroRecommendationseErrorDomain, @"Domains should equal");
         
         self.done = YES;
     }];
-    STAssertTrue([self waitForCompletion:5], @"Should not timeout since we're serving local data");
+    XCTAssertTrue([self waitForCompletion:5], @"Should not timeout since we're serving local data");
 }
 
 - (void)testAPVRequests
@@ -76,10 +77,10 @@
     
     // After this request apv should be set and the next request for this widgetID should have apv = true
     OBRequest * request = [OBRequest requestWithURL:kOBValidTestLink widgetID:kOBValidWidgetID widgetIndex:1];
-    STAssertTrue([[Outbrain _recommendationURLForRequest:request].query rangeOfString:@"apv=true"].location != NSNotFound, @"Should have apv=true");
+    XCTAssertTrue([[Outbrain _recommendationURLForRequest:request].query rangeOfString:@"apv=true"].location != NSNotFound, @"Should have apv=true");
     // Test race condition.  If we request another widget with same ID and 0 index, then apv=true should not be appended
     request.widgetIndex = 0;
-    STAssertTrue([[Outbrain _recommendationURLForRequest:request].query rangeOfString:@"apv"].location == NSNotFound, @"Should not have apv");
+    XCTAssertTrue([[Outbrain _recommendationURLForRequest:request].query rangeOfString:@"apv"].location == NSNotFound, @"Should not have apv");
 }
 
 @end

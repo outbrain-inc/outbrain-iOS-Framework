@@ -37,12 +37,12 @@
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
         OBAssertNotNilAndProperClass(response, [OBRecommendationResponse class]);
         OBAssertNotNilAndProperClass(response.error, [NSError class]);
-        STAssertEqualObjects(response.error.domain, OBNetworkErrorDomain, @"Should be network error domain");
-        STAssertTrue((response.error.code == OBInvalidParametersErrorCode) || (response.error.code == OBServerErrorCode), @"Should be invalid parameters request error code");
+        XCTAssertEqual(response.error.domain, OBNetworkErrorDomain, @"Should be network error domain");
+        XCTAssertTrue((response.error.code == OBInvalidParametersErrorCode) || (response.error.code == OBServerErrorCode), @"Should be invalid parameters request error code");
         
         self.done = YES;
     }];
-    STAssertTrue([self waitForCompletion:20], @"Should not timeout");
+    XCTAssertTrue([self waitForCompletion:20], @"Should not timeout");
 }
 
 - (void)testRecommendationsNetworkCall
@@ -53,11 +53,11 @@
         OBAssertNotNilAndProperClass(response.request, [OBRequest class]);
         OBAssertNotNilAndProperClass(response.recommendations, [NSArray class]);
         
-        STAssertNil(response.error, @"We should not have an error here.  Got error %@", response.error);
+        XCTAssertNil(response.error, @"We should not have an error here.  Got error %@", response.error);
         
         self.done = YES;
     }];
-    STAssertTrue([self waitForCompletion:20], @"Should not timeout");
+    XCTAssertTrue([self waitForCompletion:20], @"Should not timeout");
 }
 
 @end

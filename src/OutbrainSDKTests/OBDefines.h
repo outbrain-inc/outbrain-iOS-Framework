@@ -27,8 +27,8 @@
  **/
 
 #define OBAssertNotNilAndProperClass(obj,class) \
-STAssertNotNil(obj,@"Object should not be nil"); \
-STAssertTrue([obj isKindOfClass:class],@"Object should be of type %@.",NSStringFromClass(class));
+XCTAssertNotNil(obj,@"Object should not be nil"); \
+XCTAssertTrue([obj isKindOfClass:class],@"Object should be of type %@.",NSStringFromClass(class));
 
 
 #endif

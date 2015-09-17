@@ -7,7 +7,7 @@
 //  Copyright (c) 2013 Mercury. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestCase.h>
+#import <XCTest/XCTest.h>
 
 
 /**
@@ -15,7 +15,7 @@
  *  operations.
  **/
 
-@interface OBAsyncTest : SenTestCase
+@interface OBAsyncTest : XCTestCase
 /**
  *  Tells whether the asynchronous test is finished or not
  **/

@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 Mercury. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+
+#import <XCTest/XCTest.h>
 
 #import "OBContent_Private.h"
 
@@ -21,7 +22,7 @@
  *  given different data
  **/
 
-@interface OBContentTest : SenTestCase
+@interface OBContentTest : XCTestCase
 
 
 @end
@@ -49,16 +50,16 @@
     
     OBAssertNotNilAndProperClass(image, [OBImage class]);
     
-    STAssertEquals(image.width, (CGFloat)100, @"Width should be 100");
-    STAssertEquals(image.height, (CGFloat)75, @"Height should be 75");
+    XCTAssertEqual(image.width, (CGFloat)100, @"Width should be 100");
+    XCTAssertEqual(image.height, (CGFloat)75, @"Height should be 75");
     
     OBAssertNotNilAndProperClass(image.url, [NSURL class]);
 }
 
 - (void)testPartialImagePayload
 {
-    STAssertNil([OBImage contentWithPayload:@{}], @"Image payload without url should be nil");
-    STAssertNil([OBImage contentWithPayload:@{@"width":@(700)}], @"Image payload without url should be nil");
+    XCTAssertNil([OBImage contentWithPayload:@{}], @"Image payload without url should be nil");
+    XCTAssertNil([OBImage contentWithPayload:@{@"width":@(700)}], @"Image payload without url should be nil");
 }
 
 

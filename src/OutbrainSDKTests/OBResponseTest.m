@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Mercury. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
 
+#import <XCTest/XCTest.h>
 #import "OBRecommendationResponse.h"
 #import "OBContent_Private.h"
 
 #import "OBDefines.h"
 
 
-@interface OBResponseTest : SenTestCase
+@interface OBResponseTest : XCTestCase
 
 @end
 
@@ -40,7 +40,7 @@
     OBAssertNotNilAndProperClass(res, [OBRecommendationResponse class]);
     OBAssertNotNilAndProperClass(res.recommendations, [NSArray class]);
     
-    STAssertTrue(res.recommendations.count == 0, @"Should have 0 recommendations");
+    XCTAssertTrue(res.recommendations.count == 0, @"Should have 0 recommendations");
 }
 
 - (void)testFullResponseWithImages
@@ -51,7 +51,7 @@
     OBAssertNotNilAndProperClass(res, [OBRecommendationResponse class]);
     OBAssertNotNilAndProperClass(res.recommendations, [NSArray class]);
     
-    STAssertTrue(res.recommendations.count == 18, @"Should have 18 recommendations");
+    XCTAssertTrue(res.recommendations.count == 18, @"Should have 18 recommendations");
     
     for(OBRecommendation *rec in res.recommendations)
     {
@@ -68,11 +68,11 @@
     OBAssertNotNilAndProperClass(res, [OBRecommendationResponse class]);
     OBAssertNotNilAndProperClass(res.recommendations, [NSArray class]);
     
-    STAssertTrue(res.recommendations.count == 18, @"Should have 18 recommendations");
+    XCTAssertTrue(res.recommendations.count == 18, @"Should have 18 recommendations");
     for(OBRecommendation *rec in res.recommendations)
     {
         OBAssertNotNilAndProperClass(rec, [OBRecommendation class]);
-        STAssertNil(rec.image, @"Image should be nil");
+        XCTAssertNil(rec.image, @"Image should be nil");
     }
 }
 
