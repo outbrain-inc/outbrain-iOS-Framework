@@ -576,7 +576,7 @@
 			attributes = {
 				CLASSPREFIX = OB;
 				LastTestingUpgradeCheck = 0600;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Outbrain;
 				TargetAttributes = {
 					D82F1D8418564C7800D4DEA8 = {
@@ -763,6 +763,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -889,6 +890,7 @@
 					"-framework",
 					SenTestingKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mercury.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -913,6 +915,7 @@
 					"-framework",
 					SenTestingKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mercury.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -956,6 +959,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/OBIntegrationTests/OBIntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain-integration.sdk";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "826414BF-97BE-4EF2-AA3F-99294BA69E61";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -977,6 +981,7 @@
 				GCC_PREFIX_HEADER = "${SRCROOT}/${PRODUCT_NAME}/${PRODUCT_NAME}-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/OBIntegrationTests/OBIntegrationTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain-integration.sdk";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "FFB164DA-760F-4AF4-AF33-9333A652933F";
 				TARGETED_DEVICE_FAMILY = "1,2";
