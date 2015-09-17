@@ -110,10 +110,8 @@
 		FCF0FE851A91C23D008FC34E /* TopBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF0FE841A91C23D008FC34E /* TopBoxViewController.m */; };
 		FCF0FE891A91C2F0008FC34E /* OBTopBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF0FE881A91C2F0008FC34E /* OBTopBoxView.m */; };
 		FF0BB5D11B9843DE00AF9F2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA6F18883DED00E038EE /* Images.xcassets */; };
-		FFEDF9F01B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEDF9EF1B89BAD800BEEFCB /* OutbrainSDK.framework */; };
-		FFEDF9F11B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEDF9EF1B89BAD800BEEFCB /* OutbrainSDK.framework */; };
-		FFEDF9F21B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEDF9EF1B89BAD800BEEFCB /* OutbrainSDK.framework */; };
-		FFEDF9F31B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEDF9EF1B89BAD800BEEFCB /* OutbrainSDK.framework */; };
+		FF4886DE1BAAE05900E6D20A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4886DD1BAAE05900E6D20A /* OutbrainSDK.framework */; };
+		FF4886DF1BAAE05900E6D20A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4886DD1BAAE05900E6D20A /* OutbrainSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +121,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = D8DCCA5518883DED00E038EE;
 			remoteInfo = Catalog;
+		};
+		FF4886D21BAADD1F00E6D20A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4886CB1BAADD1F00E6D20A /* OutbrainSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D8C91AAF1871FF20005916A2;
+			remoteInfo = OBIntegrationTests;
+		};
+		FF4886D41BAADD1F00E6D20A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4886CB1BAADD1F00E6D20A /* OutbrainSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D82F1D7518564C7700D4DEA8;
+			remoteInfo = OutbrainSDK;
+		};
+		FF4886D61BAADD1F00E6D20A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4886CB1BAADD1F00E6D20A /* OutbrainSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D82F1D8518564C7800D4DEA8;
+			remoteInfo = OutbrainSDKTests;
+		};
+		FF4886DA1BAADFE700E6D20A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4886CB1BAADD1F00E6D20A /* OutbrainSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D8376BE9186E2F6D00B45FA3;
+			remoteInfo = OBFramework;
+		};
+		FF4886E01BAAE06500E6D20A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF4886CB1BAADD1F00E6D20A /* OutbrainSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D8376BE9186E2F6D00B45FA3;
+			remoteInfo = OBFramework;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -258,7 +291,8 @@
 		FCF0FE841A91C23D008FC34E /* TopBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopBoxViewController.m; path = ../../../Samples/OutbrainDemo/Catalog/TopBoxViewController.m; sourceTree = "<group>"; };
 		FCF0FE871A91C2F0008FC34E /* OBTopBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBTopBoxView.h; path = ../../Samples/OutbrainDemo/OBTopBoxView.h; sourceTree = "<group>"; };
 		FCF0FE881A91C2F0008FC34E /* OBTopBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBTopBoxView.m; path = ../../Samples/OutbrainDemo/OBTopBoxView.m; sourceTree = "<group>"; };
-		FFEDF9EF1B89BAD800BEEFCB /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../Samples/OutbrainDemo/OutbrainSDK.framework; sourceTree = "<group>"; };
+		FF4886CB1BAADD1F00E6D20A /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = ../../src/OutbrainSDK.xcodeproj; sourceTree = "<group>"; };
+		FF4886DD1BAAE05900E6D20A /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,7 +306,7 @@
 				D8B5923F186376B1009422D5 /* CoreGraphics.framework in Frameworks */,
 				D8B59241186376B1009422D5 /* UIKit.framework in Frameworks */,
 				D8B5923D186376B1009422D5 /* Foundation.framework in Frameworks */,
-				FFEDF9F01B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */,
+				FF4886DE1BAAE05900E6D20A /* OutbrainSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC820C1319DD598F00ABAD89 /* AdSupport.framework in Frameworks */,
-				FFEDF9F11B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */,
+				FF4886DF1BAAE05900E6D20A /* OutbrainSDK.framework in Frameworks */,
 				D8DCCA5818883DED00E038EE /* CoreGraphics.framework in Frameworks */,
 				D8DCCA5918883DED00E038EE /* UIKit.framework in Frameworks */,
 				D8DCCA5718883DED00E038EE /* Foundation.framework in Frameworks */,
@@ -295,7 +329,6 @@
 				D8DCCA7618883DED00E038EE /* XCTest.framework in Frameworks */,
 				D8DCCA7818883DED00E038EE /* UIKit.framework in Frameworks */,
 				D8DCCA7718883DED00E038EE /* Foundation.framework in Frameworks */,
-				FFEDF9F21B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +339,6 @@
 				FC416C2219F6455D000BFB18 /* AdSupport.framework in Frameworks */,
 				FC66EBC918F137C7005FA944 /* CoreGraphics.framework in Frameworks */,
 				FC66EBCA18F137C7005FA944 /* UIKit.framework in Frameworks */,
-				FFEDF9F31B89BAD800BEEFCB /* OutbrainSDK.framework in Frameworks */,
 				FC66EBCB18F137C7005FA944 /* Security.framework in Frameworks */,
 				FC66EBCD18F137C7005FA944 /* Foundation.framework in Frameworks */,
 			);
@@ -590,6 +622,7 @@
 		D8B59230186376B1009422D5 = {
 			isa = PBXGroup;
 			children = (
+				FF4886CB1BAADD1F00E6D20A /* OutbrainSDK.xcodeproj */,
 				FC66EBDC18F137C8005FA944 /* Resources-iPad */,
 				D83456431885A543002B2368 /* Journal */,
 				D8D1FD9318732CA10099831C /* Shared UI */,
@@ -615,7 +648,7 @@
 		D8B5923B186376B1009422D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FFEDF9EF1B89BAD800BEEFCB /* OutbrainSDK.framework */,
+				FF4886DD1BAAE05900E6D20A /* OutbrainSDK.framework */,
 				FC820C1119DD597F00ABAD89 /* AdSupport.framework */,
 				D852F383187B5B40008A2A04 /* QuartzCore.framework */,
 				D852F381187B5B3C008A2A04 /* Security.framework */,
@@ -902,6 +935,16 @@
 			name = TopBox;
 			sourceTree = "<group>";
 		};
+		FF4886CC1BAADD1F00E6D20A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF4886D31BAADD1F00E6D20A /* OBIntegrationTests.app */,
+				FF4886D51BAADD1F00E6D20A /* libOutbrainSDK.a */,
+				FF4886D71BAADD1F00E6D20A /* OutbrainSDKTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -916,6 +959,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FF4886DB1BAADFE700E6D20A /* PBXTargetDependency */,
 			);
 			name = Journal;
 			productName = OutbrainDemo;
@@ -933,6 +977,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FF4886E11BAAE06500E6D20A /* PBXTargetDependency */,
 			);
 			name = Catalog;
 			productName = Catalog;
@@ -1009,6 +1054,12 @@
 			mainGroup = D8B59230186376B1009422D5;
 			productRefGroup = D8B5923A186376B1009422D5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FF4886CC1BAADD1F00E6D20A /* Products */;
+					ProjectRef = FF4886CB1BAADD1F00E6D20A /* OutbrainSDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D8B59238186376B1009422D5 /* Journal */,
@@ -1018,6 +1069,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FF4886D31BAADD1F00E6D20A /* OBIntegrationTests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = OBIntegrationTests.app;
+			remoteRef = FF4886D21BAADD1F00E6D20A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF4886D51BAADD1F00E6D20A /* libOutbrainSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOutbrainSDK.a;
+			remoteRef = FF4886D41BAADD1F00E6D20A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF4886D71BAADD1F00E6D20A /* OutbrainSDKTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OutbrainSDKTests.octest;
+			remoteRef = FF4886D61BAADD1F00E6D20A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D8B59237186376B1009422D5 /* Resources */ = {
@@ -1171,6 +1246,16 @@
 			isa = PBXTargetDependency;
 			target = D8DCCA5518883DED00E038EE /* Catalog */;
 			targetProxy = D8DCCA7918883DED00E038EE /* PBXContainerItemProxy */;
+		};
+		FF4886DB1BAADFE700E6D20A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OBFramework;
+			targetProxy = FF4886DA1BAADFE700E6D20A /* PBXContainerItemProxy */;
+		};
+		FF4886E11BAAE06500E6D20A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OBFramework;
+			targetProxy = FF4886E01BAAE06500E6D20A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
