@@ -46,7 +46,8 @@
 
 - (void)testAPVRequest
 {
-    OBRequest * request = [OBRequest requestWithURL:@"http://google.com" widgetID:@"NA"];
+    
+    OBRequest * request = [OBRequest requestWithURL:@"http://google.com" widgetID:@"AR_3"];
     XCTAssertTrue([[Outbrain _recommendationURLForRequest:request].query rangeOfString:@"apv"].location == NSNotFound, @"Should not have apv param");
     request.widgetIndex = 1;
     XCTAssertTrue([[Outbrain _recommendationURLForRequest:request].query rangeOfString:@"apv"].location == NSNotFound, @"Still should not have apv param");
