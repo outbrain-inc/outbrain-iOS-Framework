@@ -9,24 +9,41 @@
 #import "OBResponse.h"
 #import "OBRecommendation.h"
 #import "OBSettings.h"
+#import "OBResponseRequest.h"
 
 @class OBSettings;
 
-@interface OBRecommendationResponse : OBResponse
+/** @brief The object sent as a response to __fetchRecommendationsForRequest__.
+ *
+ * It contains the following properties:
+ * <ul>
+ *    <li><strong>recommendations</strong> - an array of content recommendations (OBRecommendation objects).
+ *    <li><strong>settings</strong> - your app's OBSettings object.
+ *    <li><strong>responseRequest</strong> - the request parameters as they are saved by Outbrain.
+ * </ul>
+ *
+ * @see Outbrain::fetchRecommendationsForRequest
+ * @see OBRecommendation
+ */
+@interface OBRecommendationResponse : OBResponse {
+    NSArray     *recommendations;
+    OBSettings  *settings;
+    OBResponseRequest   *responseRequest;
+}
 
 /**
- *  Discussion:
- *      If everything was successful this will be populated
- *      with @OBRecommendation objects.
+ *  @brief An array of content recommendations (OBRecommendation objects).
  **/
 @property (nonatomic, strong) NSArray * recommendations;
 
 /**
- *  Discussion:
- *      If everything was successful this will be populated
- *      with @OBSettings object.
+ *  @brief Your app's OBSettings object.
  **/
 @property (nonatomic, strong) OBSettings * settings;
 
-@end
+/**
+ *  @brief The request parameters as they are saved by Outbrain.
+ **/
+@property (nonatomic, strong) OBResponseRequest * responseRequest;
 
+@end

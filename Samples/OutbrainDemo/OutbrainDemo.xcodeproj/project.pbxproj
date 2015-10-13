@@ -1401,7 +1401,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1426,7 +1426,7 @@
 				GCC_PREFIX_HEADER = "${SRCROOT}/Journal/Resources/Journal-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1455,7 +1455,7 @@
 				);
 				INFOPLIST_FILE = "Catalog/Catalog-Info.plist";
 				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.p-catalog";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1481,7 +1481,7 @@
 				GCC_PREFIX_HEADER = "Catalog/Catalog-Prefix.pch";
 				INFOPLIST_FILE = "Catalog/Catalog-Info.plist";
 				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.p-catalog";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -106,12 +106,10 @@
     
     //Push the updated token to the top of the queue, or add a new one, if a token was not found
     if (similarTokenInsideQueue != nil) {
-        int sizeOfQueue = [tokensQueue count];
+        NSUInteger sizeOfQueue = [tokensQueue count];
         int i = 0;
         
-        while ([tokensQueue count] > 0 && [tokensQueue objectAtIndex:0] != similarTokenInsideQueue) {
-            OBRecommendationsTokenWrapper *token;
-            
+        while ([tokensQueue count] > 0 && [tokensQueue objectAtIndex:0] != similarTokenInsideQueue) {            
             //dequeue
             id headObject = [tokensQueue objectAtIndex:0];
             if (headObject != nil) {
