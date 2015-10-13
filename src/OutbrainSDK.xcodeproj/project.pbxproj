@@ -608,7 +608,7 @@
 			attributes = {
 				CLASSPREFIX = OB;
 				LastTestingUpgradeCheck = 0610;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Outbrain;
 				TargetAttributes = {
 					D82F1D8418564C7800D4DEA8 = {
@@ -799,6 +799,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
