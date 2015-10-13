@@ -34,6 +34,8 @@ static BOOL shouldReport = YES;
 }
 
 + (void)reportMethodCalled:(NSString *)methodName withParams:(NSString *)firstParam, ... NS_REQUIRES_NIL_TERMINATION {    
+    return; // For the current SDK version the GA reporting should be disabled
+    
     NSMutableString *newContentString = [NSMutableString string];
     NSString *paramsString;
     
@@ -53,6 +55,9 @@ static BOOL shouldReport = YES;
 }
 
 + (void)reportMethodCalled:(NSString *)methodName withConcreteParams:(NSString *)paramsString shouldForceSend:(BOOL)forceSend {
+    
+    return; // For the current SDK version the GA reporting should be disabled
+    
     [self commonInitIfNeeded];
     if (shouldReport || forceSend) {
         //Make sure we are sending a fixed number of requests of each type every session

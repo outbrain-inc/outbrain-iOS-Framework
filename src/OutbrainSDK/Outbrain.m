@@ -200,10 +200,12 @@ const struct OBSettingsAttributes OBSettingsAttributes = {
 //    [((Outbrain *)[self mainBrain]).viewabilityService addRecommendationToViewedRecommendationsList:recommendation];
 //}
 
+#if 0 // For the current SDK version the GA reporting should be disabled
 + (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage {
     [OBGAHelper reportMethodCalled:@"setShouldTrackSDKUsage:" withParams:(shouldTrackSDKUsage ? @"YES" : @"NO"), nil];
     [OBGAHelper setShouldReportSDKUsage:shouldTrackSDKUsage];
 }
+#endif 
 
 @end
 
