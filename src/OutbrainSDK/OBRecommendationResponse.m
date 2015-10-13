@@ -8,7 +8,7 @@
 
 #import "OBRecommendationResponse.h"
 #import "OBContent_Private.h"
-
+#import "OBGAHelper.h"
 
 @implementation OBRecommendationResponse
 
@@ -40,8 +40,14 @@
 
         res.settings = [[OBSettings alloc] initWithPayload:settingsPayload];
     }
-
     
+    id requestPayload = payload[@"request"];
+    if([requestPayload isKindOfClass:[NSDictionary class]])
+    {
+        // The response request here
+        res.responseRequest = [[OBResponseRequest alloc] initWithPayload:requestPayload];
+    }
+ 
     return res;
 }
 
@@ -50,4 +56,30 @@
     return @[@"documents"];
 }
 
+#pragma mark - Getters & Setters
+
+- (NSArray *)recommendations {
+    return recommendations;
+}
+
+- (void)setRecommendations:(NSArray *)aRecommendations {
+    recommendations = aRecommendations;
+}
+
+- (OBSettings *)settings {
+    [OBGAHelper reportMethodCalled:@"OBRecommendationResponse::getSettings"];
+    return settings;
+}
+
+- (void)setSettings:(OBSettings *)aSettings {
+    settings = aSettings;
+}
+
+- (OBResponseRequest *)responseRequest {
+    return responseRequest;
+}
+
+- (void)setResponseRequest:(OBResponseRequest *)aResponseRequest {
+    responseRequest = aResponseRequest;
+}
 @end

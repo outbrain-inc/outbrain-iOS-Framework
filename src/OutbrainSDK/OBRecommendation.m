@@ -8,9 +8,40 @@
 
 #import "OBRecommendation.h"
 #import "OBContent_Private.h"
+#import "OBGAHelper.h"
 
+#define OBPublishDateKey @"OBPublishDateKey"
+#define OBSourceURLKey @"OBSourceURLKey"
+#define OBAuthorKey @"OBAuthorKey"
+#define OBContentKey @"OBContentKey"
+#define OBSourceKey @"OBSourceKey"
+#define OBSameSourceKey @"OBSameSourceKey"
+#define OBPaidLinkKey @"OBPaidLinkKey"
+#define OBVideoKey @"OBVideoKey"
 
 @implementation OBRecommendation
+@synthesize publishDate;
+@synthesize sourceURL;
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+   [coder encodeObject:publishDate forKey:OBPublishDateKey];
+   [coder encodeObject:sourceURL forKey:OBSourceURLKey];
+   [coder encodeObject:author forKey:OBAuthorKey];
+   [coder encodeObject:content forKey:OBContentKey];
+   [coder encodeObject:source forKey:OBSourceKey];
+
+}
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super init];
+    if (self) {
+        self.publishDate = [coder decodeObjectForKey:OBPublishDateKey];
+        self.sourceURL = [coder decodeObjectForKey:OBSourceURLKey];
+        self.author = [coder decodeObjectForKey:OBAuthorKey];
+        self.content = [coder decodeObjectForKey:OBContentKey];
+        self.source = [coder decodeObjectForKey:OBSourceKey];
+    }
+    return self;
+}
 
 + (instancetype)contentWithPayload:(NSDictionary *)payload
 {
@@ -21,8 +52,11 @@
         recommendation.paidLink = YES;
     }
     
-    if(recommendation.source && recommendation.source.length == 0) recommendation.source = nil;
-    if(recommendation.author && recommendation.author.length == 0) recommendation.author = nil;
+    NSString *source = [recommendation performSelector:@selector(getPrivateSource)];
+    NSString *author = [recommendation performSelector:@selector(getPrivateAuthor)];
+    
+    if(source && source.length == 0) recommendation.source = nil;
+    if(author && author.length == 0) recommendation.author = nil;
     
     return recommendation;
 }
@@ -64,6 +98,92 @@
         }
     }
     [super setValue:value forKey:key];
+}
+
+#pragma mark - Getters & Setters
+
+- (NSDate *)publishDate {
+    [OBGAHelper reportMethodCalled:@"OBRecommendation::getPublishDate"];
+    return publishDate;
+}
+
+- (BOOL)isSameSource {
+    [OBGAHelper reportMethodCalled:@"OBRecommendation::getIsSameSource"];
+    return sameSource;
+}
+
+- (BOOL)isVideo {
+    [OBGAHelper reportMethodCalled:@"OBRecommendation::getIsVideo"];
+    return video;
+}
+
+- (OBImage *)image {
+    return image;
+}
+
+- (NSString *)author {
+    [OBGAHelper reportMethodCalled:@"OBRecommendation::getAuthor"];
+    return author;
+}
+
+- (NSString *)source {
+    [OBGAHelper reportMethodCalled:@"OBRecommendation::getSource"];
+    return source;
+}
+
+- (NSURL *)sourceURL {
+    [OBGAHelper reportMethodCalled:@"OBRecommendation::getSourceURL"];
+    return sourceURL;
+}
+
+- (NSString *)content {
+    [OBGAHelper reportMethodCalled:@"OBRecommendation::getContent"];
+    return content;
+}
+
+- (BOOL)isPaidLink {
+    [OBGAHelper reportMethodCalled:@"OBRecommendation::isPaidLink"];
+    return paidLink;
+}
+
+- (void)setSameSource:(BOOL)aSameSource {
+    sameSource = aSameSource;
+}
+
+- (void)setContent:(NSString *)aContent {
+    content = aContent;
+}
+
+- (void)setImage:(OBImage *)anImage {
+    image = anImage;
+}
+
+- (void)setAuthor:(NSString *)anAuthor {
+    author = anAuthor;
+}
+
+- (void)setPaidLink:(BOOL)aPaidLink {
+    paidLink = aPaidLink;
+}
+
+- (void)setSource:(NSString *)aSource {
+    source = aSource;
+}
+
+- (void)setSourceURL:(NSURL *)aSourceURL {
+    sourceURL = aSourceURL;
+}
+
+- (void)setVideo:(BOOL)aVideo {
+    video = aVideo;
+}
+
+- (NSString *)getPrivateAuthor {
+    return author;
+}
+
+- (NSString *)getPrivateSource {
+    return source;
 }
 
 @end

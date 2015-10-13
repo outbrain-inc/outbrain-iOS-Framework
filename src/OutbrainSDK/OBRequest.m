@@ -11,6 +11,8 @@
 @interface OBRequest()
 @property (nonatomic, copy) NSString * mobileId;
 @property (nonatomic, copy) NSString * source;
+@property (nonatomic, copy) NSString * mobileSubGroup;
+@property (nonatomic, copy) NSString * additionalData;
 @end
 
 @implementation OBRequest
@@ -22,7 +24,13 @@
 
 + (instancetype)requestWithURL:(NSString *)link widgetID:(NSString *)widgetID widgetIndex:(NSInteger)widgetIndex
 {
+    return [self privateRequestWithURL:link widgetID:widgetID widgetIndex:widgetIndex];
+}
+
++ (instancetype)privateRequestWithURL:(NSString *)link widgetID:(NSString *)widgetID widgetIndex:(NSInteger)widgetIndex
+{
     NSAssert((widgetID != nil) && (widgetID.length > 0), @"WidgetID must not be empty.");
+    NSAssert((link != nil) && (link.length > 0), @"URL must not be empty.");
     
     OBRequest * request = [[[self class] alloc] init];
     request.url = link;
@@ -31,7 +39,6 @@
     
     return request;
 }
-
 
 #pragma mark - Comparison
 
@@ -53,6 +60,28 @@
 - (NSUInteger)hash
 {
     return [self.url hash] ^ [self.widgetId hash];
+}
+
+- (void)setMobileSubGroup:(NSString *)mobileSubGroup {
+    self.source = mobileSubGroup;
+}
+
+- (NSString *)mobileSubGroup {
+    return self.source;
+}
+
+- (void)setAdditionalData:(NSString *)additionalData {
+    self.mobileId = additionalData;
+}
+
+- (NSString *)additionalData {
+    return self.mobileId;
+}
+
+#pragma mark - Getters & Setters
+
+- (NSString *)description {
+    return [NSString stringWithFormat: @"WidgetId:%@;WidgetIndex:%ld;HomePage:%@;AdditionalData:%@;MobileSubGroup:%@;", self.widgetId, self.widgetIndex, self.isHomepageRequest ? @"YES" : @"NO", self.additionalData, self.mobileSubGroup];
 }
 
 @end

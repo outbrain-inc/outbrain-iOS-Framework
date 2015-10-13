@@ -8,7 +8,7 @@
 
 #import "OBImage.h"
 #import "OBContent_Private.h"
-
+#import "OBGAHelper.h"
 
 @implementation OBImage
 
@@ -30,6 +30,34 @@
 {
     if([key isEqualToString:@"url"]) return [NSURL class];
     return [super propertyClassForKey:key];
+}
+
+#pragma mark - Getters & Setters
+
+- (NSURL *)url {
+    return url;
+}
+
+- (CGFloat)width {
+    [OBGAHelper reportMethodCalled:@"OBImage::getWidth"];
+    return width;
+}
+
+- (CGFloat)height {
+    [OBGAHelper reportMethodCalled:@"OBImage::getHeight"];
+    return height;
+}
+
+- (void)setUrl:(NSURL *)aUrl {
+    url = aUrl;
+}
+
+- (void)setHeight:(CGFloat)aHeight {
+    height = aHeight;
+}
+
+- (void)setWidth:(CGFloat)aWidth {
+    width = aWidth;
 }
 
 @end

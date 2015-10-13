@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Mercury. All rights reserved.
 //
 
+#import "OBRecommendationsTokenHandler.h"
+#import "OBViewabilityService.h"
+#import "OBGAHelper.h"
 
 /**
  *  These are some keys we're defining for various lookups 
@@ -28,14 +31,16 @@ extern const struct OBSettingsAttributes {
     
 } OBSettingsAttributes;
 
-
 /**
  *  Some private outbrain things that we want access to in other places
  **/
 
 @interface Outbrain()
 @property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
-@property (nonatomic, strong) NSMutableDictionary * settings;       // Settings payload that the sdk is initialized with
+@property (nonatomic, strong) NSMutableDictionary *obSettings;       // Settings payload that the sdk is initialized with
+@property (nonatomic, strong) OBRecommendationsTokenHandler *tokensHandler;
+@property (nonatomic, strong) OBViewabilityService *viewabilityService;
+@property (nonatomic, strong) OBGAHelper *gaHelper;
 
 + (instancetype)mainBrain;  // Shared Instance
 
@@ -66,6 +71,7 @@ extern const struct OBSettingsAttributes {
 // URL Builder
 + (NSURL *)_recommendationURLForRequest:(OBRequest *)request;
 
++ (void)_fetchRecommendationsWithRequest:(OBRequest *)request andCallback:(OBResponseCompletionHandler)handler;
 
 // Convenience for setting/getting `settings`
 

@@ -7,10 +7,36 @@
 //
 
 #import "OBResponse.h"
+#import "OBGAHelper.h"
 
 @implementation OBResponse
-@synthesize request = _request;
-@synthesize error = _error;
 
+#pragma mark - Getters & Setters
+
+- (OBRequest *)request {
+    [OBGAHelper reportMethodCalled:@"OBResponse::getRequest"];
+    return _request;
+}
+
+- (void)setRequest:(OBRequest *)aRequest {
+    _request = aRequest;
+}
+
+- (NSError *)error {
+    [OBGAHelper reportMethodCalled:@"OBResponse::getError"];
+    return _error;
+}
+
+- (void)setError:(NSError *)anError {
+    _error = anError;
+}
+
+- (NSError *)getPrivateError {
+    return _error;
+}
+
+- (OBRequest *)getPrivateRequest {
+    return _request;
+}
 
 @end

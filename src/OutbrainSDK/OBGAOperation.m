@@ -14,7 +14,7 @@
 @synthesize executing = _executing;
 @synthesize finished = _finished;
 
-#define GA_ACCOUNT @"UA-58446041-3"
+#define GA_ACCOUNT @"UA-63399040-1"
 
 #pragma mark - Initialize
 

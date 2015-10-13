@@ -95,7 +95,9 @@
 
     if ([OBAppleAdIdUtil isOptedOut] || [OBAppleAdIdUtil didUserResetAdvertiserId]) {
         for (NSHTTPCookie *cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
-            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+            if ([cookie.domain rangeOfString:@"outbrain"].length != 0) {
+                [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+            }
         }
         [OBAppleAdIdUtil refreshAdId];
     }
