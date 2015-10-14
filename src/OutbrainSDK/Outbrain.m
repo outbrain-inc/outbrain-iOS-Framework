@@ -353,8 +353,8 @@ const struct OBSettingsAttributes OBSettingsAttributes = {
             parameterDelimiter = @"&";
         }
         
-        if(request.additionalData && request.additionalData.length > 0) {
-            [urlString appendFormat:@"%@additionalData=%@", parameterDelimiter, request.additionalData];
+        if(request.mobileId && request.mobileId.length > 0) {
+            [urlString appendFormat:@"%@additionalData=%@", parameterDelimiter, request.mobileId];
         }
     }
     
@@ -368,8 +368,8 @@ const struct OBSettingsAttributes OBSettingsAttributes = {
             parameterDelimiter = @"&";
         }
         
-        if(request.mobileSubGroup && request.mobileSubGroup.length > 0) {
-            [urlString appendFormat:@"%@mobileSubGroup=%@", parameterDelimiter, request.mobileSubGroup];
+        if(request.source && request.source.length > 0) {
+            [urlString appendFormat:@"%@mobileSubGroup=%@", parameterDelimiter, request.source];
         }
     }
     
