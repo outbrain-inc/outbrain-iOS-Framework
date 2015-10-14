@@ -107,7 +107,7 @@ extern NSString * const OB_SDK_VERSION;
  */
 + (void)setTestMode:(BOOL)testMode;
 
-//Default is true
-+ (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage;
+// For the current SDK version the GA reporting should be disabled
+// + (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage;
 
 @end

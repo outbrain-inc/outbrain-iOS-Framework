@@ -9,10 +9,10 @@
 #import "OBRequest.h"
 
 @interface OBRequest()
+
 @property (nonatomic, copy) NSString * mobileId;
 @property (nonatomic, copy) NSString * source;
-@property (nonatomic, copy) NSString * mobileSubGroup;
-@property (nonatomic, copy) NSString * additionalData;
+
 @end
 
 @implementation OBRequest
@@ -62,6 +62,8 @@
     return [self.url hash] ^ [self.widgetId hash];
 }
 
+#if 0
+// Currently commenting out these methods, there is a chance we'll add them to the SDK in the future.
 - (void)setMobileSubGroup:(NSString *)mobileSubGroup {
     self.source = mobileSubGroup;
 }
@@ -77,6 +79,8 @@
 - (NSString *)additionalData {
     return self.mobileId;
 }
+#endif // end of comment out
+
 
 #pragma mark - Getters & Setters
 
