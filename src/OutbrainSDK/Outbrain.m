@@ -21,7 +21,7 @@
 #import <sys/utsname.h>
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"1.6";
+NSString * const OB_SDK_VERSION     =   @"1.5.2";
 
 BOOL WAS_INITIALISED     =   NO;
 
