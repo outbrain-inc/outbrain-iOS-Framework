@@ -39,7 +39,7 @@
     XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:@"OBConfig.json"], @"Should allow valid json config file");
     XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:@"OBConfig.plist"], @"Should allow valid plist config file");
     XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"OBConfig" ofType:@"plist"]], @"Should support full path");
-    XCTAssertNotNil([[Outbrain mainBrain] settings][OBSettingsAttributes.partnerKey], @"PartnerKey should be set properly");
+    XCTAssertNotNil([[Outbrain mainBrain] obSettings][OBSettingsAttributes.partnerKey], @"PartnerKey should be set properly");
     
     XCTAssertNoThrow([Outbrain initializeOutbrainWithDictionary:@{OBSettingsAttributes.partnerKey:OB_TEST_PARTNER_KEY}], @"Should work with valid dictionary");
     XCTAssertThrows([Outbrain initializeOutbrainWithDictionary:@{}], @"Should not allow empty dictionary");
@@ -47,7 +47,7 @@
 
 - (void)testCallingBeforeInitialized
 {
-    [Outbrain mainBrain].settings = [@{} mutableCopy];
+    [Outbrain mainBrain].obSettings = [@{} mutableCopy];
     OBRequest * request = [OBRequest requestWithURL:kOBValidTestLink widgetID:@"AR_1"];
     XCTAssertThrows([Outbrain fetchRecommendationsForRequest:request withCallback:nil], @"Should fail if not initialized");
 }
