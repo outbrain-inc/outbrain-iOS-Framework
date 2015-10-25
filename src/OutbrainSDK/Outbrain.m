@@ -52,25 +52,34 @@ const struct OBSettingsAttributes OBSettingsAttributes = {
     NSAssert([self partnerKey] != nil, @"Please +initializeOutbrainWithConfigFile: before trying to use outbrain");
 }
 
+static dispatch_once_t once_token = 0;
+static Outbrain * _sharedInstance = nil;
+
 + (instancetype)mainBrain
 {
-    static dispatch_once_t onceToken;
-    static Outbrain * instance = nil;
-    dispatch_once(&onceToken, ^{
-        instance = [[Outbrain alloc] init];
-        instance.obSettings = [[NSMutableDictionary alloc] init];
-        instance.obSettings[OBSettingsAttributes.apvRequestCacheKey] = @{};   // Initialize our apv cache.
-        NSOperationQueue * queue = [[NSOperationQueue alloc] init];
-        [queue setName:@"Outbrain Operation Queue"];
-        queue.maxConcurrentOperationCount = 1;  // Serial
-        instance.obRequestQueue = queue;
-        instance.tokensHandler = [[OBRecommendationsTokenHandler alloc] init];
-        instance.viewabilityService = [[OBViewabilityService alloc] init];
-        instance.gaHelper = [[OBGAHelper alloc] init];
-        
+    dispatch_once(&once_token, ^{
+        if (_sharedInstance == nil) {
+            _sharedInstance = [[Outbrain alloc] init];
+            _sharedInstance.obSettings = [[NSMutableDictionary alloc] init];
+            _sharedInstance.obSettings[OBSettingsAttributes.apvRequestCacheKey] = @{};   // Initialize our apv cache.
+            NSOperationQueue * queue = [[NSOperationQueue alloc] init];
+            [queue setName:@"Outbrain Operation Queue"];
+            queue.maxConcurrentOperationCount = 1;  // Serial
+            _sharedInstance.obRequestQueue = queue;
+            _sharedInstance.tokensHandler = [[OBRecommendationsTokenHandler alloc] init];
+            _sharedInstance.viewabilityService = [[OBViewabilityService alloc] init];
+            _sharedInstance.gaHelper = [[OBGAHelper alloc] init];
+        }
     });
     
-    return instance;
+    return _sharedInstance;
+}
+
+// Used in Tests only
++ (void)setSharedInstance:(Outbrain *)instance {
+    once_token = 0; // resets the once_token so dispatch_once will run again
+    WAS_INITIALISED = NO;
+    _sharedInstance = instance;
 }
 
 + (void)initializeOutbrainWithConfigFile:(NSString *)pathToFile

@@ -25,6 +25,7 @@
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    [Outbrain setSharedInstance:nil];
 }
 
 - (void)tearDown
@@ -33,15 +34,35 @@
     [super tearDown];
 }
 
-- (void)testFileInitialization
+- (void)testInitializeFromInvalidFilePath
 {
     XCTAssertThrows([Outbrain initializeOutbrainWithConfigFile:@"OBConfig.jsonblah"], @"Should not allow invalid file path");
+}
+
+- (void)testInitializeFromValidJsonFile {
     XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:@"OBConfig.json"], @"Should allow valid json config file");
-    XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:@"OBConfig.plist"], @"Should allow valid plist config file");
-    XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"OBConfig" ofType:@"plist"]], @"Should support full path");
     XCTAssertNotNil([[Outbrain mainBrain] obSettings][OBSettingsAttributes.partnerKey], @"PartnerKey should be set properly");
+}
+
+- (void)testInitializeFromValidPlistFile {
+    XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:@"OBConfig.plist"], @"Should allow valid plist config file");
     
+    XCTAssertNotNil([[Outbrain mainBrain] obSettings][OBSettingsAttributes.partnerKey], @"PartnerKey should be set properly");
+}
+
+- (void)testInitializeFromFullPathConfigFile {
+    XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"OBConfig" ofType:@"plist"]], @"Should support full path");
+    
+    XCTAssertNotNil([[Outbrain mainBrain] obSettings][OBSettingsAttributes.partnerKey], @"PartnerKey should be set properly");
+}
+
+- (void)testInitializeFromValidDictionary{
     XCTAssertNoThrow([Outbrain initializeOutbrainWithDictionary:@{OBSettingsAttributes.partnerKey:OB_TEST_PARTNER_KEY}], @"Should work with valid dictionary");
+    
+    XCTAssertNotNil([[Outbrain mainBrain] obSettings][OBSettingsAttributes.partnerKey], @"PartnerKey should be set properly");
+}
+
+- (void)testInitializeFromEmptyDictionary {
     XCTAssertThrows([Outbrain initializeOutbrainWithDictionary:@{}], @"Should not allow empty dictionary");
 }
 
