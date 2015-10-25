@@ -25,7 +25,6 @@
 		D800EBEB18A2E64A00404AD9 /* OBRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D800EBEA18A2E64A00404AD9 /* OBRequestTest.m */; };
 		D804FBA9186E022B002CC967 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D804FBA7186E0214002CC967 /* Security.framework */; };
 		D8158C6D18591F3D00AC5945 /* OBRecommendationRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D8158C6C18591F3D00AC5945 /* OBRecommendationRequestOperation.m */; };
-		D8299E9C18B284E100196107 /* 0-recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = D8299E9B18B284E100196107 /* 0-recommendations.json */; };
 		D8299EA018B28BB200196107 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C91A791871FEED005916A2 /* CoreGraphics.framework */; };
 		D8299EA418B28E1800196107 /* ILCannedURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D8299EA318B28E1800196107 /* ILCannedURLProtocol.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D82F1D7918564C7700D4DEA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F1D7818564C7700D4DEA8 /* Foundation.framework */; };
@@ -37,7 +36,6 @@
 		D8376BE7186E276500B45FA3 /* OutbrainSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D8376BE6186E276500B45FA3 /* OutbrainSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D849D1091868B67300CB4B83 /* OBContentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D849D1081868B67300CB4B83 /* OBContentTest.m */; };
 		D849D10B1868BB4D00CB4B83 /* Outbrain_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D849D10A1868BB4D00CB4B83 /* Outbrain_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D849D10E1868C94C00CB4B83 /* full response no images.json in Resources */ = {isa = PBXBuildFile; fileRef = D849D10C1868C94C00CB4B83 /* full response no images.json */; };
 		D849D1111868C96600CB4B83 /* OBResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D849D1101868C96600CB4B83 /* OBResponseTest.m */; };
 		D85409BB1875D6320088DF2A /* OBNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D85409BA1875D6320088DF2A /* OBNetworkTest.m */; };
 		D85409BD1875D6490088DF2A /* OBCannedNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D85409BC1875D6490088DF2A /* OBCannedNetworkTest.m */; };
@@ -45,7 +43,6 @@
 		D869E68C18621EB7006CDAD7 /* OBResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D869E68A18621EB7006CDAD7 /* OBResponse.m */; };
 		D869E6AB18623EA2006CDAD7 /* OBRecommendationResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = D869E6A918623EA2006CDAD7 /* OBRecommendationResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D869E6AC18623EA2006CDAD7 /* OBRecommendationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D869E6AA18623EA2006CDAD7 /* OBRecommendationResponse.m */; };
-		D873964B1868E71900FD8546 /* full response images.json in Resources */ = {isa = PBXBuildFile; fileRef = D873964A1868E71900FD8546 /* full response images.json */; };
 		D873964E1868E96E00FD8546 /* OBOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = D873964C1868E96E00FD8546 /* OBOperation.h */; };
 		D873964F1868E96E00FD8546 /* OBOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D873964D1868E96E00FD8546 /* OBOperation.m */; };
 		D875400D18578F2F00050F2C /* OBContent.m in Sources */ = {isa = PBXBuildFile; fileRef = D875400C18578F2F00050F2C /* OBContent.m */; };
@@ -83,6 +80,9 @@
 		D8EE588E185A4057008F36C4 /* OBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EE588C185A4057008F36C4 /* OBImage.m */; };
 		D8EE5891185A4068008F36C4 /* OBRecommendation.h in Headers */ = {isa = PBXBuildFile; fileRef = D8EE588F185A4068008F36C4 /* OBRecommendation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8EE5892185A4068008F36C4 /* OBRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EE5890185A4068008F36C4 /* OBRecommendation.m */; };
+		E607D4D91BDD16BE009A534B /* 0-recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D61BDD16BE009A534B /* 0-recommendations.json */; settings = {ASSET_TAGS = (); }; };
+		E607D4DA1BDD16BE009A534B /* full response images.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D71BDD16BE009A534B /* full response images.json */; settings = {ASSET_TAGS = (); }; };
+		E607D4DB1BDD16BE009A534B /* full response no images.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D81BDD16BE009A534B /* full response no images.json */; settings = {ASSET_TAGS = (); }; };
 		FC4F7C0D1A0A291800D49361 /* OBResponseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4F7C0B1A0A291800D49361 /* OBResponseRequest.m */; };
 		FC4F7C111A0A2A7600D49361 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */; };
 		FC4F7C121A0A2A7600D49361 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4F7C101A0A2A7600D49361 /* OBRecommendationsTokenHandler.m */; };
@@ -123,7 +123,6 @@
 		D804FBA7186E0214002CC967 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		D8158C6B18591F3D00AC5945 /* OBRecommendationRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationRequestOperation.h; sourceTree = "<group>"; };
 		D8158C6C18591F3D00AC5945 /* OBRecommendationRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationRequestOperation.m; sourceTree = "<group>"; };
-		D8299E9B18B284E100196107 /* 0-recommendations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "0-recommendations.json"; path = "../../sample responses/0-recommendations.json"; sourceTree = "<group>"; };
 		D8299EA218B28E1800196107 /* ILCannedURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCannedURLProtocol.h; sourceTree = "<group>"; };
 		D8299EA318B28E1800196107 /* ILCannedURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCannedURLProtocol.m; sourceTree = "<group>"; };
 		D82F1D7518564C7700D4DEA8 /* libOutbrainSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOutbrainSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +139,6 @@
 		D8376BE6186E276500B45FA3 /* OutbrainSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutbrainSDK.h; sourceTree = "<group>"; };
 		D849D1081868B67300CB4B83 /* OBContentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBContentTest.m; sourceTree = "<group>"; };
 		D849D10A1868BB4D00CB4B83 /* Outbrain_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outbrain_Private.h; sourceTree = "<group>"; };
-		D849D10C1868C94C00CB4B83 /* full response no images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "full response no images.json"; path = "../../sample responses/full response no images.json"; sourceTree = "<group>"; };
 		D849D1101868C96600CB4B83 /* OBResponseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponseTest.m; sourceTree = "<group>"; };
 		D852F37A187B4A59008A2A04 /* OBDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBDefines.h; sourceTree = "<group>"; };
 		D852F37D187B4C00008A2A04 /* OBNetworkTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBNetworkTest.h; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 		D869E6A918623EA2006CDAD7 /* OBRecommendationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationResponse.h; sourceTree = "<group>"; };
 		D869E6AA18623EA2006CDAD7 /* OBRecommendationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationResponse.m; sourceTree = "<group>"; };
 		D869E6AD18624FDF006CDAD7 /* OBContent_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBContent_Private.h; sourceTree = "<group>"; };
-		D873964A1868E71900FD8546 /* full response images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "full response images.json"; path = "../../sample responses/full response images.json"; sourceTree = "<group>"; };
 		D873964C1868E96E00FD8546 /* OBOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBOperation.h; sourceTree = "<group>"; };
 		D873964D1868E96E00FD8546 /* OBOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBOperation.m; sourceTree = "<group>"; };
 		D875400B18578F2F00050F2C /* OBContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBContent.h; sourceTree = "<group>"; };
@@ -189,6 +186,9 @@
 		D8EE588C185A4057008F36C4 /* OBImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBImage.m; sourceTree = "<group>"; };
 		D8EE588F185A4068008F36C4 /* OBRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendation.h; sourceTree = "<group>"; };
 		D8EE5890185A4068008F36C4 /* OBRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendation.m; sourceTree = "<group>"; };
+		E607D4D61BDD16BE009A534B /* 0-recommendations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "0-recommendations.json"; path = "sample responses/0-recommendations.json"; sourceTree = SOURCE_ROOT; };
+		E607D4D71BDD16BE009A534B /* full response images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "full response images.json"; path = "sample responses/full response images.json"; sourceTree = SOURCE_ROOT; };
+		E607D4D81BDD16BE009A534B /* full response no images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "full response no images.json"; path = "sample responses/full response no images.json"; sourceTree = SOURCE_ROOT; };
 		FC4F7C0A1A0A291800D49361 /* OBResponseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBResponseRequest.h; sourceTree = "<group>"; };
 		FC4F7C0B1A0A291800D49361 /* OBResponseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponseRequest.m; sourceTree = "<group>"; };
 		FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
@@ -464,9 +464,9 @@
 		D89DFDEF186503E200B8A95C /* responses */ = {
 			isa = PBXGroup;
 			children = (
-				D8299E9B18B284E100196107 /* 0-recommendations.json */,
-				D873964A1868E71900FD8546 /* full response images.json */,
-				D849D10C1868C94C00CB4B83 /* full response no images.json */,
+				E607D4D61BDD16BE009A534B /* 0-recommendations.json */,
+				E607D4D71BDD16BE009A534B /* full response images.json */,
+				E607D4D81BDD16BE009A534B /* full response no images.json */,
 			);
 			name = responses;
 			sourceTree = "<group>";
@@ -642,10 +642,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E607D4DB1BDD16BE009A534B /* full response no images.json in Resources */,
 				D82F1D9318564C7800D4DEA8 /* InfoPlist.strings in Resources */,
-				D873964B1868E71900FD8546 /* full response images.json in Resources */,
-				D849D10E1868C94C00CB4B83 /* full response no images.json in Resources */,
-				D8299E9C18B284E100196107 /* 0-recommendations.json in Resources */,
+				E607D4DA1BDD16BE009A534B /* full response images.json in Resources */,
+				E607D4D91BDD16BE009A534B /* 0-recommendations.json in Resources */,
 				D8BC5CCF187CB5770018E88F /* OBConfig.json in Resources */,
 				D8BC5CCD187CB5590018E88F /* OBConfig.plist in Resources */,
 			);
