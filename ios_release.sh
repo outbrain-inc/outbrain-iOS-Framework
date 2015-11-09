@@ -1,10 +1,10 @@
 #!/bin/bash
 
-sudo xcodebuild -target OBFramework
+xcodebuild -target OBFramework
 
-cd ..
 doxygen doxygen.xml
 
+rm -fr OBSDK-Release
 mkdir OBSDK-Release
 mkdir OBSDK-Release/SDK/
 mkdir OBSDK-Release/Samples/
@@ -17,8 +17,14 @@ cp -rf HTML-Documentation/ OBSDK-Release/HTML-Documentation/
 cp -rf README.md OBSDK-Release/
 cp -rf Release-Notes.txt OBSDK-Release/
 
-mkdir ~/Desktop/Release/iOS
+# clean up the folder
+rm -fr HTML-Documentation/
+
+
+mkdir -p ~/Desktop/Release/iOS
 mv OBSDK-Release/* ~/Desktop/Release/iOS/
+rm -fr OBSDK-Release/*
 cd ~/Desktop/Release/iOS
 zip -r OBSDK-iOS.zip . -x ".*" -x "*/.*"
-mv OBSDK-iOS.zip .
+cd -
+mv ~/Desktop/Release/iOS/OBSDK-iOS.zip OBSDK-Release/
