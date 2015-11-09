@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cd ~/dev/outbrain/trunk/OBiOSSDK/src
 sudo xcodebuild -target OBFramework
 
 cd ..
@@ -22,4 +21,4 @@ mkdir ~/Desktop/Release/iOS
 mv OBSDK-Release/* ~/Desktop/Release/iOS/
 cd ~/Desktop/Release/iOS
 zip -r OBSDK-iOS.zip . -x ".*" -x "*/.*"
-mv OBSDK-iOS.zip ../
+mv OBSDK-iOS.zip .
