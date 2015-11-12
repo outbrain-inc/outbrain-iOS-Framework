@@ -394,6 +394,11 @@ static Outbrain * _sharedInstance = nil;
     //Version
     base = [base stringByAppendingString:[NSString stringWithFormat:@"&version=%@", OB_SDK_VERSION]];
     
+    //App Version
+    NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
+    base = [base stringByAppendingString:[NSString stringWithFormat:@"&app_ver=%@", appVersionString]];
+    
     //Random
     base = [base stringByAppendingString:[NSString stringWithFormat:@"&rand=%li", (long)randInteger]];
     
