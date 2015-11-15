@@ -37,7 +37,7 @@ extern NSString * const OB_SDK_VERSION;
  *
  *  @see initializeOutbrainWithPartnerKey
  */
-+ (void)initializeOutbrainWithConfigFile:(NSString *)pathToFile;
++ (void)initializeOutbrainWithConfigFile:(NSString *)pathToFile __deprecated;
 
 /**
  *  @brief Initializes Outbrain with the partner key you've received from your Outbrain Account Manager.
