@@ -1,6 +1,9 @@
 #!/bin/bash
 
 cd src
+# Clean
+xcodebuild clean -target OBFramework
+# Build
 xcodebuild -target OBFramework
 cd ..
 
