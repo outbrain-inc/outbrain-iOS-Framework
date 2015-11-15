@@ -15,7 +15,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // STEP 1:  Initialize the outbrain framework
-    [Outbrain initializeOutbrainWithConfigFile:@"OBConfig.plist"];
+    [Outbrain initializeOutbrainWithPartnerKey:@"iOSSampleApp2014"];
+    
     [Outbrain setTestMode:YES]; // Skipping all billing, statistics, information gathering, and all other action mechanisms.
     return YES;
 }

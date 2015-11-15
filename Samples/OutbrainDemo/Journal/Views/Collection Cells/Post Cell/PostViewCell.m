@@ -211,6 +211,7 @@
                              self.outbrainClassicView.alpha = 1.f;
                          }];
         
+
         // Call for the second request, we need to use the token we received from the server
         OBRequest * secondRequest = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID2 widgetIndex:1];
         [Outbrain fetchRecommendationsForRequest:secondRequest withDelegate:self];
