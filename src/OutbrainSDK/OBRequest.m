@@ -85,7 +85,7 @@
 #pragma mark - Getters & Setters
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"WidgetId:%@;WidgetIndex:%ld;HomePage:%@;AdditionalData:%@;MobileSubGroup:%@;", self.widgetId, (long)self.widgetIndex, self.isHomepageRequest ? @"YES" : @"NO", self.mobileId, self.source];
+    return [NSString stringWithFormat: @"WidgetId:%@;WidgetIndex:%ld;AdditionalData:%@;MobileSubGroup:%@;", self.widgetId, (long)self.widgetIndex, self.mobileId, self.source];
 }
 
 @end

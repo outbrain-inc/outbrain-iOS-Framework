@@ -384,8 +384,7 @@ static Outbrain * _sharedInstance = nil;
     
     //Domain
     NSString * base = @"http://";
-    NSString * domain = [request isHomepageRequest] ? OBHomepageDomain : OBRecommendationDomain;
-    base = [base stringByAppendingString:domain];
+    base = [base stringByAppendingString:OBRecommendationDomain];
     base = [base stringByAppendingString:@"/utils/get"];
     
     //Key
@@ -436,7 +435,7 @@ static Outbrain * _sharedInstance = nil;
     base = [base stringByAppendingString:@"&dos=ios"];
 
     //OS version
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&dosv=%.3f", [[[UIDevice currentDevice] systemVersion] floatValue]]];
+    base = [base stringByAppendingString:[NSString stringWithFormat:@"&dosv=%@", [[UIDevice currentDevice] systemVersion]]];
     
     //Device model
     struct utsname systemInfo;

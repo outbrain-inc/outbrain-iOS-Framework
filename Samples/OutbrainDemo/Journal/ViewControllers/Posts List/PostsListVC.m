@@ -135,7 +135,7 @@
     typeof(self) __weak __self = self;
     Post * p = (Post *)[self.postsData firstObject];
     OBRequest * request = [OBRequest requestWithURL:p.url widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
-    request.homePageRequest = YES;
+    
     // We like block handlers
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
         
