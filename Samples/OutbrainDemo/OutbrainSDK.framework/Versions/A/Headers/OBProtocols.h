@@ -15,25 +15,41 @@
 /** @section Callback Handlers **/
 
 /**
- *  @name: OBRecommendationsCompletionHandler
- *  @params:
- *      response:                         The response object from outbrain.  Will be a subclass of `OBResponse`
+ *  @brief An event handler for receiving and handling the OBRecommendationResponse object.
+ *
+ *  OBRecommendationResponse is sent in response to calling Outbrain::fetchRecommendationsForRequest.
+ *
+ *  @param response - the recommendations response object.
+ *
+ *  @see OBRecommendationResponse
+ *  @see Outbrain::fetchRecommendationsForRequest
  **/
 typedef void(^OBResponseCompletionHandler)(OBRecommendationResponse *response);
 
+/**
+ *  @brief A delegate for receiving and handling the OBRecommendationResponse object, or an error object if the request failed.
+ *
+ *  OBRecommendationResponse is sent in response to calling Outbrain::fetchRecommendationsForRequest.
+ *
+ *  @see OBRecommendationResponse
+ *  @see Outbrain::fetchRecommendationsForRequest
+ **/
 @protocol OBResponseDelegate  <NSObject>
 
 /**
- *  Discussion:
- *      This will be called when we successfully fetched recommendations for the given link
+ *  @brief This method will be called when a recommendation request is successful.
+ *
+ *  @param response - the recommendations response object.
+ *
+ *  @see OBRecommendationResponse
  **/
 - (void)outbrainDidReceiveResponseWithSuccess:(OBRecommendationResponse *)response;
 
 
 /**
- *  Discussion:
- *      This is called when any amount of errors occurs after a request is made.  The
- *      error property will be set on the response object directly
+ *  @brief This method will be called when a recommendation request fails.
+ *
+ *  @param response - an error object describing the failure's cause.
  **/
 - (void)outbrainResponseDidFail:(NSError *)response;
 @end

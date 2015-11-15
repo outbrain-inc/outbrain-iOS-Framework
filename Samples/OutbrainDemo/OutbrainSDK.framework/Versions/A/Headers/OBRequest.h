@@ -10,104 +10,104 @@
 
 
 /**
- *  This class represents a single widget as it pertains to outbrain.  
+ * @brief This class contains all the details required to produce content recommendations.
  *
- *  A widget is a user-facing group of outbrain recommendations.
- **/
-
-
-@interface OBRequest : NSObject
+ * It is passed as a parameter to __fetchRecommendationsForRequest__.\n
+ * Its properties are:\n
+ * <ul>
+ *    <li><strong>homePageRequest</strong> - indicates whether you are using the Homepage product. The default value is "false". Please consult with your account manager for more details.\n
+ *    <li><strong>url</strong> - the URL that the user is currently viewing.\n
+ *    <li><strong>widgetIndex</strong> - the page view widget index. You must assign unique, sequential numeric IDs to the widgets on your page, to be passed to Outbrain.\n
+ *          	This prevents recommendation requests from being duplicated for the same widget.\n
+ *    <li><strong>widgetId</strong> - a string ID for the widget in which content recommendations will be displayed. This ID is assigned by your account manager.\n
+ *		    	(Please consult with your account manager if you do not know your widgetIds.)\n
+ *			    The widgetId is mapped to configuration settings that define how recommendations will be displayed (e.g. with or without thumbnail images).\n
+ *    <li><strong>additionalData</strong> - custom data that you want to associate with the viewed URL.\n
+ *                                          Outbrain stores this value and returns it if and when this URL is returned as a recommendation.
+ *    <li><strong>mobileSubgroup</strong> - an identifier for the subset of your organic links that may be used within mobile apps. (Discuss this value with your Outbrain account manager.)
+ * </ul>
+ *
+ * @note The mandatory properties (which must be provided to the __OBRequest__ constructor) are __url__ and __widgetId__.
+ *
+ * @note Please see the "Outbrain Android SDK Programming Guide" for more detailed explanations about how to integrate with Outbrain.
+ *
+ *
+ * @see Outbrain::fetchRecommendationsForRequest
+ * @see OBRecommendationResponse
+ */
+@interface OBRequest : NSObject {
+}
 
 /**
- *  Discussion: (Required)
- *      This is the url that you wish to fetch recommendations for.
- *  Defaults: nil
+ *  @brief The URL that the user is currently viewing (default value is NULL).
  **/
 @property (nonatomic, copy) NSString * url;
 
 /**
- *  Discussion: (Required)
- *      The widgetID that you would like to register under with outbrain
- *  Defaults: nil
+ * @brief A string ID (assigned by your account manager) for the widget in which content recommendations will be displayed (default value is NULL).
  **/
 @property (nonatomic, copy) NSString * widgetId;
 
 /**
- *  Discussion:
- *      If there are multiple widgets with the same `widgetID` on the same page, then this represents
- *      the index of each widget on the page.  Start at 0 and move up by 1
- *  Defaults: 0
+ *  @brief A zero-based, unique numeric ID for the widget in which content recommendations will be displayed (default value is 0).
  *
- *  @note: This should only be set if there is more than 1 of the same `widgetID` on the same page.
+ *  @note This is only necessary if there is more than one widget with the same widgetID on the same page.
  **/
 @property (nonatomic, assign) NSInteger widgetIndex;
 
 
 /**
- *  Discussion: (Optional)
- *      This determines if the request is for a homepage. 
- *      (i.e.  This request for recommendations isn't tied to any one piece of content).
+ *  @brief Indicates whether you are using the Homepage product (default value is "false").
+ *
+ *  @note Please consult with your account manager for more details.
  **/
 @property (nonatomic, assign, getter = isHomepageRequest) BOOL homePageRequest;
 
 
 
 /**
- *  Discussion:
- *      Convenience creator for defining an `OBRequest` object
+ *  @brief A constructor for defining an OBRequest object.
  *
- *  Params:
- *      @url - The link that you wish to request recommendations for
- *      @widgetId - The widgetID (given by outbrain) to request recommendations for
+ *  @param url - the URL that the user is currently viewing.
+ *  @param widgetId - a string ID (assigned by your account manager) for the widget in which content recommendations will be displayed.
  *
- *  @note:  If you have more than one `widgetID` on the same page, then you should use `+requestWithURL:widgetID:widgetIndex:` instead
+ *  @note: If you have more than one widgetID on the same page, use the next constructor (with a widgetIndex parameter) instead.
  **/
 + (instancetype)requestWithURL:(NSString *)url widgetID:(NSString *)widgetId;
 
 /**
- *  Discussion:
- *      Convenience creator for defining an `OBRequest` object
+ *  @brief A constructor for defining an OBRequest object.
  *
- *  Params:
- *      @url - The link that you wish to request recommendations for
- *      @widgetId - The widgetID (given by outbrain) to request recommendations for
- *      @widgetIndex - The index of the `widgetID` on the current page.  
- *          (e.g if you have inline widgets, then the first one would be 0, then 1 and so on)
+ *  @param url - the URL that the user is currently viewing.
+ *  @param widgetId - a string ID (assigned by your account manager) for the widget in which content recommendations will be displayed.
+ *  @param widgetIndex - the numeric index of the widget on the current page.
  **/
 + (instancetype)requestWithURL:(NSString *)url widgetID:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex;
 
-
-
 @end
 
 
-
-
 /**
- *  Discussion:
- *      This section should only be used after you have talked to your
- *      outbrain administrator.
+ *  @brief Additional properties related to complex installations.
  **/
-
 @interface OBRequest (AdvancedNativeSupport)
 
-/**
- *  Discussion:
- *      The mobile content id for this request as it pertains to your app.
- *      For instance if your app looks content up in core data by id, then you would
- *      set this to the id of the object you're requeting for
- **/
-@property (nonatomic, copy) NSString * mobileId;
+@property (nonatomic, copy) NSString * mobileId __deprecated;
+
+@property (nonatomic, copy) NSString * source __deprecated;
 
 /**
  *  Discussion:
- *      A unique identifier (as it pertains to your application) to 'group'
- *      this piece of content.
+ *      An identifier for the subset of your organic links that may be used within mobile apps.
+ *     (Discuss this value with your Outbrain account manager.)
  **/
-@property (nonatomic, copy) NSString * source;
+@property (nonatomic, copy) NSString * mobileSubGroup;
+
+/**
+ *  Discussion:
+ *      The additionalData property can be used to pass custom data that you want to associate with the viewed URL.\n
+ *      Outbrain stores this value and returns it if and when this URL is returned as a recommendation.
+ **/
+@property (nonatomic, copy) NSString * additionalData;
 
 @end
-
-
-
-
