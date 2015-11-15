@@ -11,7 +11,7 @@
 #import "OBRecommendationResponse.h"
 
 @interface OBRecommendationsTokenHandler : NSObject {
-    NSMutableArray      *tokensQueue;
+
 }
 
 - (NSString *)getTokenForRequest:(OBRequest *)request;
