@@ -332,7 +332,6 @@ static Outbrain * _sharedInstance = nil;
     [self setOBSettingValue:apvCache forKey:OBSettingsAttributes.apvRequestCacheKey];
 }
 
-#define OBHomepageDomain                            @"hpr.outbrain.com"
 #define OBRecommendationDomain                      @"odb.outbrain.com"
 
 + (NSURL *)_recommendationURLForRequest:(OBRequest *)request

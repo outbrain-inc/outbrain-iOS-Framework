@@ -15,7 +15,6 @@
  * It is passed as a parameter to __fetchRecommendationsForRequest__.\n
  * Its properties are:\n
  * <ul>
- *    <li><strong>homePageRequest</strong> - indicates whether you are using the Homepage product. The default value is "false". Please consult with your account manager for more details.\n
  *    <li><strong>url</strong> - the URL that the user is currently viewing.\n
  *    <li><strong>widgetIndex</strong> - the page view widget index. You must assign unique, sequential numeric IDs to the widgets on your page, to be passed to Outbrain.\n
  *          	This prevents recommendation requests from being duplicated for the same widget.\n
@@ -54,15 +53,6 @@
  *  @note This is only necessary if there is more than one widget with the same widgetID on the same page.
  **/
 @property (nonatomic, assign) NSInteger widgetIndex;
-
-
-/**
- *  @brief Indicates whether you are using the Homepage product (default value is "false").
- *
- *  @note Please consult with your account manager for more details.
- **/
-@property (nonatomic, assign, getter = isHomepageRequest) BOOL homePageRequest;
-
 
 
 /**
