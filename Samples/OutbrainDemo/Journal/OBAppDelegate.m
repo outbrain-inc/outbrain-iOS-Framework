@@ -30,7 +30,8 @@
     // First thing you should do is initialize outbrain with your given partnerKey
     // @note:  Here we are using a build in Demo partner key.  This will not work on distribution builds.
     //         should only be used for debugging
-    [Outbrain initializeOutbrainWithConfigFile:[[NSBundle mainBundle] pathForResource:@"OBConfig" ofType:@"plist"]];
+    [Outbrain initializeOutbrainWithPartnerKey:@"iOSSampleApp2014"];
+    
     [Outbrain setTestMode:YES]; // Skipping all billing, statistics, information gathering, and all other action mechanisms.
     
     // Initialize appearance here.
@@ -137,9 +138,8 @@
 #pragma mark DEEP_LINKING
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    [Outbrain initializeOutbrainWithConfigFile:[[NSBundle mainBundle] pathForResource:@"OBConfig" ofType:@"plist"]];
-
-    bool returnValue = false;
+    [Outbrain initializeOutbrainWithPartnerKey:@"iOSSampleApp2014"];
+    BOOL returnValue = false;
     NSString *articleUrl;
     
     //see if this is should be handled by this app
