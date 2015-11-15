@@ -384,8 +384,7 @@ static Outbrain * _sharedInstance = nil;
     
     //Domain
     NSString * base = @"http://";
-    NSString * domain = [request isHomepageRequest] ? OBHomepageDomain : OBRecommendationDomain;
-    base = [base stringByAppendingString:domain];
+    base = [base stringByAppendingString:OBRecommendationDomain];
     base = [base stringByAppendingString:@"/utils/get"];
     
     //Key
