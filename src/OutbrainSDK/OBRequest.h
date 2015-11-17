@@ -86,18 +86,4 @@
 
 @property (nonatomic, copy) NSString * source __deprecated;
 
-/**
- *  Discussion:
- *      An identifier for the subset of your organic links that may be used within mobile apps.
- *     (Discuss this value with your Outbrain account manager.)
- **/
-@property (nonatomic, copy) NSString * mobileSubGroup;
-
-/**
- *  Discussion:
- *      The additionalData property can be used to pass custom data that you want to associate with the viewed URL.\n
- *      Outbrain stores this value and returns it if and when this URL is returned as a recommendation.
- **/
-@property (nonatomic, copy) NSString * additionalData;
-
 @end
