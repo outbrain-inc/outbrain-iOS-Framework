@@ -62,25 +62,6 @@
     return [self.url hash] ^ [self.widgetId hash];
 }
 
-#if 0
-// Currently commenting out these methods, there is a chance we'll add them to the SDK in the future.
-- (void)setMobileSubGroup:(NSString *)mobileSubGroup {
-    self.source = mobileSubGroup;
-}
-
-- (NSString *)mobileSubGroup {
-    return self.source;
-}
-
-- (void)setAdditionalData:(NSString *)additionalData {
-    self.mobileId = additionalData;
-}
-
-- (NSString *)additionalData {
-    return self.mobileId;
-}
-#endif // end of comment out
-
 
 #pragma mark - Getters & Setters
 

@@ -38,10 +38,16 @@ const struct OBSettingsAttributes OBSettingsAttributes = {
     
     // Misc.
     .udTokenKey                 = @"OB_USER_TOKEN_KEY",
-    .apvRequestCacheKey         = @"OB_APV_CAKE_KEY",
     .testModeKey                = @"OB_TEST_MODE_KEY"
 
 };
+
+@interface Outbrain()
+
+@property (nonatomic, strong) NSMutableDictionary * apvCache;
+
+@end
+
 
 @implementation Outbrain
 
@@ -61,7 +67,7 @@ static Outbrain * _sharedInstance = nil;
         if (_sharedInstance == nil) {
             _sharedInstance = [[Outbrain alloc] init];
             _sharedInstance.obSettings = [[NSMutableDictionary alloc] init];
-            _sharedInstance.obSettings[OBSettingsAttributes.apvRequestCacheKey] = @{};   // Initialize our apv cache.
+            _sharedInstance.apvCache = [[NSMutableDictionary alloc] init];   // Initialize our apv cache.
             NSOperationQueue * queue = [[NSOperationQueue alloc] init];
             [queue setName:@"Outbrain Operation Queue"];
             queue.maxConcurrentOperationCount = 1;  // Serial
@@ -69,6 +75,7 @@ static Outbrain * _sharedInstance = nil;
             _sharedInstance.tokensHandler = [[OBRecommendationsTokenHandler alloc] init];
             _sharedInstance.viewabilityService = [[OBViewabilityService alloc] init];
             _sharedInstance.gaHelper = [[OBGAHelper alloc] init];
+
         }
     });
     
@@ -308,28 +315,30 @@ static Outbrain * _sharedInstance = nil;
 {
     NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
     BOOL apvReturnValue = NO;
+
     // We only update our apv value in the case that the response did not error.
-    if(![response performSelector:@selector(getPrivateError)])
-    {
-        if(responseSettings && [responseSettings isKindOfClass:[NSDictionary class]] && responseSettings[@"apv"] && ![responseSettings[@"apv"] isKindOfClass:[NSNull class]])
-        {
-            apvReturnValue = [responseSettings[@"apv"] boolValue];
-        }
-    }
-    
-    id settingsResponse = [self OBSettingForKey:OBSettingsAttributes.apvRequestCacheKey];
-    if (settingsResponse && ![settingsResponse isKindOfClass:[NSNull class]]) {
-        settingsResponse = [NSDictionary dictionary];
-    }
-    
-    NSMutableDictionary * apvCache = [[NSMutableDictionary alloc] initWithDictionary:settingsResponse];
+    if([response performSelector:@selector(getPrivateError)]) return;
     
     OBRequest *request = [response performSelector:@selector(getPrivateRequest)];
+    if (request == nil) return; // sanity
     
-    if (response != nil && request != nil && request.widgetId != nil) {
-        apvCache[request.widgetId] = @(apvReturnValue);
+    NSString *requestUrl = request.url;
+    
+    // If apv = true we don't want to set anything;
+    if (_sharedInstance.apvCache[requestUrl] && ([_sharedInstance.apvCache[requestUrl] boolValue] == YES)) {
+        return;
     }
-    [self setOBSettingValue:apvCache forKey:OBSettingsAttributes.apvRequestCacheKey];
+    
+    if (responseSettings && [responseSettings isKindOfClass:[NSDictionary class]] && responseSettings[@"apv"] && ![responseSettings[@"apv"] isKindOfClass:[NSNull class]])
+    {
+        apvReturnValue = [responseSettings[@"apv"] boolValue];
+    }
+    
+    // If apvReturnValue is false we don't want to set anything
+    if (apvReturnValue == NO) return;
+ 
+    // Finally, if we got here, we need to save the apv value to the apvCache
+    _sharedInstance.apvCache[requestUrl] = [NSNumber numberWithBool:apvReturnValue]; // apvReturnValue mush be equal to YES;
 }
 
 #define OBRecommendationDomain                      @"odb.outbrain.com"
@@ -447,10 +456,10 @@ static Outbrain * _sharedInstance = nil;
     base = [base stringByAppendingString:(token == nil ? @"" : [NSString stringWithFormat:@"&t=%@", token])];
     
     // APV
-    NSMutableDictionary * apvCache = [[NSMutableDictionary alloc] initWithDictionary:[self OBSettingForKey:OBSettingsAttributes.apvRequestCacheKey]];
-    if(request.widgetIndex == 0) apvCache[request.widgetId] = @NO;
-    if([apvCache[request.widgetId] boolValue])
-    {
+    if(request.widgetIndex == 0) { // Reset APV on index = 0
+        _sharedInstance.apvCache[request.url] = [NSNumber numberWithBool:NO];
+    }
+    if ([_sharedInstance.apvCache[request.url] boolValue]) {
         // We need to append apv=true to our request
         base = [base stringByAppendingString:@"&apv=true"];
     }

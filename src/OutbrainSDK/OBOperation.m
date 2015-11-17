@@ -26,7 +26,9 @@
 
 + (instancetype)operationWithURL:(NSURL *)url
 {
-    return [[[self class] alloc] initWithURL:url];
+    NSString *urlString = [[url absoluteString] stringByAppendingString:@"&noRedirect=true"];
+    
+    return [[[self class] alloc] initWithURL:[NSURL URLWithString:urlString]];
 }
 
 - (instancetype)initWithURL:(NSURL *)url
