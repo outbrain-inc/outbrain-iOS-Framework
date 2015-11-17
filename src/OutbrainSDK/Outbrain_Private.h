@@ -26,7 +26,6 @@ extern const struct OBSettingsAttributes {
     
     // Misc.
     __unsafe_unretained NSString * udTokenKey;                  // The key for retrieving the appUserToken from user defaults
-    __unsafe_unretained NSString * apvRequestCacheKey;          // This is our apv records
     __unsafe_unretained NSString * testModeKey;
     
 } OBSettingsAttributes;
