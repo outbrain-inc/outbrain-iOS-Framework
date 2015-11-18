@@ -200,7 +200,9 @@ static Outbrain * _sharedInstance = nil;
     [self _throwAssertIfNotInitalized];
     
     NSURL * originalURL = [NSURL URLWithString:[recommendation originalValueForKeyPath:@"orig_url"]];
-    NSURL * urlWithRedirect = [NSURL URLWithString:[recommendation originalValueForKeyPath:@"url"]];
+    
+    NSString *urlString = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:@"&noRedirect=true"];
+    NSURL * urlWithRedirect = [NSURL URLWithString:urlString];
     
     // We don't need a completion block for this one.  We just need to fire off the request and let it do it's thing
     OBClickRegistrationOperation *clickOP = [OBClickRegistrationOperation operationWithURL:urlWithRedirect];
