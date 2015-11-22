@@ -21,10 +21,11 @@
     OBRequest * req1 = [OBRequest requestWithURL:@"http://google.com" widgetID:@"NA"];
     OBRequest * req2 = [OBRequest requestWithURL:@"http://google.com" widgetID:@"NA"];
     
-  //  XCTAssertEqual(req1, req2, @"Requests should be equal");
+    XCTAssertTrue([req2 isEqual:req1], @"Requests should be equal");
     
     req2.widgetIndex = 200;
-   //  XCTAssertEqual(req2, req1, @"Requests should be equal even if widgetIndex is different");
+    XCTAssertTrue([req2 isEqual:req1], @"Requests should be equal even if widgetIndex is different");
+
     
     req2.widgetId = @"blah";
     XCTAssertFalse([req2 isEqual:req1], @"Requests should not be equal given different widgetIDs");
