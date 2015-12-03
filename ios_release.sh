@@ -18,7 +18,7 @@ mkdir OBSDK-Release/HTML-Documentation/
 
 cp -a OutbrainSDK.framework OBSDK-Release/SDK/
 cp -a OutbrainSDK.framework OBSDK-Release/Samples/
-cp -rf Samples/ OBSDK-Release/Samples/
+cp -fa Samples/ OBSDK-Release/Samples/
 cp -rf HTML-Documentation/ OBSDK-Release/HTML-Documentation/
 cp -rf README.md OBSDK-Release/
 cp -rf Release-Notes.txt OBSDK-Release/
