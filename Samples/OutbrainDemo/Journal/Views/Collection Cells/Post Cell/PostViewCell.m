@@ -32,7 +32,6 @@
 
 @implementation PostViewCell
 
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -187,17 +186,24 @@
         }
         return;
     }
-    
-    // Adjust the webView contentInset so we can insert our view at the bottom
-    UIScrollView * sv = self.textView; // self.webView.scrollView; <!-- Maybe use this later
+
+    UIScrollView * sv = self.textView;
     sv.delegate = self;
-    
-    UIEdgeInsets insets = sv.contentInset;
-    insets.bottom = self.outbrainViewHeight;
-    sv.contentInset = insets;
 
     if (response.request.widgetIndex == 0) {
         self.outbrainClassicView.recommendationResponse = response;
+
+        // The next 3 lines calculate the new frame height for outbrainClassicView according to the server response
+        CGRect newFrame = self.outbrainClassicView.frame;
+        newFrame.size = CGSizeMake(newFrame.size.width, self.outbrainClassicView.getHeight);
+        self.outbrainClassicView.frame = newFrame;
+        
+        // Adjust the TextView contentInset so we can insert outbrainClassicView at the bottom
+        UIEdgeInsets insets = sv.contentInset;
+        insets.bottom = self.outbrainClassicView.frame.size.height + 10.0; // + offset
+        sv.contentInset = insets;
+
+        
         self.outbrainClassicView.frame = CGRectOffset(_outbrainClassicView.bounds, 0, sv.contentSize.height);
         [sv addSubview:self.outbrainClassicView];
         if(sv.contentOffset.y >= CGRectGetMinY(_outbrainClassicView.frame))
