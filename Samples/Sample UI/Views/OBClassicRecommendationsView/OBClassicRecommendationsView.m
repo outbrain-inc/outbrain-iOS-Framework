@@ -255,6 +255,11 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     return itemSize;
 }
 
+- (CGFloat) getHeight {
+    UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
+    return [l collectionViewContentSize].height;
+}
+
 // Setup our (images,labels,colors, etc...) if necessary
 - (void)_setupSubviewsForCell:(OBRecommendationCell *)cell
 {
