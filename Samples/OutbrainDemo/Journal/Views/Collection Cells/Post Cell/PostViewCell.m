@@ -195,7 +195,7 @@
 
         // The next 3 lines calculate the new frame height for outbrainClassicView according to the server response
         CGRect newFrame = self.outbrainClassicView.frame;
-        newFrame.size = CGSizeMake(newFrame.size.width, self.outbrainClassicView.getHeight);
+        newFrame.size = CGSizeMake(newFrame.size.width, [self.outbrainClassicView getHeight]);
         self.outbrainClassicView.frame = newFrame;
         
         // Adjust the TextView contentInset so we can insert outbrainClassicView at the bottom
