@@ -430,7 +430,8 @@ static Outbrain * _sharedInstance = nil;
     base = [base stringByAppendingString:[NSString stringWithFormat:@"&format=%@", @"vjnc"]];
     
     //User key + opt-out
-    base = [base stringByAppendingString:([OBAppleAdIdUtil isOptedOut] ? @"" : [NSString stringWithFormat:@"&api_user_id=%@", [OBAppleAdIdUtil getAdvertiserId]])];
+    base = [base stringByAppendingString:@"&api_user_id="];
+    base = [base stringByAppendingString:([OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId])];
     
     //Test mode
     base = [base stringByAppendingString:[((NSNumber *)[Outbrain mainBrain].obSettings[OBSettingsAttributes.testModeKey]) boolValue] ? @"&testMode=true" : @""];
