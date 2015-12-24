@@ -25,7 +25,6 @@
 #define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 
-
 @implementation OBRecommendationWebVC
 
 
@@ -70,7 +69,7 @@
 
 - (IBAction)optionsAction:(id)sender
 {
-    UIActivityViewController * vc = [[UIActivityViewController alloc] initWithActivityItems:@[self.webView.request.URL] applicationActivities:nil];
+    UIActivityViewController * vc = [[UIActivityViewController alloc] initWithActivityItems:@[[self getCurrentURL]] applicationActivities:nil];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -78,12 +77,20 @@
 {
     self.webView.delegate = nil;
     [self.webView stopLoading];
+    self.wk_WebView.navigationDelegate = nil;
+    [self.wk_WebView stopLoading];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)goBack:(id)sender
 {
-    [self.webView goBack];
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        [self.webView goBack];
+    }
+    else {
+        [self.wk_WebView goBack];
+    }
 }
 
 
@@ -93,11 +100,19 @@
 // [Close,FixedSpace,Back,FixedSpace,(optional refresh),FlexSpace,Share]
 - (void)_updateButtonStates
 {
-    self.backButton.enabled = [self.webView canGoBack];
-    self.forwardButton.enabled = [self.webView canGoForward];
+    self.backButton.enabled = SYSTEM_VERSION_LESS_THAN(@"8.0") ? [self.webView canGoBack] : [self.wk_WebView canGoBack];
+    self.forwardButton.enabled = SYSTEM_VERSION_LESS_THAN(@"8.0") ? [self.webView canGoForward] : [self.wk_WebView canGoForward];
     self.refreshButton.enabled = ![self isWebViewLoading];
     
-    self.navigationItem.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        self.navigationItem.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    }
+    else {
+        [self.wk_WebView evaluateJavaScript:@"document.title" completionHandler:^(id _Nullable ret, NSError * _Nullable error) {
+            self.navigationItem.title = [NSString stringWithFormat:@"%@", ret];
+        }];
+    }
+    
     
     NSInteger activityIndicatorIndex = [self.toolbarItems indexOfObject:self.backButton] + 1;   // Plus 1 because the fixed space is right after
     UIBarButtonItem * activityItem = [self.toolbarItems objectAtIndex:activityIndicatorIndex+1];
@@ -136,6 +151,15 @@
     }
     else {
         return self.wk_WebView.isLoading;
+    }
+}
+
+-(NSURL *) getCurrentURL {
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        return self.webView.request.URL;
+    }
+    else {
+        return self.wk_WebView.URL;
     }
 }
 
