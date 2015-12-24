@@ -10,7 +10,9 @@
 #import <OutbrainSDK/OutbrainSDK.h>
 
 @interface OBRecommendationWebVC ()
-@property (nonatomic, weak, readwrite) IBOutlet UIWebView * webView;
+
+@property (nonatomic, strong) UIWebView * webView;
+@property (nonatomic, strong) WKWebView * wk_WebView;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * backButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem * refreshButton;
@@ -18,6 +20,11 @@
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * actionsButton;
 
 @end
+
+
+#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
+
 
 @implementation OBRecommendationWebVC
 
@@ -28,14 +35,29 @@
 {
     [super viewDidLoad];
     
+    CGRect frame = CGRectMake(0, 20.0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        self.webView = [[UIWebView alloc] initWithFrame:frame];
+        self.webView.scalesPageToFit = YES;
+        [self.webView setTranslatesAutoresizingMaskIntoConstraints: NO];
+        self.webView.delegate = self;
+        // Fast scrolling
+        self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+        [self.view addSubview:self.webView];
+    }
+    else {
+        self.wk_WebView = [[WKWebView alloc] initWithFrame:frame];
+        self.wk_WebView.navigationDelegate = self;
+        [self.view addSubview:self.wk_WebView];
+    }
+    
+       
     if(self.recommendation)
     {
         NSURL * url = [Outbrain getOriginalContentURLAndRegisterClickForRecommendation:self.recommendation];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+        [self loadURL:url];
     }
-    self.webView.suppressesIncrementalRendering = YES;
-    // Fast scrolling
-    self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,6 +81,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)goBack:(id)sender
+{
+    [self.webView goBack];
+}
+
 
 #pragma mark - Helpers
 
@@ -68,13 +95,13 @@
 {
     self.backButton.enabled = [self.webView canGoBack];
     self.forwardButton.enabled = [self.webView canGoForward];
-    self.refreshButton.enabled = ![self.webView isLoading];
+    self.refreshButton.enabled = ![self isWebViewLoading];
     
     self.navigationItem.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     
     NSInteger activityIndicatorIndex = [self.toolbarItems indexOfObject:self.backButton] + 1;   // Plus 1 because the fixed space is right after
     UIBarButtonItem * activityItem = [self.toolbarItems objectAtIndex:activityIndicatorIndex+1];
-    if([self.webView isLoading] && [activityItem tag] != 100)
+    if([self isWebViewLoading] && [activityItem tag] != 100)
     {
         UIActivityIndicatorView * indy = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [indy startAnimating];
@@ -85,7 +112,7 @@
         [tmpItems insertObject:loadingItem atIndex:activityIndicatorIndex+1];
         [self setToolbarItems:tmpItems animated:YES];
     }
-    else if(![self.webView isLoading] && activityItem.tag == 100)
+    else if(![self isWebViewLoading] && activityItem.tag == 100)
     {
         NSMutableArray * tmpItems = [[self toolbarItems] mutableCopy];
         [tmpItems removeObject:activityItem];
@@ -94,8 +121,25 @@
     }
 }
 
+- (void) loadURL:(NSURL *)url {
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    }
+    else {
+        [self.wk_WebView loadRequest:[NSURLRequest requestWithURL:url]];
+    }
+}
 
-#pragma mark - WebView
+-(BOOL) isWebViewLoading {
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        return self.webView.isLoading;
+    }
+    else {
+        return self.wk_WebView.isLoading;
+    }
+}
+
+#pragma mark - WebView delegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -123,5 +167,17 @@
 {
     [self _updateButtonStates];
 }
+
+#pragma mark - WKNavigationDelegate
+
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
+    [self _updateButtonStates];
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
+    [self _updateButtonStates];
+}
+
+
 
 @end

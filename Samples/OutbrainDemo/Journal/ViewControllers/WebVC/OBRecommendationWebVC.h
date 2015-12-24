@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@import WebKit;
+
 
 @class OBRecommendation;
 
-@interface OBRecommendationWebVC : UIViewController <UIWebViewDelegate>
+@interface OBRecommendationWebVC : UIViewController <UIWebViewDelegate, WKNavigationDelegate>
 
-@property (nonatomic, weak, readonly) IBOutlet UIWebView * webView;
-
+- (void) loadURL:(NSURL *)url;
 
 /**
  *  Discussion:
