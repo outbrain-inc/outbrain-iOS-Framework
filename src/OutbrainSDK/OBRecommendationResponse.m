@@ -12,10 +12,26 @@
 
 @implementation OBRecommendationResponse
 
+NSString *const kSDK_SHOULD_RETURN_PAID_REDIRECT_URL = @"sdkShouldReturnPaidRedirectUrl";
+
+
 + (instancetype)contentWithPayload:(NSDictionary *)payload
 {
     OBRecommendationResponse * res = [super contentWithPayload:payload];
+    NSNumber *sdkShouldReturnPaidRedirectUrl = nil;
     
+    // Parse settings
+    id settingsPayload = payload[@"settings"];
+    if([settingsPayload isKindOfClass:[NSDictionary class]])
+    {
+        // The actual docs here
+        // Let's convert the recommendations to actual objects
+
+        res.settings = [[OBSettings alloc] initWithPayload:settingsPayload];
+        sdkShouldReturnPaidRedirectUrl = [res.settings getNSNumberValueForSettingKey:kSDK_SHOULD_RETURN_PAID_REDIRECT_URL];
+    }
+    
+    // Parse documents, i.e. recommadations
     id documents = payload[@"documents"];
     if([documents isKindOfClass:[NSDictionary class]])
     {
@@ -24,23 +40,17 @@
         {
             // Let's convert the recommendations to actual objects
             NSMutableArray * recommendations = [NSMutableArray arrayWithCapacity:[documents[@"doc"] count]];
-            for(id rec in documents[@"doc"])
+            for (NSDictionary *rec in documents[@"doc"])
             {
-                [recommendations addObject:[OBRecommendation contentWithPayload:rec]];
+                NSMutableDictionary *mutableRec = [rec mutableCopy];
+                mutableRec[kSDK_SHOULD_RETURN_PAID_REDIRECT_URL] = sdkShouldReturnPaidRedirectUrl;
+                [recommendations addObject:[OBRecommendation contentWithPayload:mutableRec]];
             }
             res.recommendations = [recommendations copy];
         }
     }
     
-    id settingsPayload = payload[@"settings"];
-    if([settingsPayload isKindOfClass:[NSDictionary class]])
-    {
-        // The actual docs here
-        // Let's convert the recommendations to actual objects
-
-        res.settings = [[OBSettings alloc] initWithPayload:settingsPayload];
-    }
-    
+    // Parse request
     id requestPayload = payload[@"request"];
     if([requestPayload isKindOfClass:[NSDictionary class]])
     {

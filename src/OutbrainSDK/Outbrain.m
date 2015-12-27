@@ -199,6 +199,15 @@ static Outbrain * _sharedInstance = nil;
     // Should be initialized
     [self _throwAssertIfNotInitalized];
     
+    // New feature!! if SDK_SHOULD_RETURN_PAID_REDIRECT_URL == YES return the redirect url
+    BOOL sdkShouldReturnPaidRedirectUrl = [[recommendation originalValueForKeyPath:kSDK_SHOULD_RETURN_PAID_REDIRECT_URL] boolValue];
+    if (sdkShouldReturnPaidRedirectUrl && [recommendation isPaidLink]) {
+        NSLog(@"URL = %@", [recommendation originalValueForKeyPath:@"url"]);
+        return [NSURL URLWithString:[recommendation originalValueForKeyPath:@"url"]];
+    }
+    
+    // else... back to original implementation
+    
     NSURL * originalURL = [NSURL URLWithString:[recommendation originalValueForKeyPath:@"orig_url"]];
     
     NSString *urlString = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:@"&noRedirect=true"];
@@ -207,6 +216,8 @@ static Outbrain * _sharedInstance = nil;
     // We don't need a completion block for this one.  We just need to fire off the request and let it do it's thing
     OBClickRegistrationOperation *clickOP = [OBClickRegistrationOperation operationWithURL:urlWithRedirect];
     [[[self mainBrain] obRequestQueue] addOperation:clickOP];
+    
+    NSLog(@"URL = %@", [originalURL absoluteString]);
     return originalURL;
 }
 

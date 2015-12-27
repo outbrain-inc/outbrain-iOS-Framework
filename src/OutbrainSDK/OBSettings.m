@@ -21,20 +21,37 @@
     return self;
 }
 
-//- (NSString *)provideStringForSetting:(NSString *)setting {
-//    id object = [payload objectForKey:setting];
-//    if (!object) {
-//        NSLog(@"No object found for setting %@", setting);
-//        return NO;
-//    }
-//    @try {
-//        return (NSString *)object;
-//    }
-//    @catch (NSException *ex) {
-//        NSLog(@"Error casing setting %@ to NSString", setting);
-//    }
-//    return nil;
-//}
+- (NSString *)getStringValueForSettingKey:(NSString *)settingKey {
+    id object = [payload objectForKey:settingKey];
+    if (!object) {
+        NSLog(@"No object found for setting %@", settingKey);
+        return NO;
+    }
+    @try {
+        return (NSString *)object;
+    }
+    @catch (NSException *ex) {
+        NSLog(@"Error casing setting %@ to NSString", settingKey);
+    }
+    return nil;
+}
+
+- (NSNumber *)getNSNumberValueForSettingKey:(NSString *)settingKey {
+    id object = [payload objectForKey:settingKey];
+    if (!object) {
+        NSLog(@"No object found for setting %@", settingKey);
+        return NO;
+    }
+    @try {
+        return (NSNumber *)object;
+    }
+    @catch (NSException *ex) {
+        NSLog(@"Error casing setting %@ to NSNumber", settingKey);
+    }
+    return nil;
+}
+
+
 //
 //- (long)provideLongForSetting:(NSString *)setting {
 //    NSString *object = [self provideStringForSetting:setting];

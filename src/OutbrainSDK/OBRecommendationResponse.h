@@ -31,6 +31,10 @@
     OBResponseRequest   *responseRequest;
 }
 
+
+FOUNDATION_EXPORT NSString *const kSDK_SHOULD_RETURN_PAID_REDIRECT_URL;
+
+
 /**
  *  @brief An array of content recommendations (OBRecommendation objects).
  **/
