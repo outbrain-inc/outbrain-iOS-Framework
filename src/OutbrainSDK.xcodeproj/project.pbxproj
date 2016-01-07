@@ -850,6 +850,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
+				DEFINES_MODULE = YES;
 				DSTROOT = /tmp/OutbrainSDK.dst;
 				EXECUTABLE_EXTENSION = a;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -877,6 +878,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
+				DEFINES_MODULE = YES;
 				DSTROOT = /tmp/OutbrainSDK.dst;
 				EXECUTABLE_EXTENSION = a;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -944,6 +946,7 @@
 		D8376BEB186E2F6D00B45FA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEFINES_MODULE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -956,6 +959,7 @@
 		D8376BEC186E2F6D00B45FA3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEFINES_MODULE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
