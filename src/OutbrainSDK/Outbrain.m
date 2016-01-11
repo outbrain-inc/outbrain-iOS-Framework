@@ -202,7 +202,6 @@ static Outbrain * _sharedInstance = nil;
     // New feature!! if SDK_SHOULD_RETURN_PAID_REDIRECT_URL == YES return the redirect url
     BOOL sdkShouldReturnPaidRedirectUrl = [[recommendation originalValueForKeyPath:kSDK_SHOULD_RETURN_PAID_REDIRECT_URL] boolValue];
     if (sdkShouldReturnPaidRedirectUrl && [recommendation isPaidLink]) {
-        NSLog(@"URL = %@", [recommendation originalValueForKeyPath:@"url"]);
         return [NSURL URLWithString:[recommendation originalValueForKeyPath:@"url"]];
     }
     
@@ -217,7 +216,6 @@ static Outbrain * _sharedInstance = nil;
     OBClickRegistrationOperation *clickOP = [OBClickRegistrationOperation operationWithURL:urlWithRedirect];
     [[[self mainBrain] obRequestQueue] addOperation:clickOP];
     
-    NSLog(@"URL = %@", [originalURL absoluteString]);
     return originalURL;
 }
 
