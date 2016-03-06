@@ -28,8 +28,7 @@
     UINavigationController * nav = (UINavigationController *)[self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"OBWebNavVC"];
     OBRecommendationWebVC * webVC = [nav.viewControllers lastObject];
     [self.window.rootViewController presentViewController:nav animated:YES completion:^{
-        webVC.webView.scalesPageToFit = YES;
-        [webVC.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+        [webVC loadURL:[NSURL URLWithString:urlString]];
     }];
 }
 
