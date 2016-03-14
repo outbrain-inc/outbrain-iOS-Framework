@@ -27,7 +27,7 @@ cp -rf Release-Notes.txt OBSDK-Release/
 # clean up the folder
 rm -fr HTML-Documentation/
 
-rm -fr ~/Desktop/Release/iOS/*
+rm -fr ~/Desktop/Release/iOS
 mkdir -p ~/Desktop/Release/iOS
 mv OBSDK-Release/* ~/Desktop/Release/iOS/
 rm -fr OBSDK-Release/*
