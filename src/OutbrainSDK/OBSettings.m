@@ -24,14 +24,14 @@
 - (NSString *)getStringValueForSettingKey:(NSString *)settingKey {
     id object = [payload objectForKey:settingKey];
     if (!object) {
-        NSLog(@"No object found for setting %@", settingKey);
+        //NSLog(@"No object found for setting %@", settingKey);
         return nil;
     }
     @try {
         return (NSString *)object;
     }
     @catch (NSException *ex) {
-        NSLog(@"Error casing setting %@ to NSString", settingKey);
+        //NSLog(@"Error casing setting %@ to NSString", settingKey);
     }
     return nil;
 }
@@ -39,14 +39,14 @@
 - (NSNumber *)getNSNumberValueForSettingKey:(NSString *)settingKey {
     id object = [payload objectForKey:settingKey];
     if (!object) {
-        NSLog(@"No object found for setting %@", settingKey);
+        //NSLog(@"No object found for setting %@", settingKey);
         return nil;
     }
     @try {
         return (NSNumber *)object;
     }
     @catch (NSException *ex) {
-        NSLog(@"Error casing setting %@ to NSNumber", settingKey);
+        //NSLog(@"Error casing setting %@ to NSNumber", settingKey);
     }
     return nil;
 }

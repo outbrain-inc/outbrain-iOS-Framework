@@ -3,6 +3,7 @@
 cd src
 # Clean
 xcodebuild clean -target OBFramework
+xcodebuild clean -target OutbrainSDK
 # Build
 xcodebuild -target OBFramework
 cd ..
