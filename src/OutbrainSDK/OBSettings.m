@@ -25,7 +25,7 @@
     id object = [payload objectForKey:settingKey];
     if (!object) {
         NSLog(@"No object found for setting %@", settingKey);
-        return NO;
+        return nil;
     }
     @try {
         return (NSString *)object;
@@ -40,7 +40,7 @@
     id object = [payload objectForKey:settingKey];
     if (!object) {
         NSLog(@"No object found for setting %@", settingKey);
-        return NO;
+        return nil;
     }
     @try {
         return (NSNumber *)object;

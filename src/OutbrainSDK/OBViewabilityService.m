@@ -39,11 +39,10 @@
 
 - (void)reportRecommendations {
     viewedRecommendationsList = [self fetchArrayFromUserDefaults];
-    int i = 0;
-    for (OBRecommendation *rec in viewedRecommendationsList) {
-        i++;
-        NSLog(@"rec %d = %@", i ,rec.content);
-    }
+//    int i = 0;
+//    for (OBRecommendation *rec in viewedRecommendationsList) {
+//        i++;        
+//    }
     [viewedRecommendationsList removeAllObjects];
     //TODO: Report this
 }

@@ -14,7 +14,7 @@
 
 - (instancetype)initWithPayload:(NSDictionary *)aPayload;
 
-- (NSString *)getValueForSettingKey:(NSString *)settingKey;
+- (NSString *)getStringValueForSettingKey:(NSString *)settingKey;
 
 - (NSNumber *)getNSNumberValueForSettingKey:(NSString *)settingKey;
 
