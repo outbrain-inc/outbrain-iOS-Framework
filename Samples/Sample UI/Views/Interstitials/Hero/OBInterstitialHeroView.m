@@ -218,7 +218,7 @@
     
     cell.heroUnit = YES;
     cell.titleLabel.text = recommendation.content;
-    cell.sourceLabel.text = [NSString stringWithFormat:@"(%@)",recommendation.author?:recommendation.source];
+    cell.sourceLabel.text = [NSString stringWithFormat:@"(%@)",(recommendation.source ? recommendation.source : recommendation.author)];
     typeof(cell.imageView) __weak __iv = cell.imageView;
     [self fetchImageForURL:recommendation.image.url withCallback:^(UIImage *image) {
         [__iv setImage:image];

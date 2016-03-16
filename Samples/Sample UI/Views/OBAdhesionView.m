@@ -533,7 +533,7 @@
     sourceLabel.backgroundColor = [UIColor clearColor];
     sourceLabel.font = [UIFont systemFontOfSize:10.f];
     sourceLabel.textColor = [UIColor colorWithRed:0.933 green:0.506 blue:0.000 alpha:1.000];
-    sourceLabel.text = [NSString stringWithFormat:@"(%@)",recommendation.author?:recommendation.source];
+    sourceLabel.text = [NSString stringWithFormat:@"(%@)",(recommendation.source ? recommendation.source : recommendation.author)];
     [cell.contentView addSubview:sourceLabel];
     [sourceLabel sizeToFit];
     sourceLabel.frame = CGRectMake(CGRectGetMinX(titleLabel.frame), CGRectGetMaxY(titleLabel.frame), sourceLabel.frame.size.width, sourceLabel.frame.size.height);

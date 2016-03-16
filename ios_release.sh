@@ -37,14 +37,23 @@ echo "Swift Sample App"
 echo "*********************"
 cd /Users/odedre/work/OutbrainDemoSwift
 git status
-git archive --format zip --output $EXPORT_DIR_PATH/OBSDK-Release/Samples/Swift-Demo.zip master
-cd $EXPORT_DIR_PATH/OBSDK-Release/Samples
+git archive --format zip --output $EXPORT_DIR_PATH/Samples/Swift-Demo.zip master
+cd $EXPORT_DIR_PATH/Samples
 unzip Swift-Demo.zip -d Swift-Demo  > /dev/null
 rm -fr Swift-Demo.zip
 
+echo ""
+echo "*********************"
+echo "Prepare Zip File"
+echo "*********************"
 #prepare 
 cd $EXPORT_DIR_PATH
-zip --symlinks -r OBSDK-iOS.zip . -x ".*" -x "*/.*"
+zip --symlinks -r OBSDK-iOS.zip . -x ".*" -x "*/.*" > /dev/null
 
-cd -
+cd /Users/odedre/work/OBSDKiOS
 mv $EXPORT_DIR_PATH/OBSDK-iOS.zip OBSDK-Release/
+
+echo ""
+echo "*********************"
+echo "Success"
+echo "*********************"

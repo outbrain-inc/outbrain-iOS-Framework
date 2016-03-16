@@ -179,7 +179,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     OBRecommendation * recommendation = self.recommendationResponse.recommendations[indexPath.row];
     
     cell.titleLabel.text = recommendation.content;
-    NSString * source = recommendation.source?:recommendation.author;
+    NSString * source = (recommendation.source ? recommendation.source : recommendation.author);
     cell.sourceLabel.text = [NSString stringWithFormat:@"(%@)",source];
     
     if(self.showImages)

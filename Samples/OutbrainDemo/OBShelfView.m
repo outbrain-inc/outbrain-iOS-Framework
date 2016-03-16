@@ -457,7 +457,7 @@
     [whiteBackground addSubview:titleLabel];
     
     
-    UILabel * sourceLabel = [self getSourceLabelForText:recommendation.author?:recommendation.source toFitWidth:iv.frame.size.width];
+    UILabel * sourceLabel = [self getSourceLabelForText:(recommendation.source ? recommendation.source : recommendation.author) toFitWidth:iv.frame.size.width];
     sourceLabel.frame = CGRectOffset(sourceLabel.frame, 0, CGRectGetMaxY(titleLabel.frame) + 5.0f);
     [whiteBackground addSubview:sourceLabel];
     
@@ -524,7 +524,7 @@
 
     UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)collectionViewLayout;
     UILabel *titleLabel = [self getTitleLabelForText:rec.content toFitWidth:(collectionView.bounds.size.width - (l.sectionInset.right + l.sectionInset.left)) - IMAGE_VIEW_PADDING*2];
-    UILabel *sourceLabel = [self getSourceLabelForText:rec.source?:rec.author toFitWidth:(collectionView.bounds.size.width - (l.sectionInset.right + l.sectionInset.left)) - IMAGE_VIEW_PADDING*2];
+    UILabel *sourceLabel = [self getSourceLabelForText:(rec.source ? rec.source : rec.author) toFitWidth:(collectionView.bounds.size.width - (l.sectionInset.right + l.sectionInset.left)) - IMAGE_VIEW_PADDING*2];
 
     return CGSizeMake(collectionView.bounds.size.width - (l.sectionInset.right + l.sectionInset.left), IMAGE_VIEW_HEIGHT + IMAGE_VIEW_PADDING * 4 + titleLabel.frame.size.height + sourceLabel.frame.size.height);
 }

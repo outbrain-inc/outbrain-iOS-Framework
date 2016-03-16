@@ -143,7 +143,7 @@
     OBParalaxSlideViewControl * slideControl = [[OBParalaxSlideViewControl alloc] initWithFrame:frame];
     slideControl.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     slideControl.titleLabel.text = recommendation.content;
-    slideControl.sourceLabel.text = [NSString stringWithFormat:@"(%@)", recommendation.source?:recommendation.author];
+    slideControl.sourceLabel.text = [NSString stringWithFormat:@"(%@)", (recommendation.source ? recommendation.source : recommendation.author)];
     
     // First check if there's an image
     slideControl.imageContainer.hidden = (recommendation.image == nil);

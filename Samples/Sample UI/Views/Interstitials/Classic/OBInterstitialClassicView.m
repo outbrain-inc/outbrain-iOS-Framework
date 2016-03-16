@@ -203,7 +203,7 @@
     
     OBRecommendation * rec = self.recommendations[indexPath.section][indexPath.row];
     titleLabel.text = rec.content;
-    sourceLabel.text = [NSString stringWithFormat:@"(%@)",rec.source?:rec.author];
+    sourceLabel.text = [NSString stringWithFormat:@"(%@)",(rec.source ? rec.source : rec.author)];
     
     titleLabel.frame = CGRectMake(0, CGRectGetMaxY(iv.frame) + 5.f, cell.bounds.size.width, 100.f);
     [titleLabel sizeToFit];
