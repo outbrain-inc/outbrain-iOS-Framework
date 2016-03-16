@@ -1,9 +1,12 @@
 #!/bin/bash
 
+EXPORT_DIR_PATH=~/Desktop/Release/iOS
+
 cd src
 # Clean
 xcodebuild clean -target OBFramework
 xcodebuild clean -target OutbrainSDK
+
 # Build
 xcodebuild -target OBFramework
 cd ..
@@ -20,20 +23,28 @@ mkdir OBSDK-Release/Samples/
 cp -a OutbrainSDK.framework OBSDK-Release/SDK/
 cp -a OutbrainSDK.framework OBSDK-Release/Samples/
 cp -fa Samples/ OBSDK-Release/Samples/
-# cp -rf HTML-Documentation/ OBSDK-Release/HTML-Documentation/
 cp -rf README.md OBSDK-Release/
 cp -rf Release-Notes.txt OBSDK-Release/
 
-# clean up the folder
-# rm -fr HTML-Documentation/
-
-rm -fr ~/Desktop/Release/iOS
-mkdir -p ~/Desktop/Release/iOS
-mv OBSDK-Release/* ~/Desktop/Release/iOS/
+# clean up the export folder
+rm -fr $EXPORT_DIR_PATH
+mkdir -p $EXPORT_DIR_PATH
+mv OBSDK-Release/* $EXPORT_DIR_PATH
 rm -fr OBSDK-Release/*
-cd ~/Desktop/Release/iOS
 
+echo "*********************"
+echo "Swift Sample App"
+echo "*********************"
+cd /Users/odedre/work/OutbrainDemoSwift
+git status
+git archive --format zip --output $EXPORT_DIR_PATH/OBSDK-Release/Samples/Swift-Demo.zip master
+cd $EXPORT_DIR_PATH/OBSDK-Release/Samples
+unzip Swift-Demo.zip -d Swift-Demo  > /dev/null
+rm -fr Swift-Demo.zip
+
+#prepare 
+cd $EXPORT_DIR_PATH
 zip --symlinks -r OBSDK-iOS.zip . -x ".*" -x "*/.*"
 
 cd -
-mv ~/Desktop/Release/iOS/OBSDK-iOS.zip OBSDK-Release/
+mv $EXPORT_DIR_PATH/OBSDK-iOS.zip OBSDK-Release/
