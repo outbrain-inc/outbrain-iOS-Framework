@@ -1,5 +1,5 @@
 //
-//  CustomUIView.h
+//  CustomUITextView.m
 //  ViewabilityApp
 //
 //  Created by Oded Regev on 1/4/16.
