@@ -21,4 +21,4 @@
 
 1.5.1:	- Fix a defect where If the user set "Limit Ad Tracking" to "on" on  iOS device (“Settings->Privacy->Advertising->Limit Ad Tracking”), use of outbrain SDK delete other cookies stored by the same app.
 
-1.5.2: See change log in attached PDF
+1.5.2: See change log in http://developer.outbrain.com/ios-new/#release-notes
