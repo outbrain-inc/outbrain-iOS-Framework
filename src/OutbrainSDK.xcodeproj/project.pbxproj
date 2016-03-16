@@ -81,6 +81,10 @@
 		E607D4D91BDD16BE009A534B /* 0-recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D61BDD16BE009A534B /* 0-recommendations.json */; };
 		E607D4DA1BDD16BE009A534B /* full response images.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D71BDD16BE009A534B /* full response images.json */; };
 		E607D4DB1BDD16BE009A534B /* full response no images.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D81BDD16BE009A534B /* full response no images.json */; };
+		E66AC3411C99AB9400A23876 /* CustomUITextView.h in Headers */ = {isa = PBXBuildFile; fileRef = E66AC33D1C99AB9400A23876 /* CustomUITextView.h */; };
+		E66AC3421C99AB9400A23876 /* CustomUITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC33E1C99AB9400A23876 /* CustomUITextView.m */; };
+		E66AC3431C99AB9400A23876 /* UIView+Visible.h in Headers */ = {isa = PBXBuildFile; fileRef = E66AC33F1C99AB9400A23876 /* UIView+Visible.h */; };
+		E66AC3441C99AB9400A23876 /* UIView+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC3401C99AB9400A23876 /* UIView+Visible.m */; };
 		FC4F7C0D1A0A291800D49361 /* OBResponseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4F7C0B1A0A291800D49361 /* OBResponseRequest.m */; };
 		FC4F7C111A0A2A7600D49361 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */; };
 		FC4F7C121A0A2A7600D49361 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4F7C101A0A2A7600D49361 /* OBRecommendationsTokenHandler.m */; };
@@ -198,6 +202,10 @@
 		E607D4D61BDD16BE009A534B /* 0-recommendations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "0-recommendations.json"; path = "sample responses/0-recommendations.json"; sourceTree = SOURCE_ROOT; };
 		E607D4D71BDD16BE009A534B /* full response images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "full response images.json"; path = "sample responses/full response images.json"; sourceTree = SOURCE_ROOT; };
 		E607D4D81BDD16BE009A534B /* full response no images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "full response no images.json"; path = "sample responses/full response no images.json"; sourceTree = SOURCE_ROOT; };
+		E66AC33D1C99AB9400A23876 /* CustomUITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUITextView.h; sourceTree = "<group>"; };
+		E66AC33E1C99AB9400A23876 /* CustomUITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUITextView.m; sourceTree = "<group>"; };
+		E66AC33F1C99AB9400A23876 /* UIView+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Visible.h"; sourceTree = "<group>"; };
+		E66AC3401C99AB9400A23876 /* UIView+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Visible.m"; sourceTree = "<group>"; };
 		FC4F7C0A1A0A291800D49361 /* OBResponseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBResponseRequest.h; sourceTree = "<group>"; };
 		FC4F7C0B1A0A291800D49361 /* OBResponseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponseRequest.m; sourceTree = "<group>"; };
 		FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
@@ -309,6 +317,7 @@
 		D82F1D7A18564C7700D4DEA8 /* OutbrainSDK */ = {
 			isa = PBXGroup;
 			children = (
+				E66AC33C1C99AB6500A23876 /* Viewability */,
 				FC4F7C0E1A0A2A6500D49361 /* Helpers */,
 				FC5DF6CD19DD726400579200 /* AdIds */,
 				D869E68818621E8C006CDAD7 /* Errors */,
@@ -484,6 +493,17 @@
 			name = Requests;
 			sourceTree = "<group>";
 		};
+		E66AC33C1C99AB6500A23876 /* Viewability */ = {
+			isa = PBXGroup;
+			children = (
+				E66AC33D1C99AB9400A23876 /* CustomUITextView.h */,
+				E66AC33E1C99AB9400A23876 /* CustomUITextView.m */,
+				E66AC33F1C99AB9400A23876 /* UIView+Visible.h */,
+				E66AC3401C99AB9400A23876 /* UIView+Visible.m */,
+			);
+			name = Viewability;
+			sourceTree = "<group>";
+		};
 		FC4F7C0E1A0A2A6500D49361 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,9 +555,11 @@
 				FC52BEC71A14EAD4007774B0 /* OBResponseRequest.h in Headers */,
 				FC79B7881A18A5C30003E583 /* OBViewabilityService.h in Headers */,
 				D8EE588D185A4057008F36C4 /* OBImage.h in Headers */,
+				E66AC3411C99AB9400A23876 /* CustomUITextView.h in Headers */,
 				D8EE587E185A1A95008F36C4 /* OBContent.h in Headers */,
 				FC651FCA1A1C75CF002FF031 /* OBGAHelper.h in Headers */,
 				FC651FCF1A1C7847002FF031 /* OBGAOperation.h in Headers */,
+				E66AC3431C99AB9400A23876 /* UIView+Visible.h in Headers */,
 				D8CD0BC2186E1874002CBC05 /* OBContent_Private.h in Headers */,
 				FC4F7C111A0A2A7600D49361 /* OBRecommendationsTokenHandler.h in Headers */,
 				D8BE79C91860C1D80090E054 /* OBProtocols.h in Headers */,
@@ -711,6 +733,7 @@
 				D8EE588A185A3ED4008F36C4 /* OBClickRegistrationOperation.m in Sources */,
 				D8EE5892185A4068008F36C4 /* OBRecommendation.m in Sources */,
 				D875400D18578F2F00050F2C /* OBContent.m in Sources */,
+				E66AC3421C99AB9400A23876 /* CustomUITextView.m in Sources */,
 				D8EE5886185A27FC008F36C4 /* OBRequest.m in Sources */,
 				D869E6AC18623EA2006CDAD7 /* OBRecommendationResponse.m in Sources */,
 				FC651FD01A1C7847002FF031 /* OBGAOperation.m in Sources */,
@@ -720,6 +743,7 @@
 				D82F1D8018564C7700D4DEA8 /* Outbrain.m in Sources */,
 				FC651FCB1A1C75CF002FF031 /* OBGAHelper.m in Sources */,
 				FC5AA29C1981059C003C5509 /* OBSettings.m in Sources */,
+				E66AC3441C99AB9400A23876 /* UIView+Visible.m in Sources */,
 				FC5DF6D119DD728300579200 /* OBAppleAdIdUtil.m in Sources */,
 				FC79B7891A18A5C30003E583 /* OBViewabilityService.m in Sources */,
 			);
