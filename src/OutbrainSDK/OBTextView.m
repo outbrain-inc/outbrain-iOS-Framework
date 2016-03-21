@@ -6,20 +6,18 @@
 //  Copyright © 2016 Oded Regev. All rights reserved.
 //
 
-#import "CustomUITextView.h"
+#import "OBTextView.h"
 #import "UIView+Visible.h"
 
-@interface CustomUITextView()
+@interface OBTextView()
 
-@property (nonatomic, copy) NSDate  *visibleImpressionTime;
+@property (nonatomic, copy) NSDate *visibleImpressionTime;
 @property (nonatomic, strong) NSTimer *viewVisibleTimer;
 
 @end
 
 
-
-
-@implementation CustomUITextView
+@implementation OBTextView
 
 const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
 
@@ -70,17 +68,20 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
     if (percentVisible >= 0.5 && secondsVisible < KViewThresholdBeforeReportingToServer) {
         timer.userInfo[@"secondsVisible"] = @(secondsVisible + timer.timeInterval);
     } else if (percentVisible >= 0.5 && secondsVisible >= KViewThresholdBeforeReportingToServer) {
-        // TODO report viewability to the server, now use NSLog instead
-        NSLog(@"Reporting viewability for view.tag: %ld for %@ seconds", view.tag, timer.userInfo[@"secondsVisible"]);
-        [timer invalidate];
+        [self reportViewability:timer];
     } else {
         // View is not visible, decide if we want to report that or not
         [timer.userInfo removeObjectForKey:@"secondsVisible"];
     }
 }
 
+- (void) reportViewability:(NSTimer *)timer {
+    // TODO report viewability to the server, now use NSLog instead
+    NSLog(@"Reporting viewability for view.tag: %ld, widget id: %@, shown for %@ seconds", self.tag, self.widgetId, timer.userInfo[@"secondsVisible"]);
+    [timer invalidate];
+}
 
-- (void)removeFromSuperview
+- (void) removeFromSuperview
 {
     if (self.viewVisibleTimer) {
         [self.viewVisibleTimer invalidate];

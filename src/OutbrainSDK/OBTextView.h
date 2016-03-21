@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomUITextView : UITextView
+@interface OBTextView : UITextView
+
+@property (nonatomic, copy) NSString * widgetId;
 
 @end

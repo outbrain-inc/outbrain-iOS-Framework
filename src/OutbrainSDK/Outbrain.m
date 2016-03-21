@@ -15,8 +15,8 @@
 #import "OBRecommendationResponse.h"
 #import "OBResponse.h"
 #import "OBRequest.h"
-
 #import "OBAppleAdIdUtil.h"
+
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
 
@@ -220,6 +220,15 @@ static Outbrain * _sharedInstance = nil;
 }
 
 #pragma mark - Viewability
++ (OBTextView *) getOBTextViewForWidget:(NSString *)widgetId {
+    OBTextView *textView = [[OBTextView alloc] init];
+    textView.widgetId = widgetId;
+    return textView;
+}
+
++ (void) registerOBTextView:(OBTextView *)textView withWidgetId:(NSString *)widgetId {
+    textView.widgetId = widgetId;
+}
 
 //+ (void)reportViewedRecommendation:(OBRecommendation *)recommendation {
 //    [OBGAHelper reportMethodCalled:@"reportViewedRecommendation:" withParams:nil];
