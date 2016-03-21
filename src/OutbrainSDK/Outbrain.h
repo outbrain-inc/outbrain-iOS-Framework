@@ -9,9 +9,9 @@
 #import <Foundation/NSArray.h>
 #import <OutbrainSDK/OBProtocols.h>
 
-#import "OBTextView.h"
 
 
+@class OBTextView;
 @class OBRequest;
 @class OBResponse;
 @class OBRecommendation;

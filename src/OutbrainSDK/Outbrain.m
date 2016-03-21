@@ -15,6 +15,7 @@
 #import "OBRecommendationResponse.h"
 #import "OBResponse.h"
 #import "OBRequest.h"
+#import "OBTextView.h"
 #import "OBAppleAdIdUtil.h"
 
 #import <UIKit/UIKit.h>
