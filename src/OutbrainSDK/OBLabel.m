@@ -31,6 +31,15 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])){
+        [self trackViewability];
+    }
+
+    return self;
+}
+
+
 - (void) drawRect:(CGRect)rect {
     [super drawRect:rect];
     NSLog(@"Drawing rect: %ld", (long)self.tag);
