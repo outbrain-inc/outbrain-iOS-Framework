@@ -8,7 +8,7 @@
 
 #import "OBImage.h"
 #import "OBContent_Private.h"
-#import "OBGAHelper.h"
+
 
 @implementation OBImage
 
@@ -39,12 +39,10 @@
 }
 
 - (CGFloat)width {
-    [OBGAHelper reportMethodCalled:@"OBImage::getWidth"];
     return width;
 }
 
 - (CGFloat)height {
-    [OBGAHelper reportMethodCalled:@"OBImage::getHeight"];
     return height;
 }
 

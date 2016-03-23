@@ -8,7 +8,7 @@
 
 #import "OBRecommendationResponse.h"
 #import "OBContent_Private.h"
-#import "OBGAHelper.h"
+
 
 @implementation OBRecommendationResponse
 
@@ -77,7 +77,6 @@ NSString *const kSDK_SHOULD_RETURN_PAID_REDIRECT_URL = @"sdkShouldReturnPaidRedi
 }
 
 - (OBSettings *)settings {
-    [OBGAHelper reportMethodCalled:@"OBRecommendationResponse::getSettings"];
     return settings;
 }
 

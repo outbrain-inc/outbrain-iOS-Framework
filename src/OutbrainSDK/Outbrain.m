@@ -75,7 +75,6 @@ static Outbrain * _sharedInstance = nil;
             _sharedInstance.obRequestQueue = queue;
             _sharedInstance.tokensHandler = [[OBRecommendationsTokenHandler alloc] init];
             _sharedInstance.viewabilityService = [[OBViewabilityService alloc] init];
-            _sharedInstance.gaHelper = [[OBGAHelper alloc] init];
 
         }
     });
@@ -126,7 +125,6 @@ static Outbrain * _sharedInstance = nil;
         
         // Finally call our dictionary method
         [self initializeOutbrainWithDictionary:settingsPayload];
-        [OBGAHelper reportMethodCalled:@"initializeOutbrainWithConfigFile:" withParams:nil];
     }
 }
 
@@ -134,7 +132,6 @@ static Outbrain * _sharedInstance = nil;
     if (!WAS_INITIALISED) {
         // Finally set the settings payload.
         [self initializeOutbrainWithDictionary:@{OBSettingsAttributes.partnerKey:partnerKey}];
-        [OBGAHelper reportMethodCalled:@"initializeOutbrainWithPartnerKey:" withParams:nil];
     }
 }
 
@@ -148,14 +145,11 @@ static Outbrain * _sharedInstance = nil;
         
         // Finally set the settings payload.
         [[[self mainBrain] obSettings] addEntriesFromDictionary:dict];
-        [OBGAHelper setAppKey:dict[OBSettingsAttributes.partnerKey]];
-        [OBGAHelper setAppVersion:OB_SDK_VERSION];
         WAS_INITIALISED = YES;
     }
 }
 
 + (void)setTestMode:(BOOL)testMode {
-    [OBGAHelper reportMethodCalled:@"setTestMode:" withParams:(testMode ? @"YES" : @"NO"), nil];
     [[[self mainBrain] obSettings] setValue:[NSNumber numberWithBool:testMode] forKey:OBSettingsAttributes.testModeKey];
 }
 
@@ -163,15 +157,11 @@ static Outbrain * _sharedInstance = nil;
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request withCallback:(OBResponseCompletionHandler)handler
 {
-    [OBGAHelper reportMethodCalled:@"fetchRecommendationsForRequest:withCallback:" withParams:request.description, nil];
-
     [self _fetchRecommendationsWithRequest:request andCallback:handler];
 }
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request withDelegate:(__weak id<OBResponseDelegate>)delegate
 {
-    [OBGAHelper reportMethodCalled:@"fetchRecommendationsForRequest:withDelegate:" withParams:request.description, nil];
-
     [self _fetchRecommendationsWithRequest:request andCallback:^(OBRecommendationResponse *response) {
         if(!delegate)
         {
@@ -195,8 +185,6 @@ static Outbrain * _sharedInstance = nil;
 
 + (NSURL *)getOriginalContentURLAndRegisterClickForRecommendation:(OBRecommendation *)recommendation
 {
-    [OBGAHelper reportMethodCalled:@"getOriginalContentURLAndRegisterClickForRecommendation:" withParams:nil];
-    
     // Should be initialized
     [self _throwAssertIfNotInitalized];
     
@@ -326,7 +314,6 @@ static Outbrain * _sharedInstance = nil;
         }
         else {
             stringUrl = [stringUrl stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
-            [OBGAHelper reportMethodCalled:@"filteredRecommendation" withConcreteParams:stringUrl shouldForceSend:YES];
         }
     }
     return filteredResponse;
