@@ -6,10 +6,10 @@
 //  Copyright © 2016 Oded Regev. All rights reserved.
 //
 
-#import "OBTextView.h"
+#import "OBLabel.h"
 #import "UIView+Visible.h"
 
-@interface OBTextView()
+@interface OBLabel()
 
 @property (nonatomic, copy) NSDate *visibleImpressionTime;
 @property (nonatomic, strong) NSTimer *viewVisibleTimer;
@@ -17,7 +17,7 @@
 @end
 
 
-@implementation OBTextView
+@implementation OBLabel
 
 const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
 
@@ -77,7 +77,7 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
 
 - (void) reportViewability:(NSTimer *)timer {
     // TODO report viewability to the server, now use NSLog instead
-    NSLog(@"Reporting viewability for view.tag: %ld, widget id: %@, shown for %@ seconds", self.tag, self.widgetId, timer.userInfo[@"secondsVisible"]);
+    NSLog(@"Reporting viewability for view.tag: %ld, widget id: %@, shown for %@ seconds", (long)self.tag, self.widgetId, timer.userInfo[@"secondsVisible"]);
     [timer invalidate];
 }
 

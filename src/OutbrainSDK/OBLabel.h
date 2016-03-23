@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OBTextView : UITextView
+@interface OBLabel : UILabel;
 
 @property (nonatomic, copy) NSString * widgetId;
 

@@ -11,7 +11,7 @@
 
 
 
-@class OBTextView;
+@class OBLabel;
 @class OBRequest;
 @class OBResponse;
 @class OBRecommendation;
@@ -82,19 +82,19 @@ extern NSString * const OB_SDK_VERSION;
 /** @section Viewability **/
 
 /**
- * @brief Create and return a new OBTextView for the publisher so it can be placed in the header of a recommandations view widget.
+ * @brief Create and return a new OBLabel for the publisher so it can be placed in the header of a recommandations view widget.
  *
- * This function Create and return a new OBTextView for the publisher so it can be placed in the
+ * This function Create and return a new OBLabel for the publisher so it can be placed in the
  * header of a recommandations view widget.
  * (See the Outbrain Journal sample app for an example of how to do this.)
  *
- * @param widgetId - The Widget Id to be associated with this OBTextView
- * @return a new instance of OBTextView which associated with the widget id
+ * @param widgetId - The Widget Id to be associated with this OBLabel
+ * @return a new instance of OBLabel which associated with the widget id
  * @note The calling method is responsible on setting the frame for the returned view
  **/
-+ (OBTextView *) getOBTextViewForWidget:(NSString *)widgetId;
++ (OBLabel *) getOBLabelForWidget:(NSString *)widgetId;
 
-+ (void) registerOBTextView:(OBTextView *)textView withWidgetId:(NSString *)widgetId;
++ (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId;
 
 
 /** @section Click Handling **/

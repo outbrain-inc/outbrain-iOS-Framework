@@ -7,8 +7,9 @@
 //
 
 #import "OBClassicRecommendationsView.h"
-#import <OutbrainSDK/OBRecommendationResponse.h>
 #import "OBDemoDataHelper.h"
+
+#import <OutbrainSDK/OutbrainSDK.h>
 
 @interface OBClassicRecommendationsView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -133,13 +134,13 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
         } NSInteger;
         
         // Get the labels
-        UILabel * alsoOnTheWebLabel = (UILabel *)[brandingHeader viewWithTag:AlsoOnTheWebTag];
+        OBLabel * alsoOnTheWebLabel = (OBLabel *)[brandingHeader viewWithTag:AlsoOnTheWebTag];
         UIButton * brandingImageButton = (UIButton *)[brandingHeader viewWithTag:AmeliaHeadLogoTag];
         
         // If not available create them
         if(!alsoOnTheWebLabel)
         {
-            alsoOnTheWebLabel = [UILabel new];
+            alsoOnTheWebLabel = [Outbrain getOBLabelForWidget: @"APP_1"];
             alsoOnTheWebLabel.textColor = [UIColor colorWithRed:0.600 green:0.600 blue:0.600 alpha:1.000];
             alsoOnTheWebLabel.backgroundColor = [UIColor clearColor];
             alsoOnTheWebLabel.font = [UIFont boldSystemFontOfSize:12];

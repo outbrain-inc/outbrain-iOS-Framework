@@ -15,7 +15,7 @@
 #import "OBRecommendationResponse.h"
 #import "OBResponse.h"
 #import "OBRequest.h"
-#import "OBTextView.h"
+#import "OBLabel.h"
 #import "OBAppleAdIdUtil.h"
 
 #import <UIKit/UIKit.h>
@@ -221,14 +221,14 @@ static Outbrain * _sharedInstance = nil;
 }
 
 #pragma mark - Viewability
-+ (OBTextView *) getOBTextViewForWidget:(NSString *)widgetId {
-    OBTextView *textView = [[OBTextView alloc] init];
-    textView.widgetId = widgetId;
-    return textView;
++ (OBLabel *) getOBLabelForWidget:(NSString *)widgetId {
+    OBLabel *label = [[OBLabel alloc] init];
+    label.widgetId = widgetId;
+    return label;
 }
 
-+ (void) registerOBTextView:(OBTextView *)textView withWidgetId:(NSString *)widgetId {
-    textView.widgetId = widgetId;
++ (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId {
+    label.widgetId = widgetId;
 }
 
 //+ (void)reportViewedRecommendation:(OBRecommendation *)recommendation {
