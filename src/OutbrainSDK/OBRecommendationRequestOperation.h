@@ -18,7 +18,7 @@
 /**
  *  This is the meat of Outbrain.
  *  This operation will:
- *  1.  Fetch the reccomendations from the api.
+ *  1.  Fetch the recomendations from the api.
  *  2.  Handle any errors in the request/response
  *  3.  Parse the data into objects.
  **/

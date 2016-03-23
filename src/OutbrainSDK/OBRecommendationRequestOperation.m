@@ -50,13 +50,7 @@
     }
     OBRecommendationResponse *response = [OBRecommendationResponse contentWithPayload:responseDict[@"response"]];
     response.request = self.request;
-    
-
-//    if(response.recommendations.count == 0 && !error)
-//    {
-//        error = [NSError errorWithDomain:OBZeroRecommendationseErrorDomain code:OBNoRecommendationsErrorCode userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"No Recommendations", @"The server returned 0 recommendations.  You should retry the request at a later date.")}];
-//    }
-    
+        
     if(error)
     {
         response.error = error;
@@ -68,7 +62,24 @@
 
 #pragma mark - Connection Delegate methods
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+- (void) taskCompletedWith:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error {
+    _responseData = data;
+    
+    if (error != nil) {
+        [self didFailWithError:error];
+        return;
+    }
+    
+    if ([self didReceiveResponseReturnedWithError:response] == YES) {
+        return;
+    }
+    
+    [self parseResponseData:_responseData];
+    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response];
+}
+
+
+- (BOOL) didReceiveResponseReturnedWithError:(NSURLResponse *)response
 {
     NSIndexSet * invalidStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(302, 600)];
     if([invalidStatusCodes containsIndex:[(NSHTTPURLResponse *)response statusCode]])
@@ -93,30 +104,25 @@
         
         NSError * error = [NSError errorWithDomain:errorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey:errorDescription}];
         [self createResponseWithDict:nil withError:error];
+        
+        return YES;
     }
+    
+    return NO;
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    if(!_responseData)
-    {
-        _responseData = [[NSMutableData alloc] init];
-    }
-    [_responseData appendData:data];
-}
-
+/*
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    if([self isCancelled]) return [self setFinished:YES];   // We are cancelled.  No need to parse the responseData
-    if(self.response) return [self setFinished:YES];        // We have already set the response.  No need to reset it.
     
     // Everything should be good and ready to parse
     [self parseResponseData:_responseData];
     [[OBViewabilityService sharedInstance] reportRecsReceived:self.response];
-    [self setFinished:YES];
-}
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+}
+*/
+
+- (void) didFailWithError:(NSError *)error
 {
 
     // Pass back the original error as the `NSUnderlyingErrorKey` since the devs
@@ -127,7 +133,6 @@
                                                         NSLocalizedDescriptionKey:@"There was an error retrieving your recommendations.  Please check your connection and try again"
                                                         }];
     [self createResponseWithDict:nil withError:wrappedError];
-    [self setFinished:YES];
 }
 
 
