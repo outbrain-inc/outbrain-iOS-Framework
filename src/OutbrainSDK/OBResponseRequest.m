@@ -21,4 +21,31 @@
     return self;
 }
 
+- (NSString *)getStringValueForPayloadKey:(NSString *)payloadKey {
+    id object = [payload objectForKey:payloadKey];
+    if (!object) {
+        return nil;
+    }
+    @try {
+        return (NSString *)object;
+    }
+    @catch (NSException *ex) {
+    }
+    return nil;
+}
+
+- (NSNumber *)getNSNumberValueForPayloadKey:(NSString *)payloadKey {
+    id object = [payload objectForKey:payloadKey];
+    if (!object) {
+        return nil;
+    }
+    @try {
+        return (NSNumber *)object;
+    }
+    @catch (NSException *ex) {
+
+    }
+    return nil;
+}
+
 @end

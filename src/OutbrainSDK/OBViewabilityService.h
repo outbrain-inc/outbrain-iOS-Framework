@@ -7,13 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OBRecommendation.h"
+#import "OBRecommendationResponse.h"
 
-@interface OBViewabilityService : NSObject {
-    NSMutableArray          *viewedRecommendationsList;
-}
+@interface OBViewabilityService : NSObject
 
-- (void)addRecommendationToViewedRecommendationsList:(OBRecommendation *)recommendation;
-- (void)reportRecommendations;
+
++ (instancetype)sharedInstance;
+
+- (void) reportRecsReceived:(OBRecommendationResponse *)response;
+
+- (void) reportRecsShownForWidgetId:(NSString *)widgetId;
+
+
 
 @end

@@ -17,4 +17,8 @@
 
 @property (nonatomic, copy) NSString        *token;
 
+- (NSString *)getStringValueForPayloadKey:(NSString *)payloadKey;
+
+- (NSNumber *)getNSNumberValueForPayloadKey:(NSString *)payloadKey;
+
 @end

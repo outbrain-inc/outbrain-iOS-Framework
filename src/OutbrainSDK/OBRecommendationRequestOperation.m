@@ -112,6 +112,7 @@
     
     // Everything should be good and ready to parse
     [self parseResponseData:_responseData];
+    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response];
     [self setFinished:YES];
 }
 

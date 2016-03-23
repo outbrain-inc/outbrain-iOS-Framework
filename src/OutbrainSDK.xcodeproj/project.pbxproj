@@ -496,6 +496,8 @@
 		E66AC33C1C99AB6500A23876 /* Viewability */ = {
 			isa = PBXGroup;
 			children = (
+				FC79B7861A18A5C30003E583 /* OBViewabilityService.h */,
+				FC79B7871A18A5C30003E583 /* OBViewabilityService.m */,
 				E66AC33D1C99AB9400A23876 /* OBLabel.h */,
 				E66AC33E1C99AB9400A23876 /* OBLabel.m */,
 				E66AC33F1C99AB9400A23876 /* UIView+Visible.h */,
@@ -510,8 +512,6 @@
 				FC651FCC1A1C7837002FF031 /* GA */,
 				FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */,
 				FC4F7C101A0A2A7600D49361 /* OBRecommendationsTokenHandler.m */,
-				FC79B7861A18A5C30003E583 /* OBViewabilityService.h */,
-				FC79B7871A18A5C30003E583 /* OBViewabilityService.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
