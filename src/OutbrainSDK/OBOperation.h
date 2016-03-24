@@ -15,19 +15,14 @@
 
 @interface OBOperation : NSOperation <NSURLConnectionDataDelegate,NSURLConnectionDelegate>
 {
-    NSMutableData *_responseData;
+    NSData *_responseData;
 }
 
 + (instancetype)operationWithURL:(NSURL *)url;
 - (instancetype)initWithURL:(NSURL *)url;
 
 
-@property (atomic, getter=isExecuting) BOOL executing;
-@property (atomic, getter=isFinished) BOOL finished;
-
 @property (nonatomic, strong, readonly) NSURLConnection *connection;
 
-
-- (NSRunLoop *)operationRunLoop;
 
 @end
