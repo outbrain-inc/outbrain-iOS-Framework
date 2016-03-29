@@ -58,6 +58,13 @@ typedef NS_ENUM(NSInteger, OBClassicRecommendationsViewLayoutType) {
 
 /**
  *  Discussion:
+ *      Set this to allow Viewability feature to work with OBClassicRecommendationsView
+ *
+ **/
+@property (nonatomic, copy) NSString * widgetId;
+
+/**
+ *  Discussion:
  *      Get the hight of the collection view
  *
  *  Defaults: 0
