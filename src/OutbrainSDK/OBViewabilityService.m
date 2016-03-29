@@ -92,10 +92,7 @@ NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widg
     viewabilityData.org = [response.responseRequest getStringValueForPayloadKey:@"org"];
     viewabilityData.pad = [response.responseRequest getStringValueForPayloadKey:@"pad"];
     
-    NSLog(@"viewabilityData: %@", viewabilityData);
-    
     NSURL *viewabilityUrl = [self createUrlFromParams:[viewabilityData toDictionary]];
-    NSLog(@"viewabilityUrl: %@", viewabilityUrl);
     
     OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
     [self.obRequestQueue addOperation:viewabilityOperation];
