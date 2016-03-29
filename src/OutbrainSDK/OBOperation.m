@@ -123,7 +123,7 @@
 }
 
 - (void) taskCompletedWith:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error {
-    NSLog(@"This is an abstract method and should be overridden");
+//    NSLog(@"This is an abstract method and should be overridden");
 }
 
 

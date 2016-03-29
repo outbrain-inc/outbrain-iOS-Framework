@@ -78,7 +78,6 @@ NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widg
 }
 
 - (void) reportRecsReceived:(OBRecommendationResponse *)response {
-    NSLog(@"response: %@", response);
     
     ViewabilityData *viewabilityData = [[ViewabilityData alloc] init];
     viewabilityData.pid = [response.responseRequest getStringValueForPayloadKey:@"pid"];
