@@ -87,6 +87,8 @@
 		E66AC3441C99AB9400A23876 /* UIView+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC3401C99AB9400A23876 /* UIView+Visible.m */; };
 		E6C2ED721CAA603600C557DE /* OBViewabilityOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */; };
 		E6C2ED731CAA603600C557DE /* OBViewabilityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */; };
+		E6C2ED761CAAAC6700C557DE /* OBWKWebview.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6C2ED771CAAAC6700C557DE /* OBWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C2ED751CAAAC6700C557DE /* OBWKWebview.m */; };
 		FC4F7C0D1A0A291800D49361 /* OBResponseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4F7C0B1A0A291800D49361 /* OBResponseRequest.m */; };
 		FC4F7C111A0A2A7600D49361 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */; };
 		FC4F7C121A0A2A7600D49361 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4F7C101A0A2A7600D49361 /* OBRecommendationsTokenHandler.m */; };
@@ -206,6 +208,8 @@
 		E66AC3401C99AB9400A23876 /* UIView+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Visible.m"; sourceTree = "<group>"; };
 		E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBViewabilityOperation.h; sourceTree = "<group>"; };
 		E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityOperation.m; sourceTree = "<group>"; };
+		E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWKWebview.h; sourceTree = "<group>"; };
+		E6C2ED751CAAAC6700C557DE /* OBWKWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBWKWebview.m; sourceTree = "<group>"; };
 		FC4F7C0A1A0A291800D49361 /* OBResponseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBResponseRequest.h; sourceTree = "<group>"; };
 		FC4F7C0B1A0A291800D49361 /* OBResponseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponseRequest.m; sourceTree = "<group>"; };
 		FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 		D82F1D7A18564C7700D4DEA8 /* OutbrainSDK */ = {
 			isa = PBXGroup;
 			children = (
+				E6C2ED781CAAAC6E00C557DE /* Custom-Classes */,
 				E66AC33C1C99AB6500A23876 /* Viewability */,
 				FC4F7C0E1A0A2A6500D49361 /* Helpers */,
 				FC5DF6CD19DD726400579200 /* AdIds */,
@@ -504,6 +509,15 @@
 			name = Viewability;
 			sourceTree = "<group>";
 		};
+		E6C2ED781CAAAC6E00C557DE /* Custom-Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */,
+				E6C2ED751CAAAC6700C557DE /* OBWKWebview.m */,
+			);
+			name = "Custom-Classes";
+			sourceTree = "<group>";
+		};
 		FC4F7C0E1A0A2A6500D49361 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +554,7 @@
 				D8EE5889185A3ED4008F36C4 /* OBClickRegistrationOperation.h in Headers */,
 				FC52BEC71A14EAD4007774B0 /* OBResponseRequest.h in Headers */,
 				FC79B7881A18A5C30003E583 /* OBViewabilityService.h in Headers */,
+				E6C2ED761CAAAC6700C557DE /* OBWKWebview.h in Headers */,
 				D8EE588D185A4057008F36C4 /* OBImage.h in Headers */,
 				E66AC3411C99AB9400A23876 /* OBLabel.h in Headers */,
 				D8EE587E185A1A95008F36C4 /* OBContent.h in Headers */,
@@ -711,6 +726,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6C2ED771CAAAC6700C557DE /* OBWKWebview.m in Sources */,
 				D87540101857930100050F2C /* OBErrors.m in Sources */,
 				D873964F1868E96E00FD8546 /* OBOperation.m in Sources */,
 				FC4F7C121A0A2A7600D49361 /* OBRecommendationsTokenHandler.m in Sources */,

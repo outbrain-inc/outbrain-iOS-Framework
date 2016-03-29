@@ -12,7 +12,7 @@
 @interface OBRecommendationWebVC ()
 
 @property (nonatomic, strong) UIWebView * webView;
-@property (nonatomic, strong) WKWebView * wk_WebView;
+@property (nonatomic, strong) OBWKWebview * wk_WebView;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * backButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem * refreshButton;
@@ -46,7 +46,7 @@
         [self.view addSubview:self.webView];
     }
     else {
-        self.wk_WebView = [[WKWebView alloc] initWithFrame:frame];
+        self.wk_WebView = [[OBWKWebview alloc] initWithFrame:frame];
         self.wk_WebView.navigationDelegate = self;
         [self.view addSubview:self.wk_WebView];
     }
@@ -195,10 +195,12 @@
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
+    NSLog(@"App didStartProvisionalNavigation");
     [self _updateButtonStates];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
+    NSLog(@"App didFinishNavigation");
     [self _updateButtonStates];
 }
 

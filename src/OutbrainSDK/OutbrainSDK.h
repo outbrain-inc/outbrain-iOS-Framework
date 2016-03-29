@@ -20,3 +20,4 @@
 #import <OutbrainSDK/OBRecommendationResponse.h>
 #import <OutbrainSDK/OBLabel.h>
 #import <OutbrainSDK/UIView+Visible.h>
+#import <OutbrainSDK/OBWKWebview.h>
