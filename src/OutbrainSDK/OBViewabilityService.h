@@ -14,6 +14,8 @@
 
 + (instancetype)sharedInstance;
 
+@property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
+
 - (void) reportRecsReceived:(OBRecommendationResponse *)response;
 
 - (void) reportRecsShownForWidgetId:(NSString *)widgetId;

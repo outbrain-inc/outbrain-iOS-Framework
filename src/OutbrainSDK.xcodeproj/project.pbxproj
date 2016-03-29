@@ -85,6 +85,8 @@
 		E66AC3421C99AB9400A23876 /* OBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC33E1C99AB9400A23876 /* OBLabel.m */; };
 		E66AC3431C99AB9400A23876 /* UIView+Visible.h in Headers */ = {isa = PBXBuildFile; fileRef = E66AC33F1C99AB9400A23876 /* UIView+Visible.h */; };
 		E66AC3441C99AB9400A23876 /* UIView+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC3401C99AB9400A23876 /* UIView+Visible.m */; };
+		E6C2ED721CAA603600C557DE /* OBViewabilityOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */; };
+		E6C2ED731CAA603600C557DE /* OBViewabilityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */; };
 		FC4F7C0D1A0A291800D49361 /* OBResponseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4F7C0B1A0A291800D49361 /* OBResponseRequest.m */; };
 		FC4F7C111A0A2A7600D49361 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */; };
 		FC4F7C121A0A2A7600D49361 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4F7C101A0A2A7600D49361 /* OBRecommendationsTokenHandler.m */; };
@@ -202,6 +204,8 @@
 		E66AC33E1C99AB9400A23876 /* OBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBLabel.m; sourceTree = "<group>"; };
 		E66AC33F1C99AB9400A23876 /* UIView+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Visible.h"; sourceTree = "<group>"; };
 		E66AC3401C99AB9400A23876 /* UIView+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Visible.m"; sourceTree = "<group>"; };
+		E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBViewabilityOperation.h; sourceTree = "<group>"; };
+		E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityOperation.m; sourceTree = "<group>"; };
 		FC4F7C0A1A0A291800D49361 /* OBResponseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBResponseRequest.h; sourceTree = "<group>"; };
 		FC4F7C0B1A0A291800D49361 /* OBResponseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponseRequest.m; sourceTree = "<group>"; };
 		FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 				D8158C6C18591F3D00AC5945 /* OBRecommendationRequestOperation.m */,
 				D8EE5887185A3ED4008F36C4 /* OBClickRegistrationOperation.h */,
 				D8EE5888185A3ED4008F36C4 /* OBClickRegistrationOperation.m */,
+				E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */,
+				E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */,
 				D873964C1868E96E00FD8546 /* OBOperation.h */,
 				D873964D1868E96E00FD8546 /* OBOperation.m */,
 			);
@@ -539,6 +545,7 @@
 				D8EE587E185A1A95008F36C4 /* OBContent.h in Headers */,
 				E66AC3431C99AB9400A23876 /* UIView+Visible.h in Headers */,
 				D8CD0BC2186E1874002CBC05 /* OBContent_Private.h in Headers */,
+				E6C2ED721CAA603600C557DE /* OBViewabilityOperation.h in Headers */,
 				FC4F7C111A0A2A7600D49361 /* OBRecommendationsTokenHandler.h in Headers */,
 				D8BE79C91860C1D80090E054 /* OBProtocols.h in Headers */,
 				D8EE587F185A1A97008F36C4 /* OBErrors.h in Headers */,
@@ -719,6 +726,7 @@
 				D8EE588E185A4057008F36C4 /* OBImage.m in Sources */,
 				D82F1D8018564C7700D4DEA8 /* Outbrain.m in Sources */,
 				FC5AA29C1981059C003C5509 /* OBSettings.m in Sources */,
+				E6C2ED731CAA603600C557DE /* OBViewabilityOperation.m in Sources */,
 				E66AC3441C99AB9400A23876 /* UIView+Visible.m in Sources */,
 				FC5DF6D119DD728300579200 /* OBAppleAdIdUtil.m in Sources */,
 				FC79B7891A18A5C30003E583 /* OBViewabilityService.m in Sources */,

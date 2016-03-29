@@ -17,6 +17,7 @@
 #import "OBRequest.h"
 #import "OBLabel.h"
 #import "OBAppleAdIdUtil.h"
+#import "OBViewabilityService.h"
 
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
@@ -73,6 +74,7 @@ static Outbrain * _sharedInstance = nil;
             [queue setName:@"Outbrain Operation Queue"];
             queue.maxConcurrentOperationCount = 1;  // Serial
             _sharedInstance.obRequestQueue = queue;
+            [OBViewabilityService sharedInstance].obRequestQueue = queue; // Share the operation queue with OBViewabilityService
             _sharedInstance.tokensHandler = [[OBRecommendationsTokenHandler alloc] init];
             _sharedInstance.viewabilityService = [[OBViewabilityService alloc] init];
 

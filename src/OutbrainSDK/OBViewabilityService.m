@@ -7,6 +7,7 @@
 //
 
 #import "OBViewabilityService.h"
+#import "OBViewabilityOperation.h"
 
 @interface ViewabilityData : NSObject
 
@@ -28,21 +29,25 @@
 NSString * const EVENT_RECEIVED = @"0";
 NSString * const EVENT_EXPOSED = @"3";
 
+NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widgetGlobalEvent";
+
 - (NSString*)description
 {
-    NSDictionary *dic = @{@"pid": self.pid,
-                          @"sid" : self.sid,
-                          @"wId" : self.wId,
-                          @"wRV" : self.wRV,
-                          @"rId" : self.rId,
-                          @"eT" : self.eT,
-                          @"idx" : self.idx,
-                          @"pvId" : self.pvId,
-                          @"org" : self.org,
-                          @"pad" : self.pad
-                          };
-    
-    return [dic description];
+    return [[self toDictionary] description];
+}
+
+-(NSDictionary *) toDictionary {
+    return @{@"pid": self.pid,
+             @"sid" : self.sid,
+             @"wId" : self.wId,
+             @"wRV" : self.wRV,
+             @"rId" : self.rId,
+             @"eT" : self.eT,
+             @"idx" : self.idx,
+             @"pvId" : self.pvId,
+             @"org" : self.org,
+             @"pad" : self.pad
+             };
 }
 
 @end
@@ -88,10 +93,26 @@ NSString * const EVENT_EXPOSED = @"3";
     viewabilityData.pad = [response.responseRequest getStringValueForPayloadKey:@"pad"];
     
     NSLog(@"viewabilityData: %@", viewabilityData);
+    
+    NSURL *viewabilityUrl = [self createUrlFromParams:[viewabilityData toDictionary]];
+    NSLog(@"viewabilityUrl: %@", viewabilityUrl);
+    
+    OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
+    [self.obRequestQueue addOperation:viewabilityOperation];
 }
 
 - (void) reportRecsShownForWidgetId:(NSString *)widgetId {
     
+}
+
+-(NSURL *) createUrlFromParams:(NSDictionary *)queryDictionary {
+    NSURLComponents *components = [NSURLComponents componentsWithString:kViewabilityUrl];
+    NSMutableArray *queryItems = [NSMutableArray array];
+    for (NSString *key in queryDictionary) {
+        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:queryDictionary[key]]];
+    }
+    components.queryItems = queryItems;
+    return components.URL;
 }
 
 @end
