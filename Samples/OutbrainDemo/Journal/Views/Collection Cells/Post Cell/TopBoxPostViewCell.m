@@ -361,11 +361,6 @@
     _previousScrollYOffset = 0;
     
     _loadingOutbrain = NO;
-    
-    
-//    [self.topBoxView removeFromSuperview];
-    //    self.outbrainHoverView = nil;
-    //    self.outbrainClassicView = nil;
 }
 
 @end
