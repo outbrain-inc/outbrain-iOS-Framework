@@ -204,6 +204,10 @@
     [self _updateButtonStates];
 }
 
+- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
+    NSLog(@"App didCommitNavigation");
+}
+
 
 
 @end

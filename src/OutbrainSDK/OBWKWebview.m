@@ -77,6 +77,9 @@
  */
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"OB didCommitNavigation");
+    if (self.externalNavigationDelegate) {
+        [self.externalNavigationDelegate webView:webView didCommitNavigation:navigation];
+    }
 }
 
 /*! @abstract Invoked when a main frame navigation completes.
