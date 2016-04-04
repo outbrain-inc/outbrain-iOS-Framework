@@ -29,6 +29,18 @@
 NSString * const EVENT_RECEIVED = @"0";
 NSString * const EVENT_EXPOSED = @"3";
 
+NSString * const kPublisherId = @"pid";
+NSString * const kSourceId = @"sid";
+NSString * const kWidgetId = @"wId";
+NSString * const kWidgetVersion = @"wRV";
+NSString * const kRequestId = @"rId";
+NSString * const kEventType = @"eT";
+NSString * const kIdx = @"idx";
+NSString * const kPageviewId = @"pvId";
+NSString * const kOrganicRecs = @"org";
+NSString * const kPaidRecs = @"pad";
+
+
 NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widgetGlobalEvent";
 
 - (NSString*)description
@@ -37,16 +49,16 @@ NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widg
 }
 
 -(NSDictionary *) toDictionary {
-    return @{@"pid": self.pid,
-             @"sid" : self.sid,
-             @"wId" : self.wId,
-             @"wRV" : self.wRV,
-             @"rId" : self.rId,
-             @"eT" : self.eT,
-             @"idx" : self.idx,
-             @"pvId" : self.pvId,
-             @"org" : self.org,
-             @"pad" : self.pad
+    return @{kPublisherId   : self.pid,
+             kSourceId      : self.sid,
+             kWidgetId      : self.wId,
+             kWidgetVersion : self.wRV,
+             kRequestId     : self.rId,
+             kEventType     : self.eT,
+             kIdx           : self.idx,
+             kPageviewId    : self.pvId,
+             kOrganicRecs   : self.org,
+             kOrganicRecs   : self.pad
              };
 }
 
