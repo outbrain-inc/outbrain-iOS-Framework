@@ -8,6 +8,8 @@
 
 #import "OBLabel.h"
 #import "UIView+Visible.h"
+#import "OBViewabilityService.h"
+
 
 @interface OBLabel()
 
@@ -85,8 +87,8 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
 }
 
 - (void) reportViewability:(NSTimer *)timer {
-    // TODO report viewability to the server, now use NSLog instead
     NSLog(@"Reporting viewability for view.tag: %ld, widget id: %@, shown for %@ seconds", (long)self.tag, self.widgetId, timer.userInfo[@"secondsVisible"]);
+    [[OBViewabilityService sharedInstance] reportRecsShownForWidgetId:self.widgetId];
     [timer invalidate];
 }
 

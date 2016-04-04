@@ -75,7 +75,7 @@
     }
     
     [self parseResponseData:_responseData];
-    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response];
+    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response widgetId:self.request.widgetId];
 }
 
 

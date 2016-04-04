@@ -42,6 +42,9 @@ NSString * const kPaidRecs = @"pad";
 
 
 NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widgetGlobalEvent";
+NSString * const kViewabilityKeyForWidgetId = @"OB_Viewability_%@";
+
+
 
 - (NSString*)description
 {
@@ -65,8 +68,6 @@ NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widg
 @end
 
 
-#define OB_VIEWABILITY_KEY_FOR_WIDGET @"OB_VIEWABILITY_KEY_FOR_WIDGET_%@"
-
 
 @implementation OBViewabilityService
 
@@ -89,7 +90,7 @@ NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widg
     return self;
 }
 
-- (void) reportRecsReceived:(OBRecommendationResponse *)response {
+- (void) reportRecsReceived:(OBRecommendationResponse *)response widgetId:(NSString *)widgetId {
     
     ViewabilityData *viewabilityData = [[ViewabilityData alloc] init];
     viewabilityData.pid = [response.responseRequest getStringValueForPayloadKey:@"pid"];
@@ -103,14 +104,29 @@ NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widg
     viewabilityData.org = [response.responseRequest getStringValueForPayloadKey:@"org"];
     viewabilityData.pad = [response.responseRequest getStringValueForPayloadKey:@"pad"];
     
-    NSURL *viewabilityUrl = [self createUrlFromParams:[viewabilityData toDictionary]];
+    
+    NSDictionary *viewabilityDictionary = [viewabilityData toDictionary];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:viewabilityDictionary forKey:[NSString stringWithFormat:kViewabilityKeyForWidgetId, widgetId]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSURL *viewabilityUrl = [self createUrlFromParams:viewabilityDictionary];
     
     OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
     [self.obRequestQueue addOperation:viewabilityOperation];
 }
 
 - (void) reportRecsShownForWidgetId:(NSString *)widgetId {
+    NSDictionary *viewabilityDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityKeyForWidgetId, widgetId]];
     
+    if (viewabilityDictionary != nil) {
+        NSMutableDictionary *params = [viewabilityDictionary mutableCopy];
+        params[kEventType] = EVENT_EXPOSED;
+        
+        NSURL *viewabilityUrl = [self createUrlFromParams:params];
+        OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
+        [self.obRequestQueue addOperation:viewabilityOperation];
+    }
 }
 
 -(NSURL *) createUrlFromParams:(NSDictionary *)queryDictionary {
