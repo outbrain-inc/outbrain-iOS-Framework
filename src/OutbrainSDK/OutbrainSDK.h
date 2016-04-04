@@ -19,4 +19,3 @@
 #import <OutbrainSDK/OBSettings.h>
 #import <OutbrainSDK/OBRecommendationResponse.h>
 #import <OutbrainSDK/OBLabel.h>
-#import <OutbrainSDK/UIView+Visible.h>
