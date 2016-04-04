@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSString *pvId; // pageview id - received from the response
 @property (nonatomic, strong) NSString *org;  // number of organic recs
 @property (nonatomic, strong) NSString *pad;  // number of paid recs
+@property (nonatomic, strong) NSNumber *timeInterval;
+
 
 @end
 
@@ -29,6 +31,7 @@
 NSString * const EVENT_RECEIVED = @"0";
 NSString * const EVENT_EXPOSED = @"3";
 
+NSString * const kTimeSinceFirstLoadRequest = @"tm";
 NSString * const kPublisherId = @"pid";
 NSString * const kSourceId = @"sid";
 NSString * const kWidgetId = @"wId";
@@ -42,7 +45,8 @@ NSString * const kPaidRecs = @"pad";
 
 
 NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widgetGlobalEvent";
-NSString * const kViewabilityKeyForWidgetId = @"OB_Viewability_%@";
+NSString * const kViewabilityDictionaryKeyForWidgetId = @"OB_Viewability_Dictionary_%@";
+NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestamp_%@";
 
 
 
@@ -52,16 +56,17 @@ NSString * const kViewabilityKeyForWidgetId = @"OB_Viewability_%@";
 }
 
 -(NSDictionary *) toDictionary {
-    return @{kPublisherId   : self.pid,
-             kSourceId      : self.sid,
-             kWidgetId      : self.wId,
-             kWidgetVersion : self.wRV,
-             kRequestId     : self.rId,
-             kEventType     : self.eT,
-             kIdx           : self.idx,
-             kPageviewId    : self.pvId,
-             kOrganicRecs   : self.org,
-             kOrganicRecs   : self.pad
+    return @{kTimeSinceFirstLoadRequest : [self.timeInterval stringValue],
+             kPublisherId               : self.pid,
+             kSourceId                  : self.sid,
+             kWidgetId                  : self.wId,
+             kWidgetVersion             : self.wRV,
+             kRequestId                 : self.rId,
+             kEventType                 : self.eT,
+             kIdx                       : self.idx,
+             kPageviewId                : self.pvId,
+             kOrganicRecs               : self.org,
+             kOrganicRecs               : self.pad
              };
 }
 
@@ -90,7 +95,7 @@ NSString * const kViewabilityKeyForWidgetId = @"OB_Viewability_%@";
     return self;
 }
 
-- (void) reportRecsReceived:(OBRecommendationResponse *)response widgetId:(NSString *)widgetId {
+- (void) reportRecsReceived:(OBRecommendationResponse *)response widgetId:(NSString *)widgetId timestamp:(NSNumber *)requestTimestampMilliseconds {
     
     ViewabilityData *viewabilityData = [[ViewabilityData alloc] init];
     viewabilityData.pid = [response.responseRequest getStringValueForPayloadKey:@"pid"];
@@ -103,11 +108,14 @@ NSString * const kViewabilityKeyForWidgetId = @"OB_Viewability_%@";
     viewabilityData.pvId = [response.responseRequest getStringValueForPayloadKey:@"pvId"];
     viewabilityData.org = [response.responseRequest getStringValueForPayloadKey:@"org"];
     viewabilityData.pad = [response.responseRequest getStringValueForPayloadKey:@"pad"];
-    
+
+    int timeNowInMilliseconds = (int)([[NSDate date] timeIntervalSince1970] * 1000);
+    viewabilityData.timeInterval = @(timeNowInMilliseconds - [requestTimestampMilliseconds integerValue]);
     
     NSDictionary *viewabilityDictionary = [viewabilityData toDictionary];
     
-    [[NSUserDefaults standardUserDefaults] setObject:viewabilityDictionary forKey:[NSString stringWithFormat:kViewabilityKeyForWidgetId, widgetId]];
+    [[NSUserDefaults standardUserDefaults] setObject:viewabilityDictionary forKey:[NSString stringWithFormat:kViewabilityDictionaryKeyForWidgetId, widgetId]];
+    [[NSUserDefaults standardUserDefaults] setObject:requestTimestampMilliseconds forKey:[NSString stringWithFormat:kViewabilityTimestampKeyForWidgetId, widgetId]];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSURL *viewabilityUrl = [self createUrlFromParams:viewabilityDictionary];
@@ -117,10 +125,14 @@ NSString * const kViewabilityKeyForWidgetId = @"OB_Viewability_%@";
 }
 
 - (void) reportRecsShownForWidgetId:(NSString *)widgetId {
-    NSDictionary *viewabilityDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityKeyForWidgetId, widgetId]];
+    NSDictionary *viewabilityDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityDictionaryKeyForWidgetId, widgetId]];
+    NSNumber *requestTimestamp = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityTimestampKeyForWidgetId, widgetId]];
     
     if (viewabilityDictionary != nil) {
         NSMutableDictionary *params = [viewabilityDictionary mutableCopy];
+        int timeNowInMilliseconds = (int)([[NSDate date] timeIntervalSince1970] * 1000);
+
+        params[kTimeSinceFirstLoadRequest] = @(timeNowInMilliseconds - [requestTimestamp integerValue]);
         params[kEventType] = EVENT_EXPOSED;
         
         NSURL *viewabilityUrl = [self createUrlFromParams:params];

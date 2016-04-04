@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
 
-- (void) reportRecsReceived:(OBRecommendationResponse *)response widgetId:(NSString *)widgetId;
+- (void) reportRecsReceived:(OBRecommendationResponse *)response widgetId:(NSString *)widgetId timestamp:(NSNumber *)requestTimestampMilliseconds;
 
 - (void) reportRecsShownForWidgetId:(NSString *)widgetId;
 
