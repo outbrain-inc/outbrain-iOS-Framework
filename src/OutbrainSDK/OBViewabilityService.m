@@ -66,7 +66,7 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
              kIdx                       : self.idx,
              kPageviewId                : self.pvId,
              kOrganicRecs               : self.org,
-             kOrganicRecs               : self.pad
+             kPaidRecs                  : self.pad
              };
 }
 
@@ -134,7 +134,7 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
         NSDate *timeNow = [NSDate date];
         NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:requestStartDate];
 
-        params[kTimeSinceFirstLoadRequest] = [@((int)(executionTime*1000)) stringValue];        
+        params[kTimeSinceFirstLoadRequest] = [@((int)(executionTime*1000)) stringValue];
         params[kEventType] = EVENT_EXPOSED;
         
         NSURL *viewabilityUrl = [self createUrlFromParams:params];
