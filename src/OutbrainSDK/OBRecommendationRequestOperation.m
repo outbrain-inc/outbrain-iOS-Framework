@@ -19,7 +19,7 @@
 
 @interface OBRecommendationRequestOperation()
 
-@property (nonatomic, strong) NSNumber *requestTimestampMilliseconds;
+@property (nonatomic, strong) NSDate *requestStartDate;
 
 @end
 
@@ -71,7 +71,7 @@
 
 - (void)main
 {
-    self.requestTimestampMilliseconds = @((int)[[NSDate date] timeIntervalSince1970] * 1000);
+    self.requestStartDate = [NSDate date];
     [super main];
 }
 
@@ -88,7 +88,7 @@
     }
     
     [self parseResponseData:_responseData];
-    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response widgetId:self.request.widgetId timestamp:self.requestTimestampMilliseconds];
+    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response widgetId:self.request.widgetId timestamp:self.requestStartDate];
 }
 
 

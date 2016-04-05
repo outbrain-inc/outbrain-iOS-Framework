@@ -48,7 +48,7 @@
     if(_outbrainLoaded || _loadingOutbrain) return;
     
     self.textView.delegate = nil;
-    OBRequest * request = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID2];
+    OBRequest * request = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID1];
     [Outbrain fetchRecommendationsForRequest:request withDelegate:self];
 }
 

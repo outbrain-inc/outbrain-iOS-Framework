@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSString *pvId; // pageview id - received from the response
 @property (nonatomic, strong) NSString *org;  // number of organic recs
 @property (nonatomic, strong) NSString *pad;  // number of paid recs
-@property (nonatomic, strong) NSNumber *timeInterval;
+@property (nonatomic, strong) NSString *tm;   // time of processing request
 
 
 @end
@@ -56,7 +56,7 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
 }
 
 -(NSDictionary *) toDictionary {
-    return @{kTimeSinceFirstLoadRequest : [self.timeInterval stringValue],
+    return @{kTimeSinceFirstLoadRequest : self.tm,
              kPublisherId               : self.pid,
              kSourceId                  : self.sid,
              kWidgetId                  : self.wId,
@@ -95,7 +95,7 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
     return self;
 }
 
-- (void) reportRecsReceived:(OBRecommendationResponse *)response widgetId:(NSString *)widgetId timestamp:(NSNumber *)requestTimestampMilliseconds {
+- (void) reportRecsReceived:(OBRecommendationResponse *)response widgetId:(NSString *)widgetId timestamp:(NSDate *)requestStartDate {
     
     ViewabilityData *viewabilityData = [[ViewabilityData alloc] init];
     viewabilityData.pid = [response.responseRequest getStringValueForPayloadKey:@"pid"];
@@ -109,13 +109,14 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
     viewabilityData.org = [response.responseRequest getStringValueForPayloadKey:@"org"];
     viewabilityData.pad = [response.responseRequest getStringValueForPayloadKey:@"pad"];
 
-    int timeNowInMilliseconds = (int)([[NSDate date] timeIntervalSince1970] * 1000);
-    viewabilityData.timeInterval = @(timeNowInMilliseconds - [requestTimestampMilliseconds integerValue]);
+    NSDate *timeNow = [NSDate date];
+    NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:requestStartDate];
+    viewabilityData.tm = [@((int)(executionTime*1000)) stringValue];
     
     NSDictionary *viewabilityDictionary = [viewabilityData toDictionary];
     
     [[NSUserDefaults standardUserDefaults] setObject:viewabilityDictionary forKey:[NSString stringWithFormat:kViewabilityDictionaryKeyForWidgetId, widgetId]];
-    [[NSUserDefaults standardUserDefaults] setObject:requestTimestampMilliseconds forKey:[NSString stringWithFormat:kViewabilityTimestampKeyForWidgetId, widgetId]];
+    [[NSUserDefaults standardUserDefaults] setObject:requestStartDate forKey:[NSString stringWithFormat:kViewabilityTimestampKeyForWidgetId, widgetId]];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSURL *viewabilityUrl = [self createUrlFromParams:viewabilityDictionary];
@@ -126,13 +127,14 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
 
 - (void) reportRecsShownForWidgetId:(NSString *)widgetId {
     NSDictionary *viewabilityDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityDictionaryKeyForWidgetId, widgetId]];
-    NSNumber *requestTimestamp = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityTimestampKeyForWidgetId, widgetId]];
+    NSDate *requestStartDate = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityTimestampKeyForWidgetId, widgetId]];
     
     if (viewabilityDictionary != nil) {
         NSMutableDictionary *params = [viewabilityDictionary mutableCopy];
-        int timeNowInMilliseconds = (int)([[NSDate date] timeIntervalSince1970] * 1000);
+        NSDate *timeNow = [NSDate date];
+        NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:requestStartDate];
 
-        params[kTimeSinceFirstLoadRequest] = @(timeNowInMilliseconds - [requestTimestamp integerValue]);
+        params[kTimeSinceFirstLoadRequest] = [@((int)(executionTime*1000)) stringValue];        
         params[kEventType] = EVENT_EXPOSED;
         
         NSURL *viewabilityUrl = [self createUrlFromParams:params];
