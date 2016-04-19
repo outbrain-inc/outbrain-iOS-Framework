@@ -195,17 +195,17 @@
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"App didStartProvisionalNavigation");
+    NSLog(@"App didStartProvisionalNavigation: %@", [webView.URL absoluteString]);
     [self _updateButtonStates];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"App didFinishNavigation");
+    NSLog(@"App didFinishNavigation: %@", [webView.URL absoluteString]);
     [self _updateButtonStates];
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"App didCommitNavigation");
+    NSLog(@"App didCommitNavigation: %@", [webView.URL absoluteString]);
 }
 
 

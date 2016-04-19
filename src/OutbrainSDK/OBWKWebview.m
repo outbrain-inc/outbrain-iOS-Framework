@@ -113,6 +113,13 @@
     if (self.externalNavigationDelegate) {
         [self.externalNavigationDelegate webView:webView didFinishNavigation:navigation];
     }
+    
+    NSString *tempUrl = [webView.URL absoluteString];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if ([[webView.URL absoluteString] isEqualToString:tempUrl]) {
+            NSLog(@"** Real Pageview: %@ **", tempUrl);
+        }
+    });
 }
 
 /*! @abstract Invoked when an error occurs during a committed main frame
