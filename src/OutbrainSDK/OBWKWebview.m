@@ -23,8 +23,16 @@
 {
     if (self = [super initWithFrame:frame configuration:configuration]) {
         self.navigationDelegate = self;
+        [self addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@"estimatedProgress"];
+    [self setNavigationDelegate:nil];
+
 }
 
 -(void) setNavigationDelegate:(id<WKNavigationDelegate>)navigationDelegate {
@@ -34,6 +42,20 @@
     }
     else {
         self.externalNavigationDelegate = navigationDelegate;
+    }
+}
+
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"estimatedProgress"] && object == self) {
+        NSLog(@"progress: %f", self.estimatedProgress);
+        // estimatedProgress is a value from 0.0 to 1.0
+        // Update your UI here accordingly
+    }
+    else {
+        // Make sure to call the superclass's implementation in the else block in case it is also implementing KVO
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 
