@@ -13,6 +13,8 @@
 
 @property (nonatomic, weak) id<WKNavigationDelegate> externalNavigationDelegate;
 
+@property (nonatomic, strong) NSString *paidOutbrainParams;
+
 @end
 
 
@@ -114,10 +116,19 @@
         [self.externalNavigationDelegate webView:webView didFinishNavigation:navigation];
     }
     
+    if ([[webView.URL absoluteString] containsString:@"paid.outbrain.com"]) {
+        NSArray *components = [[webView.URL absoluteString] componentsSeparatedByString:@"?"];
+        if (components.count == 2) {
+            self.paidOutbrainParams = components[1];
+        }
+    }
+    
     NSString *tempUrl = [webView.URL absoluteString];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         if ([[webView.URL absoluteString] isEqualToString:tempUrl]) {
             NSLog(@"** Real Pageview: %@ **", tempUrl);
+            
+            if (self.paidOutbrainParams != nil)  NSLog(@"** params: %@ **", self.paidOutbrainParams);
         }
     });
 }

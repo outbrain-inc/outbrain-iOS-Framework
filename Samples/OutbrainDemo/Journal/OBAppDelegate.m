@@ -107,7 +107,7 @@
 
 - (IBAction)showOutbrainAbout
 {
-    NSString * urlString = @"http://www.ynet.co.il";
+    NSString * urlString = @"http://m.ynet.co.il/Articles/4793303";
     
     UINavigationController * nav = (UINavigationController *)[self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"OBWebNavVC"];
     OBRecommendationWebVC * webVC = [nav.viewControllers lastObject];
