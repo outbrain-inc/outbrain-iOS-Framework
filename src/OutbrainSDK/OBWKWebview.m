@@ -129,7 +129,9 @@
         }
     });
     
-    if (self.externalNavigationDelegate) {
+    if (self.externalNavigationDelegate &&
+        [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFinishNavigation:)])
+    {
         [self.externalNavigationDelegate webView:webView didFinishNavigation:navigation];
     }
 }
