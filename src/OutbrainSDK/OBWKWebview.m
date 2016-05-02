@@ -142,6 +142,9 @@
             
             if (self.paidOutbrainParams != nil)  NSLog(@"** params: %@ **", self.paidOutbrainParams);
         }
+        else {
+            NSLog(@"NOT Real Pageview: %@ == %@", [webView.URL absoluteString], tempUrl);
+        }
     });
     
     if (self.externalNavigationDelegate &&
