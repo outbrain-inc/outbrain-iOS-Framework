@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, OBClassicRecommendationsViewLayoutType) {
  *      Set this to allow Viewability feature to work with OBClassicRecommendationsView
  *
  **/
-@property (nonatomic, copy) NSString * widgetId;
+@property (nonatomic, strong) NSString * widgetId;
 
 /**
  *  Discussion:
