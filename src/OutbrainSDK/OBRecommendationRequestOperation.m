@@ -17,6 +17,13 @@
 #import "Outbrain_Private.h"
 
 
+@interface OBRecommendationRequestOperation()
+
+@property (nonatomic, strong) NSDate *requestStartDate;
+
+@end
+
+
 @implementation OBRecommendationRequestOperation
 
 
@@ -62,6 +69,12 @@
 
 #pragma mark - Connection Delegate methods
 
+- (void)main
+{
+    self.requestStartDate = [NSDate date];
+    [super main];
+}
+
 - (void) taskCompletedWith:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error {
     _responseData = data;
     
@@ -75,7 +88,7 @@
     }
     
     [self parseResponseData:_responseData];
-    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response];
+    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response widgetId:self.request.widgetId timestamp:self.requestStartDate];
 }
 
 
@@ -111,16 +124,6 @@
     return NO;
 }
 
-/*
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    
-    // Everything should be good and ready to parse
-    [self parseResponseData:_responseData];
-    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response];
-
-}
-*/
 
 - (void) didFailWithError:(NSError *)error
 {
