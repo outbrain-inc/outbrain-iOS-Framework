@@ -112,9 +112,6 @@
  */
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"OB didFinishNavigation");
-    if (self.externalNavigationDelegate) {
-        [self.externalNavigationDelegate webView:webView didFinishNavigation:navigation];
-    }
     
     if ([[webView.URL absoluteString] containsString:@"paid.outbrain.com"]) {
         NSArray *components = [[webView.URL absoluteString] componentsSeparatedByString:@"?"];
@@ -131,6 +128,10 @@
             if (self.paidOutbrainParams != nil)  NSLog(@"** params: %@ **", self.paidOutbrainParams);
         }
     });
+    
+    if (self.externalNavigationDelegate) {
+        [self.externalNavigationDelegate webView:webView didFinishNavigation:navigation];
+    }
 }
 
 /*! @abstract Invoked when an error occurs during a committed main frame
