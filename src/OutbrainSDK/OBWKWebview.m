@@ -71,7 +71,9 @@
  */
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"OB didStartProvisionalNavigation");
-    if (self.externalNavigationDelegate) {
+    if (self.externalNavigationDelegate &&
+        [self.externalNavigationDelegate respondsToSelector:@selector(webView:didStartProvisionalNavigation:)])
+    {
         [self.externalNavigationDelegate webView:webView didStartProvisionalNavigation:navigation];
     }
 }
@@ -83,6 +85,12 @@
  */
 - (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"OB didReceiveServerRedirectForProvisionalNavigation");
+    
+    if (self.externalNavigationDelegate &&
+        [self.externalNavigationDelegate respondsToSelector:@selector(webView:didReceiveServerRedirectForProvisionalNavigation:)])
+    {
+        [self.externalNavigationDelegate webView:webView didReceiveServerRedirectForProvisionalNavigation:navigation];
+    }
 }
 
 /*! @abstract Invoked when an error occurs while starting to load data for
@@ -93,6 +101,11 @@
  */
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
     NSLog(@"OB didFailProvisionalNavigation");
+    if (self.externalNavigationDelegate &&
+        [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFailProvisionalNavigation:withError:)])
+    {
+        [self.externalNavigationDelegate webView:webView didFailProvisionalNavigation:navigation withError:error];
+    }
 }
 
 /*! @abstract Invoked when content starts arriving for the main frame.
@@ -101,7 +114,9 @@
  */
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"OB didCommitNavigation");
-    if (self.externalNavigationDelegate) {
+    if (self.externalNavigationDelegate &&
+        [self.externalNavigationDelegate respondsToSelector:@selector(webView:didCommitNavigation:)])
+    {
         [self.externalNavigationDelegate webView:webView didCommitNavigation:navigation];
     }
 }
@@ -144,6 +159,11 @@
  */
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
     NSLog(@"OB didFailNavigation");
+    if (self.externalNavigationDelegate &&
+        [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFailNavigation:withError:)])
+    {
+        [self.externalNavigationDelegate webView:webView didFailNavigation:navigation withError:error];
+    }
 }
 
 @end
