@@ -7,12 +7,13 @@
 //
 
 #import "OBRecommendationWebVC.h"
+#import "AppWKWebview.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 
 @interface OBRecommendationWebVC ()
 
 @property (nonatomic, strong) UIWebView * webView;
-@property (nonatomic, strong) OBWKWebview * wk_WebView;
+@property (nonatomic, strong) AppWKWebview * wk_WebView;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * backButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem * refreshButton;
@@ -46,7 +47,7 @@
         [self.view addSubview:self.webView];
     }
     else {
-        self.wk_WebView = [[OBWKWebview alloc] initWithFrame:frame];
+        self.wk_WebView = [[AppWKWebview alloc] initWithFrame:frame];
         self.wk_WebView.navigationDelegate = self;
         [self.view addSubview:self.wk_WebView];
     }
