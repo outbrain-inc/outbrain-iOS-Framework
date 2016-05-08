@@ -20,6 +20,7 @@
 
 @implementation OBWKWebview
 
+
 - (instancetype)initWithFrame:(CGRect)frame
                 configuration:(WKWebViewConfiguration *)configuration
 {
@@ -37,6 +38,9 @@
 
 }
 
+
+#pragma mark - Private Methods
+
 -(void) setNavigationDelegate:(id<WKNavigationDelegate>)navigationDelegate {
     if (self.navigationDelegate == nil) {
         // SDK delegate from designated initializer
@@ -47,6 +51,9 @@
     }
 }
 
+- (BOOL) urlShouldOpenInExternalBrowser {
+    return YES;
+}
 
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -71,11 +78,27 @@
  */
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"OB didStartProvisionalNavigation");
+    
+    if ([self urlShouldOpenInExternalBrowser]) {
+        [webView stopLoading];
+        SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:webView.URL];
+        sf.delegate = self;
+        [[self parentViewController] presentViewController:sf animated:YES completion:nil];
+        return;
+    }
+    
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didStartProvisionalNavigation:)])
     {
         [self.externalNavigationDelegate webView:webView didStartProvisionalNavigation:navigation];
     }
+}
+
+- (UIViewController *)parentViewController {
+    UIResponder *responder = self;
+    while ([responder isKindOfClass:[UIView class]])
+        responder = [responder nextResponder];
+    return (UIViewController *)responder;
 }
 
 /*! @abstract Invoked when a server redirect is received for the main
@@ -168,5 +191,18 @@
         [self.externalNavigationDelegate webView:webView didFailNavigation:navigation withError:error];
     }
 }
+
+#pragma mark - SFSafariViewControllerDelegate
+- (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
+    NSLog(@"safariViewController didCompleteInitialLoad");
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    if ([self urlShouldOpenInExternalBrowser]) {
+        [[self parentViewController] dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
+}
+
 
 @end
