@@ -133,6 +133,12 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
         NSMutableDictionary *params = [viewabilityDictionary mutableCopy];
         NSDate *timeNow = [NSDate date];
         NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:requestStartDate];
+        
+        // Sanity check, if executionTime is more than 2 minutes we shouldn't report Viewability since the data is probably not relevant
+        if (executionTime > 120.0) {
+            // NSLog(@"Error: reportRecsShownForWidgetId with data older than 120 seconds. (%f)", executionTime);
+            return;
+        }
 
         params[kTimeSinceFirstLoadRequest] = [@((int)(executionTime*1000)) stringValue];
         params[kEventType] = EVENT_EXPOSED;
