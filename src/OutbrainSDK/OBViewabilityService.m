@@ -141,7 +141,7 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
         
         // Sanity check, if executionTime is more than 2 minutes we shouldn't report Viewability since the data is probably not relevant
         if (executionTime > 120.0) {
-            // NSLog(@"Error: reportRecsShownForWidgetId with data older than 120 seconds. (%f)", executionTime);
+            NSLog(@"Error: reportRecsShownForWidgetId with data older than 120 seconds. (%f)", executionTime);
             return;
         }
 
@@ -151,6 +151,9 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
         NSURL *viewabilityUrl = [self createUrlFromParams:params];
         OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
         [self.obRequestQueue addOperation:viewabilityOperation];
+    }
+    else {
+        NSLog(@"Error: reportRecsShownForWidgetId() there is no viewabilityDictionary for widgetID: %@", widgetId);
     }
 }
 
