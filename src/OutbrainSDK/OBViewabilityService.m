@@ -126,6 +126,11 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
 }
 
 - (void) reportRecsShownForWidgetId:(NSString *)widgetId {
+    if (widgetId == nil) {
+        NSLog(@"Error: reportRecsShownForWidgetId() with nil - make sure to register OBLabel with Outbrain");
+        return;
+    }
+
     NSDictionary *viewabilityDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityDictionaryKeyForWidgetId, widgetId]];
     NSDate *requestStartDate = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityTimestampKeyForWidgetId, widgetId]];
     
