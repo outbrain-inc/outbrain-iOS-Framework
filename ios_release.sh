@@ -35,7 +35,7 @@ rm -fr OBSDK-Release/*
 echo "*********************"
 echo "Swift Sample App"
 echo "*********************"
-cd /Users/odedre/work/OutbrainDemoSwift
+cd /Users/odedre/work/Outbrain/OutbrainDemoSwift
 git status
 git archive --format zip --output $EXPORT_DIR_PATH/Samples/Swift-Demo.zip master
 cd $EXPORT_DIR_PATH/Samples
