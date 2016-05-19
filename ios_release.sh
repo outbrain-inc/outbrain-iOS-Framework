@@ -50,7 +50,7 @@ echo "*********************"
 cd $EXPORT_DIR_PATH
 zip --symlinks -r OBSDK-iOS.zip . -x ".*" -x "*/.*" > /dev/null
 
-cd /Users/odedre/work/OBSDKiOS
+cd /Users/odedre/work/Outbrain/OBSDKiOS
 mv $EXPORT_DIR_PATH/OBSDK-iOS.zip OBSDK-Release/
 
 echo ""
