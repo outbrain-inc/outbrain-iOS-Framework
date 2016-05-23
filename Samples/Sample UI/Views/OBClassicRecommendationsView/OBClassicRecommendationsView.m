@@ -160,6 +160,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
             [brandingHeader addSubview:brandingImageButton];
         }
         
+        [Outbrain registerOBLabel:alsoOnTheWebLabel withWidgetId:self.widgetId andUrl:self.url];
         CGFloat centerY = brandingHeader.frame.size.height/2.f;
         alsoOnTheWebLabel.center = CGPointMake(10.f + (alsoOnTheWebLabel.frame.size.width/2.f), centerY);
         brandingImageButton.center = CGPointMake(CGRectGetWidth(brandingHeader.frame) - (brandingImageButton.frame.size.width/2.f) - 10.f, CGRectGetMaxY(alsoOnTheWebLabel.frame) - (brandingImageButton.bounds.size.height/2.f));
