@@ -211,9 +211,11 @@ static Outbrain * _sharedInstance = nil;
 }
 
 #pragma mark - Viewability
-+ (OBLabel *) getOBLabelForWidget:(NSString *)widgetId {
++ (OBLabel *) getOBLabelForWidget:(NSString *)widgetId url:(NSString *)url {
     OBLabel *label = [[OBLabel alloc] init];
     label.widgetId = widgetId;
+    label.url = url;
+    [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
     return label;
 }
 

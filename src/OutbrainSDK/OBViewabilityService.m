@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NSString *org;  // number of organic recs
 @property (nonatomic, strong) NSString *pad;  // number of paid recs
 @property (nonatomic, strong) NSString *tm;   // time of processing request
-
+@property (nonatomic, strong) NSDate *requestStartDate; // helper property, will not be sent to the server
 
 @end
 
@@ -31,6 +31,7 @@
 NSString * const EVENT_RECEIVED = @"0";
 NSString * const EVENT_EXPOSED = @"3";
 
+NSString * const kRequestStartDate = @"rsd";
 NSString * const kTimeSinceFirstLoadRequest = @"tm";
 NSString * const kPublisherId = @"pid";
 NSString * const kSourceId = @"sid";
@@ -45,9 +46,7 @@ NSString * const kPaidRecs = @"pad";
 
 
 NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widgetGlobalEvent";
-NSString * const kViewabilityDictionaryKeyForWidgetId = @"OB_Viewability_Dictionary_%@";
-NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestamp_%@";
-
+NSString * const kViewabilityKeyForURL_and_WidgetId = @"OB_Viewability_Dictionary_%@_%@";
 
 
 - (NSString*)description
@@ -66,10 +65,17 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
              kIdx                       : self.idx,
              kPageviewId                : self.pvId,
              kOrganicRecs               : self.org,
-             kPaidRecs                  : self.pad
+             kPaidRecs                  : self.pad,
+             kRequestStartDate          : self.requestStartDate
              };
 }
 
+@end
+
+
+
+@interface OBViewabilityService()
+@property (nonatomic, strong) NSMutableDictionary *obLabelMappingToURLAndWidgetId;
 @end
 
 
@@ -83,6 +89,7 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
     dispatch_once(&onceToken, ^{
         sharedInstance = [[OBViewabilityService alloc] init];
         // Do any other initialisation stuff here
+        sharedInstance.obLabelMappingToURLAndWidgetId = [[NSMutableDictionary alloc] init];
     });
     
     return sharedInstance;
@@ -95,7 +102,17 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
     return self;
 }
 
-- (void) reportRecsReceived:(OBRecommendationResponse *)response widgetId:(NSString *)widgetId timestamp:(NSDate *)requestStartDate {
+- (void) addOBLabelToMap:(OBLabel *)obLabel {
+    NSString *key = [NSString stringWithFormat:kViewabilityKeyForURL_and_WidgetId, obLabel.url, obLabel.widgetId];
+    self.obLabelMappingToURLAndWidgetId[key] = obLabel;
+}
+
+- (void) reportRecsReceived:(OBRecommendationResponse *)response timestamp:(NSDate *)requestStartDate {
+    
+    NSString *widgetId = response.request.widgetId;
+    NSString *url = response.request.url;
+    
+    NSLog(@"reportRecsReceived: %@", widgetId);
     
     ViewabilityData *viewabilityData = [[ViewabilityData alloc] init];
     viewabilityData.pid = [response.responseRequest getStringValueForPayloadKey:@"pid"];
@@ -112,27 +129,38 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
     NSDate *timeNow = [NSDate date];
     NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:requestStartDate];
     viewabilityData.tm = [@((int)(executionTime*1000)) stringValue];
+    viewabilityData.requestStartDate = requestStartDate;
     
     NSDictionary *viewabilityDictionary = [viewabilityData toDictionary];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:viewabilityDictionary forKey:[NSString stringWithFormat:kViewabilityDictionaryKeyForWidgetId, widgetId]];
-    [[NSUserDefaults standardUserDefaults] setObject:requestStartDate forKey:[NSString stringWithFormat:kViewabilityTimestampKeyForWidgetId, widgetId]];
+    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyForURL_and_WidgetId, url, widgetId];
+    [[NSUserDefaults standardUserDefaults] setObject:viewabilityDictionary forKey:viewabilityKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    NSURL *viewabilityUrl = [self createUrlFromParams:viewabilityDictionary];
+    NSMutableDictionary *viewabilityUrlParamsDictionary = [viewabilityDictionary mutableCopy];
+    viewabilityUrlParamsDictionary[kRequestStartDate] = nil;
+    NSURL *viewabilityUrl = [self createUrlFromParams:viewabilityUrlParamsDictionary];
     
     OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
     [self.obRequestQueue addOperation:viewabilityOperation];
+    
+    // call track viewability on matching OBLabel
+    OBLabel *matchingOblabel = [self.obLabelMappingToURLAndWidgetId objectForKey:viewabilityKey];
+    if (matchingOblabel != nil) {
+        [matchingOblabel trackViewability];
+    }
 }
 
-- (void) reportRecsShownForWidgetId:(NSString *)widgetId {
-    if (widgetId == nil) {
-        NSLog(@"Error: reportRecsShownForWidgetId() with nil - make sure to register OBLabel with Outbrain");
+- (void) reportRecsShownForWidgetId:(OBLabel *)obLabel {
+    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyForURL_and_WidgetId, obLabel.url, obLabel.widgetId];
+    NSDictionary *viewabilityDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:viewabilityKey];
+    
+    if (viewabilityDictionary == nil) {
+        NSLog(@"Error: reportRecsShownForWidgetId() - make sure to register OBLabel with Outbrain");
         return;
     }
-
-    NSDictionary *viewabilityDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityDictionaryKeyForWidgetId, widgetId]];
-    NSDate *requestStartDate = [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:kViewabilityTimestampKeyForWidgetId, widgetId]];
+    
+    
+    NSDate *requestStartDate = viewabilityDictionary[kRequestStartDate];
     
     if (viewabilityDictionary != nil) {
         NSMutableDictionary *params = [viewabilityDictionary mutableCopy];
@@ -147,13 +175,14 @@ NSString * const kViewabilityTimestampKeyForWidgetId = @"OB_Viewability_Timestam
 
         params[kTimeSinceFirstLoadRequest] = [@((int)(executionTime*1000)) stringValue];
         params[kEventType] = EVENT_EXPOSED;
+        params[kRequestStartDate] = nil;
         
         NSURL *viewabilityUrl = [self createUrlFromParams:params];
         OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
         [self.obRequestQueue addOperation:viewabilityOperation];
     }
     else {
-        NSLog(@"Error: reportRecsShownForWidgetId() there is no viewabilityDictionary for widgetID: %@", widgetId);
+        NSLog(@"Error: reportRecsShownForWidgetId() there is no viewabilityDictionary for OBLabel: %@", viewabilityKey);
     }
 }
 

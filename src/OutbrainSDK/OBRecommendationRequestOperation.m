@@ -88,7 +88,7 @@
     }
     
     [self parseResponseData:_responseData];
-    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response widgetId:self.request.widgetId timestamp:self.requestStartDate];
+    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response timestamp:self.requestStartDate];
 }
 
 

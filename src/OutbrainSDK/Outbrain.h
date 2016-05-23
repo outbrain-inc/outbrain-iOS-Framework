@@ -89,10 +89,11 @@ extern NSString * const OB_SDK_VERSION;
  * (See the Outbrain Journal sample app for an example of how to do this.)
  *
  * @param widgetId - The Widget Id to be associated with this OBLabel
+ * @param url - The URL that the user is currently viewing
  * @return a new instance of OBLabel which associated with the widget id
  * @note The calling method is responsible on setting the frame for the returned view
  **/
-+ (OBLabel *) getOBLabelForWidget:(NSString *)widgetId;
++ (OBLabel *) getOBLabelForWidget:(NSString *)widgetId url:(NSString *)url;
 
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId;
 

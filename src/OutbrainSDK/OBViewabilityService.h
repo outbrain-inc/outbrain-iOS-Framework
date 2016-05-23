@@ -16,9 +16,11 @@
 
 @property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
 
-- (void) reportRecsReceived:(OBRecommendationResponse *)response widgetId:(NSString *)widgetId timestamp:(NSDate *)requestStartDate;
+- (void) addOBLabelToMap:(OBLabel *)obLabel;
 
-- (void) reportRecsShownForWidgetId:(NSString *)widgetId;
+- (void) reportRecsReceived:(OBRecommendationResponse *)response timestamp:(NSDate *)requestStartDate;
+
+- (void) reportRecsShownForWidgetId:(OBLabel *)obLabel;
 
 
 

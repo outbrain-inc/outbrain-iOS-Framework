@@ -47,7 +47,15 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
     NSLog(@"Drawing rect: %ld", (long)self.tag);
 }
 
+- (BOOL) isTimerRunning {
+    return ((self.viewVisibleTimer != nil) && [self.viewVisibleTimer isValid]);
+}
+
 - (void) trackViewability {
+    
+    if ([self isTimerRunning]) { // if timer is currently running for this view there is no need to start another one
+            return;
+    }
     
     self.viewVisibleTimer = [NSTimer timerWithTimeInterval:kTIMER_INTERVAL
                                              target:self
@@ -88,7 +96,7 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
 
 - (void) reportViewability:(NSTimer *)timer {
     NSLog(@"Reporting viewability for view.tag: %ld, widget id: %@, shown for %@ seconds", (long)self.tag, self.widgetId, timer.userInfo[@"secondsVisible"]);
-    [[OBViewabilityService sharedInstance] reportRecsShownForWidgetId:self.widgetId];
+    [[OBViewabilityService sharedInstance] reportRecsShownForWidgetId:self];
     [timer invalidate];
 }
 
