@@ -95,7 +95,7 @@ extern NSString * const OB_SDK_VERSION;
  **/
 + (OBLabel *) getOBLabelForWidget:(NSString *)widgetId url:(NSString *)url;
 
-+ (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId;
++ (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url;
 
 
 /** @section Click Handling **/

@@ -213,14 +213,17 @@ static Outbrain * _sharedInstance = nil;
 #pragma mark - Viewability
 + (OBLabel *) getOBLabelForWidget:(NSString *)widgetId url:(NSString *)url {
     OBLabel *label = [[OBLabel alloc] init];
-    label.widgetId = widgetId;
-    label.url = url;
-    [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
+    [Outbrain registerOBLabel:label withWidgetId:widgetId andUrl:url];
     return label;
 }
 
-+ (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId {
++ (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url {
     label.widgetId = widgetId;
+    label.url = url;
+    if (url != nil && widgetId != nil) {
+        [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
+        [label trackViewability];
+    }
 }
 
 //+ (void)reportViewedRecommendation:(OBRecommendation *)recommendation {

@@ -95,7 +95,7 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
 }
 
 - (void) reportViewability:(NSTimer *)timer {
-    NSLog(@"Reporting viewability for view.tag: %ld, widget id: %@, shown for %@ seconds", (long)self.tag, self.widgetId, timer.userInfo[@"secondsVisible"]);
+    NSLog(@"Reporting viewability for view.tag: %ld, widget id: %@, url: %@, shown for %@ seconds", (long)self.tag, self.widgetId, self.url,  timer.userInfo[@"secondsVisible"]);
     [[OBViewabilityService sharedInstance] reportRecsShownForWidgetId:self];
     [timer invalidate];
 }
