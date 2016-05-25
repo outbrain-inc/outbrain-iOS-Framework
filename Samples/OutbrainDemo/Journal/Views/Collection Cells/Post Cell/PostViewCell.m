@@ -379,9 +379,12 @@
     {
         _outbrainClassicView = [[OBClassicRecommendationsView alloc] initWithFrame:CGRectMake(0, MAXFLOAT, self.contentView.bounds.size.width, self.outbrainViewHeight)];
         _outbrainClassicView.backgroundColor = self.backgroundColor;
-        _outbrainClassicView.widgetId = OBDemoWidgetID2;
-        
     }
+    
+    // Important: we need to set those properties everytime to handle a case of re-use of the cell 
+    _outbrainClassicView.widgetId = OBDemoWidgetID2;
+    _outbrainClassicView.url = self.post.url;
+    
     return _outbrainClassicView;
 }
 

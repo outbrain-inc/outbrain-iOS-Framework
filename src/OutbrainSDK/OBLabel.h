@@ -11,5 +11,8 @@
 @interface OBLabel : UILabel;
 
 @property (nonatomic, copy) NSString * widgetId;
+@property (nonatomic, copy) NSString * url;
+
+- (void) trackViewability;
 
 @end
