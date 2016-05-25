@@ -44,7 +44,6 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
 
 - (void) drawRect:(CGRect)rect {
     [super drawRect:rect];
-    NSLog(@"Drawing rect: %ld", (long)self.tag);
 }
 
 - (BOOL) isTimerRunning {
