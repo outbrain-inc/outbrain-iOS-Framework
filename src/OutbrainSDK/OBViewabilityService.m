@@ -153,7 +153,7 @@ NSString * const kViewabilityKeyForURL_and_WidgetId = @"OB_Viewability_Key_%@_%@
     }
 }
 
-- (void) reportRecsShownForWidgetId:(OBLabel *)obLabel {
+- (void) reportRecsShownForOBLabel:(OBLabel *)obLabel {
     NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyForURL_and_WidgetId, obLabel.url, obLabel.widgetId];
     NSDictionary *viewabilityDictionary = [self.viewabilityDataMap objectForKey:viewabilityKey];
     NSString *reqId = viewabilityDictionary[kRequestId];
@@ -190,6 +190,8 @@ NSString * const kViewabilityKeyForURL_and_WidgetId = @"OB_Viewability_Key_%@_%@
         NSURL *viewabilityUrl = [self createUrlFromParams:params];
         OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
         [self.obRequestQueue addOperation:viewabilityOperation];
+        
+        NSLog(@"reportRecsShownForOBLabel: %@", obLabel.url);
     }
     else {
         NSLog(@"Error: reportRecsShownForWidgetId() there is no viewabilityDictionary for OBLabel: %@", viewabilityKey);

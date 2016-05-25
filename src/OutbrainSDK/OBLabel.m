@@ -98,7 +98,7 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
     NSString *trimmedUrlString = [self.url substringFromIndex:MAX((int)[self.url length]-50, 0)]; //in case string is less than 4 characters long.
     NSLog(@"Reporting viewability for widget id: %@, url: ...%@, shown for %.02f seconds", self.widgetId, trimmedUrlString,
           [timer.userInfo[@"secondsVisible"] floatValue]);
-    [[OBViewabilityService sharedInstance] reportRecsShownForWidgetId:self];
+    [[OBViewabilityService sharedInstance] reportRecsShownForOBLabel:self];
     [timer invalidate];
 }
 

@@ -20,7 +20,7 @@
 
 - (void) reportRecsReceived:(OBRecommendationResponse *)response timestamp:(NSDate *)requestStartDate;
 
-- (void) reportRecsShownForWidgetId:(OBLabel *)obLabel;
+- (void) reportRecsShownForOBLabel:(OBLabel *)obLabel;
 
 
 
