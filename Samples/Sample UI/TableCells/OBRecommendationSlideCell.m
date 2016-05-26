@@ -32,7 +32,7 @@
  **/
 @property (nonatomic, assign) NSInteger currentIndex;
 
-@property (nonatomic, weak) OBLabel * obLabel;
+@property (nonatomic, strong) OBLabel * obLabel;
 
 @end
 
@@ -61,7 +61,7 @@
     self.scrollViewInternal = scrollContainer;
     
     // OBLabel for Viewability
-    self.obLabel = [Outbrain getOBLabelForWidget:nil url:nil]; // will be set by PostsListVC in cellForRowAtIndexPath
+    self.obLabel = [[OBLabel alloc] init]; // registration on OBLabel will be done by PostsListVC in cellForRowAtIndexPath
     self.obLabel.frame = CGRectMake(0, 0, 5, 5);
     self.obLabel.alpha = 0;
     [self.contentView addSubview:self.obLabel];

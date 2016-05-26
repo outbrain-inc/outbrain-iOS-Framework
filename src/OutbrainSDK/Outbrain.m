@@ -211,12 +211,6 @@ static Outbrain * _sharedInstance = nil;
 }
 
 #pragma mark - Viewability
-+ (OBLabel *) getOBLabelForWidget:(NSString *)widgetId url:(NSString *)url {
-    OBLabel *label = [[OBLabel alloc] init];
-    [Outbrain registerOBLabel:label withWidgetId:widgetId andUrl:url];
-    return label;
-}
-
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url {
     label.widgetId = widgetId;
     label.url = url;
@@ -226,11 +220,6 @@ static Outbrain * _sharedInstance = nil;
     }
 }
 
-//+ (void)reportViewedRecommendation:(OBRecommendation *)recommendation {
-//    [OBGAHelper reportMethodCalled:@"reportViewedRecommendation:" withParams:nil];
-//
-//    [((Outbrain *)[self mainBrain]).viewabilityService addRecommendationToViewedRecommendationsList:recommendation];
-//}
 
 #if 0 // For the current SDK version the GA reporting should be disabled
 + (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage {

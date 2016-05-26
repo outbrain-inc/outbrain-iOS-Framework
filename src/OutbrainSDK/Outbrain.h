@@ -82,10 +82,11 @@ extern NSString * const OB_SDK_VERSION;
 /** @section Viewability **/
 
 /**
- * @brief Create and return a new OBLabel for the publisher so it can be placed in the header of a recommandations view widget.
+ * @brief Register OBLabel with the corresponding widgetId and url of the current page
  *
- * This function Create and return a new OBLabel for the publisher so it can be placed in the
- * header of a recommandations view widget.
+ * OBLabel is the view publisher should place in the header of a recommandations view widget.
+ * This function Registers the OBLabel with the corresponding widgetId and url of the screen
+ * so that analytics reports to the server will match with the actual data the user used in the app.
  * (See the Outbrain Journal sample app for an example of how to do this.)
  *
  * @param widgetId - The Widget Id to be associated with this OBLabel
@@ -93,8 +94,6 @@ extern NSString * const OB_SDK_VERSION;
  * @return a new instance of OBLabel which associated with the widget id
  * @note The calling method is responsible on setting the frame for the returned view
  **/
-+ (OBLabel *) getOBLabelForWidget:(NSString *)widgetId url:(NSString *)url;
-
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url;
 
 

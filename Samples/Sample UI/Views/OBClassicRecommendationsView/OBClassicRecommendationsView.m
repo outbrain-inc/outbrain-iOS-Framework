@@ -140,7 +140,8 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
         // If not available create them
         if(!alsoOnTheWebLabel)
         {
-            alsoOnTheWebLabel = [Outbrain getOBLabelForWidget:self.widgetId url:self.url];
+            alsoOnTheWebLabel = [[OBLabel alloc] init]; 
+            [Outbrain registerOBLabel:alsoOnTheWebLabel withWidgetId:self.widgetId andUrl:self.url];
             alsoOnTheWebLabel.textColor = [UIColor colorWithRed:0.600 green:0.600 blue:0.600 alpha:1.000];
             alsoOnTheWebLabel.backgroundColor = [UIColor clearColor];
             alsoOnTheWebLabel.font = [UIFont boldSystemFontOfSize:12];
