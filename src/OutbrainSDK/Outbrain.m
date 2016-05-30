@@ -53,6 +53,9 @@ const struct OBSettingsAttributes OBSettingsAttributes = {
 
 @implementation Outbrain
 
+NSString *const kGLOBAL_WIDGET_STATISTICS = @"globalWidgetStatistics";
+NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
+
 #pragma mark - Initialization
 
 + (void)_throwAssertIfNotInitalized
@@ -214,9 +217,9 @@ static Outbrain * _sharedInstance = nil;
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url {
     label.widgetId = widgetId;
     label.url = url;
-    if (url != nil && widgetId != nil) {
-        [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
-        [label trackViewability];
+    if (url != nil && widgetId != nil && [[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
+            [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
+            [label trackViewability];
     }
 }
 
@@ -286,6 +289,7 @@ static Outbrain * _sharedInstance = nil;
         // Here we need to update our apvCache.
         OBRecommendationResponse * response = _recommendationOperation.response;
         [__self _updateAPVCacheForResponse:response];
+        [__self _updateViewbilityStatsForResponse:response];
         response.recommendations = [__self _filterInvalidRecsForResponse:response];
         [((Outbrain *)[self mainBrain]).tokensHandler setTokenForRequest:request response:response];
         
@@ -313,6 +317,32 @@ static Outbrain * _sharedInstance = nil;
         }
     }
     return filteredResponse;
+}
+
++ (void)_updateViewbilityStatsForResponse:(OBResponse *)response {
+    NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
+    BOOL globalStatsEnabled = YES;
+    int viewabilityThreshold = 0;
+    
+    // We only update our viewability values in the case that the response did not error.
+    if([response performSelector:@selector(getPrivateError)]) return;
+    
+    // Sanity
+    if ((responseSettings == nil) || ![responseSettings isKindOfClass:[NSDictionary class]]) {
+        return;
+    }
+        
+    if (responseSettings[kGLOBAL_WIDGET_STATISTICS] && ![responseSettings[kGLOBAL_WIDGET_STATISTICS] isKindOfClass:[NSNull class]])
+    {
+        globalStatsEnabled = [responseSettings[kGLOBAL_WIDGET_STATISTICS] boolValue];
+        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithBool:globalStatsEnabled] key:kViewabilityEnabledKey];
+    }
+    
+    if (responseSettings[kVIEWABILITY_THRESHOLD] && ![responseSettings[kVIEWABILITY_THRESHOLD] isKindOfClass:[NSNull class]])
+    {
+        viewabilityThreshold = [responseSettings[kVIEWABILITY_THRESHOLD] intValue];        
+        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithInt:viewabilityThreshold] key:kViewabilityThresholdKey];
+    }
 }
 
 + (void)_updateAPVCacheForResponse:(OBResponse *)response

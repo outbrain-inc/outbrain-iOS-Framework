@@ -78,11 +78,16 @@ NSString * const kViewabilityKeyForURL_and_WidgetId = @"OB_Viewability_Key_%@_%@
 @property (nonatomic, strong) NSMutableDictionary *obLabelMap;
 @property (nonatomic, strong) NSMutableDictionary *viewabilityDataMap;
 @property (nonatomic, strong) NSMutableArray *reqIdAlreadyReportedArray;
+
 @end
 
 
 
 @implementation OBViewabilityService
+
+NSString * const kViewabilityEnabledKey = @"kViewabilityEnabledKey";
+NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
+
 
 + (instancetype)sharedInstance
 {
@@ -159,12 +164,12 @@ NSString * const kViewabilityKeyForURL_and_WidgetId = @"OB_Viewability_Key_%@_%@
     NSString *reqId = viewabilityDictionary[kRequestId];
     
     if ([self.reqIdAlreadyReportedArray containsObject:reqId]) {
-        NSLog(@"reportRecsShownForWidgetId() - trying to report again for the same reqId: %@", reqId);
+        NSLog(@"reportRecsShownForOBLabel() - trying to report again for the same reqId: %@", reqId);
         return;
     }
     
     if (viewabilityDictionary == nil) {
-        NSLog(@"Error: reportRecsShownForWidgetId() - make sure to register OBLabel with Outbrain (key: %@)", viewabilityKey);
+        NSLog(@"Error: reportRecsShownForOBLabel() - make sure to register OBLabel with Outbrain (key: %@)", viewabilityKey);
         return;
     }
     
@@ -178,7 +183,7 @@ NSString * const kViewabilityKeyForURL_and_WidgetId = @"OB_Viewability_Key_%@_%@
         
         // Sanity check, if executionTime is more than 2 minutes we shouldn't report Viewability since the data is probably not relevant
         if (executionTime > 120.0) {
-            NSLog(@"Error: reportRecsShownForWidgetId with data older than 120 seconds. (%f)", executionTime);
+            NSLog(@"Error: reportRecsShownForOBLabel with data older than 120 seconds. (%f)", executionTime);
             return;
         }
 
@@ -198,6 +203,29 @@ NSString * const kViewabilityKeyForURL_and_WidgetId = @"OB_Viewability_Key_%@_%@
     }
 }
 
+#pragma mark - Viewability Settings
+- (void) updateViewabilitySetting:(NSNumber *)value key:(NSString *)key {
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
+}
+
+- (BOOL) isViewabilityEnabled {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kViewabilityEnabledKey]) {
+        NSNumber *val = [[NSUserDefaults standardUserDefaults] objectForKey:kViewabilityEnabledKey];
+        return [val boolValue];
+    }
+    return YES;
+}
+
+- (int) viewabilityThresholdMilliseconds {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kViewabilityThresholdKey]) {
+        NSNumber *val = [[NSUserDefaults standardUserDefaults] objectForKey:kViewabilityThresholdKey];
+        return [val intValue];
+    }
+    return 1000;
+}
+
+
+#pragma mark - Private
 -(NSURL *) createUrlFromParams:(NSDictionary *)queryDictionary {
     NSURLComponents *components = [NSURLComponents componentsWithString:kViewabilityUrl];
     NSMutableArray *queryItems = [NSMutableArray array];
