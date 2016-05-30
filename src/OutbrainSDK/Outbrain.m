@@ -23,7 +23,7 @@
 #import <sys/utsname.h>
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"1.5.2";
+NSString * const OB_SDK_VERSION     =   @"2.0";
 
 BOOL WAS_INITIALISED     =   NO;
 
@@ -263,7 +263,7 @@ static Outbrain * _sharedInstance = nil;
         {
             // If parameter `value` is not valid then create a response with an error and return here
             OBRecommendationResponse * response = [[OBRecommendationResponse alloc] init];
-            response.error = [NSError errorWithDomain:OBNativeErrorDomain code:OBInvalidParametersErrorCode userInfo:nil];
+            response.error = [NSError errorWithDomain:OBNativeErrorDomain code:OBInvalidParametersErrorCode userInfo:@{@"msg" : @"Missing parameter in OBRequest"}];
             if(handler)
             {
                 handler(response);
