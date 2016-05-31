@@ -45,6 +45,15 @@
 
 /**
  *  Discussion:
+ *      Set this to allow Viewability feature to work with OBRecommendationSlideCell
+ *      @param widgetId - The Widget Id to be associated with this OBLabel
+ *      @param url - The URL that the user is currently viewing
+ *
+ **/
+- (void) setUrl:(NSString *)url andWidgetId:(NSString *)widgetId;
+
+/**
+ *  Discussion:
  *      This is where we attempt to fetch the images.  If you want to fetch images yourself then override this method
  **/
 - (void)fetchImageForURL:(NSURL *)url withCallback:(void(^)(UIImage * image))callback;

@@ -59,9 +59,19 @@ typedef NS_ENUM(NSInteger, OBClassicRecommendationsViewLayoutType) {
 /**
  *  Discussion:
  *      Set this to allow Viewability feature to work with OBClassicRecommendationsView
+ *      @param widgetId - The Widget Id to be associated with this OBLabel
  *
  **/
 @property (nonatomic, strong) NSString * widgetId;
+
+/**
+ *  Discussion:
+ *      Set this to allow Viewability feature to work with OBClassicRecommendationsView
+ *      @param url - The URL that the user is currently viewing
+ *
+ **/
+@property (nonatomic, strong) NSString * url;
+
 
 /**
  *  Discussion:

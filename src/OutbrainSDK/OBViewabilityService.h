@@ -11,15 +11,23 @@
 
 @interface OBViewabilityService : NSObject
 
-
 + (instancetype)sharedInstance;
 
 @property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
 
-- (void) reportRecsReceived:(OBRecommendationResponse *)response widgetId:(NSString *)widgetId timestamp:(NSDate *)requestStartDate;
+- (void) addOBLabelToMap:(OBLabel *)obLabel;
 
-- (void) reportRecsShownForWidgetId:(NSString *)widgetId;
+- (void) reportRecsReceived:(OBRecommendationResponse *)response timestamp:(NSDate *)requestStartDate;
 
+- (void) reportRecsShownForOBLabel:(OBLabel *)obLabel;
 
+- (void) updateViewabilitySetting:(NSNumber *)value key:(NSString *)key;
+
+- (BOOL) isViewabilityEnabled;
+
+- (int) viewabilityThresholdMilliseconds;
+
+extern NSString * const kViewabilityEnabledKey;
+extern NSString * const kViewabilityThresholdKey;
 
 @end

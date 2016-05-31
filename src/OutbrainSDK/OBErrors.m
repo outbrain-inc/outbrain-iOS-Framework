@@ -10,6 +10,6 @@
 
 
 NSString * const OBGenericErrorDomain   = @"com.outbrain.sdk:OBGenericErrorDomain";
-NSString * const OBNativeErrorDomain    = @"com.outbrain.sdk:OBNativeErrorDmain";
+NSString * const OBNativeErrorDomain    = @"com.outbrain.sdk:OBNativeErrorDomain";
 NSString * const OBNetworkErrorDomain   = @"com.outbrain.sdk:OBNetworkErrorDomain";
 NSString * const OBZeroRecommendationseErrorDomain = @"com.outbrain.sdk:OBZeroRecommendationseErrorDomain";
