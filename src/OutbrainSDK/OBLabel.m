@@ -21,21 +21,26 @@
 
 @implementation OBLabel
 
-const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
+const CGFloat KViewThresholdDefault = 1.0;
+CGFloat viewThresholdBeforeReportingToServer = 1.0;
 
 #define kTIMER_INTERVAL 0.1
 
 -(id) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self trackViewability];
+        if ([[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
+            [self trackViewability];
+        }
     }
     return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    if ((self = [super initWithCoder:aDecoder])){
-        [self trackViewability];
+    if ((self = [super initWithCoder:aDecoder])) {
+        if ([[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
+            [self trackViewability];
+        }
     }
 
     return self;
@@ -44,10 +49,19 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
 
 - (void) drawRect:(CGRect)rect {
     [super drawRect:rect];
-    NSLog(@"Drawing rect: %ld", (long)self.tag);
+}
+
+- (BOOL) isTimerRunning {
+    return ((self.viewVisibleTimer != nil) && [self.viewVisibleTimer isValid]);
 }
 
 - (void) trackViewability {
+    if ([self isTimerRunning]) { // if timer is currently running for this view there is no need to start another one
+            return;
+    }
+    
+    int viewabilityThresholdMilliseconds = [[OBViewabilityService sharedInstance] viewabilityThresholdMilliseconds];
+    viewThresholdBeforeReportingToServer =  viewabilityThresholdMilliseconds / 1000.0;
     
     self.viewVisibleTimer = [NSTimer timerWithTimeInterval:kTIMER_INTERVAL
                                              target:self
@@ -76,9 +90,9 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
     
     CGFloat secondsVisible = [timer.userInfo[@"secondsVisible"] floatValue];
     
-    if (percentVisible >= 0.5 && secondsVisible < KViewThresholdBeforeReportingToServer) {
+    if (percentVisible >= 0.5 && secondsVisible < viewThresholdBeforeReportingToServer) {
         timer.userInfo[@"secondsVisible"] = @(secondsVisible + timer.timeInterval);
-    } else if (percentVisible >= 0.5 && secondsVisible >= KViewThresholdBeforeReportingToServer) {
+    } else if (percentVisible >= 0.5 && secondsVisible >= viewThresholdBeforeReportingToServer) {
         [self reportViewability:timer];
     } else {
         // View is not visible, decide if we want to report that or not
@@ -87,8 +101,10 @@ const CGFloat KViewThresholdBeforeReportingToServer = 1.0;
 }
 
 - (void) reportViewability:(NSTimer *)timer {
-    NSLog(@"Reporting viewability for view.tag: %ld, widget id: %@, shown for %@ seconds", (long)self.tag, self.widgetId, timer.userInfo[@"secondsVisible"]);
-    [[OBViewabilityService sharedInstance] reportRecsShownForWidgetId:self.widgetId];
+//    NSString *trimmedUrlString = [self.url substringFromIndex:MAX((int)[self.url length]-50, 0)]; //in case string is less than 4 characters long.
+//    NSLog(@"Reporting viewability for widget id: %@, url: ...%@, shown for %.02f seconds", self.widgetId, trimmedUrlString,
+//          [timer.userInfo[@"secondsVisible"] floatValue]);
+    [[OBViewabilityService sharedInstance] reportRecsShownForOBLabel:self];
     [timer invalidate];
 }
 

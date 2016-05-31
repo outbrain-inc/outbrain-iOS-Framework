@@ -88,7 +88,9 @@
     }
     
     [self parseResponseData:_responseData];
-    [[OBViewabilityService sharedInstance] reportRecsReceived:self.response widgetId:self.request.widgetId timestamp:self.requestStartDate];
+    if ([[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
+        [[OBViewabilityService sharedInstance] reportRecsReceived:self.response timestamp:self.requestStartDate];
+    }
 }
 
 
