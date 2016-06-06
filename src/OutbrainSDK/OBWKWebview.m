@@ -192,6 +192,63 @@
     }
 }
 
+/*! @abstract Decides whether to allow or cancel a navigation.
+ @param webView The web view invoking the delegate method.
+ @param navigationAction Descriptive information about the action
+ triggering the navigation request.
+ @param decisionHandler The decision handler to call to allow or cancel the
+ navigation. The argument is one of the constants of the enumerated type WKNavigationActionPolicy.
+ @discussion If you do not implement this method, the web view will load the request or, if appropriate, forward it to another application.
+ */
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    //NSLog(@"OB decidePolicyForNavigationAction");
+    if (self.externalNavigationDelegate &&
+        [self.externalNavigationDelegate respondsToSelector:@selector(webView:decidePolicyForNavigationAction:decisionHandler:)])
+    {
+        [self.externalNavigationDelegate webView:webView decidePolicyForNavigationAction:navigationAction decisionHandler:decisionHandler];
+    }
+    else {
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
+}
+
+/*! @abstract Invoked when the web view's web content process is terminated.
+ @param webView The web view whose underlying web content process was terminated.
+ */
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
+    //NSLog(@"OB didFailNavigation");
+    if (self.externalNavigationDelegate &&
+        [self.externalNavigationDelegate respondsToSelector:@selector(webViewWebContentProcessDidTerminate:)])
+    {
+        [self.externalNavigationDelegate webViewWebContentProcessDidTerminate:webView];
+    }
+}
+
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *__nullable credential))completionHandler {
+    
+    //NSLog(@"OB didReceiveAuthenticationChallenge");
+    if (self.externalNavigationDelegate &&
+        [self.externalNavigationDelegate respondsToSelector:@selector(webView:didReceiveAuthenticationChallenge:completionHandler:)])
+    {
+        [self.externalNavigationDelegate webView:webView didReceiveAuthenticationChallenge:challenge completionHandler:completionHandler];
+    }
+    else {
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    }
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
+    //NSLog(@"OB decidePolicyForNavigationResponse");
+    if (self.externalNavigationDelegate &&
+        [self.externalNavigationDelegate respondsToSelector:@selector(webView:decidePolicyForNavigationResponse:decisionHandler:)])
+    {
+        [self.externalNavigationDelegate webView:webView decidePolicyForNavigationResponse:navigationResponse decisionHandler:decisionHandler];
+    }
+    else {
+        decisionHandler(WKNavigationResponsePolicyAllow);
+    }
+}
+
 #pragma mark - SFSafariViewControllerDelegate
 - (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
     NSLog(@"safariViewController didCompleteInitialLoad");

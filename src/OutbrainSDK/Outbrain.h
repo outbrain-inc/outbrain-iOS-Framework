@@ -96,6 +96,11 @@ extern NSString * const OB_SDK_VERSION;
  **/
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url;
 
+/** @section Custom OBWebView **/
+
++ (BOOL) isOutbrainPaidUrl:(NSURL *)url;
+
++ (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url;
 
 /** @section Click Handling **/
 

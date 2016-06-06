@@ -223,6 +223,15 @@ static Outbrain * _sharedInstance = nil;
     }
 }
 
+#pragma mark - Custom OBWebView
++ (BOOL) isOutbrainPaidUrl:(NSURL *)url {
+    NSString *currentUrl = [url absoluteString];
+    return [currentUrl containsString:@"paid.outbrain.com/network/redir"];
+}
+
++ (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url {
+    return YES;
+}
 
 #if 0 // For the current SDK version the GA reporting should be disabled
 + (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage {
