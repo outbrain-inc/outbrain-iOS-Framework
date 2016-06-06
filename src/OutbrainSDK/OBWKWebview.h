@@ -7,8 +7,7 @@
 //
 
 #import <WebKit/WebKit.h>
-@import SafariServices;
 
-@interface OBWKWebview : WKWebView <WKNavigationDelegate, SFSafariViewControllerDelegate>
+@interface OBWKWebview : WKWebView <WKNavigationDelegate>
 
 @end

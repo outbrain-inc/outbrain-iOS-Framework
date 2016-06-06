@@ -79,14 +79,6 @@
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"OB didStartProvisionalNavigation");
     
-    if ([self urlShouldOpenInExternalBrowser]) {
-        [webView stopLoading];
-        SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:webView.URL];
-        sf.delegate = self;
-        [[self parentViewController] presentViewController:sf animated:YES completion:nil];
-        return;
-    }
-    
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didStartProvisionalNavigation:)])
     {
@@ -246,18 +238,6 @@
     }
     else {
         decisionHandler(WKNavigationResponsePolicyAllow);
-    }
-}
-
-#pragma mark - SFSafariViewControllerDelegate
-- (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
-    NSLog(@"safariViewController didCompleteInitialLoad");
-}
-
-- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
-    if ([self urlShouldOpenInExternalBrowser]) {
-        [[self parentViewController] dismissViewControllerAnimated:YES completion:nil];
-        return;
     }
 }
 
