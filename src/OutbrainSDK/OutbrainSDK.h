@@ -18,3 +18,4 @@
 #import <OutbrainSDK/OBRecommendation.h>
 #import <OutbrainSDK/OBSettings.h>
 #import <OutbrainSDK/OBRecommendationResponse.h>
+#import <OutbrainSDK/OBLabel.h>

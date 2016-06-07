@@ -10,6 +10,8 @@
 #import <OutbrainSDK/OBProtocols.h>
 
 
+
+@class OBLabel;
 @class OBRequest;
 @class OBResponse;
 @class OBRecommendation;
@@ -75,6 +77,24 @@ extern NSString * const OB_SDK_VERSION;
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request
                           withDelegate:(__weak id<OBResponseDelegate>)delegate;
+
+
+/** @section Viewability **/
+
+/**
+ * @brief Register OBLabel with the corresponding widgetId and url of the current page
+ *
+ * OBLabel is the view publisher should place in the header of a recommandations view widget.
+ * This function Registers the OBLabel with the corresponding widgetId and url of the screen
+ * so that analytics reports to the server will match with the actual data the user used in the app.
+ * (See the Outbrain Journal sample app for an example of how to do this.)
+ *
+ * @param widgetId - The Widget Id to be associated with this OBLabel
+ * @param url - The URL that the user is currently viewing
+ * @return a new instance of OBLabel which associated with the widget id
+ * @note The calling method is responsible on setting the frame for the returned view
+ **/
++ (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url;
 
 
 /** @section Click Handling **/

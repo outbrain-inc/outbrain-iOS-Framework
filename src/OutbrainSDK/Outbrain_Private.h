@@ -8,7 +8,7 @@
 
 #import "OBRecommendationsTokenHandler.h"
 #import "OBViewabilityService.h"
-#import "OBGAHelper.h"
+
 
 /**
  *  These are some keys we're defining for various lookups 
@@ -39,7 +39,6 @@ extern const struct OBSettingsAttributes {
 @property (nonatomic, strong) NSMutableDictionary *obSettings;       // Settings payload that the sdk is initialized with
 @property (nonatomic, strong) OBRecommendationsTokenHandler *tokensHandler;
 @property (nonatomic, strong) OBViewabilityService *viewabilityService;
-@property (nonatomic, strong) OBGAHelper *gaHelper;
 
 + (instancetype)mainBrain;  // Shared Instance
 

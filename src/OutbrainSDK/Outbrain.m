@@ -15,13 +15,15 @@
 #import "OBRecommendationResponse.h"
 #import "OBResponse.h"
 #import "OBRequest.h"
-
+#import "OBLabel.h"
 #import "OBAppleAdIdUtil.h"
+#import "OBViewabilityService.h"
+
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"1.5.2";
+NSString * const OB_SDK_VERSION     =   @"2.0";
 
 BOOL WAS_INITIALISED     =   NO;
 
@@ -51,6 +53,9 @@ const struct OBSettingsAttributes OBSettingsAttributes = {
 
 @implementation Outbrain
 
+NSString *const kGLOBAL_WIDGET_STATISTICS = @"globalWidgetStatistics";
+NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
+
 #pragma mark - Initialization
 
 + (void)_throwAssertIfNotInitalized
@@ -72,9 +77,9 @@ static Outbrain * _sharedInstance = nil;
             [queue setName:@"Outbrain Operation Queue"];
             queue.maxConcurrentOperationCount = 1;  // Serial
             _sharedInstance.obRequestQueue = queue;
+            [OBViewabilityService sharedInstance].obRequestQueue = queue; // Share the operation queue with OBViewabilityService
             _sharedInstance.tokensHandler = [[OBRecommendationsTokenHandler alloc] init];
             _sharedInstance.viewabilityService = [[OBViewabilityService alloc] init];
-            _sharedInstance.gaHelper = [[OBGAHelper alloc] init];
 
         }
     });
@@ -125,7 +130,6 @@ static Outbrain * _sharedInstance = nil;
         
         // Finally call our dictionary method
         [self initializeOutbrainWithDictionary:settingsPayload];
-        [OBGAHelper reportMethodCalled:@"initializeOutbrainWithConfigFile:" withParams:nil];
     }
 }
 
@@ -133,7 +137,6 @@ static Outbrain * _sharedInstance = nil;
     if (!WAS_INITIALISED) {
         // Finally set the settings payload.
         [self initializeOutbrainWithDictionary:@{OBSettingsAttributes.partnerKey:partnerKey}];
-        [OBGAHelper reportMethodCalled:@"initializeOutbrainWithPartnerKey:" withParams:nil];
     }
 }
 
@@ -147,14 +150,11 @@ static Outbrain * _sharedInstance = nil;
         
         // Finally set the settings payload.
         [[[self mainBrain] obSettings] addEntriesFromDictionary:dict];
-        [OBGAHelper setAppKey:dict[OBSettingsAttributes.partnerKey]];
-        [OBGAHelper setAppVersion:OB_SDK_VERSION];
         WAS_INITIALISED = YES;
     }
 }
 
 + (void)setTestMode:(BOOL)testMode {
-    [OBGAHelper reportMethodCalled:@"setTestMode:" withParams:(testMode ? @"YES" : @"NO"), nil];
     [[[self mainBrain] obSettings] setValue:[NSNumber numberWithBool:testMode] forKey:OBSettingsAttributes.testModeKey];
 }
 
@@ -162,15 +162,11 @@ static Outbrain * _sharedInstance = nil;
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request withCallback:(OBResponseCompletionHandler)handler
 {
-    [OBGAHelper reportMethodCalled:@"fetchRecommendationsForRequest:withCallback:" withParams:request.description, nil];
-
     [self _fetchRecommendationsWithRequest:request andCallback:handler];
 }
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request withDelegate:(__weak id<OBResponseDelegate>)delegate
 {
-    [OBGAHelper reportMethodCalled:@"fetchRecommendationsForRequest:withDelegate:" withParams:request.description, nil];
-
     [self _fetchRecommendationsWithRequest:request andCallback:^(OBRecommendationResponse *response) {
         if(!delegate)
         {
@@ -194,8 +190,6 @@ static Outbrain * _sharedInstance = nil;
 
 + (NSURL *)getOriginalContentURLAndRegisterClickForRecommendation:(OBRecommendation *)recommendation
 {
-    [OBGAHelper reportMethodCalled:@"getOriginalContentURLAndRegisterClickForRecommendation:" withParams:nil];
-    
     // Should be initialized
     [self _throwAssertIfNotInitalized];
     
@@ -220,12 +214,15 @@ static Outbrain * _sharedInstance = nil;
 }
 
 #pragma mark - Viewability
++ (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url {
+    label.widgetId = widgetId;
+    label.url = url;
+    if (url != nil && widgetId != nil && [[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
+            [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
+            [label trackViewability];
+    }
+}
 
-//+ (void)reportViewedRecommendation:(OBRecommendation *)recommendation {
-//    [OBGAHelper reportMethodCalled:@"reportViewedRecommendation:" withParams:nil];
-//
-//    [((Outbrain *)[self mainBrain]).viewabilityService addRecommendationToViewedRecommendationsList:recommendation];
-//}
 
 #if 0 // For the current SDK version the GA reporting should be disabled
 + (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage {
@@ -266,7 +263,7 @@ static Outbrain * _sharedInstance = nil;
         {
             // If parameter `value` is not valid then create a response with an error and return here
             OBRecommendationResponse * response = [[OBRecommendationResponse alloc] init];
-            response.error = [NSError errorWithDomain:OBNativeErrorDomain code:OBInvalidParametersErrorCode userInfo:nil];
+            response.error = [NSError errorWithDomain:OBNativeErrorDomain code:OBInvalidParametersErrorCode userInfo:@{@"msg" : @"Missing parameter in OBRequest"}];
             if(handler)
             {
                 handler(response);
@@ -292,6 +289,7 @@ static Outbrain * _sharedInstance = nil;
         // Here we need to update our apvCache.
         OBRecommendationResponse * response = _recommendationOperation.response;
         [__self _updateAPVCacheForResponse:response];
+        [__self _updateViewbilityStatsForResponse:response];
         response.recommendations = [__self _filterInvalidRecsForResponse:response];
         [((Outbrain *)[self mainBrain]).tokensHandler setTokenForRequest:request response:response];
         
@@ -316,10 +314,35 @@ static Outbrain * _sharedInstance = nil;
         }
         else {
             stringUrl = [stringUrl stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
-            [OBGAHelper reportMethodCalled:@"filteredRecommendation" withConcreteParams:stringUrl shouldForceSend:YES];
         }
     }
     return filteredResponse;
+}
+
++ (void)_updateViewbilityStatsForResponse:(OBResponse *)response {
+    NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
+    BOOL globalStatsEnabled = YES;
+    int viewabilityThreshold = 0;
+    
+    // We only update our viewability values in the case that the response did not error.
+    if([response performSelector:@selector(getPrivateError)]) return;
+    
+    // Sanity
+    if ((responseSettings == nil) || ![responseSettings isKindOfClass:[NSDictionary class]]) {
+        return;
+    }
+        
+    if (responseSettings[kGLOBAL_WIDGET_STATISTICS] && ![responseSettings[kGLOBAL_WIDGET_STATISTICS] isKindOfClass:[NSNull class]])
+    {
+        globalStatsEnabled = [responseSettings[kGLOBAL_WIDGET_STATISTICS] boolValue];
+        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithBool:globalStatsEnabled] key:kViewabilityEnabledKey];
+    }
+    
+    if (responseSettings[kVIEWABILITY_THRESHOLD] && ![responseSettings[kVIEWABILITY_THRESHOLD] isKindOfClass:[NSNull class]])
+    {
+        viewabilityThreshold = [responseSettings[kVIEWABILITY_THRESHOLD] intValue];        
+        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithInt:viewabilityThreshold] key:kViewabilityThresholdKey];
+    }
 }
 
 + (void)_updateAPVCacheForResponse:(OBResponse *)response

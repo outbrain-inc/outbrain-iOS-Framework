@@ -7,8 +7,9 @@
 //
 
 #import "OBClassicRecommendationsView.h"
-#import <OutbrainSDK/OBRecommendationResponse.h>
 #import "OBDemoDataHelper.h"
+
+#import <OutbrainSDK/OutbrainSDK.h>
 
 @interface OBClassicRecommendationsView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -133,13 +134,14 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
         } NSInteger;
         
         // Get the labels
-        UILabel * alsoOnTheWebLabel = (UILabel *)[brandingHeader viewWithTag:AlsoOnTheWebTag];
+        OBLabel * alsoOnTheWebLabel = (OBLabel *)[brandingHeader viewWithTag:AlsoOnTheWebTag];
         UIButton * brandingImageButton = (UIButton *)[brandingHeader viewWithTag:AmeliaHeadLogoTag];
         
         // If not available create them
         if(!alsoOnTheWebLabel)
         {
-            alsoOnTheWebLabel = [UILabel new];
+            alsoOnTheWebLabel = [[OBLabel alloc] init]; 
+            [Outbrain registerOBLabel:alsoOnTheWebLabel withWidgetId:self.widgetId andUrl:self.url];
             alsoOnTheWebLabel.textColor = [UIColor colorWithRed:0.600 green:0.600 blue:0.600 alpha:1.000];
             alsoOnTheWebLabel.backgroundColor = [UIColor clearColor];
             alsoOnTheWebLabel.font = [UIFont boldSystemFontOfSize:12];
@@ -159,6 +161,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
             [brandingHeader addSubview:brandingImageButton];
         }
         
+        [Outbrain registerOBLabel:alsoOnTheWebLabel withWidgetId:self.widgetId andUrl:self.url];
         CGFloat centerY = brandingHeader.frame.size.height/2.f;
         alsoOnTheWebLabel.center = CGPointMake(10.f + (alsoOnTheWebLabel.frame.size.width/2.f), centerY);
         brandingImageButton.center = CGPointMake(CGRectGetWidth(brandingHeader.frame) - (brandingImageButton.frame.size.width/2.f) - 10.f, CGRectGetMaxY(alsoOnTheWebLabel.frame) - (brandingImageButton.bounds.size.height/2.f));

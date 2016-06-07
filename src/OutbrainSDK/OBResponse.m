@@ -7,14 +7,12 @@
 //
 
 #import "OBResponse.h"
-#import "OBGAHelper.h"
 
 @implementation OBResponse
 
 #pragma mark - Getters & Setters
 
 - (OBRequest *)request {
-    [OBGAHelper reportMethodCalled:@"OBResponse::getRequest"];
     return _request;
 }
 
@@ -23,7 +21,6 @@
 }
 
 - (NSError *)error {
-    [OBGAHelper reportMethodCalled:@"OBResponse::getError"];
     return _error;
 }
 

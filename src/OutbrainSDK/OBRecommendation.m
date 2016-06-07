@@ -8,7 +8,6 @@
 
 #import "OBRecommendation.h"
 #import "OBContent_Private.h"
-#import "OBGAHelper.h"
 
 #define OBPublishDateKey @"OBPublishDateKey"
 #define OBSourceURLKey @"OBSourceURLKey"
@@ -103,17 +102,14 @@
 #pragma mark - Getters & Setters
 
 - (NSDate *)publishDate {
-    [OBGAHelper reportMethodCalled:@"OBRecommendation::getPublishDate"];
     return publishDate;
 }
 
 - (BOOL)isSameSource {
-    [OBGAHelper reportMethodCalled:@"OBRecommendation::getIsSameSource"];
     return sameSource;
 }
 
 - (BOOL)isVideo {
-    [OBGAHelper reportMethodCalled:@"OBRecommendation::getIsVideo"];
     return video;
 }
 
@@ -122,27 +118,22 @@
 }
 
 - (NSString *)author {
-    [OBGAHelper reportMethodCalled:@"OBRecommendation::getAuthor"];
     return author;
 }
 
 - (NSString *)source {
-    [OBGAHelper reportMethodCalled:@"OBRecommendation::getSource"];
     return source;
 }
 
 - (NSURL *)sourceURL {
-    [OBGAHelper reportMethodCalled:@"OBRecommendation::getSourceURL"];
     return sourceURL;
 }
 
 - (NSString *)content {
-    [OBGAHelper reportMethodCalled:@"OBRecommendation::getContent"];
     return content;
 }
 
 - (BOOL)isPaidLink {
-    [OBGAHelper reportMethodCalled:@"OBRecommendation::isPaidLink"];
     return paidLink;
 }
 

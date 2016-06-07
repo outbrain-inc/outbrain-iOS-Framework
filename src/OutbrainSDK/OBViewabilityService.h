@@ -7,13 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OBRecommendation.h"
+#import "OBRecommendationResponse.h"
 
-@interface OBViewabilityService : NSObject {
-    NSMutableArray          *viewedRecommendationsList;
-}
+@interface OBViewabilityService : NSObject
 
-- (void)addRecommendationToViewedRecommendationsList:(OBRecommendation *)recommendation;
-- (void)reportRecommendations;
++ (instancetype)sharedInstance;
+
+@property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
+
+- (void) addOBLabelToMap:(OBLabel *)obLabel;
+
+- (void) reportRecsReceived:(OBRecommendationResponse *)response timestamp:(NSDate *)requestStartDate;
+
+- (void) reportRecsShownForOBLabel:(OBLabel *)obLabel;
+
+- (void) updateViewabilitySetting:(NSNumber *)value key:(NSString *)key;
+
+- (BOOL) isViewabilityEnabled;
+
+- (int) viewabilityThresholdMilliseconds;
+
+extern NSString * const kViewabilityEnabledKey;
+extern NSString * const kViewabilityThresholdKey;
 
 @end

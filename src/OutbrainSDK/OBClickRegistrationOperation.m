@@ -12,12 +12,12 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    [self setFinished:YES];
+
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    [self setFinished:YES];
+
 }
 
 @end

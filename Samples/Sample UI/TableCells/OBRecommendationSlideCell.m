@@ -31,6 +31,9 @@
  *  Our current index
  **/
 @property (nonatomic, assign) NSInteger currentIndex;
+
+@property (nonatomic, strong) OBLabel * obLabel;
+
 @end
 
 
@@ -56,7 +59,13 @@
     scrollContainer.multipleTouchEnabled = NO;
     [self.contentView addSubview:scrollContainer];
     self.scrollViewInternal = scrollContainer;
-
+    
+    // OBLabel for Viewability
+    self.obLabel = [[OBLabel alloc] init]; // registration on OBLabel will be done by PostsListVC in cellForRowAtIndexPath
+    self.obLabel.frame = CGRectMake(0, 0, 5, 5);
+    self.obLabel.alpha = 0;
+    [self.contentView addSubview:self.obLabel];
+    
     _slideViewsInternal = [NSMutableArray array];
     
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
@@ -69,6 +78,12 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 { if((self=[super initWithCoder:aDecoder]))[self commonInit]; return self; }
+
+
+#pragma mark - Viewability
+- (void) setUrl:(NSString *)url andWidgetId:(NSString *)widgetId {
+    [Outbrain registerOBLabel:self.obLabel withWidgetId:widgetId andUrl:url];
+}
 
 
 #pragma mark - Touching
