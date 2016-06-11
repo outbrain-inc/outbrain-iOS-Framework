@@ -286,10 +286,11 @@
 
 - (void)widgetView:(id<OBWidgetViewProtocol>)widgetView tappedRecommendation:(OBRecommendation *)recommendation
 {
+    // First report the click to the SDK and receive the URL to open.
+    NSURL * url = [Outbrain getOriginalContentURLAndRegisterClickForRecommendation:recommendation];
+    
     // User tapped a recommendation   
     if (recommendation.isSameSource) {
-        // url here
-        NSURL * url = [Outbrain getOriginalContentURLAndRegisterClickForRecommendation:recommendation];
         typeof(self) __weak __self = self;
         __block UIAlertView * loadingAlert = [[UIAlertView alloc] initWithTitle:@"Fetching Content" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
         [loadingAlert show];
@@ -305,7 +306,12 @@
         }];
     }
     else {
-        [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:recommendation];
+        if ([Outbrain shouldOpenUrlInSafariViewController:url]) {
+            [self openUrlInSafariVC:url];
+        }
+        else {
+            [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:url];
+        }
     }
 }
 
@@ -329,7 +335,7 @@
     {
         // This is our segue for displaying a tapped recomendation
         UINavigationController * nav = [segue destinationViewController];
-        [[nav topViewController] setValue:sender forKey:@"recommendation"];
+        [[nav topViewController] setValue:sender forKey:@"recommendationUrl"];
     }
 }
 
@@ -367,5 +373,22 @@
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
     }
 }
+
+#pragma mark - SFSafariViewController + SFSafariViewControllerDelegate
+
+- (void) openUrlInSafariVC:(NSURL *)url {
+    SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+    sf.delegate = self;
+    [self.navigationController presentViewController:sf animated:YES completion:nil];
+}
+
+- (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
+    NSLog(@"safariViewController didCompleteInitialLoad");
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    NSLog(@"safariViewController safariViewControllerDidFinish");
+}
+
 
 @end

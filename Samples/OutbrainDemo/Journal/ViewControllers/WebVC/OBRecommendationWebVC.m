@@ -53,10 +53,9 @@
     }
     
        
-    if(self.recommendation)
+    if(self.recommendationUrl)
     {
-        NSURL * url = [Outbrain getOriginalContentURLAndRegisterClickForRecommendation:self.recommendation];
-        [self loadURL:url];
+        [self loadURL:self.recommendationUrl];
     }
 }
 

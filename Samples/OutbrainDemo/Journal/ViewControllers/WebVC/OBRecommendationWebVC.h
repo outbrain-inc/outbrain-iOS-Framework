@@ -20,6 +20,6 @@
  *  Discussion:
  *      Setting this will register the click and visit the url.
  **/
-@property (nonatomic, strong) OBRecommendation * recommendation;
+@property (nonatomic, strong) NSURL * recommendationUrl;
 
 @end

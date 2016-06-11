@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "OBRecommendationSlideCell.h"
+@import SafariServices;
 
 @class PostsSwipeVC;
 
-@interface PostsListVC : UITableViewController <OBWidgetViewDelegate>
+@interface PostsListVC : UITableViewController <OBWidgetViewDelegate, SFSafariViewControllerDelegate>
 
 @property (nonatomic, strong) PostsSwipeVC * detailVC;
 
