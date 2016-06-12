@@ -8,6 +8,7 @@
 
 #import "OBWKWebview.h"
 #import "OBPostOperation.h"
+#import "Outbrain.h"
 
 @interface OBWKWebview()
 
@@ -20,6 +21,7 @@
 @property (nonatomic, assign) float percentLoadThreshold;
 
 @property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
+@property (nonatomic, strong) NSDate *loadStartDate;
 
 @end
 
@@ -82,14 +84,27 @@ int const kReportEventFinished = 200;
 }
 
 - (NSDictionary *) prepareDictionaryForServerReport:(int)eventType percentLoad:(int)percentLoad url:(NSString *)event_url {
+    // Elapsed Time
+    NSDate *timeNow = [NSDate date];
+    NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:self.loadStartDate];
+    NSString *elapsedTime = [@((int)(executionTime*1000)) stringValue];
+    
+    // Partner Key
+    SEL selector = NSSelectorFromString(@"partnerKey");
+    NSString *partnerKey = [Outbrain performSelector:selector];
+    
+    //App Version
+    NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
+    
     NSDictionary *params = @{@"redirectURL" : self.paidOutbrainUrl,
                              @"event_type" : [NSNumber numberWithInt:eventType],
                              @"event_data" : [NSNumber numberWithInt:percentLoad],
-                             @"elapsed_time" : @"100",
+                             @"elapsed_time" : elapsedTime,
                              @"event_url" : event_url,
-                             @"partner_key" : @"APP_SDK_4",
-                             @"sdk_version" : @"2.0",
-                             @"app_ver" : @"1.0",
+                             @"partner_key" : partnerKey,
+                             @"sdk_version" : OB_SDK_VERSION,
+                             @"app_ver" : appVersionString,
                              @"network" : @"3G"
                              };
     
@@ -196,6 +211,7 @@ int const kReportEventFinished = 200;
             self.paidOutbrainParams = components[1];
         }
         self.paidOutbrainUrl = [webView.URL absoluteString];
+        self.loadStartDate = [NSDate date];
     }
     
     NSString *tempUrl = [webView.URL absoluteString];
