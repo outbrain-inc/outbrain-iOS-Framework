@@ -7,18 +7,28 @@
 //
 
 #import "OBWKWebview.h"
-
+#import "OBPostOperation.h"
 
 @interface OBWKWebview()
 
 @property (nonatomic, weak) id<WKNavigationDelegate> externalNavigationDelegate;
 
 @property (nonatomic, strong) NSString *paidOutbrainParams;
+@property (nonatomic, strong) NSString *paidOutbrainUrl;
+
+@property (nonatomic, assign) BOOL alreadyReportedOnPercentLoad;
+@property (nonatomic, assign) float percentLoadThreshold;
+
+@property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
 
 @end
 
 
 @implementation OBWKWebview
+
+NSString * const kReportUrl = @"http://outbrain-node-js.herokuapp.com/api/v1/logs";
+int const kReportEventPercentLoad = 100;
+int const kReportEventFinished = 200;
 
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -27,6 +37,8 @@
     if (self = [super initWithFrame:frame configuration:configuration]) {
         self.navigationDelegate = self;
         [self addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
+        self.percentLoadThreshold = [self paidRecsLoadPercentsThreshold];
+        self.obRequestQueue = [[NSOperationQueue alloc] init];
     }
     return self;
 }
@@ -55,12 +67,47 @@
     return YES;
 }
 
+- (float) paidRecsLoadPercentsThreshold {
+    // TODO should be taken from NSUserDefaults where we save the settings from the ODB server response
+    return 0.75;
+}
+
+- (void) reportServerOnPercentLoad:(float)percentLoad {
+    int eventType = (percentLoad == 1.0) ? kReportEventFinished : kReportEventPercentLoad;
+    OBPostOperation *postOperation = [OBPostOperation operationWithURL:[NSURL URLWithString:kReportUrl]];
+    postOperation.postData = [self prepareDictionaryForServerReport:eventType percentLoad:(int)(percentLoad*100) url:self.URL.absoluteString];
+    [self.obRequestQueue addOperation:postOperation];
+    self.alreadyReportedOnPercentLoad = YES;
+    NSLog(@"reportServerOnPercentLoad: %@ - %f", self.URL.absoluteString, percentLoad);
+}
+
+- (NSDictionary *) prepareDictionaryForServerReport:(int)eventType percentLoad:(int)percentLoad url:(NSString *)event_url {
+    NSDictionary *params = @{@"redirectURL" : self.paidOutbrainUrl,
+                             @"event_type" : [NSNumber numberWithInt:eventType],
+                             @"event_data" : [NSNumber numberWithInt:percentLoad],
+                             @"elapsed_time" : @"100",
+                             @"event_url" : event_url,
+                             @"partner_key" : @"APP_SDK_4",
+                             @"sdk_version" : @"2.0",
+                             @"app_ver" : @"1.0",
+                             @"network" : @"3G"
+                             };
+    
+    return params;
+}
+
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"estimatedProgress"] && object == self) {
-        NSLog(@"progress: %f", self.estimatedProgress);
         // estimatedProgress is a value from 0.0 to 1.0
-        // Update your UI here accordingly
+        NSLog(@"progress: %f", self.estimatedProgress);
+        
+        if ((self.estimatedProgress > self.percentLoadThreshold) &&
+            (self.paidOutbrainUrl != nil) &&
+            (self.alreadyReportedOnPercentLoad == NO)) {
+            
+                [self reportServerOnPercentLoad:self.estimatedProgress]; // we want to report on the percentLoadThreshold to make the heavy BI queries execute faster
+        }
     }
     else {
         // Make sure to call the superclass's implementation in the else block in case it is also implementing KVO
@@ -148,6 +195,7 @@
         if (components.count == 2) {
             self.paidOutbrainParams = components[1];
         }
+        self.paidOutbrainUrl = [webView.URL absoluteString];
     }
     
     NSString *tempUrl = [webView.URL absoluteString];
@@ -155,7 +203,10 @@
         if ([[webView.URL absoluteString] isEqualToString:tempUrl]) {
             NSLog(@"** Real Pageview: %@ **", tempUrl);
             
-            if (self.paidOutbrainParams != nil)  NSLog(@"** params: %@ **", self.paidOutbrainParams);
+            if (self.paidOutbrainUrl != nil)  {
+                [self reportServerOnPercentLoad:1.0];
+                self.paidOutbrainUrl = nil;
+            }
         }
         else {
             NSLog(@"NOT Real Pageview: %@ == %@", [webView.URL absoluteString], tempUrl);

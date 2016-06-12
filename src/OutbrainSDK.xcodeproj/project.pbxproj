@@ -85,6 +85,8 @@
 		E66AC3421C99AB9400A23876 /* OBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC33E1C99AB9400A23876 /* OBLabel.m */; };
 		E66AC3431C99AB9400A23876 /* UIView+Visible.h in Headers */ = {isa = PBXBuildFile; fileRef = E66AC33F1C99AB9400A23876 /* UIView+Visible.h */; };
 		E66AC3441C99AB9400A23876 /* UIView+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC3401C99AB9400A23876 /* UIView+Visible.m */; };
+		E689B4FE1D0D3778009E29DF /* OBPostOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E689B4FC1D0D3778009E29DF /* OBPostOperation.h */; };
+		E689B4FF1D0D3778009E29DF /* OBPostOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E689B4FD1D0D3778009E29DF /* OBPostOperation.m */; };
 		E6C2ED721CAA603600C557DE /* OBViewabilityOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */; };
 		E6C2ED731CAA603600C557DE /* OBViewabilityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */; };
 		E6C2ED761CAAAC6700C557DE /* OBWKWebview.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -206,6 +208,8 @@
 		E66AC33E1C99AB9400A23876 /* OBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBLabel.m; sourceTree = "<group>"; };
 		E66AC33F1C99AB9400A23876 /* UIView+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Visible.h"; sourceTree = "<group>"; };
 		E66AC3401C99AB9400A23876 /* UIView+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Visible.m"; sourceTree = "<group>"; };
+		E689B4FC1D0D3778009E29DF /* OBPostOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBPostOperation.h; sourceTree = "<group>"; };
+		E689B4FD1D0D3778009E29DF /* OBPostOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBPostOperation.m; sourceTree = "<group>"; };
 		E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBViewabilityOperation.h; sourceTree = "<group>"; };
 		E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityOperation.m; sourceTree = "<group>"; };
 		E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWKWebview.h; sourceTree = "<group>"; };
@@ -270,6 +274,8 @@
 				E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */,
 				D873964C1868E96E00FD8546 /* OBOperation.h */,
 				D873964D1868E96E00FD8546 /* OBOperation.m */,
+				E689B4FC1D0D3778009E29DF /* OBPostOperation.h */,
+				E689B4FD1D0D3778009E29DF /* OBPostOperation.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -547,6 +553,7 @@
 				D869E68B18621EB7006CDAD7 /* OBResponse.h in Headers */,
 				FC5DF6D019DD728300579200 /* OBAppleAdIdUtil.h in Headers */,
 				D8376BE7186E276500B45FA3 /* OutbrainSDK.h in Headers */,
+				E689B4FE1D0D3778009E29DF /* OBPostOperation.h in Headers */,
 				D869E6AB18623EA2006CDAD7 /* OBRecommendationResponse.h in Headers */,
 				D8EE5885185A27FC008F36C4 /* OBRequest.h in Headers */,
 				D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */,
@@ -729,6 +736,7 @@
 				E6C2ED771CAAAC6700C557DE /* OBWKWebview.m in Sources */,
 				D87540101857930100050F2C /* OBErrors.m in Sources */,
 				D873964F1868E96E00FD8546 /* OBOperation.m in Sources */,
+				E689B4FF1D0D3778009E29DF /* OBPostOperation.m in Sources */,
 				FC4F7C121A0A2A7600D49361 /* OBRecommendationsTokenHandler.m in Sources */,
 				D8158C6D18591F3D00AC5945 /* OBRecommendationRequestOperation.m in Sources */,
 				D8EE588A185A3ED4008F36C4 /* OBClickRegistrationOperation.m in Sources */,

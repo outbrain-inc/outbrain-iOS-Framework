@@ -230,7 +230,7 @@ static Outbrain * _sharedInstance = nil;
 }
 
 + (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url {
-    return YES;
+    return NO;
 }
 
 #if 0 // For the current SDK version the GA reporting should be disabled
