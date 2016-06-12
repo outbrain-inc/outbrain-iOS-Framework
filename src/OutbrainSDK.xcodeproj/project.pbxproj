@@ -87,6 +87,8 @@
 		E66AC3441C99AB9400A23876 /* UIView+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC3401C99AB9400A23876 /* UIView+Visible.m */; };
 		E689B4FE1D0D3778009E29DF /* OBPostOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E689B4FC1D0D3778009E29DF /* OBPostOperation.h */; };
 		E689B4FF1D0D3778009E29DF /* OBPostOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E689B4FD1D0D3778009E29DF /* OBPostOperation.m */; };
+		E689B5051D0D53CE009E29DF /* OBReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E689B5031D0D53CE009E29DF /* OBReachability.h */; };
+		E689B5061D0D53CE009E29DF /* OBReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E689B5041D0D53CE009E29DF /* OBReachability.m */; };
 		E6C2ED721CAA603600C557DE /* OBViewabilityOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */; };
 		E6C2ED731CAA603600C557DE /* OBViewabilityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */; };
 		E6C2ED761CAAAC6700C557DE /* OBWKWebview.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -210,6 +212,9 @@
 		E66AC3401C99AB9400A23876 /* UIView+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Visible.m"; sourceTree = "<group>"; };
 		E689B4FC1D0D3778009E29DF /* OBPostOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBPostOperation.h; sourceTree = "<group>"; };
 		E689B4FD1D0D3778009E29DF /* OBPostOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBPostOperation.m; sourceTree = "<group>"; };
+		E689B5031D0D53CE009E29DF /* OBReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBReachability.h; sourceTree = "<group>"; };
+		E689B5041D0D53CE009E29DF /* OBReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBReachability.m; sourceTree = "<group>"; };
+		E689B5071D0D5463009E29DF /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBViewabilityOperation.h; sourceTree = "<group>"; };
 		E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityOperation.m; sourceTree = "<group>"; };
 		E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWKWebview.h; sourceTree = "<group>"; };
@@ -266,6 +271,7 @@
 		D8158C6A18591AEB00AC5945 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E689B5081D0D5481009E29DF /* Reachability */,
 				D8158C6B18591F3D00AC5945 /* OBRecommendationRequestOperation.h */,
 				D8158C6C18591F3D00AC5945 /* OBRecommendationRequestOperation.m */,
 				D8EE5887185A3ED4008F36C4 /* OBClickRegistrationOperation.h */,
@@ -515,6 +521,16 @@
 			name = Viewability;
 			sourceTree = "<group>";
 		};
+		E689B5081D0D5481009E29DF /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				E689B5031D0D53CE009E29DF /* OBReachability.h */,
+				E689B5041D0D53CE009E29DF /* OBReachability.m */,
+				E689B5071D0D5463009E29DF /* LICENSE.txt */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 		E6C2ED781CAAAC6E00C557DE /* Custom-Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +581,7 @@
 				D8EE588D185A4057008F36C4 /* OBImage.h in Headers */,
 				E66AC3411C99AB9400A23876 /* OBLabel.h in Headers */,
 				D8EE587E185A1A95008F36C4 /* OBContent.h in Headers */,
+				E689B5051D0D53CE009E29DF /* OBReachability.h in Headers */,
 				D8CD0BC2186E1874002CBC05 /* OBContent_Private.h in Headers */,
 				E6C2ED721CAA603600C557DE /* OBViewabilityOperation.h in Headers */,
 				FC4F7C111A0A2A7600D49361 /* OBRecommendationsTokenHandler.h in Headers */,
@@ -744,6 +761,7 @@
 				D875400D18578F2F00050F2C /* OBContent.m in Sources */,
 				E66AC3421C99AB9400A23876 /* OBLabel.m in Sources */,
 				D8EE5886185A27FC008F36C4 /* OBRequest.m in Sources */,
+				E689B5061D0D53CE009E29DF /* OBReachability.m in Sources */,
 				D869E6AC18623EA2006CDAD7 /* OBRecommendationResponse.m in Sources */,
 				FC4F7C0D1A0A291800D49361 /* OBResponseRequest.m in Sources */,
 				D869E68C18621EB7006CDAD7 /* OBResponse.m in Sources */,

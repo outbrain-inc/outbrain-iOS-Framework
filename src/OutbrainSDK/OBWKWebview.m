@@ -9,6 +9,8 @@
 #import "OBWKWebview.h"
 #import "OBPostOperation.h"
 #import "Outbrain.h"
+#import "OBReachability.h"
+
 
 @interface OBWKWebview()
 
@@ -83,6 +85,26 @@ int const kReportEventFinished = 200;
     NSLog(@"reportServerOnPercentLoad: %@ - %f", self.URL.absoluteString, percentLoad);
 }
 
+- (NSString *) getNetworkInterface {
+    OBReachability *reachability = [OBReachability reachabilityForInternetConnection];
+    [reachability startNotifier];
+    
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    
+    if (status == ReachableViaWiFi)
+    {
+        //WiFi
+        return @"WiFi";
+    }
+    else if (status == ReachableViaWWAN)
+    {
+        //3G
+        return @"Mobile Network";
+    }
+    
+    return @"No Internet";
+}
+
 - (NSDictionary *) prepareDictionaryForServerReport:(int)eventType percentLoad:(int)percentLoad url:(NSString *)event_url {
     // Elapsed Time
     NSDate *timeNow = [NSDate date];
@@ -105,7 +127,7 @@ int const kReportEventFinished = 200;
                              @"partner_key" : partnerKey,
                              @"sdk_version" : OB_SDK_VERSION,
                              @"app_ver" : appVersionString,
-                             @"network" : @"3G"
+                             @"network" : [self getNetworkInterface]
                              };
     
     return params;
