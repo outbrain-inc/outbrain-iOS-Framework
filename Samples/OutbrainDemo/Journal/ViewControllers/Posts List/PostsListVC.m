@@ -203,14 +203,7 @@
 }
 
 -(NSString *) widgetIdForIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row < 4) {
-        return OBDemoWidgetID1;
-    }
-    else if (indexPath.row < 8) {
-        return OBDemoWidgetID2;
-    }
-    
-    return OBDemoWidgetID3;
+    return OBDemoWidgetID1;
 }
 
 - (void)_configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
