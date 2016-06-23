@@ -337,11 +337,21 @@ static Outbrain * _sharedInstance = nil;
         globalStatsEnabled = [responseSettings[kGLOBAL_WIDGET_STATISTICS] boolValue];
         [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithBool:globalStatsEnabled] key:kViewabilityEnabledKey];
     }
+    else {
+        // We need to make sure that if field doesn’t appear in the odb response - use the default value explicitly (don’t skip with no action).
+        // This should fix the potential bug of switching from a non-default value to a default from the server
+        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithBool:YES] key:kViewabilityEnabledKey];
+        
+    }
     
     if (responseSettings[kVIEWABILITY_THRESHOLD] && ![responseSettings[kVIEWABILITY_THRESHOLD] isKindOfClass:[NSNull class]])
     {
         viewabilityThreshold = [responseSettings[kVIEWABILITY_THRESHOLD] intValue];        
         [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithInt:viewabilityThreshold] key:kViewabilityThresholdKey];
+    }
+    else {
+        // Same thing here, explicitly set the default value
+        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithInt:1000] key:kViewabilityThresholdKey];
     }
 }
 
