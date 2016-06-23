@@ -1,14 +1,13 @@
 //
-//  OBWebView.h
+//  Outbrain+OBWebView_ProgressDelegate.h
 //  OutbrainSDK
 //
 //  Created by Oded Regev on 6/23/16.
 //  Copyright © 2016 Outbrain. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OBWebView.h"
 
-
-@interface OBWebView : UIWebView <UIWebViewDelegate>
+@interface OBWebView (ProgressDelegate)
 
 @end

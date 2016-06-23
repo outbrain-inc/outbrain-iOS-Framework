@@ -81,10 +81,13 @@
 		E607D4D91BDD16BE009A534B /* 0-recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D61BDD16BE009A534B /* 0-recommendations.json */; };
 		E607D4DA1BDD16BE009A534B /* full response images.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D71BDD16BE009A534B /* full response images.json */; };
 		E607D4DB1BDD16BE009A534B /* full response no images.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D81BDD16BE009A534B /* full response no images.json */; };
-		E65602CE1D1C199400FC305F /* OBWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = E65602CC1D1C199400FC305F /* OBWebView.h */; };
+		E65602CE1D1C199400FC305F /* OBWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = E65602CC1D1C199400FC305F /* OBWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E65602CF1D1C199400FC305F /* OBWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E65602CD1D1C199400FC305F /* OBWebView.m */; };
 		E65602D21D1C1D2E00FC305F /* CustomWebViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E65602D01D1C1D2E00FC305F /* CustomWebViewManager.h */; };
 		E65602D31D1C1D2E00FC305F /* CustomWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E65602D11D1C1D2E00FC305F /* CustomWebViewManager.m */; };
+		E65602DA1D1C2CA800FC305F /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = E65602D71D1C2C9700FC305F /* NJKWebViewProgress.m */; };
+		E65602DD1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E65602DB1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.h */; };
+		E65602DE1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E65602DC1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.m */; };
 		E66AC3411C99AB9400A23876 /* OBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E66AC33D1C99AB9400A23876 /* OBLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E66AC3421C99AB9400A23876 /* OBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC33E1C99AB9400A23876 /* OBLabel.m */; };
 		E66AC3431C99AB9400A23876 /* UIView+Visible.h in Headers */ = {isa = PBXBuildFile; fileRef = E66AC33F1C99AB9400A23876 /* UIView+Visible.h */; };
@@ -214,6 +217,11 @@
 		E65602CD1D1C199400FC305F /* OBWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBWebView.m; sourceTree = "<group>"; };
 		E65602D01D1C1D2E00FC305F /* CustomWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebViewManager.h; sourceTree = "<group>"; };
 		E65602D11D1C1D2E00FC305F /* CustomWebViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebViewManager.m; sourceTree = "<group>"; };
+		E65602D51D1C2C9700FC305F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E65602D61D1C2C9700FC305F /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		E65602D71D1C2C9700FC305F /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		E65602DB1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OBWebView+ProgressDelegate.h"; sourceTree = "<group>"; };
+		E65602DC1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OBWebView+ProgressDelegate.m"; sourceTree = "<group>"; };
 		E66AC33D1C99AB9400A23876 /* OBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBLabel.h; sourceTree = "<group>"; };
 		E66AC33E1C99AB9400A23876 /* OBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBLabel.m; sourceTree = "<group>"; };
 		E66AC33F1C99AB9400A23876 /* UIView+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Visible.h"; sourceTree = "<group>"; };
@@ -516,6 +524,16 @@
 			name = Requests;
 			sourceTree = "<group>";
 		};
+		E65602D41D1C2C9700FC305F /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				E65602D51D1C2C9700FC305F /* LICENSE */,
+				E65602D61D1C2C9700FC305F /* NJKWebViewProgress.h */,
+				E65602D71D1C2C9700FC305F /* NJKWebViewProgress.m */,
+			);
+			path = NJKWebViewProgress;
+			sourceTree = "<group>";
+		};
 		E66AC33C1C99AB6500A23876 /* Viewability */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,12 +560,15 @@
 		E6C2ED781CAAAC6E00C557DE /* Custom-Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E65602D41D1C2C9700FC305F /* NJKWebViewProgress */,
 				E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */,
 				E6C2ED751CAAAC6700C557DE /* OBWKWebview.m */,
 				E65602CC1D1C199400FC305F /* OBWebView.h */,
 				E65602CD1D1C199400FC305F /* OBWebView.m */,
 				E65602D01D1C1D2E00FC305F /* CustomWebViewManager.h */,
 				E65602D11D1C1D2E00FC305F /* CustomWebViewManager.m */,
+				E65602DB1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.h */,
+				E65602DC1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.m */,
 			);
 			name = "Custom-Classes";
 			sourceTree = "<group>";
@@ -585,9 +606,9 @@
 				D869E6AB18623EA2006CDAD7 /* OBRecommendationResponse.h in Headers */,
 				D8EE5885185A27FC008F36C4 /* OBRequest.h in Headers */,
 				D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */,
-				E65602CE1D1C199400FC305F /* OBWebView.h in Headers */,
 				D849D10B1868BB4D00CB4B83 /* Outbrain_Private.h in Headers */,
 				D8EE5889185A3ED4008F36C4 /* OBClickRegistrationOperation.h in Headers */,
+				E65602CE1D1C199400FC305F /* OBWebView.h in Headers */,
 				E65602D21D1C1D2E00FC305F /* CustomWebViewManager.h in Headers */,
 				FC52BEC71A14EAD4007774B0 /* OBResponseRequest.h in Headers */,
 				FC79B7881A18A5C30003E583 /* OBViewabilityService.h in Headers */,
@@ -595,6 +616,7 @@
 				D8EE588D185A4057008F36C4 /* OBImage.h in Headers */,
 				E66AC3411C99AB9400A23876 /* OBLabel.h in Headers */,
 				D8EE587E185A1A95008F36C4 /* OBContent.h in Headers */,
+				E65602DD1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.h in Headers */,
 				E689B5051D0D53CE009E29DF /* OBReachability.h in Headers */,
 				D8CD0BC2186E1874002CBC05 /* OBContent_Private.h in Headers */,
 				E6C2ED721CAA603600C557DE /* OBViewabilityOperation.h in Headers */,
@@ -784,6 +806,8 @@
 				D82F1D8018564C7700D4DEA8 /* Outbrain.m in Sources */,
 				FC5AA29C1981059C003C5509 /* OBSettings.m in Sources */,
 				E6C2ED731CAA603600C557DE /* OBViewabilityOperation.m in Sources */,
+				E65602DE1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.m in Sources */,
+				E65602DA1D1C2CA800FC305F /* NJKWebViewProgress.m in Sources */,
 				E65602CF1D1C199400FC305F /* OBWebView.m in Sources */,
 				E66AC3441C99AB9400A23876 /* UIView+Visible.m in Sources */,
 				FC5DF6D119DD728300579200 /* OBAppleAdIdUtil.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "OBWebView.h"
 #import "CustomWebViewManager.h"
+#import "NJKWebViewProgress.h"
 
 @interface OBWebView()
 
@@ -21,6 +22,7 @@
 
 @property (nonatomic, strong) NSDate *loadStartDate;
 
+@property (nonatomic, strong) NJKWebViewProgress *progressProxy;
 
 @end
 
@@ -33,10 +35,15 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        [super setDelegate:self];
         
-        // TODO implement progress monitoring
+        self.progressProxy = [[NJKWebViewProgress alloc] init];
         
+        [super setDelegate:self.progressProxy]; // Pass Webview delegate calls to progressProxy
+        
+        self.progressProxy.webViewProxyDelegate = self; // progressProxy will pass UIWebViewDelegate delegate calls back to original delegate after handling the calls itself.
+        
+        self.progressProxy.progressDelegate = (id<NJKWebViewProgressDelegate>)self; // Receive the progress status from the progressProxy
+    
         
         self.percentLoadThreshold = [[CustomWebViewManager sharedManager] paidRecsLoadPercentsThreshold];
         
@@ -53,6 +60,10 @@
     self.externalDelegate = delegate;
 }
 
-
+#pragma mark - NJKWebViewProgressDelegate
+-(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
+{
+    NSLog(@"** progress: %f **", progress);
+}
 
 @end
