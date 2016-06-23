@@ -7,10 +7,8 @@
 //
 
 #import "OBWKWebview.h"
-#import "OBPostOperation.h"
 #import "Outbrain.h"
-#import "OBReachability.h"
-
+#import "CustomWebViewManager.h"
 
 @interface OBWKWebview()
 
@@ -22,7 +20,7 @@
 @property (nonatomic, assign) BOOL alreadyReportedOnPercentLoad;
 @property (nonatomic, assign) float percentLoadThreshold;
 
-@property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
+
 @property (nonatomic, strong) NSDate *loadStartDate;
 
 @end
@@ -30,19 +28,14 @@
 
 @implementation OBWKWebview
 
-NSString * const kReportUrl = @"http://outbrain-node-js.herokuapp.com/api/v1/logs";
-int const kReportEventPercentLoad = 100;
-int const kReportEventFinished = 200;
-
 
 - (instancetype)initWithFrame:(CGRect)frame
                 configuration:(WKWebViewConfiguration *)configuration
 {
     if (self = [super initWithFrame:frame configuration:configuration]) {
-        self.navigationDelegate = self;
+        [super setNavigationDelegate:self];
         [self addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
-        self.percentLoadThreshold = [self paidRecsLoadPercentsThreshold];
-        self.obRequestQueue = [[NSOperationQueue alloc] init];
+        self.percentLoadThreshold = [[CustomWebViewManager sharedManager]  paidRecsLoadPercentsThreshold];
     }
     return self;
 }
@@ -50,7 +43,7 @@ int const kReportEventFinished = 200;
 - (void)dealloc
 {
     [self removeObserver:self forKeyPath:@"estimatedProgress"];
-    [self setNavigationDelegate:nil];
+    [super setNavigationDelegate:nil];
 
 }
 
@@ -58,80 +51,11 @@ int const kReportEventFinished = 200;
 #pragma mark - Private Methods
 
 -(void) setNavigationDelegate:(id<WKNavigationDelegate>)navigationDelegate {
-    if (self.navigationDelegate == nil) {
-        // SDK delegate from designated initializer
-        [super setNavigationDelegate:navigationDelegate];
-    }
-    else {
-        self.externalNavigationDelegate = navigationDelegate;
-    }
+    self.externalNavigationDelegate = navigationDelegate;
 }
 
-- (BOOL) urlShouldOpenInExternalBrowser {
-    return YES;
-}
 
-- (float) paidRecsLoadPercentsThreshold {
-    // TODO should be taken from NSUserDefaults where we save the settings from the ODB server response
-    return 0.75;
-}
 
-- (void) reportServerOnPercentLoad:(float)percentLoad {
-    int eventType = (percentLoad == 1.0) ? kReportEventFinished : kReportEventPercentLoad;
-    OBPostOperation *postOperation = [OBPostOperation operationWithURL:[NSURL URLWithString:kReportUrl]];
-    postOperation.postData = [self prepareDictionaryForServerReport:eventType percentLoad:(int)(percentLoad*100) url:self.URL.absoluteString];
-    [self.obRequestQueue addOperation:postOperation];
-    self.alreadyReportedOnPercentLoad = YES;
-    NSLog(@"reportServerOnPercentLoad: %@ - %f", self.URL.absoluteString, percentLoad);
-}
-
-- (NSString *) getNetworkInterface {
-    OBReachability *reachability = [OBReachability reachabilityForInternetConnection];
-    [reachability startNotifier];
-    
-    NetworkStatus status = [reachability currentReachabilityStatus];
-    
-    if (status == ReachableViaWiFi)
-    {
-        //WiFi
-        return @"WiFi";
-    }
-    else if (status == ReachableViaWWAN)
-    {
-        //3G
-        return @"Mobile Network";
-    }
-    
-    return @"No Internet";
-}
-
-- (NSDictionary *) prepareDictionaryForServerReport:(int)eventType percentLoad:(int)percentLoad url:(NSString *)event_url {
-    // Elapsed Time
-    NSDate *timeNow = [NSDate date];
-    NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:self.loadStartDate];
-    NSString *elapsedTime = [@((int)(executionTime*1000)) stringValue];
-    
-    // Partner Key
-    SEL selector = NSSelectorFromString(@"partnerKey");
-    NSString *partnerKey = [Outbrain performSelector:selector];
-    
-    //App Version
-    NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
-    
-    NSDictionary *params = @{@"redirectURL" : self.paidOutbrainUrl,
-                             @"event_type" : [NSNumber numberWithInt:eventType],
-                             @"event_data" : [NSNumber numberWithInt:percentLoad],
-                             @"elapsed_time" : elapsedTime,
-                             @"event_url" : event_url,
-                             @"partner_key" : partnerKey,
-                             @"sdk_version" : OB_SDK_VERSION,
-                             @"app_ver" : appVersionString,
-                             @"network" : [self getNetworkInterface]
-                             };
-    
-    return params;
-}
 
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -143,7 +67,8 @@ int const kReportEventFinished = 200;
             (self.paidOutbrainUrl != nil) &&
             (self.alreadyReportedOnPercentLoad == NO)) {
             
-                [self reportServerOnPercentLoad:self.estimatedProgress]; // we want to report on the percentLoadThreshold to make the heavy BI queries execute faster
+                [[CustomWebViewManager sharedManager] reportServerOnPercentLoad:self.estimatedProgress forUrl:self.URL.absoluteString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate]; // we want to report on the percentLoadThreshold to make the heavy BI queries execute faster
+                self.alreadyReportedOnPercentLoad = YES;
         }
     }
     else {
@@ -242,7 +167,7 @@ int const kReportEventFinished = 200;
             NSLog(@"** Real Pageview: %@ **", tempUrl);
             
             if (self.paidOutbrainUrl != nil)  {
-                [self reportServerOnPercentLoad:1.0];
+                [[CustomWebViewManager sharedManager] reportServerOnPercentLoad:1.0 forUrl:self.URL.absoluteString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate];
                 self.paidOutbrainUrl = nil;
             }
         }
