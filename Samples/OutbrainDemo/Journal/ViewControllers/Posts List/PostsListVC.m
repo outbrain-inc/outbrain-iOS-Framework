@@ -134,7 +134,7 @@
     
     typeof(self) __weak __self = self;
     Post * p = (Post *)[self.postsData firstObject];
-    OBRequest * request = [OBRequest requestWithURL:p.url widgetID:[self widgetIdForIndexPath:indexPath] widgetIndex:widgetIndex];
+    OBRequest * request = [OBRequest requestWithURL:p.url widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
     
     // We like block handlers
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
@@ -202,17 +202,6 @@
     }];
 }
 
--(NSString *) widgetIdForIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row < 4) {
-        return OBDemoWidgetID1;
-    }
-    else if (indexPath.row < 8) {
-        return OBDemoWidgetID2;
-    }
-    
-    return OBDemoWidgetID3;
-}
-
 - (void)_configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id item = [self postsData][indexPath.row];
@@ -226,7 +215,7 @@
         Post * p = (Post *)[self.postsData firstObject];
         slideCell.recommendationResponse = res;
         slideCell.widgetDelegate = self;
-        [slideCell setUrl:p.url andWidgetId:[self widgetIdForIndexPath:indexPath]];
+        [slideCell setUrl:p.url andWidgetId:OBDemoWidgetID1];
         
         return;
     }

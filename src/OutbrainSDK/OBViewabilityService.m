@@ -118,6 +118,10 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 
 - (void) reportRecsReceived:(OBRecommendationResponse *)response timestamp:(NSDate *)requestStartDate {
     
+    if ([self isViewabilityEnabled] == NO) {
+        return;
+    }
+    
     NSString *widgetId = response.request.widgetId;
     NSString *url = response.request.url;
     
