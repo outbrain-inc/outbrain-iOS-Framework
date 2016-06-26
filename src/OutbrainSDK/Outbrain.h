@@ -105,22 +105,22 @@ extern NSString * const OB_SDK_VERSION;
 /** @section Click Handling **/
 
 /**
- * @brief Maps the given OBRecommendation object to the original URL, and registers the click.
+ * @brief Maps the given OBRecommendation object to the original URL, and for organic recommendation, register the click to traffic.outbrain
  *
- * This function reports a click on a recommendation, and returns the recommendation's original web URL.
+ * This function returns the recommendation's URL and for organic recommendation, register the click to traffic.outbrain
  * Open paid links in a web view or external browser.\n
  * In the case of an organic link, translate the web URL into a mobile URL (if necessary) and show the content natively. \n
  * (See the Outbrain Journal sample app for an example of how to do this.)
  *
  * @param recommendation - a pointer to the the OBRecommendation object representing the recommendation that has been clicked.
- * @note If you open a new view as a result of the user clicking on a recommendation, first call this method to report the click in the original view.
+ * @note If you open a new view as a result of the user clicking on a recommendation, call this method to get the URL.
  * @note It is recommended that your app hold the OBRecommendationResponse object as an instance variable in the Activity.
  *
  * @return The web URL to redirect to.
  * @note If it's necessary to map the web URL to a mobile URL, this must be done in your code.
  * @see OBRecommendation
  **/
-+ (NSURL *)getOriginalContentURLAndRegisterClickForRecommendation:(OBRecommendation *)recommendation;
++ (NSURL *)getUrl:(OBRecommendation *)recommendation;
 
 /**
  * @brief Activates/deactivates the Outbrain test mode.

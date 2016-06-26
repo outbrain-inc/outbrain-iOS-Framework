@@ -188,29 +188,27 @@ static Outbrain * _sharedInstance = nil;
 
 #pragma mark - Clicking
 
-+ (NSURL *)getOriginalContentURLAndRegisterClickForRecommendation:(OBRecommendation *)recommendation
++ (NSURL *)getUrl:(OBRecommendation *)recommendation
 {
     // Should be initialized
     [self _throwAssertIfNotInitalized];
     
-    // New feature!! if SDK_SHOULD_RETURN_PAID_REDIRECT_URL == YES return the redirect url
-    BOOL sdkShouldReturnPaidRedirectUrl = [[recommendation originalValueForKeyPath:kSDK_SHOULD_RETURN_PAID_REDIRECT_URL] boolValue];
-    if (sdkShouldReturnPaidRedirectUrl && [recommendation isPaidLink]) {
+    if (recommendation.isPaidLink) {
         return [NSURL URLWithString:[recommendation originalValueForKeyPath:@"url"]];
     }
-    
-    // else... back to original implementation
-    
-    NSURL * originalURL = [NSURL URLWithString:[recommendation originalValueForKeyPath:@"orig_url"]];
-    
-    NSString *urlString = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:@"&noRedirect=true"];
-    NSURL * urlWithRedirect = [NSURL URLWithString:urlString];
-    
-    // We don't need a completion block for this one.  We just need to fire off the request and let it do it's thing
-    OBClickRegistrationOperation *clickOP = [OBClickRegistrationOperation operationWithURL:urlWithRedirect];
-    [[[self mainBrain] obRequestQueue] addOperation:clickOP];
-    
-    return originalURL;
+    else {
+        // Organic Recommendation
+        
+        NSURL * originalURL = [NSURL URLWithString:[recommendation originalValueForKeyPath:@"orig_url"]];
+        NSString *urlString = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:@"&noRedirect=true"];
+        NSURL * urlWithRedirect = [NSURL URLWithString:urlString];
+        
+        // We don't need a completion block for this one.  We just need to fire off the request and let it do it's thing
+        OBClickRegistrationOperation *clickOP = [OBClickRegistrationOperation operationWithURL:urlWithRedirect];
+        [[[self mainBrain] obRequestQueue] addOperation:clickOP];
+        
+        return originalURL;
+    }
 }
 
 #pragma mark - Viewability

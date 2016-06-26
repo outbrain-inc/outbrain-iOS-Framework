@@ -280,7 +280,7 @@ if([posts isEqual:_posts]) return;
     if(recommendation.isSameSource)
     {
         // url here
-        NSURL * url = [Outbrain getOriginalContentURLAndRegisterClickForRecommendation:recommendation];
+        NSURL * url = [Outbrain getUrl:recommendation];
         typeof(self) __weak __self = self;
         __block UIAlertView * loadingAlert = [[UIAlertView alloc] initWithTitle:@"Fetching Content" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
         [loadingAlert show];
