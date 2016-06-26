@@ -121,7 +121,6 @@ int const kReportEventFinished = 200;
     OBPostOperation *postOperation = [OBPostOperation operationWithURL:[NSURL URLWithString:kReportUrl]];
     postOperation.postData = [self prepareDictionaryForServerReport:eventType percentLoad:(int)(percentLoad*100) url:urlString orignalPaidOutbrainUrl:orignalPaidOutbrainUrl loadStartDate:loadStartDate];
     [self.obRequestQueue addOperation:postOperation];
-    NSLog(@"reportServerOnPercentLoad: %@ - %f", urlString, percentLoad);
 }
 
 

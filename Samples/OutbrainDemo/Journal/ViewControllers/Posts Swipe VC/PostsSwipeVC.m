@@ -357,6 +357,7 @@ if([posts isEqual:_posts]) return;
     {
         UINavigationController * nav = [segue destinationViewController];
         OBRecommendation *recommendationToOpen = (OBRecommendation *)sender;
+        
         NSURL *recURL = [Outbrain getUrl:recommendationToOpen];
         [[nav topViewController] setValue:recURL forKey:@"recommendationUrl"];
     }

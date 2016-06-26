@@ -18,16 +18,39 @@
 #define OBPaidLinkKey @"OBPaidLinkKey"
 #define OBVideoKey @"OBVideoKey"
 
+
+@interface OBRecommendation()
+
+/** @brief The date the content was published. */
+@property (nonatomic, strong, readwrite) NSDate * publishDate;
+@property (nonatomic, strong, readwrite) NSURL * sourceURL;
+/** @brief TBD - property may be removed. */
+@property (nonatomic, copy, readwrite) NSString * author;
+/** @brief The recommendation's title. */
+@property (nonatomic, copy, readwrite) NSString * content;
+/** @brief The name of the recommendation's source. */
+@property (nonatomic, copy, readwrite) NSString * source;
+/** @brief Is the recommendation from the same source as the one the user is currently viewing. */
+@property (nonatomic, assign, getter = isSameSource, readwrite) BOOL sameSource;
+/** @brief Is this a recommendation for which the publisher pays, when your user clicks on it. */
+@property (nonatomic, assign, getter = isPaidLink, readwrite) BOOL paidLink;
+/** @brief Is the recommendation a link to a video clip. */
+@property (nonatomic, assign, getter = isVideo, readwrite) BOOL video;
+/** @brief An image related to the recommendation. */
+@property (nonatomic, strong, readwrite) OBImage *image;
+
+@end
+
+
 @implementation OBRecommendation
-@synthesize publishDate;
-@synthesize sourceURL;
+
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-   [coder encodeObject:publishDate forKey:OBPublishDateKey];
-   [coder encodeObject:sourceURL forKey:OBSourceURLKey];
-   [coder encodeObject:author forKey:OBAuthorKey];
-   [coder encodeObject:content forKey:OBContentKey];
-   [coder encodeObject:source forKey:OBSourceKey];
+   [coder encodeObject:self.publishDate forKey:OBPublishDateKey];
+   [coder encodeObject:self.sourceURL forKey:OBSourceURLKey];
+   [coder encodeObject:self.author forKey:OBAuthorKey];
+   [coder encodeObject:self.content forKey:OBContentKey];
+   [coder encodeObject:self.source forKey:OBSourceKey];
 
 }
 - (id)initWithCoder:(NSCoder *)coder {
@@ -64,14 +87,14 @@
 + (NSDictionary *)propertiesMap
 {
     return @{
-             @"author":@"author",
-             @"source":@"source_name",
-             @"sourceURL":@"url",
-             @"publishDate":@"publish_date",
-             @"content":@"content",
-             @"sameSource":@"same_source",
-             @"image":@"thumbnail",
-             @"video":@"isVideo"
+             @"author":             @"author",
+             @"source":             @"source_name",
+             @"sourceURL":          @"url",
+             @"publishDate":        @"publish_date",
+             @"content":            @"content",
+             @"sameSource":         @"same_source",
+             @"image":              @"thumbnail",
+             @"video":              @"isVideo"
              };
 }
 
@@ -167,6 +190,10 @@
 
 - (void)setVideo:(BOOL)aVideo {
     video = aVideo;
+}
+
+- (void) setPublishDate:(NSDate *)aPublishDate {
+    publishDate = aPublishDate;
 }
 
 - (NSString *)getPrivateAuthor {
