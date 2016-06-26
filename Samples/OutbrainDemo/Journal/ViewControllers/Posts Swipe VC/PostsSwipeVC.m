@@ -356,7 +356,9 @@ if([posts isEqual:_posts]) return;
     if([segue.identifier isEqualToString:@"ShowRecommendedContent"])
     {
         UINavigationController * nav = [segue destinationViewController];
-        [[nav topViewController] setValue:sender forKey:@"recommendation"];
+        OBRecommendation *recommendationToOpen = (OBRecommendation *)sender;
+        NSURL *recURL = [Outbrain getUrl:recommendationToOpen];
+        [[nav topViewController] setValue:recURL forKey:@"recommendationUrl"];
     }
 }
 
