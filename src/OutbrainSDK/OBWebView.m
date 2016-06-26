@@ -14,14 +14,6 @@
 
 @property (nonatomic, weak) id<UIWebViewDelegate> externalDelegate;
 
-@property (nonatomic, strong) NSString *paidOutbrainParams;
-@property (nonatomic, strong) NSString *paidOutbrainUrl;
-
-@property (nonatomic, assign) BOOL alreadyReportedOnPercentLoad;
-@property (nonatomic, assign) float percentLoadThreshold;
-
-@property (nonatomic, strong) NSDate *loadStartDate;
-
 @property (nonatomic, strong) NJKWebViewProgress *progressProxy;
 
 @end
@@ -43,10 +35,6 @@
         self.progressProxy.webViewProxyDelegate = self; // progressProxy will pass UIWebViewDelegate delegate calls back to original delegate after handling the calls itself.
         
         self.progressProxy.progressDelegate = (id<NJKWebViewProgressDelegate>)self; // Receive the progress status from the progressProxy
-    
-        
-        self.percentLoadThreshold = [[CustomWebViewManager sharedManager] paidRecsLoadPercentsThreshold];
-        
     }
     return self;
 }
@@ -63,7 +51,53 @@
 #pragma mark - NJKWebViewProgressDelegate
 -(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
 {
-    NSLog(@"** progress: %f **", progress);
+    NSLog(@"** progress: %f --> %@ **", progress, self.request.URL.host);
+    
+    if (progress < 1.0) {
+        [[CustomWebViewManager sharedManager] reportOnProgressAndReportIfNeeded:progress webview:self];
+    }
+    else if (progress == 1.0) {
+        [[CustomWebViewManager sharedManager] checkUrlAndReportIfNeeded:self];
+    }
 }
+
+#pragma mark - UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if (self.externalDelegate &&
+        [self.externalDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
+    {
+        return [self.externalDelegate webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+    }
+    
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    if (self.externalDelegate &&
+        [self.externalDelegate respondsToSelector:@selector(webViewDidStartLoad:)])
+    {
+        [self.externalDelegate webViewDidStartLoad:webView];
+    }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    if (self.externalDelegate &&
+        [self.externalDelegate respondsToSelector:@selector(webViewDidFinishLoad:)])
+    {
+        [self.externalDelegate webViewDidFinishLoad:webView];
+    }
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
+    if (self.externalDelegate &&
+        [self.externalDelegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
+    {
+        [self.externalDelegate webView:webView didFailLoadWithError:error];
+    }
+}
+
+
 
 @end

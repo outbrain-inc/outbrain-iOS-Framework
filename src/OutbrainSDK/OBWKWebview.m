@@ -62,14 +62,8 @@
     if ([keyPath isEqualToString:@"estimatedProgress"] && object == self) {
         // estimatedProgress is a value from 0.0 to 1.0
         NSLog(@"progress: %f", self.estimatedProgress);
+        [[CustomWebViewManager sharedManager] reportOnProgressAndReportIfNeeded:self.estimatedProgress webview:self];
         
-        if ((self.estimatedProgress > self.percentLoadThreshold) &&
-            (self.paidOutbrainUrl != nil) &&
-            (self.alreadyReportedOnPercentLoad == NO)) {
-            
-                [[CustomWebViewManager sharedManager] reportServerOnPercentLoad:self.estimatedProgress forUrl:self.URL.absoluteString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate]; // we want to report on the percentLoadThreshold to make the heavy BI queries execute faster
-                self.alreadyReportedOnPercentLoad = YES;
-        }
     }
     else {
         // Make sure to call the superclass's implementation in the else block in case it is also implementing KVO
@@ -152,29 +146,7 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"OB didFinishNavigation");
     
-    if ([[webView.URL absoluteString] containsString:@"paid.outbrain.com"]) {
-        NSArray *components = [[webView.URL absoluteString] componentsSeparatedByString:@"?"];
-        if (components.count == 2) {
-            self.paidOutbrainParams = components[1];
-        }
-        self.paidOutbrainUrl = [webView.URL absoluteString];
-        self.loadStartDate = [NSDate date];
-    }
-    
-    NSString *tempUrl = [webView.URL absoluteString];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        if ([[webView.URL absoluteString] isEqualToString:tempUrl]) {
-            NSLog(@"** Real Pageview: %@ **", tempUrl);
-            
-            if (self.paidOutbrainUrl != nil)  {
-                [[CustomWebViewManager sharedManager] reportServerOnPercentLoad:1.0 forUrl:self.URL.absoluteString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate];
-                self.paidOutbrainUrl = nil;
-            }
-        }
-        else {
-            NSLog(@"NOT Real Pageview: %@ == %@", [webView.URL absoluteString], tempUrl);
-        }
-    });
+    [[CustomWebViewManager sharedManager] checkUrlAndReportIfNeeded:webView];
     
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFinishNavigation:)])

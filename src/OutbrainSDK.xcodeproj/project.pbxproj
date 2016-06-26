@@ -86,8 +86,6 @@
 		E65602D21D1C1D2E00FC305F /* CustomWebViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E65602D01D1C1D2E00FC305F /* CustomWebViewManager.h */; };
 		E65602D31D1C1D2E00FC305F /* CustomWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E65602D11D1C1D2E00FC305F /* CustomWebViewManager.m */; };
 		E65602DA1D1C2CA800FC305F /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = E65602D71D1C2C9700FC305F /* NJKWebViewProgress.m */; };
-		E65602DD1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E65602DB1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.h */; };
-		E65602DE1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E65602DC1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.m */; };
 		E66AC3411C99AB9400A23876 /* OBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E66AC33D1C99AB9400A23876 /* OBLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E66AC3421C99AB9400A23876 /* OBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC33E1C99AB9400A23876 /* OBLabel.m */; };
 		E66AC3431C99AB9400A23876 /* UIView+Visible.h in Headers */ = {isa = PBXBuildFile; fileRef = E66AC33F1C99AB9400A23876 /* UIView+Visible.h */; };
@@ -220,8 +218,6 @@
 		E65602D51D1C2C9700FC305F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E65602D61D1C2C9700FC305F /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
 		E65602D71D1C2C9700FC305F /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
-		E65602DB1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OBWebView+ProgressDelegate.h"; sourceTree = "<group>"; };
-		E65602DC1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OBWebView+ProgressDelegate.m"; sourceTree = "<group>"; };
 		E66AC33D1C99AB9400A23876 /* OBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBLabel.h; sourceTree = "<group>"; };
 		E66AC33E1C99AB9400A23876 /* OBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBLabel.m; sourceTree = "<group>"; };
 		E66AC33F1C99AB9400A23876 /* UIView+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Visible.h"; sourceTree = "<group>"; };
@@ -567,8 +563,6 @@
 				E65602CD1D1C199400FC305F /* OBWebView.m */,
 				E65602D01D1C1D2E00FC305F /* CustomWebViewManager.h */,
 				E65602D11D1C1D2E00FC305F /* CustomWebViewManager.m */,
-				E65602DB1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.h */,
-				E65602DC1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.m */,
 			);
 			name = "Custom-Classes";
 			sourceTree = "<group>";
@@ -616,7 +610,6 @@
 				D8EE588D185A4057008F36C4 /* OBImage.h in Headers */,
 				E66AC3411C99AB9400A23876 /* OBLabel.h in Headers */,
 				D8EE587E185A1A95008F36C4 /* OBContent.h in Headers */,
-				E65602DD1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.h in Headers */,
 				E689B5051D0D53CE009E29DF /* OBReachability.h in Headers */,
 				D8CD0BC2186E1874002CBC05 /* OBContent_Private.h in Headers */,
 				E6C2ED721CAA603600C557DE /* OBViewabilityOperation.h in Headers */,
@@ -806,7 +799,6 @@
 				D82F1D8018564C7700D4DEA8 /* Outbrain.m in Sources */,
 				FC5AA29C1981059C003C5509 /* OBSettings.m in Sources */,
 				E6C2ED731CAA603600C557DE /* OBViewabilityOperation.m in Sources */,
-				E65602DE1D1C2ECE00FC305F /* OBWebView+ProgressDelegate.m in Sources */,
 				E65602DA1D1C2CA800FC305F /* NJKWebViewProgress.m in Sources */,
 				E65602CF1D1C199400FC305F /* OBWebView.m in Sources */,
 				E66AC3441C99AB9400A23876 /* UIView+Visible.m in Sources */,
