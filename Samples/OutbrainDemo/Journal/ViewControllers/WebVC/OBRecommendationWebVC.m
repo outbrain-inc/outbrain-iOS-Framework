@@ -12,7 +12,7 @@
 
 @interface OBRecommendationWebVC ()
 
-@property (nonatomic, strong) UIWebView * webView;
+@property (nonatomic, strong) OBWebView * webView;
 @property (nonatomic, strong) AppWKWebview * wk_WebView;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * backButton;
@@ -23,7 +23,9 @@
 @end
 
 
-#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)  (YES || [[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
+//#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 
 @implementation OBRecommendationWebVC
@@ -38,7 +40,7 @@
     CGRect frame = CGRectMake(0, 20.0, self.view.frame.size.width, self.view.frame.size.height);
     
     if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        self.webView = [[UIWebView alloc] initWithFrame:frame];
+        self.webView = [[OBWebView alloc] initWithFrame:frame];
         self.webView.scalesPageToFit = YES;
         [self.webView setTranslatesAutoresizingMaskIntoConstraints: NO];
         self.webView.delegate = self;
@@ -167,21 +169,21 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
-//    [self _updateButtonStates];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
+    [self _updateButtonStates];
     
     return YES;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
     [self _updateButtonStates];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
     // Webview sometimes calls finished when it's really not.  In this
     // case we'll just wait a second to make sure it's actually finished
     [self _updateButtonStates];
