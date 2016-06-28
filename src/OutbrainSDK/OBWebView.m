@@ -23,20 +23,33 @@
 
 @implementation OBWebView
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    
+    if ((self = [super initWithCoder:aDecoder])) {
+        [self __commonInit];
+    }
+    
+    return self;
+}
+
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        
-        self.progressProxy = [[NJKWebViewProgress alloc] init];
-        
-        [super setDelegate:self.progressProxy]; // Pass Webview delegate calls to progressProxy
-        
-        self.progressProxy.webViewProxyDelegate = self; // progressProxy will pass UIWebViewDelegate delegate calls back to original delegate after handling the calls itself.
-        
-        self.progressProxy.progressDelegate = (id<NJKWebViewProgressDelegate>)self; // Receive the progress status from the progressProxy
+        [self __commonInit];
     }
     return self;
+}
+
+- (void) __commonInit {
+    
+    self.progressProxy = [[NJKWebViewProgress alloc] init];
+    
+    [super setDelegate:self.progressProxy]; // Pass Webview delegate calls to progressProxy
+    
+    self.progressProxy.webViewProxyDelegate = self; // progressProxy will pass UIWebViewDelegate delegate calls back to original delegate after handling the calls itself.
+    
+    self.progressProxy.progressDelegate = (id<NJKWebViewProgressDelegate>)self; // Receive the progress status from the progressProxy
 }
 
 - (void)dealloc
