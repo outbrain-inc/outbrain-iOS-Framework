@@ -277,7 +277,7 @@ if([posts isEqual:_posts]) return;
 
 - (void)widgetView:(UIView<OBWidgetViewProtocol> *)widgetView tappedRecommendation:(OBRecommendation *)recommendation
 {
-    if(recommendation.isSameSource)
+    if(recommendation.isPaidLink == NO) // Organic
     {
         // url here
         NSURL * url = [Outbrain getUrl:recommendation];
@@ -339,7 +339,12 @@ if([posts isEqual:_posts]) return;
         return;
     }
     
-    [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:recommendation];
+    if (recommendation.shouldOpenInExternalBrowser) {
+        [self openUrlInSafariVC:[Outbrain getUrl:recommendation]];
+    }
+    else {
+        [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:recommendation];
+    }    
 }
 
 - (void)widgetViewTappedBranding:(UIView<OBWidgetViewProtocol> *)widgetView
@@ -363,5 +368,20 @@ if([posts isEqual:_posts]) return;
     }
 }
 
+#pragma mark - SFSafariViewController + SFSafariViewControllerDelegate
+
+- (void) openUrlInSafariVC:(NSURL *)url {
+    SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+    sf.delegate = self;
+    [self.navigationController presentViewController:sf animated:YES completion:nil];
+}
+
+- (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
+    NSLog(@"safariViewController didCompleteInitialLoad");
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    NSLog(@"safariViewController safariViewControllerDidFinish");
+}
 
 @end

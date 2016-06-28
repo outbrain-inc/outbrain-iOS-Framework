@@ -9,14 +9,12 @@
 #import "OBRecommendation.h"
 #import "OBContent_Private.h"
 
-#define OBPublishDateKey @"OBPublishDateKey"
-#define OBSourceURLKey @"OBSourceURLKey"
-#define OBAuthorKey @"OBAuthorKey"
-#define OBContentKey @"OBContentKey"
-#define OBSourceKey @"OBSourceKey"
-#define OBSameSourceKey @"OBSameSourceKey"
-#define OBPaidLinkKey @"OBPaidLinkKey"
-#define OBVideoKey @"OBVideoKey"
+#define OBPublishDateKey        @"OBPublishDateKey"
+#define OBSourceURLKey          @"OBSourceURLKey"
+#define OBAuthorKey             @"OBAuthorKey"
+#define OBContentKey            @"OBContentKey"
+#define OBSourceKey             @"OBSourceKey"
+
 
 
 @interface OBRecommendation()
@@ -38,6 +36,8 @@
 @property (nonatomic, assign, getter = isVideo, readwrite) BOOL video;
 /** @brief An image related to the recommendation. */
 @property (nonatomic, strong, readwrite) OBImage *image;
+/** @brief should we open this recommendation in an external browser or within the app */
+@property (nonatomic, assign, readwrite) BOOL shouldOpenInExternalBrowser;
 
 @end
 
@@ -51,8 +51,8 @@
    [coder encodeObject:self.author forKey:OBAuthorKey];
    [coder encodeObject:self.content forKey:OBContentKey];
    [coder encodeObject:self.source forKey:OBSourceKey];
-
 }
+
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super init];
     if (self) {
@@ -87,14 +87,15 @@
 + (NSDictionary *)propertiesMap
 {
     return @{
-             @"author":             @"author",
-             @"source":             @"source_name",
-             @"sourceURL":          @"url",
-             @"publishDate":        @"publish_date",
-             @"content":            @"content",
-             @"sameSource":         @"same_source",
-             @"image":              @"thumbnail",
-             @"video":              @"isVideo"
+             @"author":                             @"author",
+             @"source":                             @"source_name",
+             @"sourceURL":                          @"url",
+             @"publishDate":                        @"publish_date",
+             @"content":                            @"content",
+             @"sameSource":                         @"same_source",
+             @"image":                              @"thumbnail",
+             @"video":                              @"isVideo",
+             @"shouldOpenInExternalBrowser":        @"shouldOpenInExternalBrowser"
              };
 }
 

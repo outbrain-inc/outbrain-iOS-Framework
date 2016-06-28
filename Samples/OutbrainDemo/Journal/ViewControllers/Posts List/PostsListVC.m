@@ -279,7 +279,7 @@
     NSURL * url = [Outbrain getUrl:recommendation];
     
     // User tapped a recommendation   
-    if (recommendation.isSameSource) {
+    if (recommendation.isPaidLink == NO) { // Organic
         typeof(self) __weak __self = self;
         __block UIAlertView * loadingAlert = [[UIAlertView alloc] initWithTitle:@"Fetching Content" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
         [loadingAlert show];
@@ -295,7 +295,7 @@
         }];
     }
     else {
-        if ([Outbrain shouldOpenUrlInSafariViewController:url]) {
+        if (recommendation.shouldOpenInExternalBrowser) {
             [self openUrlInSafariVC:url];
         }
         else {

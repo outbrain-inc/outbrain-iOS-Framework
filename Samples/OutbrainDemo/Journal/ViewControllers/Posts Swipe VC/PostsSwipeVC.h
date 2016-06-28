@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/CADisplayLink.h>
+@import SafariServices;
 
 // Determines how frequent we want to show interstitials
 #define INTERSTITIAL_FREQUENCY  4
@@ -16,7 +17,7 @@
 @class OBParalaxTitleView;
 @class Post;
 
-@interface PostsSwipeVC : UICollectionViewController <UICollectionViewDelegateFlowLayout>
+@interface PostsSwipeVC : UICollectionViewController <UICollectionViewDelegateFlowLayout, SFSafariViewControllerDelegate>
 
 /**
  *  Discussion:
