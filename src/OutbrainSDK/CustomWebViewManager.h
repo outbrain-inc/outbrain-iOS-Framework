@@ -11,6 +11,10 @@
 @interface CustomWebViewManager : NSObject
 
 
+extern NSString * const kCustomWebViewReportingEnabledKey;
+extern NSString * const kCustomWebViewThresholdKey;
+
+
 + (id)sharedManager;
 
 - (void) reportServerOnPercentLoad:(float)percentLoad forUrl:(NSString *)urlString orignalPaidOutbrainUrl:(NSString *)orignalPaidOutbrainUrl loadStartDate:(NSDate *)loadStartDate;
@@ -19,7 +23,6 @@
 
 - (void) reportOnProgressAndReportIfNeeded:(float)progress webview:(id)uiwebView_or_wkwebview;
 
-- (float) paidRecsLoadPercentsThreshold;
-- (BOOL) urlShouldOpenInExternalBrowser;
-
+- (void) updateCWVSetting:(NSNumber *)value key:(NSString *)key;
+    
 @end

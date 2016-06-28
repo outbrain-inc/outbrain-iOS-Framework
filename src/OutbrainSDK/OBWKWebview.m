@@ -18,8 +18,6 @@
 @property (nonatomic, strong) NSString *paidOutbrainUrl;
 
 @property (nonatomic, assign) BOOL alreadyReportedOnPercentLoad;
-@property (nonatomic, assign) float percentLoadThreshold;
-
 
 @property (nonatomic, strong) NSDate *loadStartDate;
 
@@ -35,7 +33,6 @@
     if (self = [super initWithFrame:frame configuration:configuration]) {
         [super setNavigationDelegate:self];
         [self addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:NULL];
-        self.percentLoadThreshold = [[CustomWebViewManager sharedManager]  paidRecsLoadPercentsThreshold];
     }
     return self;
 }

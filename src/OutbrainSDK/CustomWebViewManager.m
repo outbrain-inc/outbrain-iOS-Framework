@@ -15,22 +15,30 @@
 #import "Outbrain.h"
 
 @interface CustomWebViewManager()
+
 @property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
 
 @property (nonatomic, assign) BOOL alreadyReportedOnPercentLoad;
 @property (nonatomic, assign) BOOL alreadyReportedOnLoadComplete;
-
 
 @property (nonatomic, strong) NSString *paidOutbrainParams;
 @property (nonatomic, strong) NSString *paidOutbrainUrl;
 @property (nonatomic, strong) NSDate *loadStartDate;
 @property (nonatomic, assign) float percentLoadThreshold;
 
+
+- (BOOL) isCustomWebViewReportingEnabled;
+- (float) customWebViewThreshold;
+
+
 @end
 
 
 
 @implementation CustomWebViewManager
+
+NSString * const kCustomWebViewReportingEnabledKey = @"kCustomWebViewReportingEnabledKey";
+NSString * const kCustomWebViewThresholdKey = @"kCustomWebViewThreshold";
 
 NSString * const kPaidOutbrainPrefix = @"paid.outbrain.com";
 NSString * const kReportUrl = @"http://outbrain-node-js.herokuapp.com/api/v1/logs";
@@ -44,7 +52,7 @@ int const kReportEventFinished = 200;
     dispatch_once(&onceToken, ^{
         sharedMyManager = [[self alloc] init];
         sharedMyManager.obRequestQueue = [[NSOperationQueue alloc] init];
-        sharedMyManager.percentLoadThreshold = [sharedMyManager paidRecsLoadPercentsThreshold];
+        sharedMyManager.percentLoadThreshold = [sharedMyManager customWebViewThreshold];
     });
     return sharedMyManager;
 }
@@ -117,6 +125,11 @@ int const kReportEventFinished = 200;
 #pragma mark - Reporting to Server
 
 - (void) reportServerOnPercentLoad:(float)percentLoad forUrl:(NSString *)urlString orignalPaidOutbrainUrl:(NSString *)orignalPaidOutbrainUrl loadStartDate:(NSDate *)loadStartDate {
+    
+    if ([self isCustomWebViewReportingEnabled] == NO) {
+        return;
+    }
+    
     int eventType = (percentLoad == 1.0) ? kReportEventFinished : kReportEventPercentLoad;
     OBPostOperation *postOperation = [OBPostOperation operationWithURL:[NSURL URLWithString:kReportUrl]];
     postOperation.postData = [self prepareDictionaryForServerReport:eventType percentLoad:(int)(percentLoad*100) url:urlString orignalPaidOutbrainUrl:orignalPaidOutbrainUrl loadStartDate:loadStartDate];
@@ -188,16 +201,27 @@ int const kReportEventFinished = 200;
     return @"No Internet";
 }
 
-#pragma mark - Temp Mocks for server params
-
-- (float) paidRecsLoadPercentsThreshold {
-    // TODO should be taken from NSUserDefaults where we save the settings from the ODB server response
-    return 0.75;
+#pragma mark - Viewability Settings
+- (void) updateCWVSetting:(NSNumber *)value key:(NSString *)key {
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
+    
+    self.percentLoadThreshold = [self customWebViewThreshold];
 }
 
-
-- (BOOL) urlShouldOpenInExternalBrowser {
+- (BOOL) isCustomWebViewReportingEnabled {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kCustomWebViewReportingEnabledKey]) {
+        NSNumber *val = [[NSUserDefaults standardUserDefaults] objectForKey:kCustomWebViewReportingEnabledKey];
+        return [val boolValue];
+    }
     return YES;
+}
+
+- (float) customWebViewThreshold {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kCustomWebViewThresholdKey]) {
+        NSNumber *val = [[NSUserDefaults standardUserDefaults] objectForKey:kCustomWebViewThresholdKey];
+        return [val floatValue] / 100.0;
+    }
+    return 0.8;
 }
 
 @end
