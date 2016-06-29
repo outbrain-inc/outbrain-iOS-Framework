@@ -19,6 +19,8 @@
 #import "OBAppDelegate.h"
 #import "TopBoxPostViewCell.h"
 
+
+
 @interface PostsSwipeVC () <OBWidgetViewDelegate,OBInterstitialViewDelegate>
 @end
 
@@ -371,9 +373,15 @@ if([posts isEqual:_posts]) return;
 #pragma mark - SFSafariViewController + SFSafariViewControllerDelegate
 
 - (void) openUrlInSafariVC:(NSURL *)url {
-    SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
-    sf.delegate = self;
-    [self.navigationController presentViewController:sf animated:YES completion:nil];
+    if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
+        [[UIApplication sharedApplication] openURL:url];
+
+    }
+    else {
+        SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+        sf.delegate = self;
+        [self.navigationController presentViewController:sf animated:YES completion:nil];
+    }
 }
 
 - (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
