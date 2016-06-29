@@ -236,6 +236,16 @@ static Outbrain * _sharedInstance = nil;
     return NO;
 }
 
++ (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary {
+    if (jsonDictionary[@"response"][@"documents"][@"doc"] == nil) {
+        return NO;
+    }
+    
+    [self _updateCustomWebViewSettings:jsonDictionary[@"response"][@"settings"]];
+    
+    return YES;
+}
+
 #if 0 // For the current SDK version the GA reporting should be disabled
 + (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage {
     [OBGAHelper reportMethodCalled:@"setShouldTrackSDKUsage:" withParams:(shouldTrackSDKUsage ? @"YES" : @"NO"), nil];

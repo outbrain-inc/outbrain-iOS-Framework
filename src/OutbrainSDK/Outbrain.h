@@ -102,6 +102,9 @@ extern NSString * const OB_SDK_VERSION;
 
 + (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url;
 
+// Return status - success or failure
++ (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary;
+
 /** @section Click Handling **/
 
 /**
