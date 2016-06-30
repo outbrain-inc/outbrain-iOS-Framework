@@ -120,7 +120,7 @@
  @param error The error that occurred.
  */
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"OB didFailProvisionalNavigation");
+    NSLog(@"OB didFailProvisionalNavigation: %@ - %@", error.localizedDescription, error.userInfo);
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFailProvisionalNavigation:withError:)])
     {
@@ -162,8 +162,7 @@
  @param error The error that occurred.
  */
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"OB didFailNavigation: %@", error.localizedDescription);
-    
+    NSLog(@"OB didFailNavigation: %@ - %@", error.localizedDescription, error.userInfo);
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFailNavigation:withError:)])
     {
@@ -180,6 +179,11 @@
  @discussion If you do not implement this method, the web view will load the request or, if appropriate, forward it to another application.
  */
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
+    if ([[[navigationAction.request URL] scheme] isEqualToString:@"itms-apps"]) {
+        decisionHandler(WKNavigationActionPolicyCancel);
+        return;
+    }
     
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:decidePolicyForNavigationAction:decisionHandler:)])

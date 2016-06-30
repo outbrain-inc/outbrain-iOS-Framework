@@ -46,11 +46,15 @@
         self.webView.delegate = self;
         // Fast scrolling
         self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+        // KVO on loading
+        [self.webView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:NULL];
         [self.view addSubview:self.webView];
     }
     else {
         self.wk_WebView = [[AppWKWebview alloc] initWithFrame:frame];
         self.wk_WebView.navigationDelegate = self;
+        // KVO on loading
+        [self.wk_WebView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:NULL];
         [self.view addSubview:self.wk_WebView];
     }
     
@@ -65,6 +69,16 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+}
+
+- (void)dealloc
+{
+    if (self.webView != nil) {
+        [self.webView removeObserver:self forKeyPath:@"loading"];
+    }
+    if (self.wk_WebView != nil) {
+        [self.wk_WebView removeObserver:self forKeyPath:@"loading"];
+    }
 }
 
 #pragma mark - User Actions
@@ -133,7 +147,6 @@
     {
         NSMutableArray * tmpItems = [[self toolbarItems] mutableCopy];
         [tmpItems removeObject:activityItem];
-//        [tmpItems replaceObjectAtIndex:2 withObject:self.refreshButton];
         [self setToolbarItems:tmpItems animated:YES];
     }
 }
@@ -162,6 +175,15 @@
     }
     else {
         return self.wk_WebView.URL;
+    }
+}
+
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"loading"]) {
+        //NSLog(@"isloading? %@" , [self isWebViewLoading] ? @"YES" : @"NO");
+        // TODO update spinner here
     }
 }
 

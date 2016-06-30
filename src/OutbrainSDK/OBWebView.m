@@ -77,6 +77,11 @@
 #pragma mark - UIWebViewDelegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    
+    if ([[[request URL] scheme] isEqualToString:@"itms-apps"]) {
+        return NO;
+    }
+    
     if (self.externalDelegate &&
         [self.externalDelegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
     {
@@ -109,7 +114,7 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
-    // NSLog(@"didFailLoadWithError: %@ - %@", error.localizedDescription, error.userInfo);
+    NSLog(@"OB didFailLoadWithError: %@ - %@", error.localizedDescription, error.userInfo);
     if (self.externalDelegate &&
         [self.externalDelegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
     {
