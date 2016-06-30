@@ -58,9 +58,14 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"estimatedProgress"] && object == self) {
         // estimatedProgress is a value from 0.0 to 1.0
-        NSLog(@"progress: %f", self.estimatedProgress);
-        [[CustomWebViewManager sharedManager] reportOnProgressAndReportIfNeeded:self.estimatedProgress webview:self];
+        NSLog(@"progress: %f --> %@", self.estimatedProgress, self.URL.host);
         
+        if (self.estimatedProgress < 1.0) {
+            [[CustomWebViewManager sharedManager] reportOnProgressAndReportIfNeeded:self.estimatedProgress webview:self];
+        }
+        else if (self.estimatedProgress == 1.0) {
+            [[CustomWebViewManager sharedManager] checkUrlAndReportIfNeeded:self];
+        }
     }
     else {
         // Make sure to call the superclass's implementation in the else block in case it is also implementing KVO
@@ -143,8 +148,6 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     NSLog(@"OB didFinishNavigation");
     
-    [[CustomWebViewManager sharedManager] checkUrlAndReportIfNeeded:webView];
-    
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFinishNavigation:)])
     {
@@ -159,7 +162,8 @@
  @param error The error that occurred.
  */
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"OB didFailNavigation");
+    NSLog(@"OB didFailNavigation: %@", error.localizedDescription);
+    
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFailNavigation:withError:)])
     {
@@ -176,7 +180,7 @@
  @discussion If you do not implement this method, the web view will load the request or, if appropriate, forward it to another application.
  */
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    //NSLog(@"OB decidePolicyForNavigationAction");
+    
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:decidePolicyForNavigationAction:decisionHandler:)])
     {
@@ -214,6 +218,7 @@
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
     //NSLog(@"OB decidePolicyForNavigationResponse");
+    
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:decidePolicyForNavigationResponse:decisionHandler:)])
     {

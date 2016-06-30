@@ -23,9 +23,9 @@
 @end
 
 
-#define SYSTEM_VERSION_LESS_THAN(v)  (YES || [[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+//#define SYSTEM_VERSION_LESS_THAN(v)  (YES || [[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
-//#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 
 @implementation OBRecommendationWebVC
@@ -55,7 +55,7 @@
     }
     
        
-    if(self.recommendationUrl)
+    if (self.recommendationUrl)
     {
         [self loadURL:self.recommendationUrl];
     }
@@ -197,7 +197,7 @@
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"App didStartProvisionalNavigation: %@", [webView.URL absoluteString]);
+    NSLog(@"App didStartProvisionalNavigation: %@", webView.URL.host);
     [self _updateButtonStates];
 }
 
@@ -207,7 +207,7 @@
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"App didCommitNavigation: %@", [webView.URL absoluteString]);
+    NSLog(@"App didCommitNavigation: %@", webView.URL.host);
 }
 
 
