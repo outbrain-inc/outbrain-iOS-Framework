@@ -66,8 +66,6 @@ int const kReportEventFinished = 200;
         (self.alreadyReportedOnPercentLoad == NO) &&
         ([urlString containsString:kPaidOutbrainPrefix] == NO)) {
         
-        NSLog(@"** reportServerOnPercentLoad: %f for: %@ **",progress, urlString);
-        
         [self reportServerOnPercentLoad:progress forUrl:[self getCurrentUrl:uiwebView_or_wkwebview].absoluteString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate]; // we want to report on the percentLoadThreshold to make the heavy BI queries execute faster
         self.alreadyReportedOnPercentLoad = YES;
     }
@@ -129,6 +127,8 @@ int const kReportEventFinished = 200;
     if ([self isCustomWebViewReportingEnabled] == NO) {
         return;
     }
+    
+    NSLog(@"** reportServerOnPercentLoad: %f for: %@ **",percentLoad, urlString);
     
     int eventType = (percentLoad == 1.0) ? kReportEventFinished : kReportEventPercentLoad;
     OBPostOperation *postOperation = [OBPostOperation operationWithURL:[NSURL URLWithString:kReportUrl]];

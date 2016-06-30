@@ -87,6 +87,7 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
+    
     if (self.externalDelegate &&
         [self.externalDelegate respondsToSelector:@selector(webViewDidStartLoad:)])
     {
@@ -95,6 +96,10 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    if (webView.isLoading == NO) {
+        // Bug fix: for some landing pages the progress is not reporting and instead we only get a call to webViewDidFinishLoad()
+        [[CustomWebViewManager sharedManager] checkUrlAndReportIfNeeded:self];
+    }
     
     if (self.externalDelegate &&
         [self.externalDelegate respondsToSelector:@selector(webViewDidFinishLoad:)])
@@ -104,6 +109,7 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
+    // NSLog(@"didFailLoadWithError: %@ - %@", error.localizedDescription, error.userInfo);
     if (self.externalDelegate &&
         [self.externalDelegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
     {
