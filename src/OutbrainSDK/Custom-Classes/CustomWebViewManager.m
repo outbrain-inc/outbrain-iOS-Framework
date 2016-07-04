@@ -161,6 +161,10 @@ int const kReportEventFinished = 200;
     NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
     
+    if (!orignalPaidOutbrainUrl || !event_url || !partnerKey ) { // sanity
+        return nil;
+    }
+    
     NSDictionary *params = @{@"redirectURL" : orignalPaidOutbrainUrl,
                              @"event_type" : [NSNumber numberWithInt:eventType],
                              @"event_data" : [NSNumber numberWithInt:percentLoad],

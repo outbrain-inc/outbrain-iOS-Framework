@@ -328,9 +328,6 @@ static Outbrain * _sharedInstance = nil;
         if (url) {
             [filteredResponse addObject:rec];
         }
-        else {
-            stringUrl = [stringUrl stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
-        }
     }
     return filteredResponse;
 }
