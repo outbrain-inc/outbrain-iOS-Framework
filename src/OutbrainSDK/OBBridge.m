@@ -17,7 +17,8 @@
 }
 
 + (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url {
-    return NO;
+    NSString *currentUrl = [url absoluteString];
+    return [currentUrl containsString:@"cwvShouldOpenInExternalBrowser=true"];
 }
 
 @end
