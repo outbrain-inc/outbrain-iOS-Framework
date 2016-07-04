@@ -54,6 +54,9 @@ const struct OBSettingsAttributes OBSettingsAttributes = {
 
 @implementation Outbrain
 
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+
+
 NSString *const kGLOBAL_WIDGET_STATISTICS = @"globalWidgetStatistics";
 NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 
