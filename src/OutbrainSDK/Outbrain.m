@@ -227,15 +227,6 @@ static Outbrain * _sharedInstance = nil;
 }
 
 #pragma mark - Custom OBWebView
-+ (BOOL) isOutbrainPaidUrl:(NSURL *)url {
-    NSString *currentUrl = [url absoluteString];
-    return [currentUrl containsString:@"paid.outbrain.com/network/redir"];
-}
-
-+ (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url {
-    return NO;
-}
-
 + (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary {
     if (jsonDictionary[@"response"][@"documents"][@"doc"] == nil) {
         return NO;

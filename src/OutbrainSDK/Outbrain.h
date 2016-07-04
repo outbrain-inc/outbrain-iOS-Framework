@@ -98,10 +98,6 @@ extern NSString * const OB_SDK_VERSION;
 
 /** @section Custom OBWebView **/
 
-+ (BOOL) isOutbrainPaidUrl:(NSURL *)url;
-
-+ (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url;
-
 // Return status - success or failure
 + (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary;
 
