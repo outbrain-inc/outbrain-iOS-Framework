@@ -83,11 +83,14 @@
 		E607D4DB1BDD16BE009A534B /* full response no images.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D81BDD16BE009A534B /* full response no images.json */; };
 		E61C737B1D2A47D300DA1CB0 /* OBBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73791D2A47D300DA1CB0 /* OBBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C737C1D2A47D300DA1CB0 /* OBBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C737A1D2A47D300DA1CB0 /* OBBridge.m */; };
-		E65602CE1D1C199400FC305F /* OBWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = E65602CC1D1C199400FC305F /* OBWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E65602CF1D1C199400FC305F /* OBWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E65602CD1D1C199400FC305F /* OBWebView.m */; };
-		E65602D21D1C1D2E00FC305F /* CustomWebViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E65602D01D1C1D2E00FC305F /* CustomWebViewManager.h */; };
-		E65602D31D1C1D2E00FC305F /* CustomWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E65602D11D1C1D2E00FC305F /* CustomWebViewManager.m */; };
-		E65602DA1D1C2CA800FC305F /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = E65602D71D1C2C9700FC305F /* NJKWebViewProgress.m */; };
+		E61C73881D2A4AA300DA1CB0 /* CustomWebViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C737E1D2A4AA300DA1CB0 /* CustomWebViewManager.h */; };
+		E61C73891D2A4AA300DA1CB0 /* CustomWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C737F1D2A4AA300DA1CB0 /* CustomWebViewManager.m */; };
+		E61C738A1D2A4AA300DA1CB0 /* NJKWebViewProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73821D2A4AA300DA1CB0 /* NJKWebViewProgress.h */; };
+		E61C738B1D2A4AA300DA1CB0 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73831D2A4AA300DA1CB0 /* NJKWebViewProgress.m */; };
+		E61C738C1D2A4AA300DA1CB0 /* OBWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73841D2A4AA300DA1CB0 /* OBWebView.h */; };
+		E61C738D1D2A4AA300DA1CB0 /* OBWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73851D2A4AA300DA1CB0 /* OBWebView.m */; };
+		E61C738E1D2A4AA300DA1CB0 /* OBWKWebview.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73861D2A4AA300DA1CB0 /* OBWKWebview.h */; };
+		E61C738F1D2A4AA300DA1CB0 /* OBWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73871D2A4AA300DA1CB0 /* OBWKWebview.m */; };
 		E66AC3411C99AB9400A23876 /* OBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E66AC33D1C99AB9400A23876 /* OBLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E66AC3421C99AB9400A23876 /* OBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E66AC33E1C99AB9400A23876 /* OBLabel.m */; };
 		E66AC3431C99AB9400A23876 /* UIView+Visible.h in Headers */ = {isa = PBXBuildFile; fileRef = E66AC33F1C99AB9400A23876 /* UIView+Visible.h */; };
@@ -98,8 +101,6 @@
 		E689B5061D0D53CE009E29DF /* OBReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E689B5041D0D53CE009E29DF /* OBReachability.m */; };
 		E6C2ED721CAA603600C557DE /* OBViewabilityOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */; };
 		E6C2ED731CAA603600C557DE /* OBViewabilityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */; };
-		E6C2ED761CAAAC6700C557DE /* OBWKWebview.h in Headers */ = {isa = PBXBuildFile; fileRef = E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E6C2ED771CAAAC6700C557DE /* OBWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C2ED751CAAAC6700C557DE /* OBWKWebview.m */; };
 		FC4F7C0D1A0A291800D49361 /* OBResponseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4F7C0B1A0A291800D49361 /* OBResponseRequest.m */; };
 		FC4F7C111A0A2A7600D49361 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */; };
 		FC4F7C121A0A2A7600D49361 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4F7C101A0A2A7600D49361 /* OBRecommendationsTokenHandler.m */; };
@@ -215,13 +216,15 @@
 		E607D4D81BDD16BE009A534B /* full response no images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "full response no images.json"; path = "sample responses/full response no images.json"; sourceTree = SOURCE_ROOT; };
 		E61C73791D2A47D300DA1CB0 /* OBBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBridge.h; sourceTree = "<group>"; };
 		E61C737A1D2A47D300DA1CB0 /* OBBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBridge.m; sourceTree = "<group>"; };
-		E65602CC1D1C199400FC305F /* OBWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWebView.h; sourceTree = "<group>"; };
-		E65602CD1D1C199400FC305F /* OBWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBWebView.m; sourceTree = "<group>"; };
-		E65602D01D1C1D2E00FC305F /* CustomWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebViewManager.h; sourceTree = "<group>"; };
-		E65602D11D1C1D2E00FC305F /* CustomWebViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebViewManager.m; sourceTree = "<group>"; };
-		E65602D51D1C2C9700FC305F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		E65602D61D1C2C9700FC305F /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
-		E65602D71D1C2C9700FC305F /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		E61C737E1D2A4AA300DA1CB0 /* CustomWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebViewManager.h; sourceTree = "<group>"; };
+		E61C737F1D2A4AA300DA1CB0 /* CustomWebViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebViewManager.m; sourceTree = "<group>"; };
+		E61C73811D2A4AA300DA1CB0 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E61C73821D2A4AA300DA1CB0 /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		E61C73831D2A4AA300DA1CB0 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		E61C73841D2A4AA300DA1CB0 /* OBWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWebView.h; sourceTree = "<group>"; };
+		E61C73851D2A4AA300DA1CB0 /* OBWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBWebView.m; sourceTree = "<group>"; };
+		E61C73861D2A4AA300DA1CB0 /* OBWKWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWKWebview.h; sourceTree = "<group>"; };
+		E61C73871D2A4AA300DA1CB0 /* OBWKWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBWKWebview.m; sourceTree = "<group>"; };
 		E66AC33D1C99AB9400A23876 /* OBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBLabel.h; sourceTree = "<group>"; };
 		E66AC33E1C99AB9400A23876 /* OBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBLabel.m; sourceTree = "<group>"; };
 		E66AC33F1C99AB9400A23876 /* UIView+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Visible.h"; sourceTree = "<group>"; };
@@ -233,8 +236,6 @@
 		E689B5071D0D5463009E29DF /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		E6C2ED701CAA603600C557DE /* OBViewabilityOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBViewabilityOperation.h; sourceTree = "<group>"; };
 		E6C2ED711CAA603600C557DE /* OBViewabilityOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityOperation.m; sourceTree = "<group>"; };
-		E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWKWebview.h; sourceTree = "<group>"; };
-		E6C2ED751CAAAC6700C557DE /* OBWKWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBWKWebview.m; sourceTree = "<group>"; };
 		FC4F7C0A1A0A291800D49361 /* OBResponseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBResponseRequest.h; sourceTree = "<group>"; };
 		FC4F7C0B1A0A291800D49361 /* OBResponseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponseRequest.m; sourceTree = "<group>"; };
 		FC4F7C0F1A0A2A7600D49361 /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
@@ -347,7 +348,7 @@
 		D82F1D7A18564C7700D4DEA8 /* OutbrainSDK */ = {
 			isa = PBXGroup;
 			children = (
-				E6C2ED781CAAAC6E00C557DE /* Custom-Classes */,
+				E61C737D1D2A4AA300DA1CB0 /* Custom-Classes */,
 				E66AC33C1C99AB6500A23876 /* Viewability */,
 				FC4F7C0E1A0A2A6500D49361 /* Helpers */,
 				FC5DF6CD19DD726400579200 /* AdIds */,
@@ -526,12 +527,26 @@
 			name = Requests;
 			sourceTree = "<group>";
 		};
-		E65602D41D1C2C9700FC305F /* NJKWebViewProgress */ = {
+		E61C737D1D2A4AA300DA1CB0 /* Custom-Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E65602D51D1C2C9700FC305F /* LICENSE */,
-				E65602D61D1C2C9700FC305F /* NJKWebViewProgress.h */,
-				E65602D71D1C2C9700FC305F /* NJKWebViewProgress.m */,
+				E61C737E1D2A4AA300DA1CB0 /* CustomWebViewManager.h */,
+				E61C737F1D2A4AA300DA1CB0 /* CustomWebViewManager.m */,
+				E61C73801D2A4AA300DA1CB0 /* NJKWebViewProgress */,
+				E61C73841D2A4AA300DA1CB0 /* OBWebView.h */,
+				E61C73851D2A4AA300DA1CB0 /* OBWebView.m */,
+				E61C73861D2A4AA300DA1CB0 /* OBWKWebview.h */,
+				E61C73871D2A4AA300DA1CB0 /* OBWKWebview.m */,
+			);
+			path = "Custom-Classes";
+			sourceTree = "<group>";
+		};
+		E61C73801D2A4AA300DA1CB0 /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				E61C73811D2A4AA300DA1CB0 /* LICENSE */,
+				E61C73821D2A4AA300DA1CB0 /* NJKWebViewProgress.h */,
+				E61C73831D2A4AA300DA1CB0 /* NJKWebViewProgress.m */,
 			);
 			path = NJKWebViewProgress;
 			sourceTree = "<group>";
@@ -557,20 +572,6 @@
 				E689B5071D0D5463009E29DF /* LICENSE.txt */,
 			);
 			name = Reachability;
-			sourceTree = "<group>";
-		};
-		E6C2ED781CAAAC6E00C557DE /* Custom-Classes */ = {
-			isa = PBXGroup;
-			children = (
-				E65602D41D1C2C9700FC305F /* NJKWebViewProgress */,
-				E6C2ED741CAAAC6700C557DE /* OBWKWebview.h */,
-				E6C2ED751CAAAC6700C557DE /* OBWKWebview.m */,
-				E65602CC1D1C199400FC305F /* OBWebView.h */,
-				E65602CD1D1C199400FC305F /* OBWebView.m */,
-				E65602D01D1C1D2E00FC305F /* CustomWebViewManager.h */,
-				E65602D11D1C1D2E00FC305F /* CustomWebViewManager.m */,
-			);
-			name = "Custom-Classes";
 			sourceTree = "<group>";
 		};
 		FC4F7C0E1A0A2A6500D49361 /* Helpers */ = {
@@ -600,20 +601,19 @@
 			files = (
 				FC5AA29D19810C3F003C5509 /* OBSettings.h in Headers */,
 				D869E68B18621EB7006CDAD7 /* OBResponse.h in Headers */,
+				E61C738C1D2A4AA300DA1CB0 /* OBWebView.h in Headers */,
 				FC5DF6D019DD728300579200 /* OBAppleAdIdUtil.h in Headers */,
 				D8376BE7186E276500B45FA3 /* OutbrainSDK.h in Headers */,
 				E689B4FE1D0D3778009E29DF /* OBPostOperation.h in Headers */,
+				E61C73881D2A4AA300DA1CB0 /* CustomWebViewManager.h in Headers */,
 				D869E6AB18623EA2006CDAD7 /* OBRecommendationResponse.h in Headers */,
 				D8EE5885185A27FC008F36C4 /* OBRequest.h in Headers */,
 				D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */,
 				D849D10B1868BB4D00CB4B83 /* Outbrain_Private.h in Headers */,
 				D8EE5889185A3ED4008F36C4 /* OBClickRegistrationOperation.h in Headers */,
-				E65602CE1D1C199400FC305F /* OBWebView.h in Headers */,
-				E65602D21D1C1D2E00FC305F /* CustomWebViewManager.h in Headers */,
 				E61C737B1D2A47D300DA1CB0 /* OBBridge.h in Headers */,
 				FC52BEC71A14EAD4007774B0 /* OBResponseRequest.h in Headers */,
 				FC79B7881A18A5C30003E583 /* OBViewabilityService.h in Headers */,
-				E6C2ED761CAAAC6700C557DE /* OBWKWebview.h in Headers */,
 				D8EE588D185A4057008F36C4 /* OBImage.h in Headers */,
 				E66AC3411C99AB9400A23876 /* OBLabel.h in Headers */,
 				D8EE587E185A1A95008F36C4 /* OBContent.h in Headers */,
@@ -623,6 +623,8 @@
 				FC4F7C111A0A2A7600D49361 /* OBRecommendationsTokenHandler.h in Headers */,
 				E66AC3431C99AB9400A23876 /* UIView+Visible.h in Headers */,
 				D8BE79C91860C1D80090E054 /* OBProtocols.h in Headers */,
+				E61C738A1D2A4AA300DA1CB0 /* NJKWebViewProgress.h in Headers */,
+				E61C738E1D2A4AA300DA1CB0 /* OBWKWebview.h in Headers */,
 				D8EE587F185A1A97008F36C4 /* OBErrors.h in Headers */,
 				D873964E1868E96E00FD8546 /* OBOperation.h in Headers */,
 				D8EE5891185A4068008F36C4 /* OBRecommendation.h in Headers */,
@@ -786,29 +788,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E65602D31D1C1D2E00FC305F /* CustomWebViewManager.m in Sources */,
-				E6C2ED771CAAAC6700C557DE /* OBWKWebview.m in Sources */,
 				D87540101857930100050F2C /* OBErrors.m in Sources */,
 				D873964F1868E96E00FD8546 /* OBOperation.m in Sources */,
+				E61C738D1D2A4AA300DA1CB0 /* OBWebView.m in Sources */,
 				E689B4FF1D0D3778009E29DF /* OBPostOperation.m in Sources */,
+				E61C738F1D2A4AA300DA1CB0 /* OBWKWebview.m in Sources */,
 				FC4F7C121A0A2A7600D49361 /* OBRecommendationsTokenHandler.m in Sources */,
 				D8158C6D18591F3D00AC5945 /* OBRecommendationRequestOperation.m in Sources */,
 				D8EE588A185A3ED4008F36C4 /* OBClickRegistrationOperation.m in Sources */,
 				D8EE5892185A4068008F36C4 /* OBRecommendation.m in Sources */,
 				E61C737C1D2A47D300DA1CB0 /* OBBridge.m in Sources */,
 				D875400D18578F2F00050F2C /* OBContent.m in Sources */,
+				E61C73891D2A4AA300DA1CB0 /* CustomWebViewManager.m in Sources */,
 				E66AC3421C99AB9400A23876 /* OBLabel.m in Sources */,
 				D8EE5886185A27FC008F36C4 /* OBRequest.m in Sources */,
 				E689B5061D0D53CE009E29DF /* OBReachability.m in Sources */,
 				D869E6AC18623EA2006CDAD7 /* OBRecommendationResponse.m in Sources */,
 				FC4F7C0D1A0A291800D49361 /* OBResponseRequest.m in Sources */,
 				D869E68C18621EB7006CDAD7 /* OBResponse.m in Sources */,
+				E61C738B1D2A4AA300DA1CB0 /* NJKWebViewProgress.m in Sources */,
 				D8EE588E185A4057008F36C4 /* OBImage.m in Sources */,
 				D82F1D8018564C7700D4DEA8 /* Outbrain.m in Sources */,
 				FC5AA29C1981059C003C5509 /* OBSettings.m in Sources */,
 				E6C2ED731CAA603600C557DE /* OBViewabilityOperation.m in Sources */,
-				E65602DA1D1C2CA800FC305F /* NJKWebViewProgress.m in Sources */,
-				E65602CF1D1C199400FC305F /* OBWebView.m in Sources */,
 				E66AC3441C99AB9400A23876 /* UIView+Visible.m in Sources */,
 				FC5DF6D119DD728300579200 /* OBAppleAdIdUtil.m in Sources */,
 				FC79B7891A18A5C30003E583 /* OBViewabilityService.m in Sources */,
