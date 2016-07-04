@@ -15,7 +15,7 @@
                 configuration:(WKWebViewConfiguration *)configuration
 {
     if (self = [super initWithFrame:frame configuration:configuration]) {
-        NSLog(@"Oded: AppWKWebview initWithFrame:configuration:");
+        
     }
     return self;
 }

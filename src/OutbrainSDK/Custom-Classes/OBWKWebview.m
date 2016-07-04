@@ -14,13 +14,6 @@
 
 @property (nonatomic, weak) id<WKNavigationDelegate> externalNavigationDelegate;
 
-@property (nonatomic, strong) NSString *paidOutbrainParams;
-@property (nonatomic, strong) NSString *paidOutbrainUrl;
-
-@property (nonatomic, assign) BOOL alreadyReportedOnPercentLoad;
-
-@property (nonatomic, strong) NSDate *loadStartDate;
-
 @end
 
 
@@ -82,7 +75,6 @@
  @param navigation The navigation.
  */
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"OB didStartProvisionalNavigation");
     
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didStartProvisionalNavigation:)])
@@ -91,20 +83,12 @@
     }
 }
 
-- (UIViewController *)parentViewController {
-    UIResponder *responder = self;
-    while ([responder isKindOfClass:[UIView class]])
-        responder = [responder nextResponder];
-    return (UIViewController *)responder;
-}
-
 /*! @abstract Invoked when a server redirect is received for the main
  frame.
  @param webView The web view invoking the delegate method.
  @param navigation The navigation.
  */
 - (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"OB didReceiveServerRedirectForProvisionalNavigation");
     
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didReceiveServerRedirectForProvisionalNavigation:)])
@@ -120,7 +104,6 @@
  @param error The error that occurred.
  */
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"OB didFailProvisionalNavigation: %@ - %@", error.localizedDescription, error.userInfo);
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFailProvisionalNavigation:withError:)])
     {
@@ -133,7 +116,6 @@
  @param navigation The navigation.
  */
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"OB didCommitNavigation");
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didCommitNavigation:)])
     {
@@ -146,7 +128,6 @@
  @param navigation The navigation.
  */
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"OB didFinishNavigation");
     
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFinishNavigation:)])
@@ -162,7 +143,6 @@
  @param error The error that occurred.
  */
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"OB didFailNavigation: %@ - %@", error.localizedDescription, error.userInfo);
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didFailNavigation:withError:)])
     {
@@ -199,7 +179,7 @@
  @param webView The web view whose underlying web content process was terminated.
  */
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
-    //NSLog(@"OB didFailNavigation");
+    
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webViewWebContentProcessDidTerminate:)])
     {
@@ -209,7 +189,6 @@
 
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *__nullable credential))completionHandler {
     
-    //NSLog(@"OB didReceiveAuthenticationChallenge");
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:didReceiveAuthenticationChallenge:completionHandler:)])
     {
@@ -221,7 +200,6 @@
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
-    //NSLog(@"OB decidePolicyForNavigationResponse");
     
     if (self.externalNavigationDelegate &&
         [self.externalNavigationDelegate respondsToSelector:@selector(webView:decidePolicyForNavigationResponse:decisionHandler:)])

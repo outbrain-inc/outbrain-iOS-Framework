@@ -107,8 +107,7 @@
 
 - (IBAction)showOutbrainAbout
 {
-    //NSString * urlString = @"http://m.ynet.co.il/Articles/4793303";
-    NSString * urlString = @"http://paid.outbrain.com/network/redir?p=_JCo2HOPl-rP0GLThzWm8zpEpScPgoZhmw7fScPACMXc0EULWFHuxQo9X3t6BfnLsClDFpDtOq3hppC7h0s2UabyKoykbPaDowaDEWpIO3-aDriu61hzjKpzTei7dCKIEvrsMMCyUe3eQauR8LdRBLKsMOjIGPXHskSqeZH41tsVrZn142jL3tG-mP3Mr7bsPUwXcEj5CHjy5oGJ4OKijpzTdUjsL5R81yI-2MfWgg3Mdz9cpc9-DR0Nx7rDSg8uumxPEPgVSobPvidMDdc33ABRdryi3kFoKytUsaL5tQgOeueg1-PEkuau_l66tjDQXWpPuV1jDt_IwNohJJT7WVIPst3MabScKkqKAfeEpi5_hx4cVQEAi1DLSw0Avazv4SnqRAwI0qvPtmTQVyb2i3E20PNZSQ0t56sMwtORXLL4OC526ZQtLSZhLOQBdanK8aqUcDN4YNUOMwIOtdUxvENnOXjLREep243xRCP-15BqJwOY4_3q6V1lRGNS7_hHshtbAM-i9eCnJyY15qBw3U4cWCaN4MV3y8GtPOAB43I3hyVmf78Lq9D9x1RFd1Zt&c=e38b0e4d&v=3";
+    NSString * urlString = @"http://www.outbrain.com/what-is/default/en-mobile";
     
     UINavigationController * nav = (UINavigationController *)[self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"OBWebNavVC"];
     OBRecommendationWebVC * webVC = [nav.viewControllers lastObject];

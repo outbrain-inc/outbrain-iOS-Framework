@@ -21,7 +21,6 @@
 @property (nonatomic, assign) BOOL alreadyReportedOnPercentLoad;
 @property (nonatomic, assign) BOOL alreadyReportedOnLoadComplete;
 
-@property (nonatomic, strong) NSString *paidOutbrainParams;
 @property (nonatomic, strong) NSString *paidOutbrainUrl;
 @property (nonatomic, strong) NSDate *loadStartDate;
 @property (nonatomic, assign) float percentLoadThreshold;
@@ -30,6 +29,7 @@
 - (BOOL) isCustomWebViewReportingEnabled;
 - (float) customWebViewThreshold;
 
+- (void) reportServerOnPercentLoad:(float)percentLoad forUrl:(NSString *)urlString orignalPaidOutbrainUrl:(NSString *)orignalPaidOutbrainUrl loadStartDate:(NSDate *)loadStartDate;
 
 @end
 
@@ -66,7 +66,7 @@ int const kReportEventFinished = 200;
         (self.alreadyReportedOnPercentLoad == NO) &&
         ([urlString containsString:kPaidOutbrainPrefix] == NO)) {
         
-        [self reportServerOnPercentLoad:progress forUrl:[self getCurrentUrl:uiwebView_or_wkwebview].absoluteString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate]; // we want to report on the percentLoadThreshold to make the heavy BI queries execute faster
+        [self reportServerOnPercentLoad:progress forUrl:urlString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate];
         self.alreadyReportedOnPercentLoad = YES;
     }
 }
@@ -81,11 +81,6 @@ int const kReportEventFinished = 200;
         self.alreadyReportedOnLoadComplete = NO;
         self.alreadyReportedOnPercentLoad = NO;
         
-        
-        NSArray *components = [[currUrl absoluteString] componentsSeparatedByString:@"?"];
-        if (components.count == 2) {
-            self.paidOutbrainParams = components[1];
-        }
         self.paidOutbrainUrl = [currUrl absoluteString];
         self.loadStartDate = [NSDate date];
         
@@ -102,7 +97,7 @@ int const kReportEventFinished = 200;
             return;
         }
         
-        // Notice this block runs 0.5 seconds after tempUrl is set, this is why the comparison make sence.
+        // Notice this block runs 0.5 seconds after tempUrl is set, this is why the comparison make sense.
         // The webview could change URL in the meantime, especially if the original url was a redirect.
         if ([[[self getCurrentUrl:uiwebView_or_wkwebview] absoluteString] isEqualToString:tempUrl]) {
             
@@ -201,7 +196,7 @@ int const kReportEventFinished = 200;
     return @"No Internet";
 }
 
-#pragma mark - Viewability Settings
+#pragma mark - Custom WebView Settings
 - (void) updateCWVSetting:(NSNumber *)value key:(NSString *)key {
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
     

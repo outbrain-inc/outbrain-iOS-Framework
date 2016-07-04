@@ -23,8 +23,6 @@
 @end
 
 
-//#define SYSTEM_VERSION_LESS_THAN(v)  (YES || [[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-
 #define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 
@@ -219,17 +217,15 @@
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"App didStartProvisionalNavigation: %@", webView.URL.host);
     [self _updateButtonStates];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"App didFinishNavigation: %@", [webView.URL absoluteString]);
     [self _updateButtonStates];
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
-    NSLog(@"App didCommitNavigation: %@", webView.URL.host);
+    
 }
 
 

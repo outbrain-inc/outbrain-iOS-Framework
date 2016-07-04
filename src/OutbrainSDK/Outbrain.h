@@ -25,9 +25,8 @@ extern NSString * const OB_SDK_VERSION;
  The Outbrain SDK must be initialized and registered (by calling __initializeOutbrainWithPartnerKey__) \n
 	when your app is initialized.\n
  Call __fetchRecommendationsForRequest__ to retrieve content recommendations.\n
- Call __getOriginalContentURLAndRegisterClickForRecommendation__ to translate a recommendation to the original URL and register a click on the recommendation.
  
- @note Please see the "Outbrain Android SDK Programming Guide" for more detailed explanations about how to integrate with Outbrain.
+ @note Please see the "Outbrain iOS SDK Programming Guide" for more detailed explanations about how to integrate with Outbrain.
  
  **/
 @interface Outbrain : NSObject
