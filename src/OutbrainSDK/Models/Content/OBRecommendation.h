@@ -37,7 +37,7 @@
     NSString * author;
     NSString * content;
     NSString * source;
-
+    
     BOOL sameSource;
     BOOL paidLink;
     
@@ -45,22 +45,25 @@
     OBImage *image;
 }
 
+
 /** @brief The date the content was published. */
-@property (nonatomic, strong) NSDate * publishDate;
-@property (nonatomic, strong) NSURL * sourceURL;
+@property (nonatomic, strong, readonly) NSDate * publishDate;
+@property (nonatomic, strong, readonly) NSURL * sourceURL;
 /** @brief TBD - property may be removed. */
-@property (nonatomic, copy) NSString * author;
+@property (nonatomic, copy, readonly) NSString * author;
 /** @brief The recommendation's title. */
-@property (nonatomic, copy) NSString * content;
+@property (nonatomic, copy, readonly) NSString * content;
 /** @brief The name of the recommendation's source. */
-@property (nonatomic, copy) NSString * source;
+@property (nonatomic, copy, readonly) NSString * source;
 /** @brief Is the recommendation from the same source as the one the user is currently viewing. */
-@property (nonatomic, assign, getter = isSameSource) BOOL sameSource;
+@property (nonatomic, assign, getter = isSameSource, readonly) BOOL sameSource;
 /** @brief Is this a recommendation for which the publisher pays, when your user clicks on it. */
-@property (nonatomic, assign, getter = isPaidLink) BOOL paidLink;
+@property (nonatomic, assign, getter = isPaidLink, readonly) BOOL paidLink;
 /** @brief Is the recommendation a link to a video clip. */
-@property (nonatomic, assign, getter = isVideo) BOOL video;
+@property (nonatomic, assign, getter = isVideo, readonly) BOOL video;
 /** @brief An image related to the recommendation. */
-@property (nonatomic, strong) OBImage *image;
+@property (nonatomic, strong, readonly) OBImage *image;
+/** @brief should we open this recommendation in an external browser or within the app */
+@property (nonatomic, assign, readonly) BOOL shouldOpenInExternalBrowser;
 
 @end

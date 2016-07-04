@@ -66,6 +66,9 @@ extern const struct OBSettingsAttributes {
 // apv cache
 + (void)_updateAPVCacheForResponse:(OBResponse *)response;
 
+// Custom Webview Settings
++ (void)_updateCustomWebViewSettings:(NSDictionary *)responseSettings;
+
 // URL Builder
 + (NSURL *)_recommendationURLForRequest:(OBRequest *)request;
 

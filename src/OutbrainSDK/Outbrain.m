@@ -18,6 +18,7 @@
 #import "OBLabel.h"
 #import "OBAppleAdIdUtil.h"
 #import "OBViewabilityService.h"
+#import "CustomWebViewManager.h"
 
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
@@ -55,6 +56,10 @@ const struct OBSettingsAttributes OBSettingsAttributes = {
 
 NSString *const kGLOBAL_WIDGET_STATISTICS = @"globalWidgetStatistics";
 NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
+
+NSString *const kIS_CUSTOM_WEBVIEW_ENABLE = @"isCWVReportingEnable";
+NSString *const kCWV_THRESHOLD = @"cwvReportingThreshold";
+
 
 #pragma mark - Initialization
 
@@ -188,29 +193,27 @@ static Outbrain * _sharedInstance = nil;
 
 #pragma mark - Clicking
 
-+ (NSURL *)getOriginalContentURLAndRegisterClickForRecommendation:(OBRecommendation *)recommendation
++ (NSURL *)getUrl:(OBRecommendation *)recommendation
 {
     // Should be initialized
     [self _throwAssertIfNotInitalized];
     
-    // New feature!! if SDK_SHOULD_RETURN_PAID_REDIRECT_URL == YES return the redirect url
-    BOOL sdkShouldReturnPaidRedirectUrl = [[recommendation originalValueForKeyPath:kSDK_SHOULD_RETURN_PAID_REDIRECT_URL] boolValue];
-    if (sdkShouldReturnPaidRedirectUrl && [recommendation isPaidLink]) {
+    if (recommendation.isPaidLink) {
         return [NSURL URLWithString:[recommendation originalValueForKeyPath:@"url"]];
     }
-    
-    // else... back to original implementation
-    
-    NSURL * originalURL = [NSURL URLWithString:[recommendation originalValueForKeyPath:@"orig_url"]];
-    
-    NSString *urlString = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:@"&noRedirect=true"];
-    NSURL * urlWithRedirect = [NSURL URLWithString:urlString];
-    
-    // We don't need a completion block for this one.  We just need to fire off the request and let it do it's thing
-    OBClickRegistrationOperation *clickOP = [OBClickRegistrationOperation operationWithURL:urlWithRedirect];
-    [[[self mainBrain] obRequestQueue] addOperation:clickOP];
-    
-    return originalURL;
+    else {
+        // Organic Recommendation
+        
+        NSURL * originalURL = [NSURL URLWithString:[recommendation originalValueForKeyPath:@"orig_url"]];
+        NSString *urlString = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:@"&noRedirect=true"];
+        NSURL * urlWithRedirect = [NSURL URLWithString:urlString];
+        
+        // We don't need a completion block for this one.  We just need to fire off the request and let it do it's thing
+        OBClickRegistrationOperation *clickOP = [OBClickRegistrationOperation operationWithURL:urlWithRedirect];
+        [[[self mainBrain] obRequestQueue] addOperation:clickOP];
+        
+        return originalURL;
+    }
 }
 
 #pragma mark - Viewability
@@ -223,6 +226,16 @@ static Outbrain * _sharedInstance = nil;
     }
 }
 
+#pragma mark - Custom OBWebView
++ (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary {
+    if (jsonDictionary[@"response"][@"documents"][@"doc"] == nil) {
+        return NO;
+    }
+    
+    [self _updateCustomWebViewSettings:jsonDictionary[@"response"][@"settings"]];
+    
+    return YES;
+}
 
 #if 0 // For the current SDK version the GA reporting should be disabled
 + (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage {
@@ -286,10 +299,10 @@ static Outbrain * _sharedInstance = nil;
     [recommendationOperation setCompletionBlock:^{
         typeof(__recommendationOperation) __strong _recommendationOperation = __recommendationOperation;
         
-        // Here we need to update our apvCache.
+        // Here we update Settings from the respones
         OBRecommendationResponse * response = _recommendationOperation.response;
-        [__self _updateAPVCacheForResponse:response];
-        [__self _updateViewbilityStatsForResponse:response];
+        [self _updateSDKSettings:response];
+        
         response.recommendations = [__self _filterInvalidRecsForResponse:response];
         [((Outbrain *)[self mainBrain]).tokensHandler setTokenForRequest:request response:response];
         
@@ -319,18 +332,53 @@ static Outbrain * _sharedInstance = nil;
     return filteredResponse;
 }
 
-+ (void)_updateViewbilityStatsForResponse:(OBResponse *)response {
++ (void)_updateSDKSettings:(OBResponse *)response {
+    // We only update Settings in the case the response did not error.
+    if ([response performSelector:@selector(getPrivateError)]) {
+        return;
+    }
+    
     NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
-    BOOL globalStatsEnabled = YES;
-    int viewabilityThreshold = 0;
-    
-    // We only update our viewability values in the case that the response did not error.
-    if([response performSelector:@selector(getPrivateError)]) return;
-    
     // Sanity
     if ((responseSettings == nil) || ![responseSettings isKindOfClass:[NSDictionary class]]) {
         return;
     }
+    
+    [self _updateAPVCacheForResponse:response];
+    [self _updateViewbilityStatsForResponse:responseSettings];
+    [self _updateCustomWebViewSettings:responseSettings];
+}
+
++ (void)_updateCustomWebViewSettings:(NSDictionary *)responseSettings {
+    BOOL isCustomWebViewEnable = YES;
+    int cwvReportingThreshold = 80;
+    
+    
+    if (responseSettings[kIS_CUSTOM_WEBVIEW_ENABLE] && ![responseSettings[kIS_CUSTOM_WEBVIEW_ENABLE] isKindOfClass:[NSNull class]])
+    {
+        isCustomWebViewEnable = [responseSettings[kIS_CUSTOM_WEBVIEW_ENABLE] boolValue];
+        [[CustomWebViewManager sharedManager] updateCWVSetting:[NSNumber numberWithBool:isCustomWebViewEnable] key:kCustomWebViewReportingEnabledKey];
+    }
+    else {
+        // We need to make sure that if field doesn’t appear in the odb response - use the default value explicitly (don’t skip with no action).
+        // This should fix the potential bug of switching from a non-default value to a default from the server
+        [[CustomWebViewManager sharedManager] updateCWVSetting:[NSNumber numberWithBool:YES] key:kCustomWebViewReportingEnabledKey];
+    }
+    
+    if (responseSettings[kCWV_THRESHOLD] && ![responseSettings[kCWV_THRESHOLD] isKindOfClass:[NSNull class]])
+    {
+        cwvReportingThreshold = [responseSettings[kCWV_THRESHOLD] intValue];
+        [[CustomWebViewManager sharedManager] updateCWVSetting:[NSNumber numberWithInt:cwvReportingThreshold] key:kCustomWebViewThresholdKey];
+    }
+    else {
+        // Same thing here, explicitly set the default value
+        [[CustomWebViewManager sharedManager] updateCWVSetting:[NSNumber numberWithInt:80] key:kCustomWebViewThresholdKey];
+    }
+}
+
++ (void)_updateViewbilityStatsForResponse:(NSDictionary *)responseSettings {
+    BOOL globalStatsEnabled = YES;
+    int viewabilityThreshold = 0;
         
     if (responseSettings[kGLOBAL_WIDGET_STATISTICS] && ![responseSettings[kGLOBAL_WIDGET_STATISTICS] isKindOfClass:[NSNull class]])
     {
@@ -359,9 +407,6 @@ static Outbrain * _sharedInstance = nil;
 {
     NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
     BOOL apvReturnValue = NO;
-
-    // We only update our apv value in the case that the response did not error.
-    if([response performSelector:@selector(getPrivateError)]) return;
     
     OBRequest *request = [response performSelector:@selector(getPrivateRequest)];
     if (request == nil) return; // sanity
@@ -373,7 +418,7 @@ static Outbrain * _sharedInstance = nil;
         return;
     }
     
-    if (responseSettings && [responseSettings isKindOfClass:[NSDictionary class]] && responseSettings[@"apv"] && ![responseSettings[@"apv"] isKindOfClass:[NSNull class]])
+    if (responseSettings[@"apv"] && ![responseSettings[@"apv"] isKindOfClass:[NSNull class]])
     {
         apvReturnValue = [responseSettings[@"apv"] boolValue];
     }

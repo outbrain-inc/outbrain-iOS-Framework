@@ -19,3 +19,6 @@
 #import <OutbrainSDK/OBSettings.h>
 #import <OutbrainSDK/OBRecommendationResponse.h>
 #import <OutbrainSDK/OBLabel.h>
+#import <OutbrainSDK/OBWKWebview.h>
+#import <OutbrainSDK/OBWebview.h>
+#import <OutbrainSDK/OBBridge.h>
