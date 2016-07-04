@@ -75,7 +75,8 @@ int const kReportEventFinished = 200;
     NSURL *currUrl = [self getCurrentUrl:uiwebView_or_wkwebview];
     
     // if its a paid.outbrain URL
-    if ([[currUrl absoluteString] containsString:kPaidOutbrainPrefix]) {
+    if ([[currUrl absoluteString] containsString:kPaidOutbrainPrefix] &&
+        [[currUrl absoluteString] containsString:kCWV_CONTEXT_FLAG]) {
         
         // reset parameters
         self.alreadyReportedOnLoadComplete = NO;

@@ -19,6 +19,8 @@
 // The current version of the sdk
 extern NSString * const OB_SDK_VERSION;
 
+extern NSString * const kCWV_CONTEXT_FLAG;
+
 /**
  @brief OBSDK's main interface; for fetching content recommendations and reporting clicks.
  

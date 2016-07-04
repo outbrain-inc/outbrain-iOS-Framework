@@ -63,6 +63,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 NSString *const kIS_CUSTOM_WEBVIEW_ENABLE = @"isCWVReportingEnable";
 NSString *const kCWV_THRESHOLD = @"cwvReportingThreshold";
 
+NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
 
 #pragma mark - Initialization
 
@@ -202,7 +203,10 @@ static Outbrain * _sharedInstance = nil;
     [self _throwAssertIfNotInitalized];
     
     if (recommendation.isPaidLink) {
-        return [NSURL URLWithString:[recommendation originalValueForKeyPath:@"url"]];
+        NSString *const kCWVContextParam = [NSString stringWithFormat:@"#%@sdk", kCWV_CONTEXT_FLAG];
+        // Adding "#cwvContext=sdk" to the url
+        NSString *recUrl = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:kCWVContextParam];
+        return [NSURL URLWithString:recUrl];
     }
     else {
         // Organic Recommendation
