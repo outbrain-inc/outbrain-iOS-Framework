@@ -21,3 +21,4 @@
 #import <OutbrainSDK/OBLabel.h>
 #import <OutbrainSDK/OBWKWebview.h>
 #import <OutbrainSDK/OBWebview.h>
+#import <OutbrainSDK/OBBridge.h>
