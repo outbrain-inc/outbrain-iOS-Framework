@@ -62,8 +62,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 
 NSString *const kIS_CUSTOM_WEBVIEW_ENABLE = @"isCWVReportingEnable";
 NSString *const kCWV_THRESHOLD = @"cwvReportingThreshold";
-
 NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
+
+NSString *const kIS_COOKIES_ENABLE_KEY = @"isSDKCookiesEnable";
 
 #pragma mark - Initialization
 
@@ -351,60 +352,38 @@ static Outbrain * _sharedInstance = nil;
     [self _updateAPVCacheForResponse:response];
     [self _updateViewbilityStatsForResponse:responseSettings];
     [self _updateCustomWebViewSettings:responseSettings];
+    [self _updateIsCookiesEnableSettings:responseSettings];
+}
+
++ (void)_updateIsCookiesEnableSettings:(NSDictionary *)responseSettings {
+    [self _updateODBSetting:responseSettings[kIS_COOKIES_ENABLE_KEY] defaultValue:[NSNumber numberWithBool:NO] saveValueBlock:^(NSNumber *value) {
+        [[NSUserDefaults standardUserDefaults] setObject:value forKey:kIS_COOKIES_ENABLE_KEY];
+    }];
 }
 
 + (void)_updateCustomWebViewSettings:(NSDictionary *)responseSettings {
-    BOOL isCustomWebViewEnable = YES;
-    int cwvReportingThreshold = 80;
     
+    // Update kCustomWebViewReportingEnabledKey
+    [self _updateODBSetting:responseSettings[kIS_CUSTOM_WEBVIEW_ENABLE] defaultValue:[NSNumber numberWithBool:YES] saveValueBlock:^(NSNumber *value) {
+        [[CustomWebViewManager sharedManager] updateCWVSetting:value key:kCustomWebViewReportingEnabledKey];
+    }];
     
-    if (responseSettings[kIS_CUSTOM_WEBVIEW_ENABLE] && ![responseSettings[kIS_CUSTOM_WEBVIEW_ENABLE] isKindOfClass:[NSNull class]])
-    {
-        isCustomWebViewEnable = [responseSettings[kIS_CUSTOM_WEBVIEW_ENABLE] boolValue];
-        [[CustomWebViewManager sharedManager] updateCWVSetting:[NSNumber numberWithBool:isCustomWebViewEnable] key:kCustomWebViewReportingEnabledKey];
-    }
-    else {
-        // We need to make sure that if field doesn’t appear in the odb response - use the default value explicitly (don’t skip with no action).
-        // This should fix the potential bug of switching from a non-default value to a default from the server
-        [[CustomWebViewManager sharedManager] updateCWVSetting:[NSNumber numberWithBool:YES] key:kCustomWebViewReportingEnabledKey];
-    }
-    
-    if (responseSettings[kCWV_THRESHOLD] && ![responseSettings[kCWV_THRESHOLD] isKindOfClass:[NSNull class]])
-    {
-        cwvReportingThreshold = [responseSettings[kCWV_THRESHOLD] intValue];
-        [[CustomWebViewManager sharedManager] updateCWVSetting:[NSNumber numberWithInt:cwvReportingThreshold] key:kCustomWebViewThresholdKey];
-    }
-    else {
-        // Same thing here, explicitly set the default value
-        [[CustomWebViewManager sharedManager] updateCWVSetting:[NSNumber numberWithInt:80] key:kCustomWebViewThresholdKey];
-    }
+    // Update kCustomWebViewThresholdKey
+    [self _updateODBSetting:responseSettings[kCWV_THRESHOLD] defaultValue:[NSNumber numberWithInt:80] saveValueBlock:^(NSNumber *value) {
+        [[CustomWebViewManager sharedManager] updateCWVSetting:value key:kCustomWebViewThresholdKey];
+    }];
 }
 
 + (void)_updateViewbilityStatsForResponse:(NSDictionary *)responseSettings {
-    BOOL globalStatsEnabled = YES;
-    int viewabilityThreshold = 0;
-        
-    if (responseSettings[kGLOBAL_WIDGET_STATISTICS] && ![responseSettings[kGLOBAL_WIDGET_STATISTICS] isKindOfClass:[NSNull class]])
-    {
-        globalStatsEnabled = [responseSettings[kGLOBAL_WIDGET_STATISTICS] boolValue];
-        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithBool:globalStatsEnabled] key:kViewabilityEnabledKey];
-    }
-    else {
-        // We need to make sure that if field doesn’t appear in the odb response - use the default value explicitly (don’t skip with no action).
-        // This should fix the potential bug of switching from a non-default value to a default from the server
-        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithBool:YES] key:kViewabilityEnabledKey];
-        
-    }
+    // Update kViewabilityEnabledKey
+    [self _updateODBSetting:responseSettings[kGLOBAL_WIDGET_STATISTICS] defaultValue:[NSNumber numberWithBool:YES] saveValueBlock:^(NSNumber *value) {
+        [[OBViewabilityService sharedInstance] updateViewabilitySetting:value key:kViewabilityEnabledKey];
+    }];
     
-    if (responseSettings[kVIEWABILITY_THRESHOLD] && ![responseSettings[kVIEWABILITY_THRESHOLD] isKindOfClass:[NSNull class]])
-    {
-        viewabilityThreshold = [responseSettings[kVIEWABILITY_THRESHOLD] intValue];        
-        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithInt:viewabilityThreshold] key:kViewabilityThresholdKey];
-    }
-    else {
-        // Same thing here, explicitly set the default value
-        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithInt:1000] key:kViewabilityThresholdKey];
-    }
+    // Update kViewabilityThresholdKey
+    [self _updateODBSetting:responseSettings[kVIEWABILITY_THRESHOLD] defaultValue:[NSNumber numberWithInt:1000] saveValueBlock:^(NSNumber *value) {
+        [[OBViewabilityService sharedInstance] updateViewabilitySetting:value key:kViewabilityThresholdKey];
+    }];
 }
 
 + (void)_updateAPVCacheForResponse:(OBResponse *)response
@@ -432,6 +411,18 @@ static Outbrain * _sharedInstance = nil;
  
     // Finally, if we got here, we need to save the apv value to the apvCache
     _sharedInstance.apvCache[requestUrl] = [NSNumber numberWithBool:apvReturnValue]; // apvReturnValue mush be equal to YES;
+}
+
++ (void) _updateODBSetting:(NSNumber *)settingValue defaultValue:(NSNumber *)defaultValue saveValueBlock:(void (^)(NSNumber *))saveBlock {
+    if (settingValue && ![settingValue isKindOfClass:[NSNull class]])
+    {
+        saveBlock(settingValue);
+    }
+    else {
+        // We need to make sure that if field doesn’t appear in the odb response - use the default value explicitly (don’t skip with no action).
+        // This should fix the potential bug of switching from a non-default value to a default from the server
+        saveBlock(defaultValue);
+    }
 }
 
 #define OBRecommendationDomain                      @"odb.outbrain.com"
