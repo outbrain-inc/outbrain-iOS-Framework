@@ -64,7 +64,6 @@ NSString *const kIS_CUSTOM_WEBVIEW_ENABLE = @"isCWVReportingEnable";
 NSString *const kCWV_THRESHOLD = @"cwvReportingThreshold";
 NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
 
-NSString *const kIS_COOKIES_ENABLE_KEY = @"isSDKCookiesEnable";
 
 #pragma mark - Initialization
 
@@ -352,13 +351,6 @@ static Outbrain * _sharedInstance = nil;
     [self _updateAPVCacheForResponse:response];
     [self _updateViewbilityStatsForResponse:responseSettings];
     [self _updateCustomWebViewSettings:responseSettings];
-    [self _updateIsCookiesEnableSettings:responseSettings];
-}
-
-+ (void)_updateIsCookiesEnableSettings:(NSDictionary *)responseSettings {
-    [self _updateODBSetting:responseSettings[kIS_COOKIES_ENABLE_KEY] defaultValue:[NSNumber numberWithBool:NO] saveValueBlock:^(NSNumber *value) {
-        [[NSUserDefaults standardUserDefaults] setObject:value forKey:kIS_COOKIES_ENABLE_KEY];
-    }];
 }
 
 + (void)_updateCustomWebViewSettings:(NSDictionary *)responseSettings {
@@ -453,10 +445,12 @@ static Outbrain * _sharedInstance = nil;
         else {
             parameterDelimiter = @"&";
         }
-        
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         if(request.mobileId && request.mobileId.length > 0) {
             [urlString appendFormat:@"%@additionalData=%@", parameterDelimiter, request.mobileId];
         }
+#pragma GCC diagnostic pop
     }
     
     hashtagRange = [urlString rangeOfString:@"#" options:NSCaseInsensitiveSearch];
@@ -468,10 +462,12 @@ static Outbrain * _sharedInstance = nil;
         else {
             parameterDelimiter = @"&";
         }
-        
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         if(request.source && request.source.length > 0) {
             [urlString appendFormat:@"%@mobileSubGroup=%@", parameterDelimiter, request.source];
         }
+#pragma GCC diagnostic pop
     }
     
     //Domain
