@@ -519,7 +519,7 @@ static Outbrain * _sharedInstance = nil;
     base = [base stringByAppendingString:[((NSNumber *)[Outbrain mainBrain].obSettings[OBSettingsAttributes.testModeKey]) boolValue] ? @"&testMode=true" : @""];
     
     //Installation type
-    base = [base stringByAppendingString:[((NSNumber *)[Outbrain mainBrain].obSettings[OBSettingsAttributes.testModeKey]) boolValue] ? @"&installationType=ios_sdk" : @""];
+    base = [base stringByAppendingString:@"&installationType=ios_sdk"];
     
     //Is opt out
     base = [base stringByAppendingString:[NSString stringWithFormat:@"&doo=%@", ([OBAppleAdIdUtil isOptedOut] ? @"true" : @"false")]];
