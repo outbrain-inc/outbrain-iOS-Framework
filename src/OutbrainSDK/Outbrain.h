@@ -36,12 +36,6 @@ extern NSString *const kIS_COOKIES_ENABLE_KEY;
 
 /** @section Initialize **/
 
-/**
- *  @brief Deprecated; please use initializeOutbrainWithPartnerKey.
- *
- *  @see initializeOutbrainWithPartnerKey
- */
-+ (void)initializeOutbrainWithConfigFile:(NSString *)pathToFile;
 
 /**
  *  @brief Initializes Outbrain with the partner key you've received from your Outbrain Account Manager.

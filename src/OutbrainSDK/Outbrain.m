@@ -10,15 +10,9 @@
 #import "Outbrain_Private.h"
 #import "OBContent_Private.h"
 
-#import "OBRecommendationRequestOperation.h"
 #import "OBClickRegistrationOperation.h"
-#import "OBRecommendationResponse.h"
-#import "OBResponse.h"
-#import "OBRequest.h"
-#import "OBLabel.h"
-#import "OBAppleAdIdUtil.h"
-#import "OBViewabilityService.h"
-#import "CustomWebViewManager.h"
+#import "OBRecommendationRequestOperation.h"
+
 #import "OutbrainHelper.h"
 
 #import <UIKit/UIKit.h>
@@ -92,44 +86,6 @@ static Outbrain * _sharedInstance = nil;
     _sharedInstance = instance;
 }
 
-+ (void)initializeOutbrainWithConfigFile:(NSString *)pathToFile
-{
-    if (!WAS_INITIALISED) {
-
-        // First check if it's absolute.  If not then we should try to find it.
-        // This way we can pass in `OBConfig.json` or [[NSBundle mainBundle] pathForResource:@"OBConfig" ofType:@"json"];
-        if(![pathToFile isAbsolutePath])
-        {
-            NSArray * fileParts = [pathToFile componentsSeparatedByString:@"."];
-            
-            pathToFile = [[NSBundle bundleForClass:[self class]] pathForResource:fileParts[0] ofType:(fileParts.count > 1) ? fileParts[1] : @"json"];
-        }
-     
-        NSAssert([[NSFileManager defaultManager] fileExistsAtPath:pathToFile], @"Could not find configuration file at %@.  Please make sure your path is right, and try again",pathToFile);
-        
-        NSDictionary * settingsPayload = nil;
-        
-        
-        if([[pathToFile pathExtension] isEqualToString:@"plist"])
-        {
-            // We're loading from a .plist.  We can load directly
-            settingsPayload = [NSDictionary dictionaryWithContentsOfFile:pathToFile];
-        }
-        else
-        {
-            // Attempt to load as json
-            NSData * data = [NSData dataWithContentsOfFile:pathToFile];
-            if(data)
-            {
-                settingsPayload = [NSJSONSerialization JSONObjectWithData:data options:(0) error:nil];
-            }
-        }
-        NSAssert(settingsPayload != nil, @"Could not read file at path.  Please check your file and try again", pathToFile);
-        
-        // Finally call our dictionary method
-        [self initializeOutbrainWithDictionary:settingsPayload];
-    }
-}
 
 + (void)initializeOutbrainWithPartnerKey:(NSString *)partnerKey {
     if (!WAS_INITIALISED) {
