@@ -111,6 +111,8 @@
 		E61C73ED1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */; };
 		E61C73EE1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */; };
 		E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6E91F7A1D2D08E300A777F3 /* OutbrainHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E6E91F781D2D08E300A777F3 /* OutbrainHelper.h */; };
+		E6E91F7B1D2D08E300A777F3 /* OutbrainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E91F791D2D08E300A777F3 /* OutbrainHelper.m */; };
 		FC6068661A7E85E0008B5C6E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
 		FC820C1019DAF0A800ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
@@ -246,6 +248,8 @@
 		E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
 		E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationsTokenHandler.m; sourceTree = "<group>"; };
 		E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBProtocols.h; sourceTree = "<group>"; };
+		E6E91F781D2D08E300A777F3 /* OutbrainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutbrainHelper.h; sourceTree = "<group>"; };
+		E6E91F791D2D08E300A777F3 /* OutbrainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutbrainHelper.m; sourceTree = "<group>"; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -580,6 +584,8 @@
 			children = (
 				E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */,
 				E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */,
+				E6E91F781D2D08E300A777F3 /* OutbrainHelper.h */,
+				E6E91F791D2D08E300A777F3 /* OutbrainHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -616,6 +622,7 @@
 				E61C73C11D2A4C9300DA1CB0 /* OBSettings.h in Headers */,
 				D8376BE7186E276500B45FA3 /* OutbrainSDK.h in Headers */,
 				E61C73881D2A4AA300DA1CB0 /* CustomWebViewManager.h in Headers */,
+				E6E91F7A1D2D08E300A777F3 /* OutbrainHelper.h in Headers */,
 				D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */,
 				D849D10B1868BB4D00CB4B83 /* Outbrain_Private.h in Headers */,
 				E61C737B1D2A47D300DA1CB0 /* OBBridge.h in Headers */,
@@ -802,6 +809,7 @@
 				E61C73BA1D2A4C9300DA1CB0 /* OBRequest.m in Sources */,
 				E61C73D71D2A4D4100DA1CB0 /* OBPostOperation.m in Sources */,
 				E61C73B61D2A4C9300DA1CB0 /* OBImage.m in Sources */,
+				E6E91F7B1D2D08E300A777F3 /* OutbrainHelper.m in Sources */,
 				E61C73D51D2A4D4100DA1CB0 /* OBOperation.m in Sources */,
 				E61C73891D2A4AA300DA1CB0 /* CustomWebViewManager.m in Sources */,
 				E61C73EE1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m in Sources */,

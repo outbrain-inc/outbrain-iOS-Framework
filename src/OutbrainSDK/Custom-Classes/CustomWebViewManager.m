@@ -13,6 +13,7 @@
 #import "OBReachability.h"
 #import "OBPostOperation.h"
 #import "Outbrain.h"
+#import "OutbrainHelper.h"
 
 @interface CustomWebViewManager()
 
@@ -161,8 +162,7 @@ int const kReportEventFinished = 200;
     NSString *elapsedTime = [@((int)(executionTime*1000)) stringValue];
     
     // Partner Key
-    SEL selector = NSSelectorFromString(@"partnerKey");
-    NSString *partnerKey = [Outbrain performSelector:selector];
+    NSString *partnerKey = [[OutbrainHelper sharedInstance] partnerKey];
     
     //App Version
     NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
