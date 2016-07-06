@@ -47,7 +47,7 @@ NSString * const kPaidRecs = @"pad";
 
 NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widgetGlobalEvent";
 NSString * const kViewabilityKeyForURL_and_WidgetId = @"OB_Viewability_Key_%@_%@";
-
+float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 
 - (NSString*)description
 {
@@ -185,9 +185,9 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
         NSDate *timeNow = [NSDate date];
         NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:requestStartDate];
         
-        // Sanity check, if executionTime is more than 2 minutes we shouldn't report Viewability since the data is probably not relevant
-        if (executionTime > 120.0) {
-            NSLog(@"Error: reportRecsShownForOBLabel with data older than 120 seconds. (%f)", executionTime);
+        // Sanity check, if executionTime is more than 30 minutes we shouldn't report Viewability since the data is probably not relevant
+        if (executionTime > kThirtyMinutesInSeconds) {
+            NSLog(@"Error: reportRecsShownForOBLabel with data older than 30 minutes. (%f)", executionTime / 60.0);
             return;
         }
 
