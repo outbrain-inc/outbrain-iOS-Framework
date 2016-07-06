@@ -20,7 +20,7 @@
  *    <li><strong>image</strong> - an image to be displayed with the recommendation.
  *    <li><strong>content</strong> - the recommendation's title.
  *    <li><strong>author</strong> - the author of the recommendation's content.
- *    <li><strong>sourceURL</strong> - the recommendation URL.
+ *    <li><strong>redirectURL</strong> - the recommendation redirect URL.
  *    <li><strong>publishDate</strong> - the date the content was published.
  *    <li><strong>isSameSource</strong> - is the recommendation from the same source as the one the user is currently viewing.
  *    <li><strong>source</strong> - the name of the recommendation's source.
@@ -33,7 +33,7 @@
  */
 @interface OBRecommendation : OBContent {
     NSDate * publishDate;
-    NSURL * sourceURL;
+    NSURL * redirectURL;
     NSString * author;
     NSString * content;
     NSString * source;
@@ -48,7 +48,6 @@
 
 /** @brief The date the content was published. */
 @property (nonatomic, strong, readonly) NSDate * publishDate;
-@property (nonatomic, strong, readonly) NSURL * sourceURL;
 /** @brief TBD - property may be removed. */
 @property (nonatomic, copy, readonly) NSString * author;
 /** @brief The recommendation's title. */

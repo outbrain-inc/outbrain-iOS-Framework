@@ -181,7 +181,6 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"loading"]) {
         //NSLog(@"isloading? %@" , [self isWebViewLoading] ? @"YES" : @"NO");
-        // TODO update spinner here
     }
 }
 

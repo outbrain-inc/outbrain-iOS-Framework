@@ -10,7 +10,7 @@
 #import "OBContent_Private.h"
 
 #define OBPublishDateKey        @"OBPublishDateKey"
-#define OBSourceURLKey          @"OBSourceURLKey"
+#define OBRedirectURLKey        @"OBRedirectURLKey"
 #define OBAuthorKey             @"OBAuthorKey"
 #define OBContentKey            @"OBContentKey"
 #define OBSourceKey             @"OBSourceKey"
@@ -21,7 +21,10 @@
 
 /** @brief The date the content was published. */
 @property (nonatomic, strong, readwrite) NSDate * publishDate;
-@property (nonatomic, strong, readwrite) NSURL * sourceURL;
+
+/** @brief The re-direct URL of the content. */
+@property (nonatomic, strong, readwrite) NSURL * redirectURL;
+
 /** @brief TBD - property may be removed. */
 @property (nonatomic, copy, readwrite) NSString * author;
 /** @brief The recommendation's title. */
@@ -47,7 +50,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)coder {
    [coder encodeObject:self.publishDate forKey:OBPublishDateKey];
-   [coder encodeObject:self.sourceURL forKey:OBSourceURLKey];
+   [coder encodeObject:self.redirectURL forKey:OBRedirectURLKey];
    [coder encodeObject:self.author forKey:OBAuthorKey];
    [coder encodeObject:self.content forKey:OBContentKey];
    [coder encodeObject:self.source forKey:OBSourceKey];
@@ -57,7 +60,7 @@
     self = [super init];
     if (self) {
         self.publishDate = [coder decodeObjectForKey:OBPublishDateKey];
-        self.sourceURL = [coder decodeObjectForKey:OBSourceURLKey];
+        self.redirectURL = [coder decodeObjectForKey:OBRedirectURLKey];
         self.author = [coder decodeObjectForKey:OBAuthorKey];
         self.content = [coder decodeObjectForKey:OBContentKey];
         self.source = [coder decodeObjectForKey:OBSourceKey];
@@ -89,7 +92,7 @@
     return @{
              @"author":                             @"author",
              @"source":                             @"source_name",
-             @"sourceURL":                          @"url",
+             @"redirectURL":                        @"url",
              @"publishDate":                        @"publish_date",
              @"content":                            @"content",
              @"sameSource":                         @"same_source",
@@ -149,8 +152,8 @@
     return source;
 }
 
-- (NSURL *)sourceURL {
-    return sourceURL;
+- (NSURL *)redirectURL {
+    return redirectURL;
 }
 
 - (NSString *)content {
@@ -185,8 +188,8 @@
     source = aSource;
 }
 
-- (void)setSourceURL:(NSURL *)aSourceURL {
-    sourceURL = aSourceURL;
+- (void)setRedirectURL:(NSURL *)aRedirectURL {
+    redirectURL = aRedirectURL;
 }
 
 - (void)setVideo:(BOOL)aVideo {

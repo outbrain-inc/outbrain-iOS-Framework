@@ -7,8 +7,9 @@
 //
 
 #import "OBAdhesionView.h"
-#import <OutbrainSDK/OutbrainSDK.h>
 #import "OBDemoDataHelper.h"
+
+#import <OutbrainSDK/OutbrainSDK.h>
 
 #define ARROW_HEIGHT 9.f
 #define BOTTOM_PADDING_AMOUNT 100.f // Some padding to go to the bottom for when we're `tugging` up
