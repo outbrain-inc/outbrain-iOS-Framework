@@ -37,7 +37,7 @@
 NSString *const kGLOBAL_WIDGET_STATISTICS = @"globalWidgetStatistics";
 NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 
-NSString *const kIS_CUSTOM_WEBVIEW_ENABLE = @"isCWVReportingEnable";
+NSString *const kIS_CUSTOM_WEBVIEW_ENABLE = @"cwvReportingEnable";
 NSString *const kCWV_THRESHOLD = @"cwvReportingThreshold";
 NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
 
