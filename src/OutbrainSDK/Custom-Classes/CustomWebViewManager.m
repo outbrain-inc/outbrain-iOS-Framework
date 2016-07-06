@@ -15,6 +15,7 @@
 #import "Outbrain.h"
 #import "OutbrainHelper.h"
 
+
 @interface CustomWebViewManager()
 
 @property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
@@ -231,8 +232,7 @@ int const kReportEventFinished = 200;
         [settingsDictionary setObject:value forKey:key];
     }
     
-    NSLog(@"settingsDictionary: %@", settingsDictionary);
-
+    [[OutbrainHelper sharedInstance] updateCustomWebViewSettings: settingsDictionary];
 }
 
 - (void) updateCWVSetting:(NSNumber *)value key:(NSString *)key {
