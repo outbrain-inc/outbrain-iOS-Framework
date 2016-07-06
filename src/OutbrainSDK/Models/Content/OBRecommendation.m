@@ -21,10 +21,8 @@
 
 /** @brief The date the content was published. */
 @property (nonatomic, strong, readwrite) NSDate * publishDate;
-
 /** @brief The re-direct URL of the content. */
 @property (nonatomic, strong, readwrite) NSURL * redirectURL;
-
 /** @brief TBD - property may be removed. */
 @property (nonatomic, copy, readwrite) NSString * author;
 /** @brief The recommendation's title. */
@@ -39,6 +37,8 @@
 @property (nonatomic, assign, getter = isVideo, readwrite) BOOL video;
 /** @brief An image related to the recommendation. */
 @property (nonatomic, strong, readwrite) OBImage *image;
+/** @brief The appflow settings for the content, currently only shouldOpenInExternalBrowser is supported. */
+@property (nonatomic, strong, readwrite) NSDictionary *appflow;
 /** @brief should we open this recommendation in an external browser or within the app */
 @property (nonatomic, assign, readwrite) BOOL shouldOpenInExternalBrowser;
 
@@ -98,7 +98,7 @@
              @"sameSource":                         @"same_source",
              @"image":                              @"thumbnail",
              @"video":                              @"isVideo",
-             @"shouldOpenInExternalBrowser":        @"shouldOpenInExternalBrowser"
+             @"appflow":                            @"appflow"
              };
 }
 
@@ -123,6 +123,11 @@
             value = @([value boolValue]);
         }
     }
+    
+    if ([key isEqualToString:@"appflow"]) {
+        self.shouldOpenInExternalBrowser = [value[@"shouldOpenInExternalBrowser"] boolValue];
+    }
+    
     [super setValue:value forKey:key];
 }
 
