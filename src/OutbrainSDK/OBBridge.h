@@ -16,4 +16,7 @@
 
 + (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url;
 
+// Return status - success or failure
++ (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary;
+
 @end

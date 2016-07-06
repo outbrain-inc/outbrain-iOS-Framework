@@ -179,16 +179,6 @@ static Outbrain * _sharedInstance = nil;
     }
 }
 
-#pragma mark - Custom OBWebView
-+ (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary {
-    if (jsonDictionary[@"response"][@"documents"][@"doc"] == nil) {
-        return NO;
-    }
-    
-    [[OutbrainHelper sharedInstance] updateCustomWebViewSettings:jsonDictionary[@"response"][@"settings"]];
-    
-    return YES;
-}
 
 #if 0 // For the current SDK version the GA reporting should be disabled
 + (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage {

@@ -92,10 +92,6 @@ extern NSString *const kIS_COOKIES_ENABLE_KEY;
  **/
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url;
 
-/** @section Custom OBWebView **/
-
-// Return status - success or failure
-+ (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary;
 
 /** @section Click Handling **/
 

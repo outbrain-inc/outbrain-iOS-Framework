@@ -7,6 +7,8 @@
 //
 
 #import "OBBridge.h"
+#import "OutbrainHelper.h"
+
 
 @implementation OBBridge
 
@@ -19,6 +21,16 @@
 + (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url {
     NSString *currentUrl = [url absoluteString];
     return [currentUrl containsString:@"cwvShouldOpenInExternalBrowser=true"];
+}
+
++ (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary {
+    if (jsonDictionary[@"response"][@"documents"][@"doc"] == nil) {
+        return NO;
+    }
+    
+    [[OutbrainHelper sharedInstance] updateCustomWebViewSettings:jsonDictionary[@"response"][@"settings"]];
+    
+    return YES;
 }
 
 @end
