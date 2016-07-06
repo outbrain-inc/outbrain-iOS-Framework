@@ -7,7 +7,7 @@
 //
 
 #import "OBAdhesionView.h"
-#import <OutbrainSDK/OBRecommendationResponse.h>
+#import <OutbrainSDK/OutbrainSDK.h>
 #import "OBDemoDataHelper.h"
 
 #define ARROW_HEIGHT 9.f

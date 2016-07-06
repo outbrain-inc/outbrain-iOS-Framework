@@ -65,32 +65,32 @@
 		E61C73891D2A4AA300DA1CB0 /* CustomWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C737F1D2A4AA300DA1CB0 /* CustomWebViewManager.m */; };
 		E61C738A1D2A4AA300DA1CB0 /* NJKWebViewProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73821D2A4AA300DA1CB0 /* NJKWebViewProgress.h */; };
 		E61C738B1D2A4AA300DA1CB0 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73831D2A4AA300DA1CB0 /* NJKWebViewProgress.m */; };
-		E61C738C1D2A4AA300DA1CB0 /* OBWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73841D2A4AA300DA1CB0 /* OBWebView.h */; };
+		E61C738C1D2A4AA300DA1CB0 /* OBWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73841D2A4AA300DA1CB0 /* OBWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C738D1D2A4AA300DA1CB0 /* OBWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73851D2A4AA300DA1CB0 /* OBWebView.m */; };
-		E61C738E1D2A4AA300DA1CB0 /* OBWKWebview.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73861D2A4AA300DA1CB0 /* OBWKWebview.h */; };
+		E61C738E1D2A4AA300DA1CB0 /* OBWKWebview.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73861D2A4AA300DA1CB0 /* OBWKWebview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C738F1D2A4AA300DA1CB0 /* OBWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73871D2A4AA300DA1CB0 /* OBWKWebview.m */; };
-		E61C73971D2A4B6100DA1CB0 /* OBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73911D2A4B6100DA1CB0 /* OBLabel.h */; };
+		E61C73971D2A4B6100DA1CB0 /* OBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73911D2A4B6100DA1CB0 /* OBLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73981D2A4B6100DA1CB0 /* OBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73921D2A4B6100DA1CB0 /* OBLabel.m */; };
 		E61C73991D2A4B6100DA1CB0 /* OBViewabilityService.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73931D2A4B6100DA1CB0 /* OBViewabilityService.h */; };
 		E61C739A1D2A4B6100DA1CB0 /* OBViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73941D2A4B6100DA1CB0 /* OBViewabilityService.m */; };
 		E61C739B1D2A4B6100DA1CB0 /* UIView+Visible.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73951D2A4B6100DA1CB0 /* UIView+Visible.h */; };
 		E61C739C1D2A4B6100DA1CB0 /* UIView+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73961D2A4B6100DA1CB0 /* UIView+Visible.m */; };
-		E61C73B21D2A4C9300DA1CB0 /* OBContent.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C739F1D2A4C9300DA1CB0 /* OBContent.h */; };
+		E61C73B21D2A4C9300DA1CB0 /* OBContent.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C739F1D2A4C9300DA1CB0 /* OBContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73B31D2A4C9300DA1CB0 /* OBContent.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73A01D2A4C9300DA1CB0 /* OBContent.m */; };
 		E61C73B41D2A4C9300DA1CB0 /* OBContent_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A11D2A4C9300DA1CB0 /* OBContent_Private.h */; };
-		E61C73B51D2A4C9300DA1CB0 /* OBImage.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A21D2A4C9300DA1CB0 /* OBImage.h */; };
+		E61C73B51D2A4C9300DA1CB0 /* OBImage.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A21D2A4C9300DA1CB0 /* OBImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73B61D2A4C9300DA1CB0 /* OBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73A31D2A4C9300DA1CB0 /* OBImage.m */; };
-		E61C73B71D2A4C9300DA1CB0 /* OBRecommendation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A41D2A4C9300DA1CB0 /* OBRecommendation.h */; };
+		E61C73B71D2A4C9300DA1CB0 /* OBRecommendation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A41D2A4C9300DA1CB0 /* OBRecommendation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73B81D2A4C9300DA1CB0 /* OBRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73A51D2A4C9300DA1CB0 /* OBRecommendation.m */; };
-		E61C73B91D2A4C9300DA1CB0 /* OBRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A71D2A4C9300DA1CB0 /* OBRequest.h */; };
+		E61C73B91D2A4C9300DA1CB0 /* OBRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A71D2A4C9300DA1CB0 /* OBRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73BA1D2A4C9300DA1CB0 /* OBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73A81D2A4C9300DA1CB0 /* OBRequest.m */; };
-		E61C73BB1D2A4C9300DA1CB0 /* OBRecommendationResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73AA1D2A4C9300DA1CB0 /* OBRecommendationResponse.h */; };
+		E61C73BB1D2A4C9300DA1CB0 /* OBRecommendationResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73AA1D2A4C9300DA1CB0 /* OBRecommendationResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73BC1D2A4C9300DA1CB0 /* OBRecommendationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73AB1D2A4C9300DA1CB0 /* OBRecommendationResponse.m */; };
-		E61C73BD1D2A4C9300DA1CB0 /* OBResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73AC1D2A4C9300DA1CB0 /* OBResponse.h */; };
+		E61C73BD1D2A4C9300DA1CB0 /* OBResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73AC1D2A4C9300DA1CB0 /* OBResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73BE1D2A4C9300DA1CB0 /* OBResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73AD1D2A4C9300DA1CB0 /* OBResponse.m */; };
-		E61C73BF1D2A4C9300DA1CB0 /* OBResponseRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73AE1D2A4C9300DA1CB0 /* OBResponseRequest.h */; };
+		E61C73BF1D2A4C9300DA1CB0 /* OBResponseRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73AE1D2A4C9300DA1CB0 /* OBResponseRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73C01D2A4C9300DA1CB0 /* OBResponseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73AF1D2A4C9300DA1CB0 /* OBResponseRequest.m */; };
-		E61C73C11D2A4C9300DA1CB0 /* OBSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73B01D2A4C9300DA1CB0 /* OBSettings.h */; };
+		E61C73C11D2A4C9300DA1CB0 /* OBSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73B01D2A4C9300DA1CB0 /* OBSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73C21D2A4C9300DA1CB0 /* OBSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73B11D2A4C9300DA1CB0 /* OBSettings.m */; };
 		E61C73D21D2A4D4100DA1CB0 /* OBClickRegistrationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73C41D2A4D4100DA1CB0 /* OBClickRegistrationOperation.h */; };
 		E61C73D31D2A4D4100DA1CB0 /* OBClickRegistrationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73C51D2A4D4100DA1CB0 /* OBClickRegistrationOperation.m */; };
@@ -106,11 +106,11 @@
 		E61C73DD1D2A4D4100DA1CB0 /* OBReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73D11D2A4D4100DA1CB0 /* OBReachability.m */; };
 		E61C73E91D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73DF1D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h */; };
 		E61C73EA1D2A4DB800DA1CB0 /* OBAppleAdIdUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E01D2A4DB800DA1CB0 /* OBAppleAdIdUtil.m */; };
-		E61C73EB1D2A4DB800DA1CB0 /* OBErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E21D2A4DB800DA1CB0 /* OBErrors.h */; };
+		E61C73EB1D2A4DB800DA1CB0 /* OBErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E21D2A4DB800DA1CB0 /* OBErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73EC1D2A4DB800DA1CB0 /* OBErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E31D2A4DB800DA1CB0 /* OBErrors.m */; };
 		E61C73ED1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */; };
 		E61C73EE1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */; };
-		E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */; };
+		E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FC6068661A7E85E0008B5C6E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
 		FC820C1019DAF0A800ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
@@ -602,9 +602,19 @@
 				E61C73D81D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.h in Headers */,
 				E61C738C1D2A4AA300DA1CB0 /* OBWebView.h in Headers */,
 				E61C73DC1D2A4D4100DA1CB0 /* OBReachability.h in Headers */,
-				D8376BE7186E276500B45FA3 /* OutbrainSDK.h in Headers */,
 				E61C73BD1D2A4C9300DA1CB0 /* OBResponse.h in Headers */,
 				E61C73B71D2A4C9300DA1CB0 /* OBRecommendation.h in Headers */,
+				E61C73EB1D2A4DB800DA1CB0 /* OBErrors.h in Headers */,
+				E61C73B91D2A4C9300DA1CB0 /* OBRequest.h in Headers */,
+				E61C73B51D2A4C9300DA1CB0 /* OBImage.h in Headers */,
+				E61C73B21D2A4C9300DA1CB0 /* OBContent.h in Headers */,
+				E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */,
+				E61C73971D2A4B6100DA1CB0 /* OBLabel.h in Headers */,
+				E61C738E1D2A4AA300DA1CB0 /* OBWKWebview.h in Headers */,
+				E61C73BF1D2A4C9300DA1CB0 /* OBResponseRequest.h in Headers */,
+				E61C73BB1D2A4C9300DA1CB0 /* OBRecommendationResponse.h in Headers */,
+				E61C73C11D2A4C9300DA1CB0 /* OBSettings.h in Headers */,
+				D8376BE7186E276500B45FA3 /* OutbrainSDK.h in Headers */,
 				E61C73881D2A4AA300DA1CB0 /* CustomWebViewManager.h in Headers */,
 				D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */,
 				D849D10B1868BB4D00CB4B83 /* Outbrain_Private.h in Headers */,
@@ -612,23 +622,13 @@
 				E61C73D61D2A4D4100DA1CB0 /* OBPostOperation.h in Headers */,
 				E61C73991D2A4B6100DA1CB0 /* OBViewabilityService.h in Headers */,
 				E61C73B41D2A4C9300DA1CB0 /* OBContent_Private.h in Headers */,
-				E61C73EB1D2A4DB800DA1CB0 /* OBErrors.h in Headers */,
-				E61C73B91D2A4C9300DA1CB0 /* OBRequest.h in Headers */,
 				E61C73ED1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h in Headers */,
-				E61C73B51D2A4C9300DA1CB0 /* OBImage.h in Headers */,
-				E61C73B21D2A4C9300DA1CB0 /* OBContent.h in Headers */,
 				E61C73DA1D2A4D4100DA1CB0 /* OBViewabilityOperation.h in Headers */,
-				E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */,
-				E61C73971D2A4B6100DA1CB0 /* OBLabel.h in Headers */,
 				E61C739B1D2A4B6100DA1CB0 /* UIView+Visible.h in Headers */,
 				E61C738A1D2A4AA300DA1CB0 /* NJKWebViewProgress.h in Headers */,
 				E61C73D21D2A4D4100DA1CB0 /* OBClickRegistrationOperation.h in Headers */,
-				E61C738E1D2A4AA300DA1CB0 /* OBWKWebview.h in Headers */,
-				E61C73BF1D2A4C9300DA1CB0 /* OBResponseRequest.h in Headers */,
 				E61C73E91D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h in Headers */,
 				E61C73D41D2A4D4100DA1CB0 /* OBOperation.h in Headers */,
-				E61C73BB1D2A4C9300DA1CB0 /* OBRecommendationResponse.h in Headers */,
-				E61C73C11D2A4C9300DA1CB0 /* OBSettings.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
