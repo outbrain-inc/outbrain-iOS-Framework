@@ -336,6 +336,7 @@ static Outbrain * _sharedInstance = nil;
     return filteredResponse;
 }
 
+#pragma mark - ODB Settings
 + (void)_updateSDKSettings:(OBResponse *)response {
     // We only update Settings in the case the response did not error.
     if ([response performSelector:@selector(getPrivateError)]) {

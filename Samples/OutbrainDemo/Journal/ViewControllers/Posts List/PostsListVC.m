@@ -280,6 +280,7 @@
     // First report the click to the SDK and receive the URL to open.
     NSURL * url = [Outbrain getUrl:recommendation];
     
+    
     // User tapped a recommendation   
     if (recommendation.isPaidLink == NO) { // Organic
         typeof(self) __weak __self = self;

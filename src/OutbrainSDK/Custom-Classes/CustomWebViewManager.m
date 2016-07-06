@@ -73,10 +73,11 @@ int const kReportEventFinished = 200;
 
 - (void) checkUrlAndReportIfNeeded:(id)uiwebView_or_wkwebview {
     NSURL *currUrl = [self getCurrentUrl:uiwebView_or_wkwebview];
+    NSString *currUrlString = [currUrl absoluteString];
     
     // if its a paid.outbrain URL
-    if ([[currUrl absoluteString] containsString:kPaidOutbrainPrefix] &&
-        [[currUrl absoluteString] containsString:kCWV_CONTEXT_FLAG]) {
+    if ([currUrlString containsString:kPaidOutbrainPrefix] &&
+        [currUrlString containsString:kCWV_CONTEXT_FLAG]) {
         
         // reset parameters
         self.alreadyReportedOnLoadComplete = NO;
@@ -85,33 +86,38 @@ int const kReportEventFinished = 200;
         self.paidOutbrainUrl = [currUrl absoluteString];
         self.loadStartDate = [NSDate date];
         
+        // Support JS Widget Settings parsing here
+        if ([currUrlString containsString:@"cwvContext=app_js_widget"]) {
+            [self parseOdbSettingsFromPaidOutbrainUrl:currUrlString];
+        }
+        
         return;
     }
+    
     
     if (self.alreadyReportedOnLoadComplete == YES) {
         return;
     }
     
-    NSString *tempUrl = [currUrl absoluteString];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         if (self.alreadyReportedOnLoadComplete == YES) {
             return;
         }
         
-        // Notice this block runs 0.5 seconds after tempUrl is set, this is why the comparison make sense.
+        // Notice this block runs 0.5 seconds after currUrlString is set, this is why the comparison make sense.
         // The webview could change URL in the meantime, especially if the original url was a redirect.
-        if ([[[self getCurrentUrl:uiwebView_or_wkwebview] absoluteString] isEqualToString:tempUrl]) {
+        if ([[[self getCurrentUrl:uiwebView_or_wkwebview] absoluteString] isEqualToString:currUrlString]) {
             
             if (self.paidOutbrainUrl != nil)  {
-                NSLog(@"** Real Pageview: %@ **", tempUrl);
-                [self reportServerOnPercentLoad:1.0 forUrl:tempUrl orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate];
+                NSLog(@"** Real Pageview: %@ **", currUrlString);
+                [self reportServerOnPercentLoad:1.0 forUrl:currUrlString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate];
                 
                 self.paidOutbrainUrl = nil;
                 self.alreadyReportedOnLoadComplete = YES;
             }
         }
         else {
-            NSLog(@"NOT Real Pageview: %@ != %@", [[self getCurrentUrl:uiwebView_or_wkwebview] absoluteString], tempUrl);
+            // NSLog(@"NOT Real Pageview: %@ != %@", [[self getCurrentUrl:uiwebView_or_wkwebview] absoluteString], currUrlString);
         }
     });
 }
@@ -202,6 +208,33 @@ int const kReportEventFinished = 200;
 }
 
 #pragma mark - Custom WebView Settings
+
+// paidUrl is a JS Widget paid.outbrain Url With ODB Settings after #
+- (void) parseOdbSettingsFromPaidOutbrainUrl:(NSString *)paidUrl {
+    NSArray *components = [paidUrl componentsSeparatedByString:@"#"];
+    if (components.count != 2) {
+        NSLog(@"Outbrain - error in parseOdbSettingsFromPaidOutbrainUrl()");
+        return;
+    }
+    
+    NSString *settingsParams = components[1];
+    NSMutableDictionary *settingsDictionary = [[NSMutableDictionary alloc] init];
+    NSArray *urlComponents = [settingsParams componentsSeparatedByString:@"&"];
+    
+    // Populate settingsDictionary with the key\value params
+    for (NSString *keyValuePair in urlComponents)
+    {
+        NSArray *pairComponents = [keyValuePair componentsSeparatedByString:@"="];
+        NSString *key = [[pairComponents firstObject] stringByRemovingPercentEncoding];
+        NSString *value = [[pairComponents lastObject] stringByRemovingPercentEncoding];
+        
+        [settingsDictionary setObject:value forKey:key];
+    }
+    
+    NSLog(@"settingsDictionary: %@", settingsDictionary);
+
+}
+
 - (void) updateCWVSetting:(NSNumber *)value key:(NSString *)key {
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
     
