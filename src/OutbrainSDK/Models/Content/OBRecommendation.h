@@ -63,6 +63,6 @@
 /** @brief An image related to the recommendation. */
 @property (nonatomic, strong, readonly) OBImage *image;
 /** @brief should we open this recommendation in an external browser or within the app */
-@property (nonatomic, assign, readonly) BOOL shouldOpenInExternalBrowser;
+@property (nonatomic, assign, readonly) BOOL shouldOpenInSafariViewController;
 
 @end

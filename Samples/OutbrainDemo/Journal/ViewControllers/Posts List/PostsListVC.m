@@ -298,7 +298,7 @@
         }];
     }
     else {
-        if (recommendation.shouldOpenInExternalBrowser) {
+        if (recommendation.shouldOpenInSafariViewController) {
             [self openUrlInSafariVC:url];
         }
         else {            

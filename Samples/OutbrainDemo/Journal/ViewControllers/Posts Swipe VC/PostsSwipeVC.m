@@ -341,7 +341,7 @@ if([posts isEqual:_posts]) return;
         return;
     }
     
-    if (recommendation.shouldOpenInExternalBrowser) {
+    if (recommendation.shouldOpenInSafariViewController) {
         [self openUrlInSafariVC:[Outbrain getUrl:recommendation]];
     }
     else {

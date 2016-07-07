@@ -40,7 +40,7 @@
 /** @brief The appflow settings for the content, currently only shouldOpenInExternalBrowser is supported. */
 @property (nonatomic, strong, readwrite) NSDictionary *appflow;
 /** @brief should we open this recommendation in an external browser or within the app */
-@property (nonatomic, assign, readwrite) BOOL shouldOpenInExternalBrowser;
+@property (nonatomic, assign, readwrite) BOOL shouldOpenInSafariViewController;
 
 @end
 
@@ -125,7 +125,7 @@
     }
     
     if ([key isEqualToString:@"appflow"]) {
-        self.shouldOpenInExternalBrowser = [value[@"shouldOpenInExternalBrowser"] boolValue];
+        self.shouldOpenInSafariViewController = [value[@"shouldOpenInExternalBrowser"] boolValue];
     }
     
     [super setValue:value forKey:key];
