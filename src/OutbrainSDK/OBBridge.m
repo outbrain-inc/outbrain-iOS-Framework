@@ -18,7 +18,7 @@
     return [currentUrl containsString:@"paid.outbrain.com/network/redir"];
 }
 
-+ (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url {
++ (BOOL) shouldOpenInSafariViewController:(NSURL *)url {
     NSString *currentUrl = [url absoluteString];
     return [currentUrl containsString:@"cwvShouldOpenInExternalBrowser=true"];
 }

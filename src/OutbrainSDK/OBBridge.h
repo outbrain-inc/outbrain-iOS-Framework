@@ -14,7 +14,7 @@
 
 + (BOOL) isOutbrainPaidUrl:(NSURL *)url;
 
-+ (BOOL) shouldOpenUrlInSafariViewController:(NSURL *)url;
++ (BOOL) shouldOpenInSafariViewController:(NSURL *)url;
 
 // Return status - success or failure
 + (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary;
