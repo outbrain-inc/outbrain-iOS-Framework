@@ -22,3 +22,4 @@
 #import <OutbrainSDK/OBWKWebview.h>
 #import <OutbrainSDK/OBWebview.h>
 #import <OutbrainSDK/OBBridge.h>
+#import <OutbrainSDK/OBAppleAdIdUtil.h>

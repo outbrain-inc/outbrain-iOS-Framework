@@ -104,7 +104,7 @@
 		E61C73DB1D2A4D4100DA1CB0 /* OBViewabilityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73CD1D2A4D4100DA1CB0 /* OBViewabilityOperation.m */; };
 		E61C73DC1D2A4D4100DA1CB0 /* OBReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73D01D2A4D4100DA1CB0 /* OBReachability.h */; };
 		E61C73DD1D2A4D4100DA1CB0 /* OBReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73D11D2A4D4100DA1CB0 /* OBReachability.m */; };
-		E61C73E91D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73DF1D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h */; };
+		E61C73E91D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73DF1D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73EA1D2A4DB800DA1CB0 /* OBAppleAdIdUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E01D2A4DB800DA1CB0 /* OBAppleAdIdUtil.m */; };
 		E61C73EB1D2A4DB800DA1CB0 /* OBErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E21D2A4DB800DA1CB0 /* OBErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73EC1D2A4DB800DA1CB0 /* OBErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E31D2A4DB800DA1CB0 /* OBErrors.m */; };
@@ -620,6 +620,7 @@
 				E61C73BF1D2A4C9300DA1CB0 /* OBResponseRequest.h in Headers */,
 				E61C73BB1D2A4C9300DA1CB0 /* OBRecommendationResponse.h in Headers */,
 				E61C73C11D2A4C9300DA1CB0 /* OBSettings.h in Headers */,
+				E61C73E91D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h in Headers */,
 				D8376BE7186E276500B45FA3 /* OutbrainSDK.h in Headers */,
 				E61C73881D2A4AA300DA1CB0 /* CustomWebViewManager.h in Headers */,
 				E6E91F7A1D2D08E300A777F3 /* OutbrainHelper.h in Headers */,
@@ -634,7 +635,6 @@
 				E61C739B1D2A4B6100DA1CB0 /* UIView+Visible.h in Headers */,
 				E61C738A1D2A4AA300DA1CB0 /* NJKWebViewProgress.h in Headers */,
 				E61C73D21D2A4D4100DA1CB0 /* OBClickRegistrationOperation.h in Headers */,
-				E61C73E91D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h in Headers */,
 				E61C73D41D2A4D4100DA1CB0 /* OBOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
