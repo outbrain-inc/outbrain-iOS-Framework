@@ -90,7 +90,7 @@
     OBRecommendation * recommendation = [OBRecommendation contentWithPayload:recommendationPayload];
     
     OBAssertNotNilAndProperClass(recommendation, [OBRecommendation class]);
-    OBAssertNotNilAndProperClass(recommendation.sourceURL, [NSURL class]);
+    OBAssertNotNilAndProperClass([Outbrain getUrl:recommendation], [NSURL class]);
     OBAssertNotNilAndProperClass(recommendation.publishDate, [NSDate class]);
     OBAssertNotNilAndProperClass(recommendation.image, [OBImage class]);
 }

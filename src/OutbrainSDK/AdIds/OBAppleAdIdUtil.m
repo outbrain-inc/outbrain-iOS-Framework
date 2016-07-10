@@ -31,7 +31,6 @@
 
 + (void)refreshAdId {
     [[NSUserDefaults standardUserDefaults] setObject:[self getAdvertiserId] forKey:LAST_AD_ID_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

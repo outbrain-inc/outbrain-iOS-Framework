@@ -73,6 +73,8 @@
 		E66AC33A1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
 		E66AC33B1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
 		E671E5E31C8C3FA9001206F7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
+		E6EF299E1CD8D6650026AAD3 /* AppWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */; };
+		E6EF299F1CD8D6660026AAD3 /* AppWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */; };
 		E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
 		FC0E091D190F901F00DBA5F4 /* OBStickyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0E091C190F901F00DBA5F4 /* OBStickyHeaderView.m */; };
 		FC11BB41196E788C0048000D /* OBIPadInterstitialClassicViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC11BB3F196E75F70048000D /* OBIPadInterstitialClassicViewCell.m */; };
@@ -215,6 +217,8 @@
 		D8F5819118B4114700AEBC15 /* HeroListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeroListVC.h; path = "viewcontrollers/Hero Interstitial/HeroListVC.h"; sourceTree = "<group>"; };
 		D8F5819218B4114700AEBC15 /* HeroListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroListVC.m; path = "viewcontrollers/Hero Interstitial/HeroListVC.m"; sourceTree = "<group>"; };
 		E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
+		E6EF299C1CD8D6650026AAD3 /* AppWKWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppWKWebview.h; sourceTree = "<group>"; };
+		E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppWKWebview.m; sourceTree = "<group>"; };
 		E6FFC2C21C28489A00498168 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FC0E091B190F901F00DBA5F4 /* OBStickyHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBStickyHeaderView.h; path = ../../Samples/OutbrainDemo/OBStickyHeaderView.h; sourceTree = "<group>"; };
 		FC0E091C190F901F00DBA5F4 /* OBStickyHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBStickyHeaderView.m; path = ../../Samples/OutbrainDemo/OBStickyHeaderView.m; sourceTree = "<group>"; };
@@ -432,6 +436,7 @@
 		D834565C1885A543002B2368 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E6EF29981CD8D64A0026AAD3 /* CustomWebview */,
 				D86CEFCC18A15416002B2017 /* Loading View */,
 				D834565D1885A543002B2368 /* Collection Cells */,
 				D83456611885A543002B2368 /* Paralax TitleView */,
@@ -751,6 +756,15 @@
 				D8F5819218B4114700AEBC15 /* HeroListVC.m */,
 			);
 			name = "Hero Interstitial";
+			sourceTree = "<group>";
+		};
+		E6EF29981CD8D64A0026AAD3 /* CustomWebview */ = {
+			isa = PBXGroup;
+			children = (
+				E6EF299C1CD8D6650026AAD3 /* AppWKWebview.h */,
+				E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */,
+			);
+			path = CustomWebview;
 			sourceTree = "<group>";
 		};
 		FC66EB9018F13789005FA944 /* Catalog-iPad */ = {
@@ -1088,6 +1102,7 @@
 				FC89009A1AA33B49008BAD54 /* TopBoxPostViewCell.m in Sources */,
 				D834566B1885A543002B2368 /* OBDemoDataHelper.m in Sources */,
 				D83456771885A543002B2368 /* TinyPageControl.m in Sources */,
+				E6EF299E1CD8D6650026AAD3 /* AppWKWebview.m in Sources */,
 				D852F388187B673B008A2A04 /* OBAdhesionView.m in Sources */,
 				D83456731885A543002B2368 /* PostsSwipeVC.m in Sources */,
 				D8D1FD9D187332540099831C /* OBRecommendationSlideCell.m in Sources */,
@@ -1114,6 +1129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC9BEE301998BFB600D545FE /* OBRecommendationWebVC.m in Sources */,
+				E6EF299F1CD8D6660026AAD3 /* AppWKWebview.m in Sources */,
 				D8448EF0189C4997005696E7 /* HeroGridVC.m in Sources */,
 				D8448EEA189C39A7005696E7 /* ClassicInterstitialVC.m in Sources */,
 				D8A6782D18A00D7000D18328 /* OBAdhesionView.m in Sources */,
@@ -1326,6 +1342,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1353,6 +1370,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

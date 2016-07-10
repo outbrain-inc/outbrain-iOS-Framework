@@ -35,9 +35,8 @@ extern const struct OBSettingsAttributes {
  **/
 
 @interface Outbrain()
+
 @property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
-@property (nonatomic, strong) NSMutableDictionary *obSettings;       // Settings payload that the sdk is initialized with
-@property (nonatomic, strong) OBRecommendationsTokenHandler *tokensHandler;
 @property (nonatomic, strong) OBViewabilityService *viewabilityService;
 
 + (instancetype)mainBrain;  // Shared Instance
@@ -50,49 +49,10 @@ extern const struct OBSettingsAttributes {
 
 
 
-// Some Convenience Getters
-@interface Outbrain(ConvenienceGetters)
-
-+ (NSString *)partnerKey;
-+ (NSString *)userToken;
-
-@end
-
-
 
 // Separating these for cleanness
 @interface Outbrain (InternalMethods)
 
-// apv cache
-+ (void)_updateAPVCacheForResponse:(OBResponse *)response;
-
-// URL Builder
-+ (NSURL *)_recommendationURLForRequest:(OBRequest *)request;
-
 + (void)_fetchRecommendationsWithRequest:(OBRequest *)request andCallback:(OBResponseCompletionHandler)handler;
-
-// Convenience for setting/getting `settings`
-
-/**
- *  Discussion:
- *      Retrieve an internal setting for the given key
- *
- *  params:
- *      @key - The key to return the setting for
- **/
-+ (id)OBSettingForKey:(NSString *)key;
-
-/**
- *  Discussion:
- *      This method is used to set an internal setting.  You can retrieve these values
- *      from the `+ OBSettingForKey:` method or by using the `@settings` property directly
- *
- *  params:
- *      @value - The value for the @key you wish to set.
- *      @key - The key you wish to set a value for
- *
- *  @note:  Passing nil for @value will delete the value for the given @key
- **/
-+ (void)setOBSettingValue:(id)value forKey:(NSString *)key;
 
 @end

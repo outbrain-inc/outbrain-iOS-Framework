@@ -19,6 +19,8 @@
 #import "OBAppDelegate.h"
 #import "TopBoxPostViewCell.h"
 
+
+
 @interface PostsSwipeVC () <OBWidgetViewDelegate,OBInterstitialViewDelegate>
 @end
 
@@ -277,10 +279,10 @@ if([posts isEqual:_posts]) return;
 
 - (void)widgetView:(UIView<OBWidgetViewProtocol> *)widgetView tappedRecommendation:(OBRecommendation *)recommendation
 {
-    if(recommendation.isSameSource)
+    if(recommendation.isPaidLink == NO) // Organic
     {
         // url here
-        NSURL * url = [Outbrain getOriginalContentURLAndRegisterClickForRecommendation:recommendation];
+        NSURL * url = [Outbrain getUrl:recommendation];
         typeof(self) __weak __self = self;
         __block UIAlertView * loadingAlert = [[UIAlertView alloc] initWithTitle:@"Fetching Content" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
         [loadingAlert show];
@@ -339,7 +341,12 @@ if([posts isEqual:_posts]) return;
         return;
     }
     
-    [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:recommendation];
+    if (recommendation.shouldOpenInSafariViewController) {
+        [self openUrlInSafariVC:[Outbrain getUrl:recommendation]];
+    }
+    else {
+        [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:recommendation];
+    }    
 }
 
 - (void)widgetViewTappedBranding:(UIView<OBWidgetViewProtocol> *)widgetView
@@ -356,9 +363,33 @@ if([posts isEqual:_posts]) return;
     if([segue.identifier isEqualToString:@"ShowRecommendedContent"])
     {
         UINavigationController * nav = [segue destinationViewController];
-        [[nav topViewController] setValue:sender forKey:@"recommendation"];
+        OBRecommendation *recommendationToOpen = (OBRecommendation *)sender;
+        
+        NSURL *recURL = [Outbrain getUrl:recommendationToOpen];
+        [[nav topViewController] setValue:recURL forKey:@"recommendationUrl"];
     }
 }
 
+#pragma mark - SFSafariViewController + SFSafariViewControllerDelegate
+
+- (void) openUrlInSafariVC:(NSURL *)url {
+    if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
+        [[UIApplication sharedApplication] openURL:url];
+
+    }
+    else {
+        SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+        sf.delegate = self;
+        [self.navigationController presentViewController:sf animated:YES completion:nil];
+    }
+}
+
+- (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
+    NSLog(@"safariViewController didCompleteInitialLoad");
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    NSLog(@"safariViewController safariViewControllerDidFinish");
+}
 
 @end

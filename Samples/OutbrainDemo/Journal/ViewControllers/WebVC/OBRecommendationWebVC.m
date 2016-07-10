@@ -7,12 +7,13 @@
 //
 
 #import "OBRecommendationWebVC.h"
+#import "AppWKWebview.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 
 @interface OBRecommendationWebVC ()
 
-@property (nonatomic, strong) UIWebView * webView;
-@property (nonatomic, strong) WKWebView * wk_WebView;
+@property (nonatomic, strong) OBWebView * webView;
+@property (nonatomic, strong) AppWKWebview * wk_WebView;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * backButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem * refreshButton;
@@ -37,25 +38,28 @@
     CGRect frame = CGRectMake(0, 20.0, self.view.frame.size.width, self.view.frame.size.height);
     
     if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        self.webView = [[UIWebView alloc] initWithFrame:frame];
+        self.webView = [[OBWebView alloc] initWithFrame:frame];
         self.webView.scalesPageToFit = YES;
         [self.webView setTranslatesAutoresizingMaskIntoConstraints: NO];
         self.webView.delegate = self;
         // Fast scrolling
         self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+        // KVO on loading
+        [self.webView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:NULL];
         [self.view addSubview:self.webView];
     }
     else {
-        self.wk_WebView = [[WKWebView alloc] initWithFrame:frame];
+        self.wk_WebView = [[AppWKWebview alloc] initWithFrame:frame];
         self.wk_WebView.navigationDelegate = self;
+        // KVO on loading
+        [self.wk_WebView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:NULL];
         [self.view addSubview:self.wk_WebView];
     }
     
        
-    if(self.recommendation)
+    if (self.recommendationUrl)
     {
-        NSURL * url = [Outbrain getOriginalContentURLAndRegisterClickForRecommendation:self.recommendation];
-        [self loadURL:url];
+        [self loadURL:self.recommendationUrl];
     }
 }
 
@@ -63,6 +67,16 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+}
+
+- (void)dealloc
+{
+    if (self.webView != nil) {
+        [self.webView removeObserver:self forKeyPath:@"loading"];
+    }
+    if (self.wk_WebView != nil) {
+        [self.wk_WebView removeObserver:self forKeyPath:@"loading"];
+    }
 }
 
 #pragma mark - User Actions
@@ -131,7 +145,6 @@
     {
         NSMutableArray * tmpItems = [[self toolbarItems] mutableCopy];
         [tmpItems removeObject:activityItem];
-//        [tmpItems replaceObjectAtIndex:2 withObject:self.refreshButton];
         [self setToolbarItems:tmpItems animated:YES];
     }
 }
@@ -163,25 +176,33 @@
     }
 }
 
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"loading"]) {
+        //NSLog(@"isloading? %@" , [self isWebViewLoading] ? @"YES" : @"NO");
+    }
+}
+
 #pragma mark - WebView delegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
-//    [self _updateButtonStates];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
+    [self _updateButtonStates];
     
     return YES;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
     [self _updateButtonStates];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_updateButtonStates) object:nil];
     // Webview sometimes calls finished when it's really not.  In this
     // case we'll just wait a second to make sure it's actually finished
     [self _updateButtonStates];
@@ -202,6 +223,12 @@
     [self _updateButtonStates];
 }
 
+- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation {
+    
+}
 
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
+    
+}
 
 @end
