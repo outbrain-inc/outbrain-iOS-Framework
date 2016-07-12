@@ -81,7 +81,7 @@ CGFloat viewThresholdBeforeReportingToServer = 1.0;
     UIView *view = timer.userInfo[@"view"];
     
     if (!view.superview) {
-        NSLog(@"Warning: The ad view is not in a super view. No visibility tracking will occur.");
+        // NSLog(@"Warning: The ad view is not in a super view. No visibility tracking will occur.");
         [self.viewVisibleTimer invalidate];
         return;
     }

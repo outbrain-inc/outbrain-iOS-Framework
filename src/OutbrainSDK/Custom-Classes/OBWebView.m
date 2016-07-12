@@ -64,7 +64,7 @@
 #pragma mark - NJKWebViewProgressDelegate
 -(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
 {
-    NSLog(@"** progress: %f --> %@ **", progress, self.request.URL.host);
+    // NSLog(@"** progress: %f --> %@ **", progress, self.request.URL.host);
     
     if (progress < 1.0) {
         [[CustomWebViewManager sharedManager] reportOnProgressAndReportIfNeeded:progress webview:self];
@@ -114,7 +114,7 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
-    NSLog(@"OB didFailLoadWithError: %@ - %@", error.localizedDescription, error.userInfo);
+    // NSLog(@"OB didFailLoadWithError: %@ - %@", error.localizedDescription, error.userInfo);
     if (self.externalDelegate &&
         [self.externalDelegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
     {

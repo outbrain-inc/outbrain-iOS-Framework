@@ -111,7 +111,7 @@ int const kReportEventFinished = 200;
         if ([[[self getCurrentUrl:uiwebView_or_wkwebview] absoluteString] isEqualToString:currUrlString]) {
             
             if (self.paidOutbrainUrl != nil)  {
-                NSLog(@"** Real Pageview: %@ **", currUrlString);
+                // NSLog(@"** Real Pageview: %@ **", currUrlString);
                 [self reportServerOnPercentLoad:1.0 forUrl:currUrlString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate];
                 
                 self.paidOutbrainUrl = nil;
@@ -132,7 +132,7 @@ int const kReportEventFinished = 200;
         return;
     }
     
-    NSLog(@"** reportServerOnPercentLoad: %f for: %@ **",percentLoad, urlString);
+    // NSLog(@"** reportServerOnPercentLoad: %f for: %@ **",percentLoad, urlString);
     
     int eventType = (percentLoad == 1.0) ? kReportEventFinished : kReportEventPercentLoad;
     OBPostOperation *postOperation = [OBPostOperation operationWithURL:[NSURL URLWithString:kReportUrl]];
@@ -214,7 +214,7 @@ int const kReportEventFinished = 200;
 - (void) parseOdbSettingsFromPaidOutbrainUrl:(NSString *)paidUrl {
     NSArray *components = [paidUrl componentsSeparatedByString:@"#"];
     if (components.count != 2) {
-        NSLog(@"Outbrain - error in parseOdbSettingsFromPaidOutbrainUrl()");
+        // NSLog(@"Outbrain - error in parseOdbSettingsFromPaidOutbrainUrl()");
         return;
     }
     

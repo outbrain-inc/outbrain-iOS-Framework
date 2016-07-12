@@ -125,7 +125,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     NSString *widgetId = response.request.widgetId;
     NSString *url = response.request.url;
     
-    NSLog(@"reportRecsReceived: %@", widgetId);
+    // NSLog(@"reportRecsReceived: %@", widgetId);
     
     ViewabilityData *viewabilityData = [[ViewabilityData alloc] init];
     viewabilityData.pid = [response.responseRequest getStringValueForPayloadKey:@"pid"];
@@ -168,12 +168,12 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     NSString *reqId = viewabilityDictionary[kRequestId];
     
     if ([self.reqIdAlreadyReportedArray containsObject:reqId]) {
-        NSLog(@"reportRecsShownForOBLabel() - trying to report again for the same reqId: %@", reqId);
+        // NSLog(@"reportRecsShownForOBLabel() - trying to report again for the same reqId: %@", reqId);
         return;
     }
     
     if (viewabilityDictionary == nil) {
-        NSLog(@"Error: reportRecsShownForOBLabel() - make sure to register OBLabel with Outbrain (key: %@)", viewabilityKey);
+        // NSLog(@"Error: reportRecsShownForOBLabel() - make sure to register OBLabel with Outbrain (key: %@)", viewabilityKey);
         return;
     }
     
@@ -187,7 +187,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
         
         // Sanity check, if executionTime is more than 30 minutes we shouldn't report Viewability since the data is probably not relevant
         if (executionTime > kThirtyMinutesInSeconds) {
-            NSLog(@"Error: reportRecsShownForOBLabel with data older than 30 minutes. (%f)", executionTime / 60.0);
+            // NSLog(@"Error: reportRecsShownForOBLabel with data older than 30 minutes. (%f)", executionTime / 60.0);
             return;
         }
 
@@ -200,10 +200,10 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
         OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
         [self.obRequestQueue addOperation:viewabilityOperation];
         
-        NSLog(@"reportRecsShownForOBLabel: %@", obLabel.url);
+        // NSLog(@"reportRecsShownForOBLabel: %@", obLabel.url);
     }
     else {
-        NSLog(@"Error: reportRecsShownForWidgetId() there is no viewabilityDictionary for OBLabel: %@", viewabilityKey);
+        // NSLog(@"Error: reportRecsShownForWidgetId() there is no viewabilityDictionary for OBLabel: %@", viewabilityKey);
     }
 }
 
