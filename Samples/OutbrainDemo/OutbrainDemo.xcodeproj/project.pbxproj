@@ -73,6 +73,8 @@
 		E66AC33A1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
 		E66AC33B1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
 		E671E5E31C8C3FA9001206F7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
+		E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
+		E6E91F861D3674A600A777F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
 		E6EF299E1CD8D6650026AAD3 /* AppWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */; };
 		E6EF299F1CD8D6660026AAD3 /* AppWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */; };
 		E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
@@ -253,6 +255,7 @@
 		D8F5819218B4114700AEBC15 /* HeroListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroListVC.m; path = "viewcontrollers/Hero Interstitial/HeroListVC.m"; sourceTree = "<group>"; };
 		E66AC3281C99AA4300A23876 /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = ../../src/OutbrainSDK.xcodeproj; sourceTree = "<group>"; };
 		E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
+		E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6EF299C1CD8D6650026AAD3 /* AppWKWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppWKWebview.h; sourceTree = "<group>"; };
 		E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppWKWebview.m; sourceTree = "<group>"; };
 		E6FFC2C21C28489A00498168 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -307,6 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */,
 				E66AC33A1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */,
 				E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */,
 				FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */,
@@ -322,6 +326,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6E91F861D3674A600A777F3 /* SystemConfiguration.framework in Frameworks */,
 				E671E5E31C8C3FA9001206F7 /* WebKit.framework in Frameworks */,
 				FC820C1319DD598F00ABAD89 /* AdSupport.framework in Frameworks */,
 				D8DCCA5818883DED00E038EE /* CoreGraphics.framework in Frameworks */,
@@ -658,6 +663,7 @@
 		D8B5923B186376B1009422D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */,
 				E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */,
 				E6FFC2C21C28489A00498168 /* WebKit.framework */,
 				FC820C1119DD597F00ABAD89 /* AdSupport.framework */,
