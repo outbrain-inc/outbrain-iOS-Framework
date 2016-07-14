@@ -184,7 +184,8 @@ int const kReportEventFinished = 200;
                              @"partner_key" :           partnerKey,
                              @"sdk_version" :           OB_SDK_VERSION,
                              @"app_ver" :               appVersionString,
-                             @"network" :               [self getNetworkInterface]
+                             @"network" :               [self getNetworkInterface],
+                             @"event_group" :           @"OBWebView"
                              };
     
     return params;
