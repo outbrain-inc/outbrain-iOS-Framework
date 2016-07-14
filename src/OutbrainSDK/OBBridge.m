@@ -8,6 +8,7 @@
 
 #import "OBBridge.h"
 #import "OutbrainHelper.h"
+#import "Outbrain.h"
 
 
 @implementation OBBridge
@@ -31,6 +32,11 @@
     [[OutbrainHelper sharedInstance] updateCustomWebViewSettings:jsonDictionary[@"response"][@"settings"]];
     
     return YES;
+}
+
+#pragma mark - Initilize Outbrain
++ (void)initializeOutbrainWithPartnerKey:(NSString *)partnerKey {
+    [Outbrain initializeOutbrainWithPartnerKey:partnerKey];
 }
 
 @end
