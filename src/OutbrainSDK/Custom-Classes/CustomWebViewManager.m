@@ -175,16 +175,16 @@ int const kReportEventFinished = 200;
     
     NSNumber *thresholdSettingValue = [NSNumber numberWithInteger:[self customWebViewThreshold]*100];
     
-    NSDictionary *params = @{@"redirectURL" : orignalPaidOutbrainUrl,
-                             @"event_type" : [NSNumber numberWithInt:eventType],
-                             @"event_data" : [NSNumber numberWithInt:percentLoad],
-                             @"threshold_setting" : thresholdSettingValue,
-                             @"elapsed_time" : elapsedTime,
-                             @"event_url" : event_url,
-                             @"partner_key" : partnerKey,
-                             @"sdk_version" : OB_SDK_VERSION,
-                             @"app_ver" : appVersionString,
-                             @"network" : [self getNetworkInterface]
+    NSDictionary *params = @{@"redirectURL" :           orignalPaidOutbrainUrl,
+                             @"event_type" :            [NSNumber numberWithInt:eventType],
+                             @"event_data" :            [NSNumber numberWithInt:percentLoad],
+                             @"threshold_setting" :     thresholdSettingValue,
+                             @"elapsed_time" :          elapsedTime,
+                             @"event_url" :             event_url,
+                             @"partner_key" :           partnerKey,
+                             @"sdk_version" :           OB_SDK_VERSION,
+                             @"app_ver" :               appVersionString,
+                             @"network" :               [self getNetworkInterface]
                              };
     
     return params;
