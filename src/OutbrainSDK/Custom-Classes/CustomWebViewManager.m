@@ -63,7 +63,7 @@ int const kReportEventFinished = 200;
 - (void) reportOnProgressAndReportIfNeeded:(float)progress webview:(id)uiwebView_or_wkwebview {
     NSString *urlString = [self getCurrentUrl:uiwebView_or_wkwebview].absoluteString;
     
-    if ((progress > self.percentLoadThreshold) &&
+    if ((progress >= self.percentLoadThreshold) &&
         (self.paidOutbrainUrl != nil) &&
         (self.alreadyReportedOnPercentLoad == NO) &&
         ([urlString containsString:kPaidOutbrainPrefix] == NO)) {
