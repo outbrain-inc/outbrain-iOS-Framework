@@ -28,6 +28,9 @@
 
 @implementation ViewabilityData
 
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
+
 NSString * const EVENT_RECEIVED = @"0";
 NSString * const EVENT_EXPOSED = @"3";
 
@@ -233,10 +236,22 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 -(NSURL *) createUrlFromParams:(NSDictionary *)queryDictionary {
     NSURLComponents *components = [NSURLComponents componentsWithString:kViewabilityUrl];
     NSMutableArray *queryItems = [NSMutableArray array];
-    for (NSString *key in queryDictionary) {
-        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:queryDictionary[key]]];
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        for (NSString *key in queryDictionary) {
+            NSString *part = [NSString stringWithFormat: @"%@=%@", key, queryDictionary[key]];
+            [queryItems addObject: part];
+        }
+        
+        components.query = [queryItems componentsJoinedByString: @"&"];
     }
-    components.queryItems = queryItems;
+    else {
+        for (NSString *key in queryDictionary) {
+            [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:queryDictionary[key]]];
+        }
+        components.queryItems = queryItems;
+    }
+    
     return components.URL;
 }
 
