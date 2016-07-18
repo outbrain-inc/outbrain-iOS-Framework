@@ -44,17 +44,6 @@
     UIRefreshControl * refreshControl = [self refreshControl];
     [refreshControl addTarget:self action:@selector(refreshPostsList) forControlEvents:UIControlEventValueChanged];
     
-#ifdef COOKIES // Only for internal debug purposes
-    UIBarButtonItem *addCookiesButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCookies)];
-
-    UIBarButtonItem *removeCookiesButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clearAllCookies)];
-
-    UIBarButtonItem *printCookiesButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(printCookies)];
-    
-    self.navigationItem.leftBarButtonItem = removeCookiesButton;
-    self.navigationItem.leftItemsSupplementBackButton = YES;
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:addCookiesButton, printCookiesButton, nil];
-#endif
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -331,40 +320,6 @@
     }
 }
 
-
-- (void)addCookies {
-    NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
-    [cookieProperties setObject:@"DEMO_COOKIE" forKey:NSHTTPCookieName];
-    [cookieProperties setObject:@"YUM" forKey:NSHTTPCookieValue];
-    [cookieProperties setObject:@"www.DEMO.com" forKey:NSHTTPCookieDomain];
-    [cookieProperties setObject:@"www.DEMO.com" forKey:NSHTTPCookieOriginURL];
-    [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
-    [cookieProperties setObject:@"0" forKey:NSHTTPCookieVersion];
-    [cookieProperties setObject:[[NSDate date] dateByAddingTimeInterval:2629743] forKey:NSHTTPCookieExpires];
-    
-    NSHTTPCookie *cookie = [[NSHTTPCookie alloc] initWithProperties:cookieProperties];
-    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-}
-
-- (void)printCookies {
-    NSString *cookiesDomains = @"";
-    NSString *cookiesNames = @"";
-    
-    for (NSHTTPCookie *cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
-        cookiesNames = [cookiesNames stringByAppendingString:cookie.name];
-        cookiesNames = [cookiesNames stringByAppendingString:@"||"];
-        cookiesDomains = [cookiesDomains stringByAppendingString:cookie.domain];
-        cookiesDomains = [cookiesDomains stringByAppendingString:@"||"];
-    }
-    
-    [[[UIAlertView alloc] initWithTitle:@"COOKIES" message:[NSString stringWithFormat:@"domains: %@\n names:%@", cookiesDomains, cookiesNames] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-}
-
-- (IBAction)clearAllCookies {
-    for (NSHTTPCookie *cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
-        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
-    }
-}
 
 #pragma mark - SFSafariViewController + SFSafariViewControllerDelegate
 

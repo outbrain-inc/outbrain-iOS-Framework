@@ -43,7 +43,7 @@ NSString * const kCustomWebViewReportingEnabledKey = @"kCustomWebViewReportingEn
 NSString * const kCustomWebViewThresholdKey = @"kCustomWebViewThreshold";
 
 NSString * const kPaidOutbrainPrefix = @"paid.outbrain.com";
-NSString * const kReportUrl = @"http://outbrain-node-js.herokuapp.com/api/v1/logs";
+NSString * const kReportUrl = @"http://eventlog.outbrain.com/logger/v1/mobile";
 int const kReportEventPercentLoad = 100;
 int const kReportEventFinished = 200;
 
@@ -63,7 +63,7 @@ int const kReportEventFinished = 200;
 - (void) reportOnProgressAndReportIfNeeded:(float)progress webview:(id)uiwebView_or_wkwebview {
     NSString *urlString = [self getCurrentUrl:uiwebView_or_wkwebview].absoluteString;
     
-    if ((progress > self.percentLoadThreshold) &&
+    if ((progress >= self.percentLoadThreshold) &&
         (self.paidOutbrainUrl != nil) &&
         (self.alreadyReportedOnPercentLoad == NO) &&
         ([urlString containsString:kPaidOutbrainPrefix] == NO)) {
@@ -111,7 +111,7 @@ int const kReportEventFinished = 200;
         if ([[[self getCurrentUrl:uiwebView_or_wkwebview] absoluteString] isEqualToString:currUrlString]) {
             
             if (self.paidOutbrainUrl != nil)  {
-                NSLog(@"** Real Pageview: %@ **", currUrlString);
+                // NSLog(@"** Real Pageview: %@ **", currUrlString);
                 [self reportServerOnPercentLoad:1.0 forUrl:currUrlString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate];
                 
                 self.paidOutbrainUrl = nil;
@@ -132,7 +132,7 @@ int const kReportEventFinished = 200;
         return;
     }
     
-    NSLog(@"** reportServerOnPercentLoad: %f for: %@ **",percentLoad, urlString);
+    // NSLog(@"** reportServerOnPercentLoad: %f for: %@ **",percentLoad, urlString);
     
     int eventType = (percentLoad == 1.0) ? kReportEventFinished : kReportEventPercentLoad;
     OBPostOperation *postOperation = [OBPostOperation operationWithURL:[NSURL URLWithString:kReportUrl]];
@@ -173,15 +173,19 @@ int const kReportEventFinished = 200;
         return nil;
     }
     
-    NSDictionary *params = @{@"redirectURL" : orignalPaidOutbrainUrl,
-                             @"event_type" : [NSNumber numberWithInt:eventType],
-                             @"event_data" : [NSNumber numberWithInt:percentLoad],
-                             @"elapsed_time" : elapsedTime,
-                             @"event_url" : event_url,
-                             @"partner_key" : partnerKey,
-                             @"sdk_version" : OB_SDK_VERSION,
-                             @"app_ver" : appVersionString,
-                             @"network" : [self getNetworkInterface]
+    NSNumber *thresholdSettingValue = [NSNumber numberWithInteger:[self customWebViewThreshold]*100];
+    
+    NSDictionary *params = @{@"redirectURL" :           orignalPaidOutbrainUrl,
+                             @"event_type" :            [NSNumber numberWithInt:eventType],
+                             @"event_data" :            [NSNumber numberWithInt:percentLoad],
+                             @"threshold_setting" :     thresholdSettingValue,
+                             @"elapsed_time" :          elapsedTime,
+                             @"event_url" :             event_url,
+                             @"partner_key" :           partnerKey,
+                             @"sdk_version" :           OB_SDK_VERSION,
+                             @"app_ver" :               appVersionString,
+                             @"network" :               [self getNetworkInterface],
+                             @"event_group" :           @"OBWebView"
                              };
     
     return params;
@@ -214,7 +218,7 @@ int const kReportEventFinished = 200;
 - (void) parseOdbSettingsFromPaidOutbrainUrl:(NSString *)paidUrl {
     NSArray *components = [paidUrl componentsSeparatedByString:@"#"];
     if (components.count != 2) {
-        NSLog(@"Outbrain - error in parseOdbSettingsFromPaidOutbrainUrl()");
+        // NSLog(@"Outbrain - error in parseOdbSettingsFromPaidOutbrainUrl()");
         return;
     }
     

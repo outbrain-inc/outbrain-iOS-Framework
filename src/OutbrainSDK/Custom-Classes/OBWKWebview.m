@@ -51,7 +51,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"estimatedProgress"] && object == self) {
         // estimatedProgress is a value from 0.0 to 1.0
-        NSLog(@"progress: %f --> %@", self.estimatedProgress, self.URL.host);
+        // NSLog(@"progress: %f --> %@", self.estimatedProgress, self.URL.host);
         
         if (self.estimatedProgress < 1.0) {
             [[CustomWebViewManager sharedManager] reportOnProgressAndReportIfNeeded:self.estimatedProgress webview:self];

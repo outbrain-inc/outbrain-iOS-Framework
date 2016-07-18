@@ -277,76 +277,17 @@ if([posts isEqual:_posts]) return;
     
 }
 
+// Please refer to http://developer.outbrain.com/ios-sdk-2-0-pre-release/#handling_clicks_on_recommendations
+// For the complete explanation on Handling Clicks on Recommendations
 - (void)widgetView:(UIView<OBWidgetViewProtocol> *)widgetView tappedRecommendation:(OBRecommendation *)recommendation
-{
-    if(recommendation.isPaidLink == NO) // Organic
+{    
+    if (recommendation.isPaidLink)
     {
-        // url here
-        NSURL * url = [Outbrain getUrl:recommendation];
-        typeof(self) __weak __self = self;
-        __block UIAlertView * loadingAlert = [[UIAlertView alloc] initWithTitle:@"Fetching Content" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-        [loadingAlert show];
-        [[OBDemoDataHelper defaultHelper] fetchPostForURL:url withCallback:^(id postObject, NSError *error) {
-            [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
-            if(postObject)
-            {
-                NSMutableArray * tmp = [__self.posts mutableCopy];
-                
-                // Put in the current post object
-                NSInteger index = __self.currentIndex + (__self.currentIndex == [__self.posts count] - 1 ? 0 : 1);
-                
-                // If our next page is an interstitial page.  Then we should do all of our logic past that.
-                if(![tmp[index] isKindOfClass:[Post class]])
-                    index += 1;
-                
-                id obj = [tmp objectAtIndex:index];
-                NSInteger originalItemIndex = [tmp indexOfObject:postObject];
-                
-                [tmp replaceObjectAtIndex:index withObject:postObject]; // Replace the next page with the post
-                
-                // If the postObject was already in the list, then we'll take the object that was in
-                // the next position and exchange it with the original post
-                if(originalItemIndex != NSNotFound)
-                {
-                    [tmp replaceObjectAtIndex:originalItemIndex withObject:obj];
-                }
-                else
-                {
-                    if (__self.currentIndex != [__self.posts count] - 1) {
-                        [tmp addObject:obj];
-                    }
-                    else {
-                        [tmp insertObject:obj atIndex:0];
-                    }  
-                }
-                
-                // Remove all the interstitial tmp components if any
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self isKindOfClass: %@",[NSDictionary class]];
-                [tmp removeObjectsInArray:[tmp filteredArrayUsingPredicate:predicate]];
-                
-                // Finally reset the posts
-                [__self setPosts:[tmp copy]];
-                
-                
-                // Now scroll over to the new native content
-                [__self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[__self.posts indexOfObject:postObject] inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-            }
-            else
-            {
-                UIAlertView * a = [[UIAlertView alloc] initWithTitle:@"Error" message:error.userInfo[NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-                [a show];
-            }
-        }];
-        
-        return;
+        [self handlePaidRecommendation:recommendation];
     }
-    
-    if (recommendation.shouldOpenInSafariViewController) {
-        [self openUrlInSafariVC:[Outbrain getUrl:recommendation]];
+    else { // Organic
+        [self handleOrganicRecommendation:recommendation];
     }
-    else {
-        [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:recommendation];
-    }    
 }
 
 - (void)widgetViewTappedBranding:(UIView<OBWidgetViewProtocol> *)widgetView
@@ -355,6 +296,73 @@ if([posts isEqual:_posts]) return;
     [appDelegate showOutbrainAbout];
 }
 
+- (void) handlePaidRecommendation:(OBRecommendation *)recommendation {
+    if (recommendation.shouldOpenInSafariViewController) {
+        [self openUrlInSafariVC:[Outbrain getUrl:recommendation]];
+    }
+    else {
+        [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:recommendation];
+    }
+}
+
+- (void) handleOrganicRecommendation:(OBRecommendation *)recommendation {
+    NSURL * url = [Outbrain getUrl:recommendation];
+    typeof(self) __weak __self = self;
+    __block UIAlertView * loadingAlert = [[UIAlertView alloc] initWithTitle:@"Fetching Content" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    [loadingAlert show];
+    [[OBDemoDataHelper defaultHelper] fetchPostForURL:url withCallback:^(id postObject, NSError *error) {
+        [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+        if(postObject)
+        {
+            NSMutableArray * tmp = [__self.posts mutableCopy];
+            
+            // Put in the current post object
+            NSInteger index = __self.currentIndex + (__self.currentIndex == [__self.posts count] - 1 ? 0 : 1);
+            
+            // If our next page is an interstitial page.  Then we should do all of our logic past that.
+            if(![tmp[index] isKindOfClass:[Post class]])
+                index += 1;
+            
+            id obj = [tmp objectAtIndex:index];
+            NSInteger originalItemIndex = [tmp indexOfObject:postObject];
+            
+            [tmp replaceObjectAtIndex:index withObject:postObject]; // Replace the next page with the post
+            
+            // If the postObject was already in the list, then we'll take the object that was in
+            // the next position and exchange it with the original post
+            if(originalItemIndex != NSNotFound)
+            {
+                [tmp replaceObjectAtIndex:originalItemIndex withObject:obj];
+            }
+            else
+            {
+                if (__self.currentIndex != [__self.posts count] - 1) {
+                    [tmp addObject:obj];
+                }
+                else {
+                    [tmp insertObject:obj atIndex:0];
+                }
+            }
+            
+            // Remove all the interstitial tmp components if any
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self isKindOfClass: %@",[NSDictionary class]];
+            [tmp removeObjectsInArray:[tmp filteredArrayUsingPredicate:predicate]];
+            
+            // Finally reset the posts
+            [__self setPosts:[tmp copy]];
+            
+            
+            // Now scroll over to the new native content
+            [__self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[__self.posts indexOfObject:postObject] inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        }
+        else
+        {
+            UIAlertView * a = [[UIAlertView alloc] initWithTitle:@"Error" message:error.userInfo[NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            [a show];
+        }
+    }];
+    
+}
 
 #pragma mark - Segue
 
