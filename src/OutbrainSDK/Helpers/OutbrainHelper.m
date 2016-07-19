@@ -304,4 +304,13 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     return [self sdkSettingForKey:OBSettingsAttributes.appUserTokenKey];
 }
 
++ (BOOL) string:(NSString *)str containsString:(NSString *)subString {
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        return ([str rangeOfString:subString].location != NSNotFound);
+    }
+    else {
+        return [str containsString:subString];
+    }
+}
+
 @end

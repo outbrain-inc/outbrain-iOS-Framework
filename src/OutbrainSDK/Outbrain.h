@@ -22,6 +22,8 @@ extern NSString * const OB_SDK_VERSION;
 extern NSString * const kCWV_CONTEXT_FLAG;
 extern NSString *const kIS_COOKIES_ENABLE_KEY;
 
+#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 /**
  @brief OBSDK's main interface; for fetching content recommendations and reporting clicks.
  

@@ -66,10 +66,10 @@ int const kReportEventFinished = 200;
     if ((progress >= self.percentLoadThreshold) &&
         (self.paidOutbrainUrl != nil) &&
         (self.alreadyReportedOnPercentLoad == NO) &&
-        ([urlString containsString:kPaidOutbrainPrefix] == NO)) {
-        
-        [self reportServerOnPercentLoad:progress forUrl:urlString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate];
-        self.alreadyReportedOnPercentLoad = YES;
+        ([OutbrainHelper string:urlString containsString:kPaidOutbrainPrefix] == NO)) {
+            
+            [self reportServerOnPercentLoad:progress forUrl:urlString orignalPaidOutbrainUrl:self.paidOutbrainUrl loadStartDate:self.loadStartDate];
+            self.alreadyReportedOnPercentLoad = YES;
     }
 }
 
@@ -78,8 +78,8 @@ int const kReportEventFinished = 200;
     NSString *currUrlString = [currUrl absoluteString];
     
     // if its a paid.outbrain URL
-    if ([currUrlString containsString:kPaidOutbrainPrefix] &&
-        [currUrlString containsString:kCWV_CONTEXT_FLAG]) {
+    if ([OutbrainHelper string:currUrlString containsString:kPaidOutbrainPrefix] &&
+        [OutbrainHelper string:currUrlString containsString:kCWV_CONTEXT_FLAG]) {
         
         // reset parameters
         self.alreadyReportedOnLoadComplete = NO;
@@ -89,7 +89,7 @@ int const kReportEventFinished = 200;
         self.loadStartDate = [NSDate date];
         
         // Support JS Widget Settings parsing here
-        if ([currUrlString containsString:@"cwvContext=app_js_widget"]) {
+        if ([OutbrainHelper string:currUrlString containsString:@"cwvContext=app_js_widget"]) {        
             [self parseOdbSettingsFromPaidOutbrainUrl:currUrlString];
         }
         

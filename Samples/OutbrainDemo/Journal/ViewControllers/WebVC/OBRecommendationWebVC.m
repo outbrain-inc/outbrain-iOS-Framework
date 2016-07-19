@@ -23,8 +23,6 @@
 @end
 
 
-#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-
 
 // Example for implementing OBWebView in code
 // For the full explanation please refer to: http://developer.outbrain.com/ios-sdk-2-0-pre-release/#how_to_use_obwebview
