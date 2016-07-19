@@ -54,4 +54,6 @@
 
 - (NSString *)partnerKey;
 
++ (BOOL) string:(NSString *)str containsString:(NSString *)subString;
+
 @end

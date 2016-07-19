@@ -28,7 +28,6 @@
 
 @implementation ViewabilityData
 
-#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 
 NSString * const EVENT_RECEIVED = @"0";
