@@ -277,7 +277,7 @@ if([posts isEqual:_posts]) return;
     
 }
 
-// Please refer to http://developer.outbrain.com/ios-sdk-2-0-pre-release/#handling_clicks_on_recommendations
+// Please refer to http://developer.outbrain.com/sdk_ios_2-0_developer_guide/#handling_clicks_on_recommendations
 // For the complete explanation on Handling Clicks on Recommendations
 - (void)widgetView:(UIView<OBWidgetViewProtocol> *)widgetView tappedRecommendation:(OBRecommendation *)recommendation
 {    
