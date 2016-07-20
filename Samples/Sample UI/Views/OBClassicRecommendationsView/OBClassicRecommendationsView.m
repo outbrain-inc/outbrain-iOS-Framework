@@ -141,7 +141,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
         if(!alsoOnTheWebLabel)
         {
             // Example for implementing Viewability in code
-            // For the full explanation please refer to: http://developer.outbrain.com/ios-sdk-2-0-pre-release/#widget_viewability
+            // For the full explanation please refer to: http://developer.outbrain.com/sdk_ios_2-0_developer_guide/#widget_viewability
             alsoOnTheWebLabel = [[OBLabel alloc] init]; 
             [Outbrain registerOBLabel:alsoOnTheWebLabel withWidgetId:self.widgetId andUrl:self.url];
             alsoOnTheWebLabel.textColor = [UIColor colorWithRed:0.600 green:0.600 blue:0.600 alpha:1.000];
