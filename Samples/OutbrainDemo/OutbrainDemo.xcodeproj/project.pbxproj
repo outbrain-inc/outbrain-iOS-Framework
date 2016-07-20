@@ -1006,12 +1006,6 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Mercury Intermedia";
 				TargetAttributes = {
-					D8B59238186376B1009422D5 = {
-						DevelopmentTeam = 97R2B46745;
-					};
-					D8DCCA5518883DED00E038EE = {
-						DevelopmentTeam = 97R2B46745;
-					};
 					D8DCCA7418883DED00E038EE = {
 						TestTargetID = D8B59238186376B1009422D5;
 					};
