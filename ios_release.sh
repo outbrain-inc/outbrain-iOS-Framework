@@ -49,9 +49,9 @@ echo "Prepare OBSDK-iOS.zip"
 echo "*********************"
 #prepare 
 cd $EXPORT_DIR_PATH
-zip --symlinks -r OBSDK-iOS.zip . -x ".*" -x "*/.*" > /dev/null
+zip --symlinks -r iOS-SampleApps.zip . -x ".*" -x "*/.*" > /dev/null
 cd /Users/odedre/work/Outbrain/OBSDKiOS
-mv $EXPORT_DIR_PATH/OBSDK-iOS.zip OBSDK-Release/
+mv $EXPORT_DIR_PATH/iOS-SampleApps.zip OBSDK-Release/
 
 echo ""
 echo "*********************"

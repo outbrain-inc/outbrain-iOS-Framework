@@ -45,7 +45,6 @@
 		D8B5923F186376B1009422D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923E186376B1009422D5 /* CoreGraphics.framework */; };
 		D8B59241186376B1009422D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
 		D8D1FD9D187332540099831C /* OBRecommendationSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D1FD9C187332540099831C /* OBRecommendationSlideCell.m */; };
-		D8D67D3D188735B900A7B7BB /* MainStoryboard-ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8D67D3C188735B900A7B7BB /* MainStoryboard-ipad.storyboard */; };
 		D8D85B8518D9DD41009081B6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8118D9DD41009081B6 /* logo.png */; };
 		D8D85B8618D9DD41009081B6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8118D9DD41009081B6 /* logo.png */; };
 		D8D85B8718D9DD41009081B6 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8218D9DD41009081B6 /* logo@2x.png */; };
@@ -145,11 +144,9 @@
 		D8B5923C186376B1009422D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8B5923E186376B1009422D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8B59240186376B1009422D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D8B5925A186376B1009422D5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D8BC5CC6187C77440018E88F /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBWidgetViewProtocol.h; path = "../Sample UI/OBWidgetViewProtocol.h"; sourceTree = "<group>"; };
 		D8D1FD9B187332540099831C /* OBRecommendationSlideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBRecommendationSlideCell.h; path = "../Sample UI/TableCells/OBRecommendationSlideCell.h"; sourceTree = "<group>"; };
 		D8D1FD9C187332540099831C /* OBRecommendationSlideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBRecommendationSlideCell.m; path = "../Sample UI/TableCells/OBRecommendationSlideCell.m"; sourceTree = "<group>"; };
-		D8D67D3C188735B900A7B7BB /* MainStoryboard-ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "MainStoryboard-ipad.storyboard"; sourceTree = "<group>"; };
 		D8D85B8118D9DD41009081B6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D8D85B8218D9DD41009081B6 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		D8D85B8318D9DD41009081B6 /* tiny-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiny-logo.png"; sourceTree = "<group>"; };
@@ -162,11 +159,7 @@
 		D8DCCA6318883DED00E038EE /* OBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBAppDelegate.h; sourceTree = "<group>"; };
 		D8DCCA6418883DED00E038EE /* OBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBAppDelegate.m; sourceTree = "<group>"; };
 		D8DCCA6718883DED00E038EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		D8DCCA6A18883DED00E038EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D8DCCA6F18883DED00E038EE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D8DCCA7D18883DED00E038EE /* CatalogTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CatalogTests-Info.plist"; sourceTree = "<group>"; };
-		D8DCCA7F18883DED00E038EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D8DCCA8118883DED00E038EE /* CatalogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatalogTests.m; sourceTree = "<group>"; };
 		D8F5818818B4071C00AEBC15 /* ClassicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassicVC.h; path = viewcontrollers/Classic/ClassicVC.h; sourceTree = "<group>"; };
 		D8F5818918B4071C00AEBC15 /* ClassicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassicVC.m; path = viewcontrollers/Classic/ClassicVC.m; sourceTree = "<group>"; };
 		D8F5818C18B40F6200AEBC15 /* OBInterstitialHeroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBInterstitialHeroView.h; path = "../Sample UI/Views/Interstitials/Hero/OBInterstitialHeroView.h"; sourceTree = "<group>"; };
@@ -178,42 +171,17 @@
 		E6EF299C1CD8D6650026AAD3 /* AppWKWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppWKWebview.h; sourceTree = "<group>"; };
 		E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppWKWebview.m; sourceTree = "<group>"; };
 		E6FFC2C21C28489A00498168 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		FC0E091B190F901F00DBA5F4 /* OBStickyHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBStickyHeaderView.h; path = ../../Samples/OutbrainDemo/OBStickyHeaderView.h; sourceTree = "<group>"; };
-		FC0E091C190F901F00DBA5F4 /* OBStickyHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBStickyHeaderView.m; path = ../../Samples/OutbrainDemo/OBStickyHeaderView.m; sourceTree = "<group>"; };
-		FC11BB3E196E75F70048000D /* OBIPadInterstitialClassicViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBIPadInterstitialClassicViewCell.h; path = ../../Samples/OutbrainDemo/OBIPadInterstitialClassicViewCell.h; sourceTree = "<group>"; };
-		FC11BB3F196E75F70048000D /* OBIPadInterstitialClassicViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBIPadInterstitialClassicViewCell.m; path = ../../Samples/OutbrainDemo/OBIPadInterstitialClassicViewCell.m; sourceTree = "<group>"; };
+		FC0E091B190F901F00DBA5F4 /* OBStickyHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBStickyHeaderView.h; sourceTree = "<group>"; };
+		FC0E091C190F901F00DBA5F4 /* OBStickyHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBStickyHeaderView.m; sourceTree = "<group>"; };
 		FC174403191B78E5008B60EF /* OBLabelExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OBLabelExtensions.h; path = ../../Samples/OutbrainDemo/OBLabelExtensions.h; sourceTree = "<group>"; };
-		FC174404191BAE9F008B60EF /* OBIPadInStreamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBIPadInStreamCell.h; path = ../../Samples/OutbrainDemo/OBIPadInStreamCell.h; sourceTree = "<group>"; };
-		FC174405191BAE9F008B60EF /* OBIPadInStreamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBIPadInStreamCell.m; path = ../../Samples/OutbrainDemo/OBIPadInStreamCell.m; sourceTree = "<group>"; };
 		FC174407191BB6F2008B60EF /* OBLabelWithPadding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBLabelWithPadding.h; path = ../../Samples/OutbrainDemo/OBLabelWithPadding.h; sourceTree = "<group>"; };
 		FC174408191BB6F2008B60EF /* OBLabelWithPadding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBLabelWithPadding.m; path = ../../Samples/OutbrainDemo/OBLabelWithPadding.m; sourceTree = "<group>"; };
-		FC2933B8190905CF0097B15D /* ShelfVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShelfVC.h; path = "../../../Samples/OutbrainDemo/Catalog-iPad/ShelfVC.h"; sourceTree = "<group>"; };
-		FC2933B9190905CF0097B15D /* ShelfVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShelfVC.m; path = "../../../Samples/OutbrainDemo/Catalog-iPad/ShelfVC.m"; sourceTree = "<group>"; };
-		FC2933BC190E77A50097B15D /* OBTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBTableViewHeader.h; path = ../../Samples/OutbrainDemo/OBTableViewHeader.h; sourceTree = "<group>"; };
-		FC2933BD190E77A50097B15D /* OBTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBTableViewHeader.m; path = ../../Samples/OutbrainDemo/OBTableViewHeader.m; sourceTree = "<group>"; };
+		FC2933BC190E77A50097B15D /* OBTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBTableViewHeader.h; sourceTree = "<group>"; };
+		FC2933BD190E77A50097B15D /* OBTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBTableViewHeader.m; sourceTree = "<group>"; };
 		FC5000E0190903F80098A9E3 /* OBShelfView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBShelfView.h; path = ../../Samples/OutbrainDemo/OBShelfView.h; sourceTree = "<group>"; };
 		FC5000E1190903F80098A9E3 /* OBShelfView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBShelfView.m; path = ../../Samples/OutbrainDemo/OBShelfView.m; sourceTree = "<group>"; };
-		FC631C0B195075400069174A /* OBTestInterstitialClassicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBTestInterstitialClassicView.h; path = ../../Samples/OutbrainDemo/OBTestInterstitialClassicView.h; sourceTree = "<group>"; };
-		FC631C0C195075400069174A /* OBTestInterstitialClassicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBTestInterstitialClassicView.m; path = ../../Samples/OutbrainDemo/OBTestInterstitialClassicView.m; sourceTree = "<group>"; };
-		FC66EB9218F13789005FA944 /* Catalog-iPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Catalog-iPad-Info.plist"; sourceTree = "<group>"; };
-		FC66EB9418F13789005FA944 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FC66EB9618F13789005FA944 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FC66EB9818F13789005FA944 /* Catalog-iPad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Catalog-iPad-Prefix.pch"; sourceTree = "<group>"; };
-		FC66EB9918F13789005FA944 /* OBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBAppDelegate.h; sourceTree = "<group>"; };
-		FC66EB9A18F13789005FA944 /* OBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBAppDelegate.m; sourceTree = "<group>"; };
-		FC66EB9C18F13789005FA944 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FC66EBE118F147F5005FA944 /* IPadClassicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPadClassicVC.h; path = "../../../Samples/OutbrainDemo/Catalog-iPad/IPadClassicVC.h"; sourceTree = "<group>"; };
-		FC66EBE218F147F5005FA944 /* IPadClassicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPadClassicVC.m; path = "../../../Samples/OutbrainDemo/Catalog-iPad/IPadClassicVC.m"; sourceTree = "<group>"; };
-		FC66EBE918F14AE6005FA944 /* IPadClassicInterstitialVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPadClassicInterstitialVC.h; path = "../../../Samples/OutbrainDemo/Catalog-iPad/IPadClassicInterstitialVC.h"; sourceTree = "<group>"; };
-		FC66EBEA18F14AE6005FA944 /* IPadClassicInterstitialVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPadClassicInterstitialVC.m; path = "../../../Samples/OutbrainDemo/Catalog-iPad/IPadClassicInterstitialVC.m"; sourceTree = "<group>"; };
 		FC66EBF118F151FC005FA944 /* OBClassicIPadRecommendationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBClassicIPadRecommendationsView.h; path = ../../Samples/OutbrainDemo/OBClassicIPadRecommendationsView.h; sourceTree = "<group>"; };
 		FC66EBF218F151FC005FA944 /* OBClassicIPadRecommendationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBClassicIPadRecommendationsView.m; path = ../../Samples/OutbrainDemo/OBClassicIPadRecommendationsView.m; sourceTree = "<group>"; };
-		FC66EBF418F1A8DD005FA944 /* OBIPadInStreamRecommendationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBIPadInStreamRecommendationsView.h; path = ../../Samples/OutbrainDemo/Catalog/OBIPadInStreamRecommendationsView.h; sourceTree = "<group>"; };
-		FC66EBF518F1A8DD005FA944 /* OBIPadInStreamRecommendationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBIPadInStreamRecommendationsView.m; path = ../../Samples/OutbrainDemo/Catalog/OBIPadInStreamRecommendationsView.m; sourceTree = "<group>"; };
-		FC66EBF718F1B047005FA944 /* IPadInStreamVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPadInStreamVC.h; path = "../../../Samples/OutbrainDemo/Catalog-iPad/IPadInStreamVC.h"; sourceTree = "<group>"; };
-		FC66EBF818F1B047005FA944 /* IPadInStreamVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPadInStreamVC.m; path = "../../../Samples/OutbrainDemo/Catalog-iPad/IPadInStreamVC.m"; sourceTree = "<group>"; };
-		FC66EBFA18F289F9005FA944 /* OBIPadInterstitialClassicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBIPadInterstitialClassicView.h; path = ../../Samples/OutbrainDemo/OBIPadInterstitialClassicView.h; sourceTree = "<group>"; };
-		FC66EBFB18F289F9005FA944 /* OBIPadInterstitialClassicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBIPadInterstitialClassicView.m; path = ../../Samples/OutbrainDemo/OBIPadInterstitialClassicView.m; sourceTree = "<group>"; };
 		FC820C1119DD597F00ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FC8900981AA33B49008BAD54 /* TopBoxPostViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopBoxPostViewCell.h; path = "../../../../../../Samples/OutbrainDemo/Journal/Views/Collection Cells/Post Cell/TopBoxPostViewCell.h"; sourceTree = "<group>"; };
 		FC8900991AA33B49008BAD54 /* TopBoxPostViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopBoxPostViewCell.m; path = "../../../../../../Samples/OutbrainDemo/Journal/Views/Collection Cells/Post Cell/TopBoxPostViewCell.m"; sourceTree = "<group>"; };
@@ -273,8 +241,6 @@
 			children = (
 				D825CE9C1898619D00E20E38 /* OBInterstitialClassicView.h */,
 				D825CE9D1898619D00E20E38 /* OBInterstitialClassicView.m */,
-				FC631C0B195075400069174A /* OBTestInterstitialClassicView.h */,
-				FC631C0C195075400069174A /* OBTestInterstitialClassicView.m */,
 			);
 			name = "Classic Grid";
 			sourceTree = "<group>";
@@ -337,7 +303,6 @@
 			isa = PBXGroup;
 			children = (
 				D83456541885A543002B2368 /* MainStoryboard-iphone.storyboard */,
-				D8D67D3C188735B900A7B7BB /* MainStoryboard-ipad.storyboard */,
 			);
 			path = storyboards;
 			sourceTree = "<group>";
@@ -533,12 +498,9 @@
 		D8B59230186376B1009422D5 = {
 			isa = PBXGroup;
 			children = (
-				FC66EBDC18F137C8005FA944 /* Resources-iPad */,
 				D83456431885A543002B2368 /* Journal */,
 				D8D1FD9318732CA10099831C /* Shared UI */,
 				D8DCCA5A18883DED00E038EE /* Catalog */,
-				D8DCCA7B18883DED00E038EE /* CatalogTests */,
-				FC66EB9018F13789005FA944 /* Catalog-iPad */,
 				D8B5923B186376B1009422D5 /* Frameworks */,
 				D8B5923A186376B1009422D5 /* Products */,
 			);
@@ -565,7 +527,6 @@
 				D8B5923C186376B1009422D5 /* Foundation.framework */,
 				D8B5923E186376B1009422D5 /* CoreGraphics.framework */,
 				D8B59240186376B1009422D5 /* UIKit.framework */,
-				D8B5925A186376B1009422D5 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -573,7 +534,12 @@
 		D8D1FD9318732CA10099831C /* Shared UI */ = {
 			isa = PBXGroup;
 			children = (
-				FC66EBEC18F150E3005FA944 /* iPad */,
+				FC2933BC190E77A50097B15D /* OBTableViewHeader.h */,
+				FC2933BD190E77A50097B15D /* OBTableViewHeader.m */,
+				FC0E091B190F901F00DBA5F4 /* OBStickyHeaderView.h */,
+				FC0E091C190F901F00DBA5F4 /* OBStickyHeaderView.m */,
+				FC66EBED18F151CB005FA944 /* Classic */,
+				FC66EBEF18F151D9005FA944 /* Shelf */,
 				D8D85B8018D9DD41009081B6 /* Branding Logos */,
 				D852F385187B6715008A2A04 /* Views */,
 				D8D1FD9A1873321A0099831C /* TableCells */,
@@ -632,24 +598,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D8DCCA7B18883DED00E038EE /* CatalogTests */ = {
-			isa = PBXGroup;
-			children = (
-				D8DCCA8118883DED00E038EE /* CatalogTests.m */,
-				D8DCCA7C18883DED00E038EE /* Supporting Files */,
-			);
-			path = CatalogTests;
-			sourceTree = "<group>";
-		};
-		D8DCCA7C18883DED00E038EE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D8DCCA7D18883DED00E038EE /* CatalogTests-Info.plist */,
-				D8DCCA7E18883DED00E038EE /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		D8DCCA891888411200E038EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,99 +651,6 @@
 			path = CustomWebview;
 			sourceTree = "<group>";
 		};
-		FC66EB9018F13789005FA944 /* Catalog-iPad */ = {
-			isa = PBXGroup;
-			children = (
-				D8DCCA6918883DED00E038EE /* Main_iPad.storyboard */,
-				FC66EBDE18F14074005FA944 /* ViewControllers */,
-				FC66EB9918F13789005FA944 /* OBAppDelegate.h */,
-				FC66EB9A18F13789005FA944 /* OBAppDelegate.m */,
-				FC66EB9C18F13789005FA944 /* Images.xcassets */,
-				FC66EB9118F13789005FA944 /* Supporting Files */,
-			);
-			path = "Catalog-iPad";
-			sourceTree = "<group>";
-		};
-		FC66EB9118F13789005FA944 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				FC66EB9218F13789005FA944 /* Catalog-iPad-Info.plist */,
-				FC66EB9318F13789005FA944 /* InfoPlist.strings */,
-				FC66EB9618F13789005FA944 /* main.m */,
-				FC66EB9818F13789005FA944 /* Catalog-iPad-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FC66EBDC18F137C8005FA944 /* Resources-iPad */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Resources-iPad";
-			sourceTree = "<group>";
-		};
-		FC66EBDE18F14074005FA944 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				FC66EBE818F14AC6005FA944 /* Shelf */,
-				FC66EBE718F14AB6005FA944 /* In-Stream */,
-				FC66EBE618F14AB0005FA944 /* Interstitial */,
-				FC66EBE018F147A3005FA944 /* Classic */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		FC66EBE018F147A3005FA944 /* Classic */ = {
-			isa = PBXGroup;
-			children = (
-				FC66EBE118F147F5005FA944 /* IPadClassicVC.h */,
-				FC66EBE218F147F5005FA944 /* IPadClassicVC.m */,
-			);
-			name = Classic;
-			sourceTree = "<group>";
-		};
-		FC66EBE618F14AB0005FA944 /* Interstitial */ = {
-			isa = PBXGroup;
-			children = (
-				FC66EBE918F14AE6005FA944 /* IPadClassicInterstitialVC.h */,
-				FC66EBEA18F14AE6005FA944 /* IPadClassicInterstitialVC.m */,
-			);
-			name = Interstitial;
-			sourceTree = "<group>";
-		};
-		FC66EBE718F14AB6005FA944 /* In-Stream */ = {
-			isa = PBXGroup;
-			children = (
-				FC66EBF718F1B047005FA944 /* IPadInStreamVC.h */,
-				FC66EBF818F1B047005FA944 /* IPadInStreamVC.m */,
-			);
-			name = "In-Stream";
-			sourceTree = "<group>";
-		};
-		FC66EBE818F14AC6005FA944 /* Shelf */ = {
-			isa = PBXGroup;
-			children = (
-				FC2933B8190905CF0097B15D /* ShelfVC.h */,
-				FC2933B9190905CF0097B15D /* ShelfVC.m */,
-			);
-			name = Shelf;
-			sourceTree = "<group>";
-		};
-		FC66EBEC18F150E3005FA944 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-				FC66EBF018F151E3005FA944 /* In-Stream */,
-				FC66EBEF18F151D9005FA944 /* Shelf */,
-				FC66EBEE18F151D3005FA944 /* Interstitials */,
-				FC66EBED18F151CB005FA944 /* Classic */,
-				FC2933BC190E77A50097B15D /* OBTableViewHeader.h */,
-				FC2933BD190E77A50097B15D /* OBTableViewHeader.m */,
-				FC0E091B190F901F00DBA5F4 /* OBStickyHeaderView.h */,
-				FC0E091C190F901F00DBA5F4 /* OBStickyHeaderView.m */,
-			);
-			name = iPad;
-			sourceTree = "<group>";
-		};
 		FC66EBED18F151CB005FA944 /* Classic */ = {
 			isa = PBXGroup;
 			children = (
@@ -805,17 +660,6 @@
 			name = Classic;
 			sourceTree = "<group>";
 		};
-		FC66EBEE18F151D3005FA944 /* Interstitials */ = {
-			isa = PBXGroup;
-			children = (
-				FC66EBFA18F289F9005FA944 /* OBIPadInterstitialClassicView.h */,
-				FC66EBFB18F289F9005FA944 /* OBIPadInterstitialClassicView.m */,
-				FC11BB3E196E75F70048000D /* OBIPadInterstitialClassicViewCell.h */,
-				FC11BB3F196E75F70048000D /* OBIPadInterstitialClassicViewCell.m */,
-			);
-			name = Interstitials;
-			sourceTree = "<group>";
-		};
 		FC66EBEF18F151D9005FA944 /* Shelf */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,17 +667,6 @@
 				FC5000E1190903F80098A9E3 /* OBShelfView.m */,
 			);
 			name = Shelf;
-			sourceTree = "<group>";
-		};
-		FC66EBF018F151E3005FA944 /* In-Stream */ = {
-			isa = PBXGroup;
-			children = (
-				FC66EBF418F1A8DD005FA944 /* OBIPadInStreamRecommendationsView.h */,
-				FC66EBF518F1A8DD005FA944 /* OBIPadInStreamRecommendationsView.m */,
-				FC174404191BAE9F008B60EF /* OBIPadInStreamCell.h */,
-				FC174405191BAE9F008B60EF /* OBIPadInStreamCell.m */,
-			);
-			name = "In-Stream";
 			sourceTree = "<group>";
 		};
 		FCF0FE821A90FA0F008FC34E /* TopBox */ = {
@@ -933,7 +766,6 @@
 				D8174B2F18A562BC005696C2 /* Settings.bundle in Resources */,
 				D8D85B8718D9DD41009081B6 /* logo@2x.png in Resources */,
 				D834566F1885A543002B2368 /* OBConfig.plist in Resources */,
-				D8D67D3D188735B900A7B7BB /* MainStoryboard-ipad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,31 +862,6 @@
 				D8DCCA6718883DED00E038EE /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		D8DCCA6918883DED00E038EE /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D8DCCA6A18883DED00E038EE /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			path = ../Catalog;
-			sourceTree = "<group>";
-		};
-		D8DCCA7E18883DED00E038EE /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D8DCCA7F18883DED00E038EE /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		FC66EB9318F13789005FA944 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FC66EB9418F13789005FA944 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
