@@ -61,11 +61,6 @@
 		D8DCCA6118883DED00E038EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DCCA6018883DED00E038EE /* main.m */; };
 		D8DCCA6518883DED00E038EE /* OBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DCCA6418883DED00E038EE /* OBAppDelegate.m */; };
 		D8DCCA6818883DED00E038EE /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA6618883DED00E038EE /* Main_iPhone.storyboard */; };
-		D8DCCA7618883DED00E038EE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5925A186376B1009422D5 /* XCTest.framework */; };
-		D8DCCA7718883DED00E038EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923C186376B1009422D5 /* Foundation.framework */; };
-		D8DCCA7818883DED00E038EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
-		D8DCCA8018883DED00E038EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA7E18883DED00E038EE /* InfoPlist.strings */; };
-		D8DCCA8218883DED00E038EE /* CatalogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DCCA8118883DED00E038EE /* CatalogTests.m */; };
 		D8F5818A18B4071C00AEBC15 /* ClassicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F5818918B4071C00AEBC15 /* ClassicVC.m */; };
 		D8F5818E18B40F6200AEBC15 /* OBInterstitialHeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F5818D18B40F6200AEBC15 /* OBInterstitialHeroView.m */; };
 		D8F5818F18B4103A00AEBC15 /* OBInterstitialHeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F5818D18B40F6200AEBC15 /* OBInterstitialHeroView.m */; };
@@ -78,57 +73,18 @@
 		E6EF299E1CD8D6650026AAD3 /* AppWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */; };
 		E6EF299F1CD8D6660026AAD3 /* AppWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */; };
 		E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
-		FC0E091D190F901F00DBA5F4 /* OBStickyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0E091C190F901F00DBA5F4 /* OBStickyHeaderView.m */; };
-		FC11BB41196E788C0048000D /* OBIPadInterstitialClassicViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC11BB3F196E75F70048000D /* OBIPadInterstitialClassicViewCell.m */; };
 		FC174409191BB6F2008B60EF /* OBLabelWithPadding.m in Sources */ = {isa = PBXBuildFile; fileRef = FC174408191BB6F2008B60EF /* OBLabelWithPadding.m */; };
-		FC17440A191BBBBA008B60EF /* OBIPadInStreamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC174405191BAE9F008B60EF /* OBIPadInStreamCell.m */; };
-		FC17440B191BBBE5008B60EF /* OBLabelWithPadding.m in Sources */ = {isa = PBXBuildFile; fileRef = FC174408191BB6F2008B60EF /* OBLabelWithPadding.m */; };
-		FC2933BA190905CF0097B15D /* ShelfVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2933B9190905CF0097B15D /* ShelfVC.m */; };
-		FC2933BB190908150097B15D /* OBShelfView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5000E1190903F80098A9E3 /* OBShelfView.m */; };
 		FC2933BE190E77A50097B15D /* OBTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2933BD190E77A50097B15D /* OBTableViewHeader.m */; };
-		FC2933BF190E78990097B15D /* OBTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2933BD190E77A50097B15D /* OBTableViewHeader.m */; };
-		FC416C2219F6455D000BFB18 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 		FC5000E2190903F80098A9E3 /* OBShelfView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5000E1190903F80098A9E3 /* OBShelfView.m */; };
-		FC66EBC918F137C7005FA944 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923E186376B1009422D5 /* CoreGraphics.framework */; };
-		FC66EBCA18F137C7005FA944 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
-		FC66EBCB18F137C7005FA944 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D852F381187B5B3C008A2A04 /* Security.framework */; };
-		FC66EBCD18F137C7005FA944 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923C186376B1009422D5 /* Foundation.framework */; };
-		FC66EBCF18F137C7005FA944 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA6918883DED00E038EE /* Main_iPad.storyboard */; };
-		FC66EBD018F137C7005FA944 /* OBConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8448EE3189C2FC2005696E7 /* OBConfig.plist */; };
-		FC66EBD118F137C7005FA944 /* tiny-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8318D9DD41009081B6 /* tiny-logo.png */; };
-		FC66EBD218F137C7005FA944 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8118D9DD41009081B6 /* logo.png */; };
-		FC66EBD318F137C7005FA944 /* tiny-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8418D9DD41009081B6 /* tiny-logo@2x.png */; };
-		FC66EBD518F137C7005FA944 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8218D9DD41009081B6 /* logo@2x.png */; };
-		FC66EBD718F137C7005FA944 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA5D18883DED00E038EE /* InfoPlist.strings */; };
-		FC66EBDF18F14594005FA944 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC66EB9C18F13789005FA944 /* Images.xcassets */; };
-		FC66EBE318F147F5005FA944 /* IPadClassicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66EBE218F147F5005FA944 /* IPadClassicVC.m */; };
-		FC66EBE418F148B9005FA944 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66EB9618F13789005FA944 /* main.m */; };
-		FC66EBE518F148CA005FA944 /* OBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66EB9A18F13789005FA944 /* OBAppDelegate.m */; };
-		FC66EBEB18F14AE6005FA944 /* IPadClassicInterstitialVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66EBEA18F14AE6005FA944 /* IPadClassicInterstitialVC.m */; };
-		FC66EBF318F151FC005FA944 /* OBClassicIPadRecommendationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66EBF218F151FC005FA944 /* OBClassicIPadRecommendationsView.m */; };
-		FC66EBF618F1A8DD005FA944 /* OBIPadInStreamRecommendationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66EBF518F1A8DD005FA944 /* OBIPadInStreamRecommendationsView.m */; };
-		FC66EBF918F1B047005FA944 /* IPadInStreamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66EBF818F1B047005FA944 /* IPadInStreamVC.m */; };
-		FC66EBFC18F289F9005FA944 /* OBIPadInterstitialClassicView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC66EBFB18F289F9005FA944 /* OBIPadInterstitialClassicView.m */; };
 		FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 		FC820C1319DD598F00ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 		FC89009A1AA33B49008BAD54 /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8900991AA33B49008BAD54 /* TopBoxPostViewCell.m */; };
 		FC89009B1AA34370008BAD54 /* OBTopBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF0FE881A91C2F0008FC34E /* OBTopBoxView.m */; };
 		FC9BEE301998BFB600D545FE /* OBRecommendationWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D87BC2E51889D29A006D1173 /* OBRecommendationWebVC.m */; };
-		FC9BEE311998BFBF00D545FE /* OBRecommendationWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D87BC2E51889D29A006D1173 /* OBRecommendationWebVC.m */; };
 		FCF0FE851A91C23D008FC34E /* TopBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF0FE841A91C23D008FC34E /* TopBoxViewController.m */; };
 		FCF0FE891A91C2F0008FC34E /* OBTopBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF0FE881A91C2F0008FC34E /* OBTopBoxView.m */; };
 		FF0BB5D11B9843DE00AF9F2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8DCCA6F18883DED00E038EE /* Images.xcassets */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D8DCCA7918883DED00E038EE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D8B59231186376B1009422D5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D8DCCA5518883DED00E038EE;
-			remoteInfo = Catalog;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D8174B2E18A562BC005696C2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -208,7 +164,6 @@
 		D8DCCA6718883DED00E038EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		D8DCCA6A18883DED00E038EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D8DCCA6F18883DED00E038EE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D8DCCA7518883DED00E038EE /* CatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DCCA7D18883DED00E038EE /* CatalogTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CatalogTests-Info.plist"; sourceTree = "<group>"; };
 		D8DCCA7F18883DED00E038EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D8DCCA8118883DED00E038EE /* CatalogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatalogTests.m; sourceTree = "<group>"; };
@@ -247,7 +202,6 @@
 		FC66EB9918F13789005FA944 /* OBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBAppDelegate.h; sourceTree = "<group>"; };
 		FC66EB9A18F13789005FA944 /* OBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBAppDelegate.m; sourceTree = "<group>"; };
 		FC66EB9C18F13789005FA944 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FC66EBDB18F137C7005FA944 /* Catalog-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Catalog-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC66EBE118F147F5005FA944 /* IPadClassicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPadClassicVC.h; path = "../../../Samples/OutbrainDemo/Catalog-iPad/IPadClassicVC.h"; sourceTree = "<group>"; };
 		FC66EBE218F147F5005FA944 /* IPadClassicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPadClassicVC.m; path = "../../../Samples/OutbrainDemo/Catalog-iPad/IPadClassicVC.m"; sourceTree = "<group>"; };
 		FC66EBE918F14AE6005FA944 /* IPadClassicInterstitialVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPadClassicInterstitialVC.h; path = "../../../Samples/OutbrainDemo/Catalog-iPad/IPadClassicInterstitialVC.h"; sourceTree = "<group>"; };
@@ -297,28 +251,6 @@
 				D8DCCA5918883DED00E038EE /* UIKit.framework in Frameworks */,
 				D8DCCA5718883DED00E038EE /* Foundation.framework in Frameworks */,
 				E66AC33B1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8DCCA7218883DED00E038EE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D8DCCA7618883DED00E038EE /* XCTest.framework in Frameworks */,
-				D8DCCA7818883DED00E038EE /* UIKit.framework in Frameworks */,
-				D8DCCA7718883DED00E038EE /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FC66EBC818F137C7005FA944 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FC416C2219F6455D000BFB18 /* AdSupport.framework in Frameworks */,
-				FC66EBC918F137C7005FA944 /* CoreGraphics.framework in Frameworks */,
-				FC66EBCA18F137C7005FA944 /* UIKit.framework in Frameworks */,
-				FC66EBCB18F137C7005FA944 /* Security.framework in Frameworks */,
-				FC66EBCD18F137C7005FA944 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,8 +549,6 @@
 			children = (
 				D8B59239186376B1009422D5 /* Journal.app */,
 				D8DCCA5618883DED00E038EE /* Catalog.app */,
-				D8DCCA7518883DED00E038EE /* CatalogTests.xctest */,
-				FC66EBDB18F137C7005FA944 /* Catalog-iPad.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -961,41 +891,6 @@
 			productReference = D8DCCA5618883DED00E038EE /* Catalog.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D8DCCA7418883DED00E038EE /* CatalogTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D8DCCA8818883DED00E038EE /* Build configuration list for PBXNativeTarget "CatalogTests" */;
-			buildPhases = (
-				D8DCCA7118883DED00E038EE /* Sources */,
-				D8DCCA7218883DED00E038EE /* Frameworks */,
-				D8DCCA7318883DED00E038EE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D8DCCA7A18883DED00E038EE /* PBXTargetDependency */,
-			);
-			name = CatalogTests;
-			productName = CatalogTests;
-			productReference = D8DCCA7518883DED00E038EE /* CatalogTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		FC66EBB618F137C7005FA944 /* Catalog-iPad */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FC66EBD818F137C7005FA944 /* Build configuration list for PBXNativeTarget "Catalog-iPad" */;
-			buildPhases = (
-				FC66EBB718F137C7005FA944 /* Sources */,
-				FC66EBC818F137C7005FA944 /* Frameworks */,
-				FC66EBCE18F137C7005FA944 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Catalog-iPad";
-			productName = Catalog;
-			productReference = FC66EBDB18F137C7005FA944 /* Catalog-iPad.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1005,11 +900,6 @@
 				CLASSPREFIX = OB;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Mercury Intermedia";
-				TargetAttributes = {
-					D8DCCA7418883DED00E038EE = {
-						TestTargetID = D8B59238186376B1009422D5;
-					};
-				};
 			};
 			buildConfigurationList = D8B59234186376B1009422D5 /* Build configuration list for PBXProject "OutbrainDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1026,8 +916,6 @@
 			targets = (
 				D8B59238186376B1009422D5 /* Journal */,
 				D8DCCA5518883DED00E038EE /* Catalog */,
-				D8DCCA7418883DED00E038EE /* CatalogTests */,
-				FC66EBB618F137C7005FA944 /* Catalog-iPad */,
 			);
 		};
 /* End PBXProject section */
@@ -1061,29 +949,6 @@
 				D8D85B8818D9DD41009081B6 /* logo@2x.png in Resources */,
 				D8DCCA6818883DED00E038EE /* Main_iPhone.storyboard in Resources */,
 				D8DCCA5F18883DED00E038EE /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8DCCA7318883DED00E038EE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D8DCCA8018883DED00E038EE /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FC66EBCE18F137C7005FA944 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FC66EBCF18F137C7005FA944 /* Main_iPad.storyboard in Resources */,
-				FC66EBDF18F14594005FA944 /* Images.xcassets in Resources */,
-				FC66EBD018F137C7005FA944 /* OBConfig.plist in Resources */,
-				FC66EBD118F137C7005FA944 /* tiny-logo.png in Resources */,
-				FC66EBD218F137C7005FA944 /* logo.png in Resources */,
-				FC66EBD318F137C7005FA944 /* tiny-logo@2x.png in Resources */,
-				FC66EBD518F137C7005FA944 /* logo@2x.png in Resources */,
-				FC66EBD718F137C7005FA944 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1148,46 +1013,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8DCCA7118883DED00E038EE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D8DCCA8218883DED00E038EE /* CatalogTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FC66EBB718F137C7005FA944 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FC9BEE311998BFBF00D545FE /* OBRecommendationWebVC.m in Sources */,
-				FC11BB41196E788C0048000D /* OBIPadInterstitialClassicViewCell.m in Sources */,
-				FC17440B191BBBE5008B60EF /* OBLabelWithPadding.m in Sources */,
-				FC17440A191BBBBA008B60EF /* OBIPadInStreamCell.m in Sources */,
-				FC2933BF190E78990097B15D /* OBTableViewHeader.m in Sources */,
-				FC2933BB190908150097B15D /* OBShelfView.m in Sources */,
-				FC66EBE518F148CA005FA944 /* OBAppDelegate.m in Sources */,
-				FC66EBE418F148B9005FA944 /* main.m in Sources */,
-				FC66EBF318F151FC005FA944 /* OBClassicIPadRecommendationsView.m in Sources */,
-				FC66EBF618F1A8DD005FA944 /* OBIPadInStreamRecommendationsView.m in Sources */,
-				FC66EBEB18F14AE6005FA944 /* IPadClassicInterstitialVC.m in Sources */,
-				FC66EBF918F1B047005FA944 /* IPadInStreamVC.m in Sources */,
-				FC0E091D190F901F00DBA5F4 /* OBStickyHeaderView.m in Sources */,
-				FC66EBE318F147F5005FA944 /* IPadClassicVC.m in Sources */,
-				FC2933BA190905CF0097B15D /* ShelfVC.m in Sources */,
-				FC66EBFC18F289F9005FA944 /* OBIPadInterstitialClassicView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D8DCCA7A18883DED00E038EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D8DCCA5518883DED00E038EE /* Catalog */;
-			targetProxy = D8DCCA7918883DED00E038EE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D8DCCA5D18883DED00E038EE /* InfoPlist.strings */ = {
@@ -1433,106 +1259,6 @@
 			};
 			name = Release;
 		};
-		D8DCCA8518883DED00E038EE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Journal.app/Journal";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"${SRCROOT}",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Catalog/Catalog-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "CatalogTests/CatalogTests-Info.plist";
-				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		D8DCCA8618883DED00E038EE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Journal.app/Journal";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"${SRCROOT}",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Catalog/Catalog-Prefix.pch";
-				INFOPLIST_FILE = "CatalogTests/CatalogTests-Info.plist";
-				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
-		FC66EBD918F137C7005FA944 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"${SRCROOT}",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Catalog/Catalog-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Catalog-iPad/Catalog-iPad-Info.plist";
-				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.catalog-ipad";
-				PRODUCT_NAME = "Catalog-iPad";
-				PROVISIONING_PROFILE = "cc49e7c1-de79-4579-b6a3-38213ad64abf";
-				TARGETED_DEVICE_FAMILY = 2;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		FC66EBDA18F137C7005FA944 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"${SRCROOT}",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Catalog/Catalog-Prefix.pch";
-				INFOPLIST_FILE = "Catalog-iPad/Catalog-iPad-Info.plist";
-				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.catalog-ipad";
-				PRODUCT_NAME = "Catalog-iPad";
-				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 2;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1559,24 +1285,6 @@
 			buildConfigurations = (
 				D8DCCA8318883DED00E038EE /* Debug */,
 				D8DCCA8418883DED00E038EE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D8DCCA8818883DED00E038EE /* Build configuration list for PBXNativeTarget "CatalogTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D8DCCA8518883DED00E038EE /* Debug */,
-				D8DCCA8618883DED00E038EE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FC66EBD818F137C7005FA944 /* Build configuration list for PBXNativeTarget "Catalog-iPad" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FC66EBD918F137C7005FA944 /* Debug */,
-				FC66EBDA18F137C7005FA944 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
