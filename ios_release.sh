@@ -32,6 +32,7 @@ mkdir -p $EXPORT_DIR_PATH
 mv OBSDK-Release/* $EXPORT_DIR_PATH
 rm -fr OBSDK-Release/*
 
+echo ""
 echo "*********************"
 echo "Swift Sample App"
 echo "*********************"
@@ -44,14 +45,30 @@ rm -fr Swift-Demo.zip
 
 echo ""
 echo "*********************"
-echo "Prepare Zip File"
+echo "Prepare OBSDK-iOS.zip"
 echo "*********************"
 #prepare 
 cd $EXPORT_DIR_PATH
-zip --symlinks -r OBSDK-iOS.zip . -x ".*" -x "*/.*" > /dev/null
-
+zip --symlinks -r iOS-SampleApps.zip . -x ".*" -x "*/.*" > /dev/null
 cd /Users/odedre/work/Outbrain/OBSDKiOS
-mv $EXPORT_DIR_PATH/OBSDK-iOS.zip OBSDK-Release/
+mv $EXPORT_DIR_PATH/iOS-SampleApps.zip OBSDK-Release/
+
+echo ""
+echo "*********************"
+echo " JS Widget Sample App"
+echo "*********************"
+cd /Users/odedre/work/Outbrain/JSWidgetSampleApp
+git status
+git archive --format zip --output /Users/odedre/work/Outbrain/OBSDKiOS/OBSDK-Release/JSWidgetSampleApp.zip master
+
+echo ""
+echo "*********************"
+echo " API Endpoint Sample App"
+echo "*********************"
+cd /Users/odedre/work/Outbrain/EndpointAPISampleApp
+git status
+git archive --format zip --output /Users/odedre/work/Outbrain/OBSDKiOS/OBSDK-Release/EndpointAPISampleApp.zip master
+
 
 echo ""
 echo "*********************"

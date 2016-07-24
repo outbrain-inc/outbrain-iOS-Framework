@@ -19,6 +19,8 @@
 
 // How many cells between OB Recommended content
 #define OB_INLINE_RECOMMENDATION_INTERVAL   3
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 
 @interface PostsListVC ()
 {
@@ -42,17 +44,6 @@
     UIRefreshControl * refreshControl = [self refreshControl];
     [refreshControl addTarget:self action:@selector(refreshPostsList) forControlEvents:UIControlEventValueChanged];
     
-#ifdef COOKIES // Only for internal debug purposes
-    UIBarButtonItem *addCookiesButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCookies)];
-
-    UIBarButtonItem *removeCookiesButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clearAllCookies)];
-
-    UIBarButtonItem *printCookiesButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(printCookies)];
-    
-    self.navigationItem.leftBarButtonItem = removeCookiesButton;
-    self.navigationItem.leftItemsSupplementBackButton = YES;
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:addCookiesButton, printCookiesButton, nil];
-#endif
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -134,7 +125,7 @@
     
     typeof(self) __weak __self = self;
     Post * p = (Post *)[self.postsData firstObject];
-    OBRequest * request = [OBRequest requestWithURL:p.url widgetID:[self widgetIdForIndexPath:indexPath] widgetIndex:widgetIndex];
+    OBRequest * request = [OBRequest requestWithURL:p.url widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
     
     // We like block handlers
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
@@ -202,17 +193,6 @@
     }];
 }
 
--(NSString *) widgetIdForIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row < 4) {
-        return OBDemoWidgetID1;
-    }
-    else if (indexPath.row < 8) {
-        return OBDemoWidgetID2;
-    }
-    
-    return OBDemoWidgetID3;
-}
-
 - (void)_configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id item = [self postsData][indexPath.row];
@@ -226,7 +206,7 @@
         Post * p = (Post *)[self.postsData firstObject];
         slideCell.recommendationResponse = res;
         slideCell.widgetDelegate = self;
-        [slideCell setUrl:p.url andWidgetId:[self widgetIdForIndexPath:indexPath]];
+        [slideCell setUrl:p.url andWidgetId:OBDemoWidgetID1];
         
         return;
     }
@@ -286,10 +266,12 @@
 
 - (void)widgetView:(id<OBWidgetViewProtocol>)widgetView tappedRecommendation:(OBRecommendation *)recommendation
 {
+    // First report the click to the SDK and receive the URL to open.
+    NSURL * url = [Outbrain getUrl:recommendation];
+    
+    
     // User tapped a recommendation   
-    if (recommendation.isSameSource) {
-        // url here
-        NSURL * url = [Outbrain getOriginalContentURLAndRegisterClickForRecommendation:recommendation];
+    if (recommendation.isPaidLink == NO) { // Organic
         typeof(self) __weak __self = self;
         __block UIAlertView * loadingAlert = [[UIAlertView alloc] initWithTitle:@"Fetching Content" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
         [loadingAlert show];
@@ -305,7 +287,12 @@
         }];
     }
     else {
-        [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:recommendation];
+        if (recommendation.shouldOpenInSafariViewController) {
+            [self openUrlInSafariVC:url];
+        }
+        else {            
+            [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:url];
+        }
     }
 }
 
@@ -329,43 +316,32 @@
     {
         // This is our segue for displaying a tapped recomendation
         UINavigationController * nav = [segue destinationViewController];
-        [[nav topViewController] setValue:sender forKey:@"recommendation"];
+        [[nav topViewController] setValue:sender forKey:@"recommendationUrl"];
     }
 }
 
 
-- (void)addCookies {
-    NSMutableDictionary *cookieProperties = [NSMutableDictionary dictionary];
-    [cookieProperties setObject:@"DEMO_COOKIE" forKey:NSHTTPCookieName];
-    [cookieProperties setObject:@"YUM" forKey:NSHTTPCookieValue];
-    [cookieProperties setObject:@"www.DEMO.com" forKey:NSHTTPCookieDomain];
-    [cookieProperties setObject:@"www.DEMO.com" forKey:NSHTTPCookieOriginURL];
-    [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
-    [cookieProperties setObject:@"0" forKey:NSHTTPCookieVersion];
-    [cookieProperties setObject:[[NSDate date] dateByAddingTimeInterval:2629743] forKey:NSHTTPCookieExpires];
-    
-    NSHTTPCookie *cookie = [[NSHTTPCookie alloc] initWithProperties:cookieProperties];
-    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-}
+#pragma mark - SFSafariViewController + SFSafariViewControllerDelegate
 
-- (void)printCookies {
-    NSString *cookiesDomains = @"";
-    NSString *cookiesNames = @"";
-    
-    for (NSHTTPCookie *cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
-        cookiesNames = [cookiesNames stringByAppendingString:cookie.name];
-        cookiesNames = [cookiesNames stringByAppendingString:@"||"];
-        cookiesDomains = [cookiesDomains stringByAppendingString:cookie.domain];
-        cookiesDomains = [cookiesDomains stringByAppendingString:@"||"];
+- (void) openUrlInSafariVC:(NSURL *)url {
+    if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
+        [[UIApplication sharedApplication] openURL:url];
+        
     }
-    
-    [[[UIAlertView alloc] initWithTitle:@"COOKIES" message:[NSString stringWithFormat:@"domains: %@\n names:%@", cookiesDomains, cookiesNames] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-}
-
-- (IBAction)clearAllCookies {
-    for (NSHTTPCookie *cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
-        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    else {
+        SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+        sf.delegate = self;
+        [self.navigationController presentViewController:sf animated:YES completion:nil];
     }
 }
+
+- (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
+    NSLog(@"safariViewController didCompleteInitialLoad");
+}
+
+- (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    NSLog(@"safariViewController safariViewControllerDidFinish");
+}
+
 
 @end

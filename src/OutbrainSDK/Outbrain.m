@@ -10,17 +10,13 @@
 #import "Outbrain_Private.h"
 #import "OBContent_Private.h"
 
-#import "OBRecommendationRequestOperation.h"
 #import "OBClickRegistrationOperation.h"
-#import "OBRecommendationResponse.h"
-#import "OBResponse.h"
-#import "OBRequest.h"
-#import "OBLabel.h"
-#import "OBAppleAdIdUtil.h"
-#import "OBViewabilityService.h"
+#import "OBRecommendationRequestOperation.h"
+
+#import "OutbrainHelper.h"
 
 #import <UIKit/UIKit.h>
-#import <sys/utsname.h>
+
 
 // The version of the sdk
 NSString * const OB_SDK_VERSION     =   @"2.0";
@@ -46,21 +42,20 @@ const struct OBSettingsAttributes OBSettingsAttributes = {
 
 @interface Outbrain()
 
-@property (nonatomic, strong) NSMutableDictionary * apvCache;
 
 @end
 
 
 @implementation Outbrain
 
-NSString *const kGLOBAL_WIDGET_STATISTICS = @"globalWidgetStatistics";
-NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+
 
 #pragma mark - Initialization
 
 + (void)_throwAssertIfNotInitalized
 {
-    NSAssert([self partnerKey] != nil, @"Please +initializeOutbrainWithConfigFile: before trying to use outbrain");
+    NSAssert([[OutbrainHelper sharedInstance] partnerKey] != nil, @"Please +initializeOutbrainWithConfigFile: before trying to use outbrain");
 }
 
 static dispatch_once_t once_token = 0;
@@ -71,14 +66,11 @@ static Outbrain * _sharedInstance = nil;
     dispatch_once(&once_token, ^{
         if (_sharedInstance == nil) {
             _sharedInstance = [[Outbrain alloc] init];
-            _sharedInstance.obSettings = [[NSMutableDictionary alloc] init];
-            _sharedInstance.apvCache = [[NSMutableDictionary alloc] init];   // Initialize our apv cache.
             NSOperationQueue * queue = [[NSOperationQueue alloc] init];
             [queue setName:@"Outbrain Operation Queue"];
             queue.maxConcurrentOperationCount = 1;  // Serial
             _sharedInstance.obRequestQueue = queue;
             [OBViewabilityService sharedInstance].obRequestQueue = queue; // Share the operation queue with OBViewabilityService
-            _sharedInstance.tokensHandler = [[OBRecommendationsTokenHandler alloc] init];
             _sharedInstance.viewabilityService = [[OBViewabilityService alloc] init];
 
         }
@@ -94,44 +86,6 @@ static Outbrain * _sharedInstance = nil;
     _sharedInstance = instance;
 }
 
-+ (void)initializeOutbrainWithConfigFile:(NSString *)pathToFile
-{
-    if (!WAS_INITIALISED) {
-
-        // First check if it's absolute.  If not then we should try to find it.
-        // This way we can pass in `OBConfig.json` or [[NSBundle mainBundle] pathForResource:@"OBConfig" ofType:@"json"];
-        if(![pathToFile isAbsolutePath])
-        {
-            NSArray * fileParts = [pathToFile componentsSeparatedByString:@"."];
-            
-            pathToFile = [[NSBundle bundleForClass:[self class]] pathForResource:fileParts[0] ofType:(fileParts.count > 1) ? fileParts[1] : @"json"];
-        }
-     
-        NSAssert([[NSFileManager defaultManager] fileExistsAtPath:pathToFile], @"Could not find configuration file at %@.  Please make sure your path is right, and try again",pathToFile);
-        
-        NSDictionary * settingsPayload = nil;
-        
-        
-        if([[pathToFile pathExtension] isEqualToString:@"plist"])
-        {
-            // We're loading from a .plist.  We can load directly
-            settingsPayload = [NSDictionary dictionaryWithContentsOfFile:pathToFile];
-        }
-        else
-        {
-            // Attempt to load as json
-            NSData * data = [NSData dataWithContentsOfFile:pathToFile];
-            if(data)
-            {
-                settingsPayload = [NSJSONSerialization JSONObjectWithData:data options:(0) error:nil];
-            }
-        }
-        NSAssert(settingsPayload != nil, @"Could not read file at path.  Please check your file and try again", pathToFile);
-        
-        // Finally call our dictionary method
-        [self initializeOutbrainWithDictionary:settingsPayload];
-    }
-}
 
 + (void)initializeOutbrainWithPartnerKey:(NSString *)partnerKey {
     if (!WAS_INITIALISED) {
@@ -149,13 +103,14 @@ static Outbrain * _sharedInstance = nil;
         NSAssert([dict[OBSettingsAttributes.partnerKey] length] > 0, @"Invalid partner key set");
         
         // Finally set the settings payload.
-        [[[self mainBrain] obSettings] addEntriesFromDictionary:dict];
+        [[OutbrainHelper sharedInstance] setSDKSettingValue:dict[OBSettingsAttributes.partnerKey] forKey:OBSettingsAttributes.partnerKey];
+        
         WAS_INITIALISED = YES;
     }
 }
 
 + (void)setTestMode:(BOOL)testMode {
-    [[[self mainBrain] obSettings] setValue:[NSNumber numberWithBool:testMode] forKey:OBSettingsAttributes.testModeKey];
+    [[OutbrainHelper sharedInstance] setSDKSettingValue:[NSNumber numberWithBool:testMode] forKey:OBSettingsAttributes.testModeKey];
 }
 
 #pragma mark - Fetching
@@ -188,29 +143,30 @@ static Outbrain * _sharedInstance = nil;
 
 #pragma mark - Clicking
 
-+ (NSURL *)getOriginalContentURLAndRegisterClickForRecommendation:(OBRecommendation *)recommendation
++ (NSURL *)getUrl:(OBRecommendation *)recommendation
 {
     // Should be initialized
     [self _throwAssertIfNotInitalized];
     
-    // New feature!! if SDK_SHOULD_RETURN_PAID_REDIRECT_URL == YES return the redirect url
-    BOOL sdkShouldReturnPaidRedirectUrl = [[recommendation originalValueForKeyPath:kSDK_SHOULD_RETURN_PAID_REDIRECT_URL] boolValue];
-    if (sdkShouldReturnPaidRedirectUrl && [recommendation isPaidLink]) {
-        return [NSURL URLWithString:[recommendation originalValueForKeyPath:@"url"]];
+    if (recommendation.isPaidLink) {
+        NSString *const kCWVContextParam = [NSString stringWithFormat:@"#%@sdk", kCWV_CONTEXT_FLAG];
+        // Adding "#cwvContext=sdk" to the url
+        NSString *recUrl = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:kCWVContextParam];
+        return [NSURL URLWithString:recUrl];
     }
-    
-    // else... back to original implementation
-    
-    NSURL * originalURL = [NSURL URLWithString:[recommendation originalValueForKeyPath:@"orig_url"]];
-    
-    NSString *urlString = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:@"&noRedirect=true"];
-    NSURL * urlWithRedirect = [NSURL URLWithString:urlString];
-    
-    // We don't need a completion block for this one.  We just need to fire off the request and let it do it's thing
-    OBClickRegistrationOperation *clickOP = [OBClickRegistrationOperation operationWithURL:urlWithRedirect];
-    [[[self mainBrain] obRequestQueue] addOperation:clickOP];
-    
-    return originalURL;
+    else {
+        // Organic Recommendation
+        
+        NSURL * originalURL = [NSURL URLWithString:[recommendation originalValueForKeyPath:@"orig_url"]];
+        NSString *urlString = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:@"&noRedirect=true"];
+        NSURL * urlWithRedirect = [NSURL URLWithString:urlString];
+        
+        // We don't need a completion block for this one.  We just need to fire off the request and let it do it's thing
+        OBClickRegistrationOperation *clickOP = [OBClickRegistrationOperation operationWithURL:urlWithRedirect];
+        [[[self mainBrain] obRequestQueue] addOperation:clickOP];
+        
+        return originalURL;
+    }
 }
 
 #pragma mark - Viewability
@@ -276,7 +232,7 @@ static Outbrain * _sharedInstance = nil;
     if(!CheckParamAndReturnIfInvalid(request.url)) return;
     if(!CheckParamAndReturnIfInvalid(request.widgetId)) return;
     
-    OBRecommendationRequestOperation *recommendationOperation = [OBRecommendationRequestOperation operationWithURL:[self _recommendationURLForRequest:request]];
+    OBRecommendationRequestOperation *recommendationOperation = [OBRecommendationRequestOperation operationWithURL:[[OutbrainHelper sharedInstance] recommendationURLForRequest:request]];
     recommendationOperation.request = request;
     
     // No retain cycles here
@@ -286,12 +242,12 @@ static Outbrain * _sharedInstance = nil;
     [recommendationOperation setCompletionBlock:^{
         typeof(__recommendationOperation) __strong _recommendationOperation = __recommendationOperation;
         
-        // Here we need to update our apvCache.
+        // Here we update Settings from the respones
         OBRecommendationResponse * response = _recommendationOperation.response;
-        [__self _updateAPVCacheForResponse:response];
-        [__self _updateViewbilityStatsForResponse:response];
+        [[OutbrainHelper sharedInstance] updateODBSettings:response];
+        
         response.recommendations = [__self _filterInvalidRecsForResponse:response];
-        [((Outbrain *)[self mainBrain]).tokensHandler setTokenForRequest:request response:response];
+        [[OutbrainHelper sharedInstance].tokensHandler setTokenForRequest:request response:response];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if(handler)
@@ -312,214 +268,12 @@ static Outbrain * _sharedInstance = nil;
         if (url) {
             [filteredResponse addObject:rec];
         }
-        else {
-            stringUrl = [stringUrl stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
-        }
     }
     return filteredResponse;
 }
 
-+ (void)_updateViewbilityStatsForResponse:(OBResponse *)response {
-    NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
-    BOOL globalStatsEnabled = YES;
-    int viewabilityThreshold = 0;
-    
-    // We only update our viewability values in the case that the response did not error.
-    if([response performSelector:@selector(getPrivateError)]) return;
-    
-    // Sanity
-    if ((responseSettings == nil) || ![responseSettings isKindOfClass:[NSDictionary class]]) {
-        return;
-    }
-        
-    if (responseSettings[kGLOBAL_WIDGET_STATISTICS] && ![responseSettings[kGLOBAL_WIDGET_STATISTICS] isKindOfClass:[NSNull class]])
-    {
-        globalStatsEnabled = [responseSettings[kGLOBAL_WIDGET_STATISTICS] boolValue];
-        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithBool:globalStatsEnabled] key:kViewabilityEnabledKey];
-    }
-    
-    if (responseSettings[kVIEWABILITY_THRESHOLD] && ![responseSettings[kVIEWABILITY_THRESHOLD] isKindOfClass:[NSNull class]])
-    {
-        viewabilityThreshold = [responseSettings[kVIEWABILITY_THRESHOLD] intValue];        
-        [[OBViewabilityService sharedInstance] updateViewabilitySetting:[NSNumber numberWithInt:viewabilityThreshold] key:kViewabilityThresholdKey];
-    }
-}
-
-+ (void)_updateAPVCacheForResponse:(OBResponse *)response
-{
-    NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
-    BOOL apvReturnValue = NO;
-
-    // We only update our apv value in the case that the response did not error.
-    if([response performSelector:@selector(getPrivateError)]) return;
-    
-    OBRequest *request = [response performSelector:@selector(getPrivateRequest)];
-    if (request == nil) return; // sanity
-    
-    NSString *requestUrl = request.url;
-    
-    // If apv = true we don't want to set anything;
-    if (_sharedInstance.apvCache[requestUrl] && ([_sharedInstance.apvCache[requestUrl] boolValue] == YES)) {
-        return;
-    }
-    
-    if (responseSettings && [responseSettings isKindOfClass:[NSDictionary class]] && responseSettings[@"apv"] && ![responseSettings[@"apv"] isKindOfClass:[NSNull class]])
-    {
-        apvReturnValue = [responseSettings[@"apv"] boolValue];
-    }
-    
-    // If apvReturnValue is false we don't want to set anything
-    if (apvReturnValue == NO) return;
- 
-    // Finally, if we got here, we need to save the apv value to the apvCache
-    _sharedInstance.apvCache[requestUrl] = [NSNumber numberWithBool:apvReturnValue]; // apvReturnValue mush be equal to YES;
-}
-
-#define OBRecommendationDomain                      @"odb.outbrain.com"
-
-+ (NSURL *)_recommendationURLForRequest:(OBRequest *)request
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        // Only need to seed once per app launch
-        srand([[NSDate date] timeIntervalSinceNow]);
-    });
-    
-    NSInteger randInteger = (arc4random() % 10000);
-    
-    NSMutableString * urlString = [NSMutableString stringWithString:request.url];
-
-    NSString *parameterDelimiter;
-
-    NSRange additionDataRange = [urlString rangeOfString:@"additionalData" options:NSCaseInsensitiveSearch];
-    NSRange mobileSubGroupRange = [urlString rangeOfString:@"mobileSubGroup" options:NSCaseInsensitiveSearch];
-
-    NSRange hashtagRange = [urlString rangeOfString:@"#" options:NSCaseInsensitiveSearch];
-
-    if (additionDataRange.length == 0) {
-        if (hashtagRange.length == 0) {
-            parameterDelimiter = @"#";
-        }
-        else {
-            parameterDelimiter = @"&";
-        }
-        
-        if(request.mobileId && request.mobileId.length > 0) {
-            [urlString appendFormat:@"%@additionalData=%@", parameterDelimiter, request.mobileId];
-        }
-    }
-    
-    hashtagRange = [urlString rangeOfString:@"#" options:NSCaseInsensitiveSearch];
-
-    if (mobileSubGroupRange.length == 0) {
-        if (hashtagRange.length == 0) {
-            parameterDelimiter = @"#";
-        }
-        else {
-            parameterDelimiter = @"&";
-        }
-        
-        if(request.source && request.source.length > 0) {
-            [urlString appendFormat:@"%@mobileSubGroup=%@", parameterDelimiter, request.source];
-        }
-    }
-    
-    //Domain
-    NSString * base = @"http://";
-    base = [base stringByAppendingString:OBRecommendationDomain];
-    base = [base stringByAppendingString:@"/utils/get"];
-    
-    //Key
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"?key=%@", [self partnerKey]]];
-    
-    //Version
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&version=%@", OB_SDK_VERSION]];
-    
-    //App Version
-    NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&app_ver=%@", appVersionString]];
-    
-    //Random
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&rand=%li", (long)randInteger]];
-    
-    //WidgetId
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&widgetJSId=%@", request.widgetId]];
-    
-    //Idx
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&idx=%li", (long)request.widgetIndex]];
-    
-    NSString *encodedUrl = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
-                                            (CFStringRef) urlString,
-                                            NULL,
-                                            (CFStringRef) @"!*'();:@&=+$,/?%#[]",
-                                            kCFStringEncodingUTF8);
-
-    //Url
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&url=%@", encodedUrl]];
-    
-    //Format
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&format=%@", @"vjnc"]];
-    
-    //User key + opt-out
-    base = [base stringByAppendingString:@"&api_user_id="];
-    base = [base stringByAppendingString:([OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId])];
-    
-    //Test mode
-    base = [base stringByAppendingString:[((NSNumber *)[Outbrain mainBrain].obSettings[OBSettingsAttributes.testModeKey]) boolValue] ? @"&testMode=true" : @""];
-    
-    //Installation type
-    base = [base stringByAppendingString:[((NSNumber *)[Outbrain mainBrain].obSettings[OBSettingsAttributes.testModeKey]) boolValue] ? @"&installationType=ios_sdk" : @""];
-    
-    //Is opt out
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&doo=%@", ([OBAppleAdIdUtil isOptedOut] ? @"true" : @"false")]];
-    
-    //OS
-    base = [base stringByAppendingString:@"&dos=ios"];
-
-    //OS version
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&dosv=%@", [[UIDevice currentDevice] systemVersion]]];
-    
-    //Device model
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *deviceModel = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&dm=%@", deviceModel]];
-
-    //Token
-    NSString *token = [((Outbrain *)[self mainBrain]).tokensHandler getTokenForRequest:request];
-    base = [base stringByAppendingString:(token == nil ? @"" : [NSString stringWithFormat:@"&t=%@", token])];
-    
-    // APV
-    if(request.widgetIndex == 0) { // Reset APV on index = 0
-        _sharedInstance.apvCache[request.url] = [NSNumber numberWithBool:NO];
-    }
-    if ([_sharedInstance.apvCache[request.url] boolValue]) {
-        // We need to append apv=true to our request
-        base = [base stringByAppendingString:@"&apv=true"];
-    }
-    
-    return [NSURL URLWithString:base];
-}
 
 
-#pragma mark - Settings
-
-+ (void)setOBSettingValue:(id)value forKey:(NSString *)key
-{
-    if(value == nil)
-    {
-        // Value is nil.  We should delete the key instead
-        [[[self mainBrain] obSettings] removeObjectForKey:key];
-        return;
-    }
-    [[self mainBrain] obSettings][key] = value;
-}
-
-+ (id)OBSettingForKey:(NSString *)key
-{
-    return [[self mainBrain] obSettings][key];
-}
 
 @end
 
@@ -528,19 +282,3 @@ static Outbrain * _sharedInstance = nil;
 
 
 
-/**
- *  Some helpful getters
- **/
-@implementation Outbrain (ConvenienceGetters)
-
-+ (NSString *)partnerKey
-{
-    return [self OBSettingForKey:OBSettingsAttributes.partnerKey];
-}
-
-+ (NSString *)userToken
-{
-    return [self OBSettingForKey:OBSettingsAttributes.appUserTokenKey];
-}
-
-@end

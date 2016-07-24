@@ -21,9 +21,9 @@
     
     // You'll also want to handle the taps
     [self.classicInterstitialView setRecommendationTapHandler:^(OBRecommendation *recommendation) {
+        
         // This recommendations was tapped.
-        // Here is where we register the click with outbrain for this piece of content
-        NSURL * url = [Outbrain getOriginalContentURLAndRegisterClickForRecommendation:recommendation];
+        NSURL * url = [Outbrain getUrl:recommendation];
         
         // Now we have a url that we can show in a webview, or if it's a piece of our native content
         // Then we can inspect [url hash] to get the mobile_id

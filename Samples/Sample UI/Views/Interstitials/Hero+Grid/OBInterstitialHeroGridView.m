@@ -515,7 +515,13 @@
     r.origin = CGPointMake(leftMargin, leftMargin);
     r.size.width = self.contentView.bounds.size.width - (leftMargin*2.f);
     r.size.height = MAXFLOAT;
-    r.size.height = [_titleLabel.text sizeWithFont:_titleLabel.font constrainedToSize:r.size lineBreakMode:_titleLabel.lineBreakMode].height;
+    
+    CGRect textRect = [_titleLabel.text boundingRectWithSize:r.size
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{NSFontAttributeName:_titleLabel.font}
+                                         context:nil];
+    
+    r.size.height = textRect.size.height;
     _titleLabel.frame = r;
     
     r = _sourceLabel.bounds;
