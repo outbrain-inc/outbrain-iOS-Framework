@@ -98,7 +98,7 @@ extern NSString *const kIS_COOKIES_ENABLE_KEY;
 /** @section Click Handling **/
 
 /**
- * @brief Maps the given OBRecommendation object to the original URL, and for organic recommendation, register the click to traffic.outbrain
+ * @brief Maps the given OBRecommendation object to the URL, and for organic recommendation, register the click to traffic.outbrain
  *
  * This function returns the recommendation's URL and for organic recommendation, register the click to traffic.outbrain
  * Open paid links in a web view or external browser.\n
