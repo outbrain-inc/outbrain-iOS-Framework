@@ -196,7 +196,7 @@ int const kReportEventFinished = 200;
     OBReachability *reachability = [OBReachability reachabilityForInternetConnection];
     [reachability startNotifier];
     
-    NetworkStatus status = [reachability currentReachabilityStatus];
+    OBNetworkStatus status = [reachability currentReachabilityStatus];
     
     if (status == ReachableViaWiFi)
     {
