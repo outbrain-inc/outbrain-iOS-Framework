@@ -20,7 +20,7 @@
 //Reachability fully support IPv6.  For full details, see ReadMe.md.
 
 
-NSString *kReachabilityChangedNotification = @"kNetworkReachabilityChangedNotification";
+NSString *kOBReachabilityChangedNotification = @"kOBNetworkReachabilityChangedNotification";
 
 
 #pragma mark - Supporting functions
@@ -56,7 +56,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     
     OBReachability* noteObject = (__bridge OBReachability *)info;
     // Post a notification to notify the client that the network reachability changed.
-    [[NSNotificationCenter defaultCenter] postNotificationName: kReachabilityChangedNotification object: noteObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName: kOBReachabilityChangedNotification object: noteObject];
 }
 
 
@@ -163,7 +163,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
 #pragma mark - Network Flag Handling
 
-- (NetworkStatus)networkStatusForFlags:(SCNetworkReachabilityFlags)flags
+- (OBNetworkStatus)networkStatusForFlags:(SCNetworkReachabilityFlags)flags
 {
     PrintReachabilityFlags(flags, "networkStatusForFlags");
     if ((flags & kSCNetworkReachabilityFlagsReachable) == 0)
@@ -172,7 +172,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
         return NotReachable;
     }
     
-    NetworkStatus returnValue = NotReachable;
+    OBNetworkStatus returnValue = NotReachable;
     
     if ((flags & kSCNetworkReachabilityFlagsConnectionRequired) == 0)
     {
@@ -224,10 +224,10 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 }
 
 
-- (NetworkStatus)currentReachabilityStatus
+- (OBNetworkStatus)currentReachabilityStatus
 {
     NSAssert(_reachabilityRef != NULL, @"currentNetworkStatus called with NULL SCNetworkReachabilityRef");
-    NetworkStatus returnValue = NotReachable;
+    OBNetworkStatus returnValue = NotReachable;
     SCNetworkReachabilityFlags flags;
     
     if (SCNetworkReachabilityGetFlags(_reachabilityRef, &flags))
