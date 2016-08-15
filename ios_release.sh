@@ -3,10 +3,11 @@
 EXPORT_DIR_PATH=~/Desktop/Release/iOS
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
-if [ BRANCH -ne "master" ]
-	echo "This script should be executed only from master branch"
-	exit(0)
-fi
+if [ $BRANCH != "master" ]; then
+	echo "Error - This script should be executed only from master branch"
+	echo ""
+	exit 1
+fi;
 
 cd src
 # Clean
