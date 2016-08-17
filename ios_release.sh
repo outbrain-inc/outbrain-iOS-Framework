@@ -66,7 +66,7 @@ echo " JS Widget Sample App"
 echo "*********************"
 cd /Users/odedre/work/Outbrain/JSWidgetSampleApp
 git status
-git archive --format zip --output /Users/odedre/work/Outbrain/OBSDKiOS/OBSDK-Release/JSWidgetSampleApp.zip master
+git archive --format zip --output /Users/odedre/work/Outbrain/OBSDKiOS/OBSDK-Release/iOS-JSWidgetSampleApp.zip master
 
 echo ""
 echo "*********************"
@@ -74,7 +74,7 @@ echo " API Endpoint Sample App"
 echo "*********************"
 cd /Users/odedre/work/Outbrain/EndpointAPISampleApp
 git status
-git archive --format zip --output /Users/odedre/work/Outbrain/OBSDKiOS/OBSDK-Release/EndpointAPISampleApp.zip master
+git archive --format zip --output /Users/odedre/work/Outbrain/OBSDKiOS/OBSDK-Release/iOS-EndpointAPISampleApp.zip master
 
 
 echo ""
