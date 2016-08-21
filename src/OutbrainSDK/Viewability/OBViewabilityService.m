@@ -58,10 +58,16 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 
 -(NSDictionary *) toDictionary {
     
-    if (!self.tm || !self.pid || !self.sid || !self.wId || !self.wRV ||
-        !self.rId || !self.eT || !self.idx || !self.pvId || !self.org || !self.pad || !self.requestStartDate ) {
-        return nil;
-    }
+    if (!self.pid)  	self.pid = @"null";
+    if (!self.sid)  	self.sid = @"null";
+    if (!self.wId)  	self.wId = @"null";
+    if (!self.wRV)  	self.wRV = @"null";
+    if (!self.rId)  	self.rId = @"null";
+    if (!self.eT)   	self.eT =  @"null";
+    if (!self.idx)  	self.idx = @"null";
+    if (!self.pvId)     self.pvId = @"null";
+    if (!self.org)      self.org = @"null";
+    if (!self.pad)      self.pad = @"null";
     
     return @{kTimeSinceFirstLoadRequest : self.tm,
              kPublisherId               : self.pid,
@@ -153,10 +159,6 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     viewabilityData.requestStartDate = requestStartDate;
     
     NSDictionary *viewabilityDictionary = [viewabilityData toDictionary];
-    if (viewabilityDictionary == nil) {
-        NSLog(@"Error: reportRecsReceived, viewabilityDictionary is nil");
-        return;
-    }
     
     NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyForURL_and_WidgetId, url, widgetId];
     [self.viewabilityDataMap setObject:viewabilityDictionary forKey:viewabilityKey];
