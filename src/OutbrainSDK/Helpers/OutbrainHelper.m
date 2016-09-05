@@ -185,6 +185,9 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
         base = [base stringByAppendingString:@"&apv=true"];
     }
     
+    // Secure HTTPS
+    base = [base stringByAppendingString:@"&secured=true"];
+    
     return [NSURL URLWithString:base];
 }
 
