@@ -110,7 +110,7 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     }
     
     //Domain
-    NSString * base = @"http://";
+    NSString * base = @"https://";
     base = [base stringByAppendingString:OBRecommendationDomain];
     base = [base stringByAppendingString:@"/utils/get"];
     

@@ -47,7 +47,7 @@ NSString * const kOrganicRecs = @"org";
 NSString * const kPaidRecs = @"pad";
 
 
-NSString * const kViewabilityUrl = @"http://log.outbrain.com/loggerServices/widgetGlobalEvent";
+NSString * const kViewabilityUrl = @"https://log.outbrain.com/loggerServices/widgetGlobalEvent";
 NSString * const kViewabilityKeyForURL_and_WidgetId = @"OB_Viewability_Key_%@_%@";
 float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 
