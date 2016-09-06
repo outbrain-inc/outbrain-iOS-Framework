@@ -113,7 +113,8 @@
     }
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error {
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     // NSLog(@"OB didFailLoadWithError: %@ - %@", error.localizedDescription, error.userInfo);
     if (self.externalDelegate &&
         [self.externalDelegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
