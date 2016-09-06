@@ -1052,7 +1052,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = OB;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Mercury Intermedia";
 				TargetAttributes = {
 					D8B59238186376B1009422D5 = {
@@ -1345,14 +1345,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1366,7 +1371,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
@@ -1387,13 +1392,18 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1401,7 +1411,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1431,7 +1441,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.journal;
@@ -1459,7 +1469,7 @@
 				GCC_PREFIX_HEADER = "${SRCROOT}/Journal/Resources/Journal-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.journal;
@@ -1492,7 +1502,7 @@
 				);
 				INFOPLIST_FILE = "Catalog/Catalog-Info.plist";
 				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.p-catalog";
@@ -1520,7 +1530,7 @@
 				GCC_PREFIX_HEADER = "Catalog/Catalog-Prefix.pch";
 				INFOPLIST_FILE = "Catalog/Catalog-Info.plist";
 				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.p-catalog";
@@ -1548,7 +1558,7 @@
 				);
 				INFOPLIST_FILE = "CatalogTests/CatalogTests-Info.plist";
 				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1569,7 +1579,7 @@
 				GCC_PREFIX_HEADER = "Catalog/Catalog-Prefix.pch";
 				INFOPLIST_FILE = "CatalogTests/CatalogTests-Info.plist";
 				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1597,7 +1607,7 @@
 				);
 				INFOPLIST_FILE = "Catalog-iPad/Catalog-iPad-Info.plist";
 				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.catalog-ipad";
 				PRODUCT_NAME = "Catalog-iPad";
 				PROVISIONING_PROFILE = "cc49e7c1-de79-4579-b6a3-38213ad64abf";
@@ -1622,7 +1632,7 @@
 				GCC_PREFIX_HEADER = "Catalog/Catalog-Prefix.pch";
 				INFOPLIST_FILE = "Catalog-iPad/Catalog-iPad-Info.plist";
 				INSTALL_PATH = /Applications;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.catalog-ipad";
 				PRODUCT_NAME = "Catalog-iPad";
 				PROVISIONING_PROFILE = "";
