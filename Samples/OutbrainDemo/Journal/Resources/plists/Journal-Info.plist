@@ -37,6 +37,8 @@
 	<true/>
     <key>NSAppTransportSecurity</key>
     <dict>
+        <key>NSAllowsArbitraryLoadsInWebContent</key>
+        <true/>
         <key>NSExceptionDomains</key>
         <dict>
             <key>mobile-demo.outbrain.com</key>
