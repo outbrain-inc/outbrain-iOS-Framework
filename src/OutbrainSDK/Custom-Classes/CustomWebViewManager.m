@@ -43,7 +43,7 @@ NSString * const kCustomWebViewReportingEnabledKey = @"kCustomWebViewReportingEn
 NSString * const kCustomWebViewThresholdKey = @"kCustomWebViewThreshold";
 
 NSString * const kPaidOutbrainPrefix = @"paid.outbrain.com";
-NSString * const kReportUrl = @"http://eventlog.outbrain.com/logger/v1/mobile";
+NSString * const kReportUrl = @"https://eventlog.outbrain.com/logger/v1/mobile";
 int const kReportEventPercentLoad = 100;
 int const kReportEventFinished = 200;
 
