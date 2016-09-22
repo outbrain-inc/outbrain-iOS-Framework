@@ -252,7 +252,8 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     if (self.layoutType == OBClassicRecommendationsViewLayoutTypeGrid)
     {
         // Portrait is 2 accross, landscape is 3
-        maxWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation) ? 3.f : 2.f);
+        UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+        maxWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(orientation) ? 3.f : 2.f);
     }
     
     CGSize itemSize = CGSizeMake(maxWidth-20.f, height);
@@ -396,7 +397,8 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     
     // add titleLabel height
     if (isLayoutTypeGrid) {
-        labelWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation) ? 3.f : 2.f);
+        UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+        labelWidth = self.bounds.size.width / (UIInterfaceOrientationIsLandscape(orientation) ? 3.f : 2.f);
 
         labelWidth -= 30.0; // width of the cell minus the padding between cells (20.0) and the padding the label has on each side (10.0)
     }
@@ -441,8 +443,8 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     
     height += expectSize.height;
     
-    
-    if (isLayoutTypeGrid && UIInterfaceOrientationIsLandscape(self.window.rootViewController.interfaceOrientation)) {
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (isLayoutTypeGrid && UIInterfaceOrientationIsLandscape(orientation)) {
         height += 25.0;
     }
     else {

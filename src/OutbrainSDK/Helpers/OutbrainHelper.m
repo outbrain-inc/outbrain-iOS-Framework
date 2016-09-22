@@ -110,7 +110,7 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     }
     
     //Domain
-    NSString * base = @"http://";
+    NSString * base = @"https://";
     base = [base stringByAppendingString:OBRecommendationDomain];
     base = [base stringByAppendingString:@"/utils/get"];
     
@@ -184,6 +184,9 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
         // We need to append apv=true to our request
         base = [base stringByAppendingString:@"&apv=true"];
     }
+    
+    // Secure HTTPS
+    base = [base stringByAppendingString:@"&secured=true"];
     
     return [NSURL URLWithString:base];
 }
