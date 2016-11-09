@@ -263,17 +263,20 @@ static Outbrain * _sharedInstance = nil;
 + (NSArray *)_filterInvalidRecsForResponse:(OBRecommendationResponse *)response {
     NSMutableArray *filteredResponse = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in response.recommendations) {
-        NSString *stringUrl = [rec performSelector:@selector(originalValueForKeyPath:) withObject:@"orig_url"];
-        NSURL *url = [NSURL URLWithString:stringUrl];
-        if (url) {
+        if (rec.isPaidLink) {
             [filteredResponse addObject:rec];
+        }
+        else {
+            // Organic
+            NSString *stringUrl = [rec performSelector:@selector(originalValueForKeyPath:) withObject:@"orig_url"];
+            NSURL *url = [NSURL URLWithString:stringUrl];
+            if (url) {
+                [filteredResponse addObject:rec];
+            }
         }
     }
     return filteredResponse;
 }
-
-
-
 
 @end
 
