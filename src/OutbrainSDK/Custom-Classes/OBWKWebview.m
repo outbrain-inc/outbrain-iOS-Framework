@@ -44,7 +44,9 @@
     self.externalNavigationDelegate = navigationDelegate;
 }
 
-
+- (id <WKNavigationDelegate>) navigationDelegate {
+    return self.externalNavigationDelegate;
+}
 
 
 #pragma mark - KVO

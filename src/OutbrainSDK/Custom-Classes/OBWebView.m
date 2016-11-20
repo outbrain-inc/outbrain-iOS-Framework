@@ -61,6 +61,10 @@
     self.externalDelegate = delegate;
 }
 
+- (id<UIWebViewDelegate>) delegate {
+    return self.externalDelegate;
+}
+
 #pragma mark - NJKWebViewProgressDelegate
 -(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
 {
