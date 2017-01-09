@@ -25,6 +25,8 @@
 
 #pragma mark - Initialize
 
+static NSString *_userAgent = nil;
+
 + (instancetype)operationWithURL:(NSURL *)url
 {
     return [[[self class] alloc] initWithURL:url];
@@ -108,7 +110,7 @@
         [OBAppleAdIdUtil refreshAdId];
     }
     
-    [self performSelectorOnMainThread:@selector(modifyUserAgent:) withObject:request waitUntilDone:YES];
+    [self modifyUserAgent:request];
     
     NSURLSession *session = [NSURLSession sharedSession];
     _task = [session dataTaskWithRequest:request
@@ -129,11 +131,22 @@
 
 #pragma mark - Private Methods
 
-- (void)modifyUserAgent:(NSMutableURLRequest *)request {
-    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-    NSString* secretAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
++ (NSString *) webviewUserAgent {
+    if (_userAgent == nil) {
+        [self performSelectorOnMainThread:@selector(createWebViewAndFetchUserAgent) withObject:nil waitUntilDone:YES];
+    }
     
-    [request setValue:secretAgent forHTTPHeaderField:@"User-Agent"];
+    return _userAgent;
+}
+
++ (void) createWebViewAndFetchUserAgent {
+    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    _userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+}
+
+
+- (void)modifyUserAgent:(NSMutableURLRequest *)request {
+    [request setValue:[OBOperation webviewUserAgent] forHTTPHeaderField:@"User-Agent"];
 }
 
 
