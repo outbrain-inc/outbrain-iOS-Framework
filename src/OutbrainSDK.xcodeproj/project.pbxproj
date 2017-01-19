@@ -37,23 +37,9 @@
 		D85409BB1875D6320088DF2A /* OBNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D85409BA1875D6320088DF2A /* OBNetworkTest.m */; };
 		D85409BD1875D6490088DF2A /* OBCannedNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D85409BC1875D6490088DF2A /* OBCannedNetworkTest.m */; };
 		D87E89A9187CBD82005572D0 /* libOutbrainSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F1D7518564C7700D4DEA8 /* libOutbrainSDK.a */; };
-		D896215B1887111200BA917D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D896214E1887111200BA917D /* InfoPlist.strings */; };
-		D896215C1887111200BA917D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89621501887111200BA917D /* Images.xcassets */; };
-		D896215D1887111200BA917D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D89621511887111200BA917D /* main.m */; };
-		D896215E1887111200BA917D /* OBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D89621531887111200BA917D /* OBAppDelegate.m */; };
-		D89621601887111200BA917D /* OBReccomendationResponseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D89621571887111200BA917D /* OBReccomendationResponseListVC.m */; };
-		D89621611887111200BA917D /* OBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D89621591887111200BA917D /* OBWebViewController.m */; };
-		D89621621887111200BA917D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D896215A1887111200BA917D /* Settings.bundle */; };
-		D8962165188711D200BA917D /* OBConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = D8962163188711D200BA917D /* OBConfig.json */; };
-		D8962166188711D200BA917D /* OBConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8962164188711D200BA917D /* OBConfig.plist */; };
 		D8962C26186DEE5B009A37A4 /* OBAsyncTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8962C25186DEE5B009A37A4 /* OBAsyncTest.m */; };
 		D8BC5CCD187CB5590018E88F /* OBConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8BC5CCC187CB5590018E88F /* OBConfig.plist */; };
 		D8BC5CCF187CB5770018E88F /* OBConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = D8BC5CCE187CB5770018E88F /* OBConfig.json */; };
-		D8C91AB01871FF20005916A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F1D7818564C7700D4DEA8 /* Foundation.framework */; };
-		D8C91AB11871FF20005916A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C91A791871FEED005916A2 /* CoreGraphics.framework */; };
-		D8C91AE518720DCA005916A2 /* libOutbrainSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F1D7518564C7700D4DEA8 /* libOutbrainSDK.a */; };
-		D8D1FD61187327CB0099831C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D1FD60187327CB0099831C /* Security.framework */; };
-		D8D1FD63187327D20099831C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D1FD62187327D20099831C /* QuartzCore.framework */; };
 		D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */ = {isa = PBXBuildFile; fileRef = D82F1D7D18564C7700D4DEA8 /* Outbrain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E604CE731C427DC600D45C31 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = E604CE711C427D9000D45C31 /* module.modulemap */; };
 		E607D4D91BDD16BE009A534B /* 0-recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D61BDD16BE009A534B /* 0-recommendations.json */; };
@@ -111,9 +97,10 @@
 		E61C73ED1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */; };
 		E61C73EE1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */; };
 		E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E699B8B11E30C69200FD5BE2 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
+		E699B8B31E30C6D100FD5BE2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */; };
 		E6E91F7A1D2D08E300A777F3 /* OutbrainHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E6E91F781D2D08E300A777F3 /* OutbrainHelper.h */; };
 		E6E91F7B1D2D08E300A777F3 /* OutbrainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E91F791D2D08E300A777F3 /* OutbrainHelper.m */; };
-		FC6068661A7E85E0008B5C6E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
 		FC820C1019DAF0A800ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,13 +111,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = D82F1D7418564C7700D4DEA8;
 			remoteInfo = OutbrainSDK;
-		};
-		D896217D18871CCD00BA917D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D82F1D6D18564C7700D4DEA8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D8C91AAE1871FF20005916A2;
-			remoteInfo = OBIntegrationTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -168,26 +148,11 @@
 		D852F37D187B4C00008A2A04 /* OBNetworkTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBNetworkTest.h; sourceTree = "<group>"; };
 		D85409BA1875D6320088DF2A /* OBNetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNetworkTest.m; sourceTree = "<group>"; };
 		D85409BC1875D6490088DF2A /* OBCannedNetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBCannedNetworkTest.m; sourceTree = "<group>"; };
-		D896214F1887111200BA917D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D89621501887111200BA917D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D89621511887111200BA917D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D89621521887111200BA917D /* OBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAppDelegate.h; sourceTree = "<group>"; };
-		D89621531887111200BA917D /* OBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAppDelegate.m; sourceTree = "<group>"; };
-		D89621541887111200BA917D /* OBIntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OBIntegrationTests-Info.plist"; sourceTree = "<group>"; };
-		D89621551887111200BA917D /* OBIntegrationTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OBIntegrationTests-Prefix.pch"; sourceTree = "<group>"; };
-		D89621561887111200BA917D /* OBReccomendationResponseListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBReccomendationResponseListVC.h; sourceTree = "<group>"; };
-		D89621571887111200BA917D /* OBReccomendationResponseListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBReccomendationResponseListVC.m; sourceTree = "<group>"; };
-		D89621581887111200BA917D /* OBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWebViewController.h; sourceTree = "<group>"; };
-		D89621591887111200BA917D /* OBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBWebViewController.m; sourceTree = "<group>"; };
-		D896215A1887111200BA917D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		D8962163188711D200BA917D /* OBConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OBConfig.json; sourceTree = "<group>"; };
-		D8962164188711D200BA917D /* OBConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OBConfig.plist; sourceTree = "<group>"; };
 		D8962C25186DEE5B009A37A4 /* OBAsyncTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAsyncTest.m; sourceTree = "<group>"; };
 		D8962C27186DEFD1009A37A4 /* OBAsyncTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBAsyncTest.h; sourceTree = "<group>"; };
 		D8BC5CCC187CB5590018E88F /* OBConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OBConfig.plist; sourceTree = "<group>"; };
 		D8BC5CCE187CB5770018E88F /* OBConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OBConfig.json; sourceTree = "<group>"; };
 		D8C91A791871FEED005916A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D8C91AAF1871FF20005916A2 /* OBIntegrationTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OBIntegrationTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D1FD60187327CB0099831C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D8D1FD62187327D20099831C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E604CE711C427D9000D45C31 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
@@ -248,6 +213,7 @@
 		E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
 		E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationsTokenHandler.m; sourceTree = "<group>"; };
 		E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBProtocols.h; sourceTree = "<group>"; };
+		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6E91F781D2D08E300A777F3 /* OutbrainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutbrainHelper.h; sourceTree = "<group>"; };
 		E6E91F791D2D08E300A777F3 /* OutbrainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutbrainHelper.m; sourceTree = "<group>"; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -267,22 +233,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E699B8B31E30C6D100FD5BE2 /* SystemConfiguration.framework in Frameworks */,
+				D82F1D8818564C7800D4DEA8 /* Foundation.framework in Frameworks */,
+				E699B8B11E30C69200FD5BE2 /* AdSupport.framework in Frameworks */,
 				D8299EA018B28BB200196107 /* CoreGraphics.framework in Frameworks */,
 				D87E89A9187CBD82005572D0 /* libOutbrainSDK.a in Frameworks */,
-				D82F1D8818564C7800D4DEA8 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8C91AAC1871FF20005916A2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FC6068661A7E85E0008B5C6E /* AdSupport.framework in Frameworks */,
-				D8D1FD63187327D20099831C /* QuartzCore.framework in Frameworks */,
-				D8D1FD61187327CB0099831C /* Security.framework in Frameworks */,
-				D8C91AE518720DCA005916A2 /* libOutbrainSDK.a in Frameworks */,
-				D8C91AB11871FF20005916A2 /* CoreGraphics.framework in Frameworks */,
-				D8C91AB01871FF20005916A2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +256,6 @@
 		D82F1D6C18564C7700D4DEA8 = {
 			isa = PBXGroup;
 			children = (
-				D896214D1887111200BA917D /* OBIntegrationTests */,
 				D82F1D7A18564C7700D4DEA8 /* OutbrainSDK */,
 				D82F1D8E18564C7800D4DEA8 /* OutbrainSDKTests */,
 				D82F1D7718564C7700D4DEA8 /* Frameworks */,
@@ -314,7 +268,6 @@
 			children = (
 				D82F1D7518564C7700D4DEA8 /* libOutbrainSDK.a */,
 				D82F1D8518564C7800D4DEA8 /* OutbrainSDKTests.xctest */,
-				D8C91AAF1871FF20005916A2 /* OBIntegrationTests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -322,6 +275,7 @@
 		D82F1D7718564C7700D4DEA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */,
 				FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */,
 				D8D1FD62187327D20099831C /* QuartzCore.framework */,
 				D8D1FD60187327CB0099831C /* Security.framework */,
@@ -415,27 +369,6 @@
 				D800EBEA18A2E64A00404AD9 /* OBRequestTest.m */,
 			);
 			name = "Data Tests";
-			sourceTree = "<group>";
-		};
-		D896214D1887111200BA917D /* OBIntegrationTests */ = {
-			isa = PBXGroup;
-			children = (
-				D8962163188711D200BA917D /* OBConfig.json */,
-				D8962164188711D200BA917D /* OBConfig.plist */,
-				D896214E1887111200BA917D /* InfoPlist.strings */,
-				D89621501887111200BA917D /* Images.xcassets */,
-				D89621511887111200BA917D /* main.m */,
-				D89621521887111200BA917D /* OBAppDelegate.h */,
-				D89621531887111200BA917D /* OBAppDelegate.m */,
-				D89621541887111200BA917D /* OBIntegrationTests-Info.plist */,
-				D89621551887111200BA917D /* OBIntegrationTests-Prefix.pch */,
-				D89621561887111200BA917D /* OBReccomendationResponseListVC.h */,
-				D89621571887111200BA917D /* OBReccomendationResponseListVC.m */,
-				D89621581887111200BA917D /* OBWebViewController.h */,
-				D89621591887111200BA917D /* OBWebViewController.m */,
-				D896215A1887111200BA917D /* Settings.bundle */,
-			);
-			path = OBIntegrationTests;
 			sourceTree = "<group>";
 		};
 		D89DFDEF186503E200B8A95C /* responses */ = {
@@ -672,29 +605,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				D896217E18871CCD00BA917D /* PBXTargetDependency */,
 			);
 			name = OutbrainSDKTests;
 			productName = OutbrainSDKTests;
 			productReference = D82F1D8518564C7800D4DEA8 /* OutbrainSDKTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D8C91AAE1871FF20005916A2 /* OBIntegrationTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D8C91AD31871FF21005916A2 /* Build configuration list for PBXNativeTarget "OBIntegrationTests" */;
-			buildPhases = (
-				D8C91AAB1871FF20005916A2 /* Sources */,
-				D8C91AAC1871FF20005916A2 /* Frameworks */,
-				D8C91AAD1871FF20005916A2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OBIntegrationTests;
-			productName = "OB SDK Tests";
-			productReference = D8C91AAF1871FF20005916A2 /* OBIntegrationTests.app */;
-			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -706,11 +621,6 @@
 				LastTestingUpgradeCheck = 0610;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Outbrain;
-				TargetAttributes = {
-					D82F1D8418564C7800D4DEA8 = {
-						TestTargetID = D8C91AAE1871FF20005916A2;
-					};
-				};
 			};
 			buildConfigurationList = D82F1D7018564C7700D4DEA8 /* Build configuration list for PBXProject "OutbrainSDK" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -725,7 +635,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D8C91AAE1871FF20005916A2 /* OBIntegrationTests */,
 				D82F1D7418564C7700D4DEA8 /* OutbrainSDK */,
 				D82F1D8418564C7800D4DEA8 /* OutbrainSDKTests */,
 				D8376BE9186E2F6D00B45FA3 /* OBFramework */,
@@ -744,18 +653,6 @@
 				E607D4D91BDD16BE009A534B /* 0-recommendations.json in Resources */,
 				D8BC5CCF187CB5770018E88F /* OBConfig.json in Resources */,
 				D8BC5CCD187CB5590018E88F /* OBConfig.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D8C91AAD1871FF20005916A2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D8962165188711D200BA917D /* OBConfig.json in Resources */,
-				D8962166188711D200BA917D /* OBConfig.plist in Resources */,
-				D89621621887111200BA917D /* Settings.bundle in Resources */,
-				D896215B1887111200BA917D /* InfoPlist.strings in Resources */,
-				D896215C1887111200BA917D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,17 +737,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8C91AAB1871FF20005916A2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D89621601887111200BA917D /* OBReccomendationResponseListVC.m in Sources */,
-				D896215D1887111200BA917D /* main.m in Sources */,
-				D89621611887111200BA917D /* OBWebViewController.m in Sources */,
-				D896215E1887111200BA917D /* OBAppDelegate.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -859,11 +745,6 @@
 			target = D82F1D7418564C7700D4DEA8 /* OutbrainSDK */;
 			targetProxy = D8376BED186E2F7800B45FA3 /* PBXContainerItemProxy */;
 		};
-		D896217E18871CCD00BA917D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D8C91AAE1871FF20005916A2 /* OBIntegrationTests */;
-			targetProxy = D896217D18871CCD00BA917D /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -871,14 +752,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D82F1D9218564C7800D4DEA8 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D896214E1887111200BA917D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D896214F1887111200BA917D /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1033,7 +906,6 @@
 		D82F1D9C18564C7800D4DEA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OBIntegrationTests.app/OBIntegrationTests";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1050,14 +922,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
 		};
 		D82F1D9D18564C7800D4DEA8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OBIntegrationTests.app/OBIntegrationTests";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1070,7 +940,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
 		};
@@ -1096,51 +965,6 @@
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "${inherited}";
 				WRAPPER_EXTENSION = framework;
-			};
-			name = Release;
-		};
-		D8C91AD41871FF21005916A2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "${SRCROOT}/${PRODUCT_NAME}/${PRODUCT_NAME}-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				INFOPLIST_FILE = "$(SRCROOT)/OBIntegrationTests/OBIntegrationTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		D8C91AD51871FF21005916A2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "${SRCROOT}/${PRODUCT_NAME}/${PRODUCT_NAME}-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/OBIntegrationTests/OBIntegrationTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
@@ -1179,15 +1003,6 @@
 			buildConfigurations = (
 				D8376BEB186E2F6D00B45FA3 /* Debug */,
 				D8376BEC186E2F6D00B45FA3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D8C91AD31871FF21005916A2 /* Build configuration list for PBXNativeTarget "OBIntegrationTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D8C91AD41871FF21005916A2 /* Debug */,
-				D8C91AD51871FF21005916A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
