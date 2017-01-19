@@ -34,44 +34,10 @@
     [super tearDown];
 }
 
-- (void)testInitializeFromInvalidFilePath
-{
-    XCTAssertThrows([Outbrain initializeOutbrainWithConfigFile:@"OBConfig.jsonblah"], @"Should not allow invalid file path");
-}
-
-- (void)testInitializeFromValidJsonFile {
-    XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:@"OBConfig.json"], @"Should allow valid json config file");
-    XCTAssertNotNil([[Outbrain mainBrain] obSettings][OBSettingsAttributes.partnerKey], @"PartnerKey should be set properly");
-}
-
-- (void)testInitializeFromValidPlistFile {
-    XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:@"OBConfig.plist"], @"Should allow valid plist config file");
-    
-    XCTAssertNotNil([[Outbrain mainBrain] obSettings][OBSettingsAttributes.partnerKey], @"PartnerKey should be set properly");
-}
-
-- (void)testInitializeFromFullPathConfigFile {
-    XCTAssertNoThrow([Outbrain initializeOutbrainWithConfigFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"OBConfig" ofType:@"plist"]], @"Should support full path");
-    
-    XCTAssertNotNil([[Outbrain mainBrain] obSettings][OBSettingsAttributes.partnerKey], @"PartnerKey should be set properly");
-}
-
-- (void)testInitializeFromValidDictionary{
-    XCTAssertNoThrow([Outbrain initializeOutbrainWithDictionary:@{OBSettingsAttributes.partnerKey:OB_TEST_PARTNER_KEY}], @"Should work with valid dictionary");
-    
-    XCTAssertNotNil([[Outbrain mainBrain] obSettings][OBSettingsAttributes.partnerKey], @"PartnerKey should be set properly");
-}
-
 - (void)testInitializeFromEmptyDictionary {
     XCTAssertThrows([Outbrain initializeOutbrainWithDictionary:@{}], @"Should not allow empty dictionary");
 }
 
-- (void)testCallingBeforeInitialized
-{
-    [Outbrain mainBrain].obSettings = [@{} mutableCopy];
-    OBRequest * request = [OBRequest requestWithURL:kOBValidTestLink widgetID:@"AR_1"];
-    XCTAssertThrows([Outbrain fetchRecommendationsForRequest:request withCallback:nil], @"Should fail if not initialized");
-}
 
 - (void)testShouldFetchRecommendations
 {
@@ -83,11 +49,12 @@
     XCTAssertTrue([self waitForCompletion:20], @"Should not timeout");
 }
 
+
 - (void)testAppUserToken
 {
     [Outbrain initializeOutbrainWithDictionary:@{OBSettingsAttributes.partnerKey:OB_TEST_PARTNER_KEY}];
-    NSString * token = [Outbrain OBSettingForKey:OBSettingsAttributes.appUserTokenKey];
-    // XCTAssertNotNil(token, @"User token should not be nil");
+   // NSString *partnerKey = [[OutbrainHelper sharedInstance] partnerKey];
+
 
     //  XCTAssertTrue([Outbrain _saveUserTokenInKeychain:token], @"Should be able to save to keychain");
     //  XCTAssertNotNil([Outbrain _getUserTokenFromKeychainIfAvailable], @"User token should be saved in keychain");
