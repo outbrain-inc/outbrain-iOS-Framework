@@ -212,38 +212,28 @@ static Outbrain * _sharedInstance = nil;
     // This is where the magic happens
     // Let's first validate any parameters that we can.
     // AKA sanity checks
-    BOOL (^CheckParamAndReturnIfInvalid)(NSString *value) = ^(NSString *value) {
-        BOOL valid = (value != nil && [value length] > 0);
-        
-        if(!valid)
+    if (![self _isValid:request.url] || ![self _isValid:request.widgetId]) {
+        OBRecommendationResponse * response = [[OBRecommendationResponse alloc] init];
+        response.error = [NSError errorWithDomain:OBNativeErrorDomain code:OBInvalidParametersErrorCode userInfo:@{@"msg" : @"Missing parameter in OBRequest"}];
+        if(handler)
         {
-            // If parameter `value` is not valid then create a response with an error and return here
-            OBRecommendationResponse * response = [[OBRecommendationResponse alloc] init];
-            response.error = [NSError errorWithDomain:OBNativeErrorDomain code:OBInvalidParametersErrorCode userInfo:@{@"msg" : @"Missing parameter in OBRequest"}];
-            if(handler)
-            {
-                handler(response);
-            }
+            handler(response);
         }
-        
-        return valid;
-    };
-    
-    if(!CheckParamAndReturnIfInvalid(request.url)) return;
-    if(!CheckParamAndReturnIfInvalid(request.widgetId)) return;
+        // If one of the parameters is not valid then create a response with an error and return here
+        return;
+    }
     
     OBRecommendationRequestOperation *recommendationOperation = [OBRecommendationRequestOperation operationWithURL:[[OutbrainHelper sharedInstance] recommendationURLForRequest:request]];
     recommendationOperation.request = request;
     
     // No retain cycles here
-    typeof(recommendationOperation) __strong __recommendationOperation = recommendationOperation;
+    typeof(recommendationOperation) __weak __recommendationOperation = recommendationOperation;
     typeof(self) __weak __self = self;
     
     [recommendationOperation setCompletionBlock:^{
-        typeof(__recommendationOperation) __strong _recommendationOperation = __recommendationOperation;
         
         // Here we update Settings from the respones
-        OBRecommendationResponse * response = _recommendationOperation.response;
+        OBRecommendationResponse * response = __recommendationOperation.response;
         [[OutbrainHelper sharedInstance] updateODBSettings:response];
         
         response.recommendations = [__self _filterInvalidRecsForResponse:response];
@@ -258,6 +248,10 @@ static Outbrain * _sharedInstance = nil;
     }];
     
     [[[self mainBrain] obRequestQueue] addOperation:recommendationOperation];
+}
+
++ (BOOL) _isValid:(NSString *)value {
+    return (value != nil && [value length] > 0);
 }
 
 + (NSArray *)_filterInvalidRecsForResponse:(OBRecommendationResponse *)response {

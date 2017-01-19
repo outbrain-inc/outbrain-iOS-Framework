@@ -21,6 +21,7 @@
 + (instancetype)operationWithURL:(NSURL *)url;
 - (instancetype)initWithURL:(NSURL *)url;
 
++ (NSString *) webviewUserAgent;
 
 @property (nonatomic, strong, readonly) NSURLConnection *connection;
 

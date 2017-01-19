@@ -7,6 +7,7 @@
 //
 
 #import "OBPostOperation.h"
+#import "OBOperation.h"
 #import <UIKit/UIKit.h>
 
 
@@ -36,12 +37,13 @@
     return self;
 }
 
+
 - (void) main {
     NSError *error;
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_requestURL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:15.f];
-    [self performSelectorOnMainThread:@selector(modifyUserAgent:) withObject:request waitUntilDone:YES];
+    [self modifyUserAgent:request];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     request.HTTPMethod = @"POST";
     NSData *postData = [NSJSONSerialization dataWithJSONObject:self.postData options:0 error:&error];
@@ -56,10 +58,7 @@
 #pragma mark - Private Methods
 
 - (void)modifyUserAgent:(NSMutableURLRequest *)request {
-    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-    NSString* secretAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-    
-    [request setValue:secretAgent forHTTPHeaderField:@"User-Agent"];
+    [request setValue:[OBOperation webviewUserAgent] forHTTPHeaderField:@"User-Agent"];
 }
 
 @end
