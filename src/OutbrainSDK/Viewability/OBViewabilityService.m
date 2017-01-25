@@ -139,13 +139,20 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     NSString *widgetId = response.request.widgetId;
     NSString *url = response.request.url;
     
+    
+    NSArray *sdkVersionComponents = [OB_SDK_VERSION componentsSeparatedByString:@"."];
+    NSString *sdkVersionString = @"";
+    if ([sdkVersionComponents count] == 3) {
+        sdkVersionString = [NSString stringWithFormat:@"%02d%02d%02d", [sdkVersionComponents[0] intValue], [sdkVersionComponents[1] intValue], [sdkVersionComponents[2] intValue]];
+    }
+    
     // NSLog(@"reportRecsReceived: %@", widgetId);
     
     ViewabilityData *viewabilityData = [[ViewabilityData alloc] init];
     viewabilityData.pid = [response.responseRequest getStringValueForPayloadKey:@"pid"];
     viewabilityData.sid = [[response.responseRequest getNSNumberValueForPayloadKey:@"sid"] stringValue];
     viewabilityData.wId = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
-    viewabilityData.wRV = @"020101"; // major 02 minor 01 patch 01
+    viewabilityData.wRV = sdkVersionString;
     viewabilityData.rId = [response.responseRequest getStringValueForPayloadKey:@"req_id"];
     viewabilityData.eT = EVENT_RECEIVED;
     viewabilityData.idx = [response.responseRequest getStringValueForPayloadKey:@"idx"];
