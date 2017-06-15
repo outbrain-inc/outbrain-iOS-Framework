@@ -10,7 +10,7 @@
 #define OutbrainDemo_OBDefines_h
 
 // Defining these here.  Normally you will probably have different widgetIDs throughout your app
-#define kOBWidgetID    @"APP_1"
+#define kOBWidgetID    @"SDK_1"
 #define kOBRecommendationLink    @"http://mobile-demo.outbrain.com/2014/01/26/how-to-use-social-media-like-the-best-smb-marketers/"
 
 #endif
