@@ -8,7 +8,7 @@
 
 #import "OBContent.h"
 #import "OBImage.h"
-
+#import "OBDisclosure.h"
 
 /** @brief An interface that represents a single content recommendation.
  *
@@ -64,5 +64,11 @@
 @property (nonatomic, strong, readonly) OBImage *image;
 /** @brief should we open this recommendation in an external browser or within the app */
 @property (nonatomic, assign, readonly) BOOL shouldOpenInSafariViewController;
+/** @brief Disclosure icon for conversion campaigns */
+@property (nonatomic, strong, readonly) OBDisclosure *disclosure;
+/** @brief Pixels array for a recommendation to be fired when recommendation received from the server */
+@property (nonatomic, strong, readonly) NSArray *pixels;
+/** @brief this is a paid recommendation of type RTB . */
+@property (nonatomic, assign, getter = isRtb, readonly) BOOL rtbRec;
 
 @end

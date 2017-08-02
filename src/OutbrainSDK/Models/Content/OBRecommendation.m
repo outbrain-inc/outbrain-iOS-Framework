@@ -9,6 +9,7 @@
 #import "OBRecommendation.h"
 #import "OBContent_Private.h"
 
+
 #define OBPublishDateKey        @"OBPublishDateKey"
 #define OBRedirectURLKey        @"OBRedirectURLKey"
 #define OBAuthorKey             @"OBAuthorKey"
@@ -41,6 +42,12 @@
 @property (nonatomic, strong, readwrite) NSDictionary *appflow;
 /** @brief should we open this recommendation in an external browser or within the app */
 @property (nonatomic, assign, readwrite) BOOL shouldOpenInSafariViewController;
+/** @brief Disclosure icon for conversion campaigns */
+@property (nonatomic, strong, readwrite) OBDisclosure *disclosure;
+/** @brief Pixels array for a recommendation to be fired when recommendation received from the server */
+@property (nonatomic, strong, readwrite) NSArray *pixels;
+/** @brief this is a paid recommendation of type RTB . */
+@property (nonatomic, assign, getter = isRtb, readwrite) BOOL rtbRec;
 
 @end
 
@@ -77,6 +84,11 @@
         recommendation.paidLink = YES;
     }
     
+    if(payload[@"pixels"])
+    {
+        recommendation.rtbRec = YES;
+    }
+    
     NSString *source = [recommendation performSelector:@selector(getPrivateSource)];
     NSString *author = [recommendation performSelector:@selector(getPrivateAuthor)];
     
@@ -98,15 +110,18 @@
              @"sameSource":                         @"same_source",
              @"image":                              @"thumbnail",
              @"video":                              @"isVideo",
-             @"appflow":                            @"appflow"
+             @"appflow":                            @"appflow",
+             @"disclosure":                         @"disclosure",
+             @"pixels":                             @"pixels"
              };
 }
 
 + (Class)propertyClassForKey:(NSString *)key
 {
-    if([key isEqualToString:@"thumbnail"]) return [OBImage class];
-    if([key isEqualToString:@"publish_date"]) return [NSDate class];
-    if([key isEqualToString:@"url"]) return [NSURL class];
+    if ([key isEqualToString:@"thumbnail"])         return [OBImage class];
+    if ([key isEqualToString:@"disclosure"])        return [OBDisclosure class];
+    if ([key isEqualToString:@"publish_date"])      return [NSDate class];
+    if ([key isEqualToString:@"url"])               return [NSURL class];
     
     return [super propertyClassForKey:key];
 }
@@ -126,6 +141,9 @@
     
     if ([key isEqualToString:@"appflow"]) {
         self.shouldOpenInSafariViewController = [value[@"shouldOpenInExternalBrowser"] boolValue];
+    }
+    if ([key isEqualToString:@"pixels"]) {
+        self.pixels = value;
     }
     
     [super setValue:value forKey:key];
