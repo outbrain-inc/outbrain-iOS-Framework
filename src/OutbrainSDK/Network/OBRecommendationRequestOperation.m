@@ -10,6 +10,7 @@
 #import "OBRequest.h"
 #import "OBRecommendation.h"
 #import "OBRecommendationResponse.h"
+#import "OBAdsChoicesManager.h"
 
 #import "OBErrors.h"
 
@@ -91,6 +92,7 @@
     if ([[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
         [[OBViewabilityService sharedInstance] reportRecsReceived:self.response timestamp:self.requestStartDate];
     }
+    [OBAdsChoicesManager reportAdsChoicesPixels:self.response];
 }
 
 
