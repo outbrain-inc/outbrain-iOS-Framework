@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/NSArray.h>
+#import <UIkit/UIkit.h>
 #import <OutbrainSDK/OBProtocols.h>
 
 
@@ -114,6 +115,23 @@ extern NSString *const kIS_COOKIES_ENABLE_KEY;
  * @see OBRecommendation
  **/
 + (NSURL *)getUrl:(OBRecommendation *)recommendation;
+
+/** @section RTB integration **/
+
+typedef void (^OBOnClickBlock)(void);
+
+/**
+ * @brief Prepare the UIImageView with the RTB recommendation image.
+ *
+ * This function prepare the UIImageView with the RTB recommendation image. Basically adding the "Ad Choices" icon and call the 
+ * onClick block in case of a click.
+ *
+ * @param imageView - The UIImageView which displays the RTB recommendation image.
+ * @param rec - The OBRecommendation which contains the content of the rec.
+ *
+ * @return void
+ **/
++(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block;
 
 /**
  * @brief Activates/deactivates the Outbrain test mode.

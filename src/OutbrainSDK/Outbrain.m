@@ -12,7 +12,7 @@
 
 #import "OBClickRegistrationOperation.h"
 #import "OBRecommendationRequestOperation.h"
-
+#import "OBDisclosure.h"
 #import "OutbrainHelper.h"
 
 #import <UIKit/UIKit.h>
@@ -167,6 +167,45 @@ static Outbrain * _sharedInstance = nil;
         
         return originalURL;
     }
+}
+
+#pragma mark - RTB integratin with SDK
++(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block {
+    //UIButton *adChoicesButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+    UIButton *adChoicesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    adChoicesButton.userInteractionEnabled = YES;
+    adChoicesButton.frame = CGRectMake(5, 5, 40, 40);
+    // add on click listener
+    [adChoicesButton addTarget:[OutbrainHelper sharedInstance] action:@selector(adChoicesClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // add on click listener
+    [adChoicesButton addTarget:[Outbrain class] action:@selector(adChoicesClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    // Load Ad Choices image url
+    UIImageView * __weak weakImageView = imageView;
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        NSURL *url = [NSURL URLWithString:rec.disclosure.imageUrl];
+        if (url == nil) {
+            return;
+        }
+        NSData * data = [[NSData alloc] initWithContentsOfURL: url];
+        if ( data == nil ) {
+            return;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (weakImageView != nil) {
+               // [adChoicesButton setImage:[UIImage imageWithData: data] forState:UIControlStateNormal];
+                [weakImageView addSubview:adChoicesButton];
+                
+            }
+        });
+    });
+}
+
++(void)adChoicesClick:(id)sender {
+    NSLog(@"single Tap on Ad Choices view");
 }
 
 #pragma mark - Viewability

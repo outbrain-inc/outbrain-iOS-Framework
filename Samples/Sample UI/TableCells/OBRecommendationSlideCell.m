@@ -166,6 +166,11 @@
     typeof(slideControl) __weak __slideControl = slideControl;
     [self fetchImageForURL:recommendation.image.url withCallback:^(UIImage *image) {
         __slideControl.imageView.image = image;
+        if ([recommendation isRtb]) {
+            [Outbrain prepare:__slideControl.imageView withRTB:recommendation onClickBlock:^{
+                NSLog(@"oded on click");
+            }];
+        }
     }];
     
     return slideControl;
