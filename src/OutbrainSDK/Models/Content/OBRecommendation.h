@@ -8,7 +8,7 @@
 
 #import "OBContent.h"
 #import "OBImage.h"
-#import "OBDisclosure.h"
+
 
 /** @brief An interface that represents a single content recommendation.
  *
@@ -31,6 +31,8 @@
  * @see OBRecommendationResponse
  * @see OBImage
  */
+@class OBDisclosure;
+
 @interface OBRecommendation : OBContent {
     NSDate * publishDate;
     NSURL * redirectURL;

@@ -7,6 +7,7 @@
 //
 
 #import "OBRecommendation.h"
+#import "OBDisclosure.h"
 #import "OBContent_Private.h"
 
 

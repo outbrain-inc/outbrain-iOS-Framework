@@ -98,10 +98,20 @@
     }
     else if(class == [NSURL class])
     {
-        if([value isKindOfClass:[NSString class]])
+        if ([value isKindOfClass:[NSString class]])
         {
-            value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            return [NSURL URLWithString:value];
+            // this method returns an NSURL object initialized with *value* NSString.
+            // If the URL string was malformed or nil, returns nil.
+            NSURL *url = [NSURL URLWithString:value];
+            if (url != nil) {
+                return url;
+            }
+            else {
+                // Returns a representation of the receiver using a given encoding to determine the percent
+                // escapes necessary to convert the receiver into a legal URL string.
+                value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                return [NSURL URLWithString:value];
+            }
         }
     }
     
