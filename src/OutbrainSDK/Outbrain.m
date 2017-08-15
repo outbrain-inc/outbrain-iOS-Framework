@@ -196,7 +196,7 @@ static Outbrain * _sharedInstance = nil;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             if (weakImageView != nil) {
-               // [adChoicesButton setImage:[UIImage imageWithData: data] forState:UIControlStateNormal];
+                [adChoicesButton setImage:[UIImage imageWithData: data] forState:UIControlStateNormal];
                 [weakImageView addSubview:adChoicesButton];
                 
             }
