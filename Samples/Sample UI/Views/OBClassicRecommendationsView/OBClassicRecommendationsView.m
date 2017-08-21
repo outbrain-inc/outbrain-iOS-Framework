@@ -192,6 +192,11 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
         typeof(cell) __weak __cell = cell;
         [self fetchImageForURL:recommendation.image.url withCallback:^(UIImage *image) {
             [__cell.imageView setImage:image];
+            if ([recommendation isRtb]) {
+                [Outbrain prepare:__cell.imageView withRTB:recommendation onClickBlock:^(NSURL *url) {
+                    NSLog(@"OBParalaxSlideViewControl --> click url: %@", url.absoluteString);
+                }];
+            }
         }];
     }
     
