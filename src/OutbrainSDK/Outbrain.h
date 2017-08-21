@@ -118,7 +118,7 @@ extern NSString *const kIS_COOKIES_ENABLE_KEY;
 
 /** @section RTB integration **/
 
-typedef void (^OBOnClickBlock)(void);
+typedef void (^OBOnClickBlock)(NSURL *url);
 
 /**
  * @brief Prepare the UIImageView with the RTB recommendation image.

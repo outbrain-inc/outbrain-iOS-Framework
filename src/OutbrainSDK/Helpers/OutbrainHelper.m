@@ -23,6 +23,19 @@
 #import <sys/utsname.h>
 
 
+
+@interface OBAdChoicesButton : UIButton
+
+@property (copy) OBOnClickBlock block;
+@property (nonatomic, copy) NSString *clickUrlString;
+
+@end
+
+@implementation OBAdChoicesButton
+
+@end
+
+
 @interface OutbrainHelper()
 
 @property (nonatomic, strong) NSMutableDictionary * apvCache;
@@ -211,13 +224,14 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
 
 #pragma mark - RTB integratin with SDK
 -(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block {
-    //UIButton *adChoicesButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
-    UIButton *adChoicesButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
+    OBAdChoicesButton *adChoicesButton = [OBAdChoicesButton buttonWithType:UIButtonTypeCustom];
     imageView.userInteractionEnabled = YES;
     adChoicesButton.frame = CGRectMake(5, 5, 15, 15);
     
     // add on click listener
+    adChoicesButton.block = block;
+    adChoicesButton.clickUrlString = rec.disclosure.clickUrl;
     [adChoicesButton addTarget:self action:@selector(adChoicesClick:) forControlEvents:UIControlEventTouchUpInside];
     
     // Load Ad Choices image url
@@ -241,8 +255,13 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     });
 }
 
--(void)adChoicesClick:(id)sender {
-    NSLog(@"single Tap on Ad Choices view");
+-(void)adChoicesClick:(id)sender {    
+    OBAdChoicesButton *button = (OBAdChoicesButton *)sender;
+    if (button.block) {
+        NSString* encodedUrl = [button.clickUrlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSURL *url = [NSURL URLWithString:encodedUrl];
+        button.block(url);
+    }
 }
 
 #pragma mark - ODB Settings - Private Methods
