@@ -11,7 +11,7 @@
 #import "Outbrain_Private.h"
 #import "OBContent_Private.h"
 
-
+#import "OBDisclosure.h"
 #import "OBResponse.h"
 #import "OBViewabilityService.h"
 #import "CustomWebViewManager.h"
@@ -209,7 +209,41 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     [self updateCustomWebViewSettings:responseSettings];
 }
 
+#pragma mark - RTB integratin with SDK
+-(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block {
+    //UIButton *adChoicesButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+    UIButton *adChoicesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    imageView.userInteractionEnabled = YES;
+    adChoicesButton.frame = CGRectMake(5, 5, 15, 15);
+    
+    // add on click listener
+    [adChoicesButton addTarget:self action:@selector(adChoicesClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Load Ad Choices image url
+    UIImageView * __weak weakImageView = imageView;
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        NSURL *url = [NSURL URLWithString:rec.disclosure.imageUrl];
+        if (url == nil) {
+            return;
+        }
+        NSData * data = [[NSData alloc] initWithContentsOfURL: url];
+        if ( data == nil ) {
+            return;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (weakImageView != nil) {
+                [adChoicesButton setImage:[UIImage imageWithData: data] forState:UIControlStateNormal];
+                [weakImageView addSubview:adChoicesButton];
+                
+            }
+        });
+    });
+}
 
+-(void)adChoicesClick:(id)sender {
+    NSLog(@"single Tap on Ad Choices view");
+}
 
 #pragma mark - ODB Settings - Private Methods
 

@@ -56,4 +56,6 @@
 
 + (BOOL) string:(NSString *)str containsString:(NSString *)subString;
 
+-(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block;
+
 @end

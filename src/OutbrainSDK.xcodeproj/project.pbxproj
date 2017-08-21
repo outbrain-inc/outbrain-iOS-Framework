@@ -99,7 +99,7 @@
 		E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E699B8B11E30C69200FD5BE2 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
 		E699B8B31E30C6D100FD5BE2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */; };
-		E6D136DD1F31EA38001E7407 /* OBDisclosure.h in Headers */ = {isa = PBXBuildFile; fileRef = E6D136DB1F31EA38001E7407 /* OBDisclosure.h */; };
+		E6D136DD1F31EA38001E7407 /* OBDisclosure.h in Headers */ = {isa = PBXBuildFile; fileRef = E6D136DB1F31EA38001E7407 /* OBDisclosure.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6D136DE1F31EA38001E7407 /* OBDisclosure.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D136DC1F31EA38001E7407 /* OBDisclosure.m */; };
 		E6D136E11F320942001E7407 /* OBAdsChoicesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E6D136DF1F320942001E7407 /* OBAdsChoicesManager.h */; };
 		E6D136E21F320942001E7407 /* OBAdsChoicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D136E01F320942001E7407 /* OBAdsChoicesManager.m */; };
