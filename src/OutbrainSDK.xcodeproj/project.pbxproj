@@ -22,29 +22,17 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		D800EBEB18A2E64A00404AD9 /* OBRequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D800EBEA18A2E64A00404AD9 /* OBRequestTest.m */; };
 		D8299EA018B28BB200196107 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C91A791871FEED005916A2 /* CoreGraphics.framework */; };
-		D8299EA418B28E1800196107 /* ILCannedURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D8299EA318B28E1800196107 /* ILCannedURLProtocol.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D82F1D7918564C7700D4DEA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F1D7818564C7700D4DEA8 /* Foundation.framework */; };
 		D82F1D8018564C7700D4DEA8 /* Outbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F1D7F18564C7700D4DEA8 /* Outbrain.m */; };
 		D82F1D8818564C7800D4DEA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F1D7818564C7700D4DEA8 /* Foundation.framework */; };
 		D82F1D9318564C7800D4DEA8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D82F1D9118564C7800D4DEA8 /* InfoPlist.strings */; };
 		D82F1D9518564C7800D4DEA8 /* OutbrainSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F1D9418564C7800D4DEA8 /* OutbrainSDKTests.m */; };
 		D8376BE7186E276500B45FA3 /* OutbrainSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D8376BE6186E276500B45FA3 /* OutbrainSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D849D1091868B67300CB4B83 /* OBContentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D849D1081868B67300CB4B83 /* OBContentTest.m */; };
 		D849D10B1868BB4D00CB4B83 /* Outbrain_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D849D10A1868BB4D00CB4B83 /* Outbrain_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D849D1111868C96600CB4B83 /* OBResponseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D849D1101868C96600CB4B83 /* OBResponseTest.m */; };
-		D85409BB1875D6320088DF2A /* OBNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D85409BA1875D6320088DF2A /* OBNetworkTest.m */; };
-		D85409BD1875D6490088DF2A /* OBCannedNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D85409BC1875D6490088DF2A /* OBCannedNetworkTest.m */; };
 		D87E89A9187CBD82005572D0 /* libOutbrainSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F1D7518564C7700D4DEA8 /* libOutbrainSDK.a */; };
-		D8962C26186DEE5B009A37A4 /* OBAsyncTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8962C25186DEE5B009A37A4 /* OBAsyncTest.m */; };
-		D8BC5CCD187CB5590018E88F /* OBConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8BC5CCC187CB5590018E88F /* OBConfig.plist */; };
-		D8BC5CCF187CB5770018E88F /* OBConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = D8BC5CCE187CB5770018E88F /* OBConfig.json */; };
 		D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */ = {isa = PBXBuildFile; fileRef = D82F1D7D18564C7700D4DEA8 /* Outbrain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E604CE731C427DC600D45C31 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = E604CE711C427D9000D45C31 /* module.modulemap */; };
-		E607D4D91BDD16BE009A534B /* 0-recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D61BDD16BE009A534B /* 0-recommendations.json */; };
-		E607D4DA1BDD16BE009A534B /* full response images.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D71BDD16BE009A534B /* full response images.json */; };
-		E607D4DB1BDD16BE009A534B /* full response no images.json in Resources */ = {isa = PBXBuildFile; fileRef = E607D4D81BDD16BE009A534B /* full response no images.json */; };
 		E61C737B1D2A47D300DA1CB0 /* OBBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73791D2A47D300DA1CB0 /* OBBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C737C1D2A47D300DA1CB0 /* OBBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C737A1D2A47D300DA1CB0 /* OBBridge.m */; };
 		E61C73881D2A4AA300DA1CB0 /* CustomWebViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C737E1D2A4AA300DA1CB0 /* CustomWebViewManager.h */; };
@@ -97,6 +85,9 @@
 		E61C73ED1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */; };
 		E61C73EE1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */; };
 		E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E682C4641F4DB47D00382289 /* OBTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E682C4631F4DB47D00382289 /* OBTestUtils.m */; };
+		E682C4661F4DB4CC00382289 /* OBParseODBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E682C4651F4DB4CC00382289 /* OBParseODBTests.m */; };
+		E682C46B1F4DB6D900382289 /* odb_normal_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E682C46A1F4DB6D900382289 /* odb_normal_response.json */; };
 		E699B8B11E30C69200FD5BE2 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
 		E699B8B31E30C6D100FD5BE2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */; };
 		E6D136DD1F31EA38001E7407 /* OBDisclosure.h in Headers */ = {isa = PBXBuildFile; fileRef = E6D136DB1F31EA38001E7407 /* OBDisclosure.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -134,9 +125,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D800EBEA18A2E64A00404AD9 /* OBRequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRequestTest.m; sourceTree = "<group>"; };
-		D8299EA218B28E1800196107 /* ILCannedURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILCannedURLProtocol.h; sourceTree = "<group>"; };
-		D8299EA318B28E1800196107 /* ILCannedURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILCannedURLProtocol.m; sourceTree = "<group>"; };
 		D82F1D7518564C7700D4DEA8 /* libOutbrainSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOutbrainSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D82F1D7818564C7700D4DEA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D82F1D7C18564C7700D4DEA8 /* OutbrainSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OutbrainSDK-Prefix.pch"; sourceTree = "<group>"; };
@@ -147,24 +135,11 @@
 		D82F1D9218564C7800D4DEA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D82F1D9418564C7800D4DEA8 /* OutbrainSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutbrainSDKTests.m; sourceTree = "<group>"; };
 		D8376BE6186E276500B45FA3 /* OutbrainSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutbrainSDK.h; sourceTree = "<group>"; };
-		D849D1081868B67300CB4B83 /* OBContentTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBContentTest.m; sourceTree = "<group>"; };
 		D849D10A1868BB4D00CB4B83 /* Outbrain_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outbrain_Private.h; sourceTree = "<group>"; };
-		D849D1101868C96600CB4B83 /* OBResponseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponseTest.m; sourceTree = "<group>"; };
-		D852F37A187B4A59008A2A04 /* OBDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBDefines.h; sourceTree = "<group>"; };
-		D852F37D187B4C00008A2A04 /* OBNetworkTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBNetworkTest.h; sourceTree = "<group>"; };
-		D85409BA1875D6320088DF2A /* OBNetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNetworkTest.m; sourceTree = "<group>"; };
-		D85409BC1875D6490088DF2A /* OBCannedNetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBCannedNetworkTest.m; sourceTree = "<group>"; };
-		D8962C25186DEE5B009A37A4 /* OBAsyncTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAsyncTest.m; sourceTree = "<group>"; };
-		D8962C27186DEFD1009A37A4 /* OBAsyncTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBAsyncTest.h; sourceTree = "<group>"; };
-		D8BC5CCC187CB5590018E88F /* OBConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OBConfig.plist; sourceTree = "<group>"; };
-		D8BC5CCE187CB5770018E88F /* OBConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OBConfig.json; sourceTree = "<group>"; };
 		D8C91A791871FEED005916A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8D1FD60187327CB0099831C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D8D1FD62187327D20099831C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E604CE711C427D9000D45C31 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		E607D4D61BDD16BE009A534B /* 0-recommendations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "0-recommendations.json"; path = "sample responses/0-recommendations.json"; sourceTree = SOURCE_ROOT; };
-		E607D4D71BDD16BE009A534B /* full response images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "full response images.json"; path = "sample responses/full response images.json"; sourceTree = SOURCE_ROOT; };
-		E607D4D81BDD16BE009A534B /* full response no images.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "full response no images.json"; path = "sample responses/full response no images.json"; sourceTree = SOURCE_ROOT; };
 		E61C73791D2A47D300DA1CB0 /* OBBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBridge.h; sourceTree = "<group>"; };
 		E61C737A1D2A47D300DA1CB0 /* OBBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBridge.m; sourceTree = "<group>"; };
 		E61C737E1D2A4AA300DA1CB0 /* CustomWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebViewManager.h; sourceTree = "<group>"; };
@@ -219,6 +194,10 @@
 		E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
 		E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationsTokenHandler.m; sourceTree = "<group>"; };
 		E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBProtocols.h; sourceTree = "<group>"; };
+		E682C4621F4DB47D00382289 /* OBTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBTestUtils.h; sourceTree = "<group>"; };
+		E682C4631F4DB47D00382289 /* OBTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBTestUtils.m; sourceTree = "<group>"; };
+		E682C4651F4DB4CC00382289 /* OBParseODBTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBParseODBTests.m; sourceTree = "<group>"; };
+		E682C46A1F4DB6D900382289 /* odb_normal_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = odb_normal_response.json; sourceTree = "<group>"; };
 		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6D136DB1F31EA38001E7407 /* OBDisclosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBDisclosure.h; sourceTree = "<group>"; };
 		E6D136DC1F31EA38001E7407 /* OBDisclosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBDisclosure.m; sourceTree = "<group>"; };
@@ -256,15 +235,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D8299EA118B28E1800196107 /* ILProtocol */ = {
-			isa = PBXGroup;
-			children = (
-				D8299EA218B28E1800196107 /* ILCannedURLProtocol.h */,
-				D8299EA318B28E1800196107 /* ILCannedURLProtocol.m */,
-			);
-			path = ILProtocol;
-			sourceTree = "<group>";
-		};
 		D82F1D6C18564C7700D4DEA8 = {
 			isa = PBXGroup;
 			children = (
@@ -331,13 +301,12 @@
 		D82F1D8E18564C7800D4DEA8 /* OutbrainSDKTests */ = {
 			isa = PBXGroup;
 			children = (
-				D852F37E187B4C85008A2A04 /* Data Tests */,
-				D852F37C187B4B37008A2A04 /* Async Tests */,
-				D852F37B187B4B20008A2A04 /* Network Tests */,
-				D89DFDEF186503E200B8A95C /* responses */,
+				E682C4691F4DB6D900382289 /* mock_responses */,
+				E682C4621F4DB47D00382289 /* OBTestUtils.h */,
+				E682C4631F4DB47D00382289 /* OBTestUtils.m */,
 				D82F1D9418564C7800D4DEA8 /* OutbrainSDKTests.m */,
+				E682C4651F4DB4CC00382289 /* OBParseODBTests.m */,
 				D82F1D8F18564C7800D4DEA8 /* Supporting Files */,
-				D852F37A187B4A59008A2A04 /* OBDefines.h */,
 			);
 			path = OutbrainSDKTests;
 			sourceTree = "<group>";
@@ -347,50 +316,8 @@
 			children = (
 				D82F1D9018564C7800D4DEA8 /* OutbrainSDKTests-Info.plist */,
 				D82F1D9118564C7800D4DEA8 /* InfoPlist.strings */,
-				D8BC5CCC187CB5590018E88F /* OBConfig.plist */,
-				D8BC5CCE187CB5770018E88F /* OBConfig.json */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D852F37B187B4B20008A2A04 /* Network Tests */ = {
-			isa = PBXGroup;
-			children = (
-				D8299EA118B28E1800196107 /* ILProtocol */,
-				D852F37D187B4C00008A2A04 /* OBNetworkTest.h */,
-				D85409BA1875D6320088DF2A /* OBNetworkTest.m */,
-				D85409BC1875D6490088DF2A /* OBCannedNetworkTest.m */,
-			);
-			name = "Network Tests";
-			sourceTree = "<group>";
-		};
-		D852F37C187B4B37008A2A04 /* Async Tests */ = {
-			isa = PBXGroup;
-			children = (
-				D8962C27186DEFD1009A37A4 /* OBAsyncTest.h */,
-				D8962C25186DEE5B009A37A4 /* OBAsyncTest.m */,
-			);
-			name = "Async Tests";
-			sourceTree = "<group>";
-		};
-		D852F37E187B4C85008A2A04 /* Data Tests */ = {
-			isa = PBXGroup;
-			children = (
-				D849D1081868B67300CB4B83 /* OBContentTest.m */,
-				D849D1101868C96600CB4B83 /* OBResponseTest.m */,
-				D800EBEA18A2E64A00404AD9 /* OBRequestTest.m */,
-			);
-			name = "Data Tests";
-			sourceTree = "<group>";
-		};
-		D89DFDEF186503E200B8A95C /* responses */ = {
-			isa = PBXGroup;
-			children = (
-				E607D4D61BDD16BE009A534B /* 0-recommendations.json */,
-				E607D4D71BDD16BE009A534B /* full response images.json */,
-				E607D4D81BDD16BE009A534B /* full response no images.json */,
-			);
-			name = responses;
 			sourceTree = "<group>";
 		};
 		E61C737D1D2A4AA300DA1CB0 /* Custom-Classes */ = {
@@ -549,6 +476,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		E682C4691F4DB6D900382289 /* mock_responses */ = {
+			isa = PBXGroup;
+			children = (
+				E682C46A1F4DB6D900382289 /* odb_normal_response.json */,
+			);
+			path = mock_responses;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -668,12 +603,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E607D4DB1BDD16BE009A534B /* full response no images.json in Resources */,
 				D82F1D9318564C7800D4DEA8 /* InfoPlist.strings in Resources */,
-				E607D4DA1BDD16BE009A534B /* full response images.json in Resources */,
-				E607D4D91BDD16BE009A534B /* 0-recommendations.json in Resources */,
-				D8BC5CCF187CB5770018E88F /* OBConfig.json in Resources */,
-				D8BC5CCD187CB5590018E88F /* OBConfig.plist in Resources */,
+				E682C46B1F4DB6D900382289 /* odb_normal_response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,14 +681,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D85409BD1875D6490088DF2A /* OBCannedNetworkTest.m in Sources */,
-				D800EBEB18A2E64A00404AD9 /* OBRequestTest.m in Sources */,
+				E682C4661F4DB4CC00382289 /* OBParseODBTests.m in Sources */,
+				E682C4641F4DB47D00382289 /* OBTestUtils.m in Sources */,
 				D82F1D9518564C7800D4DEA8 /* OutbrainSDKTests.m in Sources */,
-				D8299EA418B28E1800196107 /* ILCannedURLProtocol.m in Sources */,
-				D849D1091868B67300CB4B83 /* OBContentTest.m in Sources */,
-				D8962C26186DEE5B009A37A4 /* OBAsyncTest.m in Sources */,
-				D849D1111868C96600CB4B83 /* OBResponseTest.m in Sources */,
-				D85409BB1875D6320088DF2A /* OBNetworkTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

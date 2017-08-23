@@ -7,13 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "OBAsyncTest.h"
 #import "OutbrainSDK.h"
 #import "Outbrain_Private.h"
 
-#import "OBDefines.h"
 
-@interface OutbrainSDKTests : OBAsyncTest
+@interface OutbrainSDKTests : XCTestCase
 @end
 
 
@@ -39,27 +37,6 @@
 }
 
 
-- (void)testShouldFetchRecommendations
-{
-    [Outbrain initializeOutbrainWithDictionary:@{OBSettingsAttributes.partnerKey:OB_TEST_PARTNER_KEY}];
-    OBRequest * request = [OBRequest requestWithURL:kOBValidTestLink widgetID:@"AR_1"];
-    [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBResponse *response) {
-        self.done = YES;
-    }];
-    XCTAssertTrue([self waitForCompletion:20], @"Should not timeout");
-}
-
-
-- (void)testAppUserToken
-{
-    [Outbrain initializeOutbrainWithDictionary:@{OBSettingsAttributes.partnerKey:OB_TEST_PARTNER_KEY}];
-   // NSString *partnerKey = [[OutbrainHelper sharedInstance] partnerKey];
-
-
-    //  XCTAssertTrue([Outbrain _saveUserTokenInKeychain:token], @"Should be able to save to keychain");
-    //  XCTAssertNotNil([Outbrain _getUserTokenFromKeychainIfAvailable], @"User token should be saved in keychain");
-    //  XCTAssertTrue([token isEqualToString:[Outbrain _getUserTokenFromKeychainIfAvailable]], @"Keychain token should equal property");
-}
 
 
 

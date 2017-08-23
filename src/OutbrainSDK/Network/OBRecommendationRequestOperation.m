@@ -46,10 +46,10 @@
     
     
     // Wrap the jsonResponse and error into an OBResponse
-    [self createResponseWithDict:jsonResponse withError:error];
+    self.response = [self createResponseWithDict:jsonResponse withError:error];
 }
 
-- (void)createResponseWithDict:(NSDictionary *)responseDict withError:(NSError *)error
+- (OBRecommendationResponse *)createResponseWithDict:(NSDictionary *)responseDict withError:(NSError *)error
 {
     if(responseDict == nil || [responseDict objectForKey:@"response"] == nil || [[responseDict objectForKey:@"response"] isKindOfClass:[NSNull class]])
     {
@@ -64,7 +64,7 @@
         response.error = error;
     }
     
-    self.response = response;
+    return response;
 }
 
 
