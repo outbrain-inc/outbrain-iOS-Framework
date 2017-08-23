@@ -169,6 +169,9 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     //Installation type
     base = [base stringByAppendingString:@"&installationType=ios_sdk"];
     
+    // RTB support
+    base = [base stringByAppendingString:@"&rtbEnabled=true"];
+    
     //Is opt out
     base = [base stringByAppendingString:[NSString stringWithFormat:@"&doo=%@", ([OBAppleAdIdUtil isOptedOut] ? @"true" : @"false")]];
     
