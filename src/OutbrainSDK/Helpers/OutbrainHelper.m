@@ -172,12 +172,8 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     // RTB support
     base = [base stringByAppendingString:@"&rtbEnabled=true"];
     
-    // APP ID
-    // Bundle ID
+    // APP ID \ Bundle ID
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    if (bundleIdentifier == nil) {
-        bundleIdentifier = @"<null>"; // fix for unit-tests
-    }
     base = [base stringByAppendingString:[NSString stringWithFormat:@"&app_id=%@", bundleIdentifier]];
     
     //Is opt out
