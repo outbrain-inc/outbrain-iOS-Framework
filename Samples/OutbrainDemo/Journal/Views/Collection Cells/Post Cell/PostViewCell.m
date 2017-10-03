@@ -219,7 +219,7 @@
         
 
         // Call for the second request, we need to use the token we received from the server
-        OBRequest * secondRequest = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID2 widgetIndex:1];
+        OBRequest * secondRequest = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID1 widgetIndex:1];
         [Outbrain fetchRecommendationsForRequest:secondRequest withDelegate:self];
     }
     else {
@@ -382,7 +382,7 @@
     }
     
     // Important: we need to set those properties everytime to handle a case of re-use of the cell 
-    _outbrainClassicView.widgetId = OBDemoWidgetID2;
+    _outbrainClassicView.widgetId = OBDemoWidgetID1;
     _outbrainClassicView.url = self.post.url;
     
     return _outbrainClassicView;
