@@ -170,7 +170,7 @@
             }
             
             // Finally reset the contentInsets
-            void (^ContentInsetBlock)() = ^{
+            void (^ContentInsetBlock)(void) = ^{
                 UIEdgeInsets insets = __self.internalCollectionView.contentInset;
                 CGFloat diff = (response.recommendations.count == 0)? 0 : insets.bottom;
                 insets.bottom = 0.f;
