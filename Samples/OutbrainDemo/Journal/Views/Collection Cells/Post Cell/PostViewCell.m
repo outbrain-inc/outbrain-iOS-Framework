@@ -105,9 +105,9 @@
             rect.origin.y = [firstAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
             rect.size.height = [secondAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height - rect.origin.y;
             rect.size.height -= 20.f; // Add padding at the bottom of the image
-            if(!__imageContainerView.superview) return;
             
             dispatch_async(dispatch_get_main_queue(), ^{
+                if(!__imageContainerView.superview) return;
                 __imageContainerView.frame = rect;
             });
             
