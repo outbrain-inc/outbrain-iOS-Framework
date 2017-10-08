@@ -53,7 +53,7 @@
 		</dict>
 	</dict>
 	<key>UIMainStoryboardFile</key>
-	<string>MainStoryboard-iphone</string>
+	<string>NewMainStoryboard</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>MainStoryboard-ipad</string>
 	<key>UIRequiredDeviceCapabilities</key>

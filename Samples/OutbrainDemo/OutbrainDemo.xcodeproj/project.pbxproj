@@ -45,7 +45,6 @@
 		D8B5923F186376B1009422D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923E186376B1009422D5 /* CoreGraphics.framework */; };
 		D8B59241186376B1009422D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
 		D8D1FD9D187332540099831C /* OBRecommendationSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D1FD9C187332540099831C /* OBRecommendationSlideCell.m */; };
-		D8D67D3D188735B900A7B7BB /* MainStoryboard-ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8D67D3C188735B900A7B7BB /* MainStoryboard-ipad.storyboard */; };
 		D8D85B8518D9DD41009081B6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8118D9DD41009081B6 /* logo.png */; };
 		D8D85B8618D9DD41009081B6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8118D9DD41009081B6 /* logo.png */; };
 		D8D85B8718D9DD41009081B6 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8218D9DD41009081B6 /* logo@2x.png */; };
@@ -73,6 +72,7 @@
 		E66AC33A1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
 		E66AC33B1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
 		E671E5E31C8C3FA9001206F7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
+		E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
 		E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
 		E6E91F861D3674A600A777F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
 		E6EF299E1CD8D6650026AAD3 /* AppWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */; };
@@ -221,7 +221,6 @@
 		D8BC5CC6187C77440018E88F /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBWidgetViewProtocol.h; path = "../Sample UI/OBWidgetViewProtocol.h"; sourceTree = "<group>"; };
 		D8D1FD9B187332540099831C /* OBRecommendationSlideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBRecommendationSlideCell.h; path = "../Sample UI/TableCells/OBRecommendationSlideCell.h"; sourceTree = "<group>"; };
 		D8D1FD9C187332540099831C /* OBRecommendationSlideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBRecommendationSlideCell.m; path = "../Sample UI/TableCells/OBRecommendationSlideCell.m"; sourceTree = "<group>"; };
-		D8D67D3C188735B900A7B7BB /* MainStoryboard-ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "MainStoryboard-ipad.storyboard"; sourceTree = "<group>"; };
 		D8D85B8118D9DD41009081B6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D8D85B8218D9DD41009081B6 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		D8D85B8318D9DD41009081B6 /* tiny-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiny-logo.png"; sourceTree = "<group>"; };
@@ -248,6 +247,7 @@
 		D8F5819218B4114700AEBC15 /* HeroListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroListVC.m; path = "viewcontrollers/Hero Interstitial/HeroListVC.m"; sourceTree = "<group>"; };
 		E66AC3281C99AA4300A23876 /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = ../../src/OutbrainSDK.xcodeproj; sourceTree = "<group>"; };
 		E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
+		E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainStoryboard.storyboard; sourceTree = "<group>"; };
 		E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6EF299C1CD8D6650026AAD3 /* AppWKWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppWKWebview.h; sourceTree = "<group>"; };
 		E6EF299D1CD8D6650026AAD3 /* AppWKWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppWKWebview.m; sourceTree = "<group>"; };
@@ -434,7 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				D83456541885A543002B2368 /* MainStoryboard-iphone.storyboard */,
-				D8D67D3C188735B900A7B7BB /* MainStoryboard-ipad.storyboard */,
+				E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */,
 			);
 			path = storyboards;
 			sourceTree = "<group>";
@@ -1115,10 +1115,10 @@
 				D8D85B8918D9DD41009081B6 /* tiny-logo.png in Resources */,
 				D8D85B8518D9DD41009081B6 /* logo.png in Resources */,
 				D8D85B8B18D9DD41009081B6 /* tiny-logo@2x.png in Resources */,
+				E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */,
 				D8174B2F18A562BC005696C2 /* Settings.bundle in Resources */,
 				D8D85B8718D9DD41009081B6 /* logo@2x.png in Resources */,
 				D834566F1885A543002B2368 /* OBConfig.plist in Resources */,
-				D8D67D3D188735B900A7B7BB /* MainStoryboard-ipad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
