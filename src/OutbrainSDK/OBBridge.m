@@ -29,8 +29,6 @@
         return NO;
     }
     
-    [[OutbrainHelper sharedInstance] updateCustomWebViewSettings:jsonDictionary[@"response"][@"settings"]];
-    
     return YES;
 }
 

@@ -48,8 +48,6 @@
 
 - (void) updateODBSettings:(OBResponse *)response;
 
-- (void) updateCustomWebViewSettings:(NSDictionary *)responseSettings;
-
 - (NSURL *) recommendationURLForRequest:(OBRequest *)request;
 
 - (NSString *)partnerKey;

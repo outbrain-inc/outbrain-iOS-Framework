@@ -14,7 +14,6 @@
 #import "OBDisclosure.h"
 #import "OBResponse.h"
 #import "OBViewabilityService.h"
-#import "CustomWebViewManager.h"
 #import "OBRecommendation.h"
 #import "OBAppleAdIdUtil.h"
 
@@ -207,7 +206,6 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     
     // Secure HTTPS
     base = [base stringByAppendingString:@"&secured=true"];
-    
     return [NSURL URLWithString:base];
 }
 
@@ -226,7 +224,6 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     
     [self _updateAPVCacheForResponse:response];
     [self _updateViewbilityStatsForResponse:responseSettings];
-    [self updateCustomWebViewSettings:responseSettings];
 }
 
 #pragma mark - RTB integratin with SDK
@@ -272,20 +269,6 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
 }
 
 #pragma mark - ODB Settings - Private Methods
-
-- (void) updateCustomWebViewSettings:(NSDictionary *)responseSettings {
-    
-    // Update kCustomWebViewReportingEnabledKey
-    [self _updateODBSetting:responseSettings[kIS_CUSTOM_WEBVIEW_ENABLE] defaultValue:[NSNumber numberWithBool:YES] saveValueBlock:^(NSNumber *value) {
-        [[CustomWebViewManager sharedManager] updateCWVSetting:value key:kCustomWebViewReportingEnabledKey];
-    }];
-    
-    // Update kCustomWebViewThresholdKey
-    [self _updateODBSetting:responseSettings[kCWV_THRESHOLD] defaultValue:[NSNumber numberWithInt:80] saveValueBlock:^(NSNumber *value) {
-        [[CustomWebViewManager sharedManager] updateCWVSetting:value key:kCustomWebViewThresholdKey];
-    }];
-}
-
 - (void)_updateViewbilityStatsForResponse:(NSDictionary *)responseSettings {
     // Update kViewabilityEnabledKey
     [self _updateODBSetting:responseSettings[kGLOBAL_WIDGET_STATISTICS] defaultValue:[NSNumber numberWithBool:YES] saveValueBlock:^(NSNumber *value) {
