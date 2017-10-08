@@ -31,6 +31,7 @@
     OBRequest *request = [OBRequest requestWithURL:pageURLString widgetID:@"APP_1" widgetIndex:2];
     
     NSURL *odbUrl = [[OutbrainHelper sharedInstance] recommendationURLForRequest:request];
+    
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:odbUrl resolvingAgainstBaseURL:NO];
 
     for (NSURLQueryItem *queryItem in urlComponents.queryItems) {
@@ -41,8 +42,7 @@
             XCTAssert([queryItem.value isEqualToString:@"2"]);
         }
         else if ([queryItem.name isEqualToString:@"url"]) {
-            NSLog(@"***** URL: %@", queryItem.value);
-            XCTAssert([queryItem.value isEqualToString: pageURLString]);
+            XCTAssert([queryItem.value isEqualToString: @"http%3A%2F%2Fedition.cnn.com%2F2017%2F10%2F02%2Fsport%2Fkosei-inoue-judo-japan-supercoach-interview%2Findex.html"]);
         }
         else if ([queryItem.name isEqualToString:@"format"]) {
             XCTAssert([queryItem.value isEqualToString:@"vjnc"]);

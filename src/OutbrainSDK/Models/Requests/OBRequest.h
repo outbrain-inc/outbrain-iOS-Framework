@@ -75,15 +75,3 @@
 + (instancetype)requestWithURL:(NSString *)url widgetID:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex;
 
 @end
-
-
-/**
- *  @brief Additional properties related to complex installations.
- **/
-@interface OBRequest (AdvancedNativeSupport)
-
-@property (nonatomic, copy) NSString * mobileId __deprecated;
-
-@property (nonatomic, copy) NSString * source __deprecated;
-
-@end

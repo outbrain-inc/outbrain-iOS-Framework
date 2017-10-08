@@ -68,8 +68,6 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
 
 #pragma mark - ODB URL Builder
 
-#define OBRecommendationDomain                      @"odb.outbrain.com"
-
 - (NSURL *) recommendationURLForRequest:(OBRequest *)request
 {
     static dispatch_once_t onceToken;
@@ -78,122 +76,84 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
         srand([[NSDate date] timeIntervalSinceNow]);
     });
     
+    NSMutableArray *odbQueryItems = [[NSMutableArray alloc] init];
     NSInteger randInteger = (arc4random() % 10000);
     
-    NSMutableString * urlString = [NSMutableString stringWithString:request.url];
+    NSMutableString *requestUrlString = [NSMutableString stringWithString:request.url];
+    NSString *base = [NSString stringWithFormat:@"https://odb.outbrain.com/utils/get"];
+    NSURLComponents *components = [NSURLComponents componentsWithString: base];
     
-    NSString *parameterDelimiter;
-    
-    NSRange additionDataRange = [urlString rangeOfString:@"additionalData" options:NSCaseInsensitiveSearch];
-    NSRange mobileSubGroupRange = [urlString rangeOfString:@"mobileSubGroup" options:NSCaseInsensitiveSearch];
-    
-    NSRange hashtagRange = [urlString rangeOfString:@"#" options:NSCaseInsensitiveSearch];
-    
-    if (additionDataRange.length == 0) {
-        if (hashtagRange.length == 0) {
-            parameterDelimiter = @"#";
-        }
-        else {
-            parameterDelimiter = @"&";
-        }
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-        if(request.mobileId && request.mobileId.length > 0) {
-            [urlString appendFormat:@"%@additionalData=%@", parameterDelimiter, request.mobileId];
-        }
-#pragma GCC diagnostic pop
-    }
-    
-    hashtagRange = [urlString rangeOfString:@"#" options:NSCaseInsensitiveSearch];
-    
-    if (mobileSubGroupRange.length == 0) {
-        if (hashtagRange.length == 0) {
-            parameterDelimiter = @"#";
-        }
-        else {
-            parameterDelimiter = @"&";
-        }
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-        if(request.source && request.source.length > 0) {
-            [urlString appendFormat:@"%@mobileSubGroup=%@", parameterDelimiter, request.source];
-        }
-#pragma GCC diagnostic pop
-    }
-    
-    //Domain
-    NSString * base = @"https://";
-    base = [base stringByAppendingString:OBRecommendationDomain];
-    base = [base stringByAppendingString:@"/utils/get"];
     
     //Key
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"?key=%@", [self partnerKey]]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"key" value: ([self partnerKey] ? [self partnerKey] : @"(null)")]];
     
     //Version
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&version=%@", OB_SDK_VERSION]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"version" value: OB_SDK_VERSION]];
     
     //App Version
     NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&app_ver=%@", appVersionString]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"app_ver" value: appVersionString]];
     
     //Random
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&rand=%li", (long)randInteger]];
+    NSString *randNumStr = [NSString stringWithFormat:@"%li", (long)randInteger];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"rand" value: randNumStr]];
     
     //WidgetId
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&widgetJSId=%@", request.widgetId]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetJSId" value: request.widgetId]];
     
     //Idx
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&idx=%li", (long)request.widgetIndex]];
+    NSString *widgetIdx = [NSString stringWithFormat:@"%li", (long)request.widgetIndex];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"idx" value: widgetIdx]];
     
-    NSString *encodedUrl = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                                 (CFStringRef) urlString,
-                                                                                                 NULL,
-                                                                                                 (CFStringRef) @"!*'();:@&=+$,/?%#[]",
-                                                                                                 kCFStringEncodingUTF8);
     
-    //Url
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&url=%@", encodedUrl]];
+    // Request URL - percent encode the urlString
+    NSCharacterSet *set = [NSCharacterSet URLHostAllowedCharacterSet];
+    NSString *encodedUrl = [requestUrlString stringByAddingPercentEncodingWithAllowedCharacters:set];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"url" value: encodedUrl]];
     
     //Format
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&format=%@", @"vjnc"]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"format" value: @"vjnc"]];
     
     //User key + opt-out
-    base = [base stringByAppendingString:@"&api_user_id="];
-    base = [base stringByAppendingString:([OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId])];
+    NSString *apiUserId = [OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"api_user_id" value: apiUserId]];
     
     //Test mode
-    base = [base stringByAppendingString:[((NSNumber *)[[OutbrainHelper sharedInstance] sdkSettingForKey:OBSettingsAttributes.testModeKey]) boolValue] ? @"&testMode=true" : @""];
+    if ([((NSNumber *)[[OutbrainHelper sharedInstance] sdkSettingForKey:OBSettingsAttributes.testModeKey]) boolValue]) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
+    }
     
     //Installation type
-    base = [base stringByAppendingString:@"&installationType=ios_sdk"];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"installationType" value: @"ios_sdk"]];
     
     // RTB support
-    base = [base stringByAppendingString:@"&rtbEnabled=true"];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"rtbEnabled" value: @"true"]];
     
     // APP ID \ Bundle ID
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&app_id=%@", bundleIdentifier]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"app_id" value: bundleIdentifier]];
     
     //Is opt out
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&doo=%@", ([OBAppleAdIdUtil isOptedOut] ? @"true" : @"false")]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"doo" value: ([OBAppleAdIdUtil isOptedOut] ? @"true" : @"false")]];
     
     //OS
-    base = [base stringByAppendingString:@"&dos=ios"];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dos" value: @"ios"]];
     
     //OS version
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&dosv=%@", [[UIDevice currentDevice] systemVersion]]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dosv" value: [[UIDevice currentDevice] systemVersion]]];
     
     //Device model
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *deviceModel = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    base = [base stringByAppendingString:[NSString stringWithFormat:@"&dm=%@", deviceModel]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dm" value: deviceModel]];
     
     //Token
     NSString *token = [self.tokensHandler getTokenForRequest:request];
-    
-    base = [base stringByAppendingString:(token == nil ? @"" : [NSString stringWithFormat:@"&t=%@", token])];
+    if (token != nil) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"t" value: token]];
+    }
     
     // APV
     if(request.widgetIndex == 0) { // Reset APV on index = 0
@@ -201,12 +161,15 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     }
     if ([self.apvCache[request.url] boolValue]) {
         // We need to append apv=true to our request
-        base = [base stringByAppendingString:@"&apv=true"];
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"apv" value: @"true"]];
     }
     
     // Secure HTTPS
-    base = [base stringByAppendingString:@"&secured=true"];
-    return [NSURL URLWithString:base];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"secured" value: @"true"]];
+    
+    
+    components.queryItems = odbQueryItems;
+    return components.URL;
 }
 
 #pragma mark - ODB Settings
