@@ -7,7 +7,7 @@
 //
 
 #import "OBViewabilityService.h"
-#import "OBViewabilityOperation.h"
+#import "OBNetworkManager.h"
 
 @interface ViewabilityData : NSObject
 
@@ -174,8 +174,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     viewabilityUrlParamsDictionary[kRequestStartDate] = nil;
     NSURL *viewabilityUrl = [self createUrlFromParams:viewabilityUrlParamsDictionary];
     
-    OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
-    [self.obRequestQueue addOperation:viewabilityOperation];
+    [[OBNetworkManager sharedManager] sendGet:viewabilityUrl completionHandler:nil];
     
     // call track viewability on matching OBLabel
     OBLabel *matchingOblabel = [self.obLabelMap objectForKey:viewabilityKey];
@@ -219,8 +218,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
         
         [self.reqIdAlreadyReportedArray addObject:viewabilityDictionary[kRequestId]];
         NSURL *viewabilityUrl = [self createUrlFromParams:params];
-        OBViewabilityOperation *viewabilityOperation = [OBViewabilityOperation operationWithURL:viewabilityUrl];
-        [self.obRequestQueue addOperation:viewabilityOperation];
+        [[OBNetworkManager sharedManager] sendGet:viewabilityUrl completionHandler:nil];
         
         // NSLog(@"reportRecsShownForOBLabel: %@", obLabel.url);
     }

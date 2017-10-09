@@ -108,9 +108,7 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     
     
     // Request URL - percent encode the urlString
-    NSCharacterSet *set = [NSCharacterSet URLHostAllowedCharacterSet];
-    NSString *encodedUrl = [requestUrlString stringByAddingPercentEncodingWithAllowedCharacters:set];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"url" value: encodedUrl]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"url" value: requestUrlString]];
     
     //Format
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"format" value: @"vjnc"]];

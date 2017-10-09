@@ -10,10 +10,10 @@
 #import "Outbrain_Private.h"
 #import "OBContent_Private.h"
 
-#import "OBClickRegistrationOperation.h"
 #import "OBRecommendationRequestOperation.h"
 #import "OBDisclosure.h"
 #import "OutbrainHelper.h"
+#import "OBNetworkManager.h"
 
 #import <UIKit/UIKit.h>
 
@@ -156,15 +156,12 @@ static Outbrain * _sharedInstance = nil;
     }
     else {
         // Organic Recommendation
-        
         NSURL * originalURL = [NSURL URLWithString:[recommendation originalValueForKeyPath:@"orig_url"]];
         NSString *urlString = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:@"&noRedirect=true"];
         NSURL * urlWithRedirect = [NSURL URLWithString:urlString];
         
         // We don't need a completion block for this one.  We just need to fire off the request and let it do it's thing
-        OBClickRegistrationOperation *clickOP = [OBClickRegistrationOperation operationWithURL:urlWithRedirect];
-        [[[self mainBrain] obRequestQueue] addOperation:clickOP];
-        
+        [[OBNetworkManager sharedManager] sendGet:urlWithRedirect completionHandler:nil];        
         return originalURL;
     }
 }
@@ -228,53 +225,13 @@ static Outbrain * _sharedInstance = nil;
         return;
     }
     
-    OBRecommendationRequestOperation *recommendationOperation = [OBRecommendationRequestOperation operationWithURL:[[OutbrainHelper sharedInstance] recommendationURLForRequest:request]];
-    recommendationOperation.request = request;
-    
-    // No retain cycles here
-    typeof(recommendationOperation) __weak __recommendationOperation = recommendationOperation;
-    typeof(self) __weak __self = self;
-    
-    [recommendationOperation setCompletionBlock:^{
-        
-        // Here we update Settings from the respones
-        OBRecommendationResponse * response = __recommendationOperation.response;
-        [[OutbrainHelper sharedInstance] updateODBSettings:response];
-        
-        response.recommendations = [__self _filterInvalidRecsForResponse:response];
-        [[OutbrainHelper sharedInstance].tokensHandler setTokenForRequest:request response:response];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if(handler)
-            {
-                handler(response);
-            }
-        });
-    }];
-    
-    [[[self mainBrain] obRequestQueue] addOperation:recommendationOperation];
+    OBRecommendationRequestOperation *recommendationOperation = [[OBRecommendationRequestOperation alloc] initWithRequest:request];
+    recommendationOperation.handler = handler;
+    [recommendationOperation start];
 }
 
 + (BOOL) _isValid:(NSString *)value {
     return (value != nil && [value length] > 0);
-}
-
-+ (NSArray *)_filterInvalidRecsForResponse:(OBRecommendationResponse *)response {
-    NSMutableArray *filteredResponse = [[NSMutableArray alloc] init];
-    for (OBRecommendation *rec in response.recommendations) {
-        if (rec.isPaidLink) {
-            [filteredResponse addObject:rec];
-        }
-        else {
-            // Organic
-            NSString *stringUrl = [rec performSelector:@selector(originalValueForKeyPath:) withObject:@"orig_url"];
-            NSURL *url = [NSURL URLWithString:stringUrl];
-            if (url) {
-                [filteredResponse addObject:rec];
-            }
-        }
-    }
-    return filteredResponse;
 }
 
 @end

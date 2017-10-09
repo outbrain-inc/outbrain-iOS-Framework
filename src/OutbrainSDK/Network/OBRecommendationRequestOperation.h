@@ -25,14 +25,11 @@
 
 @interface OBRecommendationRequestOperation : OBOperation
 
+- (instancetype)initWithRequest:(OBRequest *)request;
+
+-(void) start;
+
 // The request to perform the fetch for
-@property (nonatomic, strong) OBRequest * request;
-
-
-// The final response object
-@property (nonatomic, strong) OBRecommendationResponse * response;
-
-
-
+@property (nonatomic, strong) OBResponseCompletionHandler handler;
 
 @end
