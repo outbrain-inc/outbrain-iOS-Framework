@@ -58,10 +58,6 @@
 		E61C73C01D2A4C9300DA1CB0 /* OBResponseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73AF1D2A4C9300DA1CB0 /* OBResponseRequest.m */; };
 		E61C73C11D2A4C9300DA1CB0 /* OBSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73B01D2A4C9300DA1CB0 /* OBSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61C73C21D2A4C9300DA1CB0 /* OBSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73B11D2A4C9300DA1CB0 /* OBSettings.m */; };
-		E61C73D41D2A4D4100DA1CB0 /* OBOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73C61D2A4D4100DA1CB0 /* OBOperation.h */; };
-		E61C73D51D2A4D4100DA1CB0 /* OBOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73C71D2A4D4100DA1CB0 /* OBOperation.m */; };
-		E61C73D61D2A4D4100DA1CB0 /* OBPostOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73C81D2A4D4100DA1CB0 /* OBPostOperation.h */; };
-		E61C73D71D2A4D4100DA1CB0 /* OBPostOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73C91D2A4D4100DA1CB0 /* OBPostOperation.m */; };
 		E61C73D81D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73CA1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.h */; };
 		E61C73D91D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73CB1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.m */; };
 		E61C73DC1D2A4D4100DA1CB0 /* OBReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73D01D2A4D4100DA1CB0 /* OBReachability.h */; };
@@ -154,10 +150,6 @@
 		E61C73AF1D2A4C9300DA1CB0 /* OBResponseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponseRequest.m; sourceTree = "<group>"; };
 		E61C73B01D2A4C9300DA1CB0 /* OBSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBSettings.h; sourceTree = "<group>"; };
 		E61C73B11D2A4C9300DA1CB0 /* OBSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSettings.m; sourceTree = "<group>"; };
-		E61C73C61D2A4D4100DA1CB0 /* OBOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBOperation.h; sourceTree = "<group>"; };
-		E61C73C71D2A4D4100DA1CB0 /* OBOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBOperation.m; sourceTree = "<group>"; };
-		E61C73C81D2A4D4100DA1CB0 /* OBPostOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBPostOperation.h; sourceTree = "<group>"; };
-		E61C73C91D2A4D4100DA1CB0 /* OBPostOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBPostOperation.m; sourceTree = "<group>"; };
 		E61C73CA1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationRequestOperation.h; sourceTree = "<group>"; };
 		E61C73CB1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationRequestOperation.m; sourceTree = "<group>"; };
 		E61C73CF1D2A4D4100DA1CB0 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -365,10 +357,6 @@
 		E61C73C31D2A4D4100DA1CB0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				E61C73C61D2A4D4100DA1CB0 /* OBOperation.h */,
-				E61C73C71D2A4D4100DA1CB0 /* OBOperation.m */,
-				E61C73C81D2A4D4100DA1CB0 /* OBPostOperation.h */,
-				E61C73C91D2A4D4100DA1CB0 /* OBPostOperation.m */,
 				E61C73CA1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.h */,
 				E61C73CB1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.m */,
 				E61C73CE1D2A4D4100DA1CB0 /* Reachability */,
@@ -462,12 +450,10 @@
 				D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */,
 				D849D10B1868BB4D00CB4B83 /* Outbrain_Private.h in Headers */,
 				E61C737B1D2A47D300DA1CB0 /* OBBridge.h in Headers */,
-				E61C73D61D2A4D4100DA1CB0 /* OBPostOperation.h in Headers */,
 				E61C73991D2A4B6100DA1CB0 /* OBViewabilityService.h in Headers */,
 				E61C73B41D2A4C9300DA1CB0 /* OBContent_Private.h in Headers */,
 				E61C73ED1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h in Headers */,
 				E61C739B1D2A4B6100DA1CB0 /* UIView+Visible.h in Headers */,
-				E61C73D41D2A4D4100DA1CB0 /* OBOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,10 +581,8 @@
 				E61C739C1D2A4B6100DA1CB0 /* UIView+Visible.m in Sources */,
 				E61C737C1D2A47D300DA1CB0 /* OBBridge.m in Sources */,
 				E61C73BA1D2A4C9300DA1CB0 /* OBRequest.m in Sources */,
-				E61C73D71D2A4D4100DA1CB0 /* OBPostOperation.m in Sources */,
 				E61C73B61D2A4C9300DA1CB0 /* OBImage.m in Sources */,
 				E6E91F7B1D2D08E300A777F3 /* OutbrainHelper.m in Sources */,
-				E61C73D51D2A4D4100DA1CB0 /* OBOperation.m in Sources */,
 				E6D136E21F320942001E7407 /* OBAdsChoicesManager.m in Sources */,
 				E61C73EE1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m in Sources */,
 				E61C73B31D2A4C9300DA1CB0 /* OBContent.m in Sources */,

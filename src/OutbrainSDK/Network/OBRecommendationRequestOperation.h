@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OBOperation.h"
 #import "OBProtocols.h"
 
 @class OBRequest;
@@ -23,7 +22,7 @@
  *  3.  Parse the data into objects.
  **/
 
-@interface OBRecommendationRequestOperation : OBOperation
+@interface OBRecommendationRequestOperation : NSObject
 
 - (instancetype)initWithRequest:(OBRequest *)request;
 

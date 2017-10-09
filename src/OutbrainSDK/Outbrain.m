@@ -66,11 +66,6 @@ static Outbrain * _sharedInstance = nil;
     dispatch_once(&once_token, ^{
         if (_sharedInstance == nil) {
             _sharedInstance = [[Outbrain alloc] init];
-            NSOperationQueue * queue = [[NSOperationQueue alloc] init];
-            [queue setName:@"Outbrain Operation Queue"];
-            queue.maxConcurrentOperationCount = 1;  // Serial
-            _sharedInstance.obRequestQueue = queue;
-            [OBViewabilityService sharedInstance].obRequestQueue = queue; // Share the operation queue with OBViewabilityService
             _sharedInstance.viewabilityService = [[OBViewabilityService alloc] init];
 
         }

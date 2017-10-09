@@ -105,7 +105,7 @@
 }
 
 - (void) taskCompletedWith:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error {
-    _responseData = data;
+    
     OBRecommendationResponse *obRecResponse;
     
     if (error != nil) {
@@ -120,7 +120,7 @@
         return;
     }
     
-    obRecResponse = [self parseResponseData:_responseData];
+    obRecResponse = [self parseResponseData: data];
     if ([[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
         [[OBViewabilityService sharedInstance] reportRecsReceived:obRecResponse timestamp:self.requestStartDate];
     }
