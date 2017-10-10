@@ -109,8 +109,9 @@
             else {
                 // Returns a representation of the receiver using a given encoding to determine the percent
                 // escapes necessary to convert the receiver into a legal URL string.
-                value = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                return [NSURL URLWithString:value];
+                NSCharacterSet *set = [NSCharacterSet URLHostAllowedCharacterSet];
+                NSString *formattedUrl = [value stringByAddingPercentEncodingWithAllowedCharacters:set];
+                return [NSURL URLWithString:formattedUrl];
             }
         }
     }
