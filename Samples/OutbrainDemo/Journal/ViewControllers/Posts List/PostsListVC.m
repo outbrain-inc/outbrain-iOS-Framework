@@ -272,10 +272,14 @@
     // User tapped a recommendation   
     if (recommendation.isPaidLink == NO) { // Organic
         typeof(self) __weak __self = self;
-        __block UIAlertView * loadingAlert = [[UIAlertView alloc] initWithTitle:@"Fetching Content" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-        [loadingAlert show];
+        __block UIAlertController *alertController = [UIAlertController
+                                                      alertControllerWithTitle: @"Fetching Content"
+                                                      message: @""
+                                                      preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alertController animated:YES completion:nil];
+    
         [[OBDemoDataHelper defaultHelper] fetchPostForURL:url withCallback:^(id postObject, NSError *error) {
-            [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+            [alertController dismissViewControllerAnimated:YES completion:nil];
             if(postObject)
             {
                 PostsSwipeVC * postsVc = [__self.view.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"postsSwipeVC"];
