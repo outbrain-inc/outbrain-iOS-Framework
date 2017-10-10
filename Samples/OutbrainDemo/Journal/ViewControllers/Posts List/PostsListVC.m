@@ -279,14 +279,9 @@
         [self presentViewController:alertController animated:YES completion:nil];
     
         [[OBDemoDataHelper defaultHelper] fetchPostForURL:url withCallback:^(id postObject, NSError *error) {
-            [alertController dismissViewControllerAnimated:YES completion:nil];
-            if(postObject)
-            {
-                PostsSwipeVC * postsVc = [__self.view.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"postsSwipeVC"];
-                [self.navigationController pushViewController:postsVc animated:YES];
-                postsVc.posts = @[postObject];
-                postsVc.currentIndex = 0;
-            }
+            [alertController dismissViewControllerAnimated:YES completion:^{
+                [__self handleFetchPostResponse:postObject error:error];
+            }];
         }];
     }
     else {
@@ -299,6 +294,28 @@
     }
 }
 
+-(void) handleFetchPostResponse:(id)postObject error:(NSError *)error {
+    if (error != nil) {
+        UIAlertController *alertController = [UIAlertController
+                           alertControllerWithTitle: @"Error"
+                           message: error.userInfo[NSLocalizedDescriptionKey]
+                           preferredStyle:UIAlertControllerStyleAlert];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        // dismiss the alert controller after 2 seconds
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alertController dismissViewControllerAnimated:YES completion: nil];
+        });
+    }
+    else if (postObject)
+    {
+        PostsSwipeVC * postsVc = [self.view.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"postsSwipeVC"];
+        [self.navigationController pushViewController:postsVc animated:YES];
+        postsVc.posts = @[postObject];
+        postsVc.currentIndex = 0;
+    }
+    
+}
 
 #pragma mark - Segues
 

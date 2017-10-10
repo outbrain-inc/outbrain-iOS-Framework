@@ -295,15 +295,6 @@ const struct OBDCodingKeys OBDCodingKeys = {
     __block NSError * error;
     NSBlockOperation *blockOp = [NSBlockOperation blockOperationWithBlock:^{
         
-        void (^ShowErrorBlock)(NSString * title, NSString *message) = ^(NSString *title, NSString *message) {
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-                [alert show];
-                error = [NSError errorWithDomain:title code:100 userInfo:@{NSLocalizedDescriptionKey:message}];
-            });
-            
-        };
         // Our data parsing block
         void (^ParseData)(NSData *) = ^(NSData * data) {
             NSError * error = nil;
@@ -312,7 +303,8 @@ const struct OBDCodingKeys OBDCodingKeys = {
             {
                 // Something went horribly wrong.
                 NSString * errorMessage = error ? [error userInfo][NSLocalizedDescriptionKey] : @"There was an error parsing the data response in `[OBDemoDataHelper startDataSyncing]`";
-                ShowErrorBlock(@"Error",errorMessage);
+                
+                error = [NSError errorWithDomain: @"Error" code:100 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
                 
             } else {
                 // We have a valid jsonPayload with no errors.  Now let's turn that payload into valid Post objects for CoreData
