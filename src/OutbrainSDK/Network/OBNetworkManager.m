@@ -86,7 +86,7 @@
     if ([OBAppleAdIdUtil isOptedOut] || [OBAppleAdIdUtil didUserResetAdvertiserId]) {
         [OBAppleAdIdUtil refreshAdId];
     }
-    [self modifyUserAgent:request];
+    [self addUserAgentHeaderTo:request];
     
     return request;
 }
@@ -109,7 +109,7 @@
 }
 
 
-- (void)modifyUserAgent:(NSMutableURLRequest *)request {
+- (void) addUserAgentHeaderTo:(NSMutableURLRequest *)request {
     [request setValue:[OBNetworkManager webviewUserAgent] forHTTPHeaderField:@"User-Agent"];
 }
 
