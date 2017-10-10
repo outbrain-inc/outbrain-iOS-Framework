@@ -163,9 +163,8 @@
     
     // Clear out the loaded obRecommendationPosts so we can fetch a different batch
     typeof(self) __weak __self = self;
-    [[OBDemoDataHelper defaultHelper] updatePostsWithCallback:^(BOOL contentsUpdated) {
-        
-        if(contentsUpdated)
+    [[OBDemoDataHelper defaultHelper] updatePostsInViewController:self withCallback:^(BOOL updated) {
+        if (updated)
         {
             [__self.loadedOutbrainRecommendationResponses removeAllObjects];
             __self.postsData = [[NSMutableArray alloc] initWithArray:[OBDemoDataHelper defaultHelper].posts];

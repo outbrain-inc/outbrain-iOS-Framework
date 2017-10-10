@@ -163,7 +163,7 @@ const struct OBDCodingKeys OBDCodingKeys = {
     return post;
 }
 
-- (void)updatePostsWithCallback:(void(^)(BOOL updated))callback
+- (void)updatePostsInViewController:(UIViewController *)vc withCallback:(void(^)(BOOL updated))callback
 {
     // We don't want to refresh if less than 30 seconds
     if(_lastPostsUpdate && [[NSDate date] timeIntervalSinceDate:_lastPostsUpdate] < 30 && [self posts].count > 0)
@@ -186,8 +186,20 @@ const struct OBDCodingKeys OBDCodingKeys = {
         void (^ShowErrorBlock)(NSString * title, NSString *message) = ^(NSString *title, NSString *message) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-                [alert show];
+                UIAlertController *alertController = [UIAlertController
+                                                      alertControllerWithTitle: title
+                                                      message: message
+                                                      preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* okButton = [UIAlertAction
+                                            actionWithTitle:@"OK"
+                                            style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction * action) {
+                                                //Handle your yes please button action here
+                                            }];
+                
+                [alertController addAction:okButton];
+                [vc presentViewController:alertController animated:YES completion:nil];
             });
             
         };
@@ -195,7 +207,7 @@ const struct OBDCodingKeys OBDCodingKeys = {
         void (^ParseData)(NSData *) = ^(NSData * data) {
             NSError * error = nil;
             NSDictionary * jsonPayload = [NSJSONSerialization JSONObjectWithData:data options:(0) error:&error];
-            if(error || !jsonPayload)
+            if (error || !jsonPayload)
             {
                 // Something went horribly wrong.
                 NSString * errorMessage = error ? [error userInfo][NSLocalizedDescriptionKey] : @"There was an error parsing the data response in `[OBDemoDataHelper startDataSyncing]`";
@@ -222,7 +234,7 @@ const struct OBDCodingKeys OBDCodingKeys = {
         NSString * urlString = [NSString stringWithFormat:@"%@?json=true",OBDemoURL];
         NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.f];
         NSHTTPURLResponse * response = nil;
-        NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
         
         // Nothing changed.  Let's not do anything here
         if([response statusCode] == 302) return;
