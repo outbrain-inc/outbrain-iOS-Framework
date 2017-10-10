@@ -36,7 +36,6 @@ extern const struct OBSettingsAttributes {
 
 @interface Outbrain()
 
-@property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
 @property (nonatomic, strong) OBViewabilityService *viewabilityService;
 
 + (instancetype)mainBrain;  // Shared Instance
