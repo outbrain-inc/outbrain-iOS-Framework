@@ -331,8 +331,7 @@
 
 - (void)outbrainResponseDidFail:(NSError *)response
 {
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:response.domain message:response.userInfo[NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-    [alert show];
+    NSLog(@"Outbrain Error - domain: %@; message: %@", response.domain, response.userInfo[NSLocalizedDescriptionKey]);
 }
 
 - (void)dockTopBox {
