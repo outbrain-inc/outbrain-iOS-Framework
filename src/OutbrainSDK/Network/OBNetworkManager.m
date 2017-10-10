@@ -18,7 +18,7 @@
 @interface OBNetworkManager()
 
 @property (nonatomic, strong) NSString *userAgent;
-
+@property (nonatomic, strong) NSURLSession *defaultSession;
 @end
 
 
@@ -29,6 +29,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc] init];
+        sharedManager.defaultSession = [NSURLSession sharedSession];
     });
     
     return sharedManager;
@@ -40,8 +41,7 @@
     NSMutableURLRequest *request = [self generateMutableRequest:url];
     request.HTTPMethod = @"GET";
     
-    NSURLSession *defaultSession = [NSURLSession sharedSession];
-    NSURLSessionDataTask *getDataTask = [defaultSession dataTaskWithRequest:request
+    NSURLSessionDataTask *getDataTask = [self.defaultSession dataTaskWithRequest:request
                                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                                    if (completionHandler) {
                                                                        completionHandler(data, response, error);
@@ -64,9 +64,7 @@
     request.HTTPMethod = @"POST";
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    
-    NSURLSession *defaultSession = [NSURLSession sharedSession];
-    NSURLSessionDataTask *postDataTask = [defaultSession
+    NSURLSessionDataTask *postDataTask = [self.defaultSession
                                           dataTaskWithRequest:request
                                           completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                               if (completionHandler) {
