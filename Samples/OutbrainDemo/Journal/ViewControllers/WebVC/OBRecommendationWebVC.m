@@ -21,9 +21,6 @@
 @end
 
 
-
-// Example for implementing OBWebView in code
-// For the full explanation please refer to: http://developer.outbrain.com/sdk_ios_2-0_developer_guide/#how_to_use_obwebview
 @implementation OBRecommendationWebVC
 
 
