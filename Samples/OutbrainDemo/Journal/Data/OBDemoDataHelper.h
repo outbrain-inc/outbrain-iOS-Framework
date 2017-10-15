@@ -37,7 +37,6 @@
  **/
 + (BOOL)showsDebugIndicators;
 
-@property (nonatomic, strong, readonly) NSOperationQueue * networkQueue;
 @property (nonatomic, strong, readonly) NSMutableArray * posts;
 
 /**
