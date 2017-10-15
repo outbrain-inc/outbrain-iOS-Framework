@@ -107,7 +107,7 @@
 
 - (IBAction)showOutbrainAbout
 {
-    NSString * urlString = @"http://www.outbrain.com/what-is/default/en-mobile";
+    NSString * urlString = @"https://www.outbrain.com/what-is/default/en-mobile";
     
     UINavigationController * nav = (UINavigationController *)[self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"OBWebNavVC"];
     OBRecommendationWebVC * webVC = [nav.viewControllers lastObject];
