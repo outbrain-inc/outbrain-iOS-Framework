@@ -7,6 +7,7 @@
 //
 
 #import "HeroGridVC.h"
+@import SafariServices;
 
 @implementation HeroGridVC
 
@@ -25,13 +26,9 @@
         // This recommendations was tapped.        
         NSURL * url = [Outbrain getUrl:recommendation];
         
-        // Now we have a url that we can show in a webview, or if it's a piece of our native content
-        // Then we can inspect [url hash] to get the mobile_id
-        
-        NSString * message = [NSString stringWithFormat:@"User tapped recommendation.  Need to present content for this url %@", [url absoluteString]];
-        
-        UIAlertView * a = [[UIAlertView alloc] initWithTitle:@"Recommendation Tapped!" message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [a show];
+        // Now we have a url that we can show in a webview, or if it's a piece of our native content we can decide what to do with it...
+        SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+        [self.navigationController presentViewController:sf animated:YES completion:nil];
     }];
 }
 @end

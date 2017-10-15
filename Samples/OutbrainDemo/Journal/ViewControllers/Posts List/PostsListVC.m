@@ -344,15 +344,9 @@
 #pragma mark - SFSafariViewController + SFSafariViewControllerDelegate
 
 - (void) openUrlInSafariVC:(NSURL *)url {
-    if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
-        [[UIApplication sharedApplication] openURL:url];
-        
-    }
-    else {
-        SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
-        sf.delegate = self;
-        [self.navigationController presentViewController:sf animated:YES completion:nil];
-    }
+    SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+    sf.delegate = self;
+    [self.navigationController presentViewController:sf animated:YES completion:nil];
 }
 
 - (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
