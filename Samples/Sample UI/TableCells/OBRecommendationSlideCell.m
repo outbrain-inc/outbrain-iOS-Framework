@@ -169,6 +169,7 @@
         if ([recommendation isRTB]) {
             [Outbrain prepare:__slideControl.imageView withRTB:recommendation onClickBlock:^(NSURL *url) {
                 NSLog(@"OBParalaxSlideViewControl --> click url: %@", url.absoluteString);
+                [[UIApplication sharedApplication] openURL: url];
             }];
         }
     }];

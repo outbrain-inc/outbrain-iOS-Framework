@@ -194,7 +194,8 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
             [__cell.imageView setImage:image];
             if ([recommendation isRTB]) {
                 [Outbrain prepare:__cell.imageView withRTB:recommendation onClickBlock:^(NSURL *url) {
-                    NSLog(@"OBParalaxSlideViewControl --> click url: %@", url.absoluteString);
+                    NSLog(@"OBClassicRecommendationsView --> click url: %@", url.absoluteString);
+                    [[UIApplication sharedApplication] openURL: url];
                 }];
             }
         }];
