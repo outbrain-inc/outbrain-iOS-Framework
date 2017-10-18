@@ -18,7 +18,7 @@
     NSArray *recommendations = response.recommendations;
     
     for (OBRecommendation *rec in recommendations) {
-        if (rec.isRtb) {
+        if (rec.isRTB) {
             NSLog(@"rec: %@ --> is RTB", rec.content);
             for (NSString *pixelUrl in rec.pixels) {
                 NSURL *url = [NSURL URLWithString:pixelUrl];

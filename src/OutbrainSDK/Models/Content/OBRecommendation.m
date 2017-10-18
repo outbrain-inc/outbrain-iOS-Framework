@@ -48,7 +48,7 @@
 /** @brief Pixels array for a recommendation to be fired when recommendation received from the server */
 @property (nonatomic, strong, readwrite) NSArray *pixels;
 /** @brief this is a paid recommendation of type RTB . */
-@property (nonatomic, assign, getter = isRtb, readwrite) BOOL rtbRec;
+@property (nonatomic, assign, getter = isRTB, readwrite) BOOL rtbRec;
 
 @end
 
