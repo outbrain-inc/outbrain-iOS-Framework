@@ -191,10 +191,12 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
 
 #pragma mark - RTB integratin with SDK
 -(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block {
-    
+    CGFloat const IconSize = 15.0;
+    CGFloat const IconPadding = 5.0;
     OBAdChoicesButton *adChoicesButton = [OBAdChoicesButton buttonWithType:UIButtonTypeCustom];
     imageView.userInteractionEnabled = YES;
-    adChoicesButton.frame = CGRectMake(5, 5, 15, 15);
+    // Place the icon on the Top, Right corner of the imageView
+    adChoicesButton.frame = CGRectMake(imageView.frame.size.width - (IconSize + IconPadding), IconPadding, IconSize, IconSize);
     
     // add on click listener
     adChoicesButton.block = block;
