@@ -192,7 +192,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
         typeof(cell) __weak __cell = cell;
         [self fetchImageForURL:recommendation.image.url withCallback:^(UIImage *image) {
             [__cell.imageView setImage:image];
-            if ([recommendation isRTB]) {
+            if ([recommendation isPaidLink]) {
                 [Outbrain prepare:__cell.imageView withRTB:recommendation onClickBlock:^(NSURL *url) {
                     NSLog(@"OBClassicRecommendationsView --> click url: %@", url.absoluteString);
                     [[UIApplication sharedApplication] openURL: url];
