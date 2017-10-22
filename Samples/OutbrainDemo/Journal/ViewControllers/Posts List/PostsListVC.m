@@ -235,9 +235,10 @@
 {
     static NSString * ArticleCellID = @"ArticleCellID";
     static NSString * OBRecommendationCellID = @"OBRecommendationSlideCell";
-    
     // We will attempt to show an outbrain inline recommended cell every x number of articles.
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:[self indexPathIsOBRecommendation:indexPath]?OBRecommendationCellID:ArticleCellID];
+    NSString *identifier = [self indexPathIsOBRecommendation:indexPath] ? OBRecommendationCellID : ArticleCellID;
+    
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: identifier];
     [self _configureCell:cell forRowAtIndexPath:indexPath];
     return cell;
 }
@@ -260,6 +261,14 @@
     }
 }
 
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self indexPathIsOBRecommendation:indexPath]) {
+        return 100.0;
+    }
+    else {
+        return UITableViewAutomaticDimension;
+    }
+}
 
 #pragma mark - OBWidgetView delegate
 
