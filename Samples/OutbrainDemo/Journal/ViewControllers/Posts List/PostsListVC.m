@@ -9,6 +9,7 @@
 #import "PostsListVC.h"
 #import "OBDemoDataHelper.h"
 #import "Post.h"
+#import "OBAppDelegate.h"
 
 #import <OutbrainSDK/OutbrainSDK.h>
 
@@ -40,9 +41,12 @@
 {
     [super viewDidLoad];
     
+    [self setupNavbar];
+    self.tableView.estimatedRowHeight = 100.0;
     self.loadedOutbrainRecommendationResponses = [NSMutableArray array];
     UIRefreshControl * refreshControl = [self refreshControl];
     [refreshControl addTarget:self action:@selector(refreshPostsList) forControlEvents:UIControlEventValueChanged];
+    
     
 }
 
@@ -55,6 +59,48 @@
         [self.tableView setContentOffset:CGPointMake(0, -[self refreshControl].bounds.size.height) animated:YES];
     }
 }
+
+#pragma mark - Nav bar
+- (void) setupNavbar {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    UIImage *btnImage = [UIImage imageNamed:@"outbrainSimpleLogo"];
+    
+    UIButton *aboutOutbrainButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    aboutOutbrainButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [aboutOutbrainButton setImage:btnImage forState:UIControlStateNormal];
+    [aboutOutbrainButton addTarget:self action:@selector(showOutbrainAbout) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:aboutOutbrainButton];
+    
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:aboutOutbrainButton
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:170]];
+    
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:aboutOutbrainButton
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:40]];
+    
+    // This is the magic sauce!
+    [view layoutIfNeeded];
+    [view sizeToFit];
+    
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:aboutOutbrainButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem: view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+
+    
+    // Now the frame is set (you can print it out)
+    view.translatesAutoresizingMaskIntoConstraints = YES;  // make nav bar happy
+    aboutOutbrainButton.translatesAutoresizingMaskIntoConstraints = YES;
+    self.navigationItem.titleView = view;
+}
+
 
 #pragma mark - Helpers
 
@@ -324,6 +370,12 @@
         postsVc.currentIndex = 0;
     }
     
+}
+
+#pragma mark - IBAction
+- (IBAction)showOutbrainAbout {
+    OBAppDelegate * appDelegate = (OBAppDelegate *) [[UIApplication sharedApplication] delegate];
+    [appDelegate showOutbrainAbout];
 }
 
 #pragma mark - Segues

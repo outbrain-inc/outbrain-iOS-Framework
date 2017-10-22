@@ -19,7 +19,7 @@
             <objects>
                 <tableViewController id="oCK-0C-gj1" customClass="PostsListVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" id="GBP-Qa-18K">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -61,7 +61,11 @@
                             <outlet property="delegate" destination="oCK-0C-gj1" id="VhS-Hd-GKe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="cuN-tS-eeN"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="cuN-tS-eeN">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsq-AA-Zr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -72,7 +76,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sbc-Ql-00j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zqg-6j-tUF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Zqg-6j-tUF">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

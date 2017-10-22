@@ -62,12 +62,9 @@
 - (IBAction)showOutbrainAbout
 {
     NSString * urlString = @"https://www.outbrain.com/what-is/default/en-mobile";
-    
-    UINavigationController * nav = (UINavigationController *)[self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"OBWebNavVC"];
-    OBRecommendationWebVC * webVC = [nav.viewControllers lastObject];
-    [self.window.rootViewController presentViewController:nav animated:YES completion:^{
-        [webVC loadURL:[NSURL URLWithString:urlString]];
-    }];
+    NSURL *url = [NSURL URLWithString:urlString];
+    SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+    [self.window.rootViewController presentViewController:sf animated:YES completion:nil];
 }
 
 

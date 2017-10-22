@@ -70,11 +70,11 @@
                                     <segue destination="gYH-iU-QZW" kind="push" id="72L-vk-k0i"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OBRecommendationSlideCell" rowHeight="80" id="OPU-7K-wSD" customClass="OBRecommendationSlideCell">
-                                <rect key="frame" x="0.0" y="100" width="375" height="80"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OBRecommendationSlideCell" rowHeight="81" id="OPU-7K-wSD" customClass="OBRecommendationSlideCell">
+                                <rect key="frame" x="0.0" y="100" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OPU-7K-wSD" id="7wi-dE-Bfw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
