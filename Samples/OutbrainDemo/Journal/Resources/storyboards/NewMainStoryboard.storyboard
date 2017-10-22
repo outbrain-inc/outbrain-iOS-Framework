@@ -66,6 +66,9 @@
                         <nil key="title"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="pd4-PB-PpA" kind="show" identifier="readPostSegue" id="wYZ-A1-FU2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsq-AA-Zr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,5 +92,159 @@
             </objects>
             <point key="canvasLocation" x="-1019.2" y="151.12443778110946"/>
         </scene>
+        <!--PostsSwipeVC-->
+        <scene sceneID="6oN-TX-5ZE">
+            <objects>
+                <collectionViewController storyboardIdentifier="postsSwipeVC" id="pd4-PB-PpA" userLabel="PostsSwipeVC" customClass="PostsSwipeVC" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="3Wu-Ty-R1F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="78h-Td-Lmv">
+                            <size key="itemSize" width="320" height="504"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostCellID" id="sAZ-Df-qb7" customClass="PostViewCell">
+                                <rect key="frame" x="0.0" y="68.666666666666671" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hfR-Jn-ejV">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <attributedString key="attributedText">
+                                                <fragment>
+                                                    <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <attributes>
+                                                        <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" headIndent="5" tailIndent="305"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="sAZ-Df-qb7" id="5hJ-Io-p7u"/>
+                                            </connections>
+                                        </textView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="hfR-Jn-ejV" firstAttribute="leading" secondItem="sAZ-Df-qb7" secondAttribute="leading" id="3jn-ZN-Ifb"/>
+                                    <constraint firstItem="hfR-Jn-ejV" firstAttribute="top" secondItem="sAZ-Df-qb7" secondAttribute="top" id="Op3-dF-KJq"/>
+                                    <constraint firstAttribute="bottom" secondItem="hfR-Jn-ejV" secondAttribute="bottom" id="bHM-af-AWK"/>
+                                    <constraint firstAttribute="trailing" secondItem="hfR-Jn-ejV" secondAttribute="trailing" id="gpC-zc-LgW"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="textView" destination="hfR-Jn-ejV" id="MDa-tj-Br2"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopBoxPostCellID" id="aGi-ua-WkF" customClass="TopBoxPostViewCell">
+                                <rect key="frame" x="320" y="68.666666666666671" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZc-Iu-LGw">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDU-eR-gfv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="284.33333333333331"/>
+                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="NDU-eR-gfv" firstAttribute="top" secondItem="aZc-Iu-LGw" secondAttribute="top" id="0ca-i4-SR7"/>
+                                                <constraint firstItem="NDU-eR-gfv" firstAttribute="width" secondItem="aZc-Iu-LGw" secondAttribute="width" id="En8-kg-gZ2"/>
+                                                <constraint firstAttribute="bottom" secondItem="NDU-eR-gfv" secondAttribute="bottom" id="JRb-SH-zzx"/>
+                                                <constraint firstAttribute="trailing" secondItem="NDU-eR-gfv" secondAttribute="trailing" id="mec-MU-DAO"/>
+                                                <constraint firstItem="NDU-eR-gfv" firstAttribute="leading" secondItem="aZc-Iu-LGw" secondAttribute="leading" id="z30-Vj-KN2"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="delegate" destination="pd4-PB-PpA" id="JOr-yy-ju1"/>
+                                            </connections>
+                                        </scrollView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLW-Vy-9QC" customClass="OBTopBoxView">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <outlet property="widgetDelegate" destination="pd4-PB-PpA" id="VPr-oI-92c"/>
+                                            </connections>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mLW-Vy-9QC" secondAttribute="trailing" id="37c-vy-9fo"/>
+                                    <constraint firstItem="mLW-Vy-9QC" firstAttribute="leading" secondItem="aGi-ua-WkF" secondAttribute="leading" id="6zG-hm-p5g"/>
+                                    <constraint firstAttribute="trailing" secondItem="aZc-Iu-LGw" secondAttribute="trailing" id="7Gd-4v-ngJ"/>
+                                    <constraint firstItem="aZc-Iu-LGw" firstAttribute="top" secondItem="mLW-Vy-9QC" secondAttribute="bottom" id="Gaw-wg-Ys8"/>
+                                    <constraint firstItem="mLW-Vy-9QC" firstAttribute="top" secondItem="aGi-ua-WkF" secondAttribute="top" id="cf0-i9-NNc"/>
+                                    <constraint firstItem="aZc-Iu-LGw" firstAttribute="top" secondItem="aGi-ua-WkF" secondAttribute="top" id="f6f-ch-Psz"/>
+                                    <constraint firstItem="aZc-Iu-LGw" firstAttribute="leading" secondItem="aGi-ua-WkF" secondAttribute="leading" id="jlt-Ev-oCu"/>
+                                    <constraint firstAttribute="bottom" secondItem="aZc-Iu-LGw" secondAttribute="bottom" id="oUe-NB-0TO"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="mainScrollView" destination="aZc-Iu-LGw" id="Onn-4b-pLL"/>
+                                    <outlet property="textView" destination="NDU-eR-gfv" id="t4M-5p-9Ny"/>
+                                    <outlet property="topBoxView" destination="mLW-Vy-9QC" id="hnD-DL-ry9"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendationCellID" id="GUn-fT-LQh">
+                                <rect key="frame" x="640" y="68.666666666666671" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="pd4-PB-PpA" id="LPa-m6-XIJ"/>
+                            <outlet property="delegate" destination="pd4-PB-PpA" id="xhQ-Qk-iT8"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="hSi-fw-FjM">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="q6S-dY-lIV" customClass="OBParalaxTitleView">
+                            <rect key="frame" x="88.666666666666686" y="5.6666666666666679" width="198" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <barButtonItem key="rightBarButtonItem" id="PFX-jj-Gab">
+                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Faa-Za-8Mx">
+                                <rect key="frame" x="314" y="4.6666666666666679" width="45" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" image="logo-navbar">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showOutbrainAbout" destination="Xi2-kj-aIB" eventType="touchUpInside" id="mzi-An-ejv"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="titleView" destination="q6S-dY-lIV" id="EQk-Yv-Ac1"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xi2-kj-aIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1580" y="291.87192118226602"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="logo-navbar" width="35" height="35"/>
+    </resources>
 </document>

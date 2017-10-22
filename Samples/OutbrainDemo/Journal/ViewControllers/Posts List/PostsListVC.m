@@ -300,11 +300,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        // Here we need to update the current item on the detail VC
-        self.detailVC.currentIndex = indexPath.row;
-    }
+    [self performSegueWithIdentifier:@"readPostSegue" sender:self];
+
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -340,12 +337,7 @@
         }];
     }
     else {
-        if (recommendation.shouldOpenInSafariViewController) {
-            [self openUrlInSafariVC:url];
-        }
-        else {            
-            [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:url];
-        }
+        [self openUrlInSafariVC: url];
     }
 }
 
@@ -392,12 +384,6 @@
         NSIndexPath * selectedIndexPath = [self.tableView indexPathForSelectedRow];
         Post * selectedPost = [self postsData][selectedIndexPath.row];
         destination.currentIndex = [destination.posts indexOfObject:selectedPost];
-    }
-    else if([segue.identifier isEqualToString:@"ShowRecommendedContent"])
-    {
-        // This is our segue for displaying a tapped recomendation
-        UINavigationController * nav = [segue destinationViewController];
-        [[nav topViewController] setValue:sender forKey:@"recommendationUrl"];
     }
 }
 

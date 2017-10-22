@@ -366,7 +366,7 @@
 {
     if(!_outbrainHoverView)
     {
-        _outbrainHoverView = [[OBAdhesionView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, self.outbrainViewHeight - 105)];
+        _outbrainHoverView = [[OBAdhesionView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.outbrainViewHeight - 105)];
         _outbrainHoverView.delegate = self;
     }
     return _outbrainHoverView;
@@ -376,7 +376,7 @@
 {
     if(!_outbrainClassicView)
     {
-        _outbrainClassicView = [[OBClassicRecommendationsView alloc] initWithFrame:CGRectMake(0, MAXFLOAT, self.contentView.bounds.size.width, self.outbrainViewHeight)];
+        _outbrainClassicView = [[OBClassicRecommendationsView alloc] initWithFrame:CGRectMake(0, MAXFLOAT, self.bounds.size.width, self.outbrainViewHeight)];
         _outbrainClassicView.backgroundColor = self.backgroundColor;
     }
     

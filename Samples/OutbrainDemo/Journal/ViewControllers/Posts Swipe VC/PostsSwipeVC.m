@@ -230,23 +230,15 @@ if([posts isEqual:_posts]) return;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenHeight = screenRect.size.height;
+    
+    if (screenHeight > self.collectionView.frame.size.height) {
         return self.collectionView.frame.size;
     }
     else {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenHeight = screenRect.size.height;
-        
-        if (screenHeight > self.collectionView.frame.size.height) {
-            return self.collectionView.frame.size;
-        }
-        else {
-            return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height - self.navigationController.navigationBar.bounds.size.height - STATUS_BAR_HEIGHT);            
-        }
+        return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height - self.navigationController.navigationBar.bounds.size.height - STATUS_BAR_HEIGHT);
     }
-    
-    
-    //return self.collectionView.frame.size;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -254,6 +246,11 @@ if([posts isEqual:_posts]) return;
     return UIEdgeInsetsZero;
 }
 
+- (void) openUrlInSafariVC:(NSURL *)url {
+    SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+    sf.delegate = self;
+    [self.navigationController presentViewController:sf animated:YES completion:nil];
+}
 
 #pragma mark - ScrollView Methods
 
@@ -297,12 +294,7 @@ if([posts isEqual:_posts]) return;
 }
 
 - (void) handlePaidRecommendation:(OBRecommendation *)recommendation {
-    if (recommendation.shouldOpenInSafariViewController) {
-        [self openUrlInSafariVC:[Outbrain getUrl:recommendation]];
-    }
-    else {
-        [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:recommendation];
-    }
+    [self openUrlInSafariVC:[Outbrain getUrl:recommendation]];
 }
 
 - (void) handleOrganicRecommendation:(OBRecommendation *)recommendation {
@@ -385,24 +377,13 @@ if([posts isEqual:_posts]) return;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"ShowRecommendedContent"])
+    if([segue.identifier isEqualToString:@""])
     {
-        UINavigationController * nav = [segue destinationViewController];
-        OBRecommendation *recommendationToOpen = (OBRecommendation *)sender;
         
-        NSURL *recURL = [Outbrain getUrl:recommendationToOpen];
-        [[nav topViewController] setValue:recURL forKey:@"recommendationUrl"];
     }
 }
 
 #pragma mark - SFSafariViewController + SFSafariViewControllerDelegate
-
-- (void) openUrlInSafariVC:(NSURL *)url {
-    SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
-    sf.delegate = self;
-    [self.navigationController presentViewController:sf animated:YES completion:nil];
-}
-
 - (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {
     NSLog(@"safariViewController didCompleteInitialLoad");
 }
