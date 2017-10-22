@@ -13,8 +13,6 @@
 
 + (instancetype)sharedInstance;
 
-@property (nonatomic, strong) NSOperationQueue * obRequestQueue;    // Our operation queue
-
 - (void) addOBLabelToMap:(OBLabel *)obLabel;
 
 - (void) reportRecsReceived:(OBRecommendationResponse *)response timestamp:(NSDate *)requestStartDate;

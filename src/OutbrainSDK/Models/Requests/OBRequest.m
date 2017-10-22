@@ -10,9 +10,6 @@
 
 @interface OBRequest()
 
-@property (nonatomic, copy) NSString * mobileId;
-@property (nonatomic, copy) NSString * source;
-
 @end
 
 @implementation OBRequest
@@ -66,7 +63,7 @@
 #pragma mark - Getters & Setters
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"WidgetId:%@;WidgetIndex:%ld;AdditionalData:%@;MobileSubGroup:%@;", self.widgetId, (long)self.widgetIndex, self.mobileId, self.source];
+    return [NSString stringWithFormat: @"URL: %@; WidgetId: %@; WidgetIndex:%ld; ", self.url, self.widgetId, (long)self.widgetIndex];
 }
 
 @end

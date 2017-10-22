@@ -166,9 +166,10 @@
     typeof(slideControl) __weak __slideControl = slideControl;
     [self fetchImageForURL:recommendation.image.url withCallback:^(UIImage *image) {
         __slideControl.imageView.image = image;
-        if ([recommendation isRtb]) {
+        if ([recommendation isPaidLink]) {
             [Outbrain prepare:__slideControl.imageView withRTB:recommendation onClickBlock:^(NSURL *url) {
                 NSLog(@"OBParalaxSlideViewControl --> click url: %@", url.absoluteString);
+                [[UIApplication sharedApplication] openURL: url];
             }];
         }
     }];

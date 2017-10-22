@@ -7,13 +7,11 @@
 //
 
 #import "OBRecommendationWebVC.h"
-#import "AppWKWebview.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 
 @interface OBRecommendationWebVC ()
 
-@property (nonatomic, strong) OBWebView * webView;
-@property (nonatomic, strong) AppWKWebview * wk_WebView;
+@property (nonatomic, strong) WKWebView * wk_WebView;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * backButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem * refreshButton;
@@ -23,9 +21,6 @@
 @end
 
 
-
-// Example for implementing OBWebView in code
-// For the full explanation please refer to: http://developer.outbrain.com/sdk_ios_2-0_developer_guide/#how_to_use_obwebview
 @implementation OBRecommendationWebVC
 
 
@@ -37,24 +32,11 @@
     
     CGRect frame = CGRectMake(0, 20.0, self.view.frame.size.width, self.view.frame.size.height);
     
-    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        self.webView = [[OBWebView alloc] initWithFrame:frame];
-        self.webView.scalesPageToFit = YES;
-        [self.webView setTranslatesAutoresizingMaskIntoConstraints: NO];
-        self.webView.delegate = self;
-        // Fast scrolling
-        self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
-        // KVO on loading
-        [self.webView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:NULL];
-        [self.view addSubview:self.webView];
-    }
-    else {
-        self.wk_WebView = [[AppWKWebview alloc] initWithFrame:frame];
-        self.wk_WebView.navigationDelegate = self;
-        // KVO on loading
-        [self.wk_WebView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:NULL];
-        [self.view addSubview:self.wk_WebView];
-    }
+    self.wk_WebView = [[WKWebView alloc] initWithFrame:frame];
+    self.wk_WebView.navigationDelegate = self;
+    // KVO on loading
+    [self.wk_WebView addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:NULL];
+    [self.view addSubview:self.wk_WebView];
     
        
     if (self.recommendationUrl)
@@ -71,9 +53,6 @@
 
 - (void)dealloc
 {
-    if (self.webView != nil) {
-        [self.webView removeObserver:self forKeyPath:@"loading"];
-    }
     if (self.wk_WebView != nil) {
         [self.wk_WebView removeObserver:self forKeyPath:@"loading"];
     }
@@ -89,8 +68,6 @@
 
 - (IBAction)dismissAction:(id)sender
 {
-    self.webView.delegate = nil;
-    [self.webView stopLoading];
     self.wk_WebView.navigationDelegate = nil;
     [self.wk_WebView stopLoading];
     
@@ -99,12 +76,7 @@
 
 - (IBAction)goBack:(id)sender
 {
-    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        [self.webView goBack];
-    }
-    else {
-        [self.wk_WebView goBack];
-    }
+    [self.wk_WebView goBack];
 }
 
 
@@ -114,18 +86,13 @@
 // [Close,FixedSpace,Back,FixedSpace,(optional refresh),FlexSpace,Share]
 - (void)_updateButtonStates
 {
-    self.backButton.enabled = SYSTEM_VERSION_LESS_THAN(@"8.0") ? [self.webView canGoBack] : [self.wk_WebView canGoBack];
-    self.forwardButton.enabled = SYSTEM_VERSION_LESS_THAN(@"8.0") ? [self.webView canGoForward] : [self.wk_WebView canGoForward];
+    self.backButton.enabled = [self.wk_WebView canGoBack];
+    self.forwardButton.enabled = [self.wk_WebView canGoForward];
     self.refreshButton.enabled = ![self isWebViewLoading];
     
-    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        self.navigationItem.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    }
-    else {
-        [self.wk_WebView evaluateJavaScript:@"document.title" completionHandler:^(id _Nullable ret, NSError * _Nullable error) {
-            self.navigationItem.title = [NSString stringWithFormat:@"%@", ret];
-        }];
-    }
+    [self.wk_WebView evaluateJavaScript:@"document.title" completionHandler:^(id _Nullable ret, NSError * _Nullable error) {
+        self.navigationItem.title = [NSString stringWithFormat:@"%@", ret];
+    }];
     
     
     NSInteger activityIndicatorIndex = [self.toolbarItems indexOfObject:self.backButton] + 1;   // Plus 1 because the fixed space is right after
@@ -150,30 +117,15 @@
 }
 
 - (void) loadURL:(NSURL *)url {
-    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
-    }
-    else {
-        [self.wk_WebView loadRequest:[NSURLRequest requestWithURL:url]];
-    }
+    [self.wk_WebView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 -(BOOL) isWebViewLoading {
-    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        return self.webView.isLoading;
-    }
-    else {
-        return self.wk_WebView.isLoading;
-    }
+    return self.wk_WebView.isLoading;
 }
 
 -(NSURL *) getCurrentURL {
-    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        return self.webView.request.URL;
-    }
-    else {
-        return self.wk_WebView.URL;
-    }
+    return self.wk_WebView.URL;
 }
 
 

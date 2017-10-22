@@ -37,7 +37,6 @@
  **/
 + (BOOL)showsDebugIndicators;
 
-@property (nonatomic, strong, readonly) NSOperationQueue * networkQueue;
 @property (nonatomic, strong, readonly) NSMutableArray * posts;
 
 /**
@@ -45,7 +44,7 @@
  *  Since the app is CoreData we will only read data from CoreData, and the data helper will
  *  worry about fetching the data from the network.
  **/
-- (void)updatePostsWithCallback:(void(^)(BOOL updated))callback;
+- (void)updatePostsInViewController:(UIViewController *)vc withCallback:(void(^)(BOOL updated))callback;
 
 /**
  *  Get and parse a single article

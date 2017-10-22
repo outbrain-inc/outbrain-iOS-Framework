@@ -308,11 +308,33 @@ if([posts isEqual:_posts]) return;
 - (void) handleOrganicRecommendation:(OBRecommendation *)recommendation {
     NSURL * url = [Outbrain getUrl:recommendation];
     typeof(self) __weak __self = self;
-    __block UIAlertView * loadingAlert = [[UIAlertView alloc] initWithTitle:@"Fetching Content" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-    [loadingAlert show];
+    __block UIAlertController *alertController = [UIAlertController
+                                 alertControllerWithTitle: @"Fetching Content"
+                                 message: @""
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
     [[OBDemoDataHelper defaultHelper] fetchPostForURL:url withCallback:^(id postObject, NSError *error) {
-        [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
-        if(postObject)
+        
+        // Dismiss the alertController and if we've encountered an error - show the error message on screen
+        [alertController dismissViewControllerAnimated:YES completion:^{
+            if (error != nil) {
+                alertController = [UIAlertController
+                                   alertControllerWithTitle: @"Error"
+                                   message: error.userInfo[NSLocalizedDescriptionKey]
+                                   preferredStyle:UIAlertControllerStyleAlert];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+                // dismiss the alert controller after 2 seconds
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [alertController dismissViewControllerAnimated:YES completion: nil];
+                });
+            }
+        }];
+        
+        if (postObject)
         {
             NSMutableArray * tmp = [__self.posts mutableCopy];
             
@@ -355,11 +377,6 @@ if([posts isEqual:_posts]) return;
             // Now scroll over to the new native content
             [__self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:[__self.posts indexOfObject:postObject] inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         }
-        else
-        {
-            UIAlertView * a = [[UIAlertView alloc] initWithTitle:@"Error" message:error.userInfo[NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-            [a show];
-        }
     }];
     
 }
@@ -381,15 +398,9 @@ if([posts isEqual:_posts]) return;
 #pragma mark - SFSafariViewController + SFSafariViewControllerDelegate
 
 - (void) openUrlInSafariVC:(NSURL *)url {
-    if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
-        [[UIApplication sharedApplication] openURL:url];
-
-    }
-    else {
-        SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
-        sf.delegate = self;
-        [self.navigationController presentViewController:sf animated:YES completion:nil];
-    }
+    SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+    sf.delegate = self;
+    [self.navigationController presentViewController:sf animated:YES completion:nil];
 }
 
 - (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {

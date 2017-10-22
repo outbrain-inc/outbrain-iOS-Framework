@@ -163,9 +163,8 @@
     
     // Clear out the loaded obRecommendationPosts so we can fetch a different batch
     typeof(self) __weak __self = self;
-    [[OBDemoDataHelper defaultHelper] updatePostsWithCallback:^(BOOL contentsUpdated) {
-        
-        if(contentsUpdated)
+    [[OBDemoDataHelper defaultHelper] updatePostsInViewController:self withCallback:^(BOOL updated) {
+        if (updated)
         {
             [__self.loadedOutbrainRecommendationResponses removeAllObjects];
             __self.postsData = [[NSMutableArray alloc] initWithArray:[OBDemoDataHelper defaultHelper].posts];
@@ -273,17 +272,16 @@
     // User tapped a recommendation   
     if (recommendation.isPaidLink == NO) { // Organic
         typeof(self) __weak __self = self;
-        __block UIAlertView * loadingAlert = [[UIAlertView alloc] initWithTitle:@"Fetching Content" message:@"" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-        [loadingAlert show];
+        __block UIAlertController *alertController = [UIAlertController
+                                                      alertControllerWithTitle: @"Fetching Content"
+                                                      message: @""
+                                                      preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alertController animated:YES completion:nil];
+    
         [[OBDemoDataHelper defaultHelper] fetchPostForURL:url withCallback:^(id postObject, NSError *error) {
-            [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
-            if(postObject)
-            {
-                PostsSwipeVC * postsVc = [__self.view.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"postsSwipeVC"];
-                [self.navigationController pushViewController:postsVc animated:YES];
-                postsVc.posts = @[postObject];
-                postsVc.currentIndex = 0;
-            }
+            [alertController dismissViewControllerAnimated:YES completion:^{
+                [__self handleFetchPostResponse:postObject error:error];
+            }];
         }];
     }
     else {
@@ -296,6 +294,28 @@
     }
 }
 
+-(void) handleFetchPostResponse:(id)postObject error:(NSError *)error {
+    if (error != nil) {
+        UIAlertController *alertController = [UIAlertController
+                           alertControllerWithTitle: @"Error"
+                           message: error.userInfo[NSLocalizedDescriptionKey]
+                           preferredStyle:UIAlertControllerStyleAlert];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        // dismiss the alert controller after 2 seconds
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alertController dismissViewControllerAnimated:YES completion: nil];
+        });
+    }
+    else if (postObject)
+    {
+        PostsSwipeVC * postsVc = [self.view.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"postsSwipeVC"];
+        [self.navigationController pushViewController:postsVc animated:YES];
+        postsVc.posts = @[postObject];
+        postsVc.currentIndex = 0;
+    }
+    
+}
 
 #pragma mark - Segues
 
@@ -324,15 +344,9 @@
 #pragma mark - SFSafariViewController + SFSafariViewControllerDelegate
 
 - (void) openUrlInSafariVC:(NSURL *)url {
-    if (SYSTEM_VERSION_LESS_THAN(@"9.0")) {
-        [[UIApplication sharedApplication] openURL:url];
-        
-    }
-    else {
-        SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
-        sf.delegate = self;
-        [self.navigationController presentViewController:sf animated:YES completion:nil];
-    }
+    SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+    sf.delegate = self;
+    [self.navigationController presentViewController:sf animated:YES completion:nil];
 }
 
 - (void)safariViewController:(SFSafariViewController *)controller didCompleteInitialLoad:(BOOL)didLoadSuccessfully {

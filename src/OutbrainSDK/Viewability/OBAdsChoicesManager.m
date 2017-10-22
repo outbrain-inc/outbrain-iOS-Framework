@@ -8,7 +8,7 @@
 
 #import "OBAdsChoicesManager.h"
 #import "OBRecommendationResponse.h"
-#import "OBAdChoicesGetOperation.h"
+#import "OBNetworkManager.h"
 #import "Outbrain_Private.h"
 #import "Outbrain.h"
 
@@ -16,16 +16,14 @@
 
 +(void) reportAdsChoicesPixels:(OBRecommendationResponse *)response {
     NSArray *recommendations = response.recommendations;
-    NSOperationQueue *obRequestQueue = [[Outbrain mainBrain] obRequestQueue];
     
     for (OBRecommendation *rec in recommendations) {
-        if (rec.isRtb) {
+        if (rec.isRTB) {
             NSLog(@"rec: %@ --> is RTB", rec.content);
             for (NSString *pixelUrl in rec.pixels) {
                 NSURL *url = [NSURL URLWithString:pixelUrl];
                 NSLog(@"pixel fire: %@", url);
-                OBAdChoicesGetOperation *op = [[OBAdChoicesGetOperation alloc] initWithURL:url];
-                [obRequestQueue addOperation:op];
+                [[OBNetworkManager sharedManager] sendGet:url completionHandler:nil];
             }
         }
     }
