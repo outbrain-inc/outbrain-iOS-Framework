@@ -57,7 +57,6 @@
  **/
 + (void)fetchImageWithURL:(NSURL *)url withCallback:(void(^)(UIImage * image))callback;
 
-
 /**
  *  Common Methods for settings the text on the Post Page for both PostViewCell and TopBoxPostViewCell
  **/

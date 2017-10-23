@@ -133,8 +133,9 @@
 
 - (void)setPosts:(NSArray *)posts
 {
-if([posts isEqual:_posts]) return;
-    
+    if ([posts isEqual: _posts]) {
+        return;
+    }
     
     NSMutableArray * tmp = [posts mutableCopy];
     __block NSMutableArray * titles = [NSMutableArray array];
@@ -153,7 +154,6 @@ if([posts isEqual:_posts]) return;
         [titles insertObject:recommendationTitle atIndex:convertedIndex];
         [tmp insertObject:@{@"title":recommendationTitle} atIndex:convertedIndex];
     }
-    
     
     _posts = [tmp copy];
     if ([posts count] > 1) {

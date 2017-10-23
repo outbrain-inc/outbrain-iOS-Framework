@@ -224,30 +224,28 @@
         typeof(imageContainerView) __weak __imageContainerView = imageContainerView;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             rect.origin.y = [firstAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
+            rect.origin.y += 10.f;
+            //rect.origin.x = 10.f;
             rect.size.height = [secondAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height - rect.origin.y;
-            rect.size.height -= 20.f; // Add padding at the bottom of the image
+            rect.size.height -= 20.f; // Add padding
+            //rect.size.width -= 20.f; // Add padding
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if(!__imageContainerView.superview) return;
-                __imageContainerView.frame = rect;
-            });
-            
-            
+    
             [OBDemoDataHelper fetchImageWithURL:[NSURL URLWithString:post.imageURL] withCallback:^(UIImage *image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    // We changed pages before the image got fetched
-                    if(!__imageContainerView.superview) return;
-                    UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectInset(__imageContainerView.bounds, 5, 0)];
-                    iv.contentMode = UIViewContentModeScaleAspectFill;
-                    iv.backgroundColor = [UIColor greenColor];
-                    [__imageContainerView addSubview:iv];
-                    iv.alpha = 0.f;
-                    iv.image = image;
-                    [UIView animateWithDuration:.1f animations:^{
-                        iv.alpha = 1;
-                    }];
-                });
+                // We changed pages before the image got fetched
+                if (__imageContainerView.superview == nil) {
+                    return;
+                }
+                __imageContainerView.frame = rect;
+                UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectInset(__imageContainerView.bounds, 5, 5)];
+                iv.contentMode = UIViewContentModeScaleAspectFill;
+                iv.backgroundColor = [UIColor greenColor];
+                [__imageContainerView addSubview:iv];
+                iv.alpha = 0.f;
+                iv.image = image;
+                [UIView animateWithDuration:.1f animations:^{
+                    iv.alpha = 1;
+                }];
             }];
         });
     }
