@@ -28,8 +28,14 @@
 @end
 
 @implementation TopBoxPostViewCell
-@synthesize textView;
-@synthesize mainScrollView;
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.textView.scrollsToTop = YES;
+    self.textView.textContainerInset = UIEdgeInsetsMake(20.0, 10, 0, 0);
+    
+}
 
 #pragma mark - ScrollView Delegate
 
@@ -142,13 +148,13 @@
     }
 }
 
-- (void)_animateHoverViewToPeekAmount
+- (void) _animateHoverViewToPeekAmount
 {
     if (_topBoxLocked || _topBoxDocked)
         return;
     
     _topBoxLocked = YES;
-    mainScrollView.contentSize = CGSizeMake(mainScrollView.contentSize.width, mainScrollView.contentSize.height + _topBoxView.frame.size.height);
+    self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.contentSize.width, self.mainScrollView.contentSize.height + _topBoxView.frame.size.height);
     
     //NSLog(@"animate hover");
     //NSLog(@"FRAME = %@", CGRectCreateDictionaryRepresentation(self.topBoxView.frame));
@@ -182,7 +188,7 @@
 
 - (void)setPost:(Post *)post
 {
-    if([post isEqual:_post]) {
+    if ([post isEqual:_post]) {
         return;    // Same post given.  No need to update
     }
 
@@ -194,20 +200,13 @@
     _post = post;
     
     // Setup the view here
-    self.mainScrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    self.mainScrollView.contentInset = UIEdgeInsetsZero;
     self.textView.attributedText = [OBDemoDataHelper _buildArticleAttributedStringWithPost:post];
-    self.topBoxView.frame = CGRectOffset(self.topBoxView.bounds, 0, -self.topBoxView.frame.size.height);
-
-    // We handle the fetching ourself
-    CGRect textSize = [self.textView textRectForBounds:CGRectMake(10, 8, self.frame.size.width - 20, CGFLOAT_MAX) limitedToNumberOfLines:0];    
-    self.textView.frame = textSize;
-    self.mainScrollView.contentSize = CGSizeMake(textSize.size.width, textSize.size.height);
+    self.topBoxView.frame = CGRectOffset(self.topBoxView.bounds, 0, -self.topBoxView.frame.size.height);    
     
     [[self.textView viewWithTag:200] removeFromSuperview];
     
     
-    if(post.imageURL)
+    if (post.imageURL)
     {
         UIView * imageContainerView = [[UIView alloc] initWithFrame:CGRectZero];
         imageContainerView.backgroundColor = self.backgroundColor;
@@ -227,9 +226,9 @@
             rect.origin.y = [firstAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
             rect.size.height = [secondAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height - rect.origin.y;
             rect.size.height -= 20.f; // Add padding at the bottom of the image
-            if(!__imageContainerView.superview) return;
             
             dispatch_async(dispatch_get_main_queue(), ^{
+                if(!__imageContainerView.superview) return;
                 __imageContainerView.frame = rect;
             });
             

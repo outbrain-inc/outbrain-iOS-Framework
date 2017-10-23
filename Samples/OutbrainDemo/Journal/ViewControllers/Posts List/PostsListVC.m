@@ -53,7 +53,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if(self.postsData.count == 0)
+    if (self.postsData.count == 0)
     {
         [self refreshPostsList];
         [self.tableView setContentOffset:CGPointMake(0, -[self refreshControl].bounds.size.height) animated:YES];
@@ -214,18 +214,16 @@
         {
             [__self.loadedOutbrainRecommendationResponses removeAllObjects];
             __self.postsData = [[NSMutableArray alloc] initWithArray:[OBDemoDataHelper defaultHelper].posts];
-            [__self.tableView reloadData];
-            if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-            {
-                __self.detailVC.currentIndex = 0;
-                __self.detailVC.posts = __self.postsData;
-                [__self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
-            }
+            dispatch_after(0, dispatch_get_main_queue(), ^(void){
+                [__self.tableView reloadData];
+                [__self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+
+            });
         }
         
         NSTimeInterval passedTimeInterval = [[NSDate date] timeIntervalSinceDate:refreshStart];
         CGFloat minWaitTime = 2.f;
-        if(passedTimeInterval >= minWaitTime)
+        if (passedTimeInterval >= minWaitTime)
             [[__self refreshControl] endRefreshing];
         else
         {

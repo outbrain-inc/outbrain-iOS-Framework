@@ -11,14 +11,13 @@
 #import <OutbrainSDK/OutbrainSDK.h>
 #import "OBTopBoxView.h"
 
-@interface TopBoxPostViewCell : UICollectionViewCell  <UIScrollViewDelegate> {
-    IBOutlet UIScrollView   *mainScrollView;
-    IBOutlet UILabel        *textView;
-}
+@interface TopBoxPostViewCell : UICollectionViewCell  <UIScrollViewDelegate>
+    
+@property (weak, nonatomic) IBOutlet OBTopBoxView *topBoxView;
 
-@property (nonatomic, strong) IBOutlet OBTopBoxView *topBoxView;
-@property (nonatomic, strong) IBOutlet UIScrollView   *mainScrollView;
-@property (nonatomic, strong) IBOutlet UILabel        *textView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+
 
 @property (nonatomic, weak) Post * post;
 

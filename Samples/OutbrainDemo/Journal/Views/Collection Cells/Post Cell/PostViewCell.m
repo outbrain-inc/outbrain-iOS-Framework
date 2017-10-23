@@ -36,6 +36,9 @@
 {
     [super awakeFromNib];
     _outbrainViewHeight = 300.f;
+    self.textView.scrollsToTop = YES;
+    self.textView.textContainerInset = UIEdgeInsetsMake(20.0, 10, 0, 0);
+
 }
 
 
@@ -74,18 +77,17 @@
     _post = post;
     
     // Setup the view here
-    self.textView.contentInset = UIEdgeInsetsZero;
     self.textView.attributedText = [OBDemoDataHelper _buildArticleAttributedStringWithPost:post];
     
     [[self.textView viewWithTag:200] removeFromSuperview];
     
     
-    if([self.textView respondsToSelector:@selector(layoutManager)])
+    if ([self.textView respondsToSelector:@selector(layoutManager)])
     {
         [self.textView.layoutManager setAllowsNonContiguousLayout:NO];
     }
     
-    if(post.imageURL)
+    if (post.imageURL)
     {
         UIView * imageContainerView = [[UIView alloc] initWithFrame:CGRectZero];
         imageContainerView.backgroundColor = self.backgroundColor;
