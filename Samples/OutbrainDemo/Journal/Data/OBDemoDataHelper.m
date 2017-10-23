@@ -317,10 +317,12 @@ const struct OBDCodingKeys OBDCodingKeys = {
 
 + (void)fetchImageWithURL:(NSURL *)url withCallback:(void (^)(UIImage *))callback
 {
-    static dispatch_queue_t image_fetch_queue = nil;
-    if(!image_fetch_queue)
+    static dispatch_queue_t image_queue_cache = nil;
+    static dispatch_queue_t image_queue_network = nil;
+    if(!image_queue_cache)
     {
-        image_fetch_queue = dispatch_queue_create("com.outbrain-journal.imageQueue", 0);
+        image_queue_cache = dispatch_queue_create("com.outbrain-journal.imageQueueCache", 0);
+        image_queue_network = dispatch_queue_create("com.outbrain-journal.imageQueueNetork", 0);
     }
     
     void (^ReturnHandler)(UIImage *) = ^(UIImage *returnImage) {
@@ -344,7 +346,7 @@ const struct OBDCodingKeys OBDCodingKeys = {
         return;
     }
     
-    dispatch_async(image_fetch_queue, ^{
+    dispatch_async(image_queue_cache, ^{
         // Next check if the image is on disk.  If it is then we'll go ahead and add it to the cache and return from the cache
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
         NSString *cachesDir = [paths objectAtIndex:0];
@@ -363,20 +365,22 @@ const struct OBDCodingKeys OBDCodingKeys = {
         }
         
         // Fetch the image from network
-        NSLog(@"fetchImageWithURL --> downloading %@ ....", [url absoluteString]);
-        NSData * d = [NSData dataWithContentsOfURL:url];
-        if(d)
-        {
-            responseImage = [UIImage imageWithData:d];
-            if (responseImage == nil) {
-                NSLog(@"fetchImageWithURL --> unexpected error - image is nil");
-                return;
+        dispatch_async(image_queue_network, ^{
+            NSLog(@"fetchImageWithURL --> downloading %@ ....", [url absoluteString]);
+            NSData * d = [NSData dataWithContentsOfURL:url];
+            if(d)
+            {
+                responseImage = [UIImage imageWithData:d];
+                if (responseImage == nil) {
+                    NSLog(@"fetchImageWithURL --> unexpected error - image is nil");
+                    return;
+                }
+                ReturnHandler(responseImage);
+                [d writeToFile:diskCachePath atomically:YES];
+                [[self defaultHelper] _putImage:responseImage inCacheWithKey:key];
+                NSLog(@"fetchImageWithURL --> success download (%@)", key);
             }
-            ReturnHandler(responseImage);
-            [d writeToFile:diskCachePath atomically:YES];
-            [[self defaultHelper] _putImage:responseImage inCacheWithKey:key];
-            NSLog(@"fetchImageWithURL --> success download (%@)", key);
-        }
+        });
     });
 }
 
