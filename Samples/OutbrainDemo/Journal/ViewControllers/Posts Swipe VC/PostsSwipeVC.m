@@ -111,21 +111,21 @@
     _titleView.currentIndex = currentIndex; 
     
     // Load the post only when we get to this page.
-    // Otherwise we're potentially loading 3 webviews at once.  No Mi Gusta
+    // Otherwise we're potentially loading 3 webviews at once.
     PostViewCell * cell = (PostViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:currentIndex inSection:0]];
-    for(UICollectionViewCell * cell in [self.collectionView visibleCells])
+    for (UICollectionViewCell * cell in [self.collectionView visibleCells])
     {
-        if([cell isKindOfClass:[PostViewCell class]]) {
+        if ([cell isKindOfClass:[PostViewCell class]]) {
         
             // Unset this so that we can allow scrollsToTop
             [(PostViewCell *)cell textView].scrollsToTop = NO;
         }
-        else if([cell isKindOfClass:[TopBoxPostViewCell class]]) {
+        else if ([cell isKindOfClass:[TopBoxPostViewCell class]]) {
             [(TopBoxPostViewCell *)cell mainScrollView].scrollsToTop = NO;
         }
     }
     
-    if(cell && [cell respondsToSelector:@selector(delayedContentLoad)])
+    if (cell && [cell respondsToSelector:@selector(delayedContentLoad)])
     {
         [cell delayedContentLoad];
     }

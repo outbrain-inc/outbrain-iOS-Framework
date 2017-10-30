@@ -166,25 +166,11 @@
                                                 <constraint firstItem="kM8-Ao-EJD" firstAttribute="height" secondItem="aZc-Iu-LGw" secondAttribute="height" id="EtX-uY-Pg4"/>
                                                 <constraint firstItem="kM8-Ao-EJD" firstAttribute="width" secondItem="aZc-Iu-LGw" secondAttribute="width" id="zzX-gt-1dS"/>
                                             </constraints>
-                                            <connections>
-                                                <outlet property="delegate" destination="pd4-PB-PpA" id="JOr-yy-ju1"/>
-                                            </connections>
                                         </scrollView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLW-Vy-9QC" customClass="OBTopBoxView">
-                                            <rect key="frame" x="0.0" y="10" width="375" height="0.0"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <outlet property="widgetDelegate" destination="pd4-PB-PpA" id="VPr-oI-92c"/>
-                                            </connections>
-                                        </view>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="mLW-Vy-9QC" secondAttribute="trailing" id="37c-vy-9fo"/>
-                                    <constraint firstItem="mLW-Vy-9QC" firstAttribute="leading" secondItem="aGi-ua-WkF" secondAttribute="leading" id="6zG-hm-p5g"/>
                                     <constraint firstAttribute="trailing" secondItem="aZc-Iu-LGw" secondAttribute="trailing" id="7Gd-4v-ngJ"/>
-                                    <constraint firstItem="aZc-Iu-LGw" firstAttribute="top" secondItem="mLW-Vy-9QC" secondAttribute="bottom" priority="750" id="Gaw-wg-Ys8"/>
-                                    <constraint firstItem="mLW-Vy-9QC" firstAttribute="top" secondItem="aGi-ua-WkF" secondAttribute="top" constant="10" id="cf0-i9-NNc"/>
                                     <constraint firstItem="aZc-Iu-LGw" firstAttribute="top" secondItem="aGi-ua-WkF" secondAttribute="top" id="f6f-ch-Psz"/>
                                     <constraint firstItem="aZc-Iu-LGw" firstAttribute="leading" secondItem="aGi-ua-WkF" secondAttribute="leading" id="jlt-Ev-oCu"/>
                                     <constraint firstAttribute="bottom" secondItem="aZc-Iu-LGw" secondAttribute="bottom" id="oUe-NB-0TO"/>
@@ -192,7 +178,6 @@
                                 <connections>
                                     <outlet property="mainScrollView" destination="aZc-Iu-LGw" id="K6c-o2-dSC"/>
                                     <outlet property="textView" destination="kM8-Ao-EJD" id="IPd-m0-0bq"/>
-                                    <outlet property="topBoxView" destination="mLW-Vy-9QC" id="iCv-W5-4uR"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendationCellID" id="GUn-fT-LQh">

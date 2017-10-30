@@ -341,7 +341,7 @@ const struct OBDCodingKeys OBDCodingKeys = {
     // First let's check if the image is in our cache.
     responseImage = [[[self defaultHelper] imageCache] objectForKey:key];
     if (responseImage) {
-        NSLog(@"fetchImageWithURL --> found (%@) in cache", key);
+        // NSLog(@"fetchImageWithURL --> found (%@) in cache", key);
         ReturnHandler(responseImage);
         return;
     }
@@ -359,26 +359,26 @@ const struct OBDCodingKeys OBDCodingKeys = {
         // Check if we have this on disk.
         responseImage = [UIImage imageWithContentsOfFile:diskCachePath];
         if (responseImage) {
-            NSLog(@"fetchImageWithURL --> found (%@) on disk", key);
+            // NSLog(@"fetchImageWithURL --> found (%@) on disk", key);
             ReturnHandler(responseImage);
             return;
         }
         
         // Fetch the image from network
         dispatch_async(image_queue_network, ^{
-            NSLog(@"fetchImageWithURL --> downloading %@ ....", [url absoluteString]);
+            // NSLog(@"fetchImageWithURL --> downloading %@ ....", [url absoluteString]);
             NSData * d = [NSData dataWithContentsOfURL:url];
             if(d)
             {
                 responseImage = [UIImage imageWithData:d];
                 if (responseImage == nil) {
-                    NSLog(@"fetchImageWithURL --> unexpected error - image is nil");
+                    // NSLog(@"fetchImageWithURL --> unexpected error - image is nil");
                     return;
                 }
                 ReturnHandler(responseImage);
                 [d writeToFile:diskCachePath atomically:YES];
                 [[self defaultHelper] _putImage:responseImage inCacheWithKey:key];
-                NSLog(@"fetchImageWithURL --> success download (%@)", key);
+                // NSLog(@"fetchImageWithURL --> success download (%@)", key);
             }
         });
     });

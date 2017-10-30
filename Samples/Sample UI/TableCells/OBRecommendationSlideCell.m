@@ -274,7 +274,7 @@
  **/
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if(scrollView != _scrollViewInternal) return;
+    if (scrollView != _scrollViewInternal) return;
     
     NSInteger index = ceil(scrollView.contentOffset.x / scrollView.frame.size.width);
     index = MIN(index, [_slideViewsInternal count]-1);  // Index can't be greater than the number of slides we have
@@ -332,7 +332,7 @@
         // The imageContainer will mask the text for us on the left of the image when scrolling.
         // On the right it will have a shadow
         UIView * imageContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.height, frame.size.height)];
-        imageContainer.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        imageContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         imageContainer.layer.shadowOffset = CGSizeMake(2, 0);
         imageContainer.layer.shadowOpacity = 1.f;
         imageContainer.layer.shadowRadius = padding;

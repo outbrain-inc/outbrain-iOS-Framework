@@ -12,58 +12,58 @@
 
 #import "OBDemoDataHelper.h"
 
-@interface TopBoxPostViewCell () <OBResponseDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate>
-{
-    BOOL    _topBoxLocked;
-    BOOL    _topBoxDocked;
-    
-    float   _previousScrollYOffset;
+@interface TopBoxPostViewCell () <OBResponseDelegate, UIGestureRecognizerDelegate>
 
-    BOOL _loadingOutbrain;
-    BOOL _outbrainLoaded;
+@property (assign, nonatomic) BOOL topBoxLocked;
+@property (assign, nonatomic) BOOL topBoxDocked;
 
-    BOOL _scrolledDown;
-}
+@property (assign, nonatomic) BOOL loadingOutbrain;
+@property (assign, nonatomic) BOOL outbrainLoaded;
+
+@property (assign, nonatomic) BOOL scrolledDown;
+@property (assign, nonatomic) float previousScrollYOffset;
 
 @end
 
 @implementation TopBoxPostViewCell
+
+const CGFloat kTopBoxHeight = 100.0;
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     self.textView.scrollsToTop = YES;
     self.textView.textContainerInset = UIEdgeInsetsMake(20.0, 10, 0, 0);
-    
+    self.topBoxView = [[OBTopBoxView alloc] initWithFrame:CGRectMake(0, -kTopBoxHeight, self.textView.frame.size.width, kTopBoxHeight)];
 }
 
 #pragma mark - ScrollView Delegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat yOff = scrollView.contentOffset.y;
     
     // Check user already scrolled down
-    if(!_scrolledDown)
+    if (self.scrolledDown == NO)
     {
-        _scrolledDown = (scrollView.contentOffset.y > 10);
-        if(!_scrolledDown) return;
+        self.scrolledDown = (scrollView.contentOffset.y > 10);
+        if (!self.scrolledDown) return;
     }
     
-    if (_topBoxDocked) {
+    if (self.topBoxDocked) {
         return;
     }
     
-    if (scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.size.height) {
+    // if we are scrolling to the bottom of the screen, don't do anything (we have the bottom widget already)
+    if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
         return;
     }
     
     CGFloat paralaxRate = 1.5f; // How much should we parallax
-    if(!_topBoxLocked)
+    if (self.topBoxLocked == NO)
     {
         // Only start moving the hover view onto the screen if we're scrolling up, and
         // we've scrolled down a little alread
-        if(yOff < _previousScrollYOffset && scrollView.contentOffset.y > 10.f)
+        if (yOff < _previousScrollYOffset && scrollView.contentOffset.y > 10.f)
         {
             //NSLog(@"GO UP");
             // We only scroll the hover view in when scrolling up
@@ -78,7 +78,7 @@
         else
         {
             // If we've already scrolled up some then we should scroll down at the same paralax rate vs. locking at the bottom
-            if(CGRectGetMinY(_topBoxView.frame) >= 0 && _previousScrollYOffset < yOff)
+            if (CGRectGetMinY(_topBoxView.frame) >= 0 && _previousScrollYOffset < yOff)
             {
                 //NSLog(@"GO DOWN");
                 CGRect r = _topBoxView.frame;
@@ -90,7 +90,7 @@
     }
     
     // Reset the previous offset.
-    _previousScrollYOffset = scrollView.contentOffset.y;
+    self.previousScrollYOffset = scrollView.contentOffset.y;
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
@@ -150,18 +150,19 @@
 
 - (void) _animateHoverViewToPeekAmount
 {
-    if (_topBoxLocked || _topBoxDocked)
+    if (self.topBoxLocked || self.topBoxDocked) {
         return;
+    }
     
-    _topBoxLocked = YES;
-    self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.contentSize.width, self.mainScrollView.contentSize.height + _topBoxView.frame.size.height);
+    self.topBoxLocked = YES;
+    self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.contentSize.width, self.mainScrollView.contentSize.height + self.topBoxView.frame.size.height);
     
     //NSLog(@"animate hover");
     //NSLog(@"FRAME = %@", CGRectCreateDictionaryRepresentation(self.topBoxView.frame));
     
     [UIView animateWithDuration:.25f animations:^{
-        self.topBoxView.frame = CGRectMake(0,0,_topBoxView.frame.size.width, _topBoxView.frame.size.height);
-        self.textView.frame = CGRectOffset(self.textView.frame, 0, _topBoxView.frame.size.height);
+        self.topBoxView.frame = CGRectMake(0,0,_topBoxView.frame.size.width, self.topBoxView.frame.size.height);
+        self.textView.frame = CGRectOffset(self.textView.frame, 0, self.topBoxView.frame.size.height);
     }];
 }
 
@@ -179,7 +180,7 @@
     // If we've loaded outbrain data already, or we're currently loading then there's nothing else to do.
     if(_outbrainLoaded || _loadingOutbrain) return;
     
-    self.mainScrollView.delegate = nil;
+    self.textView.delegate = nil;
     OBRequest * request = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID1];
     [Outbrain fetchRecommendationsForRequest:request withDelegate:self];
 }
@@ -270,60 +271,32 @@
 
 - (void)outbrainDidReceiveResponseWithSuccess:(OBRecommendationResponse *)response
 {
-    _outbrainLoaded = YES;
-    _loadingOutbrain = NO;
+    self.outbrainLoaded = YES;
+    self.loadingOutbrain = NO;
 
-    // If there are no recommendations (shouldn't happen often).  Then we
-    // just don't show anything
-    if(response.recommendations.count == 0)
+    // If there are no recommendations (shouldn't happen often). Then we just don't show anything
+    if (response.recommendations.count == 0)
     {
-        if([OBDemoDataHelper showsDebugIndicators])
-        {
-            
-            UITextView * label = [[UITextView alloc] initWithFrame:CGRectInset([[UIScreen mainScreen] bounds], 10.f, 10.f)];
-            label.font = [UIFont boldSystemFontOfSize:16.f];
-            
-            id resObj = [response valueForKey:@"originalOBPayload"];
-            NSString * originalRequest = @"";
-            if([resObj isKindOfClass:[NSDictionary class]])
-            {
-                NSData * d = [NSJSONSerialization dataWithJSONObject:resObj options:0 error:nil];
-                if(d)
-                { originalRequest = [[NSString alloc]  initWithData:d encoding:NSUTF8StringEncoding]; }
-            }
-            label.editable = NO;
-            label.text = [NSString stringWithFormat:@"Recommendation Response for\n'%@'\nreturnned 0 recommendations\n\n%@", self.post.title, originalRequest];
-            
-            label.backgroundColor = [UIColor redColor];
-            label.textColor = [UIColor blackColor];
-            
-            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDebugView:)];
-            [label addGestureRecognizer:tap];
-            
-            [self.window addSubview:label];
-        }
+        [self handleOutbrainErrorOnZeroRecs: response];
         return;
     }
     
+    self.topBoxView.recommendationResponse = response;    
+    self.textView.delegate = (id<UITextViewDelegate>)self; // listen to the scroll events (UITextView is a ScrollView)
     
-    
-    
-    self.topBoxView.recommendationResponse = response;
-    
-    // Adjust the webView contentInset so we can insert our view at the bottom
-    UIScrollView * sv = self.mainScrollView; // self.webView.scrollView; <!-- Maybe use this later
-    sv.delegate = self;
-    
-    UIEdgeInsets insets = sv.contentInset;
-    insets.bottom = self.topBoxView.frame.size.height;
-    sv.contentInset = insets;
-    self.topBoxView.frame = CGRectOffset(self.topBoxView.bounds, 0, -self.topBoxView.frame.size.height);
-    
-    self.topBoxView.alpha = 0.f;
-    [UIView animateWithDuration:.3f
-                     animations:^{
-                         self.topBoxView.alpha = 1.f;
-                     }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIScrollView *sv = self.mainScrollView;
+        UIEdgeInsets insets = sv.contentInset;
+        insets.bottom = self.topBoxView.frame.size.height;
+        sv.contentInset = insets;
+        self.topBoxView.frame = CGRectOffset(self.topBoxView.bounds, 0, -self.topBoxView.frame.size.height);
+        
+        self.topBoxView.alpha = 0.f;
+        [UIView animateWithDuration:.3f
+                         animations:^{
+                             self.topBoxView.alpha = 1.f;
+                         }];
+    });
 }
 
 - (void)outbrainResponseDidFail:(NSError *)response
@@ -350,7 +323,7 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    self.mainScrollView.delegate = nil;
+    self.textView.delegate = nil;
     self.mainScrollView.scrollsToTop = NO;
     self.mainScrollView.contentOffset = CGPointZero;
     
@@ -362,6 +335,33 @@
 //    [self.topBoxView removeFromSuperview];
     //    self.outbrainHoverView = nil;
     //    self.outbrainClassicView = nil;
+}
+
+-(void) handleOutbrainErrorOnZeroRecs:(OBRecommendationResponse *)response {
+    if ([OBDemoDataHelper showsDebugIndicators])
+    {
+        UITextView * label = [[UITextView alloc] initWithFrame:CGRectInset([[UIScreen mainScreen] bounds], 10.f, 10.f)];
+        label.font = [UIFont boldSystemFontOfSize:16.f];
+        
+        id resObj = [response valueForKey:@"originalOBPayload"];
+        NSString * originalRequest = @"";
+        if([resObj isKindOfClass:[NSDictionary class]])
+        {
+            NSData * d = [NSJSONSerialization dataWithJSONObject:resObj options:0 error:nil];
+            if(d)
+            { originalRequest = [[NSString alloc]  initWithData:d encoding:NSUTF8StringEncoding]; }
+        }
+        label.editable = NO;
+        label.text = [NSString stringWithFormat:@"Recommendation Response for\n'%@'\nreturnned 0 recommendations\n\n%@", self.post.title, originalRequest];
+        
+        label.backgroundColor = [UIColor redColor];
+        label.textColor = [UIColor blackColor];
+        
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDebugView:)];
+        [label addGestureRecognizer:tap];
+        
+        [self.window addSubview:label];
+    }
 }
 
 @end
