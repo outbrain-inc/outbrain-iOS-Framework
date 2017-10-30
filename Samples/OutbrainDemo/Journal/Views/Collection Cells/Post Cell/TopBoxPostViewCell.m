@@ -34,7 +34,6 @@ const CGFloat kTopBoxHeight = 100.0;
     [super awakeFromNib];
     self.textView.scrollsToTop = YES;
     self.textView.textContainerInset = UIEdgeInsetsMake(20.0, 10, 0, 0);
-    self.topBoxView = [[OBTopBoxView alloc] initWithFrame:CGRectMake(0, -kTopBoxHeight, self.textView.frame.size.width, kTopBoxHeight)];
 }
 
 #pragma mark - ScrollView Delegate
@@ -58,7 +57,6 @@ const CGFloat kTopBoxHeight = 100.0;
         return;
     }
     
-    CGFloat paralaxRate = 1.5f; // How much should we parallax
     if (self.topBoxLocked == NO)
     {
         // Only start moving the hover view onto the screen if we're scrolling up, and
@@ -67,25 +65,7 @@ const CGFloat kTopBoxHeight = 100.0;
         {
             //NSLog(@"GO UP");
             // We only scroll the hover view in when scrolling up
-            CGRect r = _topBoxView.frame;
-            r.origin.y += (_previousScrollYOffset - yOff) * paralaxRate;
-            if (r.origin.y >= 0) {
-                r.origin.y = 0;
-                [self _animateHoverViewToPeekAmount];
-            }
-            self.topBoxView.frame = r;
-        }
-        else
-        {
-            // If we've already scrolled up some then we should scroll down at the same paralax rate vs. locking at the bottom
-            if (CGRectGetMinY(_topBoxView.frame) >= 0 && _previousScrollYOffset < yOff)
-            {
-                //NSLog(@"GO DOWN");
-                CGRect r = _topBoxView.frame;
-                r.origin.y += (_previousScrollYOffset - yOff) * paralaxRate;
-                
-                self.topBoxView.frame = r;
-            }
+            [self dockTopBox];
         }
     }
     
@@ -106,20 +86,9 @@ const CGFloat kTopBoxHeight = 100.0;
     //NSLog(@"Scroll view did end dragging");
     if (_topBoxDocked) return;
     
-    //NSLog(@"contentOffset = %@", CGPointCreateDictionaryRepresentation(scrollView.contentOffset));
-    //NSLog(@"maxY = %.2f", CGRectGetMinY(_topBoxView.frame));
-    //NSLog(@"_topBoxLocked = %@", _topBoxLocked ? @"YES" : @"NO");
-    
     if (_topBoxLocked && scrollView.contentOffset.y <= CGRectGetMinY(_topBoxView.frame)) {
         [self dockTopBox];
     }
-    
-    // If we're not decelerating, and the outbrain view is currently in view by at least 10 pix.  Then we should animate
-    // it in to our 'peek' state
-//    if(CGRectGetMinY(self.topBoxView.frame) > scrollView.contentOffset.y - 10 && !decelerate) {
-//        // Here we've gotten stuck.
-//        [self _animateHoverViewToPeekAmount];
-//    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -128,42 +97,9 @@ const CGFloat kTopBoxHeight = 100.0;
     if(_topBoxDocked) return;
     if(_topBoxLocked) return;
     
-    CGFloat adhesionYOff = CGRectGetMinY(self.topBoxView.frame);
-    CGFloat scrollYOff = self.mainScrollView.contentOffset.y;
-    
-    //NSLog(@"did end decelerating");
-    if(adhesionYOff > (scrollYOff - self.topBoxView.frame.size.height) && adhesionYOff < scrollYOff)
-    {
-        //NSLog(@"did end decelerating with animation");
-        [self _animateHoverViewToPeekAmount];
-    }
-    else {
-        [UIView animateWithDuration:.25f animations:^{
-            self.topBoxView.frame = CGRectMake(0,-_topBoxView.frame.size.height,_topBoxView.frame.size.width, _topBoxView.frame.size.height);
-        }];
-    }
-    
     if (_topBoxLocked && scrollView.contentOffset.y <= CGRectGetMinY(_topBoxView.frame)) {
         [self dockTopBox];
     }
-}
-
-- (void) _animateHoverViewToPeekAmount
-{
-    if (self.topBoxLocked || self.topBoxDocked) {
-        return;
-    }
-    
-    self.topBoxLocked = YES;
-    self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.contentSize.width, self.mainScrollView.contentSize.height + self.topBoxView.frame.size.height);
-    
-    //NSLog(@"animate hover");
-    //NSLog(@"FRAME = %@", CGRectCreateDictionaryRepresentation(self.topBoxView.frame));
-    
-    [UIView animateWithDuration:.25f animations:^{
-        self.topBoxView.frame = CGRectMake(0,0,_topBoxView.frame.size.width, self.topBoxView.frame.size.height);
-        self.textView.frame = CGRectOffset(self.textView.frame, 0, self.topBoxView.frame.size.height);
-    }];
 }
 
 
@@ -176,7 +112,7 @@ const CGFloat kTopBoxHeight = 100.0;
 
 - (void)delayedContentLoad
 {
-    self.mainScrollView.scrollsToTop = YES;
+    self.textView.scrollsToTop = YES;
     // If we've loaded outbrain data already, or we're currently loading then there's nothing else to do.
     if(_outbrainLoaded || _loadingOutbrain) return;
     
@@ -193,7 +129,6 @@ const CGFloat kTopBoxHeight = 100.0;
         return;    // Same post given.  No need to update
     }
 
-    self.mainScrollView.contentOffset = CGPointZero;
     _outbrainLoaded = NO;
     _topBoxDocked = NO;
     _topBoxLocked = NO;
@@ -283,20 +218,6 @@ const CGFloat kTopBoxHeight = 100.0;
     
     self.topBoxView.recommendationResponse = response;    
     self.textView.delegate = (id<UITextViewDelegate>)self; // listen to the scroll events (UITextView is a ScrollView)
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIScrollView *sv = self.mainScrollView;
-        UIEdgeInsets insets = sv.contentInset;
-        insets.bottom = self.topBoxView.frame.size.height;
-        sv.contentInset = insets;
-        self.topBoxView.frame = CGRectOffset(self.topBoxView.bounds, 0, -self.topBoxView.frame.size.height);
-        
-        self.topBoxView.alpha = 0.f;
-        [UIView animateWithDuration:.3f
-                         animations:^{
-                             self.topBoxView.alpha = 1.f;
-                         }];
-    });
 }
 
 - (void)outbrainResponseDidFail:(NSError *)response
@@ -305,17 +226,9 @@ const CGFloat kTopBoxHeight = 100.0;
 }
 
 - (void)dockTopBox {
-    [self.topBoxView removeFromSuperview];
-    
-    self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.contentSize.width, self.mainScrollView.contentSize.height + self.topBoxView.frame.size.height);
-    // NSLog(@"DOCKING TOP BOX");
-    [UIView animateWithDuration:.25f animations:^{
-        self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.topBoxView.frame.size.height + 10, self.textView.frame.size.width, self.textView.frame.size.height);
-        self.topBoxView.frame = CGRectMake(0,0,self.topBoxView.frame.size.width, self.topBoxView.frame.size.height);
+    [UIView animateWithDuration:0.5 animations:^{
+        self.topBoxView.hidden = NO;
     }];
-    [self.mainScrollView addSubview:self.topBoxView];
-    
-    _topBoxDocked = YES;
 }
 
 #pragma mark - Reuse
@@ -324,17 +237,10 @@ const CGFloat kTopBoxHeight = 100.0;
 {
     [super prepareForReuse];
     self.textView.delegate = nil;
-    self.mainScrollView.scrollsToTop = NO;
-    self.mainScrollView.contentOffset = CGPointZero;
-    
-    _previousScrollYOffset = 0;
+    self.textView.scrollsToTop = NO;
+    self.topBoxView.hidden = YES;
     
     _loadingOutbrain = NO;
-    
-    
-//    [self.topBoxView removeFromSuperview];
-    //    self.outbrainHoverView = nil;
-    //    self.outbrainClassicView = nil;
 }
 
 -(void) handleOutbrainErrorOnZeroRecs:(OBRecommendationResponse *)response {

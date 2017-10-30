@@ -151,9 +151,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZc-Iu-LGw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iPB-hy-jPR">
+                                            <rect key="frame" x="132" y="200" width="375" height="600"/>
                                             <subviews>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLS-DW-35R" customClass="OBTopBoxView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="tqD-fs-Fu3"/>
+                                                    </constraints>
+                                                </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kM8-Ao-EJD">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,21 +170,21 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kM8-Ao-EJD" firstAttribute="height" secondItem="aZc-Iu-LGw" secondAttribute="height" id="EtX-uY-Pg4"/>
-                                                <constraint firstItem="kM8-Ao-EJD" firstAttribute="width" secondItem="aZc-Iu-LGw" secondAttribute="width" id="zzX-gt-1dS"/>
+                                                <constraint firstItem="RLS-DW-35R" firstAttribute="leading" secondItem="iPB-hy-jPR" secondAttribute="leading" id="Jno-ve-CxV"/>
+                                                <constraint firstAttribute="trailing" secondItem="RLS-DW-35R" secondAttribute="trailing" id="lxf-dG-zO4"/>
                                             </constraints>
-                                        </scrollView>
+                                        </stackView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="aZc-Iu-LGw" secondAttribute="trailing" id="7Gd-4v-ngJ"/>
-                                    <constraint firstItem="aZc-Iu-LGw" firstAttribute="top" secondItem="aGi-ua-WkF" secondAttribute="top" id="f6f-ch-Psz"/>
-                                    <constraint firstItem="aZc-Iu-LGw" firstAttribute="leading" secondItem="aGi-ua-WkF" secondAttribute="leading" id="jlt-Ev-oCu"/>
-                                    <constraint firstAttribute="bottom" secondItem="aZc-Iu-LGw" secondAttribute="bottom" id="oUe-NB-0TO"/>
+                                    <constraint firstAttribute="bottom" secondItem="iPB-hy-jPR" secondAttribute="bottom" id="3Qt-4r-GGb"/>
+                                    <constraint firstItem="iPB-hy-jPR" firstAttribute="top" secondItem="aGi-ua-WkF" secondAttribute="top" id="5fI-9E-AAp"/>
+                                    <constraint firstItem="iPB-hy-jPR" firstAttribute="leading" secondItem="aGi-ua-WkF" secondAttribute="leading" id="osR-57-zmC"/>
+                                    <constraint firstAttribute="trailing" secondItem="iPB-hy-jPR" secondAttribute="trailing" id="v5H-na-WjI"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="mainScrollView" destination="aZc-Iu-LGw" id="K6c-o2-dSC"/>
                                     <outlet property="textView" destination="kM8-Ao-EJD" id="IPd-m0-0bq"/>
+                                    <outlet property="topBoxView" destination="RLS-DW-35R" id="Nh3-he-hnP"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendationCellID" id="GUn-fT-LQh">
