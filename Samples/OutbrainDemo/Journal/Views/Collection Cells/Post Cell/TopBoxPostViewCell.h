@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet OBTopBoxView *topBoxView;
 
 
+
 @property (nonatomic, weak) Post * post;
 
 /**

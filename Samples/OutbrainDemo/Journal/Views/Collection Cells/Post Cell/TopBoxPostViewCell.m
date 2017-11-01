@@ -14,6 +14,12 @@
 
 @interface TopBoxPostViewCell () <OBResponseDelegate, UIGestureRecognizerDelegate>
 
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleTopPaddingHeightConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBoxVerticalConstraint;
+
+
 @property (assign, nonatomic) BOOL topBoxLocked;
 @property (assign, nonatomic) BOOL topBoxDocked;
 
@@ -185,9 +191,14 @@ const CGFloat kTopBoxHeight = 100.0;
 }
 
 - (void)dockTopBox {
+    [self.contentView bringSubviewToFront:self.topBoxView];
+    self.topBoxView.hidden = NO;
+    self.topBoxVerticalConstraint.constant = -100.0;
+    self.titleTopPaddingHeightConstraint.constant = 100.0;
     [UIView animateWithDuration:0.5 animations:^{
-        self.topBoxView.hidden = NO;
-        self.topPaddingView.hidden = YES;
+        [self.contentView layoutIfNeeded];
+        //self.topBoxView.hidden = NO;
+        //self.topPaddingView.hidden = YES;
     }];
 }
 
@@ -199,8 +210,10 @@ const CGFloat kTopBoxHeight = 100.0;
     self.mainScrollView.delegate = nil;
     self.mainScrollView.scrollsToTop = NO;
     self.topBoxView.hidden = YES;
-    
+    self.titleTopPaddingHeightConstraint.constant = 5.0;
+    self.topBoxVerticalConstraint.constant = 0;
     _loadingOutbrain = NO;
+    self.topBoxDocked = NO;
 }
 
 -(void) handleOutbrainErrorOnZeroRecs:(OBRecommendationResponse *)response {

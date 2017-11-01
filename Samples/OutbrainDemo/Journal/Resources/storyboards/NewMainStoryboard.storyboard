@@ -155,71 +155,60 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLS-DW-35R" customClass="OBTopBoxView">
+                                            <rect key="frame" x="0.0" y="-100" width="375" height="100"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="tqD-fs-Fu3"/>
+                                            </constraints>
+                                        </view>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kz-no-fzH">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iPB-hy-jPR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="599.33333333333337"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jxz-Sb-kxv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="561"/>
                                                     <subviews>
-                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLS-DW-35R" customClass="OBTopBoxView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duK-PG-CMr">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="6"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="100" id="tqD-fs-Fu3"/>
+                                                                <constraint firstAttribute="height" constant="6" id="KZa-pE-NsQ"/>
                                                             </constraints>
                                                         </view>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jxz-Sb-kxv">
-                                                            <rect key="frame" x="20" y="0.0" width="335" height="599.33333333333337"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duK-PG-CMr">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="6"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="6" id="KZa-pE-NsQ"/>
-                                                                    </constraints>
-                                                                </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Use Social Media Like The Best SMB Marketers" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8E-WW-u3d">
-                                                                    <rect key="frame" x="0.0" y="16" width="335" height="52.666666666666671"/>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday, January 26, 2016, 09:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvj-9L-ajC">
-                                                                    <rect key="frame" x="0.0" y="78.666666666666686" width="335" height="16.333333333333329"/>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="14"/>
-                                                                    <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post-image-sample" translatesAutoresizingMaskIntoConstraints="NO" id="Yeb-g3-KJV">
-                                                                    <rect key="frame" x="0.0" y="105" width="335" height="220"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="220" id="CcW-wv-6ST"/>
-                                                                    </constraints>
-                                                                </imageView>
-                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kM8-Ao-EJD">
-                                                                    <rect key="frame" x="0.0" y="335" width="335" height="264.33333333333337"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                </textView>
-                                                            </subviews>
-                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Use Social Media Like The Best SMB Marketers" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8E-WW-u3d">
+                                                            <rect key="frame" x="0.0" y="16" width="375" height="52.666666666666671"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday, January 26, 2016, 09:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvj-9L-ajC">
+                                                            <rect key="frame" x="0.0" y="78.666666666666686" width="375" height="16.333333333333329"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post-image-sample" translatesAutoresizingMaskIntoConstraints="NO" id="Yeb-g3-KJV">
+                                                            <rect key="frame" x="0.0" y="105" width="375" height="220"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="220" id="CcW-wv-6ST"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kM8-Ao-EJD">
+                                                            <rect key="frame" x="0.0" y="335" width="375" height="226"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="RLS-DW-35R" firstAttribute="leading" secondItem="iPB-hy-jPR" secondAttribute="leading" id="Jno-ve-CxV"/>
-                                                        <constraint firstAttribute="trailing" secondItem="jxz-Sb-kxv" secondAttribute="trailing" constant="20" id="Qfo-uo-Wtz"/>
-                                                        <constraint firstItem="jxz-Sb-kxv" firstAttribute="leading" secondItem="iPB-hy-jPR" secondAttribute="leading" constant="20" id="XLj-T0-tXF"/>
-                                                        <constraint firstAttribute="trailing" secondItem="RLS-DW-35R" secondAttribute="trailing" id="lxf-dG-zO4"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="iPB-hy-jPR" secondAttribute="bottom" id="MD5-Ya-z16"/>
-                                                <constraint firstItem="iPB-hy-jPR" firstAttribute="width" secondItem="8kz-no-fzH" secondAttribute="width" id="MwQ-G7-cFL"/>
-                                                <constraint firstItem="iPB-hy-jPR" firstAttribute="top" secondItem="8kz-no-fzH" secondAttribute="top" id="edd-eS-dpY"/>
-                                                <constraint firstAttribute="trailing" secondItem="iPB-hy-jPR" secondAttribute="trailing" id="mhM-Kl-TYQ"/>
-                                                <constraint firstItem="iPB-hy-jPR" firstAttribute="leading" secondItem="8kz-no-fzH" secondAttribute="leading" id="rzG-V4-YjU"/>
+                                                <constraint firstAttribute="bottom" secondItem="jxz-Sb-kxv" secondAttribute="bottom" id="72K-5M-Dxz"/>
+                                                <constraint firstItem="jxz-Sb-kxv" firstAttribute="width" secondItem="8kz-no-fzH" secondAttribute="width" id="Rry-l7-ihu"/>
+                                                <constraint firstItem="jxz-Sb-kxv" firstAttribute="top" secondItem="8kz-no-fzH" secondAttribute="top" id="fRg-tK-zL8"/>
+                                                <constraint firstItem="jxz-Sb-kxv" firstAttribute="leading" secondItem="8kz-no-fzH" secondAttribute="leading" id="ibv-ni-xIL"/>
+                                                <constraint firstAttribute="trailing" secondItem="jxz-Sb-kxv" secondAttribute="trailing" id="s6S-ZL-t3i"/>
                                             </constraints>
                                         </scrollView>
                                     </subviews>
@@ -228,14 +217,19 @@
                                     <constraint firstItem="8kz-no-fzH" firstAttribute="leading" secondItem="aGi-ua-WkF" secondAttribute="leading" id="8KR-6m-ar2"/>
                                     <constraint firstItem="8kz-no-fzH" firstAttribute="top" secondItem="aGi-ua-WkF" secondAttribute="top" id="9d3-cb-ufU"/>
                                     <constraint firstAttribute="trailing" secondItem="8kz-no-fzH" secondAttribute="trailing" id="CXe-oV-Or6"/>
+                                    <constraint firstItem="RLS-DW-35R" firstAttribute="width" secondItem="aGi-ua-WkF" secondAttribute="width" id="CdA-HO-CGg"/>
+                                    <constraint firstItem="8kz-no-fzH" firstAttribute="top" secondItem="RLS-DW-35R" secondAttribute="bottom" id="toF-Rn-r2N"/>
                                     <constraint firstAttribute="bottom" secondItem="8kz-no-fzH" secondAttribute="bottom" id="vGG-xB-K1v"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="TitleTopPaddingHeightConstraint" destination="KZa-pE-NsQ" id="uEv-hS-3Ft"/>
                                     <outlet property="mainScrollView" destination="8kz-no-fzH" id="FEx-On-U7y"/>
                                     <outlet property="postContentTextView" destination="kM8-Ao-EJD" id="P73-xK-NfQ"/>
                                     <outlet property="postDateLabel" destination="cvj-9L-ajC" id="pFt-2R-urE"/>
                                     <outlet property="postImageView" destination="Yeb-g3-KJV" id="z9b-dR-SlN"/>
                                     <outlet property="postTitleLabel" destination="L8E-WW-u3d" id="Ygm-jd-bDq"/>
+                                    <outlet property="titleTopPaddingHeightConstraint" destination="KZa-pE-NsQ" id="SQO-GP-LK7"/>
+                                    <outlet property="topBoxVerticalConstraint" destination="toF-Rn-r2N" id="5TM-au-Ceh"/>
                                     <outlet property="topBoxView" destination="RLS-DW-35R" id="Nh3-he-hnP"/>
                                     <outlet property="topPaddingView" destination="duK-PG-CMr" id="dGI-nc-CCf"/>
                                 </connections>
