@@ -10,8 +10,6 @@
 #import "OBAppDelegate.h"
 
 @implementation TopBoxViewController
-@synthesize mainTextView;
-@synthesize mainScrollView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

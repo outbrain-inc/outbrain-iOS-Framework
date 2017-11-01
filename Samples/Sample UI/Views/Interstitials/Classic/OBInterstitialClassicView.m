@@ -255,10 +255,13 @@
 
 @end
 
+@interface OBInterstitialClassicVC()
+@property (nonatomic, weak) OBInterstitialClassicView * classicView;
+@end
+
 
 // Wrapper to put the interstitial inside a viewControlelr
 @implementation OBInterstitialClassicVC
-@synthesize classicView = _classicView;
 
 - (OBInterstitialClassicView *)classicView
 {

@@ -56,8 +56,6 @@
 
 @implementation OBIPadInterstitialClassicView
 
-@synthesize recommendationResponse;
-
 NSInteger const kActivityIndicatorTag = 222;
 
 
@@ -263,11 +261,10 @@ static float maxCellHeight = 0;
 
 // Wrapper to put the interstitial inside a viewControlelr
 @implementation OBIPadInterstitialClassicVC
-@synthesize classicView = _classicView;
 
 - (OBIPadInterstitialClassicView *)classicView
 {
-    if(!_classicView)
+    if (!_classicView)
     {
         OBIPadInterstitialClassicView * v = [[OBIPadInterstitialClassicView alloc] initWithFrame:self.view.bounds];
         _classicView = v;
@@ -279,7 +276,6 @@ static float maxCellHeight = 0;
 @end
 
 @implementation OBIPadInterstitialHeader
-@synthesize ameliaHeaderHeight;
 
 - (id)initWithFrame:(CGRect)frame
 {

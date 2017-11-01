@@ -11,13 +11,9 @@
 #import "OBRecommendationResponse.h"
 
 
-
 #pragma mark Wrapper for Request and Response
 
-@interface OBRequestResponseWrapper : NSObject {
-    __weak OBRequest *request;
-    __weak OBRecommendationResponse *response;
-}
+@interface OBRequestResponseWrapper : NSObject
 
 @property (nonatomic, weak) OBRequest *request;
 @property (nonatomic, weak) OBRecommendationResponse *response;
@@ -26,15 +22,15 @@
 
 @end
 
+
+
 @implementation OBRequestResponseWrapper
-@synthesize request;
-@synthesize response;
 
 - (id)initWithRequest:(OBRequest *)aRequest response:(OBRecommendationResponse *)aResponse {
     self = [super init];
     if (self) {
-        request = aRequest;
-        response = aResponse;
+        self.request = aRequest;
+        self.response = aResponse;
     }
     return self;
 }

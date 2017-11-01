@@ -22,9 +22,6 @@
 @end
 
 @implementation OBIPadInStreamCell
-@synthesize imageView;
-@synthesize categoryLabel;
-@synthesize titleLabel;
 
 - (id)initWithFrame:(CGRect)frame
 {

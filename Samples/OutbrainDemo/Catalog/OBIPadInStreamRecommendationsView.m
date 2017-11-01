@@ -11,15 +11,12 @@
 
 @interface OBIPadInStreamRecommendationsView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView * internalCollectionView;
-
 @end
+
 @interface SeparatorFlowLayout : UICollectionViewFlowLayout
 @end
 
 @implementation OBIPadInStreamRecommendationsView
-@synthesize dataSource;
-@synthesize delegate;
-@synthesize internalCollectionView;
 
 - (id)initWithCoder:(NSCoder *)aDecoder { self = [super initWithCoder:aDecoder]; if (self) { [self commonInit]; } return self;}
 - (id)initWithFrame:(CGRect)frame { self = [super initWithFrame:frame]; if (self) { [self commonInit]; } return self;}

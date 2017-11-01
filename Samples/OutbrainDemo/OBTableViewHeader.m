@@ -24,8 +24,6 @@
 
 
 @implementation OBTableViewHeader
-@synthesize ameliaHeaderHeight;
-@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {

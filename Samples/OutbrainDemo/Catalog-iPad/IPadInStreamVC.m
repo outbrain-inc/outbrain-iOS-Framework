@@ -19,8 +19,6 @@
 @end
 
 @implementation IPadInStreamVC
-@synthesize recommendationResponse;
-@synthesize recommendationsView;
 
 - (void)assignSampleDataModel {
     sampleDataModel = [[NSMutableArray alloc] init];

@@ -636,7 +636,6 @@
 #define LEFT_RIGHT_CELL_MARGIN 10
 
 @implementation OBShelfHeader
-@synthesize ameliaHeaderHeight;
 
 - (id)initWithFrame:(CGRect)frame
 {

@@ -8,14 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OBResponseRequest : NSObject {
-    NSDictionary    *payload;
-    NSString        *token;
-}
+@interface OBResponseRequest : NSObject
+
+@property (nonatomic, strong)   NSDictionary    *payload;
+@property (nonatomic, copy)     NSString        *token;
 
 - (instancetype)initWithPayload:(NSDictionary *)aPayload;
-
-@property (nonatomic, copy) NSString        *token;
 
 - (NSString *)getStringValueForPayloadKey:(NSString *)payloadKey;
 

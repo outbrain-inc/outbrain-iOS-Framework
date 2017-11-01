@@ -529,10 +529,13 @@
 @end
 
 
+@interface OBInterstitialHeroGridVC()
+@property (nonatomic, weak) OBInterstitialHeroGridView * interstitialView;
+@end
+
 
 // Wrapper to put the interstitial inside a viewControlelr
 @implementation OBInterstitialHeroGridVC
-@synthesize interstitialView = _interstitialView;
 
 - (OBInterstitialHeroGridView *)interstitialView
 {
