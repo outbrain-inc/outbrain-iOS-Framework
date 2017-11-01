@@ -12,9 +12,8 @@
 - (void)brandingDidClick;
 @end
 
-@interface OBTableViewHeader : UIView {
-    __weak id<OBTableViewHeaderDelegate> delegate;
-}
+@interface OBTableViewHeader : UIView 
+    
 @property (nonatomic, weak) id<OBTableViewHeaderDelegate> delegate;
 @property (nonatomic, assign) float ameliaHeaderHeight;
 @end

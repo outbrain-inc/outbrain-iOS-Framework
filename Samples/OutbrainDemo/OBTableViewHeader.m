@@ -41,7 +41,7 @@
         [self addSubview:self.headerLabel];
         
         self.brandingImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.brandingImageButton addTarget:delegate action:@selector(brandingDidClick) forControlEvents:UIControlEventTouchUpInside];
+        [self.brandingImageButton addTarget:self.delegate action:@selector(brandingDidClick) forControlEvents:UIControlEventTouchUpInside];
         [self.brandingImageButton setImage:[UIImage imageNamed:@"logo"] forState:UIControlStateNormal];
         CGRect r = CGRectMake(0, 0, 71, 18);
         r.origin.y = self.ameliaHeaderHeight;
