@@ -36,8 +36,8 @@
 {
     [super awakeFromNib];
     _outbrainViewHeight = 300.f;
-    self.textView.scrollsToTop = YES;
-    self.textView.textContainerInset = UIEdgeInsetsMake(20.0, 10, 0, 0);
+    self.mainScrollView.scrollsToTop = YES;
+    self.postContentTextView.textContainerInset = UIEdgeInsetsMake(0, 5.0, 0, 5.0);
 
 }
 
@@ -46,11 +46,11 @@
 
 - (void)delayedContentLoad
 {
-    self.textView.scrollsToTop = YES;
+    self.mainScrollView.scrollsToTop = YES;
     // If we've loaded outbrain data already, or we're currently loading then there's nothing else to do.
     if(_outbrainLoaded || _loadingOutbrain) return;
     
-    self.textView.delegate = nil;
+    self.mainScrollView.delegate = nil;
     OBRequest * request = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID3];
     [Outbrain fetchRecommendationsForRequest:request withDelegate:self];
 }
@@ -63,7 +63,7 @@
     _adhesionLocked = YES;
     // Here we are partial.  Animate to full
     [UIView animateWithDuration:.25f animations:^{
-        self.outbrainHoverView.frame = CGRectOffset(_outbrainHoverView.bounds, 0, CGRectGetMaxY(self.textView.bounds) - _outbrainHoverView.peekAmount);
+        self.outbrainHoverView.frame = CGRectOffset(_outbrainHoverView.bounds, 0, CGRectGetMaxY(self.mainScrollView.bounds) - _outbrainHoverView.peekAmount);
     }];
 }
 
@@ -71,66 +71,23 @@
 
 - (void)setPost:(Post *)post
 {
-    if([post isEqual:_post]) return;    // Same post given.  No need to update
+    if ([post isEqual:_post]) {
+        return;    // Same post given.  No need to update
+    }
     
     _outbrainLoaded = NO;
     _post = post;
     
+    
     // Setup the view here
-    self.textView.attributedText = [OBDemoDataHelper _buildArticleAttributedStringWithPost:post];
-    
-    [[self.textView viewWithTag:200] removeFromSuperview];
-    
-    
-    if ([self.textView respondsToSelector:@selector(layoutManager)])
-    {
-        [self.textView.layoutManager setAllowsNonContiguousLayout:NO];
-    }
-    
-    if (NO && post.imageURL)
-    {
-        UIView * imageContainerView = [[UIView alloc] initWithFrame:CGRectZero];
-        imageContainerView.backgroundColor = self.backgroundColor;
-        imageContainerView.tag = 200;
-        [self.textView addSubview:imageContainerView];
-        imageContainerView.clipsToBounds = YES;
-        
-        NSInteger imageRangeStart = NSMaxRange([self.textView.attributedText.string rangeOfString:[OBDemoDataHelper _dateStringFromDate:post.date]]);
-        NSInteger imageRangeEnd = NSMaxRange([self.textView.attributedText.string rangeOfString:IMAGE_SPACING]);
-        
-        __block CGRect rect = self.textView.bounds;
-        NSAttributedString * firstAttString = [self.textView.attributedText attributedSubstringFromRange:NSMakeRange(0, imageRangeStart+1)];
-        NSAttributedString * secondAttString = [self.textView.attributedText attributedSubstringFromRange:NSMakeRange(0, imageRangeEnd)];
-        
-        typeof(imageContainerView) __weak __imageContainerView = imageContainerView;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            rect.origin.y = [firstAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
-            rect.size.height = [secondAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height - rect.origin.y;
-            rect.size.height -= 20.f; // Add padding at the bottom of the image
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if(!__imageContainerView.superview) return;
-                __imageContainerView.frame = rect;
-            });
-            
-            
-            [OBDemoDataHelper fetchImageWithURL:[NSURL URLWithString:post.imageURL] withCallback:^(UIImage *image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    // We changed pages before the image got fetched
-                    if(!__imageContainerView.superview) return;
-                    UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectInset(__imageContainerView.bounds, 5, 0)];
-                    iv.contentMode = UIViewContentModeScaleAspectFill;
-                    iv.backgroundColor = [UIColor greenColor];
-                    [__imageContainerView addSubview:iv];
-                    iv.alpha = 0.f;
-                    iv.image = image;
-                    [UIView animateWithDuration:.1f animations:^{
-                        iv.alpha = 1;
-                    }];
-                });
-            }];
-        });
+    self.postTitleLabel.text = post.title;
+    self.postDateLabel.text = [OBDemoDataHelper _dateStringFromDate:post.date];
+    NSAttributedString *bodyString = [OBDemoDataHelper _buildArticleAttributedStringWithPost:post];
+    self.postContentTextView.attributedText = bodyString;
+    if (post.imageURL) {
+        [OBDemoDataHelper fetchImageWithURL:[NSURL URLWithString:post.imageURL] withCallback:^(UIImage *image) {
+            self.postImageView.image = image;
+        }];
     }
 }
 
@@ -157,39 +114,16 @@
     _loadingOutbrain = NO;
     _adhesionDisabled = NO;
     _adhesionLocked = NO;
+    
     // If there are no recommendations (shouldn't happen often).  Then we
     // just don't show anything
-    if(response.recommendations.count == 0)
+    if (response.recommendations.count == 0)
     {
-        if([OBDemoDataHelper showsDebugIndicators])
-        {
-            
-            UITextView * label = [[UITextView alloc] initWithFrame:CGRectInset([[UIScreen mainScreen] bounds], 10.f, 10.f)];
-            label.font = [UIFont boldSystemFontOfSize:16.f];
-            
-            id resObj = [response valueForKey:@"originalOBPayload"];
-            NSString * originalRequest = @"";
-            if([resObj isKindOfClass:[NSDictionary class]])
-            {
-                NSData * d = [NSJSONSerialization dataWithJSONObject:resObj options:0 error:nil];
-                if(d)
-                { originalRequest = [[NSString alloc]  initWithData:d encoding:NSUTF8StringEncoding]; }
-            }
-            label.editable = NO;
-            label.text = [NSString stringWithFormat:@"Recommendation Response for\n'%@'\nreturnned 0 recommendations\n\n%@", self.post.title, originalRequest];
-            
-            label.backgroundColor = [UIColor redColor];
-            label.textColor = [UIColor blackColor];
-            
-            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDebugView:)];
-            [label addGestureRecognizer:tap];
-            
-            [self.window addSubview:label];
-        }
+        [self handleOutbrainErrorOnZeroRecs: response];
         return;
     }
 
-    UIScrollView * sv = self.textView;
+    UIScrollView * sv = self.mainScrollView;
     sv.delegate = self;
 
     if (response.request.widgetIndex == 0) {
@@ -330,7 +264,7 @@
     if(_adhesionLocked) return;
     
     CGFloat adhesionYOff = CGRectGetMinY(self.outbrainHoverView.frame);
-    CGFloat scrollYOff = CGRectGetMaxY(self.textView.bounds);
+    CGFloat scrollYOff = CGRectGetMaxY(self.mainScrollView.bounds);
     
     if(adhesionYOff > (scrollYOff - self.outbrainHoverView.peekAmount) && adhesionYOff < scrollYOff)
     {
@@ -395,9 +329,9 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    self.textView.delegate = nil;
-    self.textView.scrollsToTop = NO;
-    self.textView.contentOffset = CGPointZero;
+    self.mainScrollView.delegate = nil;
+    self.mainScrollView.scrollsToTop = NO;
+    self.mainScrollView.contentOffset = CGPointZero;
     
     _previousScrollYOffset = 0;
     
@@ -412,8 +346,33 @@
     
     [self.outbrainHoverView removeFromSuperview];
     [self.outbrainClassicView removeFromSuperview];
-//    self.outbrainHoverView = nil;
-//    self.outbrainClassicView = nil;
+}
+
+-(void) handleOutbrainErrorOnZeroRecs:(OBRecommendationResponse *)response {
+    if ([OBDemoDataHelper showsDebugIndicators])
+    {
+        UITextView * label = [[UITextView alloc] initWithFrame:CGRectInset([[UIScreen mainScreen] bounds], 10.f, 10.f)];
+        label.font = [UIFont boldSystemFontOfSize:16.f];
+        
+        id resObj = [response valueForKey:@"originalOBPayload"];
+        NSString * originalRequest = @"";
+        if([resObj isKindOfClass:[NSDictionary class]])
+        {
+            NSData * d = [NSJSONSerialization dataWithJSONObject:resObj options:0 error:nil];
+            if(d)
+            { originalRequest = [[NSString alloc]  initWithData:d encoding:NSUTF8StringEncoding]; }
+        }
+        label.editable = NO;
+        label.text = [NSString stringWithFormat:@"Recommendation Response for\n'%@'\nreturnned 0 recommendations\n\n%@", self.post.title, originalRequest];
+        
+        label.backgroundColor = [UIColor redColor];
+        label.textColor = [UIColor blackColor];
+        
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDebugView:)];
+        [label addGestureRecognizer:tap];
+        
+        [self.window addSubview:label];
+    }
 }
 
 @end

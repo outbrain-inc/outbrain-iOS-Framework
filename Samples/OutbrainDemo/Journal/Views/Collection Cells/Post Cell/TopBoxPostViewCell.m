@@ -2,7 +2,7 @@
 //  TopBoxPostViewCell.m
 //  OutbrainDemo
 //
-//  Created by Daniel Gorlovetsky on 3/1/15.
+//  Created by Oded Regev on 3/1/15.
 //  Copyright (c) 2015 Mercury Intermedia. All rights reserved.
 //
 

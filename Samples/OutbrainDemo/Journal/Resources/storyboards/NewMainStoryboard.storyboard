@@ -118,34 +118,69 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hfR-Jn-ejV">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rO-io-oMj">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <attributedString key="attributedText">
-                                                <fragment>
-                                                    <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <attributes>
-                                                        <font key="NSFont" size="16" name="HelveticaNeue"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" headIndent="5" tailIndent="305"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="sAZ-Df-qb7" id="5hJ-Io-p7u"/>
-                                            </connections>
-                                        </textView>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aP5-Ks-Y87">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UrU-fS-JJW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="6"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="6" id="dJi-7a-SOE"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Use Social Media Like The Best SMB Marketers" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgu-Jf-Tdm" customClass="PaddingLabel">
+                                                            <rect key="frame" x="0.0" y="26" width="375" height="52.666666666666671"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday, January 26, 2016, 09:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFz-lZ-Zyo" customClass="PaddingLabel">
+                                                            <rect key="frame" x="0.0" y="98.666666666666686" width="375" height="16.333333333333329"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="14"/>
+                                                            <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post-image-sample" translatesAutoresizingMaskIntoConstraints="NO" id="E0W-if-fA9">
+                                                            <rect key="frame" x="0.0" y="135" width="375" height="220"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="220" id="HSC-EC-h7e"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SlP-Xj-dAA">
+                                                            <rect key="frame" x="0.0" y="375" width="375" height="226"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aP5-Ks-Y87" firstAttribute="width" secondItem="8rO-io-oMj" secondAttribute="width" id="8eI-V6-IGE"/>
+                                                <constraint firstItem="aP5-Ks-Y87" firstAttribute="leading" secondItem="8rO-io-oMj" secondAttribute="leading" id="IwG-M1-KEd"/>
+                                                <constraint firstAttribute="trailing" secondItem="aP5-Ks-Y87" secondAttribute="trailing" id="Qwn-wJ-g5p"/>
+                                                <constraint firstItem="aP5-Ks-Y87" firstAttribute="top" secondItem="8rO-io-oMj" secondAttribute="top" id="cdd-1d-bLf"/>
+                                                <constraint firstAttribute="bottom" secondItem="aP5-Ks-Y87" secondAttribute="bottom" id="ovb-PN-BMc"/>
+                                            </constraints>
+                                        </scrollView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="hfR-Jn-ejV" firstAttribute="leading" secondItem="sAZ-Df-qb7" secondAttribute="leading" id="3jn-ZN-Ifb"/>
-                                    <constraint firstAttribute="bottom" secondItem="hfR-Jn-ejV" secondAttribute="bottom" id="frG-TR-6mI"/>
-                                    <constraint firstAttribute="trailing" secondItem="hfR-Jn-ejV" secondAttribute="trailing" id="gpC-zc-LgW"/>
-                                    <constraint firstItem="hfR-Jn-ejV" firstAttribute="top" secondItem="sAZ-Df-qb7" secondAttribute="top" id="mqh-MM-rpT"/>
+                                    <constraint firstItem="8rO-io-oMj" firstAttribute="leading" secondItem="sAZ-Df-qb7" secondAttribute="leading" id="mwm-Vs-7FH"/>
+                                    <constraint firstAttribute="trailing" secondItem="8rO-io-oMj" secondAttribute="trailing" id="nI1-oi-cy9"/>
+                                    <constraint firstAttribute="bottom" secondItem="8rO-io-oMj" secondAttribute="bottom" id="zLs-T4-3va"/>
+                                    <constraint firstItem="8rO-io-oMj" firstAttribute="top" secondItem="sAZ-Df-qb7" secondAttribute="top" id="zeg-cg-Fbs"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="textView" destination="hfR-Jn-ejV" id="MDa-tj-Br2"/>
+                                    <outlet property="mainScrollView" destination="8rO-io-oMj" id="smv-C6-0D3"/>
+                                    <outlet property="postContentTextView" destination="SlP-Xj-dAA" id="Qeo-cW-wH3"/>
+                                    <outlet property="postDateLabel" destination="hFz-lZ-Zyo" id="sa7-iV-xJx"/>
+                                    <outlet property="postImageView" destination="E0W-if-fA9" id="fsv-zO-PXZ"/>
+                                    <outlet property="postTitleLabel" destination="Rgu-Jf-Tdm" id="RFB-MS-Kcs"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TopBoxPostCellID" id="aGi-ua-WkF" customClass="TopBoxPostViewCell">
@@ -165,8 +200,8 @@
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kz-no-fzH">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jxz-Sb-kxv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="561"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jxz-Sb-kxv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duK-PG-CMr">
                                                             <rect key="frame" x="10" y="0.0" width="365" height="6"/>
@@ -176,27 +211,27 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Use Social Media Like The Best SMB Marketers" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8E-WW-u3d" customClass="PaddingLabel">
-                                                            <rect key="frame" x="10" y="16" width="365" height="52.666666666666671"/>
+                                                            <rect key="frame" x="10" y="26" width="365" height="52.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday, January 26, 2016, 09:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvj-9L-ajC" customClass="PaddingLabel">
-                                                            <rect key="frame" x="10" y="78.666666666666686" width="365" height="16.333333333333329"/>
+                                                            <rect key="frame" x="10" y="98.666666666666686" width="365" height="16.333333333333329"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post-image-sample" translatesAutoresizingMaskIntoConstraints="NO" id="Yeb-g3-KJV">
-                                                            <rect key="frame" x="10" y="105" width="355" height="220"/>
+                                                            <rect key="frame" x="10" y="135" width="355" height="220"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="220" id="CcW-wv-6ST"/>
                                                             </constraints>
                                                         </imageView>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kM8-Ao-EJD">
-                                                            <rect key="frame" x="10" y="335" width="365" height="226"/>
+                                                            <rect key="frame" x="10" y="375" width="365" height="226"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>

@@ -118,7 +118,7 @@
         if ([cell isKindOfClass:[PostViewCell class]]) {
         
             // Unset this so that we can allow scrollsToTop
-            [(PostViewCell *)cell textView].scrollsToTop = NO;
+            [(PostViewCell *)cell mainScrollView].scrollsToTop = NO;
         }
         else if ([cell isKindOfClass:[TopBoxPostViewCell class]]) {
             [(TopBoxPostViewCell *)cell mainScrollView].scrollsToTop = NO;
