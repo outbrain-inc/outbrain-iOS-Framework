@@ -32,8 +32,7 @@ const CGFloat kTopBoxHeight = 100.0;
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.textView.scrollsToTop = YES;
-    self.textView.textContainerInset = UIEdgeInsetsMake(20.0, 10, 0, 0);
+    self.mainScrollView.scrollsToTop = YES;
 }
 
 #pragma mark - ScrollView Delegate
@@ -112,11 +111,11 @@ const CGFloat kTopBoxHeight = 100.0;
 
 - (void)delayedContentLoad
 {
-    self.textView.scrollsToTop = YES;
+    self.mainScrollView.scrollsToTop = YES;
     // If we've loaded outbrain data already, or we're currently loading then there's nothing else to do.
     if(_outbrainLoaded || _loadingOutbrain) return;
     
-    self.textView.delegate = nil;
+    self.mainScrollView.delegate = nil;
     OBRequest * request = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID1];
     [Outbrain fetchRecommendationsForRequest:request withDelegate:self];
 }
@@ -136,54 +135,14 @@ const CGFloat kTopBoxHeight = 100.0;
     _post = post;
     
     // Setup the view here
-    self.textView.attributedText = [OBDemoDataHelper _buildArticleAttributedStringWithPost:post];
-    self.topBoxView.frame = CGRectOffset(self.topBoxView.bounds, 0, -self.topBoxView.frame.size.height);    
-    
-    [[self.textView viewWithTag:200] removeFromSuperview];
-    
-    
-    if (post.imageURL)
-    {
-        UIView * imageContainerView = [[UIView alloc] initWithFrame:CGRectZero];
-        imageContainerView.backgroundColor = self.backgroundColor;
-        imageContainerView.tag = 200;
-        [self.textView addSubview:imageContainerView];
-        imageContainerView.clipsToBounds = YES;
-        
-        NSInteger imageRangeStart = NSMaxRange([self.textView.attributedText.string rangeOfString:[OBDemoDataHelper _dateStringFromDate:post.date]]);
-        NSInteger imageRangeEnd = NSMaxRange([self.textView.attributedText.string rangeOfString:IMAGE_SPACING]);
-        
-        __block CGRect rect = self.textView.bounds;
-        NSAttributedString * firstAttString = [self.textView.attributedText attributedSubstringFromRange:NSMakeRange(0, imageRangeStart+1)];
-        NSAttributedString * secondAttString = [self.textView.attributedText attributedSubstringFromRange:NSMakeRange(0, imageRangeEnd)];
-        
-        typeof(imageContainerView) __weak __imageContainerView = imageContainerView;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            rect.origin.y = [firstAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
-            rect.origin.y += 10.f;
-            //rect.origin.x = 10.f;
-            rect.size.height = [secondAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height - rect.origin.y;
-            rect.size.height -= 20.f; // Add padding
-            //rect.size.width -= 20.f; // Add padding
-            
-    
-            [OBDemoDataHelper fetchImageWithURL:[NSURL URLWithString:post.imageURL] withCallback:^(UIImage *image) {
-                // We changed pages before the image got fetched
-                if (__imageContainerView.superview == nil) {
-                    return;
-                }
-                __imageContainerView.frame = rect;
-                UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectInset(__imageContainerView.bounds, 5, 5)];
-                iv.contentMode = UIViewContentModeScaleAspectFill;
-                iv.backgroundColor = [UIColor greenColor];
-                [__imageContainerView addSubview:iv];
-                iv.alpha = 0.f;
-                iv.image = image;
-                [UIView animateWithDuration:.1f animations:^{
-                    iv.alpha = 1;
-                }];
-            }];
-        });
+    self.postTitleLabel.text = post.title;
+    self.postDateLabel.text = [OBDemoDataHelper _dateStringFromDate:post.date];
+    NSAttributedString *bodyString = [OBDemoDataHelper _buildArticleAttributedStringWithPost:post];
+    self.postContentTextView.attributedText = bodyString;
+    if (post.imageURL) {
+        [OBDemoDataHelper fetchImageWithURL:[NSURL URLWithString:post.imageURL] withCallback:^(UIImage *image) {
+            self.postImageView.image = image;
+        }];
     }
 }
 
@@ -217,7 +176,7 @@ const CGFloat kTopBoxHeight = 100.0;
     }
     
     self.topBoxView.recommendationResponse = response;    
-    self.textView.delegate = (id<UITextViewDelegate>)self; // listen to the scroll events (UITextView is a ScrollView)
+    self.mainScrollView.delegate = (id<UITextViewDelegate>)self; // listen to the scroll events
 }
 
 - (void)outbrainResponseDidFail:(NSError *)response
@@ -228,6 +187,7 @@ const CGFloat kTopBoxHeight = 100.0;
 - (void)dockTopBox {
     [UIView animateWithDuration:0.5 animations:^{
         self.topBoxView.hidden = NO;
+        self.topPaddingView.hidden = YES;
     }];
 }
 
@@ -236,8 +196,8 @@ const CGFloat kTopBoxHeight = 100.0;
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    self.textView.delegate = nil;
-    self.textView.scrollsToTop = NO;
+    self.mainScrollView.delegate = nil;
+    self.mainScrollView.scrollsToTop = NO;
     self.topBoxView.hidden = YES;
     
     _loadingOutbrain = NO;

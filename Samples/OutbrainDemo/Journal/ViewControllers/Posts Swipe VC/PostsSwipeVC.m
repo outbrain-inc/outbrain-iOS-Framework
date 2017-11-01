@@ -121,7 +121,7 @@
             [(PostViewCell *)cell textView].scrollsToTop = NO;
         }
         else if ([cell isKindOfClass:[TopBoxPostViewCell class]]) {
-            [(TopBoxPostViewCell *)cell textView].scrollsToTop = NO;
+            [(TopBoxPostViewCell *)cell mainScrollView].scrollsToTop = NO;
         }
     }
     

@@ -13,7 +13,14 @@
 
 @interface TopBoxPostViewCell : UICollectionViewCell  <UIScrollViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property (weak, nonatomic) IBOutlet UIView *topPaddingView;
+@property (weak, nonatomic) IBOutlet UILabel *postTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *postDateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
+@property (weak, nonatomic) IBOutlet UITextView *postContentTextView;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet OBTopBoxView *topBoxView;
 
 

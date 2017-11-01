@@ -87,7 +87,7 @@
         [self.textView.layoutManager setAllowsNonContiguousLayout:NO];
     }
     
-    if (post.imageURL)
+    if (NO && post.imageURL)
     {
         UIView * imageContainerView = [[UIView alloc] initWithFrame:CGRectZero];
         imageContainerView.backgroundColor = self.backgroundColor;
