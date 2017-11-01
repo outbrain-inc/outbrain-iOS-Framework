@@ -39,6 +39,8 @@ const CGFloat kTopBoxHeight = 100.0;
 {
     [super awakeFromNib];
     self.mainScrollView.scrollsToTop = YES;
+    self.postContentTextView.textContainerInset = UIEdgeInsetsMake(0, 5.0, 0, 5.0);
+
 }
 
 #pragma mark - ScrollView Delegate

@@ -204,6 +204,7 @@
 
 - (void)refreshPostsList
 {
+    NSLog(@"refreshPostsList...");
     NSDate * refreshStart = [NSDate date];
     [[self refreshControl] beginRefreshing];
     
@@ -212,6 +213,7 @@
     [[OBDemoDataHelper defaultHelper] updatePostsInViewController:self withCallback:^(BOOL updated) {
         if (updated)
         {
+            NSLog(@"refreshPostsList --> has new posts");
             [__self.loadedOutbrainRecommendationResponses removeAllObjects];
             __self.postsData = [[NSMutableArray alloc] initWithArray:[OBDemoDataHelper defaultHelper].posts];
             dispatch_after(0, dispatch_get_main_queue(), ^(void){

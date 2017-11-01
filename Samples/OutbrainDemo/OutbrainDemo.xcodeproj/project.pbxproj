@@ -38,6 +38,7 @@
 		D8D85B8918D9DD41009081B6 /* tiny-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8318D9DD41009081B6 /* tiny-logo.png */; };
 		D8D85B8B18D9DD41009081B6 /* tiny-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8D85B8418D9DD41009081B6 /* tiny-logo@2x.png */; };
 		D8F5818F18B4103A00AEBC15 /* OBInterstitialHeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F5818D18B40F6200AEBC15 /* OBInterstitialHeroView.m */; };
+		E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366601FAA10A500FA617E /* PaddingLabel.m */; };
 		E66AC33A1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
 		E6A5E4071F9C869B00D894C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */; };
 		E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
@@ -128,6 +129,8 @@
 		D8D85B8418D9DD41009081B6 /* tiny-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiny-logo@2x.png"; sourceTree = "<group>"; };
 		D8F5818C18B40F6200AEBC15 /* OBInterstitialHeroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBInterstitialHeroView.h; path = "../Sample UI/Views/Interstitials/Hero/OBInterstitialHeroView.h"; sourceTree = "<group>"; };
 		D8F5818D18B40F6200AEBC15 /* OBInterstitialHeroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBInterstitialHeroView.m; path = "../Sample UI/Views/Interstitials/Hero/OBInterstitialHeroView.m"; sourceTree = "<group>"; };
+		E643665F1FAA10A500FA617E /* PaddingLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
+		E64366601FAA10A500FA617E /* PaddingLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaddingLabel.m; sourceTree = "<group>"; };
 		E66AC3281C99AA4300A23876 /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = ../../src/OutbrainSDK.xcodeproj; sourceTree = "<group>"; };
 		E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
 		E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -288,6 +291,8 @@
 				D83456611885A543002B2368 /* Paralax TitleView */,
 				D83456641885A543002B2368 /* Refresh Control */,
 				D83456671885A543002B2368 /* TinyPageControl */,
+				E643665F1FAA10A500FA617E /* PaddingLabel.h */,
+				E64366601FAA10A500FA617E /* PaddingLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -604,6 +609,7 @@
 				D8D1FD9D187332540099831C /* OBRecommendationSlideCell.m in Sources */,
 				D87BC2E218888016006D1173 /* OBClassicRecommendationsView.m in Sources */,
 				D83456751885A543002B2368 /* OBParalaxTitleView.m in Sources */,
+				E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */,
 				D834566A1885A543002B2368 /* Post.m in Sources */,
 				D86CEFCF18A15436002B2017 /* JLoadingView.m in Sources */,
 				D834566E1885A543002B2368 /* main.m in Sources */,

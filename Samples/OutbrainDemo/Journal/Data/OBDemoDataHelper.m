@@ -140,7 +140,10 @@ const struct OBDCodingKeys OBDCodingKeys = {
                                                                                 // No data retrieved.  (Usually means the connection timed out).
                                                                                 dispatch_async(dispatch_get_main_queue(), ^{
                                                                                     // Check if we have data saved
-                                                                                    if ([[self posts] count] == 0)
+                                                                                    if (error) {
+                                                                                        [self showErrorWith:@"Network Error" message: error.localizedDescription in:vc];
+                                                                                    }
+                                                                                    else if ([[self posts] count] == 0)
                                                                                     {
                                                                                         // Only show this as an error if we don't have data saved already
                                                                                         [self showErrorWith:@"Network Error" message:@"Couldn't contact the server.  Please check your connection and try again" in:vc];
