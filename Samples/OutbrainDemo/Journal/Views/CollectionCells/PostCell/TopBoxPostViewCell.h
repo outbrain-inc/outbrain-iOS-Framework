@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Post.h"
 #import <OutbrainSDK/OutbrainSDK.h>
-#import "OBTopBoxView.h"
 #import "OBHorizontalWidget.h"
 
 @interface TopBoxPostViewCell : UICollectionViewCell  <UIScrollViewDelegate>

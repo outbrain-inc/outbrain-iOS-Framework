@@ -25,4 +25,14 @@
  **/
 @property (nonatomic, strong) OBRecommendationResponse *recommendationResponse;
 
+/**
+ *  Discussion:
+ *      Set this to allow Viewability feature to work with OBHorizontalWidget
+ *      @param widgetId - The Widget Id to be associated with this OBLabel
+ *      @param url - The URL that the user is currently viewing
+ *
+ **/
+- (void) setUrl:(NSString *)url andWidgetId:(NSString *)widgetId;
+
+
 @end

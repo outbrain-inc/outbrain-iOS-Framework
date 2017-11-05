@@ -20,6 +20,7 @@
                 <outlet property="collectionView" destination="Dar-0B-HUg" id="9t3-ds-ghz"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="XE9-4B-efJ"/>
                 <outlet property="outbrainBrandingView" destination="27g-yv-qIe" id="5qa-4K-awl"/>
+                <outlet property="recommendedByLabel" destination="wm8-Md-YZk" id="tIz-cK-Vfa"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -44,7 +45,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27g-yv-qIe">
                     <rect key="frame" x="315" y="73.5" width="130" height="21.5"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wm8-Md-YZk">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wm8-Md-YZk" customClass="OBLabel">
                             <rect key="frame" x="0.0" y="4.5" width="92" height="12"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="10"/>
                             <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.90483197773972601" colorSpace="calibratedRGB"/>

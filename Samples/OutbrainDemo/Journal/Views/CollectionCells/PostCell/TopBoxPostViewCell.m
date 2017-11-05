@@ -40,7 +40,6 @@ const CGFloat kTopBoxHeight = 100.0;
     [super awakeFromNib];
     self.mainScrollView.scrollsToTop = YES;
     self.postContentTextView.textContainerInset = UIEdgeInsetsMake(0, 5.0, 0, 5.0);
-
 }
 
 #pragma mark - ScrollView Delegate
@@ -124,6 +123,9 @@ const CGFloat kTopBoxHeight = 100.0;
     if(_outbrainLoaded || _loadingOutbrain) return;
     
     self.mainScrollView.delegate = nil;
+    
+    [self.obHorizontalWidget setUrl:self.post.url andWidgetId:OBDemoWidgetID1];
+    
     OBRequest * request = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID1];
     [Outbrain fetchRecommendationsForRequest:request withDelegate:self];
 }

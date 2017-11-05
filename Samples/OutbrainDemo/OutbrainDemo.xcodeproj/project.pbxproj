@@ -22,7 +22,6 @@
 		D8B59241186376B1009422D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
 		E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366601FAA10A500FA617E /* PaddingLabel.m */; };
 		E64366911FAEF32E00FA617E /* OBLabelWithPadding.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667C1FAEF32D00FA617E /* OBLabelWithPadding.m */; };
-		E64366921FAEF32E00FA617E /* OBTopBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366841FAEF32E00FA617E /* OBTopBoxView.m */; };
 		E64366AD1FAEF3EC00FA617E /* JLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366821FAEF32E00FA617E /* JLoadingView.m */; };
 		E64366AE1FAEF44400FA617E /* OBRecommendationSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E643669A1FAEF38D00FA617E /* OBRecommendationSlideCell.m */; };
 		E64366B31FAEF64C00FA617E /* PostsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366741FAEF2FB00FA617E /* PostsListVC.m */; };
@@ -112,8 +111,6 @@
 		E643667F1FAEF32E00FA617E /* OBRefreshControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBRefreshControl.m; sourceTree = "<group>"; };
 		E64366811FAEF32E00FA617E /* JLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JLoadingView.h; sourceTree = "<group>"; };
 		E64366821FAEF32E00FA617E /* JLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JLoadingView.m; sourceTree = "<group>"; };
-		E64366831FAEF32E00FA617E /* OBTopBoxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBTopBoxView.h; sourceTree = "<group>"; };
-		E64366841FAEF32E00FA617E /* OBTopBoxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBTopBoxView.m; sourceTree = "<group>"; };
 		E64366851FAEF32E00FA617E /* OBLabelWithPadding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBLabelWithPadding.h; sourceTree = "<group>"; };
 		E64366871FAEF32E00FA617E /* MainPostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPostViewCell.h; sourceTree = "<group>"; };
 		E64366881FAEF32E00FA617E /* MainPostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPostViewCell.m; sourceTree = "<group>"; };
@@ -258,8 +255,6 @@
 				E643667B1FAEF32D00FA617E /* OBLabelExtensions.h */,
 				E64366851FAEF32E00FA617E /* OBLabelWithPadding.h */,
 				E643667C1FAEF32D00FA617E /* OBLabelWithPadding.m */,
-				E64366831FAEF32E00FA617E /* OBTopBoxView.h */,
-				E64366841FAEF32E00FA617E /* OBTopBoxView.m */,
 				E643668E1FAEF32E00FA617E /* ParalaxTitleView */,
 				E643667D1FAEF32E00FA617E /* RefreshControl */,
 				D83456671885A543002B2368 /* TinyPageControl */,
@@ -602,7 +597,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E64366921FAEF32E00FA617E /* OBTopBoxView.m in Sources */,
 				D834566B1885A543002B2368 /* OBDemoDataHelper.m in Sources */,
 				E64366BB1FAEF69100FA617E /* OBAdhesionView.m in Sources */,
 				E64366BE1FAEF6A000FA617E /* OBInterstitialHeroGridView.m in Sources */,
