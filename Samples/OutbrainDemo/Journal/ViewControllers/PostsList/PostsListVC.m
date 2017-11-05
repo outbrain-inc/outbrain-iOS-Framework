@@ -1,10 +1,11 @@
 //
-//  ArticlesListVC.m
+//  PostsListVC.m
 //  OutbrainDemo
 //
-//  Created by Joseph Ridenour on 12/31/13.
-//  Copyright (c) 2013 Mercury Intermedia. All rights reserved.
+//  Created by Oded Regev on 11/1/17.
+//  Copyright (c) 2017 Outbrain inc. All rights reserved.
 //
+
 
 #import "PostsListVC.h"
 #import "OBDemoDataHelper.h"
