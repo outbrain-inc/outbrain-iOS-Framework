@@ -122,35 +122,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aP5-Ks-Y87">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="601"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="695"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UrU-fS-JJW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="6"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UrU-fS-JJW" customClass="OBHorizontalWidget">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="6" id="dJi-7a-SOE"/>
+                                                                <constraint firstAttribute="height" constant="100" id="dJi-7a-SOE"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Use Social Media Like The Best SMB Marketers" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgu-Jf-Tdm" customClass="PaddingLabel">
-                                                            <rect key="frame" x="0.0" y="26" width="375" height="52.666666666666671"/>
+                                                            <rect key="frame" x="0.0" y="119.99999999999999" width="375" height="52.666666666666643"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday, January 26, 2016, 09:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFz-lZ-Zyo" customClass="PaddingLabel">
-                                                            <rect key="frame" x="0.0" y="98.666666666666686" width="375" height="16.333333333333329"/>
+                                                            <rect key="frame" x="0.0" y="192.66666666666663" width="375" height="16.333333333333343"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post-image-sample" translatesAutoresizingMaskIntoConstraints="NO" id="E0W-if-fA9">
-                                                            <rect key="frame" x="0.0" y="135" width="375" height="220"/>
+                                                            <rect key="frame" x="0.0" y="229" width="375" height="220"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="220" id="HSC-EC-h7e"/>
                                                             </constraints>
                                                         </imageView>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SlP-Xj-dAA">
-                                                            <rect key="frame" x="0.0" y="375" width="375" height="226"/>
+                                                            <rect key="frame" x="0.0" y="469" width="375" height="226"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
@@ -176,6 +176,7 @@
                                     <constraint firstItem="8rO-io-oMj" firstAttribute="top" secondItem="sAZ-Df-qb7" secondAttribute="top" id="zeg-cg-Fbs"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="horizontalWidget" destination="UrU-fS-JJW" id="kE7-bK-gob"/>
                                     <outlet property="mainScrollView" destination="8rO-io-oMj" id="smv-C6-0D3"/>
                                     <outlet property="postContentTextView" destination="SlP-Xj-dAA" id="Qeo-cW-wH3"/>
                                     <outlet property="postDateLabel" destination="hFz-lZ-Zyo" id="sa7-iV-xJx"/>

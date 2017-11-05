@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OBHorizontalWidget">
+            <connections>
+                <outlet property="collectionView" destination="Dar-0B-HUg" id="9t3-ds-ghz"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="XE9-4B-efJ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Content View">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Dar-0B-HUg">
+                    <rect key="frame" x="0.0" y="0.0" width="450" height="100"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="70u-fj-vvG">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="JFz-vi-ctb"/>
+                        <outlet property="delegate" destination="-1" id="PFO-0K-0mh"/>
+                    </connections>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27g-yv-qIe">
+                    <rect key="frame" x="315" y="73.5" width="130" height="21.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wm8-Md-YZk">
+                            <rect key="frame" x="0.0" y="4.5" width="92" height="12"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="10"/>
+                            <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.90483197773972601" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-navbar" translatesAutoresizingMaskIntoConstraints="NO" id="4cn-tl-JmQ">
+                            <rect key="frame" x="102" y="3" width="15" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="MoH-7V-A5s"/>
+                                <constraint firstAttribute="width" constant="15" id="yZR-Np-eTU"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="wm8-Md-YZk" firstAttribute="leading" secondItem="27g-yv-qIe" secondAttribute="leading" id="CTu-Hu-t5C"/>
+                        <constraint firstItem="wm8-Md-YZk" firstAttribute="top" secondItem="27g-yv-qIe" secondAttribute="top" constant="5" id="EFU-ej-ISU"/>
+                        <constraint firstItem="4cn-tl-JmQ" firstAttribute="leading" secondItem="wm8-Md-YZk" secondAttribute="trailing" constant="10" id="J0k-z9-dZO"/>
+                        <constraint firstAttribute="trailing" secondItem="4cn-tl-JmQ" secondAttribute="trailing" constant="13" id="QPK-Wz-dOO"/>
+                        <constraint firstAttribute="bottom" secondItem="wm8-Md-YZk" secondAttribute="bottom" constant="5" id="S5J-h3-w3s"/>
+                        <constraint firstItem="4cn-tl-JmQ" firstAttribute="centerY" secondItem="27g-yv-qIe" secondAttribute="centerY" id="Urh-1E-Pyh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Dar-0B-HUg" secondAttribute="trailing" id="ZgV-84-NSb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="27g-yv-qIe" secondAttribute="trailing" constant="5" id="d0b-z1-u8Y"/>
+                <constraint firstItem="Dar-0B-HUg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gOg-Q8-Ghg"/>
+                <constraint firstAttribute="bottom" secondItem="Dar-0B-HUg" secondAttribute="bottom" id="i5j-qP-cna"/>
+                <constraint firstItem="Dar-0B-HUg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nRJ-Aq-AOr"/>
+                <constraint firstAttribute="bottom" secondItem="27g-yv-qIe" secondAttribute="bottom" constant="5" id="ndU-BF-qaJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-119" y="-404"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo-navbar" width="35" height="35"/>
+    </resources>
+</document>

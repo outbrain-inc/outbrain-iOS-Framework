@@ -38,6 +38,10 @@
 		E64366BD1FAEF69C00FA617E /* OBInterstitialHeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366A21FAEF3A500FA617E /* OBInterstitialHeroView.m */; };
 		E64366BE1FAEF6A000FA617E /* OBInterstitialHeroGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366A51FAEF3A500FA617E /* OBInterstitialHeroGridView.m */; };
 		E64366BF1FAEF6A500FA617E /* OBClassicRecommendationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366AB1FAEF3A500FA617E /* OBClassicRecommendationsView.m */; };
+		E64366C31FAF091B00FA617E /* OBHorizontalWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366C21FAF091B00FA617E /* OBHorizontalWidget.m */; };
+		E64366C91FAF0A2F00FA617E /* OBHorizontalWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64366C81FAF0A2F00FA617E /* OBHorizontalWidget.xib */; };
+		E64366CB1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64366CA1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib */; };
+		E64366CE1FAF0F1500FA617E /* OBHorizontalWidgetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366CD1FAF0F1500FA617E /* OBHorizontalWidgetCell.m */; };
 		E66AC33A1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
 		E6A5E4071F9C869B00D894C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */; };
 		E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
@@ -137,6 +141,12 @@
 		E64366AA1FAEF3A500FA617E /* OBClassicRecommendationsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBClassicRecommendationsView.h; sourceTree = "<group>"; };
 		E64366AB1FAEF3A500FA617E /* OBClassicRecommendationsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBClassicRecommendationsView.m; sourceTree = "<group>"; };
 		E64366AC1FAEF3B700FA617E /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OBWidgetViewProtocol.h; path = ../SampleUI/OBWidgetViewProtocol.h; sourceTree = "<group>"; };
+		E64366C11FAF091B00FA617E /* OBHorizontalWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBHorizontalWidget.h; sourceTree = "<group>"; };
+		E64366C21FAF091B00FA617E /* OBHorizontalWidget.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBHorizontalWidget.m; sourceTree = "<group>"; };
+		E64366C81FAF0A2F00FA617E /* OBHorizontalWidget.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OBHorizontalWidget.xib; sourceTree = "<group>"; };
+		E64366CA1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OBHorizontalWidgetCell.xib; sourceTree = "<group>"; };
+		E64366CC1FAF0F1500FA617E /* OBHorizontalWidgetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBHorizontalWidgetCell.h; sourceTree = "<group>"; };
+		E64366CD1FAF0F1500FA617E /* OBHorizontalWidgetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBHorizontalWidgetCell.m; sourceTree = "<group>"; };
 		E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
 		E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -242,6 +252,7 @@
 		D834565C1885A543002B2368 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E64366C01FAF090900FA617E /* OBHorizontalWidget */,
 				E64366861FAEF32E00FA617E /* CollectionCells */,
 				E64366801FAEF32E00FA617E /* LoadingView */,
 				E643667B1FAEF32D00FA617E /* OBLabelExtensions.h */,
@@ -479,6 +490,19 @@
 			path = OBClassicRecommendationsView;
 			sourceTree = "<group>";
 		};
+		E64366C01FAF090900FA617E /* OBHorizontalWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E64366C11FAF091B00FA617E /* OBHorizontalWidget.h */,
+				E64366C21FAF091B00FA617E /* OBHorizontalWidget.m */,
+				E64366C81FAF0A2F00FA617E /* OBHorizontalWidget.xib */,
+				E64366CA1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib */,
+				E64366CC1FAF0F1500FA617E /* OBHorizontalWidgetCell.h */,
+				E64366CD1FAF0F1500FA617E /* OBHorizontalWidgetCell.m */,
+			);
+			path = OBHorizontalWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -565,6 +589,8 @@
 				E6A5E4071F9C869B00D894C5 /* LaunchScreen.storyboard in Resources */,
 				E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */,
 				D8174B2F18A562BC005696C2 /* Settings.bundle in Resources */,
+				E64366CB1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib in Resources */,
+				E64366C91FAF0A2F00FA617E /* OBHorizontalWidget.xib in Resources */,
 				D834566F1885A543002B2368 /* OBConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +608,8 @@
 				E64366BE1FAEF6A000FA617E /* OBInterstitialHeroGridView.m in Sources */,
 				D83456771885A543002B2368 /* TinyPageControl.m in Sources */,
 				E64366BC1FAEF69900FA617E /* OBInterstitialClassicView.m in Sources */,
+				E64366CE1FAF0F1500FA617E /* OBHorizontalWidgetCell.m in Sources */,
+				E64366C31FAF091B00FA617E /* OBHorizontalWidget.m in Sources */,
 				E64366B71FAEF67600FA617E /* PostViewCell.m in Sources */,
 				E64366B61FAEF67200FA617E /* MainPostViewCell.m in Sources */,
 				E64366B41FAEF66A00FA617E /* PostsSwipeVC.m in Sources */,

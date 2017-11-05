@@ -8,6 +8,7 @@
 
 #import "PostViewCell.h"
 #import "Post.h"
+#import "OBHorizontalWidget.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 
 #import "OBDemoDataHelper.h"
@@ -27,6 +28,7 @@
     BOOL _adhesionLocked;   // If yes then the adhesion is locked at the bottom of the scroll view
     BOOL _scrolledDown;
 }
+@property (weak, nonatomic) IBOutlet OBHorizontalWidget *horizontalWidget;
 
 @end
 
@@ -128,7 +130,9 @@
 
     if (response.request.widgetIndex == 0) {
         self.outbrainClassicView.recommendationResponse = response;
-
+        self.horizontalWidget.recommendationResponse = response;
+        
+        
         // The next 3 lines calculate the new frame height for outbrainClassicView according to the server response
         CGRect newFrame = self.outbrainClassicView.frame;
         newFrame.size = CGSizeMake(newFrame.size.width, [self.outbrainClassicView getHeight]);
@@ -294,6 +298,8 @@
     }];
     
 }
+
+
 
 
 #pragma mark - Getters

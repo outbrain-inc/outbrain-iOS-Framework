@@ -54,14 +54,6 @@ typedef void(^OBWRecommendationTappedHandler)(OBRecommendation * recommendation)
 
 /**
  *  Discussion:
- *      Handler for when the widget detects that the user tapped on a recommendation.
- *
- *  @note:  You can optionally use the `widgetDelegate` instead
- **/
-@property (nonatomic, copy) OBWRecommendationTappedHandler recommendationTapHandler;
-
-/**
- *  Discussion:
  *      Delegate style handler for those who don't like using the block style handlers.
  *
  **/
@@ -85,6 +77,13 @@ typedef void(^OBWRecommendationTappedHandler)(OBRecommendation * recommendation)
 - (void)fetchImageForURL:(NSURL *)url withCallback:(void(^)(UIImage * image))callback;
 
 
+/**
+ *  Discussion:
+ *      Handler for when the widget detects that the user tapped on a recommendation.
+ *
+ *  @note:  You can optionally use the `widgetDelegate` instead
+ **/
+@property (nonatomic, copy) OBWRecommendationTappedHandler recommendationTapHandler;
 
 @end
 
