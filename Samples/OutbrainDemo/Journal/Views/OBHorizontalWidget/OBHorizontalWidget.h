@@ -11,9 +11,6 @@
 
 @interface OBHorizontalWidget : UIView <UICollectionViewDelegate, UICollectionViewDataSource, OBWidgetViewProtocol>
 
-@property (strong, nonatomic) IBOutlet UIView *contentView;
-
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 /**
  *  Discussion:

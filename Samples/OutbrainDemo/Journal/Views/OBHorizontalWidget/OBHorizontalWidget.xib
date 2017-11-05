@@ -19,6 +19,7 @@
             <connections>
                 <outlet property="collectionView" destination="Dar-0B-HUg" id="9t3-ds-ghz"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="XE9-4B-efJ"/>
+                <outlet property="outbrainBrandingView" destination="27g-yv-qIe" id="5qa-4K-awl"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

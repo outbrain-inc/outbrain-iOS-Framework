@@ -11,6 +11,15 @@
 #import "OBDemoDataHelper.h"
 #import <OutbrainSDK/OBRecommendationResponse.h>
 
+@interface OBHorizontalWidget()
+
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *outbrainBrandingView;
+
+
+@end
+
 @implementation OBHorizontalWidget
 
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -28,13 +37,17 @@
         
         self.contentView.frame = self.bounds;
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(brandingTapAction:)];
+        [self.outbrainBrandingView addGestureRecognizer:singleFingerTap];
     }
     return self;
 }
 
+
+
 #pragma - mark Set Recommendations
-
-
 - (void)setRecommendationResponse:(OBRecommendationResponse *)recommendationResponse
 {
     if ([self.recommendationResponse isEqual:recommendationResponse]) {
@@ -46,6 +59,7 @@
     [self.collectionView reloadData];
 }
 
+#pragma - IBActions
 - (void)brandingTapAction:(id)sender
 {
     if (self.widgetDelegate && [self.widgetDelegate respondsToSelector:@selector(widgetViewTappedBranding:)])
