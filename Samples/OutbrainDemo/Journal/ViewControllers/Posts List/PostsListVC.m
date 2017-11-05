@@ -9,6 +9,7 @@
 #import "PostsListVC.h"
 #import "OBDemoDataHelper.h"
 #import "Post.h"
+#import "OBAppDelegate.h"
 
 #import <OutbrainSDK/OutbrainSDK.h>
 
@@ -40,21 +41,66 @@
 {
     [super viewDidLoad];
     
+    [self setupNavbar];
+    self.tableView.estimatedRowHeight = 100.0;
     self.loadedOutbrainRecommendationResponses = [NSMutableArray array];
     UIRefreshControl * refreshControl = [self refreshControl];
     [refreshControl addTarget:self action:@selector(refreshPostsList) forControlEvents:UIControlEventValueChanged];
+    
     
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if(self.postsData.count == 0)
+    if (self.postsData.count == 0)
     {
         [self refreshPostsList];
         [self.tableView setContentOffset:CGPointMake(0, -[self refreshControl].bounds.size.height) animated:YES];
     }
 }
+
+#pragma mark - Nav bar
+- (void) setupNavbar {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    UIImage *btnImage = [UIImage imageNamed:@"outbrainSimpleLogo"];
+    
+    UIButton *aboutOutbrainButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    aboutOutbrainButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [aboutOutbrainButton setImage:btnImage forState:UIControlStateNormal];
+    [aboutOutbrainButton addTarget:self action:@selector(showOutbrainAbout) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:aboutOutbrainButton];
+    
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:aboutOutbrainButton
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:170]];
+    
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:aboutOutbrainButton
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:40]];
+    
+    // This is the magic sauce!
+    [view layoutIfNeeded];
+    [view sizeToFit];
+    
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:aboutOutbrainButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem: view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+
+    
+    // Now the frame is set (you can print it out)
+    view.translatesAutoresizingMaskIntoConstraints = YES;  // make nav bar happy
+    aboutOutbrainButton.translatesAutoresizingMaskIntoConstraints = YES;
+    self.navigationItem.titleView = view;
+}
+
 
 #pragma mark - Helpers
 
@@ -158,6 +204,7 @@
 
 - (void)refreshPostsList
 {
+    NSLog(@"refreshPostsList...");
     NSDate * refreshStart = [NSDate date];
     [[self refreshControl] beginRefreshing];
     
@@ -166,20 +213,19 @@
     [[OBDemoDataHelper defaultHelper] updatePostsInViewController:self withCallback:^(BOOL updated) {
         if (updated)
         {
+            NSLog(@"refreshPostsList --> has new posts");
             [__self.loadedOutbrainRecommendationResponses removeAllObjects];
             __self.postsData = [[NSMutableArray alloc] initWithArray:[OBDemoDataHelper defaultHelper].posts];
-            [__self.tableView reloadData];
-            if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-            {
-                __self.detailVC.currentIndex = 0;
-                __self.detailVC.posts = __self.postsData;
-                [__self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
-            }
+            dispatch_after(0, dispatch_get_main_queue(), ^(void){
+                [__self.tableView reloadData];
+                [__self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+
+            });
         }
         
         NSTimeInterval passedTimeInterval = [[NSDate date] timeIntervalSinceDate:refreshStart];
         CGFloat minWaitTime = 2.f;
-        if(passedTimeInterval >= minWaitTime)
+        if (passedTimeInterval >= minWaitTime)
             [[__self refreshControl] endRefreshing];
         else
         {
@@ -235,9 +281,10 @@
 {
     static NSString * ArticleCellID = @"ArticleCellID";
     static NSString * OBRecommendationCellID = @"OBRecommendationSlideCell";
-    
     // We will attempt to show an outbrain inline recommended cell every x number of articles.
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:[self indexPathIsOBRecommendation:indexPath]?OBRecommendationCellID:ArticleCellID];
+    NSString *identifier = [self indexPathIsOBRecommendation:indexPath] ? OBRecommendationCellID : ArticleCellID;
+    
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: identifier];
     [self _configureCell:cell forRowAtIndexPath:indexPath];
     return cell;
 }
@@ -253,13 +300,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        // Here we need to update the current item on the detail VC
-        self.detailVC.currentIndex = indexPath.row;
-    }
+    [self performSegueWithIdentifier:@"readPostSegue" sender:self];
+
 }
 
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self indexPathIsOBRecommendation:indexPath]) {
+        return 100.0;
+    }
+    else {
+        return UITableViewAutomaticDimension;
+    }
+}
 
 #pragma mark - OBWidgetView delegate
 
@@ -285,12 +337,7 @@
         }];
     }
     else {
-        if (recommendation.shouldOpenInSafariViewController) {
-            [self openUrlInSafariVC:url];
-        }
-        else {            
-            [self performSegueWithIdentifier:@"ShowRecommendedContent" sender:url];
-        }
+        [self openUrlInSafariVC: url];
     }
 }
 
@@ -317,6 +364,12 @@
     
 }
 
+#pragma mark - IBAction
+- (IBAction)showOutbrainAbout {
+    OBAppDelegate * appDelegate = (OBAppDelegate *) [[UIApplication sharedApplication] delegate];
+    [appDelegate showOutbrainAbout];
+}
+
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -331,12 +384,6 @@
         NSIndexPath * selectedIndexPath = [self.tableView indexPathForSelectedRow];
         Post * selectedPost = [self postsData][selectedIndexPath.row];
         destination.currentIndex = [destination.posts indexOfObject:selectedPost];
-    }
-    else if([segue.identifier isEqualToString:@"ShowRecommendedContent"])
-    {
-        // This is our segue for displaying a tapped recomendation
-        UINavigationController * nav = [segue destinationViewController];
-        [[nav topViewController] setValue:sender forKey:@"recommendationUrl"];
     }
 }
 

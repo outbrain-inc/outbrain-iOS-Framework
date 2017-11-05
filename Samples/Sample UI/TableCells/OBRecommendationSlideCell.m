@@ -7,6 +7,7 @@
 //
 
 #import "OBRecommendationSlideCell.h"
+#import "OBDemoDataHelper.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 
 // View container for a single outbrain slide
@@ -164,7 +165,7 @@
     slideControl.imageContainer.hidden = (recommendation.image == nil);
     
     typeof(slideControl) __weak __slideControl = slideControl;
-    [self fetchImageForURL:recommendation.image.url withCallback:^(UIImage *image) {
+    [OBDemoDataHelper fetchImageWithURL:recommendation.image.url withCallback:^(UIImage *image) {
         __slideControl.imageView.image = image;
         if ([recommendation isPaidLink]) {
             [Outbrain prepare:__slideControl.imageView withRTB:recommendation onClickBlock:^(NSURL *url) {
@@ -200,44 +201,6 @@
     slideControl.sourceLabel.frame = rect;
     [slideControl.sourceLabel sizeToFit];
 
-}
-
-- (void)fetchImageForURL:(NSURL *)url withCallback:(void (^)(UIImage *))callback
-{
-    
-    BOOL (^ReturnHandler)(UIImage *) = ^(UIImage *returnImage) {
-        if(!returnImage) return NO;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            callback(returnImage);
-        });
-        return YES;
-    };
-    
-    __block UIImage * responseImage = nil;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        NSString * key = @([url.absoluteString hash]).stringValue;
-        // Next check if the image is on disk.  If it is then we'll go ahead and add it to the cache and return from the cache
-        NSString * cachesDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/com.ob.images"];
-        NSFileManager * fm = [[NSFileManager alloc] init];
-        [fm createDirectoryAtPath:cachesDir withIntermediateDirectories:YES attributes:nil error:nil];
-        NSString * diskCachePath = [cachesDir stringByAppendingPathComponent:key];
-        
-        // We have this on disk.
-        responseImage = [UIImage imageWithContentsOfFile:diskCachePath];
-        if(!ReturnHandler(responseImage))
-        {
-            // Fetch the image
-            NSData * d = [NSData dataWithContentsOfURL:url];
-            if(d)
-            {
-                responseImage = [UIImage imageWithData:d];
-                ReturnHandler(responseImage);
-                [d writeToFile:diskCachePath atomically:YES];
-            }
-        }
-        
-    });
 }
 
 // Reset the image back to it's original position
@@ -311,7 +274,7 @@
  **/
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if(scrollView != _scrollViewInternal) return;
+    if (scrollView != _scrollViewInternal) return;
     
     NSInteger index = ceil(scrollView.contentOffset.x / scrollView.frame.size.width);
     index = MIN(index, [_slideViewsInternal count]-1);  // Index can't be greater than the number of slides we have
@@ -369,7 +332,7 @@
         // The imageContainer will mask the text for us on the left of the image when scrolling.
         // On the right it will have a shadow
         UIView * imageContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.height, frame.size.height)];
-        imageContainer.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        imageContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         imageContainer.layer.shadowOffset = CGSizeMake(2, 0);
         imageContainer.layer.shadowOpacity = 1.f;
         imageContainer.layer.shadowRadius = padding;

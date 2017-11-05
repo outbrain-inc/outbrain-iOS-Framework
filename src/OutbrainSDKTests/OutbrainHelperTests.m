@@ -42,7 +42,7 @@
             XCTAssert([queryItem.value isEqualToString:@"2"]);
         }
         else if ([queryItem.name isEqualToString:@"url"]) {
-            XCTAssert([queryItem.value isEqualToString: @"http%3A%2F%2Fedition.cnn.com%2F2017%2F10%2F02%2Fsport%2Fkosei-inoue-judo-japan-supercoach-interview%2Findex.html"]);
+            XCTAssert([queryItem.value isEqualToString: @"http://edition.cnn.com/2017/10/02/sport/kosei-inoue-judo-japan-supercoach-interview/index.html"]);
         }
         else if ([queryItem.name isEqualToString:@"format"]) {
             XCTAssert([queryItem.value isEqualToString:@"vjnc"]);

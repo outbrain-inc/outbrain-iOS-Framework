@@ -190,7 +190,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     if(self.showImages)
     {
         typeof(cell) __weak __cell = cell;
-        [self fetchImageForURL:recommendation.image.url withCallback:^(UIImage *image) {
+        [OBDemoDataHelper fetchImageWithURL:recommendation.image.url withCallback:^(UIImage *image) {
             [__cell.imageView setImage:image];
             if ([recommendation isPaidLink]) {
                 [Outbrain prepare:__cell.imageView withRTB:recommendation onClickBlock:^(NSURL *url) {
@@ -311,44 +311,6 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     cell.selectedBackgroundView = v;
     
     cell.contentView.backgroundColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.969 alpha:1.000];
-}
-
-// Simple image fetching with GCD
-- (void)fetchImageForURL:(NSURL *)url withCallback:(void (^)(UIImage *))callback
-{
-    if(!self.showImages) return;
-    
-    BOOL (^ReturnHandler)(UIImage *) = ^(UIImage *returnImage) {
-        if(!returnImage) return NO;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            callback(returnImage);
-        });
-        return YES;
-    };
-    
-    __block UIImage * responseImage = nil;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        NSString * key = @([url.absoluteString hash]).stringValue;
-        // Next check if the image is on disk.  If it is then we'll go ahead and add it to the cache and return from the cache
-        NSString * cachesDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/com.ob.images"];
-        NSFileManager * fm = [[NSFileManager alloc] init];
-        [fm createDirectoryAtPath:cachesDir withIntermediateDirectories:YES attributes:nil error:nil];
-        NSString * diskCachePath = [cachesDir stringByAppendingPathComponent:key];
-        
-        // We have this on disk.
-        responseImage = [UIImage imageWithContentsOfFile:diskCachePath];
-        if(!ReturnHandler(responseImage))
-        {
-            // Fetch the image
-            NSData * d = [NSData dataWithContentsOfURL:url];
-            if(d)
-            {
-                responseImage = [UIImage imageWithData:d];
-                ReturnHandler(responseImage);
-            }
-        }
-    });
 }
 
 

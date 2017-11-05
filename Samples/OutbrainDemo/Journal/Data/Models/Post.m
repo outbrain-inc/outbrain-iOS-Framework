@@ -17,19 +17,14 @@ const struct PostAttributes PostAttributes = {
 
 
 @interface Post ()
-{
-    NSAttributedString *_attributedSummaryString;
-}
-// Private interface goes here.
+    @property (nonatomic, copy) NSAttributedString * attributedTitleString;
+    @property (nonatomic, copy) NSAttributedString * attributedSummaryString;
+    @property (nonatomic, copy) NSAttributedString * attributedBodyString;
 
 @end
 
 
 @implementation Post
-@synthesize attributedTitleString = _attributedTitleString;
-@synthesize attributedSummaryString = _attributedSummaryString;
-@synthesize attributedBodyString = _attributedBodyString;
-
 
 - (UIColor *)bodyTextColor
 {

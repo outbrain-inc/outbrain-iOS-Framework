@@ -140,7 +140,10 @@ const struct OBDCodingKeys OBDCodingKeys = {
                                                                                 // No data retrieved.  (Usually means the connection timed out).
                                                                                 dispatch_async(dispatch_get_main_queue(), ^{
                                                                                     // Check if we have data saved
-                                                                                    if ([[self posts] count] == 0)
+                                                                                    if (error) {
+                                                                                        [self showErrorWith:@"Network Error" message: error.localizedDescription in:vc];
+                                                                                    }
+                                                                                    else if ([[self posts] count] == 0)
                                                                                     {
                                                                                         // Only show this as an error if we don't have data saved already
                                                                                         [self showErrorWith:@"Network Error" message:@"Couldn't contact the server.  Please check your connection and try again" in:vc];
@@ -212,7 +215,7 @@ const struct OBDCodingKeys OBDCodingKeys = {
         if (jsonPayload[@"posts"])
         {
             [self.posts removeAllObjects];
-            for(id postData in jsonPayload[@"posts"])
+            for (id postData in jsonPayload[@"posts"])
             {
                 [self.posts addObject:[self createPostFrom:postData]];
             }
@@ -292,9 +295,9 @@ const struct OBDCodingKeys OBDCodingKeys = {
     if([attachments isKindOfClass:[NSArray class]] && attachments.count > 0)
     {
         id firstAttachment = attachments[0];
-        if(firstAttachment[@"images"][@"large"][@"url"])
+        if(firstAttachment[@"url"])
         {
-            post.imageURL = firstAttachment[@"images"][@"large"][@"url"];
+            post.imageURL = firstAttachment[@"url"];
         }
     }
     
@@ -308,6 +311,7 @@ const struct OBDCodingKeys OBDCodingKeys = {
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self _putImage:image inCacheWithKey:cacheKey];
+            return;
         });
     }
     
@@ -316,18 +320,22 @@ const struct OBDCodingKeys OBDCodingKeys = {
 
 + (void)fetchImageWithURL:(NSURL *)url withCallback:(void (^)(UIImage *))callback
 {
-    static dispatch_queue_t image_fetch_queue = nil;
-    if(!image_fetch_queue)
+    static dispatch_queue_t image_queue_cache = nil;
+    static dispatch_queue_t image_queue_network = nil;
+    if(!image_queue_cache)
     {
-        image_fetch_queue = dispatch_queue_create("com.outbrain-journal.imageQueue", 0);
+        image_queue_cache = dispatch_queue_create("com.outbrain-journal.imageQueueCache", 0);
+        image_queue_network = dispatch_queue_create("com.outbrain-journal.imageQueueNetork", 0);
     }
     
-    BOOL (^ReturnHandler)(UIImage *) = ^(UIImage *returnImage) {
-        if(!returnImage) return NO;
+    void (^ReturnHandler)(UIImage *) = ^(UIImage *returnImage) {
+        if (returnImage == nil) {
+            NSLog(@"fetchImageWithURL --> unexpected error - image is nil");
+            return;
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             callback(returnImage);
         });
-        return YES;
     };
     
     __block UIImage * responseImage;
@@ -335,34 +343,50 @@ const struct OBDCodingKeys OBDCodingKeys = {
     
     // First let's check if the image is in our cache.
     responseImage = [[[self defaultHelper] imageCache] objectForKey:key];
-    if(ReturnHandler(responseImage)) return;
+    if (responseImage) {
+        // NSLog(@"fetchImageWithURL --> found (%@) in cache", key);
+        ReturnHandler(responseImage);
+        return;
+    }
     
-    dispatch_async(image_fetch_queue, ^{
+    dispatch_async(image_queue_cache, ^{
         // Next check if the image is on disk.  If it is then we'll go ahead and add it to the cache and return from the cache
-        NSString * cachesDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/com.objournal.images"];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *cachesDir = [paths objectAtIndex:0];
+        
+        NSString * imagesCachesDir = [cachesDir stringByAppendingPathComponent:@"Library/Caches/com.objournal.images"];
         NSFileManager * fm = [[NSFileManager alloc] init];
-        [fm createDirectoryAtPath:cachesDir withIntermediateDirectories:YES attributes:nil error:nil];
+        [fm createDirectoryAtPath:imagesCachesDir withIntermediateDirectories:YES attributes:nil error:nil];
         NSString * diskCachePath = [cachesDir stringByAppendingPathComponent:key];
         
-        // We have this on disk.
+        // Check if we have this on disk.
         responseImage = [UIImage imageWithContentsOfFile:diskCachePath];
-        if(!ReturnHandler(responseImage))
-        {
-            // Fetch the image
+        if (responseImage) {
+            // NSLog(@"fetchImageWithURL --> found (%@) on disk", key);
+            ReturnHandler(responseImage);
+            return;
+        }
+        
+        // Fetch the image from network
+        dispatch_async(image_queue_network, ^{
+            // NSLog(@"fetchImageWithURL --> downloading %@ ....", [url absoluteString]);
             NSData * d = [NSData dataWithContentsOfURL:url];
             if(d)
             {
                 responseImage = [UIImage imageWithData:d];
-                if(!ReturnHandler(responseImage)) return;
+                if (responseImage == nil) {
+                    // NSLog(@"fetchImageWithURL --> unexpected error - image is nil");
+                    return;
+                }
+                ReturnHandler(responseImage);
+                [d writeToFile:diskCachePath atomically:YES];
+                [[self defaultHelper] _putImage:responseImage inCacheWithKey:key];
+                // NSLog(@"fetchImageWithURL --> success download (%@)", key);
             }
-        }
-        
-        if(responseImage)
-        {
-//            [[self defaultHelper] _putImage:responseImage inCacheWithKey:key];
-        }
+        });
     });
 }
+
 
 + (NSString *)_dateStringFromDate:(NSDate *)date
 {
@@ -376,25 +400,26 @@ const struct OBDCodingKeys OBDCodingKeys = {
     return [formatter stringFromDate:date];
 }
 
-+ (NSAttributedString *)_buildArticleAttributedStringWithPost:(Post *)post
++ (NSAttributedString *) _buildArticleAttributedStringWithPost:(Post *)post
 {
-    NSString * postTitle = post.title;
-    NSString * dateString = [self _dateStringFromDate:post.date];
     NSString * bodyString = [post.body stringByStrippingHTML];
     bodyString = [bodyString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString * articleString = [NSString stringWithFormat:@"%@\n%@\n%@%@", postTitle, dateString, post.imageURL?IMAGE_SPACING:@"", bodyString];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 10.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.paragraphSpacing = 15.f;
     paragraphStyle.paragraphSpacingBefore = 10.f;
     
+    UIFont *font = [UIFont fontWithName:@"Helvetica Neue" size:15.0];
+
     UIColor * lightGrayTextColor = [UIColor colorWithRed:0.475 green:0.475 blue:0.475 alpha:1.000];
-    NSMutableAttributedString * articleAttributedString = [[NSMutableAttributedString alloc] initWithString:articleString attributes:@{NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:lightGrayTextColor}];
-    
-    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName:[UIColor blackColor]} range:[articleString rangeOfString:postTitle]];
-    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont italicSystemFontOfSize:11]} range:[articleString rangeOfString:dateString]];
-    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} range:[articleString rangeOfString:bodyString]];
+    NSMutableAttributedString * articleAttributedString = [[NSMutableAttributedString alloc] initWithString:bodyString
+                                                                                                 attributes:
+  @{NSParagraphStyleAttributeName:  paragraphStyle,
+    NSForegroundColorAttributeName: lightGrayTextColor,
+    NSFontAttributeName:            font
+    }];
+
     return articleAttributedString;
 }
 

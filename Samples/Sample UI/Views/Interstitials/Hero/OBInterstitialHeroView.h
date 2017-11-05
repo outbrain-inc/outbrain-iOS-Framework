@@ -43,10 +43,4 @@
 @property (nonatomic, strong) UIView * loadingView;
 
 
-
-/**
- *  Discussion:
- *      This is where we attempt to fetch the images.  If you want to fetch images yourself then override this method
- **/
-- (void)fetchImageForURL:(NSURL *)url withCallback:(void(^)(UIImage * image))callback;
 @end

@@ -19,10 +19,10 @@
     
     for (OBRecommendation *rec in recommendations) {
         if (rec.isRTB) {
-            NSLog(@"rec: %@ --> is RTB", rec.content);
+            // NSLog(@"rec: %@ --> is RTB", rec.content);
             for (NSString *pixelUrl in rec.pixels) {
                 NSURL *url = [NSURL URLWithString:pixelUrl];
-                NSLog(@"pixel fire: %@", url);
+               // NSLog(@"pixel fire: %@", url);
                 [[OBNetworkManager sharedManager] sendGet:url completionHandler:nil];
             }
         }

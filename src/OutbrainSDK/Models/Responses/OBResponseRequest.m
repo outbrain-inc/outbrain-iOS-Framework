@@ -9,20 +9,20 @@
 #import "OBResponseRequest.h"
 
 @implementation OBResponseRequest
-@synthesize token;
+
 
 - (instancetype)initWithPayload:(NSDictionary *)aPayload
 {
     if (self = [super init]) {
-        payload = aPayload;
-        self.token = payload[@"t"];
+        self.payload = aPayload;
+        self.token = self.payload[@"t"];
     }
     
     return self;
 }
 
 - (NSString *)getStringValueForPayloadKey:(NSString *)payloadKey {
-    id object = [payload objectForKey:payloadKey];
+    id object = [self.payload objectForKey:payloadKey];
     if (!object) {
         return nil;
     }
@@ -35,7 +35,7 @@
 }
 
 - (NSNumber *)getNSNumberValueForPayloadKey:(NSString *)payloadKey {
-    id object = [payload objectForKey:payloadKey];
+    id object = [self.payload objectForKey:payloadKey];
     if (!object) {
         return nil;
     }

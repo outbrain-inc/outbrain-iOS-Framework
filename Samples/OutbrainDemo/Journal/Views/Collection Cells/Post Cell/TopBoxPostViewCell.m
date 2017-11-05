@@ -2,7 +2,7 @@
 //  TopBoxPostViewCell.m
 //  OutbrainDemo
 //
-//  Created by Daniel Gorlovetsky on 3/1/15.
+//  Created by Oded Regev on 3/1/15.
 //  Copyright (c) 2015 Mercury Intermedia. All rights reserved.
 //
 
@@ -12,79 +12,72 @@
 
 #import "OBDemoDataHelper.h"
 
-@interface TopBoxPostViewCell () <OBResponseDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate>
-{
-    BOOL    _topBoxLocked;
-    BOOL    _topBoxDocked;
-    
-    float   _previousScrollYOffset;
+@interface TopBoxPostViewCell () <OBResponseDelegate, UIGestureRecognizerDelegate>
 
-    BOOL _loadingOutbrain;
-    BOOL _outbrainLoaded;
 
-    BOOL _scrolledDown;
-}
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleTopPaddingHeightConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBoxVerticalConstraint;
+
+
+@property (assign, nonatomic) BOOL topBoxLocked;
+@property (assign, nonatomic) BOOL topBoxDocked;
+
+@property (assign, nonatomic) BOOL loadingOutbrain;
+@property (assign, nonatomic) BOOL outbrainLoaded;
+
+@property (assign, nonatomic) BOOL scrolledDown;
+@property (assign, nonatomic) float previousScrollYOffset;
 
 @end
 
 @implementation TopBoxPostViewCell
-@synthesize textView;
-@synthesize mainScrollView;
+
+const CGFloat kTopBoxHeight = 100.0;
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.mainScrollView.scrollsToTop = YES;
+    self.postContentTextView.textContainerInset = UIEdgeInsetsMake(0, 5.0, 0, 5.0);
+
+}
 
 #pragma mark - ScrollView Delegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat yOff = scrollView.contentOffset.y;
     
     // Check user already scrolled down
-    if(!_scrolledDown)
+    if (self.scrolledDown == NO)
     {
-        _scrolledDown = (scrollView.contentOffset.y > 10);
-        if(!_scrolledDown) return;
+        self.scrolledDown = (scrollView.contentOffset.y > 10);
+        if (!self.scrolledDown) return;
     }
     
-    if (_topBoxDocked) {
+    if (self.topBoxDocked) {
         return;
     }
     
-    if (scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.size.height) {
+    // if we are scrolling to the bottom of the screen, don't do anything (we have the bottom widget already)
+    if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
         return;
     }
     
-    CGFloat paralaxRate = 1.5f; // How much should we parallax
-    if(!_topBoxLocked)
+    if (self.topBoxLocked == NO)
     {
         // Only start moving the hover view onto the screen if we're scrolling up, and
         // we've scrolled down a little alread
-        if(yOff < _previousScrollYOffset && scrollView.contentOffset.y > 10.f)
+        if (yOff < _previousScrollYOffset && scrollView.contentOffset.y > 10.f)
         {
             //NSLog(@"GO UP");
             // We only scroll the hover view in when scrolling up
-            CGRect r = _topBoxView.frame;
-            r.origin.y += (_previousScrollYOffset - yOff) * paralaxRate;
-            if (r.origin.y >= 0) {
-                r.origin.y = 0;
-                [self _animateHoverViewToPeekAmount];
-            }
-            self.topBoxView.frame = r;
-        }
-        else
-        {
-            // If we've already scrolled up some then we should scroll down at the same paralax rate vs. locking at the bottom
-            if(CGRectGetMinY(_topBoxView.frame) >= 0 && _previousScrollYOffset < yOff)
-            {
-                //NSLog(@"GO DOWN");
-                CGRect r = _topBoxView.frame;
-                r.origin.y += (_previousScrollYOffset - yOff) * paralaxRate;
-                
-                self.topBoxView.frame = r;
-            }
+            [self dockTopBox];
         }
     }
     
     // Reset the previous offset.
-    _previousScrollYOffset = scrollView.contentOffset.y;
+    self.previousScrollYOffset = scrollView.contentOffset.y;
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
@@ -100,20 +93,9 @@
     //NSLog(@"Scroll view did end dragging");
     if (_topBoxDocked) return;
     
-    //NSLog(@"contentOffset = %@", CGPointCreateDictionaryRepresentation(scrollView.contentOffset));
-    //NSLog(@"maxY = %.2f", CGRectGetMinY(_topBoxView.frame));
-    //NSLog(@"_topBoxLocked = %@", _topBoxLocked ? @"YES" : @"NO");
-    
     if (_topBoxLocked && scrollView.contentOffset.y <= CGRectGetMinY(_topBoxView.frame)) {
         [self dockTopBox];
     }
-    
-    // If we're not decelerating, and the outbrain view is currently in view by at least 10 pix.  Then we should animate
-    // it in to our 'peek' state
-//    if(CGRectGetMinY(self.topBoxView.frame) > scrollView.contentOffset.y - 10 && !decelerate) {
-//        // Here we've gotten stuck.
-//        [self _animateHoverViewToPeekAmount];
-//    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -122,41 +104,9 @@
     if(_topBoxDocked) return;
     if(_topBoxLocked) return;
     
-    CGFloat adhesionYOff = CGRectGetMinY(self.topBoxView.frame);
-    CGFloat scrollYOff = self.mainScrollView.contentOffset.y;
-    
-    //NSLog(@"did end decelerating");
-    if(adhesionYOff > (scrollYOff - self.topBoxView.frame.size.height) && adhesionYOff < scrollYOff)
-    {
-        //NSLog(@"did end decelerating with animation");
-        [self _animateHoverViewToPeekAmount];
-    }
-    else {
-        [UIView animateWithDuration:.25f animations:^{
-            self.topBoxView.frame = CGRectMake(0,-_topBoxView.frame.size.height,_topBoxView.frame.size.width, _topBoxView.frame.size.height);
-        }];
-    }
-    
     if (_topBoxLocked && scrollView.contentOffset.y <= CGRectGetMinY(_topBoxView.frame)) {
         [self dockTopBox];
     }
-}
-
-- (void)_animateHoverViewToPeekAmount
-{
-    if (_topBoxLocked || _topBoxDocked)
-        return;
-    
-    _topBoxLocked = YES;
-    mainScrollView.contentSize = CGSizeMake(mainScrollView.contentSize.width, mainScrollView.contentSize.height + _topBoxView.frame.size.height);
-    
-    //NSLog(@"animate hover");
-    //NSLog(@"FRAME = %@", CGRectCreateDictionaryRepresentation(self.topBoxView.frame));
-    
-    [UIView animateWithDuration:.25f animations:^{
-        self.topBoxView.frame = CGRectMake(0,0,_topBoxView.frame.size.width, _topBoxView.frame.size.height);
-        self.textView.frame = CGRectOffset(self.textView.frame, 0, _topBoxView.frame.size.height);
-    }];
 }
 
 
@@ -182,11 +132,10 @@
 
 - (void)setPost:(Post *)post
 {
-    if([post isEqual:_post]) {
+    if ([post isEqual:_post]) {
         return;    // Same post given.  No need to update
     }
 
-    self.mainScrollView.contentOffset = CGPointZero;
     _outbrainLoaded = NO;
     _topBoxDocked = NO;
     _topBoxLocked = NO;
@@ -194,63 +143,14 @@
     _post = post;
     
     // Setup the view here
-    self.mainScrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    self.mainScrollView.contentInset = UIEdgeInsetsZero;
-    self.textView.attributedText = [OBDemoDataHelper _buildArticleAttributedStringWithPost:post];
-    self.topBoxView.frame = CGRectOffset(self.topBoxView.bounds, 0, -self.topBoxView.frame.size.height);
-
-    // We handle the fetching ourself
-    CGRect textSize = [self.textView textRectForBounds:CGRectMake(10, 8, self.frame.size.width - 20, CGFLOAT_MAX) limitedToNumberOfLines:0];    
-    self.textView.frame = textSize;
-    self.mainScrollView.contentSize = CGSizeMake(textSize.size.width, textSize.size.height);
-    
-    [[self.textView viewWithTag:200] removeFromSuperview];
-    
-    
-    if(post.imageURL)
-    {
-        UIView * imageContainerView = [[UIView alloc] initWithFrame:CGRectZero];
-        imageContainerView.backgroundColor = self.backgroundColor;
-        imageContainerView.tag = 200;
-        [self.textView addSubview:imageContainerView];
-        imageContainerView.clipsToBounds = YES;
-        
-        NSInteger imageRangeStart = NSMaxRange([self.textView.attributedText.string rangeOfString:[OBDemoDataHelper _dateStringFromDate:post.date]]);
-        NSInteger imageRangeEnd = NSMaxRange([self.textView.attributedText.string rangeOfString:IMAGE_SPACING]);
-        
-        __block CGRect rect = self.textView.bounds;
-        NSAttributedString * firstAttString = [self.textView.attributedText attributedSubstringFromRange:NSMakeRange(0, imageRangeStart+1)];
-        NSAttributedString * secondAttString = [self.textView.attributedText attributedSubstringFromRange:NSMakeRange(0, imageRangeEnd)];
-        
-        typeof(imageContainerView) __weak __imageContainerView = imageContainerView;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            rect.origin.y = [firstAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
-            rect.size.height = [secondAttString boundingRectWithSize:CGSizeMake(rect.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height - rect.origin.y;
-            rect.size.height -= 20.f; // Add padding at the bottom of the image
-            if(!__imageContainerView.superview) return;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                __imageContainerView.frame = rect;
-            });
-            
-            
-            [OBDemoDataHelper fetchImageWithURL:[NSURL URLWithString:post.imageURL] withCallback:^(UIImage *image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    // We changed pages before the image got fetched
-                    if(!__imageContainerView.superview) return;
-                    UIImageView * iv = [[UIImageView alloc] initWithFrame:CGRectInset(__imageContainerView.bounds, 5, 0)];
-                    iv.contentMode = UIViewContentModeScaleAspectFill;
-                    iv.backgroundColor = [UIColor greenColor];
-                    [__imageContainerView addSubview:iv];
-                    iv.alpha = 0.f;
-                    iv.image = image;
-                    [UIView animateWithDuration:.1f animations:^{
-                        iv.alpha = 1;
-                    }];
-                });
-            }];
-        });
+    self.postTitleLabel.text = post.title;
+    self.postDateLabel.text = [OBDemoDataHelper _dateStringFromDate:post.date];
+    NSAttributedString *bodyString = [OBDemoDataHelper _buildArticleAttributedStringWithPost:post];
+    self.postContentTextView.attributedText = bodyString;
+    if (post.imageURL) {
+        [OBDemoDataHelper fetchImageWithURL:[NSURL URLWithString:post.imageURL] withCallback:^(UIImage *image) {
+            self.postImageView.image = image;
+        }];
     }
 }
 
@@ -273,60 +173,18 @@
 
 - (void)outbrainDidReceiveResponseWithSuccess:(OBRecommendationResponse *)response
 {
-    _outbrainLoaded = YES;
-    _loadingOutbrain = NO;
+    self.outbrainLoaded = YES;
+    self.loadingOutbrain = NO;
 
-    // If there are no recommendations (shouldn't happen often).  Then we
-    // just don't show anything
-    if(response.recommendations.count == 0)
+    // If there are no recommendations (shouldn't happen often). Then we just don't show anything
+    if (response.recommendations.count == 0)
     {
-        if([OBDemoDataHelper showsDebugIndicators])
-        {
-            
-            UITextView * label = [[UITextView alloc] initWithFrame:CGRectInset([[UIScreen mainScreen] bounds], 10.f, 10.f)];
-            label.font = [UIFont boldSystemFontOfSize:16.f];
-            
-            id resObj = [response valueForKey:@"originalOBPayload"];
-            NSString * originalRequest = @"";
-            if([resObj isKindOfClass:[NSDictionary class]])
-            {
-                NSData * d = [NSJSONSerialization dataWithJSONObject:resObj options:0 error:nil];
-                if(d)
-                { originalRequest = [[NSString alloc]  initWithData:d encoding:NSUTF8StringEncoding]; }
-            }
-            label.editable = NO;
-            label.text = [NSString stringWithFormat:@"Recommendation Response for\n'%@'\nreturnned 0 recommendations\n\n%@", self.post.title, originalRequest];
-            
-            label.backgroundColor = [UIColor redColor];
-            label.textColor = [UIColor blackColor];
-            
-            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDebugView:)];
-            [label addGestureRecognizer:tap];
-            
-            [self.window addSubview:label];
-        }
+        [self handleOutbrainErrorOnZeroRecs: response];
         return;
     }
     
-    
-    
-    
-    self.topBoxView.recommendationResponse = response;
-    
-    // Adjust the webView contentInset so we can insert our view at the bottom
-    UIScrollView * sv = self.mainScrollView; // self.webView.scrollView; <!-- Maybe use this later
-    sv.delegate = self;
-    
-    UIEdgeInsets insets = sv.contentInset;
-    insets.bottom = self.topBoxView.frame.size.height;
-    sv.contentInset = insets;
-    self.topBoxView.frame = CGRectOffset(self.topBoxView.bounds, 0, -self.topBoxView.frame.size.height);
-    
-    self.topBoxView.alpha = 0.f;
-    [UIView animateWithDuration:.3f
-                     animations:^{
-                         self.topBoxView.alpha = 1.f;
-                     }];
+    self.topBoxView.recommendationResponse = response;    
+    self.mainScrollView.delegate = (id<UITextViewDelegate>)self; // listen to the scroll events
 }
 
 - (void)outbrainResponseDidFail:(NSError *)response
@@ -335,17 +193,15 @@
 }
 
 - (void)dockTopBox {
-    [self.topBoxView removeFromSuperview];
-    
-    self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.contentSize.width, self.mainScrollView.contentSize.height + self.topBoxView.frame.size.height);
-    // NSLog(@"DOCKING TOP BOX");
-    [UIView animateWithDuration:.25f animations:^{
-        self.textView.frame = CGRectMake(self.textView.frame.origin.x, self.topBoxView.frame.size.height + 10, self.textView.frame.size.width, self.textView.frame.size.height);
-        self.topBoxView.frame = CGRectMake(0,0,self.topBoxView.frame.size.width, self.topBoxView.frame.size.height);
+    [self.contentView bringSubviewToFront:self.topBoxView];
+    self.topBoxView.hidden = NO;
+    self.topBoxVerticalConstraint.constant = -100.0;
+    self.titleTopPaddingHeightConstraint.constant = 100.0;
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.contentView layoutIfNeeded];
+        //self.topBoxView.hidden = NO;
+        //self.topPaddingView.hidden = YES;
     }];
-    [self.mainScrollView addSubview:self.topBoxView];
-    
-    _topBoxDocked = YES;
 }
 
 #pragma mark - Reuse
@@ -355,16 +211,38 @@
     [super prepareForReuse];
     self.mainScrollView.delegate = nil;
     self.mainScrollView.scrollsToTop = NO;
-    self.mainScrollView.contentOffset = CGPointZero;
-    
-    _previousScrollYOffset = 0;
-    
+    self.topBoxView.hidden = YES;
+    self.titleTopPaddingHeightConstraint.constant = 5.0;
+    self.topBoxVerticalConstraint.constant = 0;
     _loadingOutbrain = NO;
-    
-    
-//    [self.topBoxView removeFromSuperview];
-    //    self.outbrainHoverView = nil;
-    //    self.outbrainClassicView = nil;
+    self.topBoxDocked = NO;
+}
+
+-(void) handleOutbrainErrorOnZeroRecs:(OBRecommendationResponse *)response {
+    if ([OBDemoDataHelper showsDebugIndicators])
+    {
+        UITextView * label = [[UITextView alloc] initWithFrame:CGRectInset([[UIScreen mainScreen] bounds], 10.f, 10.f)];
+        label.font = [UIFont boldSystemFontOfSize:16.f];
+        
+        id resObj = [response valueForKey:@"originalOBPayload"];
+        NSString * originalRequest = @"";
+        if([resObj isKindOfClass:[NSDictionary class]])
+        {
+            NSData * d = [NSJSONSerialization dataWithJSONObject:resObj options:0 error:nil];
+            if(d)
+            { originalRequest = [[NSString alloc]  initWithData:d encoding:NSUTF8StringEncoding]; }
+        }
+        label.editable = NO;
+        label.text = [NSString stringWithFormat:@"Recommendation Response for\n'%@'\nreturnned 0 recommendations\n\n%@", self.post.title, originalRequest];
+        
+        label.backgroundColor = [UIColor redColor];
+        label.textColor = [UIColor blackColor];
+        
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDebugView:)];
+        [label addGestureRecognizer:tap];
+        
+        [self.window addSubview:label];
+    }
 }
 
 @end

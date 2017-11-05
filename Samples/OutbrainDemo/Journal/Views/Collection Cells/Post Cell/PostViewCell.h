@@ -20,11 +20,13 @@
 
 @property (nonatomic, weak) Post * post;
 
-/**
- *  Using UIWebView for ios6. 
- **/
-//@property (nonatomic, weak) IBOutlet UIWebView * webView;
-@property (nonatomic, weak) IBOutlet UITextView * textView;
+@property (weak, nonatomic) IBOutlet UILabel *postTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *postDateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
+@property (weak, nonatomic) IBOutlet UITextView *postContentTextView;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+
 
 
 /**

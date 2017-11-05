@@ -35,53 +35,7 @@
     [Outbrain setTestMode:YES]; // Skipping all billing, statistics, information gathering, and all other action mechanisms.
     
     // Initialize appearance here.
-    if([[[UIDevice currentDevice] systemVersion] intValue] < 7)
-    {
-        // Generate  a flat navbar background color
-        UIGraphicsBeginImageContext(CGSizeMake(1, 44));
-        [[UIColor whiteColor] setFill];
-        UIRectFill(CGRectMake(0, 0, 1, 44));
-        UIImage * navBackgroundImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        [[UIToolbar appearance] setBackgroundImage:navBackgroundImage forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-        [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
-        [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        
-        // Generate our back arrow
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(20,22), NO, 0);
-        
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGRect rect = CGContextGetClipBoundingBox(context);
-        
-        CGFloat lineWidth = 3.f;
-        CGContextSetStrokeColorWithColor(context, UIColorFromRGB(0xED8100).CGColor);
-        CGContextSetLineWidth(context, lineWidth);
-        CGContextSetLineCap(context, kCGLineCapButt);
-        CGContextSetLineJoin(context, kCGLineJoinMiter);
-        
-        CGFloat arrowWidth = 15;
-        CGContextMoveToPoint(context, arrowWidth, CGRectGetMinY(rect)+(lineWidth/2.f));
-        CGContextAddLineToPoint(context, CGRectGetMinX(rect)+5.f, CGRectGetMidY(rect));
-        CGContextAddLineToPoint(context, arrowWidth, CGRectGetMaxY(rect)-(lineWidth/2.f));
-        
-        CGContextStrokePath(context);
-        
-        UIImage * backArrowImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[backArrowImage stretchableImageWithLeftCapWidth:CGRectGetMaxX(rect)-1 topCapHeight:0] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    }
-    
-    
-    // Setup differently depending on iphone vs. ipad
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        [self initializeForiPad];
-    }
-    else
-    {
-        [self initializeForiPhone];
-    }
+    [self initializeForiPhone];
 }
 
 - (void)initializeForiPhone
@@ -108,12 +62,9 @@
 - (IBAction)showOutbrainAbout
 {
     NSString * urlString = @"https://www.outbrain.com/what-is/default/en-mobile";
-    
-    UINavigationController * nav = (UINavigationController *)[self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"OBWebNavVC"];
-    OBRecommendationWebVC * webVC = [nav.viewControllers lastObject];
-    [self.window.rootViewController presentViewController:nav animated:YES completion:^{
-        [webVC loadURL:[NSURL URLWithString:urlString]];
-    }];
+    NSURL *url = [NSURL URLWithString:urlString];
+    SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
+    [self.window.rootViewController presentViewController:sf animated:YES completion:nil];
 }
 
 
