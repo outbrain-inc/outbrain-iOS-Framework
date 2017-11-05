@@ -10,6 +10,8 @@
 #import "OBHorizontalWidgetCell.h"
 #import "OBDemoDataHelper.h"
 #import <OutbrainSDK/OBRecommendationResponse.h>
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface OBHorizontalWidget()
 
@@ -41,6 +43,12 @@
         [[UITapGestureRecognizer alloc] initWithTarget:self
                                                 action:@selector(brandingTapAction:)];
         [self.outbrainBrandingView addGestureRecognizer:singleFingerTap];
+        
+        // Add bottom border
+        CALayer *bottomBorder = [CALayer layer];
+        bottomBorder.frame = CGRectMake(0.0f, self.frame.size.height - 1.0, self.frame.size.width, 1.0f);
+        bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f].CGColor;
+        [self.layer addSublayer:bottomBorder];
     }
     return self;
 }
@@ -85,6 +93,9 @@
     
     // First check if there's an image
     cell.recImageView.hidden = (rec.image == nil);
+    
+    cell.recImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    cell.recImageView.layer.borderWidth = 1.0f;
     
     [OBDemoDataHelper fetchImageWithURL:rec.image.url withCallback:^(UIImage *image) {
         cell.recImageView.image = image;
