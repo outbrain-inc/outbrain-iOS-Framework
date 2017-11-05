@@ -28,8 +28,6 @@
 		E64366B41FAEF66A00FA617E /* PostsSwipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667A1FAEF2FC00FA617E /* PostsSwipeVC.m */; };
 		E64366B51FAEF66C00FA617E /* OBRecommendationWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366771FAEF2FC00FA617E /* OBRecommendationWebVC.m */; };
 		E64366B61FAEF67200FA617E /* MainPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366881FAEF32E00FA617E /* MainPostViewCell.m */; };
-		E64366B71FAEF67600FA617E /* PostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E643668B1FAEF32E00FA617E /* PostViewCell.m */; };
-		E64366B81FAEF67900FA617E /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E643668D1FAEF32E00FA617E /* TopBoxPostViewCell.m */; };
 		E64366B91FAEF68100FA617E /* OBParalaxTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366901FAEF32E00FA617E /* OBParalaxTitleView.m */; };
 		E64366BA1FAEF68500FA617E /* OBRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667F1FAEF32E00FA617E /* OBRefreshControl.m */; };
 		E64366BB1FAEF69100FA617E /* OBAdhesionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366A81FAEF3A500FA617E /* OBAdhesionView.m */; };
@@ -41,6 +39,8 @@
 		E64366C91FAF0A2F00FA617E /* OBHorizontalWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64366C81FAF0A2F00FA617E /* OBHorizontalWidget.xib */; };
 		E64366CB1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64366CA1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib */; };
 		E64366CE1FAF0F1500FA617E /* OBHorizontalWidgetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366CD1FAF0F1500FA617E /* OBHorizontalWidgetCell.m */; };
+		E64366D41FAF492900FA617E /* PostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D11FAF491E00FA617E /* PostViewCell.m */; };
+		E64366D51FAF492C00FA617E /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */; };
 		E66AC33A1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
 		E6A5E4071F9C869B00D894C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */; };
 		E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
@@ -114,10 +114,6 @@
 		E64366851FAEF32E00FA617E /* OBLabelWithPadding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBLabelWithPadding.h; sourceTree = "<group>"; };
 		E64366871FAEF32E00FA617E /* MainPostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPostViewCell.h; sourceTree = "<group>"; };
 		E64366881FAEF32E00FA617E /* MainPostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPostViewCell.m; sourceTree = "<group>"; };
-		E643668A1FAEF32E00FA617E /* PostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostViewCell.h; sourceTree = "<group>"; };
-		E643668B1FAEF32E00FA617E /* PostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostViewCell.m; sourceTree = "<group>"; };
-		E643668C1FAEF32E00FA617E /* TopBoxPostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBoxPostViewCell.h; sourceTree = "<group>"; };
-		E643668D1FAEF32E00FA617E /* TopBoxPostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBoxPostViewCell.m; sourceTree = "<group>"; };
 		E643668F1FAEF32E00FA617E /* OBParalaxTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBParalaxTitleView.h; sourceTree = "<group>"; };
 		E64366901FAEF32E00FA617E /* OBParalaxTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBParalaxTitleView.m; sourceTree = "<group>"; };
 		E64366941FAEF36B00FA617E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -144,6 +140,10 @@
 		E64366CA1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OBHorizontalWidgetCell.xib; sourceTree = "<group>"; };
 		E64366CC1FAF0F1500FA617E /* OBHorizontalWidgetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBHorizontalWidgetCell.h; sourceTree = "<group>"; };
 		E64366CD1FAF0F1500FA617E /* OBHorizontalWidgetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBHorizontalWidgetCell.m; sourceTree = "<group>"; };
+		E64366D01FAF491E00FA617E /* PostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostViewCell.h; sourceTree = "<group>"; };
+		E64366D11FAF491E00FA617E /* PostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostViewCell.m; sourceTree = "<group>"; };
+		E64366D21FAF491E00FA617E /* TopBoxPostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBoxPostViewCell.h; sourceTree = "<group>"; };
+		E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBoxPostViewCell.m; sourceTree = "<group>"; };
 		E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
 		E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -377,22 +377,11 @@
 		E64366861FAEF32E00FA617E /* CollectionCells */ = {
 			isa = PBXGroup;
 			children = (
+				E64366CF1FAF491E00FA617E /* PostCell */,
 				E64366871FAEF32E00FA617E /* MainPostViewCell.h */,
 				E64366881FAEF32E00FA617E /* MainPostViewCell.m */,
-				E64366891FAEF32E00FA617E /* Post Cell */,
 			);
 			path = CollectionCells;
-			sourceTree = "<group>";
-		};
-		E64366891FAEF32E00FA617E /* Post Cell */ = {
-			isa = PBXGroup;
-			children = (
-				E643668A1FAEF32E00FA617E /* PostViewCell.h */,
-				E643668B1FAEF32E00FA617E /* PostViewCell.m */,
-				E643668C1FAEF32E00FA617E /* TopBoxPostViewCell.h */,
-				E643668D1FAEF32E00FA617E /* TopBoxPostViewCell.m */,
-			);
-			path = "Post Cell";
 			sourceTree = "<group>";
 		};
 		E643668E1FAEF32E00FA617E /* ParalaxTitleView */ = {
@@ -498,6 +487,17 @@
 			path = OBHorizontalWidget;
 			sourceTree = "<group>";
 		};
+		E64366CF1FAF491E00FA617E /* PostCell */ = {
+			isa = PBXGroup;
+			children = (
+				E64366D01FAF491E00FA617E /* PostViewCell.h */,
+				E64366D11FAF491E00FA617E /* PostViewCell.m */,
+				E64366D21FAF491E00FA617E /* TopBoxPostViewCell.h */,
+				E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */,
+			);
+			path = PostCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -601,10 +601,10 @@
 				E64366BB1FAEF69100FA617E /* OBAdhesionView.m in Sources */,
 				E64366BE1FAEF6A000FA617E /* OBInterstitialHeroGridView.m in Sources */,
 				D83456771885A543002B2368 /* TinyPageControl.m in Sources */,
+				E64366D51FAF492C00FA617E /* TopBoxPostViewCell.m in Sources */,
 				E64366BC1FAEF69900FA617E /* OBInterstitialClassicView.m in Sources */,
 				E64366CE1FAF0F1500FA617E /* OBHorizontalWidgetCell.m in Sources */,
 				E64366C31FAF091B00FA617E /* OBHorizontalWidget.m in Sources */,
-				E64366B71FAEF67600FA617E /* PostViewCell.m in Sources */,
 				E64366B61FAEF67200FA617E /* MainPostViewCell.m in Sources */,
 				E64366B41FAEF66A00FA617E /* PostsSwipeVC.m in Sources */,
 				E64366BD1FAEF69C00FA617E /* OBInterstitialHeroView.m in Sources */,
@@ -614,8 +614,8 @@
 				D834566E1885A543002B2368 /* main.m in Sources */,
 				E64366B51FAEF66C00FA617E /* OBRecommendationWebVC.m in Sources */,
 				E64366B31FAEF64C00FA617E /* PostsListVC.m in Sources */,
+				E64366D41FAF492900FA617E /* PostViewCell.m in Sources */,
 				E64366B91FAEF68100FA617E /* OBParalaxTitleView.m in Sources */,
-				E64366B81FAEF67900FA617E /* TopBoxPostViewCell.m in Sources */,
 				E64366BF1FAEF6A500FA617E /* OBClassicRecommendationsView.m in Sources */,
 				E64366AD1FAEF3EC00FA617E /* JLoadingView.m in Sources */,
 				E64366911FAEF32E00FA617E /* OBLabelWithPadding.m in Sources */,
