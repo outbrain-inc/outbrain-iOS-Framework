@@ -168,8 +168,15 @@ static Outbrain * _sharedInstance = nil;
 
 #pragma mark - Viewability
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url {
+    NSAssert([label isKindOfClass:[OBLabel class]], @"Outbrain - label must be of type OBLabel.");
+    if (url == nil) {
+        NSLog(@"Error: registerOBLabel() --> url must not be null");
+        return;
+    }
+    
     label.widgetId = widgetId;
     label.url = url;
+    
     if (url != nil && widgetId != nil && [[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
             [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
             [label trackViewability];
