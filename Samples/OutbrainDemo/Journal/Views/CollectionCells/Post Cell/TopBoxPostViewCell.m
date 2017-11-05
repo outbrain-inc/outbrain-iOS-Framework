@@ -83,7 +83,7 @@ const CGFloat kTopBoxHeight = 100.0;
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     if (_topBoxDocked) return;
 
-    if (_topBoxLocked && targetContentOffset->y <= CGRectGetMinY(_topBoxView.frame)) {
+    if (self.topBoxLocked && targetContentOffset->y <= CGRectGetMinY(self.obHorizontalWidget.frame)) {
         [self dockTopBox];
     }
 }
@@ -93,7 +93,7 @@ const CGFloat kTopBoxHeight = 100.0;
     //NSLog(@"Scroll view did end dragging");
     if (_topBoxDocked) return;
     
-    if (_topBoxLocked && scrollView.contentOffset.y <= CGRectGetMinY(_topBoxView.frame)) {
+    if (_topBoxLocked && scrollView.contentOffset.y <= CGRectGetMinY(self.obHorizontalWidget.frame)) {
         [self dockTopBox];
     }
 }
@@ -104,7 +104,7 @@ const CGFloat kTopBoxHeight = 100.0;
     if(_topBoxDocked) return;
     if(_topBoxLocked) return;
     
-    if (_topBoxLocked && scrollView.contentOffset.y <= CGRectGetMinY(_topBoxView.frame)) {
+    if (_topBoxLocked && scrollView.contentOffset.y <= CGRectGetMinY(self.obHorizontalWidget.frame)) {
         [self dockTopBox];
     }
 }
@@ -183,7 +183,7 @@ const CGFloat kTopBoxHeight = 100.0;
         return;
     }
     
-    self.topBoxView.recommendationResponse = response;    
+    self.obHorizontalWidget.recommendationResponse = response;
     self.mainScrollView.delegate = (id<UITextViewDelegate>)self; // listen to the scroll events
 }
 
@@ -193,8 +193,8 @@ const CGFloat kTopBoxHeight = 100.0;
 }
 
 - (void)dockTopBox {
-    [self.contentView bringSubviewToFront:self.topBoxView];
-    self.topBoxView.hidden = NO;
+    [self.contentView bringSubviewToFront:self.obHorizontalWidget];
+    self.obHorizontalWidget.hidden = NO;
     self.topBoxVerticalConstraint.constant = -100.0;
     self.titleTopPaddingHeightConstraint.constant = 100.0;
     [UIView animateWithDuration:0.5 animations:^{
@@ -211,7 +211,7 @@ const CGFloat kTopBoxHeight = 100.0;
     [super prepareForReuse];
     self.mainScrollView.delegate = nil;
     self.mainScrollView.scrollsToTop = NO;
-    self.topBoxView.hidden = YES;
+    self.obHorizontalWidget.hidden = YES;
     self.titleTopPaddingHeightConstraint.constant = 5.0;
     self.topBoxVerticalConstraint.constant = 0;
     _loadingOutbrain = NO;

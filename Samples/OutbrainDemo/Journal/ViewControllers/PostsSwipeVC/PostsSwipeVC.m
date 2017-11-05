@@ -192,7 +192,7 @@
     {
         if (indexIsTopBox) {
             ((TopBoxPostViewCell *)cell).post = [self posts][indexPath.row];
-            ((TopBoxPostViewCell *)cell).topBoxView.widgetDelegate = self;
+            ((TopBoxPostViewCell *)cell).obHorizontalWidget.widgetDelegate = self;
             if(indexPath.row == self.currentIndex)
             {
                 [((TopBoxPostViewCell *)cell) delayedContentLoad];

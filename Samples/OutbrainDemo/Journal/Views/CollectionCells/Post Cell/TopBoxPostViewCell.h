@@ -10,6 +10,7 @@
 #import "Post.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 #import "OBTopBoxView.h"
+#import "OBHorizontalWidget.h"
 
 @interface TopBoxPostViewCell : UICollectionViewCell  <UIScrollViewDelegate>
 
@@ -21,7 +22,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *postContentTextView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
-@property (weak, nonatomic) IBOutlet OBTopBoxView *topBoxView;
+
+@property (weak, nonatomic) IBOutlet OBHorizontalWidget *obHorizontalWidget;
 
 
 
