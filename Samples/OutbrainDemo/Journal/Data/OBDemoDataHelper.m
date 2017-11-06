@@ -3,7 +3,7 @@
 //  OutbrainDemo
 //
 //  Created by Oded Regev on 12/27/13.
-//  Copyright (c) 2013 Mercury. All rights reserved.
+//  Copyright (c) 2013 Outbrain inc. All rights reserved.
 //
 
 #import "OBDemoDataHelper.h"

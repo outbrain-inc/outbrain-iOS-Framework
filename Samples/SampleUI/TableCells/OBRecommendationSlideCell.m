@@ -3,7 +3,7 @@
 //  OutbrainDemo
 //
 //  Created by Oded Regev on 12/31/13.
-//  Copyright (c) 2013 Mercury Intermedia. All rights reserved.
+//  Copyright (c) 2013 Outbrain inc Intermedia. All rights reserved.
 //
 
 #import "OBRecommendationSlideCell.h"
