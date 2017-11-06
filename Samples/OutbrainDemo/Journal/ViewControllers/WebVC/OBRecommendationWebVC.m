@@ -2,7 +2,7 @@
 //  OBWebVC.m
 //  OutbrainDemo
 //
-//  Created by Joseph Ridenour on 1/17/14.
+//  Created by Oded Regev on 1/17/14.
 //  Copyright (c) 2014 Mercury Intermedia. All rights reserved.
 //
 

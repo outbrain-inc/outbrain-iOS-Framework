@@ -2,7 +2,7 @@
 //  JLoadingView.m
 //  OutbrainDemo
 //
-//  Created by Joseph Ridenour on 2/4/14.
+//  Created by Oded Regev on 2/4/14.
 //  Copyright (c) 2014 Mercury Intermedia. All rights reserved.
 //
 

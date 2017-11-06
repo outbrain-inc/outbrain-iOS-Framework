@@ -2,7 +2,7 @@
 //  OBRecommendationSlideCell.m
 //  OutbrainDemo
 //
-//  Created by Joseph Ridenour on 12/31/13.
+//  Created by Oded Regev on 12/31/13.
 //  Copyright (c) 2013 Mercury Intermedia. All rights reserved.
 //
 

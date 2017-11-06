@@ -2,7 +2,7 @@
 //  OBIntersitialHeroView.m
 //  OutbrainDemo
 //
-//  Created by Joseph Ridenour on 2/18/14.
+//  Created by Oded Regev on 2/18/14.
 //  Copyright (c) 2014 Mercury Intermedia. All rights reserved.
 //
 
