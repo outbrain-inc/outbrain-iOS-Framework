@@ -2,8 +2,8 @@
 //  OBRecommendationRequestOperation.m
 //  OutbrainSDK
 //
-//  Created by Joseph Ridenour on 12/11/13.
-//  Copyright (c) 2013 Mercury. All rights reserved.
+//  Created by Oded Regev on 6/11/17.
+//  Copyright (c) 2017 Outbrain inc. All rights reserved.
 //
 
 #import "OBRecommendationRequestOperation.h"
@@ -35,11 +35,13 @@
     if(self)
     {
         self.request = request;
-        self.url = [[OutbrainHelper sharedInstance] recommendationURLForRequest:request];
     }
     return self;
 }
 
+-(void) main {
+    [self startODBRequest];
+}
 
 #pragma mark - Parsing Reseponse
 - (OBRecommendationResponse *)createResponseWithDict:(NSDictionary *)responseDict withError:(NSError *)error
@@ -94,14 +96,22 @@
 }
 
 
-#pragma mark - Connection Delegate methods
+#pragma mark - Connection methods
 
-- (void)start
+- (void)startODBRequest
 {
+    // We are using semaphore here to promise the operation will be executed synchronously. Otherwise the next operation will
+    // start before we receive the ODB response of the first request.
+    // This is important because we use fields from the ODB response on the following calls (token, apv, etc, etc).
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    
+    self.url = [[OutbrainHelper sharedInstance] recommendationURLForRequest: self.request];
     self.requestStartDate = [NSDate date];
     [[OBNetworkManager sharedManager] sendGet:self.url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         [self taskCompletedWith:data response:response error:error];
+        dispatch_semaphore_signal(sema);
     }];
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 }
 
 - (void) taskCompletedWith:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error {

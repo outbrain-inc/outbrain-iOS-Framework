@@ -213,6 +213,14 @@ static Outbrain * _sharedInstance = nil;
 
 + (void)_fetchRecommendationsWithRequest:(OBRequest *)request andCallback:(OBResponseCompletionHandler)handler {
     [self _throwAssertIfNotInitalized];
+    static NSOperationQueue *odbFetchQueue = nil;
+    if(!odbFetchQueue)
+    {
+        odbFetchQueue = [[NSOperationQueue alloc] init];
+        odbFetchQueue.name = @"com.outbrain.sdk.odbFetchQueue";
+        odbFetchQueue.maxConcurrentOperationCount = 1;
+    }
+    
     // This is where the magic happens
     // Let's first validate any parameters that we can.
     // AKA sanity checks
@@ -229,7 +237,7 @@ static Outbrain * _sharedInstance = nil;
     
     OBRecommendationRequestOperation *recommendationOperation = [[OBRecommendationRequestOperation alloc] initWithRequest:request];
     recommendationOperation.handler = handler;
-    [recommendationOperation start];
+    [odbFetchQueue addOperation:recommendationOperation];
 }
 
 + (BOOL) _isValid:(NSString *)value {

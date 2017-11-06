@@ -2,8 +2,8 @@
 //  OBRecommendationRequestOperation.h
 //  OutbrainSDK
 //
-//  Created by Joseph Ridenour on 12/11/13.
-//  Copyright (c) 2013 Mercury. All rights reserved.
+//  Created by Oded Regev on 6/11/17.
+//  Copyright (c) 2017 Outbrain inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -22,11 +22,9 @@
  *  3.  Parse the data into objects.
  **/
 
-@interface OBRecommendationRequestOperation : NSObject
+@interface OBRecommendationRequestOperation : NSOperation
 
 - (instancetype)initWithRequest:(OBRequest *)request;
-
--(void) start;
 
 // The request to perform the fetch for
 @property (nonatomic, strong) OBResponseCompletionHandler handler;

@@ -324,8 +324,8 @@ const struct OBDCodingKeys OBDCodingKeys = {
     static dispatch_queue_t image_queue_network = nil;
     if(!image_queue_cache)
     {
-        image_queue_cache = dispatch_queue_create("com.outbrain-journal.imageQueueCache", 0);
-        image_queue_network = dispatch_queue_create("com.outbrain-journal.imageQueueNetork", 0);
+        image_queue_cache = dispatch_queue_create("com.outbrain-journal.imageQueueCache", DISPATCH_QUEUE_CONCURRENT);
+        image_queue_network = dispatch_queue_create("com.outbrain-journal.imageQueueNetwork", DISPATCH_QUEUE_CONCURRENT);
     }
     
     void (^ReturnHandler)(UIImage *) = ^(UIImage *returnImage) {
