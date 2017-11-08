@@ -33,20 +33,7 @@
  */
 @class OBDisclosure;
 
-@interface OBRecommendation : OBContent {
-    NSDate * publishDate;
-    NSURL * redirectURL;
-    NSString * author;
-    NSString * content;
-    NSString * source;
-    
-    BOOL sameSource;
-    BOOL paidLink;
-    
-    BOOL video;
-    OBImage *image;
-}
-
+@interface OBRecommendation : OBContent
 
 /** @brief The date the content was published. */
 @property (nonatomic, strong, readonly) NSDate * publishDate;
