@@ -2,12 +2,11 @@
 //  OBRecommendationSlideCell.h
 //  OutbrainDemo
 //
-//  Created by Joseph Ridenour on 12/31/13.
-//  Copyright (c) 2013 Mercury Intermedia. All rights reserved.
+//  Created by Oded Regev on 12/31/13.
+//  Copyright (c) 2013 Outbrain. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
 #import "OBWidgetViewProtocol.h"
 
 @class OBRecommendation;
@@ -22,13 +21,7 @@
 @interface OBRecommendationSlideCell : UITableViewCell <OBWidgetViewProtocol>
 
 
-/**
- *  Discussion:
- *      Handler for when the widget detects that the user tapped on a recommendation.
- *
- *  @note:  You can optionally use the `widgetDelegate` instead
- **/
-@property (nonatomic, copy) OBWRecommendationTappedHandler recommendationTapHandler;
+@property (nonatomic, strong) OBRecommendationResponse * recommendationResponse;
 
 /**
  *  Discussion:
@@ -37,11 +30,6 @@
  **/
 @property (nonatomic, weak) IBOutlet id <OBWidgetViewDelegate> widgetDelegate;
 
-/**
- *  Discussion:
- *      This is the actual response given from the sdk.
- **/
-@property (nonatomic, strong) OBRecommendationResponse * recommendationResponse;
 
 /**
  *  Discussion:

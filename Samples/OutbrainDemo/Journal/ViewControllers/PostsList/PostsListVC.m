@@ -342,6 +342,11 @@
     }
 }
 
+- (void)widgetViewTappedBranding:(UIView<OBWidgetViewProtocol> *)widgetView {
+    OBAppDelegate * appDelegate = (OBAppDelegate *) [[UIApplication sharedApplication] delegate];
+    [appDelegate showOutbrainAbout];
+}
+
 -(void) handleFetchPostResponse:(id)postObject error:(NSError *)error {
     if (error != nil) {
         UIAlertController *alertController = [UIAlertController
