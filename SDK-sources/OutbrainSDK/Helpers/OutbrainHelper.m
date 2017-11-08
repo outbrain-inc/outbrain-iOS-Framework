@@ -49,10 +49,6 @@
 NSString *const kGLOBAL_WIDGET_STATISTICS = @"globalWidgetStatistics";
 NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 
-NSString *const kIS_CUSTOM_WEBVIEW_ENABLE = @"cwvReportingEnable";
-NSString *const kCWV_THRESHOLD = @"cwvReportingThreshold";
-NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
-
 + (OutbrainHelper *) sharedInstance {
     static OutbrainHelper *sharedInstance = nil;
     static dispatch_once_t onceToken;
@@ -129,6 +125,9 @@ NSString *const kCWV_CONTEXT_FLAG = @"cwvContext=";
     
     // RTB support
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"rtbEnabled" value: @"true"]];
+//    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]]; // RTB-AppNexus, RTB-CriteoUS
+//    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"4"]];
+    
     
     // APP ID \ Bundle ID
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];

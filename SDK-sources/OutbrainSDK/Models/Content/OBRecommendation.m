@@ -90,8 +90,8 @@
         recommendation.rtbRec = YES;
     }
     
-    NSString *source = [recommendation performSelector:@selector(getPrivateSource)];
-    NSString *author = [recommendation performSelector:@selector(getPrivateAuthor)];
+    NSString *source = recommendation.source;
+    NSString *author = recommendation.author;
     
     if(source && source.length == 0) recommendation.source = nil;
     if(author && author.length == 0) recommendation.author = nil;
@@ -150,86 +150,5 @@
     [super setValue:value forKey:key];
 }
 
-#pragma mark - Getters & Setters
-
-- (NSDate *)publishDate {
-    return publishDate;
-}
-
-- (BOOL)isSameSource {
-    return sameSource;
-}
-
-- (BOOL)isVideo {
-    return video;
-}
-
-- (OBImage *)image {
-    return image;
-}
-
-- (NSString *)author {
-    return author;
-}
-
-- (NSString *)source {
-    return source;
-}
-
-- (NSURL *)redirectURL {
-    return redirectURL;
-}
-
-- (NSString *)content {
-    return content;
-}
-
-- (BOOL)isPaidLink {
-    return paidLink;
-}
-
-- (void)setSameSource:(BOOL)aSameSource {
-    sameSource = aSameSource;
-}
-
-- (void)setContent:(NSString *)aContent {
-    content = aContent;
-}
-
-- (void)setImage:(OBImage *)anImage {
-    image = anImage;
-}
-
-- (void)setAuthor:(NSString *)anAuthor {
-    author = anAuthor;
-}
-
-- (void)setPaidLink:(BOOL)aPaidLink {
-    paidLink = aPaidLink;
-}
-
-- (void)setSource:(NSString *)aSource {
-    source = aSource;
-}
-
-- (void)setRedirectURL:(NSURL *)aRedirectURL {
-    redirectURL = aRedirectURL;
-}
-
-- (void)setVideo:(BOOL)aVideo {
-    video = aVideo;
-}
-
-- (void) setPublishDate:(NSDate *)aPublishDate {
-    publishDate = aPublishDate;
-}
-
-- (NSString *)getPrivateAuthor {
-    return author;
-}
-
-- (NSString *)getPrivateSource {
-    return source;
-}
 
 @end

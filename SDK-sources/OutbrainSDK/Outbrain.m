@@ -144,9 +144,7 @@ static Outbrain * _sharedInstance = nil;
     [self _throwAssertIfNotInitalized];
     
     if (recommendation.isPaidLink) {
-        NSString *const kCWVContextParam = [NSString stringWithFormat:@"#%@sdk", kCWV_CONTEXT_FLAG];
-        // Adding "#cwvContext=sdk" to the url
-        NSString *recUrl = [[recommendation originalValueForKeyPath:@"url"] stringByAppendingString:kCWVContextParam];
+        NSString *recUrl = [recommendation originalValueForKeyPath:@"url"];
         return [NSURL URLWithString:recUrl];
     }
     else {
