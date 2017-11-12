@@ -125,9 +125,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     // RTB support
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"rtbEnabled" value: @"true"]];
-//    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]]; // RTB-AppNexus, RTB-CriteoUS
-//    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"4"]];
-    
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"4"]];
+ 
     
     // APP ID \ Bundle ID
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
@@ -191,7 +191,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 #pragma mark - RTB integratin with SDK
 -(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block {
     CGFloat const IconSize = 15.0;
-    CGFloat const IconPadding = 5.0;
+    CGFloat const IconPadding = 2.0;
     OBAdChoicesButton *adChoicesButton = [OBAdChoicesButton buttonWithType:UIButtonTypeCustom];
     imageView.userInteractionEnabled = YES;
     // Place the icon on the Top, Right corner of the imageView
