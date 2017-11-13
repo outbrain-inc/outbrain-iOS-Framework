@@ -125,8 +125,8 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     // RTB support
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"rtbEnabled" value: @"true"]];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"4"]];
+//    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
+//    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"4"]];
  
     
     // APP ID \ Bundle ID

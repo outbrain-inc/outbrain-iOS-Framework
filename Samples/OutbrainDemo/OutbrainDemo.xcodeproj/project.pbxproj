@@ -20,6 +20,7 @@
 		D8B5923D186376B1009422D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923C186376B1009422D5 /* Foundation.framework */; };
 		D8B5923F186376B1009422D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923E186376B1009422D5 /* CoreGraphics.framework */; };
 		D8B59241186376B1009422D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
+		E62725951FB9B736005CC644 /* PostPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E62725941FB9B736005CC644 /* PostPreviewCell.m */; };
 		E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366601FAA10A500FA617E /* PaddingLabel.m */; };
 		E64366911FAEF32E00FA617E /* OBLabelWithPadding.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667C1FAEF32D00FA617E /* OBLabelWithPadding.m */; };
 		E64366AD1FAEF3EC00FA617E /* JLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366821FAEF32E00FA617E /* JLoadingView.m */; };
@@ -96,6 +97,8 @@
 		D8B5923E186376B1009422D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8B59240186376B1009422D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8B5925A186376B1009422D5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E62725931FB9B736005CC644 /* PostPreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostPreviewCell.h; sourceTree = "<group>"; };
+		E62725941FB9B736005CC644 /* PostPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostPreviewCell.m; sourceTree = "<group>"; };
 		E643665F1FAA10A500FA617E /* PaddingLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
 		E64366601FAA10A500FA617E /* PaddingLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaddingLabel.m; sourceTree = "<group>"; };
 		E64366681FAEF2B300FA617E /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = "../../SDK-sources/OutbrainSDK.xcodeproj"; sourceTree = "<group>"; };
@@ -410,6 +413,8 @@
 			children = (
 				E64366991FAEF38D00FA617E /* OBRecommendationSlideCell.h */,
 				E643669A1FAEF38D00FA617E /* OBRecommendationSlideCell.m */,
+				E62725931FB9B736005CC644 /* PostPreviewCell.h */,
+				E62725941FB9B736005CC644 /* PostPreviewCell.m */,
 			);
 			name = TableCells;
 			path = ../SampleUI/TableCells;
@@ -609,6 +614,7 @@
 				E64366B41FAEF66A00FA617E /* PostsSwipeVC.m in Sources */,
 				E64366BD1FAEF69C00FA617E /* OBInterstitialHeroView.m in Sources */,
 				E64366AE1FAEF44400FA617E /* OBRecommendationSlideCell.m in Sources */,
+				E62725951FB9B736005CC644 /* PostPreviewCell.m in Sources */,
 				E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */,
 				D834566A1885A543002B2368 /* Post.m in Sources */,
 				D834566E1885A543002B2368 /* main.m in Sources */,
