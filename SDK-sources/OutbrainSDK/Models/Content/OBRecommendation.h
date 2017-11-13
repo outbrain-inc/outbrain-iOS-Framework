@@ -52,7 +52,7 @@
 /** @brief An image related to the recommendation. */
 @property (nonatomic, strong, readonly) OBImage *image;
 /** @brief should we open this recommendation in an external browser or within the app */
-@property (nonatomic, assign, readonly) BOOL shouldOpenInSafariViewController;
+@property (nonatomic, assign, readonly) BOOL shouldOpenInSafariViewController DEPRECATED_ATTRIBUTE;
 /** @brief Disclosure icon for conversion campaigns */
 @property (nonatomic, strong, readonly) OBDisclosure *disclosure;
 /** @brief Pixels array for a recommendation to be fired when recommendation received from the server */
