@@ -102,9 +102,18 @@
     
     cell.recImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.recImageView.layer.borderWidth = 1.0f;
+    cell.recImageView.image = nil;
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    spinner.color = UIColor.grayColor;
+    spinner.center = cell.recImageView.center;
+    [spinner startAnimating];
+    [cell addSubview:spinner];
+    
     
     [OBDemoDataHelper fetchImageWithURL:rec.image.url withCallback:^(UIImage *image) {
         cell.recImageView.image = image;
+        [spinner removeFromSuperview];
         if ([rec isPaidLink]) {
             [Outbrain prepare: cell.recImageView withRTB: rec onClickBlock:^(NSURL *url) {
                 NSLog(@"OBHorizontalWidget --> click url: %@", url.absoluteString);
