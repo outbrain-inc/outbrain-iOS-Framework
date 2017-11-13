@@ -52,7 +52,7 @@
     tapRecognizer.delegate = self;
     [self addGestureRecognizer:tapRecognizer];
     
-    self.peekAmount = 82.f;
+    self.peekAmount = 120.f;
     
     // Setup our collection view
     CGRect contentRect = [self hoverBounds];
@@ -327,7 +327,7 @@
 
 - (void)brandingTapAction:(id)sender
 {
-    if(self.widgetDelegate && [self.widgetDelegate respondsToSelector:@selector(widgetViewTappedBranding:)])
+    if (self.widgetDelegate && [self.widgetDelegate respondsToSelector:@selector(widgetViewTappedBranding:)])
     {
         [self.widgetDelegate widgetViewTappedBranding:self];
     }
@@ -482,11 +482,13 @@
         brandingImageButton.tag = 201;
         [brandingImageButton addTarget:self action:@selector(brandingTapAction:) forControlEvents:UIControlEventTouchUpInside];
         brandingImageButton.contentMode = UIViewContentModeScaleAspectFill;
-        [brandingImageButton setImage:[UIImage imageNamed:@"logo"] forState:UIControlStateNormal];
-        CGRect r = CGRectMake(0, 0, 71, 15);
+        [brandingImageButton setImage:[UIImage imageNamed:@"outbrainSimpleLogo"] forState:UIControlStateNormal];
+        CGRect r = CGRectMake(0, 0, 85, 20);
         r.origin.y = (container.frame.size.height - r.size.height) / 2.f;
         r.origin.x = (container.frame.size.width - r.size.width - 5.f);
         brandingImageButton.frame = r;
+        brandingImageButton.center = CGPointMake(brandingImageButton.frame.size.width / 2,
+                                                 alsoOnWeb.center.y);
         [container addSubview:brandingImageButton];
     }
     
@@ -567,7 +569,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeMake(collectionView.bounds.size.width, 25.f);
+    return CGSizeMake(collectionView.bounds.size.width, 40.f);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
