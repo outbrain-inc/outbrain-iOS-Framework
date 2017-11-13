@@ -265,12 +265,7 @@
     postPreviewCell.postTitleLabel.text = post.title;
     postPreviewCell.postPreviewLabel.text = [post.summary stringByStrippingHTML];
     
-    if(cell.selectedBackgroundView.tag != 55)
-    {
-        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.bounds];
-        cell.selectedBackgroundView.tag = 55;
-    }
-    cell.selectedBackgroundView.backgroundColor = UIColorFromRGB(0xf6f6f6);
+    
 }
 
 
