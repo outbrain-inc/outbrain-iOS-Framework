@@ -10,12 +10,5 @@
 
 @implementation OBHorizontalWidgetCell
 
--(void) prepareForReuse {
-    // Remove disclosure icon if exists
-    NSArray *viewsToRemove = [self.recImageView subviews];
-    for (UIView *v in viewsToRemove) {
-        [v removeFromSuperview];
-    }
-}
 
 @end

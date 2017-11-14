@@ -46,6 +46,7 @@
 
 #pragma GCC diagnostic ignored "-Wundeclared-selector"
 
+NSInteger const kAdChoiceButtonTag = 343;
 NSString *const kGLOBAL_WIDGET_STATISTICS = @"globalWidgetStatistics";
 NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 
@@ -192,7 +193,15 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 -(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block {
     CGFloat const IconSize = 15.0;
     CGFloat const IconPadding = 2.0;
+    
+    // Remove adChoicesButton if exists from previous uses (i.e. this is a re-use)
+    UIButton *b =  [imageView viewWithTag:kAdChoiceButtonTag];
+    if (b != nil) {
+        [b removeFromSuperview];
+    }
+    
     OBAdChoicesButton *adChoicesButton = [OBAdChoicesButton buttonWithType:UIButtonTypeCustom];
+    adChoicesButton.tag = kAdChoiceButtonTag;
     imageView.userInteractionEnabled = YES;
     // Place the icon on the Top, Right corner of the imageView
     adChoicesButton.frame = CGRectMake(imageView.frame.size.width - (IconSize + IconPadding), IconPadding, IconSize, IconSize);
