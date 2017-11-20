@@ -188,8 +188,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 
 #pragma mark - RTB integratin with SDK
 -(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block {
-    CGFloat const IconSize = 15.0;
-    CGFloat const IconPadding = 2.0;
+    CGFloat const IconSize = 30.0;
+    CGFloat const IconPaddingEdge = 2.0;
+    CGFloat const IconPaddingInside = 12.0;
     
     // Remove adChoicesButton if exists from previous uses (i.e. this is a re-use)
     UIButton *b =  [imageView viewWithTag:kAdChoiceButtonTag];
@@ -198,10 +199,12 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     }
     
     OBAdChoicesButton *adChoicesButton = [OBAdChoicesButton buttonWithType:UIButtonTypeCustom];
+    adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(IconPaddingEdge, IconPaddingInside, IconPaddingInside, IconPaddingEdge);
+
     adChoicesButton.tag = kAdChoiceButtonTag;
     imageView.userInteractionEnabled = YES;
     // Place the icon on the Top, Right corner of the imageView
-    adChoicesButton.frame = CGRectMake(imageView.frame.size.width - (IconSize + IconPadding), IconPadding, IconSize, IconSize);
+    adChoicesButton.frame = CGRectMake(imageView.frame.size.width - IconSize, 0, IconSize, IconSize);
     
     // add on click listener
     adChoicesButton.block = block;
