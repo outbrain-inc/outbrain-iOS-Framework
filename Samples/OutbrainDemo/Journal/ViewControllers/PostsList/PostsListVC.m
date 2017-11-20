@@ -146,11 +146,18 @@
         [_loadedOutbrainRecommendationResponses replaceObjectAtIndex:widgetIndex withObject:[NSNull null]];
     }
     
+    
+    [self fetchOutbrainRecFor:indexPath];
+    
+}
+
+-(void) fetchOutbrainRecFor:(NSIndexPath *)indexPath {
+    __block NSInteger widgetIndex = [self _widgetIndexForIndexPath:indexPath];
     typeof(self) __weak __self = self;
     Post * p = (Post *)[self.postsData firstObject];
     OBRequest * request = [OBRequest requestWithURL:p.url widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
     
-    // We like block handlers
+    
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
         
         // Check if there was an error.
