@@ -20,8 +20,6 @@
 // The current version of the sdk
 extern NSString * const OB_SDK_VERSION;
 
-extern NSString *const kIS_COOKIES_ENABLE_KEY;
-
 #define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 /**
