@@ -93,6 +93,7 @@
 
 + (NSString *) webviewUserAgent {
     if ([[self sharedManager] userAgent] == nil) {
+        // Please note the waitUntilDone: YES
         [self performSelectorOnMainThread:@selector(createWebViewAndFetchUserAgent) withObject:nil waitUntilDone:YES];
     }
     
