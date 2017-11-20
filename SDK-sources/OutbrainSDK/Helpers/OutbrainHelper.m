@@ -16,10 +16,10 @@
 #import "OBViewabilityService.h"
 #import "OBRecommendation.h"
 #import "OBAppleAdIdUtil.h"
+#import "OBUtils.h"
 
 
 
-#import <sys/utsname.h>
 
 
 
@@ -144,10 +144,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dosv" value: [[UIDevice currentDevice] systemVersion]]];
     
     //Device model
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *deviceModel = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dm" value: deviceModel]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dm" value: [OBUtils deviceModel]]];
     
     //Token
     NSString *token = [self.tokensHandler getTokenForRequest:request];

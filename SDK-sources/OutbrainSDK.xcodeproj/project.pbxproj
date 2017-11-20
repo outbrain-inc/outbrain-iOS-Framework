@@ -69,6 +69,8 @@
 		E61C73ED1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */; };
 		E61C73EE1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */; };
 		E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E627260F1FC2DF8E005CC644 /* OBUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E627260D1FC2DF8D005CC644 /* OBUtils.h */; };
+		E62726101FC2DF8E005CC644 /* OBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E627260E1FC2DF8D005CC644 /* OBUtils.m */; };
 		E682C4641F4DB47D00382289 /* OBTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E682C4631F4DB47D00382289 /* OBTestUtils.m */; };
 		E682C4661F4DB4CC00382289 /* OBParseODBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E682C4651F4DB4CC00382289 /* OBParseODBTests.m */; };
 		E682C46B1F4DB6D900382289 /* odb_normal_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E682C46A1F4DB6D900382289 /* odb_normal_response.json */; };
@@ -162,6 +164,8 @@
 		E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
 		E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationsTokenHandler.m; sourceTree = "<group>"; };
 		E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBProtocols.h; sourceTree = "<group>"; };
+		E627260D1FC2DF8D005CC644 /* OBUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBUtils.h; sourceTree = "<group>"; };
+		E627260E1FC2DF8D005CC644 /* OBUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBUtils.m; sourceTree = "<group>"; };
 		E682C4621F4DB47D00382289 /* OBTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBTestUtils.h; sourceTree = "<group>"; };
 		E682C4631F4DB47D00382289 /* OBTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBTestUtils.m; sourceTree = "<group>"; };
 		E682C4651F4DB4CC00382289 /* OBParseODBTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBParseODBTests.m; sourceTree = "<group>"; };
@@ -401,6 +405,8 @@
 				E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */,
 				E6E91F781D2D08E300A777F3 /* OutbrainHelper.h */,
 				E6E91F791D2D08E300A777F3 /* OutbrainHelper.m */,
+				E627260D1FC2DF8D005CC644 /* OBUtils.h */,
+				E627260E1FC2DF8D005CC644 /* OBUtils.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -449,6 +455,7 @@
 				E6E91F7A1D2D08E300A777F3 /* OutbrainHelper.h in Headers */,
 				D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */,
 				D849D10B1868BB4D00CB4B83 /* Outbrain_Private.h in Headers */,
+				E627260F1FC2DF8E005CC644 /* OBUtils.h in Headers */,
 				E61C737B1D2A47D300DA1CB0 /* OBBridge.h in Headers */,
 				E61C73991D2A4B6100DA1CB0 /* OBViewabilityService.h in Headers */,
 				E61C73B41D2A4C9300DA1CB0 /* OBContent_Private.h in Headers */,
@@ -573,6 +580,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E62726101FC2DF8E005CC644 /* OBUtils.m in Sources */,
 				E61C73D91D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.m in Sources */,
 				E61C73BC1D2A4C9300DA1CB0 /* OBRecommendationResponse.m in Sources */,
 				E61C73EC1D2A4DB800DA1CB0 /* OBErrors.m in Sources */,
