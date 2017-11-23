@@ -254,20 +254,10 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     NSURLComponents *components = [NSURLComponents componentsWithString:kViewabilityUrl];
     NSMutableArray *queryItems = [NSMutableArray array];
     
-    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        for (NSString *key in queryDictionary) {
-            NSString *part = [NSString stringWithFormat: @"%@=%@", key, queryDictionary[key]];
-            [queryItems addObject: part];
-        }
-        
-        components.query = [queryItems componentsJoinedByString: @"&"];
+    for (NSString *key in queryDictionary) {
+        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:queryDictionary[key]]];
     }
-    else {
-        for (NSString *key in queryDictionary) {
-            [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:queryDictionary[key]]];
-        }
-        components.queryItems = queryItems;
-    }
+    components.queryItems = queryItems;
     
     return components.URL;
 }

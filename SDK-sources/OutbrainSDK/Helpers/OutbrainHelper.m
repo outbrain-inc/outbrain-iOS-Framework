@@ -324,12 +324,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 }
 
 + (BOOL) string:(NSString *)str containsString:(NSString *)subString {
-    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        return ([str rangeOfString:subString].location != NSNotFound);
-    }
-    else {
-        return [str containsString:subString];
-    }
+    return [str containsString:subString];
 }
 
 @end
