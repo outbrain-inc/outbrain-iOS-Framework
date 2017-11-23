@@ -63,7 +63,6 @@
 		D834564F1885A543002B2368 /* Journal-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Journal-Prefix.pch"; sourceTree = "<group>"; };
 		D83456511885A543002B2368 /* OBConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OBConfig.plist; sourceTree = "<group>"; };
 		D83456521885A543002B2368 /* Journal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Journal-Info.plist"; sourceTree = "<group>"; };
-		D83456541885A543002B2368 /* MainStoryboard-iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "MainStoryboard-iphone.storyboard"; sourceTree = "<group>"; };
 		D83456681885A543002B2368 /* TinyPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyPageControl.h; sourceTree = "<group>"; };
 		D83456691885A543002B2368 /* TinyPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinyPageControl.m; sourceTree = "<group>"; };
 		D852F381187B5B3C008A2A04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -208,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */,
-				D83456541885A543002B2368 /* MainStoryboard-iphone.storyboard */,
 				E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */,
 			);
 			path = storyboards;
