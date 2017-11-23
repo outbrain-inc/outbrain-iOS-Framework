@@ -50,30 +50,6 @@
 		FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		E643666E1FAEF2B300FA617E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E64366681FAEF2B300FA617E /* OutbrainSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D82F1D7518564C7700D4DEA8;
-			remoteInfo = OutbrainSDK;
-		};
-		E64366701FAEF2B300FA617E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E64366681FAEF2B300FA617E /* OutbrainSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D82F1D8518564C7800D4DEA8;
-			remoteInfo = OutbrainSDKTests;
-		};
-		E64366B11FAEF48800FA617E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E64366681FAEF2B300FA617E /* OutbrainSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D8376BE9186E2F6D00B45FA3;
-			remoteInfo = OBFramework;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		D8174B2E18A562BC005696C2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D83456461885A543002B2368 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
@@ -101,7 +77,6 @@
 		E62725941FB9B736005CC644 /* PostPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostPreviewCell.m; sourceTree = "<group>"; };
 		E643665F1FAA10A500FA617E /* PaddingLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
 		E64366601FAA10A500FA617E /* PaddingLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaddingLabel.m; sourceTree = "<group>"; };
-		E64366681FAEF2B300FA617E /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = "../../SDK-sources/OutbrainSDK.xcodeproj"; sourceTree = "<group>"; };
 		E64366731FAEF2FB00FA617E /* PostsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostsListVC.h; sourceTree = "<group>"; };
 		E64366741FAEF2FB00FA617E /* PostsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostsListVC.m; sourceTree = "<group>"; };
 		E64366761FAEF2FC00FA617E /* OBRecommendationWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBRecommendationWebVC.h; sourceTree = "<group>"; };
@@ -279,7 +254,6 @@
 		D8B59230186376B1009422D5 = {
 			isa = PBXGroup;
 			children = (
-				E64366681FAEF2B300FA617E /* OutbrainSDK.xcodeproj */,
 				D83456431885A543002B2368 /* Journal */,
 				D8D1FD9318732CA10099831C /* Shared UI */,
 				D8B5923B186376B1009422D5 /* Frameworks */,
@@ -321,15 +295,6 @@
 				E64366931FAEF36B00FA617E /* Branding Logos */,
 			);
 			name = "Shared UI";
-			sourceTree = "<group>";
-		};
-		E64366691FAEF2B300FA617E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E643666F1FAEF2B300FA617E /* libOutbrainSDK.a */,
-				E64366711FAEF2B300FA617E /* OutbrainSDKTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		E64366721FAEF2FB00FA617E /* PostsList */ = {
@@ -517,7 +482,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E64366B21FAEF48800FA617E /* PBXTargetDependency */,
 			);
 			name = Journal;
 			productName = OutbrainDemo;
@@ -550,35 +514,12 @@
 			mainGroup = D8B59230186376B1009422D5;
 			productRefGroup = D8B5923A186376B1009422D5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E64366691FAEF2B300FA617E /* Products */;
-					ProjectRef = E64366681FAEF2B300FA617E /* OutbrainSDK.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D8B59238186376B1009422D5 /* Journal */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		E643666F1FAEF2B300FA617E /* libOutbrainSDK.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libOutbrainSDK.a;
-			remoteRef = E643666E1FAEF2B300FA617E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E64366711FAEF2B300FA617E /* OutbrainSDKTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OutbrainSDKTests.xctest;
-			remoteRef = E64366701FAEF2B300FA617E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D8B59237186376B1009422D5 /* Resources */ = {
@@ -631,14 +572,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E64366B21FAEF48800FA617E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OBFramework;
-			targetProxy = E64366B11FAEF48800FA617E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D8B59269186376B1009422D5 /* Debug */ = {
