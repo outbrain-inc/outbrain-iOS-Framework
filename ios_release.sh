@@ -9,7 +9,7 @@ if [ $BRANCH != "master" ]; then
 	exit 1
 fi;
 
-cd src
+cd SDK-sources
 # Clean
 xcodebuild clean -target OBFramework
 xcodebuild clean -target OutbrainSDK
