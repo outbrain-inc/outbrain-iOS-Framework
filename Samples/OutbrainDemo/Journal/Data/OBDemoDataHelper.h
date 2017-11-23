@@ -11,9 +11,9 @@
 
 #define OBDemoURL   @"http://mobile-demo.outbrain.com/"
 
-#define OBDemoWidgetID1     @"APP_1"
-#define OBDemoWidgetID2     @"APP_2"
-#define OBDemoWidgetID3     @"APP_3"
+#define OBDemoWidgetID1     @"SDK_1"
+#define OBDemoWidgetID2     @"SDK_2"
+#define OBDemoWidgetID3     @"SDK_3"
 
 #define IMAGE_SPACING @"\n\n\n\n\n"
 
