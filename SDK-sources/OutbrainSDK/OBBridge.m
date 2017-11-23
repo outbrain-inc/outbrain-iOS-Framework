@@ -16,12 +16,12 @@
 #pragma mark - Custom OBWebView
 + (BOOL) isOutbrainPaidUrl:(NSURL *)url {
     NSString *currentUrl = [url absoluteString];
-    return [OutbrainHelper string:currentUrl containsString:@"paid.outbrain.com/network/redir"];
+    return [currentUrl containsString:@"paid.outbrain.com/network/redir"];
 }
 
 + (BOOL) shouldOpenInSafariViewController:(NSURL *)url {
     NSString *currentUrl = [url absoluteString];
-    return [OutbrainHelper string:currentUrl containsString:@"cwvShouldOpenInExternalBrowser=true"];
+    return [currentUrl containsString:@"cwvShouldOpenInExternalBrowser=true"];
 }
 
 + (BOOL) registerOutbrainResponse:(NSDictionary *)jsonDictionary {

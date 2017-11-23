@@ -323,8 +323,4 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     return [self sdkSettingForKey:OBSettingsAttributes.appUserTokenKey];
 }
 
-+ (BOOL) string:(NSString *)str containsString:(NSString *)subString {
-    return [str containsString:subString];
-}
-
 @end
