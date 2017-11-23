@@ -1,0 +1,207 @@
+{
+  "response": {
+    "exec_time": 89,
+    "timestamp": 1503493233483,
+    "status": {
+      "id": 0,
+      "content": "Request succeeded"
+    },
+    "request": {
+      "lang": "en",
+      "idx": "0",
+      "did": "720627693",
+      "pid": "4737",
+      "lsd": "10e0fb73-2e3e-41be-92c0-f633f9383d46",
+      "enu": "iW6-wp8JaU6TYdyQsAUlhCtZUTUGyHGl0dhNub-z8z2w-Msl3b0uqGI8AHT9KNtH",
+      "api_user_id": "D19A3A3F-8E1F-4E3D-B2BB-D61A75733DEA",
+      "t": "MV9iY2FlN2NmNTIzYzJjM2QyYmM0OWMzZGZjZWY4MjZjZl8w",
+      "pvId": "bcae7cf523c2c3d2bc49c3dfcef826cf",
+      "pad": "4",
+      "org": "2",
+      "abTestVal": "no_abtest",
+      "obRecsAbtestAndVars": "445-1386",
+      "widgetJsId": "APP_1",
+      "readerPlatform": "desktop",
+      "sid": 5291479,
+      "wnid": 140,
+      "req_id": "bcae7cf523c2c3d2bc49c3dfcef826cf",
+      "gl": "mgchoVtVE3g1i_q8pRTFdA",
+      "vid": 0,
+      "ref": 0
+    },
+    "documents": {
+      "total_count": 6,
+      "count": 6,
+      "doc": [
+        {
+          "source_name": "healthnewstips.today",
+          "same_source": "false",
+          "source_display_name": "healthnewstips.today",
+          "pc_id": 83415918,
+          "adv_name": "a-marketingsolutions.com",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "http://great.findingnow.info/f6955a6f-34da-4982-a04a-74f188f0955e?utm_content=Japanese+Fungus+Remover&utm_term=00d924c852c87b1af4a480021b3706e35f&Doc_title=Toenail+Fungus+Ruined+My+Life+Until+I+found+This.+%28Watch%29&newad=2&utm_adid=005b5014420871df8ca2d6bd18ad3378d0&utm_doc_id=0058592db89c2784029da8b62d81abebf7&utm_new=00d924c852c87b1af4a480021b3706e35f_&utm_cam=Tier1Dskt",
+          "rec-cats": [
+            1505,
+            1507,
+            1510
+          ],
+          "ads_type": 1,
+          "rec_en_did": "dRz5OLpcB_7fqMLvOO6tgA",
+          "url": "http://paid.outbrain.com/network/redir?p=OKEOBdT5-eyC3RyXR1jZPxrkGvso1fn-ecwXlyLjegpt8F9y_clcv9YIRIBy8mnjwrEbDLIc5eyi-AHwhUqlpe8omECAjkY2ApXgwgtWzfgsQYiJjUf-hDkCs6MlejEw5cCj70v9HcJbAvgZ3AkrMwy0eTzm_GLIpSv_cLdBk998gkxyn26mSsXUQJ3TVpPCRicpx6Ne9I2qNRKFUeOhP1iB2A5JqVlqQlz4M4-AtGKw5BnldGkWrsfaTdJsYHUJql0s-ttTjakhBRe_sz4_Xz_HYub37BO3_TUa7M_fxwJ5rPBn3kHzW_4KnvMH1uwOsXv1LqLnO6cioG0FHlk5sSdylly0Vl8G8Jjk9nWDycnYuUeDdxL6AgcdwjNBTZr31xHnpJXo0tkjV3cPZ3AeFNso1u1VfjrZbu6r5SXT5ulh0aH5hHEtSwA8NHsL0Ymu6wwzR-C9kflX1EBBeE1cQJ3OAg976TBVWlmTjHD2ytGrjl-49DtS5wrxZ-afiL8FVkdClCsRkyM9bXOocd6sJtC31v-rhA1eiYA_F_EsUM3c6DJSPN2qxX7poa4nQMI6z-o6EIk8HCaWRwHRiBlnA2Re2eqyzeulCG7PtTQTJey2MIL8ef-Y3eKkz-CBnEZ_7KtVv2x9h9ILmDu2YDvTIn-BWUTjVAJGIoqYiLJMcEMgVqs3QnBy6623pXKEtJT7t3NWom03To4CR-IGiRKXnHnS1uiIBXA_VXVc_vtAQ0OV03YcIjkMj-zTyrhMgCQnVp9hOdwHrnbj9vg4G8B7Ag&c=ad2d57b1&v=3",
+          "author": "",
+          "content": "Toenail Fungus Ruined My Life Until I found This. (Watch)",
+          "pc_cmp_id": 1000565583,
+          "pos": "0",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/v1/dTJlWE9BVVgyOW1PU3hqSTE2cy9hZz09/eyJpdSI6ImMxZjNkMDA0MDJlMDEzMmY2OTU3MTJkMWNhOTVmNWQzYjc5MGFjOTk3YjFlY2JkZWNlNDk4NmM2YWRiMjJiMzQiLCJ3IjoyMDAsImgiOjIwMCwiZCI6MS4wLCJjcyI6MCwiZiI6MH0%3D.webp",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "Forge Of Empires",
+          "same_source": "false",
+          "source_display_name": "Forge Of Empires",
+          "pc_id": 82266939,
+          "adv_name": "Innogames - Forges of Empires - Desktop_p1",
+          "publish_date": "2015-06-30 00:00",
+          "orig_url": "http://om.forgeofempires.com/foe/us/?ref=out_row_en_build_2&#build",
+          "rec-cats": [
+            2005,
+            1802,
+            1804
+          ],
+          "ads_type": 1,
+          "rec_en_did": "RTbrU7YXvw2563Z26HUshw",
+          "url": "http://paid.outbrain.com/network/redir?p=88FvbgMwqZ3e0z9gUy-lAC3zzV-FgMpemRBaCbBwAJFmWt8HQz9_7cEiuna2p5rcLJmekW46Tq_fJs4y6ld8d_5tsyCumLxxhY_26WHdWSrpX2wHRmdue7Osdsbv862kGZ1dO_SrKCW2MrKF_Bo0v_TgnlALZRU6wdJ6muB0FRLGPNB849eRd2Zt1Ik3WIeFMqGs1kAliINYBXIvWZc4gm0L2o2Ipa7QHRWFjOD0xpAdeBciX6cqdTnWJkIS-gAetFoIujKB6GOAg_i2n_VTPtuwZiN2OlmbT0ITuLzILKJCETKU4sQpHbss8AHxRWtrB8tR0IIZdbkhI5J2fp3B2H997LIlT_8CCRXsrfQDJyLnp29hzlDW7LYrANABztucviGezfJGOvAlsRyIZKqGxaxO-CyF8aBjL-SMrTy0vPaJr9HidPb25bv1RLdLxmRZSpdrNswukfFC-DlS4s1FVBhc78lS3t63JY5E60UKEH8kbUMPtA77NTmandJp53bTBquRtOPVTd6lgEJdxDR-kKfHO2iOByAnw2u0ZjiXWx5oYo2N2djxaExSdvgDe5Ta3Gw7wr8oVmt7s_u8GPpPniJQ2WdWV0kEQqoR_cGlLf-cKbYZNDuQFME-sbhaHuNXhfXaIDv8oxpECCsSWDG9k2u05W78hIi8YWh--j6sACds3JcCQQsUiWTLd2JZBODPhu3ZtuinouGGK5M_kZaRvTNW3cq9H1yo2aLv4Oar2Ka_d5-9irSzWKdkV-S2aa_hYCmtx9mrReUuuoDpVQn-Gw&c=eb06826b&v=3",
+          "author": "",
+          "content": "Gamers around the world have been waiting for this game!",
+          "pc_cmp_id": 1000547593,
+          "pos": "1",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/v1/U0VmME5mZkVvMjJId2tGZ3BSNkd4dz09/eyJpdSI6IjY2NGZhZDBlOGNkMzExMzkzMWE2ZmJkMzQwNGZmOWNmYWFlMzIwN2UyYzRjNDhmMzViNmE1ODhlODE1ZWY2ODEiLCJ3IjoyMDAsImgiOjIwMCwiZCI6MS4wLCJjcyI6MCwiZiI6MH0%3D.webp",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "From the Grapevine",
+          "same_source": "false",
+          "source_display_name": "From the Grapevine",
+          "pc_id": 82995460,
+          "adv_name": "Grapevine (Grapevine IL)",
+          "publish_date": "2017-07-27 12:49",
+          "orig_url": "https://www.fromthegrapevine.com/arts/tv-series-finales-left-us-hanging-and-some-didnt",
+          "rec-cats": [
+            1408
+          ],
+          "ads_type": 1,
+          "rec_en_did": "cOxkcgbfi9Lr6GkImrXJ-A",
+          "url": "http://paid.outbrain.com/network/redir?p=Kv6gG2_vZVwH7f7pFPV6ie2p0YXsu-2Wl9gdS7hffnKWsOInHMRBAgtejDc0w8jX5ip_s3fIAxFB7XkMmm0_e3gg7bUyrcvxK2e_NNzlwTaEjeNtwKNi9Rwp-sc84XPGuIevm8R2Zntvz9Pgw76Ro02OQPaB22W95TIy7ky6Gxno0oFcMx4W-xD-YLc_hlkpGxGcrsxkjOAl9HzSLgJu94sJyeFvoH2Ze2RxDJZgQEGiq9GGSXYPu0MWHR8QYLQefyI0yYnP_q0BICalp1bnI63Fsmeg96Xk_GEcVE-ziWXggkoVdSDe9TmhKZvm-jF5VCOfxe25BunvJtvJe_9eN-Kk1BxdAsuBUC688zHcFDsey3APLlpXLT3KOc4VBb3HPGG-31iaeiblvew8OYlcI8eik-W5CluRIOkjSQEkdo2k-9oM1_jbbyxBID0NE9cHSvGBmVoXYT8BHobWDwKYwP_GeflTEwOSBzKOBZAVql2u4d7a6xYHNvYdN7rF_v2y-CZpqhhanR1bRQiPajY86x6WLdQM9cWMudPRZA-K3wcRWLBx0Tl47nKZjt4rlUgPgVMBzEca4JtdsovXVGM2NM5VhPDQX-d0fffvI-8HHvRHEdpFNEFF6bTCO1DyjtL5xrI96yk2uErhTj1DocDv86aVehmWbJELVrXJMcsf4uvPC7cfAY1WEouJcDjygViRzK6T4chkZQxq5W7ndyHoxzZWIglQYZxYwZsux1gd4DLXatClYH3c4h-vVTCYDlRsMFm5nMbAeDa6HRNGSgh4dg&c=cf9f3952&v=3",
+          "author": "",
+          "content": "5 TV series finales that left us hanging (and 5 that didn’t)",
+          "pc_cmp_id": 1000374526,
+          "pos": "2",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/v1/RTdaUTc5UjRtZjB4U3RlWUNtVEhBQT09/eyJpdSI6IjlhNTg5ODUzYzI0MzYwYTE4ZGExOWNiYjZkODViN2FkNTc4YzY4MDZmYjA0ZTU5OWViZTMxOGFjMWFjZTMyNTkiLCJ3IjoyMDAsImgiOjIwMCwiZCI6MS4wLCJjcyI6MCwiZiI6MH0%3D.webp",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "Outbrain | Mobile Demo",
+          "same_source": "true",
+          "source_display_name": "Outbrain | Mobile Demo",
+          "publish_date": "2014-01-26 00:00",
+          "orig_url": "http://mobile-demo.outbrain.com/2014/01/26/combating-the-content-overload/",
+          "desc": "Combating the Content Overload",
+          "rec-cats": [
+            1211
+          ],
+          "ads_type": 2,
+          "rec_en_did": "iqhpv-ABfVJm4oaR_nl2XA",
+          "url": "http://traffic.outbrain.com/network/redir?p=ynYt7Adp4AqSINzcsyg4r9kSpP-raTzUfU8pEP9-SeOmgZlIqlBSBbvF-eGgVkAdDdSd-ULt3SJ7Sn48T-676gV5iV2QdIgSYrA7rIKHPCPRb6NRbBTSKQqI5yRXhyef-EyIBNaz4a5DxHkKjw8tPSgAcz2vpoQetr2Z1Pu6Jn9et6z6rSpC9CsVUb0HPFUzfBz1yG2vgM8CT97YsefPibWohNcBkUjx0M7LuEJRjTLh3Oh04UcmqdFvLy9bmrEHw2xFDplkMLpxZRAn1QC5vm1CsVlJQ3k-M5jnLyXjKTBLcxY5jyiTwbwbl2w1-HsC59CueSrIMDFn4VSR-6ExvKMWT8ZtL4d5zC__q07DV9AySD_SimCNfhSsEUNR9St_T596Lpd4M5WCsbOxKLxheup229dSH5tz9rWEJiCq-uM20CJG4K23OHXImkiYnoxykuC8ObPCmhGGqRasGFYzzPWPoCuiFlaXoDAlVwGJPcVtmuBaMZHIwupGMIiOziGWW_gWHmN0N5LQzvJkaI0ohS4jLvNZQlJ_qDiFiG6TF-ERxVMUY0vk5Bcr2ok_T67WmWCJf9Pb7QwPKy1NZeOIsFk-qSejCHU2Z0FflkS7y9l_-gsKzi7_LvVaygiGHODV_OdY8Sws1ml1QN8Rlr_Kx5_dsVgQaa1coIsyvl226ceCSz-LpOIzDO6DKhJBjJk4&c=16b5dfa4&v=3",
+          "author": "uriel elster",
+          "content": "Combating the Content Overload",
+          "pos": "3",
+          "ttid": 4,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/Imaginarium/api/uuid/0b7181e69865b86c585ee8f8de33b511041effa59b8f5ba68887b3f691029883/200/200/1.0/webp",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "Outbrain | Mobile Demo",
+          "same_source": "true",
+          "source_display_name": "Outbrain | Mobile Demo",
+          "publish_date": "2014-01-26 00:00",
+          "orig_url": "http://mobile-demo.outbrain.com/2014/01/26/4-steps-to-re-launching-your-company-blog/",
+          "desc": "4 Steps to Re-Launching Your Company Blog",
+          "rec-cats": [
+            1211
+          ],
+          "ads_type": 2,
+          "rec_en_did": "PUt2oxjAfsHt9JB3Y_vepw",
+          "url": "http://traffic.outbrain.com/network/redir?p=sdEyp3F7T8yQboRXkxwL21KbGvIVvQzhRBuMMyixGHIUGtRDZ5pt4GcLWw3eJKAyS8HgwZ2j-Pr2m4kHDcXBIyW81HMeKbI6lArs9P0urPCaCIz6MMZv4v0Qud7a6SaYghTSO1saNF0-Ce2TtONDQ8a38_xZrW9_V8ISHPTIDMyqIWrszkwCCvwZT4AiaimpPZ575b-rU41BVu4rmEERxILKa-yLb8kF9GTIUq852mWODxxEKjmEJxgqiaj54P8UhP-XXXpf_wH8BJop4zV05U0nZRf_iJb_E0qxYXm8sA8GARm7PvkTEEBQ_vs7JsZnp9IJsQxUx5b65oERXivL8vcYtHv9khiMe1aZVDkgNcfOI8AGrNOuEr-ZWVGfRKJj3lMvjUpo9ewXL91_QbCg5btkmn9C98Vgt5LWxGPxiS4-otkwuN45FYrXzqHX-aykNaiZGyYUec1SS3zzdigGqMJG38qzc5vrZk1lQEO8LsomtSvz209RtrpxFQdUKzPEnJ9Hg-vJJGTxetB5z1KnYQHgrMdgspv3C9V-6AJq8gAiA9A-le32yTnsOhBLJDcfnKT-nNGZtQ9SyKbMdkBf_aL31iOfgIF4JXHa2RgjI--0JXAeDQjgimUd60UTyyPKgiHv4rF2HppiPq0PFmw3zAvsYRkoNKGeGRuM962tYZ4aRy0tD0YccKFH9mAY2Trc&c=53bb887f&v=3",
+          "author": "uriel elster",
+          "content": "4 Steps to Re-Launching Your Company Blog",
+          "pos": "4",
+          "ttid": 4,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/Imaginarium/api/uuid/f33dd0afffe1b996e7ad67d57ee93acc95f8ab83845c8bbec39027321ead8d94/200/200/1.0/webp",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "Throne: Kingdom at War",
+          "same_source": "false",
+          "source_display_name": "Throne: Kingdom at War",
+          "pc_id": 82322899,
+          "adv_name": "Throne: Kingdom at War - Plarium - Desktop",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "https://plarium.com/play/en/throne/009_village_hybrid_g?plid=107158&pxl=outbrain&",
+          "rec-cats": [
+            1611,
+            2002,
+            2003
+          ],
+          "ads_type": 1,
+          "rec_en_did": "1M3W09BA-TbvmuEKydibRg",
+          "url": "http://paid.outbrain.com/network/redir?p=g6xpk_Dhm58cWCFZBxVAhlUSNa4yzuTg3YnRPcD0b7eE0acflTVOzGW4Sg2kUuzE_uJgtcoTdSVCAdHhAiYDy6Has-yeKMoCSFYLrK_EnDRwrgniP2QLGbtp-jI8HaOhXm6VRbne0scKlDAu5-wfTrXSxOJgT3qwG8EmDb-yJawhgG-IsfFXl2QQgsMBvyiW8arjDqo1osVU78zjofWLBZ2nc54p0p5dDt6xcvXfSGabCIbnBwWlKnkaXkDZGAr1WkkDYGUskRSPXi35qacsNX6wSJXmLyE46RPGdq3CJlTLWF51AyA4i_gdpBY-7HP3ilOd0FmAy9BN1nY0AUE-GDGPmZ51ETQVNUUc0t_HqyE1L6otcV336OPO0XyNkkv3ztB0R73PQ_Nkf5HYkW--cew1Awb_mJHz_noiN3fVaHBrBLZ1YrbPgZ__yrp4sxJK5hz5iWUifFy1g0oQPp-2cXF9LDsvSrKw-JQayiy2F3hoaNG2aUx2PTudXtgT5BZw-WmCV5NEZIlHvNHI83eoNJJoNlCW-McBpWF0AuoKogel-Q_BeYOPVRAhFwhyikUflV8d0hbEqws8d9Kh8Z3WEjRGxx-BD9HUdd8LSV3mIL4KsqRoYKBSJfQjcEIhV-6fHEykjmxOou0jAHGazigOdPZBaaRWBksG837MDboT0DN1zFi-ZIlbT6a--gTIfGGRQvUQE9RdUroxgpmVQWVeTlyx0zOIopxJPoV76BXybjHm3RYwDrLt_CDOt0K80ElKr3npYuR8OOoEdWpqO470jw&c=c7ed4c46&v=3",
+          "author": "",
+          "content": "If you own a computer you must try this game!",
+          "pc_cmp_id": 1000548515,
+          "pos": "5",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/v1/bm96TXJ6ejVoU29pMWxVMXZacWhMdz09/eyJpdSI6ImQzYjY1M2NiN2U2NDkyNDYzNDVkYjdiZjRiZmZlYWU2OTQ1YmUyYmVmZjRmYTY3YTVjODM4ZDUxMTgyYmIwMWQiLCJ3IjoyMDAsImgiOjIwMCwiZCI6MS4wLCJjcyI6MCwiZiI6MH0%3D.webp",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        }
+      ]
+    },
+    "settings": {
+      "flagPublisherZappingFeature": true,
+      "defaultRecNumber": 6,
+      "cwvReportingEnable": true,
+      "recMode": "odb_strip",
+      "globalWidgetStatistics": true,
+      "apv": true,
+      "cwvReportingThreshold": 70,
+      "InstallationType": "other"
+    }
+  }
+}

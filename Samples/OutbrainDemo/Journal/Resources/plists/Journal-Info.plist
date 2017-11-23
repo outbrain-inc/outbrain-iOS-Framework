@@ -52,8 +52,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>MainStoryboard-iphone</string>
+	<string>NewMainStoryboard</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>MainStoryboard-ipad</string>
 	<key>UIRequiredDeviceCapabilities</key>

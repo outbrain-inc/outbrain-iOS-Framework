@@ -21,5 +21,6 @@
 
 
 - (IBAction)showOutbrainAbout;
+- (IBAction)showOutbrainAbout:(UIViewController *)vc;
 
 @end

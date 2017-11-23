@@ -2,8 +2,8 @@
 //  OBDemoDataHelper.m
 //  OutbrainDemo
 //
-//  Created by Joseph Ridenour on 12/27/13.
-//  Copyright (c) 2013 Mercury. All rights reserved.
+//  Created by Oded Regev on 12/27/13.
+//  Copyright (c) 2013 Outbrain inc. All rights reserved.
 //
 
 #import "OBDemoDataHelper.h"
@@ -74,7 +74,6 @@ const struct OBDCodingKeys OBDCodingKeys = {
 {
     if((self = [super init]))
     {
-        _networkQueue = [[NSOperationQueue alloc] init];
         _lastPostsUpdate = [[NSUserDefaults standardUserDefaults] valueForKey:LAST_POST_UPDATE_KEY];
         _posts = [NSMutableArray array];
         
@@ -102,7 +101,6 @@ const struct OBDCodingKeys OBDCodingKeys = {
     {
         _lastPostsUpdate = [aDecoder decodeObjectForKey:OBDCodingKeys.lastUpdateKey];
         _posts = [NSMutableArray arrayWithArray:[aDecoder decodeObjectForKey:OBDCodingKeys.postsListKey]];
-        _networkQueue = [aDecoder decodeObjectForKey:OBDCodingKeys.queueKey];
     }
     return self;
 }
@@ -110,14 +108,157 @@ const struct OBDCodingKeys OBDCodingKeys = {
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:_posts forKey:OBDCodingKeys.postsListKey];
-    [aCoder encodeObject:_networkQueue forKey:OBDCodingKeys.queueKey];
     [aCoder encodeObject:_lastPostsUpdate forKey:OBDCodingKeys.lastUpdateKey];
 }
 
+#pragma mark - fetch post \ posts from server
+- (void)updatePostsInViewController:(UIViewController *)vc withCallback:(void(^)(BOOL updated))callback
+{
+    // We don't want to refresh if less than 30 seconds
+    if(_lastPostsUpdate && [[NSDate date] timeIntervalSinceDate:_lastPostsUpdate] < 30 && [self posts].count > 0)
+    {
+        if(!callback) return;
+        return callback(NO);
+    }
+    
+    // Update the date var so we can keep users from trying to aggressively update
+    _lastPostsUpdate = [NSDate date];
+    [[NSUserDefaults standardUserDefaults] setValue:_lastPostsUpdate forKey:LAST_POST_UPDATE_KEY];
+    
+    NSString * urlString = [NSString stringWithFormat:@"%@?json=true",OBDemoURL];
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.f];
+    
+    request.HTTPMethod = @"GET";
+    
+    NSURLSessionDataTask *getDataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request
+                                                                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                                            if(data)
+                                                                            {
+                                                                                [self parseData:data FromUpdatePostsIn:vc withCallback:callback];
+                                                                            }
+                                                                            else {
+                                                                                // No data retrieved.  (Usually means the connection timed out).
+                                                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                                                                    // Check if we have data saved
+                                                                                    if (error) {
+                                                                                        [self showErrorWith:@"Network Error" message: error.localizedDescription in:vc];
+                                                                                    }
+                                                                                    else if ([[self posts] count] == 0)
+                                                                                    {
+                                                                                        // Only show this as an error if we don't have data saved already
+                                                                                        [self showErrorWith:@"Network Error" message:@"Couldn't contact the server.  Please check your connection and try again" in:vc];
+                                                                                    }
+                                                                                });
+                                                                            }
+                                                                        }];
+    [getDataTask resume];
+}
 
-#pragma mark - Methods
+- (void) showErrorWith:(NSString *)title message:(NSString *)message in:(UIViewController *)vc {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle: title
+                                              message: message
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* okButton = [UIAlertAction
+                                   actionWithTitle:@"OK"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {
+                                       //Handle your yes please button action here
+                                   }];
+        
+        [alertController addAction:okButton];
+        [vc presentViewController:alertController animated:YES completion:nil];
+    });
+}
 
-- (Post *)_postObjectWithData:(NSDictionary *)postData
+- (void)fetchPostForURL:(NSURL *)url withCallback:(void (^)(id, NSError *))callback
+{
+    // First let's check if we already have this post in our list
+    for (Post * p in self.posts)
+    {
+        if([p.url isEqualToString:url.absoluteString])
+        {
+            // Found the post already in our list
+            return callback(p,nil);
+        }
+    }
+    
+    NSString * urlString = [NSString stringWithFormat:@"%@?json=true",url.absoluteString];
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.f];
+    
+    request.HTTPMethod = @"GET";
+    
+    NSURLSessionDataTask *getDataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request
+                                                               completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                                   if(data)
+                                                                   {
+                                                                       [self parseDataFromFetchPostResponse:data withCallback:callback];
+                                                                   }
+                                                               }];
+    [getDataTask resume];
+}
+
+#pragma mark - parse the response for fetch post \ posts
+-(void) parseData:(NSData *)data FromUpdatePostsIn:(UIViewController *)vc withCallback:(void(^)(BOOL updated))callback {
+    __block BOOL updated = NO;
+    NSError * error = nil;
+    NSDictionary * jsonPayload = [NSJSONSerialization JSONObjectWithData:data options:(0) error:&error];
+    if (error || !jsonPayload)
+    {
+        // Something went horribly wrong.
+        NSString * errorMessage = error ? [error userInfo][NSLocalizedDescriptionKey] : @"There was an error parsing the data response in `[OBDemoDataHelper startDataSyncing]`";
+        [self showErrorWith:@"Error" message:errorMessage in:vc];
+    } else {
+        // We have a valid jsonPayload with no errors.  Now let's turn that payload into valid Post objects for CoreData
+        if (jsonPayload[@"posts"])
+        {
+            [self.posts removeAllObjects];
+            for (id postData in jsonPayload[@"posts"])
+            {
+                [self.posts addObject:[self createPostFrom:postData]];
+            }
+            updated = YES;
+        }
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(callback)
+        {
+            callback(updated);
+        }
+    });
+}
+
+- (void) parseDataFromFetchPostResponse:(NSData *)data withCallback:(void (^)(id, NSError *))callback {
+    Post *post = nil;
+    NSError * error = nil;
+    NSDictionary * jsonPayload = [NSJSONSerialization JSONObjectWithData:data options:(0) error:&error];
+    if (error || !jsonPayload)
+    {
+        // Something went horribly wrong.
+        NSString * errorMessage = error ? [error userInfo][NSLocalizedDescriptionKey] : @"There was an error parsing the data response in `[OBDemoDataHelper startDataSyncing]`";
+        
+        error = [NSError errorWithDomain: @"Error" code:100 userInfo:@{NSLocalizedDescriptionKey: errorMessage}];
+        
+    } else {
+        // We have a valid jsonPayload with no errors.  Now let's turn that payload into valid Post objects for CoreData
+        if(jsonPayload[@"post"] || jsonPayload[@"page"])
+        {
+            post = [self createPostFrom:jsonPayload[@"post"] ? : jsonPayload[@"page"]];
+        }
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (callback)
+        {
+            callback(post, error);
+        }
+    });
+}
+
+- (Post *) createPostFrom:(NSDictionary *)postData
 {
     Post * post = [[self class] createPostWithPayload:postData];
     
@@ -154,201 +295,23 @@ const struct OBDCodingKeys OBDCodingKeys = {
     if([attachments isKindOfClass:[NSArray class]] && attachments.count > 0)
     {
         id firstAttachment = attachments[0];
-        if(firstAttachment[@"images"][@"large"][@"url"])
+        if(firstAttachment[@"url"])
         {
-            post.imageURL = firstAttachment[@"images"][@"large"][@"url"];
+            post.imageURL = firstAttachment[@"url"];
         }
     }
     
     return post;
 }
 
-- (void)updatePostsWithCallback:(void(^)(BOOL updated))callback
-{
-    // We don't want to refresh if less than 30 seconds
-    if(_lastPostsUpdate && [[NSDate date] timeIntervalSinceDate:_lastPostsUpdate] < 30 && [self posts].count > 0)
-    {
-        if(!callback) return;
-        return callback(NO);
-    }
-    
-    // Update the date var so we can keep users from trying to aggressively update
-    _lastPostsUpdate = [NSDate date];
-    [[NSUserDefaults standardUserDefaults] setValue:_lastPostsUpdate forKey:LAST_POST_UPDATE_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    // Show that we're doing stuff
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    typeof(self) __self = self;
-    __block BOOL updated = NO;
-    NSBlockOperation *blockOp = [NSBlockOperation blockOperationWithBlock:^{
-        
-        void (^ShowErrorBlock)(NSString * title, NSString *message) = ^(NSString *title, NSString *message) {
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-                [alert show];
-            });
-            
-        };
-        // Our data parsing block
-        void (^ParseData)(NSData *) = ^(NSData * data) {
-            NSError * error = nil;
-            NSDictionary * jsonPayload = [NSJSONSerialization JSONObjectWithData:data options:(0) error:&error];
-            if(error || !jsonPayload)
-            {
-                // Something went horribly wrong.
-                NSString * errorMessage = error ? [error userInfo][NSLocalizedDescriptionKey] : @"There was an error parsing the data response in `[OBDemoDataHelper startDataSyncing]`";
-                ShowErrorBlock(@"Error",errorMessage);
-                
-            } else {
-                // We have a valid jsonPayload with no errors.  Now let's turn that payload into valid Post objects for CoreData
-                if(jsonPayload[@"posts"])
-                {
-                    [__self.posts removeAllObjects];
-                    for(id postData in jsonPayload[@"posts"])
-                    {
-                        [__self.posts addObject:[self _postObjectWithData:postData]];
-                    }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        updated = YES;
-                    });
-                }
-            }
-        };
-        
-        
-        // We're doing this synchronous because this is a sample app.  Yes it may be bad practice, but it fits our needs.
-        NSString * urlString = [NSString stringWithFormat:@"%@?json=true",OBDemoURL];
-        NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.f];
-        NSHTTPURLResponse * response = nil;
-        NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-        
-        // Nothing changed.  Let's not do anything here
-        if([response statusCode] == 302) return;
-        
-        if(data)
-        {
-            ParseData(data);
-        }
-        else
-        {
-            // No data retrieved.  (Usually means the connection timed out).
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                // Check if we have data saved
-                if([[__self posts] count] == 0)
-                {
-                    // Only show this as an error if we don't have data saved already
-                    ShowErrorBlock(@"Network Error",@"Couldn't contact the server.  Please check your connection and try again");
-                }
-            });
-        }
-    }];
-    
-    
-    // Finally stop the networkIndicator and call the callback if available
-    [blockOp setCompletionBlock:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            if(callback)
-            {
-                callback(updated);
-            }
-        });
-    }];
-    
-    // Add op to the queue
-    [self.networkQueue addOperation:blockOp];
-}
-
-- (void)fetchPostForURL:(NSURL *)url withCallback:(void (^)(id, NSError *))callback
-{
-    // First let's check if we already have this post in our list
-    
-    for(Post * p in self.posts)
-    {
-        if([p.url isEqualToString:url.absoluteString])
-        {
-            // Found the post already in our list
-            return callback(p,nil);
-        }
-    }
-    
-    
-    // Show that we're doing stuff
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    typeof(self) __weak __self = self;
-    __block Post *post = nil;
-    __block NSError * error;
-    NSBlockOperation *blockOp = [NSBlockOperation blockOperationWithBlock:^{
-        
-        void (^ShowErrorBlock)(NSString * title, NSString *message) = ^(NSString *title, NSString *message) {
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-                [alert show];
-                error = [NSError errorWithDomain:title code:100 userInfo:@{NSLocalizedDescriptionKey:message}];
-            });
-            
-        };
-        // Our data parsing block
-        void (^ParseData)(NSData *) = ^(NSData * data) {
-            NSError * error = nil;
-            NSDictionary * jsonPayload = [NSJSONSerialization JSONObjectWithData:data options:(0) error:&error];
-            if(error || !jsonPayload)
-            {
-                // Something went horribly wrong.
-                NSString * errorMessage = error ? [error userInfo][NSLocalizedDescriptionKey] : @"There was an error parsing the data response in `[OBDemoDataHelper startDataSyncing]`";
-                ShowErrorBlock(@"Error",errorMessage);
-                
-            } else {
-                // We have a valid jsonPayload with no errors.  Now let's turn that payload into valid Post objects for CoreData
-                if(jsonPayload[@"post"] || jsonPayload[@"page"])
-                {
-                    post = [__self _postObjectWithData:jsonPayload[@"post"]?:jsonPayload[@"page"]];
-                }
-            }
-        };
-        
-        
-        // We're doing this synchronous because this is a sample app.  Yes it may be bad practice, but it fits our needs.
-        NSString * urlString = [NSString stringWithFormat:@"%@?json=true",url.absoluteString];
-        NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.f];
-        NSHTTPURLResponse * response = nil;
-        NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-        
-        // Nothing changed.  Let's not do anything here
-        if([response statusCode] == 302) return;
-        
-        if(data)
-        {
-            ParseData(data);
-        }
-    }];
-    
-    
-    // Finally stop the networkIndicator and call the callback if available
-    [blockOp setCompletionBlock:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            if(callback)
-            {
-                callback(post, error);
-            }
-        });
-    }];
-    
-    // Add op to the queue
-    [self.networkQueue addOperation:blockOp];
-}
-
+#pragma mark - Private Methods
 - (void)_putImage:(UIImage *)image inCacheWithKey:(NSString *)cacheKey
 {
     if(![NSThread isMainThread])
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self _putImage:image inCacheWithKey:cacheKey];
+            return;
         });
     }
     
@@ -357,18 +320,22 @@ const struct OBDCodingKeys OBDCodingKeys = {
 
 + (void)fetchImageWithURL:(NSURL *)url withCallback:(void (^)(UIImage *))callback
 {
-    static dispatch_queue_t image_fetch_queue = nil;
-    if(!image_fetch_queue)
+    static dispatch_queue_t image_queue_cache = nil;
+    static dispatch_queue_t image_queue_network = nil;
+    if(!image_queue_cache)
     {
-        image_fetch_queue = dispatch_queue_create("com.outbrain-journal.imageQueue", 0);
+        image_queue_cache = dispatch_queue_create("com.outbrain-journal.imageQueueCache", DISPATCH_QUEUE_CONCURRENT);
+        image_queue_network = dispatch_queue_create("com.outbrain-journal.imageQueueNetwork", DISPATCH_QUEUE_CONCURRENT);
     }
     
-    BOOL (^ReturnHandler)(UIImage *) = ^(UIImage *returnImage) {
-        if(!returnImage) return NO;
+    void (^ReturnHandler)(UIImage *) = ^(UIImage *returnImage) {
+        if (returnImage == nil) {
+            NSLog(@"fetchImageWithURL --> unexpected error - image is nil");
+            return;
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             callback(returnImage);
         });
-        return YES;
     };
     
     __block UIImage * responseImage;
@@ -376,34 +343,50 @@ const struct OBDCodingKeys OBDCodingKeys = {
     
     // First let's check if the image is in our cache.
     responseImage = [[[self defaultHelper] imageCache] objectForKey:key];
-    if(ReturnHandler(responseImage)) return;
+    if (responseImage) {
+        // NSLog(@"fetchImageWithURL --> found (%@) in cache", key);
+        ReturnHandler(responseImage);
+        return;
+    }
     
-    dispatch_async(image_fetch_queue, ^{
+    dispatch_async(image_queue_cache, ^{
         // Next check if the image is on disk.  If it is then we'll go ahead and add it to the cache and return from the cache
-        NSString * cachesDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/com.objournal.images"];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *cachesDir = [paths objectAtIndex:0];
+        
+        NSString * imagesCachesDir = [cachesDir stringByAppendingPathComponent:@"Library/Caches/com.objournal.images"];
         NSFileManager * fm = [[NSFileManager alloc] init];
-        [fm createDirectoryAtPath:cachesDir withIntermediateDirectories:YES attributes:nil error:nil];
+        [fm createDirectoryAtPath:imagesCachesDir withIntermediateDirectories:YES attributes:nil error:nil];
         NSString * diskCachePath = [cachesDir stringByAppendingPathComponent:key];
         
-        // We have this on disk.
+        // Check if we have this on disk.
         responseImage = [UIImage imageWithContentsOfFile:diskCachePath];
-        if(!ReturnHandler(responseImage))
-        {
-            // Fetch the image
+        if (responseImage) {
+            // NSLog(@"fetchImageWithURL --> found (%@) on disk", key);
+            ReturnHandler(responseImage);
+            return;
+        }
+        
+        // Fetch the image from network
+        dispatch_async(image_queue_network, ^{
+            // NSLog(@"fetchImageWithURL --> downloading %@ ....", [url absoluteString]);
             NSData * d = [NSData dataWithContentsOfURL:url];
             if(d)
             {
                 responseImage = [UIImage imageWithData:d];
-                if(!ReturnHandler(responseImage)) return;
+                if (responseImage == nil) {
+                    // NSLog(@"fetchImageWithURL --> unexpected error - image is nil");
+                    return;
+                }
+                ReturnHandler(responseImage);
+                [d writeToFile:diskCachePath atomically:YES];
+                [[self defaultHelper] _putImage:responseImage inCacheWithKey:key];
+                // NSLog(@"fetchImageWithURL --> success download (%@)", key);
             }
-        }
-        
-        if(responseImage)
-        {
-//            [[self defaultHelper] _putImage:responseImage inCacheWithKey:key];
-        }
+        });
     });
 }
+
 
 + (NSString *)_dateStringFromDate:(NSDate *)date
 {
@@ -417,25 +400,26 @@ const struct OBDCodingKeys OBDCodingKeys = {
     return [formatter stringFromDate:date];
 }
 
-+ (NSAttributedString *)_buildArticleAttributedStringWithPost:(Post *)post
++ (NSAttributedString *) _buildArticleAttributedStringWithPost:(Post *)post
 {
-    NSString * postTitle = post.title;
-    NSString * dateString = [self _dateStringFromDate:post.date];
     NSString * bodyString = [post.body stringByStrippingHTML];
     bodyString = [bodyString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString * articleString = [NSString stringWithFormat:@"%@\n%@\n%@%@", postTitle, dateString, post.imageURL?IMAGE_SPACING:@"", bodyString];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 10.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.paragraphSpacing = 15.f;
     paragraphStyle.paragraphSpacingBefore = 10.f;
     
+    UIFont *font = [UIFont fontWithName:@"Helvetica Neue" size:15.0];
+
     UIColor * lightGrayTextColor = [UIColor colorWithRed:0.475 green:0.475 blue:0.475 alpha:1.000];
-    NSMutableAttributedString * articleAttributedString = [[NSMutableAttributedString alloc] initWithString:articleString attributes:@{NSParagraphStyleAttributeName:paragraphStyle,NSForegroundColorAttributeName:lightGrayTextColor}];
-    
-    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName:[UIColor blackColor]} range:[articleString rangeOfString:postTitle]];
-    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont italicSystemFontOfSize:11]} range:[articleString rangeOfString:dateString]];
-    [articleAttributedString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} range:[articleString rangeOfString:bodyString]];
+    NSMutableAttributedString * articleAttributedString = [[NSMutableAttributedString alloc] initWithString:bodyString
+                                                                                                 attributes:
+  @{NSParagraphStyleAttributeName:  paragraphStyle,
+    NSForegroundColorAttributeName: lightGrayTextColor,
+    NSFontAttributeName:            font
+    }];
+
     return articleAttributedString;
 }
 
