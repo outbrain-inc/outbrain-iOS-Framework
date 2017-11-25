@@ -121,7 +121,7 @@
 		E64366D11FAF491E00FA617E /* PostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostViewCell.m; sourceTree = "<group>"; };
 		E64366D21FAF491E00FA617E /* TopBoxPostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBoxPostViewCell.h; sourceTree = "<group>"; };
 		E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBoxPostViewCell.m; sourceTree = "<group>"; };
-		E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
+		E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../OutbrainSDK.framework; sourceTree = "<group>"; };
 		E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainStoryboard.storyboard; sourceTree = "<group>"; };
 		E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
