@@ -11,29 +11,47 @@ fi;
 
 cd SDK-sources
 # Clean
+echo ""
+echo "*********************"
+echo " Cleaing the SDK project"
+echo "*********************"
 xcodebuild clean -target OBFramework
 xcodebuild clean -target OutbrainSDK
 
 # Build
+echo ""
+echo "*********************"
+echo " Building the SDK project"
+echo "*********************"
 xcodebuild -target OBFramework
 cd ..
 
 # doxygen doxygen.xml
 
+echo ""
+echo "***************************"
+echo " Creating OBSDK-Release dir"
+echo "***************************"
 rm -fr OBSDK-Release
 mkdir OBSDK-Release
 mkdir OBSDK-Release/SDK/
 mkdir OBSDK-Release/Samples/
 # mkdir OBSDK-Release/HTML-Documentation/
 
-
+echo ""
+echo "***********************************************************"
+echo " Copy the OutbrainSDK.framework into OBSDK-Release"
+echo "***********************************************************"
 cp -a OutbrainSDK.framework OBSDK-Release/SDK/
 cp -a OutbrainSDK.framework OBSDK-Release/Samples/
 cp -fa Samples/ OBSDK-Release/Samples/
 cp -rf README.md OBSDK-Release/
-cp -rf Release-Notes.txt OBSDK-Release/
 
 # clean up the export folder
+echo ""
+echo "***********************************************************"
+echo " Copy the content ofOBSDK-Release to ${EXPORT_DIR_PATH}"
+echo "***********************************************************"
 rm -fr $EXPORT_DIR_PATH
 mkdir -p $EXPORT_DIR_PATH
 mv OBSDK-Release/* $EXPORT_DIR_PATH
@@ -50,6 +68,19 @@ cd $EXPORT_DIR_PATH/Samples
 unzip Swift-Demo.zip -d Swift-Demo  > /dev/null
 rm -fr Swift-Demo.zip
 
+
+echo "--> check if the original SDK exists"
+ls -l Swift-Demo/OutbrainSDK/
+echo "--> remove the original SDK from the git repo"
+rm -fr Swift-Demo/OutbrainSDK/OutbrainSDK.framework
+echo "--> check again if the original SDK exists"
+ls -l Swift-Demo/OutbrainSDK/
+echo "--> now copy the current SDK from this build"
+cp -a OutbrainSDK.framework Swift-Demo/OutbrainSDK/
+echo "--> finally check that the new SDK exists"
+ls -l Swift-Demo/OutbrainSDK/
+
+
 echo ""
 echo "*********************"
 echo "Prepare OBSDK-iOS.zip"
@@ -60,21 +91,7 @@ zip --symlinks -r iOS-SampleApps.zip . -x ".*" -x "*/.*" > /dev/null
 cd /Users/odedre/work/Outbrain/OBSDKiOS
 mv $EXPORT_DIR_PATH/iOS-SampleApps.zip OBSDK-Release/
 
-echo ""
-echo "*********************"
-echo " JS Widget Sample App"
-echo "*********************"
-cd /Users/odedre/work/Outbrain/JSWidgetSampleApp
-git status
-git archive --format zip --output /Users/odedre/work/Outbrain/OBSDKiOS/OBSDK-Release/iOS-JSWidgetSampleApp.zip master
 
-echo ""
-echo "*********************"
-echo " API Endpoint Sample App"
-echo "*********************"
-cd /Users/odedre/work/Outbrain/EndpointAPISampleApp
-git status
-git archive --format zip --output /Users/odedre/work/Outbrain/OBSDKiOS/OBSDK-Release/iOS-EndpointAPISampleApp.zip master
 
 
 echo ""
