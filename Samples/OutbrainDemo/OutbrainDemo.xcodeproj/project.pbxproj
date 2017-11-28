@@ -20,22 +20,15 @@
 		D8B5923D186376B1009422D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923C186376B1009422D5 /* Foundation.framework */; };
 		D8B5923F186376B1009422D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923E186376B1009422D5 /* CoreGraphics.framework */; };
 		D8B59241186376B1009422D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
-		E62725951FB9B736005CC644 /* PostPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E62725941FB9B736005CC644 /* PostPreviewCell.m */; };
 		E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366601FAA10A500FA617E /* PaddingLabel.m */; };
 		E64366911FAEF32E00FA617E /* OBLabelWithPadding.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667C1FAEF32D00FA617E /* OBLabelWithPadding.m */; };
 		E64366AD1FAEF3EC00FA617E /* JLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366821FAEF32E00FA617E /* JLoadingView.m */; };
-		E64366AE1FAEF44400FA617E /* OBRecommendationSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E643669A1FAEF38D00FA617E /* OBRecommendationSlideCell.m */; };
 		E64366B31FAEF64C00FA617E /* PostsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366741FAEF2FB00FA617E /* PostsListVC.m */; };
 		E64366B41FAEF66A00FA617E /* PostsSwipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667A1FAEF2FC00FA617E /* PostsSwipeVC.m */; };
 		E64366B51FAEF66C00FA617E /* OBRecommendationWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366771FAEF2FC00FA617E /* OBRecommendationWebVC.m */; };
 		E64366B61FAEF67200FA617E /* MainPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366881FAEF32E00FA617E /* MainPostViewCell.m */; };
 		E64366B91FAEF68100FA617E /* OBParalaxTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366901FAEF32E00FA617E /* OBParalaxTitleView.m */; };
 		E64366BA1FAEF68500FA617E /* OBRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667F1FAEF32E00FA617E /* OBRefreshControl.m */; };
-		E64366BB1FAEF69100FA617E /* OBAdhesionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366A81FAEF3A500FA617E /* OBAdhesionView.m */; };
-		E64366BC1FAEF69900FA617E /* OBInterstitialClassicView.m in Sources */ = {isa = PBXBuildFile; fileRef = E643669F1FAEF3A500FA617E /* OBInterstitialClassicView.m */; };
-		E64366BD1FAEF69C00FA617E /* OBInterstitialHeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366A21FAEF3A500FA617E /* OBInterstitialHeroView.m */; };
-		E64366BE1FAEF6A000FA617E /* OBInterstitialHeroGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366A51FAEF3A500FA617E /* OBInterstitialHeroGridView.m */; };
-		E64366BF1FAEF6A500FA617E /* OBClassicRecommendationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366AB1FAEF3A500FA617E /* OBClassicRecommendationsView.m */; };
 		E64366C31FAF091B00FA617E /* OBHorizontalWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366C21FAF091B00FA617E /* OBHorizontalWidget.m */; };
 		E64366C91FAF0A2F00FA617E /* OBHorizontalWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64366C81FAF0A2F00FA617E /* OBHorizontalWidget.xib */; };
 		E64366CB1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64366CA1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib */; };
@@ -43,6 +36,13 @@
 		E64366D41FAF492900FA617E /* PostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D11FAF491E00FA617E /* PostViewCell.m */; };
 		E64366D51FAF492C00FA617E /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */; };
 		E66AC33A1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
+		E68A906D1FCD4755008318EB /* OBRecommendationSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90591FCD4755008318EB /* OBRecommendationSlideCell.m */; };
+		E68A906E1FCD4755008318EB /* PostPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A905B1FCD4755008318EB /* PostPreviewCell.m */; };
+		E68A906F1FCD4755008318EB /* OBInterstitialClassicView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90601FCD4755008318EB /* OBInterstitialClassicView.m */; };
+		E68A90701FCD4755008318EB /* OBInterstitialHeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90631FCD4755008318EB /* OBInterstitialHeroView.m */; };
+		E68A90711FCD4755008318EB /* OBInterstitialHeroGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90661FCD4755008318EB /* OBInterstitialHeroGridView.m */; };
+		E68A90721FCD4755008318EB /* OBAdhesionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90691FCD4755008318EB /* OBAdhesionView.m */; };
+		E68A90731FCD4755008318EB /* OBClassicRecommendationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A906C1FCD4755008318EB /* OBClassicRecommendationsView.m */; };
 		E6A5E4071F9C869B00D894C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */; };
 		E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
 		E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
@@ -122,6 +122,22 @@
 		E64366D21FAF491E00FA617E /* TopBoxPostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBoxPostViewCell.h; sourceTree = "<group>"; };
 		E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBoxPostViewCell.m; sourceTree = "<group>"; };
 		E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../OutbrainSDK.framework; sourceTree = "<group>"; };
+		E68A90561FCD4755008318EB /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWidgetViewProtocol.h; sourceTree = "<group>"; };
+		E68A90581FCD4755008318EB /* OBRecommendationSlideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationSlideCell.h; sourceTree = "<group>"; };
+		E68A90591FCD4755008318EB /* OBRecommendationSlideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationSlideCell.m; sourceTree = "<group>"; };
+		E68A905A1FCD4755008318EB /* PostPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostPreviewCell.h; sourceTree = "<group>"; };
+		E68A905B1FCD4755008318EB /* PostPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostPreviewCell.m; sourceTree = "<group>"; };
+		E68A905F1FCD4755008318EB /* OBInterstitialClassicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBInterstitialClassicView.h; sourceTree = "<group>"; };
+		E68A90601FCD4755008318EB /* OBInterstitialClassicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBInterstitialClassicView.m; sourceTree = "<group>"; };
+		E68A90621FCD4755008318EB /* OBInterstitialHeroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBInterstitialHeroView.h; sourceTree = "<group>"; };
+		E68A90631FCD4755008318EB /* OBInterstitialHeroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBInterstitialHeroView.m; sourceTree = "<group>"; };
+		E68A90651FCD4755008318EB /* OBInterstitialHeroGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBInterstitialHeroGridView.h; sourceTree = "<group>"; };
+		E68A90661FCD4755008318EB /* OBInterstitialHeroGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBInterstitialHeroGridView.m; sourceTree = "<group>"; };
+		E68A90671FCD4755008318EB /* OBInterstitialViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBInterstitialViewProtocol.h; sourceTree = "<group>"; };
+		E68A90681FCD4755008318EB /* OBAdhesionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAdhesionView.h; sourceTree = "<group>"; };
+		E68A90691FCD4755008318EB /* OBAdhesionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAdhesionView.m; sourceTree = "<group>"; };
+		E68A906B1FCD4755008318EB /* OBClassicRecommendationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBClassicRecommendationsView.h; sourceTree = "<group>"; };
+		E68A906C1FCD4755008318EB /* OBClassicRecommendationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBClassicRecommendationsView.m; sourceTree = "<group>"; };
 		E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainStoryboard.storyboard; sourceTree = "<group>"; };
 		E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -152,6 +168,7 @@
 		D83456431885A543002B2368 /* Journal */ = {
 			isa = PBXGroup;
 			children = (
+				E68A90551FCD4755008318EB /* SampleUI */,
 				D83456441885A543002B2368 /* Data */,
 				D834564A1885A543002B2368 /* OBAppDelegate.h */,
 				D834564B1885A543002B2368 /* OBAppDelegate.m */,
@@ -466,6 +483,86 @@
 			path = PostCell;
 			sourceTree = "<group>";
 		};
+		E68A90551FCD4755008318EB /* SampleUI */ = {
+			isa = PBXGroup;
+			children = (
+				E68A90561FCD4755008318EB /* OBWidgetViewProtocol.h */,
+				E68A90571FCD4755008318EB /* TableCells */,
+				E68A905C1FCD4755008318EB /* Views */,
+			);
+			name = SampleUI;
+			path = AppUI/SampleUI;
+			sourceTree = "<group>";
+		};
+		E68A90571FCD4755008318EB /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				E68A90581FCD4755008318EB /* OBRecommendationSlideCell.h */,
+				E68A90591FCD4755008318EB /* OBRecommendationSlideCell.m */,
+				E68A905A1FCD4755008318EB /* PostPreviewCell.h */,
+				E68A905B1FCD4755008318EB /* PostPreviewCell.m */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		E68A905C1FCD4755008318EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E68A905D1FCD4755008318EB /* Interstitials */,
+				E68A90681FCD4755008318EB /* OBAdhesionView.h */,
+				E68A90691FCD4755008318EB /* OBAdhesionView.m */,
+				E68A906A1FCD4755008318EB /* OBClassicRecommendationsView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E68A905D1FCD4755008318EB /* Interstitials */ = {
+			isa = PBXGroup;
+			children = (
+				E68A905E1FCD4755008318EB /* Classic */,
+				E68A90611FCD4755008318EB /* Hero */,
+				E68A90641FCD4755008318EB /* Hero+Grid */,
+				E68A90671FCD4755008318EB /* OBInterstitialViewProtocol.h */,
+			);
+			path = Interstitials;
+			sourceTree = "<group>";
+		};
+		E68A905E1FCD4755008318EB /* Classic */ = {
+			isa = PBXGroup;
+			children = (
+				E68A905F1FCD4755008318EB /* OBInterstitialClassicView.h */,
+				E68A90601FCD4755008318EB /* OBInterstitialClassicView.m */,
+			);
+			path = Classic;
+			sourceTree = "<group>";
+		};
+		E68A90611FCD4755008318EB /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				E68A90621FCD4755008318EB /* OBInterstitialHeroView.h */,
+				E68A90631FCD4755008318EB /* OBInterstitialHeroView.m */,
+			);
+			path = Hero;
+			sourceTree = "<group>";
+		};
+		E68A90641FCD4755008318EB /* Hero+Grid */ = {
+			isa = PBXGroup;
+			children = (
+				E68A90651FCD4755008318EB /* OBInterstitialHeroGridView.h */,
+				E68A90661FCD4755008318EB /* OBInterstitialHeroGridView.m */,
+			);
+			path = "Hero+Grid";
+			sourceTree = "<group>";
+		};
+		E68A906A1FCD4755008318EB /* OBClassicRecommendationsView */ = {
+			isa = PBXGroup;
+			children = (
+				E68A906B1FCD4755008318EB /* OBClassicRecommendationsView.h */,
+				E68A906C1FCD4755008318EB /* OBClassicRecommendationsView.m */,
+			);
+			path = OBClassicRecommendationsView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -542,30 +639,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				D834566B1885A543002B2368 /* OBDemoDataHelper.m in Sources */,
-				E64366BB1FAEF69100FA617E /* OBAdhesionView.m in Sources */,
-				E64366BE1FAEF6A000FA617E /* OBInterstitialHeroGridView.m in Sources */,
 				D83456771885A543002B2368 /* TinyPageControl.m in Sources */,
 				E64366D51FAF492C00FA617E /* TopBoxPostViewCell.m in Sources */,
-				E64366BC1FAEF69900FA617E /* OBInterstitialClassicView.m in Sources */,
 				E64366CE1FAF0F1500FA617E /* OBHorizontalWidgetCell.m in Sources */,
+				E68A906E1FCD4755008318EB /* PostPreviewCell.m in Sources */,
 				E64366C31FAF091B00FA617E /* OBHorizontalWidget.m in Sources */,
 				E64366B61FAEF67200FA617E /* MainPostViewCell.m in Sources */,
 				E64366B41FAEF66A00FA617E /* PostsSwipeVC.m in Sources */,
-				E64366BD1FAEF69C00FA617E /* OBInterstitialHeroView.m in Sources */,
-				E64366AE1FAEF44400FA617E /* OBRecommendationSlideCell.m in Sources */,
-				E62725951FB9B736005CC644 /* PostPreviewCell.m in Sources */,
+				E68A90711FCD4755008318EB /* OBInterstitialHeroGridView.m in Sources */,
+				E68A90731FCD4755008318EB /* OBClassicRecommendationsView.m in Sources */,
 				E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */,
 				D834566A1885A543002B2368 /* Post.m in Sources */,
 				D834566E1885A543002B2368 /* main.m in Sources */,
 				E64366B51FAEF66C00FA617E /* OBRecommendationWebVC.m in Sources */,
+				E68A90721FCD4755008318EB /* OBAdhesionView.m in Sources */,
+				E68A90701FCD4755008318EB /* OBInterstitialHeroView.m in Sources */,
 				E64366B31FAEF64C00FA617E /* PostsListVC.m in Sources */,
 				E64366D41FAF492900FA617E /* PostViewCell.m in Sources */,
+				E68A906F1FCD4755008318EB /* OBInterstitialClassicView.m in Sources */,
 				E64366B91FAEF68100FA617E /* OBParalaxTitleView.m in Sources */,
-				E64366BF1FAEF6A500FA617E /* OBClassicRecommendationsView.m in Sources */,
 				E64366AD1FAEF3EC00FA617E /* JLoadingView.m in Sources */,
 				E64366911FAEF32E00FA617E /* OBLabelWithPadding.m in Sources */,
 				E64366BA1FAEF68500FA617E /* OBRefreshControl.m in Sources */,
 				D834566C1885A543002B2368 /* OBAppDelegate.m in Sources */,
+				E68A906D1FCD4755008318EB /* OBRecommendationSlideCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
