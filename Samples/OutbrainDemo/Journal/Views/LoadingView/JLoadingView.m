@@ -3,7 +3,7 @@
 //  OutbrainDemo
 //
 //  Created by Oded Regev on 2/4/14.
-//  Copyright (c) 2014 Mercury Intermedia. All rights reserved.
+//  Copyright (c) 2014 Outbrain inc. All rights reserved.
 //
 
 #import "JLoadingView.h"
