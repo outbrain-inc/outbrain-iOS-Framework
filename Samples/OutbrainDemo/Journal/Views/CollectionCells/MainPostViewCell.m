@@ -2,7 +2,7 @@
 //  MainPostViewCell.m
 //  OutbrainDemo
 //
-//  Created by Daniel Gorlovetsky on 12/24/14.
+//  Created by Oded Regev on 12/24/14.
 //  Copyright (c) 2014 Outbrain inc. All rights reserved.
 //
 

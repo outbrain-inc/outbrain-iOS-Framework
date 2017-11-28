@@ -2,7 +2,7 @@
 //  OBAppleAdIdUtil.m
 //  OutbrainSDK
 //
-//  Created by Daniel Gorlovetsky on 10/2/14.
+//  Created by Oded Regev on 10/2/14.
 //  Copyright (c) 2014 Outbrain. All rights reserved.
 //
 

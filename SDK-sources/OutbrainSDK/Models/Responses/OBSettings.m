@@ -2,7 +2,7 @@
 //  OBSettingsResponse.m
 //  OutbrainSDK
 //
-//  Created by Daniel Gorlovetsky on 7/24/14.
+//  Created by Oded Regev on 7/24/14.
 //  Copyright (c) 2014 Outbrain. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  OBLabelWithPadding.m
 //  OutbrainDemo
 //
-//  Created by Daniel Gorlovetsky on 5/8/14.
+//  Created by Oded Regev on 5/8/14.
 //  Copyright (c) 2014 Outbrain inc. All rights reserved.
 //
 
