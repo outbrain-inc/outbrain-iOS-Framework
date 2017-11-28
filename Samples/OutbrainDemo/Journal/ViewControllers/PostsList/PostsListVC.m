@@ -69,10 +69,11 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 170, 40)];
     view.backgroundColor = [UIColor clearColor];
 
-    UIImage *btnImage = [UIImage imageNamed:@"outbrainSimpleLogo"];
+    UIImage *btnImage = [UIImage imageNamed:@"recommendedbylarge"];
     UIButton *aboutOutbrainButton = [UIButton buttonWithType:UIButtonTypeCustom];
     aboutOutbrainButton.frame = view.frame;
     [aboutOutbrainButton setImage:btnImage forState:UIControlStateNormal];
+    aboutOutbrainButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [aboutOutbrainButton addTarget:self action:@selector(showOutbrainAbout) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:aboutOutbrainButton];
     
