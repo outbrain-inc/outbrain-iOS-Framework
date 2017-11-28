@@ -11,7 +11,6 @@
 #import "OBParalaxTitleView.h"
 #import "Post.h"
 
-#import "OBInterstitialClassicView.h"
 #import "OBInterstitialHeroGridView.h"
 
 #import "OBDemoDataHelper.h"
