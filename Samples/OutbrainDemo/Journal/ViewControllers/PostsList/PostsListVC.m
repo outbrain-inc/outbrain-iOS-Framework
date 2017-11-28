@@ -66,7 +66,7 @@
 - (void) setupNavbar {
     // Took advice from: https://stackoverflow.com/a/13341629/583425
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 170, 40)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 170, 30)];
     view.backgroundColor = [UIColor clearColor];
 
     UIImage *btnImage = [UIImage imageNamed:@"recommendedbylarge"];
