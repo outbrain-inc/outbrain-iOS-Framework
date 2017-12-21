@@ -119,6 +119,8 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     //Test mode
     if ([((NSNumber *)[[OutbrainHelper sharedInstance] sdkSettingForKey:OBSettingsAttributes.testModeKey]) boolValue]) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"2"]];
     }
     
     //Installation type
@@ -160,9 +162,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     // Secure HTTPS
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"secured" value: @"true"]];
-    
-    
+
     components.queryItems = odbQueryItems;
+
     return components.URL;
 }
 
