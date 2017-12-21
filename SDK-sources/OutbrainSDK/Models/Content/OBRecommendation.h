@@ -2,8 +2,8 @@
 //  OBRecommendation.h
 //  OutbrainSDK
 //
-//  Created by Joseph Ridenour on 12/12/13.
-//  Copyright (c) 2013 Mercury. All rights reserved.
+//  Created by Oded Regev on 12/12/13.
+//  Copyright (c) 2017 Outbrain. All rights reserved.
 //
 
 #import "OBContent.h"

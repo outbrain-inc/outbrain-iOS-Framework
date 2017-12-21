@@ -2,8 +2,8 @@
 //  OutbrainRecommendationDelegate.h
 //  OutbrainSDK
 //
-//  Created by Joseph Ridenour on 12/17/13.
-//  Copyright (c) 2013 Mercury. All rights reserved.
+//  Created by Oded Regev on 12/17/13.
+//  Copyright (c) 2017 Outbrain. All rights reserved.
 //
 
 #import <Foundation/NSObject.h>
