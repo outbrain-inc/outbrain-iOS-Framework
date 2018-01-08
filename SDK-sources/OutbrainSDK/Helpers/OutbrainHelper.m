@@ -19,10 +19,6 @@
 #import "OBUtils.h"
 
 
-
-
-
-
 @interface OBAdChoicesButton : UIButton
 
 @property (copy) OBOnClickBlock block;
@@ -292,9 +288,19 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     }
 }
 
+-(NSArray *) advertiserIdURLParams {
+  NSMutableArray *params = [[NSMutableArray alloc] init];
+  
+  //Is opt out
+  [params addObject:[NSURLQueryItem queryItemWithName:@"doo" value: ([OBAppleAdIdUtil isOptedOut] ? @"true" : @"false")]];
+  
+  //User key + opt-out
+  NSString *apiUserId = [OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId];
+  [params addObject:[NSURLQueryItem queryItemWithName:@"advertiser_id" value: apiUserId]];
+  return params;
+}
 
 #pragma mark - SDK Settings
-
 - (void)setSDKSettingValue:(id)value forKey:(NSString *)key
 {
     if(value == nil)

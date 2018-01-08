@@ -131,6 +131,17 @@ typedef void (^OBOnClickBlock)(NSURL *url);
 +(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block;
 
 /**
+ * @brief Get the URL you should open in an external browser when the user taps on Outbrain logo
+ *
+ * This function creates the URL to be opened in an external browser when the user taps on Outbrain logo.
+ * The URL contains the user Advertiser ID param which is mandatory for Ad Choices opt-out compliance.
+ *
+ *
+ * @return The URL to be opened in an external browser
+ **/
++(NSURL *) getOutbrainAboutURL;
+
+/**
  * @brief Activates/deactivates the Outbrain test mode.
  *
  * Activate test mode while developing and testing your app. \n

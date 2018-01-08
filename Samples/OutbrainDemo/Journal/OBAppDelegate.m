@@ -66,8 +66,7 @@
 
 - (IBAction)showOutbrainAbout:(UIViewController *)vc
 {
-    NSString * urlString = @"https://www.outbrain.com/what-is/default/en-mobile";
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSURL *url = [Outbrain getOutbrainAboutURL];
     SFSafariViewController *sf = [[SFSafariViewController alloc] initWithURL:url];
     [vc presentViewController:sf animated:YES completion:nil];
 }

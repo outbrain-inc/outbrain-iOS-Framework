@@ -164,6 +164,13 @@ static Outbrain * _sharedInstance = nil;
     [[OutbrainHelper sharedInstance] prepare:imageView withRTB:rec onClickBlock:block];
 }
 
++(NSURL *) getOutbrainAboutURL {
+  NSString *base = [NSString stringWithFormat:@"https://www.outbrain.com/what-is/"];
+  NSURLComponents *components = [NSURLComponents componentsWithString: base];
+  components.queryItems = [[OutbrainHelper sharedInstance] advertiserIdURLParams];
+  return components.URL;
+}
+
 #pragma mark - Viewability
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url {
     NSAssert([label isKindOfClass:[OBLabel class]], @"Outbrain - label must be of type OBLabel.");

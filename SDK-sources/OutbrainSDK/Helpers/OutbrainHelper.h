@@ -43,8 +43,7 @@
  **/
 - (void)setSDKSettingValue:(id)value forKey:(NSString *)key;
 
-
-
+- (NSArray *) advertiserIdURLParams;
 
 - (void) updateODBSettings:(OBResponse *)response;
 
