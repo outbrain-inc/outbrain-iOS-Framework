@@ -19,7 +19,7 @@
 
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"2.5.1";
+NSString * const OB_SDK_VERSION     =   @"2.5.2";
 
 BOOL WAS_INITIALISED     =   NO;
 
@@ -157,11 +157,6 @@ static Outbrain * _sharedInstance = nil;
         [[OBNetworkManager sharedManager] sendGet:urlWithRedirect completionHandler:nil];        
         return originalURL;
     }
-}
-
-#pragma mark - RTB integratin with SDK
-+(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block {
-    [[OutbrainHelper sharedInstance] prepare:imageView withRTB:rec onClickBlock:block];
 }
 
 +(NSURL *) getOutbrainAboutURL {

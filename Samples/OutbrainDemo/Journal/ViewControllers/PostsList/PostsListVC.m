@@ -228,7 +228,7 @@
     id item = [self postsData][indexPath.row];
     
     // Item at index is an recommendation
-    if([self indexPathIsOBRecommendation:indexPath] && [cell isKindOfClass:[OBRecommendationSlideCell class]])
+    if ([self indexPathIsOBRecommendation:indexPath] && [cell isKindOfClass:[OBRecommendationSlideCell class]])
     {
         OBRecommendationResponse * res = (OBRecommendationResponse *)item;
         OBRecommendationSlideCell *slideCell = (OBRecommendationSlideCell *)cell;

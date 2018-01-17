@@ -114,13 +114,20 @@
     [OBDemoDataHelper fetchImageWithURL:rec.image.url withCallback:^(UIImage *image) {
         cell.recImageView.image = image;
         [spinner removeFromSuperview];
-        if ([rec isPaidLink]) {
-            [Outbrain prepare: cell.recImageView withRTB: rec onClickBlock:^(NSURL *url) {
-                NSLog(@"OBHorizontalWidget --> click url: %@", url.absoluteString);
-                [[UIApplication sharedApplication] openURL: url];
-            }];
-        }
     }];
+    
+    if ([rec isRTB]) {
+        cell.adchoicesButton.hidden = NO;
+        cell.adchoicesButton.tag = indexPath.row;
+        NSURL *adChoicesURL = [NSURL URLWithString:rec.disclosure.imageUrl];
+        [OBDemoDataHelper fetchImageWithURL:adChoicesURL withCallback:^(UIImage *image) {
+            [cell.adchoicesButton setImage:image forState:UIControlStateNormal];
+            [cell.adchoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
+        }];
+    }
+    else {
+        cell.adchoicesButton.hidden = YES;
+    }
     
     return cell;
 }
@@ -136,6 +143,12 @@
     {
         [self.widgetDelegate widgetView:self tappedRecommendation:rec];
     }
+}
+
+-(void) adChoicesClicked:(id)sender {
+    UIButton *adChoicesButton = sender;
+    OBRecommendation *rec = self.recommendationResponse.recommendations[adChoicesButton.tag];
+    [[UIApplication sharedApplication] openURL: rec.disclosure.clickUrl];
 }
 
 @end

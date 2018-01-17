@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *recImageView;
 
+@property (weak, nonatomic) IBOutlet UIButton *adchoicesButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *recTitleLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *recSourceLabel;
