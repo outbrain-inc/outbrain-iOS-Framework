@@ -14,7 +14,7 @@
 /** @brief The image URL */
 @property (nonatomic, copy) NSString *imageUrl;
 
-/** @brief The URL to open onCling */
-@property (nonatomic, copy) NSString *clickUrl;
+/** @brief The URL to open onClick */
+@property (nonatomic, copy) NSURL *clickUrl;
 
 @end

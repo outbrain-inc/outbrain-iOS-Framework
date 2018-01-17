@@ -28,6 +28,7 @@ static NSString * BrandingHeaderID = @"BrandingHeaderID";
 // Our Cell class for holding the views for us
 @interface OBRecommendationCell : UICollectionViewCell
 @property (nonatomic, strong) UIImageView * imageView;
+@property (nonatomic, strong) UIButton * adChoicesButton;
 @property (nonatomic, strong) UILabel * titleLabel;
 @property (nonatomic, strong) UILabel * sourceLabel;
 @property (nonatomic, assign, getter = isInitialized) BOOL initialized;
@@ -185,29 +186,36 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
         [self _setupSubviewsForCell:cell];
     }
     
-    OBRecommendation * recommendation = self.recommendationResponse.recommendations[indexPath.row];
+    OBRecommendation * rec = self.recommendationResponse.recommendations[indexPath.row];
     
-    cell.titleLabel.text = recommendation.content;
-    NSString * source = (recommendation.source ? recommendation.source : recommendation.author);
+    cell.titleLabel.text = rec.content;
+    NSString * source = (rec.source ? rec.source : rec.author);
     cell.sourceLabel.text = [NSString stringWithFormat:@"(%@)",source];
     
-    if(self.showImages)
+    if (self.showImages)
     {
         typeof(cell) __weak __cell = cell;
-        [OBDemoDataHelper fetchImageWithURL:recommendation.image.url withCallback:^(UIImage *image) {
+        [OBDemoDataHelper fetchImageWithURL:rec.image.url withCallback:^(UIImage *image) {
             [__cell.imageView setImage:image];
-            if ([recommendation isPaidLink]) {
-                [Outbrain prepare:__cell.imageView withRTB:recommendation onClickBlock:^(NSURL *url) {
-                    NSLog(@"OBClassicRecommendationsView --> click url: %@", url.absoluteString);
-                    [[UIApplication sharedApplication] openURL: url];
-                }];
-            }
         }];
+        
+        if ([rec isRTB]) {
+            cell.adChoicesButton.hidden = NO;
+            cell.adChoicesButton.tag = indexPath.row;            
+            NSURL *adChoicesURL = [NSURL URLWithString:rec.disclosure.imageUrl];
+            [OBDemoDataHelper fetchImageWithURL:adChoicesURL withCallback:^(UIImage *image) {
+                [cell.adChoicesButton setImage:image forState:UIControlStateNormal];
+                [cell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
+            }];
+        }
+        else {
+            cell.adChoicesButton.hidden = YES;
+        }
     }
     
     
     // Setup framing and positioning
-    if(_layoutType == OBClassicRecommendationsViewLayoutTypeGrid)
+    if (_layoutType == OBClassicRecommendationsViewLayoutTypeGrid)
     {
         cell.imageView.center = CGPointMake(cell.bounds.size.width/2.f, cell.imageView.bounds.size.height/2.f);
     }
@@ -271,6 +279,12 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     return itemSize;
 }
 
+-(void) adChoicesClicked:(id)sender {
+    UIButton *adChoicesButton = sender;
+    OBRecommendation *rec = self.recommendationResponse.recommendations[adChoicesButton.tag];
+    [[UIApplication sharedApplication] openURL: rec.disclosure.clickUrl];
+}
+
 - (CGFloat) getHeight {
     UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
     return [l collectionViewContentSize].height;
@@ -279,6 +293,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
 // Setup our (images,labels,colors, etc...) if necessary
 - (void)_setupSubviewsForCell:(OBRecommendationCell *)cell
 {
+    CGFloat AD_CHOICES_SIZE = 30.0;
     BOOL isLayoutTypeGrid = (_layoutType == OBClassicRecommendationsViewLayoutTypeGrid);
     UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
     CGSize itemSize = l.itemSize;
@@ -288,6 +303,12 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     cell.imageView.layer.borderWidth = 1.f;
     cell.imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [cell.contentView addSubview:cell.imageView];
+    
+    cell.adChoicesButton = [UIButton buttonWithType: UIButtonTypeCustom];
+    cell.adChoicesButton.frame = CGRectMake(itemSize.height-AD_CHOICES_SIZE, 0, AD_CHOICES_SIZE, AD_CHOICES_SIZE);
+    cell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2,12,12,2);
+    cell.adChoicesButton.hidden = YES;
+    [cell.contentView addSubview:cell.adChoicesButton];
     
     cell.titleLabel = [UILabel new];
     cell.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;

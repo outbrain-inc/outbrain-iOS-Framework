@@ -118,19 +118,6 @@ extern NSString * const OB_SDK_VERSION;
 typedef void (^OBOnClickBlock)(NSURL *url);
 
 /**
- * @brief Prepare the UIImageView with the RTB recommendation image.
- *
- * This function prepare the UIImageView with the RTB recommendation image. Basically adding the "Ad Choices" icon and call the 
- * onClick block in case of a click.
- *
- * @param imageView - The UIImageView which displays the RTB recommendation image.
- * @param rec - The OBRecommendation which contains the content of the rec.
- *
- * @return void
- **/
-+(void) prepare:(UIImageView *)imageView withRTB:(OBRecommendation *)rec onClickBlock:(OBOnClickBlock)block;
-
-/**
  * @brief Get the URL you should open in an external browser when the user taps on Outbrain logo
  *
  * This function creates the URL to be opened in an external browser when the user taps on Outbrain logo.
