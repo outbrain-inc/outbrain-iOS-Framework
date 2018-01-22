@@ -156,7 +156,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
             brandingImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
             brandingImageButton.tag = AmeliaHeadLogoTag;
             [brandingImageButton addTarget:self action:@selector(brandingTapAction:) forControlEvents:UIControlEventTouchUpInside];
-            [brandingImageButton setImage:[UIImage imageNamed:@"outbrainSimpleLogo"] forState:UIControlStateNormal];
+            [brandingImageButton setImage:[UIImage imageNamed:@"OutbrainLogoAdChoices"] forState:UIControlStateNormal];
             brandingImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
             CGRect r = CGRectMake(0, 0, 85, 20);
             r.origin.y = (brandingHeader.frame.size.height - r.size.height) / 2.f;
