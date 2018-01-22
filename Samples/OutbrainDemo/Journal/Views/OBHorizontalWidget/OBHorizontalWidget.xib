@@ -43,7 +43,7 @@
                     </connections>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27g-yv-qIe">
-                    <rect key="frame" x="270" y="73.5" width="175" height="21.5"/>
+                    <rect key="frame" x="260" y="73.5" width="185" height="21.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wm8-Md-YZk" customClass="OBLabel">
                             <rect key="frame" x="0.0" y="4.5" width="92" height="12"/>
@@ -51,11 +51,11 @@
                             <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.90483197773972601" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OutbrainLogoAdChoices" translatesAutoresizingMaskIntoConstraints="NO" id="4cn-tl-JmQ">
-                            <rect key="frame" x="102" y="3" width="60" height="15"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OutbrainLogoAdChoices" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cn-tl-JmQ">
+                            <rect key="frame" x="102" y="-2" width="70" height="25"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="15" id="MoH-7V-A5s"/>
-                                <constraint firstAttribute="width" constant="60" id="yZR-Np-eTU"/>
+                                <constraint firstAttribute="height" constant="25" id="MoH-7V-A5s"/>
+                                <constraint firstAttribute="width" constant="70" id="yZR-Np-eTU"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -85,6 +85,6 @@
         </view>
     </objects>
     <resources>
-        <image name="OutbrainLogoAdChoices" width="46" height="8"/>
+        <image name="OutbrainLogoAdChoices" width="69" height="12"/>
     </resources>
 </document>
