@@ -481,9 +481,9 @@
         brandingImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
         brandingImageButton.tag = 201;
         [brandingImageButton addTarget:self action:@selector(brandingTapAction:) forControlEvents:UIControlEventTouchUpInside];
-        brandingImageButton.contentMode = UIViewContentModeScaleAspectFill;
-        [brandingImageButton setImage:[UIImage imageNamed:@"outbrainSimpleLogo"] forState:UIControlStateNormal];
-        CGRect r = CGRectMake(0, 0, 85, 20);
+        brandingImageButton.contentMode = UIViewContentModeScaleAspectFit;
+        [brandingImageButton setImage:[UIImage imageNamed:@"OutbrainLogoAdChoices"] forState:UIControlStateNormal];
+        CGRect r = CGRectMake(0, 0, 100, 15);
         r.origin.y = (container.frame.size.height - r.size.height) / 2.f;
         r.origin.x = (container.frame.size.width - r.size.width - 5.f);
         brandingImageButton.frame = r;
@@ -494,11 +494,11 @@
     
     _arrowLayer.position = CGPointMake(collectionView.bounds.size.width / 2.f, container.bounds.size.height / 2.f);
     
-    CGRect r = CGRectMake(0, 0, 71, 20);
-    r.origin.y = (container.frame.size.height - r.size.height) / 2.f;
+    CGRect r = brandingImageButton.frame;
+//    r.origin.y = (container.frame.size.height - r.size.height) / 2.f;
     r.origin.x = (container.frame.size.width - r.size.width - 5.f);
     brandingImageButton.frame = r;
-    
+  
     return v;
 }
 

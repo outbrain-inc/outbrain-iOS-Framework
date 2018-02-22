@@ -85,6 +85,6 @@
         </view>
     </objects>
     <resources>
-        <image name="OutbrainLogoAdChoices" width="69" height="12"/>
+        <image name="OutbrainLogoAdChoices" width="401" height="60"/>
     </resources>
 </document>
