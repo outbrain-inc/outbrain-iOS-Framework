@@ -8,8 +8,7 @@
 
 #import <Foundation/NSArray.h>
 #import <UIkit/UIkit.h>
-#import <OutbrainSDK/OBProtocols.h>
-
+#import "OBProtocols.h"
 
 
 @class OBLabel;
@@ -87,7 +86,6 @@ extern NSString * const OB_SDK_VERSION;
  *
  * @param widgetId - The Widget Id to be associated with this OBLabel
  * @param url - The URL that the user is currently viewing
- * @return a new instance of OBLabel which associated with the widget id
  * @note The calling method is responsible on setting the frame for the returned view
  **/
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url;

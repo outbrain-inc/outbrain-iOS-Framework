@@ -8,7 +8,6 @@
 
 #import "TopBoxPostViewCell.h"
 #import "Post.h"
-#import <OutbrainSDK/OutbrainSDK.h>
 
 #import "OBDemoDataHelper.h"
 

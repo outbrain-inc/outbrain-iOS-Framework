@@ -8,6 +8,9 @@
 
 #import "OBViewabilityService.h"
 #import "OBNetworkManager.h"
+#import "OBRequest.h"
+#import "OBLabel.h"
+
 
 @interface ViewabilityData : NSObject
 

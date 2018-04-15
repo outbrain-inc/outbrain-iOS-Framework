@@ -9,12 +9,13 @@
 #import "Outbrain.h"
 #import "Outbrain_Private.h"
 #import "OBContent_Private.h"
+#import "OBErrors.h"
 
 #import "OBRecommendationRequestOperation.h"
 #import "OBDisclosure.h"
 #import "OutbrainHelper.h"
 #import "OBNetworkManager.h"
-
+#import "OBLabel.h"
 #import <UIKit/UIKit.h>
 
 
@@ -86,6 +87,7 @@ static Outbrain * _sharedInstance = nil;
     if (!WAS_INITIALISED) {
         // Finally set the settings payload.
         [self initializeOutbrainWithDictionary:@{OBSettingsAttributes.partnerKey:partnerKey}];
+        NSLog(@"OutbrainSDK init");
     }
 }
 

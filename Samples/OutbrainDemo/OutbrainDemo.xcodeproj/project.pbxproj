@@ -20,6 +20,8 @@
 		D8B5923D186376B1009422D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923C186376B1009422D5 /* Foundation.framework */; };
 		D8B5923F186376B1009422D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923E186376B1009422D5 /* CoreGraphics.framework */; };
 		D8B59241186376B1009422D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
+		E61E6C64208382A50016D79A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6C63208382A50016D79A /* OutbrainSDK.framework */; };
+		E61E6C65208382A50016D79A /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6C63208382A50016D79A /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366601FAA10A500FA617E /* PaddingLabel.m */; };
 		E64366911FAEF32E00FA617E /* OBLabelWithPadding.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667C1FAEF32D00FA617E /* OBLabelWithPadding.m */; };
 		E64366AD1FAEF3EC00FA617E /* JLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366821FAEF32E00FA617E /* JLoadingView.m */; };
@@ -35,7 +37,6 @@
 		E64366CE1FAF0F1500FA617E /* OBHorizontalWidgetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366CD1FAF0F1500FA617E /* OBHorizontalWidgetCell.m */; };
 		E64366D41FAF492900FA617E /* PostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D11FAF491E00FA617E /* PostViewCell.m */; };
 		E64366D51FAF492C00FA617E /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */; };
-		E66AC33A1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */; };
 		E68A906D1FCD4755008318EB /* OBRecommendationSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90591FCD4755008318EB /* OBRecommendationSlideCell.m */; };
 		E68A906E1FCD4755008318EB /* PostPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A905B1FCD4755008318EB /* PostPreviewCell.m */; };
 		E68A90721FCD4755008318EB /* OBAdhesionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90691FCD4755008318EB /* OBAdhesionView.m */; };
@@ -63,7 +64,7 @@
 			remoteGlobalIDString = D82F1D8518564C7800D4DEA8;
 			remoteInfo = OutbrainSDKTests;
 		};
-		E61E6B36208360150016D79A /* PBXContainerItemProxy */ = {
+		E61E6C5B208378C80016D79A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
 			proxyType = 1;
@@ -71,6 +72,20 @@
 			remoteInfo = OBFramework;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E61E6C66208382A50016D79A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E61E6C65208382A50016D79A /* OutbrainSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D8174B2E18A562BC005696C2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -95,6 +110,7 @@
 		D8B59240186376B1009422D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8B5925A186376B1009422D5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = "../../SDK-sources/OutbrainSDK.xcodeproj"; sourceTree = "<group>"; };
+		E61E6C63208382A50016D79A /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
 		E62725931FB9B736005CC644 /* PostPreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostPreviewCell.h; sourceTree = "<group>"; };
 		E62725941FB9B736005CC644 /* PostPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostPreviewCell.m; sourceTree = "<group>"; };
 		E643665F1FAA10A500FA617E /* PaddingLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
@@ -144,7 +160,6 @@
 		E64366D11FAF491E00FA617E /* PostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostViewCell.m; sourceTree = "<group>"; };
 		E64366D21FAF491E00FA617E /* TopBoxPostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBoxPostViewCell.h; sourceTree = "<group>"; };
 		E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBoxPostViewCell.m; sourceTree = "<group>"; };
-		E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../OutbrainSDK.framework; sourceTree = "<group>"; };
 		E68A90561FCD4755008318EB /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWidgetViewProtocol.h; sourceTree = "<group>"; };
 		E68A90581FCD4755008318EB /* OBRecommendationSlideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationSlideCell.h; sourceTree = "<group>"; };
 		E68A90591FCD4755008318EB /* OBRecommendationSlideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationSlideCell.m; sourceTree = "<group>"; };
@@ -169,8 +184,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E61E6C64208382A50016D79A /* OutbrainSDK.framework in Frameworks */,
 				E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */,
-				E66AC33A1C99AAE100A23876 /* OutbrainSDK.framework in Frameworks */,
 				E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */,
 				FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */,
 				D852F384187B5B40008A2A04 /* QuartzCore.framework in Frameworks */,
@@ -288,6 +303,7 @@
 		D8B59230186376B1009422D5 = {
 			isa = PBXGroup;
 			children = (
+				E61E6C63208382A50016D79A /* OutbrainSDK.framework */,
 				E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */,
 				D83456431885A543002B2368 /* Journal */,
 				D8D1FD9318732CA10099831C /* Shared UI */,
@@ -308,7 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */,
-				E66AC3391C99AAE000A23876 /* OutbrainSDK.framework */,
 				E6FFC2C21C28489A00498168 /* WebKit.framework */,
 				FC820C1119DD597F00ABAD89 /* AdSupport.framework */,
 				D852F383187B5B40008A2A04 /* QuartzCore.framework */,
@@ -574,11 +589,12 @@
 				D8B59235186376B1009422D5 /* Sources */,
 				D8B59236186376B1009422D5 /* Frameworks */,
 				D8B59237186376B1009422D5 /* Resources */,
+				E61E6C66208382A50016D79A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E61E6B37208360150016D79A /* PBXTargetDependency */,
+				E61E6C5C208378C80016D79A /* PBXTargetDependency */,
 			);
 			name = Journal;
 			productName = OutbrainDemo;
@@ -692,10 +708,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E61E6B37208360150016D79A /* PBXTargetDependency */ = {
+		E61E6C5C208378C80016D79A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OBFramework;
-			targetProxy = E61E6B36208360150016D79A /* PBXContainerItemProxy */;
+			targetProxy = E61E6C5B208378C80016D79A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -809,7 +825,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"${SRCROOT}/../**",
+					"${SRCROOT}/../../**",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -821,6 +837,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.demo;
@@ -840,7 +857,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"${SRCROOT}/../**",
+					"${SRCROOT}/../../**",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -848,6 +865,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.demo;

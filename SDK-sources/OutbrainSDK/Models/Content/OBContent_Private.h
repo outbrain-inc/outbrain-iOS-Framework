@@ -6,7 +6,7 @@
 //  Copyright (c) 2017 Outbrain. All rights reserved.
 //
 
-#import <OutbrainSDK/OutbrainSDK.h>
+#import "Outbrain.h"
 
 @interface OBContent ()
 /**
