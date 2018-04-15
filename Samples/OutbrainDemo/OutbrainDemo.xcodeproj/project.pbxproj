@@ -22,6 +22,46 @@
 		D8B59241186376B1009422D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
 		E61E6C64208382A50016D79A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6C63208382A50016D79A /* OutbrainSDK.framework */; };
 		E61E6C65208382A50016D79A /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6C63208382A50016D79A /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E61E6C6B208384A00016D79A /* OBDemoDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456491885A543002B2368 /* OBDemoDataHelper.m */; };
+		E61E6C6C208384A00016D79A /* TinyPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456691885A543002B2368 /* TinyPageControl.m */; };
+		E61E6C6D208384A00016D79A /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */; };
+		E61E6C6E208384A00016D79A /* OBHorizontalWidgetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366CD1FAF0F1500FA617E /* OBHorizontalWidgetCell.m */; };
+		E61E6C6F208384A00016D79A /* PostPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A905B1FCD4755008318EB /* PostPreviewCell.m */; };
+		E61E6C70208384A00016D79A /* OBHorizontalWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366C21FAF091B00FA617E /* OBHorizontalWidget.m */; };
+		E61E6C71208384A00016D79A /* OBInterstitialHeroGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90761FCD4885008318EB /* OBInterstitialHeroGridView.m */; };
+		E61E6C72208384A00016D79A /* MainPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366881FAEF32E00FA617E /* MainPostViewCell.m */; };
+		E61E6C73208384A00016D79A /* PostsSwipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667A1FAEF2FC00FA617E /* PostsSwipeVC.m */; };
+		E61E6C74208384A00016D79A /* OBClassicRecommendationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A906C1FCD4755008318EB /* OBClassicRecommendationsView.m */; };
+		E61E6C75208384A00016D79A /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366601FAA10A500FA617E /* PaddingLabel.m */; };
+		E61E6C76208384A00016D79A /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456471885A543002B2368 /* Post.m */; };
+		E61E6C77208384A00016D79A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D834564E1885A543002B2368 /* main.m */; };
+		E61E6C78208384A00016D79A /* OBRecommendationWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366771FAEF2FC00FA617E /* OBRecommendationWebVC.m */; };
+		E61E6C79208384A00016D79A /* OBAdhesionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90691FCD4755008318EB /* OBAdhesionView.m */; };
+		E61E6C7A208384A00016D79A /* PostsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366741FAEF2FB00FA617E /* PostsListVC.m */; };
+		E61E6C7B208384A00016D79A /* PostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D11FAF491E00FA617E /* PostViewCell.m */; };
+		E61E6C7C208384A00016D79A /* OBParalaxTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366901FAEF32E00FA617E /* OBParalaxTitleView.m */; };
+		E61E6C7D208384A00016D79A /* JLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366821FAEF32E00FA617E /* JLoadingView.m */; };
+		E61E6C7E208384A00016D79A /* OBLabelWithPadding.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667C1FAEF32D00FA617E /* OBLabelWithPadding.m */; };
+		E61E6C7F208384A00016D79A /* OBRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667F1FAEF32E00FA617E /* OBRefreshControl.m */; };
+		E61E6C80208384A00016D79A /* OBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D834564B1885A543002B2368 /* OBAppDelegate.m */; };
+		E61E6C81208384A00016D79A /* OBRecommendationSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90591FCD4755008318EB /* OBRecommendationSlideCell.m */; };
+		E61E6C84208384A00016D79A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
+		E61E6C85208384A00016D79A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
+		E61E6C86208384A00016D79A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
+		E61E6C87208384A00016D79A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D852F383187B5B40008A2A04 /* QuartzCore.framework */; };
+		E61E6C88208384A00016D79A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D852F381187B5B3C008A2A04 /* Security.framework */; };
+		E61E6C89208384A00016D79A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923E186376B1009422D5 /* CoreGraphics.framework */; };
+		E61E6C8A208384A00016D79A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
+		E61E6C8B208384A00016D79A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923C186376B1009422D5 /* Foundation.framework */; };
+		E61E6C8D208384A00016D79A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D834564D1885A543002B2368 /* Images.xcassets */; };
+		E61E6C8E208384A00016D79A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */; };
+		E61E6C8F208384A00016D79A /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
+		E61E6C90208384A00016D79A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D8174B2E18A562BC005696C2 /* Settings.bundle */; };
+		E61E6C91208384A00016D79A /* OBHorizontalWidgetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64366CA1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib */; };
+		E61E6C92208384A00016D79A /* OBHorizontalWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64366C81FAF0A2F00FA617E /* OBHorizontalWidget.xib */; };
+		E61E6C93208384A00016D79A /* OBConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D83456511885A543002B2368 /* OBConfig.plist */; };
+		E61E6CA0208386410016D79A /* libOutbrainSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B332083600C0016D79A /* libOutbrainSDK.a */; };
+		E61E6CA1208386410016D79A /* libOutbrainSDK.a in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B332083600C0016D79A /* libOutbrainSDK.a */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366601FAA10A500FA617E /* PaddingLabel.m */; };
 		E64366911FAEF32E00FA617E /* OBLabelWithPadding.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667C1FAEF32D00FA617E /* OBLabelWithPadding.m */; };
 		E64366AD1FAEF3EC00FA617E /* JLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366821FAEF32E00FA617E /* JLoadingView.m */; };
@@ -71,6 +111,20 @@
 			remoteGlobalIDString = D8376BE9186E2F6D00B45FA3;
 			remoteInfo = OBFramework;
 		};
+		E61E6C9B208384BA0016D79A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E61E6B3C2083607B0016D79A;
+			remoteInfo = OutbrainSDK;
+		};
+		E61E6CA2208386410016D79A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E61E6B3C2083607B0016D79A;
+			remoteInfo = OutbrainSDK;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -81,6 +135,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E61E6C65208382A50016D79A /* OutbrainSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E61E6CA4208386420016D79A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E61E6CA1208386410016D79A /* libOutbrainSDK.a in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,13 +169,15 @@
 		D83456691885A543002B2368 /* TinyPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinyPageControl.m; sourceTree = "<group>"; };
 		D852F381187B5B3C008A2A04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D852F383187B5B40008A2A04 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D8B59239186376B1009422D5 /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8B59239186376B1009422D5 /* Journal .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Journal .app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B5923C186376B1009422D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8B5923E186376B1009422D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8B59240186376B1009422D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8B5925A186376B1009422D5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = "../../SDK-sources/OutbrainSDK.xcodeproj"; sourceTree = "<group>"; };
 		E61E6C63208382A50016D79A /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
+		E61E6C99208384A00016D79A /* Journal-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Journal-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E61E6CA5208386EF0016D79A /* Journal-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Journal-Dev-Info.plist"; sourceTree = "<group>"; };
 		E62725931FB9B736005CC644 /* PostPreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostPreviewCell.h; sourceTree = "<group>"; };
 		E62725941FB9B736005CC644 /* PostPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostPreviewCell.m; sourceTree = "<group>"; };
 		E643665F1FAA10A500FA617E /* PaddingLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
@@ -196,6 +263,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E61E6C82208384A00016D79A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E61E6CA0208386410016D79A /* libOutbrainSDK.a in Frameworks */,
+				E61E6C84208384A00016D79A /* SystemConfiguration.framework in Frameworks */,
+				E61E6C85208384A00016D79A /* WebKit.framework in Frameworks */,
+				E61E6C86208384A00016D79A /* AdSupport.framework in Frameworks */,
+				E61E6C87208384A00016D79A /* QuartzCore.framework in Frameworks */,
+				E61E6C88208384A00016D79A /* Security.framework in Frameworks */,
+				E61E6C89208384A00016D79A /* CoreGraphics.framework in Frameworks */,
+				E61E6C8A208384A00016D79A /* UIKit.framework in Frameworks */,
+				E61E6C8B208384A00016D79A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -249,6 +332,7 @@
 			children = (
 				D83456511885A543002B2368 /* OBConfig.plist */,
 				D83456521885A543002B2368 /* Journal-Info.plist */,
+				E61E6CA5208386EF0016D79A /* Journal-Dev-Info.plist */,
 				D8174B2E18A562BC005696C2 /* Settings.bundle */,
 			);
 			path = plists;
@@ -315,7 +399,8 @@
 		D8B5923A186376B1009422D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D8B59239186376B1009422D5 /* Journal.app */,
+				D8B59239186376B1009422D5 /* Journal .app */,
+				E61E6C99208384A00016D79A /* Journal-Dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -582,9 +667,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D8B59238186376B1009422D5 /* Journal */ = {
+		D8B59238186376B1009422D5 /* Journal  */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8B5926B186376B1009422D5 /* Build configuration list for PBXNativeTarget "Journal" */;
+			buildConfigurationList = D8B5926B186376B1009422D5 /* Build configuration list for PBXNativeTarget "Journal " */;
 			buildPhases = (
 				D8B59235186376B1009422D5 /* Sources */,
 				D8B59236186376B1009422D5 /* Frameworks */,
@@ -596,9 +681,29 @@
 			dependencies = (
 				E61E6C5C208378C80016D79A /* PBXTargetDependency */,
 			);
-			name = Journal;
+			name = "Journal ";
 			productName = OutbrainDemo;
-			productReference = D8B59239186376B1009422D5 /* Journal.app */;
+			productReference = D8B59239186376B1009422D5 /* Journal .app */;
+			productType = "com.apple.product-type.application";
+		};
+		E61E6C67208384A00016D79A /* Journal-Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E61E6C96208384A00016D79A /* Build configuration list for PBXNativeTarget "Journal-Dev" */;
+			buildPhases = (
+				E61E6C6A208384A00016D79A /* Sources */,
+				E61E6C82208384A00016D79A /* Frameworks */,
+				E61E6C8C208384A00016D79A /* Resources */,
+				E61E6CA4208386420016D79A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E61E6C9C208384BA0016D79A /* PBXTargetDependency */,
+				E61E6CA3208386410016D79A /* PBXTargetDependency */,
+			);
+			name = "Journal-Dev";
+			productName = OutbrainDemo;
+			productReference = E61E6C99208384A00016D79A /* Journal-Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -635,7 +740,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				D8B59238186376B1009422D5 /* Journal */,
+				D8B59238186376B1009422D5 /* Journal  */,
+				E61E6C67208384A00016D79A /* Journal-Dev */,
 			);
 		};
 /* End PBXProject section */
@@ -672,6 +778,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E61E6C8C208384A00016D79A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E61E6C8D208384A00016D79A /* Images.xcassets in Resources */,
+				E61E6C8E208384A00016D79A /* LaunchScreen.storyboard in Resources */,
+				E61E6C8F208384A00016D79A /* NewMainStoryboard.storyboard in Resources */,
+				E61E6C90208384A00016D79A /* Settings.bundle in Resources */,
+				E61E6C91208384A00016D79A /* OBHorizontalWidgetCell.xib in Resources */,
+				E61E6C92208384A00016D79A /* OBHorizontalWidget.xib in Resources */,
+				E61E6C93208384A00016D79A /* OBConfig.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -705,6 +825,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E61E6C6A208384A00016D79A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E61E6C6B208384A00016D79A /* OBDemoDataHelper.m in Sources */,
+				E61E6C6C208384A00016D79A /* TinyPageControl.m in Sources */,
+				E61E6C6D208384A00016D79A /* TopBoxPostViewCell.m in Sources */,
+				E61E6C6E208384A00016D79A /* OBHorizontalWidgetCell.m in Sources */,
+				E61E6C6F208384A00016D79A /* PostPreviewCell.m in Sources */,
+				E61E6C70208384A00016D79A /* OBHorizontalWidget.m in Sources */,
+				E61E6C71208384A00016D79A /* OBInterstitialHeroGridView.m in Sources */,
+				E61E6C72208384A00016D79A /* MainPostViewCell.m in Sources */,
+				E61E6C73208384A00016D79A /* PostsSwipeVC.m in Sources */,
+				E61E6C74208384A00016D79A /* OBClassicRecommendationsView.m in Sources */,
+				E61E6C75208384A00016D79A /* PaddingLabel.m in Sources */,
+				E61E6C76208384A00016D79A /* Post.m in Sources */,
+				E61E6C77208384A00016D79A /* main.m in Sources */,
+				E61E6C78208384A00016D79A /* OBRecommendationWebVC.m in Sources */,
+				E61E6C79208384A00016D79A /* OBAdhesionView.m in Sources */,
+				E61E6C7A208384A00016D79A /* PostsListVC.m in Sources */,
+				E61E6C7B208384A00016D79A /* PostViewCell.m in Sources */,
+				E61E6C7C208384A00016D79A /* OBParalaxTitleView.m in Sources */,
+				E61E6C7D208384A00016D79A /* JLoadingView.m in Sources */,
+				E61E6C7E208384A00016D79A /* OBLabelWithPadding.m in Sources */,
+				E61E6C7F208384A00016D79A /* OBRefreshControl.m in Sources */,
+				E61E6C80208384A00016D79A /* OBAppDelegate.m in Sources */,
+				E61E6C81208384A00016D79A /* OBRecommendationSlideCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -712,6 +862,16 @@
 			isa = PBXTargetDependency;
 			name = OBFramework;
 			targetProxy = E61E6C5B208378C80016D79A /* PBXContainerItemProxy */;
+		};
+		E61E6C9C208384BA0016D79A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OutbrainSDK;
+			targetProxy = E61E6C9B208384BA0016D79A /* PBXContainerItemProxy */;
+		};
+		E61E6CA3208386410016D79A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OutbrainSDK;
+			targetProxy = E61E6CA2208386410016D79A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -876,6 +1036,69 @@
 			};
 			name = Release;
 		};
+		E61E6C97208384A00016D79A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 97R2B46745;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"${SRCROOT}/../../**",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "${SRCROOT}/Journal/Resources/Journal-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Dev-Info.plist";
+				INSTALL_PATH = $HOME/Applications;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E61E6C98208384A00016D79A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 97R2B46745;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"${SRCROOT}/../../**",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "${SRCROOT}/Journal/Resources/Journal-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Dev-Info.plist";
+				INSTALL_PATH = $HOME/Applications;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -888,11 +1111,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D8B5926B186376B1009422D5 /* Build configuration list for PBXNativeTarget "Journal" */ = {
+		D8B5926B186376B1009422D5 /* Build configuration list for PBXNativeTarget "Journal " */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8B5926C186376B1009422D5 /* Debug */,
 				D8B5926D186376B1009422D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E61E6C96208384A00016D79A /* Build configuration list for PBXNativeTarget "Journal-Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E61E6C97208384A00016D79A /* Debug */,
+				E61E6C98208384A00016D79A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
