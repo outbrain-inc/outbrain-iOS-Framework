@@ -178,8 +178,6 @@
 		E61E6C63208382A50016D79A /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
 		E61E6C99208384A00016D79A /* Journal-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Journal-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6CA5208386EF0016D79A /* Journal-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Journal-Dev-Info.plist"; sourceTree = "<group>"; };
-		E62725931FB9B736005CC644 /* PostPreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostPreviewCell.h; sourceTree = "<group>"; };
-		E62725941FB9B736005CC644 /* PostPreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostPreviewCell.m; sourceTree = "<group>"; };
 		E643665F1FAA10A500FA617E /* PaddingLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
 		E64366601FAA10A500FA617E /* PaddingLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaddingLabel.m; sourceTree = "<group>"; };
 		E64366731FAEF2FB00FA617E /* PostsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostsListVC.h; sourceTree = "<group>"; };
@@ -199,24 +197,6 @@
 		E64366881FAEF32E00FA617E /* MainPostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPostViewCell.m; sourceTree = "<group>"; };
 		E643668F1FAEF32E00FA617E /* OBParalaxTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBParalaxTitleView.h; sourceTree = "<group>"; };
 		E64366901FAEF32E00FA617E /* OBParalaxTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBParalaxTitleView.m; sourceTree = "<group>"; };
-		E64366941FAEF36B00FA617E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		E64366951FAEF36B00FA617E /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
-		E64366961FAEF36B00FA617E /* tiny-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiny-logo.png"; sourceTree = "<group>"; };
-		E64366971FAEF36B00FA617E /* tiny-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiny-logo@2x.png"; sourceTree = "<group>"; };
-		E64366991FAEF38D00FA617E /* OBRecommendationSlideCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBRecommendationSlideCell.h; sourceTree = "<group>"; };
-		E643669A1FAEF38D00FA617E /* OBRecommendationSlideCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationSlideCell.m; sourceTree = "<group>"; };
-		E643669E1FAEF3A500FA617E /* OBInterstitialClassicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBInterstitialClassicView.h; sourceTree = "<group>"; };
-		E643669F1FAEF3A500FA617E /* OBInterstitialClassicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBInterstitialClassicView.m; sourceTree = "<group>"; };
-		E64366A11FAEF3A500FA617E /* OBInterstitialHeroView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBInterstitialHeroView.h; sourceTree = "<group>"; };
-		E64366A21FAEF3A500FA617E /* OBInterstitialHeroView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBInterstitialHeroView.m; sourceTree = "<group>"; };
-		E64366A41FAEF3A500FA617E /* OBInterstitialHeroGridView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBInterstitialHeroGridView.h; sourceTree = "<group>"; };
-		E64366A51FAEF3A500FA617E /* OBInterstitialHeroGridView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBInterstitialHeroGridView.m; sourceTree = "<group>"; };
-		E64366A61FAEF3A500FA617E /* OBInterstitialViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBInterstitialViewProtocol.h; sourceTree = "<group>"; };
-		E64366A71FAEF3A500FA617E /* OBAdhesionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBAdhesionView.h; sourceTree = "<group>"; };
-		E64366A81FAEF3A500FA617E /* OBAdhesionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBAdhesionView.m; sourceTree = "<group>"; };
-		E64366AA1FAEF3A500FA617E /* OBClassicRecommendationsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBClassicRecommendationsView.h; sourceTree = "<group>"; };
-		E64366AB1FAEF3A500FA617E /* OBClassicRecommendationsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBClassicRecommendationsView.m; sourceTree = "<group>"; };
-		E64366AC1FAEF3B700FA617E /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OBWidgetViewProtocol.h; path = ../SampleUI/OBWidgetViewProtocol.h; sourceTree = "<group>"; };
 		E64366C11FAF091B00FA617E /* OBHorizontalWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBHorizontalWidget.h; sourceTree = "<group>"; };
 		E64366C21FAF091B00FA617E /* OBHorizontalWidget.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBHorizontalWidget.m; sourceTree = "<group>"; };
 		E64366C81FAF0A2F00FA617E /* OBHorizontalWidget.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OBHorizontalWidget.xib; sourceTree = "<group>"; };
@@ -390,7 +370,6 @@
 				E61E6C63208382A50016D79A /* OutbrainSDK.framework */,
 				E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */,
 				D83456431885A543002B2368 /* Journal */,
-				D8D1FD9318732CA10099831C /* Shared UI */,
 				D8B5923B186376B1009422D5 /* Frameworks */,
 				D8B5923A186376B1009422D5 /* Products */,
 			);
@@ -419,17 +398,6 @@
 				D8B5925A186376B1009422D5 /* XCTest.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D8D1FD9318732CA10099831C /* Shared UI */ = {
-			isa = PBXGroup;
-			children = (
-				E64366AC1FAEF3B700FA617E /* OBWidgetViewProtocol.h */,
-				E643669B1FAEF3A500FA617E /* Views */,
-				E64366981FAEF38D00FA617E /* TableCells */,
-				E64366931FAEF36B00FA617E /* Branding Logos */,
-			);
-			name = "Shared UI";
 			sourceTree = "<group>";
 		};
 		E61E6B2D2083600C0016D79A /* Products */ = {
@@ -503,89 +471,6 @@
 				E64366901FAEF32E00FA617E /* OBParalaxTitleView.m */,
 			);
 			path = ParalaxTitleView;
-			sourceTree = "<group>";
-		};
-		E64366931FAEF36B00FA617E /* Branding Logos */ = {
-			isa = PBXGroup;
-			children = (
-				E64366941FAEF36B00FA617E /* logo.png */,
-				E64366951FAEF36B00FA617E /* logo@2x.png */,
-				E64366961FAEF36B00FA617E /* tiny-logo.png */,
-				E64366971FAEF36B00FA617E /* tiny-logo@2x.png */,
-			);
-			name = "Branding Logos";
-			path = "../SampleUI/Branding Logos";
-			sourceTree = "<group>";
-		};
-		E64366981FAEF38D00FA617E /* TableCells */ = {
-			isa = PBXGroup;
-			children = (
-				E64366991FAEF38D00FA617E /* OBRecommendationSlideCell.h */,
-				E643669A1FAEF38D00FA617E /* OBRecommendationSlideCell.m */,
-				E62725931FB9B736005CC644 /* PostPreviewCell.h */,
-				E62725941FB9B736005CC644 /* PostPreviewCell.m */,
-			);
-			name = TableCells;
-			path = ../SampleUI/TableCells;
-			sourceTree = "<group>";
-		};
-		E643669B1FAEF3A500FA617E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E643669C1FAEF3A500FA617E /* Interstitials */,
-				E64366A71FAEF3A500FA617E /* OBAdhesionView.h */,
-				E64366A81FAEF3A500FA617E /* OBAdhesionView.m */,
-				E64366A91FAEF3A500FA617E /* OBClassicRecommendationsView */,
-			);
-			name = Views;
-			path = ../SampleUI/Views;
-			sourceTree = "<group>";
-		};
-		E643669C1FAEF3A500FA617E /* Interstitials */ = {
-			isa = PBXGroup;
-			children = (
-				E643669D1FAEF3A500FA617E /* Classic */,
-				E64366A01FAEF3A500FA617E /* Hero */,
-				E64366A31FAEF3A500FA617E /* Hero+Grid */,
-				E64366A61FAEF3A500FA617E /* OBInterstitialViewProtocol.h */,
-			);
-			path = Interstitials;
-			sourceTree = "<group>";
-		};
-		E643669D1FAEF3A500FA617E /* Classic */ = {
-			isa = PBXGroup;
-			children = (
-				E643669E1FAEF3A500FA617E /* OBInterstitialClassicView.h */,
-				E643669F1FAEF3A500FA617E /* OBInterstitialClassicView.m */,
-			);
-			path = Classic;
-			sourceTree = "<group>";
-		};
-		E64366A01FAEF3A500FA617E /* Hero */ = {
-			isa = PBXGroup;
-			children = (
-				E64366A11FAEF3A500FA617E /* OBInterstitialHeroView.h */,
-				E64366A21FAEF3A500FA617E /* OBInterstitialHeroView.m */,
-			);
-			path = Hero;
-			sourceTree = "<group>";
-		};
-		E64366A31FAEF3A500FA617E /* Hero+Grid */ = {
-			isa = PBXGroup;
-			children = (
-				E64366A41FAEF3A500FA617E /* OBInterstitialHeroGridView.h */,
-				E64366A51FAEF3A500FA617E /* OBInterstitialHeroGridView.m */,
-			);
-			path = "Hero+Grid";
-			sourceTree = "<group>";
-		};
-		E64366A91FAEF3A500FA617E /* OBClassicRecommendationsView */ = {
-			isa = PBXGroup;
-			children = (
-				E64366AA1FAEF3A500FA617E /* OBClassicRecommendationsView.h */,
-				E64366AB1FAEF3A500FA617E /* OBClassicRecommendationsView.m */,
-			);
-			path = OBClassicRecommendationsView;
 			sourceTree = "<group>";
 		};
 		E64366C01FAF090900FA617E /* OBHorizontalWidget */ = {
