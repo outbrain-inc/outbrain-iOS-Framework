@@ -77,7 +77,7 @@
 		E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1320836C180016D79A /* OBParseODBTests.m */; };
 		E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0F20836C180016D79A /* OBTestUtils.m */; };
 		E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1020836C180016D79A /* OutbrainSDKTests.m */; };
-		E61E6CB92085D98F0016D79A /* SFCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CA72085D98F0016D79A /* SFCollectionViewCell.h */; };
+		E61E6CB92085D98F0016D79A /* SFCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CA72085D98F0016D79A /* SFCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6CBA2085D98F0016D79A /* SFHorizontalTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CA92085D98F0016D79A /* SFHorizontalTableViewCell.h */; };
 		E61E6CBB2085D98F0016D79A /* SFHorizontalCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAA2085D98F0016D79A /* SFHorizontalCell.h */; };
 		E61E6CBC2085D98F0016D79A /* SFHorizontalView.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAC2085D98F0016D79A /* SFHorizontalView.h */; };
@@ -92,7 +92,7 @@
 		E61E6CC52085D98F0016D79A /* SFCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB52085D98F0016D79A /* SFCollectionViewCell.m */; };
 		E61E6CC62085D98F0016D79A /* SFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB62085D98F0016D79A /* SFUtils.m */; };
 		E61E6CC72085D98F0016D79A /* SmartFeedManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB72085D98F0016D79A /* SmartFeedManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61E6CC82085D98F0016D79A /* SFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB82085D98F0016D79A /* SFTableViewCell.h */; };
+		E61E6CC82085D98F0016D79A /* SFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB82085D98F0016D79A /* SFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -454,8 +454,8 @@
 			isa = PBXGroup;
 			children = (
 				E61E6CAC2085D98F0016D79A /* SFHorizontalView.h */,
-				E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */,
 				E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */,
+				E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */,
 				E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */,
 			);
 			path = SFHorizontalView;

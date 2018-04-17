@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Medium</string>
+        </array>
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AppOBTableViewCell" rowHeight="289" id="2TZ-7r-GNE" userLabel="AppOBTableViewCell" customClass="AppOBTableViewCell" customModule="ios_SmartFeed" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="289"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2TZ-7r-GNE" id="miy-nZ-r2X">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="288.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" image="lyftCNN" translatesAutoresizingMaskIntoConstraints="NO" id="fxR-iw-j64">
+                        <rect key="frame" x="8" y="0.0" width="359" height="213.5"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Plus Size - Check Out The New Clothing. The Best Sales Ever!!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAZ-bc-kkX">
+                        <rect key="frame" x="8" y="224.5" width="359" height="38.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Sponsored | Source Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIL-ac-bsF">
+                        <rect key="frame" x="8" y="266" width="359" height="14.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" red="0.57647058823529407" green="0.56470588235294117" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wIL-ac-bsF" firstAttribute="leading" secondItem="oAZ-bc-kkX" secondAttribute="leading" id="0HS-Cc-K8D"/>
+                    <constraint firstAttribute="bottom" secondItem="wIL-ac-bsF" secondAttribute="bottom" constant="8" id="4IY-dZ-mFb"/>
+                    <constraint firstAttribute="trailing" secondItem="oAZ-bc-kkX" secondAttribute="trailing" constant="8" id="4zI-sl-pgC"/>
+                    <constraint firstItem="oAZ-bc-kkX" firstAttribute="top" secondItem="fxR-iw-j64" secondAttribute="bottom" constant="11" id="8b8-1D-sPk"/>
+                    <constraint firstItem="oAZ-bc-kkX" firstAttribute="leading" secondItem="miy-nZ-r2X" secondAttribute="leading" constant="8" id="SBc-Mt-wFe"/>
+                    <constraint firstItem="wIL-ac-bsF" firstAttribute="top" secondItem="oAZ-bc-kkX" secondAttribute="bottom" constant="3" id="UYh-Rd-jmg"/>
+                    <constraint firstAttribute="trailing" secondItem="wIL-ac-bsF" secondAttribute="trailing" constant="8" id="Ww2-oT-RtK"/>
+                    <constraint firstItem="fxR-iw-j64" firstAttribute="leading" secondItem="miy-nZ-r2X" secondAttribute="leading" constant="8" id="d3I-Gs-uvk"/>
+                    <constraint firstAttribute="trailing" secondItem="fxR-iw-j64" secondAttribute="trailing" constant="8" id="w8S-ON-fBK"/>
+                    <constraint firstItem="fxR-iw-j64" firstAttribute="top" secondItem="miy-nZ-r2X" secondAttribute="top" id="xgK-6L-RID"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="recImageView" destination="fxR-iw-j64" id="k4X-WL-tpX"/>
+                <outlet property="recSourceLabel" destination="wIL-ac-bsF" id="thk-gQ-cMQ"/>
+                <outlet property="recTitleLabel" destination="oAZ-bc-kkX" id="d59-IH-uyt"/>
+            </connections>
+            <point key="canvasLocation" x="-21.5" y="66.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="lyftCNN" width="390" height="219"/>
+    </resources>
+</document>

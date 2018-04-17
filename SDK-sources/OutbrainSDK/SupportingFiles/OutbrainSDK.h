@@ -29,3 +29,8 @@ FOUNDATION_EXPORT const unsigned char DynamicOutbrainSDKVersionString[];
 #import <OutbrainSDK/OBDisclosure.h>
 #import <OutbrainSDK/OBSettings.h>
 #import <OutbrainSDK/OBResponseRequest.h>
+
+#import <OutbrainSDK/SFCollectionViewCell.h>
+#import <OutbrainSDK/SFTableViewCell.h>
+#import <OutbrainSDK/SmartFeedManager.h>
+
