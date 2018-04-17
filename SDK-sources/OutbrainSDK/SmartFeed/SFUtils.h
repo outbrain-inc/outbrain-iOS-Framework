@@ -15,4 +15,6 @@
 
 +(void) addHeightConstraint:(CGFloat) height toView:(UIView *)view;
 
++(void) addDropShadowToView:(UIView *)view;
+
 @end

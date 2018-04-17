@@ -7,6 +7,7 @@
 //
 
 #import "SFUtils.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation SFUtils
 
@@ -58,6 +59,20 @@
                                   multiplier:0
                                   constant:height];
     [view addConstraint:heightConst];
+}
+
+// https://stackoverflow.com/questions/39624675/add-shadow-on-uiview-using-swift-3
++(void) addDropShadowToView:(UIView *)view {
+    CALayer *layer = view.layer;
+    layer.masksToBounds = NO;
+    layer.shadowColor = [[UIColor blackColor] CGColor];
+    layer.shadowOpacity = 0.5;
+    layer.shadowOffset = CGSizeMake(-1, 1);
+    layer.shadowRadius = 1;
+    layer.shadowPath = [[UIBezierPath bezierPathWithRect:view.bounds] CGPath];
+    layer.shouldRasterize = YES;
+    layer.zPosition = 1;
+    layer.rasterizationScale = [[UIScreen mainScreen] scale];
 }
 
 @end

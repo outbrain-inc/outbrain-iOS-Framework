@@ -11,6 +11,7 @@
 #import "SFCollectionViewCell.h"
 #import "SFTableViewCell.h"
 #import "SFHorizontalTableViewCell.h"
+#import "SFUtils.h"
 
 #import <OutbrainSDK/OutbrainSDK.h>
 
@@ -133,6 +134,7 @@
             singleCell.recSourceLabel.text = rec.source;
         }
         
+        /*
         dispatch_async(dispatch_get_global_queue(0,0), ^{
             NSData * data = [[NSData alloc] initWithContentsOfURL: rec.image.url];
             if ( data == nil )
@@ -144,6 +146,10 @@
                 singleCell.recImageView.image = [UIImage imageWithData: data];
             });
         });
+         */
+        
+        
+        [SFUtils addDropShadowToView: singleCell];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
         tapGesture.numberOfTapsRequired = 1;
