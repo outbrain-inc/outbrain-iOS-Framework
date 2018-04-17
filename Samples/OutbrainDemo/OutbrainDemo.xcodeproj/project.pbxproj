@@ -169,7 +169,7 @@
 		D83456691885A543002B2368 /* TinyPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinyPageControl.m; sourceTree = "<group>"; };
 		D852F381187B5B3C008A2A04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D852F383187B5B40008A2A04 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D8B59239186376B1009422D5 /* Journal .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Journal .app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8B59239186376B1009422D5 /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B5923C186376B1009422D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8B5923E186376B1009422D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8B59240186376B1009422D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -378,7 +378,7 @@
 		D8B5923A186376B1009422D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D8B59239186376B1009422D5 /* Journal .app */,
+				D8B59239186376B1009422D5 /* Journal.app */,
 				E61E6C99208384A00016D79A /* Journal-Dev.app */,
 			);
 			name = Products;
@@ -552,9 +552,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D8B59238186376B1009422D5 /* Journal  */ = {
+		D8B59238186376B1009422D5 /* Journal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8B5926B186376B1009422D5 /* Build configuration list for PBXNativeTarget "Journal " */;
+			buildConfigurationList = D8B5926B186376B1009422D5 /* Build configuration list for PBXNativeTarget "Journal" */;
 			buildPhases = (
 				D8B59235186376B1009422D5 /* Sources */,
 				D8B59236186376B1009422D5 /* Frameworks */,
@@ -566,9 +566,9 @@
 			dependencies = (
 				E61E6C5C208378C80016D79A /* PBXTargetDependency */,
 			);
-			name = "Journal ";
+			name = Journal;
 			productName = OutbrainDemo;
-			productReference = D8B59239186376B1009422D5 /* Journal .app */;
+			productReference = D8B59239186376B1009422D5 /* Journal.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E61E6C67208384A00016D79A /* Journal-Dev */ = {
@@ -625,7 +625,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				D8B59238186376B1009422D5 /* Journal  */,
+				D8B59238186376B1009422D5 /* Journal */,
 				E61E6C67208384A00016D79A /* Journal-Dev */,
 			);
 		};
@@ -996,7 +996,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D8B5926B186376B1009422D5 /* Build configuration list for PBXNativeTarget "Journal " */ = {
+		D8B5926B186376B1009422D5 /* Build configuration list for PBXNativeTarget "Journal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8B5926C186376B1009422D5 /* Debug */,
