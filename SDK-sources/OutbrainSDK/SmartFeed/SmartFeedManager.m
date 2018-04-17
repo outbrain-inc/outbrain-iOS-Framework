@@ -119,6 +119,7 @@
     
     if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
+        [SFUtils addDropShadowToView: cell];
     }
     else { // SFSingleCell
         SFTableViewCell *singleCell = (SFTableViewCell *)cell;
