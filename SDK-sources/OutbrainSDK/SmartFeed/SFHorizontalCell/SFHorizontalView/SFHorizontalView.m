@@ -36,6 +36,16 @@
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.itemSize = CGSizeMake(256, 460);
+        self.didInitCollectionViewLayout = NO;
+    }
+    return self;
+}
+
 -(void) setupView {
     if (self.didInitCollectionViewLayout) {
         return;

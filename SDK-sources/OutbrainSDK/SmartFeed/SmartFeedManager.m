@@ -61,7 +61,11 @@
         self.url = url;
         self.outbrainRecs = [[NSMutableArray alloc] init];
         self.tableView = tableView;
-        [self.tableView registerClass:[SFHorizontalTableViewCell class] forCellReuseIdentifier:@"SFHorizontalCell"];
+        
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalTableViewCell" bundle:bundle];
+        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: @"SFHorizontalCell"];
+        
         [self fetchMoreRecommendations];
     }
     return self;

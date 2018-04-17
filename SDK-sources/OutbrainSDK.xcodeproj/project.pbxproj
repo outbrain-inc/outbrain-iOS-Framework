@@ -93,6 +93,8 @@
 		E61E6CC62085D98F0016D79A /* SFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB62085D98F0016D79A /* SFUtils.m */; };
 		E61E6CC72085D98F0016D79A /* SmartFeedManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB72085D98F0016D79A /* SmartFeedManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6CC82085D98F0016D79A /* SFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB82085D98F0016D79A /* SFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6CFA208610AF0016D79A /* SFHorizontalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */; };
+		E61E6CFE208611380016D79A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFD208611380016D79A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +190,8 @@
 		E61E6CB62085D98F0016D79A /* SFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUtils.m; sourceTree = "<group>"; };
 		E61E6CB72085D98F0016D79A /* SmartFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartFeedManager.h; sourceTree = "<group>"; };
 		E61E6CB82085D98F0016D79A /* SFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewCell.h; sourceTree = "<group>"; };
+		E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalTableViewCell.xib; sourceTree = "<group>"; };
+		E61E6CFD208611380016D79A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -246,6 +250,7 @@
 		E61E6BCA20836C180016D79A /* OutbrainSDK */ = {
 			isa = PBXGroup;
 			children = (
+				E61E6CFD208611380016D79A /* Assets.xcassets */,
 				E61E6CA62085D98F0016D79A /* SmartFeed */,
 				E61E6BCB20836C180016D79A /* AdIds */,
 				E61E6BCF20836C180016D79A /* Viewability */,
@@ -441,11 +446,12 @@
 		E61E6CA82085D98F0016D79A /* SFHorizontalCell */ = {
 			isa = PBXGroup;
 			children = (
+				E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */,
 				E61E6CA92085D98F0016D79A /* SFHorizontalTableViewCell.h */,
-				E61E6CAA2085D98F0016D79A /* SFHorizontalCell.h */,
-				E61E6CAB2085D98F0016D79A /* SFHorizontalView */,
 				E61E6CB02085D98F0016D79A /* SFHorizontalTableViewCell.m */,
+				E61E6CAA2085D98F0016D79A /* SFHorizontalCell.h */,
 				E61E6CB12085D98F0016D79A /* SFHorizontalCell.m */,
+				E61E6CAB2085D98F0016D79A /* SFHorizontalView */,
 			);
 			path = SFHorizontalCell;
 			sourceTree = "<group>";
@@ -593,6 +599,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E61E6CFE208611380016D79A /* Assets.xcassets in Resources */,
+				E61E6CFA208610AF0016D79A /* SFHorizontalTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

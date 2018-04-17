@@ -11,6 +11,8 @@
 
 @interface SFHorizontalTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) SFHorizontalView *horizontalView;
+@property (nonatomic, weak) IBOutlet SFHorizontalView *horizontalView;
+@property (nonatomic, weak) IBOutlet UILabel *moreFromLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *moreFromImageView;
 
 @end
