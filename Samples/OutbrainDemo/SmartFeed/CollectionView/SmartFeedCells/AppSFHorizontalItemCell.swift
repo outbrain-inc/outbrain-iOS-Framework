@@ -13,10 +13,4 @@ import OutbrainSDK
 
 class AppSFHorizontalItemCell: SFCollectionViewCell {
     
-    override func prepareForReuse() {
-        self.recImageView.image = nil
-        self.layer.borderColor = UIColor.black.cgColor
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 8 // optional
-    }
 }
