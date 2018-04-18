@@ -99,8 +99,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         view.layer.shadowOpacity = 1.0
         view.layer.shadowRadius = 5.0
         view.layer.shadowOffset = CGSize(width:5.0, height: 5.0)
-        
-        
     }
     
     // method to run when table view cell is tapped
@@ -110,6 +108,14 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         self.smartFeedManager.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 1 { // Outbrain
+            return self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
+        }
+        
+        return UITableViewAutomaticDimension;
     }
 }
 
