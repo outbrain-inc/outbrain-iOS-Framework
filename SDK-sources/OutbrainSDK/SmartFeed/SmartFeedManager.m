@@ -7,7 +7,7 @@
 //
 
 #import "SmartFeedManager.h"
-#import "SFHorizontalCell.h"
+#import "SFHorizontalCollectionViewCell.h"
 #import "SFCollectionViewCell.h"
 #import "SFTableViewCell.h"
 #import "SFHorizontalTableViewCell.h"
@@ -48,7 +48,7 @@
         self.url = url;
         self.outbrainRecs = [[NSMutableArray alloc] init];
         self.collectionView = collectionView;
-        [collectionView registerClass:[SFHorizontalCell class] forCellWithReuseIdentifier:@"SFHorizontalCell"];
+        [collectionView registerClass:[SFHorizontalCollectionViewCell class] forCellWithReuseIdentifier:@"SFHorizontalCell"];
     }
     return self;
 }
@@ -231,7 +231,7 @@
     }
     
     if (indexPath.section == 1) {
-        if ([cell isKindOfClass:[SFHorizontalCell class]]) {
+        if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
             [self configureHorizontalCell:cell atIndexPath:indexPath];
         }
         else { // SFSingleCell
@@ -296,7 +296,7 @@
 }
 
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    SFHorizontalCell *horizontalCell = (SFHorizontalCell *)cell;
+    SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     [horizontalCell.horizontalView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier: self.horizontalCellIdentifier];
     [horizontalCell.horizontalView setupView];
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];

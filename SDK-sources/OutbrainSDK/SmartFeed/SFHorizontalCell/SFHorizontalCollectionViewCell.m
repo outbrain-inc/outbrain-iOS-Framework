@@ -6,10 +6,10 @@
 //  Copyright © 2018 Outbrain. All rights reserved.
 //
 
-#import "SFHorizontalCell.h"
+#import "SFHorizontalCollectionViewCell.h"
 #import "SFUtils.h"
 
-@implementation SFHorizontalCell
+@implementation SFHorizontalCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

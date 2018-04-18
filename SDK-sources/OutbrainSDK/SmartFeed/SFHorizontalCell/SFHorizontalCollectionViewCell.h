@@ -1,5 +1,5 @@
 //
-//  SFHorizontalCell.h
+//  SFHorizontalCollectionViewCell.h
 //  SmartFeedLib
 //
 //  Created by oded regev on 12/03/2018.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SFHorizontalView.h"
 
-@interface SFHorizontalCell : UICollectionViewCell
+@interface SFHorizontalCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) SFHorizontalView *horizontalView;
 
