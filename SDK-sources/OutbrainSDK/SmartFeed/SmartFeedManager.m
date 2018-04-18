@@ -98,24 +98,31 @@
 }
 
 -(void) reloadUIData:(NSUInteger) newItemsCount {
-    if (self.collectionView != nil) {
-        [self.collectionView reloadData];
+    NSInteger currentCount = self.outbrainRecs.count - newItemsCount;
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    // build the index paths for insertion
+    // since you're adding to the end of datasource, the new rows will start at count
+    for (int i = 0; i < newItemsCount; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:currentCount+i inSection:1]];
     }
+    
+    if (self.collectionView != nil) {
+        //[self.collectionView reloadData];
+        [self.collectionView performBatchUpdates:^{
+            if (currentCount == 0) {
+                [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:1]];
+            }
+            [self.collectionView insertItemsAtIndexPaths:indexPaths];
+        } completion:nil];
+    }
+    
     if (self.tableView != nil) {
-        NSInteger currentCount = self.outbrainRecs.count - newItemsCount;
-        
         // tell the table view to update (at all of the inserted index paths)
         [self.tableView beginUpdates];
         if (currentCount == 0) {
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
         }
         else {
-            NSMutableArray *indexPaths = [NSMutableArray array];
-            // build the index paths for insertion
-            // since you're adding to the end of datasource, the new rows will start at count
-            for (int i = 0; i < newItemsCount; i++) {
-                [indexPaths addObject:[NSIndexPath indexPathForRow:currentCount+i inSection:1]];
-            }
             [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
         }
         
