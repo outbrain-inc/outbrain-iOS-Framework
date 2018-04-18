@@ -95,6 +95,7 @@
 		E61E6CC82085D98F0016D79A /* SFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB82085D98F0016D79A /* SFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6CFA208610AF0016D79A /* SFHorizontalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */; };
 		E61E6CFE208611380016D79A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFD208611380016D79A /* Assets.xcassets */; };
+		E61E6D00208737F00016D79A /* SFHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,7 @@
 		E61E6CB82085D98F0016D79A /* SFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewCell.h; sourceTree = "<group>"; };
 		E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalTableViewCell.xib; sourceTree = "<group>"; };
 		E61E6CFD208611380016D79A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -451,6 +453,7 @@
 				E61E6CB02085D98F0016D79A /* SFHorizontalTableViewCell.m */,
 				E61E6CAA2085D98F0016D79A /* SFHorizontalCollectionViewCell.h */,
 				E61E6CB12085D98F0016D79A /* SFHorizontalCollectionViewCell.m */,
+				E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */,
 				E61E6CAB2085D98F0016D79A /* SFHorizontalView */,
 			);
 			path = SFHorizontalCell;
@@ -600,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E61E6CFE208611380016D79A /* Assets.xcassets in Resources */,
+				E61E6D00208737F00016D79A /* SFHorizontalCollectionViewCell.xib in Resources */,
 				E61E6CFA208610AF0016D79A /* SFHorizontalTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

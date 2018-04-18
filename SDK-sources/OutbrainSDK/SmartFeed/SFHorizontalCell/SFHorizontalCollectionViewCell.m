@@ -15,9 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.horizontalView = [[SFHorizontalView alloc] initWithFrame:self.frame];
-        [self.contentView addSubview:self.horizontalView];
-        [SFUtils addConstraintsToFillParent:self.horizontalView];
+        
     }
     return self;
 }

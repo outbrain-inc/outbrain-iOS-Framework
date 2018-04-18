@@ -48,7 +48,9 @@
         self.url = url;
         self.outbrainRecs = [[NSMutableArray alloc] init];
         self.collectionView = collectionView;
-        [collectionView registerClass:[SFHorizontalCollectionViewCell class] forCellWithReuseIdentifier:@"SFHorizontalCell"];
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCollectionViewCell" bundle:bundle];
+        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier:@"SFHorizontalCell"];
     }
     return self;
 }
