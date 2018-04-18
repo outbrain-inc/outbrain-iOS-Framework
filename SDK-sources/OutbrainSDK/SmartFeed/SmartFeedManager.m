@@ -235,6 +235,7 @@
     if (indexPath.section == 1) {
         if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
             [self configureHorizontalCell:cell atIndexPath:indexPath];
+            [SFUtils addDropShadowToView: cell]; // add shadow
         }
         else { // SFSingleCell
             SFCollectionViewCell *singleCell = (SFCollectionViewCell *)cell;
@@ -268,6 +269,8 @@
             tapGesture.numberOfTapsRequired = 1;
             [tapGesture setDelegate:self];
             [singleCell.contentView addGestureRecognizer:tapGesture];
+            
+            [SFUtils addDropShadowToView: singleCell]; // add shadow
         }
         
         if (indexPath.row == self.outbrainRecs.count - 2) {
