@@ -77,7 +77,7 @@
         return;
     }
     
-    if (self.outbrainRecs.count > 12) return; //TODO temp code
+    if (self.outbrainRecs.count > 20) return; //TODO temp code
         
     self.isLoading = YES;
     OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex++];
@@ -93,16 +93,33 @@
         }
         NSLog(@"fetchMoreRecommendations received - %d recs", response.recommendations.count);
         [self.outbrainRecs addObjectsFromArray:response.recommendations];
-        [self reloadUIData];        
+        [self reloadUIData:response.recommendations.count];        
     }];
 }
 
--(void) reloadUIData {
+-(void) reloadUIData:(NSUInteger) newItemsCount {
     if (self.collectionView != nil) {
         [self.collectionView reloadData];
     }
     if (self.tableView != nil) {
-        [self.tableView reloadData];
+        NSInteger currentCount = self.outbrainRecs.count - newItemsCount;
+        
+        // tell the table view to update (at all of the inserted index paths)
+        [self.tableView beginUpdates];
+        if (currentCount == 0) {
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+        }
+        else {
+            NSMutableArray *indexPaths = [NSMutableArray array];
+            // build the index paths for insertion
+            // since you're adding to the end of datasource, the new rows will start at count
+            for (int i = 0; i < newItemsCount; i++) {
+                [indexPaths addObject:[NSIndexPath indexPathForRow:currentCount+i inSection:1]];
+            }
+            [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+        }
+        
+        [self.tableView endUpdates];
     }
 }
 
@@ -139,7 +156,7 @@
             singleCell.recSourceLabel.text = rec.source;
         }
         
-        /*
+        
         dispatch_async(dispatch_get_global_queue(0,0), ^{
             NSData * data = [[NSData alloc] initWithContentsOfURL: rec.image.url];
             if ( data == nil )
@@ -151,8 +168,6 @@
                 singleCell.recImageView.image = [UIImage imageWithData: data];
             });
         });
-         */
-        
         
         [SFUtils addDropShadowToView: singleCell];
         
@@ -162,7 +177,7 @@
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
     
-    if (indexPath.row == self.outbrainRecs.count - 2) {
+    if (indexPath.row == self.outbrainRecs.count - 4) {
         [self fetchMoreRecommendations];
     }
 }
