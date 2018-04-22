@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SafariServices
+
 import OutbrainSDK
 
 class ArticleCollectionViewController: UICollectionViewController {
@@ -99,7 +101,13 @@ extension ArticleCollectionViewController {
 
 extension ArticleCollectionViewController : SmartFeedDelegate {
     func userTapped(on rec: OBRecommendation) {
-        print("user tappen on: \(rec.content)")
+        print("You tapped rec \(rec.content).")
+        guard let url = Outbrain.getUrl(rec) else {
+            print("Error: no url for rec.")
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
 }
 

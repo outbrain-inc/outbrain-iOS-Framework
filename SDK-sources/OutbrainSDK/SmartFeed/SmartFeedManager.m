@@ -284,6 +284,9 @@
     UITapGestureRecognizer *gestureRec = sender;
     OBRecommendation *rec = [self recForIndexPath:[NSIndexPath indexPathForRow:gestureRec.view.tag inSection:1]];
     NSLog(@"tapGesture: %@", rec.content);
+    if (self.delegate != nil) {
+        [self.delegate userTappedOnRecommendation:rec];
+    }
 }
 
 - (OBRecommendation *) recForIndexPath:(NSIndexPath *)indexPath {

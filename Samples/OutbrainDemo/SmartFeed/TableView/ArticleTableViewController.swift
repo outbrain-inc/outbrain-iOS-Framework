@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SafariServices
+
 import OutbrainSDK
 
 class ArticleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -122,6 +124,12 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
 extension ArticleTableViewController : SmartFeedDelegate {
     func userTapped(on rec: OBRecommendation) {
         print("You tapped rec \(rec.content).")
+        guard let url = Outbrain.getUrl(rec) else {
+            print("Error: no url for rec.")
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
 }
 
