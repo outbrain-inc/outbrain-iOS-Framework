@@ -121,4 +121,11 @@
     }
 }
 
+-(void) setOutbrainRecs:(NSArray *)outbrainRecs {
+    _outbrainRecs = outbrainRecs;
+    if (self.outbrainRecs.count > 1) {
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
+}
+
 @end
