@@ -65,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="476" y="132.68365817091455"/>
         </scene>
-        <!--Article Collection View Controller-->
+        <!--UICollectionView-->
         <scene sceneID="Tmd-63-60k">
             <objects>
-                <collectionViewController id="oNK-IU-Ugt" customClass="ArticleCollectionViewController" customModule="SmartFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="UICollectionView" id="oNK-IU-Ugt" customClass="ArticleCollectionViewController" customModule="SmartFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="ZhP-2V-GZm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,10 +228,10 @@
             </objects>
             <point key="canvasLocation" x="1504" y="585"/>
         </scene>
-        <!--Article Table View Controller-->
+        <!--UITableView-->
         <scene sceneID="GTO-FR-eM8">
             <objects>
-                <viewController id="9eM-n7-9YQ" customClass="ArticleTableViewController" customModule="SmartFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="UITableView" id="9eM-n7-9YQ" customClass="ArticleTableViewController" customModule="SmartFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v3b-7A-Dnk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
