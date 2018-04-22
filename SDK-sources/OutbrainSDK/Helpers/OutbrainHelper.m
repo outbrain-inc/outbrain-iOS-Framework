@@ -115,6 +115,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     //Test mode
     if ([((NSNumber *)[[OutbrainHelper sharedInstance] sdkSettingForKey:OBSettingsAttributes.testModeKey]) boolValue]) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"location" value: @"us"]];
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"2"]];
     }
