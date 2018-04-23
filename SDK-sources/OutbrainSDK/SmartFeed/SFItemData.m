@@ -29,7 +29,7 @@
 - (id)initWithSingleRec:(OBRecommendation *)rec orList:(NSArray *)recArray
 {
     self = [super init];
-    if(self) {
+    if (self) {
         self.outbrainRecs = recArray;
         self.singleRec = rec;
     }

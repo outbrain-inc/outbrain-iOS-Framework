@@ -305,11 +305,13 @@
 - (void) tapGesture: (id)sender
 {
     UITapGestureRecognizer *gestureRec = sender;
-//    OBRecommendation *rec = [self recForIndexPath:[NSIndexPath indexPathForRow:gestureRec.view.tag inSection:1]];
-//    NSLog(@"tapGesture: %@", rec.content);
-//    if (self.delegate != nil) {
-//        [self.delegate userTappedOnRecommendation:rec];
-//    }
+    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:gestureRec.view.tag inSection:1]];
+    OBRecommendation *rec = sfItem.singleRec;
+    
+    if (self.delegate != nil && rec != nil) {
+        NSLog(@"tapGesture: %@", rec.content);
+        [self.delegate userTappedOnRecommendation:rec];
+    }
 }
 
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
