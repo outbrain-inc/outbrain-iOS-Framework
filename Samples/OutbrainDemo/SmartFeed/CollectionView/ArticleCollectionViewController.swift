@@ -35,7 +35,7 @@ class ArticleCollectionViewController: UICollectionViewController {
             return
         }
         let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SDK_1", collectionView: collectionView)
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_1", collectionView: collectionView)
         self.smartFeedManager.delegate = self
         let bundle = Bundle.main
         let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
@@ -50,7 +50,7 @@ class ArticleCollectionViewController: UICollectionViewController {
 extension ArticleCollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return (self.smartFeedManager.outbrainRecs.count > 0) ? 2 : 1
+        return (self.smartFeedManager.smartFeedItemsArray.count > 0) ? 2 : 1
     }
     
     override func collectionView(_ collectionView: UICollectionView,
@@ -59,7 +59,7 @@ extension ArticleCollectionViewController {
             return originalArticleItemsCount
         }
         else {
-            return self.smartFeedManager.outbrainRecs.count
+            return self.smartFeedManager.smartFeedItemsArray.count
         }
     }
 

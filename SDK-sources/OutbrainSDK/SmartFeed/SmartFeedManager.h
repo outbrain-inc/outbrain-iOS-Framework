@@ -45,7 +45,8 @@
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier;
 
-@property (nonatomic, strong, readonly) NSMutableArray *outbrainRecs;
 @property (nonatomic, weak) id<SmartFeedDelegate> delegate;
+
+@property (nonatomic, strong, readonly) NSMutableArray *smartFeedItemsArray;
 
 @end

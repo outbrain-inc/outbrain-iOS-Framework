@@ -39,7 +39,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         spinner.startAnimating()
         spinner.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 44)
         self.tableView.tableFooterView = spinner;
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SDK_1", tableView: self.tableView)
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_1", tableView: self.tableView)
         self.smartFeedManager.delegate = self
         
         let bundle = Bundle.main
@@ -50,7 +50,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return (self.smartFeedManager.outbrainRecs.count > 0) ? 2 : 1
+        return (self.smartFeedManager.smartFeedItemsArray.count > 0) ? 2 : 1
     }
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,7 +58,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             return originalArticleItemsCount
         }
         else {
-            return self.smartFeedManager.outbrainRecs.count
+            return self.smartFeedManager.smartFeedItemsArray.count
         }
     }
         

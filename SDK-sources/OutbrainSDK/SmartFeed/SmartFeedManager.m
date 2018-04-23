@@ -12,6 +12,7 @@
 #import "SFTableViewCell.h"
 #import "SFHorizontalTableViewCell.h"
 #import "SFUtils.h"
+#import "SFItemData.h"
 
 #import <OutbrainSDK/OutbrainSDK.h>
 
@@ -19,7 +20,6 @@
 
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *widgetId;
-@property (nonatomic, strong) NSMutableArray *outbrainRecs;
 @property (nonatomic, assign) NSInteger outbrainIndex;
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, weak) UICollectionView *collectionView;
@@ -28,6 +28,8 @@
 @property (nonatomic, copy) NSString *singleCellIdentifier;
 @property (nonatomic, copy) NSString *horizontalCellIdentifier;
 @property (nonatomic, strong) UINib *horizontalItemCellNib;
+
+@property (nonatomic, strong) NSMutableArray *smartFeedItemsArray;
 
 @end
 
@@ -46,8 +48,8 @@
         NSLog(@"_init: %@", self);
         self.widgetId = widgetId;
         self.url = url;
-        self.outbrainRecs = [[NSMutableArray alloc] init];
         self.collectionView = collectionView;
+        self.smartFeedItemsArray = [[NSMutableArray alloc] init];
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCollectionViewCell" bundle:bundle];
         [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier:@"SFHorizontalCell"];
@@ -61,8 +63,8 @@
         NSLog(@"_init: %@", self);
         self.widgetId = widgetId;
         self.url = url;
-        self.outbrainRecs = [[NSMutableArray alloc] init];
         self.tableView = tableView;
+        self.smartFeedItemsArray = [[NSMutableArray alloc] init];
         
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalTableViewCell" bundle:bundle];
@@ -79,7 +81,7 @@
         return;
     }
     
-    if (self.outbrainRecs.count > 20) return; //TODO temp code
+    if (self.smartFeedItemsArray.count > 20) return; //TODO temp code
         
     self.isLoading = YES;
     OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex++];
@@ -94,13 +96,32 @@
             return;
         }
         NSLog(@"fetchMoreRecommendations received - %d recs", response.recommendations.count);
-        [self.outbrainRecs addObjectsFromArray:response.recommendations];
-        [self reloadUIData:response.recommendations.count];        
+        
+        NSUInteger newItemsCount = 0;
+        NSMutableArray *organicRecsList = [[NSMutableArray alloc] init];
+        for (OBRecommendation *rec in response.recommendations) {
+            if (rec.isPaidLink) {
+                SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec];
+                [self.smartFeedItemsArray addObject:item];
+                newItemsCount++;
+            }
+            else {
+                [organicRecsList addObject:rec];
+            }
+        }
+        
+        if (organicRecsList.count > 1) {
+            SFItemData *item = [[SFItemData alloc] initWithList:organicRecsList];
+            [self.smartFeedItemsArray addObject:item];
+            newItemsCount++;
+        }
+        
+        [self reloadUIData: newItemsCount];
     }];
 }
 
 -(void) reloadUIData:(NSUInteger) newItemsCount {
-    NSInteger currentCount = self.outbrainRecs.count - newItemsCount;
+    NSInteger currentCount = self.smartFeedItemsArray.count - newItemsCount;
     NSMutableArray *indexPaths = [NSMutableArray array];
     // build the index paths for insertion
     // since you're adding to the end of datasource, the new rows will start at count
@@ -156,7 +177,8 @@
         const NSInteger cellTag = indexPath.row;
         singleCell.tag = cellTag;
         singleCell.contentView.tag = cellTag;
-        OBRecommendation *rec = [self recForIndexPath: indexPath];
+        SFItemData *sfItem = [self itemForIndexPath: indexPath];
+        OBRecommendation *rec = sfItem.singleRec;
         singleCell.recTitleLabel.text = rec.content;
         if ([rec isPaidLink]) {
             singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
@@ -186,7 +208,7 @@
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
     
-    if (indexPath.row == self.outbrainRecs.count - 4) {
+    if (indexPath.row == self.smartFeedItemsArray.count - 4) {
         [self fetchMoreRecommendations];
     }
 }
@@ -227,7 +249,7 @@
        willDisplayCell:(UICollectionViewCell *)cell
     forItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 0 && self.outbrainRecs.count == 0) {
+    if (indexPath.section == 0 && self.smartFeedItemsArray.count == 0) {
         [self fetchMoreRecommendations];
         return;
     }
@@ -242,7 +264,8 @@
             const NSInteger cellTag = indexPath.row;
             singleCell.tag = cellTag;
             singleCell.contentView.tag = cellTag;
-            OBRecommendation *rec = [self recForIndexPath: indexPath];
+            SFItemData *sfItem = [self itemForIndexPath: indexPath];
+            OBRecommendation *rec = sfItem.singleRec;
             singleCell.recTitleLabel.text = rec.content;
             
             if ([rec isPaidLink]) {
@@ -273,7 +296,7 @@
             [SFUtils addDropShadowToView: singleCell]; // add shadow
         }
         
-        if (indexPath.row == self.outbrainRecs.count - 2) {
+        if (indexPath.row == self.smartFeedItemsArray.count - 2) {
             [self fetchMoreRecommendations];
         }
     }
@@ -282,25 +305,20 @@
 - (void) tapGesture: (id)sender
 {
     UITapGestureRecognizer *gestureRec = sender;
-    OBRecommendation *rec = [self recForIndexPath:[NSIndexPath indexPathForRow:gestureRec.view.tag inSection:1]];
-    NSLog(@"tapGesture: %@", rec.content);
-    if (self.delegate != nil) {
-        [self.delegate userTappedOnRecommendation:rec];
-    }
+//    OBRecommendation *rec = [self recForIndexPath:[NSIndexPath indexPathForRow:gestureRec.view.tag inSection:1]];
+//    NSLog(@"tapGesture: %@", rec.content);
+//    if (self.delegate != nil) {
+//        [self.delegate userTappedOnRecommendation:rec];
+//    }
 }
 
-- (OBRecommendation *) recForIndexPath:(NSIndexPath *)indexPath {
-    //TODO implement logic here
-    return self.outbrainRecs[indexPath.row % self.outbrainRecs.count];
+- (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
+    return self.smartFeedItemsArray[indexPath.row];
 }
 
 - (NSArray *) recsForHorizontalCellAtIndexPath:(NSIndexPath *)indexPath {
-    //TODO implement logic here
-    NSMutableArray *recs = [[NSMutableArray alloc] init];
-    [recs addObject:self.outbrainRecs[0]];
-    [recs addObject:self.outbrainRecs[1]];
-    [recs addObject:self.outbrainRecs[2]];
-    return recs;
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    return sfItem.outbrainRecs;
 }
 
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -332,7 +350,8 @@
 }
 
 -(BOOL) isHorizontalCell:(NSIndexPath *)indexPath {
-    return indexPath.section == 1 && ((indexPath.row % 3) == 2);
+    SFItemData *sfItem = self.smartFeedItemsArray[indexPath.row];
+    return [sfItem itemType] == HorizontalItem;
 }
 
 @end
