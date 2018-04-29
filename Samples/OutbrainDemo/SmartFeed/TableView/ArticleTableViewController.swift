@@ -30,7 +30,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
         
-        tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
 //        tableView.register(UINib(nibName: "outbrainRecCell", bundle: nil), forCellReuseIdentifier: outbrainCellReuseIdentifier)
         tableView.delegate = self

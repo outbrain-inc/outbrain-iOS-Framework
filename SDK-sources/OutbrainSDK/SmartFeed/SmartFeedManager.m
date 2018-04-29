@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *widgetId;
+@property (nonatomic, strong) NSArray *feedContentArray;
+
 @property (nonatomic, assign) NSInteger outbrainIndex;
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, weak) UICollectionView *collectionView;
@@ -34,6 +36,8 @@
 @end
 
 @implementation SmartFeedManager
+
+const CGFloat kTableViewRowHeight = 250.0;
 
 #pragma mark - init methods
 - (id)init
@@ -64,6 +68,7 @@
         self.widgetId = widgetId;
         self.url = url;
         self.tableView = tableView;
+        tableView.estimatedRowHeight = kTableViewRowHeight;
         self.smartFeedItemsArray = [[NSMutableArray alloc] init];
         
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -81,43 +86,96 @@
         return;
     }
     
-    if (self.smartFeedItemsArray.count > 20) return; //TODO temp code
+    if (self.smartFeedItemsArray.count > 30) return; //TODO temp code
         
     self.isLoading = YES;
+    if (self.smartFeedItemsArray.count == 0 || self.feedContentArray == nil) {
+        [self loadFirstTimeForFeed];
+    }
+    else {
+        [self loadMoreAccordingToFeedContent];
+    }
+}
+
+-(void) loadFirstTimeForFeed {
     OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex++];
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
         self.isLoading = NO;
         if (response.error) {
-            NSLog(@"Error in fetchRecommendations - %@", response.error.localizedDescription);
+            NSLog(@"Error in fetchRecommendations - %@, for widget id: %@", response.error.localizedDescription, request.widgetId);
             return;
         }
-        if (response.recommendations.count == 0) {            
-            NSLog(@"Error in fetchRecommendations - 0 recs");
+        
+        if (response.settings.isSmartFeed == YES) {
+            self.feedContentArray = response.settings.feedContentArray;
+        }
+        
+        if (response.recommendations.count == 0) {
+            NSLog(@"Error in fetchRecommendations - 0 recs for widget id: %@", request.widgetId);
             return;
         }
-        NSLog(@"fetchMoreRecommendations received - %d recs", response.recommendations.count);
         
-        NSUInteger newItemsCount = 0;
-        NSMutableArray *organicRecsList = [[NSMutableArray alloc] init];
-        for (OBRecommendation *rec in response.recommendations) {
-            if (rec.isPaidLink) {
-                SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec];
-                [self.smartFeedItemsArray addObject:item];
-                newItemsCount++;
-            }
-            else {
-                [organicRecsList addObject:rec];
-            }
-        }
+        NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
         
-        if (organicRecsList.count > 1) {
-            SFItemData *item = [[SFItemData alloc] initWithList:organicRecsList];
+        NSUInteger newItemsCount = [self addNewItemsToSmartFeedArray:response];
+        [self reloadUIData: newItemsCount];
+    }];
+}
+
+-(void) loadMoreAccordingToFeedContent {
+    NSLog(@"*** loadMoreAccordingToFeedContent ***");
+    
+    __block NSUInteger newItemsCount = 0;
+    __block NSUInteger responseCount = 0;
+    __block NSUInteger requestBatchSize = [self.feedContentArray count];
+    for (NSString *widgetId in self.feedContentArray) {
+        OBRequest *request = [OBRequest requestWithURL:self.url widgetID: widgetId widgetIndex:self.outbrainIndex++];
+        [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
+            responseCount++;
+            
+            if (response.error) {
+                self.isLoading = NO;
+                NSLog(@"Error in fetchRecommendations - %@, for widget id: %@", response.error.localizedDescription, request.widgetId);
+                return;
+            }
+            
+            if (response.recommendations.count == 0) {
+                self.isLoading = NO;
+                NSLog(@"Error in fetchRecommendations - 0 recs for widget id: %@", request.widgetId);
+                return;
+            }
+            
+            NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
+            
+            newItemsCount += [self addNewItemsToSmartFeedArray:response];
+            if (responseCount == requestBatchSize) {
+                self.isLoading = NO;
+                [self reloadUIData: newItemsCount];
+            }
+        }];
+    }
+}
+
+-(NSUInteger) addNewItemsToSmartFeedArray:(OBRecommendationResponse *)response {
+    NSUInteger newItemsCount = 0;
+    NSMutableArray *organicRecsList = [[NSMutableArray alloc] init];
+    for (OBRecommendation *rec in response.recommendations) {
+        if (rec.isPaidLink) {
+            SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec];
             [self.smartFeedItemsArray addObject:item];
             newItemsCount++;
         }
-        
-        [self reloadUIData: newItemsCount];
-    }];
+        else {
+            [organicRecsList addObject:rec];
+        }
+    }
+    
+    if (organicRecsList.count > 1) {
+        SFItemData *item = [[SFItemData alloc] initWithList:organicRecsList];
+        [self.smartFeedItemsArray addObject:item];
+        newItemsCount++;
+    }
+    return newItemsCount;
 }
 
 -(void) reloadUIData:(NSUInteger) newItemsCount {
@@ -216,10 +274,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self isHorizontalCell:indexPath]) {
-        return 250;
+        return kTableViewRowHeight;
     }
     else {
-        return 250;
+        return kTableViewRowHeight;
     }
 }
 
