@@ -178,6 +178,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
         return;
     }
     
+    // TODO there is some bad code here, we should use OBSettings from "response" all the time.
+    // instead, we sometimes use:
+    // NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
     [self _updateAPVCacheForResponse:response];
     [self _updateViewbilityStatsForResponse:responseSettings];
 }

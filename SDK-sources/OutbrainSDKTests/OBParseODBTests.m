@@ -76,7 +76,11 @@
 }
 
 - (void)testParsingOfSettingsFromNormalResponse {
-    
+    OBSettings *settings = self.response.settings;
+    XCTAssertNotNil(settings);
+    XCTAssertEqual(settings.apv, YES);
+    XCTAssertEqual(settings.isSmartFeed, YES);
+    XCTAssertEqual([settings.feedContentArray count], 2);
     
 }
 

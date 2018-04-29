@@ -12,13 +12,10 @@
 
 @implementation OBRecommendationResponse
 
-NSString *const kSDK_SHOULD_RETURN_PAID_REDIRECT_URL = @"sdkShouldReturnPaidRedirectUrl";
-
 
 + (instancetype)contentWithPayload:(NSDictionary *)payload
 {
     OBRecommendationResponse * res = [super contentWithPayload:payload];
-    NSNumber *sdkShouldReturnPaidRedirectUrl = nil;
     
     // Parse settings
     id settingsPayload = payload[@"settings"];
@@ -26,9 +23,7 @@ NSString *const kSDK_SHOULD_RETURN_PAID_REDIRECT_URL = @"sdkShouldReturnPaidRedi
     {
         // The actual docs here
         // Let's convert the recommendations to actual objects
-
         res.settings = [[OBSettings alloc] initWithPayload:settingsPayload];
-        sdkShouldReturnPaidRedirectUrl = [res.settings getNSNumberValueForSettingKey:kSDK_SHOULD_RETURN_PAID_REDIRECT_URL];
     }
     
     // Parse documents, i.e. recommadations
@@ -42,9 +37,7 @@ NSString *const kSDK_SHOULD_RETURN_PAID_REDIRECT_URL = @"sdkShouldReturnPaidRedi
             NSMutableArray * recommendations = [NSMutableArray arrayWithCapacity:[documents[@"doc"] count]];
             for (NSDictionary *rec in documents[@"doc"])
             {
-                NSMutableDictionary *mutableRec = [rec mutableCopy];
-                mutableRec[kSDK_SHOULD_RETURN_PAID_REDIRECT_URL] = sdkShouldReturnPaidRedirectUrl;
-                [recommendations addObject:[OBRecommendation contentWithPayload:mutableRec]];
+                [recommendations addObject:[OBRecommendation contentWithPayload:rec]];
             }
             res.recommendations = [recommendations copy];
         }
@@ -66,29 +59,4 @@ NSString *const kSDK_SHOULD_RETURN_PAID_REDIRECT_URL = @"sdkShouldReturnPaidRedi
     return @[@"documents"];
 }
 
-#pragma mark - Getters & Setters
-
-- (NSArray *)recommendations {
-    return recommendations;
-}
-
-- (void)setRecommendations:(NSArray *)aRecommendations {
-    recommendations = aRecommendations;
-}
-
-- (OBSettings *)settings {
-    return settings;
-}
-
-- (void)setSettings:(OBSettings *)aSettings {
-    settings = aSettings;
-}
-
-- (OBResponseRequest *)responseRequest {
-    return responseRequest;
-}
-
-- (void)setResponseRequest:(OBResponseRequest *)aResponseRequest {
-    responseRequest = aResponseRequest;
-}
 @end
