@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *widgetId;
 @property (nonatomic, strong) NSArray *feedContentArray;
+@property (nonatomic, strong) NSString *fid;
 
 @property (nonatomic, assign) NSInteger outbrainIndex;
 @property (nonatomic, assign) BOOL isLoading;
@@ -108,6 +109,7 @@ const CGFloat kTableViewRowHeight = 250.0;
         
         if (response.settings.isSmartFeed == YES) {
             self.feedContentArray = response.settings.feedContentArray;
+            self.fid = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
         }
         
         if (response.recommendations.count == 0) {
@@ -130,6 +132,7 @@ const CGFloat kTableViewRowHeight = 250.0;
     __block NSUInteger requestBatchSize = [self.feedContentArray count];
     for (NSString *widgetId in self.feedContentArray) {
         OBRequest *request = [OBRequest requestWithURL:self.url widgetID: widgetId widgetIndex:self.outbrainIndex++];
+        request.fid = self.fid;
         [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
             responseCount++;
             

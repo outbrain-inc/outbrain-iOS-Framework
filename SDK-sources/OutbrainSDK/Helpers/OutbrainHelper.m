@@ -149,7 +149,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     }
     
     // APV
-    if(request.widgetIndex == 0) { // Reset APV on index = 0
+    if (request.widgetIndex == 0) { // Reset APV on index = 0
         self.apvCache[request.url] = [NSNumber numberWithBool:NO];
     }
     if ([self.apvCache[request.url] boolValue]) {
@@ -160,6 +160,11 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     // Secure HTTPS
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"secured" value: @"true"]];
 
+    // Smart Feed (father id)
+    if (request.fid != nil) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fid" value: request.fid]];
+    }
+    
     components.queryItems = odbQueryItems;
 
     return components.URL;
