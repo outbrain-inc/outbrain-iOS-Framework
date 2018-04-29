@@ -81,6 +81,8 @@
     XCTAssertEqual(settings.apv, YES);
     XCTAssertEqual(settings.isSmartFeed, YES);
     XCTAssertEqual([settings.feedContentArray count], 2);
+    XCTAssert([settings.feedContentArray[0] isEqualToString:@"SFD_VRS_1"]);
+    XCTAssert([settings.feedContentArray[1] isEqualToString:@"SFD_SWP_1"]);
     
 }
 

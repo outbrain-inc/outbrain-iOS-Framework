@@ -30,7 +30,12 @@
         NSString *feedContentStr = [payload valueForKey:@"feedContent"];
         if (self.isSmartFeed && feedContentStr != nil) {
             NSData *feedContentData = [feedContentStr dataUsingEncoding:NSUTF8StringEncoding];
-            self.feedContentArray = [NSJSONSerialization JSONObjectWithData:feedContentData options:0 error:nil];
+            NSArray *originalFeedContentArray = [NSJSONSerialization JSONObjectWithData:feedContentData options:0 error:nil];
+            NSMutableArray *feedItemsArr = [[NSMutableArray alloc] init];
+            for (NSDictionary *item in originalFeedContentArray) {
+                [feedItemsArr addObject:[item valueForKey:@"id"]];
+            }
+            self.feedContentArray = [feedItemsArr copy];
         }
     }
     
