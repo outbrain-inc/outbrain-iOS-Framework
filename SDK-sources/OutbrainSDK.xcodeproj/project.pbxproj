@@ -73,7 +73,6 @@
 		E61E6C4820836C180016D79A /* OBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0A20836C180016D79A /* OBUtils.m */; };
 		E61E6C4920836C180016D79A /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0B20836C180016D79A /* OBRecommendationsTokenHandler.h */; };
 		E61E6C5220836DF00016D79A /* OutbrainHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1420836C180016D79A /* OutbrainHelperTests.m */; };
-		E61E6C5320836DF70016D79A /* DynamicOutbrainSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1220836C180016D79A /* DynamicOutbrainSDKTests.m */; };
 		E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1320836C180016D79A /* OBParseODBTests.m */; };
 		E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0F20836C180016D79A /* OBTestUtils.m */; };
 		E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1020836C180016D79A /* OutbrainSDKTests.m */; };
@@ -98,6 +97,7 @@
 		E61E6D00208737F00016D79A /* SFHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */; };
 		E61E6D06208E0F780016D79A /* SFItemData.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6D04208E0F780016D79A /* SFItemData.h */; };
 		E61E6D07208E0F780016D79A /* SFItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6D05208E0F780016D79A /* SFItemData.m */; };
+		E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E61E6C0E20836C180016D79A /* odb_normal_response.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,7 +173,6 @@
 		E61E6C0F20836C180016D79A /* OBTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBTestUtils.m; sourceTree = "<group>"; };
 		E61E6C1020836C180016D79A /* OutbrainSDKTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutbrainSDKTests.m; sourceTree = "<group>"; };
 		E61E6C1120836C180016D79A /* OBTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBTestUtils.h; sourceTree = "<group>"; };
-		E61E6C1220836C180016D79A /* DynamicOutbrainSDKTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicOutbrainSDKTests.m; sourceTree = "<group>"; };
 		E61E6C1320836C180016D79A /* OBParseODBTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBParseODBTests.m; sourceTree = "<group>"; };
 		E61E6C1420836C180016D79A /* OutbrainHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutbrainHelperTests.m; sourceTree = "<group>"; };
 		E61E6C1520836C180016D79A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -415,9 +414,8 @@
 			children = (
 				E61E6C0D20836C180016D79A /* mock_responses */,
 				E61E6C0F20836C180016D79A /* OBTestUtils.m */,
-				E61E6C1020836C180016D79A /* OutbrainSDKTests.m */,
 				E61E6C1120836C180016D79A /* OBTestUtils.h */,
-				E61E6C1220836C180016D79A /* DynamicOutbrainSDKTests.m */,
+				E61E6C1020836C180016D79A /* OutbrainSDKTests.m */,
 				E61E6C1320836C180016D79A /* OBParseODBTests.m */,
 				E61E6C1420836C180016D79A /* OutbrainHelperTests.m */,
 				E61E6C1520836C180016D79A /* Info.plist */,
@@ -619,6 +617,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,7 +684,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */,
-				E61E6C5320836DF70016D79A /* DynamicOutbrainSDKTests.m in Sources */,
 				E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */,
 				E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */,
 				E61E6C5220836DF00016D79A /* OutbrainHelperTests.m in Sources */,
@@ -906,7 +904,7 @@
 				DEVELOPMENT_TEAM = 97R2B46745;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = DynamicOutbrainSDKTests/Info.plist;
+				INFOPLIST_FILE = OutbrainSDKTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -931,7 +929,7 @@
 				DEVELOPMENT_TEAM = 97R2B46745;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = DynamicOutbrainSDKTests/Info.plist;
+				INFOPLIST_FILE = OutbrainSDKTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;

@@ -20,6 +20,8 @@
 
 @interface OBParseODBTests : XCTestCase
 
+@property (nonatomic, strong) OBRecommendationResponse *response;
+
 @end
 
 @implementation OBParseODBTests
@@ -28,6 +30,11 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     [Outbrain initializeOutbrainWithPartnerKey:@"12345"];
+    
+    NSDictionary *responseJson = [OBTestUtils JSONFromFile: @"odb_normal_response"];
+    XCTAssertNotNil(responseJson);
+    OBRecommendationRequestOperation *operation = [[OBRecommendationRequestOperation alloc] init];
+    self.response = [operation createResponseWithDict:responseJson withError:nil];
 }
 
 - (void)tearDown {
@@ -36,14 +43,10 @@
 }
 
 - (void)testParsingOfRecommendationsFromNormalResponse {
-    NSDictionary *responseJson = [OBTestUtils JSONFromFile: @"odb_normal_response"];
-    OBRecommendationRequestOperation *operation = [[OBRecommendationRequestOperation alloc] init];
-    OBRecommendationResponse *response = [operation createResponseWithDict:responseJson withError:nil];
-    
-    XCTAssertEqual([response.recommendations count], 6);
+    XCTAssertEqual([self.response.recommendations count], 6);
     
     // Paid Rec
-    OBRecommendation *rec = response.recommendations[1];
+    OBRecommendation *rec = self.response.recommendations[1];
     
     XCTAssert([rec.content isEqualToString:@"Gamers around the world have been waiting for this game!"]);
     XCTAssert([rec.source isEqualToString:@"Forge Of Empires"]);
@@ -57,7 +60,7 @@
     XCTAssert([rec.image.url.absoluteString isEqualToString:@"http://images.outbrain.com/v1/U0VmME5mZkVvMjJId2tGZ3BSNkd4dz09/eyJpdSI6IjY2NGZhZDBlOGNkMzExMzkzMWE2ZmJkMzQwNGZmOWNmYWFlMzIwN2UyYzRjNDhmMzViNmE1ODhlODE1ZWY2ODEiLCJ3IjoyMDAsImgiOjIwMCwiZCI6MS4wLCJjcyI6MCwiZiI6MH0%3D.webp"]);
     
     // Organic Rec
-    rec = response.recommendations[3];
+    rec = self.response.recommendations[3];
     
     XCTAssert([rec.content isEqualToString:@"Combating the Content Overload"]);
     XCTAssert([rec.source isEqualToString:@"Outbrain | Mobile Demo"]);
@@ -69,6 +72,11 @@
     XCTAssert([originalURL.absoluteString containsString:@"http://mobile-demo.outbrain.com/2014/01/26/combating-the-content-overload/"]);
     
     XCTAssert([rec.image.url.absoluteString isEqualToString:@"http://images.outbrain.com/Imaginarium/api/uuid/0b7181e69865b86c585ee8f8de33b511041effa59b8f5ba68887b3f691029883/200/200/1.0/webp"]);
+    
+}
+
+- (void)testParsingOfSettingsFromNormalResponse {
+    
     
 }
 
