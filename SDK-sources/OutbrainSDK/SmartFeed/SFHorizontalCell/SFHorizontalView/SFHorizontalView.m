@@ -64,8 +64,9 @@
     [self setNeedsLayout];
     
     NSLog(@"SFHorizontalView - setupView, self.collectionView.frame: %@", NSStringFromCGRect(self.collectionView.frame));
-    CGFloat itemWidth = MAX(self.collectionView.frame.size.width*0.6, 250.0);
-    self.itemSize = CGSizeMake(itemWidth, itemWidth*0.7);
+    const CGFloat itemWidth = MAX(self.collectionView.frame.size.width*0.6, 250.0);
+    const CGFloat itemHeight = MIN(itemWidth*0.7, self.collectionView.frame.size.height);
+    self.itemSize = CGSizeMake(itemWidth, itemHeight);
     [self resetLayout:self.itemSize];
     [self.collectionView reloadData];
 }
