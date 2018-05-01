@@ -28,11 +28,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1L-1q-EwP" userLabel="Content View">
                         <rect key="frame" x="0.0" y="0.0" width="319" height="280"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" image="lyftCNN" translatesAutoresizingMaskIntoConstraints="NO" id="g77-bX-xEg">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g77-bX-xEg">
                                 <rect key="frame" x="0.0" y="0.0" width="319" height="196"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" text="Lyft's quiet CEO opens up on his wild ride. Lyft's quiet CEO opens up on his wild ride." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-J8-7zV">
-                                <rect key="frame" x="5" y="200" width="309" height="37.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-J8-7zV">
+                                <rect key="frame" x="5" y="200" width="309" height="0.0"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -67,7 +67,4 @@
             <point key="canvasLocation" x="-401.5" y="57"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="lyftCNN" width="390" height="219"/>
-    </resources>
 </document>

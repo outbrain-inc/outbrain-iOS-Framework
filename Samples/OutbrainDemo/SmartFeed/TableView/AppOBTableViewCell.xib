@@ -26,11 +26,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="358.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" image="lyftCNN" translatesAutoresizingMaskIntoConstraints="NO" id="fxR-iw-j64">
-                        <rect key="frame" x="0.0" y="10" width="375" height="219"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="747" translatesAutoresizingMaskIntoConstraints="NO" id="fxR-iw-j64">
+                        <rect key="frame" x="0.0" y="10" width="375" height="273.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Plus Size - Check Out The New Clothing. The Best Sales Ever!!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAZ-bc-kkX">
-                        <rect key="frame" x="8" y="233" width="359" height="93"/>
+                        <rect key="frame" x="8" y="287.5" width="359" height="38.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -63,7 +63,4 @@
             <point key="canvasLocation" x="-21.5" y="101.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="lyftCNN" width="390" height="219"/>
-    </resources>
 </document>
