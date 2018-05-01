@@ -30,7 +30,7 @@
 {
     self = [super init];
     if (self) {
-        self.itemSize = CGSizeMake(256, 460);
+        self.itemSize = CGSizeMake(256, 360);
         self.didInitCollectionViewLayout = NO;
     }
     return self;
@@ -40,7 +40,7 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        self.itemSize = CGSizeMake(256, 460);
+        self.itemSize = CGSizeMake(256, 360);
         self.didInitCollectionViewLayout = NO;
     }
     return self;
@@ -64,7 +64,8 @@
     [self setNeedsLayout];
     
     NSLog(@"SFHorizontalView - setupView, self.collectionView.frame: %@", NSStringFromCGRect(self.collectionView.frame));
-    self.itemSize = CGSizeMake(self.collectionView.frame.size.width*0.7, self.collectionView.bounds.size.height*0.9);
+    CGFloat itemWidth = MAX(self.collectionView.frame.size.width*0.6, 250.0);
+    self.itemSize = CGSizeMake(itemWidth, itemWidth*0.7);
     [self resetLayout:self.itemSize];
     [self.collectionView reloadData];
 }
