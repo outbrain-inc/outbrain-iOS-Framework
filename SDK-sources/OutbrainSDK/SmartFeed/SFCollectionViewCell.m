@@ -10,4 +10,11 @@
 
 @implementation SFCollectionViewCell
 
+-(void) prepareForReuse {
+    [super prepareForReuse];
+    self.recImageView.image = nil;
+    self.recTitleLabel.text = nil;
+    self.recSourceLabel.text = nil;
+}
+
 @end

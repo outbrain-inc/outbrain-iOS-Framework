@@ -86,8 +86,6 @@ const CGFloat kTableViewRowHeight = 250.0;
     if (self.isLoading) {
         return;
     }
-    
-    if (self.smartFeedItemsArray.count > 30) return; //TODO temp code
         
     self.isLoading = YES;
     if (self.smartFeedItemsArray.count == 0 || self.feedContentArray == nil) {
@@ -99,6 +97,7 @@ const CGFloat kTableViewRowHeight = 250.0;
 }
 
 -(void) loadFirstTimeForFeed {
+    NSLog(@"*** loadFirstTimeForFeed ***");
     OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex++];
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
         self.isLoading = NO;
@@ -117,9 +116,12 @@ const CGFloat kTableViewRowHeight = 250.0;
             return;
         }
         
-        NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
+        NSLog(@"loadFirstTimeForFeed received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
         
-        NSUInteger newItemsCount = [self addNewItemsToSmartFeedArray:response];
+        NSUInteger newItemsCount = 0;
+        @synchronized(self) {
+            newItemsCount = [self addNewItemsToSmartFeedArray:response];
+        }
         [self reloadUIData: newItemsCount];
     }];
 }
@@ -150,7 +152,10 @@ const CGFloat kTableViewRowHeight = 250.0;
             
             NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
             
-            newItemsCount += [self addNewItemsToSmartFeedArray:response];
+            @synchronized(self) {
+                newItemsCount += [self addNewItemsToSmartFeedArray:response];
+            }
+            
             if (responseCount == requestBatchSize) {
                 self.isLoading = NO;
                 [self reloadUIData: newItemsCount];

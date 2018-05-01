@@ -116,8 +116,10 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     if ([((NSNumber *)[[OutbrainHelper sharedInstance] sdkSettingForKey:OBSettingsAttributes.testModeKey]) boolValue]) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"location" value: @"us"]];
-        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
-        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"2"]];
+        if (request.fid == nil) {
+            [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
+            [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"2"]];
+        }
     }
     
     //Installation type
