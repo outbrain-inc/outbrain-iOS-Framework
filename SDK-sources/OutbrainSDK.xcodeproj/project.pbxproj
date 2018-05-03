@@ -98,6 +98,10 @@
 		E61E6D06208E0F780016D79A /* SFItemData.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6D04208E0F780016D79A /* SFItemData.h */; };
 		E61E6D07208E0F780016D79A /* SFItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6D05208E0F780016D79A /* SFItemData.m */; };
 		E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E61E6C0E20836C180016D79A /* odb_normal_response.json */; };
+		E6EA3788209B30E2009B687B /* smart_feed_response_1.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3785209B30E1009B687B /* smart_feed_response_1.json */; };
+		E6EA3789209B30E2009B687B /* smart_feed_response_2.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3786209B30E1009B687B /* smart_feed_response_2.json */; };
+		E6EA378A209B30E2009B687B /* smart_feed_response_3.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3787209B30E1009B687B /* smart_feed_response_3.json */; };
+		E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +202,10 @@
 		E61E6D04208E0F780016D79A /* SFItemData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFItemData.h; sourceTree = "<group>"; };
 		E61E6D05208E0F780016D79A /* SFItemData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFItemData.m; sourceTree = "<group>"; };
 		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E6EA3785209B30E1009B687B /* smart_feed_response_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_1.json; sourceTree = "<group>"; };
+		E6EA3786209B30E1009B687B /* smart_feed_response_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_2.json; sourceTree = "<group>"; };
+		E6EA3787209B30E1009B687B /* smart_feed_response_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_3.json; sourceTree = "<group>"; };
+		E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSmartFeedTests.m; sourceTree = "<group>"; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -416,6 +424,7 @@
 				E61E6C0F20836C180016D79A /* OBTestUtils.m */,
 				E61E6C1120836C180016D79A /* OBTestUtils.h */,
 				E61E6C1020836C180016D79A /* OutbrainSDKTests.m */,
+				E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */,
 				E61E6C1320836C180016D79A /* OBParseODBTests.m */,
 				E61E6C1420836C180016D79A /* OutbrainHelperTests.m */,
 				E61E6C1520836C180016D79A /* Info.plist */,
@@ -426,6 +435,9 @@
 		E61E6C0D20836C180016D79A /* mock_responses */ = {
 			isa = PBXGroup;
 			children = (
+				E6EA3785209B30E1009B687B /* smart_feed_response_1.json */,
+				E6EA3786209B30E1009B687B /* smart_feed_response_2.json */,
+				E6EA3787209B30E1009B687B /* smart_feed_response_3.json */,
 				E61E6C0E20836C180016D79A /* odb_normal_response.json */,
 			);
 			path = mock_responses;
@@ -617,7 +629,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6EA378A209B30E2009B687B /* smart_feed_response_3.json in Resources */,
+				E6EA3788209B30E2009B687B /* smart_feed_response_1.json in Resources */,
 				E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */,
+				E6EA3789209B30E2009B687B /* smart_feed_response_2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +700,7 @@
 			files = (
 				E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */,
 				E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */,
+				E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */,
 				E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */,
 				E61E6C5220836DF00016D79A /* OutbrainHelperTests.m in Sources */,
 			);
