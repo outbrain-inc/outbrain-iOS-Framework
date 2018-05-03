@@ -13,6 +13,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *recImageView;
 @property (nonatomic, weak) IBOutlet UILabel *recTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *recSourceLabel;
+@property (nonatomic, weak) IBOutlet UILabel *sponsoredLabel;
 
 
 @end
