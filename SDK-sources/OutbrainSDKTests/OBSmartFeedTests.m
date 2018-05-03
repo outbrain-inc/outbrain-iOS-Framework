@@ -76,16 +76,17 @@
     [super tearDown];
 }
 
-- (void)testSmartFeedResponses {
+- (void)testSmartFeedResponsesContent {
     XCTAssertEqual(self.response1.recommendations.count, 6);
     XCTAssertEqual(self.response2.recommendations.count, 2); // paid
     XCTAssertEqual(self.response3.recommendations.count, 4); // organic
     XCTAssertEqual(self.response4.recommendations.count, 2); // paid
     XCTAssertEqual(self.response5.recommendations.count, 4); // organic
-    
+}
+
+- (void)testSmartFeedManagerBuildArrayOfItems {
     [self.smartFeedManager addNewItemsToSmartFeedArray:self.response1];
     XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 5);
-    
     [self.smartFeedManager addNewItemsToSmartFeedArray:self.response2];
     XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 7);
     [self.smartFeedManager addNewItemsToSmartFeedArray:self.response3];
@@ -94,6 +95,14 @@
     XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 10);
     [self.smartFeedManager addNewItemsToSmartFeedArray:self.response5];
     XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 11);
+}
+
+- (void)testHorizontalCellsAreBuiltForOrganicRecs {
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response1];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response2];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response3];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response4];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response5];
     
     XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:0 inSection:1]]);
     XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:1 inSection:1]]);
@@ -106,7 +115,6 @@
     XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:8 inSection:1]]);
     XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:9 inSection:1]]);
     XCTAssertTrue([self.smartFeedManager  isHorizontalCell:[NSIndexPath indexPathForRow:10 inSection:1]]);
-    
 }
 
 
