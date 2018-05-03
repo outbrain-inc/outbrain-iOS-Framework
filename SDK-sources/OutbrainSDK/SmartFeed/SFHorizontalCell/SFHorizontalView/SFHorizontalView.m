@@ -68,7 +68,6 @@
     const CGFloat itemHeight = MIN(itemWidth*0.7, self.collectionView.frame.size.height);
     self.itemSize = CGSizeMake(itemWidth, itemHeight);
     [self resetLayout:self.itemSize];
-    [self.collectionView reloadData];
 }
 
 -(void) resetLayout:(CGSize) itemSize {
@@ -125,6 +124,8 @@
 
 -(void) setOutbrainRecs:(NSArray *)outbrainRecs {
     _outbrainRecs = outbrainRecs;
+    [self.collectionView reloadData];
+    
     if (self.outbrainRecs.count > 1) {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
