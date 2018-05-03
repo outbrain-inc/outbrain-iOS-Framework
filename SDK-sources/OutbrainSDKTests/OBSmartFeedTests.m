@@ -117,5 +117,22 @@
     XCTAssertTrue([self.smartFeedManager  isHorizontalCell:[NSIndexPath indexPathForRow:10 inSection:1]]);
 }
 
+- (void)testContentOfSmartFeedArray {
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response1];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response2];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response3];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response4];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response5];
+    
+    NSArray *recs = [self.smartFeedManager recsForHorizontalCellAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:1]];
+    XCTAssertEqual(recs.count, 2);
+    
+    recs = [self.smartFeedManager recsForHorizontalCellAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:1]];
+    XCTAssertEqual(recs.count, 4);
+    
+    recs = [self.smartFeedManager recsForHorizontalCellAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:1]];
+    XCTAssertEqual(recs.count, 4);
+}
+
 
 @end
