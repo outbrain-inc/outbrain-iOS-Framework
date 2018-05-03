@@ -1,0 +1,163 @@
+{
+  "response": {
+    "exec_time": 51,
+    "timestamp": 1525350348551,
+    "status": {
+      "id": 0,
+      "content": "Request succeeded"
+    },
+    "request": {
+      "lang": "en",
+      "idx": "2",
+      "did": "689346564",
+      "pid": "4737",
+      "lsd": "5fa43a5d-d1a7-4b7c-b0a8-6c83c592a5d4",
+      "enu": "IcTblLUTUAu0pLHBz83XGCKY555X9WO07t8GQV-UXRD-joqy6ilynC6wj3NR_UBN",
+      "api_user_id": "5FA43A5D-D1A7-4B7C-B0A8-6C83C592A5D4",
+      "t": "MV8yOTNhYzk0MDc5NzRlYjU5MGViNTNiOWI3NDdiNDk5OV8w",
+      "pvId": "293ac9407974eb590eb53b9b747b4999",
+      "pad": "0",
+      "org": "4",
+      "abTestVal": "no_abtest",
+      "widgetJsId": "SFD_SWP_1",
+      "widgetJsIdOrig": "SFD_SWP_1",
+      "readerPlatform": "desktop",
+      "isHttps": "true",
+      "rtbEnabled": "true",
+      "rtbTest": "false",
+      "rtbBidTestMode": "false",
+      "rtbTestRecsNum": "0",
+      "amplifyEnabled": "true",
+      "fid": "969",
+      "sid": 5291479,
+      "wnid": 976,
+      "req_id": "103f2a443d934af39353da4247351039",
+      "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+      "vid": 0
+    },
+    "documents": {
+      "total_count": 4,
+      "count": 4,
+      "doc": [
+        {
+          "source_name": "Tech",
+          "same_source": "false",
+          "pub_id": "185",
+          "source_id": "5396239",
+          "publish_date": "2014-08-22 00:00",
+          "orig_url": "http://www.cnn.com/2014/08/18/tech/spectacular-houses-built-from-scrap/",
+          "desc": "From Islands to hotels and treehouses, ideal homes from waste materials",
+          "rec-cats": [
+            1602
+          ],
+          "ads_type": 2,
+          "rec_en_did": "TgPfip0QSdYaGSOwhaSjCg",
+          "url": "https://traffic.outbrain.com/network/redir?p=9iN8mBnMuqWjXQJjoiMOiM4Gih1L4vyDTNUbeRC3fwD0obNKmGfWH1RXJlIIu3smdeS-Om_P3dKSzYtG5mmCEEfruvTc9CVspRKvGA1zZxH_eZeRI4TBryHGvL4amg-BqIL-4tQKo_hfx1aTZREVmYfzmqAMCqaclSpsrypaUeErvvp-xpwx5bj1rdSpJeMnNoyTjvXuQGiezUHHoY5NkPBPbDw_TXtPB5kMD_bJUG3b48MojoUznbbwdt5X9S9hnaThAdbbPi8zGNViElcuIHZ7mY87v-hQs5_W-4BfkaoriyGFICLjeIDYmNSh9moX4zMR6Lwi1mOeaoeLQdPlRmVUh5Bgkdi6466bT3u6iZq8QNStEfUox-R9MSQ_mX3kvIBnCFU16cjjNdX2oBt90eInOn5PewSEk8Tud7eD5AsqxBnudnjzPwj-SVB9UCe5Uhc-5FSJfTJ4DIzuvt6PFNGoUOxqlZkkHCXJY7TCUnCRYN92OP3nW2qQk0wj1qA2V12zU4PqLXyA_uIGEgUEHG4XGNNmPDT0l31t-1zp4a0WR8TgLqU4KACG8CvwYNJUiHzWudamw9skdDsf3I-cfSllCgpymV0G_GdCgh3Aob7dtyX2u8VtGT6X-_rO0lgBcc5_M2iRQnixTQ538hSgJH3gzIPbRG_ws3cXYiqH0j5kvSWjhF-_JOSYGr12b2KrEN0Wf9vG93ejFSRuheAglYz4P6fq06MkHJYCk8W2UPxje9xR2sB3MVsgOQEpOVUjoga7nRxtPBhlbgryhpABfKGL9lq89SgbW4IjkfHCmPc&c=7845cf5c&v=3",
+          "author": "Kieron Monks",
+          "content": "Trash palaces: The spectacular houses built from scrap",
+          "pos": "0",
+          "ttid": 4,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6ImUwNzFkM2I3MjI3NjYwMDI5MjE4YzQ5MmY0NzUwOWFkNTQxMjlhMjNiOTQyMzdkNzkyMWE3ODIxNzcyODJiYTgiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+            "width": 600,
+            "height": 337,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "CNN Money: Media",
+          "same_source": "false",
+          "pub_id": "1225",
+          "source_id": "5809995",
+          "publish_date": "2018-03-18 00:00",
+          "orig_url": "http://money.cnn.com/2018/03/18/media/james-comey-book-best-seller/index.html",
+          "desc": "James Comey's book, 'A Higher Loyalty: Truth, Lies, and Leadership.' won't be released until April 17. But on Sunday morning it was No. 1 on Amazon.",
+          "rec-cats": [
+            1708
+          ],
+          "ads_type": 2,
+          "rec_en_did": "v8AYuKxl5Jdo3v8QsBJhpw",
+          "url": "https://traffic.outbrain.com/network/redir?p=-9CBBeNEm81IvKREuEzNNo7RlEGLtj3fDNyJ_Sxmvt4YSrCuaP7IsJyEDadlHmgNRPDnsYdw6djh8XflLT1zgre2rsiIAauJU7D5H1D8zF6Nji9qzq3QpogI6gWeWfSIKv99jYXDidlS6WnFIp1Rh2Grnj-QltmYbRAY2EvasFBqbhSuL9aXCXV_7T0MD8LaXe4VwWeT3DzJ_Vw8vnQcpgba8inQr2URvfMdFxJ__iw_12yrfUOn89Z79Kg-wG9FrV3fGZ4ezT-4Zof_BgnVPmxF-cy78CzvMi25ZQNWhJHqNv8OSt6TUXB6uXEqhLRXJa8nwq7oRy3NHLUWlKT9EdnkPQ68fj76oXjCoXlfhdZYDzPstf0FYJ_t-qcpu8gfInihSg3EPcl7M9FJSjD_6TQfT52E6y-GZWvmHjqjpxAIuetvHvQa9d3KienwWe5DjgatoNJoLS7mLpsjnGc7aU8besQKVgI3Z6LrfoAkOKuuTiyOyI1Kgppbasil_I24h88vEBbIUlbYWsx7-I70B4K-O39jAMNUeHkW1KGZ0iYzecTQatsVAD0o6Sg-WZi0nHLSrIQ35VqNgRWfIb4xXwdLKNzdiA7dXXCobvKjcIBUX7IynD9xBSvzePnEyuGdWbV3qRauZSR-GeIjKnnwhkba9s6yECnWX5yWrwjFWFxJhMGWmNsSmZKiL7qgmjhgIIpUeiygT1A9CgIWPbVG6dDAFE2V1RGCjMuwsKEfPb5KHmrdaomE6daKV7CJKLzYpkKVE65bouO4abR-5PZ0yJO83huZ9UaHI8HyAkJHKiQ&c=b8f8e79c&v=3",
+          "author": "Brian Stelter",
+          "content": "James Comey's book is already a best seller, with Trump's help",
+          "pos": "1",
+          "ttid": 4,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6ImQyMjA3Njc4ODFjMWIwODAxNDNlNjcyZTNmOTZiMDIyOGRkNWRlMjViZTg2Yzk1NzI5MWY1ZjYzYmMxMjA3NzMiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+            "width": 600,
+            "height": 337,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "Bleacher Report - NBA",
+          "same_source": "false",
+          "pub_id": "5312",
+          "source_id": "5350077",
+          "publish_date": "2018-04-13 14:52",
+          "orig_url": "http://bleacherreport.com/articles/2770374",
+          "desc": "The Oklahoma City Thunder suspended play-by-play announcer Brian Davis for Game 1 of their first-round playoff series against the Utah Jazz for saying Russell Westbrook was \"out ...",
+          "rec-cats": [
+            1903
+          ],
+          "ads_type": 2,
+          "rec_en_did": "260vyfAYZO7ogjQie4hkrA",
+          "url": "https://traffic.outbrain.com/network/redir?p=W4X7mojvbST5UIMyf9EOy7nOZ2cS6-sOX1Wiap6lFZFm_hrqh-_8Ms-rq6lSvG5eyyBGwWS9XhMDjiEIgxTRwQY7VvuUrf7tP6BIym3dCv2zZIn8AN3Jyr_zLYpm7_WGYSKt4HGh348t8SHUY903QIgPe8mVptzERDFahrFX1c0NqyB10o1n8VjfSqILxw8gm8bPz8nrZecVVcPNIEo_p_Aqb-L_0IcNCfFBCq0A1TNr4JS93ngdPgwRX5lQME5byhRNx67Rkgywx7_Us77Fyppk5EIcWfnGSN6fv6VTz2GpIdKBsc4CzdMt_FQfv7Svz709NHf8tP7hsVYjV_JXtb2FkTQMKdMqWsRuE1tPec_4VAR4y8bzFulx0oF9k0aVocRxYyrslRy30CAv-gAUDlllLVTIwwlPOcw8K8zpKusSNEjGT1GuHbmkD4GHhboLnvuAHAvIEnmvCgZbp91wmHKy-W47txXkhBiGTimsIzy_pSlO3wXDIm1MRypgMzzAm_Q-tB0Vol8Nss5pv6H2PxGSE36qIB6YoLmpCwgbM0bDIVU5DANs07xr7z6-hkKxlhZcpk07qBPOXtS9HaIbFTTBcExDJqPoqYykWCKNBrk_Vfg48wOVYA4wMKLoFzfyASBEO3i2MMY9eHjkHLzuLtw646IU09nX4P_N8Zcu0Pe5vTczzHszmq8u-q8yovG0N0TzNbDFZuAJvupn1fZ1U-3Enk5wDXkE7oB7ELtZ0q6TWFtK-6ejkoB6rp7n2kmMBCE21_82PS5BpHg4rbxdZqraJFy3xjNRVESZ9NYLU5M&c=44ddcc4b&v=3",
+          "author": "Mike  Chiari",
+          "content": "Thunder Suspend Brian Davis for Russell Westbrook 'Cotton Picking' Comment",
+          "pos": "2",
+          "ttid": 4,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6IjQ0YjdkNDhmYWJmOWE5ZmJiM2EyNGFmZjM2M2IyYzJmNTYzNDVmZDVhNzM1NzE4OTY4N2M2YzQ5NDRhNzZjOTAiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+            "width": 600,
+            "height": 337,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "World",
+          "same_source": "false",
+          "pub_id": "185",
+          "source_id": "5396230",
+          "publish_date": "2018-04-16 00:00",
+          "orig_url": "http://www.cnn.com/2018/04/15/middleeast/syria-strike-diplomacy-france-russia-intl/",
+          "desc": "French President Emmanuel Macron wants the world to seize the moment. After Friday night's strikes against regime targets in Syria, he's demanding a concerted drive to resurrect the international peace process, last seen late in 2016. Whether anyone listens may decide if Syria turns the corner towards peace or descends into an even more dangerous cycle of destruction.",
+          "rec-cats": [
+            1706
+          ],
+          "ads_type": 2,
+          "rec_en_did": "cw715zk09-s8ZqZfOUzUew",
+          "url": "https://traffic.outbrain.com/network/redir?p=sFUxUiv9mU74Xxhkdh3yzT98ZCyI0Ancpfnbo8u6tno7Dt6zp3aF0G41kIRcR1Ks146lmH932BkdzatmUeNEqtXxWAiDJ7HdTRIyFd9QJMAAzun48FqOjjF1uHwsIqM7IC65x7HPRPrv5DsEERRZIEb9eEbNrLwlPkJrgHFud0wzXdOiBlhtDZBRaMTtMxabHZV5YhMFCoAPLVeCgdSktmDpu4jIGD_EsmDrnMHg8vgUah5TZuk9xgHcpGW1r-lrEcPKH_aP48-LjQnB_jfkDKBV4vRcfD-MKY7lZ61ON3SHxLkbSYKwNFr-0ARvc7O45o6RfmOIerYbaZ8CMSKN8rYHkQvA3m-NZHyiO-o7jRHL1nK5XuFlFrEMeX0pnu2lQ_d-_p_hCA5xuMOfRf1D5PW5ErY34gNVCZy3cc0XI09mBV8FaKIshAxao27Zs28K1sE7d9qgw-z-N___TsESmDWL0_VERiYVMnGCEhnViOlWjj_PqoVjtyB-19dVgWEtaurQSveMT3fOB1Dgp1xNfci8Ey53kYseMehn0agD-DfchKyvs75WAeFa-OewLePwkR0PDbdoCJ-znH-ZhtrxqUdPlpJpIOPjNlYyPqLe_fdq45L7ka9Wxo0Gw8SwZxAePn29wY41GVv3LAgLefut1jmrTdpgualxYOEAuoyXOYtdcc_Up2In1pvzNxgAVWYLPpSSAhIu7PG-farTWbJShaDFNjQqO2KQ5AvGcKa1dGRmcgIJoXzlJaF0ffiGVvKdSPFey3tuBDSytFOAw3-0lEy0Qeku0EPp-_LHoijuA5c&c=8241d6d8&v=3",
+          "author": "art-vid-vls-col",
+          "content": "Did Syria strikes kill any chance of diplomacy?",
+          "pos": "3",
+          "ttid": 4,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6ImUyMTdkODE4Y2RiMTMzZmMyMjdlNjlhZmViMzhhOWZlYjMxZDUzMDk0NGFiODQyZGY3OTkyYTNjNzdhMjRmNjUiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+            "width": 600,
+            "height": 337,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        }
+      ]
+    },
+    "settings": {
+      "dynamicDynamicLayoutVersion": 3,
+      "dynamicImageWidthInPercentage": 50,
+      "recMode": "odb_dynamic_smartfeed-swipe-strip",
+      "dynamicWidgetDirection": "LTR",
+      "topBoxSpaceBetweenRecs": 10,
+      "topBoxRecWidth": 0.8,
+      "apv": false,
+      "DesignType": 5,
+      "whatIsBrandingType": "None",
+      "dynamicImageHeight": 337,
+      "dynamicWidgetLayout": "smartfeed-swipe-strip",
+      "swipeLayoutRecommendationHint": "recommendationHint",
+      "dynamicImageWidth": 600,
+      "isVisualCuesEnabled": false,
+      "dynamicTruncateText": true,
+      "topBoxRecommendationTileAlignment": "noGap"
+    }
+  }
+}

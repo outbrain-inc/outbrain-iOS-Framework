@@ -102,6 +102,8 @@
 		E6EA3789209B30E2009B687B /* smart_feed_response_2.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3786209B30E1009B687B /* smart_feed_response_2.json */; };
 		E6EA378A209B30E2009B687B /* smart_feed_response_3.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3787209B30E1009B687B /* smart_feed_response_3.json */; };
 		E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */; };
+		E6EA378F209B376F009B687B /* smart_feed_response_4.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378D209B376E009B687B /* smart_feed_response_4.json */; };
+		E6EA3790209B376F009B687B /* smart_feed_response_5.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378E209B376E009B687B /* smart_feed_response_5.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +208,8 @@
 		E6EA3786209B30E1009B687B /* smart_feed_response_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_2.json; sourceTree = "<group>"; };
 		E6EA3787209B30E1009B687B /* smart_feed_response_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_3.json; sourceTree = "<group>"; };
 		E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSmartFeedTests.m; sourceTree = "<group>"; };
+		E6EA378D209B376E009B687B /* smart_feed_response_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_4.json; sourceTree = "<group>"; };
+		E6EA378E209B376E009B687B /* smart_feed_response_5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_5.json; sourceTree = "<group>"; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -438,6 +442,8 @@
 				E6EA3785209B30E1009B687B /* smart_feed_response_1.json */,
 				E6EA3786209B30E1009B687B /* smart_feed_response_2.json */,
 				E6EA3787209B30E1009B687B /* smart_feed_response_3.json */,
+				E6EA378D209B376E009B687B /* smart_feed_response_4.json */,
+				E6EA378E209B376E009B687B /* smart_feed_response_5.json */,
 				E61E6C0E20836C180016D79A /* odb_normal_response.json */,
 			);
 			path = mock_responses;
@@ -631,7 +637,9 @@
 			files = (
 				E6EA378A209B30E2009B687B /* smart_feed_response_3.json in Resources */,
 				E6EA3788209B30E2009B687B /* smart_feed_response_1.json in Resources */,
+				E6EA3790209B376F009B687B /* smart_feed_response_5.json in Resources */,
 				E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */,
+				E6EA378F209B376F009B687B /* smart_feed_response_4.json in Resources */,
 				E6EA3789209B30E2009B687B /* smart_feed_response_2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
