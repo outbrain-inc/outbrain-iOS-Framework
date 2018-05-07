@@ -34,9 +34,10 @@
 
 -(void) loadImage:(NSURL *)imageUrl into:(UIImageView *)imageView {
     imageView.image = self.placeholderImage;
+    imageView.tag = [imageUrl.absoluteString hash];
     
     NSData *imageData = [self.imageCache objectForKey:imageUrl.absoluteString];
-    if (imageData != nil) {        
+    if (imageData != nil) {
          [[NSOperationQueue mainQueue] addOperationWithBlock:^{
              imageView.image = [UIImage imageWithData:imageData];
          }];
@@ -48,6 +49,10 @@
         if ( data == nil )
             return;
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            if (imageView.tag != [imageUrl.absoluteString hash]) {
+                NSLog(@"SFImageLoader: imageView has changed - no need to load with image..");
+                return;
+            }
             imageView.image = [UIImage imageWithData:data];
         }];
         [self.imageCache setObject:data forKey:imageUrl.absoluteString];
