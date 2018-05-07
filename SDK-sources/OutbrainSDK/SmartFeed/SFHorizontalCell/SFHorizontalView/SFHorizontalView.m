@@ -11,7 +11,7 @@
 #import "SFUtils.h"
 #import "PageCollectionLayout.h"
 #import "SFCollectionViewCell.h"
-
+#import "SFImageLoader.h"
 
 @interface SFHorizontalView() <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -25,16 +25,6 @@
 @end
 
 @implementation SFHorizontalView
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.itemSize = CGSizeMake(256, 360);
-        self.didInitCollectionViewLayout = NO;
-    }
-    return self;
-}
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
@@ -101,16 +91,7 @@
         cell.recSourceLabel.text = rec.source;
     }
     
-    
-    dispatch_async(dispatch_get_global_queue(0,0), ^{
-        NSData * data = [[NSData alloc] initWithContentsOfURL: rec.image.url];
-        if ( data == nil )
-            return;
-        UIImage *image = [UIImage imageWithData: data];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            cell.recImageView.image = image;
-        });
-    });
+    [[SFImageLoader sharedInstance] loadImage:rec.image.url into:cell.recImageView];
     
     return cell;
 }

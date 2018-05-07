@@ -22,30 +22,6 @@
     [[view bottomAnchor] constraintEqualToAnchor:[parentView bottomAnchor] constant:0].active = YES;
     
     [view setNeedsLayout];
-    
-    /*
-    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint
-                                                 constraintWithItem:view attribute:NSLayoutAttributeLeft
-                                                 relatedBy:NSLayoutRelationEqual toItem:parentView attribute:
-                                                 NSLayoutAttributeLeft multiplier:1.0 constant:0];
-    
-    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint
-                                          constraintWithItem:view attribute:NSLayoutAttributeRight
-                                          relatedBy:NSLayoutRelationEqual toItem:parentView attribute:
-                                          NSLayoutAttributeRight multiplier:1.0 constant:0];
-    
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint
-                                           constraintWithItem:view attribute:NSLayoutAttributeTop
-                                           relatedBy:NSLayoutRelationEqual toItem:parentView attribute:
-                                           NSLayoutAttributeTop multiplier:1.0 constant:0];
-    
-    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint
-                                         constraintWithItem:view attribute:NSLayoutAttributeBottom
-                                         relatedBy:NSLayoutRelationEqual toItem:parentView attribute:
-                                         NSLayoutAttributeBottom multiplier:1.0 constant:0];
-    
-    [view addConstraints:@[leftConstraint, rightConstraint, topConstraint, bottomConstraint]];
-     */
 }
 
 +(void) addHeightConstraint:(CGFloat) height toView:(UIView *)view {

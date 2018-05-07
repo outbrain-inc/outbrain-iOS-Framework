@@ -104,6 +104,8 @@
 		E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */; };
 		E6EA378F209B376F009B687B /* smart_feed_response_4.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378D209B376E009B687B /* smart_feed_response_4.json */; };
 		E6EA3790209B376F009B687B /* smart_feed_response_5.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378E209B376E009B687B /* smart_feed_response_5.json */; };
+		E6EA37BC20A04B2F009B687B /* SFImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = E6EA37BA20A04B2F009B687B /* SFImageLoader.h */; };
+		E6EA37BD20A04B2F009B687B /* SFImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA37BB20A04B2F009B687B /* SFImageLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +212,8 @@
 		E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSmartFeedTests.m; sourceTree = "<group>"; };
 		E6EA378D209B376E009B687B /* smart_feed_response_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_4.json; sourceTree = "<group>"; };
 		E6EA378E209B376E009B687B /* smart_feed_response_5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_5.json; sourceTree = "<group>"; };
+		E6EA37BA20A04B2F009B687B /* SFImageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFImageLoader.h; sourceTree = "<group>"; };
+		E6EA37BB20A04B2F009B687B /* SFImageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFImageLoader.m; sourceTree = "<group>"; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -459,6 +463,8 @@
 				E61E6CA72085D98F0016D79A /* SFCollectionViewCell.h */,
 				E61E6CB42085D98F0016D79A /* SFUtils.h */,
 				E61E6CB62085D98F0016D79A /* SFUtils.m */,
+				E6EA37BA20A04B2F009B687B /* SFImageLoader.h */,
+				E6EA37BB20A04B2F009B687B /* SFImageLoader.m */,
 				E61E6CB32085D98F0016D79A /* SmartFeedManager.m */,
 				E61E6CB72085D98F0016D79A /* SmartFeedManager.h */,
 				E61E6D04208E0F780016D79A /* SFItemData.h */,
@@ -506,6 +512,7 @@
 				E61E6D06208E0F780016D79A /* SFItemData.h in Headers */,
 				E61E6CBA2085D98F0016D79A /* SFHorizontalTableViewCell.h in Headers */,
 				E61E6C3B20836C180016D79A /* OBRequest.h in Headers */,
+				E6EA37BC20A04B2F009B687B /* SFImageLoader.h in Headers */,
 				E61E6C3820836C180016D79A /* OBRecommendation.h in Headers */,
 				E61E6CBB2085D98F0016D79A /* SFHorizontalCollectionViewCell.h in Headers */,
 				E61E6C2D20836C180016D79A /* OBResponse.h in Headers */,
@@ -675,6 +682,7 @@
 				E61E6C3620836C180016D79A /* OBContent.m in Sources */,
 				E61E6C1D20836C180016D79A /* OBLabel.m in Sources */,
 				E61E6CC62085D98F0016D79A /* SFUtils.m in Sources */,
+				E6EA37BD20A04B2F009B687B /* SFImageLoader.m in Sources */,
 				E61E6CC32085D98F0016D79A /* SmartFeedManager.m in Sources */,
 				E61E6D07208E0F780016D79A /* SFItemData.m in Sources */,
 				E61E6C3F20836C180016D79A /* OBErrors.m in Sources */,

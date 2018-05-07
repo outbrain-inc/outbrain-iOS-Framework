@@ -13,6 +13,7 @@
 #import "SFHorizontalTableViewCell.h"
 #import "SFUtils.h"
 #import "SFItemData.h"
+#import "SFImageLoader.h"
 
 #import <OutbrainSDK/OutbrainSDK.h>
 
@@ -168,6 +169,7 @@ const CGFloat kTableViewRowHeight = 250.0;
     NSUInteger newItemsCount = 0;
     NSMutableArray *organicRecsList = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in response.recommendations) {
+        [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
         if (rec.isPaidLink) {
             SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec];
             [self.smartFeedItemsArray addObject:item];
@@ -253,18 +255,7 @@ const CGFloat kTableViewRowHeight = 250.0;
             singleCell.recSourceLabel.text = rec.source;
         }
         
-        
-        dispatch_async(dispatch_get_global_queue(0,0), ^{
-            NSData * data = [[NSData alloc] initWithContentsOfURL: rec.image.url];
-            if ( data == nil )
-                return;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (singleCell.tag != cellTag) {
-                    return;
-                }
-                singleCell.recImageView.image = [UIImage imageWithData: data];
-            });
-        });
+        [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
         
         [SFUtils addDropShadowToView: singleCell];
         
@@ -341,18 +332,7 @@ const CGFloat kTableViewRowHeight = 250.0;
                 singleCell.recSourceLabel.text = rec.source;
             }
             
-            dispatch_async(dispatch_get_global_queue(0,0), ^{
-                NSData * data = [[NSData alloc] initWithContentsOfURL: rec.image.url];
-                if ( data == nil )
-                    return;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (singleCell.tag != cellTag) {
-                        return;
-                    }
-                    singleCell.recImageView.image = [UIImage imageWithData: data];
-                });
-            });
-            
+            [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
         
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
             tapGesture.numberOfTapsRequired = 1;
