@@ -274,7 +274,7 @@ const CGFloat kTableViewRowHeight = 250.0;
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
     
-    if (indexPath.row == self.smartFeedItemsArray.count - 4) {
+    if ((indexPath.row == (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
         [self fetchMoreRecommendations];
     }
 }
