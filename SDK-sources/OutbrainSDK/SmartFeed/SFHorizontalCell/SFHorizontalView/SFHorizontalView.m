@@ -107,9 +107,7 @@
     _outbrainRecs = outbrainRecs;
     [self.collectionView reloadData];
     
-    if (self.outbrainRecs.count > 1) {
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    }
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 
 @end
