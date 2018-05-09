@@ -124,6 +124,9 @@ const CGFloat kTableViewRowHeight = 250.0;
             newItemsCount = [self addNewItemsToSmartFeedArray:response];
         }
         [self reloadUIData: newItemsCount];
+        
+        // First load should fetch the children as well
+        [self loadMoreAccordingToFeedContent];
     }];
 }
 
