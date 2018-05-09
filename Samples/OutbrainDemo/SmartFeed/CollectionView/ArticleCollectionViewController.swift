@@ -30,6 +30,10 @@ class ArticleCollectionViewController: UICollectionViewController {
         setupSmartFeed()
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     func setupSmartFeed() {
         guard let collectionView = self.collectionView else {
             return
