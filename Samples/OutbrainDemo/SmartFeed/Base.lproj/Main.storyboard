@@ -42,7 +42,7 @@
                                         <rect key="frame" x="0.0" y="110" width="200" height="90"/>
                                         <state key="normal" title="UICollectionView Example"/>
                                         <connections>
-                                            <segue destination="oNK-IU-Ugt" kind="show" identifier="showCollectionVC" id="goq-Dh-pwq"/>
+                                            <segue destination="oNK-IU-Ugt" kind="show" identifier="showCollectionVC" animates="NO" id="goq-Dh-pwq"/>
                                         </connections>
                                     </button>
                                 </subviews>

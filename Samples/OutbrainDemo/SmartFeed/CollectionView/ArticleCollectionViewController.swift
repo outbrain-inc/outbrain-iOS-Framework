@@ -18,7 +18,7 @@ class ArticleCollectionViewController: UICollectionViewController {
     let contentCellReuseIdentifier = "contentCollectionCell"
     let outbrainHeaderCellReuseIdentifier = "outbrainHeaderCollectionCell"
     let outbrainRecCellReuseIdentifier = "outbrainRecCollectionCell"
-
+    var refresher:UIRefreshControl!
     
     fileprivate let itemsPerRow: CGFloat = 1
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
@@ -28,6 +28,24 @@ class ArticleCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()        
         setupSmartFeed()
+        
+        self.refresher = UIRefreshControl()
+        self.collectionView!.alwaysBounceVertical = true
+        self.refresher.tintColor = UIColor.blue
+        self.refresher.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        self.collectionView!.addSubview(refresher)
+    }
+    
+    @objc func loadData() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            self.stopRefresher()
+            self.setupSmartFeed()
+            self.collectionView?.reloadData()
+        })
+    }
+    
+    func stopRefresher() {
+        self.refresher.endRefreshing()
     }
     
     override var prefersStatusBarHidden: Bool {
