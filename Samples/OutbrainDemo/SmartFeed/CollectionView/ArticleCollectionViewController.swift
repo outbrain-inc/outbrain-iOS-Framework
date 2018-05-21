@@ -107,6 +107,10 @@ extension ArticleCollectionViewController {
         case 5:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: outbrainHeaderCellReuseIdentifier,
                                                       for: indexPath)
+            if let button = cell?.viewWithTag(33) as? UIButton {
+                button.addTarget(self, action: #selector(self.outbrainLogoClicked), for: .touchUpInside)
+            }
+            
         default:
             break
         }
@@ -118,6 +122,14 @@ extension ArticleCollectionViewController {
         self.smartFeedManager.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
         
         // App Developer should configure the app cells here..
+    }
+    
+    @objc private func outbrainLogoClicked() {
+        guard let outbrainUrl = Outbrain.getAboutURL() else {
+            return
+        }
+        let safariVC = SFSafariViewController(url: outbrainUrl)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
 }
 

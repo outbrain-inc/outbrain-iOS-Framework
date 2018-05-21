@@ -191,20 +191,22 @@
                                                         <constraint firstAttribute="width" constant="10" id="ixF-fY-SS1"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smartfeed" translatesAutoresizingMaskIntoConstraints="NO" id="O4x-so-jBA">
-                                                    <rect key="frame" x="18" y="89" width="100" height="22"/>
+                                                <button opaque="NO" tag="33" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IA2-dS-gFN" userLabel="SmartFeed">
+                                                    <rect key="frame" x="18" y="92" width="100" height="16"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="qIe-4N-qaZ"/>
+                                                        <constraint firstAttribute="height" constant="16" id="GhM-rE-dXZ"/>
+                                                        <constraint firstAttribute="width" constant="100" id="e24-yq-99a"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <state key="normal" image="smartfeed"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="O4x-so-jBA" firstAttribute="centerY" secondItem="WNl-C9-hxv" secondAttribute="centerY" id="2Mr-NW-Rbu"/>
                                                 <constraint firstItem="lOs-aJ-BWt" firstAttribute="centerY" secondItem="WNl-C9-hxv" secondAttribute="centerY" id="7I0-pO-OtD"/>
                                                 <constraint firstItem="AOn-gm-obB" firstAttribute="leading" secondItem="lOs-aJ-BWt" secondAttribute="trailing" constant="5" id="EDP-jB-4Ln"/>
+                                                <constraint firstItem="IA2-dS-gFN" firstAttribute="leading" secondItem="WNl-C9-hxv" secondAttribute="leading" constant="18" id="NPv-TW-QpA"/>
                                                 <constraint firstItem="AOn-gm-obB" firstAttribute="centerY" secondItem="WNl-C9-hxv" secondAttribute="centerY" id="TZE-vc-PrS"/>
-                                                <constraint firstItem="O4x-so-jBA" firstAttribute="leading" secondItem="WNl-C9-hxv" secondAttribute="leading" constant="18" id="npR-rT-rYa"/>
+                                                <constraint firstItem="IA2-dS-gFN" firstAttribute="centerY" secondItem="WNl-C9-hxv" secondAttribute="centerY" id="oEw-XH-tpC"/>
                                                 <constraint firstAttribute="trailing" secondItem="AOn-gm-obB" secondAttribute="trailing" constant="18" id="pZO-jO-SdW"/>
                                             </constraints>
                                         </view>
