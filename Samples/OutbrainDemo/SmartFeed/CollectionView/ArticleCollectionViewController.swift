@@ -111,6 +111,10 @@ extension ArticleCollectionViewController {
                 button.addTarget(self, action: #selector(self.outbrainLogoClicked), for: .touchUpInside)
             }
             
+            if let obLabel = cell?.viewWithTag(34) as? OBLabel {
+                Outbrain.register(obLabel, withWidgetId: self.smartFeedManager.widgetId, andUrl: self.smartFeedManager.url)
+            }
+            
         default:
             break
         }

@@ -19,6 +19,9 @@
 
 @interface SmartFeedManager : NSObject
 
+@property (nonatomic, strong, readonly) NSString *url;
+@property (nonatomic, strong, readonly) NSString *widgetId;
+
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url widgetID:(NSString * _Nonnull)widgetId collectionView:(UICollectionView * _Nonnull)collectionView;
 
 
