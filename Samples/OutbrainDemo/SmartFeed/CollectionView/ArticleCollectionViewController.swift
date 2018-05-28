@@ -147,6 +147,12 @@ extension ArticleCollectionViewController : SmartFeedDelegate {
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
+    
+    func userTapped(onAdChoicesIcon url: URL) {
+        print("You tapped onAdChoicesIcon")
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
 }
 
 extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {

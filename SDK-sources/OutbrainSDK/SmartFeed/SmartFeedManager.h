@@ -14,6 +14,8 @@
 
 -(void) userTappedOnRecommendation:(OBRecommendation *_Nonnull)rec;
 
+-(void) userTappedOnAdChoicesIcon:(NSURL *_Nonnull)url;
+
 @end
 
 
