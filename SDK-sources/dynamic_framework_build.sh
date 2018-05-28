@@ -86,7 +86,7 @@ lipo -create -output "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}/${FRAMEWORK_NAME}" "$
 
 # 8
 # Copy the framework back for the Journal app to use
-cp -a "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}" "${SRCROOT}/../"
+cp -a "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}" "${SRCROOT}/../Samples/OutbrainDemo"
 
 # 9
 # Delete the most recent build.

@@ -20,8 +20,23 @@
 		D8B5923D186376B1009422D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923C186376B1009422D5 /* Foundation.framework */; };
 		D8B5923F186376B1009422D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923E186376B1009422D5 /* CoreGraphics.framework */; };
 		D8B59241186376B1009422D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
-		E61E6C64208382A50016D79A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6C63208382A50016D79A /* OutbrainSDK.framework */; };
-		E61E6C65208382A50016D79A /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6C63208382A50016D79A /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E60DCD2C20BC39DA0023FE93 /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E60DCD2B20BC39C20023FE93 /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E60DCD3320BC3AAD0023FE93 /* AppSFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE72085DC6C0016D79A /* AppSFCollectionViewCell.swift */; };
+		E60DCD3420BC3AAD0023FE93 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE22085DC6C0016D79A /* ArticleTableViewController.swift */; };
+		E60DCD3520BC3AAD0023FE93 /* AppSFHorizontalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE62085DC6C0016D79A /* AppSFHorizontalItemCell.swift */; };
+		E60DCD3620BC3AAD0023FE93 /* ArticleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE42085DC6C0016D79A /* ArticleCollectionViewController.swift */; };
+		E60DCD3720BC3AAD0023FE93 /* AppSFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE12085DC6C0016D79A /* AppSFTableViewCell.swift */; };
+		E60DCD3820BC3AAD0023FE93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CD12085DBD50016D79A /* ViewController.swift */; };
+		E60DCD3920BC3AAD0023FE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CCF2085DBD50016D79A /* AppDelegate.swift */; };
+		E60DCD3D20BC3AAD0023FE93 /* AppSFTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE02085DC6C0016D79A /* AppSFTableViewCell.xib */; };
+		E60DCD3E20BC3AAD0023FE93 /* AppSFHorizontalItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE82085DC6C0016D79A /* AppSFHorizontalItemCell.xib */; };
+		E60DCD3F20BC3AAD0023FE93 /* AppSFCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE92085DC6C0016D79A /* AppSFCollectionViewCell.xib */; };
+		E60DCD4020BC3AAD0023FE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD82085DBD50016D79A /* LaunchScreen.storyboard */; };
+		E60DCD4120BC3AAD0023FE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD62085DBD50016D79A /* Assets.xcassets */; };
+		E60DCD4220BC3AAD0023FE93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD32085DBD50016D79A /* Main.storyboard */; };
+		E60DCD4B20BC3B1D0023FE93 /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E60DCD2B20BC39C20023FE93 /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E60DCD4C20BC3B320023FE93 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
+		E60DCD4D20BC3B3A0023FE93 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 		E61E6C6B208384A00016D79A /* OBDemoDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456491885A543002B2368 /* OBDemoDataHelper.m */; };
 		E61E6C6C208384A00016D79A /* TinyPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456691885A543002B2368 /* TinyPageControl.m */; };
 		E61E6C6D208384A00016D79A /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */; };
@@ -60,8 +75,6 @@
 		E61E6C91208384A00016D79A /* OBHorizontalWidgetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64366CA1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib */; };
 		E61E6C92208384A00016D79A /* OBHorizontalWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64366C81FAF0A2F00FA617E /* OBHorizontalWidget.xib */; };
 		E61E6C93208384A00016D79A /* OBConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D83456511885A543002B2368 /* OBConfig.plist */; };
-		E61E6CA0208386410016D79A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B332083600C0016D79A /* OutbrainSDK.framework */; };
-		E61E6CA1208386410016D79A /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B332083600C0016D79A /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E61E6CD02085DBD50016D79A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CCF2085DBD50016D79A /* AppDelegate.swift */; };
 		E61E6CD22085DBD50016D79A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CD12085DBD50016D79A /* ViewController.swift */; };
 		E61E6CD52085DBD50016D79A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD32085DBD50016D79A /* Main.storyboard */; };
@@ -75,8 +88,6 @@
 		E61E6CEF2085DC6C0016D79A /* AppSFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE72085DC6C0016D79A /* AppSFCollectionViewCell.swift */; };
 		E61E6CF02085DC6C0016D79A /* AppSFHorizontalItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE82085DC6C0016D79A /* AppSFHorizontalItemCell.xib */; };
 		E61E6CF12085DC6C0016D79A /* AppSFCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE92085DC6C0016D79A /* AppSFCollectionViewCell.xib */; };
-		E61E6CF42085DD1A0016D79A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B332083600C0016D79A /* OutbrainSDK.framework */; };
-		E61E6CF52085DD1A0016D79A /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B332083600C0016D79A /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366601FAA10A500FA617E /* PaddingLabel.m */; };
 		E64366911FAEF32E00FA617E /* OBLabelWithPadding.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667C1FAEF32D00FA617E /* OBLabelWithPadding.m */; };
 		E64366AD1FAEF3EC00FA617E /* JLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366821FAEF32E00FA617E /* JLoadingView.m */; };
@@ -104,66 +115,25 @@
 		FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		E61E6B322083600C0016D79A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D82F1D7518564C7700D4DEA8;
-			remoteInfo = OutbrainSDK;
-		};
-		E61E6B342083600C0016D79A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D82F1D8518564C7800D4DEA8;
-			remoteInfo = OutbrainSDKTests;
-		};
-		E61E6C5B208378C80016D79A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D8376BE9186E2F6D00B45FA3;
-			remoteInfo = OBFramework;
-		};
-		E61E6C9B208384BA0016D79A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E61E6B3C2083607B0016D79A;
-			remoteInfo = OutbrainSDK;
-		};
-		E61E6CA2208386410016D79A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E61E6B3C2083607B0016D79A;
-			remoteInfo = OutbrainSDK;
-		};
-		E61E6CF22085DD080016D79A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E61E6B3C2083607B0016D79A;
-			remoteInfo = OutbrainSDK;
-		};
-		E61E6CF62085DD1A0016D79A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E61E6B3C2083607B0016D79A;
-			remoteInfo = OutbrainSDK;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
+		E60DCD4320BC3AAD0023FE93 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E60DCD4B20BC3B1D0023FE93 /* OutbrainSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E61E6C66208382A50016D79A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E61E6C65208382A50016D79A /* OutbrainSDK.framework in Embed Frameworks */,
+				E60DCD2C20BC39DA0023FE93 /* OutbrainSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,7 +144,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E61E6CA1208386410016D79A /* OutbrainSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,7 +154,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E61E6CF52085DD1A0016D79A /* OutbrainSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,17 +182,18 @@
 		D8B5923E186376B1009422D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8B59240186376B1009422D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8B5925A186376B1009422D5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = "../../SDK-sources/OutbrainSDK.xcodeproj"; sourceTree = "<group>"; };
-		E61E6C63208382A50016D79A /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutbrainSDK.framework; path = ../../OutbrainSDK.framework; sourceTree = "<group>"; };
+		E60DCD2B20BC39C20023FE93 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OutbrainSDK.framework; sourceTree = "<group>"; };
+		E60DCD4820BC3AAD0023FE93 /* SmartFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E60DCD4F20BC3BD00023FE93 /* SmartFeed-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartFeed-Dev-Info.plist"; sourceTree = "<group>"; };
+		E60DCD5020BC3BD00023FE93 /* SmartFeed-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartFeed-Info.plist"; sourceTree = "<group>"; };
 		E61E6C99208384A00016D79A /* Journal-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Journal-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6CA5208386EF0016D79A /* Journal-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Journal-Dev-Info.plist"; sourceTree = "<group>"; };
-		E61E6CCD2085DBD50016D79A /* SmartFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E61E6CCD2085DBD50016D79A /* SmartFeed-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SmartFeed-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6CCF2085DBD50016D79A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E61E6CD12085DBD50016D79A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E61E6CD42085DBD50016D79A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E61E6CD62085DBD50016D79A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E61E6CD92085DBD50016D79A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E61E6CDB2085DBD50016D79A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E61E6CE02085DC6C0016D79A /* AppSFTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFTableViewCell.xib; sourceTree = "<group>"; };
 		E61E6CE12085DC6C0016D79A /* AppSFTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFTableViewCell.swift; sourceTree = "<group>"; };
 		E61E6CE22085DC6C0016D79A /* ArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
@@ -286,7 +255,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E61E6C64208382A50016D79A /* OutbrainSDK.framework in Frameworks */,
 				E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */,
 				E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */,
 				FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */,
@@ -298,11 +266,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E60DCD3A20BC3AAD0023FE93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E60DCD4D20BC3B3A0023FE93 /* AdSupport.framework in Frameworks */,
+				E60DCD4C20BC3B320023FE93 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E61E6C82208384A00016D79A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E61E6CA0208386410016D79A /* OutbrainSDK.framework in Frameworks */,
 				E61E6C84208384A00016D79A /* SystemConfiguration.framework in Frameworks */,
 				E61E6C85208384A00016D79A /* WebKit.framework in Frameworks */,
 				E61E6C86208384A00016D79A /* AdSupport.framework in Frameworks */,
@@ -318,7 +294,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E61E6CF42085DD1A0016D79A /* OutbrainSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,8 +405,7 @@
 		D8B59230186376B1009422D5 = {
 			isa = PBXGroup;
 			children = (
-				E61E6C63208382A50016D79A /* OutbrainSDK.framework */,
-				E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */,
+				E60DCD2B20BC39C20023FE93 /* OutbrainSDK.framework */,
 				D83456431885A543002B2368 /* Journal */,
 				E61E6CCE2085DBD50016D79A /* SmartFeed */,
 				D8B5923B186376B1009422D5 /* Frameworks */,
@@ -444,7 +418,8 @@
 			children = (
 				D8B59239186376B1009422D5 /* Journal.app */,
 				E61E6C99208384A00016D79A /* Journal-Dev.app */,
-				E61E6CCD2085DBD50016D79A /* SmartFeed.app */,
+				E61E6CCD2085DBD50016D79A /* SmartFeed-Dev.app */,
+				E60DCD4820BC3AAD0023FE93 /* SmartFeed.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -465,18 +440,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E61E6B2D2083600C0016D79A /* Products */ = {
+		E60DCD4E20BC3BD00023FE93 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E61E6B332083600C0016D79A /* OutbrainSDK.framework */,
-				E61E6B352083600C0016D79A /* OutbrainSDKTests.xctest */,
+				E60DCD4F20BC3BD00023FE93 /* SmartFeed-Dev-Info.plist */,
+				E60DCD5020BC3BD00023FE93 /* SmartFeed-Info.plist */,
 			);
-			name = Products;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		E61E6CCE2085DBD50016D79A /* SmartFeed */ = {
 			isa = PBXGroup;
 			children = (
+				E60DCD4E20BC3BD00023FE93 /* Resources */,
 				E61E6CE32085DC6C0016D79A /* CollectionView */,
 				E61E6CDF2085DC6C0016D79A /* TableView */,
 				E61E6CCF2085DBD50016D79A /* AppDelegate.swift */,
@@ -484,7 +460,6 @@
 				E61E6CD32085DBD50016D79A /* Main.storyboard */,
 				E61E6CD62085DBD50016D79A /* Assets.xcassets */,
 				E61E6CD82085DBD50016D79A /* LaunchScreen.storyboard */,
-				E61E6CDB2085DBD50016D79A /* Info.plist */,
 			);
 			path = SmartFeed;
 			sourceTree = "<group>";
@@ -674,11 +649,28 @@
 			buildRules = (
 			);
 			dependencies = (
-				E61E6C5C208378C80016D79A /* PBXTargetDependency */,
 			);
 			name = Journal;
 			productName = OutbrainDemo;
 			productReference = D8B59239186376B1009422D5 /* Journal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E60DCD2D20BC3AAD0023FE93 /* SmartFeed */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E60DCD4520BC3AAD0023FE93 /* Build configuration list for PBXNativeTarget "SmartFeed" */;
+			buildPhases = (
+				E60DCD3220BC3AAD0023FE93 /* Sources */,
+				E60DCD3A20BC3AAD0023FE93 /* Frameworks */,
+				E60DCD3C20BC3AAD0023FE93 /* Resources */,
+				E60DCD4320BC3AAD0023FE93 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartFeed;
+			productName = SmartFeed;
+			productReference = E60DCD4820BC3AAD0023FE93 /* SmartFeed.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E61E6C67208384A00016D79A /* Journal-Dev */ = {
@@ -693,17 +685,15 @@
 			buildRules = (
 			);
 			dependencies = (
-				E61E6C9C208384BA0016D79A /* PBXTargetDependency */,
-				E61E6CA3208386410016D79A /* PBXTargetDependency */,
 			);
 			name = "Journal-Dev";
 			productName = OutbrainDemo;
 			productReference = E61E6C99208384A00016D79A /* Journal-Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E61E6CCC2085DBD50016D79A /* SmartFeed */ = {
+		E61E6CCC2085DBD50016D79A /* SmartFeed-Dev */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E61E6CDC2085DBD50016D79A /* Build configuration list for PBXNativeTarget "SmartFeed" */;
+			buildConfigurationList = E61E6CDC2085DBD50016D79A /* Build configuration list for PBXNativeTarget "SmartFeed-Dev" */;
 			buildPhases = (
 				E61E6CC92085DBD50016D79A /* Sources */,
 				E61E6CCA2085DBD50016D79A /* Frameworks */,
@@ -713,12 +703,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				E61E6CF32085DD080016D79A /* PBXTargetDependency */,
-				E61E6CF72085DD1A0016D79A /* PBXTargetDependency */,
 			);
-			name = SmartFeed;
+			name = "SmartFeed-Dev";
 			productName = SmartFeed;
-			productReference = E61E6CCD2085DBD50016D79A /* SmartFeed.app */;
+			productReference = E61E6CCD2085DBD50016D79A /* SmartFeed-Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -734,6 +722,9 @@
 				TargetAttributes = {
 					D8B59238186376B1009422D5 = {
 						DevelopmentTeam = 97R2B46745;
+					};
+					E60DCD2D20BC3AAD0023FE93 = {
+						ProvisioningStyle = Automatic;
 					};
 					E61E6CCC2085DBD50016D79A = {
 						CreatedOnToolsVersion = 9.2;
@@ -752,37 +743,15 @@
 			mainGroup = D8B59230186376B1009422D5;
 			productRefGroup = D8B5923A186376B1009422D5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E61E6B2D2083600C0016D79A /* Products */;
-					ProjectRef = E61E6B2C2083600C0016D79A /* OutbrainSDK.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D8B59238186376B1009422D5 /* Journal */,
+				E60DCD2D20BC3AAD0023FE93 /* SmartFeed */,
 				E61E6C67208384A00016D79A /* Journal-Dev */,
-				E61E6CCC2085DBD50016D79A /* SmartFeed */,
+				E61E6CCC2085DBD50016D79A /* SmartFeed-Dev */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		E61E6B332083600C0016D79A /* OutbrainSDK.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OutbrainSDK.framework;
-			remoteRef = E61E6B322083600C0016D79A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E61E6B352083600C0016D79A /* OutbrainSDKTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OutbrainSDKTests.xctest;
-			remoteRef = E61E6B342083600C0016D79A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D8B59237186376B1009422D5 /* Resources */ = {
@@ -796,6 +765,19 @@
 				E64366CB1FAF0CBE00FA617E /* OBHorizontalWidgetCell.xib in Resources */,
 				E64366C91FAF0A2F00FA617E /* OBHorizontalWidget.xib in Resources */,
 				D834566F1885A543002B2368 /* OBConfig.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E60DCD3C20BC3AAD0023FE93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E60DCD3D20BC3AAD0023FE93 /* AppSFTableViewCell.xib in Resources */,
+				E60DCD3E20BC3AAD0023FE93 /* AppSFHorizontalItemCell.xib in Resources */,
+				E60DCD3F20BC3AAD0023FE93 /* AppSFCollectionViewCell.xib in Resources */,
+				E60DCD4020BC3AAD0023FE93 /* LaunchScreen.storyboard in Resources */,
+				E60DCD4120BC3AAD0023FE93 /* Assets.xcassets in Resources */,
+				E60DCD4220BC3AAD0023FE93 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,6 +841,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E60DCD3220BC3AAD0023FE93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E60DCD3320BC3AAD0023FE93 /* AppSFCollectionViewCell.swift in Sources */,
+				E60DCD3420BC3AAD0023FE93 /* ArticleTableViewController.swift in Sources */,
+				E60DCD3520BC3AAD0023FE93 /* AppSFHorizontalItemCell.swift in Sources */,
+				E60DCD3620BC3AAD0023FE93 /* ArticleCollectionViewController.swift in Sources */,
+				E60DCD3720BC3AAD0023FE93 /* AppSFTableViewCell.swift in Sources */,
+				E60DCD3820BC3AAD0023FE93 /* ViewController.swift in Sources */,
+				E60DCD3920BC3AAD0023FE93 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E61E6C6A208384A00016D79A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -904,34 +900,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E61E6C5C208378C80016D79A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OBFramework;
-			targetProxy = E61E6C5B208378C80016D79A /* PBXContainerItemProxy */;
-		};
-		E61E6C9C208384BA0016D79A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OutbrainSDK;
-			targetProxy = E61E6C9B208384BA0016D79A /* PBXContainerItemProxy */;
-		};
-		E61E6CA3208386410016D79A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OutbrainSDK;
-			targetProxy = E61E6CA2208386410016D79A /* PBXContainerItemProxy */;
-		};
-		E61E6CF32085DD080016D79A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OutbrainSDK;
-			targetProxy = E61E6CF22085DD080016D79A /* PBXContainerItemProxy */;
-		};
-		E61E6CF72085DD1A0016D79A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OutbrainSDK;
-			targetProxy = E61E6CF62085DD1A0016D79A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E61E6CD32085DBD50016D79A /* Main.storyboard */ = {
@@ -1113,6 +1081,62 @@
 			};
 			name = Release;
 		};
+		E60DCD4620BC3AAD0023FE93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 97R2B46745;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E60DCD4720BC3AAD0023FE93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 97R2B46745;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E61E6C97208384A00016D79A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1191,7 +1215,7 @@
 				DEVELOPMENT_TEAM = 97R2B46745;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = SmartFeed/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1220,7 +1244,7 @@
 				DEVELOPMENT_TEAM = 97R2B46745;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = SmartFeed/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1253,6 +1277,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		E60DCD4520BC3AAD0023FE93 /* Build configuration list for PBXNativeTarget "SmartFeed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E60DCD4620BC3AAD0023FE93 /* Debug */,
+				E60DCD4720BC3AAD0023FE93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E61E6C96208384A00016D79A /* Build configuration list for PBXNativeTarget "Journal-Dev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1262,7 +1295,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E61E6CDC2085DBD50016D79A /* Build configuration list for PBXNativeTarget "SmartFeed" */ = {
+		E61E6CDC2085DBD50016D79A /* Build configuration list for PBXNativeTarget "SmartFeed-Dev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E61E6CDD2085DBD50016D79A /* Debug */,
