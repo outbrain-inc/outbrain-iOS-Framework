@@ -8,10 +8,9 @@ BRANCH=`git rev-parse --abbrev-ref HEAD`
 if [ -d "$FRAMEWORK_ARTIFACT_PATH" ]; then
 	echo ""
 	echo "*********************"
-	echo " Clean previous Outbrain framework if exists"
+	echo " Clean previous OutbrainSDK.framework"
 	echo "*********************"
 	rm -fr $FRAMEWORK_ARTIFACT_PATH
-	ls -l $FRAMEWORK_ARTIFACT_PATH
 fi
 
 
@@ -36,7 +35,10 @@ echo ""
 echo "*********************"
 echo " Check if framework is where we think it is"
 echo "*********************"
-ls -l $FRAMEWORK_ARTIFACT_PATH
+if [ ! -d "$FRAMEWORK_ARTIFACT_PATH" ]; then
+	echo "framework is NOT where we think it is"
+	exit 1
+fi
 
 
 echo ""
