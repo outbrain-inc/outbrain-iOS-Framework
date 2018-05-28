@@ -21,7 +21,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArticleCollectionViewController" customModule="SmartFeed" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AppSFSingleCell" id="A14-BF-yxG" userLabel="AppSFSingleCell" customClass="AppSFSingleCell" customModule="SmartFeed" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AppSFSingleCollectionViewCell" id="A14-BF-yxG" userLabel="AppSFSingleCollectionViewCell" customClass="AppSFSingleCollectionViewCell" customModule="SmartFeed" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="380" height="263"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

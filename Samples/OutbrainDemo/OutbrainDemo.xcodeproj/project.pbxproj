@@ -72,9 +72,9 @@
 		E61E6CEC2085DC6C0016D79A /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE22085DC6C0016D79A /* ArticleTableViewController.swift */; };
 		E61E6CED2085DC6C0016D79A /* ArticleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE42085DC6C0016D79A /* ArticleCollectionViewController.swift */; };
 		E61E6CEE2085DC6C0016D79A /* AppSFHorizontalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE62085DC6C0016D79A /* AppSFHorizontalItemCell.swift */; };
-		E61E6CEF2085DC6C0016D79A /* AppSFSingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE72085DC6C0016D79A /* AppSFSingleCell.swift */; };
+		E61E6CEF2085DC6C0016D79A /* AppSFSingleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE72085DC6C0016D79A /* AppSFSingleCollectionViewCell.swift */; };
 		E61E6CF02085DC6C0016D79A /* AppSFHorizontalItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE82085DC6C0016D79A /* AppSFHorizontalItemCell.xib */; };
-		E61E6CF12085DC6C0016D79A /* AppSFSingleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE92085DC6C0016D79A /* AppSFSingleCell.xib */; };
+		E61E6CF12085DC6C0016D79A /* AppSFSingleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE92085DC6C0016D79A /* AppSFSingleCollectionViewCell.xib */; };
 		E61E6CF42085DD1A0016D79A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B332083600C0016D79A /* OutbrainSDK.framework */; };
 		E61E6CF52085DD1A0016D79A /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B332083600C0016D79A /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366601FAA10A500FA617E /* PaddingLabel.m */; };
@@ -230,9 +230,9 @@
 		E61E6CE22085DC6C0016D79A /* ArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		E61E6CE42085DC6C0016D79A /* ArticleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCollectionViewController.swift; sourceTree = "<group>"; };
 		E61E6CE62085DC6C0016D79A /* AppSFHorizontalItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFHorizontalItemCell.swift; sourceTree = "<group>"; };
-		E61E6CE72085DC6C0016D79A /* AppSFSingleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFSingleCell.swift; sourceTree = "<group>"; };
+		E61E6CE72085DC6C0016D79A /* AppSFSingleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFSingleCollectionViewCell.swift; sourceTree = "<group>"; };
 		E61E6CE82085DC6C0016D79A /* AppSFHorizontalItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFHorizontalItemCell.xib; sourceTree = "<group>"; };
-		E61E6CE92085DC6C0016D79A /* AppSFSingleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleCell.xib; sourceTree = "<group>"; };
+		E61E6CE92085DC6C0016D79A /* AppSFSingleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E643665F1FAA10A500FA617E /* PaddingLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
 		E64366601FAA10A500FA617E /* PaddingLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaddingLabel.m; sourceTree = "<group>"; };
 		E64366731FAEF2FB00FA617E /* PostsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostsListVC.h; sourceTree = "<group>"; };
@@ -512,9 +512,9 @@
 			isa = PBXGroup;
 			children = (
 				E61E6CE62085DC6C0016D79A /* AppSFHorizontalItemCell.swift */,
-				E61E6CE72085DC6C0016D79A /* AppSFSingleCell.swift */,
+				E61E6CE72085DC6C0016D79A /* AppSFSingleCollectionViewCell.swift */,
 				E61E6CE82085DC6C0016D79A /* AppSFHorizontalItemCell.xib */,
-				E61E6CE92085DC6C0016D79A /* AppSFSingleCell.xib */,
+				E61E6CE92085DC6C0016D79A /* AppSFSingleCollectionViewCell.xib */,
 			);
 			path = SmartFeedCells;
 			sourceTree = "<group>";
@@ -819,7 +819,7 @@
 			files = (
 				E61E6CEA2085DC6C0016D79A /* AppOBTableViewCell.xib in Resources */,
 				E61E6CF02085DC6C0016D79A /* AppSFHorizontalItemCell.xib in Resources */,
-				E61E6CF12085DC6C0016D79A /* AppSFSingleCell.xib in Resources */,
+				E61E6CF12085DC6C0016D79A /* AppSFSingleCollectionViewCell.xib in Resources */,
 				E61E6CDA2085DBD50016D79A /* LaunchScreen.storyboard in Resources */,
 				E61E6CD72085DBD50016D79A /* Assets.xcassets in Resources */,
 				E61E6CD52085DBD50016D79A /* Main.storyboard in Resources */,
@@ -893,7 +893,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E61E6CEF2085DC6C0016D79A /* AppSFSingleCell.swift in Sources */,
+				E61E6CEF2085DC6C0016D79A /* AppSFSingleCollectionViewCell.swift in Sources */,
 				E61E6CEC2085DC6C0016D79A /* ArticleTableViewController.swift in Sources */,
 				E61E6CEE2085DC6C0016D79A /* AppSFHorizontalItemCell.swift in Sources */,
 				E61E6CED2085DC6C0016D79A /* ArticleCollectionViewController.swift in Sources */,

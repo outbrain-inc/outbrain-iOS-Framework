@@ -9,7 +9,7 @@
 import UIKit
 import OutbrainSDK
 
-class AppSFSingleCell: SFCollectionViewCell {
+class AppSFSingleCollectionViewCell: SFCollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
