@@ -19,7 +19,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
     let outbrainHeaderCellReuseIdentifier = "outbrainHeaderCell"
-    let AppOBTableViewCellReuseIdentifier = "AppOBTableViewCell"
     
     let originalArticleItemsCount = 6
     var outbrainIdx = 0
@@ -43,9 +42,9 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         
         let bundle = Bundle.main
         let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle) // TODO maybe use another one?
-        let singleCellNib = UINib(nibName: "AppOBTableViewCell", bundle: bundle)
+        let singleCellNib = UINib(nibName: "AppSFTableViewCell", bundle: bundle)
         self.smartFeedManager.registerHorizontalItemNib(horizontalCellNib, forCellWithReuseIdentifier: "AppSFHorizontalItemCell")
-        self.smartFeedManager.registerSingleItemNib(singleCellNib, forCellWithReuseIdentifier: "AppOBTableViewCell")
+        self.smartFeedManager.registerSingleItemNib(singleCellNib, forCellWithReuseIdentifier: "AppSFTableViewCell")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

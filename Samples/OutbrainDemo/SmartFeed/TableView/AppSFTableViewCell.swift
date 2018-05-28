@@ -9,7 +9,7 @@
 import UIKit
 import OutbrainSDK
 
-class AppOBTableViewCell: SFTableViewCell {
+class AppSFTableViewCell: SFTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
