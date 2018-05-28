@@ -87,8 +87,18 @@ const CGFloat kTableViewRowHeight = 250.0;
         self.smartFeedItemsArray = [[NSMutableArray alloc] init];
         
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-        UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalTableViewCell" bundle:bundle];
-        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: @"SFHorizontalCell"];
+        
+        // horizontal cell (carousel container) SFCarouselContainerCell
+        UINib *nib = [UINib nibWithNibName:@"SFHorizontalTableViewCell" bundle:bundle];
+        [self.tableView registerNib:nib forCellReuseIdentifier: @"SFHorizontalCell"];
+        
+        // Organic, horizontal carousel item cell
+        nib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
+        [self registerHorizontalItemNib:nib forCellWithReuseIdentifier:@"SFHorizontalItemCell"];
+        
+        // Paid, single item cell
+        nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier:@"SFTableViewCell"];
         
         [self fetchMoreRecommendations];
     }

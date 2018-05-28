@@ -44,12 +44,12 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         self.smartFeedManager.delegate = self
         
         // Optional
-        self.setupCustomUIForSmartFeed()
+        // self.setupCustomUIForSmartFeed()
     }
     
     func setupCustomUIForSmartFeed() {
         let bundle = Bundle.main
-        let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle) // TODO maybe use another one?
+        let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
         let singleCellNib = UINib(nibName: "AppSFTableViewCell", bundle: bundle)
         self.smartFeedManager.registerHorizontalItemNib(horizontalCellNib, forCellWithReuseIdentifier: "AppSFHorizontalItemCell")
         self.smartFeedManager.registerSingleItemNib(singleCellNib, forCellWithReuseIdentifier: "AppSFTableViewCell")
