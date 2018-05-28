@@ -59,6 +59,12 @@ class ArticleCollectionViewController: UICollectionViewController {
         let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
         self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_1", collectionView: collectionView)
         self.smartFeedManager.delegate = self
+        
+        // Optional
+        self.setupCustomUIForSmartFeed()
+    }
+    
+    func setupCustomUIForSmartFeed() {
         let bundle = Bundle.main
         let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
         let singleCellNib = UINib(nibName: "AppSFCollectionViewCell", bundle: bundle)
