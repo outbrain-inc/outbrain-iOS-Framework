@@ -253,6 +253,18 @@ const CGFloat kTableViewRowHeight = 250.0;
         singleCell.recTitleLabel.text = rec.content;
         if ([rec isPaidLink]) {
             singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
+            if ([rec isRTB]) {
+                singleCell.adChoicesButton.hidden = NO;
+                singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
+                singleCell.adChoicesButton.tag = cellTag;
+                NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+                UIImage *adChoicesImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
+                [singleCell.adChoicesButton setImage:adChoicesImage forState:UIControlStateNormal];
+                [singleCell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            else {
+                singleCell.adChoicesButton.hidden = YES;
+            }
         }
         else {
             singleCell.recSourceLabel.text = rec.source;

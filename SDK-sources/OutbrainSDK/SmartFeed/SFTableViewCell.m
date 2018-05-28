@@ -26,6 +26,7 @@
     self.recImageView.image = nil;
     self.recTitleLabel.text = nil;
     self.recSourceLabel.text = nil;
+    self.adChoicesButton.hidden = YES;
 }
 
 @end

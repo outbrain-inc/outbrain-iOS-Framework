@@ -35,7 +35,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="90"/>
                                         <state key="normal" title="UITableView Example"/>
                                         <connections>
-                                            <segue destination="9eM-n7-9YQ" kind="show" id="BXA-mS-jMT"/>
+                                            <segue destination="9eM-n7-9YQ" kind="show" identifier="showTableVC" id="BXA-mS-jMT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A84-bH-aQt">
