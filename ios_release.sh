@@ -43,14 +43,14 @@ echo "***********************************************************"
 echo " Copy the OutbrainSDK.framework into OBSDK-Release"
 echo "***********************************************************"
 cp -a OutbrainSDK.framework OBSDK-Release/SDK/
-cp -a OutbrainSDK.framework OBSDK-Release/Samples/
+cp -a OutbrainSDK.framework OBSDK-Release/Samples/OutbrainDemo
 cp -fa Samples/ OBSDK-Release/Samples/
 cp -rf README.md OBSDK-Release/
 
 # clean up the export folder
 echo ""
 echo "***********************************************************"
-echo " Copy the content ofOBSDK-Release to ${EXPORT_DIR_PATH}"
+echo " Copy the content of OBSDK-Release to ${EXPORT_DIR_PATH}"
 echo "***********************************************************"
 rm -fr $EXPORT_DIR_PATH
 mkdir -p $EXPORT_DIR_PATH
