@@ -27,19 +27,27 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
         
         tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.register(UINib(nibName: "outbrainRecCell", bundle: nil), forCellReuseIdentifier: outbrainCellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         spinner.startAnimating()
         spinner.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 44)
         self.tableView.tableFooterView = spinner;
+        self.setupSmartFeed()
+    }
+    
+    func setupSmartFeed() {
+        let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
         self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_1", tableView: self.tableView)
         self.smartFeedManager.delegate = self
         
+        // Optional
+        self.setupCustomUIForSmartFeed()
+    }
+    
+    func setupCustomUIForSmartFeed() {
         let bundle = Bundle.main
         let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle) // TODO maybe use another one?
         let singleCellNib = UINib(nibName: "AppSFTableViewCell", bundle: bundle)
