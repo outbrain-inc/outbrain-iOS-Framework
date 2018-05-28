@@ -1,17 +1,19 @@
 #!/bin/bash
 
 EXPORT_DIR_PATH=~/Desktop/Release/iOS
-FRAMEWORK_ARTIFACT_PATH=~Samples/OutbrainDemo/OutbrainSDK.framework
+FRAMEWORK_ARTIFACT_PATH=Samples/OutbrainDemo/OutbrainSDK.framework
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 
-echo ""
-echo "*********************"
-echo " Clean previous Outbrain framework if exists"
-echo "*********************"
-ls -l $FRAMEWORK_ARTIFACT_PATH
-rm -fr $FRAMEWORK_ARTIFACT_PATH
-ls -l $FRAMEWORK_ARTIFACT_PATH
+if [ -d "$FRAMEWORK_ARTIFACT_PATH" ]; then
+	echo ""
+	echo "*********************"
+	echo " Clean previous Outbrain framework if exists"
+	echo "*********************"
+	rm -fr $FRAMEWORK_ARTIFACT_PATH
+	ls -l $FRAMEWORK_ARTIFACT_PATH
+fi
+
 
 cd SDK-sources
 # Clean
@@ -45,7 +47,7 @@ rm -fr OBSDK-Release
 mkdir OBSDK-Release
 mkdir OBSDK-Release/SDK/
 mkdir OBSDK-Release/Samples/
-# mkdir OBSDK-Release/HTML-Documentation/
+
 
 echo ""
 echo "***********************************************************"
