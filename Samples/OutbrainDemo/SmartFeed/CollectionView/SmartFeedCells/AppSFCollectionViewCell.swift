@@ -1,5 +1,5 @@
 //
-//  OutbrainRecCollectionCell.swift
+//  AppSFCollectionViewCell.swift
 //  ios-SmartFeed
 //
 //  Created by oded regev on 2/5/18.
@@ -9,7 +9,7 @@
 import UIKit
 import OutbrainSDK
 
-class AppSFSingleCollectionViewCell: SFCollectionViewCell {
+class AppSFCollectionViewCell: SFCollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
