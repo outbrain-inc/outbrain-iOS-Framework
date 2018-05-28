@@ -97,6 +97,9 @@
 		E61E6D00208737F00016D79A /* SFHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */; };
 		E61E6D06208E0F780016D79A /* SFItemData.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6D04208E0F780016D79A /* SFItemData.h */; };
 		E61E6D07208E0F780016D79A /* SFItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6D05208E0F780016D79A /* SFItemData.m */; };
+		E63175CD20BC1BAE0077F589 /* SFTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63175CA20BC1BAE0077F589 /* SFTableViewCell.xib */; };
+		E63175CE20BC1BAE0077F589 /* SFCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63175CB20BC1BAE0077F589 /* SFCollectionViewCell.xib */; };
+		E63175CF20BC1BAE0077F589 /* SFHorizontalItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63175CC20BC1BAE0077F589 /* SFHorizontalItemCell.xib */; };
 		E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E61E6C0E20836C180016D79A /* odb_normal_response.json */; };
 		E6EA3788209B30E2009B687B /* smart_feed_response_1.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3785209B30E1009B687B /* smart_feed_response_1.json */; };
 		E6EA3789209B30E2009B687B /* smart_feed_response_2.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3786209B30E1009B687B /* smart_feed_response_2.json */; };
@@ -205,6 +208,9 @@
 		E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		E61E6D04208E0F780016D79A /* SFItemData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFItemData.h; sourceTree = "<group>"; };
 		E61E6D05208E0F780016D79A /* SFItemData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFItemData.m; sourceTree = "<group>"; };
+		E63175CA20BC1BAE0077F589 /* SFTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTableViewCell.xib; sourceTree = "<group>"; };
+		E63175CB20BC1BAE0077F589 /* SFCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFCollectionViewCell.xib; sourceTree = "<group>"; };
+		E63175CC20BC1BAE0077F589 /* SFHorizontalItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalItemCell.xib; sourceTree = "<group>"; };
 		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6EA3785209B30E1009B687B /* smart_feed_response_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_1.json; sourceTree = "<group>"; };
 		E6EA3786209B30E1009B687B /* smart_feed_response_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_2.json; sourceTree = "<group>"; };
@@ -456,6 +462,7 @@
 		E61E6CA62085D98F0016D79A /* SmartFeed */ = {
 			isa = PBXGroup;
 			children = (
+				E63175C920BC1BAE0077F589 /* TemplateCells */,
 				E61E6CA82085D98F0016D79A /* SFHorizontalCell */,
 				E61E6CB22085D98F0016D79A /* SFTableViewCell.m */,
 				E61E6CB82085D98F0016D79A /* SFTableViewCell.h */,
@@ -496,6 +503,16 @@
 				E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */,
 			);
 			path = SFHorizontalView;
+			sourceTree = "<group>";
+		};
+		E63175C920BC1BAE0077F589 /* TemplateCells */ = {
+			isa = PBXGroup;
+			children = (
+				E63175CA20BC1BAE0077F589 /* SFTableViewCell.xib */,
+				E63175CB20BC1BAE0077F589 /* SFCollectionViewCell.xib */,
+				E63175CC20BC1BAE0077F589 /* SFHorizontalItemCell.xib */,
+			);
+			path = TemplateCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -632,9 +649,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E63175CD20BC1BAE0077F589 /* SFTableViewCell.xib in Resources */,
 				E61E6CFE208611380016D79A /* Assets.xcassets in Resources */,
 				E61E6D00208737F00016D79A /* SFHorizontalCollectionViewCell.xib in Resources */,
+				E63175CF20BC1BAE0077F589 /* SFHorizontalItemCell.xib in Resources */,
 				E61E6CFA208610AF0016D79A /* SFHorizontalTableViewCell.xib in Resources */,
+				E63175CE20BC1BAE0077F589 /* SFCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
