@@ -96,7 +96,7 @@
             <size key="customSize" width="380" height="238"/>
             <connections>
                 <outlet property="adChoicesButton" destination="1XD-lo-kBW" id="RTw-F2-qbd"/>
-                <outlet property="recImageView" destination="2uQ-QP-VAN" id="x8U-JF-21T"/>
+                <outlet property="recImageView" destination="2uQ-QP-VAN" id="Pty-KL-2gn"/>
                 <outlet property="recSourceLabel" destination="a2c-wY-HJi" id="kfu-iM-A8Q"/>
                 <outlet property="recTitleLabel" destination="pyP-q1-Q1W" id="65g-BX-7u3"/>
                 <outlet property="sponsoredLabel" destination="ZaF-AB-Uot" id="dBO-6F-jKS"/>

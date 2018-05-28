@@ -57,8 +57,21 @@ const CGFloat kTableViewRowHeight = 250.0;
         self.collectionView = collectionView;
         self.smartFeedItemsArray = [[NSMutableArray alloc] init];
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        
+        // horizontal cell (carousel container) SFCarouselContainerCell
         UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCollectionViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"horizontalCellNib should not be null");
         [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier:@"SFHorizontalCell"];
+        
+        // Organic, horizontal carousel item cell
+        UINib *horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
+        NSAssert(horizontalItemCellNib != nil, @"horizontalItemCellNib should not be null");
+        [self registerHorizontalItemNib:horizontalItemCellNib forCellWithReuseIdentifier:@"SFHorizontalItemCell"];
+        
+        // Paid, single item cell
+        UINib *collectionViewCellNib = [UINib nibWithNibName:@"SFCollectionViewCell" bundle:bundle];
+        NSAssert(collectionViewCellNib != nil, @"collectionViewCellNib should not be null");
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier:@"SFCollectionViewCell"];
     }
     return self;
 }

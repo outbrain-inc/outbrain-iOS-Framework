@@ -18,7 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SFHorizontalCollectionViewCell" id="Gg3-8H-tpC" customClass="SFHorizontalCollectionViewCell">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SFHorizontalItemCell" id="Gg3-8H-tpC" customClass="SFCollectionViewCell">
             <rect key="frame" x="0.0" y="0.0" width="319" height="280"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -61,8 +61,8 @@
             <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
             <size key="customSize" width="319" height="280"/>
             <connections>
-                <outlet property="recImageView" destination="g77-bX-xEg" id="Qhb-0v-jLc"/>
-                <outlet property="recTitleLabel" destination="vW4-J8-7zV" id="4YF-zk-B5B"/>
+                <outlet property="recImageView" destination="g77-bX-xEg" id="tlv-Db-JuO"/>
+                <outlet property="recTitleLabel" destination="vW4-J8-7zV" id="Z6p-Gc-V9D"/>
             </connections>
             <point key="canvasLocation" x="-401.5" y="57"/>
         </collectionViewCell>
