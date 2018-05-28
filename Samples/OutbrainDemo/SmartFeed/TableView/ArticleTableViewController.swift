@@ -44,7 +44,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         self.smartFeedManager.delegate = self
         
         // Optional
-        // self.setupCustomUIForSmartFeed()
+        self.setupCustomUIForSmartFeed()
     }
     
     func setupCustomUIForSmartFeed() {
