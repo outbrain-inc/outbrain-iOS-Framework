@@ -1,13 +1,17 @@
 #!/bin/bash
 
 EXPORT_DIR_PATH=~/Desktop/Release/iOS
+FRAMEWORK_ARTIFACT_PATH=~Samples/OutbrainDemo/OutbrainSDK.framework
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
-if [ $BRANCH != "master" ]; then
-	echo "Error - This script should be executed only from master branch"
-	echo ""
-	exit 1
-fi;
+
+echo ""
+echo "*********************"
+echo " Clean previous Outbrain framework if exists"
+echo "*********************"
+ls -l $FRAMEWORK_ARTIFACT_PATH
+rm -fr $FRAMEWORK_ARTIFACT_PATH
+ls -l $FRAMEWORK_ARTIFACT_PATH
 
 cd SDK-sources
 # Clean
@@ -26,7 +30,12 @@ echo "*********************"
 xcodebuild -target OBFramework
 cd ..
 
-# doxygen doxygen.xml
+echo ""
+echo "*********************"
+echo " Check if framework is where we think it is"
+echo "*********************"
+ls -l $FRAMEWORK_ARTIFACT_PATH
+
 
 echo ""
 echo "***************************"
@@ -42,8 +51,7 @@ echo ""
 echo "***********************************************************"
 echo " Copy the OutbrainSDK.framework into OBSDK-Release"
 echo "***********************************************************"
-cp -a OutbrainSDK.framework OBSDK-Release/SDK/
-cp -a OutbrainSDK.framework OBSDK-Release/Samples/OutbrainDemo
+cp -a $FRAMEWORK_ARTIFACT_PATH OBSDK-Release/SDK/
 cp -fa Samples/ OBSDK-Release/Samples/
 cp -rf README.md OBSDK-Release/
 
