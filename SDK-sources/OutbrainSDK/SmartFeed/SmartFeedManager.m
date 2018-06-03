@@ -350,41 +350,7 @@ const CGFloat kTableViewRowHeight = 250.0;
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
         else { // SFSingleCell
-            SFCollectionViewCell *singleCell = (SFCollectionViewCell *)cell;
-            const NSInteger cellTag = indexPath.row;
-            singleCell.tag = cellTag;
-            singleCell.contentView.tag = cellTag;
-            SFItemData *sfItem = [self itemForIndexPath: indexPath];
-            OBRecommendation *rec = sfItem.singleRec;
-            singleCell.recTitleLabel.text = rec.content;
-            
-            if ([rec isPaidLink]) {
-                singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
-                if ([rec isRTB]) {
-                    singleCell.adChoicesButton.hidden = NO;
-                    singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
-                    singleCell.adChoicesButton.tag = cellTag;
-                    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-                    UIImage *adChoicesImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
-                    [singleCell.adChoicesButton setImage:adChoicesImage forState:UIControlStateNormal];
-                    [singleCell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
-                }
-                else {
-                    singleCell.adChoicesButton.hidden = YES;
-                }
-            }
-            else {
-                singleCell.recSourceLabel.text = rec.source;
-            }
-            
-            [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
-        
-            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
-            tapGesture.numberOfTapsRequired = 1;
-            [tapGesture setDelegate:self];
-            [singleCell.contentView addGestureRecognizer:tapGesture];
-            
-            [SFUtils addDropShadowToView: singleCell]; // add shadow
+            [self configureSingleCell:cell atIndexPath:indexPath];
         }
         
         if (indexPath.row == self.smartFeedItemsArray.count - 2) {
@@ -424,6 +390,44 @@ const CGFloat kTableViewRowHeight = 250.0;
     return sfItem.outbrainRecs;
 }
 
+- (void) configureSingleCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SFCollectionViewCell *singleCell = (SFCollectionViewCell *)cell;
+    const NSInteger cellTag = indexPath.row;
+    singleCell.tag = cellTag;
+    singleCell.contentView.tag = cellTag;
+    SFItemData *sfItem = [self itemForIndexPath: indexPath];
+    OBRecommendation *rec = sfItem.singleRec;
+    singleCell.recTitleLabel.text = rec.content;
+    
+    if ([rec isPaidLink]) {
+        singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
+        if ([rec isRTB]) {
+            singleCell.adChoicesButton.hidden = NO;
+            singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
+            singleCell.adChoicesButton.tag = cellTag;
+            NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+            UIImage *adChoicesImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
+            [singleCell.adChoicesButton setImage:adChoicesImage forState:UIControlStateNormal];
+            [singleCell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else {
+            singleCell.adChoicesButton.hidden = YES;
+        }
+    }
+    else {
+        singleCell.recSourceLabel.text = rec.source;
+    }
+    
+    [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [tapGesture setDelegate:self];
+    [singleCell.contentView addGestureRecognizer:tapGesture];
+    
+    [SFUtils addDropShadowToView: singleCell]; // add shadow
+}
+    
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     [horizontalCell.horizontalView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier: self.horizontalCellIdentifier];
