@@ -310,12 +310,7 @@ const CGFloat kTableViewRowHeight = 250.0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self isHorizontalCell:indexPath]) {
-        return kTableViewRowHeight;
-    }
-    else {
-        return kTableViewRowHeight;
-    }
+    return kTableViewRowHeight;
 }
 
 - (void) configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)horizontalCell atIndexPath:(NSIndexPath *)indexPath {

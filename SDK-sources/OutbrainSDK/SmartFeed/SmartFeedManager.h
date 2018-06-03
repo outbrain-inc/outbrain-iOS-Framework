@@ -28,8 +28,6 @@
 
 
 
-- (void) fetchMoreRecommendations;
-
 // TableView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url widgetID:(NSString * _Nonnull)widgetId tableView:(UITableView * _Nonnull)tableView;
 
