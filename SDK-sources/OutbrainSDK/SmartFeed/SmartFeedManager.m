@@ -267,40 +267,7 @@ const CGFloat kTableViewRowHeight = 250.0;
         [SFUtils addDropShadowToView: cell];
     }
     else { // SFSingleCell
-        SFTableViewCell *singleCell = (SFTableViewCell *)cell;
-        const NSInteger cellTag = indexPath.row;
-        singleCell.tag = cellTag;
-        singleCell.contentView.tag = cellTag;
-        SFItemData *sfItem = [self itemForIndexPath: indexPath];
-        OBRecommendation *rec = sfItem.singleRec;
-        singleCell.recTitleLabel.text = rec.content;
-        if ([rec isPaidLink]) {
-            singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
-            if ([rec isRTB]) {
-                singleCell.adChoicesButton.hidden = NO;
-                singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
-                singleCell.adChoicesButton.tag = cellTag;
-                NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-                UIImage *adChoicesImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
-                [singleCell.adChoicesButton setImage:adChoicesImage forState:UIControlStateNormal];
-                [singleCell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
-            }
-            else {
-                singleCell.adChoicesButton.hidden = YES;
-            }
-        }
-        else {
-            singleCell.recSourceLabel.text = rec.source;
-        }
-        
-        [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
-        
-        [SFUtils addDropShadowToView: singleCell];
-        
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
-        tapGesture.numberOfTapsRequired = 1;
-        [tapGesture setDelegate:self];
-        [singleCell.contentView addGestureRecognizer:tapGesture];
+        [self configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath];
     }
     
     if ((indexPath.row == (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
@@ -322,6 +289,43 @@ const CGFloat kTableViewRowHeight = 250.0;
             [self.delegate userTappedOnRecommendation:rec];
         }
     }];
+}
+
+- (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SFTableViewCell *singleCell = (SFTableViewCell *)cell;
+    const NSInteger cellTag = indexPath.row;
+    singleCell.tag = cellTag;
+    singleCell.contentView.tag = cellTag;
+    SFItemData *sfItem = [self itemForIndexPath: indexPath];
+    OBRecommendation *rec = sfItem.singleRec;
+    singleCell.recTitleLabel.text = rec.content;
+    if ([rec isPaidLink]) {
+        singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
+        if ([rec isRTB]) {
+            singleCell.adChoicesButton.hidden = NO;
+            singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
+            singleCell.adChoicesButton.tag = cellTag;
+            NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+            UIImage *adChoicesImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
+            [singleCell.adChoicesButton setImage:adChoicesImage forState:UIControlStateNormal];
+            [singleCell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else {
+            singleCell.adChoicesButton.hidden = YES;
+        }
+    }
+    else {
+        singleCell.recSourceLabel.text = rec.source;
+    }
+    
+    [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
+    
+    [SFUtils addDropShadowToView: singleCell];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [tapGesture setDelegate:self];
+    [singleCell.contentView addGestureRecognizer:tapGesture];
 }
 
 #pragma mark - Collection View methods
