@@ -6,20 +6,15 @@
 //  Copyright (c) 2014 Outbrain. All rights reserved.
 //
 
-#import <OutbrainSDK/OutbrainSDK.h>
+#import "Outbrain.h"
 
-@interface OBSettings : NSObject {
-    NSDictionary *payload;
-}
+@interface OBSettings : NSObject
 
-- (instancetype)initWithPayload:(NSDictionary *)aPayload;
+@property (nonatomic, assign, readonly) BOOL apv;
+@property (nonatomic, assign, readonly) BOOL isSmartFeed;
+@property (nonatomic, strong, readonly) NSArray *feedContentArray;
 
-- (NSString *)getStringValueForSettingKey:(NSString *)settingKey;
+- (instancetype)initWithPayload:(NSDictionary *)payload;
 
-- (NSNumber *)getNSNumberValueForSettingKey:(NSString *)settingKey;
-
-//- (NSString *)provideStringForSetting:(NSString *)setting;
-//- (long)provideLongForSetting:(NSString *)setting;
-//- (BOOL)provideBoolForSetting:(NSString *)setting;
 
 @end

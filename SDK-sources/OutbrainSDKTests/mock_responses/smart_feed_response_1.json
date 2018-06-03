@@ -1,0 +1,218 @@
+{
+  "response": {
+    "exec_time": 59,
+    "timestamp": 1525348516116,
+    "status": {
+      "id": 0,
+      "content": "Request succeeded"
+    },
+    "request": {
+      "lang": "en",
+      "idx": "0",
+      "did": "689346564",
+      "pid": "4737",
+      "lsd": "5fa43a5d-d1a7-4b7c-b0a8-6c83c592a5d4",
+      "enu": "IcTblLUTUAu0pLHBz83XGCKY555X9WO07t8GQV-UXRD-joqy6ilynC6wj3NR_UBN",
+      "api_user_id": "5FA43A5D-D1A7-4B7C-B0A8-6C83C592A5D4",
+      "t": "MV82YTkzNDU5OTBmYmI0MDYyOTVmZmY4N2IzZGRmZjRlZl8w",
+      "pvId": "6a9345990fbb406295fff87b3ddff4ef",
+      "pad": "2",
+      "org": "2",
+      "abTestVal": "no_abtest",
+      "obRecsAbtestAndVars": "480-1527,386-1126,403-1401,452-1421,378-1101,429-1332",
+      "widgetJsId": "SFD_MAIN_1",
+      "widgetJsIdOrig": "SFD_MAIN_1",
+      "readerPlatform": "desktop",
+      "isHttps": "true",
+      "rtbEnabled": "true",
+      "rtbTest": "false",
+      "rtbBidTestMode": "false",
+      "rtbTestRecsNum": "0",
+      "amplifyEnabled": "true",
+      "sid": 5291479,
+      "wnid": 969,
+      "req_id": "6a9345990fbb406295fff87b3ddff4ef",
+      "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+      "vid": 0,
+      "ref": 0
+    },
+    "documents": {
+      "total_count": 6,
+      "count": 6,
+      "doc": [
+        {
+          "source_name": "Discoverytheword",
+          "same_source": "false",
+          "source_display_name": "Discoverytheword",
+          "pc_id": 95787995,
+          "adv_name": "DiscoveryTheWord_SA_PartnersProgram",
+          "publish_date": "2018-02-12 10:37",
+          "orig_url": "http://discoverytheword.com/cool-facts-you-didnt-know-about-the-vikings/?utm_campaign=2649_dis-out-d-us-MzPUSmXsCStp&utm_source=outbrain&utm_medium=$origsrcid$&utm_content=$section_id$&utm_term=0014505750ed0caec7e645223fca1d3945",
+          "rec-cats": [
+            2004
+          ],
+          "ads_type": 1,
+          "rec_en_did": "fvwmKLbwGF7Lq_xroze2oQ",
+          "url": "https://paid.outbrain.com/network/redir?p=HHNsZRwgT7gd9wNF8cvPv1_km_a3kpf6XxjFD6vUexuBlLoJtNJDplNjcWpxjXdutciwbW11zp5FRHOOFDawo4RAUw0oLhtSOn4xBS4Smy0f5vJU65GwMH7zC7fQkElCoe76pEsBXR3vBqiekdHUUP3DlllwPpNCzZ2SbbzTdia9T6xdNbOoPEoO_5Q7xrxgDAqcpQpCFO1Pnm3ks-sMgiFLrwcTKH9s9XSQ1DpyAMTXMr0gDYZWOPDNCRcvZrg9C87QBXU9vLjsBwZ3WgvhrlTHyZgocDq1MyusT4Sw8kWkoUrJGvAK0KeGa-NDlk_lQ2mn0o9AkszC3_InHhAw-bR5TAyyzDhRehMmREcBwEp5TDhIMA1q5nLG1osBs_2MjJVALub5zdWCpZ_h_hMEZEGBftjZsYpoJBmyh6bcehoNNV062Qjk4-JR9j6SFa9mE1Rgw3bUzrILnTC0x9ALd_sRPpHRPqpOC1YQKo9jxWBKBRfWUzCwU8gyqTRrfh1GGm3BwU9IGcB53ONykJBWtYJpfO1JggP6zk5vDFhXgy9xDWrCk0_GFGh1Or8X9fpPz8FYAjnRHvahOfo8si0hUpodW9YNe_niwN1IdPmPxgW8NJmSApAIOV1u-M9A0MQs-JSb8pjxEM7u2WcbmPQ2BRpJKFPVWZtzSl05XFU4bJ-JaJ3BDSmXWhE4mT5IyblslQi-pup34JeFWv1VIRW9NHiGvoP-Z9cTzeK4l4qSZUnvQ8b55P6NizJuKNsHwjvRFhnwWltJqWhW-sjhyJzQ71IdepHGR_p7tP3xDp5SbXZTpJit29xBc9nQwwexTZ8-Jka7TXbEXvqiaKnSPKd39bPHhpDhJOZTHuKkdD63WyZ4yAMCu53lUoEVHSXQd7Aquyt-QrRF1XF7RsbeM1CIj4-rfYeri9ez8xai7-q3bCYQq1hI8t_p5EJPJ3V7N6lTLnWosXvh2hRq2loZOkGt83gp5y1HyHVbG26kjKHoZmECXPpqKNzR-QCHJpUtBQcw&c=8a468aec&v=3",
+          "author": "",
+          "content": "[Gallery] All You Need To Know About The Age Of Vikings",
+          "pc_cmp_id": 1000864629,
+          "pos": "0",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6IjI2MmY1NWYwMDlhY2M5ODlkZmZhMWE0MzlhYmI4NTYwYWI3ZDAxMTQxYWI1ZTZjYzFjYjZkZDMzYjQ2MDJmY2MiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+            "width": 600,
+            "height": 337,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "The Sports Drop",
+          "same_source": "false",
+          "source_display_name": "The Sports Drop",
+          "pc_id": 94967133,
+          "adv_name": "Sports (914 Media)_SA_PartnersProgram",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "http://thesportsdrop.com/the-worst-nba-draft-pick-every-year-since-2000/?utm_medium=inbound&utm_source=outbrain&utm_campaign=NBA_Worst_Pick_2000_V7_OB&utm_term=$section_name$&utm_content=$publisher_name$",
+          "rec-cats": [
+            1903
+          ],
+          "ads_type": 1,
+          "rec_en_did": "L248h4kokTRXR01auJ-keg",
+          "url": "https://paid.outbrain.com/network/redir?p=d0M8PDJPiYLEw1ZDjbK9ulOOQNTLpx3jMBnuItLOvea0ykjdSzPt18VQvrUTjmtMEe7nqZgYNPJZf8fhyU-EAn5J5_uK1soGXMyN6L3VkQ63GHbQMowLjV2g2HS_wyYYcrBoa_EiYVZa_d8kdruQ0H0uml4P7sZ2HyIoMP5cnu4IuxqAd07zQ9C291NVTQtUcgD9WzMVz8yLnqgfHpMe-wRpHO1QfiOt1gH6vMAKpRRAXFFLaLdX0muSA-DbYcvivZxKFBJV-meSlLTVUZrBEi-jZRl4PpAf3DIN7XAY31YYFEzJjXs6NztcZ73glflrZsX98CBO9FRayCMHm4DX4lQHXJA2LDuc0s3W5W4L7kHpUvb3_PA8Er_fx4UEKFdHnSer0hzSAcBKcTfrIrRCzZ_jvOrKWo7fDpll-4ACOcoUpDsgE_4j-IGIBLXgyvIWksTiel52eTG7MIh2e2OmcudlzSJ093_YF-vgZnKjGMEgp4R1bS1dtHpgRZFVYx6ay8TUpxZtGEVCHMIj5MbMyik7x453Kw3gkq1qb9_2W_bv3J0QZ9k0wsy4HaKNk3ppIwoppnK5T3ZwZzjQwV2E3jScv5q55osp56pOQTc5ArxtrTwt-zxG9AkvFmNQG5-wqTwEnC8Jx_tLUu8RcQ6Ax-R_B7gpdvZ6_kYKtOBEETu0brb9y58XaRvpwEi3kwtDgYvtVmfH5T_kO5PmxNj5A7H-fP_dwBENsNs1RGpv7MAc6ml8F49b2GJsuUTkkGQBPnCyrcgoNvIfOgJqFXkWZkB1xn8PBHEogPCTn83cjar69LXMTOC5yBjHlLI8pi4roPQESus9O6Vdhq3fQVCUdaeke1DhgLNLfe4IB0-8LWzU6dIxOjPXZdgb3AwZM_9yTrnFLkM7iZxX3XqgU2SvY1ImcHE9F8THQlCbhiAnv2yhGSI4RHDxe9yiFJJ4YbV1uzOUkCrHBNX_T--3ni2Eee1vXR1zI4ln3bin5EqF-KXZnNBFfT--PF2g5g96L9Hf&c=81fd6d0d&v=3",
+          "author": "",
+          "content": "The Worst NBA Draft Pick Every Year Since 2000",
+          "pc_cmp_id": 1000837170,
+          "pos": "1",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6IjhiNzY0ODY1ZjVlODU3NzkxMDNlMzIxM2Y3ZDI4NzQzMjBhMjg3MGMyODVjYjFmMGU2Y2U4ZjE5MzhjZDM2YzAiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+            "width": 600,
+            "height": 337,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "CNN",
+          "same_source": "false",
+          "source_display_name": "CNN",
+          "pub_id": "1225",
+          "source_id": "2733959",
+          "publish_date": "2015-12-28 06:39",
+          "orig_url": "http://money.cnn.com/2015/12/28/technology/india-mark-zuckerberg-facebook-free-basics/index.html",
+          "desc": "Mark Zuckerberg has personally responded to critics of \"Free Basics,\" a controversial Facebook effort to expand Internet access in India that has come under withering criticism from tech activists.",
+          "rec-cats": [
+            2005
+          ],
+          "ads_type": 2,
+          "rec_en_did": "xzOFodjZlBfkeW4rMb3unw",
+          "url": "https://traffic.outbrain.com/network/redir?p=QY2uGRFbgbHhtZqGol4tWFTG2HX1_08AoijB7niF8dZLCu_Fzt2EMOsviUu9SnHXkYQrqTJxGBI3SnQei-Isou3qTd9cwcuUP6apD4mNtzKDh-hHniILlglDiVsstVZiB6oIL6WK5lhHyaz1ycXjgUBMYUbn-cZfenFC7GYzyKk95gFZj20p7JfyTmvOPyyTmQuYfCmnxQfJ6tHKF3nlVN7DzBRuuKrF0xGJOt3OpzayU359uIX0JjeyUXzh_fyDikOhLXd2R1YQSctN4w9_h2k659uN8MBi1rHIkJWgotzEtqZSmQOnhVvBVeTMmGuvX2CfElPIpGQyeEX5TCZem-iq4usOIQBLxEIhifCii4ScxmeKJipuT59lqJcSwp8Mf_mluECOjRcSnLW5WELOAikpP-7Ogr3IWSf6QFW7lOpDep_V0ibx_Jb2-OHCaNsF72d68lXQXFuZX6SQPAkFoqkM6AIp75Cx3GPhBz2shY9WCtqAfXb7hX0ceFtnRUG4oEFxXvCgZqBchMsJhaSsemTTurm6GTl908XELjrYFxCne6W1versS-YdI6T4KZQcBwvy6hgonAnbi05Hb_81S-94YPxa4j5izO2rrj2V2SFbUegKlNFS6gCqIsLs3e1Gi2T-mAh5aj6wUENQjbi7VLCf9ZVGdEbWaIIXWHDY-hH7QbZ9jLFhsSaunWIIBkxlc1Wwk859i3U4WqqACEei982ya-o6J5F17lJw1I58dH7jaBXP7haOB15-W-ieqcYHUDWR0KzBHbAZbEjfdZf82DRuFH-jzJTTRE8eWaCcXssJmjFFHENyFcpoUq0x_RamVpOhYjjxiFxwJ7o8TRPO5XTt8O9dO9fwm-TjJuq5cdYtGvs-lzd4V-nFvLVniMy9&c=90b05485&v=3",
+          "author": "Charles Riley",
+          "content": "Mark Zuckerberg has personally answered Facebook's Indian critics",
+          "pos": "2",
+          "ttid": 4,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6ImI4NDc3NzJiM2ZiNDU1M2Y4YTUwOTk5MzkwNmNkMGYyOTc5NjI4Zjk0NTcwMGExODY4ZTBlYjQyOGUyMWU5OWMiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+            "width": 600,
+            "height": 337,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "Bleacher Report - NHL",
+          "same_source": "false",
+          "pub_id": "5312",
+          "source_id": "5350081",
+          "publish_date": "2013-08-18 19:01",
+          "orig_url": "http://bleacherreport.com/articles/1742321",
+          "desc": "Few jobs among athletes, if any, are more demanding than that of a hockey goalie, let alone an NHL starter...",
+          "rec-cats": [
+            1909
+          ],
+          "ads_type": 2,
+          "rec_en_did": "o2d3P0hpQ4scG-SyMCRz8g",
+          "url": "https://traffic.outbrain.com/network/redir?p=oQjIq1V6GheNHad5MhvAn49NlrKSzmABR90oZ-SFkj69Mk4Xv_z5IMeKhpFNYEC3LvkWqsdGYnSsLpG85lyb_e0QECGPCyrpQc3XIowfu4Eu5RaOOFz2-UfgEpXlHIyJAZn1XSpHB_5Fm8f0Ia8D1DmTepu-2m-9SkJfiY2WgfoS0vd6Si_wp3km1dhA02xHF3KQilzYvx_mW8R2LH9kCbQugMMD1Gd75fCjhvT5M9o6ZcR6ZuC_Y8qaW2R7ZsiDxClaYlWXKHhhR1NwDG3fCI4RsxiJUFRtOHj1ZiCQZeJtQO09UpWyaCh3IDrr_BQBAYA3aj-2kv6QMwqfLPylReddSa4wuX58Kk8LgzzH1a2qcTThobqMnu2EmNF5FzQzSVZFNbT_a1imdr7oF2onbgCAG24DmQIBdoa4uVIn39IN9zXBFcrIHxbURkwTYW2hP5852wcd0xBDxnVbg5h3tB86k0-Tp0AaWnq86KsbVwEd0Z3JxmJNd_BEf-HSv7HAKlCuFW0ENgoU5pGyx54vX3LMw4ZdxISzDKrbW8tlnvNEfQTwAdA_dcY0uaQpf9kCuYE4J3yh4AB3YBbjNy5A1sZjUOkE5kY9pqdvd9b2h564nUBMzxXL_uhiyCoRp-BurfUay0TQ1EnhiJZzQU7kcMKAS2pV9DyfaF4Dwsp_edWjPmuGG8k9jw6IIhQqnb22e9IL8oRS2ngmFGzwDSLLRvGIjt4LZSCitvWGyQwBqXuxylAhnLjthzojvhkk5Dj4XaeKylZXQJf8iZbGV8pfp3aGQsPDfTPEbmmEHDVza1MO4v0l6BPuU4ZJelM7hnSOWMaIEtlxkPcXiWvaJBRq5oj8bU5pY9m_7ECtMQ1NI0nFyv4WW24oWWvKyr7oL_ZT&c=c1be670c&v=3",
+          "author": "Al Daniel",
+          "content": "Ranking the 10 Greatest Goalies in NHL History",
+          "pos": "3",
+          "ttid": 4,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6IjNjYWFmNGUxM2M5ZjFiYjdjNzU2ODg1MTIxYTIxNzA0MDIxMDI3ZDE5YTJhNDcyMDFkNmZhMmZlZWRjMjQxYjgiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+            "width": 600,
+            "height": 337,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "Darn Good Yarn",
+          "same_source": "false",
+          "source_display_name": "Darn Good Yarn",
+          "pc_id": 63977089,
+          "adv_name": "Darn Good Yarn",
+          "source_id": "5776982",
+          "orig_url": "https://cat.va.us.criteo.com/delivery/ckn.php?cppv=1&cpp=A2Bz5HxYcUhHUXJjeXlER241U1BxbkZJQVcrUGU1ZmRmdExibFJFckk4Rng2RzR4RzZSUHBibjViaUFucm1kN3Zlak1OMUJ1bXBwYzJZcFZESkRUcXJubkE2Vi9MQ1dmeFk0ZzYvanZRY0RjRE5pVTFaY3pDNHpVeVc2S0tWQ2x2anQvVUxqSkFhYjFWVVRobWFRYW1IL1pyT2dzVm1ZVjQ1SXpvNUlkTk1rYjF3N08rSG9KV2hnWGxBcFBiQis2STBYbXZiRkZYSlRoL3g0WkhxYUZvQWtjVUYzYUxUUy9ycXVGQ1ExUkc2OGlUcHViVDVybXhsdHJwMk1wLytEYzNqQURSbit6Wmo5c0dWd1F3ekZ2NFZTdTBOci8yVHQxRGtGVVl3dWZNdDg1RGZqNkNqbGpqTWFjbGNQanlVSDJidXZ4bnw%3D&maxdest=https%3A%2F%2Fdarn-good-yarn-2.myshopify.com%2Fproducts%2Fthe-calla-cowl-bandana-crochet-pattern%3Futm_source%3Dcriteo%26utm_medium%3Dcpc",
+          "ads_type": 1,
+          "rec_en_did": "G5na4XVj4YQtxuQskPFpHw",
+          "url": "https://paid.outbrain.com/network/redir?p=VmpxDaBZ9gOQ4xhpIW9EL-vN-t2BWMj3H8q9AeyEuKFW9z85gdRQx9jGIWN7opJjwJn4vK25v3yKP43lcmGIgpvwmdFkTOAHoVhkZrdf9b3FmrVk84VaB7dq6gjYsYAU5IUp_UuEm6Jc9RCxP58pi2nMYUXQrQ8VeZYvvyVIkynouxYarX42IC80U9CKbM0Gv_vkiml1O-L6ibIUThWUoGJZOwZ5Jv1SMBuJS2Qwd-benC3prSM-HYyjF8QqMnkDKygh90UHZGcrTEFP0VNfE1-TcDF4DG0D5Dg1CREimH13f4-sA2lfwrv0tBxRFfZv9_CGxVcyzONsdI8RGwg26Zr5HgbMCwJHtRxpuq6-PQrEAk4GOeLi8mQUl1vb6FRx-OJFeKWiWa09V6G7poVsHNIo677m4qcpcGEyHjCj9qHpm9RfIfFqlkG7s15f5XmGUPE_uT2D_9r32SVMgI5loNiEfLg1socZrTsBbdrpyXV5R7Mr9we-6CQi8XBBS2RXv65tEAolE4KCI6baY5xbV-_dIoW0PzRiJVdv-Auo8GR8cm7k6HxzZqpz-vONoupt09__cMVd1OpjoCdz36M8i4_zFixKUnrIA5OGkWXvKDddPFYU9lyB_NeLmmhARU33y6Th3Ed77jD40vLK3kFN5clIQFXQO2Z3F54Szkefb2KldV3nAHoxw-aYOIv5H9EjC1z5P6JtYmDJ3FCU3x1ViVQiB7DB0VRF0vlRx77VFaPYNEyvbbfziyZd7su30YR02KWs5GrDoaJ-wz-yJmlbZ3MhJHXem8BK8TxgVWXlsDtAEM7YTyb5wJW5ARz_Pj4C-Fq2iL7h9OhWwk4JvWJeHlsyssDdnXDCksiwUr_x9ie7nm3Ax6wMeEpLV7ViatY6jClA_i1blC1EqOICSSwvFfoIWDQQEDH9hKKJjkDY2We0hBta4fWdW2Q97_u66qfSdUGe7JcNUruRp2KWyQvEsHLCWqp4IAdrpXRU2XQVq7nPzwCORkQ1VnU9I4eOce53FTpJGWicC9zK2L0mvq_PhAwyqEqI0cJvBbIUbvQJEBfxxeeD6FGShCJor8mlk1sZHh6sYQbE067cEFnNxE7xedzaJg1mo4OFZC7fDAZXvqLfuwBGS35DTuVYNNSN9VGrFPrdFJGV08uDPsTOmWZvbRa4VjBIVUmOkUkRZrF4JxkPZiRxtrbcCQ4f2OQHZd23ECD0k1xMrD8g7wGhimjxvUC4-6qF428dWFQJ4lsVy27bNwOSt2SSokh2Xr8dY9UwMHFvfyfGETltXPMQF4GE5kioZfTquaG1dGWCsirlBggMvOgZQ5C1GLugn6C_VYK-U33Lw8xC1PmkE1rk-JtHdRhI3qXHw90LWlKeOhTPMA_XAs42wpJFPG0qnQUs8eVKQdvJ2CiF2IWdnFY1XO3rBgVeWc57bDXBBHe3A0-FXumGnOZA-LvdHrSZyKhtqrLId3hm-gFZL9_CwA1_UVO5MDHjUAPgyCWj3WJmY6pXm9WMYete5k-3ZfuHczQ5x9K6wCZqsttSaaHiNa4dEBny_ceDp09Yowvl4sFEdmz64vrzvp68xynKxGRIrUW3o6CTb4OhhzOzFH9AOca9176hBliOaeEhWycioqPGsHbPHInq9cNM802Rlbx0KOZ9xBeds7U3qhSffFaunfVs2JXkzXbY8z8_GIFJbfYmbl2TKuBtZn7xh1fWKFpK3UssziMMOa16YFv_Ide2pL0JdN_im3RC_HS6RYTJTzfh7ffAnXw-AuyPiOaHQnM5bj6F6WkcpYdBJQcKEwukpU_Jt0CLAmxGlRIT6MUVocLX2wfK3oCfJlPIKEey-M8mM7hFkMVhAg_mtrwPm8DTP5PfTmyilTAg0sB5z54mImTWrq_xvNBzuPjhvs_QXDJpfRZuX8uEQEuRmgq4HsklSG6sIRvfOcD3RRlRcqv1Kf24YB-eY0E&c=f7c54590&v=3",
+          "author": "",
+          "content": "The Calla Cowl Bandana Crochet Pattern",
+          "pc_cmp_id": 1000234553,
+          "pixels": [
+            "https://cat.va.us.criteo.com/delivery/lgn.php?cppv=1&cpp=wiy8F3xYcUhHUXJjeXlER241U1BxbkZJQVcrUGU1ZmRmdExibFJFckk4Rng2RzR4RzZSUHBibjViaUFucm1kN3Zlak1OMUJ1bXBwYzJZcFZESkRUcXJubkE2Vi9MQ1dmeFk0ZzYvanZRY0RjRE5pWHlBMFlzRTdZYlZhMFpab3JReFM5UThlL3FWSlhUdTM4YkFQalBOUVdLTXhoMUY4ZUhpRk5URlJTUkwwMitDQmRob0tpaDdkMmNwRDVxZ0w5Wkh0WU83WTdQeVdmZjhLVks2a2kyWlNFS3lGaVRUSUtpTld4djAxQjRwaForWHNxQVhRSkp0cTN4dTI2STh5bmJENjUrWWFOaGZFMm4wWEpiTnJ5WWp0VnNmUXJZbVJyeDFubEJSbTNXaXRsVHZZbUFES1FlOUF6Q2cxcHRmbjBhY00raXw%3D&z=0.57567465",
+            "https://amplify-imp.outbrain.com/pixel?p=nlV1YHXXXKgnJTkmjxGkpEs1pjXucEEjpBMW_EyrCRAracqsZzpRpwVWjl3Q1DTXRuySrpP0lDpnIyFSN38vFia8TWzdPHnmyjMcSR8BKoTkULTPRb81Qe3gfp-NsLWrm2PsubAXZpxo0PCbgmoDg1aeBuE5KiGO0Cw6Qx2EoxgBLCf4Y7f3439u1bylTjH-y9E3MmnN-RokOvLkpKyfxka_zKaoBvDQ3zO2xmQ-TiJu9534mWay3dmaomxQU21vcFRDcd66hY8T78NS8652wJKMkKB_60tf1G8OvdyNFlP2_RwUPltFe4ixKOhbiSkL4f5rrjkHe1FLxHHGvSyeJQPtJACrZfBCiB6PoOaExO5HBcCpsbn0p1psk3g2t9swTeCm9wVSE8YnlQ1TLnW8jxs4_PagQaFB_XaG4vNZy20pt_jwW-8xudWpMiEQJzSFRTmD72LiKNk0FbTCw0Fdnk7qdLYo_4qi_OWYlh511wN-zbnFHwTmwvsV3t3z_QWZMCcQchoQwUACru0DeRgkxKlXhT9j1H_IHXLyrkKdgVal3vvvSr6I2RKgqZ8OTiUQSnVzBHnu_4bleewqQdHgt5Ag9GGKbUxuzcWem7kBpqCAFCK_FdDMPM6HLGRgtWrgIyUy6hOHh9bfaG0KT8390yz-G9INLYNSVUiSovRxdR_XmETaWWFCRB12v7vFM3pg1V5KsrRuBN-fejxyQKsO7d14dNsNpPKvjO8n4HzEl4IY4PYnyzNQVDvMEXM4oM-6cTq3Cvyi7Gj9fDYlIDGru1oE5Xkjdx52C9ZpKPOOhcXsLBqhfTMqahQxV8IU5ihuyU3Rs0UeZeMid24aGAFcAD4OraLLf2b3Tz8ptqobqZYgTPJ0L6RtLDGDMWCv4LFCJ4vmnZoVMh52iV-civre9KtNGn-f5N4B0j2hNPDPK1EVrJdIh7WtEiGo5Pve5VYONWXYrkOVdSunvVYciTD1VO5XOnS9xBRNA7P9wQcWX7SQ0MBMAue3WcHpcEhwB_9f3UFV7eTbUlxNEUDF3YEnuS1umG-ye4dOPPXY1UKAzjWv91miPJkDwNUcly38EOA9GR-r0DI908AvLmXunluUwpdx3HcRObv6owJ83yJYdLPE9h2CELHcczXP1okz8dwXszC7L2okUvESV9o7444rV01DmrVBXfaKaa76lnFfgqDgrXdTuMrX_OWWATRDdN5zxillaK-fsmVZqoUmW8sANn1ReUd34Auy7F5YCd6BVaAlhPYF7BczZgkLjt_f_q3XZttjuZuUjYD8gyQeYtGuGX27hQ0whXeCjdrgCb25Q5ARvq9QdSGPduGjsLVWEmp9gHGtrgocHTtOcYfyY-8Mr0nshqEDN7_npgtsDohNKwF5uH5Je2AO3XhknKZdO2nY-fYVLzI8rb57zTFwosaUlOXsV-MJZttzXRlQwhW3i4Q5rzX0QIurzE5DNcl9BUHTFHFwPqBtBrZ4er2WRw0trg&c=7db50594&v=3"
+          ],
+          "pos": "4",
+          "ttid": 1,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6IiIsIml1ZSI6Imh0dHBzOi8vcGl4LnVzLmNyaXRlby5uZXQvaW1nL2ltZz9jPTEmaD00MDAmaT0zMTUxMi01Mjc4ODM0ODUzMDc1ODg0MTQ1Jm09MCZxPTgwJnI9MCZ1PWh0dHBzJTNBJTJGJTJGY2RuLnNob3BpZnkuY29tJTJGcyUyRmZpbGVzJTJGMSUyRjEzNDYlMkY1NDczJTJGcHJvZHVjdHMlMkZpbWFnZTJfMV8zMmE2YzcwNi1jMGQ3LTQxMGYtOTM2ZS0yOThlZWMzNTYzYTguanBlZyUzRnYlM0QxNTIzMDMxNDQxJnY9MiZ3PTQwMCZzPU4xTkRiOE1xdS1ZT01SbWprNnZCLWkwMCIsInciOjYwMCwiaCI6MzM3LCJkIjoxLjUsImNzIjoxLCJmIjowfQ.jpg",
+            "width": 203,
+            "height": 170,
+            "resizeStrategy": "1"
+          },
+          "disclosure": {
+            "icon": "https://images.outbrain.com/Imaginarium/api/uuid/53ab1520402c2ade95cfbd4232430e936485c3f0deb70fda33c64d760d98a9a9/16/16",
+            "url": "https://info.criteo.com/privacy/informations?infonorm=3&partner=31512&campaignid=147185&zoneid=497019&bannerid=10008043&displayid=5aeaf8931aeb7c20ac2d2b0422292800&uaCap=0&aid=M/1wIHxpWmd1cFlSZ3VCV1B5WjArdHB0bCtkR2loaGwyRUcvOVBXMjliQVZZMDRFPXw=&u=%7CqWxZ3hg0j3g7hHbegiGmFXbcXW4vuAZZVJ1kzG47GfU%3D%7C"
+          }
+        },
+        {
+          "source_name": "Trip Masters - Europe",
+          "same_source": "false",
+          "source_display_name": "Trip Masters - Europe",
+          "pc_id": 63977089,
+          "adv_name": "Trip Masters - Europe",
+          "source_id": "5776982",
+          "orig_url": "https://cat.va.us.criteo.com/delivery/ckn.php?cppv=1&cpp=kjhdkXx1cFhMYWVUNURtUXBnem4vL3JPWUNSeWVpUnV0ZHNURDV0QThlOER6Rlg2Wk5rTUtWd1dDUnN6YmJYaXRITmtMeUhPaUdqdlgzZ1lwdDdZQzBlcjliZWlzTXNaSjA5V0tsbzFXZnM0TGVUWG51RENnenpGRlJMN0pzUTJ3Y1BxTkpXMEFJejhFNVB1cXFiRXIrb2QvNW82YjVQYm92anpGU0ZRTWpqb211TWxoc3NnMHFPSFpSMzVqdlIzR2IzVVFxOUlSVVJEN2F5clNZWDNIRHlzYStDa1Qwd1drYmdIUnJPK3p1djA3eG82QVpndnVuRFlEZnphUy9vSURuRkJJZDIwaXU0U3pFVlNhY3oxRmp1TUNQMU1UdWFJWlFVUUkzYmx2Y0tNanJmMjQ0SUhlSGVhQkk0bXNyZlBEeXA1R3w%3D&maxdest=https%3A%2F%2Fwww.tripmasters.com%2Feurope%2FItaly%2FItinerary_pk44878_Charms_of_Italy.aspx%3Futm_source%3Dcrit%26utm_medium%3Dcont%26utm_campaign%3Dcritcont_Europe-remktg-44878",
+          "ads_type": 1,
+          "rec_en_did": "G5na4XVj4YQtxuQskPFpHw",
+          "url": "https://paid.outbrain.com/network/redir?p=UiPVmKsJTc1NOPsICt25ADYDgpcdV8wHpN6Jp3MCaDzERwONiouMyc87bl6_eOnBgRym0zurohO0JGVz5THv93zGCxH5cA7d3beouOfbzX5uv2jTHcFJe_lKFdrMFg8LemzeyiSj6ieV7GGUPCkEElbE20QkV8_gJE8TqLeW5OcMBc_gvC47pVsHfSHZr5DhmRdy5XDJ-IfldaLqUxQoTAN7keJ_u551mvx6cji8-mWqEzWIYE1CPB-W89VjqLkaPpQ_zcmx4ieZWZVbaxIaI6zCVnlaR0qFYCcwbj4I2oulWsmRGFKkqEDyVxdgF9ZhPh5q9jLuzwu0zems2HXfJiM-cURnuzzb6E8VXeIgGFgOxG255mE8HZsS6SDd9pwdrpVkA6nObvc0F1t2P0G6duJXABFbNKOuYOhc8DzoswPmPWajDGEc8sGZQl1ysDJJy8CfRbeVajj529042G-0IC6gxq8v6Mxn2hW1NttKZ34iM1j30v4wOK4l45ck7DsGRY_jD_yqMyhZnWgqIMYhiK_RIcB1ix0dUvZKkXshu0Hlka6-3okz4n0TG7HczCJ2UB8t1YUFUB2RBhWqf4HsIHymR7kyVhUxpIHnjgawJdKEaUtPhZzEMBkURZWV2b85J8rrS4DvjTTkxhQ5aYXFyCE6qDaY5xNOqyxY_fprct8iMxYm9DM7Xm6aBqRCAu7s0n_spdM2yWny5V3JHgSl3IDdY907LJUYylO-XF0u0cyP9r0HUhbmIwtUptHfNcHld-s7s-IjP2KSqtyq1cC99Lw-evJzFiposEzD8hSWq6mQi2TvnEey8nGw_N1WIW15aKTji_ASLmO_oOQblOendj4Bi8vhTYIUVJnspYSUcUQC3UjHgMcCeH0cYFXvnwuIrr5q_uXZwk1yFMAOp7afoDlds4dpIW0vaiZnUuj4raese5QPEFEF_HqAgygbKZn113JpD31kRhv__U1MYSTse4KoSuFvHLkJcSuTzgNuNunO3MAZWEkxqiWAsJcBGR2ek0HtMkbGXThamZOPMC_Gxlf-r-GfW8E9T1Fl5Y9GQhjX4AG9Tsg11BxNpOVooCUQhLwuB1aJfi4pLLo5Tm5tPBeVsn4KVw6jKYpwTciP4FQ&c=579678f8&v=3",
+          "author": "",
+          "content": "Charms of Italy",
+          "pc_cmp_id": 1000234553,
+          "pixels": [
+            "https://cat.va.us.criteo.com/delivery/lgn.php?cppv=1&cpp=1O8WaXx1cFhMYWVUNURtUXBnem4vL3JPWUNSeWVpUnV0ZHNURDV0QThlOER6Rlg2Wk5rTUtWd1dDUnN6YmJYaXRITmtMeUhPaUdqdlgzZ1lwdDdZQzBlcjliZWlzTXNaSjA5V0tsbzFXZnM0TGVUWFdlR2NjTHcyN2pqd3phL3BzUUhVSzlYdkxib1E0OTAzQlFHM04yQ1N1V3N3K2ZyV0Z1VlBydWcwdmJLMy9FNlRTVXV4U01jbndkR2wxYVE5cW1TcXRMMXA3TlpETjE3TTM1S2FzM1ZvSTd6VnFTamR5dkh3d3ZaQ05XWUF3QnVGQTE5V2NiYjVZV015WVJGbnJ3NEpzRXA4SjFlM1IwNjkrTzExZU5ORDhzOVVEdGRCdXFtdy96VC83aHZYWitCVG9ZbGhxbDRBR3ZmemVCT0FQM1FPcHw%3D&z=0.1",
+            "https://amplify-imp.outbrain.com/pixel?p=nlV1YHXXXKgnJTkmjxGkpFTxM698svsc8pEXefndY7vgfsBDUQrxaBJa9R1UQIFl8Apn8w7kUmccXubms4OJ3O59KIWdGh7c6hSiPAQPlIEC4x5rxVWaIDUeuW8cKaVG0wcTtMDCa30mPYO229XmlcyNVt6-NxDWmxlP4SCBwGB6z76YPztiwGimmINJ79IC-8i-Lzu-Ai7BWRihMo5GVR45LObKdPDISVdx8KHSbrV4-58dErSB4v78mwACg-PD29WHh0CrcXKtArcPTIY0L5yi33sMEEltrFM0Ubw2pq2ouwyJYOJmRNG9xeajobl5rKIZyqwW3JiTjSBmwx5UYEXBobYK-fHius-h85p6TFj34bRpdc79J1F4swMsSm5vfLtDB_9_D23sl5SAlxxzQXqRtfRkViZkWZH1cJiZGUYT1yXeuwstf0dei_KHvC9Kp8PP8q1_LztQd3YPBgD6dZmNx4EBbj1jLf9esmqI5UgFDKxE42i82cUEN0UtJpGmdz2EOvzg3xpM25PtuLwWvMbkEPycxgJmXxYIk97excRRq8tqV1s8ZNclJi9x0dF3dG1IGHftCDO-ldOvy77uxNVPTo6vQ2VRvxJr2YeSCdFSFVANt0BnXlZOVzvx926TRbycNhNkKfoVTexW-dMq9yboBKsR0u4OEqhtJt4tOgabYV93BZFXRJjZnDUI0_3P9usRLTOTfmP7SCoqpZJfnVwU62C5bd1Ql8kH1FLXIlf6QjU5efooJ0Cl9xpEZ36kX1BJ7WkFN78dxwU6iwXoawcT-51TbcxvKnqI1AOwe3cOKelBWDgovXeNxq1lhIHDv42YiJQPOyQCRSOPsxxi1JGql-2iVoyiQrKd7-yJ8hOQaKzd1quXbs3oIztIKdZQ85r2OCpRcj2NRBCAzueZb1zqdZOysBvKu1CBxUdsNwjaQG3K0BQBkfa_tnkbw3ozfOt34vV_segn81d6cNZ_nEkbZu30ikcucbfcrkaTZchYXS0U1iw1ekgiiYpbeaq7yHvBgddx1XwS1JBm3F0S4FFieEm2FIsTgxOXhoEeNERkCNBB0uSgzZKcbqQfxrqK7VL-Q7N9zjy8s08zbeBCalqDBcCJNZsC2fLVueuL62KIZ8_s681UPADq-0e1kdvRLNhII7ptSzlWEs-5srEOpvnh_oCUM-wv9VJT0qsgal4L8AYbbO8bm1hOJHaC9x6V7vcE9bNRFETIoySu7A1GeMzSDs_-Urb3NKQMLFiqrTfOTKhL3hkMnW7eSsbqbZ3Av40Js-ITmZi-JJGHEuZbGtS8dl7XG4HP1lMNcwa7_62Zv1-epMjqfhaYmr-rV2VzaoKgKKv7Fzk_dSkpR6-ZHz4bBKvq7l5s6QJQ-MMlbry_6gR7__K9kAZ-X_JBgX6791rdkgST8Le6Rg9bSKjypeGKgcbThTrCMF8-JYJDX2vfy99EYJ3JtHwzQaPiu3JKnWYPXx8tF3tdCpJycnl3jQ&c=c6e0a0b6&v=3"
+          ],
+          "pos": "5",
+          "ttid": 1,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6IiIsIml1ZSI6Imh0dHBzOi8vcGl4LnVzLmNyaXRlby5uZXQvaW1nL2ltZz9jPTEmaD00MDAmaT0yMDY5NC02MDUxNzg2NjY0ODk0NzQ3OTExJm09MCZxPTgwJnI9MCZ1PWh0dHBzJTNBJTJGJTJGcGljdHVyZXMuc29sYXJkZXN0aW5hdGlvbnMuY29tJTJGaW1hZ2VzJTJGcGFja2FnZXMlMkZpdGFseSUyRnZlbmljZS1yaWFsdG9icmlkZ2VncmFuZGNhbmFsLTUwMC5qcGcmdj0yJnc9NDAwJnM9cktVUUU0WVFMOHlub1ZjWDl3cDRsZkVhIiwidyI6NjAwLCJoIjozMzcsImQiOjEuNSwiY3MiOjEsImYiOjB9.jpg",
+            "width": 380,
+            "height": 200,
+            "resizeStrategy": "1"
+          },
+          "disclosure": {
+            "icon": "https://images.outbrain.com/Imaginarium/api/uuid/53ab1520402c2ade95cfbd4232430e936485c3f0deb70fda33c64d760d98a9a9/16/16",
+            "url": "https://info.criteo.com/privacy/informations?infonorm=3&partner=20694&campaignid=103908&zoneid=497019&bannerid=8026466&displayid=5aeaf88fb53b093ea0cf522695d31901&uaCap=0&aid=JaS5nHxqVWdZMnF3a0FKQkhlaTN0b3UvUFVZazcxV08xdzUrNFdoZG5MNFVlOGI4PXw=&u=%7ClmlbfMxCHtb9q8HL68nDOVYcDxEO00XmstO98y%2BiIaw%3D%7C"
+          }
+        }
+      ]
+    },
+    "settings": {
+      "recMode": "strip",
+      "feedContent": "[{\"type\":\"widget\", \"id\":\"SFD_VRS_1\"},{\"type\":\"widget\", \"id\":\"SFD_SWP_1\"}]",
+      "apv": true,
+      "isSmartFeed": true,
+      "isSmartFeedInjectionEnabled": true
+    }
+  }
+}

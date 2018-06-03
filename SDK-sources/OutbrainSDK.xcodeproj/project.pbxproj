@@ -14,7 +14,6 @@
 				D8376BEF186E2F8C00B45FA3 /* ShellScript */,
 			);
 			dependencies = (
-				D8376BEE186E2F7800B45FA3 /* PBXTargetDependency */,
 			);
 			name = OBFramework;
 			productName = OBFramework;
@@ -22,186 +21,221 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		D8299EA018B28BB200196107 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C91A791871FEED005916A2 /* CoreGraphics.framework */; };
-		D82F1D7918564C7700D4DEA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F1D7818564C7700D4DEA8 /* Foundation.framework */; };
-		D82F1D8018564C7700D4DEA8 /* Outbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F1D7F18564C7700D4DEA8 /* Outbrain.m */; };
-		D82F1D8818564C7800D4DEA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F1D7818564C7700D4DEA8 /* Foundation.framework */; };
-		D82F1D9318564C7800D4DEA8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D82F1D9118564C7800D4DEA8 /* InfoPlist.strings */; };
-		D82F1D9518564C7800D4DEA8 /* OutbrainSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F1D9418564C7800D4DEA8 /* OutbrainSDKTests.m */; };
-		D8376BE7186E276500B45FA3 /* OutbrainSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D8376BE6186E276500B45FA3 /* OutbrainSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D849D10B1868BB4D00CB4B83 /* Outbrain_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D849D10A1868BB4D00CB4B83 /* Outbrain_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D87E89A9187CBD82005572D0 /* libOutbrainSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F1D7518564C7700D4DEA8 /* libOutbrainSDK.a */; };
-		D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */ = {isa = PBXBuildFile; fileRef = D82F1D7D18564C7700D4DEA8 /* Outbrain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E604CE731C427DC600D45C31 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = E604CE711C427D9000D45C31 /* module.modulemap */; };
-		E61C737B1D2A47D300DA1CB0 /* OBBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73791D2A47D300DA1CB0 /* OBBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C737C1D2A47D300DA1CB0 /* OBBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C737A1D2A47D300DA1CB0 /* OBBridge.m */; };
-		E61C73971D2A4B6100DA1CB0 /* OBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73911D2A4B6100DA1CB0 /* OBLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73981D2A4B6100DA1CB0 /* OBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73921D2A4B6100DA1CB0 /* OBLabel.m */; };
-		E61C73991D2A4B6100DA1CB0 /* OBViewabilityService.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73931D2A4B6100DA1CB0 /* OBViewabilityService.h */; };
-		E61C739A1D2A4B6100DA1CB0 /* OBViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73941D2A4B6100DA1CB0 /* OBViewabilityService.m */; };
-		E61C739B1D2A4B6100DA1CB0 /* UIView+Visible.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73951D2A4B6100DA1CB0 /* UIView+Visible.h */; };
-		E61C739C1D2A4B6100DA1CB0 /* UIView+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73961D2A4B6100DA1CB0 /* UIView+Visible.m */; };
-		E61C73B21D2A4C9300DA1CB0 /* OBContent.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C739F1D2A4C9300DA1CB0 /* OBContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73B31D2A4C9300DA1CB0 /* OBContent.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73A01D2A4C9300DA1CB0 /* OBContent.m */; };
-		E61C73B41D2A4C9300DA1CB0 /* OBContent_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A11D2A4C9300DA1CB0 /* OBContent_Private.h */; };
-		E61C73B51D2A4C9300DA1CB0 /* OBImage.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A21D2A4C9300DA1CB0 /* OBImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73B61D2A4C9300DA1CB0 /* OBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73A31D2A4C9300DA1CB0 /* OBImage.m */; };
-		E61C73B71D2A4C9300DA1CB0 /* OBRecommendation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A41D2A4C9300DA1CB0 /* OBRecommendation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73B81D2A4C9300DA1CB0 /* OBRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73A51D2A4C9300DA1CB0 /* OBRecommendation.m */; };
-		E61C73B91D2A4C9300DA1CB0 /* OBRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73A71D2A4C9300DA1CB0 /* OBRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73BA1D2A4C9300DA1CB0 /* OBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73A81D2A4C9300DA1CB0 /* OBRequest.m */; };
-		E61C73BB1D2A4C9300DA1CB0 /* OBRecommendationResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73AA1D2A4C9300DA1CB0 /* OBRecommendationResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73BC1D2A4C9300DA1CB0 /* OBRecommendationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73AB1D2A4C9300DA1CB0 /* OBRecommendationResponse.m */; };
-		E61C73BD1D2A4C9300DA1CB0 /* OBResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73AC1D2A4C9300DA1CB0 /* OBResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73BE1D2A4C9300DA1CB0 /* OBResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73AD1D2A4C9300DA1CB0 /* OBResponse.m */; };
-		E61C73BF1D2A4C9300DA1CB0 /* OBResponseRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73AE1D2A4C9300DA1CB0 /* OBResponseRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73C01D2A4C9300DA1CB0 /* OBResponseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73AF1D2A4C9300DA1CB0 /* OBResponseRequest.m */; };
-		E61C73C11D2A4C9300DA1CB0 /* OBSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73B01D2A4C9300DA1CB0 /* OBSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73C21D2A4C9300DA1CB0 /* OBSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73B11D2A4C9300DA1CB0 /* OBSettings.m */; };
-		E61C73D81D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73CA1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.h */; };
-		E61C73D91D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73CB1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.m */; };
-		E61C73DC1D2A4D4100DA1CB0 /* OBReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73D01D2A4D4100DA1CB0 /* OBReachability.h */; };
-		E61C73DD1D2A4D4100DA1CB0 /* OBReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73D11D2A4D4100DA1CB0 /* OBReachability.m */; };
-		E61C73E91D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73DF1D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73EA1D2A4DB800DA1CB0 /* OBAppleAdIdUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E01D2A4DB800DA1CB0 /* OBAppleAdIdUtil.m */; };
-		E61C73EB1D2A4DB800DA1CB0 /* OBErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E21D2A4DB800DA1CB0 /* OBErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61C73EC1D2A4DB800DA1CB0 /* OBErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E31D2A4DB800DA1CB0 /* OBErrors.m */; };
-		E61C73ED1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */; };
-		E61C73EE1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */; };
-		E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E627260F1FC2DF8E005CC644 /* OBUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E627260D1FC2DF8D005CC644 /* OBUtils.h */; };
-		E62726101FC2DF8E005CC644 /* OBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E627260E1FC2DF8D005CC644 /* OBUtils.m */; };
-		E682C4641F4DB47D00382289 /* OBTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E682C4631F4DB47D00382289 /* OBTestUtils.m */; };
-		E682C4661F4DB4CC00382289 /* OBParseODBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E682C4651F4DB4CC00382289 /* OBParseODBTests.m */; };
-		E682C46B1F4DB6D900382289 /* odb_normal_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E682C46A1F4DB6D900382289 /* odb_normal_response.json */; };
-		E699B8B11E30C69200FD5BE2 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
-		E699B8B31E30C6D100FD5BE2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */; };
-		E6B6847C1F8A5979004F4AEF /* OutbrainHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B6847B1F8A5979004F4AEF /* OutbrainHelperTests.m */; };
-		E6B6847F1F8BB55B004F4AEF /* OBNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B6847D1F8BB55B004F4AEF /* OBNetworkManager.h */; };
-		E6B684801F8BB55B004F4AEF /* OBNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B6847E1F8BB55B004F4AEF /* OBNetworkManager.m */; };
-		E6D136DD1F31EA38001E7407 /* OBDisclosure.h in Headers */ = {isa = PBXBuildFile; fileRef = E6D136DB1F31EA38001E7407 /* OBDisclosure.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E6D136DE1F31EA38001E7407 /* OBDisclosure.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D136DC1F31EA38001E7407 /* OBDisclosure.m */; };
-		E6D136E11F320942001E7407 /* OBAdsChoicesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E6D136DF1F320942001E7407 /* OBAdsChoicesManager.h */; };
-		E6D136E21F320942001E7407 /* OBAdsChoicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D136E01F320942001E7407 /* OBAdsChoicesManager.m */; };
-		E6E91F7A1D2D08E300A777F3 /* OutbrainHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E6E91F781D2D08E300A777F3 /* OutbrainHelper.h */; };
-		E6E91F7B1D2D08E300A777F3 /* OutbrainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6E91F791D2D08E300A777F3 /* OutbrainHelper.m */; };
-		FC820C1019DAF0A800ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */; };
+		E61E6B462083607B0016D79A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B3D2083607B0016D79A /* OutbrainSDK.framework */; };
+		E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */; };
+		E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BCD20836C180016D79A /* OBAppleAdIdUtil.h */; };
+		E61E6C1820836C180016D79A /* Outbrain_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BCE20836C180016D79A /* Outbrain_Private.h */; };
+		E61E6C1920836C180016D79A /* OBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD020836C180016D79A /* OBLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD120836C180016D79A /* OBViewabilityService.h */; };
+		E61E6C1B20836C180016D79A /* OBAdsChoicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD220836C180016D79A /* OBAdsChoicesManager.m */; };
+		E61E6C1C20836C180016D79A /* UIView+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD320836C180016D79A /* UIView+Visible.m */; };
+		E61E6C1D20836C180016D79A /* OBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD420836C180016D79A /* OBLabel.m */; };
+		E61E6C1E20836C180016D79A /* OBAdsChoicesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD520836C180016D79A /* OBAdsChoicesManager.h */; };
+		E61E6C1F20836C180016D79A /* OBViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD620836C180016D79A /* OBViewabilityService.m */; };
+		E61E6C2020836C180016D79A /* UIView+Visible.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD720836C180016D79A /* UIView+Visible.h */; };
+		E61E6C2120836C180016D79A /* OBBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD820836C180016D79A /* OBBridge.m */; };
+		E61E6C2220836C180016D79A /* OBNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BDA20836C180016D79A /* OBNetworkManager.h */; };
+		E61E6C2320836C180016D79A /* OBRecommendationRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BDB20836C180016D79A /* OBRecommendationRequestOperation.h */; };
+		E61E6C2420836C180016D79A /* OBReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BDD20836C180016D79A /* OBReachability.m */; };
+		E61E6C2520836C180016D79A /* OBReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BDE20836C180016D79A /* OBReachability.h */; };
+		E61E6C2720836C180016D79A /* OBNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BE020836C180016D79A /* OBNetworkManager.m */; };
+		E61E6C2820836C180016D79A /* OBRecommendationRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BE120836C180016D79A /* OBRecommendationRequestOperation.m */; };
+		E61E6C2920836C180016D79A /* OBSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BE420836C180016D79A /* OBSettings.m */; };
+		E61E6C2A20836C180016D79A /* OBResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BE520836C180016D79A /* OBResponse.m */; };
+		E61E6C2B20836C180016D79A /* OBResponseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BE620836C180016D79A /* OBResponseRequest.m */; };
+		E61E6C2C20836C180016D79A /* OBRecommendationResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BE720836C180016D79A /* OBRecommendationResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C2D20836C180016D79A /* OBResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BE820836C180016D79A /* OBResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C2E20836C180016D79A /* OBSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BE920836C180016D79A /* OBSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C2F20836C180016D79A /* OBResponseRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BEA20836C180016D79A /* OBResponseRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C3020836C180016D79A /* OBRecommendationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BEB20836C180016D79A /* OBRecommendationResponse.m */; };
+		E61E6C3120836C180016D79A /* OBContent.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BED20836C180016D79A /* OBContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C3220836C180016D79A /* OBDisclosure.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BEE20836C180016D79A /* OBDisclosure.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C3320836C180016D79A /* OBContent_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BEF20836C180016D79A /* OBContent_Private.h */; };
+		E61E6C3420836C180016D79A /* OBRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BF020836C180016D79A /* OBRecommendation.m */; };
+		E61E6C3520836C180016D79A /* OBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BF120836C180016D79A /* OBImage.m */; };
+		E61E6C3620836C180016D79A /* OBContent.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BF220836C180016D79A /* OBContent.m */; };
+		E61E6C3720836C180016D79A /* OBDisclosure.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BF320836C180016D79A /* OBDisclosure.m */; };
+		E61E6C3820836C180016D79A /* OBRecommendation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BF420836C180016D79A /* OBRecommendation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C3920836C180016D79A /* OBImage.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BF520836C180016D79A /* OBImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C3A20836C180016D79A /* OBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BF720836C180016D79A /* OBRequest.m */; };
+		E61E6C3B20836C180016D79A /* OBRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BF820836C180016D79A /* OBRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C3C20836C180016D79A /* Outbrain.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BF920836C180016D79A /* Outbrain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C3D20836C180016D79A /* OutbrainSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BFC20836C180016D79A /* OutbrainSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C3F20836C180016D79A /* OBErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BFF20836C180016D79A /* OBErrors.m */; };
+		E61E6C4020836C180016D79A /* OBErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0020836C180016D79A /* OBErrors.h */; };
+		E61E6C4120836C180016D79A /* OBBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0120836C180016D79A /* OBBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C4220836C180016D79A /* Outbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0220836C180016D79A /* Outbrain.m */; };
+		E61E6C4320836C180016D79A /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0420836C180016D79A /* OBProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6C4420836C180016D79A /* OBUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0620836C180016D79A /* OBUtils.h */; };
+		E61E6C4520836C180016D79A /* OutbrainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0720836C180016D79A /* OutbrainHelper.m */; };
+		E61E6C4620836C180016D79A /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0820836C180016D79A /* OBRecommendationsTokenHandler.m */; };
+		E61E6C4720836C180016D79A /* OutbrainHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0920836C180016D79A /* OutbrainHelper.h */; };
+		E61E6C4820836C180016D79A /* OBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0A20836C180016D79A /* OBUtils.m */; };
+		E61E6C4920836C180016D79A /* OBRecommendationsTokenHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0B20836C180016D79A /* OBRecommendationsTokenHandler.h */; };
+		E61E6C5220836DF00016D79A /* OutbrainHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1420836C180016D79A /* OutbrainHelperTests.m */; };
+		E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1320836C180016D79A /* OBParseODBTests.m */; };
+		E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0F20836C180016D79A /* OBTestUtils.m */; };
+		E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1020836C180016D79A /* OutbrainSDKTests.m */; };
+		E61E6CB92085D98F0016D79A /* SFCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CA72085D98F0016D79A /* SFCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6CBA2085D98F0016D79A /* SFHorizontalTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CA92085D98F0016D79A /* SFHorizontalTableViewCell.h */; };
+		E61E6CBB2085D98F0016D79A /* SFHorizontalCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAA2085D98F0016D79A /* SFHorizontalCollectionViewCell.h */; };
+		E61E6CBC2085D98F0016D79A /* SFHorizontalView.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAC2085D98F0016D79A /* SFHorizontalView.h */; };
+		E61E6CBD2085D98F0016D79A /* PageCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */; };
+		E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */; };
+		E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */; };
+		E61E6CC02085D98F0016D79A /* SFHorizontalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB02085D98F0016D79A /* SFHorizontalTableViewCell.m */; };
+		E61E6CC12085D98F0016D79A /* SFHorizontalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB12085D98F0016D79A /* SFHorizontalCollectionViewCell.m */; };
+		E61E6CC22085D98F0016D79A /* SFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB22085D98F0016D79A /* SFTableViewCell.m */; };
+		E61E6CC32085D98F0016D79A /* SmartFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB32085D98F0016D79A /* SmartFeedManager.m */; };
+		E61E6CC42085D98F0016D79A /* SFUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB42085D98F0016D79A /* SFUtils.h */; };
+		E61E6CC52085D98F0016D79A /* SFCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB52085D98F0016D79A /* SFCollectionViewCell.m */; };
+		E61E6CC62085D98F0016D79A /* SFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB62085D98F0016D79A /* SFUtils.m */; };
+		E61E6CC72085D98F0016D79A /* SmartFeedManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB72085D98F0016D79A /* SmartFeedManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6CC82085D98F0016D79A /* SFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB82085D98F0016D79A /* SFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61E6CFA208610AF0016D79A /* SFHorizontalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */; };
+		E61E6CFE208611380016D79A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFD208611380016D79A /* Assets.xcassets */; };
+		E61E6D00208737F00016D79A /* SFHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */; };
+		E61E6D06208E0F780016D79A /* SFItemData.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6D04208E0F780016D79A /* SFItemData.h */; };
+		E61E6D07208E0F780016D79A /* SFItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6D05208E0F780016D79A /* SFItemData.m */; };
+		E63175CD20BC1BAE0077F589 /* SFTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63175CA20BC1BAE0077F589 /* SFTableViewCell.xib */; };
+		E63175CE20BC1BAE0077F589 /* SFCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63175CB20BC1BAE0077F589 /* SFCollectionViewCell.xib */; };
+		E63175CF20BC1BAE0077F589 /* SFHorizontalItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63175CC20BC1BAE0077F589 /* SFHorizontalItemCell.xib */; };
+		E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E61E6C0E20836C180016D79A /* odb_normal_response.json */; };
+		E6EA3788209B30E2009B687B /* smart_feed_response_1.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3785209B30E1009B687B /* smart_feed_response_1.json */; };
+		E6EA3789209B30E2009B687B /* smart_feed_response_2.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3786209B30E1009B687B /* smart_feed_response_2.json */; };
+		E6EA378A209B30E2009B687B /* smart_feed_response_3.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3787209B30E1009B687B /* smart_feed_response_3.json */; };
+		E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */; };
+		E6EA378F209B376F009B687B /* smart_feed_response_4.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378D209B376E009B687B /* smart_feed_response_4.json */; };
+		E6EA3790209B376F009B687B /* smart_feed_response_5.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378E209B376E009B687B /* smart_feed_response_5.json */; };
+		E6EA37BC20A04B2F009B687B /* SFImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = E6EA37BA20A04B2F009B687B /* SFImageLoader.h */; };
+		E6EA37BD20A04B2F009B687B /* SFImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA37BB20A04B2F009B687B /* SFImageLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D8376BED186E2F7800B45FA3 /* PBXContainerItemProxy */ = {
+		E61E6B472083607B0016D79A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D82F1D6D18564C7700D4DEA8 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D82F1D7418564C7700D4DEA8;
-			remoteInfo = OutbrainSDK;
+			remoteGlobalIDString = E61E6B3C2083607B0016D79A;
+			remoteInfo = DynamicOutbrainSDK;
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		E604CE721C427DBC00D45C31 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = OutbrainSDK.framework/Modules;
-			dstSubfolderSpec = 16;
-			files = (
-				E604CE731C427DC600D45C31 /* module.modulemap in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		D82F1D7518564C7700D4DEA8 /* libOutbrainSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOutbrainSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D82F1D7818564C7700D4DEA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D82F1D7C18564C7700D4DEA8 /* OutbrainSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OutbrainSDK-Prefix.pch"; sourceTree = "<group>"; };
-		D82F1D7D18564C7700D4DEA8 /* Outbrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Outbrain.h; sourceTree = "<group>"; };
-		D82F1D7F18564C7700D4DEA8 /* Outbrain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Outbrain.m; sourceTree = "<group>"; };
-		D82F1D8518564C7800D4DEA8 /* OutbrainSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutbrainSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D82F1D9018564C7800D4DEA8 /* OutbrainSDKTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OutbrainSDKTests-Info.plist"; sourceTree = "<group>"; };
-		D82F1D9218564C7800D4DEA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D82F1D9418564C7800D4DEA8 /* OutbrainSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutbrainSDKTests.m; sourceTree = "<group>"; };
-		D8376BE6186E276500B45FA3 /* OutbrainSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutbrainSDK.h; sourceTree = "<group>"; };
-		D849D10A1868BB4D00CB4B83 /* Outbrain_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outbrain_Private.h; sourceTree = "<group>"; };
 		D8C91A791871FEED005916A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8D1FD60187327CB0099831C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D8D1FD62187327D20099831C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E604CE711C427D9000D45C31 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		E61C73791D2A47D300DA1CB0 /* OBBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBridge.h; sourceTree = "<group>"; };
-		E61C737A1D2A47D300DA1CB0 /* OBBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBridge.m; sourceTree = "<group>"; };
-		E61C73911D2A4B6100DA1CB0 /* OBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBLabel.h; sourceTree = "<group>"; };
-		E61C73921D2A4B6100DA1CB0 /* OBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBLabel.m; sourceTree = "<group>"; };
-		E61C73931D2A4B6100DA1CB0 /* OBViewabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBViewabilityService.h; sourceTree = "<group>"; };
-		E61C73941D2A4B6100DA1CB0 /* OBViewabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityService.m; sourceTree = "<group>"; };
-		E61C73951D2A4B6100DA1CB0 /* UIView+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Visible.h"; sourceTree = "<group>"; };
-		E61C73961D2A4B6100DA1CB0 /* UIView+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Visible.m"; sourceTree = "<group>"; };
-		E61C739F1D2A4C9300DA1CB0 /* OBContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBContent.h; sourceTree = "<group>"; };
-		E61C73A01D2A4C9300DA1CB0 /* OBContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBContent.m; sourceTree = "<group>"; };
-		E61C73A11D2A4C9300DA1CB0 /* OBContent_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBContent_Private.h; sourceTree = "<group>"; };
-		E61C73A21D2A4C9300DA1CB0 /* OBImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBImage.h; sourceTree = "<group>"; };
-		E61C73A31D2A4C9300DA1CB0 /* OBImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBImage.m; sourceTree = "<group>"; };
-		E61C73A41D2A4C9300DA1CB0 /* OBRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendation.h; sourceTree = "<group>"; };
-		E61C73A51D2A4C9300DA1CB0 /* OBRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendation.m; sourceTree = "<group>"; };
-		E61C73A71D2A4C9300DA1CB0 /* OBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRequest.h; sourceTree = "<group>"; };
-		E61C73A81D2A4C9300DA1CB0 /* OBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRequest.m; sourceTree = "<group>"; };
-		E61C73AA1D2A4C9300DA1CB0 /* OBRecommendationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationResponse.h; sourceTree = "<group>"; };
-		E61C73AB1D2A4C9300DA1CB0 /* OBRecommendationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationResponse.m; sourceTree = "<group>"; };
-		E61C73AC1D2A4C9300DA1CB0 /* OBResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBResponse.h; sourceTree = "<group>"; };
-		E61C73AD1D2A4C9300DA1CB0 /* OBResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponse.m; sourceTree = "<group>"; };
-		E61C73AE1D2A4C9300DA1CB0 /* OBResponseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBResponseRequest.h; sourceTree = "<group>"; };
-		E61C73AF1D2A4C9300DA1CB0 /* OBResponseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponseRequest.m; sourceTree = "<group>"; };
-		E61C73B01D2A4C9300DA1CB0 /* OBSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBSettings.h; sourceTree = "<group>"; };
-		E61C73B11D2A4C9300DA1CB0 /* OBSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSettings.m; sourceTree = "<group>"; };
-		E61C73CA1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationRequestOperation.h; sourceTree = "<group>"; };
-		E61C73CB1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationRequestOperation.m; sourceTree = "<group>"; };
-		E61C73CF1D2A4D4100DA1CB0 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		E61C73D01D2A4D4100DA1CB0 /* OBReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBReachability.h; sourceTree = "<group>"; };
-		E61C73D11D2A4D4100DA1CB0 /* OBReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBReachability.m; sourceTree = "<group>"; };
-		E61C73DF1D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAppleAdIdUtil.h; sourceTree = "<group>"; };
-		E61C73E01D2A4DB800DA1CB0 /* OBAppleAdIdUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAppleAdIdUtil.m; sourceTree = "<group>"; };
-		E61C73E21D2A4DB800DA1CB0 /* OBErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBErrors.h; sourceTree = "<group>"; };
-		E61C73E31D2A4DB800DA1CB0 /* OBErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBErrors.m; sourceTree = "<group>"; };
-		E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
-		E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationsTokenHandler.m; sourceTree = "<group>"; };
-		E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBProtocols.h; sourceTree = "<group>"; };
-		E627260D1FC2DF8D005CC644 /* OBUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBUtils.h; sourceTree = "<group>"; };
-		E627260E1FC2DF8D005CC644 /* OBUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBUtils.m; sourceTree = "<group>"; };
-		E682C4621F4DB47D00382289 /* OBTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBTestUtils.h; sourceTree = "<group>"; };
-		E682C4631F4DB47D00382289 /* OBTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBTestUtils.m; sourceTree = "<group>"; };
-		E682C4651F4DB4CC00382289 /* OBParseODBTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBParseODBTests.m; sourceTree = "<group>"; };
-		E682C46A1F4DB6D900382289 /* odb_normal_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = odb_normal_response.json; sourceTree = "<group>"; };
+		E61E6B3D2083607B0016D79A /* OutbrainSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OutbrainSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E61E6B452083607B0016D79A /* OutbrainSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutbrainSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAppleAdIdUtil.m; sourceTree = "<group>"; };
+		E61E6BCD20836C180016D79A /* OBAppleAdIdUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAppleAdIdUtil.h; sourceTree = "<group>"; };
+		E61E6BCE20836C180016D79A /* Outbrain_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outbrain_Private.h; sourceTree = "<group>"; };
+		E61E6BD020836C180016D79A /* OBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBLabel.h; sourceTree = "<group>"; };
+		E61E6BD120836C180016D79A /* OBViewabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBViewabilityService.h; sourceTree = "<group>"; };
+		E61E6BD220836C180016D79A /* OBAdsChoicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAdsChoicesManager.m; sourceTree = "<group>"; };
+		E61E6BD320836C180016D79A /* UIView+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Visible.m"; sourceTree = "<group>"; };
+		E61E6BD420836C180016D79A /* OBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBLabel.m; sourceTree = "<group>"; };
+		E61E6BD520836C180016D79A /* OBAdsChoicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAdsChoicesManager.h; sourceTree = "<group>"; };
+		E61E6BD620836C180016D79A /* OBViewabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityService.m; sourceTree = "<group>"; };
+		E61E6BD720836C180016D79A /* UIView+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Visible.h"; sourceTree = "<group>"; };
+		E61E6BD820836C180016D79A /* OBBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBridge.m; sourceTree = "<group>"; };
+		E61E6BDA20836C180016D79A /* OBNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNetworkManager.h; sourceTree = "<group>"; };
+		E61E6BDB20836C180016D79A /* OBRecommendationRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationRequestOperation.h; sourceTree = "<group>"; };
+		E61E6BDD20836C180016D79A /* OBReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBReachability.m; sourceTree = "<group>"; };
+		E61E6BDE20836C180016D79A /* OBReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBReachability.h; sourceTree = "<group>"; };
+		E61E6BDF20836C180016D79A /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		E61E6BE020836C180016D79A /* OBNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNetworkManager.m; sourceTree = "<group>"; };
+		E61E6BE120836C180016D79A /* OBRecommendationRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationRequestOperation.m; sourceTree = "<group>"; };
+		E61E6BE420836C180016D79A /* OBSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSettings.m; sourceTree = "<group>"; };
+		E61E6BE520836C180016D79A /* OBResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponse.m; sourceTree = "<group>"; };
+		E61E6BE620836C180016D79A /* OBResponseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBResponseRequest.m; sourceTree = "<group>"; };
+		E61E6BE720836C180016D79A /* OBRecommendationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationResponse.h; sourceTree = "<group>"; };
+		E61E6BE820836C180016D79A /* OBResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBResponse.h; sourceTree = "<group>"; };
+		E61E6BE920836C180016D79A /* OBSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBSettings.h; sourceTree = "<group>"; };
+		E61E6BEA20836C180016D79A /* OBResponseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBResponseRequest.h; sourceTree = "<group>"; };
+		E61E6BEB20836C180016D79A /* OBRecommendationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationResponse.m; sourceTree = "<group>"; };
+		E61E6BED20836C180016D79A /* OBContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBContent.h; sourceTree = "<group>"; };
+		E61E6BEE20836C180016D79A /* OBDisclosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBDisclosure.h; sourceTree = "<group>"; };
+		E61E6BEF20836C180016D79A /* OBContent_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBContent_Private.h; sourceTree = "<group>"; };
+		E61E6BF020836C180016D79A /* OBRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendation.m; sourceTree = "<group>"; };
+		E61E6BF120836C180016D79A /* OBImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBImage.m; sourceTree = "<group>"; };
+		E61E6BF220836C180016D79A /* OBContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBContent.m; sourceTree = "<group>"; };
+		E61E6BF320836C180016D79A /* OBDisclosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBDisclosure.m; sourceTree = "<group>"; };
+		E61E6BF420836C180016D79A /* OBRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendation.h; sourceTree = "<group>"; };
+		E61E6BF520836C180016D79A /* OBImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBImage.h; sourceTree = "<group>"; };
+		E61E6BF720836C180016D79A /* OBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRequest.m; sourceTree = "<group>"; };
+		E61E6BF820836C180016D79A /* OBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRequest.h; sourceTree = "<group>"; };
+		E61E6BF920836C180016D79A /* Outbrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outbrain.h; sourceTree = "<group>"; };
+		E61E6BFC20836C180016D79A /* OutbrainSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutbrainSDK.h; sourceTree = "<group>"; };
+		E61E6BFD20836C180016D79A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E61E6BFF20836C180016D79A /* OBErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBErrors.m; sourceTree = "<group>"; };
+		E61E6C0020836C180016D79A /* OBErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBErrors.h; sourceTree = "<group>"; };
+		E61E6C0120836C180016D79A /* OBBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBridge.h; sourceTree = "<group>"; };
+		E61E6C0220836C180016D79A /* Outbrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outbrain.m; sourceTree = "<group>"; };
+		E61E6C0420836C180016D79A /* OBProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBProtocols.h; sourceTree = "<group>"; };
+		E61E6C0620836C180016D79A /* OBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUtils.h; sourceTree = "<group>"; };
+		E61E6C0720836C180016D79A /* OutbrainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutbrainHelper.m; sourceTree = "<group>"; };
+		E61E6C0820836C180016D79A /* OBRecommendationsTokenHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationsTokenHandler.m; sourceTree = "<group>"; };
+		E61E6C0920836C180016D79A /* OutbrainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutbrainHelper.h; sourceTree = "<group>"; };
+		E61E6C0A20836C180016D79A /* OBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBUtils.m; sourceTree = "<group>"; };
+		E61E6C0B20836C180016D79A /* OBRecommendationsTokenHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationsTokenHandler.h; sourceTree = "<group>"; };
+		E61E6C0E20836C180016D79A /* odb_normal_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = odb_normal_response.json; sourceTree = "<group>"; };
+		E61E6C0F20836C180016D79A /* OBTestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBTestUtils.m; sourceTree = "<group>"; };
+		E61E6C1020836C180016D79A /* OutbrainSDKTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutbrainSDKTests.m; sourceTree = "<group>"; };
+		E61E6C1120836C180016D79A /* OBTestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBTestUtils.h; sourceTree = "<group>"; };
+		E61E6C1320836C180016D79A /* OBParseODBTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBParseODBTests.m; sourceTree = "<group>"; };
+		E61E6C1420836C180016D79A /* OutbrainHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutbrainHelperTests.m; sourceTree = "<group>"; };
+		E61E6C1520836C180016D79A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E61E6CA72085D98F0016D79A /* SFCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCollectionViewCell.h; sourceTree = "<group>"; };
+		E61E6CA92085D98F0016D79A /* SFHorizontalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHorizontalTableViewCell.h; sourceTree = "<group>"; };
+		E61E6CAA2085D98F0016D79A /* SFHorizontalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHorizontalCollectionViewCell.h; sourceTree = "<group>"; };
+		E61E6CAC2085D98F0016D79A /* SFHorizontalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHorizontalView.h; sourceTree = "<group>"; };
+		E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageCollectionLayout.m; sourceTree = "<group>"; };
+		E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalView.m; sourceTree = "<group>"; };
+		E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageCollectionLayout.h; sourceTree = "<group>"; };
+		E61E6CB02085D98F0016D79A /* SFHorizontalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalTableViewCell.m; sourceTree = "<group>"; };
+		E61E6CB12085D98F0016D79A /* SFHorizontalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalCollectionViewCell.m; sourceTree = "<group>"; };
+		E61E6CB22085D98F0016D79A /* SFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewCell.m; sourceTree = "<group>"; };
+		E61E6CB32085D98F0016D79A /* SmartFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartFeedManager.m; sourceTree = "<group>"; };
+		E61E6CB42085D98F0016D79A /* SFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUtils.h; sourceTree = "<group>"; };
+		E61E6CB52085D98F0016D79A /* SFCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFCollectionViewCell.m; sourceTree = "<group>"; };
+		E61E6CB62085D98F0016D79A /* SFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUtils.m; sourceTree = "<group>"; };
+		E61E6CB72085D98F0016D79A /* SmartFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartFeedManager.h; sourceTree = "<group>"; };
+		E61E6CB82085D98F0016D79A /* SFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewCell.h; sourceTree = "<group>"; };
+		E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalTableViewCell.xib; sourceTree = "<group>"; };
+		E61E6CFD208611380016D79A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
+		E61E6D04208E0F780016D79A /* SFItemData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFItemData.h; sourceTree = "<group>"; };
+		E61E6D05208E0F780016D79A /* SFItemData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFItemData.m; sourceTree = "<group>"; };
+		E63175CA20BC1BAE0077F589 /* SFTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTableViewCell.xib; sourceTree = "<group>"; };
+		E63175CB20BC1BAE0077F589 /* SFCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFCollectionViewCell.xib; sourceTree = "<group>"; };
+		E63175CC20BC1BAE0077F589 /* SFHorizontalItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalItemCell.xib; sourceTree = "<group>"; };
 		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		E6B6847B1F8A5979004F4AEF /* OutbrainHelperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutbrainHelperTests.m; sourceTree = "<group>"; };
-		E6B6847D1F8BB55B004F4AEF /* OBNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBNetworkManager.h; sourceTree = "<group>"; };
-		E6B6847E1F8BB55B004F4AEF /* OBNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBNetworkManager.m; sourceTree = "<group>"; };
-		E6D136DB1F31EA38001E7407 /* OBDisclosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBDisclosure.h; sourceTree = "<group>"; };
-		E6D136DC1F31EA38001E7407 /* OBDisclosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBDisclosure.m; sourceTree = "<group>"; };
-		E6D136DF1F320942001E7407 /* OBAdsChoicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAdsChoicesManager.h; sourceTree = "<group>"; };
-		E6D136E01F320942001E7407 /* OBAdsChoicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAdsChoicesManager.m; sourceTree = "<group>"; };
-		E6E91F781D2D08E300A777F3 /* OutbrainHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutbrainHelper.h; sourceTree = "<group>"; };
-		E6E91F791D2D08E300A777F3 /* OutbrainHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutbrainHelper.m; sourceTree = "<group>"; };
+		E6EA3785209B30E1009B687B /* smart_feed_response_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_1.json; sourceTree = "<group>"; };
+		E6EA3786209B30E1009B687B /* smart_feed_response_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_2.json; sourceTree = "<group>"; };
+		E6EA3787209B30E1009B687B /* smart_feed_response_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_3.json; sourceTree = "<group>"; };
+		E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSmartFeedTests.m; sourceTree = "<group>"; };
+		E6EA378D209B376E009B687B /* smart_feed_response_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_4.json; sourceTree = "<group>"; };
+		E6EA378E209B376E009B687B /* smart_feed_response_5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_5.json; sourceTree = "<group>"; };
+		E6EA37BA20A04B2F009B687B /* SFImageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFImageLoader.h; sourceTree = "<group>"; };
+		E6EA37BB20A04B2F009B687B /* SFImageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFImageLoader.m; sourceTree = "<group>"; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D82F1D7218564C7700D4DEA8 /* Frameworks */ = {
+		E61E6B392083607B0016D79A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC820C1019DAF0A800ABAD89 /* AdSupport.framework in Frameworks */,
-				D82F1D7918564C7700D4DEA8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D82F1D8218564C7800D4DEA8 /* Frameworks */ = {
+		E61E6B422083607B0016D79A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E699B8B31E30C6D100FD5BE2 /* SystemConfiguration.framework in Frameworks */,
-				D82F1D8818564C7800D4DEA8 /* Foundation.framework in Frameworks */,
-				E699B8B11E30C69200FD5BE2 /* AdSupport.framework in Frameworks */,
-				D8299EA018B28BB200196107 /* CoreGraphics.framework in Frameworks */,
-				D87E89A9187CBD82005572D0 /* libOutbrainSDK.a in Frameworks */,
+				E61E6B462083607B0016D79A /* OutbrainSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,8 +245,8 @@
 		D82F1D6C18564C7700D4DEA8 = {
 			isa = PBXGroup;
 			children = (
-				D82F1D7A18564C7700D4DEA8 /* OutbrainSDK */,
-				D82F1D8E18564C7800D4DEA8 /* OutbrainSDKTests */,
+				E61E6BCA20836C180016D79A /* OutbrainSDK */,
+				E61E6C0C20836C180016D79A /* OutbrainSDKTests */,
 				D82F1D7718564C7700D4DEA8 /* Frameworks */,
 				D82F1D7618564C7700D4DEA8 /* Products */,
 			);
@@ -221,8 +255,8 @@
 		D82F1D7618564C7700D4DEA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D82F1D7518564C7700D4DEA8 /* libOutbrainSDK.a */,
-				D82F1D8518564C7800D4DEA8 /* OutbrainSDKTests.xctest */,
+				E61E6B3D2083607B0016D79A /* OutbrainSDK.framework */,
+				E61E6B452083607B0016D79A /* OutbrainSDKTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,267 +274,331 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D82F1D7A18564C7700D4DEA8 /* OutbrainSDK */ = {
+		E61E6BCA20836C180016D79A /* OutbrainSDK */ = {
 			isa = PBXGroup;
 			children = (
-				E61C73DE1D2A4DB800DA1CB0 /* AdIds */,
-				E61C73E11D2A4DB800DA1CB0 /* Errors */,
-				E61C73E41D2A4DB800DA1CB0 /* Helpers */,
-				E61C73E71D2A4DB800DA1CB0 /* Protocols */,
-				E61C73C31D2A4D4100DA1CB0 /* Network */,
-				E61C739D1D2A4C9300DA1CB0 /* Models */,
-				E61C73901D2A4B6100DA1CB0 /* Viewability */,
-				D82F1D7D18564C7700D4DEA8 /* Outbrain.h */,
-				D82F1D7F18564C7700D4DEA8 /* Outbrain.m */,
-				E61C73791D2A47D300DA1CB0 /* OBBridge.h */,
-				E61C737A1D2A47D300DA1CB0 /* OBBridge.m */,
-				D849D10A1868BB4D00CB4B83 /* Outbrain_Private.h */,
-				D82F1D7B18564C7700D4DEA8 /* Supporting Files */,
-				D8376BE6186E276500B45FA3 /* OutbrainSDK.h */,
+				E61E6CFD208611380016D79A /* Assets.xcassets */,
+				E61E6CA62085D98F0016D79A /* SmartFeed */,
+				E61E6BCB20836C180016D79A /* AdIds */,
+				E61E6BCF20836C180016D79A /* Viewability */,
+				E61E6BD920836C180016D79A /* Network */,
+				E61E6BE220836C180016D79A /* Models */,
+				E61E6BFA20836C180016D79A /* SupportingFiles */,
+				E61E6BFE20836C180016D79A /* Errors */,
+				E61E6C0120836C180016D79A /* OBBridge.h */,
+				E61E6BD820836C180016D79A /* OBBridge.m */,
+				E61E6BCE20836C180016D79A /* Outbrain_Private.h */,
+				E61E6BF920836C180016D79A /* Outbrain.h */,
+				E61E6C0220836C180016D79A /* Outbrain.m */,
+				E61E6C0320836C180016D79A /* Protocols */,
+				E61E6C0520836C180016D79A /* Helpers */,
 			);
 			path = OutbrainSDK;
 			sourceTree = "<group>";
 		};
-		D82F1D7B18564C7700D4DEA8 /* Supporting Files */ = {
+		E61E6BCB20836C180016D79A /* AdIds */ = {
 			isa = PBXGroup;
 			children = (
-				E604CE711C427D9000D45C31 /* module.modulemap */,
-				D82F1D7C18564C7700D4DEA8 /* OutbrainSDK-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D82F1D8E18564C7800D4DEA8 /* OutbrainSDKTests */ = {
-			isa = PBXGroup;
-			children = (
-				E682C4691F4DB6D900382289 /* mock_responses */,
-				E682C4621F4DB47D00382289 /* OBTestUtils.h */,
-				E682C4631F4DB47D00382289 /* OBTestUtils.m */,
-				D82F1D9418564C7800D4DEA8 /* OutbrainSDKTests.m */,
-				E682C4651F4DB4CC00382289 /* OBParseODBTests.m */,
-				E6B6847B1F8A5979004F4AEF /* OutbrainHelperTests.m */,
-				D82F1D8F18564C7800D4DEA8 /* Supporting Files */,
-			);
-			path = OutbrainSDKTests;
-			sourceTree = "<group>";
-		};
-		D82F1D8F18564C7800D4DEA8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D82F1D9018564C7800D4DEA8 /* OutbrainSDKTests-Info.plist */,
-				D82F1D9118564C7800D4DEA8 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E61C73901D2A4B6100DA1CB0 /* Viewability */ = {
-			isa = PBXGroup;
-			children = (
-				E61C73911D2A4B6100DA1CB0 /* OBLabel.h */,
-				E61C73921D2A4B6100DA1CB0 /* OBLabel.m */,
-				E6D136DF1F320942001E7407 /* OBAdsChoicesManager.h */,
-				E6D136E01F320942001E7407 /* OBAdsChoicesManager.m */,
-				E61C73931D2A4B6100DA1CB0 /* OBViewabilityService.h */,
-				E61C73941D2A4B6100DA1CB0 /* OBViewabilityService.m */,
-				E61C73951D2A4B6100DA1CB0 /* UIView+Visible.h */,
-				E61C73961D2A4B6100DA1CB0 /* UIView+Visible.m */,
-			);
-			path = Viewability;
-			sourceTree = "<group>";
-		};
-		E61C739D1D2A4C9300DA1CB0 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				E61C739E1D2A4C9300DA1CB0 /* Content */,
-				E61C73A61D2A4C9300DA1CB0 /* Requests */,
-				E61C73A91D2A4C9300DA1CB0 /* Responses */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		E61C739E1D2A4C9300DA1CB0 /* Content */ = {
-			isa = PBXGroup;
-			children = (
-				E61C739F1D2A4C9300DA1CB0 /* OBContent.h */,
-				E61C73A01D2A4C9300DA1CB0 /* OBContent.m */,
-				E61C73A11D2A4C9300DA1CB0 /* OBContent_Private.h */,
-				E61C73A21D2A4C9300DA1CB0 /* OBImage.h */,
-				E61C73A31D2A4C9300DA1CB0 /* OBImage.m */,
-				E61C73A41D2A4C9300DA1CB0 /* OBRecommendation.h */,
-				E61C73A51D2A4C9300DA1CB0 /* OBRecommendation.m */,
-				E6D136DB1F31EA38001E7407 /* OBDisclosure.h */,
-				E6D136DC1F31EA38001E7407 /* OBDisclosure.m */,
-			);
-			path = Content;
-			sourceTree = "<group>";
-		};
-		E61C73A61D2A4C9300DA1CB0 /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-				E61C73A71D2A4C9300DA1CB0 /* OBRequest.h */,
-				E61C73A81D2A4C9300DA1CB0 /* OBRequest.m */,
-			);
-			path = Requests;
-			sourceTree = "<group>";
-		};
-		E61C73A91D2A4C9300DA1CB0 /* Responses */ = {
-			isa = PBXGroup;
-			children = (
-				E61C73AA1D2A4C9300DA1CB0 /* OBRecommendationResponse.h */,
-				E61C73AB1D2A4C9300DA1CB0 /* OBRecommendationResponse.m */,
-				E61C73AC1D2A4C9300DA1CB0 /* OBResponse.h */,
-				E61C73AD1D2A4C9300DA1CB0 /* OBResponse.m */,
-				E61C73AE1D2A4C9300DA1CB0 /* OBResponseRequest.h */,
-				E61C73AF1D2A4C9300DA1CB0 /* OBResponseRequest.m */,
-				E61C73B01D2A4C9300DA1CB0 /* OBSettings.h */,
-				E61C73B11D2A4C9300DA1CB0 /* OBSettings.m */,
-			);
-			path = Responses;
-			sourceTree = "<group>";
-		};
-		E61C73C31D2A4D4100DA1CB0 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				E61C73CA1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.h */,
-				E61C73CB1D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.m */,
-				E61C73CE1D2A4D4100DA1CB0 /* Reachability */,
-				E6B6847D1F8BB55B004F4AEF /* OBNetworkManager.h */,
-				E6B6847E1F8BB55B004F4AEF /* OBNetworkManager.m */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		E61C73CE1D2A4D4100DA1CB0 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				E61C73CF1D2A4D4100DA1CB0 /* LICENSE.txt */,
-				E61C73D01D2A4D4100DA1CB0 /* OBReachability.h */,
-				E61C73D11D2A4D4100DA1CB0 /* OBReachability.m */,
-			);
-			path = Reachability;
-			sourceTree = "<group>";
-		};
-		E61C73DE1D2A4DB800DA1CB0 /* AdIds */ = {
-			isa = PBXGroup;
-			children = (
-				E61C73DF1D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h */,
-				E61C73E01D2A4DB800DA1CB0 /* OBAppleAdIdUtil.m */,
+				E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */,
+				E61E6BCD20836C180016D79A /* OBAppleAdIdUtil.h */,
 			);
 			path = AdIds;
 			sourceTree = "<group>";
 		};
-		E61C73E11D2A4DB800DA1CB0 /* Errors */ = {
+		E61E6BCF20836C180016D79A /* Viewability */ = {
 			isa = PBXGroup;
 			children = (
-				E61C73E21D2A4DB800DA1CB0 /* OBErrors.h */,
-				E61C73E31D2A4DB800DA1CB0 /* OBErrors.m */,
+				E61E6BD020836C180016D79A /* OBLabel.h */,
+				E61E6BD420836C180016D79A /* OBLabel.m */,
+				E61E6BD620836C180016D79A /* OBViewabilityService.m */,
+				E61E6BD120836C180016D79A /* OBViewabilityService.h */,
+				E61E6BD520836C180016D79A /* OBAdsChoicesManager.h */,
+				E61E6BD220836C180016D79A /* OBAdsChoicesManager.m */,
+				E61E6BD320836C180016D79A /* UIView+Visible.m */,
+				E61E6BD720836C180016D79A /* UIView+Visible.h */,
+			);
+			path = Viewability;
+			sourceTree = "<group>";
+		};
+		E61E6BD920836C180016D79A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6BDA20836C180016D79A /* OBNetworkManager.h */,
+				E61E6BE020836C180016D79A /* OBNetworkManager.m */,
+				E61E6BDB20836C180016D79A /* OBRecommendationRequestOperation.h */,
+				E61E6BE120836C180016D79A /* OBRecommendationRequestOperation.m */,
+				E61E6BDC20836C180016D79A /* Reachability */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E61E6BDC20836C180016D79A /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6BDD20836C180016D79A /* OBReachability.m */,
+				E61E6BDE20836C180016D79A /* OBReachability.h */,
+				E61E6BDF20836C180016D79A /* LICENSE.txt */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		E61E6BE220836C180016D79A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6BE320836C180016D79A /* Responses */,
+				E61E6BEC20836C180016D79A /* Content */,
+				E61E6BF620836C180016D79A /* Requests */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E61E6BE320836C180016D79A /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6BE420836C180016D79A /* OBSettings.m */,
+				E61E6BE920836C180016D79A /* OBSettings.h */,
+				E61E6BE520836C180016D79A /* OBResponse.m */,
+				E61E6BE820836C180016D79A /* OBResponse.h */,
+				E61E6BE620836C180016D79A /* OBResponseRequest.m */,
+				E61E6BEA20836C180016D79A /* OBResponseRequest.h */,
+				E61E6BE720836C180016D79A /* OBRecommendationResponse.h */,
+				E61E6BEB20836C180016D79A /* OBRecommendationResponse.m */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		E61E6BEC20836C180016D79A /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6BED20836C180016D79A /* OBContent.h */,
+				E61E6BF220836C180016D79A /* OBContent.m */,
+				E61E6BF320836C180016D79A /* OBDisclosure.m */,
+				E61E6BEE20836C180016D79A /* OBDisclosure.h */,
+				E61E6BEF20836C180016D79A /* OBContent_Private.h */,
+				E61E6BF120836C180016D79A /* OBImage.m */,
+				E61E6BF520836C180016D79A /* OBImage.h */,
+				E61E6BF020836C180016D79A /* OBRecommendation.m */,
+				E61E6BF420836C180016D79A /* OBRecommendation.h */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		E61E6BF620836C180016D79A /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6BF720836C180016D79A /* OBRequest.m */,
+				E61E6BF820836C180016D79A /* OBRequest.h */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		E61E6BFA20836C180016D79A /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6BFC20836C180016D79A /* OutbrainSDK.h */,
+				E61E6BFD20836C180016D79A /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		E61E6BFE20836C180016D79A /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6BFF20836C180016D79A /* OBErrors.m */,
+				E61E6C0020836C180016D79A /* OBErrors.h */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
 		};
-		E61C73E41D2A4DB800DA1CB0 /* Helpers */ = {
+		E61E6C0320836C180016D79A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				E61C73E51D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h */,
-				E61C73E61D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m */,
-				E6E91F781D2D08E300A777F3 /* OutbrainHelper.h */,
-				E6E91F791D2D08E300A777F3 /* OutbrainHelper.m */,
-				E627260D1FC2DF8D005CC644 /* OBUtils.h */,
-				E627260E1FC2DF8D005CC644 /* OBUtils.m */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		E61C73E71D2A4DB800DA1CB0 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				E61C73E81D2A4DB800DA1CB0 /* OBProtocols.h */,
+				E61E6C0420836C180016D79A /* OBProtocols.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		E682C4691F4DB6D900382289 /* mock_responses */ = {
+		E61E6C0520836C180016D79A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				E682C46A1F4DB6D900382289 /* odb_normal_response.json */,
+				E61E6C0620836C180016D79A /* OBUtils.h */,
+				E61E6C0720836C180016D79A /* OutbrainHelper.m */,
+				E61E6C0820836C180016D79A /* OBRecommendationsTokenHandler.m */,
+				E61E6C0920836C180016D79A /* OutbrainHelper.h */,
+				E61E6C0A20836C180016D79A /* OBUtils.m */,
+				E61E6C0B20836C180016D79A /* OBRecommendationsTokenHandler.h */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E61E6C0C20836C180016D79A /* OutbrainSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6C0D20836C180016D79A /* mock_responses */,
+				E61E6C0F20836C180016D79A /* OBTestUtils.m */,
+				E61E6C1120836C180016D79A /* OBTestUtils.h */,
+				E61E6C1020836C180016D79A /* OutbrainSDKTests.m */,
+				E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */,
+				E61E6C1320836C180016D79A /* OBParseODBTests.m */,
+				E61E6C1420836C180016D79A /* OutbrainHelperTests.m */,
+				E61E6C1520836C180016D79A /* Info.plist */,
+			);
+			path = OutbrainSDKTests;
+			sourceTree = "<group>";
+		};
+		E61E6C0D20836C180016D79A /* mock_responses */ = {
+			isa = PBXGroup;
+			children = (
+				E6EA3785209B30E1009B687B /* smart_feed_response_1.json */,
+				E6EA3786209B30E1009B687B /* smart_feed_response_2.json */,
+				E6EA3787209B30E1009B687B /* smart_feed_response_3.json */,
+				E6EA378D209B376E009B687B /* smart_feed_response_4.json */,
+				E6EA378E209B376E009B687B /* smart_feed_response_5.json */,
+				E61E6C0E20836C180016D79A /* odb_normal_response.json */,
 			);
 			path = mock_responses;
+			sourceTree = "<group>";
+		};
+		E61E6CA62085D98F0016D79A /* SmartFeed */ = {
+			isa = PBXGroup;
+			children = (
+				E63175C920BC1BAE0077F589 /* TemplateCells */,
+				E61E6CA82085D98F0016D79A /* SFHorizontalCell */,
+				E61E6CB22085D98F0016D79A /* SFTableViewCell.m */,
+				E61E6CB82085D98F0016D79A /* SFTableViewCell.h */,
+				E61E6CB52085D98F0016D79A /* SFCollectionViewCell.m */,
+				E61E6CA72085D98F0016D79A /* SFCollectionViewCell.h */,
+				E61E6CB42085D98F0016D79A /* SFUtils.h */,
+				E61E6CB62085D98F0016D79A /* SFUtils.m */,
+				E6EA37BA20A04B2F009B687B /* SFImageLoader.h */,
+				E6EA37BB20A04B2F009B687B /* SFImageLoader.m */,
+				E61E6CB32085D98F0016D79A /* SmartFeedManager.m */,
+				E61E6CB72085D98F0016D79A /* SmartFeedManager.h */,
+				E61E6D04208E0F780016D79A /* SFItemData.h */,
+				E61E6D05208E0F780016D79A /* SFItemData.m */,
+			);
+			path = SmartFeed;
+			sourceTree = "<group>";
+		};
+		E61E6CA82085D98F0016D79A /* SFHorizontalCell */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */,
+				E61E6CA92085D98F0016D79A /* SFHorizontalTableViewCell.h */,
+				E61E6CB02085D98F0016D79A /* SFHorizontalTableViewCell.m */,
+				E61E6CAA2085D98F0016D79A /* SFHorizontalCollectionViewCell.h */,
+				E61E6CB12085D98F0016D79A /* SFHorizontalCollectionViewCell.m */,
+				E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */,
+				E61E6CAB2085D98F0016D79A /* SFHorizontalView */,
+			);
+			path = SFHorizontalCell;
+			sourceTree = "<group>";
+		};
+		E61E6CAB2085D98F0016D79A /* SFHorizontalView */ = {
+			isa = PBXGroup;
+			children = (
+				E61E6CAC2085D98F0016D79A /* SFHorizontalView.h */,
+				E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */,
+				E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */,
+				E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */,
+			);
+			path = SFHorizontalView;
+			sourceTree = "<group>";
+		};
+		E63175C920BC1BAE0077F589 /* TemplateCells */ = {
+			isa = PBXGroup;
+			children = (
+				E63175CA20BC1BAE0077F589 /* SFTableViewCell.xib */,
+				E63175CB20BC1BAE0077F589 /* SFCollectionViewCell.xib */,
+				E63175CC20BC1BAE0077F589 /* SFHorizontalItemCell.xib */,
+			);
+			path = TemplateCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		D8EE587C185A1A74008F36C4 /* Headers */ = {
+		E61E6B3A2083607B0016D79A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E61C73D81D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.h in Headers */,
-				E61C73DC1D2A4D4100DA1CB0 /* OBReachability.h in Headers */,
-				E61C73BD1D2A4C9300DA1CB0 /* OBResponse.h in Headers */,
-				E61C73B71D2A4C9300DA1CB0 /* OBRecommendation.h in Headers */,
-				E61C73EB1D2A4DB800DA1CB0 /* OBErrors.h in Headers */,
-				E61C73B91D2A4C9300DA1CB0 /* OBRequest.h in Headers */,
-				E61C73B51D2A4C9300DA1CB0 /* OBImage.h in Headers */,
-				E61C73B21D2A4C9300DA1CB0 /* OBContent.h in Headers */,
-				E61C73EF1D2A4DB800DA1CB0 /* OBProtocols.h in Headers */,
-				E61C73971D2A4B6100DA1CB0 /* OBLabel.h in Headers */,
-				E61C73BF1D2A4C9300DA1CB0 /* OBResponseRequest.h in Headers */,
-				E61C73BB1D2A4C9300DA1CB0 /* OBRecommendationResponse.h in Headers */,
-				E61C73C11D2A4C9300DA1CB0 /* OBSettings.h in Headers */,
-				E61C73E91D2A4DB800DA1CB0 /* OBAppleAdIdUtil.h in Headers */,
-				D8376BE7186E276500B45FA3 /* OutbrainSDK.h in Headers */,
-				E6B6847F1F8BB55B004F4AEF /* OBNetworkManager.h in Headers */,
-				E6D136DD1F31EA38001E7407 /* OBDisclosure.h in Headers */,
-				E6D136E11F320942001E7407 /* OBAdsChoicesManager.h in Headers */,
-				E6E91F7A1D2D08E300A777F3 /* OutbrainHelper.h in Headers */,
-				D8EE587D185A1A85008F36C4 /* Outbrain.h in Headers */,
-				D849D10B1868BB4D00CB4B83 /* Outbrain_Private.h in Headers */,
-				E627260F1FC2DF8E005CC644 /* OBUtils.h in Headers */,
-				E61C737B1D2A47D300DA1CB0 /* OBBridge.h in Headers */,
-				E61C73991D2A4B6100DA1CB0 /* OBViewabilityService.h in Headers */,
-				E61C73B41D2A4C9300DA1CB0 /* OBContent_Private.h in Headers */,
-				E61C73ED1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.h in Headers */,
-				E61C739B1D2A4B6100DA1CB0 /* UIView+Visible.h in Headers */,
+				E61E6C2320836C180016D79A /* OBRecommendationRequestOperation.h in Headers */,
+				E61E6C2F20836C180016D79A /* OBResponseRequest.h in Headers */,
+				E61E6C2C20836C180016D79A /* OBRecommendationResponse.h in Headers */,
+				E61E6C4120836C180016D79A /* OBBridge.h in Headers */,
+				E61E6D06208E0F780016D79A /* SFItemData.h in Headers */,
+				E61E6CBA2085D98F0016D79A /* SFHorizontalTableViewCell.h in Headers */,
+				E61E6C3B20836C180016D79A /* OBRequest.h in Headers */,
+				E6EA37BC20A04B2F009B687B /* SFImageLoader.h in Headers */,
+				E61E6C3820836C180016D79A /* OBRecommendation.h in Headers */,
+				E61E6CBB2085D98F0016D79A /* SFHorizontalCollectionViewCell.h in Headers */,
+				E61E6C2D20836C180016D79A /* OBResponse.h in Headers */,
+				E61E6CC82085D98F0016D79A /* SFTableViewCell.h in Headers */,
+				E61E6CC42085D98F0016D79A /* SFUtils.h in Headers */,
+				E61E6C3220836C180016D79A /* OBDisclosure.h in Headers */,
+				E61E6C4320836C180016D79A /* OBProtocols.h in Headers */,
+				E61E6C1920836C180016D79A /* OBLabel.h in Headers */,
+				E61E6C3920836C180016D79A /* OBImage.h in Headers */,
+				E61E6CC72085D98F0016D79A /* SmartFeedManager.h in Headers */,
+				E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */,
+				E61E6C4020836C180016D79A /* OBErrors.h in Headers */,
+				E61E6C2520836C180016D79A /* OBReachability.h in Headers */,
+				E61E6C2E20836C180016D79A /* OBSettings.h in Headers */,
+				E61E6C1E20836C180016D79A /* OBAdsChoicesManager.h in Headers */,
+				E61E6CB92085D98F0016D79A /* SFCollectionViewCell.h in Headers */,
+				E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */,
+				E61E6C1820836C180016D79A /* Outbrain_Private.h in Headers */,
+				E61E6C3D20836C180016D79A /* OutbrainSDK.h in Headers */,
+				E61E6CBC2085D98F0016D79A /* SFHorizontalView.h in Headers */,
+				E61E6C2220836C180016D79A /* OBNetworkManager.h in Headers */,
+				E61E6C4720836C180016D79A /* OutbrainHelper.h in Headers */,
+				E61E6C4920836C180016D79A /* OBRecommendationsTokenHandler.h in Headers */,
+				E61E6C4420836C180016D79A /* OBUtils.h in Headers */,
+				E61E6C2020836C180016D79A /* UIView+Visible.h in Headers */,
+				E61E6C3C20836C180016D79A /* Outbrain.h in Headers */,
+				E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */,
+				E61E6C3120836C180016D79A /* OBContent.h in Headers */,
+				E61E6C3320836C180016D79A /* OBContent_Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D82F1D7418564C7700D4DEA8 /* OutbrainSDK */ = {
+		E61E6B3C2083607B0016D79A /* OutbrainSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D82F1D9818564C7800D4DEA8 /* Build configuration list for PBXNativeTarget "OutbrainSDK" */;
+			buildConfigurationList = E61E6B522083607B0016D79A /* Build configuration list for PBXNativeTarget "OutbrainSDK" */;
 			buildPhases = (
-				D82F1D7118564C7700D4DEA8 /* Sources */,
-				D82F1D7218564C7700D4DEA8 /* Frameworks */,
-				D8EE587C185A1A74008F36C4 /* Headers */,
-				D8376BE8186E291100B45FA3 /* ShellScript */,
-				E604CE721C427DBC00D45C31 /* CopyFiles */,
+				E61E6B382083607B0016D79A /* Sources */,
+				E61E6B392083607B0016D79A /* Frameworks */,
+				E61E6B3A2083607B0016D79A /* Headers */,
+				E61E6B3B2083607B0016D79A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = OutbrainSDK;
-			productName = OutbrainSDK;
-			productReference = D82F1D7518564C7700D4DEA8 /* libOutbrainSDK.a */;
-			productType = "com.apple.product-type.library.static";
+			productName = DynamicOutbrainSDK;
+			productReference = E61E6B3D2083607B0016D79A /* OutbrainSDK.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		D82F1D8418564C7800D4DEA8 /* OutbrainSDKTests */ = {
+		E61E6B442083607B0016D79A /* OutbrainSDKTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D82F1D9B18564C7800D4DEA8 /* Build configuration list for PBXNativeTarget "OutbrainSDKTests" */;
+			buildConfigurationList = E61E6B532083607B0016D79A /* Build configuration list for PBXNativeTarget "OutbrainSDKTests" */;
 			buildPhases = (
-				D82F1D8118564C7800D4DEA8 /* Sources */,
-				D82F1D8218564C7800D4DEA8 /* Frameworks */,
-				D82F1D8318564C7800D4DEA8 /* Resources */,
+				E61E6B412083607B0016D79A /* Sources */,
+				E61E6B422083607B0016D79A /* Frameworks */,
+				E61E6B432083607B0016D79A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E61E6B482083607B0016D79A /* PBXTargetDependency */,
 			);
 			name = OutbrainSDKTests;
-			productName = OutbrainSDKTests;
-			productReference = D82F1D8518564C7800D4DEA8 /* OutbrainSDKTests.xctest */;
+			productName = DynamicOutbrainSDKTests;
+			productReference = E61E6B452083607B0016D79A /* OutbrainSDKTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -513,6 +611,18 @@
 				LastTestingUpgradeCheck = 0610;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Outbrain;
+				TargetAttributes = {
+					E61E6B3C2083607B0016D79A = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 97R2B46745;
+						ProvisioningStyle = Automatic;
+					};
+					E61E6B442083607B0016D79A = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = 97R2B46745;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = D82F1D7018564C7700D4DEA8 /* Build configuration list for PBXProject "OutbrainSDK" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -527,39 +637,43 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D82F1D7418564C7700D4DEA8 /* OutbrainSDK */,
-				D82F1D8418564C7800D4DEA8 /* OutbrainSDKTests */,
 				D8376BE9186E2F6D00B45FA3 /* OBFramework */,
+				E61E6B3C2083607B0016D79A /* OutbrainSDK */,
+				E61E6B442083607B0016D79A /* OutbrainSDKTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D82F1D8318564C7800D4DEA8 /* Resources */ = {
+		E61E6B3B2083607B0016D79A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D82F1D9318564C7800D4DEA8 /* InfoPlist.strings in Resources */,
-				E682C46B1F4DB6D900382289 /* odb_normal_response.json in Resources */,
+				E63175CD20BC1BAE0077F589 /* SFTableViewCell.xib in Resources */,
+				E61E6CFE208611380016D79A /* Assets.xcassets in Resources */,
+				E61E6D00208737F00016D79A /* SFHorizontalCollectionViewCell.xib in Resources */,
+				E63175CF20BC1BAE0077F589 /* SFHorizontalItemCell.xib in Resources */,
+				E61E6CFA208610AF0016D79A /* SFHorizontalTableViewCell.xib in Resources */,
+				E63175CE20BC1BAE0077F589 /* SFCollectionViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E61E6B432083607B0016D79A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6EA378A209B30E2009B687B /* smart_feed_response_3.json in Resources */,
+				E6EA3788209B30E2009B687B /* smart_feed_response_1.json in Resources */,
+				E6EA3790209B376F009B687B /* smart_feed_response_5.json in Resources */,
+				E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */,
+				E6EA378F209B376F009B687B /* smart_feed_response_4.json in Resources */,
+				E6EA3789209B30E2009B687B /* smart_feed_response_2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D8376BE8186E291100B45FA3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Modules\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n";
-		};
 		D8376BEF186E2F8C00B45FA3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -571,72 +685,72 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild OTHER_CFLAGS=\"-fembed-bitcode\" -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Delete modules file\nrm -f \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/module.modulemap\"\n\n## Put the final .framework at the top level\nrm -fr \"${SRCROOT}/../${SF_WRAPPER_NAME}\"\ncp -a \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}\" \"${SRCROOT}/../\"\n\n\n";
+			shellScript = "bash -x ./dynamic_framework_build.sh    ";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D82F1D7118564C7700D4DEA8 /* Sources */ = {
+		E61E6B382083607B0016D79A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E62726101FC2DF8E005CC644 /* OBUtils.m in Sources */,
-				E61C73D91D2A4D4100DA1CB0 /* OBRecommendationRequestOperation.m in Sources */,
-				E61C73BC1D2A4C9300DA1CB0 /* OBRecommendationResponse.m in Sources */,
-				E61C73EC1D2A4DB800DA1CB0 /* OBErrors.m in Sources */,
-				E61C73C21D2A4C9300DA1CB0 /* OBSettings.m in Sources */,
-				E61C73BE1D2A4C9300DA1CB0 /* OBResponse.m in Sources */,
-				E61C739C1D2A4B6100DA1CB0 /* UIView+Visible.m in Sources */,
-				E61C737C1D2A47D300DA1CB0 /* OBBridge.m in Sources */,
-				E61C73BA1D2A4C9300DA1CB0 /* OBRequest.m in Sources */,
-				E61C73B61D2A4C9300DA1CB0 /* OBImage.m in Sources */,
-				E6E91F7B1D2D08E300A777F3 /* OutbrainHelper.m in Sources */,
-				E6D136E21F320942001E7407 /* OBAdsChoicesManager.m in Sources */,
-				E61C73EE1D2A4DB800DA1CB0 /* OBRecommendationsTokenHandler.m in Sources */,
-				E61C73B31D2A4C9300DA1CB0 /* OBContent.m in Sources */,
-				E6B684801F8BB55B004F4AEF /* OBNetworkManager.m in Sources */,
-				D82F1D8018564C7700D4DEA8 /* Outbrain.m in Sources */,
-				E61C739A1D2A4B6100DA1CB0 /* OBViewabilityService.m in Sources */,
-				E61C73981D2A4B6100DA1CB0 /* OBLabel.m in Sources */,
-				E61C73B81D2A4C9300DA1CB0 /* OBRecommendation.m in Sources */,
-				E61C73EA1D2A4DB800DA1CB0 /* OBAppleAdIdUtil.m in Sources */,
-				E61C73DD1D2A4D4100DA1CB0 /* OBReachability.m in Sources */,
-				E61C73C01D2A4C9300DA1CB0 /* OBResponseRequest.m in Sources */,
-				E6D136DE1F31EA38001E7407 /* OBDisclosure.m in Sources */,
+				E61E6C4820836C180016D79A /* OBUtils.m in Sources */,
+				E61E6C1B20836C180016D79A /* OBAdsChoicesManager.m in Sources */,
+				E61E6CC12085D98F0016D79A /* SFHorizontalCollectionViewCell.m in Sources */,
+				E61E6C4220836C180016D79A /* Outbrain.m in Sources */,
+				E61E6C1F20836C180016D79A /* OBViewabilityService.m in Sources */,
+				E61E6C3620836C180016D79A /* OBContent.m in Sources */,
+				E61E6C1D20836C180016D79A /* OBLabel.m in Sources */,
+				E61E6CC62085D98F0016D79A /* SFUtils.m in Sources */,
+				E6EA37BD20A04B2F009B687B /* SFImageLoader.m in Sources */,
+				E61E6CC32085D98F0016D79A /* SmartFeedManager.m in Sources */,
+				E61E6D07208E0F780016D79A /* SFItemData.m in Sources */,
+				E61E6C3F20836C180016D79A /* OBErrors.m in Sources */,
+				E61E6CC52085D98F0016D79A /* SFCollectionViewCell.m in Sources */,
+				E61E6C3420836C180016D79A /* OBRecommendation.m in Sources */,
+				E61E6C2720836C180016D79A /* OBNetworkManager.m in Sources */,
+				E61E6C4520836C180016D79A /* OutbrainHelper.m in Sources */,
+				E61E6C3720836C180016D79A /* OBDisclosure.m in Sources */,
+				E61E6C3020836C180016D79A /* OBRecommendationResponse.m in Sources */,
+				E61E6C3520836C180016D79A /* OBImage.m in Sources */,
+				E61E6C2820836C180016D79A /* OBRecommendationRequestOperation.m in Sources */,
+				E61E6CC02085D98F0016D79A /* SFHorizontalTableViewCell.m in Sources */,
+				E61E6C2920836C180016D79A /* OBSettings.m in Sources */,
+				E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */,
+				E61E6CBD2085D98F0016D79A /* PageCollectionLayout.m in Sources */,
+				E61E6C3A20836C180016D79A /* OBRequest.m in Sources */,
+				E61E6CC22085D98F0016D79A /* SFTableViewCell.m in Sources */,
+				E61E6C2420836C180016D79A /* OBReachability.m in Sources */,
+				E61E6C1C20836C180016D79A /* UIView+Visible.m in Sources */,
+				E61E6C2A20836C180016D79A /* OBResponse.m in Sources */,
+				E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */,
+				E61E6C2120836C180016D79A /* OBBridge.m in Sources */,
+				E61E6C4620836C180016D79A /* OBRecommendationsTokenHandler.m in Sources */,
+				E61E6C2B20836C180016D79A /* OBResponseRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D82F1D8118564C7800D4DEA8 /* Sources */ = {
+		E61E6B412083607B0016D79A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E682C4661F4DB4CC00382289 /* OBParseODBTests.m in Sources */,
-				E682C4641F4DB47D00382289 /* OBTestUtils.m in Sources */,
-				D82F1D9518564C7800D4DEA8 /* OutbrainSDKTests.m in Sources */,
-				E6B6847C1F8A5979004F4AEF /* OutbrainHelperTests.m in Sources */,
+				E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */,
+				E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */,
+				E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */,
+				E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */,
+				E61E6C5220836DF00016D79A /* OutbrainHelperTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D8376BEE186E2F7800B45FA3 /* PBXTargetDependency */ = {
+		E61E6B482083607B0016D79A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D82F1D7418564C7700D4DEA8 /* OutbrainSDK */;
-			targetProxy = D8376BED186E2F7800B45FA3 /* PBXContainerItemProxy */;
+			target = E61E6B3C2083607B0016D79A /* OutbrainSDK */;
+			targetProxy = E61E6B472083607B0016D79A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D82F1D9118564C7800D4DEA8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D82F1D9218564C7800D4DEA8 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D82F1D9618564C7800D4DEA8 /* Debug */ = {
@@ -736,109 +850,10 @@
 			};
 			name = Release;
 		};
-		D82F1D9918564C7800D4DEA8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DSTROOT = /tmp/OutbrainSDK.dst;
-				EXECUTABLE_EXTENSION = a;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutbrainSDK-akdrgzftfjdjoiaaudvjsecuoopu/Build/Products/Debug-iphonesimulator",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "OutbrainSDK/OutbrainSDK-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "-fembed-bitcode ";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				STRIP_STYLE = "non-global";
-				VALID_ARCHS = "${inherited}";
-			};
-			name = Debug;
-		};
-		D82F1D9A18564C7800D4DEA8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DSTROOT = /tmp/OutbrainSDK.dst;
-				EXECUTABLE_EXTENSION = a;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutbrainSDK-akdrgzftfjdjoiaaudvjsecuoopu/Build/Products/Debug-iphonesimulator",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "OutbrainSDK/OutbrainSDK-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				OTHER_CFLAGS = "-fembed-bitcode ";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				STRIP_STYLE = "non-global";
-				VALID_ARCHS = "${inherited}";
-			};
-			name = Release;
-		};
-		D82F1D9C18564C7800D4DEA8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OutbrainSDK/OutbrainSDK-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "OutbrainSDKTests/OutbrainSDKTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		D82F1D9D18564C7800D4DEA8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OutbrainSDK/OutbrainSDK-Prefix.pch";
-				INFOPLIST_FILE = "OutbrainSDKTests/OutbrainSDKTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-			};
-			name = Release;
-		};
 		D8376BEB186E2F6D00B45FA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -851,12 +866,128 @@
 		D8376BEC186E2F6D00B45FA3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "${inherited}";
 				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		E61E6B4E2083607B0016D79A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 97R2B46745;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = OutbrainSDK/SupportingFiles/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.OutbrainSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E61E6B4F2083607B0016D79A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 97R2B46745;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = OutbrainSDK/SupportingFiles/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.OutbrainSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E61E6B502083607B0016D79A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 97R2B46745;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = OutbrainSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.DynamicOutbrainSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E61E6B512083607B0016D79A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 97R2B46745;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = OutbrainSDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.DynamicOutbrainSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -872,29 +1003,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D82F1D9818564C7800D4DEA8 /* Build configuration list for PBXNativeTarget "OutbrainSDK" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D82F1D9918564C7800D4DEA8 /* Debug */,
-				D82F1D9A18564C7800D4DEA8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D82F1D9B18564C7800D4DEA8 /* Build configuration list for PBXNativeTarget "OutbrainSDKTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D82F1D9C18564C7800D4DEA8 /* Debug */,
-				D82F1D9D18564C7800D4DEA8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D8376BEA186E2F6D00B45FA3 /* Build configuration list for PBXAggregateTarget "OBFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8376BEB186E2F6D00B45FA3 /* Debug */,
 				D8376BEC186E2F6D00B45FA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E61E6B522083607B0016D79A /* Build configuration list for PBXNativeTarget "OutbrainSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E61E6B4E2083607B0016D79A /* Debug */,
+				E61E6B4F2083607B0016D79A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E61E6B532083607B0016D79A /* Build configuration list for PBXNativeTarget "OutbrainSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E61E6B502083607B0016D79A /* Debug */,
+				E61E6B512083607B0016D79A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

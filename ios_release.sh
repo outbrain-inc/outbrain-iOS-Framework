@@ -1,13 +1,18 @@
 #!/bin/bash
 
 EXPORT_DIR_PATH=~/Desktop/Release/iOS
+FRAMEWORK_ARTIFACT_PATH=Samples/OutbrainDemo/OutbrainSDK.framework
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
-if [ $BRANCH != "master" ]; then
-	echo "Error - This script should be executed only from master branch"
+
+if [ -d "$FRAMEWORK_ARTIFACT_PATH" ]; then
 	echo ""
-	exit 1
-fi;
+	echo "*********************"
+	echo " Clean previous OutbrainSDK.framework"
+	echo "*********************"
+	rm -fr $FRAMEWORK_ARTIFACT_PATH
+fi
+
 
 cd SDK-sources
 # Clean
@@ -26,7 +31,15 @@ echo "*********************"
 xcodebuild -target OBFramework
 cd ..
 
-# doxygen doxygen.xml
+echo ""
+echo "*********************"
+echo " Check if framework is where we think it is"
+echo "*********************"
+if [ ! -d "$FRAMEWORK_ARTIFACT_PATH" ]; then
+	echo "framework is NOT where we think it is"
+	exit 1
+fi
+
 
 echo ""
 echo "***************************"
@@ -36,21 +49,20 @@ rm -fr OBSDK-Release
 mkdir OBSDK-Release
 mkdir OBSDK-Release/SDK/
 mkdir OBSDK-Release/Samples/
-# mkdir OBSDK-Release/HTML-Documentation/
+
 
 echo ""
 echo "***********************************************************"
 echo " Copy the OutbrainSDK.framework into OBSDK-Release"
 echo "***********************************************************"
-cp -a OutbrainSDK.framework OBSDK-Release/SDK/
-cp -a OutbrainSDK.framework OBSDK-Release/Samples/
+cp -a $FRAMEWORK_ARTIFACT_PATH OBSDK-Release/SDK/
 cp -fa Samples/ OBSDK-Release/Samples/
 cp -rf README.md OBSDK-Release/
 
 # clean up the export folder
 echo ""
 echo "***********************************************************"
-echo " Copy the content ofOBSDK-Release to ${EXPORT_DIR_PATH}"
+echo " Copy the content of OBSDK-Release to ${EXPORT_DIR_PATH}"
 echo "***********************************************************"
 rm -fr $EXPORT_DIR_PATH
 mkdir -p $EXPORT_DIR_PATH

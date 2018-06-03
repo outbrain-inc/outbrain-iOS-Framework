@@ -115,8 +115,11 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     //Test mode
     if ([((NSNumber *)[[OutbrainHelper sharedInstance] sdkSettingForKey:OBSettingsAttributes.testModeKey]) boolValue]) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
-        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
-        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"2"]];
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"location" value: @"us"]];
+        if (request.fid == nil && ![request.widgetId isEqualToString:@"SFD_MAIN_1"]) {
+            [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
+            [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"2"]];
+        }
     }
     
     //Installation type
@@ -148,7 +151,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     }
     
     // APV
-    if(request.widgetIndex == 0) { // Reset APV on index = 0
+    if (request.widgetIndex == 0) { // Reset APV on index = 0
         self.apvCache[request.url] = [NSNumber numberWithBool:NO];
     }
     if ([self.apvCache[request.url] boolValue]) {
@@ -159,6 +162,11 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     // Secure HTTPS
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"secured" value: @"true"]];
 
+    // Smart Feed (father id)
+    if (request.fid != nil) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fid" value: request.fid]];
+    }
+    
     components.queryItems = odbQueryItems;
 
     return components.URL;
@@ -177,6 +185,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
         return;
     }
     
+    // TODO there is some bad code here, we should use OBSettings from "response" all the time.
+    // instead, we sometimes use:
+    // NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
     [self _updateAPVCacheForResponse:response];
     [self _updateViewbilityStatsForResponse:responseSettings];
 }

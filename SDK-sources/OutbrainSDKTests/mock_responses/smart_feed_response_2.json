@@ -1,0 +1,110 @@
+{
+  "response": {
+    "exec_time": 57,
+    "timestamp": 1525348628616,
+    "status": {
+      "id": 0,
+      "content": "Request succeeded"
+    },
+    "request": {
+      "lang": "en",
+      "idx": "1",
+      "did": "689346564",
+      "pid": "4737",
+      "lsd": "5fa43a5d-d1a7-4b7c-b0a8-6c83c592a5d4",
+      "enu": "IcTblLUTUAu0pLHBz83XGCKY555X9WO07t8GQV-UXRD-joqy6ilynC6wj3NR_UBN",
+      "api_user_id": "5FA43A5D-D1A7-4B7C-B0A8-6C83C592A5D4",
+      "t": "MV8yOTNhYzk0MDc5NzRlYjU5MGViNTNiOWI3NDdiNDk5OV8w",
+      "pvId": "293ac9407974eb590eb53b9b747b4999",
+      "pad": "2",
+      "org": "0",
+      "abTestVal": "no_abtest",
+      "obRecsAbtestAndVars": "386-1126,403-1401,452-1421,378-1101,429-1332",
+      "widgetJsId": "SFD_VRS_1",
+      "widgetJsIdOrig": "SFD_VRS_1",
+      "readerPlatform": "desktop",
+      "isHttps": "true",
+      "rtbEnabled": "true",
+      "rtbTest": "false",
+      "rtbBidTestMode": "false",
+      "rtbTestRecsNum": "0",
+      "amplifyEnabled": "true",
+      "fid": "969",
+      "sid": 5291479,
+      "wnid": 970,
+      "req_id": "c516abcd4ff55168ff7c3a7253eb4cc9",
+      "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+      "vid": 0
+    },
+    "documents": {
+      "total_count": 2,
+      "count": 2,
+      "doc": [
+        {
+          "source_name": "Teastart",
+          "same_source": "false",
+          "source_display_name": "Teastart",
+          "pc_id": 94215643,
+          "adv_name": "Teastart_SA_PartnersProgram",
+          "publish_date": "2017-07-10 10:27",
+          "orig_url": "http://teastart.com/wives-just-funny-must-keep-husbands-laughing-day-long/?utm_campaign=927_tea-out-d-us-JDgxxcGkmKdT&utm_source=outbrain&utm_medium=$origsrcid$&utm_content=$section_id$&utm_term=00a89e4ab48c7f3f3ffdacb9972241651a&tfcid=$cid$",
+          "rec-cats": [
+            1403
+          ],
+          "ads_type": 1,
+          "rec_en_did": "m-uJIX1f9V_kC9CfdmL6Qg",
+          "url": "https://paid.outbrain.com/network/redir?p=qfoydVO3pgdeVPDe6CkUV8UnKJ9WzbRJsWF4Kd0NrGCGudqO14TYxseENRCz0XWDwqA_swz0hSZ_5CRo8EbSneOsUzso_zr9fPbp_C02MaOWz0wyLmi4aSExNwO82koHEojyghN3JZRKX37WbvTsietYBr9j80yZv0KaRQ3Jgo689ZXCaf6qtLBtMLN7D6SZtdy0_NAqgr6kcxfgDsBCc6KaJ-mHoeLVR4NGKileseJj3J3ss1B80kmyIN16HzjtQz2W9Q-jH5DNuVL-85scGOmJE9qgylS0AhXFAhcK_xj4WeQcRxllTKVlFM_WA9vppLy7fl__sYpDe-rz5I29SbGEHs134EiPBNulvJUvIU84_KroghQczFjTQ1meacHVvtJcN4Cqlvg5N5X0HB3U_LH1mxag5fupUNmc1b8CuJiTObQS386DuoJUgxE-JabUr4f2suhUocwtbPQqWtqepL_tR9L9SJjh1_j2LWeYmB0D3LacgDT4V6UaAstGN5PGvcaNLwkKG_LXer9242neCLPVNmf6nIPbGiyfLjsW90ful3DGVv_NPkIrM6tQN_IbnIn_1PzdbvV6A4oKRiofGLqZU-dcHBibb6Q-MZwfLBZSoTeSS-aPlh1dUaWVGYLYb-Cg1_qHRRV2kS_JsnbnxOqYDkDCKmTdQagGxIoetwxfvYlgOfCf1JCxCqGOzck8dZV277L9R6zZBJQo6KUm_YlvWPKtXBt4eCqVJ_5qbQgwgeIg9synGWgnfQRMRmgZafOxjP0aR2-efmp2WxikLLAmQwK8ytddsR2C35M7PSHiwgsLd7ktdm8ebrUHlsmFfMKtEjeejLBl5hpVPlM2c__fOcOP9DtBtOwhNh_JYu_C1CMhcuJ-09ivMONNdeAACsuWFxoWdrLoRQHDaroP9s3CuSTqgoo0UlLdnuCQTIKfy8WHZYOU201kXnK5K-iRkVXNAy95luvBi3DniCwJ3v9cEiGgCA-KLDcU8PAVmMp4QSTJbVjZCJAZwIjnljxt&c=f9b01f5&v=3",
+          "author": "",
+          "content": "[Pics] Her Husband Left For Work Only To Come Back Home And Find This",
+          "pc_cmp_id": 1000806570,
+          "pos": "0",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6IjgxYTQ2MzYzNmUzYzY0M2E0NWU1YjljZWEzYzA3ZGFjNGU3NjA3ZjQzMzY0ZTk0NDZhMDI1MzkyOTRmOWY4OWEiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+            "width": 600,
+            "height": 337,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "FetchSport",
+          "same_source": "false",
+          "source_display_name": "FetchSport",
+          "pc_id": 95788465,
+          "adv_name": "Morazi_FetchSport_SA_PartnersProgram",
+          "publish_date": "2018-05-01 04:09",
+          "orig_url": "http://49ybbfj3.fetchsport.com/entertainment/never-got-married/?utm_campaign=Never%20Married%20Monika%20-%20Desktop%20USA%20OB&utm_source=OutBrain&utm_medium=$origsrcname$&utm_term=%5BGallery%5D+This+Is+Why+Monica+Lewinsky+Never+Married&utm_content=0052e2b036d620abf935a3a86c97e658b2}",
+          "rec-cats": [
+            1403
+          ],
+          "ads_type": 1,
+          "rec_en_did": "_nTkwbzhcO8E2GuZbkzQIw",
+          "url": "https://paid.outbrain.com/network/redir?p=vztVhZzPQ9_N8p0MgAgJ5e6kutYrM_oEF--67soYVKCUEZfPQ8zhafhy2hRjDOGX4XzdlOSRXEAXtHuustZU0fK5CFkjfqlHzUVo29d6a9xmrsA5S2LwcB9716zrs04EgHgIXiQqZz8FTo8pap7gitY_0f-QAdbcX2QL52BgOrBC-Iug_dqtgY5jLvo_bR5QD0w0F6kWpRWtJziekyyEhh789tmGE_cEXR36AegSLvIDS2E2xNXz3kO4d_xqu1PiXsYAQje25NcwFt0BWRRvtza2GQU6TEyH6-7AzL_f_YsJbQsxHzC61e8MmoWsDtKN9nuzvBh08wNuXYNQchgjn5MvGHnVYBjzCfPfX4kSwriQUmytIKpohsVCMWkuBZQ4c36nRX50mUHUNXGNC6JQEnAM41mtprRw3Y2X5PL27JBCqRu4TbZ3QchHGm4Co0XOe1VDBXblV00BIMHxvo6Zb-F_-8vkyAYNyjC1PCGzJ1wYYvwquR8dLMWjlDIiz8Czj6pWHIZEdfxL9n28zF6kedj9rVwLO6ZrmGNxoUc1p75JjzV0meVX9C0DpPBvj8ef7sOL4E85d2SBEjtUKwwdAvU6KAIR6bMfm49IQU7ElaUQBK7ZpqYOGoWRZCYArBWADnkwVU-fq4J2-XtkHX7xLsD6-R3AT_nluc4ltcNw2px16vj1ivPpUVHH4icZ7P5niGjYa3laGugLfJSphAQB2vRqWf-d2v4cJc9msfAKfBOqpxxC3busOg6qTOcRqEOU_i5wBQHCrRf-E3UIQ9O8EZFPuWqcNkvqFsQE4z_ZsBV8SteQmmAnZovf7qRlxXimQYDgXPoztgbSsOqxpjJC3upwLjbC9vy3aNf5UjsLxTXihysvoviPBdUoaUZGlA-scT4anaqJ-bSJFC8mjGplG5Jy5k3-3zSYUdKG7SXqjjttZnrykuGt3QfBchtFH5Ltu74AjcVEM8NAXh0cO0-0ANbyvPcH7quhqXYaTy4bZILa1MtRo_tgyLFsjc20N81h&c=9e69c529&v=3",
+          "author": "",
+          "content": "[Gallery] This Is Why Monica Lewinsky Never Married",
+          "pc_cmp_id": 1000864654,
+          "pos": "1",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "https://images.outbrain.com/transform/v3/eyJpdSI6IjQ0ZDc1YjE4NjQyNDIxOGM5MDRhYzk4NDg1MTY4NzBiMGMzOGEyZWQxMzQwNGUyYWE0OTM3YmQyZWZiYjAyYTMiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+            "width": 600,
+            "height": 337,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        }
+      ]
+    },
+    "settings": {
+      "recMode": "odb_dynamic_smartfeed-vertical-strip",
+      "dynamicWidgetDirection": "LTR",
+      "apv": true,
+      "dynamicImageWidth": 600,
+      "DesignType": 5,
+      "whatIsBrandingType": "None",
+      "isVisualCuesEnabled": false,
+      "dynamicTruncateText": true,
+      "dynamicImageHeight": 337,
+      "dynamicWidgetLayout": "smartfeed-vertical-strip"
+    }
+  }
+}

@@ -54,6 +54,13 @@
  **/
 @property (nonatomic, assign) NSInteger widgetIndex;
 
+/**
+ *  @brief Smart Feed parameter which defines the "father id", i.e. the smart feed original (first) reqest widget id.
+ *
+ *  @note This is only relevant for smart feed.
+ **/
+@property (nonatomic, copy) NSString *fid;
+
 
 /**
  *  @brief A constructor for defining an OBRequest object.

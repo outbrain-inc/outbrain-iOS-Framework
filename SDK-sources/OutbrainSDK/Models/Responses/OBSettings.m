@@ -8,80 +8,38 @@
 
 #import "OBSettings.h"
 
-#define NSStringFromBOOL(aBOOL) aBOOL? @"YES" : @"NO"
+
+@interface OBSettings()
+
+@property (nonatomic, assign) BOOL apv;
+@property (nonatomic, assign) BOOL isSmartFeed;
+@property (nonatomic, strong) NSArray *feedContentArray;
+
+
+@end
+
+
 
 @implementation OBSettings
 
-- (instancetype)initWithPayload:(NSDictionary *)aPayload
+- (instancetype)initWithPayload:(NSDictionary *)payload
 {
     if (self = [super init]) {
-        payload = aPayload;
+        self.apv = [[payload valueForKey:@"apv"] boolValue];
+        self.isSmartFeed = [[payload valueForKey:@"isSmartFeed"] boolValue];
+        NSString *feedContentStr = [payload valueForKey:@"feedContent"];
+        if (self.isSmartFeed && feedContentStr != nil) {
+            NSData *feedContentData = [feedContentStr dataUsingEncoding:NSUTF8StringEncoding];
+            NSArray *originalFeedContentArray = [NSJSONSerialization JSONObjectWithData:feedContentData options:0 error:nil];
+            NSMutableArray *feedItemsArr = [[NSMutableArray alloc] init];
+            for (NSDictionary *item in originalFeedContentArray) {
+                [feedItemsArr addObject:[item valueForKey:@"id"]];
+            }
+            self.feedContentArray = [feedItemsArr copy];
+        }
     }
     
     return self;
 }
-
-- (NSString *)getStringValueForSettingKey:(NSString *)settingKey {
-    id object = [payload objectForKey:settingKey];
-    if (!object) {
-        //NSLog(@"No object found for setting %@", settingKey);
-        return nil;
-    }
-    @try {
-        return (NSString *)object;
-    }
-    @catch (NSException *ex) {
-        //NSLog(@"Error casing setting %@ to NSString", settingKey);
-    }
-    return nil;
-}
-
-- (NSNumber *)getNSNumberValueForSettingKey:(NSString *)settingKey {
-    id object = [payload objectForKey:settingKey];
-    if (!object) {
-        //NSLog(@"No object found for setting %@", settingKey);
-        return nil;
-    }
-    @try {
-        return (NSNumber *)object;
-    }
-    @catch (NSException *ex) {
-        //NSLog(@"Error casing setting %@ to NSNumber", settingKey);
-    }
-    return nil;
-}
-
-
-//
-//- (long)provideLongForSetting:(NSString *)setting {
-//    NSString *object = [self provideStringForSetting:setting];
-//    if (!object) {
-//        NSLog(@"No object found for setting %@", setting);
-//        return INT_MIN;
-//    }
-//    @try {
-//        long longValue = [object longLongValue];
-//        return longValue;
-//    }
-//    @catch (NSException *ex) {
-//        NSLog(@"Error casing setting %@ to long", setting);
-//        return INT_MIN;
-//    }
-//}
-//
-//- (BOOL)provideBoolForSetting:(NSString *)setting {
-//    id object = [payload objectForKey:setting];
-//    if (!object) {
-//        NSLog(@"No object found for setting %@", setting);
-//        return NO;
-//    }
-//    @try {
-//        return (BOOL)object;
-//    }
-//    @catch (NSException *ex) {
-//        NSLog(@"Error casing setting %@ to bool", setting);
-//    }
-//    return NO;
-//}
 
 @end

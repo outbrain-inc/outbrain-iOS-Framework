@@ -199,7 +199,9 @@
       "cwvReportingEnable": true,
       "recMode": "odb_strip",
       "globalWidgetStatistics": true,
+      "feedContent": "[{\"type\":\"widget\", \"id\":\"SFD_VRS_1\"},{\"type\":\"widget\", \"id\":\"SFD_SWP_1\"}]",
       "apv": true,
+      "isSmartFeed": true,
       "cwvReportingThreshold": 70,
       "InstallationType": "other"
     }

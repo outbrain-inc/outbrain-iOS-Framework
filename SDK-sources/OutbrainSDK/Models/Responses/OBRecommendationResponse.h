@@ -25,14 +25,7 @@
  * @see Outbrain::fetchRecommendationsForRequest
  * @see OBRecommendation
  */
-@interface OBRecommendationResponse : OBResponse {
-    NSArray     *recommendations;
-    OBSettings  *settings;
-    OBResponseRequest   *responseRequest;
-}
-
-
-FOUNDATION_EXPORT NSString *const kSDK_SHOULD_RETURN_PAID_REDIRECT_URL;
+@interface OBRecommendationResponse : OBResponse
 
 
 /**
