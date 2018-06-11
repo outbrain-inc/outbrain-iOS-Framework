@@ -15,6 +15,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
+    let smartFeedWidgetID = "SFD_MAIN_1"
+    let currentArticleDemoUrl = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
@@ -39,8 +41,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func setupSmartFeed() {
-        let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_1", tableView: self.tableView)
+        let baseURL = currentArticleDemoUrl
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: smartFeedWidgetID, tableView: self.tableView)
         self.smartFeedManager.delegate = self
         
         // Optional
@@ -88,6 +90,10 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell!
         case 5:
             cell = self.tableView.dequeueReusableCell(withIdentifier: outbrainHeaderCellReuseIdentifier) as UITableViewCell!
+            
+            if let obLabel = cell?.viewWithTag(455) as? OBLabel {
+                Outbrain.register(obLabel, withWidgetId: smartFeedWidgetID, andUrl: currentArticleDemoUrl)
+            }
         default:
             break;
         }

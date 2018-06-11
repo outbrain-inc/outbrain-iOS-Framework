@@ -1,3 +1,4 @@
+
 //
 //  ArticleCollectionViewController.swift
 //  ios-SmartFeed
@@ -117,7 +118,7 @@ extension ArticleCollectionViewController {
                 button.addTarget(self, action: #selector(self.outbrainLogoClicked), for: .touchUpInside)
             }
             
-            if let obLabel = cell?.viewWithTag(34) as? OBLabel {
+            if let obLabel = cell?.viewWithTag(455) as? OBLabel {
                 Outbrain.register(obLabel, withWidgetId: self.smartFeedManager.widgetId, andUrl: self.smartFeedManager.url)
             }
             
