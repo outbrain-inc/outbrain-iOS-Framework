@@ -15,8 +15,7 @@
 #import "OutbrainHelper.h"
 #import "OBNetworkManager.h"
 #import "OBContent_Private.h"
-#import "Outbrain_Private.h"
-
+#import "OBViewabilityService.h"
 
 @interface OBRecommendationRequestOperation()
 

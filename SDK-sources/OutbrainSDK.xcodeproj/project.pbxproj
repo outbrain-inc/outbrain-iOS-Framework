@@ -24,7 +24,6 @@
 		E61E6B462083607B0016D79A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B3D2083607B0016D79A /* OutbrainSDK.framework */; };
 		E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */; };
 		E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BCD20836C180016D79A /* OBAppleAdIdUtil.h */; };
-		E61E6C1820836C180016D79A /* Outbrain_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BCE20836C180016D79A /* Outbrain_Private.h */; };
 		E61E6C1920836C180016D79A /* OBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD020836C180016D79A /* OBLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD120836C180016D79A /* OBViewabilityService.h */; };
 		E61E6C1B20836C180016D79A /* OBAdsChoicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD220836C180016D79A /* OBAdsChoicesManager.m */; };
@@ -97,6 +96,8 @@
 		E61E6D00208737F00016D79A /* SFHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */; };
 		E61E6D06208E0F780016D79A /* SFItemData.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6D04208E0F780016D79A /* SFItemData.h */; };
 		E61E6D07208E0F780016D79A /* SFItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6D05208E0F780016D79A /* SFItemData.m */; };
+		E62B7E4620D12C490096F5BD /* OutbrainManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E62B7E4420D12C490096F5BD /* OutbrainManager.h */; };
+		E62B7E4720D12C490096F5BD /* OutbrainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E62B7E4520D12C490096F5BD /* OutbrainManager.m */; };
 		E63175CD20BC1BAE0077F589 /* SFTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63175CA20BC1BAE0077F589 /* SFTableViewCell.xib */; };
 		E63175CE20BC1BAE0077F589 /* SFCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63175CB20BC1BAE0077F589 /* SFCollectionViewCell.xib */; };
 		E63175CF20BC1BAE0077F589 /* SFHorizontalItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63175CC20BC1BAE0077F589 /* SFHorizontalItemCell.xib */; };
@@ -130,7 +131,6 @@
 		E61E6B452083607B0016D79A /* OutbrainSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutbrainSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAppleAdIdUtil.m; sourceTree = "<group>"; };
 		E61E6BCD20836C180016D79A /* OBAppleAdIdUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAppleAdIdUtil.h; sourceTree = "<group>"; };
-		E61E6BCE20836C180016D79A /* Outbrain_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Outbrain_Private.h; sourceTree = "<group>"; };
 		E61E6BD020836C180016D79A /* OBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBLabel.h; sourceTree = "<group>"; };
 		E61E6BD120836C180016D79A /* OBViewabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBViewabilityService.h; sourceTree = "<group>"; };
 		E61E6BD220836C180016D79A /* OBAdsChoicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAdsChoicesManager.m; sourceTree = "<group>"; };
@@ -208,6 +208,8 @@
 		E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		E61E6D04208E0F780016D79A /* SFItemData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFItemData.h; sourceTree = "<group>"; };
 		E61E6D05208E0F780016D79A /* SFItemData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFItemData.m; sourceTree = "<group>"; };
+		E62B7E4420D12C490096F5BD /* OutbrainManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutbrainManager.h; sourceTree = "<group>"; };
+		E62B7E4520D12C490096F5BD /* OutbrainManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutbrainManager.m; sourceTree = "<group>"; };
 		E63175CA20BC1BAE0077F589 /* SFTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTableViewCell.xib; sourceTree = "<group>"; };
 		E63175CB20BC1BAE0077F589 /* SFCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFCollectionViewCell.xib; sourceTree = "<group>"; };
 		E63175CC20BC1BAE0077F589 /* SFHorizontalItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalItemCell.xib; sourceTree = "<group>"; };
@@ -287,9 +289,10 @@
 				E61E6BFE20836C180016D79A /* Errors */,
 				E61E6C0120836C180016D79A /* OBBridge.h */,
 				E61E6BD820836C180016D79A /* OBBridge.m */,
-				E61E6BCE20836C180016D79A /* Outbrain_Private.h */,
 				E61E6BF920836C180016D79A /* Outbrain.h */,
 				E61E6C0220836C180016D79A /* Outbrain.m */,
+				E62B7E4420D12C490096F5BD /* OutbrainManager.h */,
+				E62B7E4520D12C490096F5BD /* OutbrainManager.m */,
 				E61E6C0320836C180016D79A /* Protocols */,
 				E61E6C0520836C180016D79A /* Helpers */,
 			);
@@ -538,6 +541,7 @@
 				E61E6C3220836C180016D79A /* OBDisclosure.h in Headers */,
 				E61E6C4320836C180016D79A /* OBProtocols.h in Headers */,
 				E61E6C1920836C180016D79A /* OBLabel.h in Headers */,
+				E62B7E4620D12C490096F5BD /* OutbrainManager.h in Headers */,
 				E61E6C3920836C180016D79A /* OBImage.h in Headers */,
 				E61E6CC72085D98F0016D79A /* SmartFeedManager.h in Headers */,
 				E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */,
@@ -547,7 +551,6 @@
 				E61E6C1E20836C180016D79A /* OBAdsChoicesManager.h in Headers */,
 				E61E6CB92085D98F0016D79A /* SFCollectionViewCell.h in Headers */,
 				E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */,
-				E61E6C1820836C180016D79A /* Outbrain_Private.h in Headers */,
 				E61E6C3D20836C180016D79A /* OutbrainSDK.h in Headers */,
 				E61E6CBC2085D98F0016D79A /* SFHorizontalView.h in Headers */,
 				E61E6C2220836C180016D79A /* OBNetworkManager.h in Headers */,
@@ -709,6 +712,7 @@
 				E61E6CC52085D98F0016D79A /* SFCollectionViewCell.m in Sources */,
 				E61E6C3420836C180016D79A /* OBRecommendation.m in Sources */,
 				E61E6C2720836C180016D79A /* OBNetworkManager.m in Sources */,
+				E62B7E4720D12C490096F5BD /* OutbrainManager.m in Sources */,
 				E61E6C4520836C180016D79A /* OutbrainHelper.m in Sources */,
 				E61E6C3720836C180016D79A /* OBDisclosure.m in Sources */,
 				E61E6C3020836C180016D79A /* OBRecommendationResponse.m in Sources */,

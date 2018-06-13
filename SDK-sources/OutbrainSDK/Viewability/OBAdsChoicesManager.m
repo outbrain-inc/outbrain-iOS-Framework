@@ -9,7 +9,6 @@
 #import "OBAdsChoicesManager.h"
 #import "OBRecommendationResponse.h"
 #import "OBNetworkManager.h"
-#import "Outbrain_Private.h"
 #import "Outbrain.h"
 
 @implementation OBAdsChoicesManager

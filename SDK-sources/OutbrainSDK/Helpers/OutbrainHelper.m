@@ -7,10 +7,8 @@
 //
 
 #import "OutbrainHelper.h"
-
-#import "Outbrain_Private.h"
 #import "OBContent_Private.h"
-
+#import "OutbrainManager.h"
 #import "OBDisclosure.h"
 #import "OBResponse.h"
 #import "OBViewabilityService.h"
@@ -34,7 +32,6 @@
 @interface OutbrainHelper()
 
 @property (nonatomic, strong) NSMutableDictionary * apvCache;
-@property (nonatomic, strong) NSMutableDictionary *obSettings;       // Settings payload that the sdk is initialized with
 
 @end
 
@@ -52,7 +49,6 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
         sharedInstance.apvCache = [[NSMutableDictionary alloc] init];   // Initialize our apv cache.
-        sharedInstance.obSettings = [[NSMutableDictionary alloc] init];
         sharedInstance.tokensHandler = [[OBRecommendationsTokenHandler alloc] init];
         
     });
@@ -78,7 +74,8 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     
     //Key
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"key" value: ([self partnerKey] ? [self partnerKey] : @"(null)")]];
+    NSString *partnerKey = [OutbrainManager sharedInstance].partnerKey;
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"key" value: (partnerKey ? partnerKey : @"(null)")]];
     
     //Version
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"version" value: OB_SDK_VERSION]];
@@ -113,7 +110,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"api_user_id" value: apiUserId]];
     
     //Test mode
-    if ([((NSNumber *)[[OutbrainHelper sharedInstance] sdkSettingForKey:OBSettingsAttributes.testModeKey]) boolValue]) {
+    if ([OutbrainManager sharedInstance].testMode) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"location" value: @"us"]];
         if (request.fid == nil && ![request.widgetId isEqualToString:@"SFD_MAIN_1"]) {
@@ -254,34 +251,6 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
   NSString *apiUserId = [OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId];
   [params addObject:[NSURLQueryItem queryItemWithName:@"advertiser_id" value: apiUserId]];
   return params;
-}
-
-#pragma mark - SDK Settings
-- (void)setSDKSettingValue:(id)value forKey:(NSString *)key
-{
-    if(value == nil)
-    {
-        // Value is nil.  We should delete the key instead
-        [self.obSettings removeObjectForKey:key];
-        return;
-    }
-    
-    self.obSettings[key] = value;
-}
-
-- (id) sdkSettingForKey:(NSString *)key;
-{
-    return self.obSettings[key];
-}
-
-- (NSString *)partnerKey
-{
-    return [self sdkSettingForKey:OBSettingsAttributes.partnerKey];
-}
-
-- (NSString *)userToken
-{
-    return [self sdkSettingForKey:OBSettingsAttributes.appUserTokenKey];
 }
 
 @end

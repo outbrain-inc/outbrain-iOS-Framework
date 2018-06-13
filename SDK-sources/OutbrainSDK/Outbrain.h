@@ -136,10 +136,6 @@ typedef void (^OBOnClickBlock)(NSURL *url);
  */
 + (void)setTestMode:(BOOL)testMode;
 
-// For the current SDK version the GA reporting should be disabled
-// + (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage;
 
-// This method used only for tests, should be disabled on the SDK
-+ (void)setSharedInstance:(Outbrain *)instance;
 
 @end
