@@ -50,7 +50,7 @@
             return;
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             if (imageView.tag != [imageUrl.absoluteString hash]) {
-                NSLog(@"SFImageLoader: imageView has changed - no need to load with image..");
+                // NSLog(@"SFImageLoader: imageView has changed - no need to load with image..");
                 return;
             }
             imageView.image = [UIImage imageWithData:data];
