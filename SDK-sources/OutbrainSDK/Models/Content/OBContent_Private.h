@@ -7,6 +7,7 @@
 //
 
 #import "Outbrain.h"
+#import "OBContent.h"
 
 @interface OBContent ()
 /**

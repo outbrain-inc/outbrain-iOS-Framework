@@ -49,6 +49,4 @@
 
 - (NSURL *) recommendationURLForRequest:(OBRequest *)request;
 
-- (NSString *)partnerKey;
-
 @end
