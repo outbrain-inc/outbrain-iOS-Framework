@@ -32,7 +32,6 @@
 @interface OutbrainHelper()
 
 @property (nonatomic, strong) NSMutableDictionary * apvCache;
-@property (nonatomic, strong) NSMutableDictionary *obSettings;       // Settings payload that the sdk is initialized with
 
 @end
 
@@ -50,7 +49,6 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
         sharedInstance.apvCache = [[NSMutableDictionary alloc] init];   // Initialize our apv cache.
-        sharedInstance.obSettings = [[NSMutableDictionary alloc] init];
         sharedInstance.tokensHandler = [[OBRecommendationsTokenHandler alloc] init];
         
     });
@@ -253,24 +251,6 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
   NSString *apiUserId = [OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId];
   [params addObject:[NSURLQueryItem queryItemWithName:@"advertiser_id" value: apiUserId]];
   return params;
-}
-
-#pragma mark - SDK Settings
-- (void)setSDKSettingValue:(id)value forKey:(NSString *)key
-{
-    if(value == nil)
-    {
-        // Value is nil.  We should delete the key instead
-        [self.obSettings removeObjectForKey:key];
-        return;
-    }
-    
-    self.obSettings[key] = value;
-}
-
-- (id) sdkSettingForKey:(NSString *)key;
-{
-    return self.obSettings[key];
 }
 
 @end
