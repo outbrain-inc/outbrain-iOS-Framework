@@ -41,8 +41,11 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func setupSmartFeed() {
+        guard let publisherLogoImage = UIImage(named: "cnn-logo") else {
+            return
+        }
         let baseURL = currentArticleDemoUrl
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: smartFeedWidgetID, tableView: self.tableView)
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: smartFeedWidgetID, tableView: self.tableView, publisherName: "CNN", publisherImage: publisherLogoImage)
         self.smartFeedManager.delegate = self
         
         // Optional

@@ -21,15 +21,16 @@
 
 @interface SmartFeedManager : NSObject
 
-@property (nonatomic, strong, readonly) NSString *url;
-@property (nonatomic, strong, readonly) NSString *widgetId;
-
-- (id _Nonnull )initWithUrl:(NSString * _Nonnull)url widgetID:(NSString * _Nonnull)widgetId collectionView:(UICollectionView * _Nonnull)collectionView;
-
+@property (nonatomic, strong, readonly) NSString * _Nullable url;
+@property (nonatomic, strong, readonly) NSString * _Nullable widgetId;
 
 
 // TableView
-- (id _Nonnull )initWithUrl:(NSString * _Nonnull)url widgetID:(NSString * _Nonnull)widgetId tableView:(UITableView * _Nonnull)tableView;
+- (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
+                   widgetID:(NSString * _Nonnull)widgetId
+                  tableView:(UITableView * _Nonnull)tableView
+              publisherName:(NSString * _Nonnull)publisherName
+             publisherImage:(UIImage * _Nonnull)publisherImage;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
@@ -38,6 +39,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 // CollectionView
+- (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
+                   widgetID:(NSString * _Nonnull)widgetId
+             collectionView:(UICollectionView * _Nonnull)collectionView
+              publisherName:(NSString * _Nonnull)publisherName
+             publisherImage:(UIImage * _Nonnull)publisherImage;
+
 - (UICollectionViewCell *_Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView

@@ -19,8 +19,10 @@
 
 @interface SmartFeedManager() <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) NSString *url;
-@property (nonatomic, strong) NSString *widgetId;
+@property (nonatomic, strong) NSString * _Nullable url;
+@property (nonatomic, strong) NSString * _Nullable widgetId;
+@property (nonatomic, copy) NSString *publisherName;
+@property (nonatomic, strong) UIImage *publisherImage;
 @property (nonatomic, strong) NSArray *feedContentArray;
 @property (nonatomic, strong) NSString *fid;
 
@@ -44,28 +46,28 @@ const CGFloat kTableViewRowHeight = 250.0;
 #pragma mark - init methods
 - (id)init
 {
-    return [self initWithUrl:nil widgetID:nil collectionView:nil];
+    return [self initWithUrl:nil widgetID:nil collectionView:nil publisherName:nil publisherImage:nil];
 }
 
-- (id)initWithUrl:(NSString *)url widgetID:(NSString *)widgetId collectionView:(UICollectionView *)collectionView;
+- (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
+                   widgetID:(NSString * _Nonnull)widgetId
+             collectionView:(UICollectionView * _Nonnull)collectionView
+              publisherName:(NSString * _Nonnull)publisherName
+             publisherImage:(UIImage * _Nonnull)publisherImage
 {
     self = [super init];
-    if (self) {
-        self.widgetId = widgetId;
-        self.url = url;
+    if(self) {
+        NSLog(@"_init: %@", self);
+        [self commonInitWithUrl:url widgetID:widgetId publisherName:publisherName publisherImage:publisherImage];
+        
         self.collectionView = collectionView;
-        self.smartFeedItemsArray = [[NSMutableArray alloc] init];
+        
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         
         // horizontal cell (carousel container) SFCarouselContainerCell
         UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCollectionViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"horizontalCellNib should not be null");
         [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier:@"SFHorizontalCell"];
-        
-        // Organic, horizontal carousel item cell
-        UINib *horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
-        NSAssert(horizontalItemCellNib != nil, @"horizontalItemCellNib should not be null");
-        [self registerHorizontalItemNib:horizontalItemCellNib forCellWithReuseIdentifier:@"SFHorizontalItemCell"];
         
         // Paid, single item cell
         UINib *collectionViewCellNib = [UINib nibWithNibName:@"SFCollectionViewCell" bundle:bundle];
@@ -75,24 +77,25 @@ const CGFloat kTableViewRowHeight = 250.0;
     return self;
 }
 
-- (id _Nonnull )initWithUrl:(NSString * _Nonnull)url widgetID:(NSString * _Nonnull)widgetId tableView:(UITableView * _Nonnull)tableView {
+- (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
+                   widgetID:(NSString * _Nonnull)widgetId
+                  tableView:(UITableView * _Nonnull)tableView
+              publisherName:(NSString * _Nonnull)publisherName
+             publisherImage:(UIImage * _Nonnull)publisherImage {
     self = [super init];
-    if (self) {
-        self.widgetId = widgetId;
-        self.url = url;
+    if(self) {
+        NSLog(@"_init: %@", self);
+        
+        [self commonInitWithUrl:url widgetID:widgetId publisherName:publisherName publisherImage:publisherImage];
+       
         self.tableView = tableView;
         tableView.estimatedRowHeight = kTableViewRowHeight;
-        self.smartFeedItemsArray = [[NSMutableArray alloc] init];
         
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         
         // horizontal cell (carousel container) SFCarouselContainerCell
         UINib *nib = [UINib nibWithNibName:@"SFHorizontalTableViewCell" bundle:bundle];
         [self.tableView registerNib:nib forCellReuseIdentifier: @"SFHorizontalCell"];
-        
-        // Organic, horizontal carousel item cell
-        nib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
-        [self registerHorizontalItemNib:nib forCellWithReuseIdentifier:@"SFHorizontalItemCell"];
         
         // Paid, single item cell
         nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
@@ -101,6 +104,25 @@ const CGFloat kTableViewRowHeight = 250.0;
         [self fetchMoreRecommendations];
     }
     return self;
+}
+
+- (void)commonInitWithUrl:(NSString *)url
+                   widgetID:(NSString *)widgetId
+              publisherName:(NSString *)publisherName
+             publisherImage:(UIImage *)publisherImage
+{
+    self.widgetId = widgetId;
+    self.url = url;
+    self.publisherName = publisherName;
+    self.publisherImage = publisherImage;
+    
+    self.smartFeedItemsArray = [[NSMutableArray alloc] init];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    
+    // Organic, horizontal carousel item cell
+    UINib *nib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
+    [self registerHorizontalItemNib:nib forCellWithReuseIdentifier:@"SFHorizontalItemCell"];
 }
 
 #pragma mark - Fetch Recommendations
@@ -276,6 +298,8 @@ const CGFloat kTableViewRowHeight = 250.0;
 }
 
 - (void) configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)horizontalCell atIndexPath:(NSIndexPath *)indexPath {
+    horizontalCell.moreFromLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
+    horizontalCell.moreFromImageView.image = self.publisherImage;
     [horizontalCell.horizontalView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier: self.horizontalCellIdentifier];
     [horizontalCell.horizontalView setupView];
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
@@ -427,6 +451,9 @@ const CGFloat kTableViewRowHeight = 250.0;
     
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
+    horizontalCell.moreFromLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
+    horizontalCell.moreFromImageView.image = self.publisherImage;
+    
     [horizontalCell.horizontalView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier: self.horizontalCellIdentifier];
     [horizontalCell.horizontalView setupView];
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
