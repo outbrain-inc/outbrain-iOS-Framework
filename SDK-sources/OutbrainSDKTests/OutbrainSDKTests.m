@@ -8,7 +8,6 @@
 
 #import <XCTest/XCTest.h>
 #import "OutbrainSDK.h"
-#import "Outbrain_Private.h"
 
 
 @interface OutbrainSDKTests : XCTestCase
@@ -23,7 +22,6 @@
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    [Outbrain setSharedInstance:nil];
 }
 
 - (void)tearDown
@@ -32,9 +30,6 @@
     [super tearDown];
 }
 
-- (void)testInitializeFromEmptyDictionary {
-    XCTAssertThrows([Outbrain initializeOutbrainWithDictionary:@{}], @"Should not allow empty dictionary");
-}
 
 
 

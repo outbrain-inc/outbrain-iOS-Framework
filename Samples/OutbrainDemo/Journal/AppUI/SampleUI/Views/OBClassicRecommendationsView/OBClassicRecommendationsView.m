@@ -199,7 +199,7 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
             [__cell.imageView setImage:image];
         }];
         
-        if ([rec isRTB]) {
+        if ([rec shouldDisplayDisclosureIcon]) {
             cell.adChoicesButton.hidden = NO;
             cell.adChoicesButton.tag = indexPath.row;            
             NSURL *adChoicesURL = [NSURL URLWithString:rec.disclosure.imageUrl];

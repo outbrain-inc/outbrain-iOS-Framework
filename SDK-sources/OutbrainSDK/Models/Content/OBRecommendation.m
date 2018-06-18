@@ -41,14 +41,10 @@
 @property (nonatomic, strong, readwrite) OBImage *image;
 /** @brief The appflow settings for the content, currently only shouldOpenInExternalBrowser is supported. */
 @property (nonatomic, strong, readwrite) NSDictionary *appflow;
-/** @brief should we open this recommendation in an external browser or within the app */
-@property (nonatomic, assign, readwrite) BOOL shouldOpenInSafariViewController;
 /** @brief Disclosure icon for conversion campaigns */
 @property (nonatomic, strong, readwrite) OBDisclosure *disclosure;
 /** @brief Pixels array for a recommendation to be fired when recommendation received from the server */
 @property (nonatomic, strong, readwrite) NSArray *pixels;
-/** @brief this is a paid recommendation of type RTB . */
-@property (nonatomic, assign, getter = isRTB, readwrite) BOOL rtbRec;
 
 @end
 
@@ -76,6 +72,15 @@
     return self;
 }
 
+-(BOOL) isRTB {
+    return [self shouldDisplayDisclosureIcon];
+}
+
+-(BOOL) shouldDisplayDisclosureIcon {
+    // Check if both disclosure image and click_url exists
+    return self.disclosure && self.disclosure.imageUrl && [self.disclosure.imageUrl length] > 0 && self.disclosure.clickUrl && [self.disclosure.clickUrl.absoluteString length] > 0;
+}
+
 + (instancetype)contentWithPayload:(NSDictionary *)payload
 {
     OBRecommendation * recommendation = [super contentWithPayload:payload];
@@ -83,11 +88,6 @@
     if(payload[@"pc_id"])
     {
         recommendation.paidLink = YES;
-    }
-    
-    if(payload[@"pixels"])
-    {
-        recommendation.rtbRec = YES;
     }
     
     NSString *source = recommendation.source;
@@ -140,9 +140,6 @@
         }
     }
     
-    if ([key isEqualToString:@"appflow"]) {
-        self.shouldOpenInSafariViewController = [value[@"shouldOpenInExternalBrowser"] boolValue];
-    }
     if ([key isEqualToString:@"pixels"]) {
         self.pixels = value;
     }
