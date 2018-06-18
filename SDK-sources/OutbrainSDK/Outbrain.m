@@ -61,27 +61,31 @@ BOOL WAS_INITIALISED     =   NO;
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request withCallback:(OBResponseCompletionHandler)handler
 {
-    [[OutbrainManager sharedInstance] fetchRecommendationsWithRequest:request andCallback:handler];
+    @synchronized ([OutbrainManager sharedInstance]) {
+        [[OutbrainManager sharedInstance] fetchRecommendationsWithRequest:request andCallback:handler];
+    }
 }
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request withDelegate:(__weak id<OBResponseDelegate>)delegate
 {
-    [[OutbrainManager sharedInstance] fetchRecommendationsWithRequest:request andCallback:^(OBRecommendationResponse *response) {
-        if(!delegate)
-        {
-            // Our delegate has disappeared here. 
-            return;
-        }
-        NSError *error = [response performSelector:@selector(getPrivateError)];
-        if(error)
-        {
-            [delegate outbrainResponseDidFail:error];
-        }
-        else
-        {
-            [delegate outbrainDidReceiveResponseWithSuccess:response];
-        }
-    }];
+    @synchronized ([OutbrainManager sharedInstance]) {
+        [[OutbrainManager sharedInstance] fetchRecommendationsWithRequest:request andCallback:^(OBRecommendationResponse *response) {
+            if(!delegate)
+            {
+                // Our delegate has disappeared here.
+                return;
+            }
+            NSError *error = [response performSelector:@selector(getPrivateError)];
+            if(error)
+            {
+                [delegate outbrainResponseDidFail:error];
+            }
+            else
+            {
+                [delegate outbrainDidReceiveResponseWithSuccess:response];
+            }
+        }];
+    }
 }
 
 

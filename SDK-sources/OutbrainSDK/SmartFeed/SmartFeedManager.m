@@ -87,7 +87,7 @@ const CGFloat kTableViewRowHeight = 250.0;
         NSLog(@"_init: %@", self);
         
         [self commonInitWithUrl:url widgetID:widgetId publisherName:publisherName publisherImage:publisherImage];
-        
+       
         self.tableView = tableView;
         tableView.estimatedRowHeight = kTableViewRowHeight;
         
@@ -141,7 +141,6 @@ const CGFloat kTableViewRowHeight = 250.0;
 }
 
 -(void) loadFirstTimeForFeed {
-    NSLog(@"*** loadFirstTimeForFeed ***");
     OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex++];
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
         self.isLoading = NO;
@@ -160,7 +159,7 @@ const CGFloat kTableViewRowHeight = 250.0;
             return;
         }
         
-        NSLog(@"loadFirstTimeForFeed received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
+        // NSLog(@"loadFirstTimeForFeed received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
         
         NSUInteger newItemsCount = 0;
         @synchronized(self) {
@@ -174,8 +173,6 @@ const CGFloat kTableViewRowHeight = 250.0;
 }
 
 -(void) loadMoreAccordingToFeedContent {
-    NSLog(@"*** loadMoreAccordingToFeedContent ***");
-    
     __block NSUInteger newItemsCount = 0;
     __block NSUInteger responseCount = 0;
     __block NSUInteger requestBatchSize = [self.feedContentArray count];
@@ -197,7 +194,7 @@ const CGFloat kTableViewRowHeight = 250.0;
                 return;
             }
             
-            NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
+          //  NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
             
             @synchronized(self) {
                 newItemsCount += [self addNewItemsToSmartFeedArray:response];
@@ -392,7 +389,6 @@ const CGFloat kTableViewRowHeight = 250.0;
     OBRecommendation *rec = sfItem.singleRec;
     
     if (self.delegate != nil && rec != nil) {
-        NSLog(@"tapGesture: %@", rec.content);
         [self.delegate userTappedOnRecommendation:rec];
     }
 }
@@ -402,7 +398,6 @@ const CGFloat kTableViewRowHeight = 250.0;
     SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:adChoicesButton.tag inSection:1]];
     OBRecommendation *rec = sfItem.singleRec;
     if (self.delegate != nil && rec != nil) {
-        NSLog(@"adChoicesClicked: %@", rec.content);
         [self.delegate userTappedOnAdChoicesIcon:rec.disclosure.clickUrl];
     }
 }

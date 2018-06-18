@@ -11,6 +11,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
+
 #import "OBAppleAdIdUtil.h"
 
 
@@ -19,6 +21,7 @@
 
 @property (nonatomic, strong) NSString *userAgent;
 @property (nonatomic, strong) NSURLSession *defaultSession;
+@property (nonatomic, strong) WKWebView *wkWebview;
 @end
 
 
@@ -101,10 +104,12 @@
 }
 
 + (void) createWebViewAndFetchUserAgent {
-    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-    NSString *_userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-    [[self sharedManager] setUserAgent:_userAgent];
-    webView = nil;
+    [[self sharedManager] setWkWebview: [[WKWebView alloc] initWithFrame:CGRectZero]];
+    [[[self sharedManager] wkWebview] evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+        NSString *userAgent = (NSString *)response;
+        [[self sharedManager] setUserAgent:userAgent];
+        [[self sharedManager] setWkWebview:nil];
+    }];
 }
 
 
