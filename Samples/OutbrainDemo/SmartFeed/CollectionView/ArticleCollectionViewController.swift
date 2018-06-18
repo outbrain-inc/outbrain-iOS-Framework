@@ -57,8 +57,12 @@ class ArticleCollectionViewController: UICollectionViewController {
         guard let collectionView = self.collectionView else {
             return
         }
+        guard let publisherLogoImage = UIImage(named: "cnn-logo") else {
+            return
+        }
         let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_1", collectionView: collectionView)
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_1", collectionView: collectionView, publisherName: "CNN", publisherImage: publisherLogoImage)
+        
         self.smartFeedManager.delegate = self
         
         // Optional
