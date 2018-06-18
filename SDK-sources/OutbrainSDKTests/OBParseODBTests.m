@@ -50,7 +50,6 @@
     
     XCTAssert([rec.content isEqualToString:@"Gamers around the world have been waiting for this game!"]);
     XCTAssert([rec.source isEqualToString:@"Forge Of Empires"]);
-    XCTAssertEqual(rec.isRTB, NO);
     XCTAssertEqual(rec.isVideo, NO);
     XCTAssertEqual(rec.isPaidLink, YES);
     
@@ -64,7 +63,7 @@
     
     XCTAssert([rec.content isEqualToString:@"Combating the Content Overload"]);
     XCTAssert([rec.source isEqualToString:@"Outbrain | Mobile Demo"]);
-    XCTAssertEqual(rec.isRTB, NO);
+    XCTAssertEqual(rec.shouldDisplayDisclosureIcon, NO);
     XCTAssertEqual(rec.isVideo, NO);
     XCTAssertEqual(rec.isPaidLink, NO);
     

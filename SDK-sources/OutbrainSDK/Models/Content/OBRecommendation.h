@@ -51,13 +51,13 @@
 @property (nonatomic, assign, getter = isVideo, readonly) BOOL video;
 /** @brief An image related to the recommendation. */
 @property (nonatomic, strong, readonly) OBImage *image;
-/** @brief should we open this recommendation in an external browser or within the app */
-@property (nonatomic, assign, readonly) BOOL shouldOpenInSafariViewController DEPRECATED_ATTRIBUTE;
 /** @brief Disclosure icon for conversion campaigns */
 @property (nonatomic, strong, readonly) OBDisclosure *disclosure;
 /** @brief Pixels array for a recommendation to be fired when recommendation received from the server */
 @property (nonatomic, strong, readonly) NSArray *pixels;
-/** @brief this is a paid recommendation of type RTB . */
-@property (nonatomic, assign, getter = isRTB, readonly) BOOL rtbRec;
+
+-(BOOL) isRTB __deprecated_msg("use shouldDisplayDisclosureIcon() instead.");
+
+-(BOOL) shouldDisplayDisclosureIcon;
 
 @end

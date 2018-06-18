@@ -116,7 +116,7 @@
         [spinner removeFromSuperview];
     }];
     
-    if ([rec isRTB]) {
+    if ([rec shouldDisplayDisclosureIcon]) {
         cell.adchoicesButton.hidden = NO;
         cell.adchoicesButton.tag = indexPath.row;
         NSURL *adChoicesURL = [NSURL URLWithString:rec.disclosure.imageUrl];

@@ -320,7 +320,7 @@ const CGFloat kTableViewRowHeight = 250.0;
     singleCell.recTitleLabel.text = rec.content;
     if ([rec isPaidLink]) {
         singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
-        if ([rec isRTB]) {
+        if ([rec shouldDisplayDisclosureIcon]) {
             singleCell.adChoicesButton.hidden = NO;
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
             singleCell.adChoicesButton.tag = cellTag;
@@ -422,7 +422,7 @@ const CGFloat kTableViewRowHeight = 250.0;
     
     if ([rec isPaidLink]) {
         singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
-        if ([rec isRTB]) {
+        if ([rec shouldDisplayDisclosureIcon]) {
             singleCell.adChoicesButton.hidden = NO;
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
             singleCell.adChoicesButton.tag = cellTag;
