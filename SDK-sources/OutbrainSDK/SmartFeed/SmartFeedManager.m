@@ -58,24 +58,16 @@ const CGFloat kTableViewRowHeight = 250.0;
     self = [super init];
     if(self) {
         NSLog(@"_init: %@", self);
-        self.widgetId = widgetId;
-        self.url = url;
-        self.collectionView = collectionView;
-        self.publisherName = publisherName;
-        self.publisherImage = publisherImage;
+        [self commonInitWithUrl:url widgetID:widgetId publisherName:publisherName publisherImage:publisherImage];
         
-        self.smartFeedItemsArray = [[NSMutableArray alloc] init];
+        self.collectionView = collectionView;
+        
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         
         // horizontal cell (carousel container) SFCarouselContainerCell
         UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCollectionViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"horizontalCellNib should not be null");
         [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier:@"SFHorizontalCell"];
-        
-        // Organic, horizontal carousel item cell
-        UINib *horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
-        NSAssert(horizontalItemCellNib != nil, @"horizontalItemCellNib should not be null");
-        [self registerHorizontalItemNib:horizontalItemCellNib forCellWithReuseIdentifier:@"SFHorizontalItemCell"];
         
         // Paid, single item cell
         UINib *collectionViewCellNib = [UINib nibWithNibName:@"SFCollectionViewCell" bundle:bundle];
@@ -93,24 +85,17 @@ const CGFloat kTableViewRowHeight = 250.0;
     self = [super init];
     if(self) {
         NSLog(@"_init: %@", self);
-        self.widgetId = widgetId;
-        self.url = url;
-        self.publisherName = publisherName;
-        self.publisherImage = publisherImage;
-        self.tableView = tableView;
         
+        [self commonInitWithUrl:url widgetID:widgetId publisherName:publisherName publisherImage:publisherImage];
+        
+        self.tableView = tableView;
         tableView.estimatedRowHeight = kTableViewRowHeight;
-        self.smartFeedItemsArray = [[NSMutableArray alloc] init];
         
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         
         // horizontal cell (carousel container) SFCarouselContainerCell
         UINib *nib = [UINib nibWithNibName:@"SFHorizontalTableViewCell" bundle:bundle];
         [self.tableView registerNib:nib forCellReuseIdentifier: @"SFHorizontalCell"];
-        
-        // Organic, horizontal carousel item cell
-        nib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
-        [self registerHorizontalItemNib:nib forCellWithReuseIdentifier:@"SFHorizontalItemCell"];
         
         // Paid, single item cell
         nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
@@ -121,12 +106,10 @@ const CGFloat kTableViewRowHeight = 250.0;
     return self;
 }
 
-- (void)commonInitWithUrl:(NSString * _Nonnull)url
-                   widgetID:(NSString * _Nonnull)widgetId
-             collectionView:(UICollectionView * _Nonnull)collectionView
-                  tableView:(UITableView * _Nonnull)tableView
-              publisherName:(NSString * _Nonnull)publisherName
-             publisherImage:(UIImage * _Nonnull)publisherImage
+- (void)commonInitWithUrl:(NSString *)url
+                   widgetID:(NSString *)widgetId
+              publisherName:(NSString *)publisherName
+             publisherImage:(UIImage *)publisherImage
 {
     self.widgetId = widgetId;
     self.url = url;
