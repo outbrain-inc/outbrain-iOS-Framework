@@ -11,13 +11,6 @@
 #import "OBContent_Private.h"
 
 
-#define OBPublishDateKey        @"OBPublishDateKey"
-#define OBRedirectURLKey        @"OBRedirectURLKey"
-#define OBAuthorKey             @"OBAuthorKey"
-#define OBContentKey            @"OBContentKey"
-#define OBSourceKey             @"OBSourceKey"
-
-
 
 @interface OBRecommendation()
 
@@ -51,26 +44,6 @@
 
 @implementation OBRecommendation
 
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-   [coder encodeObject:self.publishDate forKey:OBPublishDateKey];
-   [coder encodeObject:self.redirectURL forKey:OBRedirectURLKey];
-   [coder encodeObject:self.author forKey:OBAuthorKey];
-   [coder encodeObject:self.content forKey:OBContentKey];
-   [coder encodeObject:self.source forKey:OBSourceKey];
-}
-
-- (id)initWithCoder:(NSCoder *)coder {
-    self = [super init];
-    if (self) {
-        self.publishDate = [coder decodeObjectForKey:OBPublishDateKey];
-        self.redirectURL = [coder decodeObjectForKey:OBRedirectURLKey];
-        self.author = [coder decodeObjectForKey:OBAuthorKey];
-        self.content = [coder decodeObjectForKey:OBContentKey];
-        self.source = [coder decodeObjectForKey:OBSourceKey];
-    }
-    return self;
-}
 
 -(BOOL) isRTB {
     return [self shouldDisplayDisclosureIcon];
