@@ -42,9 +42,10 @@
     XCTAssert([rec.source isEqualToString:@"Zoom"]); // sanity
     XCTAssert(rec.isRTB == YES);
     XCTAssert(rec.shouldDisplayDisclosureIcon == YES);
-    XCTAssert(rec.disclosure != nil);
-    XCTAssert(rec.disclosure.clickUrl != nil);
-    XCTAssert(rec.disclosure.imageUrl != nil);
+    XCTAssertNotNil(rec.disclosure);
+    XCTAssertNotNil(rec.disclosure.clickUrl);
+    XCTAssertNotNil(rec.disclosure.imageUrl);
+    XCTAssertNotNil(rec.pixels);
 }
 
 - (void)testNormalNonRTBRecommendation {
@@ -52,9 +53,10 @@
     XCTAssertNotNil(recJson);
     OBRecommendation *rec = [OBRecommendation contentWithPayload:recJson];
     XCTAssert([rec.source isEqualToString:@"From the Grapevine"]); // sanity
-    XCTAssert(rec.isRTB == NO);
-    XCTAssert(rec.shouldDisplayDisclosureIcon == NO);
-    XCTAssert(rec.disclosure == nil);
+    XCTAssertFalse(rec.isRTB);
+    XCTAssertFalse(rec.shouldDisplayDisclosureIcon);
+    XCTAssertNil(rec.disclosure);
+    XCTAssertNil(rec.pixels);
 }
 
 - (void)testNormalRTBRecommendationNoClickUrl {
@@ -64,7 +66,7 @@
     XCTAssert([rec.source isEqualToString:@"Zoom"]); // sanity
     XCTAssert(rec.isRTB == NO);
     XCTAssert(rec.shouldDisplayDisclosureIcon == NO);
-    XCTAssert(rec.disclosure == nil);
+    XCTAssertNil(rec.disclosure);
 }
 
 - (void)testNormalRTBRecommendationWithEmptyDisclosureValues {
@@ -77,7 +79,7 @@
     XCTAssert(rec.disclosure == nil);
 }
 
-- (void)testNormalRTBRecommendationDiscImage {
+- (void)testNormalRTBRecommendationNoDiscImage {
     NSDictionary *recJson = [OBTestUtils JSONFromFile: @"rtb_rec_with_no_disclosure_image"];
     XCTAssertNotNil(recJson);
     OBRecommendation *rec = [OBRecommendation contentWithPayload:recJson];
