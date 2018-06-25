@@ -67,7 +67,7 @@
     XCTAssert(rec.disclosure == nil);
 }
 
-- (void)testNormalRTBRecommendationDiscImage {
+- (void)testNormalRTBRecommendationWithEmptyDisclosureValues {
     NSDictionary *recJson = [OBTestUtils JSONFromFile: @"rtb_rec_with_disclosure_empty_values"];
     XCTAssertNotNil(recJson);
     OBRecommendation *rec = [OBRecommendation contentWithPayload:recJson];
@@ -77,7 +77,7 @@
     XCTAssert(rec.disclosure == nil);
 }
 
-- (void)testNormalRTBRecommendationWithEmptyDisclosureValues {
+- (void)testNormalRTBRecommendationDiscImage {
     NSDictionary *recJson = [OBTestUtils JSONFromFile: @"rtb_rec_with_no_disclosure_image"];
     XCTAssertNotNil(recJson);
     OBRecommendation *rec = [OBRecommendation contentWithPayload:recJson];
