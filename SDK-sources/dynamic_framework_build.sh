@@ -60,8 +60,8 @@ mkdir "${SRCROOT}/Release"
 # 4
 # Build the framework for device and for simulator (using
 # all needed architectures).
-xcodebuild -target "${TARGET_NAME}" -configuration Release -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk "iphoneos"
-xcodebuild -target "${TARGET_NAME}" -configuration Release -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk "iphonesimulator"
+xcodebuild -target "${TARGET_NAME}" -configuration Release ENABLE_BITCODE=YES OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk "iphoneos"
+xcodebuild -target "${TARGET_NAME}" -configuration Release ENABLE_BITCODE=YES OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk "iphonesimulator"
 
 # 5
 # Remove .framework file if exists on Desktop from previous run.
@@ -81,6 +81,9 @@ cp -r "${SRCROOT}/build/Release-iphoneos/${SF_WRAPPER_NAME}" "${SF_RELEASE_DIR}/
 # a new version created by merging the device and simulator
 # frameworks' executables with lipo.
 lipo -create -output "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}/${FRAMEWORK_NAME}" "${SRCROOT}/build/Release-iphoneos/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}" "${SRCROOT}/build/Release-iphonesimulator/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}"
+
+lipo -info "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}/${FRAMEWORK_NAME}"
+otool -arch arm64 -l "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}/${FRAMEWORK_NAME}" | grep __LLVM
 
 
 
