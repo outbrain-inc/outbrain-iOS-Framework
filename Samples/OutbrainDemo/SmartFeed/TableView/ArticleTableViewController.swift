@@ -86,13 +86,13 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         
         switch indexPath.row {
         case 0:
-            cell = self.tableView.dequeueReusableCell(withIdentifier: imageHeaderCellReuseIdentifier) as UITableViewCell!
+            cell = self.tableView.dequeueReusableCell(withIdentifier: imageHeaderCellReuseIdentifier) as UITableViewCell?
         case 1:
-            cell = self.tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell!
+            cell = self.tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell?
         case 2,3,4:
-            cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell!
+            cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
         case 5:
-            cell = self.tableView.dequeueReusableCell(withIdentifier: outbrainHeaderCellReuseIdentifier) as UITableViewCell!
+            cell = self.tableView.dequeueReusableCell(withIdentifier: outbrainHeaderCellReuseIdentifier) as UITableViewCell?
             
             if let obLabel = cell?.viewWithTag(455) as? OBLabel {
                 Outbrain.register(obLabel, withWidgetId: smartFeedWidgetID, andUrl: currentArticleDemoUrl)
