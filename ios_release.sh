@@ -88,9 +88,13 @@ rm -fr Swift-Demo/OutbrainSDK/OutbrainSDK.framework
 echo "--> check again if the original SDK exists"
 ls -l Swift-Demo/OutbrainSDK/
 echo "--> now copy the current SDK from this build"
-cp -a OutbrainSDK.framework Swift-Demo/OutbrainSDK/
+cp -a ../SDK/OutbrainSDK.framework Swift-Demo/OutbrainSDK/
 echo "--> finally check that the new SDK exists"
 ls -l Swift-Demo/OutbrainSDK/
+if [ ! -d Swift-Demo/OutbrainSDK/OutbrainSDK.framework ]; then
+	echo "framework is NOT where we think it is"
+	exit 1
+fi
 
 
 echo ""
