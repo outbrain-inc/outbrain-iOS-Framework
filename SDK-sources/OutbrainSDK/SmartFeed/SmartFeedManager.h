@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong, readonly) NSString * _Nullable url;
 @property (nonatomic, strong, readonly) NSString * _Nullable widgetId;
+@property (nonatomic, assign) NSInteger appNumberOfSections;
 
 
 // TableView
