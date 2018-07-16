@@ -115,7 +115,7 @@ const CGFloat kTableViewRowHeight = 250.0;
     self.url = url;
     self.publisherName = publisherName;
     self.publisherImage = publisherImage;
-    self.appNumberOfSections = 1;
+    self.outbrainSectionIndex = 1;
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -237,14 +237,14 @@ const CGFloat kTableViewRowHeight = 250.0;
     // build the index paths for insertion
     // since you're adding to the end of datasource, the new rows will start at count
     for (int i = 0; i < newItemsCount; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:currentCount+i inSection:self.appNumberOfSections]];
+        [indexPaths addObject:[NSIndexPath indexPathForRow:currentCount+i inSection:self.outbrainSectionIndex]];
     }
     
     if (self.collectionView != nil) {
         //[self.collectionView reloadData];
         [self.collectionView performBatchUpdates:^{
             if (currentCount == 0) {
-                [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:self.appNumberOfSections]];
+                [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:self.outbrainSectionIndex]];
             }
             [self.collectionView insertItemsAtIndexPaths:indexPaths];
         } completion:nil];
@@ -254,7 +254,7 @@ const CGFloat kTableViewRowHeight = 250.0;
         // tell the table view to update (at all of the inserted index paths)
         [self.tableView beginUpdates];
         if (currentCount == 0) {
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.appNumberOfSections] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.outbrainSectionIndex] withRowAnimation:UITableViewRowAnimationNone];
         }
         else {
             [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
@@ -359,7 +359,7 @@ const CGFloat kTableViewRowHeight = 250.0;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView {
-    return self.smartFeedItemsArray.count > 0 ? self.appNumberOfSections + 1 : self.appNumberOfSections;
+    return self.smartFeedItemsArray.count > 0 ? self.outbrainSectionIndex + 1 : self.outbrainSectionIndex;
 }
 
 - (void) collectionView:(UICollectionView *)collectionView
@@ -371,7 +371,7 @@ const CGFloat kTableViewRowHeight = 250.0;
         return;
     }
     
-    if (indexPath.section == self.appNumberOfSections) {
+    if (indexPath.section == self.outbrainSectionIndex) {
         if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
             [self configureHorizontalCell:cell atIndexPath:indexPath];
             [SFUtils addDropShadowToView: cell]; // add shadow
@@ -389,7 +389,7 @@ const CGFloat kTableViewRowHeight = 250.0;
 - (void) tapGesture: (id)sender
 {
     UITapGestureRecognizer *gestureRec = sender;
-    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:gestureRec.view.tag inSection:self.appNumberOfSections]];
+    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:gestureRec.view.tag inSection:self.outbrainSectionIndex]];
     OBRecommendation *rec = sfItem.singleRec;
     
     if (self.delegate != nil && rec != nil) {
@@ -399,7 +399,7 @@ const CGFloat kTableViewRowHeight = 250.0;
 
 - (void) adChoicesClicked:(id)sender {
     UIButton *adChoicesButton = sender;
-    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:adChoicesButton.tag inSection:self.appNumberOfSections]];
+    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:adChoicesButton.tag inSection:self.outbrainSectionIndex]];
     OBRecommendation *rec = sfItem.singleRec;
     if (self.delegate != nil && rec != nil) {
         [self.delegate userTappedOnAdChoicesIcon:rec.disclosure.clickUrl];
