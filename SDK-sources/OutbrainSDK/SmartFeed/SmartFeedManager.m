@@ -221,24 +221,57 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
 
 -(NSUInteger) addNewItemsToSmartFeedArray:(OBRecommendationResponse *)response {
     NSUInteger newItemsCount = 0;
-    NSMutableArray *organicRecsList = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in response.recommendations) {
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
-        if (rec.isPaidLink) {
-            SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec];
-            [self.smartFeedItemsArray addObject:item];
-            newItemsCount++;
-        }
-        else {
-            [organicRecsList addObject:rec];
-        }
     }
     
-    if (organicRecsList.count > 1) {
-        SFItemData *item = [[SFItemData alloc] initWithList:organicRecsList];
+    int random = arc4random() % 3;
+    switch (random) {
+        case 0:
+            return [self addSingleItemsToSmartFeedArray:response.recommendations];
+            break;
+        case 1:
+            return [self addCarouselItemsToSmartFeedArray:response.recommendations];
+            break;
+        case 2:
+            return [self addGridItemsToSmartFeedArray:response.recommendations];
+            break;
+            
+        default:
+            break;
+    }
+   
+    return newItemsCount;
+}
+
+-(NSUInteger) addSingleItemsToSmartFeedArray:(NSArray *)recommendations {
+    NSUInteger newItemsCount = 0;
+    for (OBRecommendation *rec in recommendations) {
+        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:SingleItem];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
     }
+    return newItemsCount;
+}
+
+-(NSUInteger) addCarouselItemsToSmartFeedArray:(NSArray *)recommendations {
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:CarouselItem];
+    [self.smartFeedItemsArray addObject:item];
+    return 1;
+}
+
+-(NSUInteger) addGridItemsToSmartFeedArray:(NSArray *)recommendations {
+    NSUInteger newItemsCount = 0;
+    NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
+    while (recommendationsMutableArray.count >= 2) {
+        NSRange subRange = NSMakeRange(0, 2);
+        NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
+        [recommendationsMutableArray removeObjectsInRange:subRange];
+        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:GridTwoInRowNoTitle];
+        [self.smartFeedItemsArray addObject:item];
+        newItemsCount++;
+    }
+
     return newItemsCount;
 }
 
