@@ -61,7 +61,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
+        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index, must be the last one.
         return self.smartFeedManager.numberOfSectionsInTableView()
     }
     // number of rows in table view
