@@ -476,8 +476,8 @@ const CGFloat kTableViewRowHeight = 250.0;
     
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
-    horizontalCell.moreFromLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
-    horizontalCell.moreFromImageView.image = self.publisherImage;
+    horizontalCell.titleLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
+    horizontalCell.publisherImageView.image = self.publisherImage;
     
     [horizontalCell.horizontalView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier: self.horizontalCellIdentifier];
     [horizontalCell.horizontalView setupView];

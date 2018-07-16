@@ -64,8 +64,8 @@
             <size key="customSize" width="461" height="251"/>
             <connections>
                 <outlet property="horizontalView" destination="ZSE-ha-ESX" id="Wbw-Gg-Dbg"/>
-                <outlet property="moreFromImageView" destination="mP1-SL-Ryg" id="zCg-B4-o7d"/>
-                <outlet property="moreFromLabel" destination="ngv-2i-bWM" id="1Q8-oJ-OL0"/>
+                <outlet property="publisherImageView" destination="mP1-SL-Ryg" id="SdL-mP-pcM"/>
+                <outlet property="titleLabel" destination="ngv-2i-bWM" id="AF2-qz-5yV"/>
             </connections>
             <point key="canvasLocation" x="-72.5" y="11.5"/>
         </collectionViewCell>
