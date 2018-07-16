@@ -13,12 +13,21 @@
 
 typedef void(^OnClick)(OBRecommendation *rec);
 
-
 - (void) setupView;
 
 - (void) registerNib:(UINib *_Nonnull)nib forCellWithReuseIdentifier:(NSString *_Nonnull)identifier;
 
 @property (nonatomic, strong) NSArray * _Nullable outbrainRecs;
 @property (nonatomic) OnClick _Nonnull onClick;
+
+
+// This section was private, now its here for the children classes
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, copy) NSString *horizontalCellIdentifier;
+@property (nonatomic, strong) UINib *horizontalItemCellNib;
+
+@property (nonatomic, assign) BOOL didInitCollectionViewLayout;
+@property (nonatomic, assign) CGSize itemSize;
+
 
 @end

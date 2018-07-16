@@ -38,7 +38,7 @@
 
 -(SFItemType) itemType {
     if (self.outbrainRecs && self.outbrainRecs.count > 1) {
-        return HorizontalItem;
+        return CarouselItem;
     }
     
     return SingleItem;

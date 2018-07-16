@@ -507,7 +507,7 @@ const CGFloat kTableViewRowHeight = 250.0;
 
 -(BOOL) isHorizontalCell:(NSIndexPath *)indexPath {
     SFItemData *sfItem = self.smartFeedItemsArray[indexPath.row];
-    return [sfItem itemType] == HorizontalItem;
+    return [sfItem itemType] == CarouselItem;
 }
 
 @end

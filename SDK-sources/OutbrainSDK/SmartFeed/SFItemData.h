@@ -18,7 +18,8 @@
 typedef enum
 {
     SingleItem = 1,
-    HorizontalItem
+    CarouselItem,
+    GridTwoInRowNoTitle,
 } SFItemType;
 
 @property (nonatomic, strong) NSArray *outbrainRecs;
