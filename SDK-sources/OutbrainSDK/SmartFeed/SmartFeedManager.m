@@ -413,18 +413,23 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
         return;
     }
     
-    if (indexPath.section == self.outbrainSectionIndex) {
-        if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
-            [self configureHorizontalCell:cell atIndexPath:indexPath];
+    if (indexPath.section != self.outbrainSectionIndex) {
+        return;
+    }
+    
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
+        [self configureHorizontalCell:cell atIndexPath:indexPath];
+        if (sfItem.itemType == CarouselItem) {
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
-        else { // SFSingleCell
-            [self configureSingleCell:cell atIndexPath:indexPath];
-        }
-        
-        if (indexPath.row == self.smartFeedItemsArray.count - 2) {
-            [self fetchMoreRecommendations];
-        }
+    }
+    else { // SFSingleCell
+        [self configureSingleCell:cell atIndexPath:indexPath];
+    }
+    
+    if (indexPath.row == self.smartFeedItemsArray.count - 2) {
+        [self fetchMoreRecommendations];
     }
 }
 
