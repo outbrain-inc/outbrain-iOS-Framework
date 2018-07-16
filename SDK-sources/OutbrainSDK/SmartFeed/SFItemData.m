@@ -44,4 +44,17 @@
     return SingleItem;
 }
 
++(NSString *) itemTypeString:(SFItemType) type {
+    if (type == SingleItem) {
+        return @"SingleItem";
+    }
+    else if (type == CarouselItem) {
+        return @"CarouselItem";
+    }
+    else if (type == GridTwoInRowNoTitle) {
+        return @"GridTwoInRowNoTitle";
+    }
+    
+    return @"";
+}
 @end

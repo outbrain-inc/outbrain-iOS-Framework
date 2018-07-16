@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "OBRecommendation.h"
+#import "SmartFeedManager.h"
 
 @interface SFItemData : NSObject
 
@@ -15,16 +16,11 @@
 
 - (id)initWithList:(NSArray *)recArray;
 
-typedef enum
-{
-    SingleItem = 1,
-    CarouselItem,
-    GridTwoInRowNoTitle,
-} SFItemType;
-
 @property (nonatomic, strong) NSArray *outbrainRecs;
 @property (nonatomic, strong) OBRecommendation *singleRec;
 
 -(SFItemType) itemType;
+
++(NSString *) itemTypeString:(SFItemType) type;
 
 @end

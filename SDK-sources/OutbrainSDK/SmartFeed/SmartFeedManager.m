@@ -32,10 +32,10 @@
 @property (nonatomic, weak) UITableView* tableView;
 
 @property (nonatomic, copy) NSString *singleCellIdentifier;
-@property (nonatomic, copy) NSString *horizontalCellIdentifier;
-@property (nonatomic, strong) UINib *horizontalItemCellNib;
 
 @property (nonatomic, strong) NSMutableArray *smartFeedItemsArray;
+@property (nonatomic, strong) NSMutableDictionary *nibsForCellType;
+@property (nonatomic, strong) NSMutableDictionary *reuseIdentifierForCellType;
 
 @end
 
@@ -123,12 +123,17 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
     self.publisherImage = publisherImage;
     self.outbrainSectionIndex = 1;
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
+    self.nibsForCellType = [[NSMutableDictionary alloc] init];
+    self.reuseIdentifierForCellType = [[NSMutableDictionary alloc] init];
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     
     // Organic, horizontal carousel item cell
     UINib *nib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
-    [self registerHorizontalItemNib:nib forCellWithReuseIdentifier:@"SFHorizontalItemCell"];
+    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalItemCell" forType:CarouselItem];
+    
+    nib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
+    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:GridTwoInRowNoTitle];
 }
 
 #pragma mark - Fetch Recommendations
@@ -316,7 +321,13 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
 - (void) configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)horizontalCell atIndexPath:(NSIndexPath *)indexPath {
     horizontalCell.moreFromLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
     horizontalCell.moreFromImageView.image = self.publisherImage;
-    [horizontalCell.horizontalView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier: self.horizontalCellIdentifier];
+    
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    NSString *cellKey = [self keyForCellType:sfItem.itemType];
+    UINib *horizontalItemCellNib = [self.nibsForCellType objectForKey:cellKey];
+    NSString *horizontalCellIdentifier = [self.reuseIdentifierForCellType objectForKey:cellKey];
+    
+    [horizontalCell.horizontalView registerNib: horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
     [horizontalCell.horizontalView setupView];
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
     [horizontalCell.horizontalView setOnClick:^(OBRecommendation *rec) {
@@ -510,7 +521,11 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
         horizontalCell.publisherImageView.image = self.publisherImage;
     }
     
-    [horizontalCell.horizontalView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier: self.horizontalCellIdentifier];
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    NSString *cellKey = [self keyForCellType:sfItem.itemType];
+    UINib *horizontalItemCellNib = [self.nibsForCellType objectForKey:cellKey];
+    NSString *horizontalCellIdentifier = [self.reuseIdentifierForCellType objectForKey:cellKey];
+    [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
     [horizontalCell.horizontalView setupView];
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
     [horizontalCell.horizontalView setOnClick:^(OBRecommendation *rec) {
@@ -521,9 +536,16 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
 }
 
 #pragma mark - Common methods
-- (void) registerHorizontalItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier {
-    self.horizontalItemCellNib = nib;
-    self.horizontalCellIdentifier = identifier;
+-(NSString *) keyForCellType:(SFItemType) type {
+    NSString *itemTypeStr = [SFItemData itemTypeString:type];
+    NSString *key = [NSString stringWithFormat:@"type_%@", itemTypeStr];
+    return key;
+}
+
+- (void) registerNib:(UINib * _Nonnull )nib withCellWithReuseIdentifier:( NSString * _Nonnull )identifier forType:(SFItemType)type {
+    NSString *key = [self keyForCellType:type];
+    self.nibsForCellType[key] = nib;
+    self.reuseIdentifierForCellType[key] = identifier;
 }
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier {
