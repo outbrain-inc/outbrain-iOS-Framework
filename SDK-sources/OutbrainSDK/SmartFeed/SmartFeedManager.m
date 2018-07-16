@@ -266,6 +266,10 @@ const CGFloat kTableViewRowHeight = 250.0;
 
 #pragma mark - UITableView methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section != self.outbrainSectionIndex) {
+        return nil;
+    }
+    
     if ([self isHorizontalCell:indexPath]) {
         return [tableView dequeueReusableCellWithIdentifier:@"SFHorizontalCell" forIndexPath:indexPath];
     }
@@ -274,8 +278,12 @@ const CGFloat kTableViewRowHeight = 250.0;
     }
 }
 
+- (NSInteger)numberOfSectionsInTableView {
+    return self.smartFeedItemsArray.count > 0 ? self.outbrainSectionIndex + 1 : self.outbrainSectionIndex;
+}
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {    
-    if (indexPath.section == 0) {
+    if (indexPath.section != self.outbrainSectionIndex) {
         return;
     }
     

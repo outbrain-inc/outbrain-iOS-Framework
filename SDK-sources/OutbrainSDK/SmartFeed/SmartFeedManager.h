@@ -33,6 +33,9 @@
               publisherName:(NSString * _Nonnull)publisherName
              publisherImage:(UIImage * _Nonnull)publisherImage;
 
+
+- (NSInteger)numberOfSectionsInTableView;
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
