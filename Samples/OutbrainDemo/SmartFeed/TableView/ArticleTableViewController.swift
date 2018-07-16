@@ -61,11 +61,12 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return (self.smartFeedManager.smartFeedItemsArray.count > 0) ? 2 : 1
+        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index, must be the last one.
+        return self.smartFeedManager.numberOfSectionsInTableView()
     }
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section < self.smartFeedManager.outbrainSectionIndex {
             return originalArticleItemsCount
         }
         else {
@@ -79,7 +80,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         // create a new cell if needed or reuse an old one
         var cell:UITableViewCell?
         
-        if indexPath.section == 1 { // Outbrain
+        if indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
             return self.smartFeedManager.tableView(tableView, cellForRowAt: indexPath)
             //setCardView(cell: outbrainCell)
         }
@@ -128,7 +129,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 { // Outbrain
+        if indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
             return self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
         }
         

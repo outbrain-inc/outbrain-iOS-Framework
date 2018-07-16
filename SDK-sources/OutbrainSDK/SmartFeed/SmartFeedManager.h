@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong, readonly) NSString * _Nullable url;
 @property (nonatomic, strong, readonly) NSString * _Nullable widgetId;
+@property (nonatomic, assign) NSInteger outbrainSectionIndex;
 
 
 // TableView
@@ -31,6 +32,9 @@
                   tableView:(UITableView * _Nonnull)tableView
               publisherName:(NSString * _Nonnull)publisherName
              publisherImage:(UIImage * _Nonnull)publisherImage;
+
+
+- (NSInteger)numberOfSectionsInTableView;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
@@ -44,6 +48,12 @@
              collectionView:(UICollectionView * _Nonnull)collectionView
               publisherName:(NSString * _Nonnull)publisherName
              publisherImage:(UIImage * _Nonnull)publisherImage;
+
+- (NSInteger)numberOfSectionsInCollectionView;
+
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView
+                  layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 - (UICollectionViewCell *_Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 

@@ -83,12 +83,13 @@ class ArticleCollectionViewController: UICollectionViewController {
 extension ArticleCollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return (self.smartFeedManager.smartFeedItemsArray.count > 0) ? 2 : 1
+        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index, must be the last one.
+        return self.smartFeedManager.numberOfSectionsInCollectionView()
     }
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
+        if section < self.smartFeedManager.outbrainSectionIndex {
             return originalArticleItemsCount
         }
         else {
@@ -101,7 +102,7 @@ extension ArticleCollectionViewController {
         // create a new cell if needed or reuse an old one
         var cell:UICollectionViewCell?
         
-        if indexPath.section == 1 { // Outbrain
+        if indexPath.section == self.smartFeedManager.outbrainSectionIndex {
             return self.smartFeedManager.collectionView(collectionView, cellForItemAt: indexPath)
         }
         
@@ -171,11 +172,11 @@ extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         let width = collectionView.frame.size.width
         
-        if indexPath.section == 1 { // Outbrain
-            return CGSize(width: width - 20.0, height: 250.0)
+        if indexPath.section == self.smartFeedManager.outbrainSectionIndex {
+            return self.smartFeedManager.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
         }
         
         switch indexPath.row {
