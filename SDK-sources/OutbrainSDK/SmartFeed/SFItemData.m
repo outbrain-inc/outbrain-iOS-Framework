@@ -8,40 +8,34 @@
 
 #import "SFItemData.h"
 
+@interface SFItemData()
+
+@property (nonatomic, strong) NSArray *outbrainRecs;
+@property (nonatomic, strong) OBRecommendation *singleRec;
+@property (nonatomic, assign) SFItemType itemType;
+
+
+@end
+
 @implementation SFItemData
 
-- (id)init
-{
-    return [self initWithSingleRec:nil orList:nil];
-}
 
-- (id)initWithSingleRecommendation:(OBRecommendation *)rec
-{
-    return [self initWithSingleRec:rec orList:nil];
-}
-
-- (id)initWithList:(NSArray *)recArray
-{
-    return [self initWithSingleRec:nil orList:recArray];
-}
-
-
-- (id)initWithSingleRec:(OBRecommendation *)rec orList:(NSArray *)recArray
-{
+- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type {
     self = [super init];
     if (self) {
-        self.outbrainRecs = recArray;
         self.singleRec = rec;
+        self.itemType = type;
     }
     return self;
 }
 
--(SFItemType) itemType {
-    if (self.outbrainRecs && self.outbrainRecs.count > 1) {
-        return GridTwoInRowNoTitle;
+- (id)initWithList:(NSArray *)recArray type:(SFItemType)type {
+    self = [super init];
+    if (self) {
+        self.outbrainRecs = recArray;
+        self.itemType = type;
     }
-    
-    return SingleItem;
+    return self;
 }
 
 +(NSString *) itemTypeString:(SFItemType) type {
