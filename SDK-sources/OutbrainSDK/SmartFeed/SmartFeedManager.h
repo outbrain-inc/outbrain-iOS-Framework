@@ -46,6 +46,8 @@
               publisherName:(NSString * _Nonnull)publisherName
              publisherImage:(UIImage * _Nonnull)publisherImage;
 
+- (NSInteger)numberOfSectionsInCollectionView;
+
 - (UICollectionViewCell *_Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView

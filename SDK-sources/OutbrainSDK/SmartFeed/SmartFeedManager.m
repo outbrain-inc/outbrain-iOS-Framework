@@ -358,6 +358,10 @@ const CGFloat kTableViewRowHeight = 250.0;
     }
 }
 
+- (NSInteger)numberOfSectionsInCollectionView {
+    return self.smartFeedItemsArray.count > 0 ? self.appNumberOfSections + 1 : self.appNumberOfSections;
+}
+
 - (void) collectionView:(UICollectionView *)collectionView
        willDisplayCell:(UICollectionViewCell *)cell
     forItemAtIndexPath:(NSIndexPath *)indexPath {
