@@ -83,7 +83,7 @@ class ArticleCollectionViewController: UICollectionViewController {
 extension ArticleCollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        self.smartFeedManager.outbrainSectionIndex = 2 // update smartFeedManager with outbrain section index
+        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
         return self.smartFeedManager.numberOfSectionsInCollectionView()
     }
     
