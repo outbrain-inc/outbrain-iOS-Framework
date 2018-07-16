@@ -42,6 +42,8 @@
 @implementation SmartFeedManager
 
 const CGFloat kTableViewRowHeight = 250.0;
+const NSString *kCollectionViewHorizontalCarouselReuseId = @"SFHorizontalCarouselCollectionViewCell";
+const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
 
 #pragma mark - init methods
 - (id)init
@@ -64,10 +66,14 @@ const CGFloat kTableViewRowHeight = 250.0;
         
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         
-        // horizontal cell (carousel container) SFCarouselContainerCell
+        // horizontal cells
         UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCarouselCollectionViewCell" bundle:bundle];
-        NSAssert(horizontalCellNib != nil, @"horizontalCellNib should not be null");
-        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier:@"SFHorizontalCell"];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalCarouselCollectionViewCell should not be null");
+        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewHorizontalCarouselReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedNoTitleCollectionViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedNoTitleCollectionViewCell should not be null");
+        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId];
         
         // Paid, single item cell
         UINib *collectionViewCellNib = [UINib nibWithNibName:@"SFCollectionViewCell" bundle:bundle];
@@ -365,10 +371,10 @@ const CGFloat kTableViewRowHeight = 250.0;
     
     if ([self isHorizontalCell:indexPath]) {
         if (sfItem.itemType == GridTwoInRowNoTitle) {
-            return [collectionView dequeueReusableCellWithReuseIdentifier:@"SFHorizontalCell" forIndexPath:indexPath];
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
         }
         else {
-            return [collectionView dequeueReusableCellWithReuseIdentifier:@"SFHorizontalCell" forIndexPath:indexPath];
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselReuseId forIndexPath:indexPath];
         }
     }
     else {
@@ -387,6 +393,11 @@ const CGFloat kTableViewRowHeight = 250.0;
     CGFloat width = collectionView.frame.size.width;
     
     if (indexPath.section == self.outbrainSectionIndex) {
+        SFItemData *sfItem = [self itemForIndexPath:indexPath];
+        
+        if (sfItem.itemType == GridTwoInRowNoTitle) {
+            return CGSizeMake(width, 250.0);
+        }
         return CGSizeMake(width - 20.0, 250.0);
     }
     
@@ -486,8 +497,13 @@ const CGFloat kTableViewRowHeight = 250.0;
     
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
-    horizontalCell.titleLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
-    horizontalCell.publisherImageView.image = self.publisherImage;
+    if (horizontalCell.titleLabel) {
+        horizontalCell.titleLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
+    }
+    
+    if (horizontalCell.publisherImageView) {
+        horizontalCell.publisherImageView.image = self.publisherImage;
+    }
     
     [horizontalCell.horizontalView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier: self.horizontalCellIdentifier];
     [horizontalCell.horizontalView setupView];

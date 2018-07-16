@@ -34,7 +34,8 @@
     if (self.didInitCollectionViewLayout) {
         return;
     }
-    UICollectionViewLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.didInitCollectionViewLayout = YES;
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
     self.collectionView.delegate = self;

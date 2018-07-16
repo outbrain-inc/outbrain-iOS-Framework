@@ -38,7 +38,7 @@
 
 -(SFItemType) itemType {
     if (self.outbrainRecs && self.outbrainRecs.count > 1) {
-        return CarouselItem;
+        return GridTwoInRowNoTitle;
     }
     
     return SingleItem;
