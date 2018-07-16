@@ -65,7 +65,7 @@ const CGFloat kTableViewRowHeight = 250.0;
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         
         // horizontal cell (carousel container) SFCarouselContainerCell
-        UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCollectionViewCell" bundle:bundle];
+        UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCarouselCollectionViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"horizontalCellNib should not be null");
         [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier:@"SFHorizontalCell"];
         
@@ -270,6 +270,8 @@ const CGFloat kTableViewRowHeight = 250.0;
         return nil;
     }
     
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
     if ([self isHorizontalCell:indexPath]) {
         return [tableView dequeueReusableCellWithIdentifier:@"SFHorizontalCell" forIndexPath:indexPath];
     }
@@ -358,8 +360,16 @@ const CGFloat kTableViewRowHeight = 250.0;
 #pragma mark - Collection View methods
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
     if ([self isHorizontalCell:indexPath]) {
-        return [collectionView dequeueReusableCellWithReuseIdentifier:@"SFHorizontalCell" forIndexPath:indexPath];
+        if (sfItem.itemType == GridTwoInRowNoTitle) {
+            return [collectionView dequeueReusableCellWithReuseIdentifier:@"SFHorizontalCell" forIndexPath:indexPath];
+        }
+        else {
+            return [collectionView dequeueReusableCellWithReuseIdentifier:@"SFHorizontalCell" forIndexPath:indexPath];
+        }
     }
     else {
         return [collectionView dequeueReusableCellWithReuseIdentifier: self.singleCellIdentifier forIndexPath:indexPath];
@@ -507,7 +517,7 @@ const CGFloat kTableViewRowHeight = 250.0;
 
 -(BOOL) isHorizontalCell:(NSIndexPath *)indexPath {
     SFItemData *sfItem = self.smartFeedItemsArray[indexPath.row];
-    return [sfItem itemType] == CarouselItem;
+    return [sfItem outbrainRecs] && [sfItem outbrainRecs].count > 0;
 }
 
 @end
