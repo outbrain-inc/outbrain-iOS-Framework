@@ -176,7 +176,7 @@ extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {
         let width = collectionView.frame.size.width
         
         if indexPath.section == self.smartFeedManager.outbrainSectionIndex {
-            return CGSize(width: width - 20.0, height: 250.0)
+            return self.smartFeedManager.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
         }
         
         switch indexPath.row {

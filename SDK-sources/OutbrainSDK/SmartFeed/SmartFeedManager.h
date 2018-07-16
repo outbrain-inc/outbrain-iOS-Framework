@@ -48,6 +48,10 @@
 
 - (NSInteger)numberOfSectionsInCollectionView;
 
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView
+                  layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+
 - (UICollectionViewCell *_Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView

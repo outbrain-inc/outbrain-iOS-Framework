@@ -362,6 +362,19 @@ const CGFloat kTableViewRowHeight = 250.0;
     return self.smartFeedItemsArray.count > 0 ? self.outbrainSectionIndex + 1 : self.outbrainSectionIndex;
 }
 
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView
+                  layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
+    
+    CGFloat width = collectionView.frame.size.width;
+    
+    if (indexPath.section == self.outbrainSectionIndex) {
+        return CGSizeMake(width - 20.0, 250.0);
+    }
+    
+    return CGSizeMake(0, 0);
+}
+
 - (void) collectionView:(UICollectionView *)collectionView
        willDisplayCell:(UICollectionViewCell *)cell
     forItemAtIndexPath:(NSIndexPath *)indexPath {
