@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <OutbrainSDK/OutbrainSDK.h>
 
-@interface SFHorizontalView : UIView 
+@interface SFHorizontalView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
 
 typedef void(^OnClick)(OBRecommendation *rec);
 
