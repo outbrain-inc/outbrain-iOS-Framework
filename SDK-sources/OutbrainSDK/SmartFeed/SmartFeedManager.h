@@ -21,6 +21,13 @@
 
 @interface SmartFeedManager : NSObject
 
+typedef enum
+{
+    SingleItem = 1,
+    CarouselItem,
+    GridTwoInRowNoTitle,
+} SFItemType;
+
 @property (nonatomic, strong, readonly) NSString * _Nullable url;
 @property (nonatomic, strong, readonly) NSString * _Nullable widgetId;
 @property (nonatomic, assign) NSInteger outbrainSectionIndex;
@@ -61,7 +68,7 @@
        willDisplayCell:(UICollectionViewCell * _Nonnull)cell
     forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
-- (void) registerHorizontalItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier;
+- (void) registerNib:(UINib * _Nonnull )nib withCellWithReuseIdentifier:( NSString * _Nonnull )identifier forType:(SFItemType)type;
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier;
 

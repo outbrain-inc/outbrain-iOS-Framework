@@ -76,14 +76,10 @@
 		E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0F20836C180016D79A /* OBTestUtils.m */; };
 		E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1020836C180016D79A /* OutbrainSDKTests.m */; };
 		E61E6CB92085D98F0016D79A /* SFCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CA72085D98F0016D79A /* SFCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61E6CBA2085D98F0016D79A /* SFHorizontalTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CA92085D98F0016D79A /* SFHorizontalTableViewCell.h */; };
-		E61E6CBB2085D98F0016D79A /* SFHorizontalCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAA2085D98F0016D79A /* SFHorizontalCollectionViewCell.h */; };
 		E61E6CBC2085D98F0016D79A /* SFHorizontalView.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAC2085D98F0016D79A /* SFHorizontalView.h */; };
 		E61E6CBD2085D98F0016D79A /* PageCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */; };
 		E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */; };
 		E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */; };
-		E61E6CC02085D98F0016D79A /* SFHorizontalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB02085D98F0016D79A /* SFHorizontalTableViewCell.m */; };
-		E61E6CC12085D98F0016D79A /* SFHorizontalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB12085D98F0016D79A /* SFHorizontalCollectionViewCell.m */; };
 		E61E6CC22085D98F0016D79A /* SFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB22085D98F0016D79A /* SFTableViewCell.m */; };
 		E61E6CC32085D98F0016D79A /* SmartFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB32085D98F0016D79A /* SmartFeedManager.m */; };
 		E61E6CC42085D98F0016D79A /* SFUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB42085D98F0016D79A /* SFUtils.h */; };
@@ -91,9 +87,7 @@
 		E61E6CC62085D98F0016D79A /* SFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CB62085D98F0016D79A /* SFUtils.m */; };
 		E61E6CC72085D98F0016D79A /* SmartFeedManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB72085D98F0016D79A /* SmartFeedManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6CC82085D98F0016D79A /* SFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CB82085D98F0016D79A /* SFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61E6CFA208610AF0016D79A /* SFHorizontalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */; };
 		E61E6CFE208611380016D79A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFD208611380016D79A /* Assets.xcassets */; };
-		E61E6D00208737F00016D79A /* SFHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */; };
 		E61E6D06208E0F780016D79A /* SFItemData.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6D04208E0F780016D79A /* SFItemData.h */; };
 		E61E6D07208E0F780016D79A /* SFItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6D05208E0F780016D79A /* SFItemData.m */; };
 		E62B7E4620D12C490096F5BD /* OutbrainManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E62B7E4420D12C490096F5BD /* OutbrainManager.h */; };
@@ -116,6 +110,19 @@
 		E6EA3790209B376F009B687B /* smart_feed_response_5.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378E209B376E009B687B /* smart_feed_response_5.json */; };
 		E6EA37BC20A04B2F009B687B /* SFImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = E6EA37BA20A04B2F009B687B /* SFImageLoader.h */; };
 		E6EA37BD20A04B2F009B687B /* SFImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA37BB20A04B2F009B687B /* SFImageLoader.m */; };
+		E6FEB18E20FCB053002A9020 /* SFHorizontalViewCarousel.h in Headers */ = {isa = PBXBuildFile; fileRef = E6FEB18C20FCB053002A9020 /* SFHorizontalViewCarousel.h */; };
+		E6FEB18F20FCB053002A9020 /* SFHorizontalViewCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FEB18D20FCB053002A9020 /* SFHorizontalViewCarousel.m */; };
+		E6FEB19420FCB8B4002A9020 /* SFHorizontalViewFixed.h in Headers */ = {isa = PBXBuildFile; fileRef = E6FEB19220FCB8B4002A9020 /* SFHorizontalViewFixed.h */; };
+		E6FEB19520FCB8B4002A9020 /* SFHorizontalViewFixed.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FEB19320FCB8B4002A9020 /* SFHorizontalViewFixed.m */; };
+		E6FEB19720FCC553002A9020 /* SFHorizontalFixedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB19620FCC552002A9020 /* SFHorizontalFixedItemCell.xib */; };
+		E6FEB3E820FF2E78002A9020 /* SFHorizontalCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FEB3DF20FF2E78002A9020 /* SFHorizontalCollectionViewCell.m */; };
+		E6FEB3E920FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB3E020FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib */; };
+		E6FEB3EA20FF2E78002A9020 /* SFHorizontalCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E6FEB3E120FF2E78002A9020 /* SFHorizontalCollectionViewCell.h */; };
+		E6FEB3EB20FF2E78002A9020 /* SFHorizontalCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB3E220FF2E78002A9020 /* SFHorizontalCarouselCollectionViewCell.xib */; };
+		E6FEB3EC20FF2E78002A9020 /* SFHorizontalTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E6FEB3E420FF2E78002A9020 /* SFHorizontalTableViewCell.h */; };
+		E6FEB3ED20FF2E78002A9020 /* SFHorizontalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB3E520FF2E78002A9020 /* SFHorizontalTableViewCell.xib */; };
+		E6FEB3EE20FF2E78002A9020 /* SFHorizontalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FEB3E620FF2E78002A9020 /* SFHorizontalTableViewCell.m */; };
+		E6FEB3EF20FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB3E720FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,14 +201,10 @@
 		E61E6C1420836C180016D79A /* OutbrainHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutbrainHelperTests.m; sourceTree = "<group>"; };
 		E61E6C1520836C180016D79A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E61E6CA72085D98F0016D79A /* SFCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCollectionViewCell.h; sourceTree = "<group>"; };
-		E61E6CA92085D98F0016D79A /* SFHorizontalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHorizontalTableViewCell.h; sourceTree = "<group>"; };
-		E61E6CAA2085D98F0016D79A /* SFHorizontalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHorizontalCollectionViewCell.h; sourceTree = "<group>"; };
 		E61E6CAC2085D98F0016D79A /* SFHorizontalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHorizontalView.h; sourceTree = "<group>"; };
 		E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageCollectionLayout.m; sourceTree = "<group>"; };
 		E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalView.m; sourceTree = "<group>"; };
 		E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageCollectionLayout.h; sourceTree = "<group>"; };
-		E61E6CB02085D98F0016D79A /* SFHorizontalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalTableViewCell.m; sourceTree = "<group>"; };
-		E61E6CB12085D98F0016D79A /* SFHorizontalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalCollectionViewCell.m; sourceTree = "<group>"; };
 		E61E6CB22085D98F0016D79A /* SFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewCell.m; sourceTree = "<group>"; };
 		E61E6CB32085D98F0016D79A /* SmartFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartFeedManager.m; sourceTree = "<group>"; };
 		E61E6CB42085D98F0016D79A /* SFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUtils.h; sourceTree = "<group>"; };
@@ -209,9 +212,7 @@
 		E61E6CB62085D98F0016D79A /* SFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUtils.m; sourceTree = "<group>"; };
 		E61E6CB72085D98F0016D79A /* SmartFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartFeedManager.h; sourceTree = "<group>"; };
 		E61E6CB82085D98F0016D79A /* SFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewCell.h; sourceTree = "<group>"; };
-		E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalTableViewCell.xib; sourceTree = "<group>"; };
 		E61E6CFD208611380016D79A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		E61E6D04208E0F780016D79A /* SFItemData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFItemData.h; sourceTree = "<group>"; };
 		E61E6D05208E0F780016D79A /* SFItemData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFItemData.m; sourceTree = "<group>"; };
 		E62B7E4420D12C490096F5BD /* OutbrainManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutbrainManager.h; sourceTree = "<group>"; };
@@ -234,6 +235,19 @@
 		E6EA378E209B376E009B687B /* smart_feed_response_5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_5.json; sourceTree = "<group>"; };
 		E6EA37BA20A04B2F009B687B /* SFImageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFImageLoader.h; sourceTree = "<group>"; };
 		E6EA37BB20A04B2F009B687B /* SFImageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFImageLoader.m; sourceTree = "<group>"; };
+		E6FEB18C20FCB053002A9020 /* SFHorizontalViewCarousel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFHorizontalViewCarousel.h; sourceTree = "<group>"; };
+		E6FEB18D20FCB053002A9020 /* SFHorizontalViewCarousel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalViewCarousel.m; sourceTree = "<group>"; };
+		E6FEB19220FCB8B4002A9020 /* SFHorizontalViewFixed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFHorizontalViewFixed.h; sourceTree = "<group>"; };
+		E6FEB19320FCB8B4002A9020 /* SFHorizontalViewFixed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalViewFixed.m; sourceTree = "<group>"; };
+		E6FEB19620FCC552002A9020 /* SFHorizontalFixedItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedItemCell.xib; sourceTree = "<group>"; };
+		E6FEB3DF20FF2E78002A9020 /* SFHorizontalCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalCollectionViewCell.m; sourceTree = "<group>"; };
+		E6FEB3E020FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
+		E6FEB3E120FF2E78002A9020 /* SFHorizontalCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHorizontalCollectionViewCell.h; sourceTree = "<group>"; };
+		E6FEB3E220FF2E78002A9020 /* SFHorizontalCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		E6FEB3E420FF2E78002A9020 /* SFHorizontalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHorizontalTableViewCell.h; sourceTree = "<group>"; };
+		E6FEB3E520FF2E78002A9020 /* SFHorizontalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalTableViewCell.xib; sourceTree = "<group>"; };
+		E6FEB3E620FF2E78002A9020 /* SFHorizontalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalTableViewCell.m; sourceTree = "<group>"; };
+		E6FEB3E720FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedNoTitleTableViewCell.xib; sourceTree = "<group>"; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -504,12 +518,8 @@
 		E61E6CA82085D98F0016D79A /* SFHorizontalCell */ = {
 			isa = PBXGroup;
 			children = (
-				E61E6CF9208610AF0016D79A /* SFHorizontalTableViewCell.xib */,
-				E61E6CA92085D98F0016D79A /* SFHorizontalTableViewCell.h */,
-				E61E6CB02085D98F0016D79A /* SFHorizontalTableViewCell.m */,
-				E61E6CAA2085D98F0016D79A /* SFHorizontalCollectionViewCell.h */,
-				E61E6CB12085D98F0016D79A /* SFHorizontalCollectionViewCell.m */,
-				E61E6CFF208737F00016D79A /* SFHorizontalCollectionViewCell.xib */,
+				E6FEB3DE20FF2E78002A9020 /* CellContainersCollectionView */,
+				E6FEB3E320FF2E78002A9020 /* CellContainersTableView */,
 				E61E6CAB2085D98F0016D79A /* SFHorizontalView */,
 			);
 			path = SFHorizontalCell;
@@ -520,6 +530,10 @@
 			children = (
 				E61E6CAC2085D98F0016D79A /* SFHorizontalView.h */,
 				E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */,
+				E6FEB19220FCB8B4002A9020 /* SFHorizontalViewFixed.h */,
+				E6FEB19320FCB8B4002A9020 /* SFHorizontalViewFixed.m */,
+				E6FEB18C20FCB053002A9020 /* SFHorizontalViewCarousel.h */,
+				E6FEB18D20FCB053002A9020 /* SFHorizontalViewCarousel.m */,
 				E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */,
 				E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */,
 			);
@@ -532,8 +546,31 @@
 				E63175CA20BC1BAE0077F589 /* SFTableViewCell.xib */,
 				E63175CB20BC1BAE0077F589 /* SFCollectionViewCell.xib */,
 				E63175CC20BC1BAE0077F589 /* SFHorizontalItemCell.xib */,
+				E6FEB19620FCC552002A9020 /* SFHorizontalFixedItemCell.xib */,
 			);
 			path = TemplateCells;
+			sourceTree = "<group>";
+		};
+		E6FEB3DE20FF2E78002A9020 /* CellContainersCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E6FEB3E120FF2E78002A9020 /* SFHorizontalCollectionViewCell.h */,
+				E6FEB3DF20FF2E78002A9020 /* SFHorizontalCollectionViewCell.m */,
+				E6FEB3E020FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib */,
+				E6FEB3E220FF2E78002A9020 /* SFHorizontalCarouselCollectionViewCell.xib */,
+			);
+			path = CellContainersCollectionView;
+			sourceTree = "<group>";
+		};
+		E6FEB3E320FF2E78002A9020 /* CellContainersTableView */ = {
+			isa = PBXGroup;
+			children = (
+				E6FEB3E420FF2E78002A9020 /* SFHorizontalTableViewCell.h */,
+				E6FEB3E620FF2E78002A9020 /* SFHorizontalTableViewCell.m */,
+				E6FEB3E520FF2E78002A9020 /* SFHorizontalTableViewCell.xib */,
+				E6FEB3E720FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib */,
+			);
+			path = CellContainersTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,12 +584,13 @@
 				E61E6C2F20836C180016D79A /* OBResponseRequest.h in Headers */,
 				E61E6C2C20836C180016D79A /* OBRecommendationResponse.h in Headers */,
 				E61E6C4120836C180016D79A /* OBBridge.h in Headers */,
+				E6FEB18E20FCB053002A9020 /* SFHorizontalViewCarousel.h in Headers */,
 				E61E6D06208E0F780016D79A /* SFItemData.h in Headers */,
-				E61E6CBA2085D98F0016D79A /* SFHorizontalTableViewCell.h in Headers */,
 				E61E6C3B20836C180016D79A /* OBRequest.h in Headers */,
 				E6EA37BC20A04B2F009B687B /* SFImageLoader.h in Headers */,
+				E6FEB3EC20FF2E78002A9020 /* SFHorizontalTableViewCell.h in Headers */,
+				E6FEB3EA20FF2E78002A9020 /* SFHorizontalCollectionViewCell.h in Headers */,
 				E61E6C3820836C180016D79A /* OBRecommendation.h in Headers */,
-				E61E6CBB2085D98F0016D79A /* SFHorizontalCollectionViewCell.h in Headers */,
 				E61E6C2D20836C180016D79A /* OBResponse.h in Headers */,
 				E61E6CC82085D98F0016D79A /* SFTableViewCell.h in Headers */,
 				E61E6CC42085D98F0016D79A /* SFUtils.h in Headers */,
@@ -577,6 +615,7 @@
 				E61E6C4420836C180016D79A /* OBUtils.h in Headers */,
 				E61E6C2020836C180016D79A /* UIView+Visible.h in Headers */,
 				E61E6C3C20836C180016D79A /* Outbrain.h in Headers */,
+				E6FEB19420FCB8B4002A9020 /* SFHorizontalViewFixed.h in Headers */,
 				E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */,
 				E61E6C3120836C180016D79A /* OBContent.h in Headers */,
 				E61E6C3320836C180016D79A /* OBContent_Private.h in Headers */,
@@ -670,11 +709,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6FEB19720FCC553002A9020 /* SFHorizontalFixedItemCell.xib in Resources */,
+				E6FEB3EF20FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib in Resources */,
 				E63175CD20BC1BAE0077F589 /* SFTableViewCell.xib in Resources */,
+				E6FEB3EB20FF2E78002A9020 /* SFHorizontalCarouselCollectionViewCell.xib in Resources */,
+				E6FEB3E920FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib in Resources */,
+				E6FEB3ED20FF2E78002A9020 /* SFHorizontalTableViewCell.xib in Resources */,
 				E61E6CFE208611380016D79A /* Assets.xcassets in Resources */,
-				E61E6D00208737F00016D79A /* SFHorizontalCollectionViewCell.xib in Resources */,
 				E63175CF20BC1BAE0077F589 /* SFHorizontalItemCell.xib in Resources */,
-				E61E6CFA208610AF0016D79A /* SFHorizontalTableViewCell.xib in Resources */,
 				E63175CE20BC1BAE0077F589 /* SFCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,8 +763,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E61E6C4820836C180016D79A /* OBUtils.m in Sources */,
+				E6FEB3E820FF2E78002A9020 /* SFHorizontalCollectionViewCell.m in Sources */,
 				E61E6C1B20836C180016D79A /* OBAdsChoicesManager.m in Sources */,
-				E61E6CC12085D98F0016D79A /* SFHorizontalCollectionViewCell.m in Sources */,
 				E61E6C4220836C180016D79A /* Outbrain.m in Sources */,
 				E61E6C1F20836C180016D79A /* OBViewabilityService.m in Sources */,
 				E61E6C3620836C180016D79A /* OBContent.m in Sources */,
@@ -740,8 +782,9 @@
 				E61E6C3720836C180016D79A /* OBDisclosure.m in Sources */,
 				E61E6C3020836C180016D79A /* OBRecommendationResponse.m in Sources */,
 				E61E6C3520836C180016D79A /* OBImage.m in Sources */,
+				E6FEB3EE20FF2E78002A9020 /* SFHorizontalTableViewCell.m in Sources */,
+				E6FEB19520FCB8B4002A9020 /* SFHorizontalViewFixed.m in Sources */,
 				E61E6C2820836C180016D79A /* OBRecommendationRequestOperation.m in Sources */,
-				E61E6CC02085D98F0016D79A /* SFHorizontalTableViewCell.m in Sources */,
 				E61E6C2920836C180016D79A /* OBSettings.m in Sources */,
 				E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */,
 				E61E6CBD2085D98F0016D79A /* PageCollectionLayout.m in Sources */,
@@ -749,6 +792,7 @@
 				E61E6CC22085D98F0016D79A /* SFTableViewCell.m in Sources */,
 				E61E6C2420836C180016D79A /* OBReachability.m in Sources */,
 				E61E6C1C20836C180016D79A /* UIView+Visible.m in Sources */,
+				E6FEB18F20FCB053002A9020 /* SFHorizontalViewCarousel.m in Sources */,
 				E61E6C2A20836C180016D79A /* OBResponse.m in Sources */,
 				E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */,
 				E61E6C2120836C180016D79A /* OBBridge.m in Sources */,

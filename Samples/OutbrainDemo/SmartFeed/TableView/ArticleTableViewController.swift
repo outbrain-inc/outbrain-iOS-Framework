@@ -56,7 +56,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         let bundle = Bundle.main
         let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
         let singleCellNib = UINib(nibName: "AppSFTableViewCell", bundle: bundle)
-        self.smartFeedManager.registerHorizontalItemNib(horizontalCellNib, forCellWithReuseIdentifier: "AppSFHorizontalItemCell")
+        
+        self.smartFeedManager.register(horizontalCellNib, withCellWithReuseIdentifier: "AppSFHorizontalItemCell", for: CarouselItem)
         self.smartFeedManager.registerSingleItemNib(singleCellNib, forCellWithReuseIdentifier: "AppSFTableViewCell")
     }
     
