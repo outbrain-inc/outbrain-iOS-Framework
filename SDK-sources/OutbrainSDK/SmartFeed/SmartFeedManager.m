@@ -236,7 +236,7 @@ const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoT
     }
     
     int random = arc4random() % 3;
-    random = 1;
+    random = 2;
     switch (random) {
         case 0:
             return [self addSingleItemsToSmartFeedArray:response.recommendations];

@@ -34,10 +34,13 @@
     if (self.didInitCollectionViewLayout) {
         return;
     }
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGRect collectionViewframe = CGRectMake(0, 0, screenWidth, self.frame.size.height);
+    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.didInitCollectionViewLayout = YES;
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame: collectionViewframe collectionViewLayout:layout];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.showsHorizontalScrollIndicator = NO;
