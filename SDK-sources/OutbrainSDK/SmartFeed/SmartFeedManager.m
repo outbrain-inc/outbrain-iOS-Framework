@@ -45,6 +45,10 @@ const CGFloat kTableViewRowHeight = 250.0;
 const NSString *kCollectionViewHorizontalCarouselReuseId = @"SFHorizontalCarouselCollectionViewCell";
 const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
 
+const NSString *kTableViewHorizontalCarouselReuseId = @"SFHorizontalTableViewCell";
+const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
+
+
 #pragma mark - init methods
 - (id)init
 {
@@ -100,11 +104,17 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         
         // horizontal cell (carousel container) SFCarouselContainerCell
-        UINib *nib = [UINib nibWithNibName:@"SFHorizontalTableViewCell" bundle:bundle];
-        [self.tableView registerNib:nib forCellReuseIdentifier: @"SFHorizontalCell"];
+        // horizontal cells
+        UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalTableViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalTableViewCell should not be null");
+        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalCarouselReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedNoTitleTableViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedNoTitleTableViewCell should not be null");
+        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedNoTitleReuseId];
         
         // Paid, single item cell
-        nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
+        UINib *nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
         [self registerSingleItemNib:nib forCellWithReuseIdentifier:@"SFTableViewCell"];
         
         [self fetchMoreRecommendations];
@@ -226,6 +236,7 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
     }
     
     int random = arc4random() % 3;
+    random = 1;
     switch (random) {
         case 0:
             return [self addSingleItemsToSmartFeedArray:response.recommendations];
@@ -317,7 +328,12 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     if ([self isHorizontalCell:indexPath]) {
-        return [tableView dequeueReusableCellWithIdentifier:@"SFHorizontalCell" forIndexPath:indexPath];
+        if (sfItem.itemType == GridTwoInRowNoTitle) {
+            return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
+        }
+        else {
+            return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalCarouselReuseId forIndexPath:indexPath];
+        }
     }
     else {
         return [tableView dequeueReusableCellWithIdentifier:self.singleCellIdentifier forIndexPath:indexPath];
@@ -333,9 +349,13 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
         return;
     }
     
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
     if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
-        [SFUtils addDropShadowToView: cell];
+        if (sfItem.itemType == CarouselItem) {
+            [SFUtils addDropShadowToView: cell];
+        }
     }
     else { // SFSingleCell
         [self configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath];
@@ -352,8 +372,13 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
 }
 
 - (void) configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)horizontalCell atIndexPath:(NSIndexPath *)indexPath {
-    horizontalCell.moreFromLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
-    horizontalCell.moreFromImageView.image = self.publisherImage;
+    if (horizontalCell.titleLabel) {
+        horizontalCell.titleLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
+    }
+    
+    if (horizontalCell.publisherImageView) {
+        horizontalCell.publisherImageView.image = self.publisherImage;
+    }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     NSString *cellKey = [self keyForCellType:sfItem.itemType];
@@ -363,6 +388,7 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
     [horizontalCell.horizontalView registerNib: horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
     [horizontalCell.horizontalView setupView];
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
+    
     [horizontalCell.horizontalView setOnClick:^(OBRecommendation *rec) {
         if (self.delegate != nil) {
             [self.delegate userTappedOnRecommendation:rec];
