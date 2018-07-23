@@ -48,7 +48,7 @@ const NSString *kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleColle
 
 const NSString *kTableViewHorizontalCarouselReuseId = @"SFHorizontalTableViewCell";
 const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
-
+const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
 
 #pragma mark - init methods
 - (id)init
@@ -118,9 +118,12 @@ const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoT
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedNoTitleTableViewCell should not be null");
         [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedNoTitleReuseId];
         
-        // Paid, single item cell
+        // single item cell
         UINib *nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
         [self registerSingleItemNib:nib forCellWithReuseIdentifier:@"SFTableViewCell"];
+        
+        nib = [UINib nibWithNibName:kTableViewSingleWithTitleReuseId bundle:bundle];
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleWithTitleReuseId];
         
         [self fetchMoreRecommendations];
     }
@@ -332,16 +335,18 @@ const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoT
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
-    if ([self isHorizontalCell:indexPath]) {
-        if (sfItem.itemType == GridTwoInRowNoTitle) {
-            return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
-        }
-        else {
+    switch (sfItem.itemType) {
+        case SingleItem:
+            [tableView dequeueReusableCellWithIdentifier:self.singleCellIdentifier forIndexPath:indexPath];
+        case CarouselItem:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalCarouselReuseId forIndexPath:indexPath];
-        }
-    }
-    else {
-        return [tableView dequeueReusableCellWithIdentifier:self.singleCellIdentifier forIndexPath:indexPath];
+        case GridTwoInRowNoTitle:
+            return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
+        case StripWithTitle:
+            [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithTitleReuseId forIndexPath:indexPath];
+            
+        default:
+            return [[UITableViewCell alloc] init]; 
     }
 }
 
@@ -455,17 +460,6 @@ const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoT
             
         default:
             break;
-    }
-    if ([self isHorizontalCell:indexPath]) {
-        if (sfItem.itemType == GridTwoInRowNoTitle) {
-            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
-        }
-        else {
-            
-        }
-    }
-    else {
-        
     }
 }
 
