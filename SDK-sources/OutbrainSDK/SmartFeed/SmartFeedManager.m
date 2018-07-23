@@ -31,8 +31,6 @@
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, weak) UITableView* tableView;
 
-@property (nonatomic, copy) NSString *singleCellIdentifier;
-
 @property (nonatomic, strong) NSMutableArray *smartFeedItemsArray;
 @property (nonatomic, strong) NSMutableDictionary *nibsForCellType;
 @property (nonatomic, strong) NSMutableDictionary *reuseIdentifierForCellType;
@@ -42,10 +40,13 @@
 @implementation SmartFeedManager
 
 const CGFloat kTableViewRowHeight = 250.0;
+
+const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
 const NSString *kCollectionViewHorizontalCarouselReuseId = @"SFHorizontalCarouselCollectionViewCell";
 const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
 const NSString *kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
 
+const NSString *kTableViewSingleReuseId = @"SFTableViewCell";
 const NSString *kTableViewHorizontalCarouselReuseId = @"SFHorizontalTableViewCell";
 const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
 const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
@@ -83,7 +84,7 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
         // Single item cell
         UINib *collectionViewCellNib = [UINib nibWithNibName:@"SFCollectionViewCell" bundle:bundle];
         NSAssert(collectionViewCellNib != nil, @"collectionViewCellNib should not be null");
-        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier:@"SFCollectionViewCell"];
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleReuseId];
         
         collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithTitleCollectionViewCell" bundle:bundle];
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithTitleCollectionViewCell should not be null");
@@ -120,9 +121,11 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
         
         // single item cell
         UINib *nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
-        [self registerSingleItemNib:nib forCellWithReuseIdentifier:@"SFTableViewCell"];
+        NSAssert(nib != nil, @"SFTableViewCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleReuseId];
         
-        nib = [UINib nibWithNibName:kTableViewSingleWithTitleReuseId bundle:bundle];
+        nib = [UINib nibWithNibName:@"SFSingleWithTitleTableViewCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFSingleWithTitleTableViewCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleWithTitleReuseId];
         
         [self fetchMoreRecommendations];
@@ -337,16 +340,17 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
     
     switch (sfItem.itemType) {
         case SingleItem:
-            [tableView dequeueReusableCellWithIdentifier:self.singleCellIdentifier forIndexPath:indexPath];
+            return [tableView dequeueReusableCellWithIdentifier: kTableViewSingleReuseId forIndexPath:indexPath];
         case CarouselItem:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalCarouselReuseId forIndexPath:indexPath];
         case GridTwoInRowNoTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
         case StripWithTitle:
-            [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithTitleReuseId forIndexPath:indexPath];
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithTitleReuseId forIndexPath:indexPath];
             
         default:
-            return [[UITableViewCell alloc] init]; 
+            NSAssert(false, @"sfItem.itemType must be covered in this switch/case statement");
+            return [[UITableViewCell alloc] init];
     }
 }
 
@@ -450,7 +454,7 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     switch (sfItem.itemType) {
         case SingleItem:
-            return [collectionView dequeueReusableCellWithReuseIdentifier: self.singleCellIdentifier forIndexPath:indexPath];
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleReuseId forIndexPath:indexPath];
         case CarouselItem:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselReuseId forIndexPath:indexPath];
         case GridTwoInRowNoTitle:
@@ -619,7 +623,6 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
 }
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier {
-    self.singleCellIdentifier = identifier;
     if (self.collectionView != nil) {
         [self.collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
     }

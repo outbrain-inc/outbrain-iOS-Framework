@@ -15,5 +15,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *recSourceLabel;
 @property (nonatomic, weak) IBOutlet UILabel *sponsoredLabel;
 @property (nonatomic, weak) IBOutlet UIButton *adChoicesButton;
+@property (nonatomic, weak) IBOutlet UILabel *cellTitleLabel;
 
 @end

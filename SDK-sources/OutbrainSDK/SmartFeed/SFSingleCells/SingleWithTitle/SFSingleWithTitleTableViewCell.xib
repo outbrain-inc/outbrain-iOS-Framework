@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SFSingleWithTitleTableViewCell" rowHeight="250" id="wCh-Bh-8fc">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SFSingleWithTitleTableViewCell" rowHeight="250" id="wCh-Bh-8fc" customClass="SFTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wCh-Bh-8fc" id="PHV-5e-kCJ">
@@ -46,6 +46,11 @@
                     <constraint firstItem="dNT-0c-aHF" firstAttribute="leading" secondItem="PHV-5e-kCJ" secondAttribute="leading" constant="8" id="tjn-Dh-CWh"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="cellTitleLabel" destination="cCO-lo-N64" id="UbE-ER-Wds"/>
+                <outlet property="recImageView" destination="Wd0-1Y-wPl" id="7Ut-aN-F1s"/>
+                <outlet property="recTitleLabel" destination="dNT-0c-aHF" id="Dr9-rX-OjS"/>
+            </connections>
             <point key="canvasLocation" x="-65.5" y="126"/>
         </tableViewCell>
     </objects>
