@@ -45,11 +45,13 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
 const NSString *kCollectionViewHorizontalCarouselReuseId = @"SFHorizontalCarouselCollectionViewCell";
 const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
 const NSString *kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
-const NSString *kCollectionViewSingleWithThumbnailReuseId = @"SingleWithThumbnailCollectionCell";
+const NSString *kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
+
 const NSString *kTableViewSingleReuseId = @"SFTableViewCell";
 const NSString *kTableViewHorizontalCarouselReuseId = @"SFHorizontalTableViewCell";
 const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
 const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
+const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
 
 #pragma mark - init methods
 - (id)init
@@ -90,8 +92,8 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithTitleCollectionViewCell should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId];
         
-        collectionViewCellNib = [UINib nibWithNibName:@"SingleWithThumbnailCollectionCell" bundle:bundle];
-        NSAssert(collectionViewCellNib != nil, @"SingleWithThumbnailCollectionCell should not be null");
+        collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithThumbnailCollectionCell" bundle:bundle];
+        NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailCollectionCell should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId];
         
     }
@@ -132,6 +134,10 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
         nib = [UINib nibWithNibName:@"SFSingleWithTitleTableViewCell" bundle:bundle];
         NSAssert(nib != nil, @"SFSingleWithTitleTableViewCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleWithTitleReuseId];
+        
+        nib = [UINib nibWithNibName:@"SFSingleWithThumbnailTableCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFSingleWithThumbnailTableCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleWithThumbnailReuseId];
         
         [self fetchMoreRecommendations];
     }
@@ -354,6 +360,8 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
         case StripWithTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithTitleReuseId forIndexPath:indexPath];
+        case StripWithThumbnail:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailReuseId forIndexPath:indexPath];
             
         default:
             NSAssert(false, @"sfItem.itemType must be covered in this switch/case statement");
@@ -389,6 +397,10 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    if (sfItem.itemType == StripWithThumbnail) {
+        return 120.0;
+    }
     return kTableViewRowHeight;
 }
 
