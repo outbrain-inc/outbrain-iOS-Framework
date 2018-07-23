@@ -44,6 +44,7 @@
 const CGFloat kTableViewRowHeight = 250.0;
 const NSString *kCollectionViewHorizontalCarouselReuseId = @"SFHorizontalCarouselCollectionViewCell";
 const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
+const NSString *kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
 
 const NSString *kTableViewHorizontalCarouselReuseId = @"SFHorizontalTableViewCell";
 const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
@@ -79,10 +80,14 @@ const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoT
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedNoTitleCollectionViewCell should not be null");
         [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId];
         
-        // Paid, single item cell
+        // Single item cell
         UINib *collectionViewCellNib = [UINib nibWithNibName:@"SFCollectionViewCell" bundle:bundle];
         NSAssert(collectionViewCellNib != nil, @"collectionViewCellNib should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier:@"SFCollectionViewCell"];
+        
+        collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithTitleCollectionViewCell" bundle:bundle];
+        NSAssert(collectionViewCellNib != nil, @"SFSingleWithTitleCollectionViewCell should not be null");
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId];
     }
     return self;
 }
@@ -236,17 +241,17 @@ const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoT
     }
     
     int random = arc4random() % 3;
-    random = 2;
+    random = 3;
+    
     switch (random) {
         case 0:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations];
-            break;
+            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SingleItem];
         case 1:
             return [self addCarouselItemsToSmartFeedArray:response.recommendations];
-            break;
         case 2:
             return [self addGridItemsToSmartFeedArray:response.recommendations];
-            break;
+        case 3:
+            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithTitle];
             
         default:
             break;
@@ -255,10 +260,10 @@ const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoT
     return newItemsCount;
 }
 
--(NSUInteger) addSingleItemsToSmartFeedArray:(NSArray *)recommendations {
+-(NSUInteger) addSingleItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType {
     NSUInteger newItemsCount = 0;
     for (OBRecommendation *rec in recommendations) {
-        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:SingleItem];
+        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
     }
@@ -438,17 +443,29 @@ const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoT
 {
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    
+    switch (sfItem.itemType) {
+        case SingleItem:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: self.singleCellIdentifier forIndexPath:indexPath];
+        case CarouselItem:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselReuseId forIndexPath:indexPath];
+        case GridTwoInRowNoTitle:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
+        case StripWithTitle:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId forIndexPath:indexPath];
+            
+        default:
+            break;
+    }
     if ([self isHorizontalCell:indexPath]) {
         if (sfItem.itemType == GridTwoInRowNoTitle) {
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
         }
         else {
-            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselReuseId forIndexPath:indexPath];
+            
         }
     }
     else {
-        return [collectionView dequeueReusableCellWithReuseIdentifier: self.singleCellIdentifier forIndexPath:indexPath];
+        
     }
 }
 
