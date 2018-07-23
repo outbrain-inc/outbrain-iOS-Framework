@@ -27,6 +27,7 @@ typedef enum
     CarouselItem,
     GridTwoInRowNoTitle,
     StripWithTitle,
+    StripWithThumbnail
 } SFItemType;
 
 @property (nonatomic, strong, readonly) NSString * _Nullable url;

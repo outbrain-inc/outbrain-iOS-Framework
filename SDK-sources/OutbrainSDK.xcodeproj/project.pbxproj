@@ -125,6 +125,8 @@
 		E6FEB7512105AAFB002A9020 /* SFTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB74D2105AAFB002A9020 /* SFTableViewCell.xib */; };
 		E6FEB7562105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB7552105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib */; };
 		E6FEB7582105BF0F002A9020 /* SFSingleWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB7572105BF0F002A9020 /* SFSingleWithTitleTableViewCell.xib */; };
+		E6FEB85A2105F80B002A9020 /* SingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB8592105F80B002A9020 /* SingleWithThumbnailCollectionCell.xib */; };
+		E6FEB85C2105F819002A9020 /* SingleWithThumbnailTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB85B2105F819002A9020 /* SingleWithThumbnailTableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -252,6 +254,8 @@
 		E6FEB74D2105AAFB002A9020 /* SFTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTableViewCell.xib; sourceTree = "<group>"; };
 		E6FEB7552105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E6FEB7572105BF0F002A9020 /* SFSingleWithTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSingleWithTitleTableViewCell.xib; sourceTree = "<group>"; };
+		E6FEB8592105F80B002A9020 /* SingleWithThumbnailCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleWithThumbnailCollectionCell.xib; sourceTree = "<group>"; };
+		E6FEB85B2105F819002A9020 /* SingleWithThumbnailTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleWithThumbnailTableCell.xib; sourceTree = "<group>"; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -569,6 +573,7 @@
 		E6FEB7472105AAFB002A9020 /* SFSingleCells */ = {
 			isa = PBXGroup;
 			children = (
+				E6FEB8582105F7E0002A9020 /* SingleWithThumbnailImage */,
 				E6FEB7542105ACFC002A9020 /* SingleWithTitle */,
 				E6FEB7482105AAFB002A9020 /* SingleItemInHorizontalView */,
 				E6FEB74B2105AAFB002A9020 /* SingleItemOriginal */,
@@ -601,6 +606,15 @@
 				E6FEB7572105BF0F002A9020 /* SFSingleWithTitleTableViewCell.xib */,
 			);
 			path = SingleWithTitle;
+			sourceTree = "<group>";
+		};
+		E6FEB8582105F7E0002A9020 /* SingleWithThumbnailImage */ = {
+			isa = PBXGroup;
+			children = (
+				E6FEB8592105F80B002A9020 /* SingleWithThumbnailCollectionCell.xib */,
+				E6FEB85B2105F819002A9020 /* SingleWithThumbnailTableCell.xib */,
+			);
+			path = SingleWithThumbnailImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -739,6 +753,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6FEB85A2105F80B002A9020 /* SingleWithThumbnailCollectionCell.xib in Resources */,
 				E6FEB74E2105AAFB002A9020 /* SFHorizontalFixedItemCell.xib in Resources */,
 				E6FEB7512105AAFB002A9020 /* SFTableViewCell.xib in Resources */,
 				E6FEB7502105AAFB002A9020 /* SFCollectionViewCell.xib in Resources */,
@@ -749,6 +764,7 @@
 				E6FEB3ED20FF2E78002A9020 /* SFHorizontalTableViewCell.xib in Resources */,
 				E6FEB74F2105AAFB002A9020 /* SFHorizontalItemCell.xib in Resources */,
 				E6FEB7582105BF0F002A9020 /* SFSingleWithTitleTableViewCell.xib in Resources */,
+				E6FEB85C2105F819002A9020 /* SingleWithThumbnailTableCell.xib in Resources */,
 				E61E6CFE208611380016D79A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

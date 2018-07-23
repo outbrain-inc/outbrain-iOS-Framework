@@ -51,6 +51,9 @@
     else if (type == StripWithTitle) {
         return @"StripWithTitle";
     }
+    else if (type == StripWithThumbnail) {
+        return @"StripWithThumbnail";
+    }
     
     return @"";
 }

@@ -45,7 +45,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
 const NSString *kCollectionViewHorizontalCarouselReuseId = @"SFHorizontalCarouselCollectionViewCell";
 const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
 const NSString *kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
-
+const NSString *kCollectionViewSingleWithThumbnailReuseId = @"SingleWithThumbnailCollectionCell";
 const NSString *kTableViewSingleReuseId = @"SFTableViewCell";
 const NSString *kTableViewHorizontalCarouselReuseId = @"SFHorizontalTableViewCell";
 const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
@@ -89,6 +89,11 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
         collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithTitleCollectionViewCell" bundle:bundle];
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithTitleCollectionViewCell should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId];
+        
+        collectionViewCellNib = [UINib nibWithNibName:@"SingleWithThumbnailCollectionCell" bundle:bundle];
+        NSAssert(collectionViewCellNib != nil, @"SingleWithThumbnailCollectionCell should not be null");
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId];
+        
     }
     return self;
 }
@@ -247,7 +252,7 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
     }
     
     int random = arc4random() % 3;
-    random = 3;
+    random = 4;
     
     switch (random) {
         case 0:
@@ -258,6 +263,8 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
             return [self addGridItemsToSmartFeedArray:response.recommendations];
         case 3:
             return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithTitle];
+        case 4:
+            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithThumbnail];
             
         default:
             break;
@@ -450,7 +457,6 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
 #pragma mark - Collection View methods
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     switch (sfItem.itemType) {
         case SingleItem:
@@ -461,6 +467,8 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
         case StripWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId forIndexPath:indexPath];
+        case StripWithThumbnail:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId forIndexPath:indexPath];
             
         default:
             break;
@@ -483,6 +491,10 @@ const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewC
         if (sfItem.itemType == GridTwoInRowNoTitle) {
             return CGSizeMake(width, 250.0);
         }
+        else if (sfItem.itemType == StripWithThumbnail) {
+            return CGSizeMake(width - 20.0, 120.0);
+        }
+        
         return CGSizeMake(width - 20.0, 250.0);
     }
     
