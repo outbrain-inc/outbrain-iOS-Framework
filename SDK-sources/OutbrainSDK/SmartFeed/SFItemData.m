@@ -48,6 +48,9 @@
     else if (type == GridTwoInRowNoTitle) {
         return @"GridTwoInRowNoTitle";
     }
+    else if (type == StripWithTitle) {
+        return @"StripWithTitle";
+    }
     
     return @"";
 }
