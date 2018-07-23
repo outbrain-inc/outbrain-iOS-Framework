@@ -123,6 +123,7 @@
 		E6FEB74F2105AAFB002A9020 /* SFHorizontalItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB74A2105AAFB002A9020 /* SFHorizontalItemCell.xib */; };
 		E6FEB7502105AAFB002A9020 /* SFCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB74C2105AAFB002A9020 /* SFCollectionViewCell.xib */; };
 		E6FEB7512105AAFB002A9020 /* SFTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB74D2105AAFB002A9020 /* SFTableViewCell.xib */; };
+		E6FEB7562105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6FEB7552105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,6 +249,7 @@
 		E6FEB74A2105AAFB002A9020 /* SFHorizontalItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalItemCell.xib; sourceTree = "<group>"; };
 		E6FEB74C2105AAFB002A9020 /* SFCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFCollectionViewCell.xib; sourceTree = "<group>"; };
 		E6FEB74D2105AAFB002A9020 /* SFTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTableViewCell.xib; sourceTree = "<group>"; };
+		E6FEB7552105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		FC820C0F19DAF0A800ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -565,6 +567,7 @@
 		E6FEB7472105AAFB002A9020 /* SFSingleCells */ = {
 			isa = PBXGroup;
 			children = (
+				E6FEB7542105ACFC002A9020 /* SingleWithTitle */,
 				E6FEB7482105AAFB002A9020 /* SingleItemInHorizontalView */,
 				E6FEB74B2105AAFB002A9020 /* SingleItemOriginal */,
 			);
@@ -587,6 +590,14 @@
 				E6FEB74D2105AAFB002A9020 /* SFTableViewCell.xib */,
 			);
 			path = SingleItemOriginal;
+			sourceTree = "<group>";
+		};
+		E6FEB7542105ACFC002A9020 /* SingleWithTitle */ = {
+			isa = PBXGroup;
+			children = (
+				E6FEB7552105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib */,
+			);
+			path = SingleWithTitle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -731,6 +742,7 @@
 				E6FEB3EF20FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib in Resources */,
 				E6FEB3EB20FF2E78002A9020 /* SFHorizontalCarouselCollectionViewCell.xib in Resources */,
 				E6FEB3E920FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib in Resources */,
+				E6FEB7562105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib in Resources */,
 				E6FEB3ED20FF2E78002A9020 /* SFHorizontalTableViewCell.xib in Resources */,
 				E6FEB74F2105AAFB002A9020 /* SFHorizontalItemCell.xib in Resources */,
 				E61E6CFE208611380016D79A /* Assets.xcassets in Resources */,
