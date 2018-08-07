@@ -28,6 +28,7 @@ typedef enum
     SingleItem = 1,
     CarouselItem,
     GridTwoInRowNoTitle,
+    GridThreeInRowNoTitle,
     StripWithTitle,
     StripWithThumbnail
 } SFItemType;

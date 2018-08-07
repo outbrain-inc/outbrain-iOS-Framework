@@ -166,6 +166,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     
     nib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
     [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:GridTwoInRowNoTitle];
+    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:GridThreeInRowNoTitle];
 }
 
 #pragma mark - Fetch Recommendations
@@ -266,10 +267,12 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
         case 1:
             return [self addCarouselItemsToSmartFeedArray:response.recommendations];
         case 2:
-            return [self addGridItemsToSmartFeedArray:response.recommendations];
+            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridTwoInRowNoTitle itemsPerRow:2];
         case 3:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithTitle];
+            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridThreeInRowNoTitle itemsPerRow:3];
         case 4:
+            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithTitle];
+        case 5:
             return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithThumbnail];
             
         default:
@@ -295,14 +298,14 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     return 1;
 }
 
--(NSUInteger) addGridItemsToSmartFeedArray:(NSArray *)recommendations {
+-(NSUInteger) addGridItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType itemsPerRow:(NSUInteger)itemsPerRow {
     NSUInteger newItemsCount = 0;
     NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
-    while (recommendationsMutableArray.count >= 2) {
-        NSRange subRange = NSMakeRange(0, 2);
+    while (recommendationsMutableArray.count >= itemsPerRow) {
+        NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
-        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:GridTwoInRowNoTitle];
+        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
     }
@@ -486,6 +489,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
         case CarouselItem:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselReuseId forIndexPath:indexPath];
         case GridTwoInRowNoTitle:
+        case GridThreeInRowNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
         case StripWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId forIndexPath:indexPath];
@@ -510,7 +514,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     if (indexPath.section == self.outbrainSectionIndex) {
         SFItemData *sfItem = [self itemForIndexPath:indexPath];
         
-        if (sfItem.itemType == GridTwoInRowNoTitle) {
+        if (sfItem.itemType == GridTwoInRowNoTitle || sfItem.itemType == GridThreeInRowNoTitle) {
             return CGSizeMake(width, 250.0);
         }
         else if (sfItem.itemType == StripWithTitle) {
@@ -659,8 +663,8 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     UINib *horizontalItemCellNib = [self.nibsForCellType objectForKey:cellKey];
     NSString *horizontalCellIdentifier = [self.reuseIdentifierForCellType objectForKey:cellKey];
     [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
-    [horizontalCell.horizontalView setupView];
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
+    [horizontalCell.horizontalView setupView];
     [horizontalCell.horizontalView setOnClick:^(OBRecommendation *rec) {
         if (self.delegate != nil) {
             [self.delegate userTappedOnRecommendation:rec];

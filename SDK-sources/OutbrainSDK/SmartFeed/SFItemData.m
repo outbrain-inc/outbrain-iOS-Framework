@@ -54,6 +54,9 @@
     else if (type == StripWithThumbnail) {
         return @"StripWithThumbnail";
     }
+    else if (type == GridThreeInRowNoTitle) {
+        return @"GridThreeInRowNoTitle";
+    }
     
     return @"";
 }

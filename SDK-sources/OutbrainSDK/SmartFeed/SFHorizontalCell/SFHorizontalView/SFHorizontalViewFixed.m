@@ -18,8 +18,9 @@ const CGFloat kDefaultMinimumLineSpacing = 10.0;
 
 -(void) setupView {
     [super setupView];
+    CGFloat itemsInLine = self.outbrainRecs.count;
+    const CGFloat itemWidth = (self.collectionView.frame.size.width - kInsetMargin*itemsInLine - kDefaultMinimumLineSpacing*(itemsInLine-1))*(1/itemsInLine);
     
-    const CGFloat itemWidth = (self.collectionView.frame.size.width - kInsetMargin*2 - kDefaultMinimumLineSpacing)*0.5;
     const CGFloat itemHeight = self.collectionView.frame.size.height;
     self.itemSize = CGSizeMake(itemWidth, itemHeight);
     self.collectionView.scrollEnabled = NO;
