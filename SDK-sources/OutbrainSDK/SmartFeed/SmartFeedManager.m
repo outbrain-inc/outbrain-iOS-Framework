@@ -258,7 +258,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     }
     
     int random = arc4random() % 3;
-    random = 4;
+    random = 3;
     
     switch (random) {
         case 0:
@@ -503,6 +503,9 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
         if (sfItem.itemType == GridTwoInRowNoTitle) {
             return CGSizeMake(width, 250.0);
         }
+        else if (sfItem.itemType == StripWithTitle) {
+            return CGSizeMake(width, 280.0);
+        }
         else if (sfItem.itemType == StripWithThumbnail) {
             return CGSizeMake(width - 20.0, 120.0);
         }
@@ -606,7 +609,13 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     [tapGesture setDelegate:self];
     [singleCell.contentView addGestureRecognizer:tapGesture];
     
-    [SFUtils addDropShadowToView: singleCell]; // add shadow
+    // add shadow
+    if (sfItem.itemType == StripWithTitle) {
+        [SFUtils addDropShadowToView: singleCell.cardContentView];
+    }
+    else {
+        [SFUtils addDropShadowToView: singleCell];
+    }
 }
     
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
