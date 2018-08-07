@@ -139,6 +139,15 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
 }
 
 extension ArticleTableViewController : SmartFeedDelegate {
+    func userTappedOnOutbrainLabeling() {
+        print("You tapped on Outbrain Labeling")
+        guard let url = Outbrain.getAboutURL() else {
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
+    
     func userTapped(on rec: OBRecommendation) {
         print("You tapped rec \(rec.content).")
         guard let url = Outbrain.getUrl(rec) else {

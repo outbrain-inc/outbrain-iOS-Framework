@@ -16,6 +16,8 @@
 
 -(void) userTappedOnAdChoicesIcon:(NSURL *_Nonnull)url;
 
+-(void) userTappedOnOutbrainLabeling;
+
 @end
 
 

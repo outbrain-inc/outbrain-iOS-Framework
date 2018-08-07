@@ -150,7 +150,7 @@ extension ArticleCollectionViewController {
     }
 }
 
-extension ArticleCollectionViewController : SmartFeedDelegate {
+extension ArticleCollectionViewController : SmartFeedDelegate {    
     func userTapped(on rec: OBRecommendation) {
         print("You tapped rec \(rec.content).")
         guard let url = Outbrain.getUrl(rec) else {
@@ -163,6 +163,15 @@ extension ArticleCollectionViewController : SmartFeedDelegate {
     
     func userTapped(onAdChoicesIcon url: URL) {
         print("You tapped onAdChoicesIcon")
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
+    
+    func userTappedOnOutbrainLabeling() {
+        print("You tapped on Outbrain Labeling")
+        guard let url = Outbrain.getAboutURL() else {
+            return
+        }
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }

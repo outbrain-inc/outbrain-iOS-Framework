@@ -578,8 +578,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
 - (void) outbrainLabelClicked:(id)sender {
     NSLog(@"outbrainLabelClicked");
     if (self.delegate != nil) {
-        // TODO call delegate with outbrain logo clicked
-        // [self.delegate userTappedOnAdChoicesIcon:rec.disclosure.clickUrl];
+        [self.delegate userTappedOnOutbrainLabeling];
     }
 }
 
