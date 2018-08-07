@@ -26,7 +26,7 @@
                                 <rect key="frame" x="10" y="32.5" width="412" height="284.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyft is creating more new jobs in San Francisco  than any other major startup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCy-6W-9WN">
-                                        <rect key="frame" x="8" y="241" width="404" height="37.5"/>
+                                        <rect key="frame" x="8" y="241" width="396" height="37.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -37,7 +37,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="iCy-6W-9WN" secondAttribute="trailing" id="CPy-XW-FOs"/>
+                                    <constraint firstAttribute="trailing" secondItem="iCy-6W-9WN" secondAttribute="trailing" constant="8" id="CPy-XW-FOs"/>
                                     <constraint firstAttribute="bottom" secondItem="iCy-6W-9WN" secondAttribute="bottom" constant="6" id="Kvi-aC-Ab0"/>
                                     <constraint firstItem="S4o-aF-NXt" firstAttribute="leading" secondItem="HRb-Ef-t8j" secondAttribute="leading" id="aEq-Mk-Ws8"/>
                                     <constraint firstItem="iCy-6W-9WN" firstAttribute="top" secondItem="S4o-aF-NXt" secondAttribute="bottom" constant="8" id="b58-ll-7bU"/>
