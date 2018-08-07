@@ -575,6 +575,14 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     }
 }
 
+- (void) outbrainLabelClicked:(id)sender {
+    NSLog(@"outbrainLabelClicked");
+    if (self.delegate != nil) {
+        // TODO call delegate with outbrain logo clicked
+        // [self.delegate userTappedOnAdChoicesIcon:rec.disclosure.clickUrl];
+    }
+}
+
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
     return self.smartFeedItemsArray[indexPath.row];
 }
@@ -589,6 +597,9 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     const NSInteger cellTag = indexPath.row;
     singleCell.tag = cellTag;
     singleCell.contentView.tag = cellTag;
+    if (singleCell.cardContentView) {
+        singleCell.cardContentView.tag = cellTag;
+    }
     SFItemData *sfItem = [self itemForIndexPath: indexPath];
     OBRecommendation *rec = sfItem.singleRec;
     singleCell.recTitleLabel.text = rec.content;
@@ -617,14 +628,20 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
     tapGesture.numberOfTapsRequired = 1;
     [tapGesture setDelegate:self];
-    [singleCell.contentView addGestureRecognizer:tapGesture];
     
-    // add shadow
+    // Cell Specific configuration
     if (sfItem.itemType == StripWithTitle) {
         [SFUtils addDropShadowToView: singleCell.cardContentView];
+        const NSString *organicCellTitle = [NSString stringWithFormat:@"Around %@", self.publisherName];
+        singleCell.cellTitleLabel.text = [rec isPaidLink] ? @"Sponsored Links" : organicCellTitle;
+        singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];
+        singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+        [singleCell.outbrainLabelingContainer addTarget:self action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [singleCell.cardContentView addGestureRecognizer:tapGesture];
     }
     else {
         [SFUtils addDropShadowToView: singleCell];
+        [singleCell.contentView addGestureRecognizer:tapGesture];
     }
 }
     
