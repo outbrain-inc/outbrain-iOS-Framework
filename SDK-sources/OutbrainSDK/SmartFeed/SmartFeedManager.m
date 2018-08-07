@@ -401,6 +401,10 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     if (sfItem.itemType == StripWithThumbnail) {
         return 120.0;
     }
+    else if (sfItem.itemType == StripWithTitle) {
+        return 280.0;
+    }
+    
     return kTableViewRowHeight;
 }
 
@@ -458,7 +462,13 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     
     [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
     
-    [SFUtils addDropShadowToView: singleCell];
+    // add shadow
+    if (sfItem.itemType == StripWithTitle) {
+        //[SFUtils addDropShadowToView: singleCell.cardContentView];
+    }
+    else {
+        [SFUtils addDropShadowToView: singleCell];
+    }
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
     tapGesture.numberOfTapsRequired = 1;

@@ -11,47 +11,67 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SFSingleWithTitleTableViewCell" rowHeight="250" id="wCh-Bh-8fc" customClass="SFTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SFSingleWithTitleTableViewCell" rowHeight="353" id="wCh-Bh-8fc" customClass="SFTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="426" height="323"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wCh-Bh-8fc" id="PHV-5e-kCJ">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="426" height="322.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around Sky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCO-lo-N64">
-                        <rect key="frame" x="10" y="10" width="89" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="10" y="10" width="73" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="wID-fO-etz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyft is creating more new jobs in San Francisco  than any other major startup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNT-0c-aHF">
-                        <rect key="frame" x="8" y="204.5" width="359" height="41"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wd0-1Y-wPl">
-                        <rect key="frame" x="0.0" y="41" width="375" height="153.5"/>
-                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoe-vy-cmK" userLabel="cardContentView">
+                        <rect key="frame" x="10" y="35" width="406" height="282.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wd0-1Y-wPl">
+                                <rect key="frame" x="0.0" y="0.0" width="406" height="234.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyft is creating more new jobs in San Francisco  than any other major startup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNT-0c-aHF">
+                                <rect key="frame" x="0.0" y="239.5" width="406" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="y0W-Nk-FKs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="dNT-0c-aHF" secondAttribute="bottom" constant="5" id="6OG-jN-xAl"/>
+                            <constraint firstItem="Wd0-1Y-wPl" firstAttribute="top" secondItem="hoe-vy-cmK" secondAttribute="top" id="MFy-Kf-fLY"/>
+                            <constraint firstItem="dNT-0c-aHF" firstAttribute="top" secondItem="Wd0-1Y-wPl" secondAttribute="bottom" constant="5" id="OjP-et-5Ye"/>
+                            <constraint firstItem="dNT-0c-aHF" firstAttribute="leading" secondItem="hoe-vy-cmK" secondAttribute="leading" id="Q0N-nb-WRC"/>
+                            <constraint firstAttribute="trailing" secondItem="dNT-0c-aHF" secondAttribute="trailing" id="Tfx-sF-mFE"/>
+                            <constraint firstItem="Wd0-1Y-wPl" firstAttribute="leading" secondItem="hoe-vy-cmK" secondAttribute="leading" id="l9H-EV-7fI"/>
+                            <constraint firstAttribute="trailing" secondItem="Wd0-1Y-wPl" secondAttribute="trailing" id="myv-Zi-A7x"/>
+                        </constraints>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="dNT-0c-aHF" secondAttribute="trailing" constant="8" id="8Jd-dC-kD9"/>
-                    <constraint firstAttribute="bottom" secondItem="dNT-0c-aHF" secondAttribute="bottom" constant="4" id="HSg-jF-voD"/>
-                    <constraint firstItem="Wd0-1Y-wPl" firstAttribute="top" secondItem="cCO-lo-N64" secondAttribute="bottom" constant="10" id="YUs-0F-yM8"/>
+                    <constraint firstAttribute="trailing" secondItem="hoe-vy-cmK" secondAttribute="trailing" constant="10" id="1rP-NE-SCS"/>
+                    <constraint firstItem="hoe-vy-cmK" firstAttribute="top" secondItem="cCO-lo-N64" secondAttribute="bottom" constant="8" id="Qtf-at-KYU"/>
                     <constraint firstItem="cCO-lo-N64" firstAttribute="top" secondItem="PHV-5e-kCJ" secondAttribute="top" constant="10" id="aaz-Hw-e2d"/>
                     <constraint firstItem="cCO-lo-N64" firstAttribute="leading" secondItem="PHV-5e-kCJ" secondAttribute="leading" constant="10" id="j9C-gm-i9c"/>
-                    <constraint firstAttribute="trailing" secondItem="Wd0-1Y-wPl" secondAttribute="trailing" id="k0O-2j-UQg"/>
-                    <constraint firstItem="Wd0-1Y-wPl" firstAttribute="leading" secondItem="PHV-5e-kCJ" secondAttribute="leading" id="kgg-4g-Qfw"/>
-                    <constraint firstItem="dNT-0c-aHF" firstAttribute="top" secondItem="Wd0-1Y-wPl" secondAttribute="bottom" constant="10" id="ncz-eb-oVG"/>
-                    <constraint firstItem="dNT-0c-aHF" firstAttribute="leading" secondItem="PHV-5e-kCJ" secondAttribute="leading" constant="8" id="tjn-Dh-CWh"/>
+                    <constraint firstItem="hoe-vy-cmK" firstAttribute="leading" secondItem="PHV-5e-kCJ" secondAttribute="leading" constant="10" id="jUI-Pj-ZlC"/>
+                    <constraint firstAttribute="bottom" secondItem="hoe-vy-cmK" secondAttribute="bottom" constant="5" id="uZH-0f-lnO"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="cardContentView" destination="hoe-vy-cmK" id="Rn7-ht-qW0"/>
                 <outlet property="cellTitleLabel" destination="cCO-lo-N64" id="UbE-ER-Wds"/>
                 <outlet property="recImageView" destination="Wd0-1Y-wPl" id="7Ut-aN-F1s"/>
                 <outlet property="recTitleLabel" destination="dNT-0c-aHF" id="Dr9-rX-OjS"/>
             </connections>
-            <point key="canvasLocation" x="-65.5" y="126"/>
+            <point key="canvasLocation" x="-73" y="174.5"/>
         </tableViewCell>
     </objects>
 </document>
