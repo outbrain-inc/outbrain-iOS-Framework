@@ -36,7 +36,9 @@ typedef enum
 @property (nonatomic, strong, readonly) NSString * _Nullable url;
 @property (nonatomic, strong, readonly) NSString * _Nullable widgetId;
 @property (nonatomic, assign) NSInteger outbrainSectionIndex;
+@property (nonatomic, strong, readonly) NSMutableArray *smartFeedItemsArray;
 
+@property (nonatomic, weak) id<SmartFeedDelegate> delegate;
 
 // TableView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
@@ -73,12 +75,10 @@ typedef enum
        willDisplayCell:(UICollectionViewCell * _Nonnull)cell
     forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
+// Common Methods
 - (void) registerNib:(UINib * _Nonnull )nib withCellWithReuseIdentifier:( NSString * _Nonnull )identifier forType:(SFItemType)type;
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier;
 
-@property (nonatomic, weak) id<SmartFeedDelegate> delegate;
-
-@property (nonatomic, strong, readonly) NSMutableArray *smartFeedItemsArray;
 
 @end

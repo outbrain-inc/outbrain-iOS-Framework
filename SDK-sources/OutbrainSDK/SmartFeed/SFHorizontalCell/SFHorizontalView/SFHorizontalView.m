@@ -92,8 +92,9 @@
 -(void) setOutbrainRecs:(NSArray *)outbrainRecs {
     _outbrainRecs = outbrainRecs;
     [self.collectionView reloadData];
-    
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    });
 }
 
 @end
