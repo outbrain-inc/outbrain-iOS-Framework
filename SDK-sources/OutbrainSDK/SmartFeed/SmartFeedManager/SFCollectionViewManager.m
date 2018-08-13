@@ -172,6 +172,10 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
         [SFUtils addDropShadowToView: singleCell];
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
+    
+    if (sfItem.itemType == SingleItem) {
+        singleCell.sponsoredLabel.hidden = ![rec isPaidLink];
+    }
 }
 
 @end

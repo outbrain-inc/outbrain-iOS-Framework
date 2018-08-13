@@ -164,6 +164,10 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
         [SFUtils addDropShadowToView: singleCell];
     }
     
+    if (sfItem.itemType == SingleItem) {
+        singleCell.sponsoredLabel.hidden = ![rec isPaidLink];
+    }
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.clickListenerTarget  action:@selector(recommendationClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [singleCell.contentView addGestureRecognizer:tapGesture];
