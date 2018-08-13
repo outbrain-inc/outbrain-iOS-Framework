@@ -33,6 +33,13 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wd0-1Y-wPl">
                                 <rect key="frame" x="0.0" y="0.0" width="406" height="234.5"/>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Zf-oO-Uzk">
+                                <rect key="frame" x="376" y="0.0" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="3zj-6Z-YLS"/>
+                                    <constraint firstAttribute="height" constant="30" id="Ajq-9Z-2A0"/>
+                                </constraints>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyft is creating more new jobs in San Francisco  than any other major startup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNT-0c-aHF">
                                 <rect key="frame" x="0.0" y="239.5" width="406" height="38"/>
                                 <constraints>
@@ -46,10 +53,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="dNT-0c-aHF" secondAttribute="bottom" constant="5" id="6OG-jN-xAl"/>
+                            <constraint firstItem="1Zf-oO-Uzk" firstAttribute="top" secondItem="hoe-vy-cmK" secondAttribute="top" id="M1A-qv-eP8"/>
                             <constraint firstItem="Wd0-1Y-wPl" firstAttribute="top" secondItem="hoe-vy-cmK" secondAttribute="top" id="MFy-Kf-fLY"/>
                             <constraint firstItem="dNT-0c-aHF" firstAttribute="top" secondItem="Wd0-1Y-wPl" secondAttribute="bottom" constant="5" id="OjP-et-5Ye"/>
                             <constraint firstItem="dNT-0c-aHF" firstAttribute="leading" secondItem="hoe-vy-cmK" secondAttribute="leading" id="Q0N-nb-WRC"/>
                             <constraint firstAttribute="trailing" secondItem="dNT-0c-aHF" secondAttribute="trailing" id="Tfx-sF-mFE"/>
+                            <constraint firstAttribute="trailing" secondItem="1Zf-oO-Uzk" secondAttribute="trailing" id="ToN-WK-Igf"/>
                             <constraint firstItem="Wd0-1Y-wPl" firstAttribute="leading" secondItem="hoe-vy-cmK" secondAttribute="leading" id="l9H-EV-7fI"/>
                             <constraint firstAttribute="trailing" secondItem="Wd0-1Y-wPl" secondAttribute="trailing" id="myv-Zi-A7x"/>
                         </constraints>
@@ -66,6 +75,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="adChoicesButton" destination="1Zf-oO-Uzk" id="gYO-PX-5EU"/>
                 <outlet property="cardContentView" destination="hoe-vy-cmK" id="Rn7-ht-qW0"/>
                 <outlet property="cellTitleLabel" destination="cCO-lo-N64" id="UbE-ER-Wds"/>
                 <outlet property="recImageView" destination="Wd0-1Y-wPl" id="7Ut-aN-F1s"/>
