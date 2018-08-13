@@ -19,7 +19,7 @@
 
 #import <OutbrainSDK/OutbrainSDK.h>
 
-@interface SmartFeedManager() <UIGestureRecognizerDelegate>
+@interface SmartFeedManager() <SFClickListener>
 
 @property (nonatomic, strong) NSString * _Nullable url;
 @property (nonatomic, strong) NSString * _Nullable widgetId;
@@ -43,10 +43,6 @@
 @implementation SmartFeedManager
 
 
-
-
-//const NSString *kCollectionViewHorizontalCarouselReuseId = @"SFHorizontalCarouselCollectionViewCell";
-
 #pragma mark - init methods
 - (id)init
 {
@@ -65,6 +61,7 @@
         [self commonInitWithUrl:url widgetID:widgetId publisherName:publisherName publisherImage:publisherImage];
 
         self.sfCollectionViewManager = [[SFCollectionViewManager alloc] initWitCollectionView:collectionView];
+        self.sfCollectionViewManager.clickListenerTarget = self;
     }
     return self;
 }
@@ -81,7 +78,7 @@
         [self commonInitWithUrl:url widgetID:widgetId publisherName:publisherName publisherImage:publisherImage];
        
         self.sfTableViewManager = [[SFTableViewManager alloc] initWithTableView:tableView];
-        
+        self.sfTableViewManager.clickListenerTarget = self;
         [self fetchMoreRecommendations];
     }
     return self;
@@ -202,7 +199,7 @@
     }
     
     int random = arc4random() % 6;
-    //random = 2;
+    random = 4;
     
     switch (random) {
         case 0:
@@ -399,33 +396,6 @@
     }
 }
 
-- (void) tapGesture: (id)sender
-{
-    UITapGestureRecognizer *gestureRec = sender;
-    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:gestureRec.view.tag inSection:self.outbrainSectionIndex]];
-    OBRecommendation *rec = sfItem.singleRec;
-    
-    if (self.delegate != nil && rec != nil) {
-        [self.delegate userTappedOnRecommendation:rec];
-    }
-}
-
-- (void) adChoicesClicked:(id)sender {
-    UIButton *adChoicesButton = sender;
-    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:adChoicesButton.tag inSection:self.outbrainSectionIndex]];
-    OBRecommendation *rec = sfItem.singleRec;
-    if (self.delegate != nil && rec != nil) {
-        [self.delegate userTappedOnAdChoicesIcon:rec.disclosure.clickUrl];
-    }
-}
-
-- (void) outbrainLabelClicked:(id)sender {
-    NSLog(@"outbrainLabelClicked");
-    if (self.delegate != nil) {
-        [self.delegate userTappedOnOutbrainLabeling];
-    }
-}
-
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
     return self.smartFeedItemsArray[indexPath.row];
 }
@@ -457,6 +427,36 @@
             [self.delegate userTappedOnRecommendation:rec];
         }
     }];
+}
+
+
+#pragma mark - SFClickListener methods
+
+- (void) recommendationClicked: (id)sender
+{
+    UITapGestureRecognizer *gestureRec = sender;
+    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:gestureRec.view.tag inSection:self.outbrainSectionIndex]];
+    OBRecommendation *rec = sfItem.singleRec;
+    
+    if (self.delegate != nil && rec != nil) {
+        [self.delegate userTappedOnRecommendation:rec];
+    }
+}
+
+- (void) adChoicesClicked:(id)sender {
+    UIButton *adChoicesButton = sender;
+    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:adChoicesButton.tag inSection:self.outbrainSectionIndex]];
+    OBRecommendation *rec = sfItem.singleRec;
+    if (self.delegate != nil && rec != nil) {
+        [self.delegate userTappedOnAdChoicesIcon:rec.disclosure.clickUrl];
+    }
+}
+
+- (void) outbrainLabelClicked:(id)sender {
+    NSLog(@"outbrainLabelClicked");
+    if (self.delegate != nil) {
+        [self.delegate userTappedOnOutbrainLabeling];
+    }
 }
 
 #pragma mark - Common methods

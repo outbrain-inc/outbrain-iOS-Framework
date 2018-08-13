@@ -130,6 +130,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     
     OBRecommendation *rec = sfItem.singleRec;
     singleCell.recTitleLabel.text = rec.content;
+    NSAssert(self.clickListenerTarget != nil, @"self.clickListenerTarget must not be nil");
     
     if ([rec isPaidLink]) {
         singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
@@ -140,7 +141,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
             NSBundle *bundle = [NSBundle bundleForClass:[self class]];
             UIImage *adChoicesImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
             [singleCell.adChoicesButton setImage:adChoicesImage forState:UIControlStateNormal];
-            [singleCell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [singleCell.adChoicesButton addTarget:self.clickListenerTarget action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
         else {
             singleCell.adChoicesButton.hidden = YES;
@@ -152,7 +153,8 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     
     [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.clickListenerTarget  action:@selector(recommendationClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [tapGesture setDelegate:self];
     
@@ -163,7 +165,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
         singleCell.cellTitleLabel.text = [rec isPaidLink] ? @"Sponsored Links" : organicCellTitle;
         singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];
         singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
-        [singleCell.outbrainLabelingContainer addTarget:self action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [singleCell.outbrainLabelingContainer addTarget:self.clickListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
         [singleCell.cardContentView addGestureRecognizer:tapGesture];
     }
     else {

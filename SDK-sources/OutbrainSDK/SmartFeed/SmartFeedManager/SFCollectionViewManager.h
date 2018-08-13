@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "SmartFeedManager.h"
 #import "SFItemData.h"
+#import "SFUtils.h"
+
 
 @interface SFCollectionViewManager : NSObject
+
+@property (nonatomic, weak) id<SFClickListener> clickListenerTarget;
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView;
 

@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "SmartFeedManager.h"
+#import "SFUtils.h"
 
 @class SFHorizontalTableViewCell;
 @class SFItemData;
 @class SFHorizontalView;
 
 @interface SFTableViewManager : NSObject
+
+@property (nonatomic, weak) id<SFClickListener> clickListenerTarget;
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView;
 

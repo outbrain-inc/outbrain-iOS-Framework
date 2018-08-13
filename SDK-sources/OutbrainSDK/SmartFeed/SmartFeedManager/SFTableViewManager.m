@@ -136,7 +136,8 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
             NSBundle *bundle = [NSBundle bundleForClass:[self class]];
             UIImage *adChoicesImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
             [singleCell.adChoicesButton setImage:adChoicesImage forState:UIControlStateNormal];
-            [singleCell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
+            NSAssert(self.clickListenerTarget != nil, @"clickListenerTarget must not be nil");
+            [singleCell.adChoicesButton addTarget:self.clickListenerTarget action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
         else {
             singleCell.adChoicesButton.hidden = YES;
@@ -156,9 +157,8 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
         [SFUtils addDropShadowToView: singleCell];
     }
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.clickListenerTarget  action:@selector(recommendationClicked:)];
     tapGesture.numberOfTapsRequired = 1;
-    [tapGesture setDelegate:self];
     [singleCell.contentView addGestureRecognizer:tapGesture];
 }
 
