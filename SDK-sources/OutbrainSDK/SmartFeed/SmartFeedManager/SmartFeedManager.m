@@ -299,7 +299,7 @@
         }
     }
     else { // SFSingleCell
-        [self.sfTableViewManager configureSingleTableViewCell:cell atIndexPath:indexPath withSFItem:sfItem];
+        [self configureSingleTableViewCell:cell atIndexPath:indexPath];        
     }
     
     if ((indexPath.row == (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
@@ -341,7 +341,7 @@
 
 - (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFItemData *sfItem = [self itemForIndexPath: indexPath];
-    [self.sfTableViewManager configureSingleTableViewCell:cell atIndexPath:indexPath withSFItem:sfItem];
+    [self.sfTableViewManager configureSingleTableViewCell:cell atIndexPath:indexPath withSFItem:sfItem publisherName:self.publisherName];
 }
 
 #pragma mark - Collection View methods

@@ -16,6 +16,7 @@
     self.recTitleLabel.text = nil;
     self.recSourceLabel.text = nil;
     self.adChoicesButton.hidden = YES;
+    self.outbrainLabelingContainer.hidden = YES;
 }
 
 @end

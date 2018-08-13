@@ -119,7 +119,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     return kTableViewRowHeight;
 }
 
-- (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
+- (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem publisherName:(NSString *)publisherName {
     SFTableViewCell *singleCell = (SFTableViewCell *)cell;
     const NSInteger cellTag = indexPath.row;
     singleCell.tag = cellTag;
@@ -152,6 +152,13 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     // add shadow
     if (sfItem.itemType == StripWithTitle) {
         //[SFUtils addDropShadowToView: singleCell.cardContentView];
+        const NSString *organicCellTitle = [NSString stringWithFormat:@"Around %@", publisherName];
+        singleCell.cellTitleLabel.text = [rec isPaidLink] ? @"Sponsored Links" : organicCellTitle;
+        singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];
+        singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+        [singleCell.outbrainLabelingContainer becomeFirstResponder];
+        singleCell.outbrainLabelingContainer.enabled = YES;
+        [singleCell.outbrainLabelingContainer addTarget:self.clickListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     else {
         [SFUtils addDropShadowToView: singleCell];
