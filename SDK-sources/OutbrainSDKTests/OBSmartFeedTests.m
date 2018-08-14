@@ -100,6 +100,10 @@
     XCTAssertTrue([self.responseParent.settings.feedContentArray[1] isEqualToString:@"SDK_SFD_2"]);
 }
 
+- (void)testFeedCycleLimitIsFetchedCorrectlyFromResponse {
+    XCTAssertEqual(self.responseParent.settings.feedCyclesLimit, 5);
+}
+
 - (void)testSmartFeedManagerBuildArrayOfItems {
     [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseParent];
     XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 3);
