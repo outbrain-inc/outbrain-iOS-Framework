@@ -198,21 +198,20 @@
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
     }
     
-    int random = arc4random() % 6;
-    random = 4;
+    SFItemType itemType = [self sfItemTypeFromResponse:response];
     
-    switch (random) {
-        case 0:
+    switch (itemType) {
+        case SingleItem:
             return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SingleItem];
-        case 1:
+        case CarouselItem:
             return [self addCarouselItemsToSmartFeedArray:response.recommendations];
-        case 2:
-            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridTwoInRowNoTitle itemsPerRow:2];
-        case 3:
-            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridThreeInRowNoTitle itemsPerRow:3];
-        case 4:
+        case GridTwoInRowNoTitle:
+            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridTwoInRowNoTitle];
+        case GridThreeInRowNoTitle:
+            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridThreeInRowNoTitle];
+        case StripWithTitle:
             return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithTitle];
-        case 5:
+        case StripWithThumbnail:
             return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithThumbnail];
             
         default:
@@ -220,6 +219,28 @@
     }
    
     return newItemsCount;
+}
+
+-(SFItemType) sfItemTypeFromResponse:(OBRecommendationResponse *)response {
+    NSString *recMode = response.settings.recMode;
+    if ([recMode isEqualToString:@"sdk_sfd_swipe"]) {
+        return CarouselItem;
+    }
+    else if ([recMode isEqualToString:@"sdk_sfd_1_column"]) {
+        return response.settings.widgetHeaderText ? StripWithTitle : SingleItem;
+    }
+    else if ([recMode isEqualToString:@"sdk_sfd_2_columns"]) {
+        return response.settings.widgetHeaderText ? GridTwoInRowNoTitle : GridTwoInRowNoTitle; // TODO with title
+    }
+    else if ([recMode isEqualToString:@"sdk_sfd_3_columns"]) {
+        return response.settings.widgetHeaderText ? GridThreeInRowNoTitle : GridThreeInRowNoTitle; // TODO with title
+    }
+    else if ([recMode isEqualToString:@"sdk_sfd_thumbnails"]) {
+        return StripWithThumbnail;
+    }
+    
+    NSLog(@"recMode value is not currently covered in the SDK");
+    return StripWithTitle;
 }
 
 -(NSUInteger) addSingleItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType {
@@ -238,7 +259,18 @@
     return 1;
 }
 
--(NSUInteger) addGridItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType itemsPerRow:(NSUInteger)itemsPerRow {
+-(NSUInteger) addGridItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType {
+    NSUInteger itemsPerRow = 0;
+    if (templateType == GridTwoInRowNoTitle) {
+        itemsPerRow = 2;
+    }
+    else if (templateType == GridThreeInRowNoTitle) {
+        itemsPerRow = 3;
+    }
+    else {
+        NSAssert(NO, @"templateType has illegal value");
+    }
+    
     NSUInteger newItemsCount = 0;
     NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
     while (recommendationsMutableArray.count >= itemsPerRow) {

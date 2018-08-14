@@ -61,7 +61,7 @@ class ArticleCollectionViewController: UICollectionViewController {
             return
         }
         let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_1", collectionView: collectionView, publisherName: "CNN", publisherImage: publisherLogoImage)
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_2", collectionView: collectionView, publisherName: "CNN", publisherImage: publisherLogoImage)
         
         self.smartFeedManager.delegate = self
         

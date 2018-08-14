@@ -15,7 +15,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    let smartFeedWidgetID = "SFD_MAIN_1"
+    let smartFeedWidgetID = "SFD_MAIN_2"
     let currentArticleDemoUrl = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     let textHeaderCellReuseIdentifier = "textHeaderCell"
