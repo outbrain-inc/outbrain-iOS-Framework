@@ -27,6 +27,8 @@
 @property (nonatomic, strong) UIImage *publisherImage;
 @property (nonatomic, strong) NSArray *feedContentArray;
 @property (nonatomic, strong) NSString *fid;
+@property (nonatomic, assign) NSInteger feedCycleCounter;
+@property (nonatomic, assign) NSInteger feedCycleLimit;
 
 @property (nonatomic, assign) NSInteger outbrainIndex;
 @property (nonatomic, assign) BOOL isLoading;
@@ -114,6 +116,10 @@
     if (self.isLoading) {
         return;
     }
+    
+    if (self.feedCycleLimit > 0 && self.feedCycleCounter == self.feedCycleLimit) {
+        return;
+    }
         
     self.isLoading = YES;
     if (self.smartFeedItemsArray.count == 0 || self.feedContentArray == nil) {
@@ -136,6 +142,7 @@
         if (response.settings.isSmartFeed == YES) {
             self.feedContentArray = response.settings.feedContentArray;
             self.fid = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
+            self.feedCycleLimit = response.settings.feedCyclesLimit;
         }
         
         if (response.recommendations.count == 0) {
@@ -190,6 +197,7 @@
             }
         }];
     }
+    self.feedCycleCounter++;
 }
 
 -(NSUInteger) addNewItemsToSmartFeedArray:(OBRecommendationResponse *)response {

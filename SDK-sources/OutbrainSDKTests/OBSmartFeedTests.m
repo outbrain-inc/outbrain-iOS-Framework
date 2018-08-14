@@ -102,6 +102,7 @@
 
 - (void)testFeedCycleLimitIsFetchedCorrectlyFromResponse {
     XCTAssertEqual(self.responseParent.settings.feedCyclesLimit, 5);
+    XCTAssertEqual(self.responseChild1.settings.feedCyclesLimit, 0);
 }
 
 - (void)testSmartFeedManagerBuildArrayOfItems {
