@@ -12,6 +12,8 @@
 
 @property (nonatomic, assign, readonly) BOOL apv;
 @property (nonatomic, assign, readonly) BOOL isSmartFeed;
+@property (nonatomic, copy, readonly) NSString *recMode;
+@property (nonatomic, copy, readonly) NSString *widgetHeaderText;
 @property (nonatomic, strong, readonly) NSArray *feedContentArray;
 
 - (instancetype)initWithPayload:(NSDictionary *)payload;

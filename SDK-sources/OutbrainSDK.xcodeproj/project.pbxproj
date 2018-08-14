@@ -97,12 +97,11 @@
 		E6D26D9020D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8D20D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json */; };
 		E6D26D9120D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8E20D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json */; };
 		E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E61E6C0E20836C180016D79A /* odb_normal_response.json */; };
-		E6EA3788209B30E2009B687B /* smart_feed_response_1.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3785209B30E1009B687B /* smart_feed_response_1.json */; };
-		E6EA3789209B30E2009B687B /* smart_feed_response_2.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3786209B30E1009B687B /* smart_feed_response_2.json */; };
-		E6EA378A209B30E2009B687B /* smart_feed_response_3.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3787209B30E1009B687B /* smart_feed_response_3.json */; };
+		E6EA3788209B30E2009B687B /* smart_feed_response_parent.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3785209B30E1009B687B /* smart_feed_response_parent.json */; };
+		E6EA3789209B30E2009B687B /* smart_feed_response_child1.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3786209B30E1009B687B /* smart_feed_response_child1.json */; };
+		E6EA378A209B30E2009B687B /* smart_feed_response_child2.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3787209B30E1009B687B /* smart_feed_response_child2.json */; };
 		E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */; };
-		E6EA378F209B376F009B687B /* smart_feed_response_4.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378D209B376E009B687B /* smart_feed_response_4.json */; };
-		E6EA3790209B376F009B687B /* smart_feed_response_5.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378E209B376E009B687B /* smart_feed_response_5.json */; };
+		E6EA378F209B376F009B687B /* smart_feed_response_child3.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378D209B376E009B687B /* smart_feed_response_child3.json */; };
 		E6EA37BC20A04B2F009B687B /* SFImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = E6EA37BA20A04B2F009B687B /* SFImageLoader.h */; };
 		E6EA37BD20A04B2F009B687B /* SFImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA37BB20A04B2F009B687B /* SFImageLoader.m */; };
 		E6F8F45C211C3C6D0069C72C /* SmartFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F8F45A211C3C6D0069C72C /* SmartFeedManager.m */; };
@@ -230,12 +229,11 @@
 		E6D26D8C20D7C16A00D6D00A /* rtb_rec_with_disclosure_empty_values.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rtb_rec_with_disclosure_empty_values.json; sourceTree = "<group>"; };
 		E6D26D8D20D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rtb_rec_with_no_disclosure_click_url.json; sourceTree = "<group>"; };
 		E6D26D8E20D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rtb_rec_with_no_disclosure_image.json; sourceTree = "<group>"; };
-		E6EA3785209B30E1009B687B /* smart_feed_response_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_1.json; sourceTree = "<group>"; };
-		E6EA3786209B30E1009B687B /* smart_feed_response_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_2.json; sourceTree = "<group>"; };
-		E6EA3787209B30E1009B687B /* smart_feed_response_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_3.json; sourceTree = "<group>"; };
+		E6EA3785209B30E1009B687B /* smart_feed_response_parent.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_parent.json; sourceTree = "<group>"; };
+		E6EA3786209B30E1009B687B /* smart_feed_response_child1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_child1.json; sourceTree = "<group>"; };
+		E6EA3787209B30E1009B687B /* smart_feed_response_child2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_child2.json; sourceTree = "<group>"; };
 		E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSmartFeedTests.m; sourceTree = "<group>"; };
-		E6EA378D209B376E009B687B /* smart_feed_response_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_4.json; sourceTree = "<group>"; };
-		E6EA378E209B376E009B687B /* smart_feed_response_5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_5.json; sourceTree = "<group>"; };
+		E6EA378D209B376E009B687B /* smart_feed_response_child3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_child3.json; sourceTree = "<group>"; };
 		E6EA37BA20A04B2F009B687B /* SFImageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFImageLoader.h; sourceTree = "<group>"; };
 		E6EA37BB20A04B2F009B687B /* SFImageLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFImageLoader.m; sourceTree = "<group>"; };
 		E6F8F45A211C3C6D0069C72C /* SmartFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartFeedManager.m; sourceTree = "<group>"; };
@@ -500,11 +498,10 @@
 				E6D26D8C20D7C16A00D6D00A /* rtb_rec_with_disclosure_empty_values.json */,
 				E6D26D8D20D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json */,
 				E6D26D8E20D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json */,
-				E6EA3785209B30E1009B687B /* smart_feed_response_1.json */,
-				E6EA3786209B30E1009B687B /* smart_feed_response_2.json */,
-				E6EA3787209B30E1009B687B /* smart_feed_response_3.json */,
-				E6EA378D209B376E009B687B /* smart_feed_response_4.json */,
-				E6EA378E209B376E009B687B /* smart_feed_response_5.json */,
+				E6EA3785209B30E1009B687B /* smart_feed_response_parent.json */,
+				E6EA3786209B30E1009B687B /* smart_feed_response_child1.json */,
+				E6EA3787209B30E1009B687B /* smart_feed_response_child2.json */,
+				E6EA378D209B376E009B687B /* smart_feed_response_child3.json */,
 				E61E6C0E20836C180016D79A /* odb_normal_response.json */,
 			);
 			path = mock_responses;
@@ -795,16 +792,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6EA378A209B30E2009B687B /* smart_feed_response_3.json in Resources */,
-				E6EA3788209B30E2009B687B /* smart_feed_response_1.json in Resources */,
-				E6EA3790209B376F009B687B /* smart_feed_response_5.json in Resources */,
+				E6EA378A209B30E2009B687B /* smart_feed_response_child2.json in Resources */,
+				E6EA3788209B30E2009B687B /* smart_feed_response_parent.json in Resources */,
 				E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */,
 				E6D26D8F20D7C16A00D6D00A /* rtb_rec_with_disclosure_empty_values.json in Resources */,
 				E6D26D8B20D7C0A900D6D00A /* non_rtb_rec.json in Resources */,
 				E6D26D9120D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json in Resources */,
 				E6D26D9020D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json in Resources */,
-				E6EA378F209B376F009B687B /* smart_feed_response_4.json in Resources */,
-				E6EA3789209B30E2009B687B /* smart_feed_response_2.json in Resources */,
+				E6EA378F209B376F009B687B /* smart_feed_response_child3.json in Resources */,
+				E6EA3789209B30E2009B687B /* smart_feed_response_child1.json in Resources */,
 				E6D26D8720D7BE6D00D6D00A /* rtb_rec_with_disclosure.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

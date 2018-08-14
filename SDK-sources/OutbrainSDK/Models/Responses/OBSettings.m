@@ -14,6 +14,8 @@
 @property (nonatomic, assign) BOOL apv;
 @property (nonatomic, assign) BOOL isSmartFeed;
 @property (nonatomic, strong) NSArray *feedContentArray;
+@property (nonatomic, copy) NSString *recMode;
+@property (nonatomic, copy) NSString *widgetHeaderText;
 
 
 @end
@@ -27,6 +29,8 @@
     if (self = [super init]) {
         self.apv = [[payload valueForKey:@"apv"] boolValue];
         self.isSmartFeed = [[payload valueForKey:@"isSmartFeed"] boolValue];
+        self.recMode = [payload valueForKey:@"recMode"];
+        self.widgetHeaderText = [payload valueForKey:@"nanoOrganicsHeader"];
         NSString *feedContentStr = [payload valueForKey:@"feedContent"];
         if (self.isSmartFeed && feedContentStr != nil) {
             NSData *feedContentData = [feedContentStr dataUsingEncoding:NSUTF8StringEncoding];
