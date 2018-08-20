@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zl6-7P-NJI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zl6-7P-NJI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-            <string>HelveticaNeue-Medium</string>
-        </array>
-        <array key="HelveticaNeueLights.ttc">
-            <string>HelveticaNeue-Light</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -107,20 +98,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YK0-oo-CYZ" userLabel="Content View">
-                                            <rect key="frame" x="8" y="8" width="375" height="184"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="184"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cun-qa-yVL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="184"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="184"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="  The Guardian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eej-j0-MTD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="89.5"/>
                                                             <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.76867508559999997" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Suarez: Messi Was Born Great, Ronaldo Made Himself Great" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sM8-Qs-2x4">
-                                                            <rect key="frame" x="0.0" y="94.5" width="375" height="89.5"/>
+                                                            <rect key="frame" x="0.0" y="94.5" width="359" height="89.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -327,46 +318,6 @@
                                                 <constraint firstItem="u0x-jR-Fxz" firstAttribute="leading" secondItem="xli-0N-7xa" secondAttribute="leading" constant="7" id="JED-ga-jru"/>
                                                 <constraint firstAttribute="bottom" secondItem="u0x-jR-Fxz" secondAttribute="bottom" id="bBo-LV-uTt"/>
                                                 <constraint firstAttribute="trailing" secondItem="u0x-jR-Fxz" secondAttribute="trailing" constant="7" id="z45-nl-uV1"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="outbrainHeaderCell" id="9g3-hT-MG4" userLabel="outbrainHeaderCell">
-                                        <rect key="frame" x="0.0" y="362" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9g3-hT-MG4" id="eca-9u-UZU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="455" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Sponsored" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xq7-zx-iYw" customClass="OBLabel">
-                                                    <rect key="frame" x="294.5" y="16" width="47.5" height="12"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="10"/>
-                                                    <color key="textColor" red="0.57647058823529407" green="0.56470588235294117" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smartfeed" translatesAutoresizingMaskIntoConstraints="NO" id="Si7-Ja-Rv9">
-                                                    <rect key="frame" x="18" y="11" width="100" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="PZ9-po-NPa"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adchoices" translatesAutoresizingMaskIntoConstraints="NO" id="B6K-CM-0QF">
-                                                    <rect key="frame" x="347" y="17" width="10" height="10"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="10" id="U4s-JF-Di5"/>
-                                                        <constraint firstAttribute="width" constant="10" id="oZz-dR-uLp"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="B6K-CM-0QF" secondAttribute="trailing" constant="18" id="23c-k1-kcU"/>
-                                                <constraint firstItem="B6K-CM-0QF" firstAttribute="leading" secondItem="Xq7-zx-iYw" secondAttribute="trailing" constant="5" id="3vz-X2-Rgy"/>
-                                                <constraint firstAttribute="bottom" secondItem="Xq7-zx-iYw" secondAttribute="bottom" constant="16" id="8ob-5R-ZOW"/>
-                                                <constraint firstItem="B6K-CM-0QF" firstAttribute="centerY" secondItem="eca-9u-UZU" secondAttribute="centerY" id="Lj3-Ag-NiD"/>
-                                                <constraint firstItem="Si7-Ja-Rv9" firstAttribute="leading" secondItem="eca-9u-UZU" secondAttribute="leading" constant="18" id="PVX-Oj-6ya"/>
-                                                <constraint firstItem="Xq7-zx-iYw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Si7-Ja-Rv9" secondAttribute="trailing" priority="750" constant="40" id="TRh-cY-25a"/>
-                                                <constraint firstItem="Xq7-zx-iYw" firstAttribute="centerY" secondItem="eca-9u-UZU" secondAttribute="centerY" id="WeH-g7-4KN"/>
-                                                <constraint firstItem="Xq7-zx-iYw" firstAttribute="top" secondItem="eca-9u-UZU" secondAttribute="top" constant="16" id="vrb-Z4-g8n"/>
-                                                <constraint firstItem="Si7-Ja-Rv9" firstAttribute="centerY" secondItem="eca-9u-UZU" secondAttribute="centerY" id="yOm-BW-lPh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

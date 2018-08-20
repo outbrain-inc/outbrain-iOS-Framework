@@ -22,6 +22,7 @@
 
 const CGFloat kTableViewRowHeight = 250.0;
 const NSString *kTableViewSingleReuseId = @"SFTableViewCell";
+const NSString *kTableViewSmartfeedHeaderReuseId = @"SFTableViewHeaderCell";
 const NSString *kTableViewHorizontalCarouselReuseId = @"SFHorizontalTableViewCell";
 const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
 const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
@@ -48,8 +49,13 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedNoTitleTableViewCell should not be null");
         [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedNoTitleReuseId];
         
+        // Smartfeed header cell
+        UINib *nib = [UINib nibWithNibName:@"SFTableViewHeaderCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFTableViewHeaderCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSmartfeedHeaderReuseId];
+        
         // single item cell
-        UINib *nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
+        nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
         NSAssert(nib != nil, @"SFTableViewCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleReuseId];
         
@@ -88,6 +94,10 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
 }
 
 #pragma mark - UITableView methods
+- (UITableViewCell *)tableView:(UITableView *)tableView headerCellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [tableView dequeueReusableCellWithIdentifier:kTableViewSmartfeedHeaderReuseId forIndexPath:indexPath];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath sfItemType:(SFItemType)sfItemType {
     switch (sfItemType) {
         case SingleItem:

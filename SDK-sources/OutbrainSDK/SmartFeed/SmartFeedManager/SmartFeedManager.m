@@ -102,6 +102,15 @@
     [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:GridThreeInRowNoTitle];
 }
 
+-(NSInteger) smartFeedItemsCount {
+    if (self.smartFeedItemsArray.count > 0) {
+        return self.smartFeedItemsArray.count + 1; // plus header cell
+    }
+    else {
+        return 0;
+    }
+}
+
 #pragma mark - Fetch Recommendations
 - (void) fetchMoreRecommendations {
     if (self.isLoading) {
@@ -318,8 +327,12 @@
         return nil;
     }
     
-    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    if (indexPath.row == 0) {
+        // Smartfeed header cell
+        return [self.sfTableViewManager tableView:tableView headerCellForRowAtIndexPath:indexPath];
+    }
     
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
     return [self.sfTableViewManager tableView:tableView cellForRowAtIndexPath:indexPath sfItemType:sfItem.itemType];
 }
 
@@ -329,6 +342,11 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section != self.outbrainSectionIndex) {
+        return;
+    }
+    
+    if (indexPath.row == 0) {
+        // Smartfeed header
         return;
     }
     
@@ -351,6 +369,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        // Smartfeed header
+        return UITableViewAutomaticDimension;
+    }
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     return [self.sfTableViewManager heightForRowAtIndexPath:indexPath withSFItem:sfItem];
 }
@@ -441,7 +463,7 @@
 }
 
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
-    return self.smartFeedItemsArray[indexPath.row];
+    return self.smartFeedItemsArray[indexPath.row-1];
 }
 
 - (NSArray *) recsForHorizontalCellAtIndexPath:(NSIndexPath *)indexPath {

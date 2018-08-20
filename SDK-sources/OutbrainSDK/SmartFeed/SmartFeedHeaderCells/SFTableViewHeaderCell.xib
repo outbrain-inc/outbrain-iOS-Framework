@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SFTableViewHeaderCell" rowHeight="35" id="KGk-i7-Jjw" customClass="SFTableViewHeaderCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="34.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="455" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Sponsored Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50E-ut-54A" customClass="OBLabel">
+                        <rect key="frame" x="11" y="9" width="105.5" height="16.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adchoices" translatesAutoresizingMaskIntoConstraints="NO" id="vyr-8A-6Ks">
+                        <rect key="frame" x="299" y="12.5" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="Qxh-NU-xZD"/>
+                            <constraint firstAttribute="width" constant="10" id="dQa-5P-3ME"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smartfeed" translatesAutoresizingMaskIntoConstraints="NO" id="kSw-82-81f">
+                        <rect key="frame" x="221" y="6.5" width="73" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="73" id="X3F-SE-PTY"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="50E-ut-54A" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="29i-O5-VZS"/>
+                    <constraint firstItem="kSw-82-81f" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FW4-zv-w8e"/>
+                    <constraint firstItem="vyr-8A-6Ks" firstAttribute="leading" secondItem="kSw-82-81f" secondAttribute="trailing" constant="5" id="Gqy-A3-VZL"/>
+                    <constraint firstAttribute="trailing" secondItem="vyr-8A-6Ks" secondAttribute="trailing" constant="11" id="OhM-4Y-YSg"/>
+                    <constraint firstItem="50E-ut-54A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="coS-wQ-ghl"/>
+                    <constraint firstItem="vyr-8A-6Ks" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oRD-fp-1ad"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="headerOBLabel" destination="50E-ut-54A" id="UHg-iE-Lzf"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="49.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="adchoices" width="90" height="94"/>
+        <image name="smartfeed" width="139" height="22"/>
+    </resources>
+</document>
