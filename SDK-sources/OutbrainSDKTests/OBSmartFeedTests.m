@@ -98,6 +98,7 @@
     XCTAssertNotNil(self.responseParent.settings.feedContentArray);
     XCTAssertEqual(self.responseParent.settings.feedContentArray.count, 3);
     XCTAssertTrue([self.responseParent.settings.feedContentArray[1] isEqualToString:@"SDK_SFD_2"]);
+    XCTAssertNil(self.responseChild3.settings.feedContentArray);
 }
 
 - (void)testFeedCycleLimitIsFetchedCorrectlyFromResponse {
