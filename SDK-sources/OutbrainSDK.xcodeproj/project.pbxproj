@@ -95,6 +95,9 @@
 		E63B785A212AB3500018C225 /* SFTableViewHeaderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7857212AB3500018C225 /* SFTableViewHeaderCell.h */; };
 		E63B785B212AB3500018C225 /* SFTableViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7858212AB3500018C225 /* SFTableViewHeaderCell.m */; };
 		E63B785C212AB3500018C225 /* SFTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63B7859212AB3500018C225 /* SFTableViewHeaderCell.xib */; };
+		E63B7860212AD9750018C225 /* SFCollectionViewHeaderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B785D212AD9750018C225 /* SFCollectionViewHeaderCell.h */; };
+		E63B7861212AD9750018C225 /* SFCollectionViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */; };
+		E63B7862212AD9750018C225 /* SFCollectionViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63B785F212AD9750018C225 /* SFCollectionViewHeaderCell.xib */; };
 		E6D26D8720D7BE6D00D6D00A /* rtb_rec_with_disclosure.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8620D7BE6D00D6D00A /* rtb_rec_with_disclosure.json */; };
 		E6D26D8920D7BEA300D6D00A /* OBRecRTBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */; };
 		E6D26D8B20D7C0A900D6D00A /* non_rtb_rec.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8A20D7C0A900D6D00A /* non_rtb_rec.json */; };
@@ -230,6 +233,9 @@
 		E63B7857212AB3500018C225 /* SFTableViewHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFTableViewHeaderCell.h; sourceTree = "<group>"; };
 		E63B7858212AB3500018C225 /* SFTableViewHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFTableViewHeaderCell.m; sourceTree = "<group>"; };
 		E63B7859212AB3500018C225 /* SFTableViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFTableViewHeaderCell.xib; sourceTree = "<group>"; };
+		E63B785D212AD9750018C225 /* SFCollectionViewHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFCollectionViewHeaderCell.h; sourceTree = "<group>"; };
+		E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFCollectionViewHeaderCell.m; sourceTree = "<group>"; };
+		E63B785F212AD9750018C225 /* SFCollectionViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFCollectionViewHeaderCell.xib; sourceTree = "<group>"; };
 		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6D26D8620D7BE6D00D6D00A /* rtb_rec_with_disclosure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rtb_rec_with_disclosure.json; sourceTree = "<group>"; };
 		E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBRecRTBTests.m; sourceTree = "<group>"; };
@@ -589,6 +595,9 @@
 				E63B7857212AB3500018C225 /* SFTableViewHeaderCell.h */,
 				E63B7858212AB3500018C225 /* SFTableViewHeaderCell.m */,
 				E63B7859212AB3500018C225 /* SFTableViewHeaderCell.xib */,
+				E63B785D212AD9750018C225 /* SFCollectionViewHeaderCell.h */,
+				E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */,
+				E63B785F212AD9750018C225 /* SFCollectionViewHeaderCell.xib */,
 			);
 			path = SmartFeedHeaderCells;
 			sourceTree = "<group>";
@@ -686,6 +695,7 @@
 				E61E6C2F20836C180016D79A /* OBResponseRequest.h in Headers */,
 				E6F8F464211C3D580069C72C /* SFCollectionViewManager.h in Headers */,
 				E61E6C2C20836C180016D79A /* OBRecommendationResponse.h in Headers */,
+				E63B7860212AD9750018C225 /* SFCollectionViewHeaderCell.h in Headers */,
 				E63B785A212AB3500018C225 /* SFTableViewHeaderCell.h in Headers */,
 				E63B7852212AB1860018C225 /* SFCollectionViewCell.h in Headers */,
 				E61E6C4120836C180016D79A /* OBBridge.h in Headers */,
@@ -823,6 +833,7 @@
 				E6FEB3EB20FF2E78002A9020 /* SFHorizontalCarouselCollectionViewCell.xib in Resources */,
 				E6FEB3E920FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib in Resources */,
 				E6FEB7562105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib in Resources */,
+				E63B7862212AD9750018C225 /* SFCollectionViewHeaderCell.xib in Resources */,
 				E6FEB3ED20FF2E78002A9020 /* SFHorizontalTableViewCell.xib in Resources */,
 				E6FEB74F2105AAFB002A9020 /* SFHorizontalItemCell.xib in Resources */,
 				E6FEB7582105BF0F002A9020 /* SFSingleWithTitleTableViewCell.xib in Resources */,
@@ -903,6 +914,7 @@
 				E6FEB18F20FCB053002A9020 /* SFHorizontalViewCarousel.m in Sources */,
 				E61E6C2A20836C180016D79A /* OBResponse.m in Sources */,
 				E63B785B212AB3500018C225 /* SFTableViewHeaderCell.m in Sources */,
+				E63B7861212AD9750018C225 /* SFCollectionViewHeaderCell.m in Sources */,
 				E6F8F45C211C3C6D0069C72C /* SmartFeedManager.m in Sources */,
 				E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */,
 				E63B7854212AB1860018C225 /* SFCollectionViewCell.m in Sources */,

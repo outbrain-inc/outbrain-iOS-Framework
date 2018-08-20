@@ -10,4 +10,6 @@
 
 @interface SFCollectionViewHeaderCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet OBLabel *headerOBLabel;
+
 @end
