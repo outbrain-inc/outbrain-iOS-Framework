@@ -7,6 +7,8 @@
 //
 
 #import "SmartFeedManager.h"
+#import "SFTableViewHeaderCell.h"
+#import "SFCollectionViewHeaderCell.h"
 #import "SFHorizontalCollectionViewCell.h"
 #import "SFCollectionViewCell.h"
 #import "SFTableViewCell.h"
@@ -100,6 +102,15 @@
     nib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
     [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:GridTwoInRowNoTitle];
     [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:GridThreeInRowNoTitle];
+}
+
+-(NSInteger) smartFeedItemsCount {
+    if (self.smartFeedItemsArray.count > 0) {
+        return self.smartFeedItemsArray.count + 1; // plus header cell
+    }
+    else {
+        return 0;
+    }
 }
 
 #pragma mark - Fetch Recommendations
@@ -208,7 +219,7 @@
     SFItemType itemType = [self sfItemTypeFromResponse:response];
     NSString *widgetTitle = response.settings.widgetHeaderText;
     
-    itemType = StripWithTitle;
+    //itemType = StripWithTitle;
     
     switch (itemType) {
         case SingleItem:
@@ -233,17 +244,26 @@
 
 -(SFItemType) sfItemTypeFromResponse:(OBRecommendationResponse *)response {
     NSString *recMode = response.settings.recMode;
+    NSString *widgetHeader = response.settings.widgetHeaderText;
+    BOOL isParentResponse = response.settings.feedContentArray != nil;
+    
+    if (isParentResponse) {
+        // for the first widget in the feed, the widgetHeader text goes into the header
+        // see configureSmartFeedHeaderTableViewCell:
+        widgetHeader = nil;
+    }
+    
     if ([recMode isEqualToString:@"sdk_sfd_swipe"]) {
         return CarouselItem;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_1_column"]) {
-        return response.settings.widgetHeaderText ? StripWithTitle : SingleItem;
+        return widgetHeader ? StripWithTitle : SingleItem;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_2_columns"]) {
-        return response.settings.widgetHeaderText ? GridTwoInRowNoTitle : GridTwoInRowNoTitle; // TODO with title
+        return widgetHeader ? GridTwoInRowNoTitle : GridTwoInRowNoTitle; // TODO with title
     }
     else if ([recMode isEqualToString:@"sdk_sfd_3_columns"]) {
-        return response.settings.widgetHeaderText ? GridThreeInRowNoTitle : GridThreeInRowNoTitle; // TODO with title
+        return widgetHeader ? GridThreeInRowNoTitle : GridThreeInRowNoTitle; // TODO with title
     }
     else if ([recMode isEqualToString:@"sdk_sfd_thumbnails"]) {
         return StripWithThumbnail;
@@ -318,8 +338,12 @@
         return nil;
     }
     
-    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    if (indexPath.row == 0) {
+        // Smartfeed header cell
+        return [self.sfTableViewManager tableView:tableView headerCellForRowAtIndexPath:indexPath];
+    }
     
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
     return [self.sfTableViewManager tableView:tableView cellForRowAtIndexPath:indexPath sfItemType:sfItem.itemType];
 }
 
@@ -329,6 +353,12 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section != self.outbrainSectionIndex) {
+        return;
+    }
+    
+    if (indexPath.row == 0) {
+        // Smartfeed header
+        [self configureSmartFeedHeaderTableViewCell:cell atIndexPath:indexPath];
         return;
     }
     
@@ -351,6 +381,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        // Smartfeed header
+        return UITableViewAutomaticDimension;
+    }
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     return [self.sfTableViewManager heightForRowAtIndexPath:indexPath withSFItem:sfItem];
 }
@@ -383,14 +417,31 @@
     }];
 }
 
-- (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void) configureSingleTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFItemData *sfItem = [self itemForIndexPath: indexPath];
-    [self.sfTableViewManager configureSingleTableViewCell:cell atIndexPath:indexPath withSFItem:sfItem];
+    [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
+}
+
+- (void) configureSmartFeedHeaderTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
+    SFTableViewHeaderCell *sfHeaderCell = (SFTableViewHeaderCell *)cell;
+    if (sfItem.widgetTitle) {
+        sfHeaderCell.headerOBLabel.text = sfItem.widgetTitle;
+    }
+    [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(outbrainLabelClicked:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
 }
 
 #pragma mark - Collection View methods
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        // Smartfeed header cell
+        return [self.sfCollectionViewManager collectionView:collectionView headerCellForItemAtIndexPath:indexPath];
+    }
+    
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItemType:sfItem.itemType];
 }
@@ -404,6 +455,10 @@
   sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
     
     if (indexPath.section == self.outbrainSectionIndex) {
+        if (indexPath.row == 0) {
+            // Smartfeed header
+            return CGSizeMake(collectionView.frame.size.width, 50);
+        }
         SFItemData *sfItem = [self itemForIndexPath:indexPath];
         return [self.sfCollectionViewManager collectionView:collectionView sizeForItemAtIndexPath:indexPath sfItemType:sfItem.itemType];
     }
@@ -423,6 +478,16 @@
     if (indexPath.section != self.outbrainSectionIndex) {
         return;
     }
+    
+    if (indexPath.row == 0) {
+        // Smartfeed header
+        SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
+        SFCollectionViewHeaderCell *sfHeaderCell = (SFCollectionViewHeaderCell *)cell;
+        [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
+        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withTitle:sfItem.widgetTitle];
+        return;
+    }
+    
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
@@ -441,7 +506,7 @@
 }
 
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
-    return self.smartFeedItemsArray[indexPath.row];
+    return self.smartFeedItemsArray[indexPath.row-1];
 }
 
 - (NSArray *) recsForHorizontalCellAtIndexPath:(NSIndexPath *)indexPath {

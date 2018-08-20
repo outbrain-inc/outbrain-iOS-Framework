@@ -40,6 +40,9 @@ typedef enum
 
 @property (nonatomic, weak) id<SmartFeedDelegate> delegate;
 
+
+-(NSInteger) smartFeedItemsCount;
+
 // TableView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
                    widgetID:(NSString * _Nonnull)widgetId

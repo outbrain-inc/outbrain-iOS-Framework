@@ -92,6 +92,12 @@
 		E63B7853212AB1860018C225 /* SFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7849212AB1860018C225 /* SFTableViewCell.m */; };
 		E63B7854212AB1860018C225 /* SFCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B784A212AB1860018C225 /* SFCollectionViewCell.m */; };
 		E63B7855212AB1860018C225 /* SFTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B784B212AB1860018C225 /* SFTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E63B785A212AB3500018C225 /* SFTableViewHeaderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7857212AB3500018C225 /* SFTableViewHeaderCell.h */; };
+		E63B785B212AB3500018C225 /* SFTableViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7858212AB3500018C225 /* SFTableViewHeaderCell.m */; };
+		E63B785C212AB3500018C225 /* SFTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63B7859212AB3500018C225 /* SFTableViewHeaderCell.xib */; };
+		E63B7860212AD9750018C225 /* SFCollectionViewHeaderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B785D212AD9750018C225 /* SFCollectionViewHeaderCell.h */; };
+		E63B7861212AD9750018C225 /* SFCollectionViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */; };
+		E63B7862212AD9750018C225 /* SFCollectionViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E63B785F212AD9750018C225 /* SFCollectionViewHeaderCell.xib */; };
 		E6D26D8720D7BE6D00D6D00A /* rtb_rec_with_disclosure.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8620D7BE6D00D6D00A /* rtb_rec_with_disclosure.json */; };
 		E6D26D8920D7BEA300D6D00A /* OBRecRTBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */; };
 		E6D26D8B20D7C0A900D6D00A /* non_rtb_rec.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8A20D7C0A900D6D00A /* non_rtb_rec.json */; };
@@ -224,6 +230,12 @@
 		E63B7849212AB1860018C225 /* SFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewCell.m; sourceTree = "<group>"; };
 		E63B784A212AB1860018C225 /* SFCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFCollectionViewCell.m; sourceTree = "<group>"; };
 		E63B784B212AB1860018C225 /* SFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewCell.h; sourceTree = "<group>"; };
+		E63B7857212AB3500018C225 /* SFTableViewHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFTableViewHeaderCell.h; sourceTree = "<group>"; };
+		E63B7858212AB3500018C225 /* SFTableViewHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFTableViewHeaderCell.m; sourceTree = "<group>"; };
+		E63B7859212AB3500018C225 /* SFTableViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFTableViewHeaderCell.xib; sourceTree = "<group>"; };
+		E63B785D212AD9750018C225 /* SFCollectionViewHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFCollectionViewHeaderCell.h; sourceTree = "<group>"; };
+		E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFCollectionViewHeaderCell.m; sourceTree = "<group>"; };
+		E63B785F212AD9750018C225 /* SFCollectionViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFCollectionViewHeaderCell.xib; sourceTree = "<group>"; };
 		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6D26D8620D7BE6D00D6D00A /* rtb_rec_with_disclosure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rtb_rec_with_disclosure.json; sourceTree = "<group>"; };
 		E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBRecRTBTests.m; sourceTree = "<group>"; };
@@ -510,6 +522,7 @@
 		E61E6CA62085D98F0016D79A /* SmartFeed */ = {
 			isa = PBXGroup;
 			children = (
+				E63B7856212AB30A0018C225 /* SmartFeedHeaderCells */,
 				E63B7847212AB1860018C225 /* BaseCellClasses */,
 				E63B7844212AB1860018C225 /* SFItemData */,
 				E63B783F212AB1860018C225 /* SFUtils */,
@@ -574,6 +587,19 @@
 				E63B784B212AB1860018C225 /* SFTableViewCell.h */,
 			);
 			path = BaseCellClasses;
+			sourceTree = "<group>";
+		};
+		E63B7856212AB30A0018C225 /* SmartFeedHeaderCells */ = {
+			isa = PBXGroup;
+			children = (
+				E63B7857212AB3500018C225 /* SFTableViewHeaderCell.h */,
+				E63B7858212AB3500018C225 /* SFTableViewHeaderCell.m */,
+				E63B7859212AB3500018C225 /* SFTableViewHeaderCell.xib */,
+				E63B785D212AD9750018C225 /* SFCollectionViewHeaderCell.h */,
+				E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */,
+				E63B785F212AD9750018C225 /* SFCollectionViewHeaderCell.xib */,
+			);
+			path = SmartFeedHeaderCells;
 			sourceTree = "<group>";
 		};
 		E6F8F459211C3C6D0069C72C /* SmartFeedManager */ = {
@@ -669,6 +695,8 @@
 				E61E6C2F20836C180016D79A /* OBResponseRequest.h in Headers */,
 				E6F8F464211C3D580069C72C /* SFCollectionViewManager.h in Headers */,
 				E61E6C2C20836C180016D79A /* OBRecommendationResponse.h in Headers */,
+				E63B7860212AD9750018C225 /* SFCollectionViewHeaderCell.h in Headers */,
+				E63B785A212AB3500018C225 /* SFTableViewHeaderCell.h in Headers */,
 				E63B7852212AB1860018C225 /* SFCollectionViewCell.h in Headers */,
 				E61E6C4120836C180016D79A /* OBBridge.h in Headers */,
 				E6FEB18E20FCB053002A9020 /* SFHorizontalViewCarousel.h in Headers */,
@@ -801,9 +829,11 @@
 				E6FEB7512105AAFB002A9020 /* SFTableViewCell.xib in Resources */,
 				E6FEB7502105AAFB002A9020 /* SFCollectionViewCell.xib in Resources */,
 				E6FEB3EF20FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib in Resources */,
+				E63B785C212AB3500018C225 /* SFTableViewHeaderCell.xib in Resources */,
 				E6FEB3EB20FF2E78002A9020 /* SFHorizontalCarouselCollectionViewCell.xib in Resources */,
 				E6FEB3E920FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib in Resources */,
 				E6FEB7562105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib in Resources */,
+				E63B7862212AD9750018C225 /* SFCollectionViewHeaderCell.xib in Resources */,
 				E6FEB3ED20FF2E78002A9020 /* SFHorizontalTableViewCell.xib in Resources */,
 				E6FEB74F2105AAFB002A9020 /* SFHorizontalItemCell.xib in Resources */,
 				E6FEB7582105BF0F002A9020 /* SFSingleWithTitleTableViewCell.xib in Resources */,
@@ -883,6 +913,8 @@
 				E61E6C1C20836C180016D79A /* UIView+Visible.m in Sources */,
 				E6FEB18F20FCB053002A9020 /* SFHorizontalViewCarousel.m in Sources */,
 				E61E6C2A20836C180016D79A /* OBResponse.m in Sources */,
+				E63B785B212AB3500018C225 /* SFTableViewHeaderCell.m in Sources */,
+				E63B7861212AD9750018C225 /* SFCollectionViewHeaderCell.m in Sources */,
 				E6F8F45C211C3C6D0069C72C /* SmartFeedManager.m in Sources */,
 				E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */,
 				E63B7854212AB1860018C225 /* SFCollectionViewCell.m in Sources */,
