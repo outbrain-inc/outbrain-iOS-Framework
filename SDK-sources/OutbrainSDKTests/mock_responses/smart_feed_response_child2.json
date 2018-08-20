@@ -1,0 +1,105 @@
+{
+    "response": {
+        "exec_time": 24,
+        "timestamp": 1534246292670,
+        "status": {
+            "id": 0,
+            "content": "Request succeeded"
+        },
+        "request": {
+            "lang": "en",
+            "idx": "0",
+            "did": "689346564",
+            "pid": "4737",
+            "lsd": "8832e28d-df26-46ce-8c41-6697f30591bc",
+            "enu": "lxSLYY32do9x3PGaMGCLdeom76Kwh0yrr_ot9ghxBF44hfTZdVlv18MWQD7ml8lG",
+            "api_user_id": "8832E28D-DF26-46CE-8C41-6697F30591BC",
+            "t": "MV82ZGU0ZTBiNTU3ODRjMmFmZDY0YzdiZjZlNzRhZDk1NF8w",
+            "pvId": "6de4e0b55784c2afd64c7bf6e74ad954",
+            "pad": "0",
+            "org": "2",
+            "abTestVal": "no_abtest",
+            "obRecsAbtestAndVars": "386-1123,467-1501,486-1552",
+            "widgetJsId": "SDK_SFD_2",
+            "readerPlatform": "desktop",
+            "isHttps": "true",
+            "rtbTest": "false",
+            "rtbBidTestMode": "false",
+            "rtbTestRecsNum": "0",
+            "amplifyEnabled": "true",
+            "gdpr": "0",
+            "sid": 5291479,
+            "wnid": 1145,
+            "req_id": "6de4e0b55784c2afd64c7bf6e74ad954",
+            "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+            "vid": 0,
+            "ref": 0,
+            "lastIdx": "9999",
+            "lastCardIdx": "9999",
+            "rtbEnabled": "true"
+        },
+        "documents": {
+            "total_count": 2,
+            "count": 2,
+            "doc": [
+                    {
+                    "source_name": "Bleacher Report - WWE",
+                    "same_source": "false",
+                    "publish_date": "2018-08-08 12:00",
+                    "orig_url": "https://bleacherreport.com/articles/2790050",
+                    "ads_type": 2,
+                    "rec_en_did": "0dCHSpiz7HhscY0-8wivoQ",
+                    "url": "https://traffic.outbrain.com/network/redir?p=g-ImAJBsr4JHp_bVeOckpjXV_iCmdhev4jiEcfcvjHD1O5vjbBhduu-SvB7GXhrUyO6rO3j4HleNVYzxpukqjudIxwWvU_zeIvctoJMEdScz5o2q3DWIjybKsAL4DcqBTgKi-mjTicdQ0ZOJ7ZTU_XoyScPTZf9kvfBORgPU-hYBuhhjKcRgvD8Q3MZunicQ9ztSdFKW5lYDOG8UhjkpcRoWSX0T5a5fhByFoipqOPBQn4RFGH5SjEjoWYjiNPXuFEIvlzYmnYanNDqtkfos_Jaze7r8Hp614AFPYy7oEQvTWB-ac2CzgbnHCa-RBmo0w03xXfZ1w2qcyD7Tqf69dPf3sgLwOVDKI5wmsNyRs-GUAhvYKtfKlGlpcpvNuR_INB2uCZRzmBoevMmIlNwwVJeRnqXZyjdYi-us_oMnmWIp3hoRJXNu1e6bdDwMFnLfii6Ot_LKB6jX0gZWi5rbsGBj-lhP2MROL-3THRbvh76TDDurmDqB3_tmRX94TyFoeKMZdT9lIUgIViRzWDeUX5jDWZMljniO1Ppr6406NQ96MUeAfA0G63QpvegKNJoTW2FWQ9r-IuY3MtjYa0wPegKVOUaHra1ZOgRhXZKqk1uoQw3tk2P7Q2MYYQCGJnt6Kbl-RXEmiMi_T2pwW623Ogg5CD7y0ORgk0dmfj4eB-lWArn2sci9KmLeNHd2VtzIlL4QiIWuuYBEnI_WlwJFxy5kO4_Arc-LMRdOpouYtixxdVYVuDMlzHzZRgyiog9mLGagX6uWgTEeOSRF1mdUjiCxh2DasKYOM8lMW3ELMng&c=c0e62564&v=3",
+                    "content": "WWE Rumors: Buying or Selling Buzz on Asuka, The Young Bucks and More",
+                    "pos": "0",
+                    "ttid": 4,
+                    "rec-cats": [
+                                 1904
+                                 ],
+                    "author": "Erik Beaston",
+                    "explain": "UserExplain(suggested for you,0,None,None,false,)",
+                    "pub_id": "5312",
+                    "source_id": "5350084",
+                    "desc": "WWE is currently in the midst of a build to its SummerSlam event on August 19 and the wrestling rumor mill is churning out report after report in the days and weeks ahead of the enormous extravaganza...",
+                    "reason": {
+                    "text": "suggested for you",
+                    "type": "0",
+                    "clickable": "false"
+                    }
+                    },
+                    {
+                    "source_name": "Bleacher Report - Golf",
+                    "same_source": "false",
+                    "explain": "UserExplain(suggested for you,0,None,None,false,)",
+                    "pub_id": "5312",
+                    "source_id": "5350086",
+                    "publish_date": "2018-08-12 20:04",
+                    "orig_url": "https://bleacherreport.com/articles/2790687",
+                    "desc": "Tiger Woods challenged eventual winner Brooks Koepka throughout Sunday's final round of the PGA Championship, but there were clearly no hard feelings in the immediate aftermath...",
+                    "rec-cats": [
+                                 1908
+                                 ],
+                    "ads_type": 2,
+                    "rec_en_did": "OMUBoF_x6qxr-NFYVaKA8w",
+                    "url": "https://traffic.outbrain.com/network/redir?p=fFOxNlxA_-MciB0YQVbwItASRlft0nN-5CpvN0z7KYj5IX28lijeLEU_U7NFUC2XDU_VEwd_NdTbZt1uX3zMNClZQ9s12K6nMJZbK6ts_oKKcN5jO5wTbOBDRPZseLFmzHpVWi-e71aXPIgJhBbvS7AWh40-_PdtcX35kv6_-22_Lcwrchy-1OoiZo3_ELlPCrDlhSHt_bLwkkkGA0OTNoS1V1SUbMse-kP2kRl89e1NHbO0znBVavMkOX4WXF53d78KHQzFd8mL_8TUfdkpbUXdf-zRPT5toNkjVJI8hfgKeqsBXN-kD3KwHprOZqULS7t8y5d4JbbWvzKSrHW8pQPk1ianJDHXhBuvval7GDQSyUmOxzXeJJBw22vo3b94Pc_BEd1zbk6KRd9PZJjRuHuwvYx6qaXi-9QBkLLjCx-nvBff7AhLFi1cEXSsH0Lykt5kWP9kwyFngwgAP9Zkyxz2xIS138N_OVAt-r-0ayr8EnOk2SABYUgcmfJHZl_m0FP1XlwBmoP8nYVhP4z42tXj_pWV1IgVesP9l30gu_7GHa9xGC4rkyo3WQ5rSwVMXvNKmHhVhe-OvDUO5ObJq1WJavKvVf870uxOsPLny-Zy3VJXWdG73fG3IFzAn4RkwygGVVlzAjrVHvtgMF_dYu0D7c_JIYkQm0y48w7eJGwU79qAKMkRXGwqeNBMSL9VKCvaLgWecLXLlx2oW-zohD4qDVZYTbLqjNumGBsxC87F2XUhWzpuGFBUQWE8NtN26BRUvIvDgvGmw5msVC_6ZG0B4Vnr6I-T2pfCadNrGvg&c=8b6b5b4e&v=3",
+                    "author": "Scott Polacek",
+                    "content": "Brooks Koepka, Girlfriend Jena Sims Hug Tiger Woods After PGA Championship Win",
+                    "pos": "1",
+                    "ttid": 4,
+                    "reason": {
+                    "text": "suggested for you",
+                    "type": "0",
+                    "clickable": "false"
+                    }
+                    }
+                    ]
+        },
+        "settings": {
+            "recMode": "sdk_sfd_thumbnails",
+            "apv": false,
+            "flagPublisherZappingFeature": true,
+            "globalWidgetStatistics": true,
+            "InstallationType": "mobile-app-sdk"
+        }
+    }
+}

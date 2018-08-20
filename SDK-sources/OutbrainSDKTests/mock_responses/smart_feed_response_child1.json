@@ -1,0 +1,81 @@
+{
+    "response": {
+        "exec_time": 24,
+        "timestamp": 1534246252065,
+        "status": {
+            "id": 0,
+            "content": "Request succeeded"
+        },
+        "request": {
+            "lang": "en",
+            "idx": "0",
+            "did": "689346564",
+            "pid": "4737",
+            "lsd": "8832e28d-df26-46ce-8c41-6697f30591bc",
+            "enu": "lxSLYY32do9x3PGaMGCLdeom76Kwh0yrr_ot9ghxBF44hfTZdVlv18MWQD7ml8lG",
+            "api_user_id": "8832E28D-DF26-46CE-8C41-6697F30591BC",
+            "t": "MV9mOTNkZWU1ZTkzZTUzNmU2OGVhM2ViNjNlM2Y3NjRhNl8w",
+            "pvId": "f93dee5e93e536e68ea3eb63e3f764a6",
+            "pad": "0",
+            "org": "1",
+            "abTestVal": "no_abtest",
+            "obRecsAbtestAndVars": "386-1126,467-1501,486-1552",
+            "widgetJsId": "SDK_SFD_1",
+            "readerPlatform": "desktop",
+            "isHttps": "true",
+            "rtbTest": "false",
+            "rtbBidTestMode": "false",
+            "rtbTestRecsNum": "0",
+            "amplifyEnabled": "true",
+            "gdpr": "0",
+            "sid": 5291479,
+            "wnid": 1144,
+            "req_id": "f93dee5e93e536e68ea3eb63e3f764a6",
+            "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+            "vid": 0,
+            "ref": 0,
+            "lastIdx": "9999",
+            "lastCardIdx": "9999",
+            "rtbEnabled": "true"
+        },
+        "documents": {
+            "total_count": 1,
+            "count": 1,
+            "doc": [
+                    {
+                    "source_name": "Real Estate",
+                    "same_source": "false",
+                    "publish_date": "2017-08-11 10:09",
+                    "orig_url": "http://money.cnn.com/2017/08/11/real_estate/save-down-payment/index.html",
+                    "ads_type": 2,
+                    "rec_en_did": "K3pfKSLeSfHUchuV_wCQnA",
+                    "url": "https://traffic.outbrain.com/network/redir?p=e8FqiMQ4rKyLm7jYCBJoiNWmdHTHG4H2_ZW5VVHZo8-JoZE164ppt4_Mbs40nAUDZyXIDbayM3UnNGvk3IkI6XsUFVoJMeRK-o6ou5ijdLlWO2i5YdrvSYL9oklFt1sIkas048pl02OFCWYNnB5ZrDWP0CDt1FUVaWRqio9jRr8pxbm3w_mxHuT4HPxpSEclmdFJJzptx5r4Z8Gk7d7C3VKENwXfF3zF5RluzOim-_L7OB8bOE15WR7TarKVvCW88S7OMYvsrxombqC8TRu55UTJQdUSjakfsTM8N5wxUpLKIKLRHzoAtdVgvbytRVAp6UuoQrxo54C9jat6u_IJRPMuJXJ-vkwZLbINOcBFhMcWC4DmrQVW6fPEst_U-bypJvJe6i7k1qJ0Kdkx_0QTKZfz5oy-IdANUC-77imxCVWnCJ8sxvXfcpXa0FtWa8hQueed6obsII2AGloUqtu7-NvHfc8tYa7xxoFuagK64LDrfPAdwU8pWou9ClUpOR4R9QWvmasvrUn2MPC7HMr6n280RdPohapecZ7pAA_GPDpiZsyUjIc9lBBL370RKFqtgxX4biUnCwvdwSdIZdx0P8nn42Iyov7eeSZQR9rYXKNggdVX7fSGDXph4RK6gsDaKhk__lToQmUfKnSkvmlsq3brR4Vkqt_C9RZzUPL6RmUfvyaGcKaKPtJNg74Y6qA1DbVbsERtoOsspDIlJXjsK7imJOjrgN4brUOLCRbAXLL3sBTpHlXbrZGeU9khuHuxmNX6bhgiLfBk-M1w51E-9rbdeCg5QHO-jxr72Jba8ao&c=ccbe6b55&v=3",
+                    "content": "How to save enough money for a down payment on a home",
+                    "pos": "0",
+                    "ttid": 4,
+                    "rec-cats": [
+                                 1208
+                                 ],
+                    "author": "Wendy Connick for The Motley Fool",
+                    "explain": "UserExplain(suggested for you,0,None,None,false,)",
+                    "pub_id": "1225",
+                    "source_id": "2733960",
+                    "desc": "Is it really possible to save a 20% down payment? Absolutely -- if you know how to go about it.",
+                    "reason": {
+                    "text": "suggested for you",
+                    "type": "0",
+                    "clickable": "false"
+                    }
+                    }
+                    ]
+        },
+        "settings": {
+            "recMode": "sdk_sfd_1_column",
+            "apv": false,
+            "nanoOrganicsHeader": "Around CNN",
+            "flagPublisherZappingFeature": true,
+            "globalWidgetStatistics": true,
+            "InstallationType": "mobile-app-sdk"
+        }
+    }
+}

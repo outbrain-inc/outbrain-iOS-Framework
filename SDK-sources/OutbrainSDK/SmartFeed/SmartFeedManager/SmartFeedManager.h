@@ -36,14 +36,17 @@ typedef enum
 @property (nonatomic, strong, readonly) NSString * _Nullable url;
 @property (nonatomic, strong, readonly) NSString * _Nullable widgetId;
 @property (nonatomic, assign) NSInteger outbrainSectionIndex;
+@property (nonatomic, strong, readonly) NSMutableArray *smartFeedItemsArray;
 
+@property (nonatomic, weak) id<SmartFeedDelegate> delegate;
+
+
+-(NSInteger) smartFeedItemsCount;
 
 // TableView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
                    widgetID:(NSString * _Nonnull)widgetId
-                  tableView:(UITableView * _Nonnull)tableView
-              publisherName:(NSString * _Nonnull)publisherName
-             publisherImage:(UIImage * _Nonnull)publisherImage;
+                  tableView:(UITableView * _Nonnull)tableView;
 
 
 - (NSInteger)numberOfSectionsInTableView;
@@ -57,9 +60,7 @@ typedef enum
 // CollectionView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
                    widgetID:(NSString * _Nonnull)widgetId
-             collectionView:(UICollectionView * _Nonnull)collectionView
-              publisherName:(NSString * _Nonnull)publisherName
-             publisherImage:(UIImage * _Nonnull)publisherImage;
+             collectionView:(UICollectionView * _Nonnull)collectionView;
 
 - (NSInteger)numberOfSectionsInCollectionView;
 
@@ -73,12 +74,10 @@ typedef enum
        willDisplayCell:(UICollectionViewCell * _Nonnull)cell
     forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
+// Common Methods
 - (void) registerNib:(UINib * _Nonnull )nib withCellWithReuseIdentifier:( NSString * _Nonnull )identifier forType:(SFItemType)type;
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier;
 
-@property (nonatomic, weak) id<SmartFeedDelegate> delegate;
-
-@property (nonatomic, strong, readonly) NSMutableArray *smartFeedItemsArray;
 
 @end

@@ -15,14 +15,13 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    let smartFeedWidgetID = "SFD_MAIN_1"
+    let smartFeedWidgetID = "SFD_MAIN_2"
     let currentArticleDemoUrl = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
-    let outbrainHeaderCellReuseIdentifier = "outbrainHeaderCell"
     
-    let originalArticleItemsCount = 6
+    let originalArticleItemsCount = 5
     var outbrainIdx = 0
     var isLoadingOutrainRecs = false
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
@@ -41,11 +40,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func setupSmartFeed() {
-        guard let publisherLogoImage = UIImage(named: "cnn-logo") else {
-            return
-        }
         let baseURL = currentArticleDemoUrl
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: smartFeedWidgetID, tableView: self.tableView, publisherName: "CNN", publisherImage: publisherLogoImage)
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: smartFeedWidgetID, tableView: self.tableView)
         self.smartFeedManager.delegate = self
         
         // Optional
@@ -71,7 +67,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             return originalArticleItemsCount
         }
         else {
-            return self.smartFeedManager.smartFeedItemsArray.count
+            return self.smartFeedManager.smartFeedItemsCount()
         }
     }
         
@@ -83,7 +79,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         
         if indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
             return self.smartFeedManager.tableView(tableView, cellForRowAt: indexPath)
-            //setCardView(cell: outbrainCell)
         }
         
         switch indexPath.row {
@@ -93,31 +88,11 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             cell = self.tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell?
         case 2,3,4:
             cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
-        case 5:
-            cell = self.tableView.dequeueReusableCell(withIdentifier: outbrainHeaderCellReuseIdentifier) as UITableViewCell?
-            
-            if let obLabel = cell?.viewWithTag(455) as? OBLabel {
-                Outbrain.register(obLabel, withWidgetId: smartFeedWidgetID, andUrl: currentArticleDemoUrl)
-            }
         default:
             break;
         }
         
         return cell ?? UITableViewCell()
-    }
-    
-    func setCardView(cell : UITableViewCell) {
-        guard let view = cell.viewWithTag(99) else {
-            return
-        }
-        view.backgroundColor = UIColor(red: 228.0/255.0, green: 228.0/255.0, blue: 228.0/255.0, alpha: 0.5)
-        view.layer.cornerRadius = 5.0
-        view.layer.borderColor  =  UIColor.lightGray.cgColor
-        view.layer.borderWidth = 0.2
-        view.layer.shadowColor =  UIColor(red: 228.0/255.0, green: 228.0/255.0, blue: 228.0/255.0, alpha: 0.5).cgColor
-        view.layer.shadowOpacity = 1.0
-        view.layer.shadowRadius = 5.0
-        view.layer.shadowOffset = CGSize(width:5.0, height: 5.0)
     }
     
     // method to run when table view cell is tapped

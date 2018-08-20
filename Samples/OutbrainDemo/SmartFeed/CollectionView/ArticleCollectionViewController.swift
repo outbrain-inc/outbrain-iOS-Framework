@@ -17,13 +17,12 @@ class ArticleCollectionViewController: UICollectionViewController {
     let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
     let textHeaderCellReuseIdentifier = "textHeaderCollectionCell"
     let contentCellReuseIdentifier = "contentCollectionCell"
-    let outbrainHeaderCellReuseIdentifier = "outbrainHeaderCollectionCell"
     let outbrainRecCellReuseIdentifier = "outbrainRecCollectionCell"
     var refresher:UIRefreshControl!
     
     fileprivate let itemsPerRow: CGFloat = 1
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
-    let originalArticleItemsCount = 6
+    let originalArticleItemsCount = 5
 
     
     override func viewDidLoad() {
@@ -57,11 +56,9 @@ class ArticleCollectionViewController: UICollectionViewController {
         guard let collectionView = self.collectionView else {
             return
         }
-        guard let publisherLogoImage = UIImage(named: "cnn-logo") else {
-            return
-        }
+        
         let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_1", collectionView: collectionView, publisherName: "CNN", publisherImage: publisherLogoImage)
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_2", collectionView: collectionView)
         
         self.smartFeedManager.delegate = self
         
@@ -94,7 +91,7 @@ extension ArticleCollectionViewController {
             return originalArticleItemsCount
         }
         else {
-            return self.smartFeedManager.smartFeedItemsArray.count
+            return self.smartFeedManager.smartFeedItemsCount()
         }
     }
 
@@ -117,17 +114,6 @@ extension ArticleCollectionViewController {
         case 2,3,4:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: contentCellReuseIdentifier,
                                                       for: indexPath)
-        case 5:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: outbrainHeaderCellReuseIdentifier,
-                                                      for: indexPath)
-            if let button = cell?.viewWithTag(33) as? UIButton {
-                button.addTarget(self, action: #selector(self.outbrainLogoClicked), for: .touchUpInside)
-            }
-            
-            if let obLabel = cell?.viewWithTag(455) as? OBLabel {
-                Outbrain.register(obLabel, withWidgetId: self.smartFeedManager.widgetId, andUrl: self.smartFeedManager.url)
-            }
-            
         default:
             break
         }
@@ -196,8 +182,6 @@ extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {
             return CGSize(width: width, height: 120.0)
         case 2,3,4:
             return CGSize(width: width, height: 200.0)
-        case 5:
-            return CGSize(width: width, height: 50)
         default:
             break
         }
