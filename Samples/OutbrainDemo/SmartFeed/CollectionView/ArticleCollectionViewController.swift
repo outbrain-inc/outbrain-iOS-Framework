@@ -92,7 +92,7 @@ extension ArticleCollectionViewController {
             return originalArticleItemsCount
         }
         else {
-            return self.smartFeedManager.smartFeedItemsArray.count
+            return self.smartFeedManager.smartFeedItemsCount()
         }
     }
 
