@@ -13,27 +13,29 @@
 @property (nonatomic, strong) NSArray *outbrainRecs;
 @property (nonatomic, strong) OBRecommendation *singleRec;
 @property (nonatomic, assign) SFItemType itemType;
-
+@property (nonatomic, copy) NSString *widgetTitle;
 
 @end
 
 @implementation SFItemData
 
 
-- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type {
+- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle {
     self = [super init];
     if (self) {
         self.singleRec = rec;
         self.itemType = type;
+        self.widgetTitle = widgetTitle;
     }
     return self;
 }
 
-- (id)initWithList:(NSArray *)recArray type:(SFItemType)type {
+- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle {
     self = [super init];
     if (self) {
         self.outbrainRecs = recArray;
         self.itemType = type;
+        self.widgetTitle = widgetTitle;
     }
     return self;
 }

@@ -43,9 +43,7 @@ typedef enum
 // TableView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
                    widgetID:(NSString * _Nonnull)widgetId
-                  tableView:(UITableView * _Nonnull)tableView
-              publisherName:(NSString * _Nonnull)publisherName
-             publisherImage:(UIImage * _Nonnull)publisherImage;
+                  tableView:(UITableView * _Nonnull)tableView;
 
 
 - (NSInteger)numberOfSectionsInTableView;
@@ -59,9 +57,7 @@ typedef enum
 // CollectionView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
                    widgetID:(NSString * _Nonnull)widgetId
-             collectionView:(UICollectionView * _Nonnull)collectionView
-              publisherName:(NSString * _Nonnull)publisherName
-             publisherImage:(UIImage * _Nonnull)publisherImage;
+             collectionView:(UICollectionView * _Nonnull)collectionView;
 
 - (NSInteger)numberOfSectionsInCollectionView;
 

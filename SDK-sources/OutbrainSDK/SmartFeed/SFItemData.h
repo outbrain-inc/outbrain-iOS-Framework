@@ -12,13 +12,14 @@
 
 @interface SFItemData : NSObject
 
-- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type;;
+- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle;
 
-- (id)initWithList:(NSArray *)recArray type:(SFItemType)type;
+- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle;
 
 @property (nonatomic, strong, readonly) NSArray *outbrainRecs;
 @property (nonatomic, strong, readonly) OBRecommendation *singleRec;
 @property (nonatomic, assign, readonly) SFItemType itemType;
+@property (nonatomic, copy, readonly) NSString *widgetTitle;
 
 +(NSString *) itemTypeString:(SFItemType) type;
 

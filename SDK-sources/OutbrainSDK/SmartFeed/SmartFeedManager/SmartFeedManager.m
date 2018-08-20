@@ -23,8 +23,6 @@
 
 @property (nonatomic, strong) NSString * _Nullable url;
 @property (nonatomic, strong) NSString * _Nullable widgetId;
-@property (nonatomic, copy) NSString *publisherName;
-@property (nonatomic, strong) UIImage *publisherImage;
 @property (nonatomic, strong) NSArray *feedContentArray;
 @property (nonatomic, strong) NSString *fid;
 @property (nonatomic, assign) NSInteger feedCycleCounter;
@@ -48,19 +46,17 @@
 #pragma mark - init methods
 - (id)init
 {
-    return [self initWithUrl:nil widgetID:nil collectionView:nil publisherName:nil publisherImage:nil];
+    return [self initWithUrl:nil widgetID:nil collectionView:nil];
 }
 
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
                    widgetID:(NSString * _Nonnull)widgetId
              collectionView:(UICollectionView * _Nonnull)collectionView
-              publisherName:(NSString * _Nonnull)publisherName
-             publisherImage:(UIImage * _Nonnull)publisherImage
 {
     self = [super init];
     if(self) {
         NSLog(@"_init: %@", self);
-        [self commonInitWithUrl:url widgetID:widgetId publisherName:publisherName publisherImage:publisherImage];
+        [self commonInitWithUrl:url widgetID:widgetId];
 
         self.sfCollectionViewManager = [[SFCollectionViewManager alloc] initWitCollectionView:collectionView];
         self.sfCollectionViewManager.clickListenerTarget = self;
@@ -71,13 +67,12 @@
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
                    widgetID:(NSString * _Nonnull)widgetId
                   tableView:(UITableView * _Nonnull)tableView
-              publisherName:(NSString * _Nonnull)publisherName
-             publisherImage:(UIImage * _Nonnull)publisherImage {
+{
     self = [super init];
     if(self) {
         NSLog(@"_init: %@", self);
         
-        [self commonInitWithUrl:url widgetID:widgetId publisherName:publisherName publisherImage:publisherImage];
+        [self commonInitWithUrl:url widgetID:widgetId];
        
         self.sfTableViewManager = [[SFTableViewManager alloc] initWithTableView:tableView];
         self.sfTableViewManager.clickListenerTarget = self;
@@ -88,13 +83,9 @@
 
 - (void)commonInitWithUrl:(NSString *)url
                    widgetID:(NSString *)widgetId
-              publisherName:(NSString *)publisherName
-             publisherImage:(UIImage *)publisherImage
 {
     self.widgetId = widgetId;
     self.url = url;
-    self.publisherName = publisherName;
-    self.publisherImage = publisherImage;
     self.outbrainSectionIndex = 1;
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
     self.nibsForCellType = [[NSMutableDictionary alloc] init];
@@ -159,7 +150,7 @@
         [self reloadUIData: newItemsCount];
         
         // First load should fetch the children as well, if self.feedCycleLimit is set, we want to optimize
-        // performance by loading all the cycles in straight away (usually it will be < 10 times). 
+        // performance by loading all the cycles in straight away (usually it will be < 10 times).
         if (self.feedCycleLimit > 0 && self.feedCycleCounter < self.feedCycleLimit) {
             while (self.feedCycleCounter < self.feedCycleLimit) {
                 [self loadMoreAccordingToFeedContent];
@@ -215,20 +206,23 @@
     }
     
     SFItemType itemType = [self sfItemTypeFromResponse:response];
+    NSString *widgetTitle = response.settings.widgetHeaderText;
+    
+    itemType = StripWithTitle;
     
     switch (itemType) {
         case SingleItem:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SingleItem];
+            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SingleItem widgetTitle:widgetTitle];
         case CarouselItem:
-            return [self addCarouselItemsToSmartFeedArray:response.recommendations];
+            return [self addCarouselItemsToSmartFeedArray:response.recommendations widgetTitle:widgetTitle];
         case GridTwoInRowNoTitle:
-            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridTwoInRowNoTitle];
+            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridTwoInRowNoTitle widgetTitle:widgetTitle];
         case GridThreeInRowNoTitle:
-            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridThreeInRowNoTitle];
+            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridThreeInRowNoTitle widgetTitle:widgetTitle];
         case StripWithTitle:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithTitle];
+            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithTitle widgetTitle:widgetTitle];
         case StripWithThumbnail:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithThumbnail];
+            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithThumbnail widgetTitle:widgetTitle];
             
         default:
             break;
@@ -259,23 +253,23 @@
     return StripWithTitle;
 }
 
--(NSUInteger) addSingleItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType {
+-(NSUInteger) addSingleItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSUInteger newItemsCount = 0;
     for (OBRecommendation *rec in recommendations) {
-        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType];
+        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
     }
     return newItemsCount;
 }
 
--(NSUInteger) addCarouselItemsToSmartFeedArray:(NSArray *)recommendations {
-    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:CarouselItem];
+-(NSUInteger) addCarouselItemsToSmartFeedArray:(NSArray *)recommendations widgetTitle:(NSString *)widgetTitle {
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:CarouselItem widgetTitle:widgetTitle];
     [self.smartFeedItemsArray addObject:item];
     return 1;
 }
 
--(NSUInteger) addGridItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType {
+-(NSUInteger) addGridItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSUInteger itemsPerRow = 0;
     if (templateType == GridTwoInRowNoTitle) {
         itemsPerRow = 2;
@@ -293,7 +287,7 @@
         NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
-        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType];
+        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
     }
@@ -362,18 +356,20 @@
 }
 
 - (void) configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)horizontalCell atIndexPath:(NSIndexPath *)indexPath {
-    if (horizontalCell.titleLabel) {
-        horizontalCell.titleLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
-    }
-    
-    if (horizontalCell.publisherImageView) {
-        horizontalCell.publisherImageView.image = self.publisherImage;
-    }
-    
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     NSString *cellKey = [self keyForCellType:sfItem.itemType];
     UINib *horizontalItemCellNib = [self.nibsForCellType objectForKey:cellKey];
     NSString *horizontalCellIdentifier = [self.reuseIdentifierForCellType objectForKey:cellKey];
+    
+    if (horizontalCell.titleLabel) {
+        if (sfItem.widgetTitle) {
+            horizontalCell.titleLabel.text = sfItem.widgetTitle;
+        }
+        else {
+            // fallback
+            horizontalCell.titleLabel.text = @"Around the web";
+        }
+    }
     
     [horizontalCell.horizontalView registerNib: horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
@@ -389,7 +385,7 @@
 
 - (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFItemData *sfItem = [self itemForIndexPath: indexPath];
-    [self.sfTableViewManager configureSingleTableViewCell:cell atIndexPath:indexPath withSFItem:sfItem publisherName:self.publisherName];
+    [self.sfTableViewManager configureSingleTableViewCell:cell atIndexPath:indexPath withSFItem:sfItem];
 }
 
 #pragma mark - Collection View methods
@@ -436,7 +432,7 @@
         }
     }
     else { // SFSingleCell
-        [self.sfCollectionViewManager configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem publisherName:self.publisherName];
+        [self.sfCollectionViewManager configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
     if (indexPath.row == self.smartFeedItemsArray.count - 2) {
@@ -455,18 +451,21 @@
     
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
-    if (horizontalCell.titleLabel) {
-        horizontalCell.titleLabel.text = [NSString stringWithFormat:@"More from %@", self.publisherName];
-    }
-    
-    if (horizontalCell.publisherImageView) {
-        horizontalCell.publisherImageView.image = self.publisherImage;
-    }
-    
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     NSString *cellKey = [self keyForCellType:sfItem.itemType];
     UINib *horizontalItemCellNib = [self.nibsForCellType objectForKey:cellKey];
     NSString *horizontalCellIdentifier = [self.reuseIdentifierForCellType objectForKey:cellKey];
+    
+    if (horizontalCell.titleLabel) {
+        if (sfItem.widgetTitle) {
+            horizontalCell.titleLabel.text = sfItem.widgetTitle;
+        }
+        else {
+            // fallback
+            horizontalCell.titleLabel.text = @"Around the web";
+        }
+    }
+    
     [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
     [horizontalCell.horizontalView setupView];

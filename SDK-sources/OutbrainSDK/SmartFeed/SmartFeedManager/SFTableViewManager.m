@@ -119,7 +119,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     return kTableViewRowHeight;
 }
 
-- (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem publisherName:(NSString *)publisherName {
+- (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     SFTableViewCell *singleCell = (SFTableViewCell *)cell;
     const NSInteger cellTag = indexPath.row;
     singleCell.tag = cellTag;
@@ -152,8 +152,14 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     // add shadow
     if (sfItem.itemType == StripWithTitle) {
         //[SFUtils addDropShadowToView: singleCell.cardContentView];
-        const NSString *organicCellTitle = [NSString stringWithFormat:@"Around %@", publisherName];
-        singleCell.cellTitleLabel.text = [rec isPaidLink] ? @"Sponsored Links" : organicCellTitle;
+        if (sfItem.widgetTitle) {
+            singleCell.cellTitleLabel.text = sfItem.widgetTitle;
+        }
+        else {
+            // fallback
+            singleCell.cellTitleLabel.text = @"Around the web";
+        }
+        
         singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];
         singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
         [singleCell.outbrainLabelingContainer becomeFirstResponder];
