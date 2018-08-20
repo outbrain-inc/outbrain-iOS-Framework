@@ -427,6 +427,7 @@
     if (sfItem.widgetTitle) {
         sfHeaderCell.headerOBLabel.text = sfItem.widgetTitle;
     }
+    [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(outbrainLabelClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
