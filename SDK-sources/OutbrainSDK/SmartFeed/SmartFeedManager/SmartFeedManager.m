@@ -7,6 +7,7 @@
 //
 
 #import "SmartFeedManager.h"
+#import "SFTableViewHeaderCell.h"
 #import "SFHorizontalCollectionViewCell.h"
 #import "SFCollectionViewCell.h"
 #import "SFTableViewCell.h"
@@ -217,7 +218,7 @@
     SFItemType itemType = [self sfItemTypeFromResponse:response];
     NSString *widgetTitle = response.settings.widgetHeaderText;
     
-    itemType = StripWithTitle;
+    //itemType = StripWithTitle;
     
     switch (itemType) {
         case SingleItem:
@@ -242,17 +243,26 @@
 
 -(SFItemType) sfItemTypeFromResponse:(OBRecommendationResponse *)response {
     NSString *recMode = response.settings.recMode;
+    NSString *widgetHeader = response.settings.widgetHeaderText;
+    BOOL isParentResponse = response.settings.feedContentArray != nil;
+    
+    if (isParentResponse) {
+        // for the first widget in the feed, the widgetHeader text goes into the header
+        // see configureSmartFeedHeaderTableViewCell:
+        widgetHeader = nil;
+    }
+    
     if ([recMode isEqualToString:@"sdk_sfd_swipe"]) {
         return CarouselItem;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_1_column"]) {
-        return response.settings.widgetHeaderText ? StripWithTitle : SingleItem;
+        return widgetHeader ? StripWithTitle : SingleItem;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_2_columns"]) {
-        return response.settings.widgetHeaderText ? GridTwoInRowNoTitle : GridTwoInRowNoTitle; // TODO with title
+        return widgetHeader ? GridTwoInRowNoTitle : GridTwoInRowNoTitle; // TODO with title
     }
     else if ([recMode isEqualToString:@"sdk_sfd_3_columns"]) {
-        return response.settings.widgetHeaderText ? GridThreeInRowNoTitle : GridThreeInRowNoTitle; // TODO with title
+        return widgetHeader ? GridThreeInRowNoTitle : GridThreeInRowNoTitle; // TODO with title
     }
     else if ([recMode isEqualToString:@"sdk_sfd_thumbnails"]) {
         return StripWithThumbnail;
@@ -347,6 +357,7 @@
     
     if (indexPath.row == 0) {
         // Smartfeed header
+        [self configureSmartFeedHeaderTableViewCell:cell atIndexPath:indexPath];
         return;
     }
     
@@ -405,9 +416,20 @@
     }];
 }
 
-- (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void) configureSingleTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFItemData *sfItem = [self itemForIndexPath: indexPath];
-    [self.sfTableViewManager configureSingleTableViewCell:cell atIndexPath:indexPath withSFItem:sfItem];
+    [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
+}
+
+- (void) configureSmartFeedHeaderTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
+    SFTableViewHeaderCell *sfHeaderCell = (SFTableViewHeaderCell *)cell;
+    if (sfItem.widgetTitle) {
+        sfHeaderCell.headerOBLabel.text = sfItem.widgetTitle;
+    }
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(outbrainLabelClicked:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
 }
 
 #pragma mark - Collection View methods
