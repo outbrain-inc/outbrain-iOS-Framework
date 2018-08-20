@@ -8,6 +8,7 @@
 
 #import "SmartFeedManager.h"
 #import "SFTableViewHeaderCell.h"
+#import "SFCollectionViewHeaderCell.h"
 #import "SFHorizontalCollectionViewCell.h"
 #import "SFCollectionViewCell.h"
 #import "SFTableViewCell.h"
@@ -436,6 +437,11 @@
 #pragma mark - Collection View methods
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        // Smartfeed header cell
+        return [self.sfCollectionViewManager collectionView:collectionView headerCellForItemAtIndexPath:indexPath];
+    }
+    
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItemType:sfItem.itemType];
 }
@@ -449,6 +455,10 @@
   sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
     
     if (indexPath.section == self.outbrainSectionIndex) {
+        if (indexPath.row == 0) {
+            // Smartfeed header
+            return CGSizeMake(collectionView.frame.size.width, 50);
+        }
         SFItemData *sfItem = [self itemForIndexPath:indexPath];
         return [self.sfCollectionViewManager collectionView:collectionView sizeForItemAtIndexPath:indexPath sfItemType:sfItem.itemType];
     }
@@ -468,6 +478,16 @@
     if (indexPath.section != self.outbrainSectionIndex) {
         return;
     }
+    
+    if (indexPath.row == 0) {
+        // Smartfeed header
+        SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
+        SFCollectionViewHeaderCell *sfHeaderCell = (SFCollectionViewHeaderCell *)cell;
+        [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
+        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withTitle:sfItem.widgetTitle];
+        return;
+    }
+    
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class OBLabel;
+
 @interface SFCollectionViewHeaderCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet OBLabel *headerOBLabel;

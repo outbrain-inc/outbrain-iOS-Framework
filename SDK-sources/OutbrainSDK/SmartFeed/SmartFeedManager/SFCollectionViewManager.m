@@ -10,6 +10,7 @@
 #import "SFHorizontalCollectionViewCell.h"
 #import "SFUtils.h"
 #import "SFImageLoader.h"
+#import "SFCollectionViewHeaderCell.h"
 
 @interface SFCollectionViewManager() <UIGestureRecognizerDelegate>
 
@@ -21,6 +22,7 @@
 @implementation SFCollectionViewManager
 
 const NSString *kCollectionViewHorizontalCarouselReuseId = @"SFHorizontalCarouselCollectionViewCell";
+const NSString *kCollectionViewSmartfeedHeaderReuseId = @"SFCollectionViewHeaderCell";
 const NSString *kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
 const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
 const NSString *kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
@@ -35,6 +37,11 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
         self.collectionView = collectionView;
         
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        
+        // Smartfeed header cell
+        UINib *headerCellNib = [UINib nibWithNibName:@"SFCollectionViewHeaderCell" bundle:bundle];
+        NSAssert(headerCellNib != nil, @"SFCollectionViewHeaderCell should not be null");
+        [collectionView registerNib:headerCellNib forCellWithReuseIdentifier: kCollectionViewSmartfeedHeaderReuseId];
         
         // horizontal cells
         UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCarouselCollectionViewCell" bundle:bundle];
@@ -81,6 +88,10 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
 }
 
 #pragma mark - Collection View methods
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView headerCellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSmartfeedHeaderReuseId forIndexPath:indexPath];
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItemType:(SFItemType)sfItemType
 {
     switch (sfItemType) {
@@ -117,6 +128,17 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     }
     
     return CGSizeMake(width - 20.0, 250.0);
+}
+
+- (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withTitle:(NSString *)title {
+    SFCollectionViewHeaderCell *sfHeaderCell = (SFCollectionViewHeaderCell *)cell;
+    if (title) {
+        sfHeaderCell.headerOBLabel.text = title;
+    }
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.clickListenerTarget  action:@selector(outbrainLabelClicked:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
 }
 
 - (void) configureSingleCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
