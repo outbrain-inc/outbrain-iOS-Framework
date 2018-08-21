@@ -70,8 +70,8 @@ class ArticleCollectionViewController: UICollectionViewController {
         let bundle = Bundle.main
         let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
         let singleCellNib = UINib(nibName: "AppSFCollectionViewCell", bundle: bundle)
-        self.smartFeedManager.register(horizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SFD_MAIN_2")
-        self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFCollectionViewCell", forWidgetId: "SDK_SFD_1")
+        //self.smartFeedManager.register(horizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SFD_MAIN_2")
+        //self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFCollectionViewCell", forWidgetId: "SDK_SFD_1")
     }
 }
 
