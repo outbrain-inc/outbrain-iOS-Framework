@@ -92,9 +92,9 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSmartfeedHeaderReuseId forIndexPath:indexPath];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItemType:(SFItemType)sfItemType
-{
-    switch (sfItemType) {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItem:(SFItemData *)sfItem
+{    
+    switch (sfItem.itemType) {
         case SFTypeSingleItem:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleReuseId forIndexPath:indexPath];
         case SFTypeCarouselItem:

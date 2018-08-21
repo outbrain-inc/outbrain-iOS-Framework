@@ -453,7 +453,13 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItemType:sfItem.itemType];
+    UINib *singleItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
+    NSString *singleCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
+    if (singleItemCellNib && singleCellIdentifier && sfItem.singleRec) { // custom UI
+        [self.sfCollectionViewManager.collectionView registerNib:singleItemCellNib forCellWithReuseIdentifier:singleCellIdentifier];
+        return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: singleCellIdentifier forIndexPath:indexPath];
+    }
+    return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItem:sfItem];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView {
