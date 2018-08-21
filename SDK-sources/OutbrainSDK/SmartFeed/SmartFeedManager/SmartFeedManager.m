@@ -340,6 +340,12 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    UINib *singleItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
+    NSString *singleCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
+    if (singleItemCellNib && singleCellIdentifier && sfItem.singleRec) { // custom UI
+        [self.sfTableViewManager.tableView registerNib:singleItemCellNib forCellReuseIdentifier:singleCellIdentifier];
+        return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:singleCellIdentifier forIndexPath:indexPath];
+    }
     return [self.sfTableViewManager tableView:tableView cellForRowAtIndexPath:indexPath sfItemType:sfItem.itemType];
 }
 

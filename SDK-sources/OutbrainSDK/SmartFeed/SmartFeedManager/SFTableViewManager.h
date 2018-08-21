@@ -17,6 +17,7 @@
 @interface SFTableViewManager : NSObject
 
 @property (nonatomic, weak) id<SFClickListener> clickListenerTarget;
+@property (nonatomic, weak, readonly) UITableView *tableView;
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView;
 
