@@ -44,7 +44,7 @@
 }
 
 +(NSString *) itemTypeString:(SFItemType) type {
-    if (type == SFTypeSingleItem) {
+    if (type == SFTypeStripNoTitle) {
         return @"SFTypeSingleItem";
     }
     else if (type == SFTypeCarouselItem) {

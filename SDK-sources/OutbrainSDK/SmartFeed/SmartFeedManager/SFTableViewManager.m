@@ -100,7 +100,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath sfItemType:(SFItemType)sfItemType {
     switch (sfItemType) {
-        case SFTypeSingleItem:
+        case SFTypeStripNoTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewSingleReuseId forIndexPath:indexPath];
         case SFTypeCarouselItem:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalCarouselReuseId forIndexPath:indexPath];
@@ -138,7 +138,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     OBRecommendation *rec = sfItem.singleRec;
     singleCell.recTitleLabel.text = rec.content;
     if ([rec isPaidLink]) {
-        singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
+        singleCell.recSourceLabel.text = rec.source;
         if ([rec shouldDisplayDisclosureIcon]) {
             singleCell.adChoicesButton.hidden = NO;
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
@@ -178,10 +178,6 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     }
     else {
         [SFUtils addDropShadowToView: singleCell];
-    }
-    
-    if (sfItem.itemType == SFTypeSingleItem) {
-        singleCell.sponsoredLabel.hidden = ![rec isPaidLink];
     }
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.clickListenerTarget  action:@selector(recommendationClicked:)];

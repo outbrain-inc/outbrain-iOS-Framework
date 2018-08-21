@@ -93,9 +93,9 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItem:(SFItemData *)sfItem
-{    
+{
     switch (sfItem.itemType) {
-        case SFTypeSingleItem:
+        case SFTypeStripNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleReuseId forIndexPath:indexPath];
         case SFTypeCarouselItem:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselReuseId forIndexPath:indexPath];
@@ -155,7 +155,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     NSAssert(self.clickListenerTarget != nil, @"self.clickListenerTarget must not be nil");
     
     if ([rec isPaidLink]) {
-        singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
+        singleCell.recSourceLabel.text = rec.source;
         if ([rec shouldDisplayDisclosureIcon]) {
             singleCell.adChoicesButton.hidden = NO;
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
@@ -199,10 +199,6 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     else {
         [SFUtils addDropShadowToView: singleCell];
         [singleCell.contentView addGestureRecognizer:tapGesture];
-    }
-    
-    if (sfItem.itemType == SFTypeSingleItem) {
-        singleCell.sponsoredLabel.hidden = ![rec isPaidLink];
     }
 }
 

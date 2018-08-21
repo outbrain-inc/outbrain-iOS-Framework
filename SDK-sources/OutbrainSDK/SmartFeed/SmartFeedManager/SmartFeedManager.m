@@ -209,11 +209,11 @@
     SFItemType itemType = [self sfItemTypeFromResponse:response];
     NSString *widgetTitle = response.settings.widgetHeaderText;
     
-    //itemType = StripWithTitle;
+    itemType = SFTypeStripNoTitle;
     
     switch (itemType) {
-        case SFTypeSingleItem:
-            return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeSingleItem widgetTitle:widgetTitle];
+        case SFTypeStripNoTitle:
+            return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeStripNoTitle widgetTitle:widgetTitle];
         case SFTypeCarouselItem:
             return [self addCarouselItemsToSmartFeedArray:response widgetTitle:widgetTitle];
         case SFTypeGridTwoInRowNoTitle:
@@ -247,7 +247,7 @@
         return SFTypeCarouselItem;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_1_column"]) {
-        return widgetHeader ? SFTypeStripWithTitle : SFTypeSingleItem;
+        return widgetHeader ? SFTypeStripWithTitle : SFTypeStripNoTitle;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_2_columns"]) {
         return widgetHeader ? SFTypeGridTwoInRowNoTitle : SFTypeGridTwoInRowNoTitle; // TODO with title
