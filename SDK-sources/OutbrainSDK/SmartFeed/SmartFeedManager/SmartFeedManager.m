@@ -37,8 +37,8 @@
 @property (nonatomic, strong) SFTableViewManager *sfTableViewManager;
 
 @property (nonatomic, strong) NSMutableArray *smartFeedItemsArray;
-@property (nonatomic, strong) NSMutableDictionary *nibsForCellType;
-@property (nonatomic, strong) NSMutableDictionary *reuseIdentifierForCellType;
+@property (nonatomic, strong) NSMutableDictionary *customNibsForWidgetId;
+@property (nonatomic, strong) NSMutableDictionary *reuseIdentifierWidgetId;
 
 @end
 
@@ -90,18 +90,8 @@
     self.url = url;
     self.outbrainSectionIndex = 1;
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
-    self.nibsForCellType = [[NSMutableDictionary alloc] init];
-    self.reuseIdentifierForCellType = [[NSMutableDictionary alloc] init];
-    
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    
-    // Organic, horizontal carousel item cell
-    UINib *nib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
-    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalItemCell" forType:SFTypeCarouselItem];
-    
-    nib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
-    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:SFTypeGridTwoInRowNoTitle];
-    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:SFTypeGridThreeInRowNoTitle];
+    self.customNibsForWidgetId = [[NSMutableDictionary alloc] init];
+    self.reuseIdentifierWidgetId = [[NSMutableDictionary alloc] init];
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -397,9 +387,10 @@
 
 - (void) configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)horizontalCell atIndexPath:(NSIndexPath *)indexPath {
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    NSString *cellKey = [self keyForCellType:sfItem.itemType];
-    UINib *horizontalItemCellNib = [self.nibsForCellType objectForKey:cellKey];
-    NSString *horizontalCellIdentifier = [self.reuseIdentifierForCellType objectForKey:cellKey];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UINib *horizontalItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
+    NSString *horizontalCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
+    
     
     if (horizontalCell.titleLabel) {
         if (sfItem.widgetTitle) {
@@ -411,7 +402,20 @@
         }
     }
     
-    [horizontalCell.horizontalView registerNib: horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
+    if (horizontalItemCellNib && horizontalCellIdentifier) { // custom UI
+        [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
+    }
+    else { // default UI
+        if (sfItem.itemType == SFTypeCarouselItem) { // carousel
+            horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
+            [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
+        }
+        else { // SFHorizontalFixed
+            horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
+            [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalFixedItemCell"];
+        }
+    }
+    
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
     [horizontalCell.horizontalView setupView];
     
@@ -523,9 +527,10 @@
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    NSString *cellKey = [self keyForCellType:sfItem.itemType];
-    UINib *horizontalItemCellNib = [self.nibsForCellType objectForKey:cellKey];
-    NSString *horizontalCellIdentifier = [self.reuseIdentifierForCellType objectForKey:cellKey];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UINib *horizontalItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
+    NSString *horizontalCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
     
     if (horizontalCell.titleLabel) {
         if (sfItem.widgetTitle) {
@@ -537,7 +542,20 @@
         }
     }
     
-    [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
+    if (horizontalItemCellNib && horizontalCellIdentifier) { // custom UI
+        [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
+    }
+    else { // default UI
+        if (sfItem.itemType == SFTypeCarouselItem) { // carousel
+            horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
+            [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
+        }
+        else { // SFHorizontalFixed
+            horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
+            [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalFixedItemCell"];
+        }
+    }
+    
     horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
     [horizontalCell.horizontalView setupView];
     [horizontalCell.horizontalView setOnClick:^(OBRecommendation *rec) {
@@ -584,12 +602,6 @@
     return key;
 }
 
-- (void) registerNib:(UINib * _Nonnull )nib withCellWithReuseIdentifier:( NSString * _Nonnull )identifier forType:(SFItemType)type {
-    NSString *key = [self keyForCellType:type];
-    self.nibsForCellType[key] = nib;
-    self.reuseIdentifierForCellType[key] = identifier;
-}
-
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier {
     if (self.sfCollectionViewManager != nil) {
         [self.sfCollectionViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
@@ -597,6 +609,11 @@
     else {
         [self.sfTableViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
     }
+}
+
+- (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forWidgetId:(NSString *)widgetId {
+    self.customNibsForWidgetId[widgetId] = nib;
+    self.reuseIdentifierWidgetId[widgetId] = identifier;
 }
 
 @end
