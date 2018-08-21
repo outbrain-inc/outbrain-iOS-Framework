@@ -102,7 +102,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     switch (sfItemType) {
         case SFTypeStripNoTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewSingleReuseId forIndexPath:indexPath];
-        case SFTypeCarouselItem:
+        case SFTypeCarouselWithTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalCarouselReuseId forIndexPath:indexPath];
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridThreeInRowNoTitle:

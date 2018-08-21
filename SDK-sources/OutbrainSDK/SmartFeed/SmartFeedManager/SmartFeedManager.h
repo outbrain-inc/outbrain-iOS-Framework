@@ -26,7 +26,8 @@
 typedef enum
 {
     SFTypeStripNoTitle = 1,
-    SFTypeCarouselItem,
+    SFTypeCarouselWithTitle,
+    SFTypeCarouselNoTitle,
     SFTypeGridTwoInRowNoTitle,
     SFTypeGridThreeInRowNoTitle,
     SFTypeStripWithTitle,

@@ -209,13 +209,15 @@
     SFItemType itemType = [self sfItemTypeFromResponse:response];
     NSString *widgetTitle = response.settings.widgetHeaderText;
     
-    itemType = SFTypeStripNoTitle;
+    itemType = SFTypeCarouselWithTitle;
     
     switch (itemType) {
         case SFTypeStripNoTitle:
             return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeStripNoTitle widgetTitle:widgetTitle];
-        case SFTypeCarouselItem:
-            return [self addCarouselItemsToSmartFeedArray:response widgetTitle:widgetTitle];
+        case SFTypeCarouselWithTitle:
+            return [self addCarouselItemsToSmartFeedArray:response templateType:SFTypeCarouselWithTitle widgetTitle:widgetTitle];
+        case SFTypeCarouselNoTitle:
+            return [self addCarouselItemsToSmartFeedArray:response templateType:SFTypeCarouselNoTitle widgetTitle:widgetTitle];
         case SFTypeGridTwoInRowNoTitle:
             return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridTwoInRowNoTitle widgetTitle:widgetTitle];
         case SFTypeGridThreeInRowNoTitle:
@@ -244,7 +246,7 @@
     }
     
     if ([recMode isEqualToString:@"sdk_sfd_swipe"]) {
-        return SFTypeCarouselItem;
+        return widgetHeader ? SFTypeCarouselWithTitle : SFTypeCarouselNoTitle;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_1_column"]) {
         return widgetHeader ? SFTypeStripWithTitle : SFTypeStripNoTitle;
@@ -275,10 +277,10 @@
     return newItemsCount;
 }
 
--(NSUInteger) addCarouselItemsToSmartFeedArray:(OBRecommendationResponse *)response widgetTitle:(NSString *)widgetTitle {
+-(NSUInteger) addCarouselItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
-    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:SFTypeCarouselItem widgetTitle:widgetTitle widgetId:widgetId];
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle widgetId:widgetId];
     [self.smartFeedItemsArray addObject:item];
     return 1;
 }
@@ -368,7 +370,7 @@
     
     if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
-        if (sfItem.itemType == SFTypeCarouselItem) {
+        if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
             [SFUtils addDropShadowToView: cell];
         }
     }
@@ -416,7 +418,7 @@
         [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
     }
     else { // default UI
-        if (sfItem.itemType == SFTypeCarouselItem) { // carousel
+        if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) { // carousel
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
         }
@@ -516,7 +518,7 @@
     
     if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
-        if (sfItem.itemType == SFTypeCarouselItem) {
+        if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
     }
