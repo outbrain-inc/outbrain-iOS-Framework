@@ -14,50 +14,53 @@
 @property (nonatomic, strong) OBRecommendation *singleRec;
 @property (nonatomic, assign) SFItemType itemType;
 @property (nonatomic, copy) NSString *widgetTitle;
+@property (nonatomic, copy) NSString *widgetId;
 
 @end
 
 @implementation SFItemData
 
 
-- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle {
+- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId {
     self = [super init];
     if (self) {
         self.singleRec = rec;
         self.itemType = type;
         self.widgetTitle = widgetTitle;
+        self.widgetId = widgetId;
     }
     return self;
 }
 
-- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle {
+- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId {
     self = [super init];
     if (self) {
         self.outbrainRecs = recArray;
         self.itemType = type;
         self.widgetTitle = widgetTitle;
+        self.widgetId = widgetId;
     }
     return self;
 }
 
 +(NSString *) itemTypeString:(SFItemType) type {
     if (type == SFTypeSingleItem) {
-        return @"SingleItem";
+        return @"SFTypeSingleItem";
     }
     else if (type == SFTypeCarouselItem) {
-        return @"CarouselItem";
+        return @"SFTypeCarouselItem";
     }
     else if (type == SFTypeGridTwoInRowNoTitle) {
-        return @"GridTwoInRowNoTitle";
+        return @"SFTypeGridTwoInRowNoTitle";
     }
     else if (type == SFTypeStripWithTitle) {
-        return @"StripWithTitle";
+        return @"SFTypeStripWithTitle";
     }
     else if (type == SFTypeStripWithThumbnail) {
-        return @"StripWithThumbnail";
+        return @"SFTypeStripWithThumbnail";
     }
     else if (type == SFTypeGridThreeInRowNoTitle) {
-        return @"GridThreeInRowNoTitle";
+        return @"SFTypeGridThreeInRowNoTitle";
     }
     
     return @"";

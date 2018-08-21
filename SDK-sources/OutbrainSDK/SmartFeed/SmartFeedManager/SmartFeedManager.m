@@ -223,17 +223,17 @@
     
     switch (itemType) {
         case SFTypeSingleItem:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SFTypeSingleItem widgetTitle:widgetTitle];
+            return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeSingleItem widgetTitle:widgetTitle];
         case SFTypeCarouselItem:
-            return [self addCarouselItemsToSmartFeedArray:response.recommendations widgetTitle:widgetTitle];
+            return [self addCarouselItemsToSmartFeedArray:response widgetTitle:widgetTitle];
         case SFTypeGridTwoInRowNoTitle:
-            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:SFTypeGridTwoInRowNoTitle widgetTitle:widgetTitle];
+            return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridTwoInRowNoTitle widgetTitle:widgetTitle];
         case SFTypeGridThreeInRowNoTitle:
-            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:SFTypeGridThreeInRowNoTitle widgetTitle:widgetTitle];
+            return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridThreeInRowNoTitle widgetTitle:widgetTitle];
         case SFTypeStripWithTitle:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SFTypeStripWithTitle widgetTitle:widgetTitle];
+            return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeStripWithTitle widgetTitle:widgetTitle];
         case SFTypeStripWithThumbnail:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SFTypeStripWithThumbnail widgetTitle:widgetTitle];
+            return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeStripWithThumbnail widgetTitle:widgetTitle];
             
         default:
             break;
@@ -273,23 +273,29 @@
     return SFTypeStripWithTitle;
 }
 
--(NSUInteger) addSingleItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSUInteger) addSingleItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+    NSArray *recommendations = response.recommendations;
+    NSString *widgetId = response.request.widgetId;
     NSUInteger newItemsCount = 0;
     for (OBRecommendation *rec in recommendations) {
-        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle];
+        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle widgetId:widgetId];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
     }
     return newItemsCount;
 }
 
--(NSUInteger) addCarouselItemsToSmartFeedArray:(NSArray *)recommendations widgetTitle:(NSString *)widgetTitle {
-    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:SFTypeCarouselItem widgetTitle:widgetTitle];
+-(NSUInteger) addCarouselItemsToSmartFeedArray:(OBRecommendationResponse *)response widgetTitle:(NSString *)widgetTitle {
+    NSArray *recommendations = response.recommendations;
+    NSString *widgetId = response.request.widgetId;
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:SFTypeCarouselItem widgetTitle:widgetTitle widgetId:widgetId];
     [self.smartFeedItemsArray addObject:item];
     return 1;
 }
 
--(NSUInteger) addGridItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSUInteger) addGridItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+    NSArray *recommendations = response.recommendations;
+    NSString *widgetId = response.request.widgetId;
     NSUInteger itemsPerRow = 0;
     if (templateType == SFTypeGridTwoInRowNoTitle) {
         itemsPerRow = 2;
@@ -307,7 +313,7 @@
         NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
-        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle];
+        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle widgetId:widgetId];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
     }
