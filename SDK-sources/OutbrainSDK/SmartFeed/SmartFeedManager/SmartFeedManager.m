@@ -209,7 +209,7 @@
     SFItemType itemType = [self sfItemTypeFromResponse:response];
     NSString *widgetTitle = response.settings.widgetHeaderText;
     
-    itemType = SFTypeCarouselWithTitle;
+    // itemType = SFTypeCarouselWithTitle;
     
     switch (itemType) {
         case SFTypeStripNoTitle:
