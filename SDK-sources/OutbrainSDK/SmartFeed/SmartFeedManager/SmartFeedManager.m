@@ -387,40 +387,42 @@
 
 - (void) configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)horizontalCell atIndexPath:(NSIndexPath *)indexPath {
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
+    [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
+}
+
+-(void) commonConfigureHorizontalCell:(SFHorizontalView *)horizontalView withCellTitleLabel:(UILabel *)cellTitleLabel sfItem:(SFItemData *)sfItem {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UINib *horizontalItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
     NSString *horizontalCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
     
-    
-    if (horizontalCell.titleLabel) {
+    if (cellTitleLabel) {
         if (sfItem.widgetTitle) {
-            horizontalCell.titleLabel.text = sfItem.widgetTitle;
+            cellTitleLabel.text = sfItem.widgetTitle;
         }
         else {
             // fallback
-            horizontalCell.titleLabel.text = @"Around the web";
+            cellTitleLabel.text = @"Around the web";
         }
     }
     
     if (horizontalItemCellNib && horizontalCellIdentifier) { // custom UI
-        [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
+        [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
     }
     else { // default UI
         if (sfItem.itemType == SFTypeCarouselItem) { // carousel
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
-            [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
+            [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
         }
         else { // SFHorizontalFixed
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
-            [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalFixedItemCell"];
+            [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalFixedItemCell"];
         }
     }
     
-    horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
-    [horizontalCell.horizontalView setupView];
-    
-    
-    [horizontalCell.horizontalView setOnClick:^(OBRecommendation *rec) {
+    horizontalView.outbrainRecs = sfItem.outbrainRecs;
+    [horizontalView setupView];
+    [horizontalView setOnClick:^(OBRecommendation *rec) {
         if (self.delegate != nil) {
             [self.delegate userTappedOnRecommendation:rec];
         }
@@ -524,51 +526,11 @@
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
     return self.smartFeedItemsArray[indexPath.row-1];
 }
-
-- (NSArray *) recsForHorizontalCellAtIndexPath:(NSIndexPath *)indexPath {
-    SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    return sfItem.outbrainRecs;
-}
     
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UINib *horizontalItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
-    NSString *horizontalCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
-    
-    if (horizontalCell.titleLabel) {
-        if (sfItem.widgetTitle) {
-            horizontalCell.titleLabel.text = sfItem.widgetTitle;
-        }
-        else {
-            // fallback
-            horizontalCell.titleLabel.text = @"Around the web";
-        }
-    }
-    
-    if (horizontalItemCellNib && horizontalCellIdentifier) { // custom UI
-        [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
-    }
-    else { // default UI
-        if (sfItem.itemType == SFTypeCarouselItem) { // carousel
-            horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
-            [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
-        }
-        else { // SFHorizontalFixed
-            horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
-            [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalFixedItemCell"];
-        }
-    }
-    
-    horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
-    [horizontalCell.horizontalView setupView];
-    [horizontalCell.horizontalView setOnClick:^(OBRecommendation *rec) {
-        if (self.delegate != nil) {
-            [self.delegate userTappedOnRecommendation:rec];
-        }
-    }];
+    [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
 }
 
 
