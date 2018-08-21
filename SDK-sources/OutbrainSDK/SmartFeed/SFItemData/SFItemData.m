@@ -41,22 +41,22 @@
 }
 
 +(NSString *) itemTypeString:(SFItemType) type {
-    if (type == SingleItem) {
+    if (type == SFTypeSingleItem) {
         return @"SingleItem";
     }
-    else if (type == CarouselItem) {
+    else if (type == SFTypeCarouselItem) {
         return @"CarouselItem";
     }
-    else if (type == GridTwoInRowNoTitle) {
+    else if (type == SFTypeGridTwoInRowNoTitle) {
         return @"GridTwoInRowNoTitle";
     }
-    else if (type == StripWithTitle) {
+    else if (type == SFTypeStripWithTitle) {
         return @"StripWithTitle";
     }
-    else if (type == StripWithThumbnail) {
+    else if (type == SFTypeStripWithThumbnail) {
         return @"StripWithThumbnail";
     }
-    else if (type == GridThreeInRowNoTitle) {
+    else if (type == SFTypeGridThreeInRowNoTitle) {
         return @"GridThreeInRowNoTitle";
     }
     

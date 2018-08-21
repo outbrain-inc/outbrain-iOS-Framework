@@ -100,16 +100,16 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath sfItemType:(SFItemType)sfItemType {
     switch (sfItemType) {
-        case SingleItem:
+        case SFTypeSingleItem:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewSingleReuseId forIndexPath:indexPath];
-        case CarouselItem:
+        case SFTypeCarouselItem:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalCarouselReuseId forIndexPath:indexPath];
-        case GridTwoInRowNoTitle:
-        case GridThreeInRowNoTitle:
+        case SFTypeGridTwoInRowNoTitle:
+        case SFTypeGridThreeInRowNoTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
-        case StripWithTitle:
+        case SFTypeStripWithTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithTitleReuseId forIndexPath:indexPath];
-        case StripWithThumbnail:
+        case SFTypeStripWithThumbnail:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailReuseId forIndexPath:indexPath];
             
         default:
@@ -119,10 +119,10 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
 }
 
 - (CGFloat) heightForRowAtIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
-    if (sfItem.itemType == StripWithThumbnail) {
+    if (sfItem.itemType == SFTypeStripWithThumbnail) {
         return 120.0;
     }
-    else if (sfItem.itemType == StripWithTitle) {
+    else if (sfItem.itemType == SFTypeStripWithTitle) {
         return 280.0;
     }
     
@@ -160,7 +160,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
     [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
     
     // add shadow
-    if (sfItem.itemType == StripWithTitle) {
+    if (sfItem.itemType == SFTypeStripWithTitle) {
         //[SFUtils addDropShadowToView: singleCell.cardContentView];
         if (sfItem.widgetTitle) {
             singleCell.cellTitleLabel.text = sfItem.widgetTitle;
@@ -180,7 +180,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
         [SFUtils addDropShadowToView: singleCell];
     }
     
-    if (sfItem.itemType == SingleItem) {
+    if (sfItem.itemType == SFTypeSingleItem) {
         singleCell.sponsoredLabel.hidden = ![rec isPaidLink];
     }
     

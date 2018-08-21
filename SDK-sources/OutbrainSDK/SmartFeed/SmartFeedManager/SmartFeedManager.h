@@ -25,12 +25,12 @@
 
 typedef enum
 {
-    SingleItem = 1,
-    CarouselItem,
-    GridTwoInRowNoTitle,
-    GridThreeInRowNoTitle,
-    StripWithTitle,
-    StripWithThumbnail
+    SFTypeSingleItem = 1,
+    SFTypeCarouselItem,
+    SFTypeGridTwoInRowNoTitle,
+    SFTypeGridThreeInRowNoTitle,
+    SFTypeStripWithTitle,
+    SFTypeStripWithThumbnail
 } SFItemType;
 
 @property (nonatomic, strong, readonly) NSString * _Nullable url;

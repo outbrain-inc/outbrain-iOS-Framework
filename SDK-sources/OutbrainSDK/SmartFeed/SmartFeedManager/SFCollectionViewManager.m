@@ -95,16 +95,16 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItemType:(SFItemType)sfItemType
 {
     switch (sfItemType) {
-        case SingleItem:
+        case SFTypeSingleItem:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleReuseId forIndexPath:indexPath];
-        case CarouselItem:
+        case SFTypeCarouselItem:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselReuseId forIndexPath:indexPath];
-        case GridTwoInRowNoTitle:
-        case GridThreeInRowNoTitle:
+        case SFTypeGridTwoInRowNoTitle:
+        case SFTypeGridThreeInRowNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
-        case StripWithTitle:
+        case SFTypeStripWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId forIndexPath:indexPath];
-        case StripWithThumbnail:
+        case SFTypeStripWithThumbnail:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId forIndexPath:indexPath];
             
         default:
@@ -117,13 +117,13 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
                sfItemType:(SFItemType)sfItemType {
     
     CGFloat width = collectionView.frame.size.width;
-    if (sfItemType == GridTwoInRowNoTitle || sfItemType == GridThreeInRowNoTitle) {
+    if (sfItemType == SFTypeGridTwoInRowNoTitle || sfItemType == SFTypeGridThreeInRowNoTitle) {
         return CGSizeMake(width, 250.0);
     }
-    else if (sfItemType == StripWithTitle) {
+    else if (sfItemType == SFTypeStripWithTitle) {
         return CGSizeMake(width, 280.0);
     }
-    else if (sfItemType == StripWithThumbnail) {
+    else if (sfItemType == SFTypeStripWithThumbnail) {
         return CGSizeMake(width - 20.0, 120.0);
     }
     
@@ -181,7 +181,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     [tapGesture setDelegate:self];
     
     // Cell Specific configuration
-    if (sfItem.itemType == StripWithTitle) {
+    if (sfItem.itemType == SFTypeStripWithTitle) {
         [SFUtils addDropShadowToView: singleCell.cardContentView];
         if (sfItem.widgetTitle) {
             singleCell.cellTitleLabel.text = sfItem.widgetTitle;
@@ -201,7 +201,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
     
-    if (sfItem.itemType == SingleItem) {
+    if (sfItem.itemType == SFTypeSingleItem) {
         singleCell.sponsoredLabel.hidden = ![rec isPaidLink];
     }
 }

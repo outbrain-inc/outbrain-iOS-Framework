@@ -97,11 +97,11 @@
     
     // Organic, horizontal carousel item cell
     UINib *nib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
-    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalItemCell" forType:CarouselItem];
+    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalItemCell" forType:SFTypeCarouselItem];
     
     nib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
-    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:GridTwoInRowNoTitle];
-    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:GridThreeInRowNoTitle];
+    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:SFTypeGridTwoInRowNoTitle];
+    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:SFTypeGridThreeInRowNoTitle];
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -222,18 +222,18 @@
     //itemType = StripWithTitle;
     
     switch (itemType) {
-        case SingleItem:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SingleItem widgetTitle:widgetTitle];
-        case CarouselItem:
+        case SFTypeSingleItem:
+            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SFTypeSingleItem widgetTitle:widgetTitle];
+        case SFTypeCarouselItem:
             return [self addCarouselItemsToSmartFeedArray:response.recommendations widgetTitle:widgetTitle];
-        case GridTwoInRowNoTitle:
-            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridTwoInRowNoTitle widgetTitle:widgetTitle];
-        case GridThreeInRowNoTitle:
-            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:GridThreeInRowNoTitle widgetTitle:widgetTitle];
-        case StripWithTitle:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithTitle widgetTitle:widgetTitle];
-        case StripWithThumbnail:
-            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:StripWithThumbnail widgetTitle:widgetTitle];
+        case SFTypeGridTwoInRowNoTitle:
+            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:SFTypeGridTwoInRowNoTitle widgetTitle:widgetTitle];
+        case SFTypeGridThreeInRowNoTitle:
+            return [self addGridItemsToSmartFeedArray:response.recommendations templateType:SFTypeGridThreeInRowNoTitle widgetTitle:widgetTitle];
+        case SFTypeStripWithTitle:
+            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SFTypeStripWithTitle widgetTitle:widgetTitle];
+        case SFTypeStripWithThumbnail:
+            return [self addSingleItemsToSmartFeedArray:response.recommendations templateType:SFTypeStripWithThumbnail widgetTitle:widgetTitle];
             
         default:
             break;
@@ -254,23 +254,23 @@
     }
     
     if ([recMode isEqualToString:@"sdk_sfd_swipe"]) {
-        return CarouselItem;
+        return SFTypeCarouselItem;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_1_column"]) {
-        return widgetHeader ? StripWithTitle : SingleItem;
+        return widgetHeader ? SFTypeStripWithTitle : SFTypeSingleItem;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_2_columns"]) {
-        return widgetHeader ? GridTwoInRowNoTitle : GridTwoInRowNoTitle; // TODO with title
+        return widgetHeader ? SFTypeGridTwoInRowNoTitle : SFTypeGridTwoInRowNoTitle; // TODO with title
     }
     else if ([recMode isEqualToString:@"sdk_sfd_3_columns"]) {
-        return widgetHeader ? GridThreeInRowNoTitle : GridThreeInRowNoTitle; // TODO with title
+        return widgetHeader ? SFTypeGridThreeInRowNoTitle : SFTypeGridThreeInRowNoTitle; // TODO with title
     }
     else if ([recMode isEqualToString:@"sdk_sfd_thumbnails"]) {
-        return StripWithThumbnail;
+        return SFTypeStripWithThumbnail;
     }
     
     NSLog(@"recMode value is not currently covered in the SDK");
-    return StripWithTitle;
+    return SFTypeStripWithTitle;
 }
 
 -(NSUInteger) addSingleItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
@@ -284,17 +284,17 @@
 }
 
 -(NSUInteger) addCarouselItemsToSmartFeedArray:(NSArray *)recommendations widgetTitle:(NSString *)widgetTitle {
-    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:CarouselItem widgetTitle:widgetTitle];
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:SFTypeCarouselItem widgetTitle:widgetTitle];
     [self.smartFeedItemsArray addObject:item];
     return 1;
 }
 
 -(NSUInteger) addGridItemsToSmartFeedArray:(NSArray *)recommendations templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSUInteger itemsPerRow = 0;
-    if (templateType == GridTwoInRowNoTitle) {
+    if (templateType == SFTypeGridTwoInRowNoTitle) {
         itemsPerRow = 2;
     }
-    else if (templateType == GridThreeInRowNoTitle) {
+    else if (templateType == SFTypeGridThreeInRowNoTitle) {
         itemsPerRow = 3;
     }
     else {
@@ -366,7 +366,7 @@
     
     if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
-        if (sfItem.itemType == CarouselItem) {
+        if (sfItem.itemType == SFTypeCarouselItem) {
             [SFUtils addDropShadowToView: cell];
         }
     }
@@ -492,7 +492,7 @@
     
     if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
-        if (sfItem.itemType == CarouselItem) {
+        if (sfItem.itemType == SFTypeCarouselItem) {
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
     }
