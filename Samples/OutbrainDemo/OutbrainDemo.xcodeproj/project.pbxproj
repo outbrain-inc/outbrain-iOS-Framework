@@ -103,6 +103,12 @@
 		E64366CE1FAF0F1500FA617E /* OBHorizontalWidgetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366CD1FAF0F1500FA617E /* OBHorizontalWidgetCell.m */; };
 		E64366D41FAF492900FA617E /* PostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D11FAF491E00FA617E /* PostViewCell.m */; };
 		E64366D51FAF492C00FA617E /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */; };
+		E64F603B212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */; };
+		E64F603C212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */; };
+		E64F603E212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */; };
+		E64F603F212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */; };
+		E64F6041212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */; };
+		E64F6042212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */; };
 		E68A906D1FCD4755008318EB /* OBRecommendationSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90591FCD4755008318EB /* OBRecommendationSlideCell.m */; };
 		E68A906E1FCD4755008318EB /* PostPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A905B1FCD4755008318EB /* PostPreviewCell.m */; };
 		E68A90721FCD4755008318EB /* OBAdhesionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90691FCD4755008318EB /* OBAdhesionView.m */; };
@@ -231,6 +237,9 @@
 		E64366D11FAF491E00FA617E /* PostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostViewCell.m; sourceTree = "<group>"; };
 		E64366D21FAF491E00FA617E /* TopBoxPostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBoxPostViewCell.h; sourceTree = "<group>"; };
 		E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBoxPostViewCell.m; sourceTree = "<group>"; };
+		E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleTableViewCell.xib; sourceTree = "<group>"; };
+		E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
+		E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailCollectionCell.xib; sourceTree = "<group>"; };
 		E68A90561FCD4755008318EB /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWidgetViewProtocol.h; sourceTree = "<group>"; };
 		E68A90581FCD4755008318EB /* OBRecommendationSlideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationSlideCell.h; sourceTree = "<group>"; };
 		E68A90591FCD4755008318EB /* OBRecommendationSlideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationSlideCell.m; sourceTree = "<group>"; };
@@ -467,6 +476,7 @@
 		E61E6CDF2085DC6C0016D79A /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */,
 				E61E6CE02085DC6C0016D79A /* AppSFTableViewCell.xib */,
 				E61E6CE12085DC6C0016D79A /* AppSFTableViewCell.swift */,
 				E61E6CE22085DC6C0016D79A /* ArticleTableViewController.swift */,
@@ -486,6 +496,8 @@
 		E61E6CE52085DC6C0016D79A /* SmartFeedCells */ = {
 			isa = PBXGroup;
 			children = (
+				E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */,
+				E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */,
 				E61E6CE62085DC6C0016D79A /* AppSFHorizontalItemCell.swift */,
 				E61E6CE72085DC6C0016D79A /* AppSFCollectionViewCell.swift */,
 				E61E6CE82085DC6C0016D79A /* AppSFHorizontalItemCell.xib */,
@@ -773,8 +785,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E60DCD3D20BC3AAD0023FE93 /* AppSFTableViewCell.xib in Resources */,
+				E64F6041212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
+				E64F603B212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */,
 				E60DCD3E20BC3AAD0023FE93 /* AppSFHorizontalItemCell.xib in Resources */,
 				E60DCD3F20BC3AAD0023FE93 /* AppSFCollectionViewCell.xib in Resources */,
+				E64F603E212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
 				E60DCD4020BC3AAD0023FE93 /* LaunchScreen.storyboard in Resources */,
 				E60DCD4120BC3AAD0023FE93 /* Assets.xcassets in Resources */,
 				E60DCD4220BC3AAD0023FE93 /* Main.storyboard in Resources */,
@@ -800,8 +815,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E61E6CEA2085DC6C0016D79A /* AppSFTableViewCell.xib in Resources */,
+				E64F6042212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
+				E64F603C212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */,
 				E61E6CF02085DC6C0016D79A /* AppSFHorizontalItemCell.xib in Resources */,
 				E61E6CF12085DC6C0016D79A /* AppSFCollectionViewCell.xib in Resources */,
+				E64F603F212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
 				E61E6CDA2085DBD50016D79A /* LaunchScreen.storyboard in Resources */,
 				E61E6CD72085DBD50016D79A /* Assets.xcassets in Resources */,
 				E61E6CD52085DBD50016D79A /* Main.storyboard in Resources */,
