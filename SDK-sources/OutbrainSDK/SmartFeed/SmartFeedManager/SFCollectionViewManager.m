@@ -21,7 +21,8 @@
 
 @implementation SFCollectionViewManager
 
-const NSString *kCollectionViewHorizontalCarouselReuseId = @"SFHorizontalCarouselCollectionViewCell";
+const NSString *kCollectionViewHorizontalCarouselWithTitleReuseId = @"SFHorizontalCarouselWithTitleCollectionViewCell";
+const NSString *kCollectionViewHorizontalCarouselNoTitleReuseId = @"SFHorizontalCarouselNoTitleCollectionViewCell";
 const NSString *kCollectionViewSmartfeedHeaderReuseId = @"SFCollectionViewHeaderCell";
 const NSString *kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
 const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
@@ -44,9 +45,13 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
         [collectionView registerNib:headerCellNib forCellWithReuseIdentifier: kCollectionViewSmartfeedHeaderReuseId];
         
         // horizontal cells
-        UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCarouselCollectionViewCell" bundle:bundle];
-        NSAssert(horizontalCellNib != nil, @"SFHorizontalCarouselCollectionViewCell should not be null");
-        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewHorizontalCarouselReuseId];
+        UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCarouselWithTitleCollectionViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalCarouselWithTitleCollectionViewCell should not be null");
+        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewHorizontalCarouselWithTitleReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCarouselNoTitleCollectionViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalCarouselNoTitleCollectionViewCell should not be null");
+        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewHorizontalCarouselNoTitleReuseId];
         
         horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedNoTitleCollectionViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedNoTitleCollectionViewCell should not be null");
@@ -92,13 +97,15 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSmartfeedHeaderReuseId forIndexPath:indexPath];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItemType:(SFItemType)sfItemType
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItem:(SFItemData *)sfItem
 {
-    switch (sfItemType) {
-        case SFTypeSingleItem:
+    switch (sfItem.itemType) {
+        case SFTypeStripNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleReuseId forIndexPath:indexPath];
-        case SFTypeCarouselItem:
-            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselReuseId forIndexPath:indexPath];
+        case SFTypeCarouselWithTitle:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselWithTitleReuseId forIndexPath:indexPath];
+        case SFTypeCarouselNoTitle:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselNoTitleReuseId forIndexPath:indexPath];
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridThreeInRowNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
@@ -117,7 +124,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
                sfItemType:(SFItemType)sfItemType {
     
     CGFloat width = collectionView.frame.size.width;
-    if (sfItemType == SFTypeGridTwoInRowNoTitle || sfItemType == SFTypeGridThreeInRowNoTitle) {
+    if (sfItemType == SFTypeGridTwoInRowNoTitle || sfItemType == SFTypeGridThreeInRowNoTitle || sfItemType == SFTypeCarouselWithTitle || sfItemType == SFTypeCarouselNoTitle) {
         return CGSizeMake(width, 250.0);
     }
     else if (sfItemType == SFTypeStripWithTitle) {
@@ -155,7 +162,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     NSAssert(self.clickListenerTarget != nil, @"self.clickListenerTarget must not be nil");
     
     if ([rec isPaidLink]) {
-        singleCell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
+        singleCell.recSourceLabel.text = rec.source;
         if ([rec shouldDisplayDisclosureIcon]) {
             singleCell.adChoicesButton.hidden = NO;
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
@@ -199,10 +206,6 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     else {
         [SFUtils addDropShadowToView: singleCell];
         [singleCell.contentView addGestureRecognizer:tapGesture];
-    }
-    
-    if (sfItem.itemType == SFTypeSingleItem) {
-        singleCell.sponsoredLabel.hidden = ![rec isPaidLink];
     }
 }
 

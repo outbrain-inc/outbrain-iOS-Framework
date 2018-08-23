@@ -37,8 +37,8 @@
 @property (nonatomic, strong) SFTableViewManager *sfTableViewManager;
 
 @property (nonatomic, strong) NSMutableArray *smartFeedItemsArray;
-@property (nonatomic, strong) NSMutableDictionary *nibsForCellType;
-@property (nonatomic, strong) NSMutableDictionary *reuseIdentifierForCellType;
+@property (nonatomic, strong) NSMutableDictionary *customNibsForWidgetId;
+@property (nonatomic, strong) NSMutableDictionary *reuseIdentifierWidgetId;
 
 @end
 
@@ -90,18 +90,8 @@
     self.url = url;
     self.outbrainSectionIndex = 1;
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
-    self.nibsForCellType = [[NSMutableDictionary alloc] init];
-    self.reuseIdentifierForCellType = [[NSMutableDictionary alloc] init];
-    
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    
-    // Organic, horizontal carousel item cell
-    UINib *nib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
-    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalItemCell" forType:SFTypeCarouselItem];
-    
-    nib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
-    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:SFTypeGridTwoInRowNoTitle];
-    [self registerNib:nib withCellWithReuseIdentifier:@"SFHorizontalFixedItemCell" forType:SFTypeGridThreeInRowNoTitle];
+    self.customNibsForWidgetId = [[NSMutableDictionary alloc] init];
+    self.reuseIdentifierWidgetId = [[NSMutableDictionary alloc] init];
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -219,13 +209,15 @@
     SFItemType itemType = [self sfItemTypeFromResponse:response];
     NSString *widgetTitle = response.settings.widgetHeaderText;
     
-    //itemType = StripWithTitle;
+    // itemType = SFTypeCarouselWithTitle;
     
     switch (itemType) {
-        case SFTypeSingleItem:
-            return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeSingleItem widgetTitle:widgetTitle];
-        case SFTypeCarouselItem:
-            return [self addCarouselItemsToSmartFeedArray:response widgetTitle:widgetTitle];
+        case SFTypeStripNoTitle:
+            return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeStripNoTitle widgetTitle:widgetTitle];
+        case SFTypeCarouselWithTitle:
+            return [self addCarouselItemsToSmartFeedArray:response templateType:SFTypeCarouselWithTitle widgetTitle:widgetTitle];
+        case SFTypeCarouselNoTitle:
+            return [self addCarouselItemsToSmartFeedArray:response templateType:SFTypeCarouselNoTitle widgetTitle:widgetTitle];
         case SFTypeGridTwoInRowNoTitle:
             return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridTwoInRowNoTitle widgetTitle:widgetTitle];
         case SFTypeGridThreeInRowNoTitle:
@@ -254,10 +246,10 @@
     }
     
     if ([recMode isEqualToString:@"sdk_sfd_swipe"]) {
-        return SFTypeCarouselItem;
+        return widgetHeader ? SFTypeCarouselWithTitle : SFTypeCarouselNoTitle;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_1_column"]) {
-        return widgetHeader ? SFTypeStripWithTitle : SFTypeSingleItem;
+        return widgetHeader ? SFTypeStripWithTitle : SFTypeStripNoTitle;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_2_columns"]) {
         return widgetHeader ? SFTypeGridTwoInRowNoTitle : SFTypeGridTwoInRowNoTitle; // TODO with title
@@ -285,10 +277,10 @@
     return newItemsCount;
 }
 
--(NSUInteger) addCarouselItemsToSmartFeedArray:(OBRecommendationResponse *)response widgetTitle:(NSString *)widgetTitle {
+-(NSUInteger) addCarouselItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
-    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:SFTypeCarouselItem widgetTitle:widgetTitle widgetId:widgetId];
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle widgetId:widgetId];
     [self.smartFeedItemsArray addObject:item];
     return 1;
 }
@@ -350,6 +342,12 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    UINib *singleItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
+    NSString *singleCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
+    if (singleItemCellNib && singleCellIdentifier && sfItem.singleRec) { // custom UI
+        [self.sfTableViewManager.tableView registerNib:singleItemCellNib forCellReuseIdentifier:singleCellIdentifier];
+        return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:singleCellIdentifier forIndexPath:indexPath];
+    }
     return [self.sfTableViewManager tableView:tableView cellForRowAtIndexPath:indexPath sfItemType:sfItem.itemType];
 }
 
@@ -372,7 +370,7 @@
     
     if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
-        if (sfItem.itemType == SFTypeCarouselItem) {
+        if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
             [SFUtils addDropShadowToView: cell];
         }
     }
@@ -397,26 +395,42 @@
 
 - (void) configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)horizontalCell atIndexPath:(NSIndexPath *)indexPath {
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    NSString *cellKey = [self keyForCellType:sfItem.itemType];
-    UINib *horizontalItemCellNib = [self.nibsForCellType objectForKey:cellKey];
-    NSString *horizontalCellIdentifier = [self.reuseIdentifierForCellType objectForKey:cellKey];
     
-    if (horizontalCell.titleLabel) {
+    [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
+}
+
+-(void) commonConfigureHorizontalCell:(SFHorizontalView *)horizontalView withCellTitleLabel:(UILabel *)cellTitleLabel sfItem:(SFItemData *)sfItem {
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UINib *horizontalItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
+    NSString *horizontalCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
+    
+    if (cellTitleLabel) {
         if (sfItem.widgetTitle) {
-            horizontalCell.titleLabel.text = sfItem.widgetTitle;
+            cellTitleLabel.text = sfItem.widgetTitle;
         }
         else {
             // fallback
-            horizontalCell.titleLabel.text = @"Around the web";
+            cellTitleLabel.text = @"Around the web";
         }
     }
     
-    [horizontalCell.horizontalView registerNib: horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
-    horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
-    [horizontalCell.horizontalView setupView];
+    if (horizontalItemCellNib && horizontalCellIdentifier) { // custom UI
+        [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
+    }
+    else { // default UI
+        if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) { // carousel
+            horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
+            [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
+        }
+        else { // SFHorizontalFixed
+            horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
+            [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalFixedItemCell"];
+        }
+    }
     
-    
-    [horizontalCell.horizontalView setOnClick:^(OBRecommendation *rec) {
+    horizontalView.outbrainRecs = sfItem.outbrainRecs;
+    [horizontalView setupView];
+    [horizontalView setOnClick:^(OBRecommendation *rec) {
         if (self.delegate != nil) {
             [self.delegate userTappedOnRecommendation:rec];
         }
@@ -449,7 +463,13 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItemType:sfItem.itemType];
+    UINib *singleItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
+    NSString *singleCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
+    if (singleItemCellNib && singleCellIdentifier && sfItem.singleRec) { // custom UI
+        [self.sfCollectionViewManager.collectionView registerNib:singleItemCellNib forCellWithReuseIdentifier:singleCellIdentifier];
+        return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: singleCellIdentifier forIndexPath:indexPath];
+    }
+    return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItem:sfItem];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView {
@@ -498,7 +518,7 @@
     
     if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
-        if (sfItem.itemType == SFTypeCarouselItem) {
+        if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
     }
@@ -514,37 +534,11 @@
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
     return self.smartFeedItemsArray[indexPath.row-1];
 }
-
-- (NSArray *) recsForHorizontalCellAtIndexPath:(NSIndexPath *)indexPath {
-    SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    return sfItem.outbrainRecs;
-}
     
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    NSString *cellKey = [self keyForCellType:sfItem.itemType];
-    UINib *horizontalItemCellNib = [self.nibsForCellType objectForKey:cellKey];
-    NSString *horizontalCellIdentifier = [self.reuseIdentifierForCellType objectForKey:cellKey];
-    
-    if (horizontalCell.titleLabel) {
-        if (sfItem.widgetTitle) {
-            horizontalCell.titleLabel.text = sfItem.widgetTitle;
-        }
-        else {
-            // fallback
-            horizontalCell.titleLabel.text = @"Around the web";
-        }
-    }
-    
-    [horizontalCell.horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
-    horizontalCell.horizontalView.outbrainRecs = [self recsForHorizontalCellAtIndexPath:indexPath];
-    [horizontalCell.horizontalView setupView];
-    [horizontalCell.horizontalView setOnClick:^(OBRecommendation *rec) {
-        if (self.delegate != nil) {
-            [self.delegate userTappedOnRecommendation:rec];
-        }
-    }];
+    [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
 }
 
 
@@ -584,12 +578,6 @@
     return key;
 }
 
-- (void) registerNib:(UINib * _Nonnull )nib withCellWithReuseIdentifier:( NSString * _Nonnull )identifier forType:(SFItemType)type {
-    NSString *key = [self keyForCellType:type];
-    self.nibsForCellType[key] = nib;
-    self.reuseIdentifierForCellType[key] = identifier;
-}
-
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier {
     if (self.sfCollectionViewManager != nil) {
         [self.sfCollectionViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
@@ -597,6 +585,11 @@
     else {
         [self.sfTableViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
     }
+}
+
+- (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forWidgetId:(NSString *)widgetId {
+    self.customNibsForWidgetId[widgetId] = nib;
+    self.reuseIdentifierWidgetId[widgetId] = identifier;
 }
 
 @end

@@ -53,8 +53,9 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
         let singleCellNib = UINib(nibName: "AppSFTableViewCell", bundle: bundle)
         
-        self.smartFeedManager.register(horizontalCellNib, withCellWithReuseIdentifier: "AppSFHorizontalItemCell", for: SFTypeCarouselItem)
-        self.smartFeedManager.registerSingleItemNib(singleCellNib, forCellWithReuseIdentifier: "AppSFTableViewCell")
+        //self.smartFeedManager.register(horizontalCellNib, withCellWithReuseIdentifier: "AppSFHorizontalItemCell",f
+        self.smartFeedManager.register(horizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SFD_MAIN_2")
+        self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFTableViewCell", forWidgetId: "SDK_SFD_1")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

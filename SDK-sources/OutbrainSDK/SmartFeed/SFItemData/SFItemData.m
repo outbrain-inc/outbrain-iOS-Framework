@@ -44,11 +44,14 @@
 }
 
 +(NSString *) itemTypeString:(SFItemType) type {
-    if (type == SFTypeSingleItem) {
+    if (type == SFTypeStripNoTitle) {
         return @"SFTypeSingleItem";
     }
-    else if (type == SFTypeCarouselItem) {
-        return @"SFTypeCarouselItem";
+    else if (type == SFTypeCarouselWithTitle) {
+        return @"SFTypeCarouselWithTitle";
+    }
+    else if (type == SFTypeCarouselNoTitle) {
+        return @"SFTypeCarouselNoTitle";
     }
     else if (type == SFTypeGridTwoInRowNoTitle) {
         return @"SFTypeGridTwoInRowNoTitle";

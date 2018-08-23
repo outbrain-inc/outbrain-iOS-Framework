@@ -45,7 +45,6 @@
     self.collectionView.dataSource = self;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.backgroundColor = UIColor.whiteColor;
-    [self.collectionView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier:self.horizontalCellIdentifier];
     [self addSubview:self.collectionView];
     
     [SFUtils addConstraintsToFillParent:self.collectionView];
@@ -67,11 +66,12 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.collectionView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier:self.horizontalCellIdentifier];
     SFCollectionViewCell *cell = (SFCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier: self.horizontalCellIdentifier forIndexPath:indexPath];
     OBRecommendation *rec = self.outbrainRecs[indexPath.row];
     cell.recTitleLabel.text = rec.content;
     if ([rec isPaidLink]) {
-        cell.recSourceLabel.text = [NSString stringWithFormat:@"Sponsored | %@", rec.source];
+        cell.recSourceLabel.text = rec.source;
     }
     else {
         cell.recSourceLabel.text = rec.source;
