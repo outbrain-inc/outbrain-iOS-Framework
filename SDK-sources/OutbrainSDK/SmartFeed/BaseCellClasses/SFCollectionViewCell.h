@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UIControl *outbrainLabelingContainer;
 @property (nonatomic, weak) IBOutlet UIView *cardContentView;
+@property (nonatomic, weak) IBOutlet UIImageView *publisherLogo;
 @property (nonatomic, weak) IBOutlet UIImageView *recImageView;
 @property (nonatomic, weak) IBOutlet UILabel *recTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *recSourceLabel;

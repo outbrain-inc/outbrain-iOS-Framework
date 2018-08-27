@@ -58,7 +58,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRb-Ef-t8j" userLabel="CardContentView">
                                 <rect key="frame" x="10" y="32.5" width="412" height="245.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyft is creating more new jobs in San Francisco  than any other major startup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCy-6W-9WN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyft is creating more new jobs in San Francisco  than any other major startup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCy-6W-9WN">
                                         <rect key="frame" x="8" y="182" width="396" height="37.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,6 +66,13 @@
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="S4o-aF-NXt">
                                         <rect key="frame" x="0.0" y="0.0" width="412" height="174"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e5u-QE-oNb" userLabel="publisherLogo">
+                                        <rect key="frame" x="10" y="10" width="65" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="3j7-9v-eb1"/>
+                                            <constraint firstAttribute="width" constant="65" id="EgC-EE-Df0"/>
+                                        </constraints>
                                     </imageView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9d-O1-WuI">
                                         <rect key="frame" x="382" y="0.0" width="30" height="30"/>
@@ -86,12 +93,14 @@
                                     <constraint firstAttribute="trailing" secondItem="iCy-6W-9WN" secondAttribute="trailing" constant="8" id="CPy-XW-FOs"/>
                                     <constraint firstAttribute="bottom" secondItem="sex-9M-qeC" secondAttribute="bottom" constant="8" id="HsN-oG-hbb"/>
                                     <constraint firstAttribute="trailing" secondItem="z9d-O1-WuI" secondAttribute="trailing" id="I7m-z9-9aT"/>
+                                    <constraint firstItem="e5u-QE-oNb" firstAttribute="leading" secondItem="S4o-aF-NXt" secondAttribute="leading" constant="10" id="NH9-bG-Fat"/>
                                     <constraint firstItem="S4o-aF-NXt" firstAttribute="leading" secondItem="HRb-Ef-t8j" secondAttribute="leading" id="aEq-Mk-Ws8"/>
                                     <constraint firstItem="iCy-6W-9WN" firstAttribute="top" secondItem="S4o-aF-NXt" secondAttribute="bottom" constant="8" id="b58-ll-7bU"/>
                                     <constraint firstItem="z9d-O1-WuI" firstAttribute="top" secondItem="HRb-Ef-t8j" secondAttribute="top" id="cV1-Xn-Fou"/>
                                     <constraint firstItem="S4o-aF-NXt" firstAttribute="top" secondItem="HRb-Ef-t8j" secondAttribute="top" id="gUm-Pc-5w9"/>
                                     <constraint firstItem="sex-9M-qeC" firstAttribute="top" secondItem="iCy-6W-9WN" secondAttribute="bottom" constant="4" id="iIk-qm-6Xx"/>
                                     <constraint firstAttribute="trailing" secondItem="S4o-aF-NXt" secondAttribute="trailing" id="kqz-yA-cm3"/>
+                                    <constraint firstItem="e5u-QE-oNb" firstAttribute="top" secondItem="S4o-aF-NXt" secondAttribute="top" constant="10" id="nvs-os-k3w"/>
                                     <constraint firstItem="sex-9M-qeC" firstAttribute="leading" secondItem="HRb-Ef-t8j" secondAttribute="leading" constant="8" id="vc5-0c-bW2"/>
                                     <constraint firstItem="iCy-6W-9WN" firstAttribute="leading" secondItem="HRb-Ef-t8j" secondAttribute="leading" constant="8" id="wk9-ye-4bJ"/>
                                 </constraints>
@@ -125,6 +134,7 @@
                 <outlet property="cardContentView" destination="HRb-Ef-t8j" id="Ge7-Y5-6Ps"/>
                 <outlet property="cellTitleLabel" destination="YWC-NK-sLS" id="eiw-hr-WPP"/>
                 <outlet property="outbrainLabelingContainer" destination="CKZ-BH-VxV" id="WNl-Uv-EyV"/>
+                <outlet property="publisherLogo" destination="e5u-QE-oNb" id="VDw-mq-X5Y"/>
                 <outlet property="recImageView" destination="S4o-aF-NXt" id="GFy-6L-BRs"/>
                 <outlet property="recSourceLabel" destination="sex-9M-qeC" id="sz4-iL-sQx"/>
                 <outlet property="recTitleLabel" destination="iCy-6W-9WN" id="q6M-zd-ivc"/>

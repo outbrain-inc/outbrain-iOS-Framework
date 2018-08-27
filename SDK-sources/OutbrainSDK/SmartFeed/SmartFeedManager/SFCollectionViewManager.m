@@ -178,6 +178,9 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     }
     else {
         singleCell.recSourceLabel.text = @"";
+        if (rec.publisherLogoImage) {
+            [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
+        }
     }
     
     [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
