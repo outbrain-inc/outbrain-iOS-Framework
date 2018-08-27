@@ -161,7 +161,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
         }
     }
     else {
-        singleCell.recSourceLabel.text = rec.source;
+        singleCell.recSourceLabel.text = @"";
     }
     
     [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
