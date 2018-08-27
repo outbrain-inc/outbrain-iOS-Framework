@@ -106,6 +106,16 @@
     XCTAssertEqual(self.responseChild1.settings.feedCyclesLimit, 0);
 }
 
+- (void)testPublisherLogoIsFetchedCorrectlyFromResponse {
+    OBRecommendation *recWithLogo = self.responseChild1.recommendations[0];
+    XCTAssertTrue([recWithLogo.publisherLogoImage.url.absoluteString isEqualToString:@"https://images.outbrainimg.com/transform/v3/eyJpdSI6ImY5OTE5OTIxMTg5YTNlOThlMDFiMjE3NjQxOTg0ZDcwOGY5ZWU1ZmY5YWFhM2I4YmRhZmZmNjQ3MmIzZDljOTQiLCJ3Ijo4NSwiaCI6MjAsImQiOjIuMCwiY3MiOjAsImYiOjB9.jpg"]);
+    
+    OBRecommendation *recNoLogo = self.responseChild3.recommendations[0];
+    XCTAssertNil(recNoLogo.publisherLogoImage);
+    
+}
+
+
 - (void)testSmartFeedManagerBuildArrayOfItems {
     [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseParent];
     XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 3);
