@@ -12,6 +12,7 @@
 
 -(void) prepareForReuse {
     [super prepareForReuse];
+    self.publisherLogo.image = nil;
     self.recImageView.image = nil;
     self.recTitleLabel.text = nil;
     self.recSourceLabel.text = nil;
