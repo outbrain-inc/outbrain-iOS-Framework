@@ -29,6 +29,13 @@
                                     <constraint firstAttribute="width" secondItem="61q-cI-eoC" secondAttribute="height" multiplier="1.35" id="8St-cs-6dQ"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OTt-Gd-VRW" userLabel="publisherLogo">
+                                <rect key="frame" x="16" y="16" width="44" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="RgF-pE-yDb"/>
+                                    <constraint firstAttribute="height" constant="12" id="b6X-ns-99J"/>
+                                </constraints>
+                            </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pid-Q1-1t8">
                                 <rect key="frame" x="70.5" y="12" width="30" height="30"/>
                                 <constraints>
@@ -47,10 +54,12 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="61q-cI-eoC" secondAttribute="bottom" constant="12" id="8i6-53-Xym"/>
                             <constraint firstItem="NuD-GR-QrN" firstAttribute="centerY" secondItem="hNs-fM-9vp" secondAttribute="centerY" id="8rp-YU-qZJ"/>
+                            <constraint firstItem="OTt-Gd-VRW" firstAttribute="leading" secondItem="61q-cI-eoC" secondAttribute="leading" constant="4" id="DoT-2b-Bmb"/>
                             <constraint firstItem="NuD-GR-QrN" firstAttribute="leading" secondItem="61q-cI-eoC" secondAttribute="trailing" constant="14" id="Hlv-BU-Ez1"/>
                             <constraint firstItem="61q-cI-eoC" firstAttribute="leading" secondItem="hNs-fM-9vp" secondAttribute="leading" constant="12" id="K3r-dg-xd7"/>
                             <constraint firstItem="pid-Q1-1t8" firstAttribute="trailing" secondItem="61q-cI-eoC" secondAttribute="trailing" id="KE9-tE-YMa"/>
                             <constraint firstAttribute="trailing" secondItem="NuD-GR-QrN" secondAttribute="trailing" constant="5" id="NJP-Pd-2Mm"/>
+                            <constraint firstItem="OTt-Gd-VRW" firstAttribute="top" secondItem="61q-cI-eoC" secondAttribute="top" constant="4" id="Skh-JU-w5u"/>
                             <constraint firstItem="61q-cI-eoC" firstAttribute="top" secondItem="hNs-fM-9vp" secondAttribute="top" constant="12" id="e1h-LW-DGR"/>
                             <constraint firstItem="pid-Q1-1t8" firstAttribute="top" secondItem="61q-cI-eoC" secondAttribute="top" id="ybY-IY-eP5"/>
                         </constraints>
@@ -67,6 +76,7 @@
             <size key="customSize" width="372" height="90"/>
             <connections>
                 <outlet property="adChoicesButton" destination="pid-Q1-1t8" id="YZn-8D-tU4"/>
+                <outlet property="publisherLogo" destination="OTt-Gd-VRW" id="vkW-0Z-1Xg"/>
                 <outlet property="recImageView" destination="61q-cI-eoC" id="h5T-SK-yc1"/>
                 <outlet property="recTitleLabel" destination="NuD-GR-QrN" id="wd8-Ri-8fa"/>
             </connections>
