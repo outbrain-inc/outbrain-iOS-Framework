@@ -29,7 +29,7 @@ const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoT
 const NSString *kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
 const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
 const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
-const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"";
+const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleTableCell";
 
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView {
@@ -77,6 +77,10 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"";
         nib = [UINib nibWithNibName:@"SFSingleWithThumbnailTableCell" bundle:bundle];
         NSAssert(nib != nil, @"SFSingleWithThumbnailTableCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleWithThumbnailReuseId];
+        
+        nib = [UINib nibWithNibName:@"SFSingleWithThumbnailWithTitleTableCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFSingleWithThumbnailWithTitleTableCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleWithThumbnailWithTitleReuseId];
     }
     return self;
 }
@@ -128,7 +132,7 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"";
         case SFTypeStripWithThumbnailNoTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnailWithTitle:
-            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailReuseId forIndexPath:indexPath];
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailWithTitleReuseId forIndexPath:indexPath];
             
         default:
             NSAssert(false, @"sfItem.itemType must be covered in this switch/case statement");
@@ -139,6 +143,9 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"";
 - (CGFloat) heightForRowAtIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     if (sfItem.itemType == SFTypeStripWithThumbnailNoTitle) {
         return 120.0;
+    }
+    else if (sfItem.itemType == SFTypeStripWithThumbnailWithTitle) {
+        return 150.0;
     }
     else if (sfItem.itemType == SFTypeStripWithTitle) {
         return 280.0;

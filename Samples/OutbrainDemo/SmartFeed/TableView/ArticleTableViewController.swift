@@ -15,7 +15,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    let smartFeedWidgetID = "SFD_MAIN_2"
+    let smartFeedWidgetID = "SFD_MAIN_5"
     let currentArticleDemoUrl = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     let textHeaderCellReuseIdentifier = "textHeaderCell"
@@ -54,8 +54,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         let singleCellNib = UINib(nibName: "AppSFTableViewCell", bundle: bundle)
         
         //self.smartFeedManager.register(horizontalCellNib, withCellWithReuseIdentifier: "AppSFHorizontalItemCell",f
-        self.smartFeedManager.register(horizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SFD_MAIN_2")
-        self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFTableViewCell", forWidgetId: "SDK_SFD_1")
+        //self.smartFeedManager.register(horizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SFD_MAIN_2")
+        //self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFTableViewCell", forWidgetId: "SDK_SFD_1")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
