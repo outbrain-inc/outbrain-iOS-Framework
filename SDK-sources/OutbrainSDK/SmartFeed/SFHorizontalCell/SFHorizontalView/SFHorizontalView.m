@@ -75,6 +75,9 @@
     }
     else {
         cell.recSourceLabel.text = rec.source;
+        if (rec.publisherLogoImage) {
+            [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:cell.publisherLogo];
+        }
     }
     
     [[SFImageLoader sharedInstance] loadImage:rec.image.url into:cell.recImageView];
