@@ -26,7 +26,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g77-bX-xEg">
                                 <rect key="frame" x="0.0" y="0.0" width="299" height="147"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3FK-GB-RYH" userLabel="publisherLogo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3FK-GB-RYH" userLabel="publisherLogo">
                                 <rect key="frame" x="4" y="4" width="44" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="3mP-fo-DVn"/>
@@ -53,10 +53,10 @@
                             <constraint firstItem="97O-YX-tW6" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" constant="5" id="LtX-aA-vPg"/>
                             <constraint firstItem="vW4-J8-7zV" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="bottom" constant="4" id="NBP-a3-ogj"/>
                             <constraint firstItem="3FK-GB-RYH" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="top" constant="4" id="QA8-bn-S72"/>
+                            <constraint firstItem="3FK-GB-RYH" firstAttribute="leading" secondItem="g77-bX-xEg" secondAttribute="leading" constant="4" id="RLj-OV-Mze"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="trailing" secondItem="97O-YX-tW6" secondAttribute="trailing" constant="5" id="V39-eO-2I7"/>
                             <constraint firstAttribute="trailing" secondItem="vW4-J8-7zV" secondAttribute="trailing" constant="5" id="WmN-aQ-qxF"/>
                             <constraint firstItem="g77-bX-xEg" firstAttribute="trailing" secondItem="EZ3-tA-2YS" secondAttribute="trailing" id="Xsu-Vi-cEZ"/>
-                            <constraint firstItem="3FK-GB-RYH" firstAttribute="leading" secondItem="g77-bX-xEg" secondAttribute="leading" constant="4" id="ZH5-u3-Igo"/>
                             <constraint firstItem="g77-bX-xEg" firstAttribute="height" secondItem="y1L-1q-EwP" secondAttribute="height" multiplier="0.55" id="kpE-11-xhR"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="97O-YX-tW6" secondAttribute="bottom" constant="5" id="mnn-1Q-NFD"/>
                         </constraints>
