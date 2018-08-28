@@ -212,24 +212,19 @@
    // itemType = SFTypeCarouselWithTitle;
     
     switch (itemType) {
-        case SFTypeStripNoTitle:
-            return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeStripNoTitle widgetTitle:widgetTitle];
         case SFTypeCarouselWithTitle:
-            return [self addCarouselItemsToSmartFeedArray:response templateType:SFTypeCarouselWithTitle widgetTitle:widgetTitle];
         case SFTypeCarouselNoTitle:
-            return [self addCarouselItemsToSmartFeedArray:response templateType:SFTypeCarouselNoTitle widgetTitle:widgetTitle];
+            return [self addCarouselItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
         case SFTypeGridTwoInRowNoTitle:
-            return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridTwoInRowNoTitle widgetTitle:widgetTitle];
         case SFTypeGridTwoInRowWithTitle:
-            return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridTwoInRowWithTitle widgetTitle:widgetTitle];
         case SFTypeGridThreeInRowNoTitle:
-            return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridThreeInRowNoTitle widgetTitle:widgetTitle];
         case SFTypeGridThreeInRowWithTitle:
-            return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridThreeInRowWithTitle widgetTitle:widgetTitle];
+            return [self addGridItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+        case SFTypeStripNoTitle:
         case SFTypeStripWithTitle:
-            return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeStripWithTitle widgetTitle:widgetTitle];
-        case SFTypeStripWithThumbnail:
-            return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeStripWithThumbnail widgetTitle:widgetTitle];
+        case SFTypeStripWithThumbnailNoTitle:
+        case SFTypeStripWithThumbnailWithTitle:
+            return [self addSingleItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
             
         default:
             break;
@@ -262,7 +257,7 @@
         return widgetHeader ? SFTypeGridThreeInRowWithTitle : SFTypeGridThreeInRowNoTitle;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_thumbnails"]) {
-        return SFTypeStripWithThumbnail;
+        return widgetHeader ? SFTypeStripWithThumbnailWithTitle : SFTypeStripWithThumbnailNoTitle;        
     }
     
     NSLog(@"recMode value is not currently covered in the SDK");

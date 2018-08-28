@@ -33,7 +33,8 @@ typedef enum
     SFTypeGridTwoInRowWithTitle,
     SFTypeGridThreeInRowWithTitle,
     SFTypeStripWithTitle,
-    SFTypeStripWithThumbnail
+    SFTypeStripWithThumbnailNoTitle,
+    SFTypeStripWithThumbnailWithTitle,
 } SFItemType;
 
 @property (nonatomic, strong, readonly) NSString * _Nullable url;

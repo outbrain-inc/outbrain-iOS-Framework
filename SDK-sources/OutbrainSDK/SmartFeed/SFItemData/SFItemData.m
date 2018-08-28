@@ -59,8 +59,11 @@
     else if (type == SFTypeStripWithTitle) {
         return @"SFTypeStripWithTitle";
     }
-    else if (type == SFTypeStripWithThumbnail) {
+    else if (type == SFTypeStripWithThumbnailNoTitle) {
         return @"SFTypeStripWithThumbnail";
+    }
+    else if (type == SFTypeStripWithThumbnailWithTitle) {
+        return @"SFTypeStripWithThumbnailWithTitle";
     }
     else if (type == SFTypeGridThreeInRowNoTitle) {
         return @"SFTypeGridThreeInRowNoTitle";

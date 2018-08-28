@@ -29,6 +29,7 @@ const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoT
 const NSString *kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
 const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
 const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
+const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"";
 
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView {
@@ -124,7 +125,9 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripWithTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithTitleReuseId forIndexPath:indexPath];
-        case SFTypeStripWithThumbnail:
+        case SFTypeStripWithThumbnailNoTitle:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailReuseId forIndexPath:indexPath];
+        case SFTypeStripWithThumbnailWithTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailReuseId forIndexPath:indexPath];
             
         default:
@@ -134,7 +137,7 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
 }
 
 - (CGFloat) heightForRowAtIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
-    if (sfItem.itemType == SFTypeStripWithThumbnail) {
+    if (sfItem.itemType == SFTypeStripWithThumbnailNoTitle) {
         return 120.0;
     }
     else if (sfItem.itemType == SFTypeStripWithTitle) {

@@ -25,6 +25,7 @@ const NSString *kCollectionViewHorizontalCarouselWithTitleReuseId = @"SFHorizont
 const NSString *kCollectionViewHorizontalCarouselNoTitleReuseId = @"SFHorizontalCarouselNoTitleCollectionViewCell";
 const NSString *kCollectionViewSmartfeedHeaderReuseId = @"SFCollectionViewHeaderCell";
 const NSString *kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
+const NSString *kCollectionViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleCollectionCell";
 const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
 const NSString *kCollectionViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleCollectionViewCell";
 const NSString *kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
@@ -75,6 +76,10 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailCollectionCell should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId];
         
+        collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithThumbnailWithTitleCollectionCell" bundle:bundle];
+        NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailWithTitleCollectionCell should not be null");
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailWithTitleReuseId];
+        
     }
     return self;
 }
@@ -119,8 +124,10 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId forIndexPath:indexPath];
-        case SFTypeStripWithThumbnail:
+        case SFTypeStripWithThumbnailNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId forIndexPath:indexPath];
+        case SFTypeStripWithThumbnailWithTitle:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailWithTitleReuseId forIndexPath:indexPath];
             
         default:
             break;
@@ -138,8 +145,11 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     else if (sfItemType == SFTypeStripWithTitle) {
         return CGSizeMake(width, 280.0);
     }
-    else if (sfItemType == SFTypeStripWithThumbnail) {
+    else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
         return CGSizeMake(width - 20.0, 120.0);
+    }
+    else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
+        return CGSizeMake(width, 150.0);
     }
     
     return CGSizeMake(width - 20.0, 250.0);
@@ -199,7 +209,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     [tapGesture setDelegate:self];
     
     // Cell Specific configuration
-    if (sfItem.itemType == SFTypeStripWithTitle) {
+    if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripWithThumbnailWithTitle) {
         [SFUtils addDropShadowToView: singleCell.cardContentView];
         if (sfItem.widgetTitle) {
             singleCell.cellTitleLabel.text = sfItem.widgetTitle;
