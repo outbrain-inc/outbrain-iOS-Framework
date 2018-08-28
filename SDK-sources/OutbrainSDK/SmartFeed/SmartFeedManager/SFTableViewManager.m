@@ -26,6 +26,7 @@ const NSString *kTableViewSmartfeedHeaderReuseId = @"SFTableViewHeaderCell";
 const NSString *kTableViewHorizontalCarouselWithTitleReuseId = @"SFCarouselWithTitleReuseId";
 const NSString *kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitleReuseId";
 const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
+const NSString *kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
 const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
 const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
 
@@ -53,6 +54,10 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
         horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedNoTitleTableViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedNoTitleTableViewCell should not be null");
         [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedNoTitleReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithTitleTableViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithTitleTableViewCell should not be null");
+        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedWithTitleReuseId];
         
         // Smartfeed header cell
         UINib *nib = [UINib nibWithNibName:@"SFTableViewHeaderCell" bundle:bundle];
@@ -114,6 +119,9 @@ const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTa
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridThreeInRowNoTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
+        case SFTypeGridTwoInRowWithTitle:
+        case SFTypeGridThreeInRowWithTitle:
+            return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripWithTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnail:
