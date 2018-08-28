@@ -14,8 +14,8 @@
 -(void) setupView {
     [super setupView];
     
-    const CGFloat itemWidth = MAX(self.collectionView.frame.size.width*0.6, 250.0);
-    const CGFloat itemHeight = MIN(itemWidth*0.7, self.collectionView.frame.size.height);
+    const CGFloat itemWidth = MAX(self.collectionView.frame.size.width*0.6, 220.0);
+    const CGFloat itemHeight = MIN(itemWidth*0.85, self.collectionView.frame.size.height);
     self.itemSize = CGSizeMake(itemWidth, itemHeight);
     [self resetLayout:self.itemSize];
 }
