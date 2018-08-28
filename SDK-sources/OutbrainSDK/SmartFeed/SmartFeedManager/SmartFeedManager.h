@@ -30,6 +30,8 @@ typedef enum
     SFTypeCarouselNoTitle,
     SFTypeGridTwoInRowNoTitle,
     SFTypeGridThreeInRowNoTitle,
+    SFTypeGridTwoInRowWithTitle,
+    SFTypeGridThreeInRowWithTitle,
     SFTypeStripWithTitle,
     SFTypeStripWithThumbnail
 } SFItemType;

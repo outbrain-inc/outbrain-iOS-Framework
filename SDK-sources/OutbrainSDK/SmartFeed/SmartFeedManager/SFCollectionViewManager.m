@@ -26,6 +26,7 @@ const NSString *kCollectionViewHorizontalCarouselNoTitleReuseId = @"SFHorizontal
 const NSString *kCollectionViewSmartfeedHeaderReuseId = @"SFCollectionViewHeaderCell";
 const NSString *kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
 const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
+const NSString *kCollectionViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleCollectionViewCell";
 const NSString *kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
 const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
 
@@ -56,6 +57,10 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
         horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedNoTitleCollectionViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedNoTitleCollectionViewCell should not be null");
         [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithTitleCollectionViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithTitleCollectionViewCell should not be null");
+        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewHorizontalFixedWithTitleReuseId];
         
         // Single item cell
         UINib *collectionViewCellNib = [UINib nibWithNibName:@"SFCollectionViewCell" bundle:bundle];
@@ -109,6 +114,9 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridThreeInRowNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
+        case SFTypeGridTwoInRowWithTitle:
+        case SFTypeGridThreeInRowWithTitle:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnail:

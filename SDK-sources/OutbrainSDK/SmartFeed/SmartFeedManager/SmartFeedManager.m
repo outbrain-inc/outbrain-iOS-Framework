@@ -209,7 +209,7 @@
     SFItemType itemType = [self sfItemTypeFromResponse:response];
     NSString *widgetTitle = response.settings.widgetHeaderText;
     
-    // itemType = SFTypeCarouselWithTitle;
+   // itemType = SFTypeCarouselWithTitle;
     
     switch (itemType) {
         case SFTypeStripNoTitle:
@@ -220,8 +220,12 @@
             return [self addCarouselItemsToSmartFeedArray:response templateType:SFTypeCarouselNoTitle widgetTitle:widgetTitle];
         case SFTypeGridTwoInRowNoTitle:
             return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridTwoInRowNoTitle widgetTitle:widgetTitle];
+        case SFTypeGridTwoInRowWithTitle:
+            return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridTwoInRowWithTitle widgetTitle:widgetTitle];
         case SFTypeGridThreeInRowNoTitle:
             return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridThreeInRowNoTitle widgetTitle:widgetTitle];
+        case SFTypeGridThreeInRowWithTitle:
+            return [self addGridItemsToSmartFeedArray:response templateType:SFTypeGridThreeInRowWithTitle widgetTitle:widgetTitle];
         case SFTypeStripWithTitle:
             return [self addSingleItemsToSmartFeedArray:response templateType:SFTypeStripWithTitle widgetTitle:widgetTitle];
         case SFTypeStripWithThumbnail:
@@ -252,10 +256,10 @@
         return widgetHeader ? SFTypeStripWithTitle : SFTypeStripNoTitle;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_2_columns"]) {
-        return widgetHeader ? SFTypeGridTwoInRowNoTitle : SFTypeGridTwoInRowNoTitle; // TODO with title
+        return widgetHeader ? SFTypeGridTwoInRowWithTitle : SFTypeGridTwoInRowNoTitle;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_3_columns"]) {
-        return widgetHeader ? SFTypeGridThreeInRowNoTitle : SFTypeGridThreeInRowNoTitle; // TODO with title
+        return widgetHeader ? SFTypeGridThreeInRowWithTitle : SFTypeGridThreeInRowNoTitle;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_thumbnails"]) {
         return SFTypeStripWithThumbnail;
@@ -289,10 +293,10 @@
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
     NSUInteger itemsPerRow = 0;
-    if (templateType == SFTypeGridTwoInRowNoTitle) {
+    if (templateType == SFTypeGridTwoInRowNoTitle || templateType == SFTypeGridTwoInRowWithTitle) {
         itemsPerRow = 2;
     }
-    else if (templateType == SFTypeGridThreeInRowNoTitle) {
+    else if (templateType == SFTypeGridThreeInRowNoTitle || templateType == SFTypeGridThreeInRowWithTitle) {
         itemsPerRow = 3;
     }
     else {

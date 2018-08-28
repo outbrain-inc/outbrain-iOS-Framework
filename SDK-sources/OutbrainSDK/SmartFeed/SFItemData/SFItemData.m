@@ -65,6 +65,12 @@
     else if (type == SFTypeGridThreeInRowNoTitle) {
         return @"SFTypeGridThreeInRowNoTitle";
     }
+    else if (type == SFTypeGridThreeInRowWithTitle) {
+        return @"SFTypeGridThreeInRowWithTitle";
+    }
+    else if (type == SFTypeGridTwoInRowWithTitle) {
+        return @"SFTypeGridTwoInRowWithTitle";
+    }
     
     return @"";
 }
