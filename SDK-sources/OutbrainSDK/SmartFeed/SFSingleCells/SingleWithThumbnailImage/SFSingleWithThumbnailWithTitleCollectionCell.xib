@@ -88,13 +88,21 @@
                                         <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Market Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ic9-2R-zBJ">
+                                        <rect key="frame" x="146" y="76" width="124" height="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" red="0.57647058819999997" green="0.56470588239999997" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="ic9-2R-zBJ" firstAttribute="leading" secondItem="NuD-GR-QrN" secondAttribute="leading" id="0dS-PC-oe9"/>
                                     <constraint firstAttribute="bottom" secondItem="61q-cI-eoC" secondAttribute="bottom" constant="10" id="8i6-53-Xym"/>
                                     <constraint firstItem="NuD-GR-QrN" firstAttribute="centerY" secondItem="hNs-fM-9vp" secondAttribute="centerY" id="8rp-YU-qZJ"/>
                                     <constraint firstItem="OTt-Gd-VRW" firstAttribute="leading" secondItem="61q-cI-eoC" secondAttribute="leading" constant="4" id="DoT-2b-Bmb"/>
                                     <constraint firstItem="NuD-GR-QrN" firstAttribute="leading" secondItem="61q-cI-eoC" secondAttribute="trailing" constant="14" id="Hlv-BU-Ez1"/>
+                                    <constraint firstItem="ic9-2R-zBJ" firstAttribute="top" secondItem="NuD-GR-QrN" secondAttribute="bottom" constant="2" id="JyX-qs-BFx"/>
                                     <constraint firstItem="61q-cI-eoC" firstAttribute="leading" secondItem="hNs-fM-9vp" secondAttribute="leading" constant="10" id="K3r-dg-xd7"/>
                                     <constraint firstItem="pid-Q1-1t8" firstAttribute="trailing" secondItem="61q-cI-eoC" secondAttribute="trailing" id="KE9-tE-YMa"/>
                                     <constraint firstAttribute="trailing" secondItem="NuD-GR-QrN" secondAttribute="trailing" constant="5" id="NJP-Pd-2Mm"/>
@@ -134,6 +142,7 @@
                 <outlet property="outbrainLabelingContainer" destination="kRr-9V-t6Y" id="b9u-AJ-7ym"/>
                 <outlet property="publisherLogo" destination="OTt-Gd-VRW" id="vkW-0Z-1Xg"/>
                 <outlet property="recImageView" destination="61q-cI-eoC" id="h5T-SK-yc1"/>
+                <outlet property="recSourceLabel" destination="ic9-2R-zBJ" id="hIH-Bq-LXP"/>
                 <outlet property="recTitleLabel" destination="NuD-GR-QrN" id="wd8-Ri-8fa"/>
             </connections>
             <point key="canvasLocation" x="169.5" y="-21"/>
