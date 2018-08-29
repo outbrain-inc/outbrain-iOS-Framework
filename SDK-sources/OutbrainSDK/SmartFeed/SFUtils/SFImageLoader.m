@@ -39,9 +39,11 @@
     
     NSData *imageData = [self.imageCache objectForKey:imageUrl.absoluteString];
     if (imageData != nil) {
-         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-             imageView.image = [UIImage imageWithData:imageData];
-         }];
+        // NSLog(@"SFImageLoader: loading image from cache");
+        UIImage *cachedImage = [UIImage imageWithData:imageData];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            imageView.image = cachedImage;
+        }];
         return;
     }
     
