@@ -26,6 +26,13 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g77-bX-xEg">
                                 <rect key="frame" x="0.0" y="0.0" width="299" height="147"/>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3c5-yh-4Py" userLabel="Ad Choices Button">
+                                <rect key="frame" x="269" y="0.0" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PZb-E5-g9i"/>
+                                    <constraint firstAttribute="width" constant="30" id="Y9i-gu-LZg"/>
+                                </constraints>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3FK-GB-RYH" userLabel="publisherLogo">
                                 <rect key="frame" x="4" y="4" width="44" height="12"/>
                                 <constraints>
@@ -49,9 +56,11 @@
                         <constraints>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="leading" secondItem="vW4-J8-7zV" secondAttribute="leading" constant="-5" id="0I6-LN-7u5"/>
                             <constraint firstItem="97O-YX-tW6" firstAttribute="top" secondItem="vW4-J8-7zV" secondAttribute="bottom" constant="4" id="39R-oV-nMx"/>
+                            <constraint firstItem="3c5-yh-4Py" firstAttribute="top" secondItem="EZ3-tA-2YS" secondAttribute="top" id="AZW-NJ-OYo"/>
                             <constraint firstItem="g77-bX-xEg" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" id="Cmb-sV-E8V"/>
                             <constraint firstItem="97O-YX-tW6" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" constant="5" id="LtX-aA-vPg"/>
                             <constraint firstItem="vW4-J8-7zV" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="bottom" constant="4" id="NBP-a3-ogj"/>
+                            <constraint firstItem="EZ3-tA-2YS" firstAttribute="trailing" secondItem="3c5-yh-4Py" secondAttribute="trailing" id="OBC-aq-8hd"/>
                             <constraint firstItem="3FK-GB-RYH" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="top" constant="4" id="QA8-bn-S72"/>
                             <constraint firstItem="3FK-GB-RYH" firstAttribute="leading" secondItem="g77-bX-xEg" secondAttribute="leading" constant="4" id="RLj-OV-Mze"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="trailing" secondItem="97O-YX-tW6" secondAttribute="trailing" constant="5" id="V39-eO-2I7"/>
@@ -74,6 +83,7 @@
             <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
             <size key="customSize" width="299" height="267"/>
             <connections>
+                <outlet property="adChoicesButton" destination="3c5-yh-4Py" id="CaN-mZ-cbY"/>
                 <outlet property="publisherLogo" destination="3FK-GB-RYH" id="Efc-Ut-loT"/>
                 <outlet property="recImageView" destination="g77-bX-xEg" id="tlv-Db-JuO"/>
                 <outlet property="recSourceLabel" destination="97O-YX-tW6" id="P5t-39-exc"/>

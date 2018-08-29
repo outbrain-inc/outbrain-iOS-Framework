@@ -72,6 +72,15 @@
     cell.recTitleLabel.text = rec.content;
     if ([rec isPaidLink]) {
         cell.recSourceLabel.text = rec.source;
+        if ([rec shouldDisplayDisclosureIcon]) {
+            cell.adChoicesButton.hidden = NO;
+            cell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
+            cell.adChoicesButton.tag = indexPath.row;
+            NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+            UIImage *adChoicesImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
+            [cell.adChoicesButton setImage:adChoicesImage forState:UIControlStateNormal];
+            [cell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
+        }
     }
     else {
         cell.recSourceLabel.text = @"";
@@ -87,8 +96,8 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     OBRecommendation *rec = self.outbrainRecs[indexPath.row];
-    if (self.onClick != nil) {
-        self.onClick(rec);
+    if (self.onRecommendationClick != nil) {
+        self.onRecommendationClick(rec);
     }
 }
 
@@ -98,6 +107,14 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     });
+}
+
+- (void) adChoicesClicked:(id)sender {
+    UIButton *adChoicesButton = sender;
+    OBRecommendation *rec = self.outbrainRecs[adChoicesButton.tag];
+    if (self.onAdChoicesIconClick != nil && rec != nil) {
+        self.onAdChoicesIconClick(rec.disclosure.clickUrl);
+    }
 }
 
 @end

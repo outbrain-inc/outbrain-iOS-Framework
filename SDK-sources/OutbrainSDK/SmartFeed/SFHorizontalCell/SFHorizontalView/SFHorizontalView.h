@@ -11,14 +11,16 @@
 
 @interface SFHorizontalView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
 
-typedef void(^OnClick)(OBRecommendation *rec);
+typedef void(^OnRecommendationClick)(OBRecommendation *rec);
+typedef void(^OnAdChoicesIconClick)(NSURL *url);
 
 - (void) setupView;
 
 - (void) registerNib:(UINib *_Nonnull)nib forCellWithReuseIdentifier:(NSString *_Nonnull)identifier;
 
 @property (nonatomic, strong) NSArray * _Nullable outbrainRecs;
-@property (nonatomic) OnClick _Nonnull onClick;
+@property (nonatomic) OnRecommendationClick _Nonnull onRecommendationClick;
+@property (nonatomic) OnAdChoicesIconClick _Nonnull onAdChoicesIconClick;
 
 
 // This section was private, now its here for the children classes

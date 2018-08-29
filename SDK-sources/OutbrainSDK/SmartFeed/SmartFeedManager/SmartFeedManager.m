@@ -429,9 +429,14 @@
     
     horizontalView.outbrainRecs = sfItem.outbrainRecs;
     [horizontalView setupView];
-    [horizontalView setOnClick:^(OBRecommendation *rec) {
+    [horizontalView setOnRecommendationClick:^(OBRecommendation *rec) {
         if (self.delegate != nil) {
             [self.delegate userTappedOnRecommendation:rec];
+        }
+    }];
+    [horizontalView setOnAdChoicesIconClick:^(NSURL *url) {
+        if (self.delegate != nil) {
+            [self.delegate userTappedOnAdChoicesIcon:url];
         }
     }];
 }

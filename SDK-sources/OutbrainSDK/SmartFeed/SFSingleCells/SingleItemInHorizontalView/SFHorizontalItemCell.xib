@@ -26,6 +26,13 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g77-bX-xEg">
                                 <rect key="frame" x="0.0" y="0.0" width="319" height="234"/>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5m-0R-CNu" userLabel="Ad Choices Button">
+                                <rect key="frame" x="289" y="0.0" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="BQU-yN-DJa"/>
+                                    <constraint firstAttribute="height" constant="30" id="pHy-Zt-DxX"/>
+                                </constraints>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ofG-qc-XMN" userLabel="publisherLogo">
                                 <rect key="frame" x="4" y="4" width="44" height="12"/>
                                 <constraints>
@@ -53,12 +60,14 @@
                             <constraint firstItem="ofG-qc-XMN" firstAttribute="leading" secondItem="g77-bX-xEg" secondAttribute="leading" constant="4" id="PfF-0A-qQv"/>
                             <constraint firstItem="JbL-mo-IAe" firstAttribute="top" secondItem="vW4-J8-7zV" secondAttribute="bottom" constant="4" id="T2q-Xg-mwW"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="trailing" secondItem="JbL-mo-IAe" secondAttribute="trailing" constant="4" id="T6u-ga-Ykc"/>
+                            <constraint firstItem="EZ3-tA-2YS" firstAttribute="trailing" secondItem="X5m-0R-CNu" secondAttribute="trailing" id="UJA-Tb-Jzd"/>
                             <constraint firstAttribute="trailing" secondItem="vW4-J8-7zV" secondAttribute="trailing" constant="5" id="WmN-aQ-qxF"/>
                             <constraint firstItem="g77-bX-xEg" firstAttribute="trailing" secondItem="EZ3-tA-2YS" secondAttribute="trailing" id="Xsu-Vi-cEZ"/>
                             <constraint firstItem="ofG-qc-XMN" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="top" constant="4" id="hG3-bk-Sdy"/>
                             <constraint firstItem="JbL-mo-IAe" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" constant="5" id="hnT-dN-SM0"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JbL-mo-IAe" secondAttribute="bottom" constant="5" id="jvU-lm-mQe"/>
                             <constraint firstItem="g77-bX-xEg" firstAttribute="height" secondItem="y1L-1q-EwP" secondAttribute="height" multiplier="0.65" id="kpE-11-xhR"/>
+                            <constraint firstItem="X5m-0R-CNu" firstAttribute="top" secondItem="EZ3-tA-2YS" secondAttribute="top" id="rid-ja-s9A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EZ3-tA-2YS"/>
                     </view>
@@ -74,6 +83,7 @@
             <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
             <size key="customSize" width="319" height="360"/>
             <connections>
+                <outlet property="adChoicesButton" destination="X5m-0R-CNu" id="gD4-Ms-T0e"/>
                 <outlet property="publisherLogo" destination="ofG-qc-XMN" id="LMp-o2-7Yo"/>
                 <outlet property="recImageView" destination="g77-bX-xEg" id="tlv-Db-JuO"/>
                 <outlet property="recSourceLabel" destination="JbL-mo-IAe" id="d7k-po-VCe"/>
