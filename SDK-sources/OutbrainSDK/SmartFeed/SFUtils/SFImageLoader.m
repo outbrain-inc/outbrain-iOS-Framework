@@ -12,7 +12,7 @@
 @property (nonatomic, strong) NSCache *imageCache;
 @property (nonatomic, strong) NSOperationQueue *imageQueue;
 @property (nonatomic, strong) UIImage *placeholderImage;
-
+@property (nonatomic, strong) UIImage *adChoicesDefaultImage;
 @end
 
 @implementation SFImageLoader
@@ -28,6 +28,7 @@
         sharedInstance.imageQueue.maxConcurrentOperationCount = 4;
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         sharedInstance.placeholderImage = [UIImage imageNamed:@"placeholder-image" inBundle:bundle compatibleWithTraitCollection:nil];
+        sharedInstance.adChoicesDefaultImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
     });
     return sharedInstance;
 }
@@ -60,6 +61,7 @@
 }
 
 -(void) loadImage:(NSString *)imageUrlStr intoButton:(UIButton *)button {
+    [button setImage:self.adChoicesDefaultImage forState:UIControlStateNormal];
     NSURL *imageUrl = [NSURL URLWithString:imageUrlStr];
     button.imageView.tag = [imageUrl.absoluteString hash];
 
