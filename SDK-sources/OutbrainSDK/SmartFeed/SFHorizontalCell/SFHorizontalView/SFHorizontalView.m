@@ -76,9 +76,7 @@
             cell.adChoicesButton.hidden = NO;
             cell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
             cell.adChoicesButton.tag = indexPath.row;
-            NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-            UIImage *adChoicesImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
-            [cell.adChoicesButton setImage:adChoicesImage forState:UIControlStateNormal];
+            [[SFImageLoader sharedInstance] loadImage:rec.disclosure.imageUrl intoButton:cell.adChoicesButton];
             [cell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
     }

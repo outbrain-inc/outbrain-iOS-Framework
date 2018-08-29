@@ -15,6 +15,8 @@
 
 -(void) loadImage:(NSURL *)imageUrl into:(UIImageView *)imageView;
 
+-(void) loadImage:(NSString *)imageUrlStr intoButton:(UIButton *)button;
+
 -(void) loadImageToCacheIfNeeded:(NSURL *)imageUrl;
 
 @end

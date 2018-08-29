@@ -185,9 +185,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
             singleCell.adChoicesButton.hidden = NO;
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
             singleCell.adChoicesButton.tag = cellTag;
-            NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-            UIImage *adChoicesImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
-            [singleCell.adChoicesButton setImage:adChoicesImage forState:UIControlStateNormal];
+            [[SFImageLoader sharedInstance] loadImage:rec.disclosure.imageUrl intoButton:singleCell.adChoicesButton];
             [singleCell.adChoicesButton addTarget:self.clickListenerTarget action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
         else {

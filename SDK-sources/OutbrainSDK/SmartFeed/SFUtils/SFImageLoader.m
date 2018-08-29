@@ -59,6 +59,33 @@
     }];
 }
 
+-(void) loadImage:(NSString *)imageUrlStr intoButton:(UIButton *)button {
+    NSURL *imageUrl = [NSURL URLWithString:imageUrlStr];
+    button.imageView.tag = [imageUrl.absoluteString hash];
+
+    NSData *imageData = [self.imageCache objectForKey:imageUrl.absoluteString];
+    if (imageData != nil) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [button setImage:[UIImage imageWithData:imageData] forState:UIControlStateNormal];
+        }];
+        return;
+    }
+    
+    [self.imageQueue addOperationWithBlock:^{
+        NSData *data = [[NSData alloc] initWithContentsOfURL: imageUrl];
+        if ( data == nil )
+            return;
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            if (button.imageView.tag != [imageUrl.absoluteString hash]) {
+                // NSLog(@"SFImageLoader: imageView has changed - no need to load with image..");
+                return;
+            }
+            [button setImage:[UIImage imageWithData:data] forState:UIControlStateNormal];
+        }];
+        [self.imageCache setObject:data forKey:imageUrl.absoluteString];
+    }];
+}
+
 -(void) loadImageToCacheIfNeeded:(NSURL *)imageUrl {
     NSData *imageData = [self.imageCache objectForKey:imageUrl.absoluteString];
     if (imageData != nil) {
