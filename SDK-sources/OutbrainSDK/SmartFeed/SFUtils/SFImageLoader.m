@@ -47,14 +47,20 @@
     
     [self.imageQueue addOperationWithBlock:^{
         NSData *data = [[NSData alloc] initWithContentsOfURL: imageUrl];
-        if ( data == nil )
+        if ( data == nil ) {
             return;
+        }
+        UIImage *downloadedImage = [UIImage imageWithData:data];
+        if (downloadedImage == nil) {
+            NSLog(@"SFImageLoader: downloadedImage is nil - check image url: %@", imageUrl.absoluteString);
+            return;
+        }
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             if (imageView.tag != [imageUrl.absoluteString hash]) {
                 // NSLog(@"SFImageLoader: imageView has changed - no need to load with image..");
                 return;
             }
-            imageView.image = [UIImage imageWithData:data];
+            imageView.image = downloadedImage;
         }];
         [self.imageCache setObject:data forKey:imageUrl.absoluteString];
     }];
@@ -75,14 +81,20 @@
     
     [self.imageQueue addOperationWithBlock:^{
         NSData *data = [[NSData alloc] initWithContentsOfURL: imageUrl];
-        if ( data == nil )
+        if ( data == nil ) {
             return;
+        }
+        UIImage *downloadedImage = [UIImage imageWithData:data];
+        if (downloadedImage == nil) {
+            NSLog(@"SFImageLoader: downloadedImage is nil - check image url: %@", imageUrl.absoluteString);
+            return;
+        }
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             if (button.imageView.tag != [imageUrl.absoluteString hash]) {
                 // NSLog(@"SFImageLoader: imageView has changed - no need to load with image..");
                 return;
             }
-            [button setImage:[UIImage imageWithData:data] forState:UIControlStateNormal];
+            [button setImage:downloadedImage forState:UIControlStateNormal];
         }];
         [self.imageCache setObject:data forKey:imageUrl.absoluteString];
     }];
