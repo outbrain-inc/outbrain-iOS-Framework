@@ -90,7 +90,7 @@
                                     <constraint firstItem="jjC-Y1-WMg" firstAttribute="top" secondItem="cwD-Wb-4tj" secondAttribute="top" id="rJo-46-mEg"/>
                                 </constraints>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="textHeaderCollectionCell" id="SKp-HF-wNR" userLabel="textHeaderCollectionCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="textHeaderCollectionCell" id="SKp-HF-wNR" userLabel="textHeaderCollectionCell" customClass="AppArticleCollectionViewCell" customModule="SmartFeed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="210" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -135,8 +135,11 @@
                                     <constraint firstAttribute="bottomMargin" secondItem="YK0-oo-CYZ" secondAttribute="bottom" id="rmb-uS-7gx"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="YK0-oo-CYZ" secondAttribute="trailing" id="xDL-sM-5yJ"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="headerLabel" destination="sM8-Qs-2x4" id="5l5-4M-Et0"/>
+                                </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contentCollectionCell" id="uy0-yv-KZG" userLabel="contentCollectionCell">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contentCollectionCell" id="uy0-yv-KZG" userLabel="contentCollectionCell" customClass="AppArticleCollectionViewCell" customModule="SmartFeed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="420" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -158,6 +161,9 @@
                                     <constraint firstItem="MKt-3x-Olz" firstAttribute="leading" secondItem="uy0-yv-KZG" secondAttribute="leading" id="e3f-N8-OZy"/>
                                     <constraint firstAttribute="bottom" secondItem="MKt-3x-Olz" secondAttribute="bottom" id="jEh-kN-A6G"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="contentTextView" destination="MKt-3x-Olz" id="hVM-fV-C9Z"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -189,7 +195,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="articleImage" translatesAutoresizingMaskIntoConstraints="NO" id="yaK-yG-G1c">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="articleImage" translatesAutoresizingMaskIntoConstraints="NO" id="yaK-yG-G1c">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="200" id="uEv-pv-Ua8"/>
@@ -207,7 +213,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textHeaderCell" rowHeight="88" id="dzf-UF-KCn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textHeaderCell" rowHeight="88" id="dzf-UF-KCn" customClass="AppArticleTableViewCell" customModule="SmartFeed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="230" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dzf-UF-KCn" id="vRv-fL-nvu">
@@ -246,8 +252,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="yBH-Rd-4YW" secondAttribute="trailing" constant="10" id="sw9-vQ-UQY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="headerLabel" destination="wIf-Ys-YNt" id="Ide-KW-HGm"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contentHeaderCell" id="ec4-ej-oEF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contentHeaderCell" id="ec4-ej-oEF" customClass="AppArticleTableViewCell" customModule="SmartFeed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="318" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ec4-ej-oEF" id="xli-0N-7xa">
@@ -269,6 +278,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="u0x-jR-Fxz" secondAttribute="trailing" constant="7" id="z45-nl-uV1"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentTextView" destination="u0x-jR-Fxz" id="Kc5-AX-he2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

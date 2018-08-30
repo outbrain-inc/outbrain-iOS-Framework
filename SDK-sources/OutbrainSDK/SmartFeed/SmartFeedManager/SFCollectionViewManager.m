@@ -138,21 +138,29 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
    sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath
                sfItemType:(SFItemType)sfItemType {
     
+    // ipad 834
+    // phone 375
     CGFloat width = collectionView.frame.size.width;
-    if (sfItemType == SFTypeGridTwoInRowNoTitle || sfItemType == SFTypeGridThreeInRowNoTitle || sfItemType == SFTypeCarouselWithTitle || sfItemType == SFTypeCarouselNoTitle) {
-        return CGSizeMake(width, 250.0);
+    if (sfItemType == SFTypeGridTwoInRowNoTitle || sfItemType == SFTypeCarouselWithTitle || sfItemType == SFTypeCarouselNoTitle) {
+        return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 240.0);
     }
-    else if (sfItemType == SFTypeStripWithTitle) {
+    else if (sfItemType == SFTypeGridThreeInRowNoTitle) {
         return CGSizeMake(width, 280.0);
     }
+    else if (sfItemType == SFTypeGridTwoInRowWithTitle) {
+        return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 270.0);
+    }
+    else if (sfItemType == SFTypeStripWithTitle) {
+        return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 280.0);
+    }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
-        return CGSizeMake(width - 20.0, 120.0);
+        return CGSizeMake(width - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
         return CGSizeMake(width, 150.0);
     }
     
-    return CGSizeMake(width - 20.0, 250.0);
+    return CGSizeMake(width - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0);
 }
 
 - (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withTitle:(NSString *)title {

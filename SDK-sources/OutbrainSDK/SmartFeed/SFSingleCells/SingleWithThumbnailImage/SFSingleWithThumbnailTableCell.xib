@@ -46,7 +46,7 @@
                         </constraints>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Market Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysi-ZE-GPx">
-                        <rect key="frame" x="136" y="74" width="124" height="14"/>
+                        <rect key="frame" x="136" y="74" width="227" height="14"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" red="0.57647058819999997" green="0.56470588239999997" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
@@ -63,6 +63,7 @@
                     <constraint firstAttribute="bottom" secondItem="lii-IZ-6QS" secondAttribute="bottom" constant="12" id="n2A-KO-KUx"/>
                     <constraint firstItem="ysi-ZE-GPx" firstAttribute="top" secondItem="mtB-rP-jIF" secondAttribute="bottom" constant="2" id="nn9-hr-rff"/>
                     <constraint firstItem="mtB-rP-jIF" firstAttribute="leading" secondItem="lii-IZ-6QS" secondAttribute="trailing" constant="14" id="odb-Zb-nMw"/>
+                    <constraint firstAttribute="trailing" secondItem="ysi-ZE-GPx" secondAttribute="trailing" constant="12" id="sei-da-qoG"/>
                     <constraint firstItem="lii-IZ-6QS" firstAttribute="top" secondItem="aao-7q-lM1" secondAttribute="top" constant="12" id="ugC-TJ-ooj"/>
                     <constraint firstItem="ysi-ZE-GPx" firstAttribute="leading" secondItem="mtB-rP-jIF" secondAttribute="leading" id="vJ8-qi-CJi"/>
                 </constraints>

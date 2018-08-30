@@ -15,7 +15,9 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    let smartFeedWidgetID = "SFD_MAIN_5"
+    let smartFeedWidgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
+    // let smartFeedWidgetID = "SFD_MAIN_5"
+    
     let currentArticleDemoUrl = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     let textHeaderCellReuseIdentifier = "textHeaderCell"
@@ -103,6 +105,20 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         self.smartFeedManager.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
+        
+        // App Developer should configure the app cells here..
+        if (indexPath.row == 1) {
+            if let articleCell = cell as? AppArticleTableViewCell {
+                let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
+                articleCell.headerLabel.font = UIFont(name: articleCell.headerLabel.font!.fontName, size: CGFloat(fontSize))
+            }
+        }
+        if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4) {
+            if let articleCell = cell as? AppArticleTableViewCell {
+                let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
+                articleCell.contentTextView.font = UIFont(name: articleCell.contentTextView.font!.fontName, size: CGFloat(fontSize))
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -110,6 +126,18 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             return self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
         }
         
+        if (indexPath.section == 0) {
+            if (indexPath.row == 0) {
+                return UIDevice.current.userInterfaceIdiom == .pad ? 400 : 250;
+            }
+            else if (indexPath.row == 1) {
+                return UIDevice.current.userInterfaceIdiom == .pad ? 150 : UITableViewAutomaticDimension;
+            }
+            else {
+                return UIDevice.current.userInterfaceIdiom == .pad ? 200 : UITableViewAutomaticDimension;
+            }
+        }
+
         return UITableViewAutomaticDimension;
     }
 }

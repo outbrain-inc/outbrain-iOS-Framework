@@ -13,8 +13,8 @@
 
 -(void) setupView {
     [super setupView];
-    
-    const CGFloat itemWidth = MAX(self.collectionView.frame.size.width*0.6, 220.0);
+    const BOOL isTablet = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+    const CGFloat itemWidth = MAX(self.collectionView.frame.size.width*(isTablet ? 0.4 : 0.6), 220.0);
     const CGFloat itemHeight = MIN(itemWidth*0.85, self.collectionView.frame.size.height);
     self.itemSize = CGSizeMake(itemWidth, itemHeight);
     [self resetLayout:self.itemSize];
