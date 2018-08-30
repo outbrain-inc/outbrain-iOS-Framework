@@ -126,6 +126,18 @@ extension ArticleCollectionViewController {
         self.smartFeedManager.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
         
         // App Developer should configure the app cells here..
+        if (indexPath.row == 1) {
+            if let articleCell = cell as? AppArticleCollectionViewCell {
+                let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
+                articleCell.headerLabel.font = UIFont(name: articleCell.headerLabel.font!.fontName, size: CGFloat(fontSize))
+            }
+        }
+        if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4) {
+            if let articleCell = cell as? AppArticleCollectionViewCell {
+                let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
+                articleCell.contentTextView.font = UIFont(name: articleCell.contentTextView.font!.fontName, size: CGFloat(fontSize))
+            }
+        }
     }
     
     @objc private func outbrainLogoClicked() {
@@ -180,7 +192,7 @@ extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {
         case 0:
             return CGSize(width: width, height: 0.5625*width)
         case 1:
-            return CGSize(width: width, height: 120.0)
+            return CGSize(width: width, height: 0.35*width)
         case 2,3,4:
             return CGSize(width: width, height: 200.0)
         default:
