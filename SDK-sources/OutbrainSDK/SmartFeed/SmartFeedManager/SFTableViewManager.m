@@ -141,17 +141,28 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
 }
 
 - (CGFloat) heightForRowAtIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
-    if (sfItem.itemType == SFTypeStripWithThumbnailNoTitle) {
-        return 120.0;
-    }
-    else if (sfItem.itemType == SFTypeStripWithThumbnailWithTitle) {
-        return 150.0;
-    }
-    else if (sfItem.itemType == SFTypeStripWithTitle) {
+    SFItemType sfItemType = sfItem.itemType;
+    
+    if (sfItemType == SFTypeGridThreeInRowNoTitle) {
         return 280.0;
     }
+    else if (sfItemType == SFTypeCarouselWithTitle) {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : kTableViewRowHeight;
+    }
+    else if (sfItemType == SFTypeGridTwoInRowWithTitle) {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 270.0;
+    }
+    else if (sfItemType == SFTypeStripWithTitle) {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 280.0;
+    }
+    else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0;
+    }
+    else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 210.0 : 150.0;
+    }
     
-    return kTableViewRowHeight;
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? kTableViewRowHeight*1.3 : kTableViewRowHeight;
 }
 
 - (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {

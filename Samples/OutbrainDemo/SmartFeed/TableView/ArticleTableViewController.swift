@@ -15,7 +15,9 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    let smartFeedWidgetID = "SFD_MAIN_5"
+    let smartFeedWidgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
+    // let smartFeedWidgetID = "SFD_MAIN_5"
+    
     let currentArticleDemoUrl = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     let textHeaderCellReuseIdentifier = "textHeaderCell"
@@ -110,6 +112,9 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             return self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
         }
         
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            return UIDevice.current.userInterfaceIdiom == .pad ? 400 : 250;
+        }
         return UITableViewAutomaticDimension;
     }
 }

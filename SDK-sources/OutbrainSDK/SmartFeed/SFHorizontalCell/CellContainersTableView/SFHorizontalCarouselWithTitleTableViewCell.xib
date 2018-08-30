@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,11 +20,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayI-4t-JuJ" customClass="SFHorizontalViewCarousel">
-                        <rect key="frame" x="0.0" y="49.5" width="441" height="200"/>
+                        <rect key="frame" x="0.0" y="33" width="441" height="216.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" priority="750" constant="200" id="XjX-97-94R"/>
-                        </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around Sky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRV-Og-25f">
                         <rect key="frame" x="14" y="8" width="73" height="16.5"/>
@@ -38,6 +36,7 @@
                     <constraint firstItem="ayI-4t-JuJ" firstAttribute="leading" secondItem="rjr-5X-91P" secondAttribute="leading" id="Qg0-Ma-Hyq"/>
                     <constraint firstItem="sRV-Og-25f" firstAttribute="top" secondItem="rjr-5X-91P" secondAttribute="top" constant="8" id="i9D-Of-GET"/>
                     <constraint firstItem="sRV-Og-25f" firstAttribute="leading" secondItem="rjr-5X-91P" secondAttribute="leading" constant="14" id="iOv-Mm-0fD"/>
+                    <constraint firstItem="ayI-4t-JuJ" firstAttribute="height" secondItem="rjr-5X-91P" secondAttribute="height" multiplier="0.85" id="kPP-8F-Tey"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
