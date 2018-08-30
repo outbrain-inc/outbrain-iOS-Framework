@@ -147,6 +147,9 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     else if (sfItemType == SFTypeGridThreeInRowNoTitle) {
         return CGSizeMake(width, 280.0);
     }
+    else if (sfItemType == SFTypeGridTwoInRowWithTitle) {
+        return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 270.0);
+    }
     else if (sfItemType == SFTypeStripWithTitle) {
         return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 280.0);
     }
