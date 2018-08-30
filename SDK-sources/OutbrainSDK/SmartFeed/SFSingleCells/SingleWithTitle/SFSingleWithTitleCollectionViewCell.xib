@@ -82,7 +82,7 @@
                                         </constraints>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Market Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sex-9M-qeC">
-                                        <rect key="frame" x="8" y="223.5" width="124" height="14"/>
+                                        <rect key="frame" x="8" y="223.5" width="396" height="14"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" red="0.57647058823529407" green="0.56470588235294117" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -98,6 +98,7 @@
                                     <constraint firstItem="iCy-6W-9WN" firstAttribute="top" secondItem="S4o-aF-NXt" secondAttribute="bottom" constant="8" id="b58-ll-7bU"/>
                                     <constraint firstItem="z9d-O1-WuI" firstAttribute="top" secondItem="HRb-Ef-t8j" secondAttribute="top" id="cV1-Xn-Fou"/>
                                     <constraint firstItem="S4o-aF-NXt" firstAttribute="top" secondItem="HRb-Ef-t8j" secondAttribute="top" id="gUm-Pc-5w9"/>
+                                    <constraint firstAttribute="trailing" secondItem="sex-9M-qeC" secondAttribute="trailing" constant="8" id="hIO-eP-uyJ"/>
                                     <constraint firstItem="sex-9M-qeC" firstAttribute="top" secondItem="iCy-6W-9WN" secondAttribute="bottom" constant="4" id="iIk-qm-6Xx"/>
                                     <constraint firstAttribute="trailing" secondItem="S4o-aF-NXt" secondAttribute="trailing" id="kqz-yA-cm3"/>
                                     <constraint firstItem="e5u-QE-oNb" firstAttribute="top" secondItem="S4o-aF-NXt" secondAttribute="top" constant="10" id="nvs-os-k3w"/>
