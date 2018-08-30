@@ -142,7 +142,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     // phone 375
     CGFloat width = collectionView.frame.size.width;
     if (sfItemType == SFTypeGridTwoInRowNoTitle || sfItemType == SFTypeCarouselWithTitle || sfItemType == SFTypeCarouselNoTitle) {
-        return CGSizeMake(width, 250.0);
+        return CGSizeMake(width, 240.0);
     }
     else if (sfItemType == SFTypeGridThreeInRowNoTitle) {
         return CGSizeMake(width, 270.0);
