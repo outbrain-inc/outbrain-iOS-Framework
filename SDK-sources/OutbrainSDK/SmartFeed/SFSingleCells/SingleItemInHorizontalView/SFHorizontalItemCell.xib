@@ -6,7 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +24,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="319" height="360"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g77-bX-xEg">
-                                <rect key="frame" x="0.0" y="0.0" width="319" height="234"/>
+                                <rect key="frame" x="0.0" y="0.0" width="319" height="195"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="g77-bX-xEg" secondAttribute="height" multiplier="360:220" id="35V-fs-GaU"/>
+                                </constraints>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5m-0R-CNu" userLabel="Ad Choices Button">
                                 <rect key="frame" x="289" y="0.0" width="30" height="30"/>
@@ -41,13 +44,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" text="Lookup Your Name to See If You Get a PPI Payout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-J8-7zV">
-                                <rect key="frame" x="5" y="238" width="309" height="37.5"/>
+                                <rect key="frame" x="5" y="199" width="309" height="37.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="751" text="The Daily Reporter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbL-mo-IAe">
-                                <rect key="frame" x="5" y="279.5" width="310" height="14"/>
+                                <rect key="frame" x="5" y="240.5" width="310" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.57647058819999997" green="0.56470588239999997" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -66,7 +69,6 @@
                             <constraint firstItem="ofG-qc-XMN" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="top" constant="4" id="hG3-bk-Sdy"/>
                             <constraint firstItem="JbL-mo-IAe" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" constant="5" id="hnT-dN-SM0"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JbL-mo-IAe" secondAttribute="bottom" constant="5" id="jvU-lm-mQe"/>
-                            <constraint firstItem="g77-bX-xEg" firstAttribute="height" secondItem="y1L-1q-EwP" secondAttribute="height" multiplier="0.65" id="kpE-11-xhR"/>
                             <constraint firstItem="X5m-0R-CNu" firstAttribute="top" secondItem="EZ3-tA-2YS" secondAttribute="top" id="rid-ja-s9A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EZ3-tA-2YS"/>

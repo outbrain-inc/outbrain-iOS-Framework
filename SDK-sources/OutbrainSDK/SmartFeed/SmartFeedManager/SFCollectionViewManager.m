@@ -142,7 +142,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     // phone 375
     CGFloat width = collectionView.frame.size.width;
     if (sfItemType == SFTypeGridTwoInRowNoTitle || sfItemType == SFTypeCarouselWithTitle || sfItemType == SFTypeCarouselNoTitle) {
-        return CGSizeMake(width, 240.0);
+        return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 240.0);
     }
     else if (sfItemType == SFTypeGridThreeInRowNoTitle) {
         return CGSizeMake(width, 280.0);
@@ -154,7 +154,7 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
         return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 280.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
-        return CGSizeMake(width - 20.0, 120.0);
+        return CGSizeMake(width - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
         return CGSizeMake(width, 150.0);
