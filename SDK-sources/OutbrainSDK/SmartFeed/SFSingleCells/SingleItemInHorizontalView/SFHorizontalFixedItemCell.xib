@@ -14,14 +14,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SFHorizontalFixedItemCell" id="Gg3-8H-tpC" userLabel="SFHorizontalFixedItemCell" customClass="SFCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="299" height="287"/>
+            <rect key="frame" x="0.0" y="0.0" width="299" height="301"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                <rect key="frame" x="0.0" y="0.0" width="299" height="287"/>
+                <rect key="frame" x="0.0" y="0.0" width="299" height="301"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1L-1q-EwP" userLabel="Content View">
-                        <rect key="frame" x="0.0" y="0.0" width="299" height="287"/>
+                        <rect key="frame" x="0.0" y="0.0" width="299" height="301"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g77-bX-xEg">
                                 <rect key="frame" x="0.0" y="0.0" width="299" height="216"/>
@@ -49,7 +49,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="751" text="The Daily Reporter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97O-YX-tW6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="The Daily Reporter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97O-YX-tW6">
                                 <rect key="frame" x="5" y="262" width="289" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.57647058823529407" green="0.56470588235294117" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
@@ -83,7 +83,7 @@
                 <constraint firstItem="g77-bX-xEg" firstAttribute="top" secondItem="vgc-B6-X7U" secondAttribute="top" id="vbp-N0-ZZp"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
-            <size key="customSize" width="299" height="287"/>
+            <size key="customSize" width="299" height="301"/>
             <connections>
                 <outlet property="adChoicesButton" destination="3c5-yh-4Py" id="CaN-mZ-cbY"/>
                 <outlet property="publisherLogo" destination="3FK-GB-RYH" id="Efc-Ut-loT"/>
@@ -91,7 +91,7 @@
                 <outlet property="recSourceLabel" destination="97O-YX-tW6" id="P5t-39-exc"/>
                 <outlet property="recTitleLabel" destination="vW4-J8-7zV" id="Z6p-Gc-V9D"/>
             </connections>
-            <point key="canvasLocation" x="-410.5" y="43.5"/>
+            <point key="canvasLocation" x="-403.5" y="-19.5"/>
         </collectionViewCell>
     </objects>
 </document>
