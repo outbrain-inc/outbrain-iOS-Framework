@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Market Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wj0-Rd-o7N">
-                                <rect key="frame" x="133" y="73" width="124" height="14"/>
+                                <rect key="frame" x="133" y="73" width="234" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.57647058819999997" green="0.56470588239999997" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -69,6 +69,7 @@
                             <constraint firstItem="OTt-Gd-VRW" firstAttribute="top" secondItem="61q-cI-eoC" secondAttribute="top" constant="4" id="Skh-JU-w5u"/>
                             <constraint firstItem="61q-cI-eoC" firstAttribute="top" secondItem="hNs-fM-9vp" secondAttribute="top" constant="12" id="e1h-LW-DGR"/>
                             <constraint firstItem="wj0-Rd-o7N" firstAttribute="top" secondItem="NuD-GR-QrN" secondAttribute="bottom" constant="2" id="h4N-nu-cxL"/>
+                            <constraint firstAttribute="trailing" secondItem="wj0-Rd-o7N" secondAttribute="trailing" constant="5" id="v7v-pv-WXf"/>
                             <constraint firstItem="pid-Q1-1t8" firstAttribute="top" secondItem="61q-cI-eoC" secondAttribute="top" id="ybY-IY-eP5"/>
                         </constraints>
                     </view>
