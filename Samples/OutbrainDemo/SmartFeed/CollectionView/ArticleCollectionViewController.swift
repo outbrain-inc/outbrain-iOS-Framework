@@ -57,8 +57,10 @@ class ArticleCollectionViewController: UICollectionViewController {
             return
         }
         
+        let widgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
+        //let widgetID = "SFD_MAIN_5"
         let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_2", collectionView: collectionView)
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: widgetID, collectionView: collectionView)
         
         self.smartFeedManager.delegate = self
         
@@ -176,7 +178,7 @@ extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {
         
         switch indexPath.row {
         case 0:
-            return CGSize(width: width, height: 200.0)
+            return CGSize(width: width, height: 0.5625*width)
         case 1:
             return CGSize(width: width, height: 120.0)
         case 2,3,4:
