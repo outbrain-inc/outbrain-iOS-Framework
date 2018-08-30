@@ -213,7 +213,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textHeaderCell" rowHeight="88" id="dzf-UF-KCn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textHeaderCell" rowHeight="88" id="dzf-UF-KCn" customClass="AppArticleTableViewCell" customModule="SmartFeed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="230" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dzf-UF-KCn" id="vRv-fL-nvu">
@@ -252,8 +252,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="yBH-Rd-4YW" secondAttribute="trailing" constant="10" id="sw9-vQ-UQY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="headerLabel" destination="wIf-Ys-YNt" id="Ide-KW-HGm"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contentHeaderCell" id="ec4-ej-oEF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contentHeaderCell" id="ec4-ej-oEF" customClass="AppArticleTableViewCell" customModule="SmartFeed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="318" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ec4-ej-oEF" id="xli-0N-7xa">
@@ -275,6 +278,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="u0x-jR-Fxz" secondAttribute="trailing" constant="7" id="z45-nl-uV1"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentTextView" destination="u0x-jR-Fxz" id="Kc5-AX-he2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
