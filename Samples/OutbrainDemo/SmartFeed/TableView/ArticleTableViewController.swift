@@ -52,11 +52,11 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func setupCustomUIForSmartFeed() {
         let bundle = Bundle.main
-        let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
+        let fixedhorizontalCellNib = UINib(nibName: "AppSFHorizontalFixedItemCell", bundle: bundle)
         let singleCellNib = UINib(nibName: "AppSFSingleWithTitleTableViewCell", bundle: bundle)
         
         //self.smartFeedManager.register(horizontalCellNib, withCellWithReuseIdentifier: "AppSFHorizontalItemCell",f
-        //self.smartFeedManager.register(horizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SFD_MAIN_2")
+        self.smartFeedManager.register(fixedhorizontalCellNib, withReuseIdentifier: "AppSFHorizontalFixedItemCell", forWidgetId: "SFD_MAIN_2")
         self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleWithTitleTableViewCell", forWidgetId: "SDK_SFD_1")
     }
     
