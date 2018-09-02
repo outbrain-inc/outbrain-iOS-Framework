@@ -130,6 +130,10 @@ extension ArticleCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.smartFeedManager.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
         
+        if indexPath.section == self.smartFeedManager.outbrainSectionIndex {
+            return
+        }
+        
         // App Developer should configure the app cells here..
         if (indexPath.row == 1) {
             if let articleCell = cell as? AppArticleCollectionViewCell {
