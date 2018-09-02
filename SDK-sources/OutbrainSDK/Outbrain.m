@@ -19,7 +19,7 @@
 
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"3.0.0";
+NSString * const OB_SDK_VERSION     =   @"3.1.0";
 
 BOOL WAS_INITIALISED     =   NO;
 
