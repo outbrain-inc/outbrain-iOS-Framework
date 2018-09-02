@@ -57,8 +57,8 @@ class ArticleCollectionViewController: UICollectionViewController {
             return
         }
         
-        //let widgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
-        let widgetID = "SFD_MAIN_5"
+        let widgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
+        //let widgetID = "SFD_MAIN_5"
         let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
         self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: widgetID, collectionView: collectionView)
         
@@ -72,10 +72,13 @@ class ArticleCollectionViewController: UICollectionViewController {
         let bundle = Bundle.main
         let fixedhorizontalCellNib = UINib(nibName: "AppSFHorizontalFixedItemCell", bundle: bundle)
         let carouselHorizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
-        let singleCellNib = UINib(nibName: "AppSFCollectionViewCell", bundle: bundle)
-        self.smartFeedManager.register(fixedhorizontalCellNib, withReuseIdentifier: "AppSFHorizontalFixedItemCell", forWidgetId: "SFD_MAIN_5")
-        self.smartFeedManager.register(carouselHorizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SDK_SFD_5")
-        //self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFCollectionViewCell", forWidgetId: "SDK_SFD_1")
+        let singleCellNib = UINib(nibName: "AppSFSingleWithTitleCollectionViewCell", bundle: bundle)
+        
+        // Example - un-comment to see how Smartfeed custom-UI works.
+        
+        // self.smartFeedManager.register(fixedhorizontalCellNib, withReuseIdentifier: "AppSFHorizontalFixedItemCell", forWidgetId: "SFD_MAIN_5")
+        // self.smartFeedManager.register(carouselHorizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SDK_SFD_5")
+        // self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleWithTitleCollectionViewCell", forWidgetId: "SDK_SFD_1")
     }
 }
 
