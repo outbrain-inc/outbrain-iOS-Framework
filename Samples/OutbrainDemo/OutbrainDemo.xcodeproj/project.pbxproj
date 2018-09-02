@@ -30,7 +30,7 @@
 		E60DCD3920BC3AAD0023FE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CCF2085DBD50016D79A /* AppDelegate.swift */; };
 		E60DCD3D20BC3AAD0023FE93 /* AppSFTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE02085DC6C0016D79A /* AppSFTableViewCell.xib */; };
 		E60DCD3E20BC3AAD0023FE93 /* AppSFHorizontalFixedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE82085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib */; };
-		E60DCD3F20BC3AAD0023FE93 /* AppSFCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE92085DC6C0016D79A /* AppSFCollectionViewCell.xib */; };
+		E60DCD3F20BC3AAD0023FE93 /* AppSingleNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE92085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib */; };
 		E60DCD4020BC3AAD0023FE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD82085DBD50016D79A /* LaunchScreen.storyboard */; };
 		E60DCD4120BC3AAD0023FE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD62085DBD50016D79A /* Assets.xcassets */; };
 		E60DCD4220BC3AAD0023FE93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD32085DBD50016D79A /* Main.storyboard */; };
@@ -87,7 +87,7 @@
 		E61E6CEE2085DC6C0016D79A /* AppSFHorizontalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE62085DC6C0016D79A /* AppSFHorizontalItemCell.swift */; };
 		E61E6CEF2085DC6C0016D79A /* AppSFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE72085DC6C0016D79A /* AppSFCollectionViewCell.swift */; };
 		E61E6CF02085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE82085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib */; };
-		E61E6CF12085DC6C0016D79A /* AppSFCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE92085DC6C0016D79A /* AppSFCollectionViewCell.xib */; };
+		E61E6CF12085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE92085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib */; };
 		E628614F2137FC8700D12A15 /* AppArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */; };
 		E62861502137FC8700D12A15 /* AppArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */; };
 		E62861542138231800D12A15 /* AppArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62861532138231800D12A15 /* AppArticleTableViewCell.swift */; };
@@ -213,7 +213,7 @@
 		E61E6CE62085DC6C0016D79A /* AppSFHorizontalItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFHorizontalItemCell.swift; sourceTree = "<group>"; };
 		E61E6CE72085DC6C0016D79A /* AppSFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFCollectionViewCell.swift; sourceTree = "<group>"; };
 		E61E6CE82085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFHorizontalFixedItemCell.xib; sourceTree = "<group>"; };
-		E61E6CE92085DC6C0016D79A /* AppSFCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFCollectionViewCell.xib; sourceTree = "<group>"; };
+		E61E6CE92085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		E62861532138231800D12A15 /* AppArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArticleTableViewCell.swift; sourceTree = "<group>"; };
 		E6286166213C0EED00D12A15 /* AppSFHorizontalItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFHorizontalItemCell.xib; sourceTree = "<group>"; };
@@ -513,7 +513,7 @@
 				E61E6CE72085DC6C0016D79A /* AppSFCollectionViewCell.swift */,
 				E6286166213C0EED00D12A15 /* AppSFHorizontalItemCell.xib */,
 				E61E6CE82085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib */,
-				E61E6CE92085DC6C0016D79A /* AppSFCollectionViewCell.xib */,
+				E61E6CE92085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib */,
 			);
 			path = SmartFeedCells;
 			sourceTree = "<group>";
@@ -801,7 +801,7 @@
 				E64F6041212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
 				E64F603B212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */,
 				E60DCD3E20BC3AAD0023FE93 /* AppSFHorizontalFixedItemCell.xib in Resources */,
-				E60DCD3F20BC3AAD0023FE93 /* AppSFCollectionViewCell.xib in Resources */,
+				E60DCD3F20BC3AAD0023FE93 /* AppSingleNoTitleCollectionViewCell.xib in Resources */,
 				E64F603E212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
 				E60DCD4020BC3AAD0023FE93 /* LaunchScreen.storyboard in Resources */,
 				E60DCD4120BC3AAD0023FE93 /* Assets.xcassets in Resources */,
@@ -832,7 +832,7 @@
 				E64F6042212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
 				E64F603C212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */,
 				E61E6CF02085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib in Resources */,
-				E61E6CF12085DC6C0016D79A /* AppSFCollectionViewCell.xib in Resources */,
+				E61E6CF12085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib in Resources */,
 				E64F603F212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
 				E61E6CDA2085DBD50016D79A /* LaunchScreen.storyboard in Resources */,
 				E61E6CD72085DBD50016D79A /* Assets.xcassets in Resources */,
