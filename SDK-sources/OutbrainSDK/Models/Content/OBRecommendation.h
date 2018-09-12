@@ -51,6 +51,8 @@
 @property (nonatomic, assign, getter = isVideo, readonly) BOOL video;
 /** @brief An image related to the recommendation. */
 @property (nonatomic, strong, readonly) OBImage *image;
+/** @brief Publisher logo image */
+@property (nonatomic, strong, readonly) OBImage *publisherLogoImage;
 /** @brief Disclosure icon for conversion campaigns */
 @property (nonatomic, strong, readonly) OBDisclosure *disclosure;
 /** @brief Pixels array for a recommendation to be fired when recommendation received from the server */

@@ -113,7 +113,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     if ([OutbrainManager sharedInstance].testMode) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"location" value: @"us"]];
-        if (request.fid == nil && ![request.widgetId isEqualToString:@"SFD_MAIN_1"]) {
+        if (request.fid == nil && ![request.widgetId containsString:@"SFD_MAIN"]) {
             [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
             [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"2"]];
         }

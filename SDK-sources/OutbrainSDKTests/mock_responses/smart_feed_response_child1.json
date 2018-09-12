@@ -1,0 +1,92 @@
+{
+    "response": {
+        "exec_time": 40,
+        "timestamp": 1535368921027,
+        "status": {
+            "id": 0,
+            "content": "Request succeeded"
+        },
+        "request": {
+            "lang": "en",
+            "idx": "0",
+            "lastIdx": "9999",
+            "lastCardIdx": "9999",
+            "did": "720627693",
+            "pid": "4737",
+            "lsd": "d19a3a3f-8e1f-4e3d-b2bb-d61a75733dea",
+            "enu": "W2T5pEqt57CHDZPvY6M8u3cyZwbVDbZKcU8UBTMqg2Bo_c0dqMDi51aAKl26bNAB",
+            "api_user_id": "D19A3A3F-8E1F-4E3D-B2BB-D61A75733DEA",
+            "t": "MV9jOWI0NDIzNmRlYWVkYTA2YjI0M2I1ODRlNTk2ZTczN18w",
+            "pvId": "c9b44236deaeda06b243b584e596e737",
+            "pad": "0",
+            "org": "1",
+            "abTestVal": "no_abtest",
+            "obRecsAbtestAndVars": "467-1501",
+            "widgetJsId": "SDK_SFD_1",
+            "readerPlatform": "desktop",
+            "isHttps": "true",
+            "rtbTest": "false",
+            "rtbBidTestMode": "false",
+            "rtbTestRecsNum": "0",
+            "amplifyEnabled": "true",
+            "gdpr": "0",
+            "sid": 5291479,
+            "wnid": 1144,
+            "req_id": "c9b44236deaeda06b243b584e596e737",
+            "gl": "mgchoVtVE3g1i_q8pRTFdA",
+            "vid": 0,
+            "ref": 0
+        },
+        "documents": {
+            "total_count": 1,
+            "count": 1,
+            "doc": [
+                    {
+                    "source_name": "Sky Sports",
+                    "same_source": "false",
+                    "source_display_name": "Sky Sports",
+                    "explain": "reasonType=DEFAULT, , , isClickable=false, reasonCtaText=, reasonText=suggested for you",
+                    "pub_id": "2256",
+                    "source_id": "5763007",
+                    "publish_date": "2018-08-23 00:00",
+                    "orig_url": "http://www.skysports.com/transfer/news/11735/11480072/millwall-set-to-complete-record-deal-for-tom-bradshaw",
+                    "desc": "Millwall are close to breaking their transfer record - which has stood since 1989 - by signing striker Tom Bradshaw from Barnsley, according to Sky sources.",
+                    "rec-cats": [
+                                 1912
+                                 ],
+                    "ads_type": 2,
+                    "rec_en_did": "g5-Z5DxD4wgqvrfTEH2kmg",
+                    "url": "https://traffic.outbrain.com/network/redir?p=D1pyM9PGx5KgoxAjSk0FCJCfCGuFsSf7vrmEjobnpDrqdzS7IHyChuv4af0npwf5DGapc6lCies4VqKyp0lvnCYF_5sMqkjcCa3_5BeayDHkRHNUHrMjgX1r-HBjSaAHYCUHH_NqRPSV0YSdhORuiG1hfgFW86OBp2VLuy_FM-0WbS8bo_qB465Uctj5z-bZ8lDIUVZZBJfMusvIiXYJmkHi3ekuG5HwB4rI40mEkDMyATQHrHjYY74V0SkDRwufTXT7CJNxOWt-eBDpdY_qxjLP-CL1fjzV1SVlDcqJS871OUzRZYvgi97gFquJclFDU8cPTAFgws9k3oAwCvFhFikFLJnE41FvtXMFQ3VpOlU0aqanuv7tBaweNlFCXLhXvO_msWAiNiC_6ZFVRWsGqrtXimUsw9qbM8JJg974DWq9CAnrVcU07JfDzI2qSudgTRbNWeNUmF4SZ1e6yJQ1hoGhuWv6Skao2vq-ssMpBuW6dgCIqcUgaE9v7Ob7ZCFxEF0Y3ekSv48K7rT0BlVE4nfKa6GYxWDGLapvk7KrU1mZ44yJv2uVgmGq5KNoqSmng020Q-jcjXFkzEsE_GA8xRN7MuCoQevVGM4kjnmJpGd5Jf_xiKYM1lfqwheGZBFNnIWyDMs9i_XIM8NLsg_fqSoONoGHsG1Aoffjp_U5naHC9od0RPont3LPFLqFEVYWlhnkEL5K1RPoJ5HRhoSUEWzW32gAwom5KmqEdNKgiU9ubwv8OGGJv28FTXKVfFiXBWXf3abJhDZKUGFYODw7Mz8HFNRCCpxtl7Uesij6LVk&c=848ebca4&v=3",
+                    "author": "By Sky Sports News |",
+                    "content": "Millwall set to complete record deal for Tom Bradshaw",
+                    "pos": "0",
+                    "ttid": 4,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjE4MzY4MzRjNzEzZjQ4OWFlYmUzMzY5OTM2ZmZlYzFhZGU3YWNmNGJlOTIxNzBlZDYyZDEwM2Y0NjA2YzIxMmIiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.webp",
+                    "width": 600,
+                    "height": 337,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    },
+                    "logo": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImY5OTE5OTIxMTg5YTNlOThlMDFiMjE3NjQxOTg0ZDcwOGY5ZWU1ZmY5YWFhM2I4YmRhZmZmNjQ3MmIzZDljOTQiLCJ3Ijo4NSwiaCI6MjAsImQiOjIuMCwiY3MiOjAsImYiOjB9.jpg",
+                    "width": "85",
+                    "height": "20"
+                    },
+                    "reason": {
+                    "text": "suggested for you",
+                    "type": "0",
+                    "clickable": "false"
+                    }
+                    }
+                    ]
+        },
+        "settings": {
+            "flagPublisherZappingFeature": true,
+            "recMode": "sdk_sfd_1_column",
+            "globalWidgetStatistics": true,
+            "apv": false,
+            "nanoOrganicsHeader": "Around CNN",
+            "InstallationType": "mobile-app-sdk"
+        }
+    }
+}

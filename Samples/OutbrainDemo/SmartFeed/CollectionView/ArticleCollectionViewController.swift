@@ -17,13 +17,12 @@ class ArticleCollectionViewController: UICollectionViewController {
     let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
     let textHeaderCellReuseIdentifier = "textHeaderCollectionCell"
     let contentCellReuseIdentifier = "contentCollectionCell"
-    let outbrainHeaderCellReuseIdentifier = "outbrainHeaderCollectionCell"
     let outbrainRecCellReuseIdentifier = "outbrainRecCollectionCell"
     var refresher:UIRefreshControl!
     
     fileprivate let itemsPerRow: CGFloat = 1
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
-    let originalArticleItemsCount = 6
+    let originalArticleItemsCount = 5
 
     
     override func viewDidLoad() {
@@ -57,11 +56,11 @@ class ArticleCollectionViewController: UICollectionViewController {
         guard let collectionView = self.collectionView else {
             return
         }
-        guard let publisherLogoImage = UIImage(named: "cnn-logo") else {
-            return
-        }
+        
+        let widgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
+        //let widgetID = "SFD_MAIN_5"
         let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: "SFD_MAIN_1", collectionView: collectionView, publisherName: "CNN", publisherImage: publisherLogoImage)
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: widgetID, collectionView: collectionView)
         
         self.smartFeedManager.delegate = self
         
@@ -71,10 +70,15 @@ class ArticleCollectionViewController: UICollectionViewController {
     
     func setupCustomUIForSmartFeed() {
         let bundle = Bundle.main
-        let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
-        let singleCellNib = UINib(nibName: "AppSFCollectionViewCell", bundle: bundle)
-        self.smartFeedManager.registerHorizontalItemNib(horizontalCellNib, forCellWithReuseIdentifier: "AppSFHorizontalItemCell")
-        self.smartFeedManager.registerSingleItemNib(singleCellNib, forCellWithReuseIdentifier: "AppSFCollectionViewCell")
+        let fixedhorizontalCellNib = UINib(nibName: "AppSFHorizontalFixedItemCell", bundle: bundle)
+        let carouselHorizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
+        let singleCellNib = UINib(nibName: "AppSFSingleWithTitleCollectionViewCell", bundle: bundle)
+        
+        // Example - un-comment to see how Smartfeed custom-UI works.
+        
+        // self.smartFeedManager.register(fixedhorizontalCellNib, withReuseIdentifier: "AppSFHorizontalFixedItemCell", forWidgetId: "SFD_MAIN_5")
+        // self.smartFeedManager.register(carouselHorizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SDK_SFD_5")
+        // self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleWithTitleCollectionViewCell", forWidgetId: "SDK_SFD_1")
     }
 }
 
@@ -93,7 +97,7 @@ extension ArticleCollectionViewController {
             return originalArticleItemsCount
         }
         else {
-            return self.smartFeedManager.smartFeedItemsArray.count
+            return self.smartFeedManager.smartFeedItemsCount()
         }
     }
 
@@ -116,17 +120,6 @@ extension ArticleCollectionViewController {
         case 2,3,4:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: contentCellReuseIdentifier,
                                                       for: indexPath)
-        case 5:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: outbrainHeaderCellReuseIdentifier,
-                                                      for: indexPath)
-            if let button = cell?.viewWithTag(33) as? UIButton {
-                button.addTarget(self, action: #selector(self.outbrainLogoClicked), for: .touchUpInside)
-            }
-            
-            if let obLabel = cell?.viewWithTag(455) as? OBLabel {
-                Outbrain.register(obLabel, withWidgetId: self.smartFeedManager.widgetId, andUrl: self.smartFeedManager.url)
-            }
-            
         default:
             break
         }
@@ -137,7 +130,23 @@ extension ArticleCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.smartFeedManager.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
         
+        if indexPath.section == self.smartFeedManager.outbrainSectionIndex {
+            return
+        }
+        
         // App Developer should configure the app cells here..
+        if (indexPath.row == 1) {
+            if let articleCell = cell as? AppArticleCollectionViewCell {
+                let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
+                articleCell.headerLabel.font = UIFont(name: articleCell.headerLabel.font!.fontName, size: CGFloat(fontSize))
+            }
+        }
+        if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4) {
+            if let articleCell = cell as? AppArticleCollectionViewCell {
+                let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
+                articleCell.contentTextView.font = UIFont(name: articleCell.contentTextView.font!.fontName, size: CGFloat(fontSize))
+            }
+        }
     }
     
     @objc private func outbrainLogoClicked() {
@@ -149,7 +158,7 @@ extension ArticleCollectionViewController {
     }
 }
 
-extension ArticleCollectionViewController : SmartFeedDelegate {
+extension ArticleCollectionViewController : SmartFeedDelegate {    
     func userTapped(on rec: OBRecommendation) {
         print("You tapped rec \(rec.content).")
         guard let url = Outbrain.getUrl(rec) else {
@@ -162,6 +171,15 @@ extension ArticleCollectionViewController : SmartFeedDelegate {
     
     func userTapped(onAdChoicesIcon url: URL) {
         print("You tapped onAdChoicesIcon")
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
+    
+    func userTappedOnOutbrainLabeling() {
+        print("You tapped on Outbrain Labeling")
+        guard let url = Outbrain.getAboutURL() else {
+            return
+        }
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
@@ -181,13 +199,11 @@ extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {
         
         switch indexPath.row {
         case 0:
-            return CGSize(width: width, height: 200.0)
+            return CGSize(width: width, height: 0.5625*width)
         case 1:
-            return CGSize(width: width, height: 120.0)
+            return CGSize(width: width, height: 0.35*width)
         case 2,3,4:
             return CGSize(width: width, height: 200.0)
-        case 5:
-            return CGSize(width: width, height: 50)
         default:
             break
         }

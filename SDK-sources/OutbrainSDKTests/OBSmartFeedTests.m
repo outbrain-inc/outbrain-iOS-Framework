@@ -10,6 +10,8 @@
 #import "OBTestUtils.h"
 #import "OutbrainSDK.h"
 #import "OBRecommendationRequestOperation.h"
+#import "SFItemData.h"
+
 
 @interface OBRecommendationRequestOperation (Testing)
 
@@ -29,11 +31,10 @@
 
 @interface OBSmartFeedTests : XCTestCase
 
-@property (nonatomic, strong) OBRecommendationResponse *response1;
-@property (nonatomic, strong) OBRecommendationResponse *response2;
-@property (nonatomic, strong) OBRecommendationResponse *response3;
-@property (nonatomic, strong) OBRecommendationResponse *response4;
-@property (nonatomic, strong) OBRecommendationResponse *response5;
+@property (nonatomic, strong) OBRecommendationResponse *responseParent;
+@property (nonatomic, strong) OBRecommendationResponse *responseChild1;
+@property (nonatomic, strong) OBRecommendationResponse *responseChild2;
+@property (nonatomic, strong) OBRecommendationResponse *responseChild3;
 
 @property (nonatomic, strong) SmartFeedManager *smartFeedManager;
 
@@ -50,25 +51,21 @@
     OBRecommendationRequestOperation *operation = [[OBRecommendationRequestOperation alloc] init];
     
     [Outbrain initializeOutbrainWithPartnerKey:@"12345"];
-    NSDictionary *responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_1"];
+    NSDictionary *responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_parent"];
     XCTAssertNotNil(responseJson);
-    self.response1 = [operation createResponseWithDict:responseJson withError:nil];
+    self.responseParent = [operation createResponseWithDict:responseJson withError:nil];
     
-    responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_2"];
+    responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_child1"];
     XCTAssertNotNil(responseJson);
-    self.response2 = [operation createResponseWithDict:responseJson withError:nil];
+    self.responseChild1 = [operation createResponseWithDict:responseJson withError:nil];
     
-    responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_3"];
+    responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_child2"];
     XCTAssertNotNil(responseJson);
-    self.response3 = [operation createResponseWithDict:responseJson withError:nil];
+    self.responseChild2 = [operation createResponseWithDict:responseJson withError:nil];
     
-    responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_4"];
+    responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_child3"];
     XCTAssertNotNil(responseJson);
-    self.response4 = [operation createResponseWithDict:responseJson withError:nil];
-    
-    responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_5"];
-    XCTAssertNotNil(responseJson);
-    self.response5 = [operation createResponseWithDict:responseJson withError:nil];
+    self.responseChild3 = [operation createResponseWithDict:responseJson withError:nil];
 }
 
 - (void)tearDown {
@@ -77,61 +74,66 @@
 }
 
 - (void)testSmartFeedResponsesContent {
-    XCTAssertEqual(self.response1.recommendations.count, 6);
-    XCTAssertEqual(self.response2.recommendations.count, 2); // paid
-    XCTAssertEqual(self.response3.recommendations.count, 4); // organic
-    XCTAssertEqual(self.response4.recommendations.count, 2); // paid
-    XCTAssertEqual(self.response5.recommendations.count, 4); // organic
+    XCTAssertEqual(self.responseParent.recommendations.count, 6);
+    XCTAssertEqual(self.responseChild1.recommendations.count, 1);
+    XCTAssertEqual(self.responseChild2.recommendations.count, 2);
+    XCTAssertEqual(self.responseChild3.recommendations.count, 1);
 }
+
+- (void)testRecModeIsFetchedCorrectlyFromResponse {
+    XCTAssertTrue([self.responseParent.settings.recMode isEqualToString:@"sdk_sfd_2_columns"]);
+    XCTAssertTrue([self.responseChild1.settings.recMode isEqualToString:@"sdk_sfd_1_column"]);
+    XCTAssertTrue([self.responseChild2.settings.recMode isEqualToString:@"sdk_sfd_thumbnails"]);
+    XCTAssertTrue([self.responseChild3.settings.recMode isEqualToString:@"sdk_sfd_1_column"]);
+}
+
+- (void)testWidgetHeaderTextIsFetchedCorrectlyFromResponse {
+    XCTAssertTrue([self.responseParent.settings.widgetHeaderText isEqualToString:@"Sponsored Links"]);
+    XCTAssertTrue([self.responseChild1.settings.widgetHeaderText isEqualToString:@"Around CNN"]);
+    XCTAssertNil(self.responseChild2.settings.widgetHeaderText);
+    XCTAssertTrue([self.responseChild3.settings.widgetHeaderText isEqualToString:@"Sponsored Links"]);
+}
+
+- (void)testFeedContentIsFetchedCorrectlyFromResponse {
+    XCTAssertNotNil(self.responseParent.settings.feedContentArray);
+    XCTAssertEqual(self.responseParent.settings.feedContentArray.count, 3);
+    XCTAssertTrue([self.responseParent.settings.feedContentArray[1] isEqualToString:@"SDK_SFD_2"]);
+    XCTAssertNil(self.responseChild3.settings.feedContentArray);
+}
+
+- (void)testFeedCycleLimitIsFetchedCorrectlyFromResponse {
+    XCTAssertEqual(self.responseParent.settings.feedCyclesLimit, 5);
+    XCTAssertEqual(self.responseChild1.settings.feedCyclesLimit, 0);
+}
+
+- (void)testPublisherLogoIsFetchedCorrectlyFromResponse {
+    OBRecommendation *recWithLogo = self.responseChild1.recommendations[0];
+    XCTAssertTrue([recWithLogo.publisherLogoImage.url.absoluteString isEqualToString:@"https://images.outbrainimg.com/transform/v3/eyJpdSI6ImY5OTE5OTIxMTg5YTNlOThlMDFiMjE3NjQxOTg0ZDcwOGY5ZWU1ZmY5YWFhM2I4YmRhZmZmNjQ3MmIzZDljOTQiLCJ3Ijo4NSwiaCI6MjAsImQiOjIuMCwiY3MiOjAsImYiOjB9.jpg"]);
+    
+    OBRecommendation *recNoLogo = self.responseChild3.recommendations[0];
+    XCTAssertNil(recNoLogo.publisherLogoImage);
+    
+}
+
 
 - (void)testSmartFeedManagerBuildArrayOfItems {
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response1];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 5);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response2];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseParent];
+    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 3);
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild1];
+    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 4);
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild2];
+    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 6);
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild3];
     XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 7);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response3];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 8);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response4];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 10);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response5];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 11);
 }
 
-- (void)testHorizontalCellsAreBuiltForOrganicRecs {
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response1];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response2];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response3];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response4];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response5];
+- (void)testUITemplateIsSetCorrectly {
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseParent];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild1];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild2];
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild3];
     
-    XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:0 inSection:1]]);
-    XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:1 inSection:1]]);
-    XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:2 inSection:1]]);
-    XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:3 inSection:1]]);
-    XCTAssertTrue([self.smartFeedManager  isHorizontalCell:[NSIndexPath indexPathForRow:4 inSection:1]]);
-    XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:5 inSection:1]]);
-    XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:6 inSection:1]]);
-    XCTAssertTrue([self.smartFeedManager  isHorizontalCell:[NSIndexPath indexPathForRow:7 inSection:1]]);
-    XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:8 inSection:1]]);
-    XCTAssertFalse([self.smartFeedManager isHorizontalCell:[NSIndexPath indexPathForRow:9 inSection:1]]);
-    XCTAssertTrue([self.smartFeedManager  isHorizontalCell:[NSIndexPath indexPathForRow:10 inSection:1]]);
-}
-
-- (void)testContentOfSmartFeedArray {
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response1];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response2];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response3];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response4];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.response5];
-    
-    NSArray *recs = [self.smartFeedManager recsForHorizontalCellAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:1]];
-    XCTAssertEqual(recs.count, 2);
-    
-    recs = [self.smartFeedManager recsForHorizontalCellAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:1]];
-    XCTAssertEqual(recs.count, 4);
-    
-    recs = [self.smartFeedManager recsForHorizontalCellAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:1]];
-    XCTAssertEqual(recs.count, 4);
+    SFItemData *sfItem = self.smartFeedManager.smartFeedItemsArray[0];
 }
 
 

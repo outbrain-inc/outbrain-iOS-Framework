@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SFHorizontalCarouselWithTitleCollectionViewCell" id="5WA-yK-Vag" customClass="SFHorizontalCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="461" height="251"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="461" height="251"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJD-mi-P9N">
+                        <rect key="frame" x="0.0" y="0.0" width="461" height="251"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSE-ha-ESX" customClass="SFHorizontalViewCarousel">
+                                <rect key="frame" x="0.0" y="29.5" width="461" height="216.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around Sky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEy-cl-S9c">
+                                <rect key="frame" x="14" y="8" width="73" height="16.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SEy-cl-S9c" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" constant="14" id="BLx-7B-HW8"/>
+                            <constraint firstItem="SEy-cl-S9c" firstAttribute="top" secondItem="jJD-mi-P9N" secondAttribute="top" constant="8" id="DPG-BY-usb"/>
+                            <constraint firstAttribute="bottom" secondItem="ZSE-ha-ESX" secondAttribute="bottom" constant="5" id="LUw-23-WGk"/>
+                            <constraint firstItem="ZSE-ha-ESX" firstAttribute="top" secondItem="SEy-cl-S9c" secondAttribute="bottom" constant="5" id="iUL-Ug-K7w"/>
+                            <constraint firstAttribute="trailing" secondItem="ZSE-ha-ESX" secondAttribute="trailing" id="qYt-Rg-xni"/>
+                            <constraint firstItem="ZSE-ha-ESX" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" id="wMb-QC-m0l"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="jJD-mi-P9N" secondAttribute="bottom" id="5ne-iK-e52"/>
+                <constraint firstItem="jJD-mi-P9N" firstAttribute="top" secondItem="5WA-yK-Vag" secondAttribute="top" id="Won-y0-IYr"/>
+                <constraint firstItem="jJD-mi-P9N" firstAttribute="leading" secondItem="5WA-yK-Vag" secondAttribute="leading" id="oIB-Yu-lre"/>
+                <constraint firstAttribute="trailing" secondItem="jJD-mi-P9N" secondAttribute="trailing" id="vKO-aP-C4J"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="AgH-sS-i8G"/>
+            <size key="customSize" width="461" height="251"/>
+            <connections>
+                <outlet property="horizontalView" destination="ZSE-ha-ESX" id="Wbw-Gg-Dbg"/>
+                <outlet property="titleLabel" destination="SEy-cl-S9c" id="JUo-wP-NNi"/>
+            </connections>
+            <point key="canvasLocation" x="-72.5" y="11.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

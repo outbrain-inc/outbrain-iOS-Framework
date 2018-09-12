@@ -15,29 +15,31 @@
 @interface OBRecommendation()
 
 /** @brief The date the content was published. */
-@property (nonatomic, strong, readwrite) NSDate * publishDate;
+@property (nonatomic, strong) NSDate * publishDate;
 /** @brief The re-direct URL of the content. */
-@property (nonatomic, strong, readwrite) NSURL * redirectURL;
+@property (nonatomic, strong) NSURL * redirectURL;
 /** @brief TBD - property may be removed. */
-@property (nonatomic, copy, readwrite) NSString * author;
+@property (nonatomic, copy) NSString * author;
 /** @brief The recommendation's title. */
-@property (nonatomic, copy, readwrite) NSString * content;
+@property (nonatomic, copy) NSString * content;
 /** @brief The name of the recommendation's source. */
-@property (nonatomic, copy, readwrite) NSString * source;
+@property (nonatomic, copy) NSString * source;
 /** @brief Is the recommendation from the same source as the one the user is currently viewing. */
-@property (nonatomic, assign, getter = isSameSource, readwrite) BOOL sameSource;
+@property (nonatomic, assign, getter = isSameSource) BOOL sameSource;
 /** @brief Is this a recommendation for which the publisher pays, when your user clicks on it. */
-@property (nonatomic, assign, getter = isPaidLink, readwrite) BOOL paidLink;
+@property (nonatomic, assign, getter = isPaidLink) BOOL paidLink;
 /** @brief Is the recommendation a link to a video clip. */
-@property (nonatomic, assign, getter = isVideo, readwrite) BOOL video;
+@property (nonatomic, assign, getter = isVideo) BOOL video;
 /** @brief An image related to the recommendation. */
-@property (nonatomic, strong, readwrite) OBImage *image;
+@property (nonatomic, strong) OBImage *image;
+/** @brief An image related to the recommendation. */
+@property (nonatomic, strong) OBImage *publisherLogoImage;
 /** @brief The appflow settings for the content, currently only shouldOpenInExternalBrowser is supported. */
-@property (nonatomic, strong, readwrite) NSDictionary *appflow;
+@property (nonatomic, strong) NSDictionary *appflow;
 /** @brief Disclosure icon for conversion campaigns */
-@property (nonatomic, strong, readwrite) OBDisclosure *disclosure;
+@property (nonatomic, strong) OBDisclosure *disclosure;
 /** @brief Pixels array for a recommendation to be fired when recommendation received from the server */
-@property (nonatomic, strong, readwrite) NSArray *pixels;
+@property (nonatomic, strong) NSArray *pixels;
 
 @end
 
@@ -83,6 +85,7 @@
              @"content":                            @"content",
              @"sameSource":                         @"same_source",
              @"image":                              @"thumbnail",
+             @"publisherLogoImage":                 @"logo",
              @"video":                              @"isVideo",
              @"appflow":                            @"appflow",
              @"disclosure":                         @"disclosure",
@@ -93,6 +96,7 @@
 + (Class)propertyClassForKey:(NSString *)key
 {
     if ([key isEqualToString:@"thumbnail"])         return [OBImage class];
+    if ([key isEqualToString:@"logo"])              return [OBImage class];
     if ([key isEqualToString:@"disclosure"])        return [OBDisclosure class];
     if ([key isEqualToString:@"publish_date"])      return [NSDate class];
     if ([key isEqualToString:@"url"])               return [NSURL class];

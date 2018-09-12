@@ -15,14 +15,15 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    let smartFeedWidgetID = "SFD_MAIN_1"
+    let smartFeedWidgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
+    // let smartFeedWidgetID = "SFD_MAIN_5"
+    
     let currentArticleDemoUrl = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
-    let outbrainHeaderCellReuseIdentifier = "outbrainHeaderCell"
     
-    let originalArticleItemsCount = 6
+    let originalArticleItemsCount = 5
     var outbrainIdx = 0
     var isLoadingOutrainRecs = false
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
@@ -41,11 +42,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func setupSmartFeed() {
-        guard let publisherLogoImage = UIImage(named: "cnn-logo") else {
-            return
-        }
         let baseURL = currentArticleDemoUrl
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: smartFeedWidgetID, tableView: self.tableView, publisherName: "CNN", publisherImage: publisherLogoImage)
+        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: smartFeedWidgetID, tableView: self.tableView)
         self.smartFeedManager.delegate = self
         
         // Optional
@@ -54,10 +52,12 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func setupCustomUIForSmartFeed() {
         let bundle = Bundle.main
-        let horizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
-        let singleCellNib = UINib(nibName: "AppSFTableViewCell", bundle: bundle)
-        self.smartFeedManager.registerHorizontalItemNib(horizontalCellNib, forCellWithReuseIdentifier: "AppSFHorizontalItemCell")
-        self.smartFeedManager.registerSingleItemNib(singleCellNib, forCellWithReuseIdentifier: "AppSFTableViewCell")
+        let fixedhorizontalCellNib = UINib(nibName: "AppSFHorizontalFixedItemCell", bundle: bundle)
+        let singleCellNib = UINib(nibName: "AppSFSingleWithTitleTableViewCell", bundle: bundle)
+        
+        //self.smartFeedManager.register(horizontalCellNib, withCellWithReuseIdentifier: "AppSFHorizontalItemCell",f
+        self.smartFeedManager.register(fixedhorizontalCellNib, withReuseIdentifier: "AppSFHorizontalFixedItemCell", forWidgetId: "SFD_MAIN_2")
+        self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleWithTitleTableViewCell", forWidgetId: "SDK_SFD_1")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -70,7 +70,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             return originalArticleItemsCount
         }
         else {
-            return self.smartFeedManager.smartFeedItemsArray.count
+            return self.smartFeedManager.smartFeedItemsCount()
         }
     }
         
@@ -82,7 +82,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         
         if indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
             return self.smartFeedManager.tableView(tableView, cellForRowAt: indexPath)
-            //setCardView(cell: outbrainCell)
         }
         
         switch indexPath.row {
@@ -92,31 +91,11 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             cell = self.tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell?
         case 2,3,4:
             cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
-        case 5:
-            cell = self.tableView.dequeueReusableCell(withIdentifier: outbrainHeaderCellReuseIdentifier) as UITableViewCell?
-            
-            if let obLabel = cell?.viewWithTag(455) as? OBLabel {
-                Outbrain.register(obLabel, withWidgetId: smartFeedWidgetID, andUrl: currentArticleDemoUrl)
-            }
         default:
             break;
         }
         
         return cell ?? UITableViewCell()
-    }
-    
-    func setCardView(cell : UITableViewCell) {
-        guard let view = cell.viewWithTag(99) else {
-            return
-        }
-        view.backgroundColor = UIColor(red: 228.0/255.0, green: 228.0/255.0, blue: 228.0/255.0, alpha: 0.5)
-        view.layer.cornerRadius = 5.0
-        view.layer.borderColor  =  UIColor.lightGray.cgColor
-        view.layer.borderWidth = 0.2
-        view.layer.shadowColor =  UIColor(red: 228.0/255.0, green: 228.0/255.0, blue: 228.0/255.0, alpha: 0.5).cgColor
-        view.layer.shadowOpacity = 1.0
-        view.layer.shadowRadius = 5.0
-        view.layer.shadowOffset = CGSize(width:5.0, height: 5.0)
     }
     
     // method to run when table view cell is tapped
@@ -126,6 +105,20 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         self.smartFeedManager.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
+        
+        // App Developer should configure the app cells here..
+        if (indexPath.row == 1) {
+            if let articleCell = cell as? AppArticleTableViewCell {
+                let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
+                articleCell.headerLabel.font = UIFont(name: articleCell.headerLabel.font!.fontName, size: CGFloat(fontSize))
+            }
+        }
+        if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4) {
+            if let articleCell = cell as? AppArticleTableViewCell {
+                let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
+                articleCell.contentTextView.font = UIFont(name: articleCell.contentTextView.font!.fontName, size: CGFloat(fontSize))
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -133,11 +126,32 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             return self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
         }
         
+        if (indexPath.section == 0) {
+            if (indexPath.row == 0) {
+                return UIDevice.current.userInterfaceIdiom == .pad ? 400 : 250;
+            }
+            else if (indexPath.row == 1) {
+                return UIDevice.current.userInterfaceIdiom == .pad ? 150 : UITableViewAutomaticDimension;
+            }
+            else {
+                return UIDevice.current.userInterfaceIdiom == .pad ? 200 : UITableViewAutomaticDimension;
+            }
+        }
+
         return UITableViewAutomaticDimension;
     }
 }
 
 extension ArticleTableViewController : SmartFeedDelegate {
+    func userTappedOnOutbrainLabeling() {
+        print("You tapped on Outbrain Labeling")
+        guard let url = Outbrain.getAboutURL() else {
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
+    
     func userTapped(on rec: OBRecommendation) {
         print("You tapped rec \(rec.content).")
         guard let url = Outbrain.getUrl(rec) else {
