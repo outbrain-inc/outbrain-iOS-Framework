@@ -13,15 +13,16 @@
 #import "SFCollectionViewCell.h"
 #import "SFTableViewCell.h"
 #import "SFHorizontalTableViewCell.h"
+#import "SFVideoCollectionViewCell.h"
 #import "SFUtils.h"
 #import "SFItemData.h"
 #import "SFImageLoader.h"
 #import "SFCollectionViewManager.h"
 #import "SFTableViewManager.h"
-
 #import <OutbrainSDK/OutbrainSDK.h>
 
-@interface SmartFeedManager() <SFClickListener>
+
+@interface SmartFeedManager() <SFClickListener, WKUIDelegate, WKScriptMessageHandler>
 
 @property (nonatomic, strong) NSString * _Nullable url;
 @property (nonatomic, strong) NSString * _Nullable widgetId;
@@ -62,6 +63,8 @@
 
         self.sfCollectionViewManager = [[SFCollectionViewManager alloc] initWitCollectionView:collectionView];
         self.sfCollectionViewManager.clickListenerTarget = self;
+        self.sfCollectionViewManager.wkWebviewDelegate = self;
+        self.sfCollectionViewManager.wkScriptMsgHandler = self;
     }
     return self;
 }
@@ -206,6 +209,14 @@
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
     }
     
+    BOOL videoIncluded = response.settings.isSmartFeed; // TODO check in response if video is included
+    if (videoIncluded) {
+        NSURL *videoURL = [NSURL URLWithString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?platform=ios&widgetId=AR_1&publisherId=111&sourceId=222"];
+        SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL widgetId:response.request.widgetId];
+        [self.smartFeedItemsArray addObject:item];
+        newItemsCount++;
+    }
+    
     SFItemType itemType = [self sfItemTypeFromResponse:response];
     NSString *widgetTitle = response.settings.widgetHeaderText;
     
@@ -214,18 +225,20 @@
     switch (itemType) {
         case SFTypeCarouselWithTitle:
         case SFTypeCarouselNoTitle:
-            return [self addCarouselItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+            newItemsCount += [self addCarouselItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+            break;
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridTwoInRowWithTitle:
         case SFTypeGridThreeInRowNoTitle:
         case SFTypeGridThreeInRowWithTitle:
-            return [self addGridItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+            newItemsCount += [self addGridItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+            break;
         case SFTypeStripNoTitle:
         case SFTypeStripWithTitle:
         case SFTypeStripWithThumbnailNoTitle:
         case SFTypeStripWithThumbnailWithTitle:
-            return [self addSingleItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
-            
+            newItemsCount += [self addSingleItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+            break;
         default:
             break;
     }
@@ -526,6 +539,9 @@
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
     }
+    else if ([cell isKindOfClass:[SFVideoCollectionViewCell class]]) {
+        [self.sfCollectionViewManager configureVideoCell:cell atIndexPath:indexPath withSFItem:sfItem];
+    }
     else { // SFSingleCell
         [self.sfCollectionViewManager configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
     }
@@ -596,4 +612,23 @@
     self.reuseIdentifierWidgetId[widgetId] = identifier;
 }
 
+#pragma mark - WKUIDelegate
+- (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
+    if (navigationAction.targetFrame == nil) {
+        NSLog(@"SmartFeedManager createWebViewWith URL: %@", navigationAction.request.URL);
+    }
+    return nil;
+}
+
+#pragma mark - WKScriptMessageHandler
+-(void) userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    NSDictionary *msgBody = message.body;
+    NSString *action = msgBody[@"action"];
+    if ([@"videoIsReady" isEqualToString:action]) {
+        NSLog(@"SmartFeedManager Received: videoIsReady");
+    }
+    else if ([@"videoFinished" isEqualToString:action]) {
+        NSLog(@"SmartFeedManager Received: videoFinished");
+    }
+}
 @end

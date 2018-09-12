@@ -16,11 +16,14 @@
 
 - (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId;
 
+- (id)initWithVideoUrl:(NSURL *)videoUrl widgetId:(NSString *)widgetId;
+
 @property (nonatomic, strong, readonly) NSArray *outbrainRecs;
 @property (nonatomic, strong, readonly) OBRecommendation *singleRec;
 @property (nonatomic, assign, readonly) SFItemType itemType;
 @property (nonatomic, copy, readonly) NSString *widgetTitle;
 @property (nonatomic, copy, readonly) NSString *widgetId;
+@property (nonatomic, strong, readonly) NSURL *videoUrl;
 
 +(NSString *) itemTypeString:(SFItemType) type;
 

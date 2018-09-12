@@ -11,6 +11,7 @@
 #import "SFUtils.h"
 #import "SFImageLoader.h"
 #import "SFCollectionViewHeaderCell.h"
+#import "SFVideoCollectionViewCell.h"
 
 @interface SFCollectionViewManager() <UIGestureRecognizerDelegate>
 
@@ -30,6 +31,7 @@ const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFix
 const NSString *kCollectionViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleCollectionViewCell";
 const NSString *kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
 const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
+const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideoReuseId";
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView
 {
@@ -45,6 +47,9 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
         UINib *headerCellNib = [UINib nibWithNibName:@"SFCollectionViewHeaderCell" bundle:bundle];
         NSAssert(headerCellNib != nil, @"SFCollectionViewHeaderCell should not be null");
         [collectionView registerNib:headerCellNib forCellWithReuseIdentifier: kCollectionViewSmartfeedHeaderReuseId];
+        
+        // video cell
+        [collectionView registerClass:[SFVideoCollectionViewCell class] forCellWithReuseIdentifier:kCollectionViewSingleVideoReuseId];
         
         // horizontal cells
         UINib *horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalCarouselWithTitleCollectionViewCell" bundle:bundle];
@@ -128,7 +133,8 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnailWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailWithTitleReuseId forIndexPath:indexPath];
-            
+        case SFTypeStripVideo:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleVideoReuseId forIndexPath:indexPath];
         default:
             break;
     }
@@ -174,6 +180,35 @@ const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
     [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
 }
 
+- (void) configureVideoCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
+    SFVideoCollectionViewCell *videoCell = (SFVideoCollectionViewCell *)cell;
+    const NSInteger cellTag = indexPath.row;
+    videoCell.tag = cellTag;
+    videoCell.contentView.backgroundColor = [UIColor blueColor];
+    
+    if (videoCell.webview) {
+        [videoCell.webview removeFromSuperview];
+        videoCell.webview = nil;
+    }
+    
+    WKPreferences *preferences = [[WKPreferences alloc] init];
+    preferences.javaScriptEnabled = YES;
+    WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *controller = [[WKUserContentController alloc] init];
+    [controller addScriptMessageHandler:self.wkScriptMsgHandler name:@"sdkObserver"];
+    webviewConf.userContentController = controller;
+    webviewConf.preferences = preferences;
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:videoCell.contentView.frame configuration:webviewConf];
+    webView.UIDelegate = self.wkWebviewDelegate;
+    [videoCell.contentView addSubview:webView];
+    videoCell.webview = webView;
+    [SFUtils addConstraintsToFillParent:videoCell.webview];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
+    [webView loadRequest:request];
+    [videoCell.contentView setNeedsLayout];
+}
+    
 - (void) configureSingleCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     SFCollectionViewCell *singleCell = (SFCollectionViewCell *)cell;
     const NSInteger cellTag = indexPath.row;

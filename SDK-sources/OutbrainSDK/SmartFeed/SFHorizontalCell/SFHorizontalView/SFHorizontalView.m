@@ -101,6 +101,9 @@
 
 -(void) setOutbrainRecs:(NSArray *)outbrainRecs {
     _outbrainRecs = outbrainRecs;
+    if (self.outbrainRecs.count == 0) {
+        return;
+    }
     [self.collectionView reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];

@@ -15,6 +15,7 @@
 @property (nonatomic, assign) SFItemType itemType;
 @property (nonatomic, copy) NSString *widgetTitle;
 @property (nonatomic, copy) NSString *widgetId;
+@property (nonatomic, strong) NSURL *videoUrl;
 
 @end
 
@@ -28,6 +29,16 @@
         self.itemType = type;
         self.widgetTitle = widgetTitle;
         self.widgetId = widgetId;
+    }
+    return self;
+}
+
+- (id)initWithVideoUrl:(NSURL *)videoUrl widgetId:(NSString *)widgetId {
+    self = [super init];
+    if (self) {
+        self.itemType = SFTypeStripVideo;
+        self.widgetId = widgetId;
+        self.videoUrl = videoUrl;
     }
     return self;
 }
@@ -73,6 +84,9 @@
     }
     else if (type == SFTypeGridTwoInRowWithTitle) {
         return @"SFTypeGridTwoInRowWithTitle";
+    }
+    else if (type == SFTypeStripVideo) {
+        return @"SFTypeStripVideo";
     }
     
     return @"";
