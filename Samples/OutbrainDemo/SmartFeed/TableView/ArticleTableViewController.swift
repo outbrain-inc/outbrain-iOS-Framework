@@ -167,6 +167,12 @@ extension ArticleTableViewController : SmartFeedDelegate {
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
+    
+    func userTapped(onVideoRec url: URL) {
+        print("You tapped on video rec")
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
 }
 
 extension UIImageView {

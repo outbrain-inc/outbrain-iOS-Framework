@@ -175,6 +175,12 @@ extension ArticleCollectionViewController : SmartFeedDelegate {
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
     
+    func userTapped(onVideoRec url: URL) {
+        print("You tapped on video rec")
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
+    
     func userTappedOnOutbrainLabeling() {
         print("You tapped on Outbrain Labeling")
         guard let url = Outbrain.getAboutURL() else {
@@ -183,6 +189,8 @@ extension ArticleCollectionViewController : SmartFeedDelegate {
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
+    
+    
 }
 
 extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {

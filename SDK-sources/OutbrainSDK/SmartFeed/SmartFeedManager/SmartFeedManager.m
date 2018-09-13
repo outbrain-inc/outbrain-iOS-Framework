@@ -616,6 +616,9 @@
 - (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
     if (navigationAction.targetFrame == nil) {
         NSLog(@"SmartFeedManager createWebViewWith URL: %@", navigationAction.request.URL);
+        if (self.delegate != nil && navigationAction.request.URL != nil) {
+            [self.delegate userTappedOnVideoRec:navigationAction.request.URL];
+        }
     }
     return nil;
 }
