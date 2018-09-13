@@ -21,6 +21,10 @@
 
 @implementation SFItemData
 
+NSInteger kVideoInitStatus = 1112;
+NSInteger kVideoReadyStatus = 1113;
+NSInteger kVideoFinishedStatus = 1114;
+
 
 - (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId {
     self = [super init];
@@ -39,6 +43,7 @@
         self.itemType = SFTypeStripVideo;
         self.widgetId = widgetId;
         self.videoUrl = videoUrl;
+        self.videoPlayerStatus = kVideoInitStatus;
     }
     return self;
 }

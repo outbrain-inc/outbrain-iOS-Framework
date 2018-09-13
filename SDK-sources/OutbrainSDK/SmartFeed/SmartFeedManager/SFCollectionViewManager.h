@@ -18,7 +18,6 @@
 
 @property (nonatomic, weak) id<SFClickListener> clickListenerTarget;
 @property (nonatomic, weak) id<WKUIDelegate> wkWebviewDelegate;
-@property (nonatomic, weak) id<WKScriptMessageHandler> wkScriptMsgHandler;
 @property (nonatomic, weak, readonly) UICollectionView *collectionView;
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView;
@@ -35,7 +34,7 @@
 
 - (CGSize) collectionView:(UICollectionView *)collectionView
    sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath
-               sfItemType:(SFItemType)sfItemType;
+                   sfItem:(SFItemData *)sfItem;
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier;
 

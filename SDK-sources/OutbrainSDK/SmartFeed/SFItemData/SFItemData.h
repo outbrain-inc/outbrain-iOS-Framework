@@ -12,6 +12,11 @@
 
 @interface SFItemData : NSObject
 
+extern NSInteger kVideoInitStatus;
+extern NSInteger kVideoReadyStatus;
+extern NSInteger kVideoFinishedStatus;
+
+
 - (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId;
 
 - (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId;
@@ -24,6 +29,7 @@
 @property (nonatomic, copy, readonly) NSString *widgetTitle;
 @property (nonatomic, copy, readonly) NSString *widgetId;
 @property (nonatomic, strong, readonly) NSURL *videoUrl;
+@property (nonatomic, assign) NSInteger videoPlayerStatus;
 
 +(NSString *) itemTypeString:(SFItemType) type;
 

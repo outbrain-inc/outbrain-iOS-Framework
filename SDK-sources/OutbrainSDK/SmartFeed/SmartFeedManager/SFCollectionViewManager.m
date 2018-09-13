@@ -142,10 +142,12 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
 
 - (CGSize) collectionView:(UICollectionView *)collectionView
    sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath
-               sfItemType:(SFItemType)sfItemType {
+               sfItem:(SFItemData *)sfItem {
     
     // ipad 834
     // phone 375
+    SFItemType sfItemType = sfItem.itemType;
+    
     CGFloat width = collectionView.frame.size.width;
     if (sfItemType == SFTypeGridTwoInRowNoTitle || sfItemType == SFTypeCarouselWithTitle || sfItemType == SFTypeCarouselNoTitle) {
         return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 240.0);
@@ -164,6 +166,9 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
     }
     else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
         return CGSizeMake(width, 150.0);
+    }
+    else if (sfItemType == SFTypeStripVideo) {
+        return CGSizeMake(width - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0);
     }
     
     return CGSizeMake(width - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0);
@@ -184,24 +189,39 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
     SFVideoCollectionViewCell *videoCell = (SFVideoCollectionViewCell *)cell;
     const NSInteger cellTag = indexPath.row;
     videoCell.tag = cellTag;
-    videoCell.contentView.backgroundColor = [UIColor blueColor];
+    videoCell.sfItem = sfItem;
+    
+    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
+        [videoCell.contentView setNeedsLayout];
+        return;
+    }
     
     if (videoCell.webview) {
         [videoCell.webview removeFromSuperview];
         videoCell.webview = nil;
     }
     
+    videoCell.contentView.backgroundColor = UIColor.blackColor;
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    activityView.center = videoCell.contentView.center;
+    [activityView startAnimating];
+    [videoCell.contentView addSubview:activityView];
+    videoCell.spinner = activityView;
+    
     WKPreferences *preferences = [[WKPreferences alloc] init];
     preferences.javaScriptEnabled = YES;
     WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
     WKUserContentController *controller = [[WKUserContentController alloc] init];
-    [controller addScriptMessageHandler:self.wkScriptMsgHandler name:@"sdkObserver"];
+    [controller addScriptMessageHandler:videoCell name:@"sdkObserver"];
     webviewConf.userContentController = controller;
     webviewConf.preferences = preferences;
     WKWebView *webView = [[WKWebView alloc] initWithFrame:videoCell.contentView.frame configuration:webviewConf];
     webView.UIDelegate = self.wkWebviewDelegate;
     [videoCell.contentView addSubview:webView];
     videoCell.webview = webView;
+    videoCell.webview.alpha = 0;
     [SFUtils addConstraintsToFillParent:videoCell.webview];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];

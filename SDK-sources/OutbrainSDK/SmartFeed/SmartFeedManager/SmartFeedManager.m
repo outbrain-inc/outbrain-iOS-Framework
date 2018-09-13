@@ -22,7 +22,7 @@
 #import <OutbrainSDK/OutbrainSDK.h>
 
 
-@interface SmartFeedManager() <SFClickListener, WKUIDelegate, WKScriptMessageHandler>
+@interface SmartFeedManager() <SFClickListener, WKUIDelegate>
 
 @property (nonatomic, strong) NSString * _Nullable url;
 @property (nonatomic, strong) NSString * _Nullable widgetId;
@@ -64,7 +64,6 @@
         self.sfCollectionViewManager = [[SFCollectionViewManager alloc] initWitCollectionView:collectionView];
         self.sfCollectionViewManager.clickListenerTarget = self;
         self.sfCollectionViewManager.wkWebviewDelegate = self;
-        self.sfCollectionViewManager.wkScriptMsgHandler = self;
     }
     return self;
 }
@@ -95,6 +94,19 @@
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
     self.customNibsForWidgetId = [[NSMutableDictionary alloc] init];
     self.reuseIdentifierWidgetId = [[NSMutableDictionary alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(videoReadyNotification:)
+                                                 name:@"VideoReadyNotification"
+                                               object:nil];
+}
+
+- (void) videoReadyNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:@"VideoReadyNotification"]) {
+        UIView *view = (UIView *) notification.object;
+        NSLog (@"Successfully received the videoReady notification! - view.tag: %d", view.tag);
+    }
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -210,7 +222,7 @@
     }
     
     BOOL videoIncluded = response.settings.isSmartFeed; // TODO check in response if video is included
-    if (videoIncluded) {
+    if (videoIncluded || YES) {
         NSURL *videoURL = [NSURL URLWithString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?platform=ios&widgetId=AR_1&publisherId=111&sourceId=222"];
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL widgetId:response.request.widgetId];
         [self.smartFeedItemsArray addObject:item];
@@ -503,7 +515,7 @@
             return CGSizeMake(collectionView.frame.size.width, 50);
         }
         SFItemData *sfItem = [self itemForIndexPath:indexPath];
-        return [self.sfCollectionViewManager collectionView:collectionView sizeForItemAtIndexPath:indexPath sfItemType:sfItem.itemType];
+        return [self.sfCollectionViewManager collectionView:collectionView sizeForItemAtIndexPath:indexPath sfItem:sfItem];
     }
     
     return CGSizeMake(0, 0);
@@ -623,15 +635,4 @@
     return nil;
 }
 
-#pragma mark - WKScriptMessageHandler
--(void) userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    NSDictionary *msgBody = message.body;
-    NSString *action = msgBody[@"action"];
-    if ([@"videoIsReady" isEqualToString:action]) {
-        NSLog(@"SmartFeedManager Received: videoIsReady");
-    }
-    else if ([@"videoFinished" isEqualToString:action]) {
-        NSLog(@"SmartFeedManager Received: videoFinished");
-    }
-}
 @end

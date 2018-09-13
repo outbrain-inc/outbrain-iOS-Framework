@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-@import WebKit;
 
-@interface SFVideoCollectionViewCell : UICollectionViewCell
+
+@import WebKit;
+@class SFItemData;
+
+@interface SFVideoCollectionViewCell : UICollectionViewCell <WKScriptMessageHandler>
 
 @property (nonatomic, weak) WKWebView *webview;
-
+@property (nonatomic, weak) SFItemData *sfItem;
+@property (nonatomic, weak) UIActivityIndicatorView *spinner;
 @end
