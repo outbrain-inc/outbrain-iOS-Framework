@@ -222,7 +222,7 @@
     }
     
     BOOL videoIncluded = response.settings.isSmartFeed; // TODO check in response if video is included
-    if (videoIncluded || YES) {
+    if (videoIncluded) {
         NSURL *videoURL = [NSURL URLWithString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?platform=ios&widgetId=AR_1&publisherId=111&sourceId=222"];
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL widgetId:response.request.widgetId];
         [self.smartFeedItemsArray addObject:item];
