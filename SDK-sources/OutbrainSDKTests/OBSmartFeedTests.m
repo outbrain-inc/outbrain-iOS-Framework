@@ -118,13 +118,13 @@
 
 - (void)testSmartFeedManagerBuildArrayOfItems {
     [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseParent];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 3);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild1];
     XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 4);
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild1];
+    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 5);
     [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild2];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 6);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild3];
     XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 7);
+    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild3];
+    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 8);
 }
 
 - (void)testUITemplateIsSetCorrectly {
