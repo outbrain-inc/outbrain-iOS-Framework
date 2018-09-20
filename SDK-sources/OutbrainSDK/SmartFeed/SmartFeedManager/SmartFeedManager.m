@@ -16,6 +16,7 @@
 #import "SFVideoCollectionViewCell.h"
 #import "SFUtils.h"
 #import "SFItemData.h"
+#import "OBAppleAdIdUtil.h"
 #import "OutbrainManager.h"
 #import "SFImageLoader.h"
 #import "SFCollectionViewManager.h"
@@ -266,6 +267,11 @@
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sourcePvId" value: pvID]];
     NSString *docId = [response.responseRequest getStringValueForPayloadKey:@"did"]; // doc ID
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"docId" value: docId]];
+    NSString *reqID = [response.responseRequest getStringValueForPayloadKey:@"req_id"]; // request ID
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sourceRequestId" value: reqID]];
+    NSString *apiUserId = [OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"api_user_id" value: apiUserId]];
+    
     if ([OutbrainManager sharedInstance].testMode) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
     }
