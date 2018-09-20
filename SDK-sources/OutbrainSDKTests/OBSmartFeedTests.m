@@ -29,6 +29,8 @@
 
 -(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response;
 
+-(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response;
+
 @end
 
 @interface OBSmartFeedTests : XCTestCase
@@ -83,6 +85,15 @@
 - (void)testSmartFeedResponsesVideoUrl {
     XCTAssertTrue([self.responseParent.settings.videoUrl.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222"]);
     XCTAssertNil(self.responseChild1.settings.videoUrl);
+}
+
+- (void)testSmartFeedVideoUrlWithParams {
+    XCTAssertTrue([self.responseParent.settings.videoUrl.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222"]);
+    
+    NSURL *videoUrlWithParams = [self.smartFeedManager appendParamsToVideoUrl:self.responseParent];
+    
+    NSLog(@"videoUrlWithParams.absoluteString: %@", videoUrlWithParams.absoluteString);
+    XCTAssertTrue([videoUrlWithParams.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222&platform=ios&sourcePvId=b4b6ea633069219626e103dc55da993c&docId=720627693"]);
 }
 
 - (void)testSmartFeedResponsesVideoIsIncluded {

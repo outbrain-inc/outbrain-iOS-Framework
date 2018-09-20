@@ -16,6 +16,7 @@
 #import "SFVideoCollectionViewCell.h"
 #import "SFUtils.h"
 #import "SFItemData.h"
+#import "OutbrainManager.h"
 #import "SFImageLoader.h"
 #import "SFCollectionViewManager.h"
 #import "SFTableViewManager.h"
@@ -222,7 +223,7 @@
     }
     
     if ([self isVideoIncludedInResponse:response]) {
-        NSURL *videoURL = [NSURL URLWithString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?platform=ios&widgetId=AR_1&publisherId=111&sourceId=222"];
+        NSURL *videoURL = [self appendParamsToVideoUrl: response];
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL widgetId:response.request.widgetId];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
@@ -255,6 +256,22 @@
     }
    
     return newItemsCount;
+}
+
+-(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
+    NSURLComponents *components = [[NSURLComponents alloc] initWithString:response.settings.videoUrl.absoluteString];
+    NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];
+    NSString *pvID = [response.responseRequest getStringValueForPayloadKey:@"pvId"]; // pageview ID
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sourcePvId" value: pvID]];
+    NSString *docId = [response.responseRequest getStringValueForPayloadKey:@"did"]; // doc ID
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"docId" value: docId]];
+    if ([OutbrainManager sharedInstance].testMode) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
+    }
+    
+    components.queryItems = odbQueryItems;
+    return components.URL;
 }
 
 -(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {
