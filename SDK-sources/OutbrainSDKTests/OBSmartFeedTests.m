@@ -27,6 +27,8 @@
 
 -(BOOL) isHorizontalCell:(NSIndexPath *)indexPath;
 
+-(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response;
+
 @end
 
 @interface OBSmartFeedTests : XCTestCase
@@ -73,6 +75,22 @@
     [super tearDown];
 }
 
+- (void)testSmartFeedResponsesVidSettings {
+    XCTAssertTrue([[self.responseParent.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1);
+    XCTAssertFalse([[self.responseChild1.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1);
+}
+
+- (void)testSmartFeedResponsesVideoUrl {
+    XCTAssertTrue([self.responseParent.settings.videoUrl.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222"]);
+    XCTAssertNil(self.responseChild1.settings.videoUrl);
+}
+
+- (void)testSmartFeedResponsesVideoIsIncluded {
+    XCTAssertTrue([self.smartFeedManager isVideoIncludedInResponse:self.responseParent]);
+    XCTAssertFalse([self.smartFeedManager isVideoIncludedInResponse:self.responseChild1]);
+    XCTAssertFalse([self.smartFeedManager isVideoIncludedInResponse:self.responseChild2]);
+}
+    
 - (void)testSmartFeedResponsesContent {
     XCTAssertEqual(self.responseParent.recommendations.count, 6);
     XCTAssertEqual(self.responseChild1.recommendations.count, 1);

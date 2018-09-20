@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSArray *feedContentArray;
 @property (nonatomic, copy) NSString *recMode;
 @property (nonatomic, copy) NSString *widgetHeaderText;
-
+@property (nonatomic, copy) NSURL *videoUrl;
 
 @end
 
@@ -33,6 +33,11 @@
         self.feedCyclesLimit = [[payload valueForKey:@"feedCyclesLimit"] integerValue];
         self.recMode = [payload valueForKey:@"recMode"];
         self.widgetHeaderText = [payload valueForKey:@"nanoOrganicsHeader"];
+        NSString *videoUrlStr = [payload valueForKey:@"sdk_sf_vidget_url"];
+        if (videoUrlStr) {
+            self.videoUrl = [NSURL URLWithString:videoUrlStr];
+        }
+        
         NSString *feedContentStr = [payload valueForKey:@"feedContent"];
         if (self.isSmartFeed && feedContentStr != nil) {
             NSData *feedContentData = [feedContentStr dataUsingEncoding:NSUTF8StringEncoding];

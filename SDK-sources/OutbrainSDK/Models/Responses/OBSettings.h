@@ -15,6 +15,7 @@
 @property (nonatomic, assign, readonly) NSInteger feedCyclesLimit;
 @property (nonatomic, copy, readonly) NSString *recMode;
 @property (nonatomic, copy, readonly) NSString *widgetHeaderText;
+@property (nonatomic, copy, readonly) NSURL *videoUrl;
 @property (nonatomic, strong, readonly) NSArray *feedContentArray;
 
 - (instancetype)initWithPayload:(NSDictionary *)payload;

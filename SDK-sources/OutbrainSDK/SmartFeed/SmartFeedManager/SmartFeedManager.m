@@ -258,6 +258,12 @@
     return newItemsCount;
 }
 
+-(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {
+    BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
+    BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
+    return videoIsIncludedInRequest && videoURLIsIncludedInSettings;
+}
+
 -(SFItemType) sfItemTypeFromResponse:(OBRecommendationResponse *)response {
     NSString *recMode = response.settings.recMode;
     NSString *widgetHeader = response.settings.widgetHeaderText;
