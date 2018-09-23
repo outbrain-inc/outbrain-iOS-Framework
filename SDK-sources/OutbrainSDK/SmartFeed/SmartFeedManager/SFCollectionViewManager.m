@@ -292,7 +292,13 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
         [singleCell.cardContentView addGestureRecognizer:tapGesture];
     }
     else {
-        [SFUtils addDropShadowToView: singleCell];
+        if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
+            [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
+        }
+        else {
+            [SFUtils addDropShadowToView: singleCell];
+        }
+        
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
 }
