@@ -19,12 +19,13 @@ extern NSInteger kVideoFinishedStatus;
 
 - (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId;
 
-- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId;
+- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId shadowColorStr:(NSString *)shadowColorStr;
 
 - (id)initWithVideoUrl:(NSURL *)videoUrl widgetId:(NSString *)widgetId;
 
 @property (nonatomic, strong, readonly) NSArray *outbrainRecs;
 @property (nonatomic, strong, readonly) OBRecommendation *singleRec;
+@property (nonatomic, strong, readonly) UIColor *shadowColor;
 @property (nonatomic, assign, readonly) SFItemType itemType;
 @property (nonatomic, copy, readonly) NSString *widgetTitle;
 @property (nonatomic, copy, readonly) NSString *widgetId;

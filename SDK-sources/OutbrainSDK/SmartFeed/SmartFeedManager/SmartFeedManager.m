@@ -332,7 +332,9 @@
 -(NSUInteger) addCarouselItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
-    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle widgetId:widgetId];
+    NSString *shadowColor = response.settings.smartfeedShadowColor;
+    
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
     [self.smartFeedItemsArray addObject:item];
     return 1;
 }
@@ -340,6 +342,8 @@
 -(NSUInteger) addGridItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
+    NSString *shadowColor = response.settings.smartfeedShadowColor;
+    
     NSUInteger itemsPerRow = 0;
     if (templateType == SFTypeGridTwoInRowNoTitle || templateType == SFTypeGridTwoInRowWithTitle) {
         itemsPerRow = 2;
@@ -357,7 +361,7 @@
         NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
-        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle widgetId:widgetId];
+        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
     }
@@ -481,6 +485,7 @@
     }
     
     horizontalView.outbrainRecs = sfItem.outbrainRecs;
+    horizontalView.shadowColor = sfItem.shadowColor;
     [horizontalView setupView];
     [horizontalView setOnRecommendationClick:^(OBRecommendation *rec) {
         if (self.delegate != nil) {

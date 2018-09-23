@@ -7,6 +7,7 @@
 //
 
 #import "SFItemData.h"
+#import "SFUtils.h"
 
 @interface SFItemData()
 
@@ -16,7 +17,7 @@
 @property (nonatomic, copy) NSString *widgetTitle;
 @property (nonatomic, copy) NSString *widgetId;
 @property (nonatomic, strong) NSURL *videoUrl;
-
+@property (nonatomic, strong) UIColor *shadowColor;
 @end
 
 @implementation SFItemData
@@ -48,13 +49,17 @@ NSInteger kVideoFinishedStatus = 1114;
     return self;
 }
 
-- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId {
+- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId shadowColorStr:(NSString *)shadowColorStr {
+    
     self = [super init];
     if (self) {
         self.outbrainRecs = recArray;
         self.itemType = type;
         self.widgetTitle = widgetTitle;
         self.widgetId = widgetId;
+        if (shadowColorStr) {
+            self.shadowColor = [SFUtils colorFromHexString:shadowColorStr];
+        }
     }
     return self;
 }
