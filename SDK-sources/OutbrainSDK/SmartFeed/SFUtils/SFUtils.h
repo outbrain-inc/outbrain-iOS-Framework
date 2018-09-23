@@ -28,6 +28,8 @@
 
 +(void) addDropShadowToView:(UIView *)view;
 
++(void) addDropShadowToView:(UIView *)view shadowColor:(UIColor *)shadowColor;
+
 + (UIColor *)colorFromHexString:(NSString *)hexString;
 
 @end

@@ -271,7 +271,13 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
     
     // Cell Specific configuration
     if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripWithThumbnailWithTitle) {
-        [SFUtils addDropShadowToView: singleCell.cardContentView];
+        if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
+            [SFUtils addDropShadowToView: singleCell.cardContentView shadowColor:sfItem.shadowColor];
+        }
+        else {
+            [SFUtils addDropShadowToView: singleCell.cardContentView];
+        }
+        
         if (sfItem.widgetTitle) {
             singleCell.cellTitleLabel.text = sfItem.widgetTitle;
         }

@@ -320,9 +320,11 @@
 -(NSUInteger) addSingleItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
+    NSString *shadowColor = response.settings.smartfeedShadowColor;
+    
     NSUInteger newItemsCount = 0;
     for (OBRecommendation *rec in recommendations) {
-        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle widgetId:widgetId];
+        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
     }

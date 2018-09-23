@@ -27,13 +27,16 @@ NSInteger kVideoReadyStatus = 1113;
 NSInteger kVideoFinishedStatus = 1114;
 
 
-- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId {
+- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId shadowColorStr:(NSString *)shadowColorStr {
     self = [super init];
     if (self) {
         self.singleRec = rec;
         self.itemType = type;
         self.widgetTitle = widgetTitle;
         self.widgetId = widgetId;
+        if (shadowColorStr) {
+            self.shadowColor = [SFUtils colorFromHexString:shadowColorStr];
+        }
     }
     return self;
 }
