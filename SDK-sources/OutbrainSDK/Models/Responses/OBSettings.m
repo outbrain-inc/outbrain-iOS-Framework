@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString *recMode;
 @property (nonatomic, copy) NSString *widgetHeaderText;
 @property (nonatomic, copy) NSURL *videoUrl;
+@property (nonatomic, copy) NSString *smartfeedShadowColor;
 
 @end
 
@@ -37,7 +38,7 @@
         if (videoUrlStr) {
             self.videoUrl = [NSURL URLWithString:videoUrlStr];
         }
-        
+        self.smartfeedShadowColor = [payload valueForKey:@"sdk_sf_shadow_color"];
         NSString *feedContentStr = [payload valueForKey:@"feedContent"];
         if (self.isSmartFeed && feedContentStr != nil) {
             NSData *feedContentData = [feedContentStr dataUsingEncoding:NSUTF8StringEncoding];

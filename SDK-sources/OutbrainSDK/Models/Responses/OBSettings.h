@@ -16,6 +16,7 @@
 @property (nonatomic, copy, readonly) NSString *recMode;
 @property (nonatomic, copy, readonly) NSString *widgetHeaderText;
 @property (nonatomic, copy, readonly) NSURL *videoUrl;
+@property (nonatomic, copy, readonly) NSString *smartfeedShadowColor;
 @property (nonatomic, strong, readonly) NSArray *feedContentArray;
 
 - (instancetype)initWithPayload:(NSDictionary *)payload;

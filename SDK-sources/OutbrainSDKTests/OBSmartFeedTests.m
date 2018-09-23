@@ -144,6 +144,11 @@
     
 }
 
+- (void)testSmartfeedShadowColorFromResponse {
+    XCTAssertTrue([self.responseParent.settings.smartfeedShadowColor isEqualToString:@"#ffa500"]);
+    XCTAssertNil(self.responseChild1.settings.smartfeedShadowColor);
+    XCTAssertNil(self.responseChild2.settings.smartfeedShadowColor);
+}
 
 - (void)testSmartFeedManagerBuildArrayOfItems {
     [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseParent];
