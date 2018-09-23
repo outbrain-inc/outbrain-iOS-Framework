@@ -21,7 +21,7 @@
 // The version of the sdk
 NSString * const OB_SDK_VERSION     =   @"3.1.0";
 
-BOOL WAS_INITIALISED     =   NO;
+BOOL WAS_INITIALIZED     =   NO;
 
 
 @interface Outbrain()
@@ -39,18 +39,22 @@ BOOL WAS_INITIALISED     =   NO;
 
 + (void)_throwAssertIfNotInitalized
 {
-    NSAssert(WAS_INITIALISED, @"Please +initializeOutbrainWithPartnerKey: before trying to use outbrain");
+    NSAssert(WAS_INITIALIZED, @"Please +initializeOutbrainWithPartnerKey: before trying to use outbrain");
 }
 
 + (void)initializeOutbrainWithPartnerKey:(NSString *)partnerKey {
-    if (!WAS_INITIALISED) {
+    if (!WAS_INITIALIZED) {
         // Finally set the settings payload.
         NSAssert(partnerKey != nil, @"Partner Key Must not be nil");
         NSAssert([partnerKey length] > 0, @"Partner Key Must not be empty string");
         [OutbrainManager sharedInstance].partnerKey = partnerKey;
-        WAS_INITIALISED = YES;
+        WAS_INITIALIZED = YES;
         NSLog(@"OutbrainSDK init");
     }
+}
+
++ (BOOL) SDKInitialized {
+    return WAS_INITIALIZED;
 }
 
 + (void)setTestMode:(BOOL)testMode {

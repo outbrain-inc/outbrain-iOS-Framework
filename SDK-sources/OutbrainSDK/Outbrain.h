@@ -50,6 +50,12 @@ extern NSString * const OB_SDK_VERSION;
  **/
 + (void)initializeOutbrainWithPartnerKey:(NSString *)partnerKey;
 
+/**
+ *  @brief Check if SDK was initilized
+ *
+ **/
++ (BOOL) SDKInitialized;
+
 /** @section Fetching **/
 
 /**
