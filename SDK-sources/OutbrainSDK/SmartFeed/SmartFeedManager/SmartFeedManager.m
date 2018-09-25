@@ -14,6 +14,7 @@
 #import "SFTableViewCell.h"
 #import "SFHorizontalTableViewCell.h"
 #import "SFVideoCollectionViewCell.h"
+#import "SFVideoTableViewCell.h"
 #import "SFUtils.h"
 #import "SFItemData.h"
 #import "OBAppleAdIdUtil.h"
@@ -432,8 +433,11 @@
             [SFUtils addDropShadowToView: cell];
         }
     }
+    else if ([cell isKindOfClass:[SFVideoTableViewCell class]]) {
+        [self.sfTableViewManager configureVideoCell:cell atIndexPath:indexPath withSFItem:sfItem];
+    }
     else { // SFSingleCell
-        [self configureSingleTableViewCell:cell atIndexPath:indexPath];        
+        [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
     if ((indexPath.row == (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
@@ -499,11 +503,6 @@
             [self.delegate userTappedOnAdChoicesIcon:url];
         }
     }];
-}
-
-- (void) configureSingleTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    SFItemData *sfItem = [self itemForIndexPath: indexPath];
-    [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
 }
 
 - (void) configureSmartFeedHeaderTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

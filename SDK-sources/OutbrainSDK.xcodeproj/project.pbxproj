@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		E61AE0C3215A2F00001F7405 /* SFVideoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61AE0C1215A2F00001F7405 /* SFVideoTableViewCell.h */; };
+		E61AE0C4215A2F00001F7405 /* SFVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61AE0C2215A2F00001F7405 /* SFVideoTableViewCell.m */; };
 		E61E6B462083607B0016D79A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B3D2083607B0016D79A /* OutbrainSDK.framework */; };
 		E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */; };
 		E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BCD20836C180016D79A /* OBAppleAdIdUtil.h */; };
@@ -161,6 +163,8 @@
 		D8C91A791871FEED005916A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8D1FD60187327CB0099831C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D8D1FD62187327D20099831C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E61AE0C1215A2F00001F7405 /* SFVideoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFVideoTableViewCell.h; sourceTree = "<group>"; };
+		E61AE0C2215A2F00001F7405 /* SFVideoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFVideoTableViewCell.m; sourceTree = "<group>"; };
 		E61E6B3D2083607B0016D79A /* OutbrainSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OutbrainSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6B452083607B0016D79A /* OutbrainSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutbrainSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAppleAdIdUtil.m; sourceTree = "<group>"; };
@@ -603,6 +607,8 @@
 				E63B784B212AB1860018C225 /* SFTableViewCell.h */,
 				E628620C214915D100D12A15 /* SFVideoCollectionViewCell.h */,
 				E628620D214915D100D12A15 /* SFVideoCollectionViewCell.m */,
+				E61AE0C1215A2F00001F7405 /* SFVideoTableViewCell.h */,
+				E61AE0C2215A2F00001F7405 /* SFVideoTableViewCell.m */,
 			);
 			path = BaseCellClasses;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				E61E6C3B20836C180016D79A /* OBRequest.h in Headers */,
 				E63B784C212AB1860018C225 /* SFImageLoader.h in Headers */,
 				E6FEB3EC20FF2E78002A9020 /* SFHorizontalTableViewCell.h in Headers */,
+				E61AE0C3215A2F00001F7405 /* SFVideoTableViewCell.h in Headers */,
 				E6F8F460211C3D400069C72C /* SFTableViewManager.h in Headers */,
 				E63B7850212AB1860018C225 /* SFItemData.h in Headers */,
 				E6FEB3EA20FF2E78002A9020 /* SFHorizontalCollectionViewCell.h in Headers */,
@@ -923,6 +930,7 @@
 				E61E6C3620836C180016D79A /* OBContent.m in Sources */,
 				E61E6C1D20836C180016D79A /* OBLabel.m in Sources */,
 				E6F8F465211C3D580069C72C /* SFCollectionViewManager.m in Sources */,
+				E61AE0C4215A2F00001F7405 /* SFVideoTableViewCell.m in Sources */,
 				E61E6C3F20836C180016D79A /* OBErrors.m in Sources */,
 				E61E6C3420836C180016D79A /* OBRecommendation.m in Sources */,
 				E61E6C2720836C180016D79A /* OBNetworkManager.m in Sources */,

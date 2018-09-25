@@ -11,6 +11,7 @@
 #import "SFHorizontalTableViewCell.h"
 #import "SFUtils.h"
 #import "SFImageLoader.h"
+#import "SFVideoTableViewCell.h"
 
 @interface SFTableViewManager() <UIGestureRecognizerDelegate>
 
@@ -30,7 +31,7 @@ const NSString *kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedW
 const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
 const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
 const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleTableCell";
-
+const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView {
     self = [super init];
@@ -64,6 +65,9 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
         UINib *nib = [UINib nibWithNibName:@"SFTableViewHeaderCell" bundle:bundle];
         NSAssert(nib != nil, @"SFTableViewHeaderCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSmartfeedHeaderReuseId];
+        
+        // video cell
+        [self.tableView registerClass:[SFVideoTableViewCell class] forCellReuseIdentifier:kTableViewSingleVideoReuseId];
         
         // single item cell
         nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
@@ -133,7 +137,8 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnailWithTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailWithTitleReuseId forIndexPath:indexPath];
-            
+        case SFTypeStripVideo:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoReuseId forIndexPath:indexPath];
         default:
             NSAssert(false, @"sfItem.itemType must be covered in this switch/case statement");
             return [[UITableViewCell alloc] init];
@@ -161,8 +166,55 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
     else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 210.0 : 150.0;
     }
+    else if (sfItemType == SFTypeStripVideo) {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0;
+    }
     
     return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? kTableViewRowHeight*1.3 : kTableViewRowHeight;
+}
+
+- (void) configureVideoCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
+    SFVideoTableViewCell *videoCell = (SFVideoTableViewCell *)cell;
+    const NSInteger cellTag = indexPath.row;
+    videoCell.tag = cellTag;
+    videoCell.sfItem = sfItem;
+    
+    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
+        [videoCell.contentView setNeedsLayout];
+        return;
+    }
+    
+    if (videoCell.webview) {
+        [videoCell.webview removeFromSuperview];
+        videoCell.webview = nil;
+    }
+    
+    videoCell.contentView.backgroundColor = UIColor.blackColor;
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    activityView.center = videoCell.contentView.center;
+    [activityView startAnimating];
+    [videoCell.contentView addSubview:activityView];
+    videoCell.spinner = activityView;
+    
+    WKPreferences *preferences = [[WKPreferences alloc] init];
+    preferences.javaScriptEnabled = YES;
+    WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *controller = [[WKUserContentController alloc] init];
+    [controller addScriptMessageHandler:videoCell name:@"sdkObserver"];
+    webviewConf.userContentController = controller;
+    webviewConf.preferences = preferences;
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:videoCell.contentView.frame configuration:webviewConf];
+    webView.UIDelegate = self.wkWebviewDelegate;
+    [videoCell.contentView addSubview:webView];
+    videoCell.webview = webView;
+    videoCell.webview.alpha = 0;
+    [SFUtils addConstraintsToFillParent:videoCell.webview];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
+    [webView loadRequest:request];
+    [videoCell.contentView setNeedsLayout];
 }
 
 - (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
