@@ -370,6 +370,7 @@
     for (int i = 0; i < newSmartfeedItems.count; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:self.smartFeedItemsArray.count+i inSection:self.outbrainSectionIndex]];
     }
+    NSIndexPath *firstIdx = indexPaths[0];
     
     NSLog(@"before reloadUIData: self.smartFeedItemsArray.count: %d", self.smartFeedItemsArray.count);
     NSLog(@"before reloadUIData: newItemsCount: %d", newSmartfeedItems.count);
@@ -377,7 +378,7 @@
         if (self.sfCollectionViewManager.collectionView != nil) {
             [self.sfCollectionViewManager.collectionView performBatchUpdates:^{
                 [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-                NSIndexPath *firstIdx = indexPaths[0];
+                
                 if (firstIdx.row == 0) {
                     [self.sfCollectionViewManager.collectionView insertSections:[NSIndexSet indexSetWithIndex:self.outbrainSectionIndex]];
                 }
@@ -387,7 +388,21 @@
         }
     }
     else if (self.sfTableViewManager) {
-        //[self.sfTableViewManager reloadUIData:currentCount indexPaths:indexPaths sectionIndex:self.outbrainSectionIndex];
+        if (self.sfTableViewManager.tableView != nil) {
+            // tell the table view to update (at all of the inserted index paths)
+            UITableView *tableView = self.sfTableViewManager.tableView;
+            [tableView beginUpdates];
+            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+            
+            if (firstIdx.row == 0) {
+                [tableView insertSections:[NSIndexSet indexSetWithIndex: self.outbrainSectionIndex] withRowAnimation:UITableViewRowAnimationNone];
+            }
+            else {
+                [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+            }
+            
+            [tableView endUpdates];
+        }
     }
 }
 
