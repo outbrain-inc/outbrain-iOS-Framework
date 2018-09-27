@@ -114,13 +114,11 @@
 }
 
 -(NSInteger) smartFeedItemsCount {
-    @synchronized(self) {
-        if (self.smartFeedItemsArray.count > 0) {
-            return self.smartFeedItemsArray.count + 1; // plus header cell
-        }
-        else {
-            return 0;
-        }
+    if (self.smartFeedItemsArray.count > 0) {
+        return self.smartFeedItemsArray.count + 1; // plus header cell
+    }
+    else {
+        return 0;
     }
 }
 
@@ -377,10 +375,8 @@
     NSLog(@"before reloadUIData: newItemsCount: %d", newSmartfeedItems.count);
     if (self.sfCollectionViewManager) {
         if (self.sfCollectionViewManager.collectionView != nil) {
-            @synchronized(self) {
-                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-            }
             [self.sfCollectionViewManager.collectionView performBatchUpdates:^{
+                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
                 NSIndexPath *firstIdx = indexPaths[0];
                 if (firstIdx.row == 0) {
                     [self.sfCollectionViewManager.collectionView insertSections:[NSIndexSet indexSetWithIndex:self.outbrainSectionIndex]];
