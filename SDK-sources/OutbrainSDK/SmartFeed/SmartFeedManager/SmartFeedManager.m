@@ -114,11 +114,13 @@
 }
 
 -(NSInteger) smartFeedItemsCount {
-    if (self.smartFeedItemsArray.count > 0) {
-        return self.smartFeedItemsArray.count + 1; // plus header cell
-    }
-    else {
-        return 0;
+    @synchronized(self) {
+        if (self.smartFeedItemsArray.count > 0) {
+            return self.smartFeedItemsArray.count + 1; // plus header cell
+        }
+        else {
+            return 0;
+        }
     }
 }
 
@@ -163,11 +165,8 @@
         
         // NSLog(@"loadFirstTimeForFeed received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
         
-        NSUInteger newItemsCount = 0;
-        @synchronized(self) {
-            newItemsCount = [self addNewItemsToSmartFeedArray:response];
-        }
-        [self reloadUIData: newItemsCount];
+        NSArray *newSmartfeedItems = [self addNewItemsToSmartFeedArray:response];
+        [self reloadUIData: newSmartfeedItems];
         
         // First load should fetch the children as well, if self.feedCycleLimit is set, we want to optimize
         // performance by loading all the cycles in straight away (usually it will be < 10 times).
@@ -183,8 +182,8 @@
 }
 
 -(void) loadMoreAccordingToFeedContent {
-    __block NSUInteger newItemsCount = 0;
     __block NSUInteger responseCount = 0;
+    __block NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     __block NSUInteger requestBatchSize = [self.feedContentArray count];
     for (NSString *widgetId in self.feedContentArray) {
         OBRequest *request = [OBRequest requestWithURL:self.url widgetID: widgetId widgetIndex:self.outbrainIndex++];
@@ -206,21 +205,18 @@
             
           //  NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
             
-            @synchronized(self) {
-                newItemsCount += [self addNewItemsToSmartFeedArray:response];
-            }
-            
+            [newSmartfeedItems addObjectsFromArray:[self addNewItemsToSmartFeedArray:response]];
             if (responseCount == requestBatchSize) {
                 self.isLoading = NO;
-                [self reloadUIData: newItemsCount];
+                [self reloadUIData: newSmartfeedItems];
             }
         }];
     }
     self.feedCycleCounter++;
 }
 
--(NSUInteger) addNewItemsToSmartFeedArray:(OBRecommendationResponse *)response {
-    NSUInteger newItemsCount = 0;
+-(NSArray *) addNewItemsToSmartFeedArray:(OBRecommendationResponse *)response {
+    NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in response.recommendations) {
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
     }
@@ -236,8 +232,7 @@
         
         NSURL *videoURL = [self appendParamsToVideoUrl: response];
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL videoParams:videoParams widgetId:response.request.widgetId];
-        [self.smartFeedItemsArray addObject:item];
-        newItemsCount++;
+        [newSmartfeedItems addObject:item];
     }
     
     SFItemType itemType = [self sfItemTypeFromResponse:response];
@@ -248,31 +243,31 @@
     switch (itemType) {
         case SFTypeCarouselWithTitle:
         case SFTypeCarouselNoTitle:
-            newItemsCount += [self addCarouselItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+            [newSmartfeedItems addObjectsFromArray:[self addCarouselItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridTwoInRowWithTitle:
         case SFTypeGridThreeInRowNoTitle:
         case SFTypeGridThreeInRowWithTitle:
-            newItemsCount += [self addGridItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+            [newSmartfeedItems addObjectsFromArray:[self addGridItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         case SFTypeStripNoTitle:
         case SFTypeStripWithTitle:
         case SFTypeStripWithThumbnailNoTitle:
         case SFTypeStripWithThumbnailWithTitle:
-            newItemsCount += [self addSingleItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+            [newSmartfeedItems addObjectsFromArray:[self addSingleItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         default:
             break;
     }
    
-    return newItemsCount;
+    return newSmartfeedItems;
 }
 
 -(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:response.settings.videoUrl.absoluteString];
     NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];    
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];
     if ([OutbrainManager sharedInstance].testMode) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
     }
@@ -318,31 +313,30 @@
     return SFTypeStripWithTitle;
 }
 
--(NSUInteger) addSingleItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSArray *) addSingleItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
     NSString *shadowColor = response.settings.smartfeedShadowColor;
     
-    NSUInteger newItemsCount = 0;
+    NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in recommendations) {
         SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
-        [self.smartFeedItemsArray addObject:item];
-        newItemsCount++;
+        [newSmartfeedItems addObject:item];
+        
     }
-    return newItemsCount;
+    return newSmartfeedItems;
 }
 
--(NSUInteger) addCarouselItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSArray *) addCarouselItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
     NSString *shadowColor = response.settings.smartfeedShadowColor;
     
     SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
-    [self.smartFeedItemsArray addObject:item];
-    return 1;
+    return @[item];
 }
 
--(NSUInteger) addGridItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSArray *) addGridItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
     NSString *shadowColor = response.settings.smartfeedShadowColor;
@@ -358,34 +352,46 @@
         NSAssert(NO, @"templateType has illegal value");
     }
     
-    NSUInteger newItemsCount = 0;
+    NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
     while (recommendationsMutableArray.count >= itemsPerRow) {
         NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
         SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
-        [self.smartFeedItemsArray addObject:item];
-        newItemsCount++;
+        [newSmartfeedItems addObject:item];
     }
 
-    return newItemsCount;
+    return newSmartfeedItems;
 }
 
--(void) reloadUIData:(NSUInteger) newItemsCount {
-    NSInteger currentCount = self.smartFeedItemsArray.count - newItemsCount;
+-(void) reloadUIData:(NSArray *) newSmartfeedItems {
     NSMutableArray *indexPaths = [NSMutableArray array];
     // build the index paths for insertion
     // since you're adding to the end of datasource, the new rows will start at count
-    for (int i = 0; i < newItemsCount; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:currentCount+i inSection:self.outbrainSectionIndex]];
+    for (int i = 0; i < newSmartfeedItems.count; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:self.smartFeedItemsArray.count+i inSection:self.outbrainSectionIndex]];
     }
-
+    
+    NSLog(@"before reloadUIData: self.smartFeedItemsArray.count: %d", self.smartFeedItemsArray.count);
+    NSLog(@"before reloadUIData: newItemsCount: %d", newSmartfeedItems.count);
     if (self.sfCollectionViewManager) {
-        [self.sfCollectionViewManager reloadUIData:currentCount indexPaths:indexPaths sectionIndex:self.outbrainSectionIndex];
+        if (self.sfCollectionViewManager.collectionView != nil) {
+            @synchronized(self) {
+                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+            }
+            [self.sfCollectionViewManager.collectionView performBatchUpdates:^{
+                NSIndexPath *firstIdx = indexPaths[0];
+                if (firstIdx.row == 0) {
+                    [self.sfCollectionViewManager.collectionView insertSections:[NSIndexSet indexSetWithIndex:self.outbrainSectionIndex]];
+                }
+                [self.sfCollectionViewManager.collectionView insertItemsAtIndexPaths:indexPaths];
+                
+            } completion:nil];
+        }
     }
     else if (self.sfTableViewManager) {
-        [self.sfTableViewManager reloadUIData:currentCount indexPaths:indexPaths sectionIndex:self.outbrainSectionIndex];
+        //[self.sfTableViewManager reloadUIData:currentCount indexPaths:indexPaths sectionIndex:self.outbrainSectionIndex];
     }
 }
 
