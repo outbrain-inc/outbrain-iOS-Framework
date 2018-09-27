@@ -83,6 +83,7 @@
        
         self.sfTableViewManager = [[SFTableViewManager alloc] initWithTableView:tableView];
         self.sfTableViewManager.clickListenerTarget = self;
+        self.sfTableViewManager.wkWebviewDelegate = self;
         [self fetchMoreRecommendations];
     }
     return self;
@@ -225,8 +226,16 @@
     }
     
     if ([self isVideoIncludedInResponse:response]) {
+        NSMutableDictionary *videoParams = [[NSMutableDictionary alloc] init];
+        if (response.originalOBPayload[@"settings"]) {
+            videoParams[@"settings"] = response.originalOBPayload[@"settings"];
+        }
+        if (response.originalOBPayload[@"request"]) {
+            videoParams[@"request"] = response.originalOBPayload[@"request"];
+        }
+        
         NSURL *videoURL = [self appendParamsToVideoUrl: response];
-        SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL widgetId:response.request.widgetId];
+        SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL videoParams:videoParams widgetId:response.request.widgetId];
         [self.smartFeedItemsArray addObject:item];
         newItemsCount++;
     }
@@ -263,16 +272,7 @@
 -(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:response.settings.videoUrl.absoluteString];
     NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];
-    NSString *pvID = [response.responseRequest getStringValueForPayloadKey:@"pvId"]; // pageview ID
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sourcePvId" value: pvID]];
-    NSString *docId = [response.responseRequest getStringValueForPayloadKey:@"did"]; // doc ID
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"docId" value: docId]];
-    NSString *reqID = [response.responseRequest getStringValueForPayloadKey:@"req_id"]; // request ID
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sourceRequestId" value: reqID]];
-    NSString *apiUserId = [OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"api_user_id" value: apiUserId]];
-    
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];    
     if ([OutbrainManager sharedInstance].testMode) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
     }

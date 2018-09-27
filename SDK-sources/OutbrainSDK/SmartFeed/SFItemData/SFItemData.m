@@ -17,6 +17,7 @@
 @property (nonatomic, copy) NSString *widgetTitle;
 @property (nonatomic, copy) NSString *widgetId;
 @property (nonatomic, strong) NSURL *videoUrl;
+@property (nonatomic, copy) NSString *videoParamsStr;
 @property (nonatomic, strong) UIColor *shadowColor;
 @end
 
@@ -41,13 +42,22 @@ NSInteger kVideoFinishedStatus = 1114;
     return self;
 }
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl widgetId:(NSString *)widgetId {
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams widgetId:(NSString *)widgetId {
     self = [super init];
     if (self) {
         self.itemType = SFTypeStripVideo;
         self.widgetId = widgetId;
         self.videoUrl = videoUrl;
         self.videoPlayerStatus = kVideoInitStatus;
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:videoParams
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:&error];
+        if (! jsonData) {
+            NSLog(@"initWithVideoUrl Got an error: %@", error);
+        } else {
+            self.videoParamsStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
     }
     return self;
 }
