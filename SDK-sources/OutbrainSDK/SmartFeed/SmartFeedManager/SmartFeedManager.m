@@ -163,7 +163,7 @@
         
         // NSLog(@"loadFirstTimeForFeed received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
         
-        NSArray *newSmartfeedItems = [self addNewItemsToSmartFeedArray:response];
+        NSArray *newSmartfeedItems = [self createSmartfeedItemsArrayFromResponse:response];
         [self reloadUIData: newSmartfeedItems];
         
         // First load should fetch the children as well, if self.feedCycleLimit is set, we want to optimize
@@ -203,7 +203,7 @@
             
           //  NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
             
-            [newSmartfeedItems addObjectsFromArray:[self addNewItemsToSmartFeedArray:response]];
+            [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:response]];
             if (responseCount == requestBatchSize) {
                 self.isLoading = NO;
                 [self reloadUIData: newSmartfeedItems];
@@ -213,7 +213,7 @@
     self.feedCycleCounter++;
 }
 
--(NSArray *) addNewItemsToSmartFeedArray:(OBRecommendationResponse *)response {
+-(NSArray *) createSmartfeedItemsArrayFromResponse:(OBRecommendationResponse *)response {
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in response.recommendations) {
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
@@ -241,19 +241,19 @@
     switch (itemType) {
         case SFTypeCarouselWithTitle:
         case SFTypeCarouselNoTitle:
-            [newSmartfeedItems addObjectsFromArray:[self addCarouselItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle]];
+            [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridTwoInRowWithTitle:
         case SFTypeGridThreeInRowNoTitle:
         case SFTypeGridThreeInRowWithTitle:
-            [newSmartfeedItems addObjectsFromArray:[self addGridItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle]];
+            [newSmartfeedItems addObjectsFromArray:[self createGridItemsFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         case SFTypeStripNoTitle:
         case SFTypeStripWithTitle:
         case SFTypeStripWithThumbnailNoTitle:
         case SFTypeStripWithThumbnailWithTitle:
-            [newSmartfeedItems addObjectsFromArray:[self addSingleItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle]];
+            [newSmartfeedItems addObjectsFromArray:[self createSingleItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         default:
             break;
@@ -311,7 +311,7 @@
     return SFTypeStripWithTitle;
 }
 
--(NSArray *) addSingleItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSArray *) createSingleItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
     NSString *shadowColor = response.settings.smartfeedShadowColor;
@@ -325,7 +325,7 @@
     return newSmartfeedItems;
 }
 
--(NSArray *) addCarouselItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSArray *) createCarouselItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
     NSString *shadowColor = response.settings.smartfeedShadowColor;
@@ -334,7 +334,7 @@
     return @[item];
 }
 
--(NSArray *) addGridItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSArray *) createGridItemsFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
     NSString *shadowColor = response.settings.smartfeedShadowColor;
