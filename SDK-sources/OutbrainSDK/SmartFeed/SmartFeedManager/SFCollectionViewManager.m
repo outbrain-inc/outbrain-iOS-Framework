@@ -95,18 +95,6 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
     }
 }
 
--(void) reloadUIData:(NSUInteger) currentCount indexPaths:(NSArray *)indexPaths sectionIndex:(NSInteger)sectionIndex {
-    if (self.collectionView != nil) {
-        //[self.collectionView reloadData];
-        [self.collectionView performBatchUpdates:^{
-            if (currentCount == 0) {
-                [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
-            }
-            [self.collectionView insertItemsAtIndexPaths:indexPaths];
-        } completion:nil];
-    }
-}
-
 #pragma mark - Collection View methods
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView headerCellForItemAtIndexPath:(NSIndexPath *)indexPath {
     return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSmartfeedHeaderReuseId forIndexPath:indexPath];

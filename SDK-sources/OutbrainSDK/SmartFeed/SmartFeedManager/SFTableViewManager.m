@@ -89,23 +89,6 @@ const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
     return self;
 }
 
--(void) reloadUIData:(NSUInteger) currentCount indexPaths:(NSArray *)indexPaths sectionIndex:(NSInteger)sectionIndex {
-    if (self.tableView != nil) {
-        // tell the table view to update (at all of the inserted index paths)
-        @synchronized(self) {
-            [self.tableView beginUpdates];
-            if (currentCount == 0) {
-                [self.tableView insertSections:[NSIndexSet indexSetWithIndex: sectionIndex] withRowAnimation:UITableViewRowAnimationNone];
-            }
-            else {
-                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-            }
-
-            [self.tableView endUpdates];
-        }
-    }
-}
-
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier {
     if (self.tableView != nil) {
         [self.tableView registerNib:nib forCellReuseIdentifier:identifier];

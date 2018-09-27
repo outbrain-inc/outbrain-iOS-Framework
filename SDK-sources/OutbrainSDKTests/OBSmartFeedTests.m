@@ -21,7 +21,7 @@
 
 @interface SmartFeedManager (Testing)
 
--(NSUInteger) addNewItemsToSmartFeedArray:(OBRecommendationResponse *)response;
+-(NSArray *) createSmartfeedItemsArrayFromResponse:(OBRecommendationResponse *)response;
 
 - (NSArray *) recsForHorizontalCellAtIndexPath:(NSIndexPath *)indexPath;
 
@@ -93,7 +93,7 @@
     NSURL *videoUrlWithParams = [self.smartFeedManager appendParamsToVideoUrl:self.responseParent];
     
     NSLog(@"videoUrlWithParams.absoluteString: %@", videoUrlWithParams.absoluteString);
-    XCTAssertTrue([videoUrlWithParams.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222&platform=ios&sourcePvId=b4b6ea633069219626e103dc55da993c&docId=720627693"]);
+    XCTAssertTrue([videoUrlWithParams.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222&platform=ios"]);
 }
 
 - (void)testSmartFeedResponsesVideoIsIncluded {
@@ -151,23 +151,17 @@
 }
 
 - (void)testSmartFeedManagerBuildArrayOfItems {
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseParent];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 4);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild1];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 5);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild2];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 7);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild3];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 8);
-}
-
-- (void)testUITemplateIsSetCorrectly {
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseParent];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild1];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild2];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild3];
+    NSArray *newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
+    XCTAssertEqual(newItems.count, 4);
     
-    SFItemData *sfItem = self.smartFeedManager.smartFeedItemsArray[0];
+    newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseChild1];
+    XCTAssertEqual(newItems.count, 1);
+    
+    newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseChild2];
+    XCTAssertEqual(newItems.count, 2);
+    
+    newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseChild3];
+    XCTAssertEqual(newItems.count, 1);
 }
 
 
