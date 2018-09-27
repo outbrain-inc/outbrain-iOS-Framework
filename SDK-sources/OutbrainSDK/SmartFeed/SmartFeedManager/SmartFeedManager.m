@@ -372,8 +372,6 @@
     }
     NSIndexPath *firstIdx = indexPaths[0];
     
-    NSLog(@"before reloadUIData: self.smartFeedItemsArray.count: %d", self.smartFeedItemsArray.count);
-    NSLog(@"before reloadUIData: newItemsCount: %d", newSmartfeedItems.count);
     if (self.sfCollectionViewManager) {
         if (self.sfCollectionViewManager.collectionView != nil) {
             [self.sfCollectionViewManager.collectionView performBatchUpdates:^{
