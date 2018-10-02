@@ -70,7 +70,7 @@
  *
  *  @note: If you have more than one widgetID on the same page, use the next constructor (with a widgetIndex parameter) instead.
  **/
-+ (instancetype)requestWithURL:(NSString *)url widgetID:(NSString *)widgetId;
++ (instancetype)requestWithURL:(NSString * _Nonnull)url widgetID:(NSString * _Nonnull)widgetId;
 
 /**
  *  @brief A constructor for defining an OBRequest object.
@@ -79,6 +79,6 @@
  *  @param widgetId - a string ID (assigned by your account manager) for the widget in which content recommendations will be displayed.
  *  @param widgetIndex - the numeric index of the widget on the current page.
  **/
-+ (instancetype)requestWithURL:(NSString *)url widgetID:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex;
++ (instancetype)requestWithURL:(NSString * _Nonnull)url widgetID:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex;
 
 @end
