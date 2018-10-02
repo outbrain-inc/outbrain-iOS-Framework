@@ -115,7 +115,7 @@ extern NSString * const OB_SDK_VERSION;
  * @note If it's necessary to map the web URL to a mobile URL, this must be done in your code.
  * @see OBRecommendation
  **/
-+ (NSURL *)getUrl:(OBRecommendation * _Nonnull)recommendation;
++ (NSURL * _Nullable) getUrl:(OBRecommendation * _Nonnull)recommendation;
 
 /** @section RTB integration **/
 
