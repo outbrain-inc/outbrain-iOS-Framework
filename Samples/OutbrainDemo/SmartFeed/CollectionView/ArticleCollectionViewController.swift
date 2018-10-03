@@ -148,14 +148,6 @@ extension ArticleCollectionViewController {
             }
         }
     }
-    
-    @objc private func outbrainLogoClicked() {
-        guard let outbrainUrl = Outbrain.getAboutURL() else {
-            return
-        }
-        let safariVC = SFSafariViewController(url: outbrainUrl)
-        self.navigationController?.present(safariVC, animated: true, completion: nil)
-    }
 }
 
 extension ArticleCollectionViewController : SmartFeedDelegate {    
@@ -183,9 +175,7 @@ extension ArticleCollectionViewController : SmartFeedDelegate {
     
     func userTappedOnOutbrainLabeling() {
         print("You tapped on Outbrain Labeling")
-        guard let url = Outbrain.getAboutURL() else {
-            return
-        }
+        let url = Outbrain.getAboutURL()
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
