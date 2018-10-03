@@ -12,9 +12,9 @@
 @interface OBDisclosure : OBContent 
 
 /** @brief The image URL */
-@property (nonatomic, copy) NSString *imageUrl;
+@property (nonatomic, copy, nullable) NSString *imageUrl;
 
 /** @brief The URL to open onClick */
-@property (nonatomic, copy) NSURL *clickUrl;
+@property (nonatomic, copy, nullable) NSURL *clickUrl;
 
 @end
