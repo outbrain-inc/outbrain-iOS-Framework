@@ -36,7 +36,6 @@
         NSLog(@"SFVideoTableViewCell  Received: pageIsReady");
         NSString * js = [NSString stringWithFormat:@"odbData(%@)", self.sfItem.videoParamsStr];
         // evaluate js to wkwebview
-        NSLog(@"pageIsReady -> %@", js);
         [self.webview evaluateJavaScript:js completionHandler:nil];
     }
     else if ([@"sdkLog" isEqualToString:action]) {
