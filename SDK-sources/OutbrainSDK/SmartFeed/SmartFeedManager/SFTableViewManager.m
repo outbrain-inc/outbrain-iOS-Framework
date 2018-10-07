@@ -187,6 +187,7 @@ const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
     WKUserContentController *controller = [[WKUserContentController alloc] init];
     [controller addScriptMessageHandler:videoCell name:@"sdkObserver"];
     webviewConf.userContentController = controller;
+    webviewConf.allowsInlineMediaPlayback = YES;
     webviewConf.preferences = preferences;
     WKWebView *webView = [[WKWebView alloc] initWithFrame:videoCell.contentView.frame configuration:webviewConf];
     webView.UIDelegate = self.wkWebviewDelegate;
