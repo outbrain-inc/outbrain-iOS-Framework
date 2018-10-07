@@ -37,7 +37,9 @@ typedef enum
     SFTypeStripWithTitle,
     SFTypeStripWithThumbnailNoTitle,
     SFTypeStripWithThumbnailWithTitle,
-    SFTypeStripVideo
+    SFTypeStripVideo,
+    SFTypeStripVideoWithPaidRecAndTitle,
+    SFTypeStripVideoWithPaidRecNoTitle,
 } SFItemType;
 
 @property (nonatomic, strong, readonly) NSString * _Nullable url;

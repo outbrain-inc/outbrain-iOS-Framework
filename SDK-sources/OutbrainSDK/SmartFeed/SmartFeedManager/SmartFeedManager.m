@@ -214,6 +214,7 @@
 }
 
 -(NSArray *) createSmartfeedItemsArrayFromResponse:(OBRecommendationResponse *)response {
+    NSString *widgetTitle = response.settings.widgetHeaderText;
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in response.recommendations) {
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
@@ -222,19 +223,55 @@
     if ([self isVideoIncludedInResponse:response]) {
         NSMutableDictionary *videoParams = [[NSMutableDictionary alloc] init];
         if (response.originalOBPayload[@"settings"]) {
-            videoParams[@"settings"] = response.originalOBPayload[@"settings"];
+            NSMutableDictionary *settingsJson = [response.originalOBPayload[@"settings"] mutableCopy];
+            if (settingsJson[@"vidgetData"] == nil) {
+                //TODO remote temporary code
+                NSLog(@"Error: isVideoIncludedInResponse --> vidgetData is missing.. temp solution");
+                NSError *error;
+                NSString *vidgetDataJsonStr;
+                NSDictionary * vidgetDataJson = @{@"channelId" : @"58a5ae2e073ef42da903a806",
+                                                  @"playMode" : @"load",
+                                                  @"closeButton" : @"true",
+                                                  @"retries" : @1,
+                                                  @"errorLimit" : @1,
+                                                  @"debug" : @"true",
+                                                  };
+                
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:vidgetDataJson
+                                                                   options:0
+                                                                     error:&error];
+                
+                if (! jsonData) {
+                    NSLog(@"%s: error: %@", __func__, error.localizedDescription);
+                    vidgetDataJsonStr = @"{}";
+                } else {
+                    vidgetDataJsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                }
+                
+                settingsJson[@"vidgetData"] = vidgetDataJsonStr;
+            }
+            videoParams[@"settings"] = settingsJson;
+            
+            
         }
         if (response.originalOBPayload[@"request"]) {
             videoParams[@"request"] = response.originalOBPayload[@"request"];
         }
         
         NSURL *videoURL = [self appendParamsToVideoUrl: response];
-        SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL videoParams:videoParams widgetId:response.request.widgetId];
+        SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
+                                                    videoParams:videoParams
+                                           singleRecommendation:response.recommendations[0]
+                                                    widgetTitle:widgetTitle
+                                                       widgetId:response.request.widgetId
+                                                 shadowColorStr:response.settings.smartfeedShadowColor];
+        
         [newSmartfeedItems addObject:item];
+        // New implementation for Video - if video available there can only be one item in the response (paid + video)
+        return newSmartfeedItems;
     }
     
     SFItemType itemType = [self sfItemTypeFromResponse:response];
-    NSString *widgetTitle = response.settings.widgetHeaderText;
     
    // itemType = SFTypeCarouselWithTitle;
     
@@ -263,7 +300,12 @@
 }
 
 -(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
-    NSURLComponents *components = [[NSURLComponents alloc] initWithString:response.settings.videoUrl.absoluteString];
+    //TODO remove temp code
+    NSString *videoUrlStr = response.settings.videoUrl != nil ?
+    response.settings.videoUrl.absoluteString :
+    @"https://static-test.outbrain.com/video/app/vidgetInApp.html";
+    
+    NSURLComponents *components = [[NSURLComponents alloc] initWithString:videoUrlStr];
     NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];
     if ([OutbrainManager sharedInstance].testMode) {
@@ -275,9 +317,12 @@
 }
 
 -(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {
-    BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
-    BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
-    return videoIsIncludedInRequest && videoURLIsIncludedInSettings;
+    //TEMP IMPL
+    return [response.request.widgetId isEqualToString:@"SDK_SFD_3"] && response.recommendations.count > 0;
+    
+    //    BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
+    //    BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
+    //    return videoIsIncludedInRequest && videoURLIsIncludedInSettings;
 }
 
 -(SFItemType) sfItemTypeFromResponse:(OBRecommendationResponse *)response {
@@ -593,14 +638,17 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    
+    NSLog(@"willDisplayCell:  sfItem: %@", [SFItemData itemTypeString:sfItem.itemType]);
     if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
         if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
     }
-    else if ([cell isKindOfClass:[SFVideoCollectionViewCell class]]) {
+    else if ([cell isKindOfClass:[SFVideoCollectionViewCell class]] ||
+             sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle ||
+             sfItem.itemType == SFTypeStripVideoWithPaidRecNoTitle)
+    {
         [self.sfCollectionViewManager configureVideoCell:cell atIndexPath:indexPath withSFItem:sfItem];
     }
     else { // SFSingleCell
