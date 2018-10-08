@@ -201,23 +201,10 @@ NSString * const SFSingleVideoNoTitleCollectionViewReuseId = @"SFSingleVideoNoTi
         videoCell.webview = nil;
     }
     
-    WKPreferences *preferences = [[WKPreferences alloc] init];
-    preferences.javaScriptEnabled = YES;
-    WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
-    WKUserContentController *controller = [[WKUserContentController alloc] init];
-    [controller addScriptMessageHandler:videoCell name:@"sdkObserver"];
-    webviewConf.userContentController = controller;
-    webviewConf.allowsInlineMediaPlayback = YES;
-    webviewConf.preferences = preferences;
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:videoCell.contentView.frame configuration:webviewConf];
-    webView.UIDelegate = self.wkWebviewDelegate;
-    [videoCell.cardContentView addSubview:webView];
-    videoCell.webview = webView;
-    videoCell.webview.alpha = 0;
-    [SFUtils addConstraintsToFillParent:videoCell.webview];
+    videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell uiDelegate:self.wkWebviewDelegate];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
-    [webView loadRequest:request];
+    [videoCell.webview loadRequest:request];
     [videoCell.contentView setNeedsLayout];
     
     [self configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
