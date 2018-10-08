@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-
+#import "SFCollectionViewCell.h"
 @import WebKit;
 @class SFItemData;
 
-@interface SFVideoCollectionViewCell : UICollectionViewCell <WKScriptMessageHandler>
+
+@interface SFVideoCollectionViewCell : SFCollectionViewCell <WKScriptMessageHandler>
 
 @property (nonatomic, weak) WKWebView *webview;
 @property (nonatomic, weak) SFItemData *sfItem;

@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SFTableViewCell.h"
 
 @import WebKit;
 @class SFItemData;
 
 
-@interface SFVideoTableViewCell : UITableViewCell <WKScriptMessageHandler>
+@interface SFVideoTableViewCell : SFTableViewCell <WKScriptMessageHandler>
 
 @property (nonatomic, weak) WKWebView *webview;
 @property (nonatomic, weak) SFItemData *sfItem;

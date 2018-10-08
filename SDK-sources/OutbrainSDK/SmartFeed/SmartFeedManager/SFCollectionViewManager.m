@@ -22,16 +22,18 @@
 
 @implementation SFCollectionViewManager
 
-const NSString *kCollectionViewHorizontalCarouselWithTitleReuseId = @"SFHorizontalCarouselWithTitleCollectionViewCell";
-const NSString *kCollectionViewHorizontalCarouselNoTitleReuseId = @"SFHorizontalCarouselNoTitleCollectionViewCell";
-const NSString *kCollectionViewSmartfeedHeaderReuseId = @"SFCollectionViewHeaderCell";
-const NSString *kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
-const NSString *kCollectionViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleCollectionCell";
-const NSString *kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
-const NSString *kCollectionViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleCollectionViewCell";
-const NSString *kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
-const NSString *kCollectionViewSingleReuseId = @"SFCollectionViewCell";
-const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideoReuseId";
+NSString * const kCollectionViewHorizontalCarouselWithTitleReuseId = @"SFHorizontalCarouselWithTitleCollectionViewCell";
+NSString * const kCollectionViewHorizontalCarouselNoTitleReuseId = @"SFHorizontalCarouselNoTitleCollectionViewCell";
+NSString * const kCollectionViewSmartfeedHeaderReuseId = @"SFCollectionViewHeaderCell";
+NSString * const kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
+NSString * const kCollectionViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleCollectionCell";
+NSString * const kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
+NSString * const kCollectionViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleCollectionViewCell";
+NSString * const kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
+NSString * const kCollectionViewSingleReuseId = @"SFCollectionViewCell";
+NSString * const kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideoReuseId";
+NSString * const SFSingleVideoWithTitleCollectionViewReuseId = @"SFSingleVideoWithTitleCollectionViewCell";
+NSString * const SFSingleVideoNoTitleCollectionViewReuseId = @"SFSingleVideoNoTitleCollectionViewCell";
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView
 {
@@ -85,6 +87,14 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailWithTitleCollectionCell should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailWithTitleReuseId];
         
+        collectionViewCellNib = [UINib nibWithNibName:@"SFSingleVideoWithTitleCollectionViewCell" bundle:bundle];
+        NSAssert(collectionViewCellNib != nil, @"SFSingleVideoWithTitleCollectionViewCell should not be null");
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: SFSingleVideoWithTitleCollectionViewReuseId];
+        
+        collectionViewCellNib = [UINib nibWithNibName:@"SFSingleVideoNoTitleCollectionViewCell" bundle:bundle];
+        NSAssert(collectionViewCellNib != nil, @"SFSingleVideoNoTitleCollectionViewReuseId should not be null");
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: SFSingleVideoNoTitleCollectionViewReuseId];
+        
     }
     return self;
 }
@@ -123,6 +133,10 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripVideo:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleVideoReuseId forIndexPath:indexPath];
+        case SFTypeStripVideoWithPaidRecAndTitle:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: SFSingleVideoWithTitleCollectionViewReuseId forIndexPath:indexPath];
+        case SFTypeStripVideoWithPaidRecNoTitle:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: SFSingleVideoNoTitleCollectionViewReuseId forIndexPath:indexPath];
         default:
             break;
     }
@@ -146,7 +160,7 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
     else if (sfItemType == SFTypeGridTwoInRowWithTitle) {
         return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 270.0);
     }
-    else if (sfItemType == SFTypeStripWithTitle) {
+    else if ((sfItemType == SFTypeStripWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {
         return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 280.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
@@ -175,8 +189,6 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
 
 - (void) configureVideoCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     SFVideoCollectionViewCell *videoCell = (SFVideoCollectionViewCell *)cell;
-    const NSInteger cellTag = indexPath.row;
-    videoCell.tag = cellTag;
     videoCell.sfItem = sfItem;
     
     if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
@@ -189,33 +201,13 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
         videoCell.webview = nil;
     }
     
-    videoCell.contentView.backgroundColor = UIColor.blackColor;
-    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
-                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    
-    activityView.center = videoCell.contentView.center;
-    [activityView startAnimating];
-    [videoCell.contentView addSubview:activityView];
-    videoCell.spinner = activityView;
-    
-    WKPreferences *preferences = [[WKPreferences alloc] init];
-    preferences.javaScriptEnabled = YES;
-    WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
-    WKUserContentController *controller = [[WKUserContentController alloc] init];
-    [controller addScriptMessageHandler:videoCell name:@"sdkObserver"];
-    webviewConf.userContentController = controller;
-    webviewConf.allowsInlineMediaPlayback = YES;
-    webviewConf.preferences = preferences;
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:videoCell.contentView.frame configuration:webviewConf];
-    webView.UIDelegate = self.wkWebviewDelegate;
-    [videoCell.contentView addSubview:webView];
-    videoCell.webview = webView;
-    videoCell.webview.alpha = 0;
-    [SFUtils addConstraintsToFillParent:videoCell.webview];
+    videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell uiDelegate:self.wkWebviewDelegate];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
-    [webView loadRequest:request];
+    [videoCell.webview loadRequest:request];
     [videoCell.contentView setNeedsLayout];
+    
+    [self configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
 }
     
 - (void) configureSingleCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
@@ -259,7 +251,10 @@ const NSString *kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideo
     [tapGesture setDelegate:self];
     
     // Cell Specific configuration
-    if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripWithThumbnailWithTitle) {
+    if (sfItem.itemType == SFTypeStripWithTitle ||
+        sfItem.itemType == SFTypeStripWithThumbnailWithTitle ||
+        sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle)
+    {
         if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
             [SFUtils addDropShadowToView: singleCell.cardContentView shadowColor:sfItem.shadowColor];
         }
