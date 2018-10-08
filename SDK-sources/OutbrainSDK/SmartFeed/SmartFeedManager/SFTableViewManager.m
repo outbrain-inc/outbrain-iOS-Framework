@@ -240,6 +240,9 @@ NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTab
         singleCell.outbrainLabelingContainer.enabled = YES;
         [singleCell.outbrainLabelingContainer addTarget:self.clickListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
+    if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
+        [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
+    }
     else {
         [SFUtils addDropShadowToView: singleCell];
     }
