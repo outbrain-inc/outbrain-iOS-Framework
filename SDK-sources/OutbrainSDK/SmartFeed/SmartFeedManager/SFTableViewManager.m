@@ -224,8 +224,10 @@ NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTab
     
     [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
     
-    if ((sfItem.itemType == SFTypeStripWithTitle) || (sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle)) {
-        //[SFUtils addDropShadowToView: singleCell.cardContentView];
+    if ((sfItem.itemType == SFTypeStripWithTitle) ||
+        (sfItem.itemType == SFTypeStripWithThumbnailWithTitle) ||
+        (sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle))
+    {
         if (sfItem.widgetTitle) {
             singleCell.cellTitleLabel.text = sfItem.widgetTitle;
         }
