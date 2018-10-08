@@ -41,20 +41,6 @@
     [self addDropShadowToView:view shadowColor:nil];
 }
 
-// https://stackoverflow.com/questions/39624675/add-shadow-on-uiview-using-swift-3
-//+(void) addDropShadowToView:(UIView *)view shadowColor:(UIColor *)shadowColor {
-//    CALayer *layer = view.layer;
-//    layer.masksToBounds = NO;
-//    layer.shadowColor = shadowColor != nil ? shadowColor.CGColor : [[UIColor blackColor] CGColor];
-//    layer.shadowOpacity = 0.5;
-//    layer.shadowOffset = CGSizeMake(-1, 1);
-//    layer.shadowRadius = 1;
-//    layer.shadowPath = [[UIBezierPath bezierPathWithRect:view.bounds] CGPath];
-//    layer.shouldRasterize = YES;
-//    layer.zPosition = 1;
-//    layer.rasterizationScale = [[UIScreen mainScreen] scale];
-//}
-
 +(void) addDropShadowToView:(UIView *)view shadowColor:(UIColor *)shadowColor {
     view.layer.cornerRadius = 4.0f;
     view.layer.borderWidth = 1.0f;
