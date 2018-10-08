@@ -23,6 +23,10 @@
 /* Begin PBXBuildFile section */
 		E61AE0C3215A2F00001F7405 /* SFVideoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61AE0C1215A2F00001F7405 /* SFVideoTableViewCell.h */; };
 		E61AE0C4215A2F00001F7405 /* SFVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61AE0C2215A2F00001F7405 /* SFVideoTableViewCell.m */; };
+		E61AE205216B560C001F7405 /* SFSingleVideoWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE201216B560B001F7405 /* SFSingleVideoWithTitleTableViewCell.xib */; };
+		E61AE206216B560C001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE202216B560B001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib */; };
+		E61AE207216B560C001F7405 /* SFSingleVideoNoTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE203216B560B001F7405 /* SFSingleVideoNoTitleTableViewCell.xib */; };
+		E61AE208216B560C001F7405 /* SFSingleVideoWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE204216B560B001F7405 /* SFSingleVideoWithTitleCollectionViewCell.xib */; };
 		E61E6B462083607B0016D79A /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E6B3D2083607B0016D79A /* OutbrainSDK.framework */; };
 		E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */; };
 		E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BCD20836C180016D79A /* OBAppleAdIdUtil.h */; };
@@ -165,6 +169,10 @@
 		D8D1FD62187327D20099831C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E61AE0C1215A2F00001F7405 /* SFVideoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFVideoTableViewCell.h; sourceTree = "<group>"; };
 		E61AE0C2215A2F00001F7405 /* SFVideoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFVideoTableViewCell.m; sourceTree = "<group>"; };
+		E61AE201216B560B001F7405 /* SFSingleVideoWithTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleVideoWithTitleTableViewCell.xib; sourceTree = "<group>"; };
+		E61AE202216B560B001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleVideoNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
+		E61AE203216B560B001F7405 /* SFSingleVideoNoTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleVideoNoTitleTableViewCell.xib; sourceTree = "<group>"; };
+		E61AE204216B560B001F7405 /* SFSingleVideoWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleVideoWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E61E6B3D2083607B0016D79A /* OutbrainSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OutbrainSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6B452083607B0016D79A /* OutbrainSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutbrainSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBAppleAdIdUtil.m; sourceTree = "<group>"; };
@@ -346,6 +354,17 @@
 				D8C91A791871FEED005916A2 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E61AE200216B560B001F7405 /* SFSingleVideoCell */ = {
+			isa = PBXGroup;
+			children = (
+				E61AE201216B560B001F7405 /* SFSingleVideoWithTitleTableViewCell.xib */,
+				E61AE202216B560B001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib */,
+				E61AE203216B560B001F7405 /* SFSingleVideoNoTitleTableViewCell.xib */,
+				E61AE204216B560B001F7405 /* SFSingleVideoWithTitleCollectionViewCell.xib */,
+			);
+			path = SFSingleVideoCell;
 			sourceTree = "<group>";
 		};
 		E61E6BCA20836C180016D79A /* OutbrainSDK */ = {
@@ -668,6 +687,7 @@
 		E6FEB7472105AAFB002A9020 /* SFSingleCells */ = {
 			isa = PBXGroup;
 			children = (
+				E61AE200216B560B001F7405 /* SFSingleVideoCell */,
 				E6FEB8582105F7E0002A9020 /* SingleWithThumbnailImage */,
 				E6FEB7542105ACFC002A9020 /* SingleWithTitle */,
 				E6FEB7482105AAFB002A9020 /* SingleItemInHorizontalView */,
@@ -856,6 +876,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E61AE208216B560C001F7405 /* SFSingleVideoWithTitleCollectionViewCell.xib in Resources */,
 				E6FEB85A2105F80B002A9020 /* SFSingleWithThumbnailCollectionCell.xib in Resources */,
 				E6FEB74E2105AAFB002A9020 /* SFHorizontalFixedItemCell.xib in Resources */,
 				E6FEB7512105AAFB002A9020 /* SFTableViewCell.xib in Resources */,
@@ -871,8 +892,11 @@
 				E64F6044212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib in Resources */,
 				E63B7862212AD9750018C225 /* SFCollectionViewHeaderCell.xib in Resources */,
 				E64F611421352824008BBDFB /* SFHorizontalFixedWithTitleTableViewCell.xib in Resources */,
+				E61AE206216B560C001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib in Resources */,
 				E64F6046212C412A008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib in Resources */,
 				E6FEB3ED20FF2E78002A9020 /* SFHorizontalCarouselWithTitleTableViewCell.xib in Resources */,
+				E61AE207216B560C001F7405 /* SFSingleVideoNoTitleTableViewCell.xib in Resources */,
+				E61AE205216B560C001F7405 /* SFSingleVideoWithTitleTableViewCell.xib in Resources */,
 				E6FEB74F2105AAFB002A9020 /* SFHorizontalItemCell.xib in Resources */,
 				E6FEB7582105BF0F002A9020 /* SFSingleWithTitleTableViewCell.xib in Resources */,
 				E6FEB85C2105F819002A9020 /* SFSingleWithThumbnailTableCell.xib in Resources */,

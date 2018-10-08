@@ -32,12 +32,13 @@
     else if ([@"videoFinished" isEqualToString:action]) {
         NSLog(@"SFVideoTableViewCell  Received: videoFinished");
         self.sfItem.videoPlayerStatus = kVideoFinishedStatus;
+        [self.webview removeFromSuperview];
+        self.webview = nil;
     }
     else if ([@"pageIsReady" isEqualToString:action]) {
         NSLog(@"SFVideoTableViewCell  Received: pageIsReady");
         NSString * js = [NSString stringWithFormat:@"odbData(%@)", self.sfItem.videoParamsStr];
         // evaluate js to wkwebview
-        NSLog(@"pageIsReady -> %@", js);
         [self.webview evaluateJavaScript:js completionHandler:nil];
     }
     else if ([@"sdkLog" isEqualToString:action]) {

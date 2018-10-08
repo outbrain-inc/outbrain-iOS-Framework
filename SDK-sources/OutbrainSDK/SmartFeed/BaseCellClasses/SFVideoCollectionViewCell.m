@@ -31,6 +31,8 @@
     else if ([@"videoFinished" isEqualToString:action]) {
         NSLog(@"SFVideoCollectionViewCell  Received: videoFinished");
         self.sfItem.videoPlayerStatus = kVideoFinishedStatus;
+        [self.webview removeFromSuperview];
+        self.webview = nil;
     }
     else if ([@"pageIsReady" isEqualToString:action]) {
         NSLog(@"SFVideoTableViewCell  Received: pageIsReady");

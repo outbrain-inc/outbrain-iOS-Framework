@@ -62,4 +62,25 @@
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
++(WKWebView *) createVideoWebViewInsideView:(UIView *)parentView
+                                 withSFItem:(SFItemData *)sfItem
+                       scriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler
+                                 uiDelegate:(id <WKUIDelegate>)uiDelegate
+{
+    WKPreferences *preferences = [[WKPreferences alloc] init];
+    preferences.javaScriptEnabled = YES;
+    WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *controller = [[WKUserContentController alloc] init];
+    [controller addScriptMessageHandler:scriptMessageHandler name:@"sdkObserver"];
+    webviewConf.userContentController = controller;
+    webviewConf.allowsInlineMediaPlayback = YES;
+    webviewConf.preferences = preferences;
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:parentView.frame configuration:webviewConf];
+    webView.UIDelegate = uiDelegate;
+    [parentView addSubview:webView];
+    webView.alpha = 0;
+    [self addConstraintsToFillParent:webView];
+    return webView;
+}
+
 @end
