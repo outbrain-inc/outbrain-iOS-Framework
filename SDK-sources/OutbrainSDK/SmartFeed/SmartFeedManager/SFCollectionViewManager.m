@@ -32,7 +32,8 @@ NSString * const kCollectionViewHorizontalFixedWithTitleReuseId = @"SFHorizontal
 NSString * const kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
 NSString * const kCollectionViewSingleReuseId = @"SFCollectionViewCell";
 NSString * const kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideoReuseId";
-NSString * const kCollectionViewSingleVideoWithPaidRecAndTitleReuseId = @"SFSingleVideoWithTitleCollectionViewCell";
+NSString * const SFSingleVideoWithTitleCollectionViewReuseId = @"SFSingleVideoWithTitleCollectionViewCell";
+NSString * const SFSingleVideoNoTitleCollectionViewReuseId = @"SFSingleVideoNoTitleCollectionViewCell";
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView
 {
@@ -88,7 +89,11 @@ NSString * const kCollectionViewSingleVideoWithPaidRecAndTitleReuseId = @"SFSing
         
         collectionViewCellNib = [UINib nibWithNibName:@"SFSingleVideoWithTitleCollectionViewCell" bundle:bundle];
         NSAssert(collectionViewCellNib != nil, @"SFSingleVideoWithTitleCollectionViewCell should not be null");
-        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleVideoWithPaidRecAndTitleReuseId];
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: SFSingleVideoWithTitleCollectionViewReuseId];
+        
+        collectionViewCellNib = [UINib nibWithNibName:@"SFSingleVideoNoTitleCollectionViewCell" bundle:bundle];
+        NSAssert(collectionViewCellNib != nil, @"SFSingleVideoNoTitleCollectionViewReuseId should not be null");
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: SFSingleVideoNoTitleCollectionViewReuseId];
         
     }
     return self;
@@ -129,9 +134,9 @@ NSString * const kCollectionViewSingleVideoWithPaidRecAndTitleReuseId = @"SFSing
         case SFTypeStripVideo:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleVideoReuseId forIndexPath:indexPath];
         case SFTypeStripVideoWithPaidRecAndTitle:
-            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleVideoWithPaidRecAndTitleReuseId forIndexPath:indexPath];
+            return [collectionView dequeueReusableCellWithReuseIdentifier: SFSingleVideoWithTitleCollectionViewReuseId forIndexPath:indexPath];
         case SFTypeStripVideoWithPaidRecNoTitle:
-            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleVideoWithPaidRecAndTitleReuseId forIndexPath:indexPath];
+            return [collectionView dequeueReusableCellWithReuseIdentifier: SFSingleVideoNoTitleCollectionViewReuseId forIndexPath:indexPath];
         default:
             break;
     }
@@ -196,14 +201,14 @@ NSString * const kCollectionViewSingleVideoWithPaidRecAndTitleReuseId = @"SFSing
         videoCell.webview = nil;
     }
     
-    NSString *setViewportScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
-    WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:setViewportScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+//    NSString *setViewportScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+//    WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:setViewportScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
 
     WKPreferences *preferences = [[WKPreferences alloc] init];
     preferences.javaScriptEnabled = YES;
     WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
     WKUserContentController *controller = [[WKUserContentController alloc] init];
-    [controller addUserScript:wkUScript];
+   // [controller addUserScript:wkUScript];
     [controller addScriptMessageHandler:videoCell name:@"sdkObserver"];
     webviewConf.userContentController = controller;
     webviewConf.allowsInlineMediaPlayback = YES;
