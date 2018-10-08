@@ -148,14 +148,6 @@ extension ArticleCollectionViewController {
             }
         }
     }
-    
-    @objc private func outbrainLogoClicked() {
-        guard let outbrainUrl = Outbrain.getAboutURL() else {
-            return
-        }
-        let safariVC = SFSafariViewController(url: outbrainUrl)
-        self.navigationController?.present(safariVC, animated: true, completion: nil)
-    }
 }
 
 extension ArticleCollectionViewController : SmartFeedDelegate {    
@@ -175,14 +167,20 @@ extension ArticleCollectionViewController : SmartFeedDelegate {
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
     
-    func userTappedOnOutbrainLabeling() {
-        print("You tapped on Outbrain Labeling")
-        guard let url = Outbrain.getAboutURL() else {
-            return
-        }
+    func userTapped(onVideoRec url: URL) {
+        print("You tapped on video rec")
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
+    
+    func userTappedOnOutbrainLabeling() {
+        print("You tapped on Outbrain Labeling")
+        let url = Outbrain.getAboutURL()
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
+    
+    
 }
 
 extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {

@@ -145,9 +145,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
 extension ArticleTableViewController : SmartFeedDelegate {
     func userTappedOnOutbrainLabeling() {
         print("You tapped on Outbrain Labeling")
-        guard let url = Outbrain.getAboutURL() else {
-            return
-        }
+        let url = Outbrain.getAboutURL()
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
@@ -164,6 +162,12 @@ extension ArticleTableViewController : SmartFeedDelegate {
     
     func userTapped(onAdChoicesIcon url: URL) {
         print("You tapped onAdChoicesIcon")
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
+    
+    func userTapped(onVideoRec url: URL) {
+        print("You tapped on video rec")
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }

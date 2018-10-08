@@ -16,4 +16,6 @@
 
 @interface OBContent : NSObject
 
+@property (nonatomic, copy, readonly) NSDictionary *originalOBPayload;
+
 @end

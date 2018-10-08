@@ -21,11 +21,15 @@
 
 @interface SmartFeedManager (Testing)
 
--(NSUInteger) addNewItemsToSmartFeedArray:(OBRecommendationResponse *)response;
+-(NSArray *) createSmartfeedItemsArrayFromResponse:(OBRecommendationResponse *)response;
 
 - (NSArray *) recsForHorizontalCellAtIndexPath:(NSIndexPath *)indexPath;
 
 -(BOOL) isHorizontalCell:(NSIndexPath *)indexPath;
+
+-(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response;
+
+-(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response;
 
 @end
 
@@ -73,6 +77,31 @@
     [super tearDown];
 }
 
+- (void)testSmartFeedResponsesVidSettings {
+    XCTAssertTrue([[self.responseParent.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1);
+    XCTAssertFalse([[self.responseChild1.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1);
+}
+
+- (void)testSmartFeedResponsesVideoUrl {
+    XCTAssertTrue([self.responseParent.settings.videoUrl.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222"]);
+    XCTAssertNil(self.responseChild1.settings.videoUrl);
+}
+
+- (void)testSmartFeedVideoUrlWithParams {
+    XCTAssertTrue([self.responseParent.settings.videoUrl.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222"]);
+    
+    NSURL *videoUrlWithParams = [self.smartFeedManager appendParamsToVideoUrl:self.responseParent];
+    
+    NSLog(@"videoUrlWithParams.absoluteString: %@", videoUrlWithParams.absoluteString);
+    XCTAssertTrue([videoUrlWithParams.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222&platform=ios"]);
+}
+
+- (void)testSmartFeedResponsesVideoIsIncluded {
+    XCTAssertTrue([self.smartFeedManager isVideoIncludedInResponse:self.responseParent]);
+    XCTAssertFalse([self.smartFeedManager isVideoIncludedInResponse:self.responseChild1]);
+    XCTAssertFalse([self.smartFeedManager isVideoIncludedInResponse:self.responseChild2]);
+}
+    
 - (void)testSmartFeedResponsesContent {
     XCTAssertEqual(self.responseParent.recommendations.count, 6);
     XCTAssertEqual(self.responseChild1.recommendations.count, 1);
@@ -115,25 +144,24 @@
     
 }
 
-
-- (void)testSmartFeedManagerBuildArrayOfItems {
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseParent];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 3);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild1];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 4);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild2];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 6);
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild3];
-    XCTAssertEqual(self.smartFeedManager.smartFeedItemsArray.count, 7);
+- (void)testSmartfeedShadowColorFromResponse {
+    XCTAssertTrue([self.responseParent.settings.smartfeedShadowColor isEqualToString:@"#ffa500"]);
+    XCTAssertNil(self.responseChild1.settings.smartfeedShadowColor);
+    XCTAssertNil(self.responseChild2.settings.smartfeedShadowColor);
 }
 
-- (void)testUITemplateIsSetCorrectly {
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseParent];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild1];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild2];
-    [self.smartFeedManager addNewItemsToSmartFeedArray:self.responseChild3];
+- (void)testSmartFeedManagerBuildArrayOfItems {
+    NSArray *newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
+    XCTAssertEqual(newItems.count, 4);
     
-    SFItemData *sfItem = self.smartFeedManager.smartFeedItemsArray[0];
+    newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseChild1];
+    XCTAssertEqual(newItems.count, 1);
+    
+    newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseChild2];
+    XCTAssertEqual(newItems.count, 2);
+    
+    newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseChild3];
+    XCTAssertEqual(newItems.count, 1);
 }
 
 

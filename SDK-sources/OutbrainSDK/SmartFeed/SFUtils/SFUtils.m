@@ -37,18 +37,50 @@
     [view addConstraint:heightConst];
 }
 
-// https://stackoverflow.com/questions/39624675/add-shadow-on-uiview-using-swift-3
 +(void) addDropShadowToView:(UIView *)view {
-    CALayer *layer = view.layer;
-    layer.masksToBounds = NO;
-    layer.shadowColor = [[UIColor blackColor] CGColor];
-    layer.shadowOpacity = 0.5;
-    layer.shadowOffset = CGSizeMake(-1, 1);
-    layer.shadowRadius = 1;
-    layer.shadowPath = [[UIBezierPath bezierPathWithRect:view.bounds] CGPath];
-    layer.shouldRasterize = YES;
-    layer.zPosition = 1;
-    layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    [self addDropShadowToView:view shadowColor:nil];
+}
+
++(void) addDropShadowToView:(UIView *)view shadowColor:(UIColor *)shadowColor {
+    view.layer.cornerRadius = 4.0f;
+    view.layer.borderWidth = 1.0f;
+    view.layer.borderColor = [UIColor clearColor].CGColor;
+    
+    view.layer.shadowColor = shadowColor != nil ? shadowColor.CGColor : [[UIColor lightGrayColor] CGColor];
+    view.layer.shadowOffset = CGSizeMake(0, 2.0f);
+    view.layer.shadowRadius = 2.0f;
+    view.layer.shadowOpacity = 1.0f;
+    view.layer.masksToBounds = NO;
+    view.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:view.layer.cornerRadius].CGPath;
+}
+
++ (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
++(WKWebView *) createVideoWebViewInsideView:(UIView *)parentView
+                                 withSFItem:(SFItemData *)sfItem
+                       scriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler
+                                 uiDelegate:(id <WKUIDelegate>)uiDelegate
+{
+    WKPreferences *preferences = [[WKPreferences alloc] init];
+    preferences.javaScriptEnabled = YES;
+    WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *controller = [[WKUserContentController alloc] init];
+    [controller addScriptMessageHandler:scriptMessageHandler name:@"sdkObserver"];
+    webviewConf.userContentController = controller;
+    webviewConf.allowsInlineMediaPlayback = YES;
+    webviewConf.preferences = preferences;
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:parentView.frame configuration:webviewConf];
+    webView.UIDelegate = uiDelegate;
+    [parentView addSubview:webView];
+    webView.alpha = 0;
+    [self addConstraintsToFillParent:webView];
+    return webView;
 }
 
 @end

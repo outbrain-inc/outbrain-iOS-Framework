@@ -11,6 +11,7 @@
 #import "SFHorizontalTableViewCell.h"
 #import "SFUtils.h"
 #import "SFImageLoader.h"
+#import "SFVideoTableViewCell.h"
 
 @interface SFTableViewManager() <UIGestureRecognizerDelegate>
 
@@ -21,16 +22,18 @@
 @implementation SFTableViewManager
 
 const CGFloat kTableViewRowHeight = 250.0;
-const NSString *kTableViewSingleReuseId = @"SFTableViewCell";
-const NSString *kTableViewSmartfeedHeaderReuseId = @"SFTableViewHeaderCell";
-const NSString *kTableViewHorizontalCarouselWithTitleReuseId = @"SFCarouselWithTitleReuseId";
-const NSString *kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitleReuseId";
-const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
-const NSString *kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
-const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
-const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
-const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleTableCell";
-
+NSString * const kTableViewSingleReuseId = @"SFTableViewCell";
+NSString * const kTableViewSmartfeedHeaderReuseId = @"SFTableViewHeaderCell";
+NSString * const kTableViewHorizontalCarouselWithTitleReuseId = @"SFCarouselWithTitleReuseId";
+NSString * const kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitleReuseId";
+NSString * const kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
+NSString * const kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
+NSString * const kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
+NSString * const kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
+NSString * const kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleTableCell";
+NSString * const kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
+NSString * const kTableViewSingleVideoWithTitleReuseId = @"SFSingleVideoWithTitleTableViewCell";
+NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTableViewCell";
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView {
     self = [super init];
@@ -65,6 +68,9 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
         NSAssert(nib != nil, @"SFTableViewHeaderCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSmartfeedHeaderReuseId];
         
+        // video cell
+        [self.tableView registerClass:[SFVideoTableViewCell class] forCellReuseIdentifier:kTableViewSingleVideoReuseId];
+        
         // single item cell
         nib = [UINib nibWithNibName:@"SFTableViewCell" bundle:bundle];
         NSAssert(nib != nil, @"SFTableViewCell should not be null");
@@ -81,25 +87,16 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
         nib = [UINib nibWithNibName:@"SFSingleWithThumbnailWithTitleTableCell" bundle:bundle];
         NSAssert(nib != nil, @"SFSingleWithThumbnailWithTitleTableCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleWithThumbnailWithTitleReuseId];
+        
+        nib = [UINib nibWithNibName:@"SFSingleVideoNoTitleTableViewCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFSingleVideoNoTitleTableViewCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleVideoNoTitleReuseId];
+        
+        nib = [UINib nibWithNibName:@"SFSingleVideoWithTitleTableViewCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFSingleVideoWithTitleTableViewCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleVideoWithTitleReuseId];
     }
     return self;
-}
-
--(void) reloadUIData:(NSUInteger) currentCount indexPaths:(NSArray *)indexPaths sectionIndex:(NSInteger)sectionIndex {
-    if (self.tableView != nil) {
-        // tell the table view to update (at all of the inserted index paths)
-        @synchronized(self) {
-            [self.tableView beginUpdates];
-            if (currentCount == 0) {
-                [self.tableView insertSections:[NSIndexSet indexSetWithIndex: sectionIndex] withRowAnimation:UITableViewRowAnimationNone];
-            }
-            else {
-                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-            }
-
-            [self.tableView endUpdates];
-        }
-    }
 }
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier {
@@ -133,7 +130,12 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnailWithTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailWithTitleReuseId forIndexPath:indexPath];
-            
+        case SFTypeStripVideo:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoReuseId forIndexPath:indexPath];
+        case SFTypeStripVideoWithPaidRecAndTitle:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoWithTitleReuseId forIndexPath:indexPath];
+        case SFTypeStripVideoWithPaidRecNoTitle:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoNoTitleReuseId forIndexPath:indexPath];
         default:
             NSAssert(false, @"sfItem.itemType must be covered in this switch/case statement");
             return [[UITableViewCell alloc] init];
@@ -149,7 +151,7 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
     else if (sfItemType == SFTypeCarouselWithTitle) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : kTableViewRowHeight;
     }
-    else if (sfItemType == SFTypeGridTwoInRowWithTitle) {
+    else if ((sfItemType == SFTypeGridTwoInRowWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 270.0;
     }
     else if (sfItemType == SFTypeStripWithTitle) {
@@ -161,8 +163,34 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
     else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 210.0 : 150.0;
     }
+    else if (sfItemType == SFTypeStripVideo) {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0;
+    }
     
     return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? kTableViewRowHeight*1.3 : kTableViewRowHeight;
+}
+
+- (void) configureVideoCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
+    SFVideoTableViewCell *videoCell = (SFVideoTableViewCell *)cell;
+    videoCell.sfItem = sfItem;
+    
+    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
+        [videoCell.contentView setNeedsLayout];
+        return;
+    }
+    
+    if (videoCell.webview) {
+        [videoCell.webview removeFromSuperview];
+        videoCell.webview = nil;
+    }
+
+    videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell uiDelegate:self.wkWebviewDelegate];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
+    [videoCell.webview loadRequest:request];
+    [videoCell.contentView setNeedsLayout];
+    
+    [self configureSingleTableViewCell:videoCell atIndexPath:indexPath withSFItem:sfItem];
 }
 
 - (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
@@ -196,9 +224,10 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
     
     [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
     
-    // add shadow
-    if (sfItem.itemType == SFTypeStripWithTitle) {
-        //[SFUtils addDropShadowToView: singleCell.cardContentView];
+    if ((sfItem.itemType == SFTypeStripWithTitle) ||
+        (sfItem.itemType == SFTypeStripWithThumbnailWithTitle) ||
+        (sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle))
+    {
         if (sfItem.widgetTitle) {
             singleCell.cellTitleLabel.text = sfItem.widgetTitle;
         }
@@ -212,6 +241,9 @@ const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithTh
         [singleCell.outbrainLabelingContainer becomeFirstResponder];
         singleCell.outbrainLabelingContainer.enabled = YES;
         [singleCell.outbrainLabelingContainer addTarget:self.clickListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
+        [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
     }
     else {
         [SFUtils addDropShadowToView: singleCell];

@@ -36,13 +36,13 @@
 @interface OBRecommendation : OBContent
 
 /** @brief The date the content was published. */
-@property (nonatomic, strong, readonly) NSDate * publishDate;
+@property (nonatomic, strong, readonly, nullable) NSDate * publishDate;
 /** @brief TBD - property may be removed. */
-@property (nonatomic, copy, readonly) NSString * author;
+@property (nonatomic, copy, readonly, nullable) NSString * author;
 /** @brief The recommendation's title. */
-@property (nonatomic, copy, readonly) NSString * content;
+@property (nonatomic, copy, readonly, nonnull) NSString * content;
 /** @brief The name of the recommendation's source. */
-@property (nonatomic, copy, readonly) NSString * source;
+@property (nonatomic, copy, readonly, nonnull) NSString * source;
 /** @brief Is the recommendation from the same source as the one the user is currently viewing. */
 @property (nonatomic, assign, getter = isSameSource, readonly) BOOL sameSource;
 /** @brief Is this a recommendation for which the publisher pays, when your user clicks on it. */
@@ -50,13 +50,13 @@
 /** @brief Is the recommendation a link to a video clip. */
 @property (nonatomic, assign, getter = isVideo, readonly) BOOL video;
 /** @brief An image related to the recommendation. */
-@property (nonatomic, strong, readonly) OBImage *image;
+@property (nonatomic, strong, readonly, nullable) OBImage *image;
 /** @brief Publisher logo image */
-@property (nonatomic, strong, readonly) OBImage *publisherLogoImage;
+@property (nonatomic, strong, readonly, nullable) OBImage *publisherLogoImage;
 /** @brief Disclosure icon for conversion campaigns */
-@property (nonatomic, strong, readonly) OBDisclosure *disclosure;
+@property (nonatomic, strong, readonly, nullable) OBDisclosure *disclosure;
 /** @brief Pixels array for a recommendation to be fired when recommendation received from the server */
-@property (nonatomic, strong, readonly) NSArray *pixels;
+@property (nonatomic, strong, readonly, nullable) NSArray *pixels;
 
 -(BOOL) isRTB __deprecated_msg("use shouldDisplayDisclosureIcon() instead.");
 

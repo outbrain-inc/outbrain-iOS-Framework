@@ -18,6 +18,7 @@ typedef void(^OnAdChoicesIconClick)(NSURL *url);
 
 - (void) registerNib:(UINib *_Nonnull)nib forCellWithReuseIdentifier:(NSString *_Nonnull)identifier;
 
+@property (nonatomic, strong) UIColor * _Nullable shadowColor;
 @property (nonatomic, strong) NSArray * _Nullable outbrainRecs;
 @property (nonatomic) OnRecommendationClick _Nonnull onRecommendationClick;
 @property (nonatomic) OnAdChoicesIconClick _Nonnull onAdChoicesIconClick;

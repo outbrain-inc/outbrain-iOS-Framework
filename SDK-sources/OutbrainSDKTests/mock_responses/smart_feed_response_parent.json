@@ -1,7 +1,7 @@
 {
     "response": {
-        "exec_time": 116,
-        "timestamp": 1534246203576,
+        "exec_time": 28,
+        "timestamp": 1537431737848,
         "status": {
             "id": 0,
             "content": "Request succeeded"
@@ -9,17 +9,19 @@
         "request": {
             "lang": "en",
             "idx": "0",
-            "did": "689346564",
+            "lastIdx": "9999",
+            "lastCardIdx": "9999",
+            "did": "720627693",
             "pid": "4737",
-            "lsd": "8832e28d-df26-46ce-8c41-6697f30591bc",
-            "enu": "lxSLYY32do9x3PGaMGCLdeom76Kwh0yrr_ot9ghxBF44hfTZdVlv18MWQD7ml8lG",
-            "api_user_id": "8832E28D-DF26-46CE-8C41-6697F30591BC",
-            "t": "MV9kMjZiZmIwMGNjZTU0Nzk0MWVmZDYwNzEyMjE4ZjA4M18w",
-            "pvId": "d26bfb00cce547941efd60712218f083",
+            "lsd": "d19a3a3f-8e1f-4e3d-b2bb-d61a75733dea",
+            "enu": "W2T5pEqt57CHDZPvY6M8u3cyZwbVDbZKcU8UBTMqg2Bo_c0dqMDi51aAKl26bNAB",
+            "api_user_id": "D19A3A3F-8E1F-4E3D-B2BB-D61A75733DEA",
+            "t": "MV9iNGI2ZWE2MzMwNjkyMTk2MjZlMTAzZGM1NWRhOTkzY18w",
+            "pvId": "b4b6ea633069219626e103dc55da993c",
             "pad": "6",
             "org": "0",
             "abTestVal": "no_abtest",
-            "obRecsAbtestAndVars": "386-1125,486-1552,378-1101",
+            "obRecsAbtestAndVars": "403-1410,378-1101",
             "widgetJsId": "SFD_MAIN_2",
             "readerPlatform": "desktop",
             "isHttps": "true",
@@ -30,151 +32,186 @@
             "gdpr": "0",
             "sid": 5291479,
             "wnid": 1117,
-            "req_id": "d26bfb00cce547941efd60712218f083",
+            "req_id": "b4b6ea633069219626e103dc55da993c",
             "gl": "gitdl9OoE0zDZV3Fi9iNFA",
-            "vid": 0,
+            "vid": 1,
             "ref": 0,
-            "lastIdx": "9999",
-            "lastCardIdx": "9999",
-            "rtbEnabled": "true"
+            "forceFeed": "false"
         },
         "documents": {
             "total_count": 6,
             "count": 6,
             "doc": [
                     {
-                    "source_name": "www.mediaforce.com",
+                    "source_name": "news.myecomclub.com",
                     "same_source": "false",
+                    "source_display_name": "news.myecomclub.com",
+                    "pc_id": 100284322,
+                    "adv_name": "NativeAds_104275",
                     "publish_date": "1969-12-31 19:00",
-                    "orig_url": "http://www.mediaforce.com",
-                    "ads_type": 1,
-                    "rec_en_did": "d2EE6KwBUIa8OqCiW1CPwQ",
-                    "url": "https://paid.outbrain.com/network/redir?p=mtpumSMESzEg9hMUB57vYQGMzLH30hdw_ahqvJw78tmO_OXlWDi4YW3e4J-bt4iusKc13MMpp3Z9duVKPrELIgs2UoqSup9Zqk1kCqUFh-fsUB8_estQpSOB86ekqWMth14lpHM7RzA_fa-wQevvINBF4UJTdEDXQqWHy8hGrtuPJAIERth9GQ2dpRpkA897KAopJvdkjP3ghZUKt9p4UcXDm9sDBQUaBHohUgpOf7orQrLyhhTkRb0d9aaA06pGL6h8fkUd4VBUtwnVIAVniMrWy5-klFf_ItWtUQCpcg5iHKGK--sJ8uX8t75_-HDaAVRJmzAJ_duOQj6jHBRD9iJUt0Cu8wjF7hMuNdQR58e-1dQyYlweyAENdOxHaYzug-yBDE5wWffEcyfs_VobIuaN_HBn2cM9Hs8M-ntbRS6wqe9rLhNxVI6IoR9LJnYegcAdCtiUaQ_bT2iV4cS_D6J64MlM4FZIn8kZqSuCAOix5ericOYEvDde22zNncrJCE90Nn4yTORZyV_0Lc4DV6uNzlAXhWCUeVypyYGM_0Y_0f6nYgNXllCln2tS3OFdYmdd5icEaWefmgZMIF__zRJoKlGFlaydJcJ6oUhI7nzTJ9I7KHAGYAVsGifZRRrtKyIUiT0Tu6XcatkDhCbehab-kS08N55iJpiwEFXjpKAJpvlsNB4Y9eDozfflvU5BTaKnjiletP-cROBl3QW2ocJEFYSQqVTQOXhv8myuQvFetWm-vxd05qVOBTCpcroa-lAIvybkThb_LA-UyGohADaU3Z5M0cd5kpXa-umdvDAPruz3STykWoAbH4qIjYsbX1aQl9rwcyTBt35AA45fxqRcM0JN1u5G2S0fWwAqN6wlJfEIjRgGOa9AGLkEUpDm8wt-0apKHJSdTUM_6yD41FMAML-2vQdfAiAC0iQCCbVEeyKN3WbN9mV91LHUW6f1&c=6875866f&v=3",
-                    "content": "Media Force – Performance-Based Marketing",
-                    "pos": "0",
-                    "ttid": 3,
-                    "source_display_name": "www.mediaforce.com",
-                    "pc_id": 92427055,
-                    "adv_name": "RTB-in_MediaForce_Advertiser (MediaForce RTB)",
+                    "orig_url": "https://news.myecomclub.com/sideincomeforamericans?utm_c1=A&utm_c2=457088&utm_c3=A_$origsrcid$&utm_c4=120028&utm_source=nativeads_Desktop&utm_medium=A_$origsrcid$&utm_campaign=NA_Desktop_120028_457088&utm_content=How_To_Start_Ecommerce_As_A_Side_Income",
                     "rec-cats": [
                                  1211
                                  ],
+                    "ads_type": 1,
+                    "rec_en_did": "bcbARX5GWYrRsPu_VdbTvA",
+                    "url": "https://paid.outbrain.com/network/redir?p=eOLdoTrP7LDqpI6g5mkrep42J7OoysRJ9y2R-5Kgb5wNyxVlmlZz6UhBZ-vJy8RX71hIqpvVuEsoZ9OT1j8tcgknP7lay8IihwIUdK0B94oqLPt37b5MboQdtJJnmgUDUc9nrp86r2F_h_DbEmP6vcHjqX7ITCsyocN846fWRwEjJCwvPbtpI-crQT1mNcbZ09OYN4hj8Wj0VYTJQODi3JO2y6fPxY9RjkBtlJwI8L-Nmkt-SUIA37yaWaiM6VDdoXQf--e67eWqDUG-JsuixInAOsvFkCG69eD1ae2CfLt9qNDxyOekZZ-kyDrnutp2Hh_JycwngI8pFnfGZcpDi4XwCam1rj11s6bQudi4xbET2XFFN_fCFBqfhEEdxt63VdW8Jl1espNozZ4MLoWZkhIdN0K6jK281A0z6ebz0C23ZZ04b-zW1g9dB5vlA7dA0CF1XwBX7KuEdfEY3a7AjOKwALqrcMZoQKQIpKUILJw8B23XRyJb797YNwZ-1bzBWxUo4N7oilWAHrfmH7lvodZb3DQEXXFUWxJ-vpuly9Gcak8PrEyrEcfUjOoUd9odDPKrAy71IuwkDEC04iWgUGFgivkKN0HEpWD51c2AFYOuBrnY5kAOSDv9McvX7twIS5qRFtToMP1CJOmEYOKwSA9HZUvDLmAeDwIw_mCES37Q-bI_z84c6Qm_rEHTyeUfGfh-XDvI2noMu-ami0eAoZV-NVLp2jwTe6SifZZnp0zRUURkUWkMtU2fMXKCnQR0sCZeyCharg7B85dc7OPR6rFYQFUBjjrjz2RcXNS3Fa6CRDYMWovkukxbVuJYlHbZ4P_pv_-GTpJgZCGc0_3PJ_G2Cs0RyFjbDCALoenOrUkFO0J5IHdHtRyX0CwiNSGK5X2F26OT87F8ZG3mUsx9auAWWhjdZDbzFiSNnFerxBwyTlXuPDSI-Ihi9plI9mcp&c=4da4a2cb&v=3",
                     "author": "",
-                    "pc_cmp_id": 1000757861
+                    "content": "How To Start Ecommerce As A Side Income",
+                    "pc_cmp_id": 1001020472,
+                    "pos": "0",
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImFjNGUxODNjNjIxZTliMGFlZDBiNTA5NWNjYTVmNWFjOWQ0YjhiZjZjMzcyMGQ3YmI1ZDNjMjI5NzQwMWMwOGYiLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
                     },
                     {
-                    "source_name": "Discoverytheword",
+                    "source_name": "www.signarama.com",
                     "same_source": "false",
-                    "source_display_name": "Discoverytheword",
-                    "publish_date": "2018-02-12 10:37",
-                    "orig_url": "http://discoverytheword.com/cool-facts-you-didnt-know-about-the-vikings/?utm_campaign=2649_dis-out-d-us-kTOkHGPiVvRC&utm_source=outbrain&utm_medium=$origsrcid$&utm_content=002879d4f686c9431db57b17f829023295&utm_term=005dfe8f1617c7b59d4705490e3d655bff",
+                    "source_display_name": "www.signarama.com",
+                    "pc_id": 100897722,
+                    "adv_name": "Selfserve_signarama@dasverify.com",
+                    "publish_date": "1969-12-31 19:00",
+                    "orig_url": "https://www.signarama.com/blog/signarama-graphics-designers-explain-their-creative-process/?utm_source=promotedblogcontent&utm_medium=seo&utm_campaign=blogs&client=0004&campid=1001",
                     "rec-cats": [
-                                 2004
+                                 1211
                                  ],
                     "ads_type": 1,
-                    "rec_en_did": "fvwmKLbwGF7Lq_xroze2oQ",
-                    "url": "https://paid.outbrain.com/network/redir?p=NAw7_tzIRMHctBLQWyGnvBm7103RPmIq8ty2XRt__a5EEIa9VEP4yUUcfPiu_y-ASpoGKl7r04wRfwM--DgQzG6Ssxf2oRrofvQnBLMWIHrn5WwtJU40HdIn3dYWjebqP7xBSgBIb6sHC6xaXK41fN-BXYhMGKYsmHctp4Q-cYcJRNKx1CGYgiJ3xVKEIMa6TPbIswaH3dBOyZImTqBs3vUWD6NhjVPaKqk68UPMt7PRPfETAvZ4HAnmG3UH-eBqArI9pnGmYSYrZvkUxWeaFXBZbFATo9ohRCYFERkefnFxPug8FmJIHudtcq3cml4EG2oToM0AyVTq9pOE7a_B7s2ShXxePCMqV0LlokKn-NlAIeVaqBh85phUPzr9cLL_Zlu9kgHOzxUIEl_udwwGUwoNWzc7x3gSVWX78D3pKRfIvXYelVPCUrzyXH_EtN7woHgo5Gt4bMBhcbIBq5uxCjDoL3LiEqwvZVan4G27KXP-cpnWzINzkp8YGH5_idJ6FNNyxCLKTm-vf88oZI7PfJl79y-co1NN5qb0deyvewIaoK4HL5s_KYgUmtAsohH91WUjDPcIG-a5s4zZRzblSDJZ1yQC33j6kizdgs56iyBwPkyZJWHmCMpf8vfTGXdU84ZQSXTMLkY4iVbEfzZvOcaS1ndo0LddWkKfsBJ-oxAlV8TDDL-2CEmyWsq6UxOXyXWP6YIR7iYOeg8jj9CEQz31dHPYHl2SNAW__vwqmJPS_QoBNI69U0ynzf9M1cj2Eu_Fr86uGFxXRlDTkwaEB82XWtGCPoMu9mSgxVWEHPyYcYw9l8BYV5jNS1-Z6POPeJWrHFP_exOPXRI7oH1ZLdQoH5FbqtDysqFrhWP7VSAei4Y0A9nfQ5mowiDsEiTM-YEvuSDzs07oPp1FwqXOjAN3eSV2l9zuoCM3O5zmquzcvTPk9ZX_FwRLeFYh5DuI&c=85d29120&v=3",
+                    "rec_en_did": "MIDIi5lZmWW0ua8p25Apqw",
+                    "url": "https://paid.outbrain.com/network/redir?p=gDrJSK2fEQehikZCV7PpxYXbPyPqCmwYkR777rVgjVS8jyN2M7QmVOD15nNyn1M4pek-zHycEYYsi4QZjQvCFqd99mHpEc0Ve-GuHN_usRtTUQFFPGdmWHhWCMKvoL9zYrrsEZFvNqodn3e82w-jrSbpl8kB9y3TCT8VHeqbXxwAKaqvfeGmZu6KVqlW-cdHQh7ze7B_tMFKiidPETNANLn-iSZk8VczMgadLzzfLl3sZG21zB-vhfW6UdCnwm4Vx7QkNH61xvd-8Tkmm-b1l1YwMfbHA6LKj5auFmlNACkk7WBMoHWm44TBTMDdj57SYx3wjEsUsERUYo4tdZ0xYRf6kCeT0BO36A2cpFkObS1yZX35_2KbiLA3DNA-hz1BDN7T06AjCTwU1HXfQw7cxKPVuVIefzax-0XJwD4QaL6iOCpmuL99XRAJ5iLY2r4-ITj8lvpboS294qkm1Vn35tid-kx6-LqdSVLbYVnBoN98cyTaGmJbE4vt0cLRiOybqJ52cIa6IoY57ZAFVtOmxvZvcR-KwhmxXSiFJfR8s1fkeeclSoLiaSQM9XCbmbTYA3-XkfbNwbe2q_O60s5CGURiabudAhXrChEoC-Cl4_aajk903q3LARkjbcCvXhgZGD5MPkSWarBqZa3odTAGdmt8Ywx3jujDcv36JgYY7PuLqG-vcbOVJ7ZBAg34dLU8MPhSf1Ct2NKkApPU-wINES9AsFoefk-mxAPnW9bS1sRsxDJCIsxbWK22cxJuSLw-2YYumpW2mOevTKFBkOh-kIWWiqR2zeL1Sw-D2XbHgJ7D4AFTIRKkBdKqevEMBjGzVhjD_EUUFKAgB1XGp0rzTq36125njPjZKqV4pfMuWpgU3i4qSJvP-AeyiDKXPTno3iZ-KZNp1qi0ys1-faTH0C5zkDinbHK4l7I967SBUrU6jGDrCnk3NLHIUlfTDpZb&c=4f14a54b&v=3",
                     "author": "",
-                    "content": "This Is What Vikings Were Actually Like. The Photos Are Strikingly Scary",
+                    "content": "Sign Design: Signarama Graphic Designers Explain Their Creative Process",
+                    "pc_cmp_id": 1001045954,
                     "pos": "1",
                     "ttid": 3,
-                    "pc_id": 97522773,
-                    "adv_name": "DiscoveryTheWord_SA_PartnersProgram",
-                    "pc_cmp_id": 1000868240
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjQ4M2IwZDUyYjI3YmJjZDY4ZTEwZDdlMGIzNzVhZmU4ZjNlMmI1YzBlMWM5MmRmYjQxZjhlOTA1MWY5OGY4OGQiLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
                     },
                     {
-                    "source_name": "maternityweek.com -",
+                    "source_name": "www.signarama.com",
                     "same_source": "false",
-                    "source_display_name": "maternityweek.com -",
-                    "pc_id": 96497030,
-                    "adv_name": "MaternityWeek_Adrizer_SA_PartnersProgram",
-                    "publish_date": "2018-05-18 05:18",
-                    "orig_url": "http://maternityweek.com/a/pop-culture/celebrities/jonathan-scott-jacinta-kuznetsov-split-reason-heartbreaking/?utm_source=Outbrain-AdRizer&utm_campaign=81586&utm_term=$publisher_name$&utm_medium=CPC&utm_content=%5BPhotos%5D+Millions+Are+Grieving+Over+Jonathan+Scott%E2%80%99s+Tragic+Loss%2C+And+",
+                    "source_display_name": "www.signarama.com",
+                    "pc_id": 100897721,
+                    "adv_name": "Selfserve_signarama@dasverify.com",
+                    "publish_date": "1969-12-31 19:00",
+                    "orig_url": "https://www.signarama.com/blog/basics-of-effective-sign-design/?utm_source=promotedblogcontent&utm_medium=seo&utm_campaign=blogs&client=0004&campid=1001",
                     "rec-cats": [
-                                 1408
+                                 1211
                                  ],
                     "ads_type": 1,
-                    "rec_en_did": "ko5qcKvWxCbso-KOvJiocA",
-                    "url": "https://paid.outbrain.com/network/redir?p=gFQMmLsmMDFTpI8P5j360AF7cQ2OlTrGhBZksXem-LaJSIL4_AOq00aYskh7s_wqBmr4RlMliuIym201sGNmLvHFTkS8Z2gG1hMnXhphKhQtZ-tPzggNkpQKNopWlcVvv7pD8LQztwuxsuSNFAIwAvnelVSTbLhsSrMxvY36PcKCtsvGQTuZ7IFj0OKNgFLih6npyvbSj5LPMu5LzE_rEY2POytsvo1FfMLQ6z8XswCu8ELCYaBxieWmxwiPN6azdASHEVxZMcwzyRIjaXcY0HQajxr4q3lcsvWbrfVuNe8sQ9CXnajPza9ENsMpYExSQqNVMNvDr6Eur3owBQOyfx3JL8LPENnMq8CKx2xE_IxFIPZBPl-C8q6OQfkDOF5_QGIEL-oL0DY8V7ei_cnHzyXtLR19KA4XKmLvf0LKrZ4H24HTwvj9fHCBi4EnCOfy8-cKKTjXko1qnCleT7AIicrVTPmuW5vPNUNCZy1XylGOinenCzliMkP7LfTOdG_V8D7qlcjtfDfl9gcZIdDnSw1NUpZCGA9Y2VKoG2GfeSAXQibooJt_0FgFpZnyT6uLp_--UgaNAcph3ewaC2oVyN9ddI85tY_0b-9sliGj7oKZbyAWmPHh-JPR7xwjE20T26U6ic6y8T-AT13TvYpqAglhpU-CYilPOxugOxd22OUSvfQfdViSqbGaYEmc-B4x8a-5Bpz_Bg2NR2ODjvEMiXUCQVZX3wUV0IIWzJh_fSgrlo1J5kPHdVeace4187KodF4PzW4MveRFG9UJV9kzzCayZ11RFfmnmJyiju_C3T-Uq1Hj6Sa7Yw_ScvGQ6zs-OzAhgpovcpMtFvw5jWRk5W_Zx3kjj9XvcnUohIZljIXRbfotuNM3zHZsUUqbppX8tNy3ak_B99bZ0gVc_DB6fgy0yzrnBR1SxaKS6X3tSeXd6V_b7EcJANVKc69KmgiG&c=e305601d&v=3",
+                    "rec_en_did": "q6h3dJcKV8baMV93DGE81g",
+                    "url": "https://paid.outbrain.com/network/redir?p=paiqH4TD9JXoBbtxfm4R_uKkXT5H8wv5XQCTRcRqFWFPPYAqw1pjQj2gCrewUyAkIrTRRaVvZ3U_w_aZnMUxjcD0gKPYKlUcL_O4r5gJj4d6kb0tRTa_5Rtg6EsLH44AO6f6F67LfkE0h8O5l_ZzEtXoRq0gTCoRFSqA0PBdvpkj4ihNUSB3XF9APjOIjfNAXA1gZ_4a3JVP-DN0yJK_q6U0c4DKDG3Bb05e_5Cf1XahBeIWoEmBCwJHIBu1gLTrczejL1LwbFZCAbiWUfkxajclRgiKaaPQdrz8RdlUjn3p_93GFnYzGlGYyZAsRM0B0dU1GK-u03pyqR9WaEEUT0N9Z7o9ZVwVnVqruTGo97glncvBumhgAVHFRzkT39zJNZlezA7mfOgDzHDzRAwYR0_Z4gkV-pdhjZwAqwKj9uB3B1fyaqtnQPT5F6tcbk8dw--RWa2wpSTWxTV3GDDIxb3BUlW91S0g1iag7Edl9wlFBFYY8sd0E4HvJh-mLmdJjZM2069fr6AXy8a7EL_-yV0OZvSK_B73DqqOMs7Jvnd2BcffKYAgl-t-JZlhQcs-p8VLZy4HGPXhBz2zJnVPe2tGOlsvLBXLum_G9ER8hHoTXsPaaoQjvTJJ3kOwX34xcNAh-bSo8GTnNiYkUxT53JF86MJEXgytkftyKHlrVshLq6THCX7XDrSOYw91VgSY8pLUXWGsT9Tld2CN5mHOfEFoZ_4GsjBboxBapF_UFkTqJOVxs6oWapYuaEmk3MfVUjG9ByHtfSkSXPm5yzJrBE7-UxKb7k9rl60ARV83Xx72gqcitUCXzfk2hFN3xJUtSvvXxad8yR_QJLqy7FE3ZEYFFbhKZmuygSFcCs-LxsVETysdUia6mDypv21eDDZgv93vhgqodWS7ySVNk81qMHZC6Gzw0XRV42OhQq6sUS8UuFXqLV_0a-G_HXoFA3L-&c=e85e9d08&v=3",
                     "author": "",
-                    "content": "[Photos] Millions Are Grieving Over Jonathan Scott’s Tragic Loss, And It Will Have You In Tears",
-                    "pc_cmp_id": 1000887599,
+                    "content": "Schooled: The Basics of Effective Sign Design - a Refresher",
+                    "pc_cmp_id": 1001045954,
                     "pos": "2",
-                    "ttid": 3
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjhhMDVjY2RkODNjZGJmNDhkZTcyYjc4YzBlY2M3NmEyZGRlMjM4MGU0NGU1MmQ3NzFkZGFiMzU2NjkzNTA0N2QiLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
                     },
                     {
-                    "source_name": "Babbel",
+                    "source_name": "Podium Blog - Online Reviews and Local Search - Podium",
                     "same_source": "false",
-                    "source_display_name": "Babbel",
-                    "pc_id": 92748695,
-                    "adv_name": "Babbel RefENG USA",
-                    "publish_date": "1969-12-31 19:00",
-                    "orig_url": "https://go.babbel.com/engmag-a271-100experts-cd-usa-ob/1_usa_out_cd?utm_source=outbrain&utm_medium=CON&utm_campaign=cd_usaall_gen_cus_100experts&utm_term=$section_name$&utm_content=How+This+Expert-Designed+App+Can+Teach+You+Spanish+In+3+Weeks",
+                    "source_display_name": "Podium Blog - Online Reviews and Local Search - Podium",
+                    "pc_id": 95129142,
+                    "adv_name": "Selfserve_nico@podium.co",
+                    "publish_date": "2018-02-13 09:17",
+                    "orig_url": "https://blog.podium.com/reputation-management-techniques/?utm_campaign=reputation-techniques&utm_medium=paid&utm_source=outbrain",
                     "rec-cats": [
-                                 1604,
-                                 1305,
-                                 1608
+                                 1211
                                  ],
                     "ads_type": 1,
-                    "rec_en_did": "t9ppTiNLgKhj5oi-YGPZ3g",
-                    "url": "https://paid.outbrain.com/network/redir?p=82ceG_U6UNbI_VfhHmEDe7F71ZGBbU94PvbJc54rBo6tRLjk7HDZysW6pJI5unsOvSRbvJ6P_zHhpvZNJENV4-5wF_9C1SycVYwBM8iT48OP_2_r_sjiSnDXfKVVyry-84050OfKDXhjq1Vh9q9dizX0-3QnsjLO8r0RFn2DytZh2ZZHjt6dkeWAXOSpom-BfEGtYGu_VvjyOjfJajVJnrZXw-kkEf-XE4-WsVQIygegPuGXOs9SFAGp9QQ2EO3xuAddkYI7_-ZqdrE7e61MyH0BaC9e1dbciVYRoOOa8JwMVRGvA-LWLTvNWBJ_M3BW60TzXz3p5C35K_b9BnLV_UEiDD5Gm-h5D6lBMyLrtY-eFGCagYJdy2okk1N1VIiVn6KmA-iOI9xvz6OS1oWqGDLJqHZVSNfFOZMk7VT_DzI9FK0tvIKjnAdkIR2WGl6opvfwJm2JgBfb-6E_VKGFHOIxC8uKX6cM526_mEtVtYRky_RJxiHSY1Ava3SIxdAOJJF_8vzWJUtcNqIB6hBDmze4LXtG6aHo0Wf1Oq9GIBWvsbn8-GSpqpOr1qqnGo3wD-AvCVl2kVkcRhY7nZ96UOLhjH89vOnM7lki0wwj9KcW7rt6kduS8s_Rd9h0KyA3rRKsZhJJddoPxLCOraDGCjag1ynarLt6fL7uUgYE8vaXKntAkwqQTJO_Rn84hk9adyQneqVb1cyr1Ex1GovYgeCvYABxNl5KukJG_5V-ZBkp0aR2KKqLxJzOi3tErQsv_fbV-VNaVuwK5_44FJVTVUkkKWvHCS_rVshGaA6zttEe2pAiu_MTLtIiV4n6wuvuNb6GeNq5XQB2Aj_OW9KXXPC34Z4tKOialYQs-xT1nQ3lTe9-RftpZcejXKhzMzkSbWZgqQ_yBkHV6eAhXIa-S8zhA-SpA7CU6zibSK3DAX0cHGyk43JFlD1YL0BbCEJS&c=5af25f46&v=3",
+                    "rec_en_did": "wKHKNdKkZ9TnE3g_j1gJxw",
+                    "url": "https://paid.outbrain.com/network/redir?p=qrrGYQ3BLY7MPr7ktju8lYJqfSKsNYp8H6CjiSI1-8H4kZmEWWjEXeVfNPOkvNZO6O6GKX9cIdx1tw56gW3PK9imHWUIdsLzqo6ItZTsDiUO5KQpdzzvD_88ElNxz_wVV-JbN3OR-q5ElcMRv4P1XTC2g7MMzoragWsUwnDpMcA77uuEt3MzAyn75nJS5gMgCrXiQcf-uUUX63dO9dL1kPbr8AGMEq873XyIaPjaYgUDt4gbc8fxgDKTYfTlKObDjIdqXjxC7tvjCqZ0Qpdzj9N7qsCNmuiqMndhqAmolx17In9ZSJIpQVJuUfTq1GZY6vBeiaKa2kSuNJIFQzugdEwf1_ZTGvlt-jPMScIJTlacOTwq1o0yLvr29YbGLJuK_R-4K0Mm2y2txE70h_Wxwr7HP2vEzPJ3rp8rRUGswkyw4AVlaBRvobmP_8gKz08lR1PWJ4G7Pg38oYpa5ILT68lIwX49kU56ZB1sgSaoMt7gkYlvpDNRbMDYOo3ADZdS1tvC4yx8Tk2UeiiSMkfbUVpsfD7wUpyG5SdprPZswp40d4EkRCoHGxAN-ptKmao8oINssx4nIu253GKhRO3LsJ4EDcqxSfoGkwrOtV5TMY40kJlpbOXu6FOsU6rsNGt47VBk4NoBlp7msYDlfe5ths4UfacPr_T7XJPCFEOjM0_FWGkohQhRwMM-nIQwgVoWm3OjwVBP8Reqefp7bOzqJl4qC6yBKjM1r0fFr9QDmGf5CvTznNmSWthhUdkqGY-Ju8cxBnwFqHimaFMT98RUCRkC7_n4S9JsRIfe0KRRdtsd8nZwMUttZnWuCRc4LIL5j4w8I9YwSqUDs3FIcOXAAylxH90kpGZ8OBV3Ep7ry1vIdoS_71EVw82TuVtZCR-lhQUBaSpWTqQOGd_JY0cpnwRHD4WodxcTiMv31p7WEFP08I0KRJUKj5c9GBNCxhMq&c=512ccaae&v=3",
                     "author": "",
-                    "content": "How This Expert-Designed App Can Teach You Spanish In 3 Weeks",
-                    "pc_cmp_id": 1000483037,
+                    "content": "Reputation Management Techniques that help you grow your business",
+                    "pc_cmp_id": 1000843005,
                     "pos": "3",
-                    "ttid": 3
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjBiZjRlNmI1ZDVjYTJkYmJkNWEwZjZiZmNlNjM4YzMwOTk1ZDllMjkzZDRmMzdmZWY4OTY1ZGNhMWI1NzkxNDMiLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
                     },
                     {
-                    "source_name": "Trend Chaser",
+                    "source_name": "Marketing Dive",
                     "same_source": "false",
-                    "source_display_name": "Trend Chaser",
-                    "pc_id": 99154854,
-                    "adv_name": "Hive_Trendchaser_SA_PartnersProgram",
-                    "publish_date": "2018-07-26 09:01",
-                    "orig_url": "http://www.trend-chaser.com/lol/these-workers-have-given-up-on-their-jobs-entirely?utm_campaign=twu-d-us-n-0-es-180726-tc-ob-b8-a1&utm_term=walkingintowall.jpg&utm_source=ob&utm_medium=$section_id$-ob&utm_content=0026704eb87e06dd6af77838b50ba5ee7a",
+                    "source_display_name": "Marketing Dive",
+                    "pc_id": 101067750,
+                    "adv_name": "Selfserve_industrydive",
+                    "publish_date": "2018-09-18 00:00",
+                    "orig_url": "https://www.marketingdive.com/news/how-to-price-your-marketing-proposal-for-profitability/532180/?utm_source=outbrain&utm_medium=CPO&utm_campaign=ProposifyMDSept18",
                     "rec-cats": [
-                                 1711
+                                 1211
                                  ],
                     "ads_type": 1,
-                    "rec_en_did": "wNXr8YbstdXSSGsdXA-elg",
-                    "url": "https://paid.outbrain.com/network/redir?p=2_-BDiGmpZuY1lhlq5jzypRr7kJXV-lYpZEH56909YKDT79jGGyGysZkR1nLx5qUsv-HW_cRWU02A_YbI1YQ39eoZ5v3YrATw3NF-6DztHsDK0vaaUWbM27R3NumbeJi9StIQibp9HOTAw2rE4ZAUUKHD4J2zfoErjQ-XxM-tN7iguMAc10I3kJIW2uPw5AAKBTJnHQQiPZnRAwz8SKwgo_3aWLWiuXNf3pF6XOpPTlEu3Ew-TYDwY5ugf0mJEJaGxWq5ptNc_dgv_TInVOKDkBhInzg3sRU-T17MNnsJTjYdw7XrP63bYI6O-dft3xQ28n50XbMjTuLpRjgyaanv4coKID_DGMAb4o4Td7Zu0OPap6ZMYxCD3QOgK4NNeEK8ojwcXfbYuadE-s0Yc-Ooq6fGV7mREAkEm1N9YBass8XWFYzZXY6QxSTxhQPLD9gEU9Vraj6N_oynTsNFY15Y7PsFh7q8L6c2Be96oB0bWEEfyss-mEwhXB1zYmfjQuetBm22aWnd8mG5023HlEhfOFAHmGidB7YJtCihUjBmly2SZYFm8x4BrfteJorf6Ud0UwTOFY39cqkf9DszlEeK5ceXEjxSJ_hsYjqknCyAUV5g08sQ4QgkKhxaseKjm_NxqTAFgCZK6IDC-pt14HpQxLtXP_I6WhVLiwguKOI1njnC47Es08oyxA7VuqaaXhXrBGhyT8grDwux6JcCgh1caSdsEf34O38UtVIiKqlUDYHo7RzNBzyu3U5vKmjvmaPNiV1pSsu2QZgKQlmFxwA-YHbKkcn9q-_873JlROVo27An8Nkd60yc8xx0463ssBX7HogTceeZvVKjy2oc2u7WfBMI1tEaohukDQyop8SOJ7ky3_BFYUYybZ8S064FgCWikwV4xhD8ul0eDV34c9h0sEHif-3QuHLoSESesyVK5zrhXuo7A29DC-janwO5l0z&c=deb93cb0&v=3",
+                    "rec_en_did": "8fuWGtBfj4TwPkT9gzSa6A",
+                    "url": "https://paid.outbrain.com/network/redir?p=b9SAbN6TbFz7mS8XoqJh82BlTAu-b68t_VeLB-HtrkSstIaTFvmWcqZ1cUSCt6pm4EeZfE4Hcrl4ta7bLui1vU1wSRJHN6B7c-I2hHCR1Zai6koPf2kaSvZa1pAHfICZZV-_iYKnHho1rIkLRT54yylZWMVVHc2mXENXEeJKPa8ce6AZWLh_M37kpBhKg3YhghkceRn4HDFjDPYal2fuOh1jvk9g7FBETkejo5xoavST36myFXZE9KKoWBwSbEYKaMO7jzbg9SLAthdO_F3wP_GgJlUW4nPVlpzHuAt7LNrlfEtwvoFtHyEJl2HwGukcL60Wc9k-ipoxXn6SVpTMmvpHoH9H7Cwt547iEuMPSyIituSkRJ3jUPA8XUgagSQT5mYXLwH6LNLkKLV4L7Wk3uBE1PjPXNLMD9OuiJXmtveWU6lEIHOVTvUUQZ_jq-JuHfi_MNJoz_lH8IGONfMOThl0h3zFzjigL438k0iLoFeg2mngmniT5MeGYGb_4HaxMvhM0-Gi_g4UvWsqSgpFy3gS7nO2dWbLWoGz4SfqPfiOJI0hJ4aXzp8y6L4hEbU8ek4_XUt2udeKLtM35HmKa4ec-s4pq0BmeWq-namB7zvxBPjIQ1GPwlf4mCrrOPfdmfcl3NmkS0bVud4IPVDjJ6YvThWiUlEU2J78JJfH6LT_zDXHeWKt4WOCLR3eDfVIUIA67ur1hiOoYybWgwjWAqYv5qwnpnOdDQFLsftbHKROn2LEooFTAj7DCnfiuJ4O6OieZ7rhwwwjPuVoInSAU9zBIa116_AHJdsfTMKsie0mL3Yo16GkM6ylGBjTLo7JU_1LuS5Q1MTB4pN9WKERGSuw2lKo1pqPoQ8p7-PvoqOW81i0oL2-POSr0zYTgSleY5iwf17iWtmGiYEV30M27ejWWDB6giPXJ61EXO0mSxA8VcXo6-GkxeyLG0adjRS9&c=3814ca9e&v=3",
                     "author": "",
-                    "content": "[Gallery] Ridiculous Photos Taken By Construction Workers That Are Hilarious",
-                    "pc_cmp_id": 1000976458,
+                    "content": "Deciding on how to price your proposal can require significant consideration",
+                    "pc_cmp_id": 1001053317,
                     "pos": "4",
-                    "ttid": 3
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjQ5YjUxNGZkNWY1NzI5OTRjYTI5ZDg2OWNkYmZhNGJlNGM5YzBlMzVhMTYxMmRmMDNiM2QyYWE5OWM5ZThiOTciLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
                     },
                     {
-                    "source_name": "Standard News",
+                    "source_name": "DailySportX",
                     "same_source": "false",
-                    "source_display_name": "Standard News",
-                    "pc_id": 97722338,
-                    "adv_name": "Spine_StandardNews_SA_PartnersProgram",
-                    "publish_date": "1969-12-31 19:00",
-                    "orig_url": "https://sn.sptrkr.com/a5dd5227/?spadid=795059&spcampid=60908&utm_source=outbrain&utm_medium=cpc&utm_campaign=sn_us_d_outbrain_30574_00c62e3c4fc71d3ebd9624fe5be110dfb3&utm_content=00f1541726a2e5a60a0724c1ea5e8b6b62&spsecid=$section_id$&sppubid=$publisher_name$&utm_term=$section_name$",
+                    "source_display_name": "DailySportX",
+                    "pc_id": 100628456,
+                    "adv_name": "DailySportx_SA_PartnersProgram",
+                    "publish_date": "2017-09-24 03:39",
+                    "orig_url": "http://www.dailysportx.com/nba/special-forces-sustainable-cities?utm_medium=outbrain&utm_source=outbrainjk&utm_campaign=ds-special-forces-des-us-0709&utm_term=$origpubname$",
                     "rec-cats": [
-                                 1611
+                                 1211
                                  ],
                     "ads_type": 1,
-                    "rec_en_did": "C6V4xMk37CeTav3rRdlgXQ",
-                    "url": "https://paid.outbrain.com/network/redir?p=T43TO_Tw-AcFzZckXgM7cWfShc5ldBIDmeX7QnFgIZ-4zdxB9csLaq58QoGcPk_5udgVfwLDQ4w17XaEnh5BuIfOEE3Rlf_Z8FLQlv5T8JlTftpfqprXHfSlKy9qAoHLncfyTog_5FNo7o39MxTkgR8NFFwFxO_pviydli-c5ekLC2aVgWe_IeNmgBbxAVw-nmkmPEF_wgWkyPIXZCYNzmqnPe6D5ENxDEnwchDoOrg_fpZsbOYpoaoikulJR2rb9dtCkoCfEod_WnikyKeTqq-FvtvL0c8LLYKp8PbgZBAuBXBvBh_C13E9oSyEZbpRpW3HSZ0Yw81rDcI5IJE7O1v_Ws9vZe932FDXxyIc6jgIzt1ZtXs36EQPsfpncPxszB2I1f1uyg_2gBCD9a_-pUO2kDV0bQDCsTPO6YPM-jllCuLypnYQYssgKhZSQKPhsXE5ngG6SbYRIEMJERlSD4_Qhy8mHgj4XLrIKPhZaH4yqPw1P4uZIRGLo6kWZiMoh_IIetfbtW_MT_Nu7AfuE1KqzKBLgH-QvtOo3UfCEhkiQ3Cm8j5jv3PjwiT0B4IAM6FJ3LvYPZDdSJR16j-o8LdGMtcqy_yUT0pKqJAqAcSrummyS9ATtrDRM-nA1lU3lWjs2ukY9Q6lBJ1HJypOrLqe4xzndPS3RWikUvFaLSyfkmJWlhvV6rcaP4769qaLHgNeW2GDNd8U6zRfl01dk_xfB8I_kHbq4-kTEgf7HSv3izmm_WAmnVjOZAXk0XRAlaX8ivCLJNQbc_Jc2SeW-xmuq2hSUBl-TkaJcRmYOK3IHG3eygg8qlcLVColra2nt3plJrTKj2IbSojgEXlElJca80cQukW8KJNhk_Ymp_M4tK5dhR_mIctpQr2irOkVJmZTqWmhCf1ydWxySJfpPrGWmgeS8Fh9WPKKJv7ihDxfOqwR3n9hGicxcH1ymm87&c=344e311c&v=3",
+                    "rec_en_did": "l3dJ3oWxrWyYEkPUdoE4dA",
+                    "url": "https://paid.outbrain.com/network/redir?p=DzZMlNuR6qDVSU3H_MnVecY7V3heyhPGPqmpNIhllbrR6kVcCKg5wPxLXFRUgXFK6Z6_mVBft62dNQQk8l75G8C-LTgaXd4dkOu361LbQZVSqjcn1mLN0BeQvei2q8Aik87YmtQO-FJqcGaI79MTcG_hJdNyh49Ysnlmo7x3SkAbFrm5m5VFd4_bkVcNOHVYQhtp2OFgcdOpWIIW7QTmEKKeNyEi-2OsxhV8WxqycxJM3tTF5CSBNWfbSYFeY4hO4khMtuMNCa750v3blmu9Lk4iJeKMgQRhoxbWOmbl3NegHsOtT2PDukDed9atwZJ8e2wlzboif_PHxjkny_U5a3FR_8FH260snjIHWXGouqtpM83uh0OjF-fxjEHbn56UywTLZBXA9dlmd1VmJhsTy14f8Teu4Zr4COc2wsbIztw9SJX2BtdpDx4ryk6SpOxrvxT8anUUatmIbKcSld5_ehg0yslYFAZPL8weIgso_gT-OQmxRHRPV7tuLxcY6CfKd5Uk9QdhHKKFocou8MfJJ4KnO_uggxiX65_ZrMwF8zE7iChgGjLdnbSW_qzQ7RbD3pJLU6Gnh1o5una3ZQTrcoWlAb0uvfGcWeRz_SBAanpSMdc6TPtA68YNJLiYR8_ji093Lu9XJJXyXX-Tu88Jh0pq8_o_SxVJqGZMJdCd3c3iN9irupGi5cygbHR7__-_Zg1OSrMevaFGXntd5SE4Jx17R7no83uMPbT2STOcPloqa0tZhqJ8L5o8LZRAfk_6thwAXcUJ2z0mSb7Up_wSvcOkiFwAEaKqOI3bHTb698tLEHl5cFiteYD-f495kcFULFYO3le9PPrb8SJbBnxtMVrwc604Kac_bw809nDQ6P5zGf5l9_4SIl-jWQpVgsAAGHU5XignFz4AAlcQLweZxmx8lQhDj7hifFIfLSTN0GNopXxeqncWAIZVfEXSItM1&c=2c59a6c3&v=3",
                     "author": "",
-                    "content": "95% of Americans Can't Pass This US Map Quiz - Can You?",
-                    "pc_cmp_id": 1000930140,
+                    "content": "Don’t Mess With These Units- They Are The Toughest In The World",
+                    "pc_cmp_id": 1001035466,
                     "pos": "5",
-                    "ttid": 3
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImMzNWU1NTY2YzFhMDliMjg3NDg3Y2E5MjFmOTUxZWIyMzFjOGU2ODkxMTBjMTI3NzE3NWFiM2QzZWQ3N2JmZGUiLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
                     }
                     ]
         },
         "settings": {
             "recMode": "sdk_sfd_2_columns",
             "apv": true,
-            "nanoOrganicsHeader": "Sponsored Links",
+            "sdk_sf_vidget_url": "https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222",
             "feedContent": "[{\"type\":\"widget\", \"id\":\"SDK_SFD_1\"},{\"type\":\"widget\", \"id\":\"SDK_SFD_2\"},{\"type\":\"widget\", \"id\":\"SDK_SFD_3\"}]",
             "DPR": "2.0",
             "isSmartFeed": true,
             "isSmartFeedInjectionEnabled": true,
-            "feedCyclesLimit": 5
+            "nanoOrganicsHeader": "Sponsored Links",
+            "feedCyclesLimit": 5,
+            "sdk_sf_shadow_color": "#ffa500",
+            "VidgetEnabled": true
         },
         "features": {
             "smartFeed": {

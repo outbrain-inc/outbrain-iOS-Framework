@@ -29,7 +29,7 @@
 }
 
 /** @brief The image URL */
-@property (nonatomic, copy) NSURL *url;
+@property (nonatomic, copy, nullable) NSURL *url;
 
 /** @brief The image width in pixels. */
 @property (nonatomic, assign) CGFloat width;

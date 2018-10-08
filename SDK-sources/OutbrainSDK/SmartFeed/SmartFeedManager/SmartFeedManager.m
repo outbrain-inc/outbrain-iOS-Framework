@@ -13,15 +13,19 @@
 #import "SFCollectionViewCell.h"
 #import "SFTableViewCell.h"
 #import "SFHorizontalTableViewCell.h"
+#import "SFVideoCollectionViewCell.h"
+#import "SFVideoTableViewCell.h"
 #import "SFUtils.h"
 #import "SFItemData.h"
+#import "OBAppleAdIdUtil.h"
+#import "OutbrainManager.h"
 #import "SFImageLoader.h"
 #import "SFCollectionViewManager.h"
 #import "SFTableViewManager.h"
-
 #import <OutbrainSDK/OutbrainSDK.h>
 
-@interface SmartFeedManager() <SFClickListener>
+
+@interface SmartFeedManager() <SFClickListener, WKUIDelegate>
 
 @property (nonatomic, strong) NSString * _Nullable url;
 @property (nonatomic, strong) NSString * _Nullable widgetId;
@@ -62,6 +66,7 @@
 
         self.sfCollectionViewManager = [[SFCollectionViewManager alloc] initWitCollectionView:collectionView];
         self.sfCollectionViewManager.clickListenerTarget = self;
+        self.sfCollectionViewManager.wkWebviewDelegate = self;
     }
     return self;
 }
@@ -78,6 +83,7 @@
        
         self.sfTableViewManager = [[SFTableViewManager alloc] initWithTableView:tableView];
         self.sfTableViewManager.clickListenerTarget = self;
+        self.sfTableViewManager.wkWebviewDelegate = self;
         [self fetchMoreRecommendations];
     }
     return self;
@@ -92,6 +98,19 @@
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
     self.customNibsForWidgetId = [[NSMutableDictionary alloc] init];
     self.reuseIdentifierWidgetId = [[NSMutableDictionary alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(videoReadyNotification:)
+                                                 name:@"VideoReadyNotification"
+                                               object:nil];
+}
+
+- (void) videoReadyNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:@"VideoReadyNotification"]) {
+        UIView *view = (UIView *) notification.object;
+        NSLog (@"Successfully received the videoReady notification! - view.tag: %d", view.tag);
+    }
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -144,11 +163,8 @@
         
         // NSLog(@"loadFirstTimeForFeed received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
         
-        NSUInteger newItemsCount = 0;
-        @synchronized(self) {
-            newItemsCount = [self addNewItemsToSmartFeedArray:response];
-        }
-        [self reloadUIData: newItemsCount];
+        NSArray *newSmartfeedItems = [self createSmartfeedItemsArrayFromResponse:response];
+        [self reloadUIData: newSmartfeedItems];
         
         // First load should fetch the children as well, if self.feedCycleLimit is set, we want to optimize
         // performance by loading all the cycles in straight away (usually it will be < 10 times).
@@ -164,8 +180,8 @@
 }
 
 -(void) loadMoreAccordingToFeedContent {
-    __block NSUInteger newItemsCount = 0;
     __block NSUInteger responseCount = 0;
+    __block NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     __block NSUInteger requestBatchSize = [self.feedContentArray count];
     for (NSString *widgetId in self.feedContentArray) {
         OBRequest *request = [OBRequest requestWithURL:self.url widgetID: widgetId widgetIndex:self.outbrainIndex++];
@@ -187,50 +203,126 @@
             
           //  NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
             
-            @synchronized(self) {
-                newItemsCount += [self addNewItemsToSmartFeedArray:response];
-            }
-            
+            [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:response]];
             if (responseCount == requestBatchSize) {
                 self.isLoading = NO;
-                [self reloadUIData: newItemsCount];
+                [self reloadUIData: newSmartfeedItems];
             }
         }];
     }
     self.feedCycleCounter++;
 }
 
--(NSUInteger) addNewItemsToSmartFeedArray:(OBRecommendationResponse *)response {
-    NSUInteger newItemsCount = 0;
+-(NSArray *) createSmartfeedItemsArrayFromResponse:(OBRecommendationResponse *)response {
+    NSString *widgetTitle = response.settings.widgetHeaderText;
+    NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in response.recommendations) {
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
     }
     
+    if ([self isVideoIncludedInResponse:response]) {
+        NSMutableDictionary *videoParams = [[NSMutableDictionary alloc] init];
+        if (response.originalOBPayload[@"settings"]) {
+            NSMutableDictionary *settingsJson = [response.originalOBPayload[@"settings"] mutableCopy];
+            if (settingsJson[@"vidgetData"] == nil) {
+                //TODO remote temporary code
+                NSLog(@"Error: isVideoIncludedInResponse --> vidgetData is missing.. temp solution");
+                NSError *error;
+                NSString *vidgetDataJsonStr;
+                NSDictionary * vidgetDataJson = @{@"channelId" : @"58a5ae2e073ef42da903a806",
+                                                  @"playMode" : @"load",
+                                                  @"closeButton" : @"true",
+                                                  @"retries" : @1,
+                                                  @"errorLimit" : @1,
+                                                  @"debug" : @"true",
+                                                  };
+                
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:vidgetDataJson
+                                                                   options:0
+                                                                     error:&error];
+                
+                if (! jsonData) {
+                    NSLog(@"%s: error: %@", __func__, error.localizedDescription);
+                    vidgetDataJsonStr = @"{}";
+                } else {
+                    vidgetDataJsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                }
+                
+                settingsJson[@"vidgetData"] = vidgetDataJsonStr;
+            }
+            videoParams[@"settings"] = settingsJson;
+            
+            
+        }
+        if (response.originalOBPayload[@"request"]) {
+            videoParams[@"request"] = response.originalOBPayload[@"request"];
+        }
+        
+        NSURL *videoURL = [self appendParamsToVideoUrl: response];
+        SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
+                                                    videoParams:videoParams
+                                           singleRecommendation:response.recommendations[0]
+                                                    widgetTitle:widgetTitle
+                                                       widgetId:response.request.widgetId
+                                                 shadowColorStr:response.settings.smartfeedShadowColor];
+        
+        [newSmartfeedItems addObject:item];
+        // New implementation for Video - if video available there can only be one item in the response (paid + video)
+        return newSmartfeedItems;
+    }
+    
     SFItemType itemType = [self sfItemTypeFromResponse:response];
-    NSString *widgetTitle = response.settings.widgetHeaderText;
     
    // itemType = SFTypeCarouselWithTitle;
     
     switch (itemType) {
         case SFTypeCarouselWithTitle:
         case SFTypeCarouselNoTitle:
-            return [self addCarouselItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+            [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
+            break;
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridTwoInRowWithTitle:
         case SFTypeGridThreeInRowNoTitle:
         case SFTypeGridThreeInRowWithTitle:
-            return [self addGridItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
+            [newSmartfeedItems addObjectsFromArray:[self createGridItemsFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
+            break;
         case SFTypeStripNoTitle:
         case SFTypeStripWithTitle:
         case SFTypeStripWithThumbnailNoTitle:
         case SFTypeStripWithThumbnailWithTitle:
-            return [self addSingleItemsToSmartFeedArray:response templateType:itemType widgetTitle:widgetTitle];
-            
+            [newSmartfeedItems addObjectsFromArray:[self createSingleItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
+            break;
         default:
             break;
     }
    
-    return newItemsCount;
+    return newSmartfeedItems;
+}
+
+-(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
+    //TODO remove temp code
+    NSString *videoUrlStr = response.settings.videoUrl != nil ?
+    response.settings.videoUrl.absoluteString :
+    @"https://static-test.outbrain.com/video/app/vidgetInApp.html";
+    
+    NSURLComponents *components = [[NSURLComponents alloc] initWithString:videoUrlStr];
+    NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];
+    if ([OutbrainManager sharedInstance].testMode) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
+    }
+    
+    components.queryItems = odbQueryItems;
+    return components.URL;
+}
+
+-(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {
+    //TEMP IMPL
+    return [response.request.widgetId isEqualToString:@"SDK_SFD_3"] && response.recommendations.count > 0;
+    
+    //    BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
+    //    BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
+    //    return videoIsIncludedInRequest && videoURLIsIncludedInSettings;
 }
 
 -(SFItemType) sfItemTypeFromResponse:(OBRecommendationResponse *)response {
@@ -264,29 +356,34 @@
     return SFTypeStripWithTitle;
 }
 
--(NSUInteger) addSingleItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSArray *) createSingleItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
-    NSUInteger newItemsCount = 0;
+    NSString *shadowColor = response.settings.smartfeedShadowColor;
+    
+    NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in recommendations) {
-        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle widgetId:widgetId];
-        [self.smartFeedItemsArray addObject:item];
-        newItemsCount++;
+        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
+        [newSmartfeedItems addObject:item];
+        
     }
-    return newItemsCount;
+    return newSmartfeedItems;
 }
 
--(NSUInteger) addCarouselItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSArray *) createCarouselItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
-    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle widgetId:widgetId];
-    [self.smartFeedItemsArray addObject:item];
-    return 1;
+    NSString *shadowColor = response.settings.smartfeedShadowColor;
+    
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
+    return @[item];
 }
 
--(NSUInteger) addGridItemsToSmartFeedArray:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+-(NSArray *) createGridItemsFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSString *widgetId = response.request.widgetId;
+    NSString *shadowColor = response.settings.smartfeedShadowColor;
+    
     NSUInteger itemsPerRow = 0;
     if (templateType == SFTypeGridTwoInRowNoTitle || templateType == SFTypeGridTwoInRowWithTitle) {
         itemsPerRow = 2;
@@ -298,34 +395,57 @@
         NSAssert(NO, @"templateType has illegal value");
     }
     
-    NSUInteger newItemsCount = 0;
+    NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
     while (recommendationsMutableArray.count >= itemsPerRow) {
         NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
-        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle widgetId:widgetId];
-        [self.smartFeedItemsArray addObject:item];
-        newItemsCount++;
+        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
+        [newSmartfeedItems addObject:item];
     }
 
-    return newItemsCount;
+    return newSmartfeedItems;
 }
 
--(void) reloadUIData:(NSUInteger) newItemsCount {
-    NSInteger currentCount = self.smartFeedItemsArray.count - newItemsCount;
+-(void) reloadUIData:(NSArray *) newSmartfeedItems {
     NSMutableArray *indexPaths = [NSMutableArray array];
     // build the index paths for insertion
     // since you're adding to the end of datasource, the new rows will start at count
-    for (int i = 0; i < newItemsCount; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:currentCount+i inSection:self.outbrainSectionIndex]];
+    for (int i = 0; i < newSmartfeedItems.count; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:self.smartFeedItemsArray.count+i inSection:self.outbrainSectionIndex]];
     }
-
+    NSIndexPath *firstIdx = indexPaths[0];
+    
     if (self.sfCollectionViewManager) {
-        [self.sfCollectionViewManager reloadUIData:currentCount indexPaths:indexPaths sectionIndex:self.outbrainSectionIndex];
+        if (self.sfCollectionViewManager.collectionView != nil) {
+            [self.sfCollectionViewManager.collectionView performBatchUpdates:^{
+                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+                
+                if (firstIdx.row == 0) {
+                    [self.sfCollectionViewManager.collectionView insertSections:[NSIndexSet indexSetWithIndex:self.outbrainSectionIndex]];
+                }
+                [self.sfCollectionViewManager.collectionView insertItemsAtIndexPaths:indexPaths];
+                
+            } completion:nil];
+        }
     }
     else if (self.sfTableViewManager) {
-        [self.sfTableViewManager reloadUIData:currentCount indexPaths:indexPaths sectionIndex:self.outbrainSectionIndex];
+        if (self.sfTableViewManager.tableView != nil) {
+            // tell the table view to update (at all of the inserted index paths)
+            UITableView *tableView = self.sfTableViewManager.tableView;
+            [tableView beginUpdates];
+            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+            
+            if (firstIdx.row == 0) {
+                [tableView insertSections:[NSIndexSet indexSetWithIndex: self.outbrainSectionIndex] withRowAnimation:UITableViewRowAnimationNone];
+            }
+            else {
+                [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+            }
+            
+            [tableView endUpdates];
+        }
     }
 }
 
@@ -373,8 +493,14 @@
             [SFUtils addDropShadowToView: cell];
         }
     }
+    else if ([cell isKindOfClass:[SFVideoTableViewCell class]] ||
+             sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle ||
+             sfItem.itemType == SFTypeStripVideoWithPaidRecNoTitle)
+    {
+        [self.sfTableViewManager configureVideoCell:cell atIndexPath:indexPath withSFItem:sfItem];
+    }
     else { // SFSingleCell
-        [self configureSingleTableViewCell:cell atIndexPath:indexPath];        
+        [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
     if ((indexPath.row == (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
@@ -428,6 +554,7 @@
     }
     
     horizontalView.outbrainRecs = sfItem.outbrainRecs;
+    horizontalView.shadowColor = sfItem.shadowColor;
     [horizontalView setupView];
     [horizontalView setOnRecommendationClick:^(OBRecommendation *rec) {
         if (self.delegate != nil) {
@@ -439,11 +566,6 @@
             [self.delegate userTappedOnAdChoicesIcon:url];
         }
     }];
-}
-
-- (void) configureSingleTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    SFItemData *sfItem = [self itemForIndexPath: indexPath];
-    [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
 }
 
 - (void) configureSmartFeedHeaderTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -490,7 +612,7 @@
             return CGSizeMake(collectionView.frame.size.width, 50);
         }
         SFItemData *sfItem = [self itemForIndexPath:indexPath];
-        return [self.sfCollectionViewManager collectionView:collectionView sizeForItemAtIndexPath:indexPath sfItemType:sfItem.itemType];
+        return [self.sfCollectionViewManager collectionView:collectionView sizeForItemAtIndexPath:indexPath sfItem:sfItem];
     }
     
     return CGSizeMake(0, 0);
@@ -519,12 +641,17 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    
     if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
         if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
+    }
+    else if ([cell isKindOfClass:[SFVideoCollectionViewCell class]] ||
+             sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle ||
+             sfItem.itemType == SFTypeStripVideoWithPaidRecNoTitle)
+    {
+        [self.sfCollectionViewManager configureVideoCell:cell atIndexPath:indexPath withSFItem:sfItem];
     }
     else { // SFSingleCell
         [self.sfCollectionViewManager configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
@@ -594,6 +721,17 @@
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forWidgetId:(NSString *)widgetId {
     self.customNibsForWidgetId[widgetId] = nib;
     self.reuseIdentifierWidgetId[widgetId] = identifier;
+}
+
+#pragma mark - WKUIDelegate
+- (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
+    if (navigationAction.targetFrame == nil) {
+        NSLog(@"SmartFeedManager createWebViewWith URL: %@", navigationAction.request.URL);
+        if (self.delegate != nil && navigationAction.request.URL != nil) {
+            [self.delegate userTappedOnVideoRec:navigationAction.request.URL];
+        }
+    }
+    return nil;
 }
 
 @end

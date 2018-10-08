@@ -13,9 +13,11 @@
 @property (nonatomic, assign, readonly) BOOL apv;
 @property (nonatomic, assign, readonly) BOOL isSmartFeed;
 @property (nonatomic, assign, readonly) NSInteger feedCyclesLimit;
-@property (nonatomic, copy, readonly) NSString *recMode;
-@property (nonatomic, copy, readonly) NSString *widgetHeaderText;
-@property (nonatomic, strong, readonly) NSArray *feedContentArray;
+@property (nonatomic, copy, readonly, nullable) NSString *recMode;
+@property (nonatomic, copy, readonly, nullable) NSString *widgetHeaderText;
+@property (nonatomic, copy, readonly, nullable) NSURL *videoUrl;
+@property (nonatomic, copy, readonly, nullable) NSString *smartfeedShadowColor;
+@property (nonatomic, strong, readonly, nullable) NSArray *feedContentArray;
 
 - (instancetype)initWithPayload:(NSDictionary *)payload;
 

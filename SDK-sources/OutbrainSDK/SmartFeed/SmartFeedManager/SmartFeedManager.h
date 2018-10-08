@@ -16,6 +16,8 @@
 
 -(void) userTappedOnAdChoicesIcon:(NSURL *_Nonnull)url;
 
+-(void) userTappedOnVideoRec:(NSURL *_Nonnull)url;
+
 -(void) userTappedOnOutbrainLabeling;
 
 @end
@@ -35,6 +37,9 @@ typedef enum
     SFTypeStripWithTitle,
     SFTypeStripWithThumbnailNoTitle,
     SFTypeStripWithThumbnailWithTitle,
+    SFTypeStripVideo,
+    SFTypeStripVideoWithPaidRecAndTitle,
+    SFTypeStripVideoWithPaidRecNoTitle,
 } SFItemType;
 
 @property (nonatomic, strong, readonly) NSString * _Nullable url;

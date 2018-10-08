@@ -48,7 +48,13 @@ extern NSString * const OB_SDK_VERSION;
  *
  *  @see initializeOutbrainWithConfigFile
  **/
-+ (void)initializeOutbrainWithPartnerKey:(NSString *)partnerKey;
++ (void)initializeOutbrainWithPartnerKey:(NSString * _Nonnull)partnerKey;
+
+/**
+ *  @brief Check if SDK was initilized
+ *
+ **/
++ (BOOL) SDKInitialized;
 
 /** @section Fetching **/
 
@@ -67,10 +73,10 @@ extern NSString * const OB_SDK_VERSION;
  * @see OBResponseCompletionHandler
  * @see OBResponseDelegate
  */
-+ (void)fetchRecommendationsForRequest:(OBRequest *)request
++ (void)fetchRecommendationsForRequest:(OBRequest * _Nonnull)request
                           withCallback:(OBResponseCompletionHandler)handler;
 
-+ (void)fetchRecommendationsForRequest:(OBRequest *)request
++ (void)fetchRecommendationsForRequest:(OBRequest * _Nonnull)request
                           withDelegate:(__weak id<OBResponseDelegate>)delegate;
 
 
@@ -88,7 +94,7 @@ extern NSString * const OB_SDK_VERSION;
  * @param url - The URL that the user is currently viewing
  * @note The calling method is responsible on setting the frame for the returned view
  **/
-+ (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url;
++ (void) registerOBLabel:(OBLabel * _Nonnull)label withWidgetId:(NSString * _Nonnull)widgetId andUrl:(NSString * _Nonnull)url;
 
 
 /** @section Click Handling **/
@@ -109,7 +115,7 @@ extern NSString * const OB_SDK_VERSION;
  * @note If it's necessary to map the web URL to a mobile URL, this must be done in your code.
  * @see OBRecommendation
  **/
-+ (NSURL *)getUrl:(OBRecommendation *)recommendation;
++ (NSURL * _Nullable) getUrl:(OBRecommendation * _Nonnull)recommendation;
 
 /** @section RTB integration **/
 
@@ -124,7 +130,7 @@ typedef void (^OBOnClickBlock)(NSURL *url);
  *
  * @return The URL to be opened in an external browser
  **/
-+(NSURL *) getOutbrainAboutURL;
++(NSURL * _Nonnull) getOutbrainAboutURL;
 
 /**
  * @brief Activates/deactivates the Outbrain test mode.

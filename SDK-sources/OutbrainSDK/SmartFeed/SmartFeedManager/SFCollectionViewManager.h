@@ -11,18 +11,20 @@
 #import "SFItemData.h"
 #import "SFUtils.h"
 
+@import WebKit;
+
 
 @interface SFCollectionViewManager : NSObject
 
 @property (nonatomic, weak) id<SFClickListener> clickListenerTarget;
+@property (nonatomic, weak) id<WKUIDelegate> wkWebviewDelegate;
 @property (nonatomic, weak, readonly) UICollectionView *collectionView;
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView;
 
--(void) reloadUIData:(NSUInteger) currentCount indexPaths:(NSArray *)indexPaths sectionIndex:(NSInteger)sectionIndex;
-
 - (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withTitle:(NSString *)title;
 - (void) configureSingleCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem;
+- (void) configureVideoCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView headerCellForItemAtIndexPath:(NSIndexPath *)indexPath;
 
@@ -30,7 +32,7 @@
 
 - (CGSize) collectionView:(UICollectionView *)collectionView
    sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath
-               sfItemType:(SFItemType)sfItemType;
+                   sfItem:(SFItemData *)sfItem;
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier;
 

@@ -92,6 +92,23 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    OBRecommendation *rec = self.outbrainRecs[indexPath.row];
+    cell.contentView.backgroundColor = UIColor.whiteColor;
+    cell.contentView.layer.cornerRadius = 4.0f;
+    cell.contentView.layer.borderWidth = 1.0f;
+    cell.contentView.layer.borderColor = [UIColor clearColor].CGColor;
+    cell.contentView.layer.masksToBounds = YES;
+    
+    cell.layer.shadowColor = rec.isPaidLink && (self.shadowColor != nil) ? self.shadowColor.CGColor : [UIColor lightGrayColor].CGColor;
+    cell.layer.shadowOffset = CGSizeMake(0, 2.0f);
+    cell.layer.shadowRadius = 2.0f;
+    cell.layer.shadowOpacity = 1.0f;
+    cell.layer.masksToBounds = NO;
+    cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
+}
+
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     OBRecommendation *rec = self.outbrainRecs[indexPath.row];
     if (self.onRecommendationClick != nil) {
@@ -101,6 +118,9 @@
 
 -(void) setOutbrainRecs:(NSArray *)outbrainRecs {
     _outbrainRecs = outbrainRecs;
+    if (self.outbrainRecs.count == 0) {
+        return;
+    }
     [self.collectionView reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
