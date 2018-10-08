@@ -641,7 +641,6 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    NSLog(@"willDisplayCell:  sfItem: %@", [SFItemData itemTypeString:sfItem.itemType]);
     if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
         if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
