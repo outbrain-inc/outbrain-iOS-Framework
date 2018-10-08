@@ -201,14 +201,10 @@ NSString * const SFSingleVideoNoTitleCollectionViewReuseId = @"SFSingleVideoNoTi
         videoCell.webview = nil;
     }
     
-//    NSString *setViewportScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
-//    WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:setViewportScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
-
     WKPreferences *preferences = [[WKPreferences alloc] init];
     preferences.javaScriptEnabled = YES;
     WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
     WKUserContentController *controller = [[WKUserContentController alloc] init];
-   // [controller addUserScript:wkUScript];
     [controller addScriptMessageHandler:videoCell name:@"sdkObserver"];
     webviewConf.userContentController = controller;
     webviewConf.allowsInlineMediaPlayback = YES;
