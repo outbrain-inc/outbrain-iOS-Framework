@@ -22,16 +22,18 @@
 @implementation SFTableViewManager
 
 const CGFloat kTableViewRowHeight = 250.0;
-const NSString *kTableViewSingleReuseId = @"SFTableViewCell";
-const NSString *kTableViewSmartfeedHeaderReuseId = @"SFTableViewHeaderCell";
-const NSString *kTableViewHorizontalCarouselWithTitleReuseId = @"SFCarouselWithTitleReuseId";
-const NSString *kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitleReuseId";
-const NSString *kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
-const NSString *kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
-const NSString *kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
-const NSString *kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
-const NSString *kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleTableCell";
-const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
+NSString * const kTableViewSingleReuseId = @"SFTableViewCell";
+NSString * const kTableViewSmartfeedHeaderReuseId = @"SFTableViewHeaderCell";
+NSString * const kTableViewHorizontalCarouselWithTitleReuseId = @"SFCarouselWithTitleReuseId";
+NSString * const kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitleReuseId";
+NSString * const kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
+NSString * const kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
+NSString * const kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
+NSString * const kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
+NSString * const kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleTableCell";
+NSString * const kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
+NSString * const kTableViewSingleVideoWithTitleReuseId = @"SFSingleVideoWithTitleTableViewCell";
+NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTableViewCell";
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView {
     self = [super init];
@@ -85,6 +87,14 @@ const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
         nib = [UINib nibWithNibName:@"SFSingleWithThumbnailWithTitleTableCell" bundle:bundle];
         NSAssert(nib != nil, @"SFSingleWithThumbnailWithTitleTableCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleWithThumbnailWithTitleReuseId];
+        
+        nib = [UINib nibWithNibName:@"SFSingleVideoNoTitleTableViewCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFSingleVideoNoTitleTableViewCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleVideoNoTitleReuseId];
+        
+        nib = [UINib nibWithNibName:@"SFSingleVideoWithTitleTableViewCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFSingleVideoWithTitleTableViewCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleVideoWithTitleReuseId];
     }
     return self;
 }
@@ -122,6 +132,10 @@ const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripVideo:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoReuseId forIndexPath:indexPath];
+        case SFTypeStripVideoWithPaidRecAndTitle:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoWithTitleReuseId forIndexPath:indexPath];
+        case SFTypeStripVideoWithPaidRecNoTitle:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoNoTitleReuseId forIndexPath:indexPath];
         default:
             NSAssert(false, @"sfItem.itemType must be covered in this switch/case statement");
             return [[UITableViewCell alloc] init];
@@ -137,7 +151,7 @@ const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
     else if (sfItemType == SFTypeCarouselWithTitle) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : kTableViewRowHeight;
     }
-    else if (sfItemType == SFTypeGridTwoInRowWithTitle) {
+    else if ((sfItemType == SFTypeGridTwoInRowWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 270.0;
     }
     else if (sfItemType == SFTypeStripWithTitle) {
@@ -158,8 +172,6 @@ const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
 
 - (void) configureVideoCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     SFVideoTableViewCell *videoCell = (SFVideoTableViewCell *)cell;
-    const NSInteger cellTag = indexPath.row;
-    videoCell.tag = cellTag;
     videoCell.sfItem = sfItem;
     
     if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
@@ -172,15 +184,6 @@ const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
         videoCell.webview = nil;
     }
     
-    videoCell.contentView.backgroundColor = UIColor.blackColor;
-    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
-                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    
-    activityView.center = videoCell.contentView.center;
-    [activityView startAnimating];
-    [videoCell.contentView addSubview:activityView];
-    videoCell.spinner = activityView;
-    
     WKPreferences *preferences = [[WKPreferences alloc] init];
     preferences.javaScriptEnabled = YES;
     WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
@@ -191,7 +194,7 @@ const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
     webviewConf.preferences = preferences;
     WKWebView *webView = [[WKWebView alloc] initWithFrame:videoCell.contentView.frame configuration:webviewConf];
     webView.UIDelegate = self.wkWebviewDelegate;
-    [videoCell.contentView addSubview:webView];
+    [videoCell.cardContentView addSubview:webView];
     videoCell.webview = webView;
     videoCell.webview.alpha = 0;
     [SFUtils addConstraintsToFillParent:videoCell.webview];
@@ -199,6 +202,8 @@ const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
     NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
     [webView loadRequest:request];
     [videoCell.contentView setNeedsLayout];
+    
+    [self configureSingleTableViewCell:videoCell atIndexPath:indexPath withSFItem:sfItem];
 }
 
 - (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
@@ -232,8 +237,7 @@ const NSString *kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
     
     [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
     
-    // add shadow
-    if (sfItem.itemType == SFTypeStripWithTitle) {
+    if ((sfItem.itemType == SFTypeStripWithTitle) || (sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle)) {
         //[SFUtils addDropShadowToView: singleCell.cardContentView];
         if (sfItem.widgetTitle) {
             singleCell.cellTitleLabel.text = sfItem.widgetTitle;

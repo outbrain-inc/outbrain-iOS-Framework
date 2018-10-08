@@ -493,7 +493,10 @@
             [SFUtils addDropShadowToView: cell];
         }
     }
-    else if ([cell isKindOfClass:[SFVideoTableViewCell class]]) {
+    else if ([cell isKindOfClass:[SFVideoTableViewCell class]] ||
+             sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle ||
+             sfItem.itemType == SFTypeStripVideoWithPaidRecNoTitle)
+    {
         [self.sfTableViewManager configureVideoCell:cell atIndexPath:indexPath withSFItem:sfItem];
     }
     else { // SFSingleCell
