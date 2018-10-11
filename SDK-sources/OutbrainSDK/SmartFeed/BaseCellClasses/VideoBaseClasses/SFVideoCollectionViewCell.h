@@ -16,6 +16,6 @@
 @interface SFVideoCollectionViewCell : SFCollectionViewCell <WKScriptMessageHandler>
 
 @property (nonatomic, weak) WKWebView *webview;
-@property (nonatomic, weak) SFItemData *sfItem;
+@property (nonatomic, strong) SFItemData *sfItem;
 
 @end

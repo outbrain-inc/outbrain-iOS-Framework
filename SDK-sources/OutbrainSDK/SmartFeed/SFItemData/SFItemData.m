@@ -68,6 +68,32 @@ NSInteger kVideoFinishedStatus = 1114;
     return self;
 }
 
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams reclist:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId shadowColorStr:(NSString *)shadowColorStr {
+    self = [super init];
+    if (self) {
+        self.videoUrl = videoUrl;
+        self.videoPlayerStatus = kVideoInitStatus;
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:videoParams
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:&error];
+        if (! jsonData) {
+            NSLog(@"initWithVideoUrl Got an error: %@", error);
+        } else {
+            self.videoParamsStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
+        
+        self.outbrainRecs = recArray;
+        self.itemType = type;
+        self.widgetTitle = widgetTitle;
+        self.widgetId = widgetId;
+        if (shadowColorStr) {
+            self.shadowColor = [SFUtils colorFromHexString:shadowColorStr];
+        }
+    }
+    return self;
+}
+
 - (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId shadowColorStr:(NSString *)shadowColorStr {
     
     self = [super init];
@@ -122,6 +148,9 @@ NSInteger kVideoFinishedStatus = 1114;
     }
     else if (type == SFTypeStripVideoWithPaidRecNoTitle) {
         return @"SFTypeStripVideoWithPaidRecNoTitle";
+    }
+    else if (type == SFTypeGridTwoInRowWithVideo) {
+        return @"SFTypeGridTwoInRowWithVideo";
     }
     
     return @"";
