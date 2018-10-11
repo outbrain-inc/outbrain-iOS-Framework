@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		E61AE0C3215A2F00001F7405 /* SFVideoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E61AE0C1215A2F00001F7405 /* SFVideoTableViewCell.h */; };
-		E61AE0C4215A2F00001F7405 /* SFVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E61AE0C2215A2F00001F7405 /* SFVideoTableViewCell.m */; };
 		E61AE205216B560C001F7405 /* SFSingleVideoWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE201216B560B001F7405 /* SFSingleVideoWithTitleTableViewCell.xib */; };
 		E61AE206216B560C001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE202216B560B001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib */; };
 		E61AE207216B560C001F7405 /* SFSingleVideoNoTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE203216B560B001F7405 /* SFSingleVideoNoTitleTableViewCell.xib */; };
@@ -86,8 +84,6 @@
 		E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */; };
 		E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */; };
 		E61E6CFE208611380016D79A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFD208611380016D79A /* Assets.xcassets */; };
-		E628620E214915D100D12A15 /* SFVideoCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E628620C214915D100D12A15 /* SFVideoCollectionViewCell.h */; };
-		E628620F214915D100D12A15 /* SFVideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E628620D214915D100D12A15 /* SFVideoCollectionViewCell.m */; };
 		E62B7E4620D12C490096F5BD /* OutbrainManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E62B7E4420D12C490096F5BD /* OutbrainManager.h */; };
 		E62B7E4720D12C490096F5BD /* OutbrainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E62B7E4520D12C490096F5BD /* OutbrainManager.m */; };
 		E63B784C212AB1860018C225 /* SFImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7840212AB1860018C225 /* SFImageLoader.h */; };
@@ -112,6 +108,11 @@
 		E64F611421352824008BBDFB /* SFHorizontalFixedWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F611321352823008BBDFB /* SFHorizontalFixedWithTitleTableViewCell.xib */; };
 		E64F611621352E06008BBDFB /* SFSingleWithThumbnailWithTitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F611521352E05008BBDFB /* SFSingleWithThumbnailWithTitleCollectionCell.xib */; };
 		E64F611821357DCA008BBDFB /* SFSingleWithThumbnailWithTitleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F611721357DCA008BBDFB /* SFSingleWithThumbnailWithTitleTableCell.xib */; };
+		E6B930A6216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */; };
+		E6B930AC216F794C00EC7A4A /* SFVideoCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */; };
+		E6B930AD216F794C00EC7A4A /* SFVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */; };
+		E6B930AE216F794C00EC7A4A /* SFVideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B930AA216F794C00EC7A4A /* SFVideoCollectionViewCell.m */; };
+		E6B930AF216F794C00EC7A4A /* SFVideoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B930AB216F794C00EC7A4A /* SFVideoTableViewCell.h */; };
 		E6D26D8720D7BE6D00D6D00A /* rtb_rec_with_disclosure.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8620D7BE6D00D6D00A /* rtb_rec_with_disclosure.json */; };
 		E6D26D8920D7BEA300D6D00A /* OBRecRTBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */; };
 		E6D26D8B20D7C0A900D6D00A /* non_rtb_rec.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8A20D7C0A900D6D00A /* non_rtb_rec.json */; };
@@ -167,8 +168,6 @@
 		D8C91A791871FEED005916A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8D1FD60187327CB0099831C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D8D1FD62187327D20099831C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E61AE0C1215A2F00001F7405 /* SFVideoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFVideoTableViewCell.h; sourceTree = "<group>"; };
-		E61AE0C2215A2F00001F7405 /* SFVideoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFVideoTableViewCell.m; sourceTree = "<group>"; };
 		E61AE201216B560B001F7405 /* SFSingleVideoWithTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleVideoWithTitleTableViewCell.xib; sourceTree = "<group>"; };
 		E61AE202216B560B001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleVideoNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E61AE203216B560B001F7405 /* SFSingleVideoNoTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleVideoNoTitleTableViewCell.xib; sourceTree = "<group>"; };
@@ -238,8 +237,6 @@
 		E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalView.m; sourceTree = "<group>"; };
 		E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageCollectionLayout.h; sourceTree = "<group>"; };
 		E61E6CFD208611380016D79A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E628620C214915D100D12A15 /* SFVideoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFVideoCollectionViewCell.h; sourceTree = "<group>"; };
-		E628620D214915D100D12A15 /* SFVideoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFVideoCollectionViewCell.m; sourceTree = "<group>"; };
 		E62B7E4420D12C490096F5BD /* OutbrainManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutbrainManager.h; sourceTree = "<group>"; };
 		E62B7E4520D12C490096F5BD /* OutbrainManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutbrainManager.m; sourceTree = "<group>"; };
 		E63B7840212AB1860018C225 /* SFImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageLoader.h; sourceTree = "<group>"; };
@@ -265,6 +262,11 @@
 		E64F611521352E05008BBDFB /* SFSingleWithThumbnailWithTitleCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleWithThumbnailWithTitleCollectionCell.xib; sourceTree = "<group>"; };
 		E64F611721357DCA008BBDFB /* SFSingleWithThumbnailWithTitleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSingleWithThumbnailWithTitleTableCell.xib; sourceTree = "<group>"; };
 		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedWithVideoCollectionViewCell.xib; sourceTree = "<group>"; };
+		E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFVideoCollectionViewCell.h; sourceTree = "<group>"; };
+		E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFVideoTableViewCell.m; sourceTree = "<group>"; };
+		E6B930AA216F794C00EC7A4A /* SFVideoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFVideoCollectionViewCell.m; sourceTree = "<group>"; };
+		E6B930AB216F794C00EC7A4A /* SFVideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFVideoTableViewCell.h; sourceTree = "<group>"; };
 		E6D26D8620D7BE6D00D6D00A /* rtb_rec_with_disclosure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rtb_rec_with_disclosure.json; sourceTree = "<group>"; };
 		E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBRecRTBTests.m; sourceTree = "<group>"; };
 		E6D26D8A20D7C0A900D6D00A /* non_rtb_rec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = non_rtb_rec.json; sourceTree = "<group>"; };
@@ -620,14 +622,11 @@
 		E63B7847212AB1860018C225 /* BaseCellClasses */ = {
 			isa = PBXGroup;
 			children = (
+				E6B930A7216F794C00EC7A4A /* VideoBaseClasses */,
 				E63B7848212AB1860018C225 /* SFCollectionViewCell.h */,
 				E63B784A212AB1860018C225 /* SFCollectionViewCell.m */,
 				E63B7849212AB1860018C225 /* SFTableViewCell.m */,
 				E63B784B212AB1860018C225 /* SFTableViewCell.h */,
-				E628620C214915D100D12A15 /* SFVideoCollectionViewCell.h */,
-				E628620D214915D100D12A15 /* SFVideoCollectionViewCell.m */,
-				E61AE0C1215A2F00001F7405 /* SFVideoTableViewCell.h */,
-				E61AE0C2215A2F00001F7405 /* SFVideoTableViewCell.m */,
 			);
 			path = BaseCellClasses;
 			sourceTree = "<group>";
@@ -643,6 +642,17 @@
 				E63B785F212AD9750018C225 /* SFCollectionViewHeaderCell.xib */,
 			);
 			path = SmartFeedHeaderCells;
+			sourceTree = "<group>";
+		};
+		E6B930A7216F794C00EC7A4A /* VideoBaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */,
+				E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */,
+				E6B930AA216F794C00EC7A4A /* SFVideoCollectionViewCell.m */,
+				E6B930AB216F794C00EC7A4A /* SFVideoTableViewCell.h */,
+			);
+			path = VideoBaseClasses;
 			sourceTree = "<group>";
 		};
 		E6F8F459211C3C6D0069C72C /* SmartFeedManager */ = {
@@ -664,6 +674,7 @@
 				E6FEB3E120FF2E78002A9020 /* SFHorizontalCollectionViewCell.h */,
 				E6FEB3DF20FF2E78002A9020 /* SFHorizontalCollectionViewCell.m */,
 				E6FEB3E020FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib */,
+				E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */,
 				E64F6111213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib */,
 				E6FEB3E220FF2E78002A9020 /* SFHorizontalCarouselWithTitleCollectionViewCell.xib */,
 				E64F6043212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib */,
@@ -753,7 +764,7 @@
 				E61E6C3B20836C180016D79A /* OBRequest.h in Headers */,
 				E63B784C212AB1860018C225 /* SFImageLoader.h in Headers */,
 				E6FEB3EC20FF2E78002A9020 /* SFHorizontalTableViewCell.h in Headers */,
-				E61AE0C3215A2F00001F7405 /* SFVideoTableViewCell.h in Headers */,
+				E6B930AC216F794C00EC7A4A /* SFVideoCollectionViewCell.h in Headers */,
 				E6F8F460211C3D400069C72C /* SFTableViewManager.h in Headers */,
 				E63B7850212AB1860018C225 /* SFItemData.h in Headers */,
 				E6FEB3EA20FF2E78002A9020 /* SFHorizontalCollectionViewCell.h in Headers */,
@@ -775,6 +786,7 @@
 				E61E6CBC2085D98F0016D79A /* SFHorizontalView.h in Headers */,
 				E61E6C2220836C180016D79A /* OBNetworkManager.h in Headers */,
 				E61E6C4720836C180016D79A /* OutbrainHelper.h in Headers */,
+				E6B930AF216F794C00EC7A4A /* SFVideoTableViewCell.h in Headers */,
 				E61E6C4920836C180016D79A /* OBRecommendationsTokenHandler.h in Headers */,
 				E61E6C4420836C180016D79A /* OBUtils.h in Headers */,
 				E63B784D212AB1860018C225 /* SFUtils.h in Headers */,
@@ -782,7 +794,6 @@
 				E61E6C2020836C180016D79A /* UIView+Visible.h in Headers */,
 				E61E6C3C20836C180016D79A /* Outbrain.h in Headers */,
 				E6FEB19420FCB8B4002A9020 /* SFHorizontalViewFixed.h in Headers */,
-				E628620E214915D100D12A15 /* SFVideoCollectionViewCell.h in Headers */,
 				E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */,
 				E61E6C3120836C180016D79A /* OBContent.h in Headers */,
 				E61E6C3320836C180016D79A /* OBContent_Private.h in Headers */,
@@ -880,6 +891,7 @@
 				E6FEB85A2105F80B002A9020 /* SFSingleWithThumbnailCollectionCell.xib in Resources */,
 				E6FEB74E2105AAFB002A9020 /* SFHorizontalFixedItemCell.xib in Resources */,
 				E6FEB7512105AAFB002A9020 /* SFTableViewCell.xib in Resources */,
+				E6B930A6216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib in Resources */,
 				E64F6112213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib in Resources */,
 				E6FEB7502105AAFB002A9020 /* SFCollectionViewCell.xib in Resources */,
 				E6FEB3EF20FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib in Resources */,
@@ -954,7 +966,6 @@
 				E61E6C3620836C180016D79A /* OBContent.m in Sources */,
 				E61E6C1D20836C180016D79A /* OBLabel.m in Sources */,
 				E6F8F465211C3D580069C72C /* SFCollectionViewManager.m in Sources */,
-				E61AE0C4215A2F00001F7405 /* SFVideoTableViewCell.m in Sources */,
 				E61E6C3F20836C180016D79A /* OBErrors.m in Sources */,
 				E61E6C3420836C180016D79A /* OBRecommendation.m in Sources */,
 				E61E6C2720836C180016D79A /* OBNetworkManager.m in Sources */,
@@ -969,7 +980,9 @@
 				E63B784E212AB1860018C225 /* SFImageLoader.m in Sources */,
 				E61E6C2920836C180016D79A /* OBSettings.m in Sources */,
 				E6F8F461211C3D400069C72C /* SFTableViewManager.m in Sources */,
+				E6B930AE216F794C00EC7A4A /* SFVideoCollectionViewCell.m in Sources */,
 				E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */,
+				E6B930AD216F794C00EC7A4A /* SFVideoTableViewCell.m in Sources */,
 				E61E6CBD2085D98F0016D79A /* PageCollectionLayout.m in Sources */,
 				E61E6C3A20836C180016D79A /* OBRequest.m in Sources */,
 				E61E6C2420836C180016D79A /* OBReachability.m in Sources */,
@@ -981,7 +994,6 @@
 				E6F8F45C211C3C6D0069C72C /* SmartFeedManager.m in Sources */,
 				E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */,
 				E63B7854212AB1860018C225 /* SFCollectionViewCell.m in Sources */,
-				E628620F214915D100D12A15 /* SFVideoCollectionViewCell.m in Sources */,
 				E61E6C2120836C180016D79A /* OBBridge.m in Sources */,
 				E61E6C4620836C180016D79A /* OBRecommendationsTokenHandler.m in Sources */,
 				E63B7853212AB1860018C225 /* SFTableViewCell.m in Sources */,

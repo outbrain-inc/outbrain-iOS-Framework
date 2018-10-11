@@ -17,6 +17,5 @@
 
 @property (nonatomic, weak) WKWebView *webview;
 @property (nonatomic, weak) SFItemData *sfItem;
-@property (nonatomic, weak) UIActivityIndicatorView *spinner;
 
 @end
