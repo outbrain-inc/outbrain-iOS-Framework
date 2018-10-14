@@ -11,6 +11,7 @@
 #import "SFCollectionViewHeaderCell.h"
 #import "SFHorizontalCollectionViewCell.h"
 #import "SFHorizontalWithVideoCollectionViewCell.h"
+#import "SFHorizontalWithVideoTableViewCell.h"
 #import "SFCollectionViewCell.h"
 #import "SFTableViewCell.h"
 #import "SFHorizontalTableViewCell.h"
@@ -511,7 +512,10 @@
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
-    if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
+    if ([cell isKindOfClass:[SFHorizontalWithVideoTableViewCell class]]) {
+        [self configureHorizontalVideoTableViewCell:cell atIndexPath:indexPath];
+    }
+    else if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
         if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
             [SFUtils addDropShadowToView: cell];
@@ -546,6 +550,31 @@
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
+}
+
+- (void) configureHorizontalVideoTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SFHorizontalWithVideoTableViewCell *horizontalVideoCell = (SFHorizontalWithVideoTableViewCell *)cell;
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
+    horizontalVideoCell.sfItem = sfItem;
+    
+    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
+        [horizontalVideoCell.contentView setNeedsLayout];
+        return;
+    }
+    
+    if (horizontalVideoCell.webview) {
+        [horizontalVideoCell.webview removeFromSuperview];
+        horizontalVideoCell.webview = nil;
+    }
+    
+    [self commonConfigureHorizontalCell:horizontalVideoCell.horizontalView withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
+    
+    horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell uiDelegate:self withHorizontalMargin:YES];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
+    [horizontalVideoCell.webview loadRequest:request];
+    [horizontalVideoCell.contentView setNeedsLayout];
 }
 
 -(void) commonConfigureHorizontalCell:(SFHorizontalView *)horizontalView withCellTitleLabel:(UILabel *)cellTitleLabel sfItem:(SFItemData *)sfItem {
