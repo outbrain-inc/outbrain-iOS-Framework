@@ -118,6 +118,8 @@
 		E6B930B6217339DD00EC7A4A /* SFHorizontalWithVideoTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B930B4217339DD00EC7A4A /* SFHorizontalWithVideoTableViewCell.h */; };
 		E6B930B7217339DD00EC7A4A /* SFHorizontalWithVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B930B5217339DD00EC7A4A /* SFHorizontalWithVideoTableViewCell.m */; };
 		E6B930BB21733BB300EC7A4A /* SFHorizontalFixedWithVideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B930BA21733BB300EC7A4A /* SFHorizontalFixedWithVideoTableViewCell.xib */; };
+		E6B930BE2173691900EC7A4A /* SFScriptMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B930BC2173691900EC7A4A /* SFScriptMessageHandler.h */; };
+		E6B930BF2173691900EC7A4A /* SFScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B930BD2173691900EC7A4A /* SFScriptMessageHandler.m */; };
 		E6D26D8720D7BE6D00D6D00A /* rtb_rec_with_disclosure.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8620D7BE6D00D6D00A /* rtb_rec_with_disclosure.json */; };
 		E6D26D8920D7BEA300D6D00A /* OBRecRTBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */; };
 		E6D26D8B20D7C0A900D6D00A /* non_rtb_rec.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8A20D7C0A900D6D00A /* non_rtb_rec.json */; };
@@ -277,6 +279,8 @@
 		E6B930B4217339DD00EC7A4A /* SFHorizontalWithVideoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFHorizontalWithVideoTableViewCell.h; sourceTree = "<group>"; };
 		E6B930B5217339DD00EC7A4A /* SFHorizontalWithVideoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalWithVideoTableViewCell.m; sourceTree = "<group>"; };
 		E6B930BA21733BB300EC7A4A /* SFHorizontalFixedWithVideoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedWithVideoTableViewCell.xib; sourceTree = "<group>"; };
+		E6B930BC2173691900EC7A4A /* SFScriptMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFScriptMessageHandler.h; sourceTree = "<group>"; };
+		E6B930BD2173691900EC7A4A /* SFScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFScriptMessageHandler.m; sourceTree = "<group>"; };
 		E6D26D8620D7BE6D00D6D00A /* rtb_rec_with_disclosure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rtb_rec_with_disclosure.json; sourceTree = "<group>"; };
 		E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBRecRTBTests.m; sourceTree = "<group>"; };
 		E6D26D8A20D7C0A900D6D00A /* non_rtb_rec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = non_rtb_rec.json; sourceTree = "<group>"; };
@@ -616,6 +620,8 @@
 				E63B7842212AB1860018C225 /* SFImageLoader.m */,
 				E63B7841212AB1860018C225 /* SFUtils.h */,
 				E63B7843212AB1860018C225 /* SFUtils.m */,
+				E6B930BC2173691900EC7A4A /* SFScriptMessageHandler.h */,
+				E6B930BD2173691900EC7A4A /* SFScriptMessageHandler.m */,
 			);
 			path = SFUtils;
 			sourceTree = "<group>";
@@ -782,6 +788,7 @@
 				E6FEB3EC20FF2E78002A9020 /* SFHorizontalTableViewCell.h in Headers */,
 				E6B930AC216F794C00EC7A4A /* SFVideoCollectionViewCell.h in Headers */,
 				E6F8F460211C3D400069C72C /* SFTableViewManager.h in Headers */,
+				E6B930BE2173691900EC7A4A /* SFScriptMessageHandler.h in Headers */,
 				E63B7850212AB1860018C225 /* SFItemData.h in Headers */,
 				E6FEB3EA20FF2E78002A9020 /* SFHorizontalCollectionViewCell.h in Headers */,
 				E61E6C3820836C180016D79A /* OBRecommendation.h in Headers */,
@@ -987,6 +994,7 @@
 				E6F8F465211C3D580069C72C /* SFCollectionViewManager.m in Sources */,
 				E61E6C3F20836C180016D79A /* OBErrors.m in Sources */,
 				E61E6C3420836C180016D79A /* OBRecommendation.m in Sources */,
+				E6B930BF2173691900EC7A4A /* SFScriptMessageHandler.m in Sources */,
 				E61E6C2720836C180016D79A /* OBNetworkManager.m in Sources */,
 				E62B7E4720D12C490096F5BD /* OutbrainManager.m in Sources */,
 				E61E6C4520836C180016D79A /* OutbrainHelper.m in Sources */,

@@ -107,14 +107,6 @@
                                                object:nil];
 }
 
-- (void) videoReadyNotification:(NSNotification *) notification
-{
-    if ([[notification name] isEqualToString:@"VideoReadyNotification"]) {
-        UIView *view = (UIView *) notification.object;
-        NSLog (@"Successfully received the videoReady notification! - view.tag: %d", view.tag);
-    }
-}
-
 -(NSInteger) smartFeedItemsCount {
     if (self.smartFeedItemsArray.count > 0) {
         return self.smartFeedItemsArray.count + 1; // plus header cell
@@ -563,7 +555,7 @@
         return;
     }
     
-    horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell uiDelegate:self withHorizontalMargin:YES];
+    horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
     
     [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
 }
@@ -731,7 +723,7 @@
         return;
     }
     
-    horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell uiDelegate:self withHorizontalMargin:YES];
+    horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
     
     [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
 }

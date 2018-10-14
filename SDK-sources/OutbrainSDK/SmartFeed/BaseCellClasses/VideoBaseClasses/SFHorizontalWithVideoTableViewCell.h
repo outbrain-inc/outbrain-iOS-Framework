@@ -10,14 +10,16 @@
 #import "SFHorizontalView.h"
 #import "SFHorizontalTableViewCell.h"
 #import "SFUtils.h"
+#import "SFScriptMessageHandler.h"
 
 @import WebKit;
 @class SFItemData;
 
 
-@interface SFHorizontalWithVideoTableViewCell : SFHorizontalTableViewCell <WKScriptMessageHandler, SFVideoCellType>
+@interface SFHorizontalWithVideoTableViewCell : SFHorizontalTableViewCell <SFVideoCellType>
 
 @property (nonatomic, weak) WKWebView *webview;
 @property (nonatomic, strong) SFItemData *sfItem;
+@property (nonatomic, strong, readonly) SFScriptMessageHandler *wkScriptMessageHandler;
 
 @end
