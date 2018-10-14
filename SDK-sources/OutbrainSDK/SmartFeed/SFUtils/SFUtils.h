@@ -46,10 +46,16 @@
 
 + (UIColor *)colorFromHexString:(NSString *)hexString;
 
+
+// Video related methods
 +(WKWebView *) createVideoWebViewInsideView:(UIView *)parentView
                                  withSFItem:(SFItemData *)sfItem
                        scriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler
                                  uiDelegate:(id <WKUIDelegate>)uiDelegate
                        withHorizontalMargin:(BOOL)withHorizontalMargin;
+
++(BOOL) configureGenericVideoCell:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem;
+
++(void) loadRequestIn:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem;
 
 @end

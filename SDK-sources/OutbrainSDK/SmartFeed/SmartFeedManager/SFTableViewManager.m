@@ -179,23 +179,14 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
 
 - (void) configureVideoCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     SFVideoTableViewCell *videoCell = (SFVideoTableViewCell *)cell;
-    videoCell.sfItem = sfItem;
+    BOOL shouldReturn = [SFUtils configureGenericVideoCell:videoCell sfItem:sfItem];
     
-    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
-        [videoCell.contentView setNeedsLayout];
+    if (shouldReturn) {
         return;
     }
-    
-    if (videoCell.webview) {
-        [videoCell.webview removeFromSuperview];
-        videoCell.webview = nil;
-    }
-
     videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell uiDelegate:self.wkWebviewDelegate withHorizontalMargin:NO];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
-    [videoCell.webview loadRequest:request];
-    [videoCell.contentView setNeedsLayout];
+    [SFUtils loadRequestIn:videoCell sfItem:sfItem];
     
     [self configureSingleTableViewCell:videoCell atIndexPath:indexPath withSFItem:sfItem];
 }

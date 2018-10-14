@@ -75,6 +75,7 @@
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
+#pragma mark - Video related methods
 +(WKWebView *) createVideoWebViewInsideView:(UIView *)parentView
                                  withSFItem:(SFItemData *)sfItem
                        scriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler
@@ -101,6 +102,28 @@
     }
     
     return webView;
+}
+
+// return whether caller should return
++(BOOL) configureGenericVideoCell:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem {
+    videoCell.sfItem = sfItem;
+    
+    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
+        [videoCell.contentView setNeedsLayout];
+        return YES;
+    }
+    
+    if (videoCell.webview) {
+        [videoCell.webview removeFromSuperview];
+        videoCell.webview = nil;
+    }
+    return NO;
+}
+
++(void) loadRequestIn:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem {
+    NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
+    [videoCell.webview loadRequest:request];
+    [videoCell.contentView setNeedsLayout];
 }
 
 @end
