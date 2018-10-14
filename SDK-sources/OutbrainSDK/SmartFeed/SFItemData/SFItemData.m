@@ -33,11 +33,7 @@ NSInteger kVideoFinishedStatus = 1114;
     if (self) {
         self.singleRec = rec;
         self.itemType = type;
-        self.widgetTitle = widgetTitle;
-        self.widgetId = widgetId;
-        if (shadowColorStr) {
-            self.shadowColor = [SFUtils colorFromHexString:shadowColorStr];
-        }
+        [self commonInitWithWidgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColorStr];
     }
     return self;
 }
@@ -59,11 +55,7 @@ NSInteger kVideoFinishedStatus = 1114;
         
         self.singleRec = rec;
         self.itemType = widgetTitle ? SFTypeStripVideoWithPaidRecAndTitle : SFTypeStripVideoWithPaidRecNoTitle;
-        self.widgetTitle = widgetTitle;
-        self.widgetId = widgetId;
-        if (shadowColorStr) {
-            self.shadowColor = [SFUtils colorFromHexString:shadowColorStr];
-        }
+        [self commonInitWithWidgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColorStr];
     }
     return self;
 }
@@ -85,11 +77,7 @@ NSInteger kVideoFinishedStatus = 1114;
         
         self.outbrainRecs = recArray;
         self.itemType = type;
-        self.widgetTitle = widgetTitle;
-        self.widgetId = widgetId;
-        if (shadowColorStr) {
-            self.shadowColor = [SFUtils colorFromHexString:shadowColorStr];
-        }
+        [self commonInitWithWidgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColorStr];
     }
     return self;
 }
@@ -100,13 +88,20 @@ NSInteger kVideoFinishedStatus = 1114;
     if (self) {
         self.outbrainRecs = recArray;
         self.itemType = type;
-        self.widgetTitle = widgetTitle;
-        self.widgetId = widgetId;
-        if (shadowColorStr) {
-            self.shadowColor = [SFUtils colorFromHexString:shadowColorStr];
-        }
+        [self commonInitWithWidgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColorStr];
     }
     return self;
+}
+
+- (void)commonInitWithWidgetTitle:(NSString *)widgetTitle
+                         widgetId:(NSString *)widgetId
+                   shadowColorStr:(NSString *)shadowColorStr
+{
+    self.widgetTitle = widgetTitle;
+    self.widgetId = widgetId;
+    if (shadowColorStr) {
+        self.shadowColor = [SFUtils colorFromHexString:shadowColorStr];
+    }
 }
 
 +(NSString *) itemTypeString:(SFItemType) type {
