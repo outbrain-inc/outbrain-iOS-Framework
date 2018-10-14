@@ -159,13 +159,16 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     SFItemType sfItemType = sfItem.itemType;
     
     CGFloat width = collectionView.frame.size.width;
-    if (sfItemType == SFTypeGridTwoInRowNoTitle || sfItemType == SFTypeCarouselWithTitle || sfItemType == SFTypeCarouselNoTitle) {
+    if (sfItemType == SFTypeGridTwoInRowNoTitle ||
+        sfItemType == SFTypeCarouselWithTitle ||
+        sfItemType == SFTypeCarouselNoTitle ||
+        sfItemType == SFTypeGridTwoInRowWithVideo) {
         return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 240.0);
     }
     else if (sfItemType == SFTypeGridThreeInRowNoTitle) {
         return CGSizeMake(width, 280.0);
     }
-    else if ((sfItemType == SFTypeGridTwoInRowWithVideo) || (sfItemType == SFTypeGridTwoInRowWithTitle)) {
+    else if (sfItemType == SFTypeGridTwoInRowWithTitle) {
         return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 270.0);
     }
     else if ((sfItemType == SFTypeStripWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {
