@@ -10,6 +10,8 @@
 #import "SFTableViewHeaderCell.h"
 #import "SFCollectionViewHeaderCell.h"
 #import "SFHorizontalCollectionViewCell.h"
+#import "SFHorizontalWithVideoCollectionViewCell.h"
+#import "SFHorizontalWithVideoTableViewCell.h"
 #import "SFCollectionViewCell.h"
 #import "SFTableViewCell.h"
 #import "SFHorizontalTableViewCell.h"
@@ -103,14 +105,6 @@
                                              selector:@selector(videoReadyNotification:)
                                                  name:@"VideoReadyNotification"
                                                object:nil];
-}
-
-- (void) videoReadyNotification:(NSNotification *) notification
-{
-    if ([[notification name] isEqualToString:@"VideoReadyNotification"]) {
-        UIView *view = (UIView *) notification.object;
-        NSLog (@"Successfully received the videoReady notification! - view.tag: %d", view.tag);
-    }
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -220,7 +214,9 @@
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
     }
     
-    if ([self isVideoIncludedInResponse:response]) {
+    
+    if ([response.request.widgetId isEqualToString:@"SDK_SFD_3"] && response.recommendations.count > 0) { // VIDEO TEMP
+    //if ([self isVideoIncludedInResponse:response]) {
         NSMutableDictionary *videoParams = [[NSMutableDictionary alloc] init];
         if (response.originalOBPayload[@"settings"]) {
             NSMutableDictionary *settingsJson = [response.originalOBPayload[@"settings"] mutableCopy];
@@ -317,12 +313,9 @@
 }
 
 -(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {
-    //TEMP IMPL
-    return [response.request.widgetId isEqualToString:@"SDK_SFD_3"] && response.recommendations.count > 0;
-    
-    //    BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
-    //    BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
-    //    return videoIsIncludedInRequest && videoURLIsIncludedInSettings;
+    BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
+    BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
+    return videoIsIncludedInRequest && videoURLIsIncludedInSettings;
 }
 
 -(SFItemType) sfItemTypeFromResponse:(OBRecommendationResponse *)response {
@@ -395,12 +388,36 @@
         NSAssert(NO, @"templateType has illegal value");
     }
     
+    BOOL shouldIncludeVideoInTheMiddle =
+        [self isVideoIncludedInResponse:response] &&
+        templateType == SFTypeGridTwoInRowNoTitle &&
+        recommendations.count == 6;
+    
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
     while (recommendationsMutableArray.count >= itemsPerRow) {
         NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
+        
+        if (shouldIncludeVideoInTheMiddle &&
+            newSmartfeedItems.count == 1)
+        {
+            // Add SFTypeGridTwoInRowWithVideo for the middle of the grid
+            NSMutableDictionary *videoParams = [[NSMutableDictionary alloc] init];
+            if (response.originalOBPayload[@"settings"]) {
+                videoParams[@"settings"] = response.originalOBPayload[@"settings"];
+            }
+            if (response.originalOBPayload[@"request"]) {
+                videoParams[@"request"] = response.originalOBPayload[@"request"];
+            }
+            
+            NSURL *videoURL = [self appendParamsToVideoUrl: response];
+            SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL videoParams:videoParams reclist:singleLineRecs type:SFTypeGridTwoInRowWithVideo widgetTitle:nil widgetId:widgetId shadowColorStr:shadowColor];
+            [newSmartfeedItems addObject:videoItem];
+            continue;
+        }
+        
         SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
         [newSmartfeedItems addObject:item];
     }
@@ -487,7 +504,10 @@
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
-    if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
+    if ([cell isKindOfClass:[SFHorizontalWithVideoTableViewCell class]]) {
+        [self configureHorizontalVideoTableViewCell:cell atIndexPath:indexPath];
+    }
+    else if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
         if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
             [SFUtils addDropShadowToView: cell];
@@ -522,6 +542,22 @@
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
+}
+
+- (void) configureHorizontalVideoTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SFHorizontalWithVideoTableViewCell *horizontalVideoCell = (SFHorizontalWithVideoTableViewCell *)cell;
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
+    [self commonConfigureHorizontalCell:horizontalVideoCell.horizontalView withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
+    
+    BOOL shouldReturn = [SFUtils configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
+    if (shouldReturn) {
+        return;
+    }
+    
+    horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
+    
+    [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
 }
 
 -(void) commonConfigureHorizontalCell:(SFHorizontalView *)horizontalView withCellTitleLabel:(UILabel *)cellTitleLabel sfItem:(SFItemData *)sfItem {
@@ -641,7 +677,10 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
+    if ([cell isKindOfClass:[SFHorizontalWithVideoCollectionViewCell class]]) {
+        [self configureHorizontalVideoCollectionCell:cell atIndexPath:indexPath];
+    }
+    else if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
         if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
             [SFUtils addDropShadowToView: cell]; // add shadow
@@ -672,6 +711,22 @@
     [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
 }
 
+- (void) configureHorizontalVideoCollectionCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SFHorizontalWithVideoCollectionViewCell *horizontalVideoCell = (SFHorizontalWithVideoCollectionViewCell *)cell;
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
+    [self commonConfigureHorizontalCell:horizontalVideoCell.horizontalView withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
+    
+    
+    BOOL shouldReturn = [SFUtils configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
+    if (shouldReturn) {
+        return;
+    }
+    
+    horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
+    
+    [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
+}
 
 #pragma mark - SFClickListener methods
 

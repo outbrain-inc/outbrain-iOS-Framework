@@ -34,6 +34,7 @@ NSString * const kCollectionViewSingleReuseId = @"SFCollectionViewCell";
 NSString * const kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideoReuseId";
 NSString * const SFSingleVideoWithTitleCollectionViewReuseId = @"SFSingleVideoWithTitleCollectionViewCell";
 NSString * const SFSingleVideoNoTitleCollectionViewReuseId = @"SFSingleVideoNoTitleCollectionViewCell";
+NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWithVideoCollectionViewCell";
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView
 {
@@ -69,6 +70,10 @@ NSString * const SFSingleVideoNoTitleCollectionViewReuseId = @"SFSingleVideoNoTi
         horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithTitleCollectionViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithTitleCollectionViewCell should not be null");
         [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewHorizontalFixedWithTitleReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithVideoCollectionViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithVideoCollectionViewCell should not be null");
+        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: SFHorizontalFixedWithVideoCellReuseId];
         
         // Single item cell
         UINib *collectionViewCellNib = [UINib nibWithNibName:@"SFCollectionViewCell" bundle:bundle];
@@ -137,6 +142,9 @@ NSString * const SFSingleVideoNoTitleCollectionViewReuseId = @"SFSingleVideoNoTi
             return [collectionView dequeueReusableCellWithReuseIdentifier: SFSingleVideoWithTitleCollectionViewReuseId forIndexPath:indexPath];
         case SFTypeStripVideoWithPaidRecNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: SFSingleVideoNoTitleCollectionViewReuseId forIndexPath:indexPath];
+            
+        case SFTypeGridTwoInRowWithVideo:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: SFHorizontalFixedWithVideoCellReuseId forIndexPath:indexPath];
         default:
             break;
     }
@@ -151,7 +159,10 @@ NSString * const SFSingleVideoNoTitleCollectionViewReuseId = @"SFSingleVideoNoTi
     SFItemType sfItemType = sfItem.itemType;
     
     CGFloat width = collectionView.frame.size.width;
-    if (sfItemType == SFTypeGridTwoInRowNoTitle || sfItemType == SFTypeCarouselWithTitle || sfItemType == SFTypeCarouselNoTitle) {
+    if (sfItemType == SFTypeGridTwoInRowNoTitle ||
+        sfItemType == SFTypeCarouselWithTitle ||
+        sfItemType == SFTypeCarouselNoTitle ||
+        sfItemType == SFTypeGridTwoInRowWithVideo) {
         return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 240.0);
     }
     else if (sfItemType == SFTypeGridThreeInRowNoTitle) {
@@ -189,23 +200,14 @@ NSString * const SFSingleVideoNoTitleCollectionViewReuseId = @"SFSingleVideoNoTi
 
 - (void) configureVideoCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     SFVideoCollectionViewCell *videoCell = (SFVideoCollectionViewCell *)cell;
-    videoCell.sfItem = sfItem;
-    
-    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
-        [videoCell.contentView setNeedsLayout];
+    BOOL shouldReturn = [SFUtils configureGenericVideoCell:videoCell sfItem:sfItem];
+    if (shouldReturn) {
         return;
     }
     
-    if (videoCell.webview) {
-        [videoCell.webview removeFromSuperview];
-        videoCell.webview = nil;
-    }
+    videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell.wkScriptMessageHandler uiDelegate:self.wkWebviewDelegate withHorizontalMargin:NO];
     
-    videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell uiDelegate:self.wkWebviewDelegate];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
-    [videoCell.webview loadRequest:request];
-    [videoCell.contentView setNeedsLayout];
+    [SFUtils loadRequestIn:videoCell sfItem:sfItem];
     
     [self configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
 }

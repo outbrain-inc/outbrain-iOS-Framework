@@ -24,6 +24,19 @@
     [view setNeedsLayout];
 }
 
++(void) addConstraintsToFillParentWithHorizontalMargin:(UIView *)view {
+    UIView *parentView = view.superview;
+    
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [[view leadingAnchor] constraintEqualToAnchor:[parentView leadingAnchor] constant: 10].active = YES;
+    [[view trailingAnchor] constraintEqualToAnchor:[parentView trailingAnchor] constant: -10].active = YES;
+    [[view topAnchor] constraintEqualToAnchor:[parentView topAnchor] constant:0].active = YES;
+    [[view bottomAnchor] constraintEqualToAnchor:[parentView bottomAnchor] constant:0].active = YES;
+    
+    [view setNeedsLayout];
+}
+
 +(void) addHeightConstraint:(CGFloat) height toView:(UIView *)view {
     view.translatesAutoresizingMaskIntoConstraints = NO;
     NSLayoutConstraint *heightConst = [NSLayoutConstraint
@@ -62,10 +75,12 @@
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
+#pragma mark - Video related methods
 +(WKWebView *) createVideoWebViewInsideView:(UIView *)parentView
                                  withSFItem:(SFItemData *)sfItem
                        scriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler
                                  uiDelegate:(id <WKUIDelegate>)uiDelegate
+                       withHorizontalMargin:(BOOL)withHorizontalMargin
 {
     WKPreferences *preferences = [[WKPreferences alloc] init];
     preferences.javaScriptEnabled = YES;
@@ -79,8 +94,36 @@
     webView.UIDelegate = uiDelegate;
     [parentView addSubview:webView];
     webView.alpha = 0;
-    [self addConstraintsToFillParent:webView];
+    if (withHorizontalMargin) {
+        [self addConstraintsToFillParentWithHorizontalMargin:webView];
+    }
+    else {
+        [self addConstraintsToFillParent:webView];
+    }
+    
     return webView;
+}
+
+// return whether caller should return
++(BOOL) configureGenericVideoCell:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem {
+    videoCell.sfItem = sfItem;
+    
+    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
+        [videoCell.contentView setNeedsLayout];
+        return YES;
+    }
+    
+    if (videoCell.webview) {
+        [videoCell.webview removeFromSuperview];
+        videoCell.webview = nil;
+    }
+    return NO;
+}
+
++(void) loadRequestIn:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem {
+    NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
+    [videoCell.webview loadRequest:request];
+    [videoCell.contentView setNeedsLayout];
 }
 
 @end

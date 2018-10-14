@@ -34,6 +34,7 @@ NSString * const kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithT
 NSString * const kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
 NSString * const kTableViewSingleVideoWithTitleReuseId = @"SFSingleVideoWithTitleTableViewCell";
 NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTableViewCell";
+NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWithVideoTableViewCell";
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView {
     self = [super init];
@@ -62,6 +63,10 @@ NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTab
         horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithTitleTableViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithTitleTableViewCell should not be null");
         [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedWithTitleReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithVideoTableViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithVideoTableViewCell should not be null");
+        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedWithVideoCellReuseId];
         
         // Smartfeed header cell
         UINib *nib = [UINib nibWithNibName:@"SFTableViewHeaderCell" bundle:bundle];
@@ -136,6 +141,8 @@ NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTab
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripVideoWithPaidRecNoTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoNoTitleReuseId forIndexPath:indexPath];
+        case SFTypeGridTwoInRowWithVideo:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewHorizontalFixedWithVideoCellReuseId forIndexPath:indexPath];
         default:
             NSAssert(false, @"sfItem.itemType must be covered in this switch/case statement");
             return [[UITableViewCell alloc] init];
@@ -172,23 +179,14 @@ NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTab
 
 - (void) configureVideoCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     SFVideoTableViewCell *videoCell = (SFVideoTableViewCell *)cell;
-    videoCell.sfItem = sfItem;
+    BOOL shouldReturn = [SFUtils configureGenericVideoCell:videoCell sfItem:sfItem];
     
-    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
-        [videoCell.contentView setNeedsLayout];
+    if (shouldReturn) {
         return;
     }
+    videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell.wkScriptMessageHandler uiDelegate:self.wkWebviewDelegate withHorizontalMargin:NO];
     
-    if (videoCell.webview) {
-        [videoCell.webview removeFromSuperview];
-        videoCell.webview = nil;
-    }
-
-    videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell uiDelegate:self.wkWebviewDelegate];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
-    [videoCell.webview loadRequest:request];
-    [videoCell.contentView setNeedsLayout];
+    [SFUtils loadRequestIn:videoCell sfItem:sfItem];
     
     [self configureSingleTableViewCell:videoCell atIndexPath:indexPath withSFItem:sfItem];
 }

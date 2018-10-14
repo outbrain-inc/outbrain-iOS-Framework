@@ -1,5 +1,5 @@
 //
-//  SFHorizontalCell.m
+//  SFHorizontalCollectionViewCell.m
 //  SmartFeedLib
 //
 //  Created by oded regev on 12/03/2018.
