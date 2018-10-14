@@ -27,6 +27,8 @@
 
 +(void) addConstraintsToFillParent:(UIView *)view;
 
++(void) addConstraintsToFillParentWithHorizontalMargin:(UIView *)view;
+
 +(void) addHeightConstraint:(CGFloat) height toView:(UIView *)view;
 
 +(void) addDropShadowToView:(UIView *)view;
@@ -38,6 +40,7 @@
 +(WKWebView *) createVideoWebViewInsideView:(UIView *)parentView
                                  withSFItem:(SFItemData *)sfItem
                        scriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler
-                                 uiDelegate:(id <WKUIDelegate>)uiDelegate;
+                                 uiDelegate:(id <WKUIDelegate>)uiDelegate
+                       withHorizontalMargin:(BOOL)withHorizontalMargin;
 
 @end

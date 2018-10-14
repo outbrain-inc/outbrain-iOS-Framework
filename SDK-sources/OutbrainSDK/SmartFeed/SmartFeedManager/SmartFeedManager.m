@@ -319,7 +319,7 @@
     return components.URL;
 }
 
--(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {    
+-(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {
     BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
     BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
     return videoIsIncludedInRequest && videoURLIsIncludedInSettings;
@@ -717,7 +717,7 @@
     
     [self commonConfigureHorizontalCell:horizontalVideoCell.horizontalView withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
     
-    horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell uiDelegate:self];
+    horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell uiDelegate:self withHorizontalMargin:YES];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
     [horizontalVideoCell.webview loadRequest:request];

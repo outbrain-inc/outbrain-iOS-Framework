@@ -24,6 +24,19 @@
     [view setNeedsLayout];
 }
 
++(void) addConstraintsToFillParentWithHorizontalMargin:(UIView *)view {
+    UIView *parentView = view.superview;
+    
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [[view leadingAnchor] constraintEqualToAnchor:[parentView leadingAnchor] constant: 10].active = YES;
+    [[view trailingAnchor] constraintEqualToAnchor:[parentView trailingAnchor] constant: -10].active = YES;
+    [[view topAnchor] constraintEqualToAnchor:[parentView topAnchor] constant:0].active = YES;
+    [[view bottomAnchor] constraintEqualToAnchor:[parentView bottomAnchor] constant:0].active = YES;
+    
+    [view setNeedsLayout];
+}
+
 +(void) addHeightConstraint:(CGFloat) height toView:(UIView *)view {
     view.translatesAutoresizingMaskIntoConstraints = NO;
     NSLayoutConstraint *heightConst = [NSLayoutConstraint
@@ -66,6 +79,7 @@
                                  withSFItem:(SFItemData *)sfItem
                        scriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler
                                  uiDelegate:(id <WKUIDelegate>)uiDelegate
+                       withHorizontalMargin:(BOOL)withHorizontalMargin
 {
     WKPreferences *preferences = [[WKPreferences alloc] init];
     preferences.javaScriptEnabled = YES;
@@ -79,7 +93,13 @@
     webView.UIDelegate = uiDelegate;
     [parentView addSubview:webView];
     webView.alpha = 0;
-    [self addConstraintsToFillParent:webView];
+    if (withHorizontalMargin) {
+        [self addConstraintsToFillParentWithHorizontalMargin:webView];
+    }
+    else {
+        [self addConstraintsToFillParent:webView];
+    }
+    
     return webView;
 }
 

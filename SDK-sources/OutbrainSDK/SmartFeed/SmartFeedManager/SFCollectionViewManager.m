@@ -209,7 +209,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         videoCell.webview = nil;
     }
     
-    videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell uiDelegate:self.wkWebviewDelegate];
+    videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell uiDelegate:self.wkWebviewDelegate withHorizontalMargin:NO];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
     [videoCell.webview loadRequest:request];
