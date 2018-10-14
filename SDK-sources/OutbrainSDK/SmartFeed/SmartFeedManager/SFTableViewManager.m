@@ -34,6 +34,7 @@ NSString * const kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithT
 NSString * const kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
 NSString * const kTableViewSingleVideoWithTitleReuseId = @"SFSingleVideoWithTitleTableViewCell";
 NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTableViewCell";
+NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWithVideoTableViewCell";
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView {
     self = [super init];
@@ -62,6 +63,10 @@ NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTab
         horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithTitleTableViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithTitleTableViewCell should not be null");
         [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedWithTitleReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithVideoTableViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithVideoTableViewCell should not be null");
+        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedWithVideoCellReuseId];
         
         // Smartfeed header cell
         UINib *nib = [UINib nibWithNibName:@"SFTableViewHeaderCell" bundle:bundle];
@@ -136,6 +141,8 @@ NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTab
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripVideoWithPaidRecNoTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoNoTitleReuseId forIndexPath:indexPath];
+        case SFTypeGridTwoInRowWithVideo:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewHorizontalFixedWithVideoCellReuseId forIndexPath:indexPath];
         default:
             NSAssert(false, @"sfItem.itemType must be covered in this switch/case statement");
             return [[UITableViewCell alloc] init];
