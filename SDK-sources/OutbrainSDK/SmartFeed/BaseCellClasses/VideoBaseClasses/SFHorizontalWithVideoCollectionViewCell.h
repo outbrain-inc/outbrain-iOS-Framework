@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "SFHorizontalView.h"
 #import "SFHorizontalCollectionViewCell.h"
+#import "SFUtils.h"
+#import "SFScriptMessageHandler.h"
 
 @import WebKit;
 @class SFItemData;
 
 
-@interface SFHorizontalWithVideoCollectionViewCell : SFHorizontalCollectionViewCell <WKScriptMessageHandler>
+@interface SFHorizontalWithVideoCollectionViewCell : SFHorizontalCollectionViewCell <SFVideoCellType>
 
 @property (nonatomic, weak) WKWebView *webview;
 @property (nonatomic, strong) SFItemData *sfItem;
+@property (nonatomic, strong, readonly) SFScriptMessageHandler *wkScriptMessageHandler;
 
 @end
