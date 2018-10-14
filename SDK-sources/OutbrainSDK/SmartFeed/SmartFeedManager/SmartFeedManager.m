@@ -556,25 +556,16 @@
     SFHorizontalWithVideoTableViewCell *horizontalVideoCell = (SFHorizontalWithVideoTableViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
-    horizontalVideoCell.sfItem = sfItem;
+    [self commonConfigureHorizontalCell:horizontalVideoCell.horizontalView withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
     
-    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
-        [horizontalVideoCell.contentView setNeedsLayout];
+    BOOL shouldReturn = [self configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
+    if (shouldReturn) {
         return;
     }
     
-    if (horizontalVideoCell.webview) {
-        [horizontalVideoCell.webview removeFromSuperview];
-        horizontalVideoCell.webview = nil;
-    }
-    
-    [self commonConfigureHorizontalCell:horizontalVideoCell.horizontalView withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
-    
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell uiDelegate:self withHorizontalMargin:YES];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
-    [horizontalVideoCell.webview loadRequest:request];
-    [horizontalVideoCell.contentView setNeedsLayout];
+    [self loadRequestIn:horizontalVideoCell sfItem:sfItem];
 }
 
 -(void) commonConfigureHorizontalCell:(SFHorizontalView *)horizontalView withCellTitleLabel:(UILabel *)cellTitleLabel sfItem:(SFItemData *)sfItem {
@@ -732,25 +723,39 @@
     SFHorizontalWithVideoCollectionViewCell *horizontalVideoCell = (SFHorizontalWithVideoCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
-    horizontalVideoCell.sfItem = sfItem;
+    [self commonConfigureHorizontalCell:horizontalVideoCell.horizontalView withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
     
-    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
-        [horizontalVideoCell.contentView setNeedsLayout];
+    
+    BOOL shouldReturn = [self configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
+    if (shouldReturn) {
         return;
     }
     
-    if (horizontalVideoCell.webview) {
-        [horizontalVideoCell.webview removeFromSuperview];
-        horizontalVideoCell.webview = nil;
-    }
-    
-    [self commonConfigureHorizontalCell:horizontalVideoCell.horizontalView withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
-    
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell uiDelegate:self withHorizontalMargin:YES];
     
+    [self loadRequestIn:horizontalVideoCell sfItem:sfItem];
+}
+
+// return whether caller should return
+-(BOOL) configureGenericVideoCell:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem {
+    videoCell.sfItem = sfItem;
+    
+    if (sfItem.videoPlayerStatus == kVideoReadyStatus) {
+        [videoCell.contentView setNeedsLayout];
+        return YES;
+    }
+    
+    if (videoCell.webview) {
+        [videoCell.webview removeFromSuperview];
+        videoCell.webview = nil;
+    }
+    return NO;
+}
+
+-(void) loadRequestIn:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem {
     NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
-    [horizontalVideoCell.webview loadRequest:request];
-    [horizontalVideoCell.contentView setNeedsLayout];
+    [videoCell.webview loadRequest:request];
+    [videoCell.contentView setNeedsLayout];
 }
 
 #pragma mark - SFClickListener methods

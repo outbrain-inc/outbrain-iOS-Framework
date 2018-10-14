@@ -15,6 +15,15 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 
+@protocol SFVideoCellType
+
+@property (nonatomic, readonly) UIView *contentView;
+@property (nonatomic, weak) WKWebView *webview;
+@property (nonatomic, strong) SFItemData *sfItem;
+
+@end
+
+
 @protocol SFClickListener
 
 - (void) recommendationClicked: (id)sender;
