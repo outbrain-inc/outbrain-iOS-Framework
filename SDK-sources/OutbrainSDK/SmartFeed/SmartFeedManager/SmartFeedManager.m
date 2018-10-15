@@ -542,6 +542,11 @@
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // do work here
+        [horizontalCell.horizontalView setupView];
+        [horizontalCell.horizontalView.collectionView reloadData];
+    });
 }
 
 - (void) configureHorizontalVideoTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

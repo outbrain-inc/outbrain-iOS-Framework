@@ -200,6 +200,8 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
 
 - (void) configureVideoCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     SFVideoCollectionViewCell *videoCell = (SFVideoCollectionViewCell *)cell;
+    [self configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
+    
     BOOL shouldReturn = [SFUtils configureGenericVideoCell:videoCell sfItem:sfItem];
     if (shouldReturn) {
         return;
@@ -208,8 +210,6 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell.wkScriptMessageHandler uiDelegate:self.wkWebviewDelegate withHorizontalMargin:NO];
     
     [SFUtils loadRequestIn:videoCell sfItem:sfItem];
-    
-    [self configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
 }
     
 - (void) configureSingleCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
