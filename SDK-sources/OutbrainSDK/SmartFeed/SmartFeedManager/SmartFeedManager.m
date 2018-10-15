@@ -543,7 +543,7 @@
     
     [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
     dispatch_async(dispatch_get_main_queue(), ^{
-        // do work here
+        // reload cells again because the first render always displays the wrong size.
         [horizontalCell.horizontalView setupView];
         [horizontalCell.horizontalView.collectionView reloadData];
     });
