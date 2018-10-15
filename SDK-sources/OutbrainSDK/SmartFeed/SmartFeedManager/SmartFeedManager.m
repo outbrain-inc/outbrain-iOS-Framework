@@ -38,6 +38,7 @@
 
 @property (nonatomic, assign) NSInteger outbrainIndex;
 @property (nonatomic, assign) BOOL isLoading;
+@property (nonatomic, assign) BOOL isSmartfeedWithNoChildren;
 
 @property (nonatomic, strong) SFCollectionViewManager *sfCollectionViewManager;
 @property (nonatomic, strong) SFTableViewManager *sfTableViewManager;
@@ -125,6 +126,10 @@
     if (self.feedCycleLimit > 0 && self.feedCycleCounter == self.feedCycleLimit) {
         return;
     }
+    
+    if (self.feedCycleLimit == 0 && self.smartFeedItemsArray.count > 0) { // a special case for smartfeed with only parent with no children
+        return;
+    }
         
     self.isLoading = YES;
     if (self.smartFeedItemsArray.count == 0 || self.feedContentArray == nil) {
@@ -148,6 +153,9 @@
             self.feedContentArray = response.settings.feedContentArray;
             self.fid = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
             self.feedCycleLimit = response.settings.feedCyclesLimit;
+            if (self.feedContentArray == nil || self.feedCycleLimit == 0) {
+                self.isSmartfeedWithNoChildren = YES;
+            }
         }
         
         if (response.recommendations.count == 0) {
@@ -224,6 +232,10 @@
         }
         
         NSURL *videoURL = [self appendParamsToVideoUrl: response];
+        BOOL isParentResponse = response.settings.isSmartFeed;
+        if (isParentResponse) {
+            widgetTitle = nil;
+        }
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                     videoParams:videoParams
                                            singleRecommendation:response.recommendations[0]
@@ -286,7 +298,7 @@
 -(SFItemType) sfItemTypeFromResponse:(OBRecommendationResponse *)response {
     NSString *recMode = response.settings.recMode;
     NSString *widgetHeader = response.settings.widgetHeaderText;
-    BOOL isParentResponse = response.settings.feedContentArray != nil;
+    BOOL isParentResponse = response.settings.isSmartFeed;
     
     if (isParentResponse) {
         // for the first widget in the feed, the widgetHeader text goes into the header
@@ -581,6 +593,14 @@
         sfHeaderCell.headerOBLabel.text = sfItem.widgetTitle;
     }
     [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
+    
+    if (self.isSmartfeedWithNoChildren) {
+        // Remove Smartfeed logo and place Outbrain regular logo instead
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        sfHeaderCell.headerImageView.image = [UIImage imageNamed:@"outbrain-logo" inBundle:bundle compatibleWithTraitCollection:nil];
+        [sfHeaderCell.adChoicesImageView removeFromSuperview];
+    }
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(outbrainLabelClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
@@ -642,7 +662,7 @@
         SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
         SFCollectionViewHeaderCell *sfHeaderCell = (SFCollectionViewHeaderCell *)cell;
         [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
-        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withTitle:sfItem.widgetTitle];
+        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withTitle:sfItem.widgetTitle isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren];
         return;
     }
     

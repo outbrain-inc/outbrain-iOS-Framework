@@ -49,6 +49,7 @@
                             <constraint firstItem="D9b-tS-IaU" firstAttribute="leading" secondItem="CAP-KL-ahl" secondAttribute="trailing" constant="5" id="Kxw-f4-pU2"/>
                             <constraint firstItem="D9b-tS-IaU" firstAttribute="centerY" secondItem="Imd-ra-IE4" secondAttribute="centerY" id="MlD-df-cSR"/>
                             <constraint firstItem="Imd-ra-IE4" firstAttribute="leading" secondItem="SvZ-DD-Tga" secondAttribute="leading" constant="11" id="Nyw-QD-Xa3"/>
+                            <constraint firstAttribute="trailing" secondItem="CAP-KL-ahl" secondAttribute="trailing" priority="750" constant="11" id="UZ0-4s-dfT"/>
                             <constraint firstItem="Imd-ra-IE4" firstAttribute="centerY" secondItem="SvZ-DD-Tga" secondAttribute="centerY" id="xy5-YC-yu8"/>
                         </constraints>
                     </view>
@@ -63,6 +64,8 @@
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="433" height="68"/>
             <connections>
+                <outlet property="adChoicesImageView" destination="D9b-tS-IaU" id="c99-2g-qUf"/>
+                <outlet property="headerImageView" destination="CAP-KL-ahl" id="wBi-Un-B49"/>
                 <outlet property="headerOBLabel" destination="Imd-ra-IE4" id="scg-Jw-Cbe"/>
             </connections>
             <point key="canvasLocation" x="-161.5" y="74"/>
