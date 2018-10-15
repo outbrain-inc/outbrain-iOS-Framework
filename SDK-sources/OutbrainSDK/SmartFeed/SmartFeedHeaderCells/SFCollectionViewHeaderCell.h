@@ -13,5 +13,7 @@
 @interface SFCollectionViewHeaderCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet OBLabel *headerOBLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *adChoicesImageView;
 
 @end

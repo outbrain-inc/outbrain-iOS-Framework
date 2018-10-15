@@ -193,6 +193,10 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         sfHeaderCell.headerOBLabel.text = title;
     }
     
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    sfHeaderCell.headerImageView.image = [UIImage imageNamed:@"outbrain-logo" inBundle:bundle compatibleWithTraitCollection:nil];
+    [sfHeaderCell.adChoicesImageView removeFromSuperview];
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.clickListenerTarget  action:@selector(outbrainLabelClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [sfHeaderCell.contentView addGestureRecognizer:tapGesture];

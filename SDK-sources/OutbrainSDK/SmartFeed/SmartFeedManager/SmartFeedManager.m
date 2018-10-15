@@ -125,6 +125,10 @@
     if (self.feedCycleLimit > 0 && self.feedCycleCounter == self.feedCycleLimit) {
         return;
     }
+    
+    if (self.feedCycleLimit == 0 && self.smartFeedItemsArray.count > 0) { // a special case for smartfeed with only parent with no children
+        return;
+    }
         
     self.isLoading = YES;
     if (self.smartFeedItemsArray.count == 0 || self.feedContentArray == nil) {
@@ -585,6 +589,11 @@
         sfHeaderCell.headerOBLabel.text = sfItem.widgetTitle;
     }
     [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    sfHeaderCell.headerImageView.image = [UIImage imageNamed:@"outbrain-logo" inBundle:bundle compatibleWithTraitCollection:nil];
+    [sfHeaderCell.adChoicesImageView removeFromSuperview];
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(outbrainLabelClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [sfHeaderCell.contentView addGestureRecognizer:tapGesture];

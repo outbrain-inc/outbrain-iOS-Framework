@@ -34,10 +34,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.delegate = self
         tableView.dataSource = self
-        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        spinner.startAnimating()
-        spinner.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 44)
-        self.tableView.tableFooterView = spinner;
         self.setupSmartFeed()
     }
     
