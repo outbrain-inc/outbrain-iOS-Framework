@@ -224,6 +224,10 @@
         }
         
         NSURL *videoURL = [self appendParamsToVideoUrl: response];
+        BOOL isParentResponse = response.settings.isSmartFeed;
+        if (isParentResponse) {
+            widgetTitle = nil;
+        }
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                     videoParams:videoParams
                                            singleRecommendation:response.recommendations[0]
@@ -286,7 +290,7 @@
 -(SFItemType) sfItemTypeFromResponse:(OBRecommendationResponse *)response {
     NSString *recMode = response.settings.recMode;
     NSString *widgetHeader = response.settings.widgetHeaderText;
-    BOOL isParentResponse = response.settings.feedContentArray != nil;
+    BOOL isParentResponse = response.settings.isSmartFeed;
     
     if (isParentResponse) {
         // for the first widget in the feed, the widgetHeader text goes into the header
