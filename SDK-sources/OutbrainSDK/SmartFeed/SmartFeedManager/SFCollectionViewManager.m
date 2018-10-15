@@ -187,15 +187,17 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     return CGSizeMake(width - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0);
 }
 
-- (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withTitle:(NSString *)title {
+- (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withTitle:(NSString *)title isSmartfeedWithNoChildren:(BOOL)isSmartfeedWithNoChildren {
     SFCollectionViewHeaderCell *sfHeaderCell = (SFCollectionViewHeaderCell *)cell;
     if (title) {
         sfHeaderCell.headerOBLabel.text = title;
     }
     
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    sfHeaderCell.headerImageView.image = [UIImage imageNamed:@"outbrain-logo" inBundle:bundle compatibleWithTraitCollection:nil];
-    [sfHeaderCell.adChoicesImageView removeFromSuperview];
+    if (isSmartfeedWithNoChildren) {
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        sfHeaderCell.headerImageView.image = [UIImage imageNamed:@"outbrain-logo" inBundle:bundle compatibleWithTraitCollection:nil];
+        [sfHeaderCell.adChoicesImageView removeFromSuperview];
+    }
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.clickListenerTarget  action:@selector(outbrainLabelClicked:)];
     tapGesture.numberOfTapsRequired = 1;

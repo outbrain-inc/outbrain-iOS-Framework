@@ -38,6 +38,7 @@
 
 @property (nonatomic, assign) NSInteger outbrainIndex;
 @property (nonatomic, assign) BOOL isLoading;
+@property (nonatomic, assign) BOOL isSmartfeedWithNoChildren;
 
 @property (nonatomic, strong) SFCollectionViewManager *sfCollectionViewManager;
 @property (nonatomic, strong) SFTableViewManager *sfTableViewManager;
@@ -152,6 +153,9 @@
             self.feedContentArray = response.settings.feedContentArray;
             self.fid = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
             self.feedCycleLimit = response.settings.feedCyclesLimit;
+            if (self.feedContentArray == nil || self.feedCycleLimit == 0) {
+                self.isSmartfeedWithNoChildren = YES;
+            }
         }
         
         if (response.recommendations.count == 0) {
@@ -590,9 +594,12 @@
     }
     [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
     
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    sfHeaderCell.headerImageView.image = [UIImage imageNamed:@"outbrain-logo" inBundle:bundle compatibleWithTraitCollection:nil];
-    [sfHeaderCell.adChoicesImageView removeFromSuperview];
+    if (self.isSmartfeedWithNoChildren) {
+        // Remove Smartfeed logo and place Outbrain regular logo instead
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        sfHeaderCell.headerImageView.image = [UIImage imageNamed:@"outbrain-logo" inBundle:bundle compatibleWithTraitCollection:nil];
+        [sfHeaderCell.adChoicesImageView removeFromSuperview];
+    }
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(outbrainLabelClicked:)];
     tapGesture.numberOfTapsRequired = 1;
@@ -655,7 +662,7 @@
         SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
         SFCollectionViewHeaderCell *sfHeaderCell = (SFCollectionViewHeaderCell *)cell;
         [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
-        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withTitle:sfItem.widgetTitle];
+        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withTitle:sfItem.widgetTitle isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren];
         return;
     }
     
