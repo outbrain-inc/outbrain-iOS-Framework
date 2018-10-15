@@ -214,41 +214,10 @@
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
     }
     
-    
-    if ([response.request.widgetId isEqualToString:@"SDK_SFD_3"] && response.recommendations.count > 0) { // VIDEO TEMP
-    //if ([self isVideoIncludedInResponse:response]) {
+    if ([self isVideoIncludedInResponse:response] && response.recommendations.count == 1) {
         NSMutableDictionary *videoParams = [[NSMutableDictionary alloc] init];
         if (response.originalOBPayload[@"settings"]) {
-            NSMutableDictionary *settingsJson = [response.originalOBPayload[@"settings"] mutableCopy];
-            if (settingsJson[@"vidgetData"] == nil) {
-                //TODO remote temporary code
-                NSLog(@"Error: isVideoIncludedInResponse --> vidgetData is missing.. temp solution");
-                NSError *error;
-                NSString *vidgetDataJsonStr;
-                NSDictionary * vidgetDataJson = @{@"channelId" : @"58a5ae2e073ef42da903a806",
-                                                  @"playMode" : @"load",
-                                                  @"closeButton" : @"true",
-                                                  @"retries" : @1,
-                                                  @"errorLimit" : @1,
-                                                  @"debug" : @"true",
-                                                  };
-                
-                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:vidgetDataJson
-                                                                   options:0
-                                                                     error:&error];
-                
-                if (! jsonData) {
-                    NSLog(@"%s: error: %@", __func__, error.localizedDescription);
-                    vidgetDataJsonStr = @"{}";
-                } else {
-                    vidgetDataJsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                }
-                
-                settingsJson[@"vidgetData"] = vidgetDataJsonStr;
-            }
-            videoParams[@"settings"] = settingsJson;
-            
-            
+            videoParams[@"settings"] = response.originalOBPayload[@"settings"];
         }
         if (response.originalOBPayload[@"request"]) {
             videoParams[@"request"] = response.originalOBPayload[@"request"];
@@ -296,11 +265,7 @@
 }
 
 -(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
-    //TODO remove temp code
-    NSString *videoUrlStr = response.settings.videoUrl != nil ?
-    response.settings.videoUrl.absoluteString :
-    @"https://static-test.outbrain.com/video/app/vidgetInApp.html";
-    
+    NSString *videoUrlStr = response.settings.videoUrl.absoluteString;
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:videoUrlStr];
     NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];
