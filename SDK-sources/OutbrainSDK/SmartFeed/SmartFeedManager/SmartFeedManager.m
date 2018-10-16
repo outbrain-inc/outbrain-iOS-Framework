@@ -268,7 +268,7 @@
     NSString *videoUrlStr = response.settings.videoUrl.absoluteString;
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:videoUrlStr];
     NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
-    NSString *appNameStr =[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
     NSString *apiUserId = [OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId];
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
     
