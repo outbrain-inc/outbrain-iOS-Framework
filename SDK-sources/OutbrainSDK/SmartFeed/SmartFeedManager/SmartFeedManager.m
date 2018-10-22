@@ -127,7 +127,7 @@
         return;
     }
     
-    if (self.feedCycleLimit == 0 && self.smartFeedItemsArray.count > 0) { // a special case for smartfeed with only parent with no children
+    if (self.feedContentArray.count == 0 && self.smartFeedItemsArray.count > 0) { // a special case for smartfeed with only parent with no children
         return;
     }
         
@@ -330,7 +330,7 @@
         return widgetHeader ? SFTypeStripWithThumbnailWithTitle : SFTypeStripWithThumbnailNoTitle;        
     }
     
-    NSLog(@"recMode value is not currently covered in the SDK");
+    NSLog(@"recMode value is not currently covered in the SDK - (%@)", recMode);
     return SFTypeStripWithTitle;
 }
 
