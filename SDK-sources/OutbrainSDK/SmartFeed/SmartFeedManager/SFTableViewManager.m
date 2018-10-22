@@ -234,7 +234,10 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         }
         
         singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];
-        singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+        if (!sfItem.isCustomUI) {
+            singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+        }
+
         [singleCell.outbrainLabelingContainer becomeFirstResponder];
         singleCell.outbrainLabelingContainer.enabled = YES;
         [singleCell.outbrainLabelingContainer addTarget:self.clickListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];

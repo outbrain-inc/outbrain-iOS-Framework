@@ -467,6 +467,7 @@
     NSString *singleCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
     if (singleItemCellNib && singleCellIdentifier && sfItem.singleRec) { // custom UI
         [self.sfTableViewManager.tableView registerNib:singleItemCellNib forCellReuseIdentifier:singleCellIdentifier];
+        sfItem.isCustomUI = YES;
         return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:singleCellIdentifier forIndexPath:indexPath];
     }
     return [self.sfTableViewManager tableView:tableView cellForRowAtIndexPath:indexPath sfItemType:sfItem.itemType];
