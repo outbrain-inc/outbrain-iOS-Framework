@@ -279,7 +279,10 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         }
     
         singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];
-        singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+        if (!sfItem.isCustomUI) {
+            singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+        }
+        
         [singleCell.outbrainLabelingContainer addTarget:self.clickListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
         [singleCell.cardContentView addGestureRecognizer:tapGesture];
     }

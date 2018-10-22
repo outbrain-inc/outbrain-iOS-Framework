@@ -627,6 +627,7 @@
     NSString *singleCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
     if (singleItemCellNib && singleCellIdentifier && sfItem.singleRec) { // custom UI
         [self.sfCollectionViewManager.collectionView registerNib:singleItemCellNib forCellWithReuseIdentifier:singleCellIdentifier];
+        sfItem.isCustomUI = YES;
         return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: singleCellIdentifier forIndexPath:indexPath];
     }
     return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItem:sfItem];

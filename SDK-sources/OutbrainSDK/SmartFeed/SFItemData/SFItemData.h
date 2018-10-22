@@ -34,6 +34,7 @@ extern NSInteger kVideoFinishedStatus;
 @property (nonatomic, strong, readonly) NSURL *videoUrl;
 @property (nonatomic, copy, readonly) NSString *videoParamsStr;
 @property (nonatomic, assign) NSInteger videoPlayerStatus;
+@property (nonatomic, assign) BOOL isCustomUI;
 
 +(NSString *) itemTypeString:(SFItemType) type;
 
