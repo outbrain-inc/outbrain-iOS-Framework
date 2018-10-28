@@ -15,6 +15,7 @@
 #import "OBRecommendation.h"
 #import "OBAppleAdIdUtil.h"
 #import "OBUtils.h"
+#import "GDPRUtils.h"
 
 
 @interface OBAdChoicesButton : UIButton
@@ -162,6 +163,24 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     // Smart Feed (father id)
     if (request.fid != nil) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fid" value: request.fid]];
+    }
+    
+    if (GDPRUtils.sharedInstance.cmpPresent) {
+        // TODO - check if value should be true/false or 1/0/-1
+        NSString *subjectToGDPR = GDPRUtils.sharedInstance.subjectToGDPR == SubjectToGDPR_Yes ? @"true" : @"false";
+        NSString *consents = GDPRUtils.sharedInstance.consentString;
+        NSString *purposes = GDPRUtils.sharedInstance.parsedPurposeConsents;
+        BOOL vendorConsentGivenForOutbrain = [GDPRUtils.sharedInstance isVendorConsentGivenFor:164];
+        NSString *isOutbarainVendor = vendorConsentGivenForOutbrain ? @"ture" : @"false";
+
+        // TODO - add keys to query params
+        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: @"true"]];
+        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: subjectToGDPR]];
+        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: consents]];
+        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: purposes]];
+        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: isOutbarainVendor]];
+    } else {
+        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: @"false"]];
     }
     
     components.queryItems = odbQueryItems;
