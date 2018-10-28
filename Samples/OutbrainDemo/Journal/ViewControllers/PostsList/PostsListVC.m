@@ -48,8 +48,7 @@
     self.loadedOutbrainRecommendationResponses = [NSMutableArray array];
     UIRefreshControl * refreshControl = [self refreshControl];
     [refreshControl addTarget:self action:@selector(refreshPostsList) forControlEvents:UIControlEventValueChanged];
-    
-    
+    [self becomeFirstResponder];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -59,6 +58,16 @@
     {
         [self refreshPostsList];
         [self.tableView setContentOffset:CGPointMake(0, -[self refreshControl].bounds.size.height) animated:YES];
+    }
+}
+
+- (BOOL)canBecomeFirstResponder{
+    return true;
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if (event.subtype == UIEventSubtypeMotionShake){
+        [self performSegueWithIdentifier:@"gdprSegue" sender:self];
     }
 }
 
