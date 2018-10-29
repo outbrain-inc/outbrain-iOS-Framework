@@ -23,29 +23,29 @@ typedef NS_ENUM(NSInteger, SubjectToGDPR) {
 /**
  The consent string passed as a websafe base64-encoded string.
  */
-@property (nonatomic, retain) NSString *consentString;
+@property (nonatomic, readonly) NSString *consentString;
 
 /**
  Enum that indicates    'SubjectToGDPR_Unknown'- value -1, unset.
                         'SubjectToGDPR_No' – value 0, not subject to GDPR
                         'SubjectToGDPR_Yes' – value 1, subject to GDPR,
  */
-@property (nonatomic, assign) SubjectToGDPR subjectToGDPR;
+@property (nonatomic, readonly) SubjectToGDPR subjectToGDPR;
 
 /**
  String that contains the consent information for all vendors.
  */
-@property (nonatomic, retain, readonly) NSString *parsedVendorConsents;
+@property (nonatomic, readonly) NSString *parsedVendorConsents;
 
 /**
  String that contains the consent information for all purposes.
  */
-@property (nonatomic, retain, readonly) NSString *parsedPurposeConsents;
+@property (nonatomic, readonly) NSString *parsedPurposeConsents;
 
 /**
  Boolean that indicates if a CMP implementing the iAB specification is present in the application
  */
-@property (nonatomic, assign) BOOL cmpPresent;
+@property (nonatomic, readonly) BOOL cmpPresent;
 
 /**
  Returns true if user consent has been given to vendor
