@@ -165,6 +165,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fid" value: request.fid]];
     }
     
+    // GDPR
     if (GDPRUtils.sharedInstance.cmpPresent) {
         // TODO - check if value should be true/false or 1/0/-1
         NSString *subjectToGDPR = GDPRUtils.sharedInstance.subjectToGDPR == SubjectToGDPR_Yes ? @"true" : @"false";

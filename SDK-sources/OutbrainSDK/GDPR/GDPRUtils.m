@@ -11,11 +11,6 @@ NSString *const IABConsent_ParsedVendorConsentsKey = @"IABConsent_ParsedVendorCo
 NSString *const IABConsent_ParsedPurposeConsentsKey = @"IABConsent_ParsedPurposeConsents";
 NSString *const IABConsent_CMPPresentKey = @"IABConsent_CMPPresent";
 
-@interface GDPRUtils()
-@property (nonatomic, retain, readwrite) NSString *parsedVendorConsents;
-@property (nonatomic, retain, readwrite) NSString *parsedPurposeConsents;
-@end
-
 @implementation GDPRUtils
 
 +(GDPRUtils *) sharedInstance {

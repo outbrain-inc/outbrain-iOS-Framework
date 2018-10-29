@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, SubjectToGDPR) {
 /**
  Boolean that indicates if a CMP implementing the iAB specification is present in the application
  */
-@property (nonatomic, readonly) BOOL cmpPresent;
+@property (nonatomic, assign, readonly) BOOL cmpPresent;
 
 /**
  Returns true if user consent has been given to vendor
