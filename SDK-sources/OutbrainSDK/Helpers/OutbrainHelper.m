@@ -167,21 +167,8 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     // GDPR
     if (GDPRUtils.sharedInstance.cmpPresent) {
-        // TODO - check if value should be true/false or 1/0/-1
-        NSString *subjectToGDPR = GDPRUtils.sharedInstance.subjectToGDPR == SubjectToGDPR_Yes ? @"true" : @"false";
-        NSString *consents = GDPRUtils.sharedInstance.consentString;
-        NSString *purposes = GDPRUtils.sharedInstance.parsedPurposeConsents;
-        BOOL vendorConsentGivenForOutbrain = [GDPRUtils.sharedInstance isVendorConsentGivenFor:164];
-        NSString *isOutbarainVendor = vendorConsentGivenForOutbrain ? @"ture" : @"false";
-
-        // TODO - add keys to query params
-        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: @"true"]];
-        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: subjectToGDPR]];
-        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: consents]];
-        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: purposes]];
-        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: isOutbarainVendor]];
-    } else {
-        // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"" value: @"false"]];
+        NSString *consentString = GDPRUtils.sharedInstance.consentString;
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"cnsnt" value: consentString]];
     }
     
     components.queryItems = odbQueryItems;
