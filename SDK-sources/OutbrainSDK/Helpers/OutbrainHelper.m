@@ -15,6 +15,7 @@
 #import "OBRecommendation.h"
 #import "OBAppleAdIdUtil.h"
 #import "OBUtils.h"
+#import "GDPRUtils.h"
 
 
 @interface OBAdChoicesButton : UIButton
@@ -162,6 +163,12 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     // Smart Feed (father id)
     if (request.fid != nil) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fid" value: request.fid]];
+    }
+    
+    // GDPR
+    if (GDPRUtils.sharedInstance.cmpPresent) {
+        NSString *consentString = GDPRUtils.sharedInstance.consentString;
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"cnsnt" value: consentString]];
     }
     
     components.queryItems = odbQueryItems;

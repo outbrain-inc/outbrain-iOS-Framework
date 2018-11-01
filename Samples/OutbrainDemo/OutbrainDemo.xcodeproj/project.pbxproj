@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16B1F96B2185DC8100023DDD /* GDPRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9552185DC8100023DDD /* GDPRViewController.m */; };
+		16B1F96C2185DC8100023DDD /* GDPRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9552185DC8100023DDD /* GDPRViewController.m */; };
+		16B1F96D2185DC8100023DDD /* CMPConsentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9582185DC8100023DDD /* CMPConsentParser.m */; };
+		16B1F96E2185DC8100023DDD /* CMPConsentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9582185DC8100023DDD /* CMPConsentParser.m */; };
+		16B1F96F2185DC8100023DDD /* CMPDataStorageUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F95E2185DC8100023DDD /* CMPDataStorageUserDefaults.m */; };
+		16B1F9702185DC8100023DDD /* CMPDataStorageUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F95E2185DC8100023DDD /* CMPDataStorageUserDefaults.m */; };
+		16B1F9712185DC8100023DDD /* CMPConsentToolAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9622185DC8100023DDD /* CMPConsentToolAPI.m */; };
+		16B1F9722185DC8100023DDD /* CMPConsentToolAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9622185DC8100023DDD /* CMPConsentToolAPI.m */; };
+		16B1F9732185DC8100023DDD /* CMPConsentToolUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9632185DC8100023DDD /* CMPConsentToolUtil.m */; };
+		16B1F9742185DC8100023DDD /* CMPConsentToolUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9632185DC8100023DDD /* CMPConsentToolUtil.m */; };
+		16B1F9752185DC8100023DDD /* CMPConsentToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9682185DC8100023DDD /* CMPConsentToolViewController.m */; };
+		16B1F9762185DC8100023DDD /* CMPConsentToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9682185DC8100023DDD /* CMPConsentToolViewController.m */; };
+		16B1F9772185DC8100023DDD /* CMPActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9692185DC8100023DDD /* CMPActivityIndicatorView.m */; };
+		16B1F9782185DC8100023DDD /* CMPActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9692185DC8100023DDD /* CMPActivityIndicatorView.m */; };
 		D8174B2F18A562BC005696C2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D8174B2E18A562BC005696C2 /* Settings.bundle */; };
 		D834566A1885A543002B2368 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456471885A543002B2368 /* Post.m */; };
 		D834566B1885A543002B2368 /* OBDemoDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456491885A543002B2368 /* OBDemoDataHelper.m */; };
@@ -173,6 +187,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		16B1F9552185DC8100023DDD /* GDPRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDPRViewController.m; sourceTree = "<group>"; };
+		16B1F9582185DC8100023DDD /* CMPConsentParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPConsentParser.m; sourceTree = "<group>"; };
+		16B1F9592185DC8100023DDD /* CMPConsentConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPConsentConstant.h; sourceTree = "<group>"; };
+		16B1F95A2185DC8100023DDD /* CMPConsentParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPConsentParser.h; sourceTree = "<group>"; };
+		16B1F95C2185DC8100023DDD /* CMPDataStorageUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPDataStorageUserDefaults.h; sourceTree = "<group>"; };
+		16B1F95D2185DC8100023DDD /* CMPDataStorageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPDataStorageProtocol.h; sourceTree = "<group>"; };
+		16B1F95E2185DC8100023DDD /* CMPDataStorageUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPDataStorageUserDefaults.m; sourceTree = "<group>"; };
+		16B1F9602185DC8100023DDD /* CMPConsentToolUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPConsentToolUtil.h; sourceTree = "<group>"; };
+		16B1F9612185DC8100023DDD /* CMPTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPTypes.h; sourceTree = "<group>"; };
+		16B1F9622185DC8100023DDD /* CMPConsentToolAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPConsentToolAPI.m; sourceTree = "<group>"; };
+		16B1F9632185DC8100023DDD /* CMPConsentToolUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPConsentToolUtil.m; sourceTree = "<group>"; };
+		16B1F9642185DC8100023DDD /* CMPConsentToolAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPConsentToolAPI.h; sourceTree = "<group>"; };
+		16B1F9662185DC8100023DDD /* CMPConsentToolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPConsentToolViewController.h; sourceTree = "<group>"; };
+		16B1F9672185DC8100023DDD /* CMPActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPActivityIndicatorView.h; sourceTree = "<group>"; };
+		16B1F9682185DC8100023DDD /* CMPConsentToolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPConsentToolViewController.m; sourceTree = "<group>"; };
+		16B1F9692185DC8100023DDD /* CMPActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPActivityIndicatorView.m; sourceTree = "<group>"; };
+		16B1F96A2185DC8100023DDD /* GDPRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPRViewController.h; sourceTree = "<group>"; };
 		D8174B2E18A562BC005696C2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D83456461885A543002B2368 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		D83456471885A543002B2368 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
@@ -318,9 +349,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16B1F9542185DC8100023DDD /* GDPR */ = {
+			isa = PBXGroup;
+			children = (
+				16B1F9552185DC8100023DDD /* GDPRViewController.m */,
+				16B1F96A2185DC8100023DDD /* GDPRViewController.h */,
+				16B1F9562185DC8100023DDD /* CMPConsentTool */,
+			);
+			path = GDPR;
+			sourceTree = "<group>";
+		};
+		16B1F9562185DC8100023DDD /* CMPConsentTool */ = {
+			isa = PBXGroup;
+			children = (
+				16B1F9572185DC8100023DDD /* Parser */,
+				16B1F95B2185DC8100023DDD /* Storage */,
+				16B1F95F2185DC8100023DDD /* API */,
+				16B1F9652185DC8100023DDD /* Presentation */,
+			);
+			path = CMPConsentTool;
+			sourceTree = "<group>";
+		};
+		16B1F9572185DC8100023DDD /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				16B1F9582185DC8100023DDD /* CMPConsentParser.m */,
+				16B1F9592185DC8100023DDD /* CMPConsentConstant.h */,
+				16B1F95A2185DC8100023DDD /* CMPConsentParser.h */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		16B1F95B2185DC8100023DDD /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				16B1F95C2185DC8100023DDD /* CMPDataStorageUserDefaults.h */,
+				16B1F95D2185DC8100023DDD /* CMPDataStorageProtocol.h */,
+				16B1F95E2185DC8100023DDD /* CMPDataStorageUserDefaults.m */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		16B1F95F2185DC8100023DDD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				16B1F9602185DC8100023DDD /* CMPConsentToolUtil.h */,
+				16B1F9612185DC8100023DDD /* CMPTypes.h */,
+				16B1F9622185DC8100023DDD /* CMPConsentToolAPI.m */,
+				16B1F9632185DC8100023DDD /* CMPConsentToolUtil.m */,
+				16B1F9642185DC8100023DDD /* CMPConsentToolAPI.h */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		16B1F9652185DC8100023DDD /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				16B1F9662185DC8100023DDD /* CMPConsentToolViewController.h */,
+				16B1F9672185DC8100023DDD /* CMPActivityIndicatorView.h */,
+				16B1F9682185DC8100023DDD /* CMPConsentToolViewController.m */,
+				16B1F9692185DC8100023DDD /* CMPActivityIndicatorView.m */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		D83456431885A543002B2368 /* Journal */ = {
 			isa = PBXGroup;
 			children = (
+				16B1F9542185DC8100023DDD /* GDPR */,
 				E68A90551FCD4755008318EB /* SampleUI */,
 				D83456441885A543002B2368 /* Data */,
 				D834564A1885A543002B2368 /* OBAppDelegate.h */,
@@ -865,19 +961,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B1F9712185DC8100023DDD /* CMPConsentToolAPI.m in Sources */,
 				D834566B1885A543002B2368 /* OBDemoDataHelper.m in Sources */,
 				D83456771885A543002B2368 /* TinyPageControl.m in Sources */,
 				E64366D51FAF492C00FA617E /* TopBoxPostViewCell.m in Sources */,
+				16B1F9772185DC8100023DDD /* CMPActivityIndicatorView.m in Sources */,
+				16B1F96B2185DC8100023DDD /* GDPRViewController.m in Sources */,
 				E64366CE1FAF0F1500FA617E /* OBHorizontalWidgetCell.m in Sources */,
 				E68A906E1FCD4755008318EB /* PostPreviewCell.m in Sources */,
+				16B1F96D2185DC8100023DDD /* CMPConsentParser.m in Sources */,
+				16B1F9752185DC8100023DDD /* CMPConsentToolViewController.m in Sources */,
 				E64366C31FAF091B00FA617E /* OBHorizontalWidget.m in Sources */,
 				E68A90771FCD4885008318EB /* OBInterstitialHeroGridView.m in Sources */,
+				16B1F96F2185DC8100023DDD /* CMPDataStorageUserDefaults.m in Sources */,
 				E64366B61FAEF67200FA617E /* MainPostViewCell.m in Sources */,
 				E64366B41FAEF66A00FA617E /* PostsSwipeVC.m in Sources */,
 				E68A90731FCD4755008318EB /* OBClassicRecommendationsView.m in Sources */,
 				E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */,
 				D834566A1885A543002B2368 /* Post.m in Sources */,
 				D834566E1885A543002B2368 /* main.m in Sources */,
+				16B1F9732185DC8100023DDD /* CMPConsentToolUtil.m in Sources */,
 				E64366B51FAEF66C00FA617E /* OBRecommendationWebVC.m in Sources */,
 				E68A90721FCD4755008318EB /* OBAdhesionView.m in Sources */,
 				E64366B31FAEF64C00FA617E /* PostsListVC.m in Sources */,
@@ -911,19 +1014,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B1F9722185DC8100023DDD /* CMPConsentToolAPI.m in Sources */,
 				E61E6C6B208384A00016D79A /* OBDemoDataHelper.m in Sources */,
 				E61E6C6C208384A00016D79A /* TinyPageControl.m in Sources */,
 				E61E6C6D208384A00016D79A /* TopBoxPostViewCell.m in Sources */,
+				16B1F9782185DC8100023DDD /* CMPActivityIndicatorView.m in Sources */,
+				16B1F96C2185DC8100023DDD /* GDPRViewController.m in Sources */,
 				E61E6C6E208384A00016D79A /* OBHorizontalWidgetCell.m in Sources */,
 				E61E6C6F208384A00016D79A /* PostPreviewCell.m in Sources */,
+				16B1F96E2185DC8100023DDD /* CMPConsentParser.m in Sources */,
+				16B1F9762185DC8100023DDD /* CMPConsentToolViewController.m in Sources */,
 				E61E6C70208384A00016D79A /* OBHorizontalWidget.m in Sources */,
 				E61E6C71208384A00016D79A /* OBInterstitialHeroGridView.m in Sources */,
+				16B1F9702185DC8100023DDD /* CMPDataStorageUserDefaults.m in Sources */,
 				E61E6C72208384A00016D79A /* MainPostViewCell.m in Sources */,
 				E61E6C73208384A00016D79A /* PostsSwipeVC.m in Sources */,
 				E61E6C74208384A00016D79A /* OBClassicRecommendationsView.m in Sources */,
 				E61E6C75208384A00016D79A /* PaddingLabel.m in Sources */,
 				E61E6C76208384A00016D79A /* Post.m in Sources */,
 				E61E6C77208384A00016D79A /* main.m in Sources */,
+				16B1F9742185DC8100023DDD /* CMPConsentToolUtil.m in Sources */,
 				E61E6C78208384A00016D79A /* OBRecommendationWebVC.m in Sources */,
 				E61E6C79208384A00016D79A /* OBAdhesionView.m in Sources */,
 				E61E6C7A208384A00016D79A /* PostsListVC.m in Sources */,
