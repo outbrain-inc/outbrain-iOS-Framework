@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		16B1F9A02185E95C00023DDD /* GDPRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F99E2185E95C00023DDD /* GDPRUtils.m */; };
+		16B1F9A12185E95C00023DDD /* GDPRUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 16B1F99F2185E95C00023DDD /* GDPRUtils.h */; };
 		E61AE205216B560C001F7405 /* SFSingleVideoWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE201216B560B001F7405 /* SFSingleVideoWithTitleTableViewCell.xib */; };
 		E61AE206216B560C001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE202216B560B001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib */; };
 		E61AE207216B560C001F7405 /* SFSingleVideoNoTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE203216B560B001F7405 /* SFSingleVideoNoTitleTableViewCell.xib */; };
@@ -171,6 +173,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16B1F99E2185E95C00023DDD /* GDPRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDPRUtils.m; sourceTree = "<group>"; };
+		16B1F99F2185E95C00023DDD /* GDPRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPRUtils.h; sourceTree = "<group>"; };
 		D82F1D7818564C7700D4DEA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8C91A791871FEED005916A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8D1FD60187327CB0099831C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -340,6 +344,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16B1F9892185E76700023DDD /* GDPR */ = {
+			isa = PBXGroup;
+			children = (
+				16B1F99F2185E95C00023DDD /* GDPRUtils.h */,
+				16B1F99E2185E95C00023DDD /* GDPRUtils.m */,
+			);
+			path = GDPR;
+			sourceTree = "<group>";
+		};
 		D82F1D6C18564C7700D4DEA8 = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				E61E6CFD208611380016D79A /* Assets.xcassets */,
+				16B1F9892185E76700023DDD /* GDPR */,
 				E61E6CA62085D98F0016D79A /* SmartFeed */,
 				E61E6BCB20836C180016D79A /* AdIds */,
 				E61E6BCF20836C180016D79A /* Viewability */,
@@ -797,6 +811,7 @@
 				E61E6C4320836C180016D79A /* OBProtocols.h in Headers */,
 				E61E6C1920836C180016D79A /* OBLabel.h in Headers */,
 				E62B7E4620D12C490096F5BD /* OutbrainManager.h in Headers */,
+				16B1F9A12185E95C00023DDD /* GDPRUtils.h in Headers */,
 				E61E6C3920836C180016D79A /* OBImage.h in Headers */,
 				E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */,
 				E61E6C4020836C180016D79A /* OBErrors.h in Headers */,
@@ -1012,6 +1027,7 @@
 				E6B930AD216F794C00EC7A4A /* SFVideoTableViewCell.m in Sources */,
 				E61E6CBD2085D98F0016D79A /* PageCollectionLayout.m in Sources */,
 				E61E6C3A20836C180016D79A /* OBRequest.m in Sources */,
+				16B1F9A02185E95C00023DDD /* GDPRUtils.m in Sources */,
 				E61E6C2420836C180016D79A /* OBReachability.m in Sources */,
 				E61E6C1C20836C180016D79A /* UIView+Visible.m in Sources */,
 				E6B930B2216F79F500EC7A4A /* SFHorizontalWithVideoCollectionViewCell.m in Sources */,
