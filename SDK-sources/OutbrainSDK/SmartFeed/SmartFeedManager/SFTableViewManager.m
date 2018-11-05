@@ -197,6 +197,15 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     singleCell.contentView.tag = cellTag;
     
     OBRecommendation *rec = sfItem.singleRec;
+    
+    singleCell.recTitleLabel.textAlignment = [SFUtils isRTL:rec.content] ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    singleCell.recSourceLabel.textAlignment = [SFUtils isRTL:rec.source] ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    
+    if ([SFUtils isRTL:rec.content]) {
+        [singleCell.contentView setNeedsDisplay];
+        [singleCell.contentView setNeedsLayout];
+    }
+    
     singleCell.recTitleLabel.text = rec.content;
     if ([rec isPaidLink]) {
         singleCell.recSourceLabel.text = rec.source;
