@@ -69,6 +69,16 @@
     [self.collectionView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier:self.horizontalCellIdentifier];
     SFCollectionViewCell *cell = (SFCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier: self.horizontalCellIdentifier forIndexPath:indexPath];
     OBRecommendation *rec = self.outbrainRecs[indexPath.row];
+    
+    
+    cell.recTitleLabel.textAlignment = [SFUtils isRTL:rec.content] ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    cell.recSourceLabel.textAlignment = [SFUtils isRTL:rec.source] ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    
+    if ([SFUtils isRTL:rec.content]) {
+        [cell.contentView setNeedsDisplay];
+        [cell.contentView setNeedsLayout];
+    }
+    
     cell.recTitleLabel.text = rec.content;
     if ([rec isPaidLink]) {
         cell.recSourceLabel.text = rec.source;

@@ -46,6 +46,7 @@
 
 + (UIColor *)colorFromHexString:(NSString *)hexString;
 
++(BOOL) isRTL:(NSString *)string;
 
 // Video related methods
 +(WKWebView *) createVideoWebViewInsideView:(UIView *)parentView
