@@ -11,6 +11,7 @@
 @interface OBSettings : NSObject
 
 @property (nonatomic, assign, readonly) BOOL apv;
+@property (nonatomic, assign, readonly) BOOL isRTL;
 @property (nonatomic, assign, readonly) BOOL isSmartFeed;
 @property (nonatomic, assign, readonly) NSInteger feedCyclesLimit;
 @property (nonatomic, copy, readonly, nullable) NSString *recMode;

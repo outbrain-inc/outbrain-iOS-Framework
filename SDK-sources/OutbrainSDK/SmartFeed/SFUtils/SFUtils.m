@@ -75,6 +75,14 @@
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
++(BOOL) isRTL:(NSString *)string {
+    NSArray *tagschemes = [NSArray arrayWithObjects:NSLinguisticTagSchemeLanguage, nil];
+    NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:tagschemes options:0];
+    [tagger setString: string];
+    NSString *language = [tagger tagAtIndex:0 scheme:NSLinguisticTagSchemeLanguage tokenRange:NULL sentenceRange:NULL];
+    return [language isEqualToString:@"he"];
+}
+
 #pragma mark - Video related methods
 +(WKWebView *) createVideoWebViewInsideView:(UIView *)parentView
                                  withSFItem:(SFItemData *)sfItem

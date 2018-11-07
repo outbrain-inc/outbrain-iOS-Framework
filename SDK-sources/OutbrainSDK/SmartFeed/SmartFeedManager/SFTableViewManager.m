@@ -24,6 +24,7 @@
 const CGFloat kTableViewRowHeight = 250.0;
 NSString * const kTableViewSingleReuseId = @"SFTableViewCell";
 NSString * const kTableViewSmartfeedHeaderReuseId = @"SFTableViewHeaderCell";
+NSString * const kTableViewSmartfeedRTLHeaderReuseId = @"SFTableViewRTLHeaderCell";
 NSString * const kTableViewHorizontalCarouselWithTitleReuseId = @"SFCarouselWithTitleReuseId";
 NSString * const kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitleReuseId";
 NSString * const kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
@@ -73,6 +74,10 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         NSAssert(nib != nil, @"SFTableViewHeaderCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSmartfeedHeaderReuseId];
         
+        nib = [UINib nibWithNibName:@"SFTableViewRTLHeaderCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFTableViewRTLHeaderCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSmartfeedRTLHeaderReuseId];
+        
         // video cell
         [self.tableView registerClass:[SFVideoTableViewCell class] forCellReuseIdentifier:kTableViewSingleVideoReuseId];
         
@@ -111,8 +116,9 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
 }
 
 #pragma mark - UITableView methods
-- (UITableViewCell *)tableView:(UITableView *)tableView headerCellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [tableView dequeueReusableCellWithIdentifier:kTableViewSmartfeedHeaderReuseId forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView headerCellForRowAtIndexPath:(NSIndexPath *)indexPath isRTL:(BOOL)isRTL {
+    NSString * const reuseId = isRTL ? kTableViewSmartfeedRTLHeaderReuseId : kTableViewSmartfeedHeaderReuseId;
+    return [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath sfItemType:(SFItemType)sfItemType {
@@ -197,9 +203,19 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     singleCell.contentView.tag = cellTag;
     
     OBRecommendation *rec = sfItem.singleRec;
+    
+    singleCell.recTitleLabel.textAlignment = [SFUtils isRTL:rec.content] ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    singleCell.recSourceLabel.textAlignment = [SFUtils isRTL:rec.source] ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    
+    if ([SFUtils isRTL:rec.content]) {
+        [singleCell.contentView setNeedsDisplay];
+        [singleCell.contentView setNeedsLayout];
+    }
+    
     singleCell.recTitleLabel.text = rec.content;
+    singleCell.recSourceLabel.text = rec.source;
+    
     if ([rec isPaidLink]) {
-        singleCell.recSourceLabel.text = rec.source;
         if ([rec shouldDisplayDisclosureIcon]) {
             singleCell.adChoicesButton.hidden = NO;
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
@@ -213,9 +229,9 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         }
     }
     else {
-        singleCell.recSourceLabel.text = @"";
         if (rec.publisherLogoImage) {
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
+            singleCell.recSourceLabel.text = @"";
         }
     }
     

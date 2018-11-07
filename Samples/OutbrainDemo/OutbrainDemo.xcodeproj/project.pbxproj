@@ -129,6 +129,10 @@
 		E64F603F212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */; };
 		E64F6041212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */; };
 		E64F6042212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */; };
+		E67A719D21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */; };
+		E67A719E21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */; };
+		E67A71A0219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */; };
+		E67A71A1219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */; };
 		E68A906D1FCD4755008318EB /* OBRecommendationSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90591FCD4755008318EB /* OBRecommendationSlideCell.m */; };
 		E68A906E1FCD4755008318EB /* PostPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A905B1FCD4755008318EB /* PostPreviewCell.m */; };
 		E68A90721FCD4755008318EB /* OBAdhesionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90691FCD4755008318EB /* OBAdhesionView.m */; };
@@ -280,6 +284,8 @@
 		E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleTableViewCell.xib; sourceTree = "<group>"; };
 		E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailCollectionCell.xib; sourceTree = "<group>"; };
+		E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailRTLCollectionCell.xib; sourceTree = "<group>"; };
+		E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailRTLTableCell.xib; sourceTree = "<group>"; };
 		E68A90561FCD4755008318EB /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWidgetViewProtocol.h; sourceTree = "<group>"; };
 		E68A90581FCD4755008318EB /* OBRecommendationSlideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationSlideCell.h; sourceTree = "<group>"; };
 		E68A90591FCD4755008318EB /* OBRecommendationSlideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBRecommendationSlideCell.m; sourceTree = "<group>"; };
@@ -581,6 +587,7 @@
 		E61E6CDF2085DC6C0016D79A /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */,
 				E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */,
 				E61E6CE02085DC6C0016D79A /* AppSFTableViewCell.xib */,
 				E61E6CE12085DC6C0016D79A /* AppSFTableViewCell.swift */,
@@ -603,6 +610,7 @@
 		E61E6CE52085DC6C0016D79A /* SmartFeedCells */ = {
 			isa = PBXGroup;
 			children = (
+				E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */,
 				E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */,
 				E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */,
 				E61E6CE62085DC6C0016D79A /* AppSFHorizontalItemCell.swift */,
@@ -893,6 +901,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E67A719D21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */,
 				E60DCD3D20BC3AAD0023FE93 /* AppSFTableViewCell.xib in Resources */,
 				E6286167213C0EEE00D12A15 /* AppSFHorizontalItemCell.xib in Resources */,
 				E64F6041212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
@@ -900,6 +909,7 @@
 				E60DCD3E20BC3AAD0023FE93 /* AppSFHorizontalFixedItemCell.xib in Resources */,
 				E60DCD3F20BC3AAD0023FE93 /* AppSingleNoTitleCollectionViewCell.xib in Resources */,
 				E64F603E212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
+				E67A71A0219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib in Resources */,
 				E60DCD4020BC3AAD0023FE93 /* LaunchScreen.storyboard in Resources */,
 				E60DCD4120BC3AAD0023FE93 /* Assets.xcassets in Resources */,
 				E60DCD4220BC3AAD0023FE93 /* Main.storyboard in Resources */,
@@ -924,6 +934,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E67A719E21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */,
 				E61E6CEA2085DC6C0016D79A /* AppSFTableViewCell.xib in Resources */,
 				E6286168213C0EEE00D12A15 /* AppSFHorizontalItemCell.xib in Resources */,
 				E64F6042212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
@@ -931,6 +942,7 @@
 				E61E6CF02085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib in Resources */,
 				E61E6CF12085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib in Resources */,
 				E64F603F212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
+				E67A71A1219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib in Resources */,
 				E61E6CDA2085DBD50016D79A /* LaunchScreen.storyboard in Resources */,
 				E61E6CD72085DBD50016D79A /* Assets.xcassets in Resources */,
 				E61E6CD52085DBD50016D79A /* Main.storyboard in Resources */,
