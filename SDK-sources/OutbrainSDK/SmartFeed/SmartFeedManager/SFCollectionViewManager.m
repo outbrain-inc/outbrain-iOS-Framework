@@ -25,6 +25,7 @@
 NSString * const kCollectionViewHorizontalCarouselWithTitleReuseId = @"SFHorizontalCarouselWithTitleCollectionViewCell";
 NSString * const kCollectionViewHorizontalCarouselNoTitleReuseId = @"SFHorizontalCarouselNoTitleCollectionViewCell";
 NSString * const kCollectionViewSmartfeedHeaderReuseId = @"SFCollectionViewHeaderCell";
+NSString * const kCollectionViewSmartfeedRTLHeaderReuseId = @"SFCollectionViewRTLHeaderCell";
 NSString * const kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
 NSString * const kCollectionViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleCollectionCell";
 NSString * const kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
@@ -50,6 +51,10 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         UINib *headerCellNib = [UINib nibWithNibName:@"SFCollectionViewHeaderCell" bundle:bundle];
         NSAssert(headerCellNib != nil, @"SFCollectionViewHeaderCell should not be null");
         [collectionView registerNib:headerCellNib forCellWithReuseIdentifier: kCollectionViewSmartfeedHeaderReuseId];
+        
+        headerCellNib = [UINib nibWithNibName:@"SFCollectionViewRTLHeaderCell" bundle:bundle];
+        NSAssert(headerCellNib != nil, @"SFCollectionViewRTLHeaderCell should not be null");
+        [collectionView registerNib:headerCellNib forCellWithReuseIdentifier: kCollectionViewSmartfeedRTLHeaderReuseId];
         
         // video cell
         [collectionView registerClass:[SFVideoCollectionViewCell class] forCellWithReuseIdentifier:kCollectionViewSingleVideoReuseId];
@@ -111,8 +116,9 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
 }
 
 #pragma mark - Collection View methods
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView headerCellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSmartfeedHeaderReuseId forIndexPath:indexPath];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView headerCellForItemAtIndexPath:(NSIndexPath *)indexPath isRTL:(BOOL)isRTL {
+    NSString * const reuseId = isRTL ? kCollectionViewSmartfeedRTLHeaderReuseId : kCollectionViewSmartfeedHeaderReuseId;
+    return [collectionView dequeueReusableCellWithReuseIdentifier: reuseId forIndexPath:indexPath];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItem:(SFItemData *)sfItem

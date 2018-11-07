@@ -622,7 +622,7 @@
 {
     if (indexPath.row == 0) {
         // Smartfeed header cell
-        return [self.sfCollectionViewManager collectionView:collectionView headerCellForItemAtIndexPath:indexPath];
+        return [self.sfCollectionViewManager collectionView:collectionView headerCellForItemAtIndexPath:indexPath isRTL:self.isRTL];
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
