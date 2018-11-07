@@ -633,7 +633,7 @@
         sfItem.isCustomUI = YES;
         return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: singleCellIdentifier forIndexPath:indexPath];
     }
-    return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItem:sfItem];
+    return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItem:sfItem isRTL:self.isRTL];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView {

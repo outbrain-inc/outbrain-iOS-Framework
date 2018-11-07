@@ -27,6 +27,7 @@ NSString * const kCollectionViewHorizontalCarouselNoTitleReuseId = @"SFHorizonta
 NSString * const kCollectionViewSmartfeedHeaderReuseId = @"SFCollectionViewHeaderCell";
 NSString * const kCollectionViewSmartfeedRTLHeaderReuseId = @"SFCollectionViewRTLHeaderCell";
 NSString * const kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
+NSString * const kCollectionViewSingleWithThumbnailRTLReuseId = @"SFSingleWithThumbnailRTLCollectionCell";
 NSString * const kCollectionViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleCollectionCell";
 NSString * const kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
 NSString * const kCollectionViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleCollectionViewCell";
@@ -93,6 +94,10 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailCollectionCell should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId];
         
+        collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithThumbnailRTLCollectionCell" bundle:bundle];
+        NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailRTLCollectionCell should not be null");
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailRTLReuseId];
+        
         collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithThumbnailWithTitleCollectionCell" bundle:bundle];
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailWithTitleCollectionCell should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailWithTitleReuseId];
@@ -121,7 +126,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     return [collectionView dequeueReusableCellWithReuseIdentifier: reuseId forIndexPath:indexPath];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItem:(SFItemData *)sfItem
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItem:(SFItemData *)sfItem isRTL:(BOOL)isRTL
 {
     switch (sfItem.itemType) {
         case SFTypeStripNoTitle:
@@ -139,7 +144,9 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         case SFTypeStripWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnailNoTitle:
-            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId forIndexPath:indexPath];
+            return [collectionView dequeueReusableCellWithReuseIdentifier:
+                    isRTL ? kCollectionViewSingleWithThumbnailRTLReuseId : kCollectionViewSingleWithThumbnailReuseId
+                                                             forIndexPath:indexPath];
         case SFTypeStripWithThumbnailWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripVideo:

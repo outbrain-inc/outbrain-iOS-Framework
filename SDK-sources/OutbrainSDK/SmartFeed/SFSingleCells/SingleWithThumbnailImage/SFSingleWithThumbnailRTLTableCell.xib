@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SFSingleWithThumbnailRTLTableCell" rowHeight="106" id="IGK-WT-yg7" customClass="SFTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="106"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IGK-WT-yg7" id="aao-7q-lM1">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="105.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lii-IZ-6QS">
+                        <rect key="frame" x="253" y="12" width="110" height="81.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="lii-IZ-6QS" secondAttribute="height" multiplier="1.35" id="5SQ-eb-7Nd"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g6I-eN-wms" userLabel="publisherLogo">
+                        <rect key="frame" x="329" y="16" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="AQJ-ab-Uf0"/>
+                            <constraint firstAttribute="width" constant="30" id="kHI-Um-Op6"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="העולם שייך למותגים: רשימת 10 המותגים הכי שווים בעולם!" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtB-rP-jIF">
+                        <rect key="frame" x="5" y="34" width="236" height="37.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmu-SP-SE5">
+                        <rect key="frame" x="333" y="12" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="8Rr-3e-pbs"/>
+                            <constraint firstAttribute="height" constant="30" id="ErZ-6T-ATw"/>
+                        </constraints>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="כלכליסט" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysi-ZE-GPx">
+                        <rect key="frame" x="201.5" y="73.5" width="39.5" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" red="0.57647058819999997" green="0.56470588239999997" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="lii-IZ-6QS" secondAttribute="trailing" constant="12" id="5jn-ns-Xcw"/>
+                    <constraint firstItem="g6I-eN-wms" firstAttribute="top" secondItem="lii-IZ-6QS" secondAttribute="top" constant="4" id="BIn-UT-fAc"/>
+                    <constraint firstItem="ysi-ZE-GPx" firstAttribute="trailing" secondItem="mtB-rP-jIF" secondAttribute="trailing" id="IYV-dr-S0s"/>
+                    <constraint firstItem="Cmu-SP-SE5" firstAttribute="trailing" secondItem="lii-IZ-6QS" secondAttribute="trailing" id="K54-KI-uWh"/>
+                    <constraint firstItem="lii-IZ-6QS" firstAttribute="top" secondItem="Cmu-SP-SE5" secondAttribute="top" id="PS4-bE-qTu"/>
+                    <constraint firstItem="g6I-eN-wms" firstAttribute="trailing" secondItem="lii-IZ-6QS" secondAttribute="trailing" constant="-4" id="TXu-YX-kEe"/>
+                    <constraint firstItem="lii-IZ-6QS" firstAttribute="leading" secondItem="mtB-rP-jIF" secondAttribute="trailing" constant="12" id="Yrq-YK-pfS"/>
+                    <constraint firstItem="mtB-rP-jIF" firstAttribute="centerY" secondItem="aao-7q-lM1" secondAttribute="centerY" id="hpz-si-FAh"/>
+                    <constraint firstItem="mtB-rP-jIF" firstAttribute="leading" secondItem="aao-7q-lM1" secondAttribute="leading" constant="5" id="jac-Kl-BZx"/>
+                    <constraint firstAttribute="bottom" secondItem="lii-IZ-6QS" secondAttribute="bottom" constant="12" id="n2A-KO-KUx"/>
+                    <constraint firstItem="ysi-ZE-GPx" firstAttribute="top" secondItem="mtB-rP-jIF" secondAttribute="bottom" constant="2" id="nn9-hr-rff"/>
+                    <constraint firstItem="lii-IZ-6QS" firstAttribute="top" secondItem="aao-7q-lM1" secondAttribute="top" constant="12" id="ugC-TJ-ooj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="adChoicesButton" destination="Cmu-SP-SE5" id="JLh-Cs-BfT"/>
+                <outlet property="publisherLogo" destination="g6I-eN-wms" id="58b-1q-hFH"/>
+                <outlet property="recImageView" destination="lii-IZ-6QS" id="Tfd-rb-KqS"/>
+                <outlet property="recSourceLabel" destination="ysi-ZE-GPx" id="Tba-DW-6dq"/>
+                <outlet property="recTitleLabel" destination="mtB-rP-jIF" id="gzZ-k2-tBB"/>
+            </connections>
+            <point key="canvasLocation" x="-216.5" y="1"/>
+        </tableViewCell>
+    </objects>
+</document>

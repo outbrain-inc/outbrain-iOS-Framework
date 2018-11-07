@@ -29,7 +29,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView headerCellForItemAtIndexPath:(NSIndexPath *)indexPath isRTL:(BOOL)isRTL;
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItem:(SFItemData *)sfItem;
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItem:(SFItemData *)sfItem isRTL:(BOOL)isRTL;
 
 - (CGSize) collectionView:(UICollectionView *)collectionView
    sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath
