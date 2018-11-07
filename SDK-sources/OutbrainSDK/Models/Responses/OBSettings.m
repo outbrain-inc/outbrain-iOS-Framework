@@ -12,6 +12,7 @@
 @interface OBSettings()
 
 @property (nonatomic, assign) BOOL apv;
+@property (nonatomic, assign) BOOL isRTL;
 @property (nonatomic, assign) BOOL isSmartFeed;
 @property (nonatomic, assign) NSInteger feedCyclesLimit;
 @property (nonatomic, strong) NSArray *feedContentArray;
@@ -30,6 +31,7 @@
 {
     if (self = [super init]) {
         self.apv = [[payload valueForKey:@"apv"] boolValue];
+        self.isRTL = [payload valueForKey:@"dynamicWidgetDirection"] && [[payload valueForKey:@"dynamicWidgetDirection"] isEqualToString:@"RTL"];
         self.isSmartFeed = [[payload valueForKey:@"isSmartFeed"] boolValue];
         self.feedCyclesLimit = [[payload valueForKey:@"feedCyclesLimit"] integerValue];
         self.recMode = [payload valueForKey:@"recMode"];

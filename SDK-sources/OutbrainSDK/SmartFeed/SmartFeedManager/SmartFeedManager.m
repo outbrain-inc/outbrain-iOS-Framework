@@ -35,6 +35,7 @@
 @property (nonatomic, strong) NSString *fid;
 @property (nonatomic, assign) NSInteger feedCycleCounter;
 @property (nonatomic, assign) NSInteger feedCycleLimit;
+@property (nonatomic, assign) BOOL isRTL;
 
 @property (nonatomic, assign) NSInteger outbrainIndex;
 @property (nonatomic, assign) BOOL isLoading;
@@ -152,6 +153,7 @@
         if (response.settings.isSmartFeed == YES) {
             self.feedContentArray = response.settings.feedContentArray;
             self.fid = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
+            self.isRTL = response.settings.isRTL;
             self.feedCycleLimit = response.settings.feedCyclesLimit;
             if (self.feedContentArray == nil || self.feedCycleLimit == 0) {
                 self.isSmartfeedWithNoChildren = YES;
