@@ -461,7 +461,7 @@
     
     if (indexPath.row == 0) {
         // Smartfeed header cell
-        return [self.sfTableViewManager tableView:tableView headerCellForRowAtIndexPath:indexPath];
+        return [self.sfTableViewManager tableView:tableView headerCellForRowAtIndexPath:indexPath isRTL:self.isRTL];
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
@@ -633,7 +633,7 @@
         sfItem.isCustomUI = YES;
         return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: singleCellIdentifier forIndexPath:indexPath];
     }
-    return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItem:sfItem isRTL:self.isRTL];
+    return [self.sfCollectionViewManager collectionView:collectionView cellForItemAtIndexPath:indexPath sfItem:sfItem];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView {

@@ -27,7 +27,6 @@ NSString * const kCollectionViewHorizontalCarouselNoTitleReuseId = @"SFHorizonta
 NSString * const kCollectionViewSmartfeedHeaderReuseId = @"SFCollectionViewHeaderCell";
 NSString * const kCollectionViewSmartfeedRTLHeaderReuseId = @"SFCollectionViewRTLHeaderCell";
 NSString * const kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
-NSString * const kCollectionViewSingleWithThumbnailRTLReuseId = @"SFSingleWithThumbnailRTLCollectionCell";
 NSString * const kCollectionViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleCollectionCell";
 NSString * const kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
 NSString * const kCollectionViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleCollectionViewCell";
@@ -94,10 +93,6 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailCollectionCell should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId];
         
-        collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithThumbnailRTLCollectionCell" bundle:bundle];
-        NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailRTLCollectionCell should not be null");
-        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailRTLReuseId];
-        
         collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithThumbnailWithTitleCollectionCell" bundle:bundle];
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailWithTitleCollectionCell should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailWithTitleReuseId];
@@ -126,8 +121,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     return [collectionView dequeueReusableCellWithReuseIdentifier: reuseId forIndexPath:indexPath];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItem:(SFItemData *)sfItem isRTL:(BOOL)isRTL
-{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath sfItem:(SFItemData *)sfItem {
     switch (sfItem.itemType) {
         case SFTypeStripNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleReuseId forIndexPath:indexPath];
@@ -144,9 +138,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         case SFTypeStripWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnailNoTitle:
-            return [collectionView dequeueReusableCellWithReuseIdentifier:
-                    isRTL ? kCollectionViewSingleWithThumbnailRTLReuseId : kCollectionViewSingleWithThumbnailReuseId
-                                                             forIndexPath:indexPath];
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnailWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleWithThumbnailWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripVideo:
@@ -251,10 +243,11 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     }
     
     singleCell.recTitleLabel.text = rec.content;
+    singleCell.recSourceLabel.text = rec.source;
+    
     NSAssert(self.clickListenerTarget != nil, @"self.clickListenerTarget must not be nil");
     
     if ([rec isPaidLink]) {
-        singleCell.recSourceLabel.text = rec.source;
         if ([rec shouldDisplayDisclosureIcon]) {
             singleCell.adChoicesButton.hidden = NO;
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
@@ -267,9 +260,9 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         }
     }
     else {
-        singleCell.recSourceLabel.text = @"";
         if (rec.publisherLogoImage) {
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
+            singleCell.recSourceLabel.text = @"";
         }
     }
     
