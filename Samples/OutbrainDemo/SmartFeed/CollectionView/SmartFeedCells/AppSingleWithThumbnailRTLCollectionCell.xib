@@ -30,10 +30,10 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OTt-Gd-VRW" userLabel="publisherLogo">
-                                <rect key="frame" x="326" y="16" width="30" height="30"/>
+                                <rect key="frame" x="331" y="63" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="RgF-pE-yDb"/>
-                                    <constraint firstAttribute="height" constant="30" id="b6X-ns-99J"/>
+                                    <constraint firstAttribute="width" constant="25" id="RgF-pE-yDb"/>
+                                    <constraint firstAttribute="height" constant="25" id="b6X-ns-99J"/>
                                 </constraints>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pid-Q1-1t8">
@@ -65,7 +65,7 @@
                             <constraint firstItem="wj0-Rd-o7N" firstAttribute="trailing" secondItem="NuD-GR-QrN" secondAttribute="trailing" id="CSm-Gx-RYA"/>
                             <constraint firstItem="pid-Q1-1t8" firstAttribute="trailing" secondItem="61q-cI-eoC" secondAttribute="trailing" constant="-4" id="KE9-tE-YMa"/>
                             <constraint firstItem="OTt-Gd-VRW" firstAttribute="trailing" secondItem="61q-cI-eoC" secondAttribute="trailing" constant="-4" id="QAk-C6-gZO"/>
-                            <constraint firstItem="OTt-Gd-VRW" firstAttribute="top" secondItem="61q-cI-eoC" secondAttribute="top" constant="4" id="Skh-JU-w5u"/>
+                            <constraint firstItem="OTt-Gd-VRW" firstAttribute="bottom" secondItem="61q-cI-eoC" secondAttribute="bottom" constant="-4" id="aWu-z3-ZWf"/>
                             <constraint firstAttribute="trailing" secondItem="61q-cI-eoC" secondAttribute="trailing" constant="12" id="ctA-FF-0js"/>
                             <constraint firstItem="61q-cI-eoC" firstAttribute="top" secondItem="hNs-fM-9vp" secondAttribute="top" constant="12" id="e1h-LW-DGR"/>
                             <constraint firstItem="wj0-Rd-o7N" firstAttribute="top" secondItem="NuD-GR-QrN" secondAttribute="bottom" constant="2" id="h4N-nu-cxL"/>

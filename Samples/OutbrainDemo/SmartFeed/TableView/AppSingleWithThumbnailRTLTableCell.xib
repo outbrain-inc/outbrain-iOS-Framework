@@ -26,10 +26,10 @@
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g6I-eN-wms" userLabel="publisherLogo">
-                        <rect key="frame" x="329" y="16" width="30" height="30"/>
+                        <rect key="frame" x="334" y="64.5" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="AQJ-ab-Uf0"/>
-                            <constraint firstAttribute="width" constant="30" id="kHI-Um-Op6"/>
+                            <constraint firstAttribute="height" constant="25" id="AQJ-ab-Uf0"/>
+                            <constraint firstAttribute="width" constant="25" id="kHI-Um-Op6"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="העולם שייך למותגים: רשימת 10 המותגים הכי שווים בעולם!" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtB-rP-jIF">
@@ -54,7 +54,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="lii-IZ-6QS" secondAttribute="trailing" constant="12" id="5jn-ns-Xcw"/>
-                    <constraint firstItem="g6I-eN-wms" firstAttribute="top" secondItem="lii-IZ-6QS" secondAttribute="top" constant="4" id="BIn-UT-fAc"/>
+                    <constraint firstItem="g6I-eN-wms" firstAttribute="bottom" secondItem="lii-IZ-6QS" secondAttribute="bottom" constant="-4" id="HEk-2D-DUN"/>
                     <constraint firstItem="ysi-ZE-GPx" firstAttribute="trailing" secondItem="mtB-rP-jIF" secondAttribute="trailing" id="IYV-dr-S0s"/>
                     <constraint firstItem="Cmu-SP-SE5" firstAttribute="trailing" secondItem="lii-IZ-6QS" secondAttribute="trailing" id="K54-KI-uWh"/>
                     <constraint firstItem="lii-IZ-6QS" firstAttribute="top" secondItem="Cmu-SP-SE5" secondAttribute="top" id="PS4-bE-qTu"/>
