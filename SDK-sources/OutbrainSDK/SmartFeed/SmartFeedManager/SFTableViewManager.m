@@ -213,8 +213,9 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     }
     
     singleCell.recTitleLabel.text = rec.content;
+    singleCell.recSourceLabel.text = rec.source;
+    
     if ([rec isPaidLink]) {
-        singleCell.recSourceLabel.text = rec.source;
         if ([rec shouldDisplayDisclosureIcon]) {
             singleCell.adChoicesButton.hidden = NO;
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
@@ -228,9 +229,9 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         }
     }
     else {
-        singleCell.recSourceLabel.text = @"";
         if (rec.publisherLogoImage) {
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
+            singleCell.recSourceLabel.text = @"";
         }
     }
     
