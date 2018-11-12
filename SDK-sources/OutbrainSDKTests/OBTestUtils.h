@@ -12,4 +12,7 @@
 
 + (NSDictionary *)JSONFromFile:(NSString *)fileName;
 
++ (NSString *)valueForKey:(NSString *)key
+           fromQueryItems:(NSArray *)queryItems;
+
 @end

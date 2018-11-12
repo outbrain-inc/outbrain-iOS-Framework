@@ -34,4 +34,14 @@
     return dict;
 }
 
++ (NSString *)valueForKey:(NSString *)key
+           fromQueryItems:(NSArray *)queryItems
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@", key];
+    NSURLQueryItem *queryItem = [[queryItems
+                                  filteredArrayUsingPredicate:predicate]
+                                 firstObject];
+    return queryItem.value;
+}
+
 @end

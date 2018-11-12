@@ -91,9 +91,12 @@
     XCTAssertTrue([self.responseParent.settings.videoUrl.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222"]);
     
     NSURL *videoUrlWithParams = [self.smartFeedManager appendParamsToVideoUrl:self.responseParent];
-    
+    NSArray *queryItems = [[[NSURLComponents alloc] initWithURL:videoUrlWithParams resolvingAgainstBaseURL:nil] queryItems];
     NSLog(@"videoUrlWithParams.absoluteString: %@", videoUrlWithParams.absoluteString);
-    XCTAssertTrue([videoUrlWithParams.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222&platform=ios"]);
+    
+    XCTAssertNotNil([OBTestUtils valueForKey:@"platform" fromQueryItems:queryItems]);
+    XCTAssertNotNil([OBTestUtils valueForKey:@"inApp" fromQueryItems:queryItems]);
+    XCTAssertNotNil([OBTestUtils valueForKey:@"deviceIfa" fromQueryItems:queryItems]);
 }
 
 - (void)testSmartFeedResponsesVideoIsIncluded {
@@ -152,7 +155,7 @@
 
 - (void)testSmartFeedManagerBuildArrayOfItems {
     NSArray *newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
-    XCTAssertEqual(newItems.count, 4);
+    XCTAssertEqual(newItems.count, 3);
     
     newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseChild1];
     XCTAssertEqual(newItems.count, 1);
