@@ -19,4 +19,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *adChoicesButton;
 @property (nonatomic, weak) IBOutlet UILabel *cellTitleLabel;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *publisherLogoWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *publisherLogoHeight;
+
 @end

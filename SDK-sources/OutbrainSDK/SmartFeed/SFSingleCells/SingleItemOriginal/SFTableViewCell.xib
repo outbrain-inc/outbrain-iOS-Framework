@@ -68,6 +68,8 @@
             <connections>
                 <outlet property="adChoicesButton" destination="Dp0-H7-BN8" id="fHe-HO-BpP"/>
                 <outlet property="publisherLogo" destination="83o-hU-ZPa" id="mQv-5W-aSW"/>
+                <outlet property="publisherLogoHeight" destination="jbq-7G-5uW" id="kgA-ib-RwX"/>
+                <outlet property="publisherLogoWidth" destination="h9v-Gr-YJA" id="Lsw-rd-ksE"/>
                 <outlet property="recImageView" destination="fxR-iw-j64" id="k4X-WL-tpX"/>
                 <outlet property="recSourceLabel" destination="wIL-ac-bsF" id="thk-gQ-cMQ"/>
                 <outlet property="recTitleLabel" destination="oAZ-bc-kkX" id="d59-IH-uyt"/>

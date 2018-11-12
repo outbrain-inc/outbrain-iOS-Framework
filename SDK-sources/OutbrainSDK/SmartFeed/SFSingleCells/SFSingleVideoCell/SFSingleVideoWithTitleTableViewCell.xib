@@ -129,6 +129,8 @@
                 <outlet property="cellTitleLabel" destination="cCO-lo-N64" id="UbE-ER-Wds"/>
                 <outlet property="outbrainLabelingContainer" destination="bHA-Wa-m4f" id="uXL-gB-42o"/>
                 <outlet property="publisherLogo" destination="Raf-ex-94E" id="2KU-8Z-Hrl"/>
+                <outlet property="publisherLogoHeight" destination="uLC-dX-IlF" id="jY7-4E-t40"/>
+                <outlet property="publisherLogoWidth" destination="vmk-JE-LmE" id="7V6-8Y-PMn"/>
                 <outlet property="recImageView" destination="Wd0-1Y-wPl" id="7Ut-aN-F1s"/>
                 <outlet property="recSourceLabel" destination="xnJ-4y-X2Q" id="yLj-RU-im6"/>
                 <outlet property="recTitleLabel" destination="dNT-0c-aHF" id="Dr9-rX-OjS"/>

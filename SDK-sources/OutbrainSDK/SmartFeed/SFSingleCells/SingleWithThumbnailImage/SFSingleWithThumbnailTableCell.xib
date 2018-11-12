@@ -71,6 +71,8 @@
             <connections>
                 <outlet property="adChoicesButton" destination="Cmu-SP-SE5" id="JLh-Cs-BfT"/>
                 <outlet property="publisherLogo" destination="g6I-eN-wms" id="58b-1q-hFH"/>
+                <outlet property="publisherLogoHeight" destination="AQJ-ab-Uf0" id="29u-p2-LCn"/>
+                <outlet property="publisherLogoWidth" destination="kHI-Um-Op6" id="TvW-TS-KiN"/>
                 <outlet property="recImageView" destination="lii-IZ-6QS" id="Tfd-rb-KqS"/>
                 <outlet property="recSourceLabel" destination="ysi-ZE-GPx" id="Tba-DW-6dq"/>
                 <outlet property="recTitleLabel" destination="mtB-rP-jIF" id="gzZ-k2-tBB"/>
