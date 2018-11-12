@@ -94,6 +94,10 @@
         cell.recSourceLabel.text = @"";
         if (rec.publisherLogoImage) {
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:cell.publisherLogo];
+            if (rec.publisherLogoImage.width == rec.publisherLogoImage.height) {
+                cell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
+                cell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
+            }
         }
     }
     
