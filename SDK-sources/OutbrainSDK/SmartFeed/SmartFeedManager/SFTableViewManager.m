@@ -232,8 +232,8 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         if (rec.publisherLogoImage) {
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
             if (rec.publisherLogoImage.width == rec.publisherLogoImage.height) {
-                singleCell.publisherLogoWidth = rec.publisherLogoImage.width;
-                singleCell.publisherLogoHeight = rec.publisherLogoImage.height;
+                singleCell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
+                singleCell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
             }
             singleCell.recSourceLabel.text = @"";
         }

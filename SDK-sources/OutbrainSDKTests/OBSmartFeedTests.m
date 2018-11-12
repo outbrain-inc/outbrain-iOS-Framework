@@ -241,6 +241,8 @@
 #pragma mark - utilities methods
 -(void) verifyCollectionCellBasicOutlets:(SFCollectionViewCell *)cell {
     XCTAssertNotNil(cell.publisherLogo);
+    XCTAssertNotNil(cell.publisherLogoHeight);
+    XCTAssertNotNil(cell.publisherLogoWidth);
     XCTAssertNotNil(cell.recSourceLabel);
     XCTAssertNotNil(cell.recImageView);
     XCTAssertNotNil(cell.recTitleLabel);
@@ -257,6 +259,8 @@
 
 -(void) verifyTableCellBasicOutlets:(SFTableViewCell *)cell {
     XCTAssertNotNil(cell.publisherLogo);
+    XCTAssertNotNil(cell.publisherLogoHeight);
+    XCTAssertNotNil(cell.publisherLogoWidth);
     XCTAssertNotNil(cell.recSourceLabel);
     XCTAssertNotNil(cell.recImageView);
     XCTAssertNotNil(cell.recTitleLabel);
