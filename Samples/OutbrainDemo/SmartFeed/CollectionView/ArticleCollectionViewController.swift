@@ -57,10 +57,8 @@ class ArticleCollectionViewController: UICollectionViewController {
             return
         }
         
-        let widgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
-        //let widgetID = "SFD_MAIN_5"
-        let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: widgetID, collectionView: collectionView)
+        
+        self.smartFeedManager = SmartFeedManager(url: Const.baseURL, widgetID: Const.widgetID, collectionView: collectionView)
         
         self.smartFeedManager.delegate = self
         

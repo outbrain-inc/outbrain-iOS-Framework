@@ -15,10 +15,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    let smartFeedWidgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
-    // let smartFeedWidgetID = "SFD_MAIN_5"
-    
-    let currentArticleDemoUrl = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
@@ -38,8 +34,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func setupSmartFeed() {
-        let baseURL = currentArticleDemoUrl
-        self.smartFeedManager = SmartFeedManager(url: baseURL, widgetID: smartFeedWidgetID, tableView: self.tableView)
+        self.smartFeedManager = SmartFeedManager(url: Const.baseURL, widgetID: Const.widgetID, tableView: self.tableView)
         self.smartFeedManager.delegate = self
         
         // Optional
