@@ -198,6 +198,13 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         sfHeaderCell.headerOBLabel.text = title;
     }
     
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
+    {
+        sfHeaderCell.smartfeedLogoWidth.constant = 125.0;
+        UIFont *font = sfHeaderCell.headerOBLabel.font;
+        sfHeaderCell.headerOBLabel.font = [font fontWithSize:16.0];
+    }
+    
     if (isSmartfeedWithNoChildren) {
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         sfHeaderCell.headerImageView.image = [UIImage imageNamed:@"outbrain-logo" inBundle:bundle compatibleWithTraitCollection:nil];
