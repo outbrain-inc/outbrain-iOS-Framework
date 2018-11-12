@@ -167,5 +167,108 @@
     XCTAssertEqual(newItems.count, 1);
 }
 
+-(void) testSingleTemplateNib {
+    SFCollectionViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFCollectionViewCell" owner:nil options:nil] objectAtIndex:0];
+    [self verifyCollectionCellBasicOutlets:cell];
+
+    
+    SFTableViewCell *tableCell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFTableViewCell" owner:nil options:nil] objectAtIndex:0];
+    [self verifyTableCellBasicOutlets:tableCell];
+}
+
+-(void) testSingleItemInHorizontalViewTemplateNib {
+    SFCollectionViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFHorizontalFixedItemCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyCollectionCellBasicOutlets:cell];
+    
+    
+    cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFHorizontalItemCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyCollectionCellBasicOutlets:cell];
+}
+
+-(void) testSingleWithTitleTemplateNib {
+    SFCollectionViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleWithTitleCollectionViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyCollectionCellWithTitleOutlets:cell];
+    
+    
+    SFTableViewCell *tableCell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleWithTitleTableViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyTableCellWithTitleOutlets:tableCell];
+}
+
+-(void) testSingleWithThumbnailImageTemplateNib {
+    SFCollectionViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleWithThumbnailWithTitleCollectionCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyCollectionCellWithTitleOutlets:cell];
+    
+    cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleWithThumbnailCollectionCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyCollectionCellBasicOutlets:cell];
+    
+    
+    SFTableViewCell *tableCell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleWithThumbnailWithTitleTableCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyTableCellWithTitleOutlets:tableCell];
+    
+    tableCell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleWithThumbnailTableCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyTableCellBasicOutlets:tableCell];
+}
+
+-(void) testVideoWithTitleTemplateNib {
+    SFCollectionViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleVideoWithTitleCollectionViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyCollectionCellWithTitleOutlets:cell];
+    
+    SFTableViewCell *tableCell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleVideoWithTitleTableViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyTableCellWithTitleOutlets:tableCell];
+}
+
+-(void) testVideoNoTitleTemplateNib {
+    SFCollectionViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleVideoNoTitleCollectionViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyCollectionCellBasicOutlets:cell];
+    
+    SFTableViewCell *tableCell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleVideoNoTitleTableViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    [self verifyTableCellBasicOutlets:tableCell];
+}
+
+
+#pragma mark - utilities methods
+-(void) verifyCollectionCellBasicOutlets:(SFCollectionViewCell *)cell {
+    XCTAssertNotNil(cell.publisherLogo);
+    XCTAssertNotNil(cell.recSourceLabel);
+    XCTAssertNotNil(cell.recImageView);
+    XCTAssertNotNil(cell.recTitleLabel);
+    XCTAssertNotNil(cell.adChoicesButton);
+}
+
+-(void) verifyCollectionCellWithTitleOutlets:(SFCollectionViewCell *)cell {
+    [self verifyCollectionCellBasicOutlets:cell];
+    XCTAssertNotNil(cell.cardContentView);
+    XCTAssertNotNil(cell.cellTitleLabel);
+    XCTAssertNotNil(cell.outbrainLabelingContainer);
+    XCTAssertNotNil(cell.outbrainLabelingContainer);
+}
+
+-(void) verifyTableCellBasicOutlets:(SFTableViewCell *)cell {
+    XCTAssertNotNil(cell.publisherLogo);
+    XCTAssertNotNil(cell.recSourceLabel);
+    XCTAssertNotNil(cell.recImageView);
+    XCTAssertNotNil(cell.recTitleLabel);
+    XCTAssertNotNil(cell.adChoicesButton);
+}
+
+-(void) verifyTableCellWithTitleOutlets:(SFTableViewCell *)cell {
+    [self verifyTableCellBasicOutlets:cell];
+    XCTAssertNotNil(cell.cardContentView);
+    XCTAssertNotNil(cell.cellTitleLabel);
+    XCTAssertNotNil(cell.outbrainLabelingContainer);
+    XCTAssertNotNil(cell.outbrainLabelingContainer);
+}
 
 @end

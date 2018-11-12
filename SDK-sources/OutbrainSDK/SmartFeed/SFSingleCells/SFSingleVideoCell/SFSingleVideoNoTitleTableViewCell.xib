@@ -40,6 +40,13 @@
                             <constraint firstAttribute="height" constant="30" id="sRJ-dt-vbk"/>
                         </constraints>
                     </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0rR-SE-dSj" userLabel="publisherLogo">
+                        <rect key="frame" x="10" y="20" width="65" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="65" id="NYS-IP-o5l"/>
+                            <constraint firstAttribute="height" constant="20" id="d6x-i4-Ar7"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wIL-ac-bsF" firstAttribute="leading" secondItem="oAZ-bc-kkX" secondAttribute="leading" id="0HS-Cc-K8D"/>
@@ -52,6 +59,8 @@
                     <constraint firstItem="wIL-ac-bsF" firstAttribute="top" secondItem="oAZ-bc-kkX" secondAttribute="bottom" constant="3" id="UYh-Rd-jmg"/>
                     <constraint firstAttribute="trailing" secondItem="wIL-ac-bsF" secondAttribute="trailing" constant="8" id="Ww2-oT-RtK"/>
                     <constraint firstItem="fxR-iw-j64" firstAttribute="leading" secondItem="miy-nZ-r2X" secondAttribute="leading" id="d3I-Gs-uvk"/>
+                    <constraint firstItem="0rR-SE-dSj" firstAttribute="top" secondItem="fxR-iw-j64" secondAttribute="top" constant="10" id="sRs-8Y-8Vn"/>
+                    <constraint firstItem="0rR-SE-dSj" firstAttribute="leading" secondItem="fxR-iw-j64" secondAttribute="leading" constant="10" id="uvA-qV-2dl"/>
                     <constraint firstAttribute="trailing" secondItem="fxR-iw-j64" secondAttribute="trailing" id="w8S-ON-fBK"/>
                     <constraint firstItem="fxR-iw-j64" firstAttribute="top" secondItem="miy-nZ-r2X" secondAttribute="top" constant="10" id="xgK-6L-RID"/>
                 </constraints>
@@ -59,6 +68,7 @@
             <connections>
                 <outlet property="adChoicesButton" destination="Dp0-H7-BN8" id="fHe-HO-BpP"/>
                 <outlet property="cardContentView" destination="miy-nZ-r2X" id="KIq-02-AAT"/>
+                <outlet property="publisherLogo" destination="0rR-SE-dSj" id="RPI-ra-ukh"/>
                 <outlet property="recImageView" destination="fxR-iw-j64" id="k4X-WL-tpX"/>
                 <outlet property="recSourceLabel" destination="wIL-ac-bsF" id="thk-gQ-cMQ"/>
                 <outlet property="recTitleLabel" destination="oAZ-bc-kkX" id="d59-IH-uyt"/>
