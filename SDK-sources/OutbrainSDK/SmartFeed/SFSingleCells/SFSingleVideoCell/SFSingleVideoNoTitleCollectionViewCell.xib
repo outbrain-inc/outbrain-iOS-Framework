@@ -85,6 +85,8 @@
                 <outlet property="adChoicesButton" destination="1XD-lo-kBW" id="fdU-ah-j6X"/>
                 <outlet property="cardContentView" destination="xbT-lX-Jx1" id="QSp-Jj-Hn9"/>
                 <outlet property="publisherLogo" destination="5gP-Og-AO3" id="I1B-hh-DC2"/>
+                <outlet property="publisherLogoHeight" destination="34b-ha-DPS" id="8iC-FX-FUP"/>
+                <outlet property="publisherLogoWidth" destination="QSX-eI-gBH" id="WZ6-tA-3th"/>
                 <outlet property="recImageView" destination="2uQ-QP-VAN" id="Pty-KL-2gn"/>
                 <outlet property="recSourceLabel" destination="a2c-wY-HJi" id="kfu-iM-A8Q"/>
                 <outlet property="recTitleLabel" destination="pyP-q1-Q1W" id="65g-BX-7u3"/>

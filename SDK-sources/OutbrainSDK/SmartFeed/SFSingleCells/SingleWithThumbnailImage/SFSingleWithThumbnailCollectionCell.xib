@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -86,6 +85,8 @@
             <connections>
                 <outlet property="adChoicesButton" destination="pid-Q1-1t8" id="YZn-8D-tU4"/>
                 <outlet property="publisherLogo" destination="OTt-Gd-VRW" id="vkW-0Z-1Xg"/>
+                <outlet property="publisherLogoHeight" destination="b6X-ns-99J" id="706-nu-jBo"/>
+                <outlet property="publisherLogoWidth" destination="RgF-pE-yDb" id="izy-p5-CPn"/>
                 <outlet property="recImageView" destination="61q-cI-eoC" id="h5T-SK-yc1"/>
                 <outlet property="recSourceLabel" destination="wj0-Rd-o7N" id="ewe-Ay-93z"/>
                 <outlet property="recTitleLabel" destination="NuD-GR-QrN" id="wd8-Ri-8fa"/>

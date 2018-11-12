@@ -136,6 +136,8 @@
                 <outlet property="cellTitleLabel" destination="YWC-NK-sLS" id="eiw-hr-WPP"/>
                 <outlet property="outbrainLabelingContainer" destination="CKZ-BH-VxV" id="WNl-Uv-EyV"/>
                 <outlet property="publisherLogo" destination="e5u-QE-oNb" id="VDw-mq-X5Y"/>
+                <outlet property="publisherLogoHeight" destination="3j7-9v-eb1" id="WiC-8h-GZT"/>
+                <outlet property="publisherLogoWidth" destination="EgC-EE-Df0" id="Uzr-3i-Ztc"/>
                 <outlet property="recImageView" destination="S4o-aF-NXt" id="GFy-6L-BRs"/>
                 <outlet property="recSourceLabel" destination="sex-9M-qeC" id="sz4-iL-sQx"/>
                 <outlet property="recTitleLabel" destination="iCy-6W-9WN" id="q6M-zd-ivc"/>

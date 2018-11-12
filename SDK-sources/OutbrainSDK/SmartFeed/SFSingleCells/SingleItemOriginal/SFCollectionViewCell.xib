@@ -84,6 +84,8 @@
             <connections>
                 <outlet property="adChoicesButton" destination="1XD-lo-kBW" id="fdU-ah-j6X"/>
                 <outlet property="publisherLogo" destination="QmY-Dw-gpg" id="Z4H-th-uhv"/>
+                <outlet property="publisherLogoHeight" destination="7Ky-Pb-PND" id="Qu4-7s-JlT"/>
+                <outlet property="publisherLogoWidth" destination="seO-Yg-voY" id="jcH-lg-r9a"/>
                 <outlet property="recImageView" destination="2uQ-QP-VAN" id="Pty-KL-2gn"/>
                 <outlet property="recSourceLabel" destination="a2c-wY-HJi" id="kfu-iM-A8Q"/>
                 <outlet property="recTitleLabel" destination="pyP-q1-Q1W" id="65g-BX-7u3"/>
