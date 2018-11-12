@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet OBLabel *headerOBLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *adChoicesImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *smartfeedLogoWidth;
 
 
 @end

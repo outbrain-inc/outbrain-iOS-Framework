@@ -55,6 +55,7 @@
                 <outlet property="adChoicesImageView" destination="vyr-8A-6Ks" id="GK6-Xo-IRo"/>
                 <outlet property="headerImageView" destination="kSw-82-81f" id="QQi-je-IW1"/>
                 <outlet property="headerOBLabel" destination="50E-ut-54A" id="UHg-iE-Lzf"/>
+                <outlet property="smartfeedLogoWidth" destination="X3F-SE-PTY" id="heo-D1-Z0P"/>
             </connections>
             <point key="canvasLocation" x="34" y="-39.5"/>
         </tableViewCell>

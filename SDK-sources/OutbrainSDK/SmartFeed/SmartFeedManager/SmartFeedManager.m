@@ -605,6 +605,13 @@
     }
     [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
     
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
+    {
+        sfHeaderCell.smartfeedLogoWidth.constant = 125.0;
+        UIFont *font = sfHeaderCell.headerOBLabel.font;
+        sfHeaderCell.headerOBLabel.font = [font fontWithSize:16.0];
+    }
+    
     if (self.isSmartfeedWithNoChildren) {
         // Remove Smartfeed logo and place Outbrain regular logo instead
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
