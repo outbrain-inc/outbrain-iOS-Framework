@@ -165,6 +165,11 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fid" value: request.fid]];
     }
     
+    // External ID
+    if (request.externalID != nil) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"extid" value: request.externalID]];
+    }
+    
     // GDPR
     if (GDPRUtils.sharedInstance.cmpPresent) {
         NSString *consentString = GDPRUtils.sharedInstance.consentString;

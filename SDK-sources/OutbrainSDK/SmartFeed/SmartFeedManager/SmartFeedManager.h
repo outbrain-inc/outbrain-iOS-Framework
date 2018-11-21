@@ -45,6 +45,8 @@ typedef enum
 
 @property (nonatomic, strong, readonly) NSString * _Nullable url;
 @property (nonatomic, strong, readonly) NSString * _Nullable widgetId;
+@property (nonatomic, copy) NSString * _Nullable externalID;
+
 @property (nonatomic, assign) NSInteger outbrainSectionIndex;
 @property (nonatomic, strong, readonly) NSMutableArray *smartFeedItemsArray;
 
