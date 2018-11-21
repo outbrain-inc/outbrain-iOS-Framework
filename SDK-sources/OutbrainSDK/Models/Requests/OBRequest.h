@@ -61,6 +61,12 @@
  **/
 @property (nonatomic, copy) NSString *fid;
 
+/**
+ *  @brief externalID is a custom parmater for the publisher to pass on to our SDK, we will include this in the ODB request
+ *          it will serve the publisher for reporting purposes.
+ *
+ **/
+@property (nonatomic, copy) NSString *externalID;
 
 /**
  *  @brief A constructor for defining an OBRequest object.

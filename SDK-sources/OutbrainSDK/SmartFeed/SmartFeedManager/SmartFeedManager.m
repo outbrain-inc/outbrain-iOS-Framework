@@ -143,6 +143,9 @@
 
 -(void) loadFirstTimeForFeed {
     OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex++];
+    if (self.externalID) {
+        request.externalID = self.externalID;
+    }
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
         self.isLoading = NO;
         if (response.error) {
@@ -190,6 +193,9 @@
     for (NSString *widgetId in self.feedContentArray) {
         OBRequest *request = [OBRequest requestWithURL:self.url widgetID: widgetId widgetIndex:self.outbrainIndex++];
         request.fid = self.fid;
+        if (self.externalID) {
+            request.externalID = self.externalID;
+        }
         [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
             responseCount++;
             
