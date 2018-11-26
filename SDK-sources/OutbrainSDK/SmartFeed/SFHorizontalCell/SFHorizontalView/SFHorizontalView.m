@@ -89,6 +89,18 @@
             [[SFImageLoader sharedInstance] loadImage:rec.disclosure.imageUrl intoButton:cell.adChoicesButton];
             [cell.adChoicesButton addTarget:self action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
+        else {
+            cell.adChoicesButton.hidden = YES;
+        }
+        if (YES) { // TODO replace with shouldDisplayPaidLabel
+            [SFUtils addPaidLabelToImageView:cell.recImageView withText:@"Sponsored"];
+        }
+        else {
+            UILabel *paidLabel = (UILabel *)[cell.recImageView viewWithTag: SPONSORED_LABEL_TAG];
+            if (paidLabel) {
+                [paidLabel removeFromSuperview];
+            }
+        }
     }
     else {
         cell.recSourceLabel.text = @"";

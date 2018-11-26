@@ -227,6 +227,15 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         else {
             singleCell.adChoicesButton.hidden = YES;
         }
+        if (YES) { // TODO replace with shouldDisplayPaidLabel
+            [SFUtils addPaidLabelToImageView:singleCell.recImageView withText:@"Sponsored"];
+        }
+        else {
+            UILabel *paidLabel = (UILabel *)[singleCell.recImageView viewWithTag: SPONSORED_LABEL_TAG];
+            if (paidLabel) {
+                [paidLabel removeFromSuperview];
+            }
+        }
     }
     else {
         if (rec.publisherLogoImage) {

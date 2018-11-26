@@ -14,6 +14,7 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+#define SPONSORED_LABEL_TAG 334422
 
 @protocol SFVideoCellType
 
@@ -38,8 +39,6 @@
 
 +(void) addConstraintsToFillParentWithHorizontalMargin:(UIView *)view;
 
-+(void) addHeightConstraint:(CGFloat) height toView:(UIView *)view;
-
 +(void) addDropShadowToView:(UIView *)view;
 
 +(void) addDropShadowToView:(UIView *)view shadowColor:(UIColor *)shadowColor;
@@ -47,6 +46,8 @@
 + (UIColor *)colorFromHexString:(NSString *)hexString;
 
 +(BOOL) isRTL:(NSString *)string;
+
++ (void) addPaidLabelToImageView:(UIImageView *)recImageView withText:(NSString *)text;
 
 // Video related methods
 +(WKWebView *) createVideoWebViewInsideView:(UIView *)parentView
