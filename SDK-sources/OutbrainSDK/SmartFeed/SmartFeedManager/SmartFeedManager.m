@@ -491,6 +491,9 @@
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
+    // Report Viewability
+    [[OBViewabilityService sharedInstance] reportRecsShownForRequest:sfItem.request];
+    
     if ([cell isKindOfClass:[SFHorizontalWithVideoTableViewCell class]]) {
         [self configureHorizontalVideoTableViewCell:cell atIndexPath:indexPath];
     }
