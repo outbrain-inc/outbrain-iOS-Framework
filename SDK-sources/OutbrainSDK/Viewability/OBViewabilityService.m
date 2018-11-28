@@ -172,7 +172,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     NSDictionary *viewabilityDictionary = [viewabilityData toDictionary];
     
     NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, urlHash, widgetId, (long)widgetIndex];
-    NSLog(@"viewabilityKey: %@", viewabilityKey);
+
     [self.viewabilityDataMap setObject:viewabilityDictionary forKey:viewabilityKey];
     
     NSMutableDictionary *viewabilityUrlParamsDictionary = [viewabilityDictionary mutableCopy];
