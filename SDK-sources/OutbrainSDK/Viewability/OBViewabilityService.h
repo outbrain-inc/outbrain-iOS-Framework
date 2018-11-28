@@ -19,6 +19,8 @@
 
 - (void) reportRecsShownForOBLabel:(OBLabel *)obLabel;
 
+- (void) reportRecsShownForRequest:(OBRequest *)request;
+
 - (void) updateViewabilitySetting:(NSNumber *)value key:(NSString *)key;
 
 - (BOOL) isViewabilityEnabled;

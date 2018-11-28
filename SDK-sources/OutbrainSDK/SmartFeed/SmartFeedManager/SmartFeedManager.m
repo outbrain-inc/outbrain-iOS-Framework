@@ -24,6 +24,7 @@
 #import "SFImageLoader.h"
 #import "SFCollectionViewManager.h"
 #import "SFTableViewManager.h"
+#import "OBViewabilityService.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 
 
@@ -56,7 +57,7 @@
 #pragma mark - init methods
 - (id)init
 {
-    return [self initWithUrl:nil widgetID:nil collectionView:nil];
+    return [self initWithUrl:@"NULL" widgetID:@"NULL" collectionView:[[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[[UICollectionViewLayout alloc] init]]];
 }
 
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
@@ -102,11 +103,6 @@
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
     self.customNibsForWidgetId = [[NSMutableDictionary alloc] init];
     self.reuseIdentifierWidgetId = [[NSMutableDictionary alloc] init];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(videoReadyNotification:)
-                                                 name:@"VideoReadyNotification"
-                                               object:nil];
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -248,7 +244,7 @@
                                                     videoParams:videoParams
                                            singleRecommendation:response.recommendations[0]
                                                     widgetTitle:widgetTitle
-                                                       widgetId:response.request.widgetId
+                                                        request:response.request
                                                  shadowColorStr:response.settings.smartfeedShadowColor];
         
         [newSmartfeedItems addObject:item];
@@ -344,12 +340,11 @@
 
 -(NSArray *) createSingleItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
-    NSString *widgetId = response.request.widgetId;
     NSString *shadowColor = response.settings.smartfeedShadowColor;
     
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in recommendations) {
-        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
+        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle request:response.request shadowColorStr: shadowColor];
         [newSmartfeedItems addObject:item];
         
     }
@@ -358,16 +353,14 @@
 
 -(NSArray *) createCarouselItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
-    NSString *widgetId = response.request.widgetId;
     NSString *shadowColor = response.settings.smartfeedShadowColor;
     
-    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle request:response.request shadowColorStr:shadowColor];
     return @[item];
 }
 
 -(NSArray *) createGridItemsFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
-    NSString *widgetId = response.request.widgetId;
     NSString *shadowColor = response.settings.smartfeedShadowColor;
     
     NSUInteger itemsPerRow = 0;
@@ -406,12 +399,12 @@
             }
             
             NSURL *videoURL = [self appendParamsToVideoUrl: response];
-            SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL videoParams:videoParams reclist:singleLineRecs type:SFTypeGridTwoInRowWithVideo widgetTitle:nil widgetId:widgetId shadowColorStr:shadowColor];
+            SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL videoParams:videoParams reclist:singleLineRecs type:SFTypeGridTwoInRowWithVideo widgetTitle:nil request:response.request shadowColorStr:shadowColor];
             [newSmartfeedItems addObject:videoItem];
             continue;
         }
         
-        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
+        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle request:response.request shadowColorStr:shadowColor];
         [newSmartfeedItems addObject:item];
     }
 
@@ -692,6 +685,10 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
+    // Report Viewability
+    [[OBViewabilityService sharedInstance] reportRecsShownForRequest:sfItem.request];
+    
     if ([cell isKindOfClass:[SFHorizontalWithVideoCollectionViewCell class]]) {
         [self configureHorizontalVideoCollectionCell:cell atIndexPath:indexPath];
     }
