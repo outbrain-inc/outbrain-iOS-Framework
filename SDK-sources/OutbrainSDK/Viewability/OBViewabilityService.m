@@ -51,7 +51,7 @@ NSString * const kPaidRecs = @"pad";
 
 
 NSString * const kViewabilityUrl = @"https://log.outbrain.com/loggerServices/widgetGlobalEvent";
-NSString * const kViewabilityKeyForURL_and_WidgetId = @"OB_Viewability_Key_%@_%@";
+NSString * const kViewabilityKeyFor_urlhash_widgetId_idx = @"OB_Viewability_Key_%lu_%@_%ld";
 float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 
 - (NSString*)description
@@ -61,13 +61,13 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 
 -(NSDictionary *) toDictionary {
     
-    if (!self.pid)  	self.pid = @"null";
-    if (!self.sid)  	self.sid = @"null";
-    if (!self.wId)  	self.wId = @"null";
-    if (!self.wRV)  	self.wRV = @"null";
-    if (!self.rId)  	self.rId = @"null";
-    if (!self.eT)   	self.eT =  @"null";
-    if (!self.idx)  	self.idx = @"null";
+    if (!self.pid)      self.pid = @"null";
+    if (!self.sid)      self.sid = @"null";
+    if (!self.wId)      self.wId = @"null";
+    if (!self.wRV)      self.wRV = @"null";
+    if (!self.rId)      self.rId = @"null";
+    if (!self.eT)       self.eT =  @"null";
+    if (!self.idx)      self.idx = @"null";
     if (!self.pvId)     self.pvId = @"null";
     if (!self.org)      self.org = @"null";
     if (!self.pad)      self.pad = @"null";
@@ -129,7 +129,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 }
 
 - (void) addOBLabelToMap:(OBLabel *)obLabel {
-    NSString *key = [NSString stringWithFormat:kViewabilityKeyForURL_and_WidgetId, obLabel.url, obLabel.widgetId];
+    NSString *key = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, [obLabel.url hash], obLabel.widgetId, (long)0];
     self.obLabelMap[key] = obLabel;
 }
 
@@ -140,7 +140,8 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     }
     
     NSString *widgetId = response.request.widgetId;
-    NSString *url = response.request.url;
+    NSInteger urlHash = [response.request.url hash];
+    NSInteger widgetIndex = response.request.widgetIndex;
     
     
     NSArray *sdkVersionComponents = [OB_SDK_VERSION componentsSeparatedByString:@"."];
@@ -162,7 +163,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     viewabilityData.pvId = [response.responseRequest getStringValueForPayloadKey:@"pvId"];
     viewabilityData.org = [response.responseRequest getStringValueForPayloadKey:@"org"];
     viewabilityData.pad = [response.responseRequest getStringValueForPayloadKey:@"pad"];
-
+    
     NSDate *timeNow = [NSDate date];
     NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:requestStartDate];
     viewabilityData.tm = [@((int)(executionTime*1000)) stringValue];
@@ -170,7 +171,8 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     
     NSDictionary *viewabilityDictionary = [viewabilityData toDictionary];
     
-    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyForURL_and_WidgetId, url, widgetId];
+    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, urlHash, widgetId, (long)widgetIndex];
+
     [self.viewabilityDataMap setObject:viewabilityDictionary forKey:viewabilityKey];
     
     NSMutableDictionary *viewabilityUrlParamsDictionary = [viewabilityDictionary mutableCopy];
@@ -187,7 +189,16 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 }
 
 - (void) reportRecsShownForOBLabel:(OBLabel *)obLabel {
-    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyForURL_and_WidgetId, obLabel.url, obLabel.widgetId];
+    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, [obLabel.url hash], obLabel.widgetId, (long)0];
+    [self reportRecsShownForKey:viewabilityKey];
+}
+
+- (void) reportRecsShownForRequest:(OBRequest *)request {
+    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, [request.url hash], request.widgetId, (long)request.widgetIndex];
+    [self reportRecsShownForKey:viewabilityKey];
+}
+
+- (void) reportRecsShownForKey:(NSString *)viewabilityKey {
     NSDictionary *viewabilityDictionary = [self.viewabilityDataMap objectForKey:viewabilityKey];
     NSString *reqId = viewabilityDictionary[kRequestId];
     

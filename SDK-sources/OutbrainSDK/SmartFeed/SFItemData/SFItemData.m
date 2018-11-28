@@ -16,6 +16,7 @@
 @property (nonatomic, assign) SFItemType itemType;
 @property (nonatomic, copy) NSString *widgetTitle;
 @property (nonatomic, copy) NSString *widgetId;
+@property (nonatomic, strong) OBRequest *request;
 @property (nonatomic, strong) NSURL *videoUrl;
 @property (nonatomic, copy) NSString *videoParamsStr;
 @property (nonatomic, strong) UIColor *shadowColor;
@@ -28,17 +29,17 @@ NSInteger kVideoReadyStatus = 1113;
 NSInteger kVideoFinishedStatus = 1114;
 
 
-- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId shadowColorStr:(NSString *)shadowColorStr {
+- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr {
     self = [super init];
     if (self) {
         self.singleRec = rec;
         self.itemType = type;
-        [self commonInitWithWidgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColorStr];
+        [self commonInitWithWidgetTitle:widgetTitle request:request shadowColorStr:shadowColorStr];
     }
     return self;
 }
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams singleRecommendation:(OBRecommendation *)rec widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId shadowColorStr:(NSString *)shadowColorStr {
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams singleRecommendation:(OBRecommendation *)rec widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr {
     self = [super init];
     if (self) {
         self.videoUrl = videoUrl;
@@ -55,12 +56,12 @@ NSInteger kVideoFinishedStatus = 1114;
         
         self.singleRec = rec;
         self.itemType = widgetTitle ? SFTypeStripVideoWithPaidRecAndTitle : SFTypeStripVideoWithPaidRecNoTitle;
-        [self commonInitWithWidgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColorStr];
+        [self commonInitWithWidgetTitle:widgetTitle request:request shadowColorStr:shadowColorStr];
     }
     return self;
 }
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams reclist:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId shadowColorStr:(NSString *)shadowColorStr {
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams reclist:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr {
     self = [super init];
     if (self) {
         self.videoUrl = videoUrl;
@@ -77,28 +78,29 @@ NSInteger kVideoFinishedStatus = 1114;
         
         self.outbrainRecs = recArray;
         self.itemType = type;
-        [self commonInitWithWidgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColorStr];
+        [self commonInitWithWidgetTitle:widgetTitle request:request shadowColorStr:shadowColorStr];
     }
     return self;
 }
 
-- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle widgetId:(NSString *)widgetId shadowColorStr:(NSString *)shadowColorStr {
+- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr {
     
     self = [super init];
     if (self) {
         self.outbrainRecs = recArray;
         self.itemType = type;
-        [self commonInitWithWidgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColorStr];
+        [self commonInitWithWidgetTitle:widgetTitle request:request shadowColorStr:shadowColorStr];
     }
     return self;
 }
 
 - (void)commonInitWithWidgetTitle:(NSString *)widgetTitle
-                         widgetId:(NSString *)widgetId
+                         request:(OBRequest *)request
                    shadowColorStr:(NSString *)shadowColorStr
 {
     self.widgetTitle = widgetTitle;
-    self.widgetId = widgetId;
+    self.widgetId = request.widgetId;
+    self.request = request;
     if (shadowColorStr) {
         self.shadowColor = [SFUtils colorFromHexString:shadowColorStr];
     }
