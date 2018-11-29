@@ -247,9 +247,9 @@
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                     videoParams:videoParams
                                            singleRecommendation:response.recommendations[0]
-                                                    widgetTitle:widgetTitle
-                                                       widgetId:response.request.widgetId
-                                                 shadowColorStr:response.settings.smartfeedShadowColor];
+                                                    odbSettings:response.settings
+                                                       widgetId:response.request.widgetId];
+        
         
         [newSmartfeedItems addObject:item];
         // New implementation for Video - if video available there can only be one item in the response (paid + video)
@@ -349,7 +349,11 @@
     
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in recommendations) {
-        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
+        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec
+                                                                odbSettings:response.settings
+                                                                       type:templateType
+                                                                   widgetId:widgetId];
+        
         [newSmartfeedItems addObject:item];
         
     }
@@ -361,7 +365,11 @@
     NSString *widgetId = response.request.widgetId;
     NSString *shadowColor = response.settings.smartfeedShadowColor;
     
-    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations
+                                            odbSettings:response.settings
+                                                   type:templateType
+                                               widgetId:widgetId];
+    
     return @[item];
 }
 
@@ -406,12 +414,22 @@
             }
             
             NSURL *videoURL = [self appendParamsToVideoUrl: response];
-            SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL videoParams:videoParams reclist:singleLineRecs type:SFTypeGridTwoInRowWithVideo widgetTitle:nil widgetId:widgetId shadowColorStr:shadowColor];
+            SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL
+                                                             videoParams:videoParams
+                                                                 reclist:singleLineRecs
+                                                             odbSettings:response.settings
+                                                                    type:SFTypeGridTwoInRowWithVideo
+                                                                widgetId:widgetId];
+            
             [newSmartfeedItems addObject:videoItem];
             continue;
         }
         
-        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle widgetId:widgetId shadowColorStr:shadowColor];
+        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs
+                                                odbSettings:response.settings
+                                                       type:templateType
+                                                   widgetId:widgetId];
+        
         [newSmartfeedItems addObject:item];
     }
 
