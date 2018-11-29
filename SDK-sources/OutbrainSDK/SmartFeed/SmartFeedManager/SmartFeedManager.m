@@ -593,6 +593,7 @@
     }
     
     horizontalView.outbrainRecs = sfItem.outbrainRecs;
+    horizontalView.settings = sfItem.odbSettings;
     horizontalView.shadowColor = sfItem.shadowColor;
     [horizontalView setupView];
     [horizontalView setOnRecommendationClick:^(OBRecommendation *rec) {

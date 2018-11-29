@@ -47,7 +47,7 @@
 
 +(BOOL) isRTL:(NSString *)string;
 
-+ (void) addPaidLabelToImageView:(UIImageView *)recImageView withText:(NSString *)text;
++ (void) addPaidLabelToImageView:(UIImageView *)recImageView withSettings:(OBSettings *)settings;
 
 // Video related methods
 +(WKWebView *) createVideoWebViewInsideView:(UIView *)parentView

@@ -265,8 +265,10 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         else {
             singleCell.adChoicesButton.hidden = YES;
         }
-        if (YES) { // TODO replace with shouldDisplayPaidLabel
-            [SFUtils addPaidLabelToImageView:singleCell.recImageView withText:@"Sponsored"];
+        
+        // Paid label
+        if (sfItem.odbSettings.paidLabelText) {
+            [SFUtils addPaidLabelToImageView:singleCell.recImageView withSettings:sfItem.odbSettings];
         }
         else {
             UILabel *paidLabel = (UILabel *)[singleCell.recImageView viewWithTag: SPONSORED_LABEL_TAG];

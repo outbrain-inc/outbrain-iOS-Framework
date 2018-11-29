@@ -80,18 +80,18 @@
     view.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:view.layer.cornerRadius].CGPath;
 }
 
-+ (void) addPaidLabelToImageView:(UIImageView *)recImageView withText:(NSString *)text {
++ (void) addPaidLabelToImageView:(UIImageView *)recImageView withSettings:(OBSettings *)settings {
     UILabel *paidLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    paidLabel.text = text;
+    paidLabel.text = settings.paidLabelText;
     paidLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12.0];
-    paidLabel.textColor = UIColor.whiteColor;
+    paidLabel.textColor = settings.paidLabelTextColor ? [self colorFromHexString:settings.paidLabelTextColor] : UIColor.whiteColor;
     paidLabel.textAlignment = NSTextAlignmentCenter;
-    paidLabel.backgroundColor = [self colorFromHexString:@"#666666"];
+    paidLabel.backgroundColor = [self colorFromHexString:settings.paidLabelBackgroundColor ? settings.paidLabelBackgroundColor : @"#666666"];
     paidLabel.tag = SPONSORED_LABEL_TAG;
-    BOOL isRTL = [SFUtils isRTL:text];
+    BOOL isRTL = [SFUtils isRTL:settings.paidLabelText];
     [recImageView addSubview:paidLabel];
     
-    CGSize expectedLabelSize = [text sizeWithFont:paidLabel.font constrainedToSize:recImageView.frame.size lineBreakMode:paidLabel.lineBreakMode];
+    CGSize expectedLabelSize = [settings.paidLabelText sizeWithFont:paidLabel.font constrainedToSize:recImageView.frame.size lineBreakMode:paidLabel.lineBreakMode];
     
     [self addConstraint:NSLayoutAttributeHeight constant:expectedLabelSize.height + 6.0 toView:paidLabel];
     [self addConstraint:NSLayoutAttributeWidth constant:expectedLabelSize.width + 20.0 toView:paidLabel];

@@ -92,8 +92,10 @@
         else {
             cell.adChoicesButton.hidden = YES;
         }
-        if (YES) { // TODO replace with shouldDisplayPaidLabel
-            [SFUtils addPaidLabelToImageView:cell.recImageView withText:@"Sponsored"];
+        
+        // Paid label
+        if (self.settings.paidLabelText) {
+            [SFUtils addPaidLabelToImageView:cell.recImageView withSettings:self.settings];
         }
         else {
             UILabel *paidLabel = (UILabel *)[cell.recImageView viewWithTag: SPONSORED_LABEL_TAG];
