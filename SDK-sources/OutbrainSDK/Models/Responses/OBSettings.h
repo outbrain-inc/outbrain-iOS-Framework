@@ -20,6 +20,10 @@
 @property (nonatomic, copy, readonly, nullable) NSString *smartfeedShadowColor;
 @property (nonatomic, strong, readonly, nullable) NSArray *feedContentArray;
 
+@property (nonatomic, copy, readonly, nullable) NSString *paidLabelText;
+@property (nonatomic, copy, readonly, nullable) NSString *paidLabelTextColor;
+@property (nonatomic, copy, readonly, nullable) NSString *paidLabelBackgroundColor;
+
 - (instancetype)initWithPayload:(NSDictionary *)payload;
 
 

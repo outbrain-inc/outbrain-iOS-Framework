@@ -194,6 +194,10 @@
       ]
     },
     "settings": {
+      "dynamic:PaidLabelTextColor": "#ffffff",
+      "dynamic:PaidLabelBackgroundColor": "#666666",
+      "dynamic:PaidLabel": "Sponsored",
+      "sdk_sf_shadow_color": "#ffa500",
       "flagPublisherZappingFeature": true,
       "defaultRecNumber": 6,
       "cwvReportingEnable": true,

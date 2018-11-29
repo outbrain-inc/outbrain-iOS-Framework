@@ -78,6 +78,12 @@
     OBSettings *settings = self.response.settings;
     XCTAssertNotNil(settings);
     XCTAssertEqual(settings.apv, YES);
+    
+    XCTAssert([settings.smartfeedShadowColor isEqualToString:@"#ffa500"]);
+    XCTAssert([settings.paidLabelText isEqualToString:@"Sponsored"]);
+    XCTAssert([settings.paidLabelTextColor isEqualToString:@"#ffffff"]);
+    XCTAssert([settings.paidLabelBackgroundColor isEqualToString:@"#666666"]);
+    
     XCTAssertEqual(settings.isSmartFeed, YES);
     XCTAssertEqual([settings.feedContentArray count], 2);
     XCTAssert([settings.feedContentArray[0] isEqualToString:@"SFD_VRS_1"]);
