@@ -24,6 +24,7 @@
 #import "SFImageLoader.h"
 #import "SFCollectionViewManager.h"
 #import "SFTableViewManager.h"
+#import "OBViewabilityService.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 
 
@@ -56,7 +57,7 @@
 #pragma mark - init methods
 - (id)init
 {
-    return [self initWithUrl:nil widgetID:nil collectionView:nil];
+    return [self initWithUrl:@"NULL" widgetID:@"NULL" collectionView:[[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[[UICollectionViewLayout alloc] init]]];
 }
 
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
@@ -102,11 +103,6 @@
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
     self.customNibsForWidgetId = [[NSMutableDictionary alloc] init];
     self.reuseIdentifierWidgetId = [[NSMutableDictionary alloc] init];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(videoReadyNotification:)
-                                                 name:@"VideoReadyNotification"
-                                               object:nil];
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -247,9 +243,7 @@
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                     videoParams:videoParams
                                            singleRecommendation:response.recommendations[0]
-                                                    odbSettings:response.settings
-                                                       widgetId:response.request.widgetId];
-        
+                                                    odbResponse:response];
         
         [newSmartfeedItems addObject:item];
         // New implementation for Video - if video available there can only be one item in the response (paid + video)
@@ -344,15 +338,11 @@
 
 -(NSArray *) createSingleItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
-    NSString *widgetId = response.request.widgetId;
-    NSString *shadowColor = response.settings.smartfeedShadowColor;
-    
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in recommendations) {
         SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec
-                                                                odbSettings:response.settings
-                                                                       type:templateType
-                                                                   widgetId:widgetId];
+                                                                 odbResponse:response
+                                                                        type:templateType];
         
         [newSmartfeedItems addObject:item];
         
@@ -362,21 +352,16 @@
 
 -(NSArray *) createCarouselItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
-    NSString *widgetId = response.request.widgetId;
-    NSString *shadowColor = response.settings.smartfeedShadowColor;
     
     SFItemData *item = [[SFItemData alloc] initWithList:recommendations
-                                            odbSettings:response.settings
-                                                   type:templateType
-                                               widgetId:widgetId];
+                                            odbResponse:response
+                                                   type:templateType];
     
     return @[item];
 }
 
 -(NSArray *) createGridItemsFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
-    NSString *widgetId = response.request.widgetId;
-    NSString *shadowColor = response.settings.smartfeedShadowColor;
     
     NSUInteger itemsPerRow = 0;
     if (templateType == SFTypeGridTwoInRowNoTitle || templateType == SFTypeGridTwoInRowWithTitle) {
@@ -417,18 +402,16 @@
             SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                              videoParams:videoParams
                                                                  reclist:singleLineRecs
-                                                             odbSettings:response.settings
-                                                                    type:SFTypeGridTwoInRowWithVideo
-                                                                widgetId:widgetId];
+                                                             odbResponse:response
+                                                                    type:SFTypeGridTwoInRowWithVideo];
             
             [newSmartfeedItems addObject:videoItem];
             continue;
         }
         
         SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs
-                                                odbSettings:response.settings
-                                                       type:templateType
-                                                   widgetId:widgetId];
+                                                odbResponse:response
+                                                       type:templateType];
         
         [newSmartfeedItems addObject:item];
     }
@@ -515,6 +498,9 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
+    // Report Viewability
+    [[OBViewabilityService sharedInstance] reportRecsShownForRequest:sfItem.request];
     
     if ([cell isKindOfClass:[SFHorizontalWithVideoTableViewCell class]]) {
         [self configureHorizontalVideoTableViewCell:cell atIndexPath:indexPath];
@@ -710,6 +696,10 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
+    // Report Viewability
+    [[OBViewabilityService sharedInstance] reportRecsShownForRequest:sfItem.request];
+    
     if ([cell isKindOfClass:[SFHorizontalWithVideoCollectionViewCell class]]) {
         [self configureHorizontalVideoCollectionCell:cell atIndexPath:indexPath];
     }

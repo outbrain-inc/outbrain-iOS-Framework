@@ -163,33 +163,33 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     // phone 375
     SFItemType sfItemType = sfItem.itemType;
     
-    CGFloat width = collectionView.frame.size.width;
+    CGFloat screenWidth = collectionView.frame.size.width;
     if (sfItemType == SFTypeGridTwoInRowNoTitle ||
         sfItemType == SFTypeCarouselWithTitle ||
         sfItemType == SFTypeCarouselNoTitle ||
         sfItemType == SFTypeGridTwoInRowWithVideo) {
-        return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 240.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 240.0);
     }
     else if (sfItemType == SFTypeGridThreeInRowNoTitle) {
-        return CGSizeMake(width, 280.0);
+        return CGSizeMake(screenWidth, 280.0);
     }
     else if (sfItemType == SFTypeGridTwoInRowWithTitle) {
-        return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 270.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 270.0);
     }
     else if ((sfItemType == SFTypeStripWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {
-        return CGSizeMake(width, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 280.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 280.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
-        return CGSizeMake(width - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0);
+        return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
-        return CGSizeMake(width, 150.0);
+        return CGSizeMake(screenWidth, 150.0);
     }
     else if (sfItemType == SFTypeStripVideo) {
-        return CGSizeMake(width - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0);
+        return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0);
     }
     
-    return CGSizeMake(width - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0);
+    return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 250.0);
 }
 
 - (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withTitle:(NSString *)title isSmartfeedWithNoChildren:(BOOL)isSmartfeedWithNoChildren {

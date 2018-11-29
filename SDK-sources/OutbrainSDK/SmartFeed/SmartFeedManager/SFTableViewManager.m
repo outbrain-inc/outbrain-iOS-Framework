@@ -157,18 +157,22 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
 
 - (CGFloat) heightForRowAtIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     SFItemType sfItemType = sfItem.itemType;
+    CGFloat screenWidth = self.tableView.frame.size.width;
     
     if (sfItemType == SFTypeGridThreeInRowNoTitle) {
         return 280.0;
     }
-    else if (sfItemType == SFTypeCarouselWithTitle) {
+    else if (sfItemType == SFTypeGridTwoInRowNoTitle ||
+             sfItemType == SFTypeCarouselWithTitle ||
+             sfItemType == SFTypeCarouselNoTitle ||
+             sfItemType == SFTypeGridTwoInRowWithVideo) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : kTableViewRowHeight;
     }
     else if ((sfItemType == SFTypeGridTwoInRowWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 270.0;
     }
-    else if (sfItemType == SFTypeStripWithTitle) {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 280.0;
+    else if (sfItemType == SFTypeStripWithTitle || sfItemType == SFTypeStripVideoWithPaidRecAndTitle) {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 280.0;
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0;
@@ -180,7 +184,7 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0;
     }
     
-    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? kTableViewRowHeight*1.3 : kTableViewRowHeight;
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : kTableViewRowHeight;
 }
 
 - (void) configureVideoCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
