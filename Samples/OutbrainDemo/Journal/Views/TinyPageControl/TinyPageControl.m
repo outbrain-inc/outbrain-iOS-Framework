@@ -145,9 +145,9 @@
     [CATransaction setAnimationDuration:.1f];
     
     [CATransaction setCompletionBlock:^{
-        for(CALayer * l in _pageIndicatorContainerView.layer.sublayers)
+        for(CALayer * l in self->_pageIndicatorContainerView.layer.sublayers)
         {
-            if(l != [self ticLayerForIndex:_currentPage])
+            if(l != [self ticLayerForIndex:self->_currentPage])
                 [l removeAllAnimations];
         }
     }];

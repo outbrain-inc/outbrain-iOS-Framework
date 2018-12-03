@@ -65,7 +65,7 @@
     _adhesionLocked = YES;
     // Here we are partial.  Animate to full
     [UIView animateWithDuration:.25f animations:^{
-        self.outbrainHoverView.frame = CGRectOffset(_outbrainHoverView.bounds, 0, CGRectGetMaxY(self.mainScrollView.bounds) - _outbrainHoverView.peekAmount);
+        self.outbrainHoverView.frame = CGRectOffset(self->_outbrainHoverView.bounds, 0, CGRectGetMaxY(self.mainScrollView.bounds) - self->_outbrainHoverView.peekAmount);
     }];
 }
 
@@ -291,8 +291,8 @@
 {
     _adhesionDisabled = YES;
     [UIView animateWithDuration:.1f animations:^{
-        _outbrainHoverView.alpha = 0.f;
-        _outbrainHoverView.frame = CGRectOffset(_outbrainHoverView.bounds, 0, CGRectGetMinY(_outbrainHoverView.frame));
+        self->_outbrainHoverView.alpha = 0.f;
+        self->_outbrainHoverView.frame = CGRectOffset(self->_outbrainHoverView.bounds, 0, CGRectGetMinY(self->_outbrainHoverView.frame));
     }];
     
 }

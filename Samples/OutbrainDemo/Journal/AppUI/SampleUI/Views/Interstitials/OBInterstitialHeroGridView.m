@@ -313,9 +313,9 @@
     
     [UIView animateWithDuration:.2f
                      animations:^{
-                         self.loadingView.alpha = _loading?1.f:0.f;
+                         self.loadingView.alpha = self->_loading?1.f:0.f;
                      } completion:^(BOOL finished) {
-                         if(!_loading)
+                         if(!self->_loading)
                          {
                              [self.loadingView removeFromSuperview];
                          }
