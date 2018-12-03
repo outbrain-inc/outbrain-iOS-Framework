@@ -1301,6 +1301,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.DynamicOutbrainSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Debug;
 		};
@@ -1326,6 +1327,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.DynamicOutbrainSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Release;
 		};
