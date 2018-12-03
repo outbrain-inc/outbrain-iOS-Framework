@@ -34,7 +34,6 @@
 		D8B5923D186376B1009422D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923C186376B1009422D5 /* Foundation.framework */; };
 		D8B5923F186376B1009422D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B5923E186376B1009422D5 /* CoreGraphics.framework */; };
 		D8B59241186376B1009422D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B59240186376B1009422D5 /* UIKit.framework */; };
-		E60DCD2C20BC39DA0023FE93 /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E60DCD2B20BC39C20023FE93 /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E60DCD3320BC3AAD0023FE93 /* AppSFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE72085DC6C0016D79A /* AppSFCollectionViewCell.swift */; };
 		E60DCD3420BC3AAD0023FE93 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE22085DC6C0016D79A /* ArticleTableViewController.swift */; };
 		E60DCD3520BC3AAD0023FE93 /* AppSFHorizontalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE62085DC6C0016D79A /* AppSFHorizontalItemCell.swift */; };
@@ -48,7 +47,6 @@
 		E60DCD4020BC3AAD0023FE93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD82085DBD50016D79A /* LaunchScreen.storyboard */; };
 		E60DCD4120BC3AAD0023FE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD62085DBD50016D79A /* Assets.xcassets */; };
 		E60DCD4220BC3AAD0023FE93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD32085DBD50016D79A /* Main.storyboard */; };
-		E60DCD4B20BC3B1D0023FE93 /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E60DCD2B20BC39C20023FE93 /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E60DCD4C20BC3B320023FE93 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
 		E60DCD4D20BC3B3A0023FE93 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 		E61E6C6B208384A00016D79A /* OBDemoDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456491885A543002B2368 /* OBDemoDataHelper.m */; };
@@ -141,6 +139,10 @@
 		E6A5E4071F9C869B00D894C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */; };
 		E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
 		E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
+		E6F9FB1021B5379000F7C0B9 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F9FB0D21B5377500F7C0B9 /* OutbrainSDK.framework */; };
+		E6F9FB1121B5379000F7C0B9 /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6F9FB0D21B5377500F7C0B9 /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6F9FB1221B5388100F7C0B9 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F9FB0D21B5377500F7C0B9 /* OutbrainSDK.framework */; };
+		E6F9FB1321B5388100F7C0B9 /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6F9FB0D21B5377500F7C0B9 /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
 		FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
@@ -152,7 +154,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E60DCD4B20BC3B1D0023FE93 /* OutbrainSDK.framework in Embed Frameworks */,
+				E6F9FB1121B5379000F7C0B9 /* OutbrainSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,7 +165,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E60DCD2C20BC39DA0023FE93 /* OutbrainSDK.framework in Embed Frameworks */,
+				E6F9FB1321B5388100F7C0B9 /* OutbrainSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +231,6 @@
 		D8B5923E186376B1009422D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8B59240186376B1009422D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D8B5925A186376B1009422D5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		E60DCD2B20BC39C20023FE93 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OutbrainSDK.framework; sourceTree = "<group>"; };
 		E60DCD4820BC3AAD0023FE93 /* SmartFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60DCD4F20BC3BD00023FE93 /* SmartFeed-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartFeed-Dev-Info.plist"; sourceTree = "<group>"; };
 		E60DCD5020BC3BD00023FE93 /* SmartFeed-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartFeed-Info.plist"; sourceTree = "<group>"; };
@@ -301,6 +302,7 @@
 		E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainStoryboard.storyboard; sourceTree = "<group>"; };
 		E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E6F9FB0D21B5377500F7C0B9 /* OutbrainSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OutbrainSDK.framework; sourceTree = "<group>"; };
 		E6FFC2C21C28489A00498168 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FC820C1119DD597F00ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -310,6 +312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6F9FB1221B5388100F7C0B9 /* OutbrainSDK.framework in Frameworks */,
 				E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */,
 				E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */,
 				FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */,
@@ -325,6 +328,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6F9FB1021B5379000F7C0B9 /* OutbrainSDK.framework in Frameworks */,
 				E60DCD4D20BC3B3A0023FE93 /* AdSupport.framework in Frameworks */,
 				E60DCD4C20BC3B320023FE93 /* SystemConfiguration.framework in Frameworks */,
 			);
@@ -525,7 +529,7 @@
 		D8B59230186376B1009422D5 = {
 			isa = PBXGroup;
 			children = (
-				E60DCD2B20BC39C20023FE93 /* OutbrainSDK.framework */,
+				E6F9FB0D21B5377500F7C0B9 /* OutbrainSDK.framework */,
 				D83456431885A543002B2368 /* Journal */,
 				E61E6CCE2085DBD50016D79A /* SmartFeed */,
 				D8B5923B186376B1009422D5 /* Frameworks */,
@@ -853,6 +857,7 @@
 						DevelopmentTeam = 97R2B46745;
 					};
 					E60DCD2D20BC3AAD0023FE93 = {
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					E61E6CCC2085DBD50016D79A = {
@@ -1275,7 +1280,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 97R2B46745;
-				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}";
+				FRAMEWORK_SEARCH_PATHS = (
+					"${SRCROOT}",
+					"$(PROJECT_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Info.plist";
@@ -1286,7 +1294,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1305,7 +1313,10 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 97R2B46745;
-				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}";
+				FRAMEWORK_SEARCH_PATHS = (
+					"${SRCROOT}",
+					"$(PROJECT_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Info.plist";
@@ -1315,7 +1326,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
