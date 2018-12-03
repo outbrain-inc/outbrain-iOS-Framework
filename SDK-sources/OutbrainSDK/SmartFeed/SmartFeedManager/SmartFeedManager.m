@@ -169,16 +169,7 @@
         NSArray *newSmartfeedItems = [self createSmartfeedItemsArrayFromResponse:response];
         [self reloadUIData: newSmartfeedItems];
         
-        // First load should fetch the children as well, if self.feedCycleLimit is set, we want to optimize
-        // performance by loading all the cycles in straight away (usually it will be < 10 times).
-        if (self.feedCycleLimit > 0 && self.feedCycleCounter < self.feedCycleLimit) {
-            while (self.feedCycleCounter < self.feedCycleLimit) {
-                [self loadMoreAccordingToFeedContent];
-            }
-        }
-        else {
-            [self loadMoreAccordingToFeedContent];
-        }
+        [self loadMoreAccordingToFeedContent];
     }];
 }
 
