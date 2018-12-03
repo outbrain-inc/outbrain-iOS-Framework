@@ -20,6 +20,9 @@
 @property (nonatomic, copy) NSString *widgetHeaderText;
 @property (nonatomic, copy) NSURL *videoUrl;
 @property (nonatomic, copy) NSString *smartfeedShadowColor;
+@property (nonatomic, copy) NSString *paidLabelText;
+@property (nonatomic, copy) NSString *paidLabelTextColor;
+@property (nonatomic, copy) NSString *paidLabelBackgroundColor;
 
 @end
 
@@ -41,6 +44,11 @@
             self.videoUrl = [NSURL URLWithString:videoUrlStr];
         }
         self.smartfeedShadowColor = [payload valueForKey:@"sdk_sf_shadow_color"];
+        
+        self.paidLabelText = [payload valueForKey:@"dynamic:PaidLabel"];
+        self.paidLabelTextColor = [payload valueForKey:@"dynamic:PaidLabelTextColor"];
+        self.paidLabelBackgroundColor = [payload valueForKey:@"dynamic:PaidLabelBackgroundColor"];
+        
         NSString *feedContentStr = [payload valueForKey:@"feedContent"];
         if (self.isSmartFeed && feedContentStr != nil) {
             NSData *feedContentData = [feedContentStr dataUsingEncoding:NSUTF8StringEncoding];

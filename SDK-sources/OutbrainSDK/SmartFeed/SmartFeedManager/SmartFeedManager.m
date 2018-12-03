@@ -243,9 +243,7 @@
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                     videoParams:videoParams
                                            singleRecommendation:response.recommendations[0]
-                                                    widgetTitle:widgetTitle
-                                                        request:response.request
-                                                 shadowColorStr:response.settings.smartfeedShadowColor];
+                                                    odbResponse:response];
         
         [newSmartfeedItems addObject:item];
         // New implementation for Video - if video available there can only be one item in the response (paid + video)
@@ -340,11 +338,12 @@
 
 -(NSArray *) createSingleItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
-    NSString *shadowColor = response.settings.smartfeedShadowColor;
-    
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
     for (OBRecommendation *rec in recommendations) {
-        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec type:templateType widgetTitle:widgetTitle request:response.request shadowColorStr: shadowColor];
+        SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec
+                                                                 odbResponse:response
+                                                                        type:templateType];
+        
         [newSmartfeedItems addObject:item];
         
     }
@@ -353,15 +352,16 @@
 
 -(NSArray *) createCarouselItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
-    NSString *shadowColor = response.settings.smartfeedShadowColor;
     
-    SFItemData *item = [[SFItemData alloc] initWithList:recommendations type:templateType widgetTitle:widgetTitle request:response.request shadowColorStr:shadowColor];
+    SFItemData *item = [[SFItemData alloc] initWithList:recommendations
+                                            odbResponse:response
+                                                   type:templateType];
+    
     return @[item];
 }
 
 -(NSArray *) createGridItemsFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
-    NSString *shadowColor = response.settings.smartfeedShadowColor;
     
     NSUInteger itemsPerRow = 0;
     if (templateType == SFTypeGridTwoInRowNoTitle || templateType == SFTypeGridTwoInRowWithTitle) {
@@ -399,12 +399,20 @@
             }
             
             NSURL *videoURL = [self appendParamsToVideoUrl: response];
-            SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL videoParams:videoParams reclist:singleLineRecs type:SFTypeGridTwoInRowWithVideo widgetTitle:nil request:response.request shadowColorStr:shadowColor];
+            SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL
+                                                             videoParams:videoParams
+                                                                 reclist:singleLineRecs
+                                                             odbResponse:response
+                                                                    type:SFTypeGridTwoInRowWithVideo];
+            
             [newSmartfeedItems addObject:videoItem];
             continue;
         }
         
-        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs type:templateType widgetTitle:widgetTitle request:response.request shadowColorStr:shadowColor];
+        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs
+                                                odbResponse:response
+                                                       type:templateType];
+        
         [newSmartfeedItems addObject:item];
     }
 
@@ -585,6 +593,7 @@
     }
     
     horizontalView.outbrainRecs = sfItem.outbrainRecs;
+    horizontalView.settings = sfItem.odbSettings;
     horizontalView.shadowColor = sfItem.shadowColor;
     [horizontalView setupView];
     [horizontalView setOnRecommendationClick:^(OBRecommendation *rec) {

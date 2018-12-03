@@ -18,16 +18,18 @@ extern NSInteger kVideoReadyStatus;
 extern NSInteger kVideoFinishedStatus;
 
 
-- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr;
+- (id)initWithSingleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type;
 
-- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr;
+- (id)initWithList:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type;
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams singleRecommendation:(OBRecommendation *)rec widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr;
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse;
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams reclist:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr;
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams reclist:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type;
+
 
 @property (nonatomic, strong, readonly) NSArray *outbrainRecs;
 @property (nonatomic, strong, readonly) OBRecommendation *singleRec;
+@property (nonatomic, strong, readonly) OBSettings *odbSettings;
 @property (nonatomic, strong, readonly) UIColor *shadowColor;
 @property (nonatomic, assign, readonly) SFItemType itemType;
 @property (nonatomic, copy, readonly) NSString *widgetTitle;

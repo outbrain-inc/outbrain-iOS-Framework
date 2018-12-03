@@ -20,6 +20,7 @@ typedef void(^OnAdChoicesIconClick)(NSURL *url);
 
 @property (nonatomic, strong) UIColor * _Nullable shadowColor;
 @property (nonatomic, strong) NSArray * _Nullable outbrainRecs;
+@property (nonatomic, strong) OBSettings * _Nullable settings;
 @property (nonatomic) OnRecommendationClick _Nonnull onRecommendationClick;
 @property (nonatomic) OnAdChoicesIconClick _Nonnull onAdChoicesIconClick;
 

@@ -37,17 +37,30 @@
     [view setNeedsLayout];
 }
 
-+(void) addHeightConstraint:(CGFloat) height toView:(UIView *)view {
++(void) addConstraint:(NSLayoutAttribute)attribute constant:(CGFloat)constant toView:(UIView *)view {
     view.translatesAutoresizingMaskIntoConstraints = NO;
-    NSLayoutConstraint *heightConst = [NSLayoutConstraint
+    NSLayoutConstraint *constraint = [NSLayoutConstraint
                                   constraintWithItem:view
-                                  attribute:NSLayoutAttributeHeight
+                                  attribute:attribute
                                   relatedBy:NSLayoutRelationEqual
                                   toItem:nil
                                   attribute:NSLayoutAttributeNotAnAttribute
                                   multiplier:0
-                                  constant:height];
-    [view addConstraint:heightConst];
+                                  constant:constant];
+    [view addConstraint:constraint];
+}
+
++(void) addConstraint:(NSLayoutAttribute)attribute constant:(CGFloat) constant baseView:(UIView *)baseView toView:(UIView *)toView{
+    baseView.translatesAutoresizingMaskIntoConstraints = NO;
+    NSLayoutConstraint *constraint = [NSLayoutConstraint
+                                      constraintWithItem:baseView
+                                      attribute: attribute
+                                      relatedBy:NSLayoutRelationEqual
+                                      toItem:toView
+                                      attribute:attribute
+                                      multiplier:1
+                                      constant:constant];
+    [baseView addConstraint:constraint];
 }
 
 +(void) addDropShadowToView:(UIView *)view {
@@ -65,6 +78,25 @@
     view.layer.shadowOpacity = 1.0f;
     view.layer.masksToBounds = NO;
     view.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:view.layer.cornerRadius].CGPath;
+}
+
++ (void) addPaidLabelToImageView:(UIImageView *)recImageView withSettings:(OBSettings *)settings {
+    UILabel *paidLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    paidLabel.text = settings.paidLabelText;
+    paidLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12.0];
+    paidLabel.textColor = settings.paidLabelTextColor ? [self colorFromHexString:settings.paidLabelTextColor] : UIColor.whiteColor;
+    paidLabel.textAlignment = NSTextAlignmentCenter;
+    paidLabel.backgroundColor = [self colorFromHexString:settings.paidLabelBackgroundColor ? settings.paidLabelBackgroundColor : @"#666666"];
+    paidLabel.tag = SPONSORED_LABEL_TAG;
+    BOOL isRTL = [SFUtils isRTL:settings.paidLabelText];
+    [recImageView addSubview:paidLabel];
+    
+    CGSize expectedLabelSize = [settings.paidLabelText sizeWithFont:paidLabel.font constrainedToSize:recImageView.frame.size lineBreakMode:paidLabel.lineBreakMode];
+    
+    [self addConstraint:NSLayoutAttributeHeight constant:expectedLabelSize.height + 6.0 toView:paidLabel];
+    [self addConstraint:NSLayoutAttributeWidth constant:expectedLabelSize.width + 20.0 toView:paidLabel];
+    [self addConstraint:(isRTL ? NSLayoutAttributeLeading : NSLayoutAttributeTrailing) constant:0 baseView:recImageView toView:paidLabel];
+    [self addConstraint:NSLayoutAttributeBottom constant:10 baseView:recImageView toView:paidLabel];
 }
 
 + (UIColor *)colorFromHexString:(NSString *)hexString {

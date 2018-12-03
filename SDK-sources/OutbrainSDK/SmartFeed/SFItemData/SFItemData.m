@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSArray *outbrainRecs;
 @property (nonatomic, strong) OBRecommendation *singleRec;
+@property (nonatomic, strong) OBSettings *odbSettings;
 @property (nonatomic, assign) SFItemType itemType;
 @property (nonatomic, copy) NSString *widgetTitle;
 @property (nonatomic, copy) NSString *widgetId;
@@ -28,18 +29,17 @@ NSInteger kVideoInitStatus = 1112;
 NSInteger kVideoReadyStatus = 1113;
 NSInteger kVideoFinishedStatus = 1114;
 
-
-- (id)initWithSingleRecommendation:(OBRecommendation *)rec type:(SFItemType)type widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr {
+- (id)initWithSingleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type {
     self = [super init];
     if (self) {
         self.singleRec = rec;
         self.itemType = type;
-        [self commonInitWithWidgetTitle:widgetTitle request:request shadowColorStr:shadowColorStr];
+        [self commonInitWithResponse:odbResponse];
     }
     return self;
 }
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams singleRecommendation:(OBRecommendation *)rec widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr {
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse {
     self = [super init];
     if (self) {
         self.videoUrl = videoUrl;
@@ -55,13 +55,14 @@ NSInteger kVideoFinishedStatus = 1114;
         }
         
         self.singleRec = rec;
-        self.itemType = widgetTitle ? SFTypeStripVideoWithPaidRecAndTitle : SFTypeStripVideoWithPaidRecNoTitle;
-        [self commonInitWithWidgetTitle:widgetTitle request:request shadowColorStr:shadowColorStr];
+        self.itemType = odbResponse.settings.widgetHeaderText ? SFTypeStripVideoWithPaidRecAndTitle : SFTypeStripVideoWithPaidRecNoTitle;
+        [self commonInitWithResponse:odbResponse];
     }
     return self;
 }
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams reclist:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr {
+
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams reclist:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type {
     self = [super init];
     if (self) {
         self.videoUrl = videoUrl;
@@ -78,31 +79,29 @@ NSInteger kVideoFinishedStatus = 1114;
         
         self.outbrainRecs = recArray;
         self.itemType = type;
-        [self commonInitWithWidgetTitle:widgetTitle request:request shadowColorStr:shadowColorStr];
+        [self commonInitWithResponse:odbResponse];
     }
     return self;
 }
 
-- (id)initWithList:(NSArray *)recArray type:(SFItemType)type widgetTitle:(NSString *)widgetTitle request:(OBRequest *)request shadowColorStr:(NSString *)shadowColorStr {
-    
+- (id)initWithList:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type {
     self = [super init];
     if (self) {
         self.outbrainRecs = recArray;
         self.itemType = type;
-        [self commonInitWithWidgetTitle:widgetTitle request:request shadowColorStr:shadowColorStr];
+        [self commonInitWithResponse:odbResponse];
     }
     return self;
 }
 
-- (void)commonInitWithWidgetTitle:(NSString *)widgetTitle
-                         request:(OBRequest *)request
-                   shadowColorStr:(NSString *)shadowColorStr
+- (void) commonInitWithResponse:(OBRecommendationResponse *)odbResponse
 {
-    self.widgetTitle = widgetTitle;
-    self.widgetId = request.widgetId;
-    self.request = request;
-    if (shadowColorStr) {
-        self.shadowColor = [SFUtils colorFromHexString:shadowColorStr];
+    self.odbSettings = odbResponse.settings;
+    self.request = odbResponse.request;
+    self.widgetTitle = self.odbSettings.widgetHeaderText;
+    self.widgetId = self.request.widgetId;
+    if (self.odbSettings.smartfeedShadowColor) {
+        self.shadowColor = [SFUtils colorFromHexString:self.odbSettings.smartfeedShadowColor];
     }
 }
 
