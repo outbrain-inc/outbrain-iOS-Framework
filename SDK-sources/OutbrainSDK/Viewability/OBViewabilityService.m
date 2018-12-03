@@ -129,7 +129,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 }
 
 - (void) addOBLabelToMap:(OBLabel *)obLabel {
-    NSString *key = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, [obLabel.url hash], obLabel.widgetId, (long)0];
+    NSString *key = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, (long)[obLabel.url hash], obLabel.widgetId, (long)0];
     self.obLabelMap[key] = obLabel;
 }
 
@@ -171,7 +171,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     
     NSDictionary *viewabilityDictionary = [viewabilityData toDictionary];
     
-    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, urlHash, widgetId, (long)widgetIndex];
+    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, (long)urlHash, widgetId, (long)widgetIndex];
 
     [self.viewabilityDataMap setObject:viewabilityDictionary forKey:viewabilityKey];
     
@@ -189,12 +189,12 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 }
 
 - (void) reportRecsShownForOBLabel:(OBLabel *)obLabel {
-    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, [obLabel.url hash], obLabel.widgetId, (long)0];
+    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, (long)[obLabel.url hash], obLabel.widgetId, (long)0];
     [self reportRecsShownForKey:viewabilityKey];
 }
 
 - (void) reportRecsShownForRequest:(OBRequest *)request {
-    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, [request.url hash], request.widgetId, (long)request.widgetIndex];
+    NSString *viewabilityKey = [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, (long)[request.url hash], request.widgetId, (long)request.widgetIndex];
     [self reportRecsShownForKey:viewabilityKey];
 }
 
