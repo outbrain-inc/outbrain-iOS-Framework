@@ -20,6 +20,6 @@ echo ""
 echo "- edit the Outbrain.m file"
 PREVIOUS_SDK_VERSION=`cat $OUTBRAIN_SDK_M_PATH | grep "OB_SDK_VERSION" | cut -d "=" -f2 | cut -d \" -f2`
 echo "- replacing previous version ($PREVIOUS_SDK_VERSION) with current version ($1)"
-sed -i -e "s/${PREVIOUS_SDK_VERSION}/${1}/g" $OUTBRAIN_SDK_M_PATH
+sed -i '' -e "s/${PREVIOUS_SDK_VERSION}/${1}/g" $OUTBRAIN_SDK_M_PATH
 
 git status
