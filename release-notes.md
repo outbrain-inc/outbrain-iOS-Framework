@@ -1,5 +1,12 @@
 # Release Notes
 
+## v3.4.3 - December 5th, 2018
+
+- Smartfeed Paid Label support
+- Smartfeed batch size = 1
+- Adapting project to Xcode 10.1 (Swift 4.2)
+
+
 ## v3.4.2 - Novemeber 28th, 2018
 
 - Viewability support for Smartfeed sub-widgets (children) - UICollectiovView and UITableView
