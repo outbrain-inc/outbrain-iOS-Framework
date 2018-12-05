@@ -4,7 +4,6 @@
 
 - Smartfeed Paid Label support
 - Smartfeed batch size = 1
-- Adapting project to Xcode 10.1 (still works on Xcode 9)
 - Add update_version.sh
 
 
