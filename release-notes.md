@@ -1,5 +1,12 @@
 # Release Notes
 
+## v3.4.4 - December 6th, 2018
+
+- UX Optimization (derieved from Sky).
+    1) First reloadData() will be called for parent + children response (was called only for parent)
+    2) If Smartfeed is TableView (UX performance not so good) and we are about to update UI for relatively small number of items and feedCycleLimit is set and we're not at the limit yet - let's postpone the reloadUI and loadMoreAccordingToFeedContent instead.
+- 2 fixes in Smartfeed tableview logic which solve crashes for Sky demo app in which they use UIPageViewController with ArticleVC in carousel. The quick loading cause those crashes. now it is much more stable
+
 ## v3.4.3 - December 5th, 2018
 
 - Smartfeed Paid Label support
