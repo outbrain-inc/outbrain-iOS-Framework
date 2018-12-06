@@ -99,7 +99,7 @@
 {
     self.widgetId = widgetId;
     self.url = url;
-    self.outbrainSectionIndex = 1;
+    self.outbrainSectionIndex = -1;
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
     self.customNibsForWidgetId = [[NSMutableDictionary alloc] init];
     self.reuseIdentifierWidgetId = [[NSMutableDictionary alloc] init];
@@ -436,17 +436,18 @@
         if (self.sfTableViewManager.tableView != nil) {
             // tell the table view to update (at all of the inserted index paths)
             UITableView *tableView = self.sfTableViewManager.tableView;
-            [tableView beginUpdates];
-            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
             
             if (firstIdx.row == 0) {
-                [tableView insertSections:[NSIndexSet indexSetWithIndex: self.outbrainSectionIndex] withRowAnimation:UITableViewRowAnimationNone];
+                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+                [tableView reloadData];
+                return;
             }
             else {
-                [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+                [tableView beginUpdates];
+                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+                [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                [tableView endUpdates];
             }
-            
-            [tableView endUpdates];
         }
     }
 }
