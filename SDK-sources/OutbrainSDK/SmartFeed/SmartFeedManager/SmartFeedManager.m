@@ -143,7 +143,6 @@
         request.externalID = self.externalID;
     }
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
-        self.isLoading = NO;
         if (response.error) {
             NSLog(@"Error in fetchRecommendations - %@, for widget id: %@", response.error.localizedDescription, request.widgetId);
             return;
@@ -166,16 +165,18 @@
         
         // NSLog(@"loadFirstTimeForFeed received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
         
-        NSArray *newSmartfeedItems = [self createSmartfeedItemsArrayFromResponse:response];
-        [self reloadUIData: newSmartfeedItems];
-        
-        [self loadMoreAccordingToFeedContent];
+        NSArray *parentSmartfeedItems = [self createSmartfeedItemsArrayFromResponse:response];
+        [self loadMoreAccordingToFeedContent:parentSmartfeedItems];
     }];
 }
 
 -(void) loadMoreAccordingToFeedContent {
+    [self loadMoreAccordingToFeedContent:nil];
+}
+
+-(void) loadMoreAccordingToFeedContent:(NSArray *)pendingItems {
     __block NSUInteger responseCount = 0;
-    __block NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
+    __block NSMutableArray *newSmartfeedItems = pendingItems ? [pendingItems mutableCopy] : [[NSMutableArray alloc] init];
     __block NSUInteger requestBatchSize = [self.feedContentArray count];
     for (NSString *widgetId in self.feedContentArray) {
         OBRequest *request = [OBRequest requestWithURL:self.url widgetID: widgetId widgetIndex:self.outbrainIndex++];
@@ -202,7 +203,6 @@
             
             [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:response]];
             if (responseCount == requestBatchSize) {
-                self.isLoading = NO;
                 [self reloadUIData: newSmartfeedItems];
             }
         }];
@@ -411,6 +411,16 @@
 }
 
 -(void) reloadUIData:(NSArray *) newSmartfeedItems {
+    // UX Optimization (derieved from Sky)
+    // If Smartfeed is TableView (UX performance not so good) and we are about to update UI for relatively small number of items
+    // and feedCycleLimit is set and we're not at the limit yet - let's postpone the reloadUI and loadMoreAccordingToFeedContent instead.
+    if (self.sfTableViewManager && newSmartfeedItems.count < 5 && self.feedCycleLimit > 0 && self.feedCycleCounter < self.feedCycleLimit) {
+        [self loadMoreAccordingToFeedContent:newSmartfeedItems];
+        return;
+    }
+    
+    self.isLoading = NO;
+    
     NSMutableArray *indexPaths = [NSMutableArray array];
     // build the index paths for insertion
     // since you're adding to the end of datasource, the new rows will start at count
@@ -436,18 +446,12 @@
         if (self.sfTableViewManager.tableView != nil) {
             // tell the table view to update (at all of the inserted index paths)
             UITableView *tableView = self.sfTableViewManager.tableView;
-            
-            if (firstIdx.row == 0) {
-                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+            [UIView performWithoutAnimation:^{
                 [tableView reloadData];
-                return;
-            }
-            else {
                 [tableView beginUpdates];
-                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-                [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
                 [tableView endUpdates];
-            }
+            }];
         }
     }
 }
