@@ -470,6 +470,14 @@
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     UINib *singleItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
     NSString *singleCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
+    if (singleItemCellNib) {
+        UIView *rootView = [[singleItemCellNib instantiateWithOwner:self options:nil] objectAtIndex:0];
+        if (![rootView isKindOfClass:[UITableViewCell class]]) {
+            NSLog([NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UITableViewCell. --> reverting back to default", singleCellIdentifier]);
+            singleItemCellNib = nil; // reverting back to default
+        }
+    }
+
     if (singleItemCellNib && singleCellIdentifier && sfItem.singleRec) { // custom UI
         [self.sfTableViewManager.tableView registerNib:singleItemCellNib forCellReuseIdentifier:singleCellIdentifier];
         sfItem.isCustomUI = YES;
@@ -563,6 +571,14 @@
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UINib *horizontalItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
     NSString *horizontalCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
+    
+    if (horizontalItemCellNib) {
+        UIView *rootView = [[horizontalItemCellNib instantiateWithOwner:self options:nil] objectAtIndex:0];
+        if (![rootView isKindOfClass:[UICollectionViewCell class]]) {
+            NSLog([NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UICollectionViewCell. --> reverting back to default", horizontalCellIdentifier]);
+            horizontalItemCellNib = nil; // reverting back to default
+        }
+    }
     
     if (cellTitleLabel) {
         if (sfItem.widgetTitle) {
