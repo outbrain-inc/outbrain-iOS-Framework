@@ -29,8 +29,8 @@
     
     view.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [[view leadingAnchor] constraintEqualToAnchor:[parentView leadingAnchor] constant: 10].active = YES;
-    [[view trailingAnchor] constraintEqualToAnchor:[parentView trailingAnchor] constant: -10].active = YES;
+    [[view leadingAnchor] constraintEqualToAnchor:[parentView leadingAnchor] constant: 7].active = YES;
+    [[view trailingAnchor] constraintEqualToAnchor:[parentView trailingAnchor] constant: -7].active = YES;
     [[view topAnchor] constraintEqualToAnchor:[parentView topAnchor] constant:0].active = YES;
     [[view bottomAnchor] constraintEqualToAnchor:[parentView bottomAnchor] constant:0].active = YES;
     
