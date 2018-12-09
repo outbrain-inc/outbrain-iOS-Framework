@@ -86,6 +86,7 @@
 		E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */; };
 		E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */; };
 		E61E6CFE208611380016D79A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFD208611380016D79A /* Assets.xcassets */; };
+		E6250CCD21BD5E8900C329B9 /* SFUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6250CCC21BD5E8900C329B9 /* SFUtilsTests.m */; };
 		E62B7E4620D12C490096F5BD /* OutbrainManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E62B7E4420D12C490096F5BD /* OutbrainManager.h */; };
 		E62B7E4720D12C490096F5BD /* OutbrainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E62B7E4520D12C490096F5BD /* OutbrainManager.m */; };
 		E63B784C212AB1860018C225 /* SFImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7840212AB1860018C225 /* SFImageLoader.h */; };
@@ -250,6 +251,7 @@
 		E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalView.m; sourceTree = "<group>"; };
 		E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageCollectionLayout.h; sourceTree = "<group>"; };
 		E61E6CFD208611380016D79A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E6250CCC21BD5E8900C329B9 /* SFUtilsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFUtilsTests.m; sourceTree = "<group>"; };
 		E62B7E4420D12C490096F5BD /* OutbrainManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutbrainManager.h; sourceTree = "<group>"; };
 		E62B7E4520D12C490096F5BD /* OutbrainManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutbrainManager.m; sourceTree = "<group>"; };
 		E63B7840212AB1860018C225 /* SFImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageLoader.h; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				E61E6C1320836C180016D79A /* OBParseODBTests.m */,
 				E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */,
 				E61E6C1420836C180016D79A /* OutbrainHelperTests.m */,
+				E6250CCC21BD5E8900C329B9 /* SFUtilsTests.m */,
 				E61E6C1520836C180016D79A /* Info.plist */,
 			);
 			path = OutbrainSDKTests;
@@ -1065,6 +1068,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6250CCD21BD5E8900C329B9 /* SFUtilsTests.m in Sources */,
 				E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */,
 				E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */,
 				E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */,

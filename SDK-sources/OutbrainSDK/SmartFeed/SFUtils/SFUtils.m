@@ -108,6 +108,9 @@
 }
 
 +(BOOL) isRTL:(NSString *)string {
+    if (string == nil || string.length == 0) {
+        return NO;
+    }
     NSArray *tagschemes = [NSArray arrayWithObjects:NSLinguisticTagSchemeLanguage, nil];
     NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:tagschemes options:0];
     [tagger setString: string];
