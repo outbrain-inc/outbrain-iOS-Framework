@@ -195,14 +195,14 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
 - (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withTitle:(NSString *)title isSmartfeedWithNoChildren:(BOOL)isSmartfeedWithNoChildren {
     SFCollectionViewHeaderCell *sfHeaderCell = (SFCollectionViewHeaderCell *)cell;
     if (title) {
-        sfHeaderCell.headerOBLabel.text = title;
+        sfHeaderCell.headerLabel.text = title;
     }
     
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
     {
         sfHeaderCell.smartfeedLogoWidth.constant = 125.0;
-        UIFont *font = sfHeaderCell.headerOBLabel.font;
-        sfHeaderCell.headerOBLabel.font = [font fontWithSize:16.0];
+        UIFont *font = sfHeaderCell.headerLabel.font;
+        sfHeaderCell.headerLabel.font = [font fontWithSize:16.0];
     }
     
     if (isSmartfeedWithNoChildren) {
