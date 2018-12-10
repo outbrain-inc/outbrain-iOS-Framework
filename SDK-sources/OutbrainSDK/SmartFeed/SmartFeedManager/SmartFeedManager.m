@@ -624,15 +624,14 @@
     SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
     SFTableViewHeaderCell *sfHeaderCell = (SFTableViewHeaderCell *)cell;
     if (sfItem.widgetTitle) {
-        sfHeaderCell.headerOBLabel.text = sfItem.widgetTitle;
+        sfHeaderCell.headerLabel.text = sfItem.widgetTitle;
     }
-    [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
     
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
     {
         sfHeaderCell.smartfeedLogoWidth.constant = 125.0;
-        UIFont *font = sfHeaderCell.headerOBLabel.font;
-        sfHeaderCell.headerOBLabel.font = [font fontWithSize:16.0];
+        UIFont *font = sfHeaderCell.headerLabel.font;
+        sfHeaderCell.headerLabel.font = [font fontWithSize:16.0];
     }
     
     if (self.isSmartfeedWithNoChildren) {
@@ -702,8 +701,7 @@
     if (indexPath.row == 0) {
         // Smartfeed header
         SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
-        SFCollectionViewHeaderCell *sfHeaderCell = (SFCollectionViewHeaderCell *)cell;
-        [Outbrain registerOBLabel:sfHeaderCell.headerOBLabel withWidgetId:self.widgetId andUrl:self.url];
+        
         [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withTitle:sfItem.widgetTitle isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren];
         return;
     }

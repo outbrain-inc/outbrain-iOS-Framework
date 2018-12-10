@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvZ-DD-Tga" userLabel="ContentView">
                         <rect key="frame" x="0.0" y="0.0" width="433" height="68"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="455" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Sponsored Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imd-ra-IE4" customClass="OBLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="455" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Sponsored Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imd-ra-IE4" userLabel="Header Label">
                                 <rect key="frame" x="11" y="26" width="105.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,7 +66,7 @@
             <connections>
                 <outlet property="adChoicesImageView" destination="D9b-tS-IaU" id="c99-2g-qUf"/>
                 <outlet property="headerImageView" destination="CAP-KL-ahl" id="wBi-Un-B49"/>
-                <outlet property="headerOBLabel" destination="Imd-ra-IE4" id="scg-Jw-Cbe"/>
+                <outlet property="headerLabel" destination="Imd-ra-IE4" id="qhs-nS-sIY"/>
                 <outlet property="smartfeedLogoWidth" destination="jKi-7V-4H6" id="cV1-Mu-yb5"/>
             </connections>
             <point key="canvasLocation" x="-161.5" y="74"/>
