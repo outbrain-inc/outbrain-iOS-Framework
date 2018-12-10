@@ -1,5 +1,15 @@
 # Release Notes
 
+## v3.4.5 - December 10th, 2018
+
+- UI fix - clean yellow border when Video player is active
+- Bug fix: crash in isRTL method, NSLinguisticTagger Range or index out of bounds
+- Add protection in code for custom ui to make sure we will not crash due to a bad xib file
+- Bug fix - edit constraints to solve a bug in iPad carousel item.
+- Improvement - remove OBLabel from Smartfeed header cell 
+
+
+
 ## v3.4.4 - December 6th, 2018
 
 - UX Optimization (derieved from Sky).
