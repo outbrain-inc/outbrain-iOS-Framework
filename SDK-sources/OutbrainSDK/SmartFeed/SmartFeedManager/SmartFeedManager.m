@@ -49,6 +49,9 @@
 @property (nonatomic, strong) NSMutableDictionary *customNibsForWidgetId;
 @property (nonatomic, strong) NSMutableDictionary *reuseIdentifierWidgetId;
 
+@property (nonatomic, strong) UINib *smartFeedHeaderCustomUINib;
+@property (nonatomic, strong) NSString *smartFeedHeadercCustomUIReuseIdentifier;
+
 @end
 
 @implementation SmartFeedManager
@@ -464,6 +467,10 @@
     
     if (indexPath.row == 0) {
         // Smartfeed header cell
+        if (self.smartFeedHeaderCustomUINib) {
+            [self.sfTableViewManager.tableView registerNib:self.smartFeedHeaderCustomUINib forCellReuseIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier];
+            return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
+        }
         return [self.sfTableViewManager tableView:tableView headerCellForRowAtIndexPath:indexPath isRTL:self.isRTL];
     }
     
@@ -627,13 +634,6 @@
         sfHeaderCell.headerLabel.text = sfItem.widgetTitle;
     }
     
-    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
-    {
-        sfHeaderCell.smartfeedLogoWidth.constant = 125.0;
-        UIFont *font = sfHeaderCell.headerLabel.font;
-        sfHeaderCell.headerLabel.font = [font fontWithSize:16.0];
-    }
-    
     if (self.isSmartfeedWithNoChildren) {
         // Remove Smartfeed logo and place Outbrain regular logo instead
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -651,6 +651,10 @@
 {
     if (indexPath.row == 0) {
         // Smartfeed header cell
+        if (self.smartFeedHeaderCustomUINib) {
+            [self.sfCollectionViewManager.collectionView registerNib:self.smartFeedHeaderCustomUINib forCellWithReuseIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier];
+            return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
+        }
         return [self.sfCollectionViewManager collectionView:collectionView headerCellForItemAtIndexPath:indexPath isRTL:self.isRTL];
     }
     
@@ -810,6 +814,11 @@
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forWidgetId:(NSString *)widgetId {
     self.customNibsForWidgetId[widgetId] = nib;
     self.reuseIdentifierWidgetId[widgetId] = identifier;
+}
+
+- (void) registerHeaderNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
+    self.smartFeedHeaderCustomUINib = nib;
+    self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
 }
 
 #pragma mark - WKUIDelegate
