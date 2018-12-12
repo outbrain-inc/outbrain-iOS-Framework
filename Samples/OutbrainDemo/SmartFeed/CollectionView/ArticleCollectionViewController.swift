@@ -72,7 +72,12 @@ class ArticleCollectionViewController: UICollectionViewController {
         let carouselHorizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
         let singleCellNib = UINib(nibName: "AppSFSingleWithTitleCollectionViewCell", bundle: bundle)
         
+        let headerCellNib = UINib(nibName: "AppSFCollectionViewHeaderCell", bundle: bundle)
+        
+        
         // Example - un-comment to see how Smartfeed custom-UI works.
+        
+        self.smartFeedManager.registerHeaderNib(headerCellNib, withReuseIdentifier: "AppSFCollectionViewHeaderCell")
         
         // self.smartFeedManager.register(fixedhorizontalCellNib, withReuseIdentifier: "AppSFHorizontalFixedItemCell", forWidgetId: "SFD_MAIN_5")
         // self.smartFeedManager.register(carouselHorizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SDK_SFD_5")
