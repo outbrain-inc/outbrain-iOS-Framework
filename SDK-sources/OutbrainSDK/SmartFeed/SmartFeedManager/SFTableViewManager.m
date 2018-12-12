@@ -248,7 +248,9 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
             singleCell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
             singleCell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
-            singleCell.recSourceLabel.text = @"";
+            if (!sfItem.isCustomUI) {
+                singleCell.recSourceLabel.text = @"";
+            }
         }
     }
     
