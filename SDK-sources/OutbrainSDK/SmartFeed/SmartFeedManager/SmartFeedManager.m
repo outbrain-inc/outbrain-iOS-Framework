@@ -51,6 +51,8 @@
 
 @property (nonatomic, copy) NSString *smartFeedHeadercCustomUIReuseIdentifier;
 
+@property (nonatomic, assign) BOOL isTransparentBackground;
+
 @end
 
 @implementation SmartFeedManager
@@ -553,6 +555,14 @@
         // reload cells again because the first render always displays the wrong size.
         [horizontalCell.horizontalView setupView];
         [horizontalCell.horizontalView.collectionView reloadData];
+        
+        if (self.isTransparentBackground) {
+            horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
+            horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+        } else {
+            horizontalCell.horizontalView.backgroundColor = UIColor.whiteColor;
+            horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
+        }
     });
 }
 
@@ -568,6 +578,14 @@
     }
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
+    
+    if (self.isTransparentBackground) {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+    } else {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.whiteColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
+    }
     
     [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
 }
@@ -744,6 +762,16 @@
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
+    
+    if (self.isTransparentBackground) {
+        horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
+        horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+        horizontalCell.cellView.backgroundColor = UIColor.clearColor;
+    } else {
+        horizontalCell.horizontalView.backgroundColor = UIColor.whiteColor;
+        horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
+        horizontalCell.cellView.backgroundColor = UIColor.whiteColor;
+    }
 }
 
 - (void) configureHorizontalVideoCollectionCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -756,6 +784,16 @@
     BOOL shouldReturn = [SFUtils configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
     if (shouldReturn) {
         return;
+    }
+    
+    if (self.isTransparentBackground) {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+        horizontalVideoCell.cellView.backgroundColor = UIColor.clearColor;
+    } else {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.whiteColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
+        horizontalVideoCell.cellView.backgroundColor = UIColor.whiteColor;
     }
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
@@ -832,6 +870,10 @@
     }
     
     self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
+}
+
+- (void) setTransparentBackground: (BOOL)isTransparentBackground {
+    self.isTransparentBackground = isTransparentBackground;
 }
 
 #pragma mark - WKUIDelegate
