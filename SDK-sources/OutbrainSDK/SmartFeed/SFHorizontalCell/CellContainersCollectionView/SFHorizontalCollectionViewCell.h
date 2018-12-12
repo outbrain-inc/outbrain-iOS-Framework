@@ -15,9 +15,11 @@
 @property (nonatomic, weak) IBOutlet SFHorizontalView *horizontalView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalViewTrailingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalViewLeadingConstraint;
+- (BOOL)respondsToSelector:(SEL)aSelector;
 
 @optional
-// list of optional methods
+
+@property (nonatomic, weak) IBOutlet UIView *cellView;
 @end
 
 
