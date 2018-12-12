@@ -52,6 +52,8 @@
 @property (nonatomic, strong) UINib *smartFeedHeaderCustomUINib;
 @property (nonatomic, strong) NSString *smartFeedHeadercCustomUIReuseIdentifier;
 
+@property (nonatomic, assign) BOOL isTransparentSmartFeed;
+
 @end
 
 @implementation SmartFeedManager
@@ -555,6 +557,11 @@
         // reload cells again because the first render always displays the wrong size.
         [horizontalCell.horizontalView setupView];
         [horizontalCell.horizontalView.collectionView reloadData];
+        
+        if (self.isTransparentSmartFeed) {
+            horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
+            horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+        }
     });
 }
 
@@ -570,6 +577,11 @@
     }
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
+    
+    if (self.isTransparentSmartFeed) {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+    }
     
     [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
 }
@@ -819,6 +831,10 @@
 - (void) registerHeaderNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
     self.smartFeedHeaderCustomUINib = nib;
     self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
+}
+
+- (void) setTransparent: (BOOL)isTransparent {
+    self.isTransparentSmartFeed = isTransparent;
 }
 
 #pragma mark - WKUIDelegate
