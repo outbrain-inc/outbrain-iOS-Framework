@@ -561,6 +561,9 @@
         if (self.isTransparentBackground) {
             horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
             horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+        } else {
+            horizontalCell.horizontalView.backgroundColor = UIColor.whiteColor;
+            horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
         }
     });
 }
@@ -581,6 +584,9 @@
     if (self.isTransparentBackground) {
         horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
         horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+    } else {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.whiteColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
     }
     
     [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
@@ -764,6 +770,10 @@
         horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
         horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
         horizontalCell.cellView.backgroundColor = UIColor.clearColor;
+    } else {
+        horizontalCell.horizontalView.backgroundColor = UIColor.whiteColor;
+        horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
+        horizontalCell.cellView.backgroundColor = UIColor.whiteColor;
     }
 }
 
@@ -783,6 +793,10 @@
         horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
         horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
         horizontalVideoCell.cellView.backgroundColor = UIColor.clearColor;
+    } else {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.whiteColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
+        horizontalVideoCell.cellView.backgroundColor = UIColor.whiteColor;
     }
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
