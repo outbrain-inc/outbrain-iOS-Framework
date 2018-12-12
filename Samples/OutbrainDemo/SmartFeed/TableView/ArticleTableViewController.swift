@@ -48,7 +48,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         
         let headerCellNib = UINib(nibName: "AppSFTableViewHeaderCell", bundle: bundle)
         
-        self.smartFeedManager.registerHeaderNib(headerCellNib, withReuseIdentifier: "AppSFTableViewHeaderCell")
+        // self.smartFeedManager.registerHeaderNib(headerCellNib, withReuseIdentifier: "AppSFTableViewHeaderCell")
         
         //self.smartFeedManager.register(horizontalCellNib, withCellWithReuseIdentifier: "AppSFHorizontalItemCell",f
 //        self.smartFeedManager.register(fixedhorizontalCellNib, withReuseIdentifier: "AppSFHorizontalFixedItemCell", forWidgetId: "SFD_MAIN_2")

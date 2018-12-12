@@ -77,7 +77,7 @@ class ArticleCollectionViewController: UICollectionViewController {
         
         // Example - un-comment to see how Smartfeed custom-UI works.
         
-        self.smartFeedManager.registerHeaderNib(headerCellNib, withReuseIdentifier: "AppSFCollectionViewHeaderCell")
+        // self.smartFeedManager.registerHeaderNib(headerCellNib, withReuseIdentifier: "AppSFCollectionViewHeaderCell")
         
         // self.smartFeedManager.register(fixedhorizontalCellNib, withReuseIdentifier: "AppSFHorizontalFixedItemCell", forWidgetId: "SFD_MAIN_5")
         // self.smartFeedManager.register(carouselHorizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SDK_SFD_5")
