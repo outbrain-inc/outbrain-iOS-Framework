@@ -27,7 +27,8 @@
 
 typedef enum
 {
-    SFTypeStripNoTitle = 1,
+    SFTypeSmartfeedHeader = 1,
+    SFTypeStripNoTitle,
     SFTypeCarouselWithTitle,
     SFTypeCarouselNoTitle,
     SFTypeGridTwoInRowNoTitle,
@@ -88,6 +89,8 @@ typedef enum
 
 // Common Methods
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forWidgetId:(NSString *)widgetId;
+
+-(NSString * _Nullable) sfItemTypeFor:(NSIndexPath *)indexPath;
 
 - (void) registerHeaderNib: (UINib * _Nonnull)nib withReuseIdentifier:( NSString * _Nonnull )identifier;
 
