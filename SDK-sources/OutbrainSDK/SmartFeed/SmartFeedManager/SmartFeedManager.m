@@ -52,7 +52,7 @@
 @property (nonatomic, strong) UINib *smartFeedHeaderCustomUINib;
 @property (nonatomic, strong) NSString *smartFeedHeadercCustomUIReuseIdentifier;
 
-@property (nonatomic, assign) BOOL isTransparentSmartFeed;
+@property (nonatomic, assign) BOOL isTransparentBackground;
 
 @end
 
@@ -558,7 +558,7 @@
         [horizontalCell.horizontalView setupView];
         [horizontalCell.horizontalView.collectionView reloadData];
         
-        if (self.isTransparentSmartFeed) {
+        if (self.isTransparentBackground) {
             horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
             horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
         }
@@ -578,7 +578,7 @@
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
     
-    if (self.isTransparentSmartFeed) {
+    if (self.isTransparentBackground) {
         horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
         horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
     }
@@ -760,7 +760,7 @@
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
     
-    if (self.isTransparentSmartFeed) {
+    if (self.isTransparentBackground) {
         horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
         horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
         horizontalCell.cellView.backgroundColor = UIColor.clearColor;
@@ -779,7 +779,7 @@
         return;
     }
     
-    if (self.isTransparentSmartFeed) {
+    if (self.isTransparentBackground) {
         horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
         horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
         horizontalVideoCell.cellView.backgroundColor = UIColor.clearColor;
@@ -845,8 +845,8 @@
     self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
 }
 
-- (void) setTransparent: (BOOL)isTransparent {
-    self.isTransparentSmartFeed = isTransparent;
+- (void) setTransparentBackground: (BOOL)isTransparentBackground {
+    self.isTransparentBackground = isTransparentBackground;
 }
 
 #pragma mark - WKUIDelegate
