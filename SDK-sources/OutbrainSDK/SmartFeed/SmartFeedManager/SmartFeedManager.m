@@ -49,8 +49,7 @@
 @property (nonatomic, strong) NSMutableDictionary *customNibsForWidgetId;
 @property (nonatomic, strong) NSMutableDictionary *reuseIdentifierWidgetId;
 
-@property (nonatomic, strong) UINib *smartFeedHeaderCustomUINib;
-@property (nonatomic, strong) NSString *smartFeedHeadercCustomUIReuseIdentifier;
+@property (nonatomic, copy) NSString *smartFeedHeadercCustomUIReuseIdentifier;
 
 @end
 
@@ -467,8 +466,7 @@
     
     if (indexPath.row == 0) {
         // Smartfeed header cell
-        if (self.smartFeedHeaderCustomUINib) {
-            [self.sfTableViewManager.tableView registerNib:self.smartFeedHeaderCustomUINib forCellReuseIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier];
+        if (self.smartFeedHeadercCustomUIReuseIdentifier) {
             return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
         }
         return [self.sfTableViewManager tableView:tableView headerCellForRowAtIndexPath:indexPath isRTL:self.isRTL];
@@ -651,8 +649,7 @@
 {
     if (indexPath.row == 0) {
         // Smartfeed header cell
-        if (self.smartFeedHeaderCustomUINib) {
-            [self.sfCollectionViewManager.collectionView registerNib:self.smartFeedHeaderCustomUINib forCellWithReuseIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier];
+        if (self.smartFeedHeadercCustomUIReuseIdentifier) {
             return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
         }
         return [self.sfCollectionViewManager collectionView:collectionView headerCellForItemAtIndexPath:indexPath isRTL:self.isRTL];
@@ -817,7 +814,23 @@
 }
 
 - (void) registerHeaderNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
-    self.smartFeedHeaderCustomUINib = nib;
+    UIView *rootView = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
+    
+    if (self.sfCollectionViewManager != nil) {
+        if (![rootView isKindOfClass:[UICollectionViewCell class]]) {
+            NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UICollectionViewCell. --> reverting back to default", identifier]);
+            return; // reverting back to default
+        }
+        [self.sfCollectionViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
+    }
+    else {
+        if (![rootView isKindOfClass:[UITableViewCell class]]) {
+            NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UITableViewCell. --> reverting back to default", identifier]);
+            return; // reverting back to default
+        }
+        [self.sfTableViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
+    }
+    
     self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
 }
 
