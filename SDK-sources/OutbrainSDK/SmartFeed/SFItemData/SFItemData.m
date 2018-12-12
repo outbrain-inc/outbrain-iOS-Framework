@@ -106,8 +106,11 @@ NSInteger kVideoFinishedStatus = 1114;
 }
 
 +(NSString *) itemTypeString:(SFItemType) type {
-    if (type == SFTypeStripNoTitle) {
-        return @"SFTypeSingleItem";
+    if (type == SFTypeSmartfeedHeader) {
+        return @"SFTypeSmartfeedHeader";
+    }
+    else if (type == SFTypeStripNoTitle) {
+        return @"SFTypeStripNoTitle";
     }
     else if (type == SFTypeCarouselWithTitle) {
         return @"SFTypeCarouselWithTitle";
@@ -122,7 +125,7 @@ NSInteger kVideoFinishedStatus = 1114;
         return @"SFTypeStripWithTitle";
     }
     else if (type == SFTypeStripWithThumbnailNoTitle) {
-        return @"SFTypeStripWithThumbnail";
+        return @"SFTypeStripWithThumbnailNoTitle";
     }
     else if (type == SFTypeStripWithThumbnailWithTitle) {
         return @"SFTypeStripWithThumbnailWithTitle";

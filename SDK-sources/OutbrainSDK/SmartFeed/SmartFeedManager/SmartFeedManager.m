@@ -812,18 +812,18 @@
     self.reuseIdentifierWidgetId[widgetId] = identifier;
 }
 
--(SFItemType) sfItemTypeFor:(NSIndexPath *)indexPath {
+-(NSString *) sfItemTypeFor:(NSIndexPath *)indexPath {
     if (indexPath.section != self.outbrainSectionIndex) {
-        return SFTypeBadType;
+        return nil;
     }
     
     if (indexPath.row == 0) {
         // Smartfeed header cell
-        return SFTypeSmartfeedHeader;
+        return [SFItemData itemTypeString:SFTypeSmartfeedHeader];
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    return sfItem.itemType;
+    return [SFItemData itemTypeString:sfItem.itemType];
 }
 
 #pragma mark - WKUIDelegate

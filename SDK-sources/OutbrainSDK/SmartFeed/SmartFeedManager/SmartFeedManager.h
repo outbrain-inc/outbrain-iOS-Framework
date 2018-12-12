@@ -42,7 +42,6 @@ typedef enum
     SFTypeStripVideoWithPaidRecAndTitle,
     SFTypeStripVideoWithPaidRecNoTitle,
     SFTypeGridTwoInRowWithVideo,
-    SFTypeBadType
 } SFItemType;
 
 @property (nonatomic, strong, readonly) NSString * _Nullable url;
@@ -91,6 +90,6 @@ typedef enum
 // Common Methods
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forWidgetId:(NSString *)widgetId;
 
--(SFItemType) sfItemTypeFor:(NSIndexPath *)indexPath;
+-(NSString * _Nullable) sfItemTypeFor:(NSIndexPath *)indexPath;
 
 @end
