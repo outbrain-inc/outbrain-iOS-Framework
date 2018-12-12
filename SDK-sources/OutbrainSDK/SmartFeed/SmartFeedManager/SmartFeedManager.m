@@ -49,6 +49,10 @@
 @property (nonatomic, strong) NSMutableDictionary *customNibsForWidgetId;
 @property (nonatomic, strong) NSMutableDictionary *reuseIdentifierWidgetId;
 
+@property (nonatomic, copy) NSString *smartFeedHeadercCustomUIReuseIdentifier;
+
+@property (nonatomic, assign) BOOL isTransparentBackground;
+
 @end
 
 @implementation SmartFeedManager
@@ -464,6 +468,9 @@
     
     if (indexPath.row == 0) {
         // Smartfeed header cell
+        if (self.smartFeedHeadercCustomUIReuseIdentifier) {
+            return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
+        }
         return [self.sfTableViewManager tableView:tableView headerCellForRowAtIndexPath:indexPath isRTL:self.isRTL];
     }
     
@@ -548,6 +555,14 @@
         // reload cells again because the first render always displays the wrong size.
         [horizontalCell.horizontalView setupView];
         [horizontalCell.horizontalView.collectionView reloadData];
+        
+        if (self.isTransparentBackground) {
+            horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
+            horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+        } else {
+            horizontalCell.horizontalView.backgroundColor = UIColor.whiteColor;
+            horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
+        }
     });
 }
 
@@ -563,6 +578,14 @@
     }
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
+    
+    if (self.isTransparentBackground) {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+    } else {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.whiteColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
+    }
     
     [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
 }
@@ -627,13 +650,6 @@
         sfHeaderCell.headerLabel.text = sfItem.widgetTitle;
     }
     
-    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
-    {
-        sfHeaderCell.smartfeedLogoWidth.constant = 125.0;
-        UIFont *font = sfHeaderCell.headerLabel.font;
-        sfHeaderCell.headerLabel.font = [font fontWithSize:16.0];
-    }
-    
     if (self.isSmartfeedWithNoChildren) {
         // Remove Smartfeed logo and place Outbrain regular logo instead
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -651,6 +667,9 @@
 {
     if (indexPath.row == 0) {
         // Smartfeed header cell
+        if (self.smartFeedHeadercCustomUIReuseIdentifier) {
+            return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
+        }
         return [self.sfCollectionViewManager collectionView:collectionView headerCellForItemAtIndexPath:indexPath isRTL:self.isRTL];
     }
     
@@ -743,6 +762,16 @@
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
+    
+    if (self.isTransparentBackground) {
+        horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
+        horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+        horizontalCell.cellView.backgroundColor = UIColor.clearColor;
+    } else {
+        horizontalCell.horizontalView.backgroundColor = UIColor.whiteColor;
+        horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
+        horizontalCell.cellView.backgroundColor = UIColor.whiteColor;
+    }
 }
 
 - (void) configureHorizontalVideoCollectionCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -755,6 +784,16 @@
     BOOL shouldReturn = [SFUtils configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
     if (shouldReturn) {
         return;
+    }
+    
+    if (self.isTransparentBackground) {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+        horizontalVideoCell.cellView.backgroundColor = UIColor.clearColor;
+    } else {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.whiteColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
+        horizontalVideoCell.cellView.backgroundColor = UIColor.whiteColor;
     }
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
@@ -824,6 +863,31 @@
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     return [SFItemData itemTypeString:sfItem.itemType];
+}
+
+- (void) registerHeaderNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
+    UIView *rootView = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
+    
+    if (self.sfCollectionViewManager != nil) {
+        if (![rootView isKindOfClass:[UICollectionViewCell class]]) {
+            NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UICollectionViewCell. --> reverting back to default", identifier]);
+            return; // reverting back to default
+        }
+        [self.sfCollectionViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
+    }
+    else {
+        if (![rootView isKindOfClass:[UITableViewCell class]]) {
+            NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UITableViewCell. --> reverting back to default", identifier]);
+            return; // reverting back to default
+        }
+        [self.sfTableViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
+    }
+    
+    self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
+}
+
+- (void) setTransparentBackground: (BOOL)isTransparentBackground {
+    self.isTransparentBackground = isTransparentBackground;
 }
 
 #pragma mark - WKUIDelegate

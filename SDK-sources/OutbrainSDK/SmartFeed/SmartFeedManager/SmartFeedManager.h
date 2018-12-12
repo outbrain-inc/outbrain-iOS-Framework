@@ -92,4 +92,8 @@ typedef enum
 
 -(NSString * _Nullable) sfItemTypeFor:(NSIndexPath *)indexPath;
 
+- (void) registerHeaderNib: (UINib * _Nonnull)nib withReuseIdentifier:( NSString * _Nonnull )identifier;
+
+- (void) setTransparentBackground: (BOOL)isTransparentBackground;
+
 @end
