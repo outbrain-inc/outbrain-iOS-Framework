@@ -759,6 +759,12 @@
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
+    
+    if (self.isTransparentSmartFeed) {
+        horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
+        horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+        horizontalCell.cellView.backgroundColor = UIColor.clearColor;
+    }
 }
 
 - (void) configureHorizontalVideoCollectionCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -771,6 +777,12 @@
     BOOL shouldReturn = [SFUtils configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
     if (shouldReturn) {
         return;
+    }
+    
+    if (self.isTransparentSmartFeed) {
+        horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
+        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
+        horizontalVideoCell.cellView.backgroundColor = UIColor.clearColor;
     }
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];

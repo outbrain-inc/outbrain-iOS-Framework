@@ -12,6 +12,7 @@
 @interface SFHorizontalCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, weak) IBOutlet SFHorizontalView *horizontalView;
+@property (nonatomic, weak) IBOutlet UIView *cellView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *publisherImageView;
 
