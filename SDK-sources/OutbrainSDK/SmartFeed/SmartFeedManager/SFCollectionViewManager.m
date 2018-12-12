@@ -151,7 +151,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         case SFTypeGridTwoInRowWithVideo:
             return [collectionView dequeueReusableCellWithReuseIdentifier: SFHorizontalFixedWithVideoCellReuseId forIndexPath:indexPath];
         default:
-            break;
+            return nil;
     }
 }
 
