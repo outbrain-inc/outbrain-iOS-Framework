@@ -52,7 +52,7 @@ typedef enum
 @property (nonatomic, strong, readonly) NSMutableArray *smartFeedItemsArray;
 
 @property (nonatomic, weak) id<SmartFeedDelegate> delegate;
-
+@property (nonatomic, assign) CGFloat horizontalContainerMargin;
 
 -(NSInteger) smartFeedItemsCount;
 

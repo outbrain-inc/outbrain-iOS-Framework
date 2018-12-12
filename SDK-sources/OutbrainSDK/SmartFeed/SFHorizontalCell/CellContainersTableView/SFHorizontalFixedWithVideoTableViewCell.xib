@@ -32,6 +32,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="horizontalView" destination="ayI-4t-JuJ" id="9s4-d7-iHi"/>
+                <outlet property="horizontalViewLeadingConstraint" destination="Qg0-Ma-Hyq" id="5NX-rB-RRd"/>
+                <outlet property="horizontalViewTrailingConstraint" destination="E07-uT-4qu" id="f3O-cH-6AQ"/>
             </connections>
             <point key="canvasLocation" x="-146.5" y="-81.5"/>
         </tableViewCell>

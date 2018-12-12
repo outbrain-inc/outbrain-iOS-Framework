@@ -9,7 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "SFHorizontalView.h"
 
-@interface SFHorizontalCollectionViewCell : UICollectionViewCell
+@protocol SFHorizontalCellCommonProps
+@required
+// list of required methods
+@property (nonatomic, weak) IBOutlet SFHorizontalView *horizontalView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalViewTrailingConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalViewLeadingConstraint;
+
+@optional
+// list of optional methods
+@end
+
+
+@interface SFHorizontalCollectionViewCell : UICollectionViewCell <SFHorizontalCellCommonProps>
 
 @property (nonatomic, weak) IBOutlet SFHorizontalView *horizontalView;
 @property (nonatomic, weak) IBOutlet UIView *cellView;
