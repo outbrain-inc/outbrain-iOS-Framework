@@ -49,6 +49,8 @@
 @property (nonatomic, strong) NSMutableDictionary *customNibsForWidgetId;
 @property (nonatomic, strong) NSMutableDictionary *reuseIdentifierWidgetId;
 
+@property (nonatomic, copy) NSString *smartFeedHeadercCustomUIReuseIdentifier;
+
 @end
 
 @implementation SmartFeedManager
@@ -464,6 +466,9 @@
     
     if (indexPath.row == 0) {
         // Smartfeed header cell
+        if (self.smartFeedHeadercCustomUIReuseIdentifier) {
+            return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
+        }
         return [self.sfTableViewManager tableView:tableView headerCellForRowAtIndexPath:indexPath isRTL:self.isRTL];
     }
     
@@ -627,13 +632,6 @@
         sfHeaderCell.headerLabel.text = sfItem.widgetTitle;
     }
     
-    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
-    {
-        sfHeaderCell.smartfeedLogoWidth.constant = 125.0;
-        UIFont *font = sfHeaderCell.headerLabel.font;
-        sfHeaderCell.headerLabel.font = [font fontWithSize:16.0];
-    }
-    
     if (self.isSmartfeedWithNoChildren) {
         // Remove Smartfeed logo and place Outbrain regular logo instead
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -651,6 +649,9 @@
 {
     if (indexPath.row == 0) {
         // Smartfeed header cell
+        if (self.smartFeedHeadercCustomUIReuseIdentifier) {
+            return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
+        }
         return [self.sfCollectionViewManager collectionView:collectionView headerCellForItemAtIndexPath:indexPath isRTL:self.isRTL];
     }
     
@@ -810,6 +811,27 @@
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forWidgetId:(NSString *)widgetId {
     self.customNibsForWidgetId[widgetId] = nib;
     self.reuseIdentifierWidgetId[widgetId] = identifier;
+}
+
+- (void) registerHeaderNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
+    UIView *rootView = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
+    
+    if (self.sfCollectionViewManager != nil) {
+        if (![rootView isKindOfClass:[UICollectionViewCell class]]) {
+            NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UICollectionViewCell. --> reverting back to default", identifier]);
+            return; // reverting back to default
+        }
+        [self.sfCollectionViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
+    }
+    else {
+        if (![rootView isKindOfClass:[UITableViewCell class]]) {
+            NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UITableViewCell. --> reverting back to default", identifier]);
+            return; // reverting back to default
+        }
+        [self.sfTableViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
+    }
+    
+    self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
 }
 
 #pragma mark - WKUIDelegate

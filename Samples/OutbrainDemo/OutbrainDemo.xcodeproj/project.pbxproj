@@ -100,6 +100,10 @@
 		E61E6CEF2085DC6C0016D79A /* AppSFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CE72085DC6C0016D79A /* AppSFCollectionViewCell.swift */; };
 		E61E6CF02085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE82085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib */; };
 		E61E6CF12085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CE92085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib */; };
+		E6250D8621C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6250D8521C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib */; };
+		E6250D8721C0FEFF00C329B9 /* AppSFTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6250D8521C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib */; };
+		E6250D8921C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */; };
+		E6250D8A21C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */; };
 		E628614F2137FC8700D12A15 /* AppArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */; };
 		E62861502137FC8700D12A15 /* AppArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */; };
 		E62861542138231800D12A15 /* AppArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62861532138231800D12A15 /* AppArticleTableViewCell.swift */; };
@@ -250,6 +254,8 @@
 		E61E6CE72085DC6C0016D79A /* AppSFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFCollectionViewCell.swift; sourceTree = "<group>"; };
 		E61E6CE82085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFHorizontalFixedItemCell.xib; sourceTree = "<group>"; };
 		E61E6CE92085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
+		E6250D8521C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFTableViewHeaderCell.xib; sourceTree = "<group>"; };
+		E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AppSFCollectionViewHeaderCell.xib; path = SmartFeedCells/AppSFCollectionViewHeaderCell.xib; sourceTree = "<group>"; };
 		E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		E62861532138231800D12A15 /* AppArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArticleTableViewCell.swift; sourceTree = "<group>"; };
 		E6286166213C0EED00D12A15 /* AppSFHorizontalItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFHorizontalItemCell.xib; sourceTree = "<group>"; };
@@ -592,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */,
+				E6250D8521C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib */,
 				E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */,
 				E61E6CE02085DC6C0016D79A /* AppSFTableViewCell.xib */,
 				E61E6CE12085DC6C0016D79A /* AppSFTableViewCell.swift */,
@@ -604,6 +611,7 @@
 		E61E6CE32085DC6C0016D79A /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */,
 				E61E6CE42085DC6C0016D79A /* ArticleCollectionViewController.swift */,
 				E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */,
 				E61E6CE52085DC6C0016D79A /* SmartFeedCells */,
@@ -906,11 +914,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6250D8621C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib in Resources */,
 				E67A719D21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */,
 				E60DCD3D20BC3AAD0023FE93 /* AppSFTableViewCell.xib in Resources */,
 				E6286167213C0EEE00D12A15 /* AppSFHorizontalItemCell.xib in Resources */,
 				E64F6041212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
 				E64F603B212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */,
+				E6250D8921C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib in Resources */,
 				E60DCD3E20BC3AAD0023FE93 /* AppSFHorizontalFixedItemCell.xib in Resources */,
 				E60DCD3F20BC3AAD0023FE93 /* AppSingleNoTitleCollectionViewCell.xib in Resources */,
 				E64F603E212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
@@ -939,11 +949,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6250D8721C0FEFF00C329B9 /* AppSFTableViewHeaderCell.xib in Resources */,
 				E67A719E21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */,
 				E61E6CEA2085DC6C0016D79A /* AppSFTableViewCell.xib in Resources */,
 				E6286168213C0EEE00D12A15 /* AppSFHorizontalItemCell.xib in Resources */,
 				E64F6042212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
 				E64F603C212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */,
+				E6250D8A21C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib in Resources */,
 				E61E6CF02085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib in Resources */,
 				E61E6CF12085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib in Resources */,
 				E64F603F212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
