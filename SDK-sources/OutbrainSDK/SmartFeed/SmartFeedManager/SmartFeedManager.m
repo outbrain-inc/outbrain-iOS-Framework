@@ -107,6 +107,7 @@
     self.smartFeedItemsArray = [[NSMutableArray alloc] init];
     self.customNibsForWidgetId = [[NSMutableDictionary alloc] init];
     self.reuseIdentifierWidgetId = [[NSMutableDictionary alloc] init];
+    self.horizontalContainerMargin = 0;
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -550,27 +551,14 @@
 - (void) configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)horizontalCell atIndexPath:(NSIndexPath *)indexPath {
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
-    [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // reload cells again because the first render always displays the wrong size.
-        [horizontalCell.horizontalView setupView];
-        [horizontalCell.horizontalView.collectionView reloadData];
-        
-        if (self.isTransparentBackground) {
-            horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
-            horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
-        } else {
-            horizontalCell.horizontalView.backgroundColor = UIColor.whiteColor;
-            horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
-        }
-    });
+    [self commonConfigureHorizontalCell:horizontalCell withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
 }
 
 - (void) configureHorizontalVideoTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalWithVideoTableViewCell *horizontalVideoCell = (SFHorizontalWithVideoTableViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
-    [self commonConfigureHorizontalCell:horizontalVideoCell.horizontalView withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
+    [self commonConfigureHorizontalCell:horizontalVideoCell withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
     
     BOOL shouldReturn = [SFUtils configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
     if (shouldReturn) {
@@ -579,18 +567,17 @@
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
     
-    if (self.isTransparentBackground) {
-        horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
-        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
-    } else {
-        horizontalVideoCell.horizontalView.backgroundColor = UIColor.whiteColor;
-        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
-    }
-    
     [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
 }
 
--(void) commonConfigureHorizontalCell:(SFHorizontalView *)horizontalView withCellTitleLabel:(UILabel *)cellTitleLabel sfItem:(SFItemData *)sfItem {
+-(void) commonConfigureHorizontalCell:(id<SFHorizontalCellCommonProps>)horizontalCell withCellTitleLabel:(UILabel *)cellTitleLabel sfItem:(SFItemData *)sfItem {
+    SFHorizontalView *horizontalView = horizontalCell.horizontalView;
+    
+    if (self.horizontalContainerMargin != 0) {
+        horizontalCell.horizontalViewLeadingConstraint.constant = self.horizontalContainerMargin;
+        horizontalCell.horizontalViewTrailingConstraint.constant = self.horizontalContainerMargin;
+    }
+    
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UINib *horizontalItemCellNib = self.customNibsForWidgetId[sfItem.widgetId];
     NSString *horizontalCellIdentifier = self.reuseIdentifierWidgetId[sfItem.widgetId];
@@ -641,6 +628,23 @@
             [self.delegate userTappedOnAdChoicesIcon:url];
         }
     }];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // reload cells again because the first render always displays the wrong size.
+        [horizontalView setupView];
+        [horizontalView.collectionView reloadData];
+        
+        UIColor *defaultBGColor = UIColor.whiteColor;
+        
+        if (self.isTransparentBackground) {
+            defaultBGColor = UIColor.clearColor;
+        }
+        horizontalView.backgroundColor = defaultBGColor;
+        horizontalView.collectionView.backgroundColor = defaultBGColor;
+        if ([horizontalCell respondsToSelector:@selector(cellView)]) {
+            horizontalCell.cellView.backgroundColor = defaultBGColor;
+        }
+    });
 }
 
 - (void) configureSmartFeedHeaderTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -761,39 +765,19 @@
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    [self commonConfigureHorizontalCell:horizontalCell.horizontalView withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
     
-    if (self.isTransparentBackground) {
-        horizontalCell.horizontalView.backgroundColor = UIColor.clearColor;
-        horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
-        horizontalCell.cellView.backgroundColor = UIColor.clearColor;
-    } else {
-        horizontalCell.horizontalView.backgroundColor = UIColor.whiteColor;
-        horizontalCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
-        horizontalCell.cellView.backgroundColor = UIColor.whiteColor;
-    }
+    [self commonConfigureHorizontalCell:horizontalCell withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
 }
 
 - (void) configureHorizontalVideoCollectionCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalWithVideoCollectionViewCell *horizontalVideoCell = (SFHorizontalWithVideoCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
-    [self commonConfigureHorizontalCell:horizontalVideoCell.horizontalView withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
-    
+    [self commonConfigureHorizontalCell:horizontalVideoCell withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
     
     BOOL shouldReturn = [SFUtils configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
     if (shouldReturn) {
         return;
-    }
-    
-    if (self.isTransparentBackground) {
-        horizontalVideoCell.horizontalView.backgroundColor = UIColor.clearColor;
-        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.clearColor;
-        horizontalVideoCell.cellView.backgroundColor = UIColor.clearColor;
-    } else {
-        horizontalVideoCell.horizontalView.backgroundColor = UIColor.whiteColor;
-        horizontalVideoCell.horizontalView.collectionView.backgroundColor = UIColor.whiteColor;
-        horizontalVideoCell.cellView.backgroundColor = UIColor.whiteColor;
     }
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];

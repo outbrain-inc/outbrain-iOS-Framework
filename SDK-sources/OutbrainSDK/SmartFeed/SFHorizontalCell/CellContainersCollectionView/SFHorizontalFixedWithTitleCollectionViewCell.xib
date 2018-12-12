@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -56,6 +56,8 @@
             <connections>
                 <outlet property="cellView" destination="jJD-mi-P9N" id="lQE-SR-lJl"/>
                 <outlet property="horizontalView" destination="ZSE-ha-ESX" id="Wbw-Gg-Dbg"/>
+                <outlet property="horizontalViewLeadingConstraint" destination="wMb-QC-m0l" id="uBl-f3-hqa"/>
+                <outlet property="horizontalViewTrailingConstraint" destination="qYt-Rg-xni" id="E5X-4x-1aV"/>
                 <outlet property="titleLabel" destination="SEy-cl-S9c" id="JUo-wP-NNi"/>
             </connections>
             <point key="canvasLocation" x="-72.5" y="11.5"/>
