@@ -178,7 +178,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         // NSLog(@"loadFirstTimeForFeed received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
         
         NSArray *parentSmartfeedItems = [self createSmartfeedItemsArrayFromResponse:response];
+        if ([self.delegate respondsToSelector:@selector(smartFeedResponseReceived:forWidgetId:)]) {
+            [self.delegate smartFeedResponseReceived:response.recommendations forWidgetId:request.widgetId];
+        }
         [self loadMoreAccordingToFeedContent:parentSmartfeedItems];
+        
     }];
 }
 
@@ -216,6 +220,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:response]];
             if (responseCount == requestBatchSize) {
                 [self reloadUIData: newSmartfeedItems];
+            }
+            
+            if ([self.delegate respondsToSelector:@selector(smartFeedResponseReceived:forWidgetId:)]) {
+                [self.delegate smartFeedResponseReceived:response.recommendations forWidgetId:request.widgetId];
             }
         }];
     }
