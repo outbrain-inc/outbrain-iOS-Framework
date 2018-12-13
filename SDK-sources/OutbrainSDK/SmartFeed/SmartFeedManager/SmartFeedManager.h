@@ -88,9 +88,11 @@ typedef enum
     forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 // Common Methods
+-(NSString * _Nullable) sfItemTypeFor:(NSIndexPath *)indexPath;
+
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forWidgetId:(NSString *)widgetId;
 
--(NSString * _Nullable) sfItemTypeFor:(NSIndexPath *)indexPath;
+- (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forSFItemType:(NSInteger)itemType;
 
 - (void) registerHeaderNib: (UINib * _Nonnull)nib withReuseIdentifier:( NSString * _Nonnull )identifier;
 
