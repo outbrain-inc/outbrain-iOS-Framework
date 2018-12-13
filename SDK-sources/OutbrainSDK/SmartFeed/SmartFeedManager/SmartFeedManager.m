@@ -903,7 +903,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     return [SFItemData itemTypeString:sfItem.itemType];
 }
 
-- (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forSFItemType:(NSInteger)itemType {
+- (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forSFItemType:(SFItemType)itemType {
     NSNumber *convertedItemType = [NSNumber numberWithInteger: itemType];
     self.customNibsForItemType[convertedItemType] = nib;
     self.reuseIdentifierItemType[convertedItemType] = identifier;

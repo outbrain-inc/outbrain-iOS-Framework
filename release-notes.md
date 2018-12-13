@@ -1,5 +1,9 @@
 # Release Notes
 
+## v3.4.7 - December 13th, 2018
+
+- New `SmartFeedManager` method - `self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleCell", for: SFTypeStripWithTitle)`
+
 ## v3.4.6 - December 13th, 2018
 
 - Support header for custom UI - `self.smartFeedManager.registerHeaderNib(headerCellNib, withReuseIdentifier: "AppSFTableViewHeaderCell")`
