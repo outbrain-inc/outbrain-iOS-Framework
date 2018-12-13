@@ -1,5 +1,12 @@
 # Release Notes
 
+## v3.4.6 - December 13th, 2018
+
+- Support header for custom UI - `self.smartFeedManager.registerHeaderNib(headerCellNib, withReuseIdentifier: "AppSFTableViewHeaderCell")`
+- Support transparent color for horizontal container cell - `self.smartFeedManager.setTransparentBackground(true)`
+- Support set value for horizontal margin for horizontal container cell - `self.smartFeedManager.horizontalContainerMargin = 40.0`
+- New SmartFeedManager method - `let itemType = self.smartFeedManager.sfItemType(for: indexPath)`
+
 ## v3.4.5 - December 10th, 2018
 
 - UI fix - clean yellow border when Video player is active
