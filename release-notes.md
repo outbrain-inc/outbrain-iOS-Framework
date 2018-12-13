@@ -5,7 +5,8 @@
 - Support header for custom UI - `self.smartFeedManager.registerHeaderNib(headerCellNib, withReuseIdentifier: "AppSFTableViewHeaderCell")`
 - Support transparent color for horizontal container cell - `self.smartFeedManager.setTransparentBackground(true)`
 - Support set value for horizontal margin for horizontal container cell - `self.smartFeedManager.horizontalContainerMargin = 40.0`
-- New SmartFeedManager method - `let itemType = self.smartFeedManager.sfItemType(for: indexPath)`
+- New `SmartFeedManager` method - `let itemType = self.smartFeedManager.sfItemType(for: indexPath)`
+- New `SmartFeedDelegate` method - `func smartFeedResponseReceived(_ recommendations: [OBRecommendation], forWidgetId widgetId: String)`
 
 ## v3.4.5 - December 10th, 2018
 
@@ -56,7 +57,7 @@
 - Bug fix - custom ui didnt change color of rec title
 - Bug fix - infinite feed didnt work because condition was wrong
 
-## v3.2.0 - Octover 21, 2018
+## v3.2.0 - October 21, 2018
 
 - Video player in Smartfeed
 - Support for Smartfeed with only a parent with single recommendation (no children)
