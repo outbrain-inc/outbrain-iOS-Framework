@@ -60,6 +60,8 @@
 
 @implementation SmartFeedManager
 
+NSString * const kCustomUINib = @"CustomUINib";
+NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 #pragma mark - init methods
 - (id)init
@@ -481,21 +483,13 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    NSNumber *itemType = [NSNumber numberWithInteger:sfItem.itemType];
-    UINib *singleItemCellNibForWidgetId = self.customNibsForWidgetId[sfItem.widgetId];
-    NSString *singleCellIdentifierForWidgetId = self.reuseIdentifierWidgetId[sfItem.widgetId];
-    UINib *singleItemCellNibForItemType = self.customNibsForItemType[itemType];
-    NSString *singleCellIdentifierForItemType = self.reuseIdentifierItemType[itemType];
     UINib *singleItemCellNib = nil;
     NSString *singleCellIdentifier = nil;
-    if (singleItemCellNibForWidgetId && singleCellIdentifierForWidgetId) {
-        singleItemCellNib = singleItemCellNibForWidgetId;
-        singleCellIdentifier = singleCellIdentifierForWidgetId;
-    } else if (singleItemCellNibForItemType && singleCellIdentifierForItemType){
-        singleItemCellNib = singleItemCellNibForItemType;
-        singleCellIdentifier = singleCellIdentifierForItemType;
+    NSMutableDictionary *customNibAndIdentifierDictionary = [self getCustomNibAndIdentifierForSFItem:sfItem];
+    if (customNibAndIdentifierDictionary) {
+        singleItemCellNib = customNibAndIdentifierDictionary[kCustomUINib];
+        singleCellIdentifier = customNibAndIdentifierDictionary[kCustomUIIdentifier];
     }
-    
     
     if (singleItemCellNib) {
         UIView *rootView = [[singleItemCellNib instantiateWithOwner:self options:nil] objectAtIndex:0];
@@ -598,19 +592,12 @@
     }
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSNumber *itemType = [NSNumber numberWithInteger:sfItem.itemType];
-    UINib *horizontalItemCellNibForWidgetId = self.customNibsForWidgetId[sfItem.widgetId];
-    NSString *horizontalCellIdentifierForWidgetId = self.reuseIdentifierWidgetId[sfItem.widgetId];
-    UINib *horizontalItemCellNibForItemType = self.customNibsForItemType[itemType];
-    NSString *horizontalCellIdentifierForItemType = self.reuseIdentifierItemType[itemType];
     UINib *horizontalItemCellNib = nil;
     NSString *horizontalCellIdentifier = nil;
-    if (horizontalItemCellNibForWidgetId && horizontalCellIdentifierForWidgetId) {
-        horizontalItemCellNib = horizontalItemCellNibForWidgetId;
-        horizontalCellIdentifier = horizontalCellIdentifierForWidgetId;
-    } else if (horizontalItemCellNibForItemType && horizontalCellIdentifierForItemType){
-        horizontalItemCellNib = horizontalItemCellNibForItemType;
-        horizontalCellIdentifier = horizontalCellIdentifierForItemType;
+    NSMutableDictionary *customNibAndIdentifierDictionary = [self getCustomNibAndIdentifierForSFItem:sfItem];
+    if (customNibAndIdentifierDictionary) {
+        horizontalItemCellNib = customNibAndIdentifierDictionary[kCustomUINib];
+        horizontalCellIdentifier = customNibAndIdentifierDictionary[kCustomUIIdentifier];
     }
     
     if (horizontalItemCellNib) {
@@ -709,19 +696,12 @@
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    NSNumber *itemType = [NSNumber numberWithInteger:sfItem.itemType];
-    UINib *singleItemCellNibForWidgetId = self.customNibsForWidgetId[sfItem.widgetId];
-    NSString *singleCellIdentifierForWidgetId = self.reuseIdentifierWidgetId[sfItem.widgetId];
-    UINib *singleItemCellNibForItemType = self.customNibsForItemType[itemType];
-    NSString *singleCellIdentifierForItemType = self.reuseIdentifierItemType[itemType];
     UINib *singleItemCellNib = nil;
     NSString *singleCellIdentifier = nil;
-    if (singleItemCellNibForWidgetId && singleCellIdentifierForWidgetId) {
-        singleItemCellNib = singleItemCellNibForWidgetId;
-        singleCellIdentifier = singleCellIdentifierForWidgetId;
-    } else if (singleItemCellNibForItemType && singleCellIdentifierForItemType){
-        singleItemCellNib = singleItemCellNibForItemType;
-        singleCellIdentifier = singleCellIdentifierForItemType;
+    NSMutableDictionary *customNibAndIdentifierDictionary = [self getCustomNibAndIdentifierForSFItem:sfItem];
+    if (customNibAndIdentifierDictionary) {
+        singleItemCellNib = customNibAndIdentifierDictionary[kCustomUINib];
+        singleCellIdentifier = customNibAndIdentifierDictionary[kCustomUIIdentifier];
     }
     
     if (singleItemCellNib && singleCellIdentifier && sfItem.singleRec) { // custom UI
@@ -827,6 +807,26 @@
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
     
     [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
+}
+
+- (NSMutableDictionary *) getCustomNibAndIdentifierForSFItem: (SFItemData *)sfItem {
+    NSMutableDictionary *customNibAndIdentifierDictionary = [[NSMutableDictionary alloc] init];
+    NSNumber *itemType = [NSNumber numberWithInteger:sfItem.itemType];
+    UINib *itemCellNibForWidgetId = self.customNibsForWidgetId[sfItem.widgetId];
+    NSString *itemCellIdentifierForWidgetId = self.reuseIdentifierWidgetId[sfItem.widgetId];
+    UINib *itemCellNibForItemType = self.customNibsForItemType[itemType];
+    NSString *itemCellIdentifierForItemType = self.reuseIdentifierItemType[itemType];
+    if (itemCellNibForWidgetId && itemCellIdentifierForWidgetId) {
+        customNibAndIdentifierDictionary[kCustomUINib] = itemCellNibForWidgetId;
+        customNibAndIdentifierDictionary[kCustomUIIdentifier] = itemCellIdentifierForWidgetId;
+        return customNibAndIdentifierDictionary;
+    } else if (itemCellNibForItemType && itemCellIdentifierForItemType){
+        customNibAndIdentifierDictionary[kCustomUINib] = itemCellNibForItemType;
+        customNibAndIdentifierDictionary[kCustomUIIdentifier] = itemCellIdentifierForItemType;
+        return customNibAndIdentifierDictionary;
+    } else {
+        return nil;
+    }
 }
 
 #pragma mark - SFClickListener methods
