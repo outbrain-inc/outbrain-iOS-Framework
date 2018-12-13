@@ -1,8 +1,5 @@
 # Release Notes
 
-## v3.4.7 - December 13th, 2018
-
-- New `SmartFeedManager` method - `self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleCell", for: SFTypeStripWithTitle)`
 
 ## v3.4.6 - December 13th, 2018
 
@@ -11,6 +8,7 @@
 - Support set value for horizontal margin for horizontal container cell - `self.smartFeedManager.horizontalContainerMargin = 40.0`
 - New `SmartFeedManager` method - `let itemType = self.smartFeedManager.sfItemType(for: indexPath)`
 - New `SmartFeedDelegate` method - `func smartFeedResponseReceived(_ recommendations: [OBRecommendation], forWidgetId widgetId: String)`
+- New `SmartFeedManager` method - `self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleCell", for: SFTypeStripWithTitle)`
 
 ## v3.4.5 - December 10th, 2018
 
