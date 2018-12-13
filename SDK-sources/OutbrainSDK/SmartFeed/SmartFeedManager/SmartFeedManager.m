@@ -810,17 +810,19 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (NSMutableDictionary *) getCustomNibAndIdentifierForSFItem: (SFItemData *)sfItem {
+    // App developer can set Custom UI for widgetID or item type.
+    // In case both are present, widgetID will precedence.
     NSMutableDictionary *customNibAndIdentifierDictionary = [[NSMutableDictionary alloc] init];
     NSNumber *itemType = [NSNumber numberWithInteger:sfItem.itemType];
     UINib *itemCellNibForWidgetId = self.customNibsForWidgetId[sfItem.widgetId];
     NSString *itemCellIdentifierForWidgetId = self.reuseIdentifierWidgetId[sfItem.widgetId];
     UINib *itemCellNibForItemType = self.customNibsForItemType[itemType];
     NSString *itemCellIdentifierForItemType = self.reuseIdentifierItemType[itemType];
-    if (itemCellNibForWidgetId && itemCellIdentifierForWidgetId) {
+    if (itemCellNibForWidgetId && itemCellIdentifierForWidgetId) { // widgetID
         customNibAndIdentifierDictionary[kCustomUINib] = itemCellNibForWidgetId;
         customNibAndIdentifierDictionary[kCustomUIIdentifier] = itemCellIdentifierForWidgetId;
         return customNibAndIdentifierDictionary;
-    } else if (itemCellNibForItemType && itemCellIdentifierForItemType){
+    } else if (itemCellNibForItemType && itemCellIdentifierForItemType){ // itemType
         customNibAndIdentifierDictionary[kCustomUINib] = itemCellNibForItemType;
         customNibAndIdentifierDictionary[kCustomUIIdentifier] = itemCellIdentifierForItemType;
         return customNibAndIdentifierDictionary;
