@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <OutbrainSDK/OutbrainSDK.h>
 
-@protocol SmartFeedDelegate
+@protocol SmartFeedDelegate <NSObject>
 
 -(void) userTappedOnRecommendation:(OBRecommendation *_Nonnull)rec;
 
@@ -19,6 +19,9 @@
 -(void) userTappedOnVideoRec:(NSURL *_Nonnull)url;
 
 -(void) userTappedOnOutbrainLabeling;
+
+@optional
+-(void) smartFeedResponseReceived:(NSArray<OBRecommendation *> *_Nonnull)recommendations forWidgetId:(NSString *_Nonnull)widgetId;
 
 @end
 
