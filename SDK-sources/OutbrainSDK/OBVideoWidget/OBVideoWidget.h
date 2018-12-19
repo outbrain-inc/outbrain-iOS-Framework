@@ -32,5 +32,6 @@
 
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
                    widgetID:(NSString * _Nonnull)widgetId
+              containerView:(UIView * _Nonnull)containerView;
 
 @end
