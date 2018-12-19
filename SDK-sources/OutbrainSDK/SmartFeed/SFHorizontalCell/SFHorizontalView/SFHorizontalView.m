@@ -94,15 +94,7 @@
         }
         
         // Paid label
-        if (self.settings.paidLabelText) {
-            [SFUtils addPaidLabelToImageView:cell.recImageView withSettings:self.settings];
-        }
-        else {
-            UILabel *paidLabel = (UILabel *)[cell.recImageView viewWithTag: SPONSORED_LABEL_TAG];
-            if (paidLabel) {
-                [paidLabel removeFromSuperview];
-            }
-        }
+        [SFUtils configurePaidLabelToImageViewIfneeded:cell.recImageView withSettings:self.settings];
     }
     else {
         cell.recSourceLabel.text = @"";
