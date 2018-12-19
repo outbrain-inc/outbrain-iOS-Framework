@@ -233,15 +233,7 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         }
         
         // Paid label
-        if (sfItem.odbSettings.paidLabelText) {
-            [SFUtils addPaidLabelToImageView:singleCell.recImageView withSettings:sfItem.odbSettings];
-        }
-        else {
-            UILabel *paidLabel = (UILabel *)[singleCell.recImageView viewWithTag: SPONSORED_LABEL_TAG];
-            if (paidLabel) {
-                [paidLabel removeFromSuperview];
-            }
-        }
+        [SFUtils configurePaidLabelToImageViewIfneeded:singleCell.recImageView withSettings:sfItem.odbSettings];
     }
     else {
         if (rec.publisherLogoImage) {

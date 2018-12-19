@@ -80,8 +80,23 @@
     view.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:view.layer.cornerRadius].CGPath;
 }
 
-+ (void) addPaidLabelToImageView:(UIImageView *)recImageView withSettings:(OBSettings *)settings {
++ (void) configurePaidLabelToImageViewIfneeded:(UIImageView *)recImageView withSettings:(OBSettings *)settings {
+    UILabel *existingPaidLabel = (UILabel *)[recImageView viewWithTag: SPONSORED_LABEL_TAG];
+    if (existingPaidLabel) {
+        if (settings.paidLabelText) {
+            // if we received a settings for paidLabelText and the cell.recImageView already has a label on it yet -
+            // we should return since the label is already there.
+            return;
+        }
+        else {
+            // if we there is NO settings for paidLabelText and the cell.recImageView has a label on it yet - we will call:
+            [existingPaidLabel removeFromSuperview];
+            return;
+        }
+    }
+    
     UILabel *paidLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    
     paidLabel.text = settings.paidLabelText;
     paidLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12.0];
     paidLabel.textColor = settings.paidLabelTextColor ? [self colorFromHexString:settings.paidLabelTextColor] : UIColor.whiteColor;
