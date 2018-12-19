@@ -87,6 +87,8 @@
 		E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */; };
 		E61E6CFE208611380016D79A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFD208611380016D79A /* Assets.xcassets */; };
 		E6250CCD21BD5E8900C329B9 /* SFUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6250CCC21BD5E8900C329B9 /* SFUtilsTests.m */; };
+		E625100521CA866A00C329B9 /* OBVideoWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = E625100321CA866A00C329B9 /* OBVideoWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E625100621CA866A00C329B9 /* OBVideoWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = E625100421CA866A00C329B9 /* OBVideoWidget.m */; };
 		E62B7E4620D12C490096F5BD /* OutbrainManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E62B7E4420D12C490096F5BD /* OutbrainManager.h */; };
 		E62B7E4720D12C490096F5BD /* OutbrainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E62B7E4520D12C490096F5BD /* OutbrainManager.m */; };
 		E63B784C212AB1860018C225 /* SFImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7840212AB1860018C225 /* SFImageLoader.h */; };
@@ -252,6 +254,8 @@
 		E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageCollectionLayout.h; sourceTree = "<group>"; };
 		E61E6CFD208611380016D79A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6250CCC21BD5E8900C329B9 /* SFUtilsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFUtilsTests.m; sourceTree = "<group>"; };
+		E625100321CA866A00C329B9 /* OBVideoWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBVideoWidget.h; sourceTree = "<group>"; };
+		E625100421CA866A00C329B9 /* OBVideoWidget.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBVideoWidget.m; sourceTree = "<group>"; };
 		E62B7E4420D12C490096F5BD /* OutbrainManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutbrainManager.h; sourceTree = "<group>"; };
 		E62B7E4520D12C490096F5BD /* OutbrainManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutbrainManager.m; sourceTree = "<group>"; };
 		E63B7840212AB1860018C225 /* SFImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageLoader.h; sourceTree = "<group>"; };
@@ -410,6 +414,7 @@
 				E61E6CA62085D98F0016D79A /* SmartFeed */,
 				E61E6BCB20836C180016D79A /* AdIds */,
 				E61E6BCF20836C180016D79A /* Viewability */,
+				E625100221CA863100C329B9 /* OBVideoWidget */,
 				E61E6BD920836C180016D79A /* Network */,
 				E61E6BE220836C180016D79A /* Models */,
 				E61E6BFA20836C180016D79A /* SupportingFiles */,
@@ -634,6 +639,16 @@
 			path = SFHorizontalView;
 			sourceTree = "<group>";
 		};
+		E625100221CA863100C329B9 /* OBVideoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E625100321CA866A00C329B9 /* OBVideoWidget.h */,
+				E625100421CA866A00C329B9 /* OBVideoWidget.m */,
+			);
+			name = OBVideoWidget;
+			path = OutbrainSDK/OBVideoWidget;
+			sourceTree = SOURCE_ROOT;
+		};
 		E63B783F212AB1860018C225 /* SFUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -843,6 +858,7 @@
 				E61E6C2220836C180016D79A /* OBNetworkManager.h in Headers */,
 				E61E6C4720836C180016D79A /* OutbrainHelper.h in Headers */,
 				E6B930AF216F794C00EC7A4A /* SFVideoTableViewCell.h in Headers */,
+				E625100521CA866A00C329B9 /* OBVideoWidget.h in Headers */,
 				E61E6C4920836C180016D79A /* OBRecommendationsTokenHandler.h in Headers */,
 				E61E6C4420836C180016D79A /* OBUtils.h in Headers */,
 				E63B784D212AB1860018C225 /* SFUtils.h in Headers */,
@@ -1052,6 +1068,7 @@
 				E6B930B2216F79F500EC7A4A /* SFHorizontalWithVideoCollectionViewCell.m in Sources */,
 				E6FEB18F20FCB053002A9020 /* SFHorizontalViewCarousel.m in Sources */,
 				E61E6C2A20836C180016D79A /* OBResponse.m in Sources */,
+				E625100621CA866A00C329B9 /* OBVideoWidget.m in Sources */,
 				E63B785B212AB3500018C225 /* SFTableViewHeaderCell.m in Sources */,
 				E63B7861212AD9750018C225 /* SFCollectionViewHeaderCell.m in Sources */,
 				E6F8F45C211C3C6D0069C72C /* SmartFeedManager.m in Sources */,

@@ -16,10 +16,12 @@ struct Const {
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var outbrainVideoContainerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        performSegue(withIdentifier: "showCollectionVC", sender: nil)
+        // performSegue(withIdentifier: "showCollectionVC", sender: nil)
         //performSegue(withIdentifier: "showTableVC", sender: nil)
     }
 }
