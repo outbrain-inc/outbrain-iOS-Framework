@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## v3.4.7 - December 20th, 2018
+
+- Update signature for method `self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleCell", for: SFTypeStripWithTitle)`
+- Bug fix - Sponsored label was added multiple times to the UI instead of once.
+- Header files of the Smartfeed cell classes are now public.
+- Add new SmartFeedDelegate method - `-(CGSize) carouselItemSize`
+
 ## v3.4.6 - December 13th, 2018
 
 - Support header for custom UI - `self.smartFeedManager.registerHeaderNib(headerCellNib, withReuseIdentifier: "AppSFTableViewHeaderCell")`
