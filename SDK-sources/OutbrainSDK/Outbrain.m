@@ -61,6 +61,10 @@ BOOL WAS_INITIALIZED     =   NO;
     [OutbrainManager sharedInstance].testMode = testMode;
 }
 
++ (void)testRTB:(BOOL)testRTB {
+    [OutbrainManager sharedInstance].testRTB = testRTB;
+}
+
 #pragma mark - Fetching
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request withCallback:(OBResponseCompletionHandler)handler
