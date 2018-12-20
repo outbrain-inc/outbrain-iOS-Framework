@@ -167,6 +167,11 @@ extension ArticleTableViewController : SmartFeedDelegate {
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
+
+      // Optional
+//    func carouselItemSize() -> CGSize {
+//        return CGSize(width: 300, height: 200)
+//    }
 }
 
 extension UIImageView {
