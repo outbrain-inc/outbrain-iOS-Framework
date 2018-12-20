@@ -81,7 +81,7 @@
 		E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1320836C180016D79A /* OBParseODBTests.m */; };
 		E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0F20836C180016D79A /* OBTestUtils.m */; };
 		E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C1020836C180016D79A /* OutbrainSDKTests.m */; };
-		E61E6CBC2085D98F0016D79A /* SFHorizontalView.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAC2085D98F0016D79A /* SFHorizontalView.h */; };
+		E61E6CBC2085D98F0016D79A /* SFHorizontalView.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAC2085D98F0016D79A /* SFHorizontalView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6CBD2085D98F0016D79A /* PageCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */; };
 		E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */; };
 		E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */; };

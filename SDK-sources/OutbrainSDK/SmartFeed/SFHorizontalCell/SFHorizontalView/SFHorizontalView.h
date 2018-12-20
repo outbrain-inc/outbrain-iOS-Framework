@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <OutbrainSDK/OutbrainSDK.h>
+#import "OBRecommendation.h"
+#import "OBSettings.h"
 
 @interface SFHorizontalView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
 
