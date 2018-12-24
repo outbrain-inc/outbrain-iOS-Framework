@@ -19,7 +19,7 @@
 
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"3.4.6";
+NSString * const OB_SDK_VERSION     =   @"3.4.7";
 
 BOOL WAS_INITIALIZED     =   NO;
 
@@ -59,6 +59,10 @@ BOOL WAS_INITIALIZED     =   NO;
 
 + (void)setTestMode:(BOOL)testMode {
     [OutbrainManager sharedInstance].testMode = testMode;
+}
+
++ (void)testRTB:(BOOL)testRTB {
+    [OutbrainManager sharedInstance].testRTB = testRTB;
 }
 
 #pragma mark - Fetching

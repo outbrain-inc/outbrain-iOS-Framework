@@ -23,6 +23,8 @@
 @optional
 -(void) smartFeedResponseReceived:(NSArray<OBRecommendation *> *_Nonnull)recommendations forWidgetId:(NSString *_Nonnull)widgetId;
 
+-(CGSize) carouselItemSize;
+
 @end
 
 

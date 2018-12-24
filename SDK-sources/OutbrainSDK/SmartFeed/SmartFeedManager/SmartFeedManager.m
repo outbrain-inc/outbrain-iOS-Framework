@@ -655,6 +655,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         }
     }];
     
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(carouselItemSize)]) {
+        [horizontalView setCarouselItemSizeCallback:^CGSize{
+            return [self.delegate carouselItemSize];
+        }];
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         // reload cells again because the first render always displays the wrong size.
         [horizontalView setupView];

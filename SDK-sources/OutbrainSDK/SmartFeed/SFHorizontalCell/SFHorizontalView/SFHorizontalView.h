@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <OutbrainSDK/OutbrainSDK.h>
+#import "OBRecommendation.h"
+#import "OBSettings.h"
 
 @interface SFHorizontalView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
 
 typedef void(^OnRecommendationClick)(OBRecommendation *rec);
 typedef void(^OnAdChoicesIconClick)(NSURL *url);
+typedef CGSize(^CarouselItemSizeCallback)(void);
 
 - (void) setupView;
 
@@ -23,7 +25,7 @@ typedef void(^OnAdChoicesIconClick)(NSURL *url);
 @property (nonatomic, strong) OBSettings * _Nullable settings;
 @property (nonatomic) OnRecommendationClick _Nonnull onRecommendationClick;
 @property (nonatomic) OnAdChoicesIconClick _Nonnull onAdChoicesIconClick;
-
+@property (nonatomic) CarouselItemSizeCallback _Nonnull carouselItemSizeCallback;
 
 // This section was private, now its here for the children classes
 @property (nonatomic, strong) UICollectionView *collectionView;
