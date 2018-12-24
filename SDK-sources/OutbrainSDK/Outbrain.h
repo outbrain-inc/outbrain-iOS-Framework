@@ -147,7 +147,7 @@ typedef void (^OBOnClickBlock)(NSURL *url);
  *
  * Setting this flag to "true" will force every Outbrain response (ODB) to include at least 1 RTB rec
  *
- * @param testMode - a boolean flag; set to true to activate test mode, or false to deactivate test mode.
+ * @param testRTB - a boolean flag; set to true to activate test mode, or false to deactivate test mode.
  */
 + (void)testRTB:(BOOL)testRTB;
 

@@ -43,7 +43,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzC-wm-eUi">
-                                <rect key="frame" x="40" y="40" width="295" height="163.5"/>
+                                <rect key="frame" x="40" y="40" width="295" height="183.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -54,7 +54,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dzC-wm-eUi" secondAttribute="trailing" constant="40" id="O1q-be-Zcf"/>
                             <constraint firstItem="dzC-wm-eUi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Xtm-Hm-Kcy"/>
                             <constraint firstItem="dzC-wm-eUi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="a2b-2s-LD3"/>
-                            <constraint firstItem="X0e-1Y-JoU" firstAttribute="top" secondItem="dzC-wm-eUi" secondAttribute="bottom" constant="40" id="rRM-L7-Y1L"/>
+                            <constraint firstItem="X0e-1Y-JoU" firstAttribute="top" secondItem="dzC-wm-eUi" secondAttribute="bottom" constant="20" id="rRM-L7-Y1L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

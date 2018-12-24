@@ -25,13 +25,11 @@
 
 @interface OBVideoWidget : NSObject
 
-@property (nonatomic, copy, readonly) NSString * _Nullable url;
-@property (nonatomic, copy, readonly) NSString * _Nullable widgetId;
+@property (nonatomic, strong, readonly) OBRequest * _Nonnull obRequest;
 
 @property (nonatomic, weak) id<OBVideoWidgetDelegate> delegate;
 
-- (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
-                   widgetID:(NSString * _Nonnull)widgetId
+- (id _Nonnull )initRequest:(OBRequest * _Nonnull)obRequest
               containerView:(UIView * _Nonnull)containerView;
 
 -(void) start;

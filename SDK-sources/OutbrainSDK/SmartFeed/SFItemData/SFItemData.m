@@ -39,44 +39,28 @@ NSInteger kVideoFinishedStatus = 1114;
     return self;
 }
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse {
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse {
     self = [super init];
     if (self) {
+        NSString *widgetTitle = odbResponse.settings.widgetHeaderText;
+        
         self.videoUrl = videoUrl;
         self.videoPlayerStatus = kVideoInitStatus;
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:videoParams
-                                                           options:NSJSONWritingPrettyPrinted
-                                                             error:&error];
-        if (! jsonData) {
-            NSLog(@"initWithVideoUrl Got an error: %@", error);
-        } else {
-            self.videoParamsStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        }
-        
+        self.videoParamsStr = videoParamsStr;
         self.singleRec = rec;
-        self.itemType = odbResponse.settings.widgetHeaderText ? SFTypeStripVideoWithPaidRecAndTitle : SFTypeStripVideoWithPaidRecNoTitle;
+        self.itemType = widgetTitle ? SFTypeStripVideoWithPaidRecAndTitle : SFTypeStripVideoWithPaidRecNoTitle;
         [self commonInitWithResponse:odbResponse];
     }
     return self;
 }
 
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams reclist:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type {
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr reclist:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type {
     self = [super init];
     if (self) {
         self.videoUrl = videoUrl;
         self.videoPlayerStatus = kVideoInitStatus;
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:videoParams
-                                                           options:NSJSONWritingPrettyPrinted
-                                                             error:&error];
-        if (! jsonData) {
-            NSLog(@"initWithVideoUrl Got an error: %@", error);
-        } else {
-            self.videoParamsStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        }
-        
+        self.videoParamsStr = videoParamsStr;
         self.outbrainRecs = recArray;
         self.itemType = type;
         [self commonInitWithResponse:odbResponse];

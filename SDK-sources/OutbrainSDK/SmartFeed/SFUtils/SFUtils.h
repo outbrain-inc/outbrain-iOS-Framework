@@ -60,4 +60,10 @@
 
 +(void) loadRequestIn:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem;
 
++(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response;
+
++(NSString *) videoParamsStringFromResponse:(OBRecommendationResponse *)response;
+
++(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response;
+
 @end

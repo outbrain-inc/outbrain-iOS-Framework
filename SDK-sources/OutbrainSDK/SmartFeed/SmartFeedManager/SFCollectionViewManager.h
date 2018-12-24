@@ -10,6 +10,7 @@
 #import "SmartFeedManager.h"
 #import "SFItemData.h"
 #import "SFUtils.h"
+#import "SFVideoCollectionViewCell.h"
 
 @import WebKit;
 
@@ -36,5 +37,11 @@
                    sfItem:(SFItemData *)sfItem;
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier;
+
++ (void) configureVideoCell:(SFVideoCollectionViewCell *)videoCell
+                 withSFItem:(SFItemData *)sfItem
+               wkUIDelegate:(id <WKUIDelegate>)wkUIDelegate
+        clickListenerTarget:(id<SFClickListener>) clickListenerTarget
+         tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate;
 
 @end
