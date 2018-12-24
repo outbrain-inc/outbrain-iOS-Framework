@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import OutbrainSDK
+
 
 struct Const {
     static let widgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
@@ -16,6 +18,8 @@ struct Const {
 
 class ViewController: UIViewController {
     
+    var outbrainVideoWidget:OBVideoWidget? = nil
+    
     @IBOutlet weak var outbrainVideoContainerView: UIView!
     
     override func viewDidLoad() {
@@ -23,6 +27,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         // performSegue(withIdentifier: "showCollectionVC", sender: nil)
         //performSegue(withIdentifier: "showTableVC", sender: nil)
+        self.outbrainVideoWidget = OBVideoWidget.init(url: Const.baseURL, widgetID: Const.widgetID, containerView: self.outbrainVideoContainerView)
+        
+        self.outbrainVideoWidget?.start()
+        
     }
 }
 
