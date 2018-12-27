@@ -188,7 +188,7 @@
 }
 
 +(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {
-    NSLog(@"response.responseRequest: %@", [response.responseRequest payload]);
+//    NSLog(@"response.responseRequest: %@", [response.responseRequest payload]);
     
     BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
     BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
@@ -218,6 +218,7 @@
 
 +(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
     NSString *videoUrlStr = response.settings.videoUrl.absoluteString;
+    //NSString *videoUrlStr = @"https://broadsay-sdk-mock-server.herokuapp.com/static/vidgetInApp.html";
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:videoUrlStr];
     NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
     NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
