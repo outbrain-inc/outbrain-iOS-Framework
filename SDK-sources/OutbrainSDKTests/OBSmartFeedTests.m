@@ -237,6 +237,11 @@
     [self verifyTableCellBasicOutlets:tableCell];
 }
 
+-(void) testAudienceCampaignsLabel {
+    OBRecommendation *rec = self.responseParent.recommendations[0];
+    XCTAssertTrue([rec.audienceCampaignsLabel isEqualToString: @"sponsored"]);
+}
+
 
 #pragma mark - utilities methods
 -(void) verifyCollectionCellBasicOutlets:(SFCollectionViewCell *)cell {
