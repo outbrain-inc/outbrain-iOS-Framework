@@ -70,7 +70,8 @@
             "flagPublisherZappingFeature": true,
             "globalWidgetStatistics": true,
             "InstallationType": "mobile-app-sdk",
-            "nanoOrganicsHeader": "Sponsored Links"
+            "nanoOrganicsHeader": "Sponsored Links",
+            "dynamic:SourceFormat": "Recommended by $SOURCE"
         }
     }
 }
