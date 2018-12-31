@@ -23,6 +23,7 @@
 @property (nonatomic, copy) NSString *paidLabelText;
 @property (nonatomic, copy) NSString *paidLabelTextColor;
 @property (nonatomic, copy) NSString *paidLabelBackgroundColor;
+@property (nonatomic, copy) NSString *sourceFormat;
 
 @end
 
@@ -48,6 +49,8 @@
         self.paidLabelText = [payload valueForKey:@"dynamic:PaidLabel"];
         self.paidLabelTextColor = [payload valueForKey:@"dynamic:PaidLabelTextColor"];
         self.paidLabelBackgroundColor = [payload valueForKey:@"dynamic:PaidLabelBackgroundColor"];
+        
+        self.sourceFormat = [payload valueForKey:@"dynamic:SourceFormat"];
         
         NSString *feedContentStr = [payload valueForKey:@"feedContent"];
         if (self.isSmartFeed && feedContentStr != nil) {
