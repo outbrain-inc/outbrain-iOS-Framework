@@ -60,4 +60,6 @@
 
 +(void) loadRequestIn:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem;
 
++(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat;
+
 @end

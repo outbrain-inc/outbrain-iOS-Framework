@@ -184,4 +184,12 @@
     [videoCell.contentView setNeedsLayout];
 }
 
++(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat {
+    if (sourceFormat && [sourceFormat containsString:@"$SOURCE"]) {
+        return [sourceFormat stringByReplacingOccurrencesOfString:@"$SOURCE" withString:recSource];
+    } else {
+        return recSource;
+    }
+}
+
 @end
