@@ -81,7 +81,7 @@
     
     cell.recTitleLabel.text = rec.content;
     if ([rec isPaidLink]) {
-        cell.recSourceLabel.text = rec.source;
+        cell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:self.settings.sourceFormat];
         if ([rec shouldDisplayDisclosureIcon]) {
             cell.adChoicesButton.hidden = NO;
             cell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
