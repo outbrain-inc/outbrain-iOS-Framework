@@ -895,18 +895,23 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.reuseIdentifierWidgetId[widgetId] = identifier;
 }
 
--(NSString *) sfItemTypeFor:(NSIndexPath *)indexPath {
+-(NSString *) sfItemTypeStringFor:(NSIndexPath *)indexPath {
+    SFItemType itemType = [self sfItemTypeFor:indexPath];
+    return [SFItemData itemTypeString:itemType];
+}
+
+-(SFItemType) sfItemTypeFor:(NSIndexPath *)indexPath {
     if (indexPath.section != self.outbrainSectionIndex) {
-        return nil;
+        return SFTypeBadType;
     }
     
     if (indexPath.row == 0) {
         // Smartfeed header cell
-        return [SFItemData itemTypeString:SFTypeSmartfeedHeader];
+        return SFTypeSmartfeedHeader;
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    return [SFItemData itemTypeString:sfItem.itemType];
+    return sfItem.itemType;
 }
 
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forSFItemType:(SFItemType)itemType {
