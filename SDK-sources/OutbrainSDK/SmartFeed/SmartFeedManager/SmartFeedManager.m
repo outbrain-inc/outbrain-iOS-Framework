@@ -499,7 +499,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         singleCellIdentifier = customNibAndIdentifierDictionary[kCustomUIIdentifier];
     }
     
-    if (singleItemCellNib) {
+    if (singleItemCellNib && sfItem.singleRec) {
         UIView *rootView = [[singleItemCellNib instantiateWithOwner:self options:nil] objectAtIndex:0];
         if (![rootView isKindOfClass:[UITableViewCell class]]) {
             NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UITableViewCell. --> reverting back to default", singleCellIdentifier]);
