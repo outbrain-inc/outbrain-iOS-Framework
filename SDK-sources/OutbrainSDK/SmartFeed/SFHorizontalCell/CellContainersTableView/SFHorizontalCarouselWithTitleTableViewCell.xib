@@ -40,6 +40,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="cellTitleLeadingConstraint" destination="iOv-Mm-0fD" id="C1o-Ib-rCS"/>
                 <outlet property="horizontalView" destination="ayI-4t-JuJ" id="9s4-d7-iHi"/>
                 <outlet property="horizontalViewLeadingConstraint" destination="Qg0-Ma-Hyq" id="OBW-GF-Prq"/>
                 <outlet property="horizontalViewTrailingConstraint" destination="E07-uT-4qu" id="y9n-ao-ev5"/>
