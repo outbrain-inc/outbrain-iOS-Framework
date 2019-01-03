@@ -240,6 +240,9 @@
 -(void) testAudienceCampaignsLabel {
     OBRecommendation *rec = self.responseParent.recommendations[0];
     XCTAssertTrue([rec.audienceCampaignsLabel isEqualToString: @"sponsored"]);
+    
+    OBRecommendation *rec2 = self.responseParent.recommendations[1];
+    XCTAssertNil(rec2.audienceCampaignsLabel);
 }
 
 

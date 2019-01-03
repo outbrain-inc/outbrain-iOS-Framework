@@ -80,7 +80,9 @@
     
     if (payload[@"publisherAds"] && [payload[@"publisherAds"] isKindOfClass:[NSDictionary class]]) {
         NSDictionary *dict = payload[@"publisherAds"];
-        recommendation.audienceCampaignsLabel = dict[@"label"];
+        if ([dict[@"isPublisherAds"] boolValue]) {
+            recommendation.audienceCampaignsLabel = dict[@"label"];
+        }
     }
     
     return recommendation;
