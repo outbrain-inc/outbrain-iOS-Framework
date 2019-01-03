@@ -237,6 +237,14 @@
     [self verifyTableCellBasicOutlets:tableCell];
 }
 
+-(void) testAudienceCampaignsLabel {
+    OBRecommendation *rec = self.responseParent.recommendations[0];
+    XCTAssertTrue([rec.audienceCampaignsLabel isEqualToString: @"sponsored"]);
+    
+    OBRecommendation *rec2 = self.responseParent.recommendations[1];
+    XCTAssertNil(rec2.audienceCampaignsLabel);
+}
+
 -(void) testSourceFormat {
     XCTAssertTrue([self.responseChild3.settings.sourceFormat isEqualToString:@"Recommended by $SOURCE"]);
     OBRecommendation *firstRecOfChild3 = self.responseChild3.recommendations[0];
@@ -250,7 +258,6 @@
                    isEqualToString:firstRecOfChild2.source]
                   );
 }
-
 
 #pragma mark - utilities methods
 -(void) verifyCollectionCellBasicOutlets:(SFCollectionViewCell *)cell {
