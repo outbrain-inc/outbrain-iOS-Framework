@@ -50,7 +50,7 @@
         self.paidLabelTextColor = [payload valueForKey:@"dynamic:PaidLabelTextColor"];
         self.paidLabelBackgroundColor = [payload valueForKey:@"dynamic:PaidLabelBackgroundColor"];
         
-        self.sourceFormat = [payload valueForKey:@"dynamic:SourceFormat"];
+        self.sourceFormat = [payload valueForKey:@"dynamicSourceFormat"];
         
         NSString *feedContentStr = [payload valueForKey:@"feedContent"];
         if (self.isSmartFeed && feedContentStr != nil) {
