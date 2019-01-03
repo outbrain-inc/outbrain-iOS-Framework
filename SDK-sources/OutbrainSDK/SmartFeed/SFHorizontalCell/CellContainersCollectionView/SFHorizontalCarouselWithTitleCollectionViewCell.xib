@@ -54,6 +54,7 @@
             <viewLayoutGuide key="safeArea" id="AgH-sS-i8G"/>
             <size key="customSize" width="461" height="251"/>
             <connections>
+                <outlet property="cellTitleLeadingConstraint" destination="BLx-7B-HW8" id="4gK-RY-VMq"/>
                 <outlet property="cellView" destination="jJD-mi-P9N" id="hde-uj-2eR"/>
                 <outlet property="horizontalView" destination="ZSE-ha-ESX" id="Wbw-Gg-Dbg"/>
                 <outlet property="horizontalViewLeadingConstraint" destination="wMb-QC-m0l" id="HRk-Iv-PrV"/>

@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSURL *videoUrl;
 @property (nonatomic, copy) NSString *videoParamsStr;
 @property (nonatomic, strong) UIColor *shadowColor;
+@property (nonatomic, copy) NSString *sourceFormat;
 @end
 
 @implementation SFItemData
@@ -103,6 +104,7 @@ NSInteger kVideoFinishedStatus = 1114;
     if (self.odbSettings.smartfeedShadowColor) {
         self.shadowColor = [SFUtils colorFromHexString:self.odbSettings.smartfeedShadowColor];
     }
+    self.sourceFormat = self.odbSettings.sourceFormat;
 }
 
 +(NSString *) itemTypeString:(SFItemType) type {
@@ -150,6 +152,9 @@ NSInteger kVideoFinishedStatus = 1114;
     }
     else if (type == SFTypeGridTwoInRowWithVideo) {
         return @"SFTypeGridTwoInRowWithVideo";
+    }
+    else if (type == SFTypeBadType) {
+        return @"SFTypeBadType";
     }
     
     return @"";

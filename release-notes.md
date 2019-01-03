@@ -1,5 +1,17 @@
 # Release Notes
 
+## v3.4.8 - January 3rd, 2019
+
+- Add `testRTB` flag to Outbrain public class to seperate the RTB simulation from the `testMode`.
+- Add `SFTypeBadType` and also according to Sky request, add `-(SFItemType) sfItemTypeFor:(NSIndexPath *)indexPath;`
+- Bug fix - sponsored label was displayed on Smartfeed items when it should not appear.
+- Bug fix - Smartfeed in table view - single rec tappable area was wrong.
+- Bug fix - when trying to set custom ui for cell type SFTypeCarouselWithTitle the SDK reverted (by mistake) to default xib file.
+- Smartfeed custom UI for `SFTypeSmartfeedHeader` will work only via:
+```
+self.smartFeedManager.register(headerCellNib, withReuseIdentifier: "AppSFTableViewHeaderCell", for: SFTypeSmartfeedHeader)
+```
+- Add `cellTitleLeadingConstraint` property for Horizontal cell (table view and collection view) per Sky request.
 
 ## v3.4.7 - December 20th, 2018
 

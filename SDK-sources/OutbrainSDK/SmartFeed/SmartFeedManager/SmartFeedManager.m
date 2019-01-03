@@ -499,7 +499,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         singleCellIdentifier = customNibAndIdentifierDictionary[kCustomUIIdentifier];
     }
     
-    if (singleItemCellNib) {
+    if (singleItemCellNib && sfItem.singleRec) {
         UIView *rootView = [[singleItemCellNib instantiateWithOwner:self options:nil] objectAtIndex:0];
         if (![rootView isKindOfClass:[UITableViewCell class]]) {
             NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UITableViewCell. --> reverting back to default", singleCellIdentifier]);
@@ -895,21 +895,32 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.reuseIdentifierWidgetId[widgetId] = identifier;
 }
 
--(NSString *) sfItemTypeFor:(NSIndexPath *)indexPath {
+-(NSString *) sfItemTypeStringFor:(NSIndexPath *)indexPath {
+    SFItemType itemType = [self sfItemTypeFor:indexPath];
+    return [SFItemData itemTypeString:itemType];
+}
+
+-(SFItemType) sfItemTypeFor:(NSIndexPath *)indexPath {
     if (indexPath.section != self.outbrainSectionIndex) {
-        return nil;
+        return SFTypeBadType;
     }
     
     if (indexPath.row == 0) {
         // Smartfeed header cell
-        return [SFItemData itemTypeString:SFTypeSmartfeedHeader];
+        return SFTypeSmartfeedHeader;
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    return [SFItemData itemTypeString:sfItem.itemType];
+    return sfItem.itemType;
 }
 
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forSFItemType:(SFItemType)itemType {
+    // We handle Header cell override differently
+    if (itemType == SFTypeSmartfeedHeader) {
+        [self registerHeaderNib:nib withReuseIdentifier:identifier];
+        return;
+    }
+    
     NSNumber *convertedItemType = [NSNumber numberWithInteger: itemType];
     self.customNibsForItemType[convertedItemType] = nib;
     self.reuseIdentifierItemType[convertedItemType] = identifier;
@@ -936,7 +947,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
 }
 
-- (void) setTransparentBackground: (BOOL)isTransparentBackground {
+- (void) setTransparentBackground:(BOOL)isTransparentBackground {
     self.isTransparentBackground = isTransparentBackground;
 }
 

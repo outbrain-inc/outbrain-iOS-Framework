@@ -24,6 +24,8 @@
 @property (nonatomic, copy, readonly, nullable) NSString *paidLabelTextColor;
 @property (nonatomic, copy, readonly, nullable) NSString *paidLabelBackgroundColor;
 
+@property (nonatomic, copy, readonly, nullable) NSString *sourceFormat;
+
 - (instancetype)initWithPayload:(NSDictionary *)payload;
 
 

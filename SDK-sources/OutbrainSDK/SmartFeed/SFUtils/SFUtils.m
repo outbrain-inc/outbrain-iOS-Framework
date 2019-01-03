@@ -83,16 +83,12 @@
 + (void) configurePaidLabelToImageViewIfneeded:(UIImageView *)recImageView withSettings:(OBSettings *)settings {
     UILabel *existingPaidLabel = (UILabel *)[recImageView viewWithTag: SPONSORED_LABEL_TAG];
     if (existingPaidLabel) {
-        if (settings.paidLabelText) {
-            // if we received a settings for paidLabelText and the cell.recImageView already has a label on it yet -
-            // we should return since the label is already there.
-            return;
-        }
-        else {
-            // if we there is NO settings for paidLabelText and the cell.recImageView has a label on it yet - we will call:
-            [existingPaidLabel removeFromSuperview];
-            return;
-        }
+        [existingPaidLabel removeFromSuperview];
+    }
+    
+    if (!settings.paidLabelText || [settings.paidLabelText isEqualToString:@""]) {
+        // no settings for paidLabelText --> we will return
+        return;
     }
     
     UILabel *paidLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -182,6 +178,14 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
     [videoCell.webview loadRequest:request];
     [videoCell.contentView setNeedsLayout];
+}
+
++(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat {
+    if (sourceFormat && [sourceFormat containsString:@"$SOURCE"]) {
+        return [sourceFormat stringByReplacingOccurrencesOfString:@"$SOURCE" withString:recSource];
+    } else {
+        return recSource;
+    }
 }
 
 @end

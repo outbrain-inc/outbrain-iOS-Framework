@@ -205,6 +205,9 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     const NSInteger cellTag = indexPath.row;
     singleCell.tag = cellTag;
     singleCell.contentView.tag = cellTag;
+    if (singleCell.cardContentView) {
+        singleCell.cardContentView.tag = cellTag;
+    }
     
     OBRecommendation *rec = sfItem.singleRec;
     
@@ -278,7 +281,12 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.clickListenerTarget  action:@selector(recommendationClicked:)];
     tapGesture.numberOfTapsRequired = 1;
-    [singleCell.contentView addGestureRecognizer:tapGesture];
+    if (singleCell.cardContentView) {
+        [singleCell.cardContentView addGestureRecognizer:tapGesture];
+    }
+    else {
+        [singleCell.contentView addGestureRecognizer:tapGesture];
+    }
 }
 
 @end
