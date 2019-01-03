@@ -915,6 +915,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forSFItemType:(SFItemType)itemType {
+    // We handle Header cell override differently
+    if (itemType == SFTypeSmartfeedHeader) {
+        [self registerHeaderNib:nib withReuseIdentifier:identifier];
+        return;
+    }
+    
     NSNumber *convertedItemType = [NSNumber numberWithInteger: itemType];
     self.customNibsForItemType[convertedItemType] = nib;
     self.reuseIdentifierItemType[convertedItemType] = identifier;
@@ -941,7 +947,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
 }
 
-- (void) setTransparentBackground: (BOOL)isTransparentBackground {
+- (void) setTransparentBackground:(BOOL)isTransparentBackground {
     self.isTransparentBackground = isTransparentBackground;
 }
 

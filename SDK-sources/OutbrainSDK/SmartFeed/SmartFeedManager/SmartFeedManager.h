@@ -102,8 +102,6 @@ typedef enum
 
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forSFItemType:(SFItemType)itemType;
 
-- (void) registerHeaderNib: (UINib * _Nonnull)nib withReuseIdentifier:( NSString * _Nonnull )identifier;
-
 - (void) setTransparentBackground: (BOOL)isTransparentBackground;
 
 @end
