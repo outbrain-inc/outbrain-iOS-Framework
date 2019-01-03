@@ -103,6 +103,7 @@
              @"video":                              @"isVideo",
              @"appflow":                            @"appflow",
              @"disclosure":                         @"disclosure",
+             @"pixels":                             @"pixels"
              };
 }
 
