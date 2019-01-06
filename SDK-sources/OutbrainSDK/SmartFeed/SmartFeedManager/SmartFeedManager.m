@@ -181,8 +181,13 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if ([self.delegate respondsToSelector:@selector(smartFeedResponseReceived:forWidgetId:)]) {
             [self.delegate smartFeedResponseReceived:response.recommendations forWidgetId:request.widgetId];
         }
-        [self loadMoreAccordingToFeedContent:parentSmartfeedItems];
         
+        if (self.isSmartfeedWithNoChildren) {
+            [self reloadUIData: parentSmartfeedItems];
+        }
+        else {
+            [self loadMoreAccordingToFeedContent:parentSmartfeedItems];
+        }
     }];
 }
 
