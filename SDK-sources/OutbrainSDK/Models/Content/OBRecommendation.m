@@ -9,7 +9,7 @@
 #import "OBRecommendation.h"
 #import "OBDisclosure.h"
 #import "OBContent_Private.h"
-
+#import "OBUtils.h"
 
 
 @interface OBRecommendation()
@@ -133,6 +133,11 @@
     
     if ([key isEqualToString:@"pixels"]) {
         self.pixels = value;
+    }
+    
+    if ([key isEqualToString:@"content"] && [value isKindOfClass:[NSString class]]) {
+        self.content = [OBUtils decodeHTMLEnocdedString:value];;
+        return;
     }
     
     [super setValue:value forKey:key];

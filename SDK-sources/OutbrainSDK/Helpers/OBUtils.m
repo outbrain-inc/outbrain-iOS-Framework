@@ -8,6 +8,7 @@
 
 #import "OBUtils.h"
 #import <sys/utsname.h>
+#import <UIKit/UIKit.h>
 
 @implementation OBUtils
 
@@ -97,6 +98,18 @@
     
     return deviceName;
     
+}
+
++(NSString *) decodeHTMLEnocdedString:(NSString *)htmlEncodedString {
+    if (!htmlEncodedString) {
+        return nil;
+    }
+    
+    NSData *data = [htmlEncodedString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *attributes = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                                 NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)};
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:data options:attributes documentAttributes:nil error:nil];
+    return [attributedString string];
 }
 
 @end
