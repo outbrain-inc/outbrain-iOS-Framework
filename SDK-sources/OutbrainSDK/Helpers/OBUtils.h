@@ -12,4 +12,6 @@
 
 +(NSString *) deviceModel;
 
++(NSString *) decodeHTMLEnocdedString:(NSString *)htmlEncodedString;
+
 @end
