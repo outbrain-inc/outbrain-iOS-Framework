@@ -2,10 +2,11 @@
 
 ## v3.4.9 - January 10, 2019
 
-- Support for "source format"
-- Support for "audience campaign"
-- Bug fix - HTML encoding characters appeared in the UI
-- Per Sky request - implement recommendationsForIndexPath() method
+- Support for "source format".
+- Support for "audience campaign".
+- Bug fix - HTML encoding characters appeared in the UI.
+- Per Sky request - implement `recommendationsForIndexPath:` method.
+- Per Sky request, add `configureHorizontalItem:withRec:` method to enable app developers to configure specific UI design on horizontal item.
 
 ## v3.4.8 - January 3rd, 2019
 
