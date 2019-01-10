@@ -1,5 +1,12 @@
 # Release Notes
 
+## v3.4.9 - January 10, 2019
+
+- Support for "source format"
+- Support for "audience campaign"
+- Bug fix - HTML encoding characters appeared in the UI
+- Per Sky request - implement recommendationsForIndexPath() method
+
 ## v3.4.8 - January 3rd, 2019
 
 - Add `testRTB` flag to Outbrain public class to seperate the RTB simulation from the `testMode`.
