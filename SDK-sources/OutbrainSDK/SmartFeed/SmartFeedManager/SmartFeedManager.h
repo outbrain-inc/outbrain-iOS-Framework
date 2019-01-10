@@ -25,6 +25,8 @@
 
 -(CGSize) carouselItemSize;
 
+-(void) configureHorizontalItem:(SFCollectionViewCell * _Nonnull)sfCollectionViewCell withRec:(OBRecommendation * _Nonnull)rec;
+
 @end
 
 

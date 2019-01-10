@@ -665,6 +665,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             return [self.delegate carouselItemSize];
         }];
     }
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(configureHorizontalItem:withRec:)]) {
+        [horizontalView setConfigureHorizontalItem:^(SFCollectionViewCell *cell, OBRecommendation *rec) {
+            [self.delegate configureHorizontalItem:cell withRec:rec];
+        }];
+    }
     
     dispatch_async(dispatch_get_main_queue(), ^{
         // reload cells again because the first render always displays the wrong size.
