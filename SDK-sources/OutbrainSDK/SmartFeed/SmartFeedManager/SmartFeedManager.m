@@ -98,7 +98,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         self.sfTableViewManager = [[SFTableViewManager alloc] initWithTableView:tableView];
         self.sfTableViewManager.clickListenerTarget = self;
         self.sfTableViewManager.wkWebviewDelegate = self;
-        [self fetchMoreRecommendations];
     }
     return self;
 }
@@ -139,7 +138,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if (self.feedContentArray.count == 0 && self.smartFeedItemsArray.count > 0) { // a special case for smartfeed with only parent with no children
         return;
     }
-        
+    
+    if (self.outbrainSectionIndex < 0) {
+        NSLog(@"fetchMoreRecommendations ---> outbrainSectionIndex < 0");
+        return;
+    }
+    
     self.isLoading = YES;
     if (self.smartFeedItemsArray.count == 0 || self.feedContentArray == nil) {
         [self loadFirstTimeForFeed];
@@ -531,6 +535,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0 && self.smartFeedItemsArray.count == 0) {
+        [self fetchMoreRecommendations];
+        return;
+    }
+    
     if (indexPath.section != self.outbrainSectionIndex) {
         return;
     }
