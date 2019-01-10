@@ -143,5 +143,8 @@
     [super setValue:value forKey:key];
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"%@ - %@", self.content, self.source];
+}
 
 @end

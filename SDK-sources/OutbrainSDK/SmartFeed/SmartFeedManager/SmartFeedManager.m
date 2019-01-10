@@ -956,6 +956,27 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.isTransparentBackground = isTransparentBackground;
 }
 
+-(NSArray * _Nullable) recommendationsForIndexPath:(NSIndexPath * _Nonnull)indexPath {
+    if (indexPath.section != self.outbrainSectionIndex) {
+        return nil;
+    }
+    
+    if (indexPath.row == 0) {
+        // Smartfeed header        
+        return nil;
+    }
+    
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    if (sfItem.singleRec) {
+        return @[sfItem.singleRec];
+    }
+    else if (sfItem.outbrainRecs) {
+        return sfItem.outbrainRecs;
+    }
+    
+    return nil;
+}
+
 #pragma mark - WKUIDelegate
 - (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
     if (navigationAction.targetFrame == nil) {

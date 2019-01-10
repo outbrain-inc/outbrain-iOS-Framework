@@ -64,4 +64,6 @@
 
 -(BOOL) shouldDisplayDisclosureIcon;
 
+- (NSString *)description;
+
 @end

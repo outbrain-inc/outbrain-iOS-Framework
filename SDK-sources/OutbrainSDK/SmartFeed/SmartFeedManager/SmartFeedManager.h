@@ -104,4 +104,7 @@ typedef enum
 
 - (void) setTransparentBackground: (BOOL)isTransparentBackground;
 
+-(NSArray * _Nullable) recommendationsForIndexPath:(NSIndexPath * _Nonnull)indexPath;
+
+
 @end
