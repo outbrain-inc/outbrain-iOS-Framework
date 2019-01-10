@@ -165,7 +165,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             self.fid = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
             self.isRTL = response.settings.isRTL;
             self.feedCycleLimit = response.settings.feedCyclesLimit;
-            if (self.feedContentArray == nil || self.feedCycleLimit == 0) {
+            if (self.feedContentArray == nil || self.feedContentArray.count == 0) {
                 self.isSmartfeedWithNoChildren = YES;
             }
         }
@@ -447,10 +447,18 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.isLoading = NO;
     
     NSMutableArray *indexPaths = [NSMutableArray array];
+    
+    if (self.smartFeedItemsArray.count == 0) {
+        // add Header first
+        [indexPaths addObject:[NSIndexPath indexPathForRow:0 inSection:self.outbrainSectionIndex]];
+    }
+    
     // build the index paths for insertion
-    // since you're adding to the end of datasource, the new rows will start at count
+    // since you're adding to the end of datasource, the new rows will start at count + 1 (header)
+    NSInteger baseIndex = self.smartFeedItemsArray.count+1;
+    
     for (int i = 0; i < newSmartfeedItems.count; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:self.smartFeedItemsArray.count+i inSection:self.outbrainSectionIndex]];
+        [indexPaths addObject:[NSIndexPath indexPathForRow:baseIndex+i inSection:self.outbrainSectionIndex]];
     }
     NSIndexPath *firstIdx = indexPaths[0];
     
@@ -471,12 +479,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if (self.sfTableViewManager.tableView != nil) {
             // tell the table view to update (at all of the inserted index paths)
             UITableView *tableView = self.sfTableViewManager.tableView;
+            [tableView beginUpdates];
             [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-            [UIView performWithoutAnimation:^{
-                [tableView reloadData];
-                [tableView beginUpdates];
-                [tableView endUpdates];
-            }];
+            [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+            [tableView endUpdates];
         }
     }
 }
@@ -521,7 +527,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (NSInteger)numberOfSectionsInTableView {
-    return self.smartFeedItemsArray.count > 0 ? self.outbrainSectionIndex + 1 : self.outbrainSectionIndex;
+    return self.outbrainSectionIndex + 1;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
