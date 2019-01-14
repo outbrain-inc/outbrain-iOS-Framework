@@ -15,6 +15,7 @@
 @interface OBVideoWidget() <SFClickListener, WKUIDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) OBRequest *obRequest;
+@property (nonatomic, strong) OBRecommendationResponse *odbResponse;
 @property (nonatomic, weak) UIView * containerView;
 @property (nonatomic, strong) SFItemData *sfItem;
 @property (nonatomic, weak) SFVideoCollectionViewCell *videoCell;
@@ -36,6 +37,9 @@
 }
 
 -(void) start {
+    if (self.odbResponse) {
+        return;
+    }
     [self loadUIInContainerView];
     [self fetchRecommendationFromOutbrain];
 }
@@ -62,20 +66,22 @@
             return;
         }
         
+        self.odbResponse = response;
+        
         NSLog(@"fetchRecommendationFromOutbrain received - %lu recs, for widget id: %@", (unsigned long)response.recommendations.count, self.obRequest.widgetId);
         
         if ([SFUtils isVideoIncludedInResponse:response] && response.recommendations.count == 1) {
             NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
             NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
-            SFItemData *sfItem = [[SFItemData alloc] initWithVideoUrl:videoURL
+            self.sfItem = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                      videoParamsStr:videoParamsStr
                                                singleRecommendation:response.recommendations[0]
                                                         odbResponse:response];
             
             // Report Viewability
-            [[OBViewabilityService sharedInstance] reportRecsShownForRequest:sfItem.request];
+            [[OBViewabilityService sharedInstance] reportRecsShownForRequest:self.sfItem.request];
             
-            [SFCollectionViewManager configureVideoCell:self.videoCell withSFItem:sfItem wkUIDelegate:self clickListenerTarget:self tapGestureDelegate:self];
+            [SFCollectionViewManager configureVideoCell:self.videoCell withSFItem:self.sfItem wkUIDelegate:self clickListenerTarget:self tapGestureDelegate:self];
             
             [self.containerView setNeedsDisplay];
         }

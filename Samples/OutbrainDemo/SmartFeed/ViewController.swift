@@ -19,7 +19,6 @@ struct Const {
 
 class ViewController: UIViewController {
     
-    var outbrainVideoWidget:OBVideoWidget? = nil
     
     @IBOutlet weak var outbrainVideoContainerView: UIView!
     
@@ -28,10 +27,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
          //performSegue(withIdentifier: "showCollectionVC", sender: nil)
         //performSegue(withIdentifier: "showTableVC", sender: nil)
-        
-        let obRequest = OBRequest.init(url: Const.baseURL, widgetID: Const.widgetID)
-        self.outbrainVideoWidget = OBVideoWidget.init(request: obRequest, containerView: self.outbrainVideoContainerView)
-        self.outbrainVideoWidget?.start()
+        performSegue(withIdentifier: "showVideoVC", sender: nil)        
     }
 }
 
