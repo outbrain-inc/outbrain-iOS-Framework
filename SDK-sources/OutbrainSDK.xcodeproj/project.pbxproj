@@ -71,7 +71,7 @@
 		E61E6C4120836C180016D79A /* OBBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0120836C180016D79A /* OBBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6C4220836C180016D79A /* Outbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0220836C180016D79A /* Outbrain.m */; };
 		E61E6C4320836C180016D79A /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0420836C180016D79A /* OBProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61E6C4420836C180016D79A /* OBUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0620836C180016D79A /* OBUtils.h */; };
+		E61E6C4420836C180016D79A /* OBUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0620836C180016D79A /* OBUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6C4520836C180016D79A /* OutbrainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0720836C180016D79A /* OutbrainHelper.m */; };
 		E61E6C4620836C180016D79A /* OBRecommendationsTokenHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0820836C180016D79A /* OBRecommendationsTokenHandler.m */; };
 		E61E6C4720836C180016D79A /* OutbrainHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0920836C180016D79A /* OutbrainHelper.h */; };

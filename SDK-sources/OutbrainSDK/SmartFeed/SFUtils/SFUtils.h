@@ -66,4 +66,7 @@
 
 +(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response;
 
++(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat;
+
+
 @end

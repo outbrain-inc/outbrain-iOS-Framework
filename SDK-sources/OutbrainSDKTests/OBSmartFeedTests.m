@@ -11,7 +11,7 @@
 #import "OutbrainSDK.h"
 #import "OBRecommendationRequestOperation.h"
 #import "SFItemData.h"
-
+#import "SFUtils.h"
 
 @interface OBRecommendationRequestOperation (Testing)
 
@@ -237,6 +237,27 @@
     [self verifyTableCellBasicOutlets:tableCell];
 }
 
+-(void) testAudienceCampaignsLabel {
+    OBRecommendation *rec = self.responseParent.recommendations[0];
+    XCTAssertTrue([rec.audienceCampaignsLabel isEqualToString: @"sponsored"]);
+    
+    OBRecommendation *rec2 = self.responseParent.recommendations[1];
+    XCTAssertNil(rec2.audienceCampaignsLabel);
+}
+
+-(void) testSourceFormat {
+    XCTAssertTrue([self.responseChild3.settings.sourceFormat isEqualToString:@"Recommended by $SOURCE"]);
+    OBRecommendation *firstRecOfChild3 = self.responseChild3.recommendations[0];
+    OBRecommendation *firstRecOfChild2 = self.responseChild2.recommendations[0];
+    XCTAssertTrue(
+                  [[SFUtils getRecSourceText:firstRecOfChild3.source withSourceFormat:self.responseChild3.settings.sourceFormat]
+                  isEqualToString:[@"Recommended by " stringByAppendingString:firstRecOfChild3.source]]
+                  );
+    XCTAssertTrue(
+                  [[SFUtils getRecSourceText:firstRecOfChild2.source withSourceFormat:self.responseChild2.settings.sourceFormat]
+                   isEqualToString:firstRecOfChild2.source]
+                  );
+}
 
 #pragma mark - utilities methods
 -(void) verifyCollectionCellBasicOutlets:(SFCollectionViewCell *)cell {

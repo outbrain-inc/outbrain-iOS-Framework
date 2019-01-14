@@ -81,7 +81,7 @@
     
     cell.recTitleLabel.text = rec.content;
     if ([rec isPaidLink]) {
-        cell.recSourceLabel.text = rec.source;
+        cell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:self.settings.sourceFormat];
         if ([rec shouldDisplayDisclosureIcon]) {
             cell.adChoicesButton.hidden = NO;
             cell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
@@ -125,7 +125,11 @@
     cell.layer.shadowOpacity = 1.0f;
     cell.layer.masksToBounds = NO;
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
-}
+    
+    if (self.configureHorizontalItem) {
+        self.configureHorizontalItem(cell, rec);
+    }
+ }
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     OBRecommendation *rec = self.outbrainRecs[indexPath.row];

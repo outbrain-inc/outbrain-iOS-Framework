@@ -244,7 +244,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     }
     
     singleCell.recTitleLabel.text = rec.content;
-    singleCell.recSourceLabel.text = rec.source;
+    singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
     
     NSAssert(clickListenerTarget != nil, @"clickListenerTarget must not be nil");
     

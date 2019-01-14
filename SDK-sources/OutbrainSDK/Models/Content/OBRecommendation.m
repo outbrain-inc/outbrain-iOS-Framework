@@ -9,7 +9,7 @@
 #import "OBRecommendation.h"
 #import "OBDisclosure.h"
 #import "OBContent_Private.h"
-
+#import "OBUtils.h"
 
 
 @interface OBRecommendation()
@@ -40,6 +40,8 @@
 @property (nonatomic, strong) OBDisclosure *disclosure;
 /** @brief Pixels array for a recommendation to be fired when recommendation received from the server */
 @property (nonatomic, strong) NSArray *pixels;
+/** @brief The audience campaigns label - null if not audience campaigns. */
+@property (nonatomic, copy) NSString *audienceCampaignsLabel;
 
 @end
 
@@ -68,8 +70,20 @@
     NSString *source = recommendation.source;
     NSString *author = recommendation.author;
     
-    if(source && source.length == 0) recommendation.source = nil;
-    if(author && author.length == 0) recommendation.author = nil;
+    if (source && source.length == 0) {
+        recommendation.source = nil;
+    }
+    
+    if (author && author.length == 0) {
+        recommendation.author = nil;
+    }
+    
+    if (payload[@"publisherAds"] && [payload[@"publisherAds"] isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *dict = payload[@"publisherAds"];
+        if ([dict[@"isPublisherAds"] boolValue]) {
+            recommendation.audienceCampaignsLabel = dict[@"label"];
+        }
+    }
     
     return recommendation;
 }
@@ -121,8 +135,16 @@
         self.pixels = value;
     }
     
+    if ([key isEqualToString:@"content"] && [value isKindOfClass:[NSString class]]) {
+        self.content = [OBUtils decodeHTMLEnocdedString:value];;
+        return;
+    }
+    
     [super setValue:value forKey:key];
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"%@ - %@", self.content, self.source];
+}
 
 @end

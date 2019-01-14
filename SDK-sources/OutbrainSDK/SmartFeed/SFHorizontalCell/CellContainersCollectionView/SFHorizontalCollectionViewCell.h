@@ -15,6 +15,7 @@
 @property (nonatomic, weak) IBOutlet SFHorizontalView *horizontalView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalViewTrailingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalViewLeadingConstraint;
+
 - (BOOL)respondsToSelector:(SEL)aSelector;
 
 @optional
@@ -31,5 +32,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *publisherImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalViewTrailingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalViewLeadingConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cellTitleLeadingConstraint;
 
 @end

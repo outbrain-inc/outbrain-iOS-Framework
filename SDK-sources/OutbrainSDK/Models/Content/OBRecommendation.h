@@ -57,9 +57,13 @@
 @property (nonatomic, strong, readonly, nullable) OBDisclosure *disclosure;
 /** @brief Pixels array for a recommendation to be fired when recommendation received from the server */
 @property (nonatomic, strong, readonly, nullable) NSArray *pixels;
+/** @brief The audience campaigns label - null if not audience campaigns. */
+@property (nonatomic, copy, readonly, nullable) NSString * audienceCampaignsLabel;
 
 -(BOOL) isRTB __deprecated_msg("use shouldDisplayDisclosureIcon() instead.");
 
 -(BOOL) shouldDisplayDisclosureIcon;
+
+- (NSString *)description;
 
 @end

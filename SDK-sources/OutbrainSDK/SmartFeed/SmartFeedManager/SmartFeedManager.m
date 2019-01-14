@@ -98,7 +98,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         self.sfTableViewManager = [[SFTableViewManager alloc] initWithTableView:tableView];
         self.sfTableViewManager.clickListenerTarget = self;
         self.sfTableViewManager.wkWebviewDelegate = self;
-        [self fetchMoreRecommendations];
     }
     return self;
 }
@@ -139,7 +138,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if (self.feedContentArray.count == 0 && self.smartFeedItemsArray.count > 0) { // a special case for smartfeed with only parent with no children
         return;
     }
-        
+    
+    if (self.outbrainSectionIndex < 0) {
+        NSLog(@"fetchMoreRecommendations ---> outbrainSectionIndex < 0");
+        return;
+    }
+    
     self.isLoading = YES;
     if (self.smartFeedItemsArray.count == 0 || self.feedContentArray == nil) {
         [self loadFirstTimeForFeed];
@@ -165,7 +169,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             self.fid = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
             self.isRTL = response.settings.isRTL;
             self.feedCycleLimit = response.settings.feedCyclesLimit;
-            if (self.feedContentArray == nil || self.feedCycleLimit == 0) {
+            if (self.feedContentArray == nil || self.feedContentArray.count == 0) {
                 self.isSmartfeedWithNoChildren = YES;
             }
         }
@@ -181,8 +185,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if ([self.delegate respondsToSelector:@selector(smartFeedResponseReceived:forWidgetId:)]) {
             [self.delegate smartFeedResponseReceived:response.recommendations forWidgetId:request.widgetId];
         }
+        
         if (self.isSmartfeedWithNoChildren) {
-            [self reloadUIData:parentSmartfeedItems];
+            [self reloadUIData: parentSmartfeedItems];
         }
         else {
             [self loadMoreAccordingToFeedContent:parentSmartfeedItems];
@@ -401,10 +406,18 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.isLoading = NO;
     
     NSMutableArray *indexPaths = [NSMutableArray array];
+    
+    if (self.smartFeedItemsArray.count == 0) {
+        // add Header first
+        [indexPaths addObject:[NSIndexPath indexPathForRow:0 inSection:self.outbrainSectionIndex]];
+    }
+    
     // build the index paths for insertion
-    // since you're adding to the end of datasource, the new rows will start at count
+    // since you're adding to the end of datasource, the new rows will start at count + 1 (header)
+    NSInteger baseIndex = self.smartFeedItemsArray.count+1;
+    
     for (int i = 0; i < newSmartfeedItems.count; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:self.smartFeedItemsArray.count+i inSection:self.outbrainSectionIndex]];
+        [indexPaths addObject:[NSIndexPath indexPathForRow:baseIndex+i inSection:self.outbrainSectionIndex]];
     }
     NSIndexPath *firstIdx = indexPaths[0];
     
@@ -425,12 +438,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if (self.sfTableViewManager.tableView != nil) {
             // tell the table view to update (at all of the inserted index paths)
             UITableView *tableView = self.sfTableViewManager.tableView;
+            [tableView beginUpdates];
             [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-            [UIView performWithoutAnimation:^{
-                [tableView reloadData];
-                [tableView beginUpdates];
-                [tableView endUpdates];
-            }];
+            [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+            [tableView endUpdates];
         }
     }
 }
@@ -458,7 +469,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         singleCellIdentifier = customNibAndIdentifierDictionary[kCustomUIIdentifier];
     }
     
-    if (singleItemCellNib) {
+    if (singleItemCellNib && sfItem.singleRec) {
         UIView *rootView = [[singleItemCellNib instantiateWithOwner:self options:nil] objectAtIndex:0];
         if (![rootView isKindOfClass:[UITableViewCell class]]) {
             NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UITableViewCell. --> reverting back to default", singleCellIdentifier]);
@@ -475,10 +486,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (NSInteger)numberOfSectionsInTableView {
-    return self.smartFeedItemsArray.count > 0 ? self.outbrainSectionIndex + 1 : self.outbrainSectionIndex;
+    return self.outbrainSectionIndex + 1;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0 && self.smartFeedItemsArray.count == 0) {
+        [self fetchMoreRecommendations];
+        return;
+    }
+    
     if (indexPath.section != self.outbrainSectionIndex) {
         return;
     }
@@ -617,6 +634,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(carouselItemSize)]) {
         [horizontalView setCarouselItemSizeCallback:^CGSize{
             return [self.delegate carouselItemSize];
+        }];
+    }
+    if (self.delegate != nil && [self.delegate respondsToSelector:@selector(configureHorizontalItem:withRec:)]) {
+        [horizontalView setConfigureHorizontalItem:^(SFCollectionViewCell *cell, OBRecommendation *rec) {
+            [self.delegate configureHorizontalItem:cell withRec:rec];
         }];
     }
     
@@ -854,21 +876,32 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.reuseIdentifierWidgetId[widgetId] = identifier;
 }
 
--(NSString *) sfItemTypeFor:(NSIndexPath *)indexPath {
+-(NSString *) sfItemTypeStringFor:(NSIndexPath *)indexPath {
+    SFItemType itemType = [self sfItemTypeFor:indexPath];
+    return [SFItemData itemTypeString:itemType];
+}
+
+-(SFItemType) sfItemTypeFor:(NSIndexPath *)indexPath {
     if (indexPath.section != self.outbrainSectionIndex) {
-        return nil;
+        return SFTypeBadType;
     }
     
     if (indexPath.row == 0) {
         // Smartfeed header cell
-        return [SFItemData itemTypeString:SFTypeSmartfeedHeader];
+        return SFTypeSmartfeedHeader;
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    return [SFItemData itemTypeString:sfItem.itemType];
+    return sfItem.itemType;
 }
 
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forSFItemType:(SFItemType)itemType {
+    // We handle Header cell override differently
+    if (itemType == SFTypeSmartfeedHeader) {
+        [self registerHeaderNib:nib withReuseIdentifier:identifier];
+        return;
+    }
+    
     NSNumber *convertedItemType = [NSNumber numberWithInteger: itemType];
     self.customNibsForItemType[convertedItemType] = nib;
     self.reuseIdentifierItemType[convertedItemType] = identifier;
@@ -895,8 +928,29 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
 }
 
-- (void) setTransparentBackground: (BOOL)isTransparentBackground {
+- (void) setTransparentBackground:(BOOL)isTransparentBackground {
     self.isTransparentBackground = isTransparentBackground;
+}
+
+-(NSArray * _Nullable) recommendationsForIndexPath:(NSIndexPath * _Nonnull)indexPath {
+    if (indexPath.section != self.outbrainSectionIndex) {
+        return nil;
+    }
+    
+    if (indexPath.row == 0) {
+        // Smartfeed header        
+        return nil;
+    }
+    
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    if (sfItem.singleRec) {
+        return @[sfItem.singleRec];
+    }
+    else if (sfItem.outbrainRecs) {
+        return sfItem.outbrainRecs;
+    }
+    
+    return nil;
 }
 
 #pragma mark - WKUIDelegate

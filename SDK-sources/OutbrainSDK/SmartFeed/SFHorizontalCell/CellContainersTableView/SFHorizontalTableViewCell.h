@@ -17,6 +17,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *publisherImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalViewTrailingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalViewLeadingConstraint;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cellTitleLeadingConstraint;
 
 @end
