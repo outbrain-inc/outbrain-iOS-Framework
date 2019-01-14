@@ -45,6 +45,7 @@
     self.videoCell = (SFVideoCollectionViewCell *)[[bundle loadNibNamed:@"SFSingleVideoWithTitleCollectionViewCell" owner:self options:nil] objectAtIndex:0];
     
     NSLog(@"rootView: %@", self.videoCell);
+    [self.videoCell prepareForReuse];
     [self.containerView addSubview:self.videoCell];
     [SFUtils addConstraintsToFillParent:self.videoCell];
 }
