@@ -191,13 +191,18 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     SFVideoTableViewCell *videoCell = (SFVideoTableViewCell *)cell;
     [self configureSingleTableViewCell:videoCell atIndexPath:indexPath withSFItem:sfItem];
     
+    if ([self.eventListenerTarget respondsToSelector:@selector(isVideoCurrentlyPlaying)] &&
+        self.eventListenerTarget.isVideoCurrentlyPlaying) {
+        return;
+    }
+    
     BOOL shouldReturn = [SFUtils configureGenericVideoCell:videoCell sfItem:sfItem];
     if (shouldReturn) {
         return;
     }
     videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell.wkScriptMessageHandler uiDelegate:self.wkWebviewDelegate withHorizontalMargin:NO];
     
-    [SFUtils loadRequestIn:videoCell sfItem:sfItem];
+    [SFUtils loadVideoURLIn:videoCell sfItem:sfItem];
 }
 
 - (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
@@ -228,8 +233,8 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
             singleCell.adChoicesButton.tag = cellTag;
             [[SFImageLoader sharedInstance] loadImage:rec.disclosure.imageUrl intoButton:singleCell.adChoicesButton];
-            NSAssert(self.clickListenerTarget != nil, @"clickListenerTarget must not be nil");
-            [singleCell.adChoicesButton addTarget:self.clickListenerTarget action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
+            NSAssert(self.eventListenerTarget != nil, @"clickListenerTarget must not be nil");
+            [singleCell.adChoicesButton addTarget:self.eventListenerTarget action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
         else {
             singleCell.adChoicesButton.hidden = YES;
@@ -270,7 +275,7 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
 
         [singleCell.outbrainLabelingContainer becomeFirstResponder];
         singleCell.outbrainLabelingContainer.enabled = YES;
-        [singleCell.outbrainLabelingContainer addTarget:self.clickListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [singleCell.outbrainLabelingContainer addTarget:self.eventListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
         [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
@@ -279,7 +284,7 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         [SFUtils addDropShadowToView: singleCell];
     }
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.clickListenerTarget  action:@selector(recommendationClicked:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget  action:@selector(recommendationClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     if (singleCell.cardContentView) {
         [singleCell.cardContentView addGestureRecognizer:tapGesture];

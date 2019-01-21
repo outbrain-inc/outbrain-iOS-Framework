@@ -204,7 +204,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         [sfHeaderCell.adChoicesImageView removeFromSuperview];
     }
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.clickListenerTarget  action:@selector(outbrainLabelClicked:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget  action:@selector(outbrainLabelClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
 }
@@ -213,6 +213,11 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
 {
     SFVideoCollectionViewCell *videoCell = (SFVideoCollectionViewCell *)cell;
     [self configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
+    
+    if ([self.eventListenerTarget respondsToSelector:@selector(isVideoCurrentlyPlaying)] &&
+        self.eventListenerTarget.isVideoCurrentlyPlaying) {
+        return;
+    }
     
     [SFCollectionViewManager configureVideoInCell:videoCell withSFItem:sfItem wkUIDelegate:self.wkWebviewDelegate];
 }
@@ -226,10 +231,10 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         singleCell.cardContentView.tag = cellTag;
     }
     
-    [SFCollectionViewManager configureSingleCell:cell withSFItem:sfItem clickListenerTarget:self.clickListenerTarget cellTag:cellTag tapGestureDelegate:self];
+    [SFCollectionViewManager configureSingleCell:cell withSFItem:sfItem eventListenerTarget:self.eventListenerTarget cellTag:cellTag tapGestureDelegate:self];
 }
 
-+ (void) configureSingleCell:(UICollectionViewCell *)cell withSFItem:(SFItemData *)sfItem clickListenerTarget:(id<SFClickListener>) clickListenerTarget cellTag:(NSInteger)cellTag tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate
++ (void) configureSingleCell:(UICollectionViewCell *)cell withSFItem:(SFItemData *)sfItem eventListenerTarget:(id<SFPrivateEventListener>) eventListenerTarget cellTag:(NSInteger)cellTag tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate
 {
     SFCollectionViewCell *singleCell = (SFCollectionViewCell *)cell;
     
@@ -246,7 +251,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     singleCell.recTitleLabel.text = rec.content;
     singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
     
-    NSAssert(clickListenerTarget != nil, @"clickListenerTarget must not be nil");
+    NSAssert(eventListenerTarget != nil, @"clickListenerTarget must not be nil");
     
     if ([rec isPaidLink]) {
         if ([rec shouldDisplayDisclosureIcon]) {
@@ -254,7 +259,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
             singleCell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
             singleCell.adChoicesButton.tag = cellTag;
             [[SFImageLoader sharedInstance] loadImage:rec.disclosure.imageUrl intoButton:singleCell.adChoicesButton];
-            [singleCell.adChoicesButton addTarget:clickListenerTarget action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [singleCell.adChoicesButton addTarget:eventListenerTarget action:@selector(adChoicesClicked:) forControlEvents:UIControlEventTouchUpInside];
         }
         else {
             singleCell.adChoicesButton.hidden = YES;
@@ -277,7 +282,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
     
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:clickListenerTarget  action:@selector(recommendationClicked:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:eventListenerTarget  action:@selector(recommendationClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [tapGesture setDelegate:tapGestureDelegate];
     
@@ -306,7 +311,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
             singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
         }
         
-        [singleCell.outbrainLabelingContainer addTarget:clickListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [singleCell.outbrainLabelingContainer addTarget:eventListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
         [singleCell.cardContentView addGestureRecognizer:tapGesture];
     }
     else {
@@ -324,11 +329,11 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
 + (void) configureVideoCell:(SFVideoCollectionViewCell *)videoCell
                  withSFItem:(SFItemData *)sfItem
                wkUIDelegate:(id <WKUIDelegate>)wkUIDelegate
-        clickListenerTarget:(id<SFClickListener>) clickListenerTarget
+        eventListenerTarget:(id<SFPrivateEventListener>) eventListenerTarget
          tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate
 {
     
-    [SFCollectionViewManager configureSingleCell:videoCell withSFItem:sfItem clickListenerTarget:clickListenerTarget cellTag:0 tapGestureDelegate:tapGestureDelegate];
+    [SFCollectionViewManager configureSingleCell:videoCell withSFItem:sfItem eventListenerTarget:eventListenerTarget cellTag:0 tapGestureDelegate:tapGestureDelegate];
     
     [SFCollectionViewManager configureVideoInCell:videoCell withSFItem:sfItem wkUIDelegate:wkUIDelegate];
 }
@@ -341,7 +346,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     
     videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell.wkScriptMessageHandler uiDelegate:wkUIDelegate withHorizontalMargin:NO];
     
-    [SFUtils loadRequestIn:videoCell sfItem:sfItem];
+    [SFUtils loadVideoURLIn:videoCell sfItem:sfItem];
 }
 
 @end

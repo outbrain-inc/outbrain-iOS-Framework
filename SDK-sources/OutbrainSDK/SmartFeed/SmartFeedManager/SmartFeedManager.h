@@ -23,6 +23,8 @@
 @optional
 -(void) smartFeedResponseReceived:(NSArray<OBRecommendation *> *_Nonnull)recommendations forWidgetId:(NSString *_Nonnull)widgetId;
 
+-(BOOL) isVideoCurrentlyPlaying;
+
 -(CGSize) carouselItemSize;
 
 -(void) configureHorizontalItem:(SFCollectionViewCell * _Nonnull)sfCollectionViewCell withRec:(OBRecommendation * _Nonnull)rec;

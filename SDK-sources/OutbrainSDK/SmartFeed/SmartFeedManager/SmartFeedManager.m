@@ -28,7 +28,7 @@
 #import <OutbrainSDK/OutbrainSDK.h>
 
 
-@interface SmartFeedManager() <SFClickListener, WKUIDelegate>
+@interface SmartFeedManager() <SFPrivateEventListener, WKUIDelegate>
 
 @property (nonatomic, strong) NSString * _Nullable url;
 @property (nonatomic, strong) NSString * _Nullable widgetId;
@@ -79,7 +79,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [self commonInitWithUrl:url widgetID:widgetId];
 
         self.sfCollectionViewManager = [[SFCollectionViewManager alloc] initWitCollectionView:collectionView];
-        self.sfCollectionViewManager.clickListenerTarget = self;
+        self.sfCollectionViewManager.eventListenerTarget = self;
         self.sfCollectionViewManager.wkWebviewDelegate = self;
     }
     return self;
@@ -96,7 +96,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [self commonInitWithUrl:url widgetID:widgetId];
        
         self.sfTableViewManager = [[SFTableViewManager alloc] initWithTableView:tableView];
-        self.sfTableViewManager.clickListenerTarget = self;
+        self.sfTableViewManager.eventListenerTarget = self;
         self.sfTableViewManager.wkWebviewDelegate = self;
     }
     return self;
@@ -557,6 +557,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     [self commonConfigureHorizontalCell:horizontalVideoCell withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
     
+    if ([self.delegate respondsToSelector:@selector(isVideoCurrentlyPlaying)] &&
+        self.delegate.isVideoCurrentlyPlaying) {
+        return;
+    }
+    
     BOOL shouldReturn = [SFUtils configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
     if (shouldReturn) {
         return;
@@ -564,7 +569,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
     
-    [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
+    [SFUtils loadVideoURLIn:horizontalVideoCell sfItem:sfItem];
 }
 
 -(void) commonConfigureHorizontalCell:(id<SFHorizontalCellCommonProps>)horizontalCell withCellTitleLabel:(UILabel *)cellTitleLabel sfItem:(SFItemData *)sfItem {
@@ -794,6 +799,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     [self commonConfigureHorizontalCell:horizontalVideoCell withCellTitleLabel:horizontalVideoCell.titleLabel sfItem:sfItem];
     
+    if ([self.delegate respondsToSelector:@selector(isVideoCurrentlyPlaying)] &&
+        self.delegate.isVideoCurrentlyPlaying) {
+        return;
+    }
+    
     BOOL shouldReturn = [SFUtils configureGenericVideoCell:horizontalVideoCell sfItem:sfItem];
     if (shouldReturn) {
         return;
@@ -801,7 +811,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
     
-    [SFUtils loadRequestIn:horizontalVideoCell sfItem:sfItem];
+    [SFUtils loadVideoURLIn:horizontalVideoCell sfItem:sfItem];
 }
 
 - (NSMutableDictionary *) getCustomNibAndIdentifierForSFItem: (SFItemData *)sfItem {
@@ -826,7 +836,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
 }
 
-#pragma mark - SFClickListener methods
+#pragma mark - SFEventListener methods
 
 - (void) recommendationClicked: (id)sender
 {
@@ -853,6 +863,15 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if (self.delegate != nil) {
         [self.delegate userTappedOnOutbrainLabeling];
     }
+}
+
+- (BOOL) isVideoCurrentlyPlaying {
+    NSLog(@"SmartFeedManager - isVideoCurrentlyPlaying");
+    if ([self.delegate respondsToSelector:@selector(isVideoCurrentlyPlaying)]) {
+        return self.delegate.isVideoCurrentlyPlaying;
+    }
+        
+    return NO;
 }
 
 #pragma mark - Common methods

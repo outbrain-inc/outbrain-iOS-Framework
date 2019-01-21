@@ -18,7 +18,7 @@
 
 @interface SFTableViewManager : NSObject
 
-@property (nonatomic, weak) id<SFClickListener> clickListenerTarget;
+@property (nonatomic, weak) id<SFPrivateEventListener> eventListenerTarget;
 @property (nonatomic, weak) id<WKUIDelegate> wkWebviewDelegate;
 @property (nonatomic, weak, readonly) UITableView *tableView;
 
