@@ -5,6 +5,9 @@ FRAMEWORK_ARTIFACT_PATH=Samples/OutbrainDemo/OutbrainSDK.framework
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 
+OUTBRAIN_SDK_M_PATH="SDK-sources/OutbrainSDK/Outbrain.m"
+CURRENT_SDK_VERSION=`cat $OUTBRAIN_SDK_M_PATH | grep "OB_SDK_VERSION" | cut -d "=" -f2 | cut -d \" -f2`
+
 if [ -d "$FRAMEWORK_ARTIFACT_PATH" ]; then
 	echo ""
 	echo "*********************"
@@ -26,7 +29,7 @@ xcodebuild clean -target OutbrainSDK
 # Build
 echo ""
 echo "*********************"
-echo " Building the SDK project"
+echo " Building the SDK project (version ${CURRENT_SDK_VERSION})"
 echo "*********************"
 xcodebuild -target OBFramework
 cd ..
@@ -99,13 +102,16 @@ fi
 
 echo ""
 echo "*********************"
-echo "Prepare OBSDK-iOS.zip"
+echo "Prepare iOS-SampleApps.zip and OutbrainSDK.framework.zip"
 echo "*********************"
 #prepare 
 cd $EXPORT_DIR_PATH
 zip --symlinks -r iOS-SampleApps.zip . -x ".*" -x "*/.*" > /dev/null
+cd SDK/OutbrainSDK.framework > /dev/null
+zip --symlinks -r ../../OutbrainSDK.framework.zip *
 cd /Users/odedre/work/Outbrain/OBSDKiOS
 mv $EXPORT_DIR_PATH/iOS-SampleApps.zip OBSDK-Release/
+mv $EXPORT_DIR_PATH/OutbrainSDK.framework.zip OBSDK-Release/
 
 
 
