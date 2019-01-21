@@ -64,6 +64,8 @@ typedef enum
 @property (nonatomic, weak) id<SmartFeedDelegate> delegate;
 @property (nonatomic, assign) CGFloat horizontalContainerMargin;
 
+@property (nonatomic) BOOL isVideoEligible;
+
 -(NSInteger) smartFeedItemsCount;
 
 // TableView

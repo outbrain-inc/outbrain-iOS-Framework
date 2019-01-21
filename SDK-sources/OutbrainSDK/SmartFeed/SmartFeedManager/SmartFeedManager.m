@@ -246,7 +246,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
     }
     
-    if ([SFUtils isVideoIncludedInResponse:response] && response.recommendations.count == 1) {
+    if ([SFUtils isVideoIncludedInResponse:response] && response.recommendations.count == 1 && self.isVideoEligible) {
         NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
         NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
@@ -359,6 +359,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     BOOL shouldIncludeVideoInTheMiddle =
         [SFUtils isVideoIncludedInResponse:response] &&
         templateType == SFTypeGridTwoInRowNoTitle &&
+        self.isVideoEligible &&
         recommendations.count == 6;
     
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
