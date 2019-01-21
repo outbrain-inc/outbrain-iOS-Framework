@@ -214,6 +214,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     __block NSUInteger subWidgetsCounterBeforeFetching = self.subWidgetsCounter;
     __block NSUInteger responseCount = 0;
+    __block NSUInteger requestCount = 0;
     __block NSMutableArray *newSmartfeedItems = pendingItems ? [pendingItems mutableCopy] : [[NSMutableArray alloc] init];
     
     for (NSInteger i=0; i < self.feedChunkSize; i++) {
@@ -232,6 +233,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         }
         
         NSLog(@"fetching widget: %@", request.widgetId);
+        requestCount++;
         [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
             responseCount++;
             
@@ -252,7 +254,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             //  NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
             
             [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:response]];
-            if (responseCount == self.feedChunkSize || [self finishedLoadingAllItemsInSmartfeed]) {
+            if (responseCount == self.feedChunkSize || ([self finishedLoadingAllItemsInSmartfeed] && responseCount == requestCount)) {
                 [self reloadUIData: newSmartfeedItems];
             }
             
