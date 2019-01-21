@@ -867,7 +867,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (BOOL) isVideoCurrentlyPlaying {
-    NSLog(@"SmartFeedManager - isVideoCurrentlyPlaying");
     if ([self.delegate respondsToSelector:@selector(isVideoCurrentlyPlaying)]) {
         return self.delegate.isVideoCurrentlyPlaying;
     }
