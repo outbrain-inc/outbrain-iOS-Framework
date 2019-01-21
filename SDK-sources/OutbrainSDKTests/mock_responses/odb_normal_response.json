@@ -197,6 +197,7 @@
       "dynamic:PaidLabelTextColor": "#ffffff",
       "dynamic:PaidLabelBackgroundColor": "#666666",
       "dynamic:PaidLabel": "Sponsored",
+      "feedLoadChunkSize": 3,
       "sdk_sf_shadow_color": "#ffa500",
       "flagPublisherZappingFeature": true,
       "defaultRecNumber": 6,

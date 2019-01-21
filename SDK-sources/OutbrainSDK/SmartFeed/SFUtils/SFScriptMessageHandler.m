@@ -51,11 +51,11 @@
         [webview evaluateJavaScript:js completionHandler:nil];
     }
     else if ([@"sdkLog" isEqualToString:action]) {
-        NSLog(@"SFScriptMessageHandler  Received: sdkLog");
-        NSLog(@"** Webview sdkLog: %@", message.body);
+        //NSLog(@"SFScriptMessageHandler  Received: sdkLog");
+        //NSLog(@"** Webview sdkLog: %@", message.body);
     }
     else {
-        NSLog(@"** Webview log: %@", message.body);
+        // NSLog(@"** Webview log: %@", message.body);
     }
 }
 

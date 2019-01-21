@@ -15,6 +15,7 @@
 @property (nonatomic, assign) BOOL isRTL;
 @property (nonatomic, assign) BOOL isSmartFeed;
 @property (nonatomic, assign) NSInteger feedCyclesLimit;
+@property (nonatomic, assign) NSInteger feedChunkSize;
 @property (nonatomic, strong) NSArray *feedContentArray;
 @property (nonatomic, copy) NSString *recMode;
 @property (nonatomic, copy) NSString *widgetHeaderText;
@@ -38,6 +39,7 @@
         self.isRTL = [payload valueForKey:@"dynamicWidgetDirection"] && [[payload valueForKey:@"dynamicWidgetDirection"] isEqualToString:@"RTL"];
         self.isSmartFeed = [[payload valueForKey:@"isSmartFeed"] boolValue];
         self.feedCyclesLimit = [[payload valueForKey:@"feedCyclesLimit"] integerValue];
+        self.feedChunkSize = [[payload valueForKey:@"feedLoadChunkSize"] integerValue];
         self.recMode = [payload valueForKey:@"recMode"];
         self.widgetHeaderText = [payload valueForKey:@"nanoOrganicsHeader"];
         NSString *videoUrlStr = [payload valueForKey:@"sdk_sf_vidget_url"];
