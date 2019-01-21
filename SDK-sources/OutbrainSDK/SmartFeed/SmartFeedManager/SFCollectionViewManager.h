@@ -17,7 +17,7 @@
 
 @interface SFCollectionViewManager : NSObject
 
-@property (nonatomic, weak) id<SFClickListener> clickListenerTarget;
+@property (nonatomic, weak) id<SFPrivateEventListener> eventListenerTarget;
 @property (nonatomic, weak) id<WKUIDelegate> wkWebviewDelegate;
 @property (nonatomic, weak, readonly) UICollectionView *collectionView;
 
@@ -41,7 +41,7 @@
 + (void) configureVideoCell:(SFVideoCollectionViewCell *)videoCell
                  withSFItem:(SFItemData *)sfItem
                wkUIDelegate:(id <WKUIDelegate>)wkUIDelegate
-        clickListenerTarget:(id<SFClickListener>) clickListenerTarget
+        eventListenerTarget:(id<SFPrivateEventListener>) eventListenerTarget
          tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate;
 
 @end

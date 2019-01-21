@@ -12,7 +12,7 @@
 #import "SFVideoCollectionViewCell.h"
 #import "SFCollectionViewManager.h"
 
-@interface OBVideoWidget() <SFClickListener, WKUIDelegate, UIGestureRecognizerDelegate>
+@interface OBVideoWidget() <SFPrivateEventListener, WKUIDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) OBRequest *obRequest;
 @property (nonatomic, strong) OBRecommendationResponse *odbResponse;
@@ -80,7 +80,7 @@
             // Report Viewability
             [[OBViewabilityService sharedInstance] reportRecsShownForRequest:self.sfItem.request];
             
-            [SFCollectionViewManager configureVideoCell:self.videoCell withSFItem:self.sfItem wkUIDelegate:self clickListenerTarget:self tapGestureDelegate:self];
+            [SFCollectionViewManager configureVideoCell:self.videoCell withSFItem:self.sfItem wkUIDelegate:self eventListenerTarget:self tapGestureDelegate:self];
             
             [self.containerView setNeedsDisplay];
         }
@@ -102,7 +102,7 @@
     return nil;
 }
 
-#pragma mark - SFClickListener methods
+#pragma mark - SFEventListener methods
 
 - (void) recommendationClicked: (id)sender {
     OBRecommendation *rec = self.sfItem.singleRec;
