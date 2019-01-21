@@ -133,7 +133,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return;
     }
     
-    if (self.feedCycleLimit > 0 && self.subWidgetsCounter >= self.feedCycleLimit*self.feedSubWidgetsSize) {
+    if ([self finishedLoadingAllItemsInSmartfeed]) {
         return;
     }
     
@@ -217,11 +217,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     __block NSMutableArray *newSmartfeedItems = pendingItems ? [pendingItems mutableCopy] : [[NSMutableArray alloc] init];
     
     for (NSInteger i=0; i < self.feedChunkSize; i++) {
-        if (self.feedCycleLimit > 0 && self.subWidgetsCounter >= self.feedCycleLimit*self.feedSubWidgetsSize) {
+        if ([self finishedLoadingAllItemsInSmartfeed]) {
             NSLog(@"loadMoreAccordingToFeedContent - finished loading all items in the Smartfeed");
-            if ([newSmartfeedItems count] > 0) {
-                [self reloadUIData: newSmartfeedItems];
-            }
             return;
         }
         
@@ -255,7 +252,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             //  NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
             
             [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:response]];
-            if (responseCount == self.feedChunkSize) {
+            if (responseCount == self.feedChunkSize || [self finishedLoadingAllItemsInSmartfeed]) {
                 [self reloadUIData: newSmartfeedItems];
             }
             
@@ -876,6 +873,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 #pragma mark - Common methods
+-(BOOL) finishedLoadingAllItemsInSmartfeed {
+    return self.feedCycleLimit > 0 && self.subWidgetsCounter >= self.feedCycleLimit*self.feedSubWidgetsSize;
+}
+
 -(NSString *) keyForCellType:(SFItemType) type {
     NSString *itemTypeStr = [SFItemData itemTypeString:type];
     NSString *key = [NSString stringWithFormat:@"type_%@", itemTypeStr];
