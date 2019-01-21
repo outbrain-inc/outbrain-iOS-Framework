@@ -34,8 +34,10 @@
 @property (nonatomic, strong) NSString * _Nullable widgetId;
 @property (nonatomic, strong) NSArray *feedContentArray;
 @property (nonatomic, strong) NSString *fid;
-@property (nonatomic, assign) NSInteger feedCycleCounter;
+@property (nonatomic, assign) NSInteger subWidgetsCounter;
 @property (nonatomic, assign) NSInteger feedCycleLimit;
+@property (nonatomic, assign) NSInteger feedChunkSize;
+@property (nonatomic, assign) NSInteger feedSubWidgetsSize;
 @property (nonatomic, assign) BOOL isRTL;
 
 @property (nonatomic, assign) NSInteger outbrainIndex;
@@ -131,7 +133,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return;
     }
     
-    if (self.feedCycleLimit > 0 && self.feedCycleCounter == self.feedCycleLimit) {
+    if (self.feedCycleLimit > 0 && self.subWidgetsCounter >= self.feedCycleLimit*self.feedSubWidgetsSize) {
         return;
     }
     
@@ -166,9 +168,17 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         
         if (response.settings.isSmartFeed == YES) {
             self.feedContentArray = response.settings.feedContentArray;
+            self.feedSubWidgetsSize = [self.feedContentArray count];
             self.fid = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
             self.isRTL = response.settings.isRTL;
             self.feedCycleLimit = response.settings.feedCyclesLimit;
+            if (response.settings.feedChunkSize == 0) {
+                self.feedChunkSize = self.feedSubWidgetsSize; // default value for chunk size is the size of the sub-widgets array
+            }
+            else {
+                self.feedChunkSize = response.settings.feedChunkSize;
+            }
+            
             if (self.feedContentArray == nil || self.feedContentArray.count == 0) {
                 self.isSmartfeedWithNoChildren = YES;
             }
@@ -200,34 +210,52 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 -(void) loadMoreAccordingToFeedContent:(NSArray *)pendingItems {
+    NSLog(@"--> loadMoreAccordingToFeedContent");
+    
+    __block NSUInteger subWidgetsCounterBeforeFetching = self.subWidgetsCounter;
     __block NSUInteger responseCount = 0;
     __block NSMutableArray *newSmartfeedItems = pendingItems ? [pendingItems mutableCopy] : [[NSMutableArray alloc] init];
-    __block NSUInteger requestBatchSize = [self.feedContentArray count];
-    for (NSString *widgetId in self.feedContentArray) {
+    
+    for (NSInteger i=0; i < self.feedChunkSize; i++) {
+        if (self.feedCycleLimit > 0 && self.subWidgetsCounter >= self.feedCycleLimit*self.feedSubWidgetsSize) {
+            NSLog(@"loadMoreAccordingToFeedContent - finished loading all items in the Smartfeed");
+            if ([newSmartfeedItems count] > 0) {
+                [self reloadUIData: newSmartfeedItems];
+            }
+            return;
+        }
+        
+        NSInteger currentSubWidgetIdx = self.subWidgetsCounter++ % self.feedSubWidgetsSize;
+        NSString *widgetId = self.feedContentArray[currentSubWidgetIdx];
+        
         OBRequest *request = [OBRequest requestWithURL:self.url widgetID: widgetId widgetIndex:self.outbrainIndex++];
         request.fid = self.fid;
         if (self.externalID) {
             request.externalID = self.externalID;
         }
+        
+        NSLog(@"fetching widget: %@", request.widgetId);
         [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
             responseCount++;
             
             if (response.error) {
                 self.isLoading = NO;
+                self.subWidgetsCounter = subWidgetsCounterBeforeFetching;
                 NSLog(@"Error in fetchRecommendations - %@, for widget id: %@", response.error.localizedDescription, request.widgetId);
                 return;
             }
             
             if (response.recommendations.count == 0) {
                 self.isLoading = NO;
+                self.subWidgetsCounter = subWidgetsCounterBeforeFetching;
                 NSLog(@"Error in fetchRecommendations - 0 recs for widget id: %@", request.widgetId);
                 return;
             }
             
-          //  NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
+            //  NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
             
             [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:response]];
-            if (responseCount == requestBatchSize) {
+            if (responseCount == self.feedChunkSize) {
                 [self reloadUIData: newSmartfeedItems];
             }
             
@@ -236,7 +264,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             }
         }];
     }
-    self.feedCycleCounter++;
 }
 
 -(NSArray *) createSmartfeedItemsArrayFromResponse:(OBRecommendationResponse *)response {
@@ -395,13 +422,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 -(void) reloadUIData:(NSArray *) newSmartfeedItems {
-    // UX Optimization (derieved from Sky)
-    // If we are about to update UI for relatively small number of items
-    // and feedCycleLimit is set and we're not at the limit yet - let's postpone the reloadUI and loadMoreAccordingToFeedContent instead.
-    if (newSmartfeedItems.count < 5 && self.feedCycleLimit > 0 && self.feedCycleCounter < self.feedCycleLimit) {
-        [self loadMoreAccordingToFeedContent:newSmartfeedItems];
-        return;
-    }
     
     self.isLoading = NO;
     
