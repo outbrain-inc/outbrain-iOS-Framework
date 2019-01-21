@@ -3,7 +3,7 @@
 ## v3.4.10 - January 21, 2019
 
 - OBVideoWidget support in the SDK
-- 
+- Smartfeed "chunk size" settings support
 
 ## v3.4.9 - January 10, 2019
 
