@@ -37,7 +37,7 @@
 @property (nonatomic, assign) NSInteger subWidgetsCounter;
 @property (nonatomic, assign) NSInteger feedCycleLimit;
 @property (nonatomic, assign) NSInteger feedChunkSize;
-@property (nonatomic, assign) NSInteger feedSubWidgetsSize;
+@property (nonatomic, assign) NSInteger feedContentArraySize;
 @property (nonatomic, assign) BOOL isRTL;
 
 @property (nonatomic, assign) NSInteger outbrainIndex;
@@ -168,12 +168,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         
         if (response.settings.isSmartFeed == YES) {
             self.feedContentArray = response.settings.feedContentArray;
-            self.feedSubWidgetsSize = [self.feedContentArray count];
+            self.feedContentArraySize = [self.feedContentArray count];
             self.fid = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
             self.isRTL = response.settings.isRTL;
             self.feedCycleLimit = response.settings.feedCyclesLimit;
             if (response.settings.feedChunkSize == 0) {
-                self.feedChunkSize = self.feedSubWidgetsSize; // default value for chunk size is the size of the sub-widgets array
+                self.feedChunkSize = self.feedContentArraySize; // default value for chunk size 
             }
             else {
                 self.feedChunkSize = response.settings.feedChunkSize;
@@ -223,7 +223,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             return;
         }
         
-        NSInteger currentSubWidgetIdx = self.subWidgetsCounter++ % self.feedSubWidgetsSize;
+        NSInteger currentSubWidgetIdx = self.subWidgetsCounter++ % self.feedContentArraySize;
         NSString *widgetId = self.feedContentArray[currentSubWidgetIdx];
         
         OBRequest *request = [OBRequest requestWithURL:self.url widgetID: widgetId widgetIndex:self.outbrainIndex++];
@@ -876,7 +876,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 #pragma mark - Common methods
 -(BOOL) finishedLoadingAllItemsInSmartfeed {
-    return self.feedCycleLimit > 0 && self.subWidgetsCounter >= self.feedCycleLimit*self.feedSubWidgetsSize;
+    return self.feedCycleLimit > 0 && self.subWidgetsCounter >= self.feedCycleLimit*self.feedContentArraySize;
 }
 
 -(NSString *) keyForCellType:(SFItemType) type {
