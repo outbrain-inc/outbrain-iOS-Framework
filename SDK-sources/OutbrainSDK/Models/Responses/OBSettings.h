@@ -14,6 +14,7 @@
 @property (nonatomic, assign, readonly) BOOL isRTL;
 @property (nonatomic, assign, readonly) BOOL isSmartFeed;
 @property (nonatomic, assign, readonly) NSInteger feedCyclesLimit;
+@property (nonatomic, assign, readonly) NSInteger feedChunkSize;
 @property (nonatomic, copy, readonly, nullable) NSString *recMode;
 @property (nonatomic, copy, readonly, nullable) NSString *widgetHeaderText;
 @property (nonatomic, copy, readonly, nullable) NSURL *videoUrl;
