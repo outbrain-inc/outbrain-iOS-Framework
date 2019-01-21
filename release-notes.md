@@ -1,5 +1,10 @@
 # Release Notes
 
+## v3.4.10 - January 21, 2019
+
+- OBVideoWidget support in the SDK
+- 
+
 ## v3.4.9 - January 10, 2019
 
 - Support for "source format".
