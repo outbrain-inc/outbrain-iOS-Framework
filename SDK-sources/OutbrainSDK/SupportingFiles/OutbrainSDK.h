@@ -39,5 +39,7 @@ FOUNDATION_EXPORT const unsigned char DynamicOutbrainSDKVersionString[];
 #import <OutbrainSDK/SFHorizontalTableViewCell.h>
 #import <OutbrainSDK/SFHorizontalCollectionViewCell.h>
 #import <OutbrainSDK/SFHorizontalView.h>
+#import <OutbrainSDK/OBVideoWidget.h>
 #import <OutbrainSDK/OBUtils.h>
+
 

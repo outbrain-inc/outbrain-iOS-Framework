@@ -22,9 +22,9 @@ extern NSInteger kVideoFinishedStatus;
 
 - (id)initWithList:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type;
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse;
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse;
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParams:(NSDictionary *)videoParams reclist:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type;
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr reclist:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type;
 
 
 @property (nonatomic, strong, readonly) NSArray *outbrainRecs;

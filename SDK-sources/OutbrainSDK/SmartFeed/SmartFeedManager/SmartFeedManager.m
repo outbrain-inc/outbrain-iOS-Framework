@@ -246,22 +246,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
     }
     
-    if ([self isVideoIncludedInResponse:response] && response.recommendations.count == 1) {
-        NSMutableDictionary *videoParams = [[NSMutableDictionary alloc] init];
-        if (response.originalOBPayload[@"settings"]) {
-            videoParams[@"settings"] = response.originalOBPayload[@"settings"];
-        }
-        if (response.originalOBPayload[@"request"]) {
-            videoParams[@"request"] = response.originalOBPayload[@"request"];
-        }
-        
-        NSURL *videoURL = [self appendParamsToVideoUrl: response];
-        BOOL isParentResponse = response.settings.isSmartFeed;
-        if (isParentResponse) {
-            widgetTitle = nil;
-        }
+    if ([SFUtils isVideoIncludedInResponse:response] && response.recommendations.count == 1) {
+        NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
+        NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
-                                                    videoParams:videoParams
+                                                    videoParamsStr:videoParamsStr
                                            singleRecommendation:response.recommendations[0]
                                                     odbResponse:response];
         
@@ -296,33 +285,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
    
     return newSmartfeedItems;
-}
-
--(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
-    NSString *videoUrlStr = response.settings.videoUrl.absoluteString;
-    NSURLComponents *components = [[NSURLComponents alloc] initWithString:videoUrlStr];
-    NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
-    NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
-    NSString *apiUserId = [OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId];
-    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"inApp" value: @"true"]];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appBundle" value: bundleIdentifier]];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"deviceIfa" value: apiUserId]];
-    if ([OutbrainManager sharedInstance].testMode) {
-        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
-    }
-    
-    components.queryItems = odbQueryItems;
-    return components.URL;
-}
-
--(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {
-    BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
-    BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
-    return videoIsIncludedInRequest && videoURLIsIncludedInSettings;
 }
 
 -(SFItemType) sfItemTypeFromResponse:(OBRecommendationResponse *)response {
@@ -395,7 +357,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     
     BOOL shouldIncludeVideoInTheMiddle =
-        [self isVideoIncludedInResponse:response] &&
+        [SFUtils isVideoIncludedInResponse:response] &&
         templateType == SFTypeGridTwoInRowNoTitle &&
         recommendations.count == 6;
     
@@ -410,17 +372,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             newSmartfeedItems.count == 1)
         {
             // Add SFTypeGridTwoInRowWithVideo for the middle of the grid
-            NSMutableDictionary *videoParams = [[NSMutableDictionary alloc] init];
-            if (response.originalOBPayload[@"settings"]) {
-                videoParams[@"settings"] = response.originalOBPayload[@"settings"];
-            }
-            if (response.originalOBPayload[@"request"]) {
-                videoParams[@"request"] = response.originalOBPayload[@"request"];
-            }
-            
-            NSURL *videoURL = [self appendParamsToVideoUrl: response];
+            NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
+            NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
             SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL
-                                                             videoParams:videoParams
+                                                             videoParamsStr:videoParamsStr
                                                                  reclist:singleLineRecs
                                                              odbResponse:response
                                                                     type:SFTypeGridTwoInRowWithVideo];
@@ -441,9 +396,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 -(void) reloadUIData:(NSArray *) newSmartfeedItems {
     // UX Optimization (derieved from Sky)
-    // If Smartfeed is TableView (UX performance not so good) and we are about to update UI for relatively small number of items
+    // If we are about to update UI for relatively small number of items
     // and feedCycleLimit is set and we're not at the limit yet - let's postpone the reloadUI and loadMoreAccordingToFeedContent instead.
-    if (self.sfTableViewManager && newSmartfeedItems.count < 5 && self.feedCycleLimit > 0 && self.feedCycleCounter < self.feedCycleLimit) {
+    if (newSmartfeedItems.count < 5 && self.feedCycleLimit > 0 && self.feedCycleCounter < self.feedCycleLimit) {
         [self loadMoreAccordingToFeedContent:newSmartfeedItems];
         return;
     }

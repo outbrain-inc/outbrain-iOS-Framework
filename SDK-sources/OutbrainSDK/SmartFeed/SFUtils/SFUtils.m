@@ -7,6 +7,9 @@
 //
 
 #import "SFUtils.h"
+#import "OBAppleAdIdUtil.h"
+#import "OutbrainManager.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @implementation SFUtils
@@ -178,6 +181,57 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
     [videoCell.webview loadRequest:request];
     [videoCell.contentView setNeedsLayout];
+}
+
++(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {
+//    NSLog(@"response.responseRequest: %@", [response.responseRequest payload]);
+    
+    BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
+    BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
+    return videoIsIncludedInRequest && videoURLIsIncludedInSettings;
+}
+
++(NSString *) videoParamsStringFromResponse:(OBRecommendationResponse *)response {
+    NSMutableDictionary *videoParams = [[NSMutableDictionary alloc] init];
+    if (response.originalOBPayload[@"settings"]) {
+        videoParams[@"settings"] = response.originalOBPayload[@"settings"];
+    }
+    if (response.originalOBPayload[@"request"]) {
+        videoParams[@"request"] = response.originalOBPayload[@"request"];
+    }
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:videoParams
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    if (! jsonData) {
+        NSLog(@"initWithVideoUrl Got an error: %@", error);
+        return nil;
+    } else {
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+}
+
++(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
+    NSString *videoUrlStr = response.settings.videoUrl.absoluteString;
+    //NSString *videoUrlStr = @"https://broadsay-sdk-mock-server.herokuapp.com/static/vidgetInApp.html";
+    NSURLComponents *components = [[NSURLComponents alloc] initWithString:videoUrlStr];
+    NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
+    NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
+    NSString *apiUserId = [OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId];
+    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+    
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"inApp" value: @"true"]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appBundle" value: bundleIdentifier]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"deviceIfa" value: apiUserId]];
+    if ([OutbrainManager sharedInstance].testMode) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
+    }
+    
+    components.queryItems = odbQueryItems;
+    return components.URL;
 }
 
 +(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat {

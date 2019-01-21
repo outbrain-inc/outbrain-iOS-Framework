@@ -104,6 +104,8 @@
 		E6250D8721C0FEFF00C329B9 /* AppSFTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6250D8521C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib */; };
 		E6250D8921C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */; };
 		E6250D8A21C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */; };
+		E62729E121ECD41900C8CEFD /* OBVideoWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62729E021ECD41900C8CEFD /* OBVideoWidgetViewController.swift */; };
+		E62729E221ECD41900C8CEFD /* OBVideoWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62729E021ECD41900C8CEFD /* OBVideoWidgetViewController.swift */; };
 		E628614F2137FC8700D12A15 /* AppArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */; };
 		E62861502137FC8700D12A15 /* AppArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */; };
 		E62861542138231800D12A15 /* AppArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62861532138231800D12A15 /* AppArticleTableViewCell.swift */; };
@@ -256,6 +258,7 @@
 		E61E6CE92085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E6250D8521C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFTableViewHeaderCell.xib; sourceTree = "<group>"; };
 		E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AppSFCollectionViewHeaderCell.xib; path = SmartFeedCells/AppSFCollectionViewHeaderCell.xib; sourceTree = "<group>"; };
+		E62729E021ECD41900C8CEFD /* OBVideoWidgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBVideoWidgetViewController.swift; sourceTree = "<group>"; };
 		E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		E62861532138231800D12A15 /* AppArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArticleTableViewCell.swift; sourceTree = "<group>"; };
 		E6286166213C0EED00D12A15 /* AppSFHorizontalItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFHorizontalItemCell.xib; sourceTree = "<group>"; };
@@ -611,6 +614,7 @@
 		E61E6CE32085DC6C0016D79A /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				E62729DF21ECD3FD00C8CEFD /* OBVideoWidget */,
 				E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */,
 				E61E6CE42085DC6C0016D79A /* ArticleCollectionViewController.swift */,
 				E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */,
@@ -632,6 +636,14 @@
 				E61E6CE92085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib */,
 			);
 			path = SmartFeedCells;
+			sourceTree = "<group>";
+		};
+		E62729DF21ECD3FD00C8CEFD /* OBVideoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E62729E021ECD41900C8CEFD /* OBVideoWidgetViewController.swift */,
+			);
+			path = OBVideoWidget;
 			sourceTree = "<group>";
 		};
 		E64366721FAEF2FB00FA617E /* PostsList */ = {
@@ -1034,6 +1046,7 @@
 				E60DCD3720BC3AAD0023FE93 /* AppSFTableViewCell.swift in Sources */,
 				E62861542138231800D12A15 /* AppArticleTableViewCell.swift in Sources */,
 				E628614F2137FC8700D12A15 /* AppArticleCollectionViewCell.swift in Sources */,
+				E62729E121ECD41900C8CEFD /* OBVideoWidgetViewController.swift in Sources */,
 				E60DCD3820BC3AAD0023FE93 /* ViewController.swift in Sources */,
 				E60DCD3920BC3AAD0023FE93 /* AppDelegate.swift in Sources */,
 			);
@@ -1087,6 +1100,7 @@
 				E61E6CEB2085DC6C0016D79A /* AppSFTableViewCell.swift in Sources */,
 				E62861552138231800D12A15 /* AppArticleTableViewCell.swift in Sources */,
 				E62861502137FC8700D12A15 /* AppArticleCollectionViewCell.swift in Sources */,
+				E62729E221ECD41900C8CEFD /* OBVideoWidgetViewController.swift in Sources */,
 				E61E6CD22085DBD50016D79A /* ViewController.swift in Sources */,
 				E61E6CD02085DBD50016D79A /* AppDelegate.swift in Sources */,
 			);
