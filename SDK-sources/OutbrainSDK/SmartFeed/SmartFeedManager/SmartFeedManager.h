@@ -23,6 +23,8 @@
 @optional
 -(void) smartFeedResponseReceived:(NSArray<OBRecommendation *> *_Nonnull)recommendations forWidgetId:(NSString *_Nonnull)widgetId;
 
+-(BOOL) isVideoCurrentlyPlaying;
+
 -(CGSize) carouselItemSize;
 
 -(void) configureHorizontalItem:(SFCollectionViewCell * _Nonnull)sfCollectionViewCell withRec:(OBRecommendation * _Nonnull)rec;
@@ -61,6 +63,8 @@ typedef enum
 
 @property (nonatomic, weak) id<SmartFeedDelegate> delegate;
 @property (nonatomic, assign) CGFloat horizontalContainerMargin;
+
+@property (nonatomic) BOOL isVideoEligible;
 
 -(NSInteger) smartFeedItemsCount;
 

@@ -25,11 +25,15 @@
 @end
 
 
-@protocol SFClickListener
+@protocol SFPrivateEventListener<NSObject>
 
 - (void) recommendationClicked: (id)sender;
 - (void) adChoicesClicked:(id)sender;
 - (void) outbrainLabelClicked:(id)sender;
+
+@optional
+
+- (BOOL) isVideoCurrentlyPlaying;
 
 @end
 
@@ -58,7 +62,7 @@
 
 +(BOOL) configureGenericVideoCell:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem;
 
-+(void) loadRequestIn:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem;
++(void) loadVideoURLIn:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem;
 
 +(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response;
 

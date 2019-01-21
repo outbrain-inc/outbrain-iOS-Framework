@@ -177,7 +177,7 @@
     return NO;
 }
 
-+(void) loadRequestIn:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem {
++(void) loadVideoURLIn:(id<SFVideoCellType>)videoCell sfItem:(SFItemData *)sfItem {
     NSURLRequest *request = [NSURLRequest requestWithURL:sfItem.videoUrl];
     [videoCell.webview loadRequest:request];
     [videoCell.contentView setNeedsLayout];
