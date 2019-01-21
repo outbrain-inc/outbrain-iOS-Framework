@@ -48,7 +48,6 @@
     NSBundle *bundle = [NSBundle bundleForClass:[OBVideoWidget class]];
     self.videoCell = (SFVideoCollectionViewCell *)[[bundle loadNibNamed:@"SFSingleVideoWithTitleCollectionViewCell" owner:self options:nil] objectAtIndex:0];
     
-    NSLog(@"rootView: %@", self.videoCell);
     [self.videoCell prepareForReuse];
     [self.containerView addSubview:self.videoCell];
     [SFUtils addConstraintsToFillParent:self.videoCell];
@@ -95,7 +94,7 @@
 #pragma mark - WKUIDelegate
 - (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
     if (navigationAction.targetFrame == nil) {
-        NSLog(@"SmartFeedManager createWebViewWith URL: %@", navigationAction.request.URL);
+        NSLog(@"OBVideoWidget createWebViewWith URL: %@", navigationAction.request.URL);
         if (self.delegate != nil && navigationAction.request.URL != nil) {
             [self.delegate userTappedOnVideoRec:navigationAction.request.URL];
         }
@@ -106,7 +105,6 @@
 #pragma mark - SFClickListener methods
 
 - (void) recommendationClicked: (id)sender {
-    NSLog(@"recommendationClicked");
     OBRecommendation *rec = self.sfItem.singleRec;
     
     if (self.delegate != nil && rec != nil) {
@@ -115,7 +113,6 @@
 }
 
 - (void) adChoicesClicked:(id)sender {
-    NSLog(@"adChoicesClicked");
     OBRecommendation *rec = self.sfItem.singleRec;
     if (self.delegate != nil && rec != nil) {
         [self.delegate userTappedOnAdChoicesIcon:rec.disclosure.clickUrl];
