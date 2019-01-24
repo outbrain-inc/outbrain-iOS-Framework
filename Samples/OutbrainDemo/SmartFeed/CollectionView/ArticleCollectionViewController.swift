@@ -3,7 +3,7 @@
 //  ArticleCollectionViewController.swift
 //  ios-SmartFeed
 //
-//  Created by Gai Carmi on 2/4/18.
+//  Created by Oded Regev on 2/4/18.
 //  Copyright © 2018 Outbrain. All rights reserved.
 //
 

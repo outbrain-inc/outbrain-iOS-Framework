@@ -4,6 +4,8 @@
 
 - OBVideoWidget support in the SDK
 - Smartfeed "chunk size" settings support
+- ios-release.sh script update
+- Per Sky request - isVideoCurrentlyPlaying and isVideoEligible flag
 
 ## v3.4.9 - January 10, 2019
 
