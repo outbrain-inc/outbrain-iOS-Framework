@@ -2,6 +2,7 @@
 
 ## v3.5.0 - ??
 
+- Per Sky request - add "pauseVideo" method to `SmartFeedManager`
 - OBVideoWidget support in the SDK
 - Smartfeed "chunk size" settings support
 - ios-release.sh script update
