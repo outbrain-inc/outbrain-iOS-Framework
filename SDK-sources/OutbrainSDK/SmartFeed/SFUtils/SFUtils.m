@@ -148,6 +148,7 @@
     webviewConf.allowsInlineMediaPlayback = YES;
     webviewConf.preferences = preferences;
     WKWebView *webView = [[WKWebView alloc] initWithFrame:parentView.frame configuration:webviewConf];
+    webView.scrollView.scrollEnabled = NO;
     webView.UIDelegate = uiDelegate;
     [parentView addSubview:webView];
     webView.alpha = 0;
