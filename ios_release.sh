@@ -140,9 +140,9 @@ mv $EXPORT_DIR_PATH/OutbrainSDK.framework.zip OBSDK-Release/
 open OBSDK-Release
 
 echo ""
-echo "*********************"
+echo "**********************************************************************"
 echo "Uploading iOS-SampleApps.zip and OutbrainSDK.framework.zip to Bintray"
-echo "*********************"
+echo "**********************************************************************"
 #Uploading to Bintray
 API_KEY="bdf87de700d2dffd65fe3aeb23d13122a3406a0b"
 REPO="obsdk"
@@ -158,17 +158,29 @@ echo "Upload iOS-SampleApps.zip to Bintray"
 curl -T OBSDK-Release/iOS-SampleApps.zip -uoutbrainmobileadmin:$API_KEY https://api.bintray.com/content/outbrainmobile/$REPO/$PACKAGE_SAMPLE_APPS/$NEW_SDK_VER/$NEW_SDK_VER/iOS-SampleApps.zip?publish=1
 
 echo ""
+echo "**********************"
+echo " Uploading Custom UI"
+echo "**********************"
+echo ""
+
+./update_custom_ui.sh
+
+echo ""
 echo "*********************"
 echo "Success"
 echo "*********************"
 echo ""
 echo "*********************************************************************************************************"
-echo "Links:"
-echo ""
-echo "iOS Sample Apps on bintray:"
-echo "https://dl.bintray.com/outbrainmobile/obsdk/$NEW_SDK_VER/iOS-SampleApps.zip"
-echo ""
-echo "iOS SDK on bintray:"
-echo "https://dl.bintray.com/outbrainmobile/obsdk/$NEW_SDK_VER/OutbrainSDK.framework.zip"
+echo "* Links:                                                                                                *"
+echo "*                                                                                                       *"
+echo "* iOS SDK on bintray:                                                                                   *"
+echo "* https://dl.bintray.com/outbrainmobile/obsdk/$NEW_SDK_VER/OutbrainSDK.framework.zip                    *"
+echo "*                                                                                                       *"
+echo "* iOS Sample Apps on bintray:                                                                           *"
+echo "* https://dl.bintray.com/outbrainmobile/obsdk/$NEW_SDK_VER/iOS-SampleApps.zip                           *"
+echo "*                                                                                                       *"
+echo "* iOS Custom UI on bintray:                                                                             *"
+echo "* https://dl.bintray.com/outbrainmobile/obsdk/$NEW_SDK_VER/Custom-UI-iOS-SDK-Smartfeed.zip              *"
+echo "*                                                                                                       *"
 echo "*********************************************************************************************************"
 
