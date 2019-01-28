@@ -274,8 +274,6 @@
     [self verifyCollectionCellBasicOutlets:cell];
     XCTAssertNotNil(cell.cardContentView);
     XCTAssertNotNil(cell.cellTitleLabel);
-    XCTAssertNotNil(cell.outbrainLabelingContainer);
-    XCTAssertNotNil(cell.outbrainLabelingContainer);
 }
 
 -(void) verifyTableCellBasicOutlets:(SFTableViewCell *)cell {
@@ -292,8 +290,6 @@
     [self verifyTableCellBasicOutlets:cell];
     XCTAssertNotNil(cell.cardContentView);
     XCTAssertNotNil(cell.cellTitleLabel);
-    XCTAssertNotNil(cell.outbrainLabelingContainer);
-    XCTAssertNotNil(cell.outbrainLabelingContainer);
 }
 
 @end

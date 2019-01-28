@@ -10,7 +10,6 @@
 
 @interface SFTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UIControl *outbrainLabelingContainer;
 @property (nonatomic, weak) IBOutlet UIView *cardContentView;
 @property (nonatomic, weak) IBOutlet UIImageView *publisherLogo;
 @property (nonatomic, weak) IBOutlet UIImageView *recImageView;

@@ -268,14 +268,9 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
             singleCell.cellTitleLabel.text = @"Around the web";
         }
         
-        singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];
         if (!sfItem.isCustomUI) {
             singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
         }
-
-        [singleCell.outbrainLabelingContainer becomeFirstResponder];
-        singleCell.outbrainLabelingContainer.enabled = YES;
-        [singleCell.outbrainLabelingContainer addTarget:self.eventListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
         [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];

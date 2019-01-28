@@ -32,33 +32,6 @@
                                 <color key="textColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRr-9V-t6Y" userLabel="Outbrain Labeling Container" customClass="UIControl">
-                                <rect key="frame" x="261" y="4" width="150" height="25"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recommended-by-outbrain" translatesAutoresizingMaskIntoConstraints="NO" id="1k1-12-3CY">
-                                        <rect key="frame" x="100" y="4" width="50" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="Bfx-EA-C15"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCx-r3-YUf">
-                                        <rect key="frame" x="17" y="6.5" width="83" height="12"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                                        <color key="textColor" red="0.61176470589999998" green="0.61568627450000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="1k1-12-3CY" firstAttribute="top" secondItem="kRr-9V-t6Y" secondAttribute="top" constant="4" id="6eY-ll-tH2"/>
-                                    <constraint firstAttribute="bottom" secondItem="1k1-12-3CY" secondAttribute="bottom" constant="4" id="7qw-63-kmN"/>
-                                    <constraint firstItem="1k1-12-3CY" firstAttribute="leading" secondItem="QCx-r3-YUf" secondAttribute="trailing" id="Ao8-ui-KK2"/>
-                                    <constraint firstAttribute="width" constant="150" id="IJd-5u-ubD"/>
-                                    <constraint firstAttribute="trailing" secondItem="1k1-12-3CY" secondAttribute="trailing" id="Vlh-os-iER"/>
-                                    <constraint firstItem="QCx-r3-YUf" firstAttribute="centerY" secondItem="1k1-12-3CY" secondAttribute="centerY" id="YRd-mZ-dh0"/>
-                                    <constraint firstAttribute="height" constant="25" id="dGB-g9-c9o"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNs-fM-9vp" userLabel="CardContentView">
                                 <rect key="frame" x="10" y="32.5" width="401" height="110.5"/>
                                 <subviews>
@@ -119,8 +92,6 @@
                             <constraint firstItem="hNs-fM-9vp" firstAttribute="top" secondItem="dyd-vn-6Ta" secondAttribute="bottom" constant="8" id="7M9-tq-hCt"/>
                             <constraint firstItem="dyd-vn-6Ta" firstAttribute="leading" secondItem="MD5-iE-f5d" secondAttribute="leading" constant="14" id="Mfj-JK-Ugj"/>
                             <constraint firstItem="hNs-fM-9vp" firstAttribute="leading" secondItem="MD5-iE-f5d" secondAttribute="leading" constant="10" id="Vdq-zv-QRn"/>
-                            <constraint firstItem="kRr-9V-t6Y" firstAttribute="centerY" secondItem="dyd-vn-6Ta" secondAttribute="centerY" id="at4-Wm-f1L"/>
-                            <constraint firstAttribute="trailing" secondItem="kRr-9V-t6Y" secondAttribute="trailing" constant="10" id="eyZ-cI-EJh"/>
                             <constraint firstAttribute="bottom" secondItem="hNs-fM-9vp" secondAttribute="bottom" constant="5" id="hmP-Bw-Ihb"/>
                             <constraint firstItem="dyd-vn-6Ta" firstAttribute="top" secondItem="MD5-iE-f5d" secondAttribute="top" constant="8" id="yuH-sB-hOw"/>
                         </constraints>
@@ -140,7 +111,6 @@
                 <outlet property="adChoicesButton" destination="pid-Q1-1t8" id="YZn-8D-tU4"/>
                 <outlet property="cardContentView" destination="hNs-fM-9vp" id="Lro-xT-xBH"/>
                 <outlet property="cellTitleLabel" destination="dyd-vn-6Ta" id="PwH-ne-MvZ"/>
-                <outlet property="outbrainLabelingContainer" destination="kRr-9V-t6Y" id="b9u-AJ-7ym"/>
                 <outlet property="publisherLogo" destination="OTt-Gd-VRW" id="vkW-0Z-1Xg"/>
                 <outlet property="publisherLogoHeight" destination="b6X-ns-99J" id="JpH-C9-yeR"/>
                 <outlet property="publisherLogoWidth" destination="RgF-pE-yDb" id="dnt-A0-iPy"/>
@@ -151,7 +121,4 @@
             <point key="canvasLocation" x="169.5" y="-21"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="recommended-by-outbrain" width="60" height="32"/>
-    </resources>
 </document>
