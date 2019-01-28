@@ -744,7 +744,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if (indexPath.section == self.outbrainSectionIndex) {
         if (indexPath.row == 0) {
             // Smartfeed header
-            return CGSizeMake(collectionView.frame.size.width, 50);
+            return CGSizeMake(collectionView.frame.size.width, 35);
         }
         SFItemData *sfItem = [self itemForIndexPath:indexPath];
         return [self.sfCollectionViewManager collectionView:collectionView sizeForItemAtIndexPath:indexPath sfItem:sfItem];
