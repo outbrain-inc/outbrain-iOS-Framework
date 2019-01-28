@@ -116,6 +116,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.customNibsForItemType = [[NSMutableDictionary alloc] init];
     self.reuseIdentifierItemType = [[NSMutableDictionary alloc] init];
     self.horizontalContainerMargin = 0;
+    self.isVideoEligible = YES; // default value
 }
 
 -(NSInteger) smartFeedItemsCount {
