@@ -67,10 +67,6 @@
 #pragma mark - NSNotificationCenter
 - (void) receiveVideoPauseNotification:(NSNotification *) notification
 {
-    // [notification name] should always be @"TestNotification"
-    // unless you use this method for observation of other notifications
-    // as well.
-    
     if ([[notification name] isEqualToString: OB_VIDEO_PAUSE_NOTIFICATION]) {
         if (!self.videoCell.webview) {
             return;
