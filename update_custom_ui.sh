@@ -22,9 +22,9 @@ mkdir OBSDK-CustomUI/SFSingleCells/
 mkdir OBSDK-CustomUI/SFHeaderCells/
 
 echo ""
-echo "***************************************************"
-echo " Copy Custom UI files to OBSDK-CustomUI/CustomUI/"
-echo "***************************************************"
+echo "****************************************"
+echo " Copy Custom UI files to OBSDK-CustomUI"
+echo "****************************************"
 
 SINGLE_CELLS_PATH="SDK-sources/OutbrainSDK/SmartFeed/SFSingleCells"
 HEADER_CELLS_PATH="SDK-sources/OutbrainSDK/SmartFeed/SmartFeedHeaderCells/XIB"
