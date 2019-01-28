@@ -9,6 +9,7 @@
 - Remove the "Recommended by" label from the Smartfeed
 - Bug fix: WKWebView for the video player should have scrolled disable
 - Bug fix: default value for isVideoEligible should be YES
+- UI improvement for the Smartfeed header cell
 
 ## v3.4.9 - January 10, 2019
 
