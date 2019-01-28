@@ -90,7 +90,7 @@
 - (void)testSmartFeedVideoUrlWithParams {
     XCTAssertTrue([self.responseParent.settings.videoUrl.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222"]);
     
-    NSURL *videoUrlWithParams = [self.smartFeedManager appendParamsToVideoUrl:self.responseParent];
+    NSURL *videoUrlWithParams = [SFUtils appendParamsToVideoUrl:self.responseParent];
     NSArray *queryItems = [[[NSURLComponents alloc] initWithURL:videoUrlWithParams resolvingAgainstBaseURL:nil] queryItems];
     NSLog(@"videoUrlWithParams.absoluteString: %@", videoUrlWithParams.absoluteString);
     
@@ -100,9 +100,9 @@
 }
 
 - (void)testSmartFeedResponsesVideoIsIncluded {
-    XCTAssertTrue([self.smartFeedManager isVideoIncludedInResponse:self.responseParent]);
-    XCTAssertFalse([self.smartFeedManager isVideoIncludedInResponse:self.responseChild1]);
-    XCTAssertFalse([self.smartFeedManager isVideoIncludedInResponse:self.responseChild2]);
+    XCTAssertTrue([SFUtils isVideoIncludedInResponse:self.responseParent]);
+    XCTAssertFalse([SFUtils isVideoIncludedInResponse:self.responseChild1]);
+    XCTAssertFalse([SFUtils isVideoIncludedInResponse:self.responseChild2]);
 }
     
 - (void)testSmartFeedResponsesContent {
@@ -274,8 +274,6 @@
     [self verifyCollectionCellBasicOutlets:cell];
     XCTAssertNotNil(cell.cardContentView);
     XCTAssertNotNil(cell.cellTitleLabel);
-    XCTAssertNotNil(cell.outbrainLabelingContainer);
-    XCTAssertNotNil(cell.outbrainLabelingContainer);
 }
 
 -(void) verifyTableCellBasicOutlets:(SFTableViewCell *)cell {
@@ -292,8 +290,6 @@
     [self verifyTableCellBasicOutlets:cell];
     XCTAssertNotNil(cell.cardContentView);
     XCTAssertNotNil(cell.cellTitleLabel);
-    XCTAssertNotNil(cell.outbrainLabelingContainer);
-    XCTAssertNotNil(cell.outbrainLabelingContainer);
 }
 
 @end
