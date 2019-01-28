@@ -7,6 +7,7 @@
 //
 
 #import "SFScriptMessageHandler.h"
+#import "SFUtils.h"
 
 @interface SFScriptMessageHandler()
 
@@ -22,8 +23,16 @@
     self = [super init];
     if(self) {
         self.videoCell = videoCell;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(receiveVideoPauseNotification:)
+                                                     name:OB_VIDEO_PAUSE_NOTIFICATION
+                                                   object:nil];
     }
     return self;
+}
+
+-(void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - WKScriptMessageHandler
@@ -58,5 +67,22 @@
         // NSLog(@"** Webview log: %@", message.body);
     }
 }
+
+#pragma mark - NSNotificationCenter
+- (void) receiveVideoPauseNotification:(NSNotification *) notification
+{
+    // [notification name] should always be @"TestNotification"
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString: OB_VIDEO_PAUSE_NOTIFICATION]) {
+        if (!self.videoCell.webview) {
+            return;
+        }
+        NSString* js = @"systemVideoPause()";
+        [self.videoCell.webview evaluateJavaScript:js completionHandler:nil];
+    }
+}
+
 
 @end

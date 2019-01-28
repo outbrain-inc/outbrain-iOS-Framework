@@ -16,6 +16,10 @@
 
 #define SPONSORED_LABEL_TAG 334422
 
+
+extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
+
+
 @protocol SFVideoCellType
 
 @property (nonatomic, readonly) UIView *contentView;

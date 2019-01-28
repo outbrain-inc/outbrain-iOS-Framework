@@ -12,6 +12,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATION";
+
 @implementation SFUtils
 
 +(void) addConstraintsToFillParent:(UIView *)view {

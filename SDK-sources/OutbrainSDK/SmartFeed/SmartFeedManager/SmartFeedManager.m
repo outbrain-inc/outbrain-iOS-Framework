@@ -996,6 +996,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     return nil;
 }
 
+-(void) pauseVideo {
+    [[NSNotificationCenter defaultCenter]
+        postNotificationName: OB_VIDEO_PAUSE_NOTIFICATION
+        object:self];
+}
+
 #pragma mark - WKUIDelegate
 - (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
     if (navigationAction.targetFrame == nil) {
