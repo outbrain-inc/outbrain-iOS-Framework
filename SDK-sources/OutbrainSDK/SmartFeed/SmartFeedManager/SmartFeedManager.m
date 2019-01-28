@@ -210,9 +210,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     [self loadMoreAccordingToFeedContent:nil];
 }
 
--(void) loadMoreAccordingToFeedContent:(NSArray *)pendingItems {
-    NSLog(@"--> loadMoreAccordingToFeedContent");
-    
+-(void) loadMoreAccordingToFeedContent:(NSArray *)pendingItems {    
     __block NSUInteger subWidgetsCounterBeforeFetching = self.subWidgetsCounter;
     __block NSUInteger responseCount = 0;
     __block NSUInteger requestCount = 0;
@@ -233,7 +231,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             request.externalID = self.externalID;
         }
         
-        NSLog(@"fetching widget: %@", request.widgetId);
         requestCount++;
         [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
             responseCount++;
@@ -1005,7 +1002,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 #pragma mark - WKUIDelegate
 - (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
     if (navigationAction.targetFrame == nil) {
-        NSLog(@"SmartFeedManager createWebViewWith URL: %@", navigationAction.request.URL);
+        // NSLog(@"SmartFeedManager createWebViewWith URL: %@", navigationAction.request.URL);
         if (self.delegate != nil && navigationAction.request.URL != nil) {
             [self.delegate userTappedOnVideoRec:navigationAction.request.URL];
         }

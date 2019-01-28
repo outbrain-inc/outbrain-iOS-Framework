@@ -43,24 +43,20 @@
     
     NSString *action = msgBody[@"action"];
     if ([@"videoIsReady" isEqualToString:action]) {
-        NSLog(@"SFScriptMessageHandler Received: videoIsReady");
         sfItem.videoPlayerStatus = kVideoReadyStatus;
         webview.alpha = 1.0;
     }
     else if ([@"videoFinished" isEqualToString:action]) {
-        NSLog(@"SFScriptMessageHandler  Received: videoFinished");
         sfItem.videoPlayerStatus = kVideoFinishedStatus;
         [webview removeFromSuperview];
         self.videoCell.webview = nil;
     }
     else if ([@"pageIsReady" isEqualToString:action]) {
-        NSLog(@"SFScriptMessageHandler  Received: pageIsReady");
         NSString * js = [NSString stringWithFormat:@"odbData(%@)", sfItem.videoParamsStr];
         // evaluate js to wkwebview
         [webview evaluateJavaScript:js completionHandler:nil];
     }
     else if ([@"sdkLog" isEqualToString:action]) {
-        //NSLog(@"SFScriptMessageHandler  Received: sdkLog");
         //NSLog(@"** Webview sdkLog: %@", message.body);
     }
     else {
