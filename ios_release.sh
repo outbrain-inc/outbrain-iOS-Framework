@@ -163,7 +163,7 @@ echo " Uploading Custom UI"
 echo "**********************"
 echo ""
 
-./update_custom_ui.sh
+./update_custom_ui.sh &{NEW_SDK_VER}
 
 echo ""
 echo "*********************"
