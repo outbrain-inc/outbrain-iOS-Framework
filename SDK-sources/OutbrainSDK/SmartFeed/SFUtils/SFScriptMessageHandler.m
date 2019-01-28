@@ -7,6 +7,7 @@
 //
 
 #import "SFScriptMessageHandler.h"
+#import "SFUtils.h"
 
 @interface SFScriptMessageHandler()
 
@@ -22,8 +23,16 @@
     self = [super init];
     if(self) {
         self.videoCell = videoCell;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(receiveVideoPauseNotification:)
+                                                     name:OB_VIDEO_PAUSE_NOTIFICATION
+                                                   object:nil];
     }
     return self;
+}
+
+-(void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - WKScriptMessageHandler
@@ -34,29 +43,38 @@
     
     NSString *action = msgBody[@"action"];
     if ([@"videoIsReady" isEqualToString:action]) {
-        NSLog(@"SFScriptMessageHandler Received: videoIsReady");
         sfItem.videoPlayerStatus = kVideoReadyStatus;
         webview.alpha = 1.0;
     }
     else if ([@"videoFinished" isEqualToString:action]) {
-        NSLog(@"SFScriptMessageHandler  Received: videoFinished");
         sfItem.videoPlayerStatus = kVideoFinishedStatus;
         [webview removeFromSuperview];
         self.videoCell.webview = nil;
     }
     else if ([@"pageIsReady" isEqualToString:action]) {
-        NSLog(@"SFScriptMessageHandler  Received: pageIsReady");
         NSString * js = [NSString stringWithFormat:@"odbData(%@)", sfItem.videoParamsStr];
         // evaluate js to wkwebview
         [webview evaluateJavaScript:js completionHandler:nil];
     }
     else if ([@"sdkLog" isEqualToString:action]) {
-        //NSLog(@"SFScriptMessageHandler  Received: sdkLog");
         //NSLog(@"** Webview sdkLog: %@", message.body);
     }
     else {
         // NSLog(@"** Webview log: %@", message.body);
     }
 }
+
+#pragma mark - NSNotificationCenter
+- (void) receiveVideoPauseNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString: OB_VIDEO_PAUSE_NOTIFICATION]) {
+        if (!self.videoCell.webview) {
+            return;
+        }
+        NSString* js = @"systemVideoPause()";
+        [self.videoCell.webview evaluateJavaScript:js completionHandler:nil];
+    }
+}
+
 
 @end

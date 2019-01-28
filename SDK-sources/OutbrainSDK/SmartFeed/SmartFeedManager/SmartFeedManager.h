@@ -112,5 +112,6 @@ typedef enum
 
 -(NSArray * _Nullable) recommendationsForIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
+-(void) pauseVideo;
 
 @end
