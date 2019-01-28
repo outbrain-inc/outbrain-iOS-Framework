@@ -1,11 +1,14 @@
 # Release Notes
 
-## v3.4.10 - January 21, 2019
+## v3.5.0 - ??
 
 - OBVideoWidget support in the SDK
 - Smartfeed "chunk size" settings support
 - ios-release.sh script update
 - Per Sky request - isVideoCurrentlyPlaying and isVideoEligible flag
+- Remove the "Recommended by" label from the Smartfeed
+- Bug fix: WKWebView for the video player should have scrolled disable
+- Bug fix: default value for isVideoEligible should be YES
 
 ## v3.4.9 - January 10, 2019
 
