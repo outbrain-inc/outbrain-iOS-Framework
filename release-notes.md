@@ -1,12 +1,12 @@
 # Release Notes
 
-## v3.5.0 - ??
+## v3.5.0 - January 29, 2019
 
 - Per Sky request - add "pauseVideo" method to `SmartFeedManager`
+- Per Sky request - isVideoCurrentlyPlaying and isVideoEligible flag
 - OBVideoWidget support in the SDK
 - Smartfeed "chunk size" settings support
 - ios-release.sh script update
-- Per Sky request - isVideoCurrentlyPlaying and isVideoEligible flag
 - Remove the "Recommended by" label from the Smartfeed
 - Bug fix: WKWebView for the video player should have scrolled disable
 - Bug fix: default value for isVideoEligible should be YES
