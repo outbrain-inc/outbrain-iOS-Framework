@@ -10,8 +10,13 @@ OUTBRAIN_SDK_M_PATH="SDK-sources/OutbrainSDK/Outbrain.m"
 CURRENT_SDK_VERSION=`cat $OUTBRAIN_SDK_M_PATH | grep "OB_SDK_VERSION" | cut -d "=" -f2 | cut -d \" -f2`
 
 if [ $# -eq 0 ]; then
-echo "version parameter is missing"
-exit 1
+	echo "version parameter is missing"
+	exit 1
+fi
+
+if [[ `git status --porcelain` ]]; then
+  	echo "git status is not clean.. exiting"
+	exit 1
 fi
 
 NEW_SDK_VER=$1
