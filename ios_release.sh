@@ -157,11 +157,11 @@ PACKAGE_SAMPLE_APPS="iOS-SampleApps"
 
 echo ""
 echo "Upload OutbrainSDK.framework.zip to Bintray"
-curl -T OBSDK-Release/OutbrainSDK.framework.zip -uoutbrainmobileadmin:$API_KEY https://api.bintray.com/content/outbrainmobile/$REPO/$PACKAGE_SDK/$NEW_SDK_VER/$NEW_SDK_VER/OutbrainSDK.framework.zip?publish=1
+./upload_to_bintray.sh OBSDK-Release/OutbrainSDK.framework.zip $PACKAGE_SDK $NEW_SDK_VER OutbrainSDK.framework.zip
 
 echo ""
 echo "Upload iOS-SampleApps.zip to Bintray"
-curl -T OBSDK-Release/iOS-SampleApps.zip -uoutbrainmobileadmin:$API_KEY https://api.bintray.com/content/outbrainmobile/$REPO/$PACKAGE_SAMPLE_APPS/$NEW_SDK_VER/$NEW_SDK_VER/iOS-SampleApps.zip?publish=1
+./upload_to_bintray.sh OBSDK-Release/iOS-SampleApps.zip $PACKAGE_SAMPLE_APPS $NEW_SDK_VER iOS-SampleApps.zip
 
 echo ""
 echo "**********************"

@@ -45,15 +45,13 @@ rm -fr SFHeaderCells/
 cd ..
 
 echo ""
-echo "*********************************************************"
-echo " Upload Custom-UI-iOS-SDK-Smartfeed.zip to Bintray (version ${NEW_SDK_VER})"
-echo "*********************************************************"
-API_KEY="bdf87de700d2dffd65fe3aeb23d13122a3406a0b"
-REPO="obsdk"
+echo "*******************"
+echo " Upload to Bintray "
+echo "*******************"
+
 PACKAGE_IOS_CUSTOM_UI="iOS-Custom-UI-SDK-Smartfeed"
 
-
-curl -T OBSDK-CustomUI/Custom-UI-iOS-SDK-Smartfeed.zip -uoutbrainmobileadmin:$API_KEY https://api.bintray.com/content/outbrainmobile/$REPO/$PACKAGE_IOS_CUSTOM_UI/$NEW_SDK_VER/$NEW_SDK_VER/Custom-UI-iOS-SDK-Smartfeed.zip?publish=1
+./upload_to_bintray.sh OBSDK-CustomUI/Custom-UI-iOS-SDK-Smartfeed.zip $PACKAGE_IOS_CUSTOM_UI $NEW_SDK_VER Custom-UI-iOS-SDK-Smartfeed.zip
 
 echo ""
 echo ""
