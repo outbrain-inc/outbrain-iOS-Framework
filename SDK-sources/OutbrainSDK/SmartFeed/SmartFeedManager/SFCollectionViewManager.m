@@ -231,10 +231,30 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         singleCell.cardContentView.tag = cellTag;
     }
     
-    [SFCollectionViewManager configureSingleCell:cell withSFItem:sfItem eventListenerTarget:self.eventListenerTarget cellTag:cellTag tapGestureDelegate:self];
+    [SFCollectionViewManager configureSingleCell:cell withSFItem:sfItem eventListenerTarget:self.eventListenerTarget cellTag:cellTag tapGestureDelegate:self displaySourceOnOrganicRec:self.displaySourceOnOrganicRec];
 }
 
-+ (void) configureSingleCell:(UICollectionViewCell *)cell withSFItem:(SFItemData *)sfItem eventListenerTarget:(id<SFPrivateEventListener>) eventListenerTarget cellTag:(NSInteger)cellTag tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate
++ (void) configureSingleCell:(UICollectionViewCell *)cell
+                  withSFItem:(SFItemData *)sfItem
+         eventListenerTarget:(id<SFPrivateEventListener>)eventListenerTarget
+                     cellTag:(NSInteger)cellTag
+          tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate
+{
+    
+    [self configureSingleCell:cell
+                   withSFItem:sfItem
+          eventListenerTarget:eventListenerTarget
+                      cellTag:cellTag
+           tapGestureDelegate:tapGestureDelegate
+    displaySourceOnOrganicRec:NO];
+}
+
++ (void) configureSingleCell:(UICollectionViewCell *)cell
+                  withSFItem:(SFItemData *)sfItem
+         eventListenerTarget:(id<SFPrivateEventListener>)eventListenerTarget
+                     cellTag:(NSInteger)cellTag
+          tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate
+   displaySourceOnOrganicRec:(BOOL)displaySourceOnOrganicRec
 {
     SFCollectionViewCell *singleCell = (SFCollectionViewCell *)cell;
     
@@ -273,7 +293,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
             singleCell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
             singleCell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
-            if (!sfItem.isCustomUI) {
+            if (!sfItem.isCustomUI && !displaySourceOnOrganicRec) {
                 singleCell.recSourceLabel.text = @"";
             }
         }

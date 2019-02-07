@@ -20,6 +20,8 @@
 @property (nonatomic, weak) id<SFPrivateEventListener> eventListenerTarget;
 @property (nonatomic, weak) id<WKUIDelegate> wkWebviewDelegate;
 @property (nonatomic, weak, readonly) UICollectionView *collectionView;
+@property (nonatomic) BOOL displaySourceOnOrganicRec;
+
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView;
 

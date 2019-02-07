@@ -65,6 +65,7 @@ typedef enum
 @property (nonatomic, assign) CGFloat horizontalContainerMargin;
 
 @property (nonatomic) BOOL isVideoEligible;
+@property (nonatomic) BOOL displaySourceOnOrganicRec;
 
 -(NSInteger) smartFeedItemsCount;
 

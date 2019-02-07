@@ -128,6 +128,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
 }
 
+- (void)setDisplaySourceOnOrganicRec:(BOOL)displaySourceOnOrganicRec {
+    _displaySourceOnOrganicRec = displaySourceOnOrganicRec;
+    if (self.sfCollectionViewManager) {
+        self.sfCollectionViewManager.displaySourceOnOrganicRec = displaySourceOnOrganicRec;
+    }
+    if (self.sfTableViewManager) {
+        self.sfTableViewManager.displaySourceOnOrganicRec = displaySourceOnOrganicRec;
+    }
+}
+
 #pragma mark - Fetch Recommendations
 - (void) fetchMoreRecommendations {
     if (self.isLoading) {
@@ -642,6 +652,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     horizontalView.outbrainRecs = sfItem.outbrainRecs;
     horizontalView.settings = sfItem.odbSettings;
     horizontalView.shadowColor = sfItem.shadowColor;
+    horizontalView.displaySourceOnOrganicRec = self.displaySourceOnOrganicRec;
+    
     [horizontalView setupView];
     [horizontalView setOnRecommendationClick:^(OBRecommendation *rec) {
         if (self.delegate != nil) {

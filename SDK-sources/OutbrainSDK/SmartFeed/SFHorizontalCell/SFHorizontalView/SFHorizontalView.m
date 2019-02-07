@@ -80,8 +80,9 @@
     }
     
     cell.recTitleLabel.text = rec.content;
+    cell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:self.settings.sourceFormat];
+    
     if ([rec isPaidLink]) {
-        cell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:self.settings.sourceFormat];
         if ([rec shouldDisplayDisclosureIcon]) {
             cell.adChoicesButton.hidden = NO;
             cell.adChoicesButton.imageEdgeInsets = UIEdgeInsetsMake(2.0, 12.0, 12.0, 2.0);
@@ -97,7 +98,10 @@
         [SFUtils configurePaidLabelToImageViewIfneeded:cell.recImageView withSettings:self.settings];
     }
     else {
-        cell.recSourceLabel.text = @"";
+        if (!self.displaySourceOnOrganicRec) {
+            cell.recSourceLabel.text = @"";
+        }
+        
         if (rec.publisherLogoImage) {
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:cell.publisherLogo];
             cell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
