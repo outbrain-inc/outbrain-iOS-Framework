@@ -61,8 +61,8 @@ class ArticleCollectionViewController: UICollectionViewController {
         self.smartFeedManager = SmartFeedManager(url: Const.baseURL, widgetID: Const.widgetID, collectionView: collectionView)
         
         self.smartFeedManager.delegate = self
-        self.smartFeedManager.displaySourceOnOrganicRec = true
         
+        // self.smartFeedManager.displaySourceOnOrganicRec = true
         // self.smartFeedManager.horizontalContainerMargin = 40.0
         
         // Optional

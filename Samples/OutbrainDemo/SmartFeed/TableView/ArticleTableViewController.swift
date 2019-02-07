@@ -36,6 +36,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     func setupSmartFeed() {
         self.smartFeedManager = SmartFeedManager(url: Const.baseURL, widgetID: Const.widgetID, tableView: self.tableView)
         self.smartFeedManager.delegate = self
+        
+        // self.smartFeedManager.displaySourceOnOrganicRec = true
         // self.smartFeedManager.horizontalContainerMargin = 40.0
         
         // Optional
