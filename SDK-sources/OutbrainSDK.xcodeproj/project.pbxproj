@@ -95,7 +95,7 @@
 		E63B784D212AB1860018C225 /* SFUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7841212AB1860018C225 /* SFUtils.h */; };
 		E63B784E212AB1860018C225 /* SFImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7842212AB1860018C225 /* SFImageLoader.m */; };
 		E63B784F212AB1860018C225 /* SFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7843212AB1860018C225 /* SFUtils.m */; };
-		E63B7850212AB1860018C225 /* SFItemData.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7845212AB1860018C225 /* SFItemData.h */; };
+		E63B7850212AB1860018C225 /* SFItemData.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7845212AB1860018C225 /* SFItemData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E63B7851212AB1860018C225 /* SFItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7846212AB1860018C225 /* SFItemData.m */; };
 		E63B7852212AB1860018C225 /* SFCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7848212AB1860018C225 /* SFCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E63B7853212AB1860018C225 /* SFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7849212AB1860018C225 /* SFTableViewCell.m */; };

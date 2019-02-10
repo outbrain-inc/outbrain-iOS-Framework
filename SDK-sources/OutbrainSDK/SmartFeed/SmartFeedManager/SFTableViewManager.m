@@ -12,6 +12,7 @@
 #import "SFUtils.h"
 #import "SFImageLoader.h"
 #import "SFVideoTableViewCell.h"
+#import "OBDisclosure.h"
 
 @interface SFTableViewManager() <UIGestureRecognizerDelegate>
 

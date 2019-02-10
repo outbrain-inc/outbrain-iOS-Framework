@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "OBRecommendation.h"
-#import "OBSettings.h"
 #import "SFCollectionViewCell.h"
+#import "SFItemData.h"
 
 @interface SFHorizontalView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -22,9 +22,8 @@ typedef void(^ConfigureHorizontalItem)(SFCollectionViewCell * _Nonnull cell, OBR
 
 - (void) registerNib:(UINib *_Nonnull)nib forCellWithReuseIdentifier:(NSString *_Nonnull)identifier;
 
+@property (nonatomic, strong) SFItemData * _Nullable sfItem;
 @property (nonatomic, strong) UIColor * _Nullable shadowColor;
-@property (nonatomic, strong) NSArray * _Nullable outbrainRecs;
-@property (nonatomic, strong) OBSettings * _Nullable settings;
 @property (nonatomic) OnRecommendationClick _Nonnull onRecommendationClick;
 @property (nonatomic) OnAdChoicesIconClick _Nonnull onAdChoicesIconClick;
 @property (nonatomic) CarouselItemSizeCallback _Nullable carouselItemSizeCallback;

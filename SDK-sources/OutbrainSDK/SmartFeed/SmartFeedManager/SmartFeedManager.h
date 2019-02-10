@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <OutbrainSDK/OutbrainSDK.h>
+
+#import "OBRecommendation.h"
+#import "SFCollectionViewCell.h"
 
 @protocol SmartFeedDelegate <NSObject>
 

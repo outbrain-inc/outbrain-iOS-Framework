@@ -7,13 +7,12 @@
 //
 
 #import "SFHorizontalView.h"
-#import <OutbrainSDK/OutbrainSDK.h>
 #import "SFUtils.h"
 #import "SFCollectionViewCell.h"
 #import "SFImageLoader.h"
+#import "OBDisclosure.h"
 
 @interface SFHorizontalView() <UICollectionViewDataSource, UICollectionViewDelegate>
-
 
 
 @end
@@ -60,7 +59,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.horizontalCellIdentifier isEqualToString: @""] ? 0 : self.outbrainRecs.count;
+    return [self.horizontalCellIdentifier isEqualToString: @""] ? 0 : self.sfItem.outbrainRecs.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -68,7 +67,7 @@
 {
     [self.collectionView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier:self.horizontalCellIdentifier];
     SFCollectionViewCell *cell = (SFCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier: self.horizontalCellIdentifier forIndexPath:indexPath];
-    OBRecommendation *rec = self.outbrainRecs[indexPath.row];
+    OBRecommendation *rec = self.sfItem.outbrainRecs[indexPath.row];
     
     
     cell.recTitleLabel.textAlignment = [SFUtils isRTL:rec.content] ? NSTextAlignmentRight : NSTextAlignmentLeft;
@@ -80,7 +79,7 @@
     }
     
     cell.recTitleLabel.text = rec.content;
-    cell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:self.settings.sourceFormat];
+    cell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:self.sfItem.odbSettings.sourceFormat];
     
     if ([rec isPaidLink]) {
         if ([rec shouldDisplayDisclosureIcon]) {
@@ -95,10 +94,10 @@
         }
         
         // Paid label
-        [SFUtils configurePaidLabelToImageViewIfneeded:cell.recImageView withSettings:self.settings];
+        [SFUtils configurePaidLabelToImageViewIfneeded:cell.recImageView withSettings:self.sfItem.odbSettings];
     }
     else {
-        if (!self.displaySourceOnOrganicRec) {
+        if (!self.sfItem.isCustomUI && !self.displaySourceOnOrganicRec) {
             cell.recSourceLabel.text = @"";
         }
         
@@ -116,7 +115,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    OBRecommendation *rec = self.outbrainRecs[indexPath.row];
+    OBRecommendation *rec = self.sfItem.outbrainRecs[indexPath.row];
     cell.contentView.backgroundColor = UIColor.whiteColor;
     cell.contentView.layer.cornerRadius = 4.0f;
     cell.contentView.layer.borderWidth = 1.0f;
@@ -131,20 +130,20 @@
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
     
     if (self.configureHorizontalItem) {
-        self.configureHorizontalItem(cell, rec);
+        self.configureHorizontalItem((SFCollectionViewCell *)cell, rec);
     }
  }
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    OBRecommendation *rec = self.outbrainRecs[indexPath.row];
+    OBRecommendation *rec = self.sfItem.outbrainRecs[indexPath.row];
     if (self.onRecommendationClick != nil) {
         self.onRecommendationClick(rec);
     }
 }
 
--(void) setOutbrainRecs:(NSArray *)outbrainRecs {
-    _outbrainRecs = outbrainRecs;
-    if (self.outbrainRecs.count == 0) {
+-(void) setSfItem:(SFItemData *)sfItem {
+    _sfItem = sfItem;
+    if (self.sfItem.outbrainRecs.count == 0) {
         return;
     }
     [self.collectionView reloadData];
@@ -155,7 +154,7 @@
 
 - (void) adChoicesClicked:(id)sender {
     UIButton *adChoicesButton = sender;
-    OBRecommendation *rec = self.outbrainRecs[adChoicesButton.tag];
+    OBRecommendation *rec = self.sfItem.outbrainRecs[adChoicesButton.tag];
     if (self.onAdChoicesIconClick != nil && rec != nil) {
         self.onAdChoicesIconClick(rec.disclosure.clickUrl);
     }

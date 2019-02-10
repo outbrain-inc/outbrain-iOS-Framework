@@ -12,6 +12,7 @@
 #import "SFImageLoader.h"
 #import "SFCollectionViewHeaderCell.h"
 #import "SFVideoCollectionViewCell.h"
+#import "OBDisclosure.h"
 
 @interface SFCollectionViewManager() <UIGestureRecognizerDelegate>
 

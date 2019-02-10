@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SmartFeedManager.h"
 #import "SFUtils.h"
+#import "SFTableViewCell.h"
+
 @import WebKit;
 
 @class SFHorizontalTableViewCell;

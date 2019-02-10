@@ -636,6 +636,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     
     if (horizontalItemCellNib && horizontalCellIdentifier) { // custom UI
+        sfItem.isCustomUI = YES;
         [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: horizontalCellIdentifier];
     }
     else { // default UI
@@ -649,8 +650,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         }
     }
     
-    horizontalView.outbrainRecs = sfItem.outbrainRecs;
-    horizontalView.settings = sfItem.odbSettings;
+    horizontalView.sfItem = sfItem;
     horizontalView.shadowColor = sfItem.shadowColor;
     horizontalView.displaySourceOnOrganicRec = self.displaySourceOnOrganicRec;
     
