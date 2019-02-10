@@ -129,13 +129,11 @@ BOOL WAS_INITIALIZED     =   NO;
 
 #pragma mark - Viewability
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url {
-    NSLog(@"Outbrain registerOBLabel:withWidgetId: widgetid: %@", widgetId);
     OBRequest *obRequet = [OBRequest requestWithURL:url widgetID:widgetId];
     [self registerOBLabel:label withOBRequest:obRequet];
 }
 
 + (void) registerOBLabel:(OBLabel * _Nonnull)label withOBRequest:(OBRequest * _Nonnull)obRequest {
-    NSLog(@"Outbrain registerOBLabel:withOBRequest: widgetid: %@ - %d", obRequest.widgetId, obRequest.widgetIndex);
     NSAssert([label isKindOfClass:[OBLabel class]], @"Outbrain - label must be of type OBLabel.");
     if (obRequest.widgetId == nil || obRequest.url == nil) {
         NSLog(@"Outbrain Error: registerOBLabel() --> url and widgetId must not be null");

@@ -130,7 +130,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 
 - (void) addOBLabelToMap:(OBLabel *)obLabel {
     NSString *key = [self viewabilityKeyForRequest:obLabel.obRequest];
-    NSLog(@"Outbrain addOBLabelToMap widgetid: %@ - key: %@", obLabel.obRequest.widgetId, key);
+    // NSLog(@"Outbrain addOBLabelToMap widgetid: %@ - key: %@", obLabel.obRequest.widgetId, key);
     self.obLabelMap[key] = obLabel;
 }
 
@@ -151,7 +151,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
         sdkVersionString = [NSString stringWithFormat:@"%02d%02d%02d", [sdkVersionComponents[0] intValue], [sdkVersionComponents[1] intValue], [sdkVersionComponents[2] intValue]];
     }
     
-    NSLog(@"Outbrain reportRecsReceived: %@", widgetId);
+    // NSLog(@"Outbrain reportRecsReceived: %@", widgetId);
     
     ViewabilityData *viewabilityData = [[ViewabilityData alloc] init];
     viewabilityData.pid = [response.responseRequest getStringValueForPayloadKey:@"pid"];
@@ -174,7 +174,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     
     NSString *viewabilityKey = [self viewabilityKeyForURL:url widgetId:widgetId widgetIndex:widgetIndex];
 
-    NSLog(@"Outbrain set viewabilityDictionary for key: %@", viewabilityKey);
+    // NSLog(@"Outbrain set viewabilityDictionary for key: %@", viewabilityKey);
     [self.viewabilityDataMap setObject:viewabilityDictionary forKey:viewabilityKey];
     
     NSMutableDictionary *viewabilityUrlParamsDictionary = [viewabilityDictionary mutableCopy];
@@ -207,12 +207,12 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
     NSString *reqId = viewabilityDictionary[kRequestId];
     
     if ([self.reqIdAlreadyReportedArray containsObject:reqId]) {
-        NSLog(@"Outbrain reportRecsShownForOBLabel() - trying to report again for the same reqId: %@", reqId);
+        // NSLog(@"Outbrain reportRecsShownForOBLabel() - trying to report again for the same reqId: %@", reqId);
         return;
     }
     
     if (viewabilityDictionary == nil) {
-        NSLog(@"Outbrain Error: reportRecsShownForOBLabel() - make sure to register OBLabel with Outbrain (key: %@)", viewabilityKey);
+        // NSLog(@"Outbrain Error: reportRecsShownForOBLabel() - make sure to register OBLabel with Outbrain (key: %@)", viewabilityKey);
         return;
     }
     
@@ -226,7 +226,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
         
         // Sanity check, if executionTime is more than 30 minutes we shouldn't report Viewability since the data is probably not relevant
         if (executionTime > kThirtyMinutesInSeconds) {
-            NSLog(@"Outbrain Error: reportRecsShownForOBLabel with data older than 30 minutes. (%f)", executionTime / 60.0);
+            // NSLog(@"Outbrain Error: reportRecsShownForOBLabel with data older than 30 minutes. (%f)", executionTime / 60.0);
             return;
         }
 
@@ -238,10 +238,10 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
         NSURL *viewabilityUrl = [self createUrlFromParams:params];
         [[OBNetworkManager sharedManager] sendGet:viewabilityUrl completionHandler:nil];
         
-        NSLog(@"Outbrain reportRecsShownForOBLabel: key: %@", viewabilityKey);
+        // NSLog(@"Outbrain reportRecsShownForOBLabel: key: %@", viewabilityKey);
     }
     else {
-        NSLog(@"Outbrain Error: reportRecsShownForWidgetId() there is no viewabilityDictionary for OBLabel: %@", viewabilityKey);
+        // NSLog(@"Outbrain Error: reportRecsShownForWidgetId() there is no viewabilityDictionary for OBLabel: %@", viewabilityKey);
     }
 }
 
