@@ -1,5 +1,11 @@
 # Release Notes
 
+## v3.5.1 - February 10, 2019
+
+- Bug fix - Viewability for regular widgets didn't work for index > 0
+- Refactor viewability code
+
+
 ## v3.5.0 - January 29, 2019
 
 - Per Sky request - add "pauseVideo" method to `SmartFeedManager`
