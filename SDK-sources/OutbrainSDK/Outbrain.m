@@ -144,14 +144,6 @@ BOOL WAS_INITIALIZED     =   NO;
     }
 }
 
-
-#if 0 // For the current SDK version the GA reporting should be disabled
-+ (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage {
-    [OBGAHelper reportMethodCalled:@"setShouldTrackSDKUsage:" withParams:(shouldTrackSDKUsage ? @"YES" : @"NO"), nil];
-    [OBGAHelper setShouldReportSDKUsage:shouldTrackSDKUsage];
-}
-#endif 
-
 @end
 
 
