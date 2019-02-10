@@ -1,6 +1,6 @@
 # Release Notes
 
-## Development
+## v3.5.2 - February 10, 2019
 
 - Bug fix: detecting RTL in string was implemented incorrectly. 
 - Bug fix: set a limit on the number of lines in rec title for Thumbnail cells.
