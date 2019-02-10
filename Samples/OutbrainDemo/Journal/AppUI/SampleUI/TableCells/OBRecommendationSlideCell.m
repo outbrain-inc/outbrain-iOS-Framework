@@ -23,8 +23,8 @@
 
 @implementation OBRecommendationSlideCell
 
-- (void) setUrl:(NSString *)url andWidgetId:(NSString *)widgetId; {
-    [self.obHorizontalWidget setUrl:url andWidgetId:widgetId];
+-(void) setOBRequest:(OBRequest *)obRequest {
+    [self.obHorizontalWidget setOBRequest:obRequest];
 }
 
 -(void) setRecommendationResponse:(OBRecommendationResponse *)recommendationResponse {
