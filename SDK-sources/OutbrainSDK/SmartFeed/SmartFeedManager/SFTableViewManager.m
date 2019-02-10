@@ -12,6 +12,7 @@
 #import "SFUtils.h"
 #import "SFImageLoader.h"
 #import "SFVideoTableViewCell.h"
+#import "OBDisclosure.h"
 
 @interface SFTableViewManager() <UIGestureRecognizerDelegate>
 
@@ -225,7 +226,7 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     }
     
     singleCell.recTitleLabel.text = rec.content;
-    singleCell.recSourceLabel.text = rec.source;
+    singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
     
     if ([rec isPaidLink]) {
         if ([rec shouldDisplayDisclosureIcon]) {
@@ -248,7 +249,7 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
             singleCell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
             singleCell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
-            if (!sfItem.isCustomUI) {
+            if (!sfItem.isCustomUI && !self.displaySourceOnOrganicRec) {
                 singleCell.recSourceLabel.text = @"";
             }
         }

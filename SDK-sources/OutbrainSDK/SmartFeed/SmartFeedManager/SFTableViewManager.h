@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SmartFeedManager.h"
 #import "SFUtils.h"
+#import "SFTableViewCell.h"
+
 @import WebKit;
 
 @class SFHorizontalTableViewCell;
@@ -21,6 +23,7 @@
 @property (nonatomic, weak) id<SFPrivateEventListener> eventListenerTarget;
 @property (nonatomic, weak) id<WKUIDelegate> wkWebviewDelegate;
 @property (nonatomic, weak, readonly) UITableView *tableView;
+@property (nonatomic) BOOL displaySourceOnOrganicRec;
 
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView;

@@ -10,6 +10,8 @@
 #import "OBRecommendation.h"
 #import "SmartFeedManager.h"
 #import "OBRequest.h"
+#import "OBRecommendationResponse.h"
+#import "OBSettings.h"
 
 @interface SFItemData : NSObject
 

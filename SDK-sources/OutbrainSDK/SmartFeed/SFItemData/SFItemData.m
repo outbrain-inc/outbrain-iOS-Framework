@@ -6,6 +6,9 @@
 //  Copyright © 2018 Outbrain. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 #import "SFItemData.h"
 #import "SFUtils.h"
 

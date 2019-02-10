@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <OutbrainSDK/OutbrainSDK.h>
+
+#import "OBRecommendation.h"
+#import "SFCollectionViewCell.h"
 
 @protocol SmartFeedDelegate <NSObject>
 
@@ -65,6 +67,7 @@ typedef enum
 @property (nonatomic, assign) CGFloat horizontalContainerMargin;
 
 @property (nonatomic) BOOL isVideoEligible;
+@property (nonatomic) BOOL displaySourceOnOrganicRec;
 
 -(NSInteger) smartFeedItemsCount;
 
