@@ -8,6 +8,7 @@
 - `sfItem.isCustomUI` is now supported in the horizontal view as well
 - `HorizontalView` will use `sfItem` instead of recs array and OBSettings directly
 - Make some order in the header file imports in the SDK. 
+- UI fix - If rec title is RTL we will set the source text alignment to be the same, otherwise it will look weird in the UI.
 
 ## v3.5.1 - February 10, 2019
 
