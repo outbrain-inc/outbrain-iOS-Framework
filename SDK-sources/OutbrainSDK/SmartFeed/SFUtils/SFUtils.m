@@ -131,7 +131,12 @@ NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATI
     NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:tagschemes options:0];
     [tagger setString: string];
     NSString *language = [tagger tagAtIndex:0 scheme:NSLinguisticTagSchemeLanguage tokenRange:NULL sentenceRange:NULL];
-    return [language isEqualToString:@"he"];
+    BOOL testBegining = [language isEqualToString:@"he"];
+    
+    language = [tagger tagAtIndex:string.length/2 scheme:NSLinguisticTagSchemeLanguage tokenRange:NULL sentenceRange:NULL];
+    BOOL testMiddle = [language isEqualToString:@"he"];
+    
+    return testBegining || testMiddle;
 }
 
 #pragma mark - Video related methods

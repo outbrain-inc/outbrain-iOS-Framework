@@ -29,10 +29,12 @@
 }
 
 - (void)testIsRTL {
-    XCTAssert(![SFUtils isRTL:@"fdfsd"]);
-    XCTAssert([SFUtils isRTL:@"בדיקה בדיקה"]);
-    
-    XCTAssert(![SFUtils isRTL:nil]);
-    XCTAssert(![SFUtils isRTL:@""]);
+    XCTAssertFalse([SFUtils isRTL:@"fdfsd"]);
+    XCTAssertFalse([SFUtils isRTL:@"Rafael Nadal engaged to girlfriend of 14 years Mery Perello"]);
+    XCTAssertFalse([SFUtils isRTL:nil]);
+    XCTAssertFalse([SFUtils isRTL:@""]);
+    XCTAssertTrue([SFUtils isRTL:@"בדיקה בדיקה"]);
+    XCTAssertTrue([SFUtils isRTL:@"גרמניה נגד פייסבוק: איסוף הנתונים מגורם צד שלישי יוגבל"]);
+    XCTAssertTrue([SFUtils isRTL:@"50 דרכים להוריד משקל במהירות"]);
 }
 @end
