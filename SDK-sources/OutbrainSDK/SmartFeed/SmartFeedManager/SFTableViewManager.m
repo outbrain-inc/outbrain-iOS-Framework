@@ -217,8 +217,10 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     
     OBRecommendation *rec = sfItem.singleRec;
     
-    singleCell.recTitleLabel.textAlignment = [SFUtils isRTL:rec.content] ? NSTextAlignmentRight : NSTextAlignmentLeft;
-    singleCell.recSourceLabel.textAlignment = [SFUtils isRTL:rec.source] ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    // If rec title is RTL we will set the source text alignment to be the same, otherwise it will look weird in the UI.
+    NSTextAlignment textAlignment = [SFUtils isRTL:rec.content] ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    singleCell.recTitleLabel.textAlignment = textAlignment;
+    singleCell.recSourceLabel.textAlignment = textAlignment;
     
     if ([SFUtils isRTL:rec.content]) {
         [singleCell.contentView setNeedsDisplay];

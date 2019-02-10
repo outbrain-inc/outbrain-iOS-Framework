@@ -69,9 +69,10 @@
     SFCollectionViewCell *cell = (SFCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier: self.horizontalCellIdentifier forIndexPath:indexPath];
     OBRecommendation *rec = self.sfItem.outbrainRecs[indexPath.row];
     
-    
-    cell.recTitleLabel.textAlignment = [SFUtils isRTL:rec.content] ? NSTextAlignmentRight : NSTextAlignmentLeft;
-    cell.recSourceLabel.textAlignment = [SFUtils isRTL:rec.source] ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    // If rec title is RTL we will set the source text alignment to be the same, otherwise it will look weird in the UI.
+    NSTextAlignment textAlignment = [SFUtils isRTL:rec.content] ? NSTextAlignmentRight : NSTextAlignmentLeft;
+    cell.recTitleLabel.textAlignment = textAlignment;
+    cell.recSourceLabel.textAlignment = textAlignment;
     
     if ([SFUtils isRTL:rec.content]) {
         [cell.contentView setNeedsDisplay];
