@@ -129,28 +129,24 @@ BOOL WAS_INITIALIZED     =   NO;
 
 #pragma mark - Viewability
 + (void) registerOBLabel:(OBLabel *)label withWidgetId:(NSString *)widgetId andUrl:(NSString *)url {
+    OBRequest *obRequet = [OBRequest requestWithURL:url widgetID:widgetId];
+    [self registerOBLabel:label withOBRequest:obRequet];
+}
+
++ (void) registerOBLabel:(OBLabel * _Nonnull)label withOBRequest:(OBRequest * _Nonnull)obRequest {
     NSAssert([label isKindOfClass:[OBLabel class]], @"Outbrain - label must be of type OBLabel.");
-    if (url == nil) {
-        NSLog(@"Error: registerOBLabel() --> url must not be null");
+    if (obRequest.widgetId == nil || obRequest.url == nil) {
+        NSLog(@"Outbrain Error: registerOBLabel() --> url and widgetId must not be null");
         return;
     }
     
-    label.widgetId = widgetId;
-    label.url = url;
+    label.obRequest = obRequest;
     
-    if (url != nil && widgetId != nil && [[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
-            [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
-            [label trackViewability];
+    if ([[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
+        [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
+        [label trackViewability];
     }
 }
-
-
-#if 0 // For the current SDK version the GA reporting should be disabled
-+ (void)trackSDKUsage:(BOOL)shouldTrackSDKUsage {
-    [OBGAHelper reportMethodCalled:@"setShouldTrackSDKUsage:" withParams:(shouldTrackSDKUsage ? @"YES" : @"NO"), nil];
-    [OBGAHelper setShouldReportSDKUsage:shouldTrackSDKUsage];
-}
-#endif 
 
 @end
 

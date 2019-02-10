@@ -32,6 +32,7 @@
 }
 
 @property (nonatomic, strong) NSMutableArray * loadedOutbrainRecommendationResponses;
+@property (nonatomic, strong) NSMutableDictionary *indexPathToOutbrainReqDict;
 @end
 
 @implementation PostsListVC
@@ -46,6 +47,7 @@
     [self setupNavbar];
     self.tableView.estimatedRowHeight = 100.0;
     self.loadedOutbrainRecommendationResponses = [NSMutableArray array];
+    self.indexPathToOutbrainReqDict = [[NSMutableDictionary alloc] init];
     UIRefreshControl * refreshControl = [self refreshControl];
     [refreshControl addTarget:self action:@selector(refreshPostsList) forControlEvents:UIControlEventValueChanged];
     [self becomeFirstResponder];
@@ -166,7 +168,7 @@
     typeof(self) __weak __self = self;
     Post * p = (Post *)[self.postsData firstObject];
     OBRequest * request = [OBRequest requestWithURL:p.url widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
-    
+    self.indexPathToOutbrainReqDict[indexPath] = request;
     
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
         
@@ -245,7 +247,7 @@
         Post * p = (Post *)[self.postsData firstObject];
         slideCell.recommendationResponse = res;
         slideCell.widgetDelegate = self;
-        [slideCell setUrl:p.url andWidgetId:OBDemoWidgetID1];
+        [slideCell setOBRequest:self.indexPathToOutbrainReqDict[indexPath]];
         
         return;
     }

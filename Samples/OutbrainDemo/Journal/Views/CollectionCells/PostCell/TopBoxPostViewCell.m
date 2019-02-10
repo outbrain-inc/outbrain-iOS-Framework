@@ -122,10 +122,8 @@ const CGFloat kTopBoxHeight = 100.0;
     if(_outbrainLoaded || _loadingOutbrain) return;
     
     self.mainScrollView.delegate = nil;
-    
-    [self.obHorizontalWidget setUrl:self.post.url andWidgetId:OBDemoWidgetID1];
-    
     OBRequest * request = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID1];
+    [self.obHorizontalWidget setOBRequest:request];
     [Outbrain fetchRecommendationsForRequest:request withDelegate:self];
 }
 

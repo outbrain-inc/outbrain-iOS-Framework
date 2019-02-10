@@ -69,8 +69,8 @@
 }
 
 #pragma mark - Viewability
-- (void) setUrl:(NSString *)url andWidgetId:(NSString *)widgetId {
-    [Outbrain registerOBLabel:self.recommendedByLabel withWidgetId:widgetId andUrl:url];
+-(void) setOBRequest:(OBRequest *)obRequest {
+    [Outbrain registerOBLabel:self.recommendedByLabel withOBRequest:obRequest];
 }
 
 #pragma - IBActions

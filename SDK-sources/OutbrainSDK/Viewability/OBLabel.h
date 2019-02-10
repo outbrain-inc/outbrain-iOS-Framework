@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OBRequest.h"
 
 @interface OBLabel : UILabel;
 
-@property (nonatomic, copy) NSString * widgetId;
-@property (nonatomic, copy) NSString * url;
+@property (nonatomic) OBRequest * obRequest;
 
 - (void) trackViewability;
 

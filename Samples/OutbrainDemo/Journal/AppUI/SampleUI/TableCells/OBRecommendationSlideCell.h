@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <OutbrainSDK/OutbrainSDK.h>
 #import "OBWidgetViewProtocol.h"
 
 @class OBRecommendation;
@@ -34,11 +35,10 @@
 /**
  *  Discussion:
  *      Set this to allow Viewability feature to work with OBRecommendationSlideCell
- *      @param widgetId - The Widget Id to be associated with this OBLabel
- *      @param url - The URL that the user is currently viewing
+ *      @param obRequest - The OBRequest to be associated with this OBLabel
  *
  **/
-- (void) setUrl:(NSString *)url andWidgetId:(NSString *)widgetId;
+-(void) setOBRequest:(OBRequest *)obRequest;
 
 
 

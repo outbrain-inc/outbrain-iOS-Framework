@@ -92,10 +92,20 @@ extern NSString * const OB_SDK_VERSION;
  *
  * @param widgetId - The Widget Id to be associated with this OBLabel
  * @param url - The URL that the user is currently viewing
- * @note The calling method is responsible on setting the frame for the returned view
  **/
-+ (void) registerOBLabel:(OBLabel * _Nonnull)label withWidgetId:(NSString * _Nonnull)widgetId andUrl:(NSString * _Nonnull)url;
++ (void) registerOBLabel:(OBLabel * _Nonnull)label withWidgetId:(NSString * _Nonnull)widgetId andUrl:(NSString * _Nonnull)url __deprecated_msg("use registerOBLabel:withOBRequest: instead.");
 
+/**
+ * @brief Register OBLabel with the corresponding OBRequest for the recommendations to be displayed in this widget.
+ *
+ * OBLabel is the view publisher should place in the header of a recommandations view widget.
+ * This function Registers the OBLabel with the corresponding OBRequest for the recommendations to be displayed in this widget,
+ * so that analytics reports to the server will match with the actual data the user used in the app.
+ * (See the Outbrain Journal sample app for an example of how to do this.)
+ *
+ * @param obRequest - The OBRequest to be associated with this OBLabel
+ **/
++ (void) registerOBLabel:(OBLabel * _Nonnull)label withOBRequest:(OBRequest * _Nonnull)obRequest;
 
 /** @section Click Handling **/
 
