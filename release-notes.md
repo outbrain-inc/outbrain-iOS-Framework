@@ -2,7 +2,12 @@
 
 ## Development
 
-- Bug fix for detecting RTL in string.
+- Bug fix: detecting RTL in string was implemented incorrectly. 
+- Bug fix: set a limit on the number of lines in rec title for Thumbnail cells.
+- Add support for displaySourceOnOrganicRec in SmartFeedManager. 
+- `sfItem.isCustomUI` is now supported in the horizontal view as well
+- `HorizontalView` will use `sfItem` instead of recs array and OBSettings directly
+- Make some order in the header file imports in the SDK. 
 
 ## v3.5.1 - February 10, 2019
 
