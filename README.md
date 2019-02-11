@@ -16,6 +16,10 @@ In order to start developing the SDK you need to:
 
 5) Xcode - General - Embedded Binaries - add OutbrainSDK target 
 
+## Release Notes
+
+[Release notes can be found here](release-notes.md).
+
 ## App Developer Guidelines
 
 [Outbrain SDK v3 – Documentation & Download Links](http://developer.outbrain.com/outbrain-sdk-v3-documentation-download-links/)
