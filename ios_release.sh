@@ -45,6 +45,7 @@ git add Samples/OutbrainDemo/SmartFeed/Resources/SmartFeed-Info.plist
 git commit -m "update SDK version to ${NEW_SDK_VER}"
 git tag "release_${NEW_SDK_VER}"
 git push origin -u
+git push origin --tags
 
 cd SDK-sources
 # Clean
