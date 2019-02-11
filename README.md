@@ -2,7 +2,7 @@
 
 This repo contains the Outbrain mobile SDK for the iOS platform. It is intended for iOS mobile app developers who want to integrate the Outbrain product into their code. The document describes the main Outbrain interface functions.
 
-[Release notes can be found here](release-notes.md).
+[Release Notes](release-notes.md)
 
 ## Getting Started
 
