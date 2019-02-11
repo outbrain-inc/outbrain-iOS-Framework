@@ -2,6 +2,8 @@
 
 This repo contains the Outbrain mobile SDK for the iOS platform. It is intended for iOS mobile app developers who want to integrate the Outbrain product into their code. The document describes the main Outbrain interface functions.
 
+[Release notes can be found here](release-notes.md).
+
 ## Getting Started
 
 In order to start developing the SDK you need to:
@@ -14,11 +16,7 @@ In order to start developing the SDK you need to:
 
 4) Smartfeed-Dev or Journal-dev - Xcode - Build Phases --> Target Dependecies - add OutbrainSDK target 
 
-5) Xcode - General - Embedded Binaries - add OutbrainSDK target 
-
-## Release Notes
-
-[Release notes can be found here](release-notes.md).
+5) Xcode - General - Embedded Binaries - add OutbrainSDK target
 
 ## App Developer Guidelines
 
