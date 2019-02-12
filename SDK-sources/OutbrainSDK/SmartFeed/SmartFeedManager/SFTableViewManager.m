@@ -230,6 +230,8 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     singleCell.recTitleLabel.text = rec.content;
     singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
     
+    [SFUtils removePaidLabelFromImageView:singleCell.recImageView];
+    
     if ([rec isPaidLink]) {
         if ([rec shouldDisplayDisclosureIcon]) {
             singleCell.adChoicesButton.hidden = NO;

@@ -55,6 +55,8 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 
 +(BOOL) isRTL:(NSString *)string;
 
++ (void) removePaidLabelFromImageView:(UIImageView *)recImageView;
+
 + (void) configurePaidLabelToImageViewIfneeded:(UIImageView *)recImageView withSettings:(OBSettings *)settings;
 
 // Video related methods

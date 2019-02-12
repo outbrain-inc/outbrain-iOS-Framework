@@ -276,6 +276,8 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     
     NSAssert(eventListenerTarget != nil, @"clickListenerTarget must not be nil");
     
+    [SFUtils removePaidLabelFromImageView:singleCell.recImageView];
+    
     if ([rec isPaidLink]) {
         if ([rec shouldDisplayDisclosureIcon]) {
             singleCell.adChoicesButton.hidden = NO;

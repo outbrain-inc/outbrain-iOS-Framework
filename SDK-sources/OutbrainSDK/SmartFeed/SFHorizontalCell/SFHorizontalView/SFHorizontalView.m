@@ -82,6 +82,8 @@
     cell.recTitleLabel.text = rec.content;
     cell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:self.sfItem.odbSettings.sourceFormat];
     
+    [SFUtils removePaidLabelFromImageView:cell.recImageView];
+    
     if ([rec isPaidLink]) {
         if ([rec shouldDisplayDisclosureIcon]) {
             cell.adChoicesButton.hidden = NO;

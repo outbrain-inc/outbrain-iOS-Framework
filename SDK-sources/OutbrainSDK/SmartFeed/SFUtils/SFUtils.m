@@ -85,11 +85,14 @@ NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATI
     view.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:view.layer.cornerRadius].CGPath;
 }
 
-+ (void) configurePaidLabelToImageViewIfneeded:(UIImageView *)recImageView withSettings:(OBSettings *)settings {
++ (void) removePaidLabelFromImageView:(UIImageView *)recImageView {
     UILabel *existingPaidLabel = (UILabel *)[recImageView viewWithTag: SPONSORED_LABEL_TAG];
     if (existingPaidLabel) {
         [existingPaidLabel removeFromSuperview];
     }
+}
+
++ (void) configurePaidLabelToImageViewIfneeded:(UIImageView *)recImageView withSettings:(OBSettings *)settings {
     
     if (!settings.paidLabelText || [settings.paidLabelText isEqualToString:@""]) {
         // no settings for paidLabelText --> we will return
