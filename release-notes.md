@@ -1,5 +1,10 @@
 # Release Notes
 
+## Development 
+
+- Sponsored label - improve implementation logic for widget with mix of paid and organic recs. Make sure we remove the paid label every time we configure a new cell
+- Improve isRTL implementation
+
 ## v3.5.2 - February 10, 2019
 
 - Bug fix: detecting RTL in string was implemented incorrectly. 
