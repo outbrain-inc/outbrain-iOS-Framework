@@ -34,7 +34,9 @@
     XCTAssertFalse([SFUtils isRTL:nil]);
     XCTAssertFalse([SFUtils isRTL:@""]);
     XCTAssertTrue([SFUtils isRTL:@"בדיקה בדיקה"]);
+    XCTAssertTrue([SFUtils isRTL:@"\"ערבי לא יוצא ליער עם סכין בלי סיבה\""]);
     XCTAssertTrue([SFUtils isRTL:@"גרמניה נגד פייסבוק: איסוף הנתונים מגורם צד שלישי יוגבל"]);
     XCTAssertTrue([SFUtils isRTL:@"50 דרכים להוריד משקל במהירות"]);
 }
+
 @end

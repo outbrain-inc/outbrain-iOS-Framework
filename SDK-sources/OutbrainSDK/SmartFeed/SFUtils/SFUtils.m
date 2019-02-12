@@ -133,7 +133,9 @@ NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATI
     NSString *language = [tagger tagAtIndex:0 scheme:NSLinguisticTagSchemeLanguage tokenRange:NULL sentenceRange:NULL];
     BOOL testBegining = [language isEqualToString:@"he"];
     
-    language = [tagger tagAtIndex:string.length/2 scheme:NSLinguisticTagSchemeLanguage tokenRange:NULL sentenceRange:NULL];
+    NSInteger middleIndex = string.length/2;
+    middleIndex = [string characterAtIndex:middleIndex] == ' ' ? middleIndex + 1 : middleIndex;
+    language = [tagger tagAtIndex:middleIndex scheme:NSLinguisticTagSchemeLanguage tokenRange:NULL sentenceRange:NULL];
     BOOL testMiddle = [language isEqualToString:@"he"];
     
     return testBegining || testMiddle;
