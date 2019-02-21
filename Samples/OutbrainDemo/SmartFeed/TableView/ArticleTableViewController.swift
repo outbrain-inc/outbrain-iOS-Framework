@@ -27,7 +27,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.delegate = self
         tableView.dataSource = self
         self.setupSmartFeed()
@@ -128,14 +128,14 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
                 return UIDevice.current.userInterfaceIdiom == .pad ? 400 : 250;
             }
             else if (indexPath.row == 1) {
-                return UIDevice.current.userInterfaceIdiom == .pad ? 150 : UITableViewAutomaticDimension;
+                return UIDevice.current.userInterfaceIdiom == .pad ? 150 : UITableView.automaticDimension;
             }
             else {
-                return UIDevice.current.userInterfaceIdiom == .pad ? 200 : UITableViewAutomaticDimension;
+                return UIDevice.current.userInterfaceIdiom == .pad ? 200 : UITableView.automaticDimension;
             }
         }
 
-        return UITableViewAutomaticDimension;
+        return UITableView.automaticDimension;
     }
 }
 
@@ -176,7 +176,7 @@ extension ArticleTableViewController : SmartFeedDelegate {
 }
 
 extension UIImageView {
-    func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    func downloadedFrom(url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard
@@ -190,7 +190,7 @@ extension UIImageView {
             }
             }.resume()
     }
-    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    func downloadedFrom(link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloadedFrom(url: url, contentMode: mode)
     }
