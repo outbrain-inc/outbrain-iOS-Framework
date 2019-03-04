@@ -20,13 +20,13 @@ extern NSInteger kVideoReadyStatus;
 extern NSInteger kVideoFinishedStatus;
 
 
-- (id)initWithSingleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type;
+- (id)initWithSingleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type position:(NSString *)pos;
 
-- (id)initWithList:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type;
+- (id)initWithList:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type positions:(NSArray *)positions;
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse;
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse position:(NSString *)pos;
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr reclist:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type;
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr reclist:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type positions:(NSArray *)positions;
 
 
 @property (nonatomic, strong, readonly) NSArray *outbrainRecs;
@@ -42,6 +42,8 @@ extern NSInteger kVideoFinishedStatus;
 @property (nonatomic, assign) NSInteger videoPlayerStatus;
 @property (nonatomic, assign) BOOL isCustomUI;
 @property (nonatomic, copy, readonly) NSString *sourceFormat;
+@property (nonatomic, strong, readonly) NSArray *positions;
+@property (nonatomic, copy, readonly) NSString *requestId;
 
 +(NSString *) itemTypeString:(SFItemType) type;
 

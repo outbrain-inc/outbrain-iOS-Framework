@@ -53,7 +53,7 @@
     [getDataTask resume];
 }
 
--(void) sendPost:(NSURL *)url postData:(NSDictionary *)postDataDictionary completionHandler:(OBNetworkCompletionBlock)completionHandler
+-(void) sendPost:(NSURL *)url postData:(id)postDataDictionary completionHandler:(OBNetworkCompletionBlock)completionHandler
 {
     NSMutableURLRequest *request = [self generateMutableRequest:url];
     

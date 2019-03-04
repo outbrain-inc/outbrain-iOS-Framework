@@ -26,6 +26,9 @@
 @property (nonatomic, copy) NSString *paidLabelBackgroundColor;
 @property (nonatomic, copy) NSString *sourceFormat;
 
+@property (nonatomic, assign) BOOL isViewabilityEnabled;
+@property (nonatomic, assign) CGFloat viewabilityThresholdMilisec;
+
 @end
 
 
@@ -64,6 +67,9 @@
             }
             self.feedContentArray = [feedItemsArr copy];
         }
+        
+        self.isViewabilityEnabled = ![payload valueForKey:@"isViewabilityEnabled"] || [[payload valueForKey:@"isViewabilityEnabled"] boolValue];
+        self.viewabilityThresholdMilisec = [payload valueForKey:@"viewabilityThresholdMilisec"] ? [[payload valueForKey:@"viewabilityThresholdMilisec"] floatValue] : 1.0;
     }
     
     return self;

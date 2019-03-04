@@ -35,6 +35,8 @@
 
 @interface OBRecommendation : OBContent
 
+/** @brief The position of the recommendation. */
+@property (nonatomic, copy, readonly, nullable) NSString * position;
 /** @brief The date the content was published. */
 @property (nonatomic, strong, readonly, nullable) NSDate * publishDate;
 /** @brief TBD - property may be removed. */

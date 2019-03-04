@@ -14,6 +14,8 @@
 
 @interface OBRecommendation()
 
+/** @brief The position of the recommendation. */
+@property (nonatomic, copy) NSString * position;
 /** @brief The date the content was published. */
 @property (nonatomic, strong) NSDate * publishDate;
 /** @brief The re-direct URL of the content. */
@@ -92,6 +94,7 @@
 + (NSDictionary *)propertiesMap
 {
     return @{
+             @"position":                           @"pos",
              @"author":                             @"author",
              @"source":                             @"source_name",
              @"redirectURL":                        @"url",

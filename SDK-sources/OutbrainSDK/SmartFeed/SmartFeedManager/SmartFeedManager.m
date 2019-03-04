@@ -25,6 +25,8 @@
 #import "SFCollectionViewManager.h"
 #import "SFTableViewManager.h"
 #import "OBViewabilityService.h"
+#import "OBView.h"
+#import "SFViewabilityService.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 
 
@@ -57,6 +59,10 @@
 @property (nonatomic, copy) NSString *smartFeedHeadercCustomUIReuseIdentifier;
 
 @property (nonatomic, assign) BOOL isTransparentBackground;
+
+@property (nonatomic, strong) NSDate *initializationTime;
+@property (nonatomic, assign) BOOL isViewabilityEnabled;
+@property (nonatomic, assign) CGFloat viewabilityThresholdMilisec;
 
 @end
 
@@ -107,6 +113,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 - (void)commonInitWithUrl:(NSString *)url
                    widgetID:(NSString *)widgetId
 {
+    self.initializationTime = [NSDate date];
     self.widgetId = widgetId;
     self.url = url;
     self.outbrainSectionIndex = -1;
@@ -192,6 +199,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             
             if (self.feedContentArray == nil || self.feedContentArray.count == 0) {
                 self.isSmartfeedWithNoChildren = YES;
+            }
+            self.isViewabilityEnabled = response.settings.isViewabilityEnabled;
+            self.viewabilityThresholdMilisec = response.settings.viewabilityThresholdMilisec;
+            if (self.isViewabilityEnabled) {
+                [[SFViewabilityService sharedInstance] startReportViewability];
             }
         }
         
@@ -283,10 +295,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if ([SFUtils isVideoIncludedInResponse:response] && response.recommendations.count == 1 && self.isVideoEligible) {
         NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
         NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
+        OBRecommendation *rec = response.recommendations[0];
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                     videoParamsStr:videoParamsStr
-                                           singleRecommendation:response.recommendations[0]
-                                                    odbResponse:response];
+                                           singleRecommendation:rec
+                                                    odbResponse:response
+                                                       position:rec.position];
         
         [newSmartfeedItems addObject:item];
         // New implementation for Video - if video available there can only be one item in the response (paid + video)
@@ -358,7 +372,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     for (OBRecommendation *rec in recommendations) {
         SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec
                                                                  odbResponse:response
-                                                                        type:templateType];
+                                                                        type:templateType
+                                                                   position:rec.position];
         
         [newSmartfeedItems addObject:item];
         
@@ -369,9 +384,15 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 -(NSArray *) createCarouselItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     
+    NSMutableArray *positions = [[NSMutableArray alloc] init];
+    for (OBRecommendation *rec in recommendations) {
+        [positions addObject:[NSString stringWithString:rec.position]];
+    }
+    
     SFItemData *item = [[SFItemData alloc] initWithList:recommendations
                                             odbResponse:response
-                                                   type:templateType];
+                                                   type:templateType
+                                              positions:positions];
     
     return @[item];
 }
@@ -403,6 +424,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
         
+        NSMutableArray *positions = [[NSMutableArray alloc] init];
+        for (OBRecommendation *rec in singleLineRecs) {
+            [positions addObject:[NSString stringWithString:rec.position]];
+        }
+             
         if (shouldIncludeVideoInTheMiddle &&
             newSmartfeedItems.count == 1)
         {
@@ -413,7 +439,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
                                                              videoParamsStr:videoParamsStr
                                                                  reclist:singleLineRecs
                                                              odbResponse:response
-                                                                    type:SFTypeGridTwoInRowWithVideo];
+                                                                    type:SFTypeGridTwoInRowWithVideo
+                                                               positions:positions];
+            
             
             [newSmartfeedItems addObject:videoItem];
             continue;
@@ -421,7 +449,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         
         SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs
                                                 odbResponse:response
-                                                       type:templateType];
+                                                       type:templateType
+                                                  positions:positions];
         
         [newSmartfeedItems addObject:item];
     }
@@ -787,6 +816,23 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     // Report Viewability
     [[OBViewabilityService sharedInstance] reportRecsShownForRequest:sfItem.request];
+    
+    OBView *existingOBView = (OBView *)[cell viewWithTag: 12345678];
+    if (existingOBView) {
+        [existingOBView removeFromSuperview];
+    }
+    if (![[SFViewabilityService sharedInstance] isAlreadyReportedForRequestId:sfItem.requestId position:sfItem.positions[0]]
+        && self.isViewabilityEnabled) {
+        OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
+        obview.tag = 12345678;
+        obview.opaque = NO;
+        obview.positions = sfItem.positions;
+        obview.requestId = sfItem.requestId;
+        obview.viewabilityThresholdMilliseconds = self.viewabilityThresholdMilisec || 1.0;
+        obview.smartFeedInitializationTime = self.initializationTime;
+        obview.userInteractionEnabled = NO;
+        [cell addSubview: obview];
+    }
     
     if ([cell isKindOfClass:[SFHorizontalWithVideoCollectionViewCell class]]) {
         [self configureHorizontalVideoCollectionCell:cell atIndexPath:indexPath];
