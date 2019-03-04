@@ -25,7 +25,7 @@
 @property (nonatomic, copy) NSString *videoParamsStr;
 @property (nonatomic, strong) UIColor *shadowColor;
 @property (nonatomic, copy) NSString *sourceFormat;
-@property (nonatomic, strong) NSArray *positions;
+@property (nonatomic, strong) NSMutableArray *positions;
 @property (nonatomic, copy) NSString *requestId;
 @end
 
@@ -35,18 +35,21 @@ NSInteger kVideoInitStatus = 1112;
 NSInteger kVideoReadyStatus = 1113;
 NSInteger kVideoFinishedStatus = 1114;
 
-- (id)initWithSingleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type position:(NSString *)pos {
+- (id)initWithSingleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type {
     self = [super init];
     if (self) {
         self.singleRec = rec;
-        self.positions = @[pos];
         self.itemType = type;
+        self.positions = [[NSMutableArray alloc] init];
+        if (rec.position) {
+            [self.positions addObject:rec.position];
+        }
         [self commonInitWithResponse:odbResponse];
     }
     return self;
 }
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse position:(NSString *)pos {
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse {
     self = [super init];
     if (self) {
         NSString *widgetTitle = odbResponse.settings.widgetHeaderText;
@@ -55,34 +58,47 @@ NSInteger kVideoFinishedStatus = 1114;
         self.videoPlayerStatus = kVideoInitStatus;
         self.videoParamsStr = videoParamsStr;
         self.singleRec = rec;
-        self.positions = @[pos];
         self.itemType = widgetTitle ? SFTypeStripVideoWithPaidRecAndTitle : SFTypeStripVideoWithPaidRecNoTitle;
+        self.positions = [[NSMutableArray alloc] init];
+        if (rec.position) {
+            [self.positions addObject:rec.position];
+        }
         [self commonInitWithResponse:odbResponse];
     }
     return self;
 }
 
 
-- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr reclist:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type positions:(NSArray *)positions {
+- (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr reclist:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type {
     self = [super init];
     if (self) {
         self.videoUrl = videoUrl;
         self.videoPlayerStatus = kVideoInitStatus;
         self.videoParamsStr = videoParamsStr;
         self.outbrainRecs = recArray;
-        self.positions = positions;
         self.itemType = type;
+        self.positions = [[NSMutableArray alloc] init];
+        for (OBRecommendation *rec in recArray) {
+            if (rec.position) {
+                [self.positions addObject:rec.position];
+            }
+        }
         [self commonInitWithResponse:odbResponse];
     }
     return self;
 }
 
-- (id)initWithList:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type positions:(NSArray *)positions {
+- (id)initWithList:(NSArray *)recArray odbResponse:(OBRecommendationResponse *)odbResponse type:(SFItemType)type {
     self = [super init];
     if (self) {
         self.outbrainRecs = recArray;
-        self.positions = positions;
         self.itemType = type;
+        self.positions = [[NSMutableArray alloc] init];
+        for (OBRecommendation *rec in recArray) {
+            if (rec.position) {
+                [self.positions addObject:rec.position];
+            }
+        }
         [self commonInitWithResponse:odbResponse];
     }
     return self;

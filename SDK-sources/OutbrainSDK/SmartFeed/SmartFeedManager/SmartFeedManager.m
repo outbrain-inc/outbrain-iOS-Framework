@@ -299,8 +299,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                     videoParamsStr:videoParamsStr
                                            singleRecommendation:rec
-                                                    odbResponse:response
-                                                       position:rec.position];
+                                                    odbResponse:response];
         
         [newSmartfeedItems addObject:item];
         // New implementation for Video - if video available there can only be one item in the response (paid + video)
@@ -372,8 +371,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     for (OBRecommendation *rec in recommendations) {
         SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec
                                                                  odbResponse:response
-                                                                        type:templateType
-                                                                   position:rec.position];
+                                                                        type:templateType];
         
         [newSmartfeedItems addObject:item];
         
@@ -384,15 +382,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 -(NSArray *) createCarouselItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     
-    NSMutableArray *positions = [[NSMutableArray alloc] init];
-    for (OBRecommendation *rec in recommendations) {
-        [positions addObject:[NSString stringWithString:rec.position]];
-    }
-    
     SFItemData *item = [[SFItemData alloc] initWithList:recommendations
                                             odbResponse:response
-                                                   type:templateType
-                                              positions:positions];
+                                                   type:templateType];
     
     return @[item];
 }
@@ -423,11 +415,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
-        
-        NSMutableArray *positions = [[NSMutableArray alloc] init];
-        for (OBRecommendation *rec in singleLineRecs) {
-            [positions addObject:[NSString stringWithString:rec.position]];
-        }
              
         if (shouldIncludeVideoInTheMiddle &&
             newSmartfeedItems.count == 1)
@@ -439,8 +426,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
                                                              videoParamsStr:videoParamsStr
                                                                  reclist:singleLineRecs
                                                              odbResponse:response
-                                                                    type:SFTypeGridTwoInRowWithVideo
-                                                               positions:positions];
+                                                                    type:SFTypeGridTwoInRowWithVideo];
             
             
             [newSmartfeedItems addObject:videoItem];
@@ -449,8 +435,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         
         SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs
                                                 odbResponse:response
-                                                       type:templateType
-                                                  positions:positions];
+                                                       type:templateType];
         
         [newSmartfeedItems addObject:item];
     }

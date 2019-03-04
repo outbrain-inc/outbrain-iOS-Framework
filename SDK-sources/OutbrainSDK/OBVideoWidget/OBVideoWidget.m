@@ -76,8 +76,7 @@
             self.sfItem = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                      videoParamsStr:videoParamsStr
                                                singleRecommendation:rec
-                                                        odbResponse:response
-                                                      position:rec.position];
+                                                        odbResponse:response];
             
             // Report Viewability
             [[OBViewabilityService sharedInstance] reportRecsShownForRequest:self.sfItem.request];
