@@ -91,6 +91,9 @@
 		E625100621CA866A00C329B9 /* OBVideoWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = E625100421CA866A00C329B9 /* OBVideoWidget.m */; };
 		E62B7E4620D12C490096F5BD /* OutbrainManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E62B7E4420D12C490096F5BD /* OutbrainManager.h */; };
 		E62B7E4720D12C490096F5BD /* OutbrainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E62B7E4520D12C490096F5BD /* OutbrainManager.m */; };
+		E6355BE922353A0600C3D1D5 /* MultivacResponseDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E6355BE8223538E500C3D1D5 /* MultivacResponseDelegate.h */; };
+		E6355BEC223544CA00C3D1D5 /* OBMultivacRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E6355BEA223544CA00C3D1D5 /* OBMultivacRequestOperation.h */; };
+		E6355BED223544CA00C3D1D5 /* OBMultivacRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6355BEB223544CA00C3D1D5 /* OBMultivacRequestOperation.m */; };
 		E63B784C212AB1860018C225 /* SFImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7840212AB1860018C225 /* SFImageLoader.h */; };
 		E63B784D212AB1860018C225 /* SFUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7841212AB1860018C225 /* SFUtils.h */; };
 		E63B784E212AB1860018C225 /* SFImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7842212AB1860018C225 /* SFImageLoader.m */; };
@@ -258,6 +261,9 @@
 		E625100421CA866A00C329B9 /* OBVideoWidget.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBVideoWidget.m; sourceTree = "<group>"; };
 		E62B7E4420D12C490096F5BD /* OutbrainManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutbrainManager.h; sourceTree = "<group>"; };
 		E62B7E4520D12C490096F5BD /* OutbrainManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutbrainManager.m; sourceTree = "<group>"; };
+		E6355BE8223538E500C3D1D5 /* MultivacResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultivacResponseDelegate.h; sourceTree = "<group>"; };
+		E6355BEA223544CA00C3D1D5 /* OBMultivacRequestOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBMultivacRequestOperation.h; sourceTree = "<group>"; };
+		E6355BEB223544CA00C3D1D5 /* OBMultivacRequestOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBMultivacRequestOperation.m; sourceTree = "<group>"; };
 		E63B7840212AB1860018C225 /* SFImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageLoader.h; sourceTree = "<group>"; };
 		E63B7841212AB1860018C225 /* SFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUtils.h; sourceTree = "<group>"; };
 		E63B7842212AB1860018C225 /* SFImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImageLoader.m; sourceTree = "<group>"; };
@@ -462,6 +468,8 @@
 				E61E6BE020836C180016D79A /* OBNetworkManager.m */,
 				E61E6BDB20836C180016D79A /* OBRecommendationRequestOperation.h */,
 				E61E6BE120836C180016D79A /* OBRecommendationRequestOperation.m */,
+				E6355BEA223544CA00C3D1D5 /* OBMultivacRequestOperation.h */,
+				E6355BEB223544CA00C3D1D5 /* OBMultivacRequestOperation.m */,
 				E61E6BDC20836C180016D79A /* Reachability */,
 			);
 			path = Network;
@@ -549,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				E61E6C0420836C180016D79A /* OBProtocols.h */,
+				E6355BE8223538E500C3D1D5 /* MultivacResponseDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -831,11 +840,13 @@
 				E61E6C3B20836C180016D79A /* OBRequest.h in Headers */,
 				E6B930B3216F79F500EC7A4A /* SFHorizontalWithVideoCollectionViewCell.h in Headers */,
 				E63B784C212AB1860018C225 /* SFImageLoader.h in Headers */,
+				E6355BE922353A0600C3D1D5 /* MultivacResponseDelegate.h in Headers */,
 				E6FEB3EC20FF2E78002A9020 /* SFHorizontalTableViewCell.h in Headers */,
 				E6B930AC216F794C00EC7A4A /* SFVideoCollectionViewCell.h in Headers */,
 				E6F8F460211C3D400069C72C /* SFTableViewManager.h in Headers */,
 				E6B930BE2173691900EC7A4A /* SFScriptMessageHandler.h in Headers */,
 				E63B7850212AB1860018C225 /* SFItemData.h in Headers */,
+				E6355BEC223544CA00C3D1D5 /* OBMultivacRequestOperation.h in Headers */,
 				E6FEB3EA20FF2E78002A9020 /* SFHorizontalCollectionViewCell.h in Headers */,
 				E61E6C3820836C180016D79A /* OBRecommendation.h in Headers */,
 				E61E6C2D20836C180016D79A /* OBResponse.h in Headers */,
@@ -1022,7 +1033,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bash -x ./dynamic_framework_build.sh    ";
+			shellScript = "bash -x ./dynamic_framework_build.sh    \n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1070,6 +1081,7 @@
 				E61E6C2A20836C180016D79A /* OBResponse.m in Sources */,
 				E625100621CA866A00C329B9 /* OBVideoWidget.m in Sources */,
 				E63B785B212AB3500018C225 /* SFTableViewHeaderCell.m in Sources */,
+				E6355BED223544CA00C3D1D5 /* OBMultivacRequestOperation.m in Sources */,
 				E63B7861212AD9750018C225 /* SFCollectionViewHeaderCell.m in Sources */,
 				E6F8F45C211C3C6D0069C72C /* SmartFeedManager.m in Sources */,
 				E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */,

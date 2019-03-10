@@ -26,18 +26,18 @@
 #import "SFTableViewManager.h"
 #import "OBViewabilityService.h"
 #import <OutbrainSDK/OutbrainSDK.h>
+#import "MultivacResponseDelegate.h"
 
-
-@interface SmartFeedManager() <SFPrivateEventListener, WKUIDelegate>
+@interface SmartFeedManager() <SFPrivateEventListener, WKUIDelegate, MultivacResponseDelegate>
 
 @property (nonatomic, strong) NSString * _Nullable url;
 @property (nonatomic, strong) NSString * _Nullable widgetId;
-@property (nonatomic, strong) NSArray *feedContentArray;
-@property (nonatomic, strong) NSString *fid;
-@property (nonatomic, assign) NSInteger subWidgetsCounter;
-@property (nonatomic, assign) NSInteger feedCycleLimit;
-@property (nonatomic, assign) NSInteger feedChunkSize;
-@property (nonatomic, assign) NSInteger feedContentArraySize;
+
+@property (nonatomic, assign) NSInteger lastCardIdx; // lastCardIdx is the index of the last “child widget” inside the smartfeed
+@property (nonatomic, assign) NSInteger lastIdx;  // lastIdx is the index of the last widget on the page (because we can load widgets async)
+@property (nonatomic, assign) BOOL hasMore;
+
+
 @property (nonatomic, assign) BOOL isRTL;
 
 @property (nonatomic, assign) NSInteger outbrainIndex;
@@ -47,7 +47,11 @@
 @property (nonatomic, strong) SFCollectionViewManager *sfCollectionViewManager;
 @property (nonatomic, strong) SFTableViewManager *sfTableViewManager;
 
+
+@property (nonatomic, strong) NSArray *pendingItems;
 @property (nonatomic, strong) NSMutableArray *smartFeedItemsArray;
+@property (nonatomic, strong) NSArray *feedContentArray;
+
 @property (nonatomic, strong) NSMutableDictionary *customNibsForWidgetId;
 @property (nonatomic, strong) NSMutableDictionary *reuseIdentifierWidgetId;
 @property (nonatomic, strong) NSMutableDictionary *customNibsForItemType;
@@ -148,10 +152,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return;
     }
     
-    if (self.feedContentArray.count == 0 && self.smartFeedItemsArray.count > 0) { // a special case for smartfeed with only parent with no children
-        return;
-    }
-    
     if (self.outbrainSectionIndex < 0) {
         NSLog(@"fetchMoreRecommendations ---> outbrainSectionIndex < 0");
         return;
@@ -162,12 +162,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [self loadFirstTimeForFeed];
     }
     else {
-        [self loadMoreAccordingToFeedContent];
+        [self fetchMoreRecommendationsWithMultivac];
     }
 }
 
 -(void) loadFirstTimeForFeed {
-    OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex++];
+    OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex];
     if (self.externalID) {
         request.externalID = self.externalID;
     }
@@ -179,16 +179,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         
         if (response.settings.isSmartFeed == YES) {
             self.feedContentArray = response.settings.feedContentArray;
-            self.feedContentArraySize = [self.feedContentArray count];
-            self.fid = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
             self.isRTL = response.settings.isRTL;
-            self.feedCycleLimit = response.settings.feedCyclesLimit;
-            if (response.settings.feedChunkSize == 0) {
-                self.feedChunkSize = self.feedContentArraySize; // default value for chunk size 
-            }
-            else {
-                self.feedChunkSize = response.settings.feedChunkSize;
-            }
             
             if (self.feedContentArray == nil || self.feedContentArray.count == 0) {
                 self.isSmartfeedWithNoChildren = YES;
@@ -211,66 +202,24 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             [self reloadUIData: parentSmartfeedItems];
         }
         else {
-            [self loadMoreAccordingToFeedContent:parentSmartfeedItems];
+            self.pendingItems = parentSmartfeedItems;
+            [self fetchMoreRecommendationsWithMultivac];
         }
     }];
 }
 
--(void) loadMoreAccordingToFeedContent {
-    [self loadMoreAccordingToFeedContent:nil];
-}
-
--(void) loadMoreAccordingToFeedContent:(NSArray *)pendingItems {    
-    __block NSUInteger subWidgetsCounterBeforeFetching = self.subWidgetsCounter;
-    __block NSUInteger responseCount = 0;
-    __block NSUInteger requestCount = 0;
-    __block NSMutableArray *newSmartfeedItems = pendingItems ? [pendingItems mutableCopy] : [[NSMutableArray alloc] init];
+-(void) fetchMoreRecommendationsWithMultivac {
+    OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex];
+    request.lastCardIdx = self.lastCardIdx;
+    request.lastIdx = self.lastIdx;
+    request.isMultivac = YES;
     
-    for (NSInteger i=0; i < self.feedChunkSize; i++) {
-        if ([self finishedLoadingAllItemsInSmartfeed]) {
-            NSLog(@"loadMoreAccordingToFeedContent - finished loading all items in the Smartfeed");
-            return;
-        }
-        
-        NSInteger currentSubWidgetIdx = self.subWidgetsCounter++ % self.feedContentArraySize;
-        NSString *widgetId = self.feedContentArray[currentSubWidgetIdx];
-        
-        OBRequest *request = [OBRequest requestWithURL:self.url widgetID: widgetId widgetIndex:self.outbrainIndex++];
-        request.fid = self.fid;
-        if (self.externalID) {
-            request.externalID = self.externalID;
-        }
-        
-        requestCount++;
-        [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
-            responseCount++;
-            
-            if (response.error) {
-                self.isLoading = NO;
-                self.subWidgetsCounter = subWidgetsCounterBeforeFetching;
-                NSLog(@"Error in fetchRecommendations - %@, for widget id: %@", response.error.localizedDescription, request.widgetId);
-                return;
-            }
-            
-            if (response.recommendations.count == 0) {
-                self.isLoading = NO;
-                self.subWidgetsCounter = subWidgetsCounterBeforeFetching;
-                NSLog(@"Error in fetchRecommendations - 0 recs for widget id: %@", request.widgetId);
-                return;
-            }
-            
-            //  NSLog(@"fetchMoreRecommendations received - %d recs, for widget id: %@", response.recommendations.count, request.widgetId);
-            
-            [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:response]];
-            if (responseCount == self.feedChunkSize || ([self finishedLoadingAllItemsInSmartfeed] && responseCount == requestCount)) {
-                [self reloadUIData: newSmartfeedItems];
-            }
-            
-            if ([self.delegate respondsToSelector:@selector(smartFeedResponseReceived:forWidgetId:)]) {
-                [self.delegate smartFeedResponseReceived:response.recommendations forWidgetId:request.widgetId];
-            }
-        }];
+    // request.fid = self.fid;
+    if (self.externalID) {
+        request.externalID = self.externalID;
     }
+    
+    [[OutbrainManager sharedInstance] fetchMultivacWithRequest:request andDelegate:self];
 }
 
 -(NSArray *) createSmartfeedItemsArrayFromResponse:(OBRecommendationResponse *)response {
@@ -905,7 +854,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 #pragma mark - Common methods
 -(BOOL) finishedLoadingAllItemsInSmartfeed {
-    return self.feedCycleLimit > 0 && self.subWidgetsCounter >= self.feedCycleLimit*self.feedContentArraySize;
+    return [self.smartFeedItemsArray count] > 0 && !self.hasMore;
 }
 
 -(NSString *) keyForCellType:(SFItemType) type {
@@ -1021,5 +970,36 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     return nil;
 }
+
+#pragma mark - MultivacResponseDelegate
+
+- (void)onMultivacSuccess:(NSArray<OBRecommendationResponse *> *)cardsResponseArray feedIdx:(NSInteger)feedIdx hasMore:(BOOL)hasMore {
+    NSMutableArray *newSmartfeedItems = self.pendingItems ? [self.pendingItems mutableCopy] : [[NSMutableArray alloc] init];
+    self.pendingItems = nil;
+    
+    self.hasMore = hasMore;
+    NSInteger cardsCount = [cardsResponseArray count];
+    self.lastCardIdx += cardsCount;
+    self.lastIdx += cardsCount;
+    
+    for (NSInteger i=0; i < cardsResponseArray.count; i++) {
+        OBRecommendationResponse *recResponse = cardsResponseArray[i];
+        [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:recResponse]];
+        
+        if ([self.delegate respondsToSelector:@selector(smartFeedResponseReceived:forWidgetId:)]) {
+            [self.delegate smartFeedResponseReceived:recResponse.recommendations forWidgetId:recResponse.request.widgetId];
+        }
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self reloadUIData: newSmartfeedItems];
+    });
+}
+
+- (void)onMultivacFailure:(NSError *)error {
+    self.isLoading = NO;
+    NSLog(@"Error in fetchRecommendations - %@", error.localizedDescription);
+}
+
 
 @end

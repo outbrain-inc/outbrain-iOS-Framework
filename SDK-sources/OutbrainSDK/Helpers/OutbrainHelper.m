@@ -70,7 +70,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     NSInteger randInteger = (arc4random() % 10000);
     
     NSMutableString *requestUrlString = [NSMutableString stringWithString:request.url];
-    NSString *base = [NSString stringWithFormat:@"https://odb.outbrain.com/utils/get"];
+    NSString *base = [NSString stringWithFormat:request.isMultivac ? @"https://mv.outbrain.com/Multivac/api/get" : @"https://odb.outbrain.com/utils/get"];
     NSURLComponents *components = [NSURLComponents componentsWithString: base];
     
     
@@ -95,8 +95,12 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     //Idx
     NSString *widgetIdx = [NSString stringWithFormat:@"%li", (long)request.widgetIndex];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"idx" value: widgetIdx]];
-    
+    if (request.isMultivac) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"feedIdx" value:widgetIdx]];
+    }
+    else {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"idx" value:widgetIdx]];
+    }
     
     // Request URL - percent encode the urlString
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
@@ -161,11 +165,6 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     // Secure HTTPS
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"secured" value: @"true"]];
-
-    // Smart Feed (father id)
-    if (request.fid != nil) {
-        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fid" value: request.fid]];
-    }
     
     // External ID
     if (request.externalID != nil) {
@@ -176,6 +175,14 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     if (GDPRUtils.sharedInstance.cmpPresent) {
         NSString *consentString = GDPRUtils.sharedInstance.consentString;
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"cnsnt" value: consentString]];
+    }
+    
+    // Multivac
+    if (request.isMultivac) {
+        NSString *lastCardIdx = [NSString stringWithFormat:@"%li", (long)request.lastCardIdx];
+        NSString *lastIdx = [NSString stringWithFormat:@"%li", (long)request.widgetIndex];
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"lastCardIdx" value: lastCardIdx]];
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"lastIdx" value: lastIdx]];
     }
     
     components.queryItems = odbQueryItems;
