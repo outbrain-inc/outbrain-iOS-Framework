@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSArray * positions;
 @property (nonatomic, strong) NSString * requestId;
 @property (nonatomic, strong) NSDate * smartFeedInitializationTime;
-@property (nonatomic) CGFloat viewabilityThresholdMilliseconds;
+@property (nonatomic) NSInteger viewabilityThresholdMilliseconds;
 
 
 - (void) trackViewability;

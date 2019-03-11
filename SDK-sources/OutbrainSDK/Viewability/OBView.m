@@ -75,15 +75,15 @@
     
     CGFloat percentVisible = [view percentVisible];
     
-    CGFloat secondsVisible = [timer.userInfo[@"secondsVisible"] floatValue];
+    CGFloat milisecondsVisible = [timer.userInfo[@"milisecondsVisible"] floatValue];
     
-    if (percentVisible >= 0.5 && secondsVisible < self.viewabilityThresholdMilliseconds) {
-        timer.userInfo[@"secondsVisible"] = @(secondsVisible + timer.timeInterval);
-    } else if (percentVisible >= 0.5 && secondsVisible >= self.viewabilityThresholdMilliseconds) {
+    if (percentVisible >= 0.5 && milisecondsVisible < self.viewabilityThresholdMilliseconds) {
+        timer.userInfo[@"milisecondsVisible"] = @(milisecondsVisible + (timer.timeInterval * 1000));
+    } else if (percentVisible >= 0.5 && milisecondsVisible >= self.viewabilityThresholdMilliseconds) {
         [self reportViewability:timer];
     } else {
         // View is not visible, decide if we want to report that or not
-        [timer.userInfo removeObjectForKey:@"secondsVisible"];
+        [timer.userInfo removeObjectForKey:@"milisecondsVisible"];
     }
 }
 
