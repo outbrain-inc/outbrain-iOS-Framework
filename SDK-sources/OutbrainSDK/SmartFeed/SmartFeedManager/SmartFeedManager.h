@@ -66,7 +66,7 @@ typedef enum
 
 @property (nonatomic, weak) id<SmartFeedDelegate> delegate;
 @property (nonatomic, assign) CGFloat horizontalContainerMargin;
-f
+
 @property (nonatomic) BOOL isVideoEligible;
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
 
