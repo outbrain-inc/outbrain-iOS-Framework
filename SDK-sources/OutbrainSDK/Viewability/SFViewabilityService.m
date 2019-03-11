@@ -52,7 +52,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
 - (void) reportViewabilityForOBView:(OBView *)obview {
     NSDate *timeNow = [NSDate date];
     NSTimeInterval timeInterval = [timeNow timeIntervalSinceDate:obview.smartFeedInitializationTime];
-    NSNumber *timeElapsed = @((int)(timeInterval*1000));
+    NSNumber *timeElapsedMillis = @((int)(timeInterval*1000));
     
     for (NSString *pos in obview.positions) {
         NSString *key = [self viewabilityKeyForRequestId:obview.requestId position:pos];
@@ -60,7 +60,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
         
         NSMutableDictionary *itemMap = [[NSMutableDictionary alloc]init];
         [itemMap setObject:@([pos intValue]) forKey:@"position"];
-        [itemMap setObject:timeElapsed forKey:@"timeElapsed"];
+        [itemMap setObject:timeElapsedMillis forKey:@"timeElapsed"];
         [itemMap setObject:obview.requestId forKey:@"requestId"];
         
         [self.itemsToReportMap setObject:itemMap forKey:key];
@@ -70,7 +70,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
 - (void) startReportViewability {
     self.reportViewabilityTimer = [NSTimer timerWithTimeInterval:kREPORT_TIMER_INTERVAL
                                                     target:self
-                                                  selector:@selector(ReportViewability)
+                                                  selector:@selector(reportViewability)
                                                   userInfo:[@{@"view": self} mutableCopy]
                                                    repeats:YES];
     
@@ -85,7 +85,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
 }
 
 #pragma mark - Private
-- (void) ReportViewability {
+- (void) reportViewability {
     if ([self.itemsToReportMap count] == 0 || self.isLoading) {
         return;
     }
@@ -95,6 +95,8 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     [[OBNetworkManager sharedManager] sendPost:url postData:[self.itemsToReportMap allValues] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil) {
             [self.itemsToReportMap removeObjectsForKeys:keys];
+        } else {
+            NSLog(@"Error report viewability per listing %@", error);
         }
         self.isLoading = false;
     }];

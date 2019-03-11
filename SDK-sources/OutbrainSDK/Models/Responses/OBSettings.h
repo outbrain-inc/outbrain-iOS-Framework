@@ -27,8 +27,8 @@
 
 @property (nonatomic, copy, readonly, nullable) NSString *sourceFormat;
 
-@property (nonatomic, assign, readonly) BOOL isViewabilityEnabled;
-@property (nonatomic, assign, readonly) CGFloat viewabilityThresholdMilisec;
+@property (nonatomic, assign, readonly) BOOL isViewabilityPerListingEnabled;
+@property (nonatomic, assign, readonly) CGFloat viewabilityPerListingThresholdMilisec;
 
 - (instancetype)initWithPayload:(NSDictionary *)payload;
 

@@ -61,8 +61,8 @@
 @property (nonatomic, assign) BOOL isTransparentBackground;
 
 @property (nonatomic, strong) NSDate *initializationTime;
-@property (nonatomic, assign) BOOL isViewabilityEnabled;
-@property (nonatomic, assign) CGFloat viewabilityThresholdMilisec;
+@property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
+@property (nonatomic, assign) CGFloat viewabilityPerListingThresholdMilisec;
 
 @end
 
@@ -70,6 +70,7 @@
 
 NSString * const kCustomUINib = @"CustomUINib";
 NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
+int const OBVIEW_DEFAULT_TAG = 12345678;
 
 #pragma mark - init methods
 - (id)init
@@ -200,9 +201,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             if (self.feedContentArray == nil || self.feedContentArray.count == 0) {
                 self.isSmartfeedWithNoChildren = YES;
             }
-            self.isViewabilityEnabled = response.settings.isViewabilityEnabled;
-            self.viewabilityThresholdMilisec = response.settings.viewabilityThresholdMilisec;
-            if (self.isViewabilityEnabled) {
+            self.isViewabilityPerListingEnabled = response.settings.isViewabilityPerListingEnabled;
+            self.viewabilityPerListingThresholdMilisec = response.settings.viewabilityPerListingThresholdMilisec;
+            if (self.isViewabilityPerListingEnabled) {
                 [[SFViewabilityService sharedInstance] startReportViewability];
             }
         }
@@ -802,18 +803,18 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     // Report Viewability
     [[OBViewabilityService sharedInstance] reportRecsShownForRequest:sfItem.request];
     
-    OBView *existingOBView = (OBView *)[cell viewWithTag: 12345678];
+    OBView *existingOBView = (OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG];
     if (existingOBView) {
         [existingOBView removeFromSuperview];
     }
     if (![[SFViewabilityService sharedInstance] isAlreadyReportedForRequestId:sfItem.requestId position:sfItem.positions[0]]
-        && self.isViewabilityEnabled) {
+        && self.isViewabilityPerListingEnabled) {
         OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
-        obview.tag = 12345678;
+        obview.tag = OBVIEW_DEFAULT_TAG;
         obview.opaque = NO;
         obview.positions = sfItem.positions;
         obview.requestId = sfItem.requestId;
-        obview.viewabilityThresholdMilliseconds = self.viewabilityThresholdMilisec || 1.0;
+        obview.viewabilityThresholdMilliseconds = self.viewabilityPerListingThresholdMilisec;
         obview.smartFeedInitializationTime = self.initializationTime;
         obview.userInteractionEnabled = NO;
         [cell addSubview: obview];

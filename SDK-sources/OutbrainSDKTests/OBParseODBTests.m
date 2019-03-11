@@ -89,7 +89,15 @@
     XCTAssertEqual(settings.feedChunkSize, 3);
     XCTAssert([settings.feedContentArray[0] isEqualToString:@"SFD_VRS_1"]);
     XCTAssert([settings.feedContentArray[1] isEqualToString:@"SFD_SWP_1"]);
-    
+}
+
+- (void)testRecommendationsPosition {
+    NSArray *recs = self.response.recommendations;
+    for (int i = 0; i < recs.count; i++) {
+        OBRecommendation *rec = recs[i];
+        NSString *position = [NSString stringWithFormat:@"%d", i];
+        XCTAssert([rec.position isEqualToString:position]);
+    }
 }
 
 
