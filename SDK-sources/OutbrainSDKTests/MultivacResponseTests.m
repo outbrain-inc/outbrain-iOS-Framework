@@ -79,17 +79,41 @@
     XCTAssertTrue(hasMore);
     XCTAssertEqual(1, feedIdx);
     XCTAssertEqual(3, [cardsResponseArray count]);
-    OBRecommendationResponse *recsResponse0 = cardsResponseArray[0];
-    XCTAssert([@"MV80Y2NjMjM0MDk2OGU1MTFlY2QxYzZmNTJmMWUzOWFhN18w" isEqualToString:recsResponse0.responseRequest.token]);
-    NSString *reqId = [recsResponse0.responseRequest getStringValueForPayloadKey:@"req_id"];
-    XCTAssert([@"804d8988ed7a0d8072663612153cdac8" isEqualToString:reqId]);
-    XCTAssertEqual(1, [recsResponse0.recommendations count]);
-    OBRecommendation *rec0 = recsResponse0.recommendations[0];
-    XCTAssert([@"Marcus Smart sets up Gordon Hayward with a deft behind-the-back assist as Celtics hammer Warriors" isEqualToString: [rec0 content]]);
+    
+    [self verifyCard0:cardsResponseArray[0]];
+    [self verifyCard1:cardsResponseArray[1]];
+    [self verifyCard2:cardsResponseArray[2]];
 }
 
 - (void)onMultivacFailure:(NSError *)error {
     
+}
+
+-(void) verifyCard0:(OBRecommendationResponse *)recsResponse {
+    XCTAssert([@"MV80Y2NjMjM0MDk2OGU1MTFlY2QxYzZmNTJmMWUzOWFhN18w" isEqualToString:recsResponse.responseRequest.token]);
+    NSString *reqId = [recsResponse.responseRequest getStringValueForPayloadKey:@"req_id"];
+    XCTAssert([@"804d8988ed7a0d8072663612153cdac8" isEqualToString:reqId]);
+    XCTAssertEqual(1, [recsResponse.recommendations count]);
+    OBRecommendation *rec = recsResponse.recommendations[0];
+    XCTAssert([@"Marcus Smart sets up Gordon Hayward with a deft behind-the-back assist as Celtics hammer Warriors" isEqualToString: [rec content]]);
+}
+
+-(void) verifyCard1:(OBRecommendationResponse *)recsResponse {
+    XCTAssert([@"MV80Y2NjMjM0MDk2OGU1MTFlY2QxYzZmNTJmMWUzOWFhN18w" isEqualToString:recsResponse.responseRequest.token]);
+    NSString *reqId = [recsResponse.responseRequest getStringValueForPayloadKey:@"req_id"];
+    XCTAssert([@"d7d0197f6460f8f88e267a3fc98fcba4" isEqualToString:reqId]);
+    XCTAssertEqual(2, [recsResponse.recommendations count]);
+    OBRecommendation *rec = recsResponse.recommendations[1];
+    XCTAssert([@"Rennes vs Arsenal preview: Alexandre Lacazette suspended for Europa League last-16 tie" isEqualToString: [rec content]]);
+}
+
+-(void) verifyCard2:(OBRecommendationResponse *)recsResponse {
+    XCTAssert([@"MV80Y2NjMjM0MDk2OGU1MTFlY2QxYzZmNTJmMWUzOWFhN18w" isEqualToString:recsResponse.responseRequest.token]);
+    NSString *reqId = [recsResponse.responseRequest getStringValueForPayloadKey:@"req_id"];
+    XCTAssert([@"4a39c90fe96018663c8d25f4939fc0a0" isEqualToString:reqId]);
+    XCTAssertEqual(1, [recsResponse.recommendations count]);
+    OBRecommendation *rec = recsResponse.recommendations[0];
+    XCTAssert([@"Deadly Cold: 22 Photos Capture Life-Threatening Frozen Weather" isEqualToString: [rec content]]);
 }
 
 
