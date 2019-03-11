@@ -40,7 +40,6 @@
 
 @property (nonatomic, assign) BOOL isRTL;
 
-@property (nonatomic, assign) NSInteger outbrainIndex;
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, assign) BOOL isSmartfeedWithNoChildren;
 
@@ -123,6 +122,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.isVideoEligible = YES; // default value
 }
 
+-(void) setOutbrainWidgetIndex:(NSInteger)widgetIndex {
+    _outbrainWidgetIndex = widgetIndex;
+    self.lastIdx = widgetIndex;
+}
+
 -(NSInteger) smartFeedItemsCount {
     if (self.smartFeedItemsArray.count > 0) {
         return self.smartFeedItemsArray.count + 1; // plus header cell
@@ -167,7 +171,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 -(void) loadFirstTimeForFeed {
-    OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex];
+    OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainWidgetIndex];
     if (self.externalID) {
         request.externalID = self.externalID;
     }
@@ -209,7 +213,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 -(void) fetchMoreRecommendationsWithMultivac {
-    OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainIndex];
+    OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainWidgetIndex];
     request.lastCardIdx = self.lastCardIdx;
     request.lastIdx = self.lastIdx;
     request.isMultivac = YES;

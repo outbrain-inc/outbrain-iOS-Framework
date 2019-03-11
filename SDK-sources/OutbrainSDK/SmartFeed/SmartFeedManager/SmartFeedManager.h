@@ -56,6 +56,7 @@ typedef enum
     SFTypeBadType
 } SFItemType;
 
+@property (nonatomic, assign) NSInteger outbrainWidgetIndex;
 @property (nonatomic, strong, readonly) NSString * _Nullable url;
 @property (nonatomic, strong, readonly) NSString * _Nullable widgetId;
 @property (nonatomic, copy) NSString * _Nullable externalID;
@@ -65,7 +66,7 @@ typedef enum
 
 @property (nonatomic, weak) id<SmartFeedDelegate> delegate;
 @property (nonatomic, assign) CGFloat horizontalContainerMargin;
-
+f
 @property (nonatomic) BOOL isVideoEligible;
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
 
