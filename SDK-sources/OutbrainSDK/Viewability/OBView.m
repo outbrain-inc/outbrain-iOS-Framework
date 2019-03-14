@@ -77,9 +77,9 @@
     
     CGFloat milisecondsVisible = [timer.userInfo[@"milisecondsVisible"] floatValue];
     
-    if (percentVisible >= 0.5 && milisecondsVisible < self.viewabilityThresholdMilliseconds) {
+    if (percentVisible >= 0.5 && milisecondsVisible < 1000) {
         timer.userInfo[@"milisecondsVisible"] = @(milisecondsVisible + (timer.timeInterval * 1000));
-    } else if (percentVisible >= 0.5 && milisecondsVisible >= self.viewabilityThresholdMilliseconds) {
+    } else if (percentVisible >= 0.5 && milisecondsVisible >= 1000) {
         [self reportViewability:timer];
     } else {
         // View is not visible, decide if we want to report that or not
