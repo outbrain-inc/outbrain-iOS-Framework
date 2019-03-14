@@ -62,7 +62,6 @@
 
 @property (nonatomic, strong) NSDate *initializationTime;
 @property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
-@property (nonatomic, assign) CGFloat viewabilityPerListingThresholdMilisec;
 
 @end
 
@@ -202,9 +201,9 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
                 self.isSmartfeedWithNoChildren = YES;
             }
             self.isViewabilityPerListingEnabled = response.settings.isViewabilityPerListingEnabled;
-            self.viewabilityPerListingThresholdMilisec = response.settings.viewabilityPerListingThresholdMilisec;
+            NSInteger viewabilityPerListingReportingIntervalMillis = response.settings.viewabilityPerListingReportingIntervalMillis;
             if (self.isViewabilityPerListingEnabled) {
-                [[SFViewabilityService sharedInstance] startReportViewability];
+                [[SFViewabilityService sharedInstance] startReportViewabilityWithTimeInterval:viewabilityPerListingReportingIntervalMillis];
             }
         }
         
@@ -814,7 +813,6 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         obview.opaque = NO;
         obview.positions = sfItem.positions;
         obview.requestId = sfItem.requestId;
-        obview.viewabilityThresholdMilliseconds = self.viewabilityPerListingThresholdMilisec;
         obview.smartFeedInitializationTime = self.initializationTime;
         obview.userInteractionEnabled = NO;
         [cell addSubview: obview];

@@ -23,8 +23,6 @@
 
 @implementation SFViewabilityService
 
-#define kREPORT_TIMER_INTERVAL 1.0
-
 NSString * const kLogViewabilityUrl = @"https://log.outbrainimg.com/api/loggerBatch/log-viewability";
 NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@_%@";
 
@@ -67,17 +65,18 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     }
 }
 
-- (void) startReportViewability {
+- (void) startReportViewabilityWithTimeInterval:(NSInteger)reportingIntervalMillis {
     if (self.reportViewabilityTimer != nil) {
         return;
     }
-    self.reportViewabilityTimer = [NSTimer timerWithTimeInterval:kREPORT_TIMER_INTERVAL
+    CGFloat reportingIntervalsec = (float) reportingIntervalMillis / 1000;
+    self.reportViewabilityTimer = [NSTimer timerWithTimeInterval:reportingIntervalsec
                                                     target:self
                                                   selector:@selector(reportViewability)
                                                   userInfo:nil
                                                    repeats:YES];
     
-    self.reportViewabilityTimer.tolerance = kREPORT_TIMER_INTERVAL * 0.5;
+    self.reportViewabilityTimer.tolerance = reportingIntervalsec * 0.5;
     
     [[NSRunLoop mainRunLoop] addTimer:self.reportViewabilityTimer forMode:NSRunLoopCommonModes];
 }

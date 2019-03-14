@@ -27,7 +27,7 @@
 @property (nonatomic, copy) NSString *sourceFormat;
 
 @property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
-@property (nonatomic, assign) NSInteger viewabilityPerListingThresholdMilisec;
+@property (nonatomic, assign) NSInteger viewabilityPerListingReportingIntervalMillis;
 
 @end
 
@@ -69,7 +69,7 @@
         }
         
         self.isViewabilityPerListingEnabled = ![payload valueForKey:@"listingViewability"] || [[payload valueForKey:@"listingViewability"] boolValue];
-        self.viewabilityPerListingThresholdMilisec = [payload valueForKey:@"listingViewabilityThresholdMilisec"] ? [[payload valueForKey:@"listingViewabilityThresholdMilisec"] intValue] : 1000;
+        self.viewabilityPerListingReportingIntervalMillis = [payload valueForKey:@"listingsViewabilityReportingIntervalMillis"] ? [[payload valueForKey:@"listingsViewabilityReportingIntervalMillis"] intValue] : 2500;
     }
     
     return self;

@@ -17,6 +17,6 @@
 
 - (BOOL) isAlreadyReportedForRequestId:(NSString *)requestId position:(NSString *)pos;
 
-- (void) startReportViewability;
+- (void) startReportViewabilityWithTimeInterval:(NSInteger)reportingIntervalMillis;
 
 @end
