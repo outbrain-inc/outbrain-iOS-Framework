@@ -811,9 +811,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
         obview.tag = OBVIEW_DEFAULT_TAG;
         obview.opaque = NO;
-        obview.positions = sfItem.positions;
-        obview.requestId = sfItem.requestId;
-        obview.smartFeedInitializationTime = self.initializationTime;
+        [[SFViewabilityService sharedInstance] registerOBView:obview positions:sfItem.positions requestId:sfItem.requestId smartFeedInitializationTime:self.initializationTime];
         obview.userInteractionEnabled = NO;
         [cell addSubview: obview];
     }

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSTimer *reportViewabilityTimer;
 @property (nonatomic, strong) NSMutableDictionary *itemAlreadyReportedMap;
 @property (nonatomic, strong) NSMutableDictionary *itemsToReportMap;
+@property (nonatomic, strong) NSMutableDictionary *obViewsData;
 @property (nonatomic, assign) BOOL isLoading;
 
 @end
@@ -35,6 +36,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
         // Do any other initialisation stuff here
         sharedInstance.itemAlreadyReportedMap = [[NSMutableDictionary alloc] init];
         sharedInstance.itemsToReportMap = [[NSMutableDictionary alloc] init];
+        sharedInstance.obViewsData = [[NSMutableDictionary alloc] init];
     });
     
     return sharedInstance;
@@ -47,19 +49,38 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     return self;
 }
 
+- (void) registerOBView:(OBView *)obView positions:(NSArray *)positions requestId:(NSString *)reqId smartFeedInitializationTime:(NSDate *)initializationTime {
+    // we save the key of the first rec in the OBView
+    NSString *key = [self viewabilityKeyForRequestId:reqId position:positions[0]];
+    obView.key = key;
+    
+    NSMutableDictionary *obViewData = [[NSMutableDictionary alloc]init];
+    [obViewData setObject:positions forKey:@"positions"];
+    [obViewData setObject:reqId forKey:@"requestId"];
+    [obViewData setObject:initializationTime forKey:@"smartFeedInitializationTime"];
+    
+    [self.obViewsData setObject:obViewData forKey:key];
+}
+
 - (void) reportViewabilityForOBView:(OBView *)obview {
+    NSString *key = obview.key;
+    NSMutableDictionary *obViewData = [self.obViewsData valueForKey:key];
+    NSArray *positions = [obViewData valueForKey:@"positions"];
+    NSString *requestId = [obViewData valueForKey:@"requestId"];
+    NSDate *smartFeedInitializationTime = [obViewData valueForKey:@"smartFeedInitializationTime"];
+    
     NSDate *timeNow = [NSDate date];
-    NSTimeInterval timeInterval = [timeNow timeIntervalSinceDate:obview.smartFeedInitializationTime];
+    NSTimeInterval timeInterval = [timeNow timeIntervalSinceDate:smartFeedInitializationTime];
     NSNumber *timeElapsedMillis = @((int)(timeInterval*1000));
     
-    for (NSString *pos in obview.positions) {
-        NSString *key = [self viewabilityKeyForRequestId:obview.requestId position:pos];
+    for (NSString *pos in positions) {
+        NSString *key = [self viewabilityKeyForRequestId:requestId position:pos];
         [self.itemAlreadyReportedMap setValue:@"YES" forKey:key];
         
         NSMutableDictionary *itemMap = [[NSMutableDictionary alloc]init];
         [itemMap setObject:@([pos intValue]) forKey:@"position"];
         [itemMap setObject:timeElapsedMillis forKey:@"timeElapsed"];
-        [itemMap setObject:obview.requestId forKey:@"requestId"];
+        [itemMap setObject:requestId forKey:@"requestId"];
         
         [self.itemsToReportMap setObject:itemMap forKey:key];
     }

@@ -17,6 +17,8 @@
 
 - (BOOL) isAlreadyReportedForRequestId:(NSString *)requestId position:(NSString *)pos;
 
+- (void) registerOBView:(OBView *)obView positions:(NSArray *)positions requestId:(NSString *)reqId smartFeedInitializationTime:(NSDate *)initializationTime;
+
 - (void) startReportViewabilityWithTimeInterval:(NSInteger)reportingIntervalMillis;
 
 @end
