@@ -101,15 +101,81 @@
 }
 
 +(NSString *) decodeHTMLEnocdedString:(NSString *)htmlEncodedString {
-    if (!htmlEncodedString) {
+    NSString *result = [self stripHTMLTags:[self replaceCommonHTMLEntities:htmlEncodedString]];
+    return result;
+}
+
++(NSString *) stripHTMLTags:(NSString *)inputString {
+    if (inputString == nil || inputString.length == 0) {
+        return @"";
+    }
+    
+    static NSRegularExpression *htmlRegex = nil;
+    static NSString *htmlRegexPattern = @"(<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>|&.*?;)";
+    
+    if (htmlRegex == nil) {
+        htmlRegex = [NSRegularExpression regularExpressionWithPattern:htmlRegexPattern options:0 error:nil];
+    }
+    
+    NSString *result = [htmlRegex stringByReplacingMatchesInString:inputString
+                                                           options:0
+                                                             range:NSMakeRange(0, inputString.length)
+                                                      withTemplate:@""];
+    
+    return result ?: @"";
+}
+
++(NSString *) replaceCommonHTMLEntities:(NSString *)inputString {
+    if (inputString == nil || inputString.length == 0) {
         return nil;
     }
     
-    NSData *data = [htmlEncodedString dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *attributes = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                                 NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)};
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithData:data options:attributes documentAttributes:nil error:nil];
-    return [attributedString string];
+    static NSDictionary *characterMapping = nil;
+    
+    if (characterMapping == nil) {
+        /// https://brajeshwar.github.io/entities/
+        characterMapping = @{@"&quot;": @"\"", @"&#34;": @"\"",
+                             @"&num;": @"#", @"&#35;": @"#",
+                             @"&dollar;": @"$", @"&#36;": @"$",
+                             @"&percnt;": @"%", @"&#37;": @"%",
+                             @"&amp;": @"&", @"&#38;": @"&",
+                             @"&apos;": @"'", @"&#39;": @"'",
+                             @"&lpar;": @"(", @"&#40;": @"(",
+                             @"&rpar;": @")", @"&#41;": @")",
+                             @"&ast;": @"*", @"&#42;": @"*",
+                             @"&plus;": @"+", @"&#43;": @"+",
+                             @"&comma;": @",", @"&#44;": @",",
+                             @"&minus;": @"-", @"&#45;": @"-",
+                             @"&period;": @".", @"&#46;": @".",
+                             @"&sol;": @"/", @"&#47;": @"/",
+                             @"&colon;": @":", @"&#58;": @":",
+                             @"&semi;": @";", @"&#59;": @";",
+                             @"&lt;": @"<", @"&#60;": @"<",
+                             @"&equals;": @"=", @"&#61;": @"=",
+                             @"&gt;": @">", @"&#62;": @">",
+                             @"&quest;": @"?", @"&#63;": @"?",
+                             @"&commat;": @"@", @"&#64;": @"@",
+                             @"&lsqb;": @"[", @"&#91;": @"[",
+                             @"&bsol;": @"\\", @"&#92;": @"\\",
+                             @"&rsqb;": @"]", @"&#93;": @"]",
+                             @"&Hat;": @"^", @"&#94;": @"^",
+                             @"&lowbar;": @"_", @"&#95;": @"_",
+                             @"&grave;": @"`", @"&#96;": @"`",
+                             @"&lcub;": @"{", @"&#123;": @"{",
+                             @"&verbar;": @"|", @"&#124;": @"|",
+                             @"&rcub;": @"}", @"&#125;": @"}",
+                             @"&#126;": @"~", @"&#x2018;" : @"‘",
+                             @"&#x2019;" : @"’"
+                             };
+    }
+    
+    NSString *result = [NSString stringWithString:inputString];
+    
+    for (NSString *key in characterMapping) {
+        result = [result stringByReplacingOccurrencesOfString:key withString:characterMapping[key]];
+    }
+    
+    return result ?: @"";
 }
 
 @end
