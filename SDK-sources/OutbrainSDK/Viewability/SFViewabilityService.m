@@ -68,10 +68,13 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
 }
 
 - (void) startReportViewability {
+    if (self.reportViewabilityTimer != nil) {
+        return;
+    }
     self.reportViewabilityTimer = [NSTimer timerWithTimeInterval:kREPORT_TIMER_INTERVAL
                                                     target:self
                                                   selector:@selector(reportViewability)
-                                                  userInfo:[@{@"view": self} mutableCopy]
+                                                  userInfo:nil
                                                    repeats:YES];
     
     self.reportViewabilityTimer.tolerance = kREPORT_TIMER_INTERVAL * 0.5;
