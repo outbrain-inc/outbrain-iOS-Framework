@@ -19,6 +19,7 @@
 @implementation OBView
 
 #define kTIMER_INTERVAL 0.1
+#define KViewThresholdMillisec 1000
 
 -(id) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -77,9 +78,9 @@
     
     CGFloat milisecondsVisible = [timer.userInfo[@"milisecondsVisible"] floatValue];
     
-    if (percentVisible >= 0.5 && milisecondsVisible < 1000) {
-        timer.userInfo[@"milisecondsVisible"] = @(milisecondsVisible + (timer.timeInterval * 1000));
-    } else if (percentVisible >= 0.5 && milisecondsVisible >= 1000) {
+    if (percentVisible >= 0.5 && milisecondsVisible < KViewThresholdMillisec) {
+        timer.userInfo[@"milisecondsVisible"] = @(milisecondsVisible + (timer.timeInterval * KViewThresholdMillisec));
+    } else if (percentVisible >= 0.5 && milisecondsVisible >= KViewThresholdMillisec) {
         [self reportViewability:timer];
     } else {
         // View is not visible, decide if we want to report that or not
