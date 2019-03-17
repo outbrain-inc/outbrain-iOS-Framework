@@ -16,6 +16,6 @@ typedef void (^OBNetworkCompletionBlock)(NSData *data, NSURLResponse *response, 
 
 -(void) sendGet:(NSURL *)url completionHandler:(OBNetworkCompletionBlock)completionHandler;
 
--(void) sendPost:(NSURL *)url postData:(id)postDataString completionHandler:(OBNetworkCompletionBlock)completionHandler;
+-(void) sendPost:(NSURL *)url postData:(id)postJsonObject completionHandler:(OBNetworkCompletionBlock)completionHandler;
 
 @end
