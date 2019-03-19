@@ -74,7 +74,7 @@
     }
     
     NSMutableArray<OBRecommendationResponse *> *cardsResponseList = [[NSMutableArray alloc] init];
-    BOOL hasMore = jsonResponse[@"hasMore"];
+    BOOL hasMore = [jsonResponse[@"hasMore"] boolValue];
     NSInteger feedIdx = [jsonResponse[@"feedIdx"] integerValue];
     NSArray *cardsJsonArray = jsonResponse[@"cards"];
     for (NSInteger i=0; i< [cardsJsonArray count]; i++) {
