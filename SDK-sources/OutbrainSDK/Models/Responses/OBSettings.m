@@ -26,6 +26,9 @@
 @property (nonatomic, copy) NSString *paidLabelBackgroundColor;
 @property (nonatomic, copy) NSString *sourceFormat;
 
+@property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
+@property (nonatomic, assign) NSInteger viewabilityPerListingReportingIntervalMillis;
+
 @end
 
 
@@ -64,6 +67,9 @@
             }
             self.feedContentArray = [feedItemsArr copy];
         }
+        
+        self.isViewabilityPerListingEnabled = ![payload valueForKey:@"listingViewability"] || [[payload valueForKey:@"listingViewability"] boolValue];
+        self.viewabilityPerListingReportingIntervalMillis = [payload valueForKey:@"listingsViewabilityReportingIntervalMillis"] ? [[payload valueForKey:@"listingsViewabilityReportingIntervalMillis"] intValue] : 2500;
     }
     
     return self;

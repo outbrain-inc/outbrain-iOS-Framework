@@ -25,6 +25,8 @@
 #import "SFCollectionViewManager.h"
 #import "SFTableViewManager.h"
 #import "OBViewabilityService.h"
+#import "OBView.h"
+#import "SFViewabilityService.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 
 
@@ -58,12 +60,16 @@
 
 @property (nonatomic, assign) BOOL isTransparentBackground;
 
+@property (nonatomic, strong) NSDate *initializationTime;
+@property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
+
 @end
 
 @implementation SmartFeedManager
 
 NSString * const kCustomUINib = @"CustomUINib";
 NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
+int const OBVIEW_DEFAULT_TAG = 12345678;
 
 #pragma mark - init methods
 - (id)init
@@ -107,6 +113,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 - (void)commonInitWithUrl:(NSString *)url
                    widgetID:(NSString *)widgetId
 {
+    self.initializationTime = [NSDate date];
     self.widgetId = widgetId;
     self.url = url;
     self.outbrainSectionIndex = -1;
@@ -192,6 +199,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             
             if (self.feedContentArray == nil || self.feedContentArray.count == 0) {
                 self.isSmartfeedWithNoChildren = YES;
+            }
+            self.isViewabilityPerListingEnabled = response.settings.isViewabilityPerListingEnabled;
+            NSInteger viewabilityPerListingReportingIntervalMillis = response.settings.viewabilityPerListingReportingIntervalMillis;
+            if (self.isViewabilityPerListingEnabled) {
+                [[SFViewabilityService sharedInstance] startReportViewabilityWithTimeInterval:viewabilityPerListingReportingIntervalMillis];
             }
         }
         
@@ -283,9 +295,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if ([SFUtils isVideoIncludedInResponse:response] && response.recommendations.count == 1 && self.isVideoEligible) {
         NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
         NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
+        OBRecommendation *rec = response.recommendations[0];
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                     videoParamsStr:videoParamsStr
-                                           singleRecommendation:response.recommendations[0]
+                                           singleRecommendation:rec
                                                     odbResponse:response];
         
         [newSmartfeedItems addObject:item];
@@ -402,7 +415,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
-        
+             
         if (shouldIncludeVideoInTheMiddle &&
             newSmartfeedItems.count == 1)
         {
@@ -414,6 +427,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
                                                                  reclist:singleLineRecs
                                                              odbResponse:response
                                                                     type:SFTypeGridTwoInRowWithVideo];
+            
             
             [newSmartfeedItems addObject:videoItem];
             continue;
@@ -787,6 +801,20 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     // Report Viewability
     [[OBViewabilityService sharedInstance] reportRecsShownForRequest:sfItem.request];
+    
+    OBView *existingOBView = (OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG];
+    if (existingOBView) {
+        [existingOBView removeFromSuperview];
+    }
+    if (![[SFViewabilityService sharedInstance] isAlreadyReportedForRequestId:sfItem.requestId position:sfItem.positions[0]]
+        && self.isViewabilityPerListingEnabled) {
+        OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
+        obview.tag = OBVIEW_DEFAULT_TAG;
+        obview.opaque = NO;
+        [[SFViewabilityService sharedInstance] registerOBView:obview positions:sfItem.positions requestId:sfItem.requestId smartFeedInitializationTime:self.initializationTime];
+        obview.userInteractionEnabled = NO;
+        [cell addSubview: obview];
+    }
     
     if ([cell isKindOfClass:[SFHorizontalWithVideoCollectionViewCell class]]) {
         [self configureHorizontalVideoCollectionCell:cell atIndexPath:indexPath];

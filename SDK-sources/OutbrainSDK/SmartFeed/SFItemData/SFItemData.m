@@ -25,6 +25,8 @@
 @property (nonatomic, copy) NSString *videoParamsStr;
 @property (nonatomic, strong) UIColor *shadowColor;
 @property (nonatomic, copy) NSString *sourceFormat;
+@property (nonatomic, strong) NSMutableArray *positions;
+@property (nonatomic, copy) NSString *requestId;
 @end
 
 @implementation SFItemData
@@ -38,6 +40,10 @@ NSInteger kVideoFinishedStatus = 1114;
     if (self) {
         self.singleRec = rec;
         self.itemType = type;
+        self.positions = [[NSMutableArray alloc] init];
+        if (rec.position) {
+            [self.positions addObject:rec.position];
+        }
         [self commonInitWithResponse:odbResponse];
     }
     return self;
@@ -53,6 +59,10 @@ NSInteger kVideoFinishedStatus = 1114;
         self.videoParamsStr = videoParamsStr;
         self.singleRec = rec;
         self.itemType = widgetTitle ? SFTypeStripVideoWithPaidRecAndTitle : SFTypeStripVideoWithPaidRecNoTitle;
+        self.positions = [[NSMutableArray alloc] init];
+        if (rec.position) {
+            [self.positions addObject:rec.position];
+        }
         [self commonInitWithResponse:odbResponse];
     }
     return self;
@@ -67,6 +77,12 @@ NSInteger kVideoFinishedStatus = 1114;
         self.videoParamsStr = videoParamsStr;
         self.outbrainRecs = recArray;
         self.itemType = type;
+        self.positions = [[NSMutableArray alloc] init];
+        for (OBRecommendation *rec in recArray) {
+            if (rec.position) {
+                [self.positions addObject:rec.position];
+            }
+        }
         [self commonInitWithResponse:odbResponse];
     }
     return self;
@@ -77,6 +93,12 @@ NSInteger kVideoFinishedStatus = 1114;
     if (self) {
         self.outbrainRecs = recArray;
         self.itemType = type;
+        self.positions = [[NSMutableArray alloc] init];
+        for (OBRecommendation *rec in recArray) {
+            if (rec.position) {
+                [self.positions addObject:rec.position];
+            }
+        }
         [self commonInitWithResponse:odbResponse];
     }
     return self;
@@ -92,6 +114,7 @@ NSInteger kVideoFinishedStatus = 1114;
         self.shadowColor = [SFUtils colorFromHexString:self.odbSettings.smartfeedShadowColor];
     }
     self.sourceFormat = self.odbSettings.sourceFormat;
+    self.requestId = [odbResponse.responseRequest getStringValueForPayloadKey:@"req_id"];
 }
 
 +(NSString *) itemTypeString:(SFItemType) type {

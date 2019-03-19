@@ -53,13 +53,13 @@
     [getDataTask resume];
 }
 
--(void) sendPost:(NSURL *)url postData:(NSDictionary *)postDataDictionary completionHandler:(OBNetworkCompletionBlock)completionHandler
+-(void) sendPost:(NSURL *)url postData:(id)postJsonObject completionHandler:(OBNetworkCompletionBlock)completionHandler
 {
     NSMutableURLRequest *request = [self generateMutableRequest:url];
     
-    if ([NSJSONSerialization isValidJSONObject:postDataDictionary]) {
+    if ([NSJSONSerialization isValidJSONObject:postJsonObject]) {
         NSError *error;
-        NSData *postData = [NSJSONSerialization dataWithJSONObject:postDataDictionary
+        NSData *postData = [NSJSONSerialization dataWithJSONObject:postJsonObject
                                                            options:0
                                                              error:&error];
         [request setHTTPBody: postData];
