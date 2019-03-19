@@ -96,6 +96,10 @@
 		E6355BED223544CA00C3D1D5 /* OBMultivacRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E6355BEB223544CA00C3D1D5 /* OBMultivacRequestOperation.m */; };
 		E6355BFF22367E7D00C3D1D5 /* outbrain_multivac_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E6355BFE22367E7D00C3D1D5 /* outbrain_multivac_response.json */; };
 		E6355C0122367EC000C3D1D5 /* MultivacResponseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6355C0022367EC000C3D1D5 /* MultivacResponseTests.m */; };
+		E6355E2122411DF200C3D1D5 /* OBView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6355E1F22411DF100C3D1D5 /* OBView.m */; };
+		E6355E2222411DF200C3D1D5 /* OBView.h in Headers */ = {isa = PBXBuildFile; fileRef = E6355E2022411DF200C3D1D5 /* OBView.h */; };
+		E6355E2522411E3B00C3D1D5 /* SFViewabilityService.h in Headers */ = {isa = PBXBuildFile; fileRef = E6355E2322411E3B00C3D1D5 /* SFViewabilityService.h */; };
+		E6355E2622411E3B00C3D1D5 /* SFViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = E6355E2422411E3B00C3D1D5 /* SFViewabilityService.m */; };
 		E63B784C212AB1860018C225 /* SFImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7840212AB1860018C225 /* SFImageLoader.h */; };
 		E63B784D212AB1860018C225 /* SFUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7841212AB1860018C225 /* SFUtils.h */; };
 		E63B784E212AB1860018C225 /* SFImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7842212AB1860018C225 /* SFImageLoader.m */; };
@@ -268,6 +272,10 @@
 		E6355BEB223544CA00C3D1D5 /* OBMultivacRequestOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBMultivacRequestOperation.m; sourceTree = "<group>"; };
 		E6355BFE22367E7D00C3D1D5 /* outbrain_multivac_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = outbrain_multivac_response.json; sourceTree = "<group>"; };
 		E6355C0022367EC000C3D1D5 /* MultivacResponseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultivacResponseTests.m; sourceTree = "<group>"; };
+		E6355E1F22411DF100C3D1D5 /* OBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBView.m; sourceTree = "<group>"; };
+		E6355E2022411DF200C3D1D5 /* OBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBView.h; sourceTree = "<group>"; };
+		E6355E2322411E3B00C3D1D5 /* SFViewabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFViewabilityService.h; sourceTree = "<group>"; };
+		E6355E2422411E3B00C3D1D5 /* SFViewabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFViewabilityService.m; sourceTree = "<group>"; };
 		E63B7840212AB1860018C225 /* SFImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageLoader.h; sourceTree = "<group>"; };
 		E63B7841212AB1860018C225 /* SFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUtils.h; sourceTree = "<group>"; };
 		E63B7842212AB1860018C225 /* SFImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImageLoader.m; sourceTree = "<group>"; };
@@ -453,12 +461,16 @@
 		E61E6BCF20836C180016D79A /* Viewability */ = {
 			isa = PBXGroup;
 			children = (
+				E6355E2022411DF200C3D1D5 /* OBView.h */,
+				E6355E1F22411DF100C3D1D5 /* OBView.m */,
 				E61E6BD020836C180016D79A /* OBLabel.h */,
 				E61E6BD420836C180016D79A /* OBLabel.m */,
 				E61E6BD620836C180016D79A /* OBViewabilityService.m */,
 				E61E6BD120836C180016D79A /* OBViewabilityService.h */,
 				E61E6BD520836C180016D79A /* OBAdsChoicesManager.h */,
 				E61E6BD220836C180016D79A /* OBAdsChoicesManager.m */,
+				E6355E2322411E3B00C3D1D5 /* SFViewabilityService.h */,
+				E6355E2422411E3B00C3D1D5 /* SFViewabilityService.m */,
 				E61E6BD320836C180016D79A /* UIView+Visible.m */,
 				E61E6BD720836C180016D79A /* UIView+Visible.h */,
 			);
@@ -854,6 +866,7 @@
 				E63B7850212AB1860018C225 /* SFItemData.h in Headers */,
 				E6355BEC223544CA00C3D1D5 /* OBMultivacRequestOperation.h in Headers */,
 				E6FEB3EA20FF2E78002A9020 /* SFHorizontalCollectionViewCell.h in Headers */,
+				E6355E2222411DF200C3D1D5 /* OBView.h in Headers */,
 				E61E6C3820836C180016D79A /* OBRecommendation.h in Headers */,
 				E61E6C2D20836C180016D79A /* OBResponse.h in Headers */,
 				E61E6C3220836C180016D79A /* OBDisclosure.h in Headers */,
@@ -862,6 +875,7 @@
 				E62B7E4620D12C490096F5BD /* OutbrainManager.h in Headers */,
 				16B1F9A12185E95C00023DDD /* GDPRUtils.h in Headers */,
 				E61E6C3920836C180016D79A /* OBImage.h in Headers */,
+				E6355E2522411E3B00C3D1D5 /* SFViewabilityService.h in Headers */,
 				E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */,
 				E61E6C4020836C180016D79A /* OBErrors.h in Headers */,
 				E6F8F45D211C3C6D0069C72C /* SmartFeedManager.h in Headers */,
@@ -1055,7 +1069,9 @@
 				E61E6C1B20836C180016D79A /* OBAdsChoicesManager.m in Sources */,
 				E61E6C4220836C180016D79A /* Outbrain.m in Sources */,
 				E61E6C1F20836C180016D79A /* OBViewabilityService.m in Sources */,
+				E6355E2622411E3B00C3D1D5 /* SFViewabilityService.m in Sources */,
 				E63B7851212AB1860018C225 /* SFItemData.m in Sources */,
+				E6355E2122411DF200C3D1D5 /* OBView.m in Sources */,
 				E63B784F212AB1860018C225 /* SFUtils.m in Sources */,
 				E61E6C3620836C180016D79A /* OBContent.m in Sources */,
 				E61E6C1D20836C180016D79A /* OBLabel.m in Sources */,
