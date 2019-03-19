@@ -55,27 +55,15 @@
 }
 
 - (NSString *)getTokenForRequest:(OBRequest *)request {
-    // If IDX is 0, return nil. Otherwise - return the token if exists for the url
-    if (request.widgetIndex != 0) {
-        return self.tokensDictionary[request.url];
+    if (request.widgetIndex == 0 && !request.isMultivac) {
+        return nil;
     }
     
-    return nil;
+    return self.tokensDictionary[request.url];
 }
 
 - (void)setTokenForRequest:(OBRequest *)request response:(OBRecommendationResponse *)response {
-    if (self.tokensDictionary[request.url]) {
-        if (request.widgetIndex == 0) {
-            // Replacing token
-            self.tokensDictionary[request.url] = response.responseRequest.token;
-        }
-        return;
-    }
-    else { // no token found for url, save the token
-        self.tokensDictionary[request.url] = response.responseRequest.token;
-    }
-
-  
+    self.tokensDictionary[request.url] = response.responseRequest.token;
 }
 
 @end

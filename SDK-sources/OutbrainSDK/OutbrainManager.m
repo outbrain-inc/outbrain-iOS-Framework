@@ -9,8 +9,10 @@
 #import "OutbrainManager.h"
 #import "Outbrain.h"
 #import "OBRecommendationRequestOperation.h"
+#import "OBMultivacRequestOperation.h"
 #import "OBRecommendationResponse.h"
 #import "OBErrors.h"
+#import "MultivacResponseDelegate.h"
 
 @interface OutbrainManager()
 
@@ -52,6 +54,12 @@
     
     OBRecommendationRequestOperation *recommendationOperation = [[OBRecommendationRequestOperation alloc] initWithRequest:request];
     recommendationOperation.handler = handler;
+    [self.odbFetchQueue addOperation:recommendationOperation];
+}
+
+- (void) fetchMultivacWithRequest:(OBRequest *)request andDelegate:(id<MultivacResponseDelegate>)multivacDelegate {
+    OBMultivacRequestOperation *recommendationOperation = [[OBMultivacRequestOperation alloc] initWithRequest:request];
+    recommendationOperation.multivacDelegate = multivacDelegate;
     [self.odbFetchQueue addOperation:recommendationOperation];
 }
 

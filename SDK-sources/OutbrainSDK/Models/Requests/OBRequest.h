@@ -55,11 +55,26 @@
 @property (nonatomic, assign) NSInteger widgetIndex;
 
 /**
- *  @brief Smart Feed parameter which defines the "father id", i.e. the smart feed original (first) reqest widget id.
+ *  @brief Smart Feed parameter which defines the index of the last “child widget” inside the smartfeed
  *
  *  @note This is only relevant for smart feed.
  **/
-@property (nonatomic, copy) NSString *fid;
+@property (nonatomic, assign) NSInteger lastCardIdx;
+
+/**
+ *  @brief Smart Feed parameter which defines the index of the last widget on the page (because we can load widgets async)
+ *
+ *  @note This is only relevant for smart feed.
+ **/
+@property (nonatomic, assign) NSInteger lastIdx;
+
+/**
+ *  @brief Smart Feed parameter which defines the OBRequest to be of type Multivac (multiple sub-widgets in one request).
+ *
+ *  @note This is only relevant for smart feed.
+ **/
+@property (nonatomic, assign) BOOL isMultivac;
+
 
 /**
  *  @brief externalID is a custom parmater for the publisher to pass on to our SDK, we will include this in the ODB request

@@ -1,0 +1,336 @@
+{
+    "cards": [
+        {
+            "cardType": "widget",
+            "response": {
+                "exec_time": 24,
+                "timestamp": 1551946563455,
+                "status": {
+                    "id": 0,
+                    "content": "Request succeeded"
+                },
+                "request": {
+                    "lang": "en",
+                    "idx": "4",
+                    "lastIdx": "3",
+                    "lastCardIdx": "3",
+                    "did": "689346564",
+                    "pid": "4737",
+                    "lsd": "f22700d5-1d49-42cc-a183-f3676526035f",
+                    "enu": "3nwx1f-7FDD19BYCUPn1a5_-GK_ebJI9j4bvWer8Mm2tkeZo66CFX401l47WHqT6",
+                    "api_user_id": "F22700D5-1D49-42CC-A183-F3676526035F",
+                    "t": "MV80Y2NjMjM0MDk2OGU1MTFlY2QxYzZmNTJmMWUzOWFhN18w",
+                    "pvId": "4ccc2340968e511ecd1c6f52f1e39aa7",
+                    "pad": "0",
+                    "org": "1",
+                    "abTestVal": "no_abtest",
+                    "obRecsAbtestAndVars": "386-1123",
+                    "widgetJsId": "SDK_SFD_1",
+                    "readerPlatform": "desktop",
+                    "isHttps": "true",
+                    "rtbEnabled": "true",
+                    "rtbTest": "false",
+                    "rtbBidTestMode": "false",
+                    "rtbTestRecsNum": "0",
+                    "amplifyEnabled": "true",
+                    "fid": "1117",
+                    "gdpr": "0",
+                    "fCard": "4",
+                    "feedIdx": "1",
+                    "forceFeed": "false",
+                    "sid": 5291479,
+                    "wnid": 1144,
+                    "req_id": "804d8988ed7a0d8072663612153cdac8",
+                    "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+                    "vid": 0
+                },
+                "documents": {
+                    "total_count": 1,
+                    "count": 1,
+                    "doc": [
+                        {
+                            "rpcRec": "ns6BdC8nzgADeyLNCNDAwNoAk2h0dHBzOi8vd3d3LnNreXNwb3J0cy5jb20vbmJhL25ld3MvMzYyNDQvMTE2NTY0NzYvbWFyY3VzLXNtYXJ0LXNldHMtdXAtZ29yZG9uLWhheXdhcmQtd2l0aC1hLWRlZnQtYmVoaW5kLXRoZS1iYWNrLWFzc2lzdC1hcy1jZWx0aWNzLWhhbW1lci13YXJyaW9yc8oxnVePo09SRMAAwJaocmVkaXJlY3SoaW50ZXJuYWyrUmVjRmVhdHVyZXOnZGlzcGxhea9kd3BsX3BjX2xpc3RpbmesZHdsdF9saXN0aW5n3AAvq09SRF8lMkZfY2gypWZhbHNloTChMqoxOTAzLC0xLC0xqjIxNzE4NzUxMTGhNKIxNNoAvgAAAB9wZXJzb25hbGl6YXRpb24tc2NvcmluZy1leHBsYWluAAAAAAAAABB1c2VkVmFyc0FuZFRlc3RzAAAAAAAAAAZ0YXJnZXQAAAAQQ29yZVJlY3NTZWxlY3RvcgAAABZjb3JlU2VsZWN0b3I6aW5wdXQtcG9zAAAAATAAAAAXY29yZVNlbGVjdG9yOm91dHB1dC1wb3MAAAABMAAAABRjb3JlU2VsZWN0b3I6b3V0Y29tZQAAAAZXaW5uZXKkAAAHb9oAIBp1nHgjHYvx0Xv////1YyhdmkU7GPEMwftgKiMurWOaqF2aRTsY8QzBqNXr3Qox2W7TqlNreSBTcG9ydHPaAFdyZWFzb25UeXBlPURFRkFVTFQsICwgLCBpc0NsaWNrYWJsZT1mYWxzZSwgcmVhc29uQ3RhVGV4dD0sIHJlYXNvblRleHQ9c3VnZ2VzdGVkIGZvciB5b3WkMjI1NqYyMjgxMzCwMTk2OS0xMi0zMSAxOTowMNoAm1R3byBtb25zdHJvdXMgdGhyb3cgZG93bnMgZnJvbSBLYXJsLUFudGhvbnkgVG93bnMsIGEgRGVsb24gV3JpZ2h0IGJ1enplciBiZWF0ZXIgYW5kIGEgSmF5bGVuIEJyb3duIHJpbS1yb2NrZXIgYWxzbyBmZWF0dXJlIGFtb25nIFR1ZXNkYXkgbmlnaHQncyBiZXN0IHBsYXlzpAAAAAK2c2pjU2tBeFFlb3RxOWdKNHktMms0UdoAYU1hcmN1cyBTbWFydCBzZXRzIHVwIEdvcmRvbiBIYXl3YXJkIHdpdGggYSBkZWZ0IGJlaGluZC10aGUtYmFjayBhc3Npc3QgYXMgQ2VsdGljcyBoYW1tZXIgV2FycmlvcnPaAMNodHRwczovL2ltYWdlcy5vdXRicmFpbmltZy5jb20vdHJhbnNmb3JtL3YzL2V5SnBkU0k2SWpNMlpXVTNZVE00WldGaE5tVTFNVEl5TXpRM1lqUXpNamRtTldGbVpXRmhOamhoTUdaalpqTXhNVGN6WVRoaFpUYzNPVE5rWVRNNVlXVXlaVFprWlRraUxDSjNJam8yTURBc0ltZ2lPak16Tnl3aVpDSTZNUzQxTENKamN5STZNQ3dpWmlJNk1IMC5qcGekAAACWKQAAAFRrkRPQ1VNRU5UX0lNQUdFpAAAAATaAMBodHRwczovL2ltYWdlcy5vdXRicmFpbmltZy5jb20vdHJhbnNmb3JtL3YzL2V5SnBkU0k2SWpObFpHSTJaRE0zTjJFMll6RmlPV0ZoWW1FelpqUmlOR1ZsTVRNME9ETTRNR0kzWkRCaVpXVXpPVEEzTkdObE9XSTFNemMzT0dFelpHVTFOV1l5WkdVaUxDSjNJam80TlN3aWFDSTZNakFzSW1RaU9qSXVNQ3dpWTNNaU9qQXNJbVlpT2pCOS5qcGeiODWiMjCxc3VnZ2VzdGVkIGZvciB5b3WgqU9SRF8vX2NoMqYwLjAwMDChMaItMbUzLjQ4ODc3NTE1NTYzNjYzMjZFLTamMS4wRS01pjEwMDAwMKQxOTAzpDEwLjCoODU5MjM0NzWiZW60MC4wMDM0ODg3NzUxNTU2MzY2MzPaAEAzNmVlN2EzOGVhYTZlNTEyMjM0N2I0MzI3ZjVhZmVhYTY4YTBmY2YzMTE3M2E4YWU3NzkzZGEzOWFlMmU2ZGU5pVJvbGV4tC0zMDMyMDg2ODg4MjQ4MTUyMzY13ABIkwACAJMAAwGTAAQCkwALA5MADASTABMFkwAsBpMALQeTAQAIkwIBCZMCAgqTAgMLkwIEDJMDAA2TAwEBkwMDDZMDBA6TAwsPkwMMEJMDDRGTAxQSkwMVCZMDFhOTAxgUkwMhFZMDIhaTAyMXkwMkGJMDJRmTAz4CkwM/GpMDRBuTA0UckwNGHZMDSR6TA0oCkwNNAZMDTh+TBA0CkwUGBZMFBxCTBQoCkwULIJMFDCGTBQ0ikwUOI5MFDwOTBRYCkwUXIpMFGCKTBRokkwUdJZMFHiWTBR8PkwUhApMFIiaTBSMnkwUkI5MFJSOTBS0okwUwKZMFNAKTBTUqkwU2IpMFNyKTBT0CkwU+BpMFRCuTBUUHkwVKLJMFSy2TBV4u",
+                            "source_name": "Sky Sports",
+                            "same_source": "false",
+                            "source_display_name": "Sky Sports",
+                            "explain": "reasonType=DEFAULT, , , isClickable=false, reasonCtaText=, reasonText=suggested for you",
+                            "pub_id": "2256",
+                            "source_id": "228130",
+                            "publish_date": "1969-12-31 19:00",
+                            "orig_url": "https://www.skysports.com/nba/news/36244/11656476/marcus-smart-sets-up-gordon-hayward-with-a-deft-behind-the-back-assist-as-celtics-hammer-warriors",
+                            "desc": "Two monstrous throw downs from Karl-Anthony Towns, a Delon Wright buzzer beater and a Jaylen Brown rim-rocker also feature among Tuesday night's best plays",
+                            "rec-cats": [
+                                1903
+                            ],
+                            "ads_type": 2,
+                            "rec_en_did": "sjcSkAxQeotq9gJ4y-2k4Q",
+                            "url": "https://traffic.outbrain.com/network/redir?p=zrkLnWzz3RjGqOq-bdrL4F0E436nYrsrIhm5x4hoPKpNzLgdZilnSg7TOSQ6HeCpjDMfbFnYzvWeVDTr19edJ7b4Ee2lxJ-Sm9oKzkNFyN-5Xxdt_Q6iTXr4LQc4Dlf-a4a1_xzY7Q2DrA7wMf7FCFVCo3kSOdmXuh-KFqEhlNPr5tOaJBR1xm00k0kpf21vQ-AhSeVJpO5cTKQuBc3X08lK8fWgpF-CJbLXkEFuKKYIrR7oo_ojlyuXYsA2LL1n3suWjaxvaVtLBZ9ZQDCluNIw8BHMeH_NHFfsSP7pmU7b4eEKCgwf2ac2Yi4YbdVGHX_GpWxGX7Cf4l6XKAbd5eZfM5CUrzU2SSVNvjhzKDh7SoJJXdUFLKXOBo0ggeULUTngC4haT6yDUTjA6k-eZwtdG2q9yyIHxd7XWpPbBdn5GGmGdEGzCFdOabvNKMwkpKhjBk7Py505b2GrIm688Y1Ub0b7443Sdz3WU43scW3Msj9jn00-nSNmIdxbskuPbfpNehzolbP67F37RIePrZ63ug2IdzUPmKb9LERnmnZpE2hIrW4GFzghPpbAty_1N2CjuI7aH93VYKMe-3Tk5cqKTLd97sMwF9bS5TTud2ReANXkPMtVxtIb31vIDoYCibkQ8dbCIhliZ5ElusZqHzkUniGIH9DYnALwHWg5nztIKwPPt6JlcTm4-gbeSXxgQNIXWANyIXBlAJk2EVF0rAjMYeWE2SN4ATezWtelDs0NtYdamd3FA3qpTlO5W9VAxhiR50mHhOawOBreibmnSvJk8qApxDRF7lxpuYCBAj8&c=b282b5be&v=3",
+                            "content": "Marcus Smart sets up Gordon Hayward with a deft behind-the-back assist as Celtics hammer Warriors",
+                            "pos": "0",
+                            "ttid": 4,
+                            "thumbnail": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjM2ZWU3YTM4ZWFhNmU1MTIyMzQ3YjQzMjdmNWFmZWFhNjhhMGZjZjMxMTczYThhZTc3OTNkYTM5YWUyZTZkZTkiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+                                "width": 600,
+                                "height": 337,
+                                "imageImpressionType": "DOCUMENT_IMAGE"
+                            },
+                            "logo": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjNlZGI2ZDM3N2E2YzFiOWFhYmEzZjRiNGVlMTM0ODM4MGI3ZDBiZWUzOTA3NGNlOWI1Mzc3OGEzZGU1NWYyZGUiLCJ3Ijo4NSwiaCI6MjAsImQiOjIuMCwiY3MiOjAsImYiOjB9.jpg",
+                                "width": "85",
+                                "height": "20"
+                            },
+                            "reason": {
+                                "text": "suggested for you",
+                                "type": "0",
+                                "clickable": "false"
+                            }
+                        }
+                    ]
+                },
+                "settings": {
+                    "flagPublisherZappingFeature": true,
+                    "recMode": "sdk_sfd_1_column",
+                    "globalWidgetStatistics": true,
+                    "apv": false,
+                    "listingsViewability": true,
+                    "ImpressionTrackersSupported": "false",
+                    "nanoOrganicsHeader": "Around Sky",
+                    "sdk_sf_shadow_color": "#ffa500",
+                    "InstallationType": "mobile-app-sdk",
+                    "ImpressionPixelsSupported": "false"
+                }
+            }
+        },
+        {
+            "cardType": "widget",
+            "response": {
+                "exec_time": 25,
+                "timestamp": 1551946563494,
+                "status": {
+                    "id": 0,
+                    "content": "Request succeeded"
+                },
+                "request": {
+                    "lang": "en",
+                    "idx": "5",
+                    "lastIdx": "3",
+                    "lastCardIdx": "3",
+                    "did": "689346564",
+                    "pid": "4737",
+                    "lsd": "f22700d5-1d49-42cc-a183-f3676526035f",
+                    "enu": "3nwx1f-7FDD19BYCUPn1a5_-GK_ebJI9j4bvWer8Mm2tkeZo66CFX401l47WHqT6",
+                    "api_user_id": "F22700D5-1D49-42CC-A183-F3676526035F",
+                    "t": "MV80Y2NjMjM0MDk2OGU1MTFlY2QxYzZmNTJmMWUzOWFhN18w",
+                    "pvId": "4ccc2340968e511ecd1c6f52f1e39aa7",
+                    "pad": "0",
+                    "org": "2",
+                    "abTestVal": "no_abtest",
+                    "obRecsAbtestAndVars": "386-1126",
+                    "widgetJsId": "SDK_SFD_2",
+                    "readerPlatform": "desktop",
+                    "isHttps": "true",
+                    "rtbEnabled": "true",
+                    "rtbTest": "false",
+                    "rtbBidTestMode": "false",
+                    "rtbTestRecsNum": "0",
+                    "amplifyEnabled": "true",
+                    "fid": "1117",
+                    "gdpr": "0",
+                    "fCard": "5",
+                    "feedIdx": "1",
+                    "forceFeed": "false",
+                    "sid": 5291479,
+                    "wnid": 1145,
+                    "req_id": "d7d0197f6460f8f88e267a3fc98fcba4",
+                    "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+                    "vid": 0
+                },
+                "documents": {
+                    "total_count": 2,
+                    "count": 2,
+                    "doc": [
+                        {
+                            "rpcRec": "ns6Bf29hzgBTJkTNCNDAwNoAfmh0dHBzOi8vd3d3LnNreXNwb3J0cy5jb20vZm9vdGJhbGwvbmV3cy8xMTY2MS8xMTY1NjY3OS9wcmVtaWVyLWxlYWd1ZS1xdWVzdGlvbnMtd2lsbC1tYW5jaGVzdGVyLXVuaXRlZC1tYWtlLXRvcC1mb3VyLXN0YXRlbWVudMoxmbVqo09SRMDPAAABaVaFwIDAlqhyZWRpcmVjdKhpbnRlcm5hbKtSZWNGZWF0dXJlc6dkaXNwbGF5r2R3cGxfcGNfbGlzdGluZ6xkd2x0X2xpc3RpbmfcADCrT1JEXyUyRl9jaDKlZmFsc2WhMKEyqjE5MTIsLTEsLTGqMjE3MjYxMjQ0OaE0ojE02gC+AAAAH3BlcnNvbmFsaXphdGlvbi1zY29yaW5nLWV4cGxhaW4AAAAAAAAAEHVzZWRWYXJzQW5kVGVzdHMAAAAAAAAABnRhcmdldAAAABBDb3JlUmVjc1NlbGVjdG9yAAAAFmNvcmVTZWxlY3RvcjppbnB1dC1wb3MAAAABMAAAABdjb3JlU2VsZWN0b3I6b3V0cHV0LXBvcwAAAAEwAAAAFGNvcmVTZWxlY3RvcjpvdXRjb21lAAAABldpbm5lcqQAAAd4uHLAoYC4ipSqAXBEzEnoJ4ikTk3Eh2nFGagBcETMSegniKjg0vntkJBtZ6pTa3kgU3BvcnRz2gBXcmVhc29uVHlwZT1ERUZBVUxULCAsICwgaXNDbGlja2FibGU9ZmFsc2UsIHJlYXNvbkN0YVRleHQ9LCByZWFzb25UZXh0PXN1Z2dlc3RlZCBmb3IgeW91pDIyNTanNTQ0OTI4NLAyMDE5LTAzLTA3IDAwOjAw2gCUV2lsbCBNYW5jaGVzdGVyIFVuaXRlZCBtYWtlIGEgdG9wLWZvdXIgc3RhdGVtZW50PyBXaWxsIFdpbGZyaWVkIFphaGEgc2hpbmUgYWdhaW4/IFdlIHBpY2sgb3V0IHRoZSBrZXkgcXVlc3Rpb25zIGFoZWFkIG9mIHRoZSBQcmVtaWVyIExlYWd1ZSB3ZWVrZW5kLqQAAAACtkttQm9JemNEVGF3QnBENmZtODJMUXfaAElQcmVtaWVyIExlYWd1ZSBxdWVzdGlvbnM6IFdpbGwgTWFuY2hlc3RlciBVbml0ZWQgbWFrZSB0b3AtZm91ciBzdGF0ZW1lbnQ/2gDDaHR0cHM6Ly9pbWFnZXMub3V0YnJhaW5pbWcuY29tL3RyYW5zZm9ybS92My9leUpwZFNJNklqTXdOemxoWXpsak16VXpaVGsxTmpsak5UbG1OVFpoTVRJek9ERmtZakExTkdJd09HRTJaalF3TjJNek5UaGlZMkprTjJOak4yWTVabVF5T0dZME5ERWlMQ0ozSWpvek1EQXNJbWdpT2pJeU1Dd2laQ0k2TVM0MUxDSmpjeUk2TUN3aVppSTZNSDAuanBnpAAAASykAAAA3K5ET0NVTUVOVF9JTUFHRaQAAAAE2gDAaHR0cHM6Ly9pbWFnZXMub3V0YnJhaW5pbWcuY29tL3RyYW5zZm9ybS92My9leUpwZFNJNklqTmxaR0kyWkRNM04yRTJZekZpT1dGaFltRXpaalJpTkdWbE1UTTBPRE00TUdJM1pEQmlaV1V6T1RBM05HTmxPV0kxTXpjM09HRXpaR1UxTldZeVpHVWlMQ0ozSWpvME15d2lhQ0k2TVRBc0ltUWlPakl1TUN3aVkzTWlPakFzSW1ZaU9qQjkuanBnojQzojEwsXN1Z2dlc3RlZCBmb3IgeW91oKlPUkRfL19jaDKmMC4wMDAwoTGoMTE3NjM1MTa1My40ODg3NzUxNTU2MzY2MzI2RS02pjEuMEUtNaYxMDAwMDCkMTkxMqItMaQxMC4wpzgwNjE1MTaiZW60MC4wMDM0ODg3NzUxNTU2MzY2MzPaAEAzMDc5YWM5YzM1M2U5NTY5YzU5ZjU2YTEyMzgxZGIwNTRiMDhhNmY0MDdjMzU4YmNiZDdjYzdmOWZkMjhmNDQxpVJvbGV4tC0yMjQ2NDU4NDY1Mzc2NTA2NTIx3ABIkwACAJMAAwGTAAQCkwALA5MADASTABMFkwAsBpMALQeTAQAIkwIBCZMCAgqTAgMLkwIEDJMDAA2TAwEBkwMDDZMDBA6TAwsPkwMMEJMDDRGTAxQSkwMVCZMDFhOTAxgUkwMhFZMDIhaTAyMXkwMkGJMDJRmTAz4CkwM/GpMDRBuTA0UckwNGHZMDSR6TA0oCkwNNAZMDTh+TBA0CkwUGBZMFBxCTBQoCkwULIJMFDCGTBQ0ikwUOI5MFDwOTBRYCkwUXIpMFGCKTBRokkwUdJZMFHiWTBR8PkwUhApMFIiaTBSMnkwUkKJMFJSiTBS0pkwUwKpMFNAKTBTUrkwU2IpMFNyKTBT0CkwU+BpMFRCyTBUUHkwVKLZMFSy6TBV4v",
+                            "source_name": "Sky Sports",
+                            "same_source": "false",
+                            "source_display_name": "Sky Sports",
+                            "explain": "reasonType=DEFAULT, , , isClickable=false, reasonCtaText=, reasonText=suggested for you",
+                            "pub_id": "2256",
+                            "source_id": "5449284",
+                            "publish_date": "2019-03-07 00:00",
+                            "orig_url": "https://www.skysports.com/football/news/11661/11656679/premier-league-questions-will-manchester-united-make-top-four-statement",
+                            "desc": "Will Manchester United make a top-four statement? Will Wilfried Zaha shine again? We pick out the key questions ahead of the Premier League weekend.",
+                            "rec-cats": [
+                                1912
+                            ],
+                            "ads_type": 2,
+                            "rec_en_did": "KmBoIzcDTawBpD6fm82LQw",
+                            "url": "https://traffic.outbrain.com/network/redir?p=PWKKP4TfTkCBslyACC8_xZwnEM_44FL7NeeOJGFwJO6lEL6qkgYDp8OOuPmGccVauo2kqkshOuZgMss8R9E_8nl-Sw9mQKX_aTMiUtJisYaQsOb4SOJNTYr_IrXo65YVYj28F0qpeaRYBFj1-xBAcUsQUsu98Jm7RE0qKf66CWTwx9vVPUVIzHoNOoG_FhYKJRKD_JYtChY4z_NWB0PDbLoS-v2madDzhpzm_Q1_W79-MFvH0DuFjcuxg0tQWGuUsIwF1uFVxhov1s4qd0qpCyFNWeWnUfQcIqjK_IwFOCHnd3V2-xXRf97IVCIqMonxoeZ7cJcEwZ9rtr_7u2zQbcC5UZbXIEcPqIxal9fjHAdbGF5mjvc3XtcMVdbvUiFiYXdLJ3dTFYfOvUjvlwEOWjM3ZWFheUan4keVzXely5ntUvt21rshkh5in-ZM8XTZxheUX1QAfNpebujKmlGqKBCkb6z9zWisKUtZhdk--iE-aHUGAWIOZyBsIqb8one2CGfsme1XnW4kwXvwFWTI-Pji-FwkMJCPYQFnfbgLN5SNn9S3-hqW6vY5zO7ho4Vfk3DcR4yMhwjqNfvTOlJVx2Tg4e0NJX-wPe7wlI8HjYBqieHjazkbaUH2QoxQKxv8rSwfYmVvi4KDf28Kmet6TGcX0tDX7n6-dvB0T545YzvDqa8Sy7RvoXCLoOKmkXY6GCyfzrBxXvKhupLDH3rF9KO3hwGpHc1SEbQ9wAstAKVv2ewy6XjRl2R0eB-2CtCimbPCzF42lptFkGtRLxZeB1LudP6KjZnUJXu9a0zVJew&c=8dd080fc&v=3",
+                            "content": "Premier League questions: Will Manchester United make top-four statement?",
+                            "pos": "0",
+                            "ttid": 4,
+                            "thumbnail": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjMwNzlhYzljMzUzZTk1NjljNTlmNTZhMTIzODFkYjA1NGIwOGE2ZjQwN2MzNThiY2JkN2NjN2Y5ZmQyOGY0NDEiLCJ3IjozMDAsImgiOjIyMCwiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+                                "width": 300,
+                                "height": 220,
+                                "imageImpressionType": "DOCUMENT_IMAGE"
+                            },
+                            "logo": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjNlZGI2ZDM3N2E2YzFiOWFhYmEzZjRiNGVlMTM0ODM4MGI3ZDBiZWUzOTA3NGNlOWI1Mzc3OGEzZGU1NWYyZGUiLCJ3Ijo0MywiaCI6MTAsImQiOjIuMCwiY3MiOjAsImYiOjB9.jpg",
+                                "width": "43",
+                                "height": "10"
+                            },
+                            "reason": {
+                                "text": "suggested for you",
+                                "type": "0",
+                                "clickable": "false"
+                            }
+                        },
+                        {
+                            "rpcRec": "ns6BQ73hzgBTJkTNCNDAwNoAO2h0dHBzOi8vd3d3LnNreXNwb3J0cy5jb20vZm9vdGJhbGwvcmVubmVzLXZzLWFyc2VuYWwvNDA2MzYzyjEy2C6jT1JEwM8AAAFpVoXAgMCWqHJlZGlyZWN0qGludGVybmFsq1JlY0ZlYXR1cmVzp2Rpc3BsYXmvZHdwbF9wY19saXN0aW5nrGR3bHRfbGlzdGluZ9wAMKtPUkRfJTJGX2NoMqVmYWxzZaExoTKqMTkxMiwtMSwtMaoyMTY4NzAwMzg1oTSiMTTaAL4AAAAfcGVyc29uYWxpemF0aW9uLXNjb3JpbmctZXhwbGFpbgAAAAAAAAAQdXNlZFZhcnNBbmRUZXN0cwAAAAAAAAAGdGFyZ2V0AAAAEENvcmVSZWNzU2VsZWN0b3IAAAAWY29yZVNlbGVjdG9yOmlucHV0LXBvcwAAAAExAAAAF2NvcmVTZWxlY3RvcjpvdXRwdXQtcG9zAAAAATEAAAAUY29yZVNlbGVjdG9yOm91dGNvbWUAAAAGV2lubmVypAAAB3jaACDj2bdAmj/TLLN7/2ffiVBxwICyHQA22e7tA//7NAMnRtoAIOLOxcriTin4OJ+XL8RKmDhg5yUR5NESZZtUdzDD5QgjqKUsqqGrShTwqlNreSBTcG9ydHPaAFdyZWFzb25UeXBlPURFRkFVTFQsICwgLCBpc0NsaWNrYWJsZT1mYWxzZSwgcmVhc29uQ3RhVGV4dD0sIHJlYXNvblRleHQ9c3VnZ2VzdGVkIGZvciB5b3WkMjI1Nqc1NDQ5Mjg0sDIwMTktMDMtMDcgMDA6MDDaAIVFdXJvcGEgTGVhZ3VlIG1hdGNoIFJlbm5lcyB2cyBBcnNlbmFsICg3IE1hciAyMDE5KS4gUHJldmlldyBhbmQgc3RhdHMgZm9sbG93ZWQgYnkgbGl2ZSBjb21tZW50YXJ5LCB2aWRlbyBoaWdobGlnaHRzIGFuZCBtYXRjaCByZXBvcnQupAAAAAK2T0t0TWQ2U2dSWFMzTzhER3lCYnFHUdoAVlJlbm5lcyB2cyBBcnNlbmFsIHByZXZpZXc6IEFsZXhhbmRyZSBMYWNhemV0dGUgc3VzcGVuZGVkIGZvciBFdXJvcGEgTGVhZ3VlIGxhc3QtMTYgdGll2gDDaHR0cHM6Ly9pbWFnZXMub3V0YnJhaW5pbWcuY29tL3RyYW5zZm9ybS92My9leUpwZFNJNklqTXdObVpqT0RWaFpEUTJOVFE1WVRKbU1qWmtaR05qTXpNNFpETmtNRE0xWWpWbE9HUXdZVFJsWVRabE56QTRZakJtWWprek9EQTBNR1JqWm1Jd09EY2lMQ0ozSWpvek1EQXNJbWdpT2pJeU1Dd2laQ0k2TVM0MUxDSmpjeUk2TUN3aVppSTZNSDAuanBnpAAAASykAAAA3K5ET0NVTUVOVF9JTUFHRaQAAAAE2gDAaHR0cHM6Ly9pbWFnZXMub3V0YnJhaW5pbWcuY29tL3RyYW5zZm9ybS92My9leUpwZFNJNklqTmxaR0kyWkRNM04yRTJZekZpT1dGaFltRXpaalJpTkdWbE1UTTBPRE00TUdJM1pEQmlaV1V6T1RBM05HTmxPV0kxTXpjM09HRXpaR1UxTldZeVpHVWlMQ0ozSWpvME15d2lhQ0k2TVRBc0ltUWlPakl1TUN3aVkzTWlPakFzSW1ZaU9qQjkuanBnojQzojEwsXN1Z2dlc3RlZCBmb3IgeW91oTCgqU9SRF8vX2NoMqYwLjAwMDCoMTE3NjM1MTa1My40ODg3NzUxNTU2MzY2MzI2RS02pjEuMEUtNaYxMDAwMDCkMTkxMqItMaQxMC4wqTQ3Nzk4MjUxNqJlbrQwLjAwMzQ4ODc3NTE1NTYzNjYzM9oAQDMwNmZjODVhZDQ2NTQ5YTJmMjZkZGNjMzM4ZDNkMDM1YjVlOGQwYTRlYTZlNzA4YjBmYjkzODA0MGRjZmIwODelUm9sZXi0LTY1NDQ2Njg1NDcxMzU5NTc3NzbcAEiTAAIAkwADAZMABAKTAAsDkwAMBJMAEwWTACwGkwAtB5MBAAiTAgEJkwICCpMCAwuTAgQMkwMADZMDAQGTAwMNkwMEDpMDCw+TAwwQkwMNEZMDFBKTAxUJkwMWE5MDGBSTAyEVkwMiFpMDIxeTAyQYkwMlGZMDPgKTAz8akwNEG5MDRRyTA0YdkwNJHpMDSh+TA00BkwNOIJMEDQKTBQYFkwUHEJMFCgKTBQshkwUMIpMFDQKTBQ4jkwUPA5MFFh+TBRcCkwUYApMFGiSTBR0lkwUeJZMFHw+TBSEfkwUiJpMFIyeTBSQokwUlKJMFLSmTBTAqkwU0ApMFNSuTBTYCkwU3ApMFPR+TBT4GkwVELJMFRQeTBUotkwVLLpMFXi8=",
+                            "source_name": "Sky Sports",
+                            "same_source": "false",
+                            "source_display_name": "Sky Sports",
+                            "explain": "reasonType=DEFAULT, , , isClickable=false, reasonCtaText=, reasonText=suggested for you",
+                            "pub_id": "2256",
+                            "source_id": "5449284",
+                            "publish_date": "2019-03-07 00:00",
+                            "orig_url": "https://www.skysports.com/football/rennes-vs-arsenal/406363",
+                            "desc": "Europa League match Rennes vs Arsenal (7 Mar 2019). Preview and stats followed by live commentary, video highlights and match report.",
+                            "rec-cats": [
+                                1912
+                            ],
+                            "ads_type": 2,
+                            "rec_en_did": "OKtMd6SgRXS3O8DGyBbqGQ",
+                            "url": "https://traffic.outbrain.com/network/redir?p=ffw2HPvlk1652dgpTES8EQM4QxoBr8qRoCFFB6Z0bVl-bNMckR_vxfHGSRGfZdFnYWl2CVk3k49IFGZ_JtgfkWkD8MrxcWK-6yW3UlPLzaqv2xoDuCrJsVsyKO-NFWT1wx6DOid0BEVygBQPH038L-6k9XT0QT1tRDDb3MCptXMVR5M3e2n64NuRU6d7JNa0MShM-QfG6g3yf6V-d5-DNkiH9A1xtvVix2DCU8KKUsJJKf7tBeKKHdKTca6FGoRRkBOjsvQvf8DqYSE6qBaQiaePnb_sSkGyuabTPqenQ0igLez61_2YfrBYIxqBAqJqZ91vY79alJggC5Yf1kWRrU-szGHmwp72YpLVaqFauQe7FPBdG78yTueGEaehc5I171Vi0AAkIcpO0pjd50Y39AxCS5QNztQhe6te1swdDnSRD7NBkEAVR4ExROPKgmWymSBkX5EwHhDu2qDy5LUq3wCp_9Z2CnWTnbFZq0hA1JuaxLIGt6ozZo0hDcQHu40TF25e0Ofmt7_I4slq7lYyfLsRvyKifLCQGTrvFtMXAlXxMJtpD5e5zxYnmrNl3gC-53iCtuYIW1j5WN7xzZl3-WkixI0OhzPMqLb--slXCZhalG5akUQ9Et81aP6febUs_MsiIv5fKaE1RAIUWaX7azQGnTkPWN1W-GiYU7BbjRPdKg7BbgKaEnXxVSVMEA-KQYPEWI4YlD6wLyUmVVn-i47Xg4fFFBThvRqa6wC9dQi3Hr0heFglxvK8NeBOh1_FQm7sfXFLy5fO9DVbPEj7SShtae-FCC6LlojBeyKwkmw&c=3913afb3&v=3",
+                            "content": "Rennes vs Arsenal preview: Alexandre Lacazette suspended for Europa League last-16 tie",
+                            "pos": "1",
+                            "ttid": 4,
+                            "thumbnail": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjMwNmZjODVhZDQ2NTQ5YTJmMjZkZGNjMzM4ZDNkMDM1YjVlOGQwYTRlYTZlNzA4YjBmYjkzODA0MGRjZmIwODciLCJ3IjozMDAsImgiOjIyMCwiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+                                "width": 300,
+                                "height": 220,
+                                "imageImpressionType": "DOCUMENT_IMAGE"
+                            },
+                            "logo": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjNlZGI2ZDM3N2E2YzFiOWFhYmEzZjRiNGVlMTM0ODM4MGI3ZDBiZWUzOTA3NGNlOWI1Mzc3OGEzZGU1NWYyZGUiLCJ3Ijo0MywiaCI6MTAsImQiOjIuMCwiY3MiOjAsImYiOjB9.jpg",
+                                "width": "43",
+                                "height": "10"
+                            },
+                            "reason": {
+                                "text": "suggested for you",
+                                "type": "0",
+                                "clickable": "false"
+                            }
+                        }
+                    ]
+                },
+                "settings": {
+                    "flagPublisherZappingFeature": true,
+                    "recMode": "sdk_sfd_thumbnails",
+                    "globalWidgetStatistics": true,
+                    "apv": false,
+                    "listingsViewability": true,
+                    "ImpressionTrackersSupported": "false",
+                    "sdk_sf_shadow_color": "#ffa500",
+                    "InstallationType": "mobile-app-sdk",
+                    "ImpressionPixelsSupported": "false"
+                }
+            }
+        },
+        {
+            "cardType": "widget",
+            "response": {
+                "exec_time": 42,
+                "timestamp": 1551946563536,
+                "status": {
+                    "id": 0,
+                    "content": "Request succeeded"
+                },
+                "request": {
+                    "lang": "en",
+                    "idx": "6",
+                    "lastIdx": "3",
+                    "lastCardIdx": "3",
+                    "did": "689346564",
+                    "pid": "4737",
+                    "lsd": "f22700d5-1d49-42cc-a183-f3676526035f",
+                    "enu": "3nwx1f-7FDD19BYCUPn1a5_-GK_ebJI9j4bvWer8Mm2tkeZo66CFX401l47WHqT6",
+                    "api_user_id": "F22700D5-1D49-42CC-A183-F3676526035F",
+                    "t": "MV80Y2NjMjM0MDk2OGU1MTFlY2QxYzZmNTJmMWUzOWFhN18w",
+                    "pvId": "4ccc2340968e511ecd1c6f52f1e39aa7",
+                    "pad": "1",
+                    "org": "0",
+                    "abTestVal": "no_abtest",
+                    "obRecsAbtestAndVars": "386-1123,565-1784,517-1730,572-1809",
+                    "widgetJsId": "SDK_SFD_3",
+                    "readerPlatform": "desktop",
+                    "isHttps": "true",
+                    "rtbEnabled": "true",
+                    "rtbTest": "false",
+                    "rtbBidTestMode": "false",
+                    "rtbTestRecsNum": "0",
+                    "amplifyEnabled": "true",
+                    "fid": "1117",
+                    "gdpr": "0",
+                    "fCard": "6",
+                    "feedIdx": "1",
+                    "forceFeed": "false",
+                    "sid": 5291479,
+                    "wnid": 1146,
+                    "req_id": "4a39c90fe96018663c8d25f4939fc0a0",
+                    "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+                    "vid": 0
+                },
+                "documents": {
+                    "total_count": 1,
+                    "count": 1,
+                    "doc": [
+                        {
+                            "rpcRec": "ns6ANtGVzgBTmSLNIv/OBs/dys47seMU2gDZaHR0cHM6Ly93d3cub2JzZXYuY29tL2cvZnJlZXppbmctY29sZC10ZW1wZXJhdHVyZXMtd2VhdGhlci82NTk3ODU/dXRtX2NvbnRlbnQ9NjJhYWRjJnV0bV9zb3VyY2U9b2Jfb3V0YnJhaW4mdXRtX21lZGl1bT0kcHVibGlzaGVyX25hbWUkLSRzZWN0aW9uX25hbWUkJnV0bV9jYW1wYWlnbj1Qb2xhcl9Wb3J0ZXhfT0JfU2Jlcm1fRGVza3RvcF9VUyZ1dG1fdGVybT0kb3JpZ3NyY2lkJMrM+tdVo09OVMDPAAABaKVc6GCkUEFJRJaocmVkaXJlY3SoaW50ZXJuYWywZHdhYl9hdWN0aW9uX2JpZKdkaXNwbGF5r2R3cGxfcGNfbGlzdGluZ6xkd2x0X2xpc3RpbmfcADyrT05UXyUyRl9jaDKlZmFsc2WhMKkxMTQyODYwMjahMqoxNzEwLC0xLC0xqjEwMDE1MTM3NDiqMjE1MTA3NjI0NaMxLjCmMTE5NTM5oTOlMC4wOTWrVVMlM0UlM0UlM0WpMC41OTk2Mzk2ozAuMK0xNTUxOTQ1OTczNTk4qTE3MDgsMTQwMtoAsQAAABB1c2VkVmFyc0FuZFRlc3RzAAAAGjU2NS0xNzg0LDUxNy0xNzMwLDU3Mi0xODA5AAAABnRhcmdldAAAABBDb3JlUmVjc1NlbGVjdG9yAAAAFmNvcmVTZWxlY3RvcjppbnB1dC1wb3MAAAABMAAAABdjb3JlU2VsZWN0b3I6b3V0cHV0LXBvcwAAAAEwAAAAFGNvcmVTZWxlY3RvcjpvdXRjb21lAAAABldpbm5lcqNPTlSyMC45NTYzMjkyODY1Mzk4MTU3qi0xLjMxNTEzRTi0MC4wMTQzMTMwNTMzMzk3MTk3NzKjOS41pC0xLjCiMTOlT2JzZXakBs/dyrtFUHVic19FbmdhZ2VfT2JzZXZfSW50ZXJuYWywMjAxOS0wMS0zMSAxNDoyMqQAAAaupAAAAAG2T3BwUDV3cUh3UUdBRm8td1ZlYm1yUaDaAD5EZWFkbHkgQ29sZDogMjIgUGhvdG9zIENhcHR1cmUgTGlmZS1UaHJlYXRlbmluZyBGcm96ZW4gV2VhdGhlctoAw2h0dHBzOi8vaW1hZ2VzLm91dGJyYWluaW1nLmNvbS90cmFuc2Zvcm0vdjMvZXlKcGRTSTZJbVE0T0RKbU5UTmxPVGczTUdZMllUQmlPRFZoTVRkbU1HSmxNMlU1WVRFek5HTmpZelUwWldOaE5USXhOVEppTlRjM01tUTJOak5pTXpGbU5XVXdNR0VpTENKM0lqbzJNREFzSW1naU9qTXpOeXdpWkNJNk1TNDFMQ0pqY3lJNk1Dd2laaUk2TUgwLmpwZ6QAAAJYpAAAAVGuRE9DVU1FTlRfSU1BR0WkO7HjFKQAAAADpzU0Nzg2OTCpT05UXy9fY2gyoi0xpDE3MTCjMzI4oTGnMTAwMTAwMKQxMDAwpDg5NTmhNdoAQGQ4ODJmNTNlOTg3MGY2YTBiODVhMTdmMGJlM2U5YTEzNGNjYzU0ZWNhNTIxNTJiNTc3MmQ2NjNiMzFmNWUwMGGnNjAweDMzN6JlbqdkZXNrdG9wqjAuMzkyNTQwNTeyLTEzMTUxMzAwMC4wMDAwMDAwqjI5ODQwMDc1NzOnMTY1NTUwNKNVU0SqUGxhc3RpY1JleNwAlJMAAgCTAAMBkwAEApMABQOTAAsEkwAMBZMAEAaTABMHkwAXCJMAHAaTACoJkwAsCpMAMgKTADwLkwA9ApMAPgyTAD8BkwBIDZMASQ6TAEoPkwBLEJMBABGTAgoDkwILEpMCDBOTAg0UkwIOFZMCDxaTAhAXkwIRGJMDABmTAwEBkwMDGZMDBhqTAwkbkwMNHJMDFR2TAxYekwMYH5MDICCTAyEhkwMiIpMDIyOTAyQkkwMlJZMDOiaTAz4CkwM/J5MDUgmTBAgHkwQJKJMECgOTBAsGkwQNApMEESmTBBIqkwQTKpMEFCqTBBUEkwQbK5MEHCqTBB0qkwQhFJMEJgmTBCcskwQoLZMEKhWTBCsukwQsCJMELQ6TBC4vkwQwMJMEMReTBDQWkwQ1GJMENgiTBDwTkwQ9CpMEPjGTBD8ykwRAM5MEQQKTBEI0kwRENZMERTaTBEYOkwRHFpMESA2TBEk2kwRKCJMESwiTBEwtkwRND5MFBgeTBQcokwUIA5MFCgKTBQspkwUMN5MFDS2TBQ44kwUPBJMFFwKTBRgtkwUaFZMFGy6TBR0IkwUeDpMFHzCTBSEvkwUjK5MFJCqTBSUqkwUwKpMFMSyTBTIJkwUzBpMFNAKTBTU0kwU4OZMFOTqTBToCkwU7F5MFPBaTBT4KkwVEE5MFSjKTBUs7kwVPGJMFUAiTBVEqkwVSKpMFUyqTBVQxkwVWNJMFVzWTBVo2kwVbDpMFXw2TBWA2kwVhCJMFYgiTBWMtkwVlEJMFZhaTBWcTkwVoFZMFaTM=",
+                            "source_name": "Obsev",
+                            "same_source": "false",
+                            "source_display_name": "Obsev",
+                            "pc_id": 114286026,
+                            "adv_name": "EPubs_Engage_Obsev_Internal",
+                            "publish_date": "2019-01-31 14:22",
+                            "orig_url": "https://www.obsev.com/g/freezing-cold-temperatures-weather/659785?utm_content=62aadc&utm_source=ob_outbrain&utm_medium=$publisher_name$-$section_name$&utm_campaign=Polar_Vortex_OB_Sberm_Desktop_US&utm_term=$origsrcid$",
+                            "rec-cats": [
+                                1710
+                            ],
+                            "ads_type": 1,
+                            "rec_en_did": "OppP5wqHwQGAFo-wVebmrQ",
+                            "url": "https://paid.outbrain.com/network/redir?p=xDJw8190CD6YwIxLdxPqmc5792DMWc0NqOE7z2ittfxB3p1HFoteVjnSNTCZeJZ5be6jJW4NbSU1aM0r1GiKq5dhbKGXe0eAwgQv1xDQSMaJTl3ynoiblp77NWcKhpvZrUyqwWAjmTgxX_z5CE8sFJ8QWJHY0iAZ39aApUixLwTLsg_4ud_16pdtdr80Nc1KcrgAirH9eWw9hCOuEXH3xGkoi6wGuWebsQ3ASZREaoCkuo6tZuuSYoOlXvbuHyWWa0DMYNyMDMRQhyIOddw8cJ4jpcINj7AlM1FGYyW137Vhh7sIrQjE5G9DuOo0Ot29Q4Wg-3SuBf8oaSoM7rmE9G4ohNML9ZJlUQpDQ-hWdKmvg2dVwPywn82KrbKUh64iTkADFAD3iIo04uCEg2NJaiV188H4r0uh4TAt77xSooe2Z77xZRIlW3MbSPzYjpvS2jSdRfs8eRkYLoXgbFucd9zyfERn3c9psT6A34im2bu5cUh9evSVt_ZJuv_o2ExV1czW4UzeheBqVzvI1qurkQ4qljwG60oat0CBR0tZYcmRY8HCcoIdvR3_rtXoyhIE8bzMy9GVRsYNyFMjBJvNQsJ9U4vE-wiOMHZZkThFvIsIt7EitdDk38nqEtubUL8MawnQSH-0_VCSzSXU4eADlqsJ1mwwBpLOwPWzpcBC13DH8PPHEuRT9O8_PiPKmxky-ccSwSOOZHEm5tgcGkFXe3vvMv8DmbStRb03p_14mI1j3zLA4Gns14RvvGKbOYQRt7nONpYHyUCbBX9gg6-IqyLidcwO2YB8HGaLOL5t8baB1wtHlOrj2ixpXESn8TSv2nd6e--uS_QP0ADTzDy3StmRxCg9Rdd3wAjCGE6faC51Nh6WjXATnNVIBRdKRRVsKXrzYnY4gFwOJ3e5V53OlxjkhZfSlWtENBHyJ9XDHlCC9RneOefG0PX78WL3H6nRS0U-B01VHT6LCI-UtHEcrkN8uu_li08cPbZU4OBOhDotFqf76okGe1-fFLrjfqYp9fPutMMGnCueudDAMKNSrrGcNMkzouxzGDDttnoswNE&c=d2cc8c25&v=3",
+                            "author": "",
+                            "content": "Deadly Cold: 22 Photos Capture Life-Threatening Frozen Weather",
+                            "pc_cmp_id": 1001513748,
+                            "pos": "0",
+                            "ttid": 3,
+                            "advId": "119539",
+                            "thumbnail": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImQ4ODJmNTNlOTg3MGY2YTBiODVhMTdmMGJlM2U5YTEzNGNjYzU0ZWNhNTIxNTJiNTc3MmQ2NjNiMzFmNWUwMGEiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+                                "width": 600,
+                                "height": 337,
+                                "imageImpressionType": "DOCUMENT_IMAGE"
+                            }
+                        }
+                    ]
+                },
+                "settings": {
+                    "flagPublisherZappingFeature": true,
+                    "recMode": "sdk_sfd_1_column",
+                    "globalWidgetStatistics": true,
+                    "apv": true,
+                    "listingsViewability": true,
+                    "ImpressionTrackersSupported": "false",
+                    "nanoOrganicsHeader": "Sponsored Links",
+                    "sdk_sf_shadow_color": "#ffa500",
+                    "InstallationType": "mobile-app-sdk",
+                    "ImpressionPixelsSupported": "false"
+                }
+            }
+        }
+    ],
+    "feedIdx": "1",
+    "hasMore": "true"
+}

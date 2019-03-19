@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OBRequest.h"
 #import "OBProtocols.h"
+#import "MultivacResponseDelegate.h"
 
 @interface OutbrainManager : NSObject
 
@@ -19,5 +20,7 @@
 +(OutbrainManager *) sharedInstance;
 
 -(void) fetchRecommendationsWithRequest:(OBRequest *)request andCallback:(OBResponseCompletionHandler)handler;
+
+-(void) fetchMultivacWithRequest:(OBRequest *)request andDelegate:(id<MultivacResponseDelegate>)multivacDelegate;
 
 @end

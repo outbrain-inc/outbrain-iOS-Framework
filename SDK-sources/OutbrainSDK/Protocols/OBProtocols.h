@@ -53,3 +53,4 @@ typedef void(^OBResponseCompletionHandler)(OBRecommendationResponse *response);
  **/
 - (void)outbrainResponseDidFail:(NSError *)response;
 @end
+
