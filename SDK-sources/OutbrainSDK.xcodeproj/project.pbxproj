@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		16B1F9A02185E95C00023DDD /* GDPRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F99E2185E95C00023DDD /* GDPRUtils.m */; };
 		16B1F9A12185E95C00023DDD /* GDPRUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 16B1F99F2185E95C00023DDD /* GDPRUtils.h */; };
+		16F81EF32241420400DC0D03 /* OBViewabilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F81EF22241420400DC0D03 /* OBViewabilityActions.m */; };
 		E61AE205216B560C001F7405 /* SFSingleVideoWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE201216B560B001F7405 /* SFSingleVideoWithTitleTableViewCell.xib */; };
 		E61AE206216B560C001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE202216B560B001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib */; };
 		E61AE207216B560C001F7405 /* SFSingleVideoNoTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE203216B560B001F7405 /* SFSingleVideoNoTitleTableViewCell.xib */; };
@@ -189,6 +190,8 @@
 /* Begin PBXFileReference section */
 		16B1F99E2185E95C00023DDD /* GDPRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDPRUtils.m; sourceTree = "<group>"; };
 		16B1F99F2185E95C00023DDD /* GDPRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPRUtils.h; sourceTree = "<group>"; };
+		16F81EF1224141F000DC0D03 /* OBViewabilityActions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBViewabilityActions.h; sourceTree = "<group>"; };
+		16F81EF22241420400DC0D03 /* OBViewabilityActions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityActions.m; sourceTree = "<group>"; };
 		D82F1D7818564C7700D4DEA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8C91A791871FEED005916A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8D1FD60187327CB0099831C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -516,6 +519,8 @@
 			children = (
 				E61E6BE420836C180016D79A /* OBSettings.m */,
 				E61E6BE920836C180016D79A /* OBSettings.h */,
+				16F81EF1224141F000DC0D03 /* OBViewabilityActions.h */,
+				16F81EF22241420400DC0D03 /* OBViewabilityActions.m */,
 				E61E6BE520836C180016D79A /* OBResponse.m */,
 				E61E6BE820836C180016D79A /* OBResponse.h */,
 				E61E6BE620836C180016D79A /* OBResponseRequest.m */,
@@ -1063,6 +1068,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16F81EF32241420400DC0D03 /* OBViewabilityActions.m in Sources */,
 				E6B930B7217339DD00EC7A4A /* SFHorizontalWithVideoTableViewCell.m in Sources */,
 				E61E6C4820836C180016D79A /* OBUtils.m in Sources */,
 				E6FEB3E820FF2E78002A9020 /* SFHorizontalCollectionViewCell.m in Sources */,
