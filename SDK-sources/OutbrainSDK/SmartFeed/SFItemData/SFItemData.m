@@ -21,6 +21,7 @@
 @property (nonatomic, copy) NSString *widgetTitle;
 @property (nonatomic, copy) NSString *widgetId;
 @property (nonatomic, strong) OBRequest *request;
+@property (nonatomic, strong) OBResponseRequest *responseRequest;
 @property (nonatomic, strong) NSURL *videoUrl;
 @property (nonatomic, copy) NSString *videoParamsStr;
 @property (nonatomic, strong) UIColor *shadowColor;
@@ -108,6 +109,7 @@ NSInteger kVideoFinishedStatus = 1114;
 {
     self.odbSettings = odbResponse.settings;
     self.request = odbResponse.request;
+    self.responseRequest = odbResponse.responseRequest;
     self.widgetTitle = self.odbSettings.widgetHeaderText;
     self.widgetId = self.request.widgetId;
     if (self.odbSettings.smartfeedShadowColor) {

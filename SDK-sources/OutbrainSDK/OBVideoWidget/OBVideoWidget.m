@@ -79,7 +79,7 @@
                                                         odbResponse:response];
             
             // Report Viewability
-            [[OBViewabilityService sharedInstance] reportRecsShownForRequest:self.sfItem.request];
+            [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:self.sfItem.responseRequest];
             
             [SFCollectionViewManager configureVideoCell:self.videoCell withSFItem:self.sfItem wkUIDelegate:self eventListenerTarget:self tapGestureDelegate:self];
             

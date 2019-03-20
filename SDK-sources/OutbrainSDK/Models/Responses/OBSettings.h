@@ -31,7 +31,7 @@
 @property (nonatomic, assign, readonly) BOOL isViewabilityPerListingEnabled;
 @property (nonatomic, assign, readonly) NSInteger viewabilityPerListingReportingIntervalMillis;
 
-@property (nonatomic, copy, nullable) OBViewabilityActions *viewabilityActions;
+@property (nonatomic, strong, nullable) OBViewabilityActions *viewabilityActions;
 
 - (instancetype)initWithPayload:(NSDictionary *)payload;
 
