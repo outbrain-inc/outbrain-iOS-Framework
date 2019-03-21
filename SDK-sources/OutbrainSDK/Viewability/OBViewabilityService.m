@@ -30,6 +30,7 @@
 @interface OBViewabilityService()
 @property (nonatomic, strong) NSMutableDictionary *obLabelMap;
 @property (nonatomic, strong) NSMutableDictionary *viewabilityDataMap;
+@property (nonatomic, strong) NSMutableDictionary *obLabelkeyToRequestIdKeyMap;
 @property (nonatomic, strong) NSMutableArray *reqIdAlreadyReportedArray;
 
 @end
@@ -55,6 +56,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
         // Do any other initialisation stuff here
         sharedInstance.obLabelMap = [[NSMutableDictionary alloc] init];
         sharedInstance.viewabilityDataMap = [[NSMutableDictionary alloc] init];
+        sharedInstance.obLabelkeyToRequestIdKeyMap = [[NSMutableDictionary alloc] init];
         sharedInstance.reqIdAlreadyReportedArray = [[NSMutableArray alloc] init];
     });
     
@@ -92,6 +94,11 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     
     [self.viewabilityDataMap setObject:viewabilityData forKey:viewabilityKeyForRequestId];
     
+    // Adding the key associated with OBLabel to obLabelkeyToRequestIdKeyMap
+    // We will use this key only in case OBLabel will be shown
+    NSString *viewabilityKeyForOBRequest = [self viewabilityKeyForOBRequest:response.request];
+    [self.obLabelkeyToRequestIdKeyMap setObject:viewabilityKeyForRequestId forKey:viewabilityKeyForOBRequest];
+    
     NSDate *timeNow = [NSDate date];
     NSTimeInterval timeIntervalSinceRequestStart = [timeNow timeIntervalSinceDate:requestStartDate];
     NSString *timeToProcessRequest = [NSString stringWithFormat:@"%d", (long) (timeIntervalSinceRequestStart * 1000)];
@@ -103,7 +110,6 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     [[OBNetworkManager sharedManager] sendGet:components.URL completionHandler:nil];
     
     // call track viewability on matching OBLabel
-    NSString *viewabilityKeyForOBRequest = [self viewabilityKeyForOBRequest:response.request];
     OBLabel *matchingOblabel = [self.obLabelMap objectForKey:viewabilityKeyForOBRequest];
     if (matchingOblabel != nil) {
         [matchingOblabel trackViewability];
@@ -124,19 +130,25 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 }
 
 - (void) reportRecsShownForKey:(NSString *)viewabilityKey {
-    ViewabilityData *viewabilityData = [self.viewabilityDataMap objectForKey:viewabilityKey];
-    NSString *reqId = viewabilityData.rId;
     
-    if ([self.reqIdAlreadyReportedArray containsObject:reqId]) {
-        // NSLog(@"Outbrain reportRecsShownForOBLabel() - trying to report again for the same reqId: %@", reqId);
-        return;
+    // OBLabel shown
+    NSString *requestIdkeyAsocciatedWithOBLabel = [self.obLabelkeyToRequestIdKeyMap objectForKey:viewabilityKey];
+    if (requestIdkeyAsocciatedWithOBLabel != nil) {
+        viewabilityKey = requestIdkeyAsocciatedWithOBLabel;
     }
+    
+    ViewabilityData *viewabilityData = [self.viewabilityDataMap objectForKey:viewabilityKey];
     
     if (viewabilityData == nil) {
         // NSLog(@"Outbrain Error: reportRecsShownForOBLabel() - make sure to register OBLabel with Outbrain (key: %@)", viewabilityKey);
         return;
     }
     
+    NSString *reqId = viewabilityData.rId;
+    if ([self.reqIdAlreadyReportedArray containsObject:reqId]) {
+        // NSLog(@"Outbrain reportRecsShownForOBLabel() - trying to report again for the same reqId: %@", reqId);
+        return;
+    }
     
     NSDate *requestStartDate = viewabilityData.requestStartDate;
     
