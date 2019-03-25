@@ -19,6 +19,18 @@ jobs:
       - checkout
 
       - run:
+          name: Run tests
+          command: fastlane scan
+          environment:
+            SCAN_DEVICE: iPhone 6
+            SCAN_SCHEME: WebTests
+
+  ios_release:
+     <<: *ios_config
+    steps:
+      - checkout
+
+      - run:
           name: Clean previous OutbrainSDK.framework
           command: |
             if [ -d OutbrainSDK.framework ]; then
@@ -40,6 +52,7 @@ jobs:
           name: Building the SDK project
           command: xcodebuild -target OBFramework
           working_directory: SDK-sources
+
 
 
 workflows:
