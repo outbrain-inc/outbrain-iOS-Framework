@@ -48,8 +48,7 @@
     }
     else if ([@"videoFinished" isEqualToString:action]) {
         sfItem.videoPlayerStatus = kVideoFinishedStatus;
-        [webview removeFromSuperview];
-        self.videoCell.webview = nil;
+        webview.alpha = 0.0;
     }
     else if ([@"pageIsReady" isEqualToString:action]) {
         NSString * js = [NSString stringWithFormat:@"odbData(%@)", sfItem.videoParamsStr];
