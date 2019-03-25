@@ -18,6 +18,14 @@ jobs:
     steps:
       - checkout
 
+      -run:
+        name: Clean previous OutbrainSDK.framework
+        command: |
+          if [ -d OutbrainSDK.framework ]; then
+            rm -fr OutbrainSDK.framework
+          fi
+        working_directory: Samples/OutbrainDemo/
+
       - run:
           name: Cleaing the SDK project - OBFramework
           command: xcodebuild clean -target OBFramework
