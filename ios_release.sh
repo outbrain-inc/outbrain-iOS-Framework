@@ -151,8 +151,6 @@ echo "**********************************************************************"
 echo "Uploading iOS-SampleApps.zip and OutbrainSDK.framework.zip to Bintray"
 echo "**********************************************************************"
 #Uploading to Bintray
-API_KEY="bdf87de700d2dffd65fe3aeb23d13122a3406a0b"
-REPO="obsdk"
 PACKAGE_SDK="iOS-SDK"
 PACKAGE_SAMPLE_APPS="iOS-SampleApps"
 
