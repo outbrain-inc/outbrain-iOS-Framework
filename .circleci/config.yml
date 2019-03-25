@@ -1,0 +1,38 @@
+# Java Gradle CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+
+references:
+
+  # Docker image configurations
+  ios_config: &ios_config
+    working_directory: ~/repo
+    macos:
+      xcode: "10.1.0"
+
+jobs:
+  ios_default:
+    <<: *ios_config
+    steps:
+      - checkout
+
+      - run:
+          name: Cleaing the SDK project - OBFramework
+          command: xcodebuild clean -target OBFramework
+
+      - run:
+          name: Cleaing the SDK project - OutbrainSDK
+          command: xcodebuild clean -target OutbrainSDK
+
+      - run:
+          name: Building the SDK project
+          command: xcodebuild -target OBFramework
+
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - ios_default
