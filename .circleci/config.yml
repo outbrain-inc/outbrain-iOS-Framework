@@ -21,9 +21,7 @@ jobs:
       - run:
         name: Clean previous OutbrainSDK.framework
         command: |
-          if [ -d "OutbrainSDK.framework" ]; then
-            rm -fr OutbrainSDK.framework
-          fi
+          rm -fr OutbrainSDK.framework
         working_directory: Samples/OutbrainDemo
 
       - run:
