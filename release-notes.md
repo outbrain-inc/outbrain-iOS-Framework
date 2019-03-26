@@ -3,11 +3,13 @@
 ## Development 
 
 
-- New Smartfeed API (Multivac)
-- Viewability per listing
-- Sponsored label - improve implementation logic for widget with mix of paid and organic recs. Make sure we remove the paid label every time we configure a new cell
-- Improve isRTL implementation
-- Barstool suggested fix for `decodeHTMLEnocdedString` method (stop using NSDocumentTypeDocumentAttribute from background thread).
+- Feature: New Smartfeed API (Multivac)
+- Feature: Viewability per listing
+- Feature: Served vs Requested
+- Improvement: Sponsored label improve implementation logic for widget with mix of paid and organic recs. Make sure we remove the paid label every time we configure a new cell
+- Improvement: isRTL implementation
+- Improvement: Barstool suggested fix for `decodeHTMLEnocdedString` method (stop using NSDocumentTypeDocumentAttribute from background thread).
+- Improvement: Video - support reload of additional videos in the same WebView
 
 ## v3.5.2 - February 10, 2019
 
