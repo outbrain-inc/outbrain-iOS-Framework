@@ -148,6 +148,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     //Device model
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dm" value: [OBUtils deviceModel]]];
     
+    //Viewability actions
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"va" value: @"true"]];
+    
     //Token
     NSString *token = [self.tokensHandler getTokenForRequest:request];
     if (token != nil) {

@@ -37,6 +37,7 @@ extern NSInteger kVideoFinishedStatus;
 @property (nonatomic, copy, readonly) NSString *widgetTitle;
 @property (nonatomic, copy, readonly) NSString *widgetId;
 @property (nonatomic, strong, readonly) OBRequest *request;
+@property (nonatomic, strong, readonly) OBResponseRequest *responseRequest;
 @property (nonatomic, strong, readonly) NSURL *videoUrl;
 @property (nonatomic, copy, readonly) NSString *videoParamsStr;
 @property (nonatomic, assign) NSInteger videoPlayerStatus;

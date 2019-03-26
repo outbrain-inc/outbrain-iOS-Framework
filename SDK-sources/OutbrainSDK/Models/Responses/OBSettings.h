@@ -7,6 +7,7 @@
 //
 
 #import "Outbrain.h"
+#import "OBViewabilityActions.h"
 
 @interface OBSettings : NSObject
 
@@ -29,6 +30,8 @@
 
 @property (nonatomic, assign, readonly) BOOL isViewabilityPerListingEnabled;
 @property (nonatomic, assign, readonly) NSInteger viewabilityPerListingReportingIntervalMillis;
+
+@property (nonatomic, strong, nullable) OBViewabilityActions *viewabilityActions;
 
 - (instancetype)initWithPayload:(NSDictionary *)payload;
 

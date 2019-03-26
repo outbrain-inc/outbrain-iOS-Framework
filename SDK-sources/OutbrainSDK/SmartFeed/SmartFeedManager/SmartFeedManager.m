@@ -504,7 +504,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     // Report Viewability
-    [[OBViewabilityService sharedInstance] reportRecsShownForRequest:sfItem.request];
+    [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:sfItem.responseRequest];
     
     if ([cell isKindOfClass:[SFHorizontalWithVideoTableViewCell class]]) {
         [self configureHorizontalVideoTableViewCell:cell atIndexPath:indexPath];
@@ -753,7 +753,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     // Report Viewability
-    [[OBViewabilityService sharedInstance] reportRecsShownForRequest:sfItem.request];
+    [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:sfItem.responseRequest];
     
     OBView *existingOBView = (OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG];
     if (existingOBView) {

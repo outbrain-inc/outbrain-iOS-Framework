@@ -26,6 +26,12 @@
         res.settings = [[OBSettings alloc] initWithPayload:settingsPayload];
     }
     
+    // Parse viewability actions
+    id viewabilityActionsPayload = payload[@"viewability_actions"];
+    if ([viewabilityActionsPayload isKindOfClass:[NSDictionary class]]) {
+        res.settings.viewabilityActions = [[OBViewabilityActions alloc] initWithPayload:viewabilityActionsPayload];
+    }
+    
     // Parse documents, i.e. recommadations
     id documents = payload[@"documents"];
     if([documents isKindOfClass:[NSDictionary class]])

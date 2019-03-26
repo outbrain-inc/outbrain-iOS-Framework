@@ -14,78 +14,14 @@
 
 @interface ViewabilityData : NSObject
 
-@property (nonatomic, strong) NSString *pid;  // publisher id
-@property (nonatomic, strong) NSString *sid;  // source id
-@property (nonatomic, strong) NSString *wId;  // widget id (wnid from response)
-@property (nonatomic, strong) NSString *wRV;  // widget version in long format NOT string(SDK version)
-@property (nonatomic, strong) NSString *rId;  // request id - important
-@property (nonatomic, strong) NSString *eT;   // event type (0 - received, 3- exposed)
-@property (nonatomic, strong) NSString *idx;  // index
-@property (nonatomic, strong) NSString *pvId; // pageview id - received from the response
-@property (nonatomic, strong) NSString *org;  // number of organic recs
-@property (nonatomic, strong) NSString *pad;  // number of paid recs
-@property (nonatomic, strong) NSString *tm;   // time of processing request
+@property (nonatomic, strong) NSString *reportServedUrl;  // report served URL
+@property (nonatomic, strong) NSString *reportViewedUrl;  // report viewed URL
+@property (nonatomic, strong) NSString *rId;  // request id
 @property (nonatomic, strong) NSDate *requestStartDate; // helper property, will not be sent to the server
 
 @end
 
 @implementation ViewabilityData
-
-
-
-NSString * const EVENT_RECEIVED = @"0";
-NSString * const EVENT_EXPOSED = @"3";
-
-NSString * const kRequestStartDate = @"rsd";
-NSString * const kTimeSinceFirstLoadRequest = @"tm";
-NSString * const kPublisherId = @"pid";
-NSString * const kSourceId = @"sid";
-NSString * const kWidgetId = @"wId";
-NSString * const kWidgetVersion = @"wRV";
-NSString * const kRequestId = @"rId";
-NSString * const kEventType = @"eT";
-NSString * const kIdx = @"idx";
-NSString * const kPageviewId = @"pvId";
-NSString * const kOrganicRecs = @"org";
-NSString * const kPaidRecs = @"pad";
-
-
-NSString * const kViewabilityUrl = @"https://log.outbrain.com/loggerServices/widgetGlobalEvent";
-NSString * const kViewabilityKeyFor_urlhash_widgetId_idx = @"OB_Viewability_Key_%lu_%@_%ld";
-float const kThirtyMinutesInSeconds = 30.0 * 60.0;
-
-- (NSString*)description
-{
-    return [[self toDictionary] description];
-}
-
--(NSDictionary *) toDictionary {
-    
-    if (!self.pid)      self.pid = @"null";
-    if (!self.sid)      self.sid = @"null";
-    if (!self.wId)      self.wId = @"null";
-    if (!self.wRV)      self.wRV = @"null";
-    if (!self.rId)      self.rId = @"null";
-    if (!self.eT)       self.eT =  @"null";
-    if (!self.idx)      self.idx = @"null";
-    if (!self.pvId)     self.pvId = @"null";
-    if (!self.org)      self.org = @"null";
-    if (!self.pad)      self.pad = @"null";
-    
-    return @{kTimeSinceFirstLoadRequest : self.tm,
-             kPublisherId               : self.pid,
-             kSourceId                  : self.sid,
-             kWidgetId                  : self.wId,
-             kWidgetVersion             : self.wRV,
-             kRequestId                 : self.rId,
-             kEventType                 : self.eT,
-             kIdx                       : self.idx,
-             kPageviewId                : self.pvId,
-             kOrganicRecs               : self.org,
-             kPaidRecs                  : self.pad,
-             kRequestStartDate          : self.requestStartDate
-             };
-}
 
 @end
 
@@ -94,6 +30,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 @interface OBViewabilityService()
 @property (nonatomic, strong) NSMutableDictionary *obLabelMap;
 @property (nonatomic, strong) NSMutableDictionary *viewabilityDataMap;
+@property (nonatomic, strong) NSMutableDictionary *obLabelkeyToRequestIdKeyMap;
 @property (nonatomic, strong) NSMutableArray *reqIdAlreadyReportedArray;
 
 @end
@@ -105,6 +42,10 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 NSString * const kViewabilityEnabledKey = @"kViewabilityEnabledKey";
 NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 
+NSString * const kViewabilityKeyFor_urlhash_widgetId_idx = @"OB_Viewability_Key_%lu_%@_%ld";
+NSString * const kViewabilityKeyFor_reqId = @"OB_Viewability_Key_%@";
+float const kThirtyMinutesInSeconds = 30.0 * 60.0;
+
 
 + (instancetype)sharedInstance
 {
@@ -115,6 +56,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
         // Do any other initialisation stuff here
         sharedInstance.obLabelMap = [[NSMutableDictionary alloc] init];
         sharedInstance.viewabilityDataMap = [[NSMutableDictionary alloc] init];
+        sharedInstance.obLabelkeyToRequestIdKeyMap = [[NSMutableDictionary alloc] init];
         sharedInstance.reqIdAlreadyReportedArray = [[NSMutableArray alloc] init];
     });
     
@@ -129,7 +71,7 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 }
 
 - (void) addOBLabelToMap:(OBLabel *)obLabel {
-    NSString *key = [self viewabilityKeyForRequest:obLabel.obRequest];
+    NSString *key = [self viewabilityKeyForOBRequest:obLabel.obRequest];
     // NSLog(@"Outbrain addOBLabelToMap widgetid: %@ - key: %@", obLabel.obRequest.widgetId, key);
     self.obLabelMap[key] = obLabel;
 }
@@ -140,51 +82,35 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
         return;
     }
     
-    NSString *widgetId = response.request.widgetId;
-    NSString *url = response.request.url;
-    NSInteger widgetIndex = response.request.widgetIndex;
-    
-    
-    NSArray *sdkVersionComponents = [OB_SDK_VERSION componentsSeparatedByString:@"."];
-    NSString *sdkVersionString = @"";
-    if ([sdkVersionComponents count] == 3) {
-        sdkVersionString = [NSString stringWithFormat:@"%02d%02d%02d", [sdkVersionComponents[0] intValue], [sdkVersionComponents[1] intValue], [sdkVersionComponents[2] intValue]];
-    }
-    
     // NSLog(@"Outbrain reportRecsReceived: %@", widgetId);
     
     ViewabilityData *viewabilityData = [[ViewabilityData alloc] init];
-    viewabilityData.pid = [response.responseRequest getStringValueForPayloadKey:@"pid"];
-    viewabilityData.sid = [[response.responseRequest getNSNumberValueForPayloadKey:@"sid"] stringValue];
-    viewabilityData.wId = [[response.responseRequest getNSNumberValueForPayloadKey:@"wnid"] stringValue];
-    viewabilityData.wRV = sdkVersionString;
     viewabilityData.rId = [response.responseRequest getStringValueForPayloadKey:@"req_id"];
-    viewabilityData.eT = EVENT_RECEIVED;
-    viewabilityData.idx = [response.responseRequest getStringValueForPayloadKey:@"idx"];
-    viewabilityData.pvId = [response.responseRequest getStringValueForPayloadKey:@"pvId"];
-    viewabilityData.org = [response.responseRequest getStringValueForPayloadKey:@"org"];
-    viewabilityData.pad = [response.responseRequest getStringValueForPayloadKey:@"pad"];
-    
-    NSDate *timeNow = [NSDate date];
-    NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:requestStartDate];
-    viewabilityData.tm = [@((int)(executionTime*1000)) stringValue];
+    viewabilityData.reportServedUrl = response.settings.viewabilityActions.reportServedUrl;
+    viewabilityData.reportViewedUrl = response.settings.viewabilityActions.reportViewedUrl;
     viewabilityData.requestStartDate = requestStartDate;
     
-    NSDictionary *viewabilityDictionary = [viewabilityData toDictionary];
+    NSString *viewabilityKeyForRequestId = [self viewabilityKeyForRequestId:viewabilityData.rId];
     
-    NSString *viewabilityKey = [self viewabilityKeyForURL:url widgetId:widgetId widgetIndex:widgetIndex];
-
-    // NSLog(@"Outbrain set viewabilityDictionary for key: %@", viewabilityKey);
-    [self.viewabilityDataMap setObject:viewabilityDictionary forKey:viewabilityKey];
+    [self.viewabilityDataMap setObject:viewabilityData forKey:viewabilityKeyForRequestId];
     
-    NSMutableDictionary *viewabilityUrlParamsDictionary = [viewabilityDictionary mutableCopy];
-    viewabilityUrlParamsDictionary[kRequestStartDate] = nil;
-    NSURL *viewabilityUrl = [self createUrlFromParams:viewabilityUrlParamsDictionary];
+    // Adding the key associated with OBLabel to obLabelkeyToRequestIdKeyMap
+    // We will use this key only in case OBLabel will be shown
+    NSString *viewabilityKeyForOBRequest = [self viewabilityKeyForOBRequest:response.request];
+    [self.obLabelkeyToRequestIdKeyMap setObject:viewabilityKeyForRequestId forKey:viewabilityKeyForOBRequest];
     
-    [[OBNetworkManager sharedManager] sendGet:viewabilityUrl completionHandler:nil];
+    NSDate *timeNow = [NSDate date];
+    NSTimeInterval timeIntervalSinceRequestStart = [timeNow timeIntervalSinceDate:requestStartDate];
+    NSString *timeToProcessRequest = [NSString stringWithFormat:@"%d", (long) (timeIntervalSinceRequestStart * 1000)];
+    
+    NSString *viewabilityUrl = [self editTmParameterInUrl:viewabilityData.reportServedUrl tm:timeToProcessRequest];
+    
+    NSURLComponents *components = [NSURLComponents componentsWithString:viewabilityUrl];
+    
+    [[OBNetworkManager sharedManager] sendGet:components.URL completionHandler:nil];
     
     // call track viewability on matching OBLabel
-    OBLabel *matchingOblabel = [self.obLabelMap objectForKey:viewabilityKey];
+    OBLabel *matchingOblabel = [self.obLabelMap objectForKey:viewabilityKeyForOBRequest];
     if (matchingOblabel != nil) {
         [matchingOblabel trackViewability];
     }
@@ -193,50 +119,60 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 - (void) reportRecsShownForOBLabel:(OBLabel *)obLabel {
     OBRequest *obRequest = obLabel.obRequest;
     
-    NSString *viewabilityKey = [self viewabilityKeyForRequest:obRequest];
-    [self reportRecsShownForKey:viewabilityKey];
+    NSString *viewabilityKeyForOBRequest = [self viewabilityKeyForOBRequest:obRequest];
+    [self reportRecsShownForKey:viewabilityKeyForOBRequest];
 }
 
-- (void) reportRecsShownForRequest:(OBRequest *)request {
-    NSString *viewabilityKey = [self viewabilityKeyForRequest:request];
-    [self reportRecsShownForKey:viewabilityKey];
+- (void) reportRecsShownForResponseRequest:(OBResponseRequest *)responseRequest {
+    NSString *reqId = [responseRequest getStringValueForPayloadKey:@"req_id"];
+    NSString *viewabilityKeyForRequestId = [self viewabilityKeyForRequestId:reqId];
+    [self reportRecsShownForKey:viewabilityKeyForRequestId];
 }
 
 - (void) reportRecsShownForKey:(NSString *)viewabilityKey {
-    NSDictionary *viewabilityDictionary = [self.viewabilityDataMap objectForKey:viewabilityKey];
-    NSString *reqId = viewabilityDictionary[kRequestId];
     
+    // OBLabel shown
+    NSString *requestIdkeyAsocciatedWithOBLabel = [self.obLabelkeyToRequestIdKeyMap objectForKey:viewabilityKey];
+    if (requestIdkeyAsocciatedWithOBLabel != nil) {
+        viewabilityKey = requestIdkeyAsocciatedWithOBLabel;
+    }
+    
+    ViewabilityData *viewabilityData = [self.viewabilityDataMap objectForKey:viewabilityKey];
+    
+    if (viewabilityData == nil) {
+        // NSLog(@"Outbrain Error: reportRecsShownForOBLabel() - make sure to register OBLabel with Outbrain (key: %@)", viewabilityKey);
+        return;
+    }
+    
+    NSString *reqId = viewabilityData.rId;
     if ([self.reqIdAlreadyReportedArray containsObject:reqId]) {
         // NSLog(@"Outbrain reportRecsShownForOBLabel() - trying to report again for the same reqId: %@", reqId);
         return;
     }
     
-    if (viewabilityDictionary == nil) {
-        // NSLog(@"Outbrain Error: reportRecsShownForOBLabel() - make sure to register OBLabel with Outbrain (key: %@)", viewabilityKey);
-        return;
-    }
+    NSDate *requestStartDate = viewabilityData.requestStartDate;
     
-    
-    NSDate *requestStartDate = viewabilityDictionary[kRequestStartDate];
-    
-    if (viewabilityDictionary != nil) {
-        NSMutableDictionary *params = [viewabilityDictionary mutableCopy];
+    if (viewabilityData != nil) {
         NSDate *timeNow = [NSDate date];
-        NSTimeInterval executionTime = [timeNow timeIntervalSinceDate:requestStartDate];
+        NSTimeInterval executionTimeInterval = [timeNow timeIntervalSinceDate:requestStartDate];
         
         // Sanity check, if executionTime is more than 30 minutes we shouldn't report Viewability since the data is probably not relevant
-        if (executionTime > kThirtyMinutesInSeconds) {
+        if (executionTimeInterval > kThirtyMinutesInSeconds) {
             // NSLog(@"Outbrain Error: reportRecsShownForOBLabel with data older than 30 minutes. (%f)", executionTime / 60.0);
             return;
         }
-
-        params[kTimeSinceFirstLoadRequest] = [@((int)(executionTime*1000)) stringValue];
-        params[kEventType] = EVENT_EXPOSED;
-        params[kRequestStartDate] = nil;
         
-        [self.reqIdAlreadyReportedArray addObject:viewabilityDictionary[kRequestId]];
-        NSURL *viewabilityUrl = [self createUrlFromParams:params];
-        [[OBNetworkManager sharedManager] sendGet:viewabilityUrl completionHandler:nil];
+        
+        
+        NSString *executionTime = [NSString stringWithFormat:@"%d", (long) (executionTimeInterval * 1000)];
+        
+        [self.reqIdAlreadyReportedArray addObject:viewabilityData.rId];
+        
+        NSString *viewabilityUrl = [self editTmParameterInUrl:viewabilityData.reportViewedUrl tm:executionTime];
+        
+        NSURLComponents *components = [NSURLComponents componentsWithString:viewabilityUrl];
+        
+        [[OBNetworkManager sharedManager] sendGet:components.URL completionHandler:nil];
         
         // NSLog(@"Outbrain reportRecsShownForOBLabel: key: %@", viewabilityKey);
     }
@@ -268,19 +204,20 @@ NSString * const kViewabilityThresholdKey = @"kViewabilityThresholdKey";
 
 
 #pragma mark - Private
--(NSURL *) createUrlFromParams:(NSDictionary *)queryDictionary {
-    NSURLComponents *components = [NSURLComponents componentsWithString:kViewabilityUrl];
-    NSMutableArray *queryItems = [NSMutableArray array];
-    
-    for (NSString *key in queryDictionary) {
-        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:queryDictionary[key]]];
+-(NSString *) editTmParameterInUrl:(NSString *)url tm:(NSString *)tm {
+    NSString *tmString = [@"tm=" stringByAppendingString:tm];
+    if ([url containsString:@"tm=0"]) {
+        return [url stringByReplacingOccurrencesOfString:@"tm=0" withString:tmString];
+    } else {
+        return tmString;
     }
-    components.queryItems = queryItems;
-    
-    return components.URL;
 }
 
--(NSString *) viewabilityKeyForRequest:(OBRequest *)obRequest {
+-(NSString *) viewabilityKeyForRequestId:(NSString *)reqId {
+    return [NSString stringWithFormat:kViewabilityKeyFor_reqId, reqId];
+}
+
+-(NSString *) viewabilityKeyForOBRequest:(OBRequest *)obRequest {
     return [self viewabilityKeyForURL:obRequest.url widgetId:obRequest.widgetId widgetIndex:obRequest.widgetIndex];
 }
 
