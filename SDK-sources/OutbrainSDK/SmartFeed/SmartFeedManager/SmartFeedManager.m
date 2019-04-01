@@ -525,7 +525,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
-    if ((indexPath.row == (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
+    if ((indexPath.row >= (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
         [self fetchMoreRecommendations];
     }
 }
@@ -788,7 +788,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         [self.sfCollectionViewManager configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
-    if (indexPath.row == self.smartFeedItemsArray.count - 2) {
+    if (indexPath.row >= self.smartFeedItemsArray.count - 2) {
         [self fetchMoreRecommendations];
     }
 }
