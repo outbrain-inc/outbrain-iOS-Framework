@@ -48,6 +48,11 @@
     }
     else if ([@"videoFinished" isEqualToString:action]) {
         sfItem.videoPlayerStatus = kVideoFinishedStatus;
+        [webview removeFromSuperview];
+        self.videoCell.webview = nil;
+    }
+    else if ([@"videoWillReload" isEqualToString:action]) {
+        sfItem.videoPlayerStatus = kVideoFinishedStatus;
         webview.alpha = 0.0;
     }
     else if ([@"pageIsReady" isEqualToString:action]) {
