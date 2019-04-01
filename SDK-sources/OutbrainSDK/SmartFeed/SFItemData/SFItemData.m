@@ -111,7 +111,7 @@ NSInteger kVideoFinishedStatus = 1114;
     self.request = odbResponse.request;
     self.responseRequest = odbResponse.responseRequest;
     self.widgetTitle = self.odbSettings.widgetHeaderText;
-    self.widgetId = self.request.widgetId;
+    self.widgetId = [odbResponse.responseRequest getStringValueForPayloadKey:@"widgetJsId"];
     if (self.odbSettings.smartfeedShadowColor) {
         self.shadowColor = [SFUtils colorFromHexString:self.odbSettings.smartfeedShadowColor];
     }
