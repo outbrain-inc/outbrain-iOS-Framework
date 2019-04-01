@@ -3,6 +3,8 @@
 ## Development 
 
 
+## v3.6.0 - April 1, 2019
+
 - Feature: New Smartfeed API (Multivac)
 - Feature: Viewability per listing
 - Feature: Served vs Requested
@@ -10,6 +12,8 @@
 - Improvement: isRTL implementation
 - Improvement: Barstool suggested fix for `decodeHTMLEnocdedString` method (stop using NSDocumentTypeDocumentAttribute from background thread).
 - Improvement: Video - support reload of additional videos in the same WebView
+- Improvement: In `fetchMoreRecs` logic, we want to trigger the reload on the last item as well.
+
 
 ## v3.5.2 - February 10, 2019
 
