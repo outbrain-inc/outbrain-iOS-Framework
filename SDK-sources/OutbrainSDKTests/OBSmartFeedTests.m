@@ -12,6 +12,7 @@
 #import "OBRecommendationRequestOperation.h"
 #import "SFItemData.h"
 #import "SFUtils.h"
+#import "SFItemData.h"
 
 @interface OBRecommendationRequestOperation (Testing)
 
@@ -166,6 +167,36 @@
     newItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseChild3];
     XCTAssertEqual(newItems.count, 1);
 }
+
+- (void)testParentSFItemParsing {
+    NSArray *parentItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
+    XCTAssertEqual(parentItems.count, 3);
+    
+    SFItemData *sfItemParentFirst = parentItems[0];
+    XCTAssertEqual(sfItemParentFirst.itemType, SFTypeGridTwoInRowNoTitle);
+    BOOL checkColors = CGColorEqualToColor(sfItemParentFirst.shadowColor.CGColor, [SFUtils colorFromHexString:@"#ffa500"].CGColor);
+    XCTAssertTrue(checkColors);
+    XCTAssertNil(sfItemParentFirst.singleRec);
+    XCTAssertNotNil(sfItemParentFirst.outbrainRecs);
+    XCTAssertTrue([sfItemParentFirst.widgetId isEqualToString:@"SFD_MAIN_2"]);
+    OBRecommendation *singleRec = sfItemParentFirst.outbrainRecs[0];
+    XCTAssertTrue([singleRec.content isEqualToString:@"How To Start Ecommerce As A Side Income"]);
+}
+
+- (void)testFirstChildSFItemParsing {
+    NSArray *firstChildItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseChild1];
+    XCTAssertEqual(firstChildItems.count, 1);
+    
+    SFItemData *sfItem = firstChildItems[0];
+    XCTAssertEqual(sfItem.itemType, SFTypeStripWithTitle);
+    XCTAssertNil(sfItem.shadowColor);
+    XCTAssertNotNil(sfItem.singleRec);
+    XCTAssertNil(sfItem.outbrainRecs);
+    XCTAssertTrue([sfItem.widgetId isEqualToString:@"SDK_SFD_1"]);
+    OBRecommendation *singleRec = sfItem.singleRec;
+    XCTAssertTrue([singleRec.content isEqualToString:@"Millwall set to complete record deal for Tom Bradshaw"]);
+}
+
 
 -(void) testSingleTemplateNib {
     SFCollectionViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFCollectionViewCell" owner:nil options:nil] objectAtIndex:0];
