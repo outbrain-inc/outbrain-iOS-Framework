@@ -51,7 +51,8 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
 
 - (void) registerOBView:(OBView *)obView positions:(NSArray *)positions requestId:(NSString *)reqId smartFeedInitializationTime:(NSDate *)initializationTime {
     // we save the key of the first rec in the OBView
-    NSString *key = [self viewabilityKeyForRequestId:reqId position:positions[0]];
+    NSString *pos = (positions && positions.count > 0) ? positions[0] : @"0";
+    NSString *key = [self viewabilityKeyForRequestId:reqId position:pos];
     obView.key = key;
     
     NSMutableDictionary *obViewData = [[NSMutableDictionary alloc]init];
