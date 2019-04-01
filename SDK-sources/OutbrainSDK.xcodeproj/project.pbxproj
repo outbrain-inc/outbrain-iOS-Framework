@@ -137,6 +137,7 @@
 		E6B930BB21733BB300EC7A4A /* SFHorizontalFixedWithVideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B930BA21733BB300EC7A4A /* SFHorizontalFixedWithVideoTableViewCell.xib */; };
 		E6B930BE2173691900EC7A4A /* SFScriptMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B930BC2173691900EC7A4A /* SFScriptMessageHandler.h */; };
 		E6B930BF2173691900EC7A4A /* SFScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B930BD2173691900EC7A4A /* SFScriptMessageHandler.m */; };
+		E6C14F3F2251FC010075474E /* OBViewabilityActions.h in Headers */ = {isa = PBXBuildFile; fileRef = 16F81EF1224141F000DC0D03 /* OBViewabilityActions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6D26D8720D7BE6D00D6D00A /* rtb_rec_with_disclosure.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8620D7BE6D00D6D00A /* rtb_rec_with_disclosure.json */; };
 		E6D26D8920D7BEA300D6D00A /* OBRecRTBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */; };
 		E6D26D8B20D7C0A900D6D00A /* non_rtb_rec.json in Resources */ = {isa = PBXBuildFile; fileRef = E6D26D8A20D7C0A900D6D00A /* non_rtb_rec.json */; };
@@ -887,6 +888,7 @@
 				E61E6C2520836C180016D79A /* OBReachability.h in Headers */,
 				E61E6C2E20836C180016D79A /* OBSettings.h in Headers */,
 				E61E6C1E20836C180016D79A /* OBAdsChoicesManager.h in Headers */,
+				E6C14F3F2251FC010075474E /* OBViewabilityActions.h in Headers */,
 				E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */,
 				E61E6C3D20836C180016D79A /* OutbrainSDK.h in Headers */,
 				E6B930B6217339DD00EC7A4A /* SFHorizontalWithVideoTableViewCell.h in Headers */,
