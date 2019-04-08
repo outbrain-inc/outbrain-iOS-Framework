@@ -25,6 +25,12 @@ references:
       name: Export new version number to environment variable
       command: echo "export RELEASE_VERSION=$(cut -d '/' -f2 <<< $CIRCLE_BRANCH)" >> $BASH_ENV
 
+  export_framework_artifact_path: &export_framework_artifact_path
+    run:
+      name: Export framework artifacr path
+      command: echo "export FRAMEWORK_ARTIFACT_PATH=Samples/OutbrainDemo/OutbrainSDK.framework" >> $BASH_ENV
+
+
 jobs:
   ios_default:
     <<: *ios_config
@@ -89,9 +95,9 @@ jobs:
 
       - *export_release_version
 
-      - run:
-          name: Updating SDK version
-          command: bash -x ./bump_sdk_version.sh
+      # - run:
+      #     name: Updating SDK version
+      #     command: bash -x ./bump_sdk_version.sh
 
       - run:
           name: Clean previous OutbrainSDK.framework
@@ -116,6 +122,30 @@ jobs:
           command: xcodebuild -target OBFramework -UseModernBuildSystem=NO
           working_directory: SDK-sources
 
+      - run:
+          name: Check if framework is where we think it is
+          command: |
+            if [ ! -d "OutbrainSDK.framework" ]; then
+            	echo "framework is NOT where we think it is"
+            	exit 1
+            fi
+          working_directory: Samples/OutbrainDemo/
+
+      - run:
+          name: Creating OBSDK-Release dir
+          command: |
+            mkdir OBSDK-Release
+            mkdir OBSDK-Release/SDK/
+            mkdir OBSDK-Release/Samples/
+
+      - run:
+          name: Copy the OutbrainSDK.framework into OBSDK-Release
+          command: |
+            cp -a Samples/OutbrainDemo/OutbrainSDK.framework OBSDK-Release/SDK/
+            cp -fa Samples/ OBSDK-Release/Samples/
+            cp -rf README.md OBSDK-Release/
+            ls
+
 workflows:
   version: 2
   workflow:
@@ -124,7 +154,7 @@ workflows:
       - ios_release:
           requires:
             - ios_default
-          filters:
-            branches:
-              only:
-                - /^release/.*/
+          # filters:
+          #   branches:
+          #     only:
+          #       - /^release/.*/
