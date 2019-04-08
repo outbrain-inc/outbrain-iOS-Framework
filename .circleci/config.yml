@@ -33,10 +33,13 @@ jobs:
 
       - run:
           name: Run tests
-          command: fastlane scan
-          environment:
-            SCAN_DEVICE: iPhone 6
-            SCAN_SCHEME: OutbrainSDKTests
+          command: |
+            xcodebuild \
+            -project OutbrainSDK.xcodeproj \
+            -scheme OutbrainSDK \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            test
           working_directory: SDK-sources
 
   # ios_release:
