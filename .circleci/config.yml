@@ -32,7 +32,18 @@ jobs:
       - checkout
 
       - run:
-          name: Run tests
+          name: Build SDK
+          command: |
+            xcodebuild \
+            -project OutbrainSDK.xcodeproj \
+            -scheme OutbrainSDK \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            build
+          working_directory: SDK-sources
+
+      - run:
+          name: Run SDK tests
           command: |
             xcodebuild \
             -project OutbrainSDK.xcodeproj \
