@@ -100,7 +100,7 @@ jobs:
 
       - run:
           name: Building the SDK project
-          command: xcodebuild -target OBFramework
+          command: xcodebuild -target OBFramework -UseModernBuildSystem=NO
           working_directory: SDK-sources
 
 workflows:
