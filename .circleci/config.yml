@@ -7,10 +7,23 @@ version: 2
 references:
 
   # Docker image configurations
+
   ios_config: &ios_config
     working_directory: ~/repo
     macos:
       xcode: "10.1.0"
+
+  # Export environment variables
+  export_previous_release_version: &export_previous_release_version
+    run:
+      name: Export previous version number to environment variable
+      command: echo "export PREVIOUS_SDK_VERSION=`cat Outbrain.m | grep "OB_SDK_VERSION" | cut -d "=" -f2 | cut -d \" -f2`" >> $BASH_ENV
+      working_directory: SDK-sources/OutbrainSDK/
+
+  export_release_version: &export_release_version
+    run:
+      name: Export new version number to environment variable
+      command: echo "export RELEASE_VERSION=$(cut -d '/' -f2 <<< $CIRCLE_BRANCH)" >> $BASH_ENV
 
 jobs:
   ios_default:
@@ -23,7 +36,7 @@ jobs:
           command: fastlane scan
           environment:
             SCAN_DEVICE: iPhone 6
-            SCAN_SCHEME: WebTests
+            SCAN_SCHEME: OutbrainSDK
           working_directory: SDK-sources
 
   # ios_release:
