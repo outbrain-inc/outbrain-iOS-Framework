@@ -87,7 +87,7 @@ jobs:
 
       - *export_previous_release_version
 
-      -*export_release_version
+      - *export_release_version
       
       - run:
           name: Updating SDK version
