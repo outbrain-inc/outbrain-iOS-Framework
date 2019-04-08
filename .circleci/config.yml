@@ -83,7 +83,7 @@ jobs:
       # Add ssh key fingerprint to tell circleci to use the key we've added in the console settings.
       - add_ssh_keys:
           fingerprints:
-            - "91:db:7d:c2:fc:6c:f9:ce:1b:4c:83:0d:79:33:b9:bb"
+            - "fa:6e:50:44:11:39:30:06:6c:e2:3a:cd:ca:3c:1b:2f"
 
       - *export_previous_release_version
 
