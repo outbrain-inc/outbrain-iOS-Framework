@@ -36,7 +36,7 @@ jobs:
           command: fastlane scan
           environment:
             SCAN_DEVICE: iPhone 6
-            SCAN_SCHEME: OutbrainSDK
+            SCAN_SCHEME: OutbrainSDKTests
           working_directory: SDK-sources
 
   # ios_release:
