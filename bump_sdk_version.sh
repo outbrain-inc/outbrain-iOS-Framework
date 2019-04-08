@@ -23,5 +23,5 @@ git config --global user.email "oregev@outbrain.com"
 git config --global user.name "Alon Shprung via CircleCI"
 git commit -m "[skip ci] Update SDK version to ${RELEASE_VERSION}"
 git tag "release_${RELEASE_VERSION}"
-git push origin -u
+git push origin $CIRCLE_BRANCH
 git push origin --tags
