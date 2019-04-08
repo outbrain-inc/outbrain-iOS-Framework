@@ -80,6 +80,19 @@ jobs:
     steps:
       - checkout
 
+      # Add ssh key fingerprint to tell circleci to use the key we've added in the console settings.
+      - add_ssh_keys:
+          fingerprints:
+            - "7e:98:b6:e7:93:06:0c:d7:1f:6a:e0:6b:00:1b:6c:2b"
+
+      - *export_previous_release_version
+
+      -*export_release_version
+      
+      - run:
+          name: Updating SDK version
+          command: bash -x ./bump_sdk_version.sh
+
       - run:
           name: Clean previous OutbrainSDK.framework
           command: |
@@ -111,3 +124,7 @@ workflows:
       - ios_release:
           requires:
             - ios_default
+          filters:
+            branches:
+              only:
+                - /^release/.*/
