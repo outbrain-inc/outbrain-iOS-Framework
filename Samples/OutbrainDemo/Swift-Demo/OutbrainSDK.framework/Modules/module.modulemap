@@ -1,0 +1,6 @@
+framework module OutbrainSDK {
+  umbrella header "OutbrainSDK.h"
+
+  export *
+  module * { export * }
+}
