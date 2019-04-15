@@ -38,48 +38,69 @@ jobs:
       - checkout
 
       - run:
-          name: Build SDK
+          name: Clean previous OutbrainSDK.framework
+          command: |
+            if [ -d OutbrainSDK.framework ]; then
+              rm -fr OutbrainSDK.framework
+            fi
+          working_directory: Samples/OutbrainDemo
+
+      - run:
+          name: Cleaing the SDK project - OBFramework
+          command: xcodebuild clean -target OBFramework
+          working_directory: SDK-sources
+
+      - run:
+          name: Cleaing the SDK project - OutbrainSDK
+          command: xcodebuild clean -target OutbrainSDK
+          working_directory: SDK-sources
+
+      - run:
+          name: Building the SDK project
+          command: xcodebuild -target OBFramework -UseModernBuildSystem=NO
+          working_directory: SDK-sources
+
+      - run:
+          name: Check if framework is where we think it is
+          command: |
+            if [ ! -d "OutbrainSDK.framework" ]; then
+              echo "framework is NOT where we think it is"
+              exit 1
+            fi
+          working_directory: Samples/OutbrainDemo/
+
+      - run:
+          name: Build Sample Apps - Journal
+          command: |
+            xcodebuild \
+            -project OutbrainDemo.xcodeproj \
+            -scheme Journal \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            build
+          working_directory: Samples/OutbrainDemo
+      
+      - run:
+          name: Build Sample Apps - SmartFeed
+          command: |
+            xcodebuild \
+            -project OutbrainDemo.xcodeproj \
+            -scheme SmartFeed \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            build
+          working_directory: Samples/OutbrainDemo
+
+      - run:
+          name: Run SDK tests
           command: |
             xcodebuild \
             -project OutbrainSDK.xcodeproj \
             -scheme OutbrainSDK \
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 6' \
-            build
+            test
           working_directory: SDK-sources
-
-      # - run:
-      #     name: Build Sample Apps - Journal
-      #     command: |
-      #       xcodebuild \
-      #       -project OutbrainDemo.xcodeproj \
-      #       -scheme Journal \
-      #       -sdk iphonesimulator \
-      #       -destination 'platform=iOS Simulator,name=iPhone 6' \
-      #       build
-      #     working_directory: Samples/OutbrainDemo
-      #
-      # - run:
-      #     name: Build Sample Apps - SmartFeed
-      #     command: |
-      #       xcodebuild \
-      #       -project OutbrainDemo.xcodeproj \
-      #       -scheme SmartFeed \
-      #       -sdk iphonesimulator \
-      #       -destination 'platform=iOS Simulator,name=iPhone 6' \
-      #       build
-      #     working_directory: Samples/OutbrainDemo
-
-      # - run:
-      #     name: Run SDK tests
-      #     command: |
-      #       xcodebuild \
-      #       -project OutbrainSDK.xcodeproj \
-      #       -scheme OutbrainSDK \
-      #       -sdk iphonesimulator \
-      #       -destination 'platform=iOS Simulator,name=iPhone 6' \
-      #       test
-      #     working_directory: SDK-sources
 
   ios_release:
     <<: *ios_config
@@ -139,12 +160,21 @@ jobs:
             mkdir OBSDK-Release/Samples/
 
       - run:
-          name: Copy the OutbrainSDK.framework into OBSDK-Release
+          name: Copy the OutbrainSDK.framework and sample apps into OBSDK-Release
           command: |
             cp -a Samples/OutbrainDemo/OutbrainSDK.framework OBSDK-Release/SDK/
             cp -fa Samples/ OBSDK-Release/Samples/
             cp -rf README.md OBSDK-Release/
+
+      - run:
+          name: Prepare iOS-SampleApps.zip and OutbrainSDK.framework.zip
+          command: |
+            zip --symlinks -r iOS-SampleApps.zip . -x ".*" -x "*/.*" > /dev/null
+            cd SDK/OutbrainSDK.framework
+            zip --symlinks -r ../../OutbrainSDK.framework.zip *
             ls
+          working_directory: OBSDK-Release
+
 
 workflows:
   version: 2
