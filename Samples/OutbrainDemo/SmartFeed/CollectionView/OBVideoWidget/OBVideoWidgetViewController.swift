@@ -103,7 +103,7 @@ extension OBVideoWidgetViewController {
         if (indexPath.row == 3) {
             if let outbrainContainerView = cell.viewWithTag(111) {
                 if (self.outbrainVideoWidget == nil) {
-                    let obRequest = OBRequest(url: Const.baseURL, widgetID: Const.widgetID)
+                    let obRequest = OBRequest(url: OBConf.baseURL, widgetID: OBConf.widgetID)
                     self.outbrainVideoWidget = OBVideoWidget(request: obRequest, containerView: outbrainContainerView)
                     self.outbrainVideoWidget?.delegate = self
                     self.outbrainVideoWidget?.start()

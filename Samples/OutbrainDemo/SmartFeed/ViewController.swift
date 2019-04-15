@@ -10,11 +10,11 @@ import UIKit
 import OutbrainSDK
 
 
-struct Const {
-    static let widgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
+struct OBConf {
+    static var widgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
     // static let widgetID = "SFD_MAIN_5"
     // static let widgetID = "SFD_MAIN_4"
-    static let baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
+    static var baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
 }
 
 class ViewController: UIViewController {
