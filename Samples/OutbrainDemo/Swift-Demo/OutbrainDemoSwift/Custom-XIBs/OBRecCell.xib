@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OBRecCell" rowHeight="138" id="mdf-YQ-yFA" customClass="OBRecCell" customModule="OutbrainDemoSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="138"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mdf-YQ-yFA" id="EoU-jH-bvU">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="137.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vmb-d3-RGt">
+                        <rect key="frame" x="16" y="11" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="Mf8-Mf-Xgw"/>
+                            <constraint firstAttribute="width" constant="72" id="TaV-SX-gal"/>
+                        </constraints>
+                    </imageView>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJh-lY-XiV" userLabel="AdChoices Button">
+                        <rect key="frame" x="58" y="11" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Hb3-Q2-rC0"/>
+                            <constraint firstAttribute="height" constant="30" id="Kqp-73-nVB"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="12" minY="2" maxX="2" maxY="12"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuH-v0-dMR" userLabel="TitleLabel">
+                        <rect key="frame" x="93" y="11" width="211" height="83.5"/>
+                        <accessibility key="accessibilityConfiguration" identifier=""/>
+                        <string key="text">5 Tips on Taking Charge of Your Earned Media 5 Tips on Taking Charge of Your Earned Media 5 Tips on Taking Charge of Your Earned Media</string>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="( Outbrain | Mobile Demo)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKg-FU-Sbj" userLabel="SourceLabel">
+                        <rect key="frame" x="93" y="97" width="211" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" red="0.46464646459999998" green="0.46464646459999998" blue="0.46464646459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BaV-gw-pYx" userLabel="SeparatorView">
+                        <rect key="frame" x="8" y="125" width="304" height="10"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="spm-8d-90R"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="bJh-lY-XiV" firstAttribute="trailing" secondItem="Vmb-d3-RGt" secondAttribute="trailing" id="3mq-Qj-fWc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="BaV-gw-pYx" secondAttribute="trailing" constant="-8" id="6gp-uE-vYf"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Vmb-d3-RGt" secondAttribute="bottom" id="ITH-Mu-66C"/>
+                    <constraint firstItem="BaV-gw-pYx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cKg-FU-Sbj" secondAttribute="bottom" priority="750" constant="8" id="Jjh-cg-iqa"/>
+                    <constraint firstItem="vuH-v0-dMR" firstAttribute="leading" secondItem="Vmb-d3-RGt" secondAttribute="trailing" constant="5" id="Kpm-ae-gtU"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="cKg-FU-Sbj" secondAttribute="bottom" constant="8" id="Pm9-fK-g4K"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vuH-v0-dMR" secondAttribute="trailing" id="PsR-6F-UEM"/>
+                    <constraint firstItem="Vmb-d3-RGt" firstAttribute="centerY" secondItem="EoU-jH-bvU" secondAttribute="centerY" id="TGM-jh-Wcs"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="BaV-gw-pYx" secondAttribute="leading" constant="8" id="VBq-4Y-EyQ"/>
+                    <constraint firstAttribute="topMargin" secondItem="Vmb-d3-RGt" secondAttribute="top" id="dtq-ML-zrZ"/>
+                    <constraint firstItem="BaV-gw-pYx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Vmb-d3-RGt" secondAttribute="bottom" priority="750" constant="8" id="eQN-kP-NwZ"/>
+                    <constraint firstItem="BaV-gw-pYx" firstAttribute="top" secondItem="Vmb-d3-RGt" secondAttribute="bottom" constant="8" id="f6C-CX-t59"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="Vmb-d3-RGt" secondAttribute="leading" id="gMd-ea-mmf"/>
+                    <constraint firstAttribute="topMargin" secondItem="vuH-v0-dMR" secondAttribute="top" id="hup-Fc-RZc"/>
+                    <constraint firstItem="cKg-FU-Sbj" firstAttribute="centerX" secondItem="vuH-v0-dMR" secondAttribute="centerX" id="ikc-Zj-bqc"/>
+                    <constraint firstItem="bJh-lY-XiV" firstAttribute="top" secondItem="Vmb-d3-RGt" secondAttribute="top" id="jax-G3-3fu"/>
+                    <constraint firstItem="cKg-FU-Sbj" firstAttribute="width" secondItem="vuH-v0-dMR" secondAttribute="width" id="kMQ-3i-Wqk"/>
+                    <constraint firstItem="cKg-FU-Sbj" firstAttribute="top" secondItem="vuH-v0-dMR" secondAttribute="bottom" constant="3" id="pxp-vf-Tzk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="BaV-gw-pYx" secondAttribute="bottom" constant="-8" id="zIx-kv-NlF"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="ITH-Mu-66C"/>
+                        <exclude reference="TGM-jh-Wcs"/>
+                        <exclude reference="f6C-CX-t59"/>
+                        <exclude reference="Pm9-fK-g4K"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="adChoicesButton" destination="bJh-lY-XiV" id="JkF-ci-IVu"/>
+                <outlet property="recImageView" destination="Vmb-d3-RGt" id="2TA-ZN-jMi"/>
+                <outlet property="recSource" destination="cKg-FU-Sbj" id="n4e-N2-BPQ"/>
+                <outlet property="recTitle" destination="vuH-v0-dMR" id="eFg-0E-TPx"/>
+            </connections>
+            <point key="canvasLocation" x="-459" y="290"/>
+        </tableViewCell>
+    </objects>
+</document>
