@@ -116,9 +116,9 @@ jobs:
 
       - *export_release_version
 
-      # - run:
-      #     name: Updating SDK version
-      #     command: bash -x ./bump_sdk_version.sh
+      - run:
+          name: Updating SDK version
+          command: bash -x ./bump_sdk_version.sh
 
       - run:
           name: Clean previous OutbrainSDK.framework
@@ -172,9 +172,19 @@ jobs:
             zip --symlinks -r iOS-SampleApps.zip . -x ".*" -x "*/.*" > /dev/null
             cd SDK/OutbrainSDK.framework
             zip --symlinks -r ../../OutbrainSDK.framework.zip *
-            ls
           working_directory: OBSDK-Release
 
+      - run:
+          name: Upload OutbrainSDK.framework.zip to Bintray
+          command: bash -x ./upload_to_bintray.sh OBSDK-Release/OutbrainSDK.framework.zip iOS-SDK $RELEASE_VERSION OutbrainSDK.framework.zip
+
+      - run:
+          name: Upload iOS-SampleApps.zip to Bintray
+          command: bash -x ./upload_to_bintray.sh OBSDK-Release/iOS-SampleApps.zip iOS-SampleApps $RELEASE_VERSION iOS-SampleApps.zip
+
+      - run:
+          name: Upload Custom UI
+          command: bash -x ./update_custom_ui.sh $RELEASE_VERSION
 
 workflows:
   version: 2
@@ -184,7 +194,7 @@ workflows:
       - ios_release:
           requires:
             - ios_default
-          # filters:
-          #   branches:
-          #     only:
-          #       - /^release/.*/
+          filters:
+            branches:
+              only:
+                - /^release/.*/
