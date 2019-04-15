@@ -30,16 +30,20 @@ references:
       name: Export framework artifacr path
       command: echo "export FRAMEWORK_ARTIFACT_PATH=Samples/OutbrainDemo/OutbrainSDK.framework" >> $BASH_ENV
 
-  # Clean and Build SDK project
-  build_sdk_project: &build_sdk_project
-    - run:
-          name: Clean previous OutbrainSDK.framework
-          command: |
-            if [ -d OutbrainSDK.framework ]; then
-              rm -fr OutbrainSDK.framework
-            fi
-          working_directory: Samples/OutbrainDemo
+jobs:
+  ios_default:
+    <<: *ios_config
+    steps:
+      - checkout
 
+    - run:
+        name: Clean previous OutbrainSDK.framework
+        command: |
+          if [ -d OutbrainSDK.framework ]; then
+            rm -fr OutbrainSDK.framework
+          fi
+        working_directory: Samples/OutbrainDemo
+          
     - run:
         name: Cleaing the SDK project - OBFramework
         command: xcodebuild clean -target OBFramework
@@ -63,15 +67,6 @@ references:
             exit 1
           fi
         working_directory: Samples/OutbrainDemo/
-
-
-jobs:
-  ios_default:
-    <<: *ios_config
-    steps:
-      - checkout
-
-      - *build_sdk_project
 
       - run:
           name: Build Sample Apps - Journal
@@ -124,7 +119,37 @@ jobs:
           name: Updating SDK version
           command: bash -x ./bump_sdk_version.sh
 
-      - *build_sdk_project
+      - run:
+        name: Clean previous OutbrainSDK.framework
+        command: |
+          if [ -d OutbrainSDK.framework ]; then
+            rm -fr OutbrainSDK.framework
+          fi
+        working_directory: Samples/OutbrainDemo
+          
+    - run:
+        name: Cleaing the SDK project - OBFramework
+        command: xcodebuild clean -target OBFramework
+        working_directory: SDK-sources
+
+    - run:
+        name: Cleaing the SDK project - OutbrainSDK
+        command: xcodebuild clean -target OutbrainSDK
+        working_directory: SDK-sources
+
+    - run:
+        name: Building the SDK project
+        command: xcodebuild -target OBFramework -UseModernBuildSystem=NO
+        working_directory: SDK-sources
+
+    - run:
+        name: Check if framework is where we think it is
+        command: |
+          if [ ! -d "OutbrainSDK.framework" ]; then
+            echo "framework is NOT where we think it is"
+            exit 1
+          fi
+        working_directory: Samples/OutbrainDemo/
 
       - run:
           name: Creating OBSDK-Release dir
