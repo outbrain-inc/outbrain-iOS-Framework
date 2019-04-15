@@ -127,29 +127,29 @@ jobs:
           fi
         working_directory: Samples/OutbrainDemo
           
-    - run:
-        name: Cleaing the SDK project - OBFramework
-        command: xcodebuild clean -target OBFramework
-        working_directory: SDK-sources
+      - run:
+          name: Cleaing the SDK project - OBFramework
+          command: xcodebuild clean -target OBFramework
+          working_directory: SDK-sources
 
-    - run:
-        name: Cleaing the SDK project - OutbrainSDK
-        command: xcodebuild clean -target OutbrainSDK
-        working_directory: SDK-sources
+      - run:
+          name: Cleaing the SDK project - OutbrainSDK
+          command: xcodebuild clean -target OutbrainSDK
+          working_directory: SDK-sources
 
-    - run:
-        name: Building the SDK project
-        command: xcodebuild -target OBFramework -UseModernBuildSystem=NO
-        working_directory: SDK-sources
+      - run:
+          name: Building the SDK project
+          command: xcodebuild -target OBFramework -UseModernBuildSystem=NO
+          working_directory: SDK-sources
 
-    - run:
-        name: Check if framework is where we think it is
-        command: |
-          if [ ! -d "OutbrainSDK.framework" ]; then
-            echo "framework is NOT where we think it is"
-            exit 1
-          fi
-        working_directory: Samples/OutbrainDemo/
+      - run:
+          name: Check if framework is where we think it is
+          command: |
+            if [ ! -d "OutbrainSDK.framework" ]; then
+              echo "framework is NOT where we think it is"
+              exit 1
+            fi
+          working_directory: Samples/OutbrainDemo/
 
       - run:
           name: Creating OBSDK-Release dir
