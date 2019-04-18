@@ -241,6 +241,14 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
 -(NSArray *) createSmartfeedItemsArrayFromResponse:(OBRecommendationResponse *)response {
     NSString *widgetTitle = response.settings.widgetHeaderText;
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
+    
+    if (response.recommendations.count == 0) {
+        NSLog(@"Error - ODB response with zero recs.. widget id: %@, req_id: %@",
+              [response.responseRequest getStringValueForPayloadKey:@"widgetJsId"],
+              [response.responseRequest getStringValueForPayloadKey:@"req_id"]);
+        return @[];
+    }
+    
     for (OBRecommendation *rec in response.recommendations) {
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
     }
@@ -1021,6 +1029,12 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         if ([self.delegate respondsToSelector:@selector(smartFeedResponseReceived:forWidgetId:)]) {
             [self.delegate smartFeedResponseReceived:recResponse.recommendations forWidgetId:recResponse.request.widgetId];
         }
+    }
+    
+    if (newSmartfeedItems.count == 0) {
+        NSLog(@"Error in onMultivacSuccess - newSmartfeedItems.count == 0");
+        self.isLoading = NO;
+        return;
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
