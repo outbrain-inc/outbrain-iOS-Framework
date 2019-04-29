@@ -67,7 +67,7 @@
 @property (nonatomic, strong) NSDate *initializationTime;
 @property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
 
-@property (nonatomic, strong) SFDefaultDelegate *dafaultDelegate;
+@property (nonatomic, strong) SFDefaultDelegate *defaultDelegate;
 
 @end
 
@@ -131,8 +131,8 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     self.horizontalContainerMargin = 0;
     self.isVideoEligible = YES; // default value
     
-    self.dafaultDelegate = [[SFDefaultDelegate alloc] init];
-    self.delegate = self.dafaultDelegate;
+    self.defaultDelegate = [[SFDefaultDelegate alloc] init];
+    self.delegate = self.defaultDelegate;
 }
 
 -(void) setOutbrainWidgetIndex:(NSInteger)widgetIndex {
