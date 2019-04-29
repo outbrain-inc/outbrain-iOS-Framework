@@ -29,6 +29,7 @@
 #import "SFViewabilityService.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 #import "MultivacResponseDelegate.h"
+#import "SFDefaultDelegate.h"
 
 @interface SmartFeedManager() <SFPrivateEventListener, WKUIDelegate, MultivacResponseDelegate>
 
@@ -65,6 +66,8 @@
 
 @property (nonatomic, strong) NSDate *initializationTime;
 @property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
+
+@property (nonatomic, strong) SFDefaultDelegate *defaultDelegate;
 
 @end
 
@@ -127,6 +130,9 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     self.reuseIdentifierItemType = [[NSMutableDictionary alloc] init];
     self.horizontalContainerMargin = 0;
     self.isVideoEligible = YES; // default value
+    
+    self.defaultDelegate = [[SFDefaultDelegate alloc] init];
+    self.delegate = self.defaultDelegate;
 }
 
 -(void) setOutbrainWidgetIndex:(NSInteger)widgetIndex {
