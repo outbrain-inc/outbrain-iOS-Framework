@@ -150,7 +150,7 @@ jobs:
               exit 1
             fi
           working_directory: Samples/OutbrainDemo/
-          
+
       - run:
           name: Build Sample Apps - Journal
           command: |
@@ -223,9 +223,9 @@ workflows:
   workflow:
     jobs:
       - ios_default:
-        filters:
-          branches:
-            ignore: /^release/.*/
+          filters:
+            branches:
+              ignore: /^release/.*/
 
       - ios_release:
           filters:
