@@ -150,6 +150,39 @@ jobs:
               exit 1
             fi
           working_directory: Samples/OutbrainDemo/
+          
+      - run:
+          name: Build Sample Apps - Journal
+          command: |
+            xcodebuild \
+            -project OutbrainDemo.xcodeproj \
+            -scheme Journal \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            build
+          working_directory: Samples/OutbrainDemo
+      
+      - run:
+          name: Build Sample Apps - SmartFeed
+          command: |
+            xcodebuild \
+            -project OutbrainDemo.xcodeproj \
+            -scheme SmartFeed \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            build
+          working_directory: Samples/OutbrainDemo
+
+      - run:
+          name: Run SDK tests
+          command: |
+            xcodebuild \
+            -project OutbrainSDK.xcodeproj \
+            -scheme OutbrainSDK \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            test
+          working_directory: SDK-sources
 
       - run:
           name: Creating OBSDK-Release dir
@@ -189,10 +222,12 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - ios_default
+      - ios_default:
+        filters:
+          branches:
+            ignore: /^release/.*/
+
       - ios_release:
-          requires:
-            - ios_default
           filters:
             branches:
               only:
