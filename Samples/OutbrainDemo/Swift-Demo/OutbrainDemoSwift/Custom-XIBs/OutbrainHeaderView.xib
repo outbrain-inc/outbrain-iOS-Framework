@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" id="iN0-l3-epB" customClass="OutbrainHeaderView" customModule="OutbrainDemoSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended to you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExU-el-Nzy" customClass="OBLabel">
+                    <rect key="frame" x="0.0" y="8" width="202" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="202" id="Lff-pa-Abi"/>
+                        <constraint firstAttribute="height" constant="20" id="z3g-dC-ZbN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" red="0.61111111111111116" green="0.61111111111111116" blue="0.61111111111111116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zps-Cr-oF1" userLabel="Outbrain Logo">
+                    <rect key="frame" x="285" y="10" width="90" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="4bD-af-3MC"/>
+                        <constraint firstAttribute="width" constant="90" id="tOf-Mo-abC"/>
+                    </constraints>
+                    <state key="normal" image="outbrainAdChoiceLogo"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ExU-el-Nzy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Itj-F1-TEq"/>
+                <constraint firstAttribute="trailing" secondItem="zps-Cr-oF1" secondAttribute="trailing" id="OAX-TX-0ey"/>
+                <constraint firstAttribute="bottom" secondItem="ExU-el-Nzy" secondAttribute="bottom" id="Yry-gS-9kw"/>
+                <constraint firstItem="zps-Cr-oF1" firstAttribute="centerY" secondItem="ExU-el-Nzy" secondAttribute="centerY" id="kNo-3v-20R"/>
+                <constraint firstAttribute="bottom" secondItem="ExU-el-Nzy" secondAttribute="bottom" id="lGV-u7-BpY"/>
+                <constraint firstItem="ExU-el-Nzy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sHP-Kk-O1Z"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Yry-gS-9kw"/>
+                    <exclude reference="lGV-u7-BpY"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="outbrainLogoButton" destination="zps-Cr-oF1" id="8Ds-1L-6N2"/>
+                <outlet property="recommendedToYouLabel" destination="ExU-el-Nzy" id="tTp-OB-oLy"/>
+            </connections>
+            <point key="canvasLocation" x="293" y="422"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="outbrainAdChoiceLogo" width="401" height="60"/>
+    </resources>
+</document>

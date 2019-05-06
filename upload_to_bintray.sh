@@ -1,6 +1,6 @@
 #!/bin/bash
 
-API_KEY="bdf87de700d2dffd65fe3aeb23d13122a3406a0b"
+API_KEY=$BINTRAY_KEY
 REPO="obsdk"
 
 if [[ $# != 4 ]]; then

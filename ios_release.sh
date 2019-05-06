@@ -62,7 +62,7 @@ echo ""
 echo "*********************"
 echo " Building the SDK project (version ${NEW_SDK_VER})"
 echo "*********************"
-xcodebuild -target OBFramework
+xcodebuild -target OBFramework -UseModernBuildSystem=NO
 cd ..
 
 echo ""
@@ -135,7 +135,7 @@ echo ""
 echo "*********************"
 echo "Prepare iOS-SampleApps.zip and OutbrainSDK.framework.zip"
 echo "*********************"
-#prepare 
+#prepare
 cd $EXPORT_DIR_PATH
 zip --symlinks -r iOS-SampleApps.zip . -x ".*" -x "*/.*" > /dev/null
 cd SDK/OutbrainSDK.framework > /dev/null
@@ -151,8 +151,6 @@ echo "**********************************************************************"
 echo "Uploading iOS-SampleApps.zip and OutbrainSDK.framework.zip to Bintray"
 echo "**********************************************************************"
 #Uploading to Bintray
-API_KEY="bdf87de700d2dffd65fe3aeb23d13122a3406a0b"
-REPO="obsdk"
 PACKAGE_SDK="iOS-SDK"
 PACKAGE_SAMPLE_APPS="iOS-SampleApps"
 
@@ -190,4 +188,3 @@ echo "* iOS Custom UI on bintray:                                               
 echo "* https://dl.bintray.com/outbrainmobile/obsdk/$NEW_SDK_VER/Custom-UI-iOS-SDK-Smartfeed.zip              *"
 echo "*                                                                                                       *"
 echo "*********************************************************************************************************"
-
