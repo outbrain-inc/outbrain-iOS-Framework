@@ -209,7 +209,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     if ([url containsString:@"tm=0"]) {
         return [url stringByReplacingOccurrencesOfString:@"tm=0" withString:tmString];
     } else {
-        return tmString;
+        return url;
     }
 }
 
