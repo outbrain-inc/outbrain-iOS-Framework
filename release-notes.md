@@ -2,6 +2,7 @@
 
 ## Development 
 
+- Bug fix - Viewablity report served, if url didn't include "tm" the SDK failed to report to server.
 
 ## v3.6.0 - April 1, 2019
 
