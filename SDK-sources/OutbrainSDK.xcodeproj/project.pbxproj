@@ -34,7 +34,7 @@
 		E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */; };
 		E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BCD20836C180016D79A /* OBAppleAdIdUtil.h */; };
 		E61E6C1920836C180016D79A /* OBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD020836C180016D79A /* OBLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD120836C180016D79A /* OBViewabilityService.h */; };
+		E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD120836C180016D79A /* OBViewabilityService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6C1B20836C180016D79A /* OBAdsChoicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD220836C180016D79A /* OBAdsChoicesManager.m */; };
 		E61E6C1C20836C180016D79A /* UIView+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD320836C180016D79A /* UIView+Visible.m */; };
 		E61E6C1D20836C180016D79A /* OBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD420836C180016D79A /* OBLabel.m */; };
