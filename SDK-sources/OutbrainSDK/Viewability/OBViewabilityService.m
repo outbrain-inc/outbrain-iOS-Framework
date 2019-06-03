@@ -204,12 +204,20 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 
 
 #pragma mark - Private
--(NSString *) editTmParameterInUrl:(NSString *)url tm:(NSString *)tm {
-    NSString *tmString = [@"tm=" stringByAppendingString:tm];
-    if ([url containsString:@"tm=0"]) {
-        return [url stringByReplacingOccurrencesOfString:@"tm=0" withString:tmString];
+-(NSString *) editTmParameterInUrl:(NSString *)urlString tm:(NSString *)tm {
+    NSString *tmQueryString = [@"tm=" stringByAppendingString:tm];
+    if ([urlString containsString:@"tm=0"]) {
+        return [urlString stringByReplacingOccurrencesOfString:@"tm=0" withString:tmQueryString];
     } else {
-        return url;
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        if (![urlString length]) {
+            return urlString;
+        }
+        
+        NSString *URLString = [[NSString alloc] initWithFormat:@"%@%@%@", [url absoluteString],
+                               url.query ? @"&" : @"?", tmQueryString];
+        return [[NSURL URLWithString:URLString] absoluteString];
     }
 }
 
