@@ -174,7 +174,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
         [self.reqIdAlreadyReportedArray addObject:viewabilityData.rId];
         
         if (viewabilityData.reportViewedUrl == nil) {
-            NSLog(@"Error - reportRecsReceived, reportViewedUrl is nil");
+            NSLog(@"Error - reportRecsShownForKey, reportViewedUrl is nil");
             return;
         }
         
