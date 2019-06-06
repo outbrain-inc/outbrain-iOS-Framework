@@ -103,6 +103,11 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     NSTimeInterval timeIntervalSinceRequestStart = [timeNow timeIntervalSinceDate:requestStartDate];
     NSString *timeToProcessRequest = [NSString stringWithFormat:@"%d", (long) (timeIntervalSinceRequestStart * 1000)];
     
+    if (viewabilityData.reportServedUrl == nil) {
+        NSLog(@"Error - reportRecsReceived, reportServedUrl is nil");
+        return;
+    }
+    
     NSString *viewabilityUrl = [self editTmParameterInUrl:viewabilityData.reportServedUrl tm:timeToProcessRequest];
     
     NSURLComponents *components = [NSURLComponents componentsWithString:viewabilityUrl];
@@ -167,6 +172,11 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
         NSString *executionTime = [NSString stringWithFormat:@"%d", (long) (executionTimeInterval * 1000)];
         
         [self.reqIdAlreadyReportedArray addObject:viewabilityData.rId];
+        
+        if (viewabilityData.reportViewedUrl == nil) {
+            NSLog(@"Error - reportRecsShownForKey, reportViewedUrl is nil");
+            return;
+        }
         
         NSString *viewabilityUrl = [self editTmParameterInUrl:viewabilityData.reportViewedUrl tm:executionTime];
         
