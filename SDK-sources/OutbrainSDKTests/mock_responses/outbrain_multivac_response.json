@@ -98,6 +98,10 @@
                     "sdk_sf_shadow_color": "#ffa500",
                     "InstallationType": "mobile-app-sdk",
                     "ImpressionPixelsSupported": "false"
+                },
+                "viewability_actions": {
+                    "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=e245653b9e0d38ca2fd5feb5417d7f86&pvId=e245653b9e0d38ca2fd5feb5417d7f86&sid=5291479&pid=4737&idx=0&wId=1117&pad=6&org=0&tm=0&eT=0",
+                    "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=e245653b9e0d38ca2fd5feb5417d7f86&pvId=e245653b9e0d38ca2fd5feb5417d7f86&sid=5291479&pid=4737&idx=0&wId=1117&pad=6&org=0&tm=0&eT=3"
                 }
             }
         },
@@ -235,6 +239,10 @@
                     "sdk_sf_shadow_color": "#ffa500",
                     "InstallationType": "mobile-app-sdk",
                     "ImpressionPixelsSupported": "false"
+                },
+                "viewability_actions": {
+                    "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=e245653b9e0d38ca2fd5feb5417d7f86&pvId=e245653b9e0d38ca2fd5feb5417d7f86&sid=5291479&pid=4737&idx=0&wId=1117&pad=6&org=0&tm=0&eT=0",
+                    "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=e245653b9e0d38ca2fd5feb5417d7f86&pvId=e245653b9e0d38ca2fd5feb5417d7f86&sid=5291479&pid=4737&idx=0&wId=1117&pad=6&org=0&tm=0&eT=3"
                 }
             }
         },
@@ -327,6 +335,10 @@
                     "sdk_sf_shadow_color": "#ffa500",
                     "InstallationType": "mobile-app-sdk",
                     "ImpressionPixelsSupported": "false"
+                },
+                "viewability_actions": {
+                    "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=e245653b9e0d38ca2fd5feb5417d7f86&pvId=e245653b9e0d38ca2fd5feb5417d7f86&sid=5291479&pid=4737&idx=0&wId=1117&pad=6&org=0&tm=0&eT=0",
+                    "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=e245653b9e0d38ca2fd5feb5417d7f86&pvId=e245653b9e0d38ca2fd5feb5417d7f86&sid=5291479&pid=4737&idx=0&wId=1117&pad=6&org=0&tm=0&eT=3"
                 }
             }
         }
