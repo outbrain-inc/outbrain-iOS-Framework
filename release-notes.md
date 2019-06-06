@@ -2,7 +2,13 @@
 
 ## Development 
 
+
+
+## v3.7.0 - June 6, 2019
+
 - Bug fix - Viewablity report served, if url didn't include "tm" the SDK failed to report to server.
+- Feature: App developer can now use `SmartFeedManager` without implementing `SFDefaultDelegate`, in which case the SDK will handle the click events.
+
 
 ## v3.6.0 - April 1, 2019
 
