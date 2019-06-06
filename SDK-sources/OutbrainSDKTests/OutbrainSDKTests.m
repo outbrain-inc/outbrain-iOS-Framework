@@ -95,6 +95,11 @@
     XCTAssert([expected isEqualToString:res]);
 }
 
+-(void) testEditTmParameterInUrlWithNilURL {
+    NSString *res = [[OBViewabilityService sharedInstance] editTmParameterInUrl:nil tm:@"222"];
+    XCTAssertNil(res);
+}
+
 
 
 
