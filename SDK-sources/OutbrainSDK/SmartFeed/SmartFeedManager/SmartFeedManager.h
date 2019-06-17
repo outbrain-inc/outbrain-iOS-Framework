@@ -120,4 +120,6 @@ typedef enum
 
 -(BOOL) isReady;
 
+- (void) fetchMoreRecommendations;
+
 @end
