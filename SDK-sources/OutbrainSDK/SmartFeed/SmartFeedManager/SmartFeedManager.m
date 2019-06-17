@@ -449,12 +449,19 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     else if (self.sfTableViewManager) {
         if (self.sfTableViewManager.tableView != nil) {
-            // tell the table view to update (at all of the inserted index paths)
-            UITableView *tableView = self.sfTableViewManager.tableView;
-            [tableView beginUpdates];
-            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-            [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-            [tableView endUpdates];
+            if (self.isInMiddleOfScreen) {
+                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+                [self.sfTableViewManager.tableView reloadData];
+                return;
+            }
+            else {
+                // tell the table view to update (at all of the inserted index paths)
+                UITableView *tableView = self.sfTableViewManager.tableView;
+                [tableView beginUpdates];
+                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+                [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+                [tableView endUpdates];
+            }
         }
     }
 }
@@ -510,6 +517,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     
     if (indexPath.section != self.outbrainSectionIndex) {
+        return;
+    }
+    
+    if (![self isReady]) {
         return;
     }
     
