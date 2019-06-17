@@ -135,6 +135,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     self.delegate = self.defaultDelegate;
 }
 
+-(BOOL) isReady {
+    return self.smartFeedItemsArray.count > 0;
+}
+
 -(void) setOutbrainWidgetIndex:(NSInteger)widgetIndex {
     _outbrainWidgetIndex = widgetIndex;
     self.lastIdx = widgetIndex;
@@ -753,6 +757,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     
     if (indexPath.section != self.outbrainSectionIndex) {
+        return;
+    }
+    
+    if (![self isReady]) {
         return;
     }
     

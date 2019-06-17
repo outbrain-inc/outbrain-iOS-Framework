@@ -118,4 +118,6 @@ typedef enum
 
 -(void) pauseVideo;
 
+-(BOOL) isReady;
+
 @end

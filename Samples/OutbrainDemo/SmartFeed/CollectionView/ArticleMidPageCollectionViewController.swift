@@ -19,9 +19,9 @@ class ArticleMidPageCollectionViewController: UICollectionViewController {
     let outbrainRecCellReuseIdentifier = "outbrainRecCollectionCell"
     var refresher:UIRefreshControl!
     
-    fileprivate let itemsPerRow: CGFloat = 1
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
-    let originalArticleItemsCount = 5
+    let articleSectionItemsCount = 5
+    let articleTotalItemsCount = 10
     
     
     override func viewDidLoad() {
@@ -90,17 +90,23 @@ class ArticleMidPageCollectionViewController: UICollectionViewController {
 extension ArticleMidPageCollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index, must be the last one.
-        return self.smartFeedManager.numberOfSectionsInCollectionView()
+        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
+        if self.smartFeedManager.isReady() {
+            // numberOfSections including Smartfeed
+            return 3
+        }
+        else {
+            return 2
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        if section < self.smartFeedManager.outbrainSectionIndex {
-            return originalArticleItemsCount
+        if self.smartFeedManager.isReady() && section == self.smartFeedManager.outbrainSectionIndex {
+            return self.smartFeedManager.smartFeedItemsCount()
         }
         else {
-            return self.smartFeedManager.smartFeedItemsCount()
+            return articleSectionItemsCount
         }
     }
     
@@ -109,7 +115,7 @@ extension ArticleMidPageCollectionViewController {
         // create a new cell if needed or reuse an old one
         var cell:UICollectionViewCell?
         
-        if indexPath.section == self.smartFeedManager.outbrainSectionIndex {
+        if self.smartFeedManager.isReady() && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
             return self.smartFeedManager.collectionView(collectionView, cellForItemAt: indexPath)
         }
         
@@ -133,7 +139,7 @@ extension ArticleMidPageCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.smartFeedManager.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
         
-        if indexPath.section == self.smartFeedManager.outbrainSectionIndex {
+        if self.smartFeedManager.isReady() && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
             return
         }
         
@@ -194,7 +200,7 @@ extension ArticleMidPageCollectionViewController : UICollectionViewDelegateFlowL
         
         let width = collectionView.frame.size.width
         
-        if indexPath.section == self.smartFeedManager.outbrainSectionIndex {
+        if self.smartFeedManager.isReady() && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
             return self.smartFeedManager.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
         }
         
