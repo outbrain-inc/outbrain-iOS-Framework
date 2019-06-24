@@ -20,6 +20,7 @@ class ArticleMidPageCollectionViewController: UICollectionViewController {
     var refresher:UIRefreshControl!
     
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
+    var smartfeedIsReady = false
     let articleSectionItemsCount = 5
     let articleTotalItemsCount = 10
     
@@ -38,6 +39,7 @@ class ArticleMidPageCollectionViewController: UICollectionViewController {
     @objc func loadData() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             self.stopRefresher()
+            self.smartfeedIsReady = false
             self.setupSmartFeed()
             self.collectionView?.reloadData()
         })
@@ -58,8 +60,10 @@ class ArticleMidPageCollectionViewController: UICollectionViewController {
         
         
         self.smartFeedManager = SmartFeedManager(url: Const.baseURL, widgetID: Const.widgetID, collectionView: collectionView)
-        
         self.smartFeedManager.delegate = self
+        self.smartFeedManager.isInMiddleOfScreen = true
+        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
+        self.smartFeedManager.fetchMoreRecommendations() // start fetching manually because Smartfeed is in the middle
         
         // self.smartFeedManager.displaySourceOnOrganicRec = true
         // self.smartFeedManager.horizontalContainerMargin = 40.0
@@ -90,8 +94,7 @@ class ArticleMidPageCollectionViewController: UICollectionViewController {
 extension ArticleMidPageCollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
-        if self.smartFeedManager.isReady() {
+        if self.smartfeedIsReady {
             // numberOfSections including Smartfeed
             return 3
         }
@@ -102,7 +105,7 @@ extension ArticleMidPageCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        if self.smartFeedManager.isReady() && section == self.smartFeedManager.outbrainSectionIndex {
+        if self.smartfeedIsReady && section == self.smartFeedManager.outbrainSectionIndex {
             return self.smartFeedManager.smartFeedItemsCount()
         }
         else {
@@ -115,7 +118,7 @@ extension ArticleMidPageCollectionViewController {
         // create a new cell if needed or reuse an old one
         var cell:UICollectionViewCell?
         
-        if self.smartFeedManager.isReady() && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
+        if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
             return self.smartFeedManager.collectionView(collectionView, cellForItemAt: indexPath)
         }
         
@@ -137,9 +140,11 @@ extension ArticleMidPageCollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        self.smartFeedManager.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
+        if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
+            self.smartFeedManager.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
+        }
         
-        if self.smartFeedManager.isReady() && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
+        if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
             return
         }
         
@@ -189,7 +194,11 @@ extension ArticleMidPageCollectionViewController : SmartFeedDelegate {
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
     
-    
+    func smartfeedIsReadyWithRecs() {
+        // Do what is needed to integrate the Smartfeed content in the UITableView
+        self.smartfeedIsReady = true
+        self.collectionView.reloadData()
+    }
 }
 
 extension ArticleMidPageCollectionViewController : UICollectionViewDelegateFlowLayout {
@@ -200,7 +209,7 @@ extension ArticleMidPageCollectionViewController : UICollectionViewDelegateFlowL
         
         let width = collectionView.frame.size.width
         
-        if self.smartFeedManager.isReady() && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
+        if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
             return self.smartFeedManager.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
         }
         

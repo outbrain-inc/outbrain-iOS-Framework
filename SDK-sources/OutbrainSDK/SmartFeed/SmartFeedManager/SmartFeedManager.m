@@ -135,10 +135,6 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     self.delegate = self.defaultDelegate;
 }
 
--(BOOL) isReady {
-    return self.smartFeedItemsArray.count > 0;
-}
-
 -(void) setOutbrainWidgetIndex:(NSInteger)widgetIndex {
     _outbrainWidgetIndex = widgetIndex;
     self.lastIdx = widgetIndex;
@@ -434,7 +430,16 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     NSIndexPath *firstIdx = indexPaths[0];
     
-    if (self.sfCollectionViewManager) {
+    if (self.isInMiddleOfScreen) {
+        [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+        if (self.hasMore) {
+            [self fetchMoreRecommendations];
+        }
+        else if ([self.delegate respondsToSelector:@selector(smartfeedIsReadyWithRecs)]) {
+            [self.delegate smartfeedIsReadyWithRecs];
+        }
+    }
+    else if (self.sfCollectionViewManager) {
         if (self.sfCollectionViewManager.collectionView != nil) {
             [self.sfCollectionViewManager.collectionView performBatchUpdates:^{
                 [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
@@ -449,23 +454,12 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     else if (self.sfTableViewManager) {
         if (self.sfTableViewManager.tableView != nil) {
-            if (self.isInMiddleOfScreen) {
-                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-                if (self.hasMore) {
-                    [self fetchMoreRecommendations];
-                }
-                else if ([self.delegate respondsToSelector:@selector(smartfeedIsReadyWithRecs)]) {
-                    [self.delegate smartfeedIsReadyWithRecs];
-                }
-            }
-            else {
-                // tell the table view to update (at all of the inserted index paths)
-                UITableView *tableView = self.sfTableViewManager.tableView;
-                [tableView beginUpdates];
-                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-                [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-                [tableView endUpdates];
-            }
+            // tell the table view to update (at all of the inserted index paths)
+            UITableView *tableView = self.sfTableViewManager.tableView;
+            [tableView beginUpdates];
+            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+            [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+            [tableView endUpdates];
         }
     }
 }
@@ -521,10 +515,6 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     
     if (indexPath.section != self.outbrainSectionIndex) {
-        return;
-    }
-    
-    if (![self isReady]) {
         return;
     }
     
@@ -772,10 +762,6 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     
     if (indexPath.section != self.outbrainSectionIndex) {
-        return;
-    }
-    
-    if (![self isReady]) {
         return;
     }
     

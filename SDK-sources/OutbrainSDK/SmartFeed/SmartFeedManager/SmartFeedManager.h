@@ -165,8 +165,6 @@ typedef enum
 
 -(void) pauseVideo;
 
--(BOOL) isReady;
-
 - (void) fetchMoreRecommendations;
 
 @end
