@@ -451,8 +451,12 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         if (self.sfTableViewManager.tableView != nil) {
             if (self.isInMiddleOfScreen) {
                 [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-                [self.sfTableViewManager.tableView reloadData];
-                return;
+                if (self.hasMore) {
+                    [self fetchMoreRecommendations];
+                }
+                else if ([self.delegate respondsToSelector:@selector(smartfeedIsReadyWithRecs)]) {
+                    [self.delegate smartfeedIsReadyWithRecs];
+                }
             }
             else {
                 // tell the table view to update (at all of the inserted index paths)
