@@ -20,6 +20,7 @@ class ArticleMidPageTableViewController: UIViewController, UITableViewDelegate, 
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
     
+    var smartfeedIsReady = false
     let articleSectionItemsCount = 5
     let articleTotalItemsCount = 10
     var outbrainIdx = 0
@@ -39,6 +40,8 @@ class ArticleMidPageTableViewController: UIViewController, UITableViewDelegate, 
         self.smartFeedManager = SmartFeedManager(url: Const.baseURL, widgetID: Const.widgetID, tableView: self.tableView)
         self.smartFeedManager.delegate = self
         self.smartFeedManager.isInMiddleOfScreen = true
+        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
+        self.smartFeedManager.fetchMoreRecommendations() // start fetching manually because Smartfeed is in the middle
         
         // self.smartFeedManager.displaySourceOnOrganicRec = true
         // self.smartFeedManager.horizontalContainerMargin = 40.0
@@ -61,8 +64,7 @@ class ArticleMidPageTableViewController: UIViewController, UITableViewDelegate, 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
-        if self.smartFeedManager.isReady() {
+        if self.smartfeedIsReady {
             // numberOfSections including Smartfeed
             return 3
         }
@@ -73,7 +75,7 @@ class ArticleMidPageTableViewController: UIViewController, UITableViewDelegate, 
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.smartFeedManager.isReady() && section == self.smartFeedManager.outbrainSectionIndex {
+        if self.smartfeedIsReady && section == self.smartFeedManager.outbrainSectionIndex {
             return self.smartFeedManager.smartFeedItemsCount()
         }
         else {
@@ -87,7 +89,7 @@ class ArticleMidPageTableViewController: UIViewController, UITableViewDelegate, 
         // create a new cell if needed or reuse an old one
         var cell:UITableViewCell?
         
-        if self.smartFeedManager.isReady() && indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
+        if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
             return self.smartFeedManager.tableView(tableView, cellForRowAt: indexPath)
         }
         
@@ -111,7 +113,9 @@ class ArticleMidPageTableViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        self.smartFeedManager.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
+        if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
+            self.smartFeedManager.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
+        }
         
         // App Developer should configure the app cells here..
         if (indexPath.row == 1) {
@@ -129,7 +133,7 @@ class ArticleMidPageTableViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.smartFeedManager.isReady() && indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
+        if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
             return self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
         }
         
@@ -177,6 +181,12 @@ extension ArticleMidPageTableViewController : SmartFeedDelegate {
         print("You tapped on video rec")
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
+    
+    func smartfeedIsReadyWithRecs() {
+        // Do what is needed to integrate the Smartfeed content in the UITableView
+        self.smartfeedIsReady = true
+        self.tableView.reloadData()
     }
     
     // Optional
