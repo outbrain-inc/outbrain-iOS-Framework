@@ -117,12 +117,15 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     //Test mode
     if ([OutbrainManager sharedInstance].testMode) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
-        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"location" value: @"us"]];
         
         // Test RTB recs (only in testMode)
         if ([OutbrainManager sharedInstance].testRTB) {
             [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRec" value: @"RTB-CriteoUS"]];
             [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fakeRecSize" value: @"2"]];
+        }
+        // simulate location
+        if ([OutbrainManager sharedInstance].testLocation) {
+            [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"location" value: [OutbrainManager sharedInstance].testLocation]];
         }
     }
     

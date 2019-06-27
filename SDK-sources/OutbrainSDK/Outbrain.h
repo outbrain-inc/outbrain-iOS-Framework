@@ -161,6 +161,15 @@ typedef void (^OBOnClickBlock)(NSURL *url);
  */
 + (void)testRTB:(BOOL)testRTB;
 
+/**
+ * @brief Simulate Geo by setting location (country code, for example: "us")
+ *
+ * Setting location will cause all ODB requests to be sent with the "location" param set to this value
+ *
+ * @param location - country code, for example: "us"
+ */
++ (void)testLocation:(NSString * _Nonnull)location;
+
 
 
 @end
