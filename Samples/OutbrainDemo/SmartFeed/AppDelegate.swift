@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Outbrain.initializeOutbrain(withPartnerKey: "iOSSampleApp2014")
         Outbrain.setTestMode(true) // Skipping all billing, statistics, information gathering, and all other action mechanisms.
-        
+        Outbrain.testLocation("us")
         return true
     }
 

@@ -65,6 +65,10 @@ BOOL WAS_INITIALIZED     =   NO;
     [OutbrainManager sharedInstance].testRTB = testRTB;
 }
 
++ (void)testLocation:(NSString *)location {
+    [OutbrainManager sharedInstance].testLocation = location;
+}
+
 #pragma mark - Fetching
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request withCallback:(OBResponseCompletionHandler)handler
