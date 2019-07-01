@@ -142,9 +142,6 @@ extension ArticleMidPageCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
             self.smartFeedManager.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
-        }
-        
-        if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
             return
         }
         
