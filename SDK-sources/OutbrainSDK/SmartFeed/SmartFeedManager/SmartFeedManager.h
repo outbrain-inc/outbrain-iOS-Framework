@@ -108,9 +108,9 @@ typedef enum
 @property (nonatomic, copy) NSString * _Nullable externalID;
 
 @property (nonatomic, assign) NSInteger outbrainSectionIndex;
-@property (nonatomic, strong, readonly) NSMutableArray *smartFeedItemsArray;
+@property (nonatomic, strong, readonly) NSMutableArray * _Nonnull smartFeedItemsArray;
 
-@property (nonatomic, weak) id<SmartFeedDelegate> delegate;
+@property (nonatomic, weak) id<SmartFeedDelegate> _Nullable delegate;
 @property (nonatomic, assign) CGFloat horizontalContainerMargin;
 
 @property (nonatomic) BOOL isVideoEligible;
@@ -126,11 +126,11 @@ typedef enum
 
 - (NSInteger)numberOfSectionsInTableView;
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView * _Nonnull)tableView willDisplayCell:(UITableViewCell * _Nonnull)cell forRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 // CollectionView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
@@ -150,11 +150,11 @@ typedef enum
     forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 // Common Methods
--(NSString * _Nullable) sfItemTypeStringFor:(NSIndexPath *)indexPath;
+-(NSString * _Nullable) sfItemTypeStringFor:(NSIndexPath * _Nonnull)indexPath;
 
--(SFItemType) sfItemTypeFor:(NSIndexPath *)indexPath;
+-(SFItemType) sfItemTypeFor:(NSIndexPath * _Nonnull)indexPath;
 
-- (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forWidgetId:(NSString *)widgetId;
+- (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forWidgetId:(NSString * _Nonnull)widgetId;
 
 - (void) registerNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier forSFItemType:(SFItemType)itemType;
 

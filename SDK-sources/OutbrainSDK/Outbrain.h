@@ -17,7 +17,7 @@
 @class OBRecommendation;
 
 // The current version of the sdk
-extern NSString * const OB_SDK_VERSION;
+extern NSString * _Nonnull const OB_SDK_VERSION;
 
 #define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
@@ -74,10 +74,10 @@ extern NSString * const OB_SDK_VERSION;
  * @see OBResponseDelegate
  */
 + (void)fetchRecommendationsForRequest:(OBRequest * _Nonnull)request
-                          withCallback:(OBResponseCompletionHandler)handler;
+                          withCallback:(OBResponseCompletionHandler _Nonnull )handler;
 
 + (void)fetchRecommendationsForRequest:(OBRequest * _Nonnull)request
-                          withDelegate:(__weak id<OBResponseDelegate>)delegate;
+                          withDelegate:(__weak id<OBResponseDelegate> _Nonnull)delegate;
 
 
 /** @section Viewability **/
@@ -127,9 +127,6 @@ extern NSString * const OB_SDK_VERSION;
  **/
 + (NSURL * _Nullable) getUrl:(OBRecommendation * _Nonnull)recommendation;
 
-/** @section RTB integration **/
-
-typedef void (^OBOnClickBlock)(NSURL *url);
 
 /**
  * @brief Get the URL you should open in an external browser when the user taps on Outbrain logo
