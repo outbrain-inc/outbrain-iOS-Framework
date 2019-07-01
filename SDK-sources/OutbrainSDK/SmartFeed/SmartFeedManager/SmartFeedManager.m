@@ -430,7 +430,16 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     NSIndexPath *firstIdx = indexPaths[0];
     
-    if (self.sfCollectionViewManager) {
+    if (self.isInMiddleOfScreen) {
+        [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+        if (self.hasMore) {
+            [self fetchMoreRecommendations];
+        }
+        else if ([self.delegate respondsToSelector:@selector(smartfeedIsReadyWithRecs)]) {
+            [self.delegate smartfeedIsReadyWithRecs];
+        }
+    }
+    else if (self.sfCollectionViewManager) {
         if (self.sfCollectionViewManager.collectionView != nil) {
             [self.sfCollectionViewManager.collectionView performBatchUpdates:^{
                 [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
