@@ -18,18 +18,6 @@
 #import "GDPRUtils.h"
 
 
-@interface OBAdChoicesButton : UIButton
-
-@property (copy) OBOnClickBlock block;
-@property (nonatomic, copy) NSString *clickUrlString;
-
-@end
-
-@implementation OBAdChoicesButton
-
-@end
-
-
 @interface OutbrainHelper()
 
 @property (nonatomic, strong) NSMutableDictionary * apvCache;

@@ -27,7 +27,7 @@
 
 @property (nonatomic, strong, readonly) OBRequest * _Nonnull obRequest;
 
-@property (nonatomic, weak) id<OBVideoWidgetDelegate> delegate;
+@property (nonatomic, weak) id<OBVideoWidgetDelegate> _Nullable delegate;
 
 - (id _Nonnull )initRequest:(OBRequest * _Nonnull)obRequest
               containerView:(UIView * _Nonnull)containerView;

@@ -13,6 +13,6 @@
 @property (nonatomic, copy, readonly, nullable) NSString *reportServedUrl;
 @property (nonatomic, copy, readonly, nullable) NSString *reportViewedUrl;
 
-- (instancetype)initWithPayload:(NSDictionary *)payload;
+- (instancetype _Nonnull )initWithPayload:(NSDictionary * _Nullable)payload;
 
 @end
