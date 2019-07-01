@@ -115,6 +115,7 @@ class ArticleMidPageTableViewController: UIViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
             self.smartFeedManager.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
+            return
         }
         
         // App Developer should configure the app cells here..
