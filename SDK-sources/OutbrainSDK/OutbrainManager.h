@@ -16,6 +16,7 @@
 @property (nonatomic, copy)     NSString *  partnerKey;
 @property (nonatomic, assign)   BOOL        testMode;
 @property (nonatomic, assign)   BOOL        testRTB;
+@property (nonatomic, copy)     NSString *  testLocation;
 
 +(OutbrainManager *) sharedInstance;
 
