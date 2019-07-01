@@ -3,7 +3,7 @@
 ## Development 
 
 
-## v3.7.5 - July 1, 2019
+## v3.7.5 - July 1, 2019 
 
 - Feature: Smartfeed in the middle of the screen support (possible to have additional custom content below the SF).
 - Improvement: fix all nullability warnings in xcode 10.2.1
