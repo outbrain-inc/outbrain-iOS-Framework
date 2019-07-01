@@ -3,6 +3,13 @@
 ## Development 
 
 
+## v3.7.5 - July 1, 2019 
+
+- Feature: Smartfeed in the middle of the screen support (possible to have additional custom content below the SF).
+- Improvement: fix all nullability warnings in xcode 10.2.1
+- Improvement: Smartfeed fetchMoreRecommendations() is now public.
+- Improvement: add `testLocation()` to Outbrain.h to simulate location, e.g. "us"
+
 
 ## v3.7.0 - June 6, 2019
 
