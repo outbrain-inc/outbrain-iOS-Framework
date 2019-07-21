@@ -1040,9 +1040,9 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     for (NSInteger i=0; i < cardsResponseArray.count; i++) {
         OBRecommendationResponse *recResponse = cardsResponseArray[i];
         [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:recResponse]];
-        
+        NSString *widgetId = [recResponse.responseRequest getStringValueForPayloadKey:@"widgetJsId"];
         if ([self.delegate respondsToSelector:@selector(smartFeedResponseReceived:forWidgetId:)]) {
-            [self.delegate smartFeedResponseReceived:recResponse.recommendations forWidgetId:recResponse.request.widgetId];
+            [self.delegate smartFeedResponseReceived:recResponse.recommendations forWidgetId:widgetId];
         }
     }
     
