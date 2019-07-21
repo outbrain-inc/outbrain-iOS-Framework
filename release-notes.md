@@ -2,6 +2,9 @@
 
 ## Development 
 
+## v3.7.6 - July 20, 2019 
+
+- Bug fix - `smartFeedResponseReceived:forWidgetId:` returned the parent widget id every time.
 
 ## v3.7.5 - July 1, 2019 
 
