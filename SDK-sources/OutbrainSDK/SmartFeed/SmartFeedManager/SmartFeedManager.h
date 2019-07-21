@@ -104,6 +104,7 @@ typedef enum
 
 @property (nonatomic, assign) NSInteger outbrainWidgetIndex;
 @property (nonatomic, assign) BOOL isInMiddleOfScreen;
+@property (nonatomic, assign, readonly) BOOL hasMore;
 @property (nonatomic, strong, readonly) NSString * _Nullable url;
 @property (nonatomic, strong, readonly) NSString * _Nullable widgetId;
 @property (nonatomic, copy) NSString * _Nullable externalID;
