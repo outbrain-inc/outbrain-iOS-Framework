@@ -5,6 +5,7 @@
 ## v3.7.6 - July 20, 2019 
 
 - Bug fix - `smartFeedResponseReceived:forWidgetId:` returned the parent widget id every time.
+- Improvement: smartfeed in middle will fetch recs only on app developer explicit call
 
 ## v3.7.5 - July 1, 2019 
 

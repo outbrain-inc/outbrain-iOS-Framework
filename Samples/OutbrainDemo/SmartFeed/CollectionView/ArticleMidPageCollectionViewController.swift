@@ -69,7 +69,7 @@ class ArticleMidPageCollectionViewController: UICollectionViewController {
         // self.smartFeedManager.horizontalContainerMargin = 40.0
         
         // Optional
-        self.setupCustomUIForSmartFeed()
+        // self.setupCustomUIForSmartFeed()
     }
     
     func setupCustomUIForSmartFeed() {
@@ -142,6 +142,10 @@ extension ArticleMidPageCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if self.smartfeedIsReady && indexPath.section == self.smartFeedManager.outbrainSectionIndex {
             self.smartFeedManager.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
+            if (self.smartFeedManager.hasMore && indexPath.row + 3 >= self.smartFeedManager.smartFeedItemsCount()) {
+                print("App calling fetchMoreRecommendations()")
+                self.smartFeedManager.fetchMoreRecommendations()
+            }
             return
         }
         
@@ -193,8 +197,12 @@ extension ArticleMidPageCollectionViewController : SmartFeedDelegate {
     
     func smartfeedIsReadyWithRecs() {
         // Do what is needed to integrate the Smartfeed content in the UITableView
-        self.smartfeedIsReady = true
-        self.collectionView.reloadData()
+        print("smartfeedIsReadyWithRecs")
+        if (!self.smartfeedIsReady) {
+            // only for the first time run reloadData() after that the Smartfeed will take care of updating itself
+            self.smartfeedIsReady = true
+            self.collectionView.reloadData()
+        }
     }
 }
 

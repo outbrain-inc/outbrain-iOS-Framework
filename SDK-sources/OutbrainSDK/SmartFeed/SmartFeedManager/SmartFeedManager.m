@@ -430,7 +430,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     NSIndexPath *firstIdx = indexPaths[0];
     
-    if (self.isInMiddleOfScreen) {
+    if (self.isInMiddleOfScreen && self.smartFeedItemsArray.count == 0) {
         [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
         
         if ([self.delegate respondsToSelector:@selector(smartfeedIsReadyWithRecs)]) {
@@ -447,7 +447,11 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
                 }
                 [self.sfCollectionViewManager.collectionView insertItemsAtIndexPaths:indexPaths];
                 
-            } completion:nil];
+            } completion:^(BOOL finished) {
+                if (self.isInMiddleOfScreen && [self.delegate respondsToSelector:@selector(smartfeedIsReadyWithRecs)]) {
+                    [self.delegate smartfeedIsReadyWithRecs];
+                }
+            }];
         }
     }
     else if (self.sfTableViewManager) {
