@@ -59,7 +59,7 @@ class ArticleMidPageCollectionViewController: UICollectionViewController {
         }
         
         
-        self.smartFeedManager = SmartFeedManager(url: Const.baseURL, widgetID: Const.widgetID, collectionView: collectionView)
+        self.smartFeedManager = SmartFeedManager(url: OBConf.baseURL, widgetID: OBConf.widgetID, collectionView: collectionView)
         self.smartFeedManager.delegate = self
         self.smartFeedManager.isInMiddleOfScreen = true
         self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
