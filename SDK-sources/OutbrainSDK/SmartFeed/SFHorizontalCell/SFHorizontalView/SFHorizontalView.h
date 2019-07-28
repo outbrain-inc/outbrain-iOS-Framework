@@ -13,8 +13,8 @@
 
 @interface SFHorizontalView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
 
-typedef void(^OnRecommendationClick)(OBRecommendation *rec);
-typedef void(^OnAdChoicesIconClick)(NSURL *url);
+typedef void(^OnRecommendationClick)(OBRecommendation * _Nullable rec);
+typedef void(^OnAdChoicesIconClick)(NSURL * _Nullable url);
 typedef CGSize(^CarouselItemSizeCallback)(void);
 typedef void(^ConfigureHorizontalItem)(SFCollectionViewCell * _Nonnull cell, OBRecommendation * _Nonnull rec);
 
@@ -30,9 +30,9 @@ typedef void(^ConfigureHorizontalItem)(SFCollectionViewCell * _Nonnull cell, OBR
 @property (nonatomic) ConfigureHorizontalItem _Nullable configureHorizontalItem;
 
 // This section was private, now its here for the children classes
-@property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, copy) NSString *horizontalCellIdentifier;
-@property (nonatomic, strong) UINib *horizontalItemCellNib;
+@property (nonatomic, strong) UICollectionView * _Nullable collectionView;
+@property (nonatomic, copy) NSString * _Nullable horizontalCellIdentifier;
+@property (nonatomic, strong) UINib * _Nullable horizontalItemCellNib;
 
 @property (nonatomic, assign) BOOL didInitCollectionViewLayout;
 @property (nonatomic, assign) CGSize itemSize;

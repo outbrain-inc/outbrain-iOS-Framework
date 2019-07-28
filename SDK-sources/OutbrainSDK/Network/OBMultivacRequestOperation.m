@@ -124,9 +124,6 @@
 }
 
 - (void) taskCompletedWith:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error {
-    
-    NSDictionary *multivacResponse;
-    
     if (error != nil) {
         [self.multivacDelegate onMultivacFailure:error];
         return;

@@ -40,12 +40,12 @@
 /**
  *  @brief The URL that the user is currently viewing (default value is NULL).
  **/
-@property (nonatomic, copy) NSString * url;
+@property (nonatomic, copy) NSString * _Nonnull url;
 
 /**
  * @brief A string ID (assigned by your account manager) for the widget in which content recommendations will be displayed (default value is NULL).
  **/
-@property (nonatomic, copy) NSString * widgetId;
+@property (nonatomic, copy) NSString * _Nonnull widgetId;
 
 /**
  *  @brief A zero-based, unique numeric ID for the widget in which content recommendations will be displayed (default value is 0).
@@ -81,7 +81,7 @@
  *          it will serve the publisher for reporting purposes.
  *
  **/
-@property (nonatomic, copy) NSString *externalID;
+@property (nonatomic, copy) NSString * _Nullable externalID;
 
 /**
  *  @brief A constructor for defining an OBRequest object.

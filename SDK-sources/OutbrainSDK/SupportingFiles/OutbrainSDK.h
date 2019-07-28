@@ -42,5 +42,6 @@ FOUNDATION_EXPORT const unsigned char DynamicOutbrainSDKVersionString[];
 #import <OutbrainSDK/OBVideoWidget.h>
 #import <OutbrainSDK/OBUtils.h>
 #import <OutbrainSDK/SFItemData.h>
+#import <OutbrainSDK/OBViewabilityService.h>
 
 

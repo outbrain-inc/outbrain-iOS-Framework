@@ -19,7 +19,7 @@
 
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"3.6.0";
+NSString * const OB_SDK_VERSION     =   @"3.7.6";
 
 BOOL WAS_INITIALIZED     =   NO;
 
@@ -63,6 +63,10 @@ BOOL WAS_INITIALIZED     =   NO;
 
 + (void)testRTB:(BOOL)testRTB {
     [OutbrainManager sharedInstance].testRTB = testRTB;
+}
+
++ (void)testLocation:(NSString *)location {
+    [OutbrainManager sharedInstance].testLocation = location;
 }
 
 #pragma mark - Fetching

@@ -33,7 +33,7 @@
 
 @property (nonatomic, strong, nullable) OBViewabilityActions *viewabilityActions;
 
-- (instancetype)initWithPayload:(NSDictionary *)payload;
+- (instancetype _Nonnull) initWithPayload:(NSDictionary * _Nullable) payload;
 
 
 @end

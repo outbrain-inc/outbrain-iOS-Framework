@@ -29,6 +29,7 @@
 #import "SFViewabilityService.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 #import "MultivacResponseDelegate.h"
+#import "SFDefaultDelegate.h"
 
 @interface SmartFeedManager() <SFPrivateEventListener, WKUIDelegate, MultivacResponseDelegate>
 
@@ -65,6 +66,8 @@
 
 @property (nonatomic, strong) NSDate *initializationTime;
 @property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
+
+@property (nonatomic, strong) SFDefaultDelegate *defaultDelegate;
 
 @end
 
@@ -127,6 +130,9 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     self.reuseIdentifierItemType = [[NSMutableDictionary alloc] init];
     self.horizontalContainerMargin = 0;
     self.isVideoEligible = YES; // default value
+    
+    self.defaultDelegate = [[SFDefaultDelegate alloc] init];
+    self.delegate = self.defaultDelegate;
 }
 
 -(void) setOutbrainWidgetIndex:(NSInteger)widgetIndex {
@@ -241,6 +247,14 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
 -(NSArray *) createSmartfeedItemsArrayFromResponse:(OBRecommendationResponse *)response {
     NSString *widgetTitle = response.settings.widgetHeaderText;
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
+    
+    if (response.recommendations.count == 0) {
+        NSLog(@"Error - ODB response with zero recs.. widget id: %@, req_id: %@",
+              [response.responseRequest getStringValueForPayloadKey:@"widgetJsId"],
+              [response.responseRequest getStringValueForPayloadKey:@"req_id"]);
+        return @[];
+    }
+    
     for (OBRecommendation *rec in response.recommendations) {
         [[SFImageLoader sharedInstance] loadImageToCacheIfNeeded:rec.image.url];
     }
@@ -416,7 +430,14 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     NSIndexPath *firstIdx = indexPaths[0];
     
-    if (self.sfCollectionViewManager) {
+    if (self.isInMiddleOfScreen && self.smartFeedItemsArray.count == 0) {
+        [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+        
+        if ([self.delegate respondsToSelector:@selector(smartfeedIsReadyWithRecs)]) {
+            [self.delegate smartfeedIsReadyWithRecs];
+        }
+    }
+    else if (self.sfCollectionViewManager) {
         if (self.sfCollectionViewManager.collectionView != nil) {
             [self.sfCollectionViewManager.collectionView performBatchUpdates:^{
                 [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
@@ -426,7 +447,11 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
                 }
                 [self.sfCollectionViewManager.collectionView insertItemsAtIndexPaths:indexPaths];
                 
-            } completion:nil];
+            } completion:^(BOOL finished) {
+                if (self.isInMiddleOfScreen && [self.delegate respondsToSelector:@selector(smartfeedIsReadyWithRecs)]) {
+                    [self.delegate smartfeedIsReadyWithRecs];
+                }
+            }];
         }
     }
     else if (self.sfTableViewManager) {
@@ -525,7 +550,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
-    if ((indexPath.row >= (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
+    if (!self.isInMiddleOfScreen && (indexPath.row >= (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
         [self fetchMoreRecommendations];
     }
 }
@@ -788,7 +813,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         [self.sfCollectionViewManager configureSingleCell:cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
-    if (indexPath.row >= self.smartFeedItemsArray.count - 2) {
+    if (!self.isInMiddleOfScreen && indexPath.row >= self.smartFeedItemsArray.count - 2) {
         [self fetchMoreRecommendations];
     }
 }
@@ -1017,10 +1042,16 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     for (NSInteger i=0; i < cardsResponseArray.count; i++) {
         OBRecommendationResponse *recResponse = cardsResponseArray[i];
         [newSmartfeedItems addObjectsFromArray:[self createSmartfeedItemsArrayFromResponse:recResponse]];
-        
+        NSString *widgetId = [recResponse.responseRequest getStringValueForPayloadKey:@"widgetJsId"];
         if ([self.delegate respondsToSelector:@selector(smartFeedResponseReceived:forWidgetId:)]) {
-            [self.delegate smartFeedResponseReceived:recResponse.recommendations forWidgetId:recResponse.request.widgetId];
+            [self.delegate smartFeedResponseReceived:recResponse.recommendations forWidgetId:widgetId];
         }
+    }
+    
+    if (newSmartfeedItems.count == 0) {
+        NSLog(@"Error in onMultivacSuccess - newSmartfeedItems.count == 0");
+        self.isLoading = NO;
+        return;
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{

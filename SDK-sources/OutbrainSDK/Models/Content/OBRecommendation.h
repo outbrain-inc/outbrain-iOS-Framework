@@ -42,9 +42,9 @@
 /** @brief TBD - property may be removed. */
 @property (nonatomic, copy, readonly, nullable) NSString * author;
 /** @brief The recommendation's title. */
-@property (nonatomic, copy, readonly, nonnull) NSString * content;
+@property (nonatomic, copy, readonly, nullable) NSString * content;
 /** @brief The name of the recommendation's source. */
-@property (nonatomic, copy, readonly, nonnull) NSString * source;
+@property (nonatomic, copy, readonly, nullable) NSString * source;
 /** @brief Is the recommendation from the same source as the one the user is currently viewing. */
 @property (nonatomic, assign, getter = isSameSource, readonly) BOOL sameSource;
 /** @brief Is this a recommendation for which the publisher pays, when your user clicks on it. */
@@ -66,6 +66,6 @@
 
 -(BOOL) shouldDisplayDisclosureIcon;
 
-- (NSString *)description;
+- (NSString * _Nonnull)description;
 
 @end

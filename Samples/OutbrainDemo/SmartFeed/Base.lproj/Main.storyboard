@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zl6-7P-NJI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zl6-7P-NJI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,6 +57,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="1IC-s9-h48"/>
+                    <connections>
+                        <segue destination="0MH-sW-S8S" kind="show" identifier="showCollectionMidPageVC" id="eMn-GZ-hxJ"/>
+                        <segue destination="j7a-a8-dfY" kind="show" identifier="showTableMidPageVC" id="R9M-IZ-HEK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,20 +108,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YK0-oo-CYZ" userLabel="Content View">
-                                            <rect key="frame" x="8" y="8" width="359" height="184"/>
+                                            <rect key="frame" x="8" y="28" width="359" height="164"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cun-qa-yVL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="184"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="164"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="  The Guardian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eej-j0-MTD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="89.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="79.5"/>
                                                             <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.76867508559999997" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Suarez: Messi Was Born Great, Ronaldo Made Himself Great" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sM8-Qs-2x4">
-                                                            <rect key="frame" x="0.0" y="94.5" width="359" height="89.5"/>
+                                                            <rect key="frame" x="0.0" y="84.5" width="359" height="79.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -271,7 +274,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0x-jR-Fxz">
-                                                    <rect key="frame" x="7" y="0.0" width="361" height="43.5"/>
+                                                    <rect key="frame" x="7" y="0.0" width="361" height="44"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
@@ -368,20 +371,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWZ-7x-3KT" userLabel="Content View">
-                                            <rect key="frame" x="8" y="8" width="359" height="184"/>
+                                            <rect key="frame" x="8" y="28" width="359" height="164"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gfP-D5-xDy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="184"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="164"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="  The Guardian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZD4-5C-Q0A">
-                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="89.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="79.5"/>
                                                             <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.76867508559999997" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Suarez: Messi Was Born Great, Ronaldo Made Himself Great" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94K-RB-6Gs">
-                                                            <rect key="frame" x="0.0" y="94.5" width="359" height="89.5"/>
+                                                            <rect key="frame" x="0.0" y="84.5" width="359" height="79.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -477,6 +480,252 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0M-tg-qfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1513" y="-860"/>
+        </scene>
+        <!--UICollectionView-->
+        <scene sceneID="sD8-L0-Q0r">
+            <objects>
+                <collectionViewController title="UICollectionView" id="0MH-sW-S8S" customClass="ArticleMidPageCollectionViewController" customModule="SmartFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="jgZ-wI-XRm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3mI-g6-uPB">
+                            <size key="itemSize" width="375" height="200"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageHeaderCollectionCell" id="BWp-Bf-q4J" userLabel="imageHeaderCollectionCell">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="articleImage" translatesAutoresizingMaskIntoConstraints="NO" id="grE-zW-ovV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="grE-zW-ovV" firstAttribute="leading" secondItem="BWp-Bf-q4J" secondAttribute="leading" id="B5w-QA-C3s"/>
+                                    <constraint firstAttribute="bottom" secondItem="grE-zW-ovV" secondAttribute="bottom" id="Nve-G3-X4l"/>
+                                    <constraint firstAttribute="trailing" secondItem="grE-zW-ovV" secondAttribute="trailing" id="XzJ-Pr-kDG"/>
+                                    <constraint firstItem="grE-zW-ovV" firstAttribute="top" secondItem="BWp-Bf-q4J" secondAttribute="top" id="gY9-3m-usV"/>
+                                </constraints>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="textHeaderCollectionCell" id="55A-50-iXz" userLabel="textHeaderCollectionCell" customClass="AppArticleCollectionViewCell" customModule="SmartFeed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="210" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLX-1e-nrd" userLabel="Content View">
+                                            <rect key="frame" x="8" y="28" width="359" height="164"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hce-iI-mXP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="164"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="  The Guardian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MR-WJ-GH7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="79.5"/>
+                                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.76867508559999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Suarez: Messi Was Born Great, Ronaldo Made Himself Great" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEu-gU-S22">
+                                                            <rect key="frame" x="0.0" y="84.5" width="359" height="79.5"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="hce-iI-mXP" secondAttribute="trailing" id="1XG-Dv-L5l"/>
+                                                <constraint firstItem="hce-iI-mXP" firstAttribute="leading" secondItem="YLX-1e-nrd" secondAttribute="leading" id="6HU-Oo-7cK"/>
+                                                <constraint firstAttribute="bottom" secondItem="hce-iI-mXP" secondAttribute="bottom" id="7js-uz-uXh"/>
+                                                <constraint firstItem="hce-iI-mXP" firstAttribute="top" secondItem="YLX-1e-nrd" secondAttribute="top" id="8gQ-h2-eQx"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="YLX-1e-nrd" firstAttribute="top" secondItem="55A-50-iXz" secondAttribute="topMargin" id="6Mr-x0-tPd"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="YLX-1e-nrd" secondAttribute="trailing" id="T09-Vv-gdy"/>
+                                    <constraint firstItem="YLX-1e-nrd" firstAttribute="leading" secondItem="55A-50-iXz" secondAttribute="leadingMargin" id="XaK-5y-W3e"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="YLX-1e-nrd" secondAttribute="bottom" id="f1A-UZ-L3c"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="headerLabel" destination="wEu-gU-S22" id="vum-zG-hPM"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contentCollectionCell" id="vIa-Fj-Aov" userLabel="contentCollectionCell" customClass="AppArticleCollectionViewCell" customModule="SmartFeed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="420" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDP-9A-XUi">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="hDP-9A-XUi" firstAttribute="leading" secondItem="vIa-Fj-Aov" secondAttribute="leading" id="6ub-j6-Rtd"/>
+                                    <constraint firstAttribute="bottom" secondItem="hDP-9A-XUi" secondAttribute="bottom" id="962-mg-jTv"/>
+                                    <constraint firstAttribute="trailing" secondItem="hDP-9A-XUi" secondAttribute="trailing" id="clm-mz-G91"/>
+                                    <constraint firstItem="hDP-9A-XUi" firstAttribute="top" secondItem="vIa-Fj-Aov" secondAttribute="top" id="hQy-tE-hBP"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="contentTextView" destination="hDP-9A-XUi" id="qhm-ed-TZX"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="0MH-sW-S8S" id="UTj-zs-1qQ"/>
+                            <outlet property="delegate" destination="0MH-sW-S8S" id="hYa-A4-Rq9"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0uH-pa-vwe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2242" y="584"/>
+        </scene>
+        <!--UITableView-->
+        <scene sceneID="sJu-KQ-Cvi">
+            <objects>
+                <viewController title="UITableView" id="j7a-a8-dfY" customClass="ArticleMidPageTableViewController" customModule="SmartFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0aS-He-Te0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l04-rD-bH0">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageHeaderCell" rowHeight="202" id="hOy-Ge-Da7">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="202"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hOy-Ge-Da7" id="Iy3-bq-dBX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="articleImage" translatesAutoresizingMaskIntoConstraints="NO" id="Hq0-Yo-Ic8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" priority="750" constant="200" id="iEX-8G-5u9"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Hq0-Yo-Ic8" firstAttribute="top" secondItem="Iy3-bq-dBX" secondAttribute="top" id="6yo-CB-dhw"/>
+                                                <constraint firstItem="Hq0-Yo-Ic8" firstAttribute="width" secondItem="Iy3-bq-dBX" secondAttribute="width" id="Apm-LA-Tvn"/>
+                                                <constraint firstItem="Hq0-Yo-Ic8" firstAttribute="centerX" secondItem="Iy3-bq-dBX" secondAttribute="centerX" id="GT6-El-ztm"/>
+                                                <constraint firstAttribute="bottom" secondItem="Hq0-Yo-Ic8" secondAttribute="bottom" id="GUZ-q6-bAC"/>
+                                                <constraint firstItem="Hq0-Yo-Ic8" firstAttribute="leading" secondItem="Iy3-bq-dBX" secondAttribute="leading" id="GhB-nl-ZrX"/>
+                                                <constraint firstItem="Hq0-Yo-Ic8" firstAttribute="centerY" secondItem="Iy3-bq-dBX" secondAttribute="centerY" id="ITa-Wa-HqR"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hq0-Yo-Ic8" secondAttribute="trailing" id="cfZ-3o-CVM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textHeaderCell" rowHeight="88" id="ftb-Wg-bMt" customClass="AppArticleTableViewCell" customModule="SmartFeed" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="230" width="375" height="88"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ftb-Wg-bMt" id="5fn-RJ-0Bw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rWL-yK-O3M">
+                                                    <rect key="frame" x="10" y="20" width="355" height="68"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="  The Guardian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yct-pz-fD6">
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="15"/>
+                                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.76867508559999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="rzj-5s-Gdy"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Suarez: Messi Was Born Great, Ronaldo Made Himself Great" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kC3-3a-UqN">
+                                                            <rect key="frame" x="0.0" y="20" width="355" height="48"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="kC3-3a-UqN" secondAttribute="trailing" id="NpR-LW-JXe"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rWL-yK-O3M" firstAttribute="top" secondItem="5fn-RJ-0Bw" secondAttribute="top" constant="20" id="3GD-LR-tEB"/>
+                                                <constraint firstAttribute="trailing" secondItem="rWL-yK-O3M" secondAttribute="trailing" constant="10" id="8JA-bv-Vec"/>
+                                                <constraint firstAttribute="bottom" secondItem="rWL-yK-O3M" secondAttribute="bottom" id="PlG-W3-859"/>
+                                                <constraint firstItem="rWL-yK-O3M" firstAttribute="leading" secondItem="5fn-RJ-0Bw" secondAttribute="leading" constant="10" id="QlJ-Dj-kgu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="headerLabel" destination="kC3-3a-UqN" id="D4L-aH-ozy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contentHeaderCell" id="5F9-0U-e5t" customClass="AppArticleTableViewCell" customModule="SmartFeed" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="318" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5F9-0U-e5t" id="neR-DM-PUx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alG-PZ-6rS">
+                                                    <rect key="frame" x="7" y="0.0" width="361" height="44"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="alG-PZ-6rS" firstAttribute="top" secondItem="neR-DM-PUx" secondAttribute="top" id="3Uh-uX-nFi"/>
+                                                <constraint firstAttribute="bottom" secondItem="alG-PZ-6rS" secondAttribute="bottom" id="BWp-ex-mwO"/>
+                                                <constraint firstAttribute="trailing" secondItem="alG-PZ-6rS" secondAttribute="trailing" constant="7" id="ogC-1U-Csf"/>
+                                                <constraint firstItem="alG-PZ-6rS" firstAttribute="leading" secondItem="neR-DM-PUx" secondAttribute="leading" constant="7" id="y0W-aC-9Ww"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentTextView" destination="alG-PZ-6rS" id="PDd-2H-lTM"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="d0f-c9-lSm" firstAttribute="trailing" secondItem="l04-rD-bH0" secondAttribute="trailing" id="OsB-0G-8BE"/>
+                            <constraint firstItem="l04-rD-bH0" firstAttribute="top" secondItem="d0f-c9-lSm" secondAttribute="top" id="Srg-K8-1fu"/>
+                            <constraint firstItem="d0f-c9-lSm" firstAttribute="bottom" secondItem="l04-rD-bH0" secondAttribute="bottom" id="WYv-88-fvM"/>
+                            <constraint firstItem="l04-rD-bH0" firstAttribute="leading" secondItem="d0f-c9-lSm" secondAttribute="leading" id="Zud-69-Ynn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="d0f-c9-lSm"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="l04-rD-bH0" id="5vP-FY-sN8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N3u-RW-8ly" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2241" y="-143"/>
         </scene>
     </scenes>
     <resources>

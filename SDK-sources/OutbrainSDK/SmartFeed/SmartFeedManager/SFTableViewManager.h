@@ -20,23 +20,23 @@
 
 @interface SFTableViewManager : NSObject
 
-@property (nonatomic, weak) id<SFPrivateEventListener> eventListenerTarget;
-@property (nonatomic, weak) id<WKUIDelegate> wkWebviewDelegate;
-@property (nonatomic, weak, readonly) UITableView *tableView;
+@property (nonatomic, weak) id<SFPrivateEventListener> _Nullable eventListenerTarget;
+@property (nonatomic, weak) id<WKUIDelegate> _Nullable wkWebviewDelegate;
+@property (nonatomic, weak, readonly) UITableView * _Nullable tableView;
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
 
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView;
 
-- (UITableViewCell *)tableView:(UITableView *)tableView headerCellForRowAtIndexPath:(NSIndexPath *)indexPath isRTL:(BOOL)isRTL;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView headerCellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath isRTL:(BOOL)isRTL;
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath sfItemType:(SFItemType)sfItemType;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath sfItemType:(SFItemType)sfItemType;
 
-- (CGFloat) heightForRowAtIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem;
+- (CGFloat) heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath withSFItem:(SFItemData * _Nonnull)sfItem;
 
-- (void) configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem;
+- (void) configureSingleTableViewCell:(SFTableViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath withSFItem:(SFItemData * _Nonnull)sfItem;
 
-- (void) configureVideoCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem;
+- (void) configureVideoCell:(UITableViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath withSFItem:(SFItemData * _Nonnull)sfItem;
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier;
 

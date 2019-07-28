@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		16B1F9A02185E95C00023DDD /* GDPRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F99E2185E95C00023DDD /* GDPRUtils.m */; };
 		16B1F9A12185E95C00023DDD /* GDPRUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 16B1F99F2185E95C00023DDD /* GDPRUtils.h */; };
+		16C48D55227739160003A892 /* SFDefaultDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C48D53227739150003A892 /* SFDefaultDelegate.h */; };
+		16C48D56227739160003A892 /* SFDefaultDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C48D54227739160003A892 /* SFDefaultDelegate.m */; };
 		16F81EF32241420400DC0D03 /* OBViewabilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F81EF22241420400DC0D03 /* OBViewabilityActions.m */; };
 		E61AE205216B560C001F7405 /* SFSingleVideoWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE201216B560B001F7405 /* SFSingleVideoWithTitleTableViewCell.xib */; };
 		E61AE206216B560C001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE202216B560B001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib */; };
@@ -32,7 +34,7 @@
 		E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BCC20836C180016D79A /* OBAppleAdIdUtil.m */; };
 		E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BCD20836C180016D79A /* OBAppleAdIdUtil.h */; };
 		E61E6C1920836C180016D79A /* OBLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD020836C180016D79A /* OBLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD120836C180016D79A /* OBViewabilityService.h */; };
+		E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD120836C180016D79A /* OBViewabilityService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6C1B20836C180016D79A /* OBAdsChoicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD220836C180016D79A /* OBAdsChoicesManager.m */; };
 		E61E6C1C20836C180016D79A /* UIView+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD320836C180016D79A /* UIView+Visible.m */; };
 		E61E6C1D20836C180016D79A /* OBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD420836C180016D79A /* OBLabel.m */; };
@@ -191,6 +193,8 @@
 /* Begin PBXFileReference section */
 		16B1F99E2185E95C00023DDD /* GDPRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDPRUtils.m; sourceTree = "<group>"; };
 		16B1F99F2185E95C00023DDD /* GDPRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPRUtils.h; sourceTree = "<group>"; };
+		16C48D53227739150003A892 /* SFDefaultDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDefaultDelegate.h; sourceTree = "<group>"; };
+		16C48D54227739160003A892 /* SFDefaultDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDefaultDelegate.m; sourceTree = "<group>"; };
 		16F81EF1224141F000DC0D03 /* OBViewabilityActions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBViewabilityActions.h; sourceTree = "<group>"; };
 		16F81EF22241420400DC0D03 /* OBViewabilityActions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityActions.m; sourceTree = "<group>"; };
 		D82F1D7818564C7700D4DEA8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -763,6 +767,8 @@
 				E6F8F45F211C3D400069C72C /* SFTableViewManager.m */,
 				E6F8F462211C3D580069C72C /* SFCollectionViewManager.h */,
 				E6F8F463211C3D580069C72C /* SFCollectionViewManager.m */,
+				16C48D53227739150003A892 /* SFDefaultDelegate.h */,
+				16C48D54227739160003A892 /* SFDefaultDelegate.m */,
 			);
 			path = SmartFeedManager;
 			sourceTree = "<group>";
@@ -886,6 +892,7 @@
 				E61E6C4020836C180016D79A /* OBErrors.h in Headers */,
 				E6F8F45D211C3C6D0069C72C /* SmartFeedManager.h in Headers */,
 				E61E6C2520836C180016D79A /* OBReachability.h in Headers */,
+				16C48D55227739160003A892 /* SFDefaultDelegate.h in Headers */,
 				E61E6C2E20836C180016D79A /* OBSettings.h in Headers */,
 				E61E6C1E20836C180016D79A /* OBAdsChoicesManager.h in Headers */,
 				E6C14F3F2251FC010075474E /* OBViewabilityActions.h in Headers */,
@@ -1081,6 +1088,7 @@
 				E63B7851212AB1860018C225 /* SFItemData.m in Sources */,
 				E6355E2122411DF200C3D1D5 /* OBView.m in Sources */,
 				E63B784F212AB1860018C225 /* SFUtils.m in Sources */,
+				16C48D56227739160003A892 /* SFDefaultDelegate.m in Sources */,
 				E61E6C3620836C180016D79A /* OBContent.m in Sources */,
 				E61E6C1D20836C180016D79A /* OBLabel.m in Sources */,
 				E6F8F465211C3D580069C72C /* SFCollectionViewManager.m in Sources */,

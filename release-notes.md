@@ -2,6 +2,25 @@
 
 ## Development 
 
+## v3.7.6 - July 20, 2019 
+
+- Bug fix - `smartFeedResponseReceived:forWidgetId:` returned the parent widget id every time.
+- Improvement: smartfeed in middle will fetch recs only on app developer explicit call
+
+## v3.7.5 - July 1, 2019 
+
+- Feature: Smartfeed in the middle of the screen support (possible to have additional custom content below the SF).
+- Improvement: fix all nullability warnings in xcode 10.2.1
+- Improvement: Smartfeed fetchMoreRecommendations() is now public.
+- Improvement: add `testLocation()` to Outbrain.h to simulate location, e.g. "us"
+
+
+## v3.7.0 - June 6, 2019
+
+- Bug fix - Viewablity report served, if url didn't include "tm" the SDK failed to report to server.
+- Bug fix - Viewablity actions, if url is nil the SDK should ignore the report. 
+- Feature: App developer can now use `SmartFeedManager` without implementing `SFDefaultDelegate`, in which case the SDK will handle the click events.
+
 
 ## v3.6.0 - April 1, 2019
 
