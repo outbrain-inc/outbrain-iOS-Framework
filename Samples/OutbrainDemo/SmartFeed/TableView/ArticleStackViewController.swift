@@ -209,9 +209,6 @@ extension ArticleStackViewController : UICollectionViewDelegateFlowLayout {
 
 extension ArticleStackViewController : UIScrollViewDelegate {
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView.contentOffset.y + 400 >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
             if (self.smartFeedManager.hasMore) {
@@ -219,27 +216,6 @@ extension ArticleStackViewController : UIScrollViewDelegate {
                     self.lastFetchMoreRecommendationFireTime = NSDate().timeIntervalSince1970
                     print("App calling fetchMoreRecommendations()")
                     self.smartFeedManager.fetchMoreRecommendations()
-                }
-            }
-        }
-    }
-    
-    @objc func fetchMoreRecommendations() {
-        
-    }
-    func debounce(interval: Int, queue: DispatchQueue, action: @escaping (() -> Void)) -> () -> Void {
-        var lastFireTime:DispatchTime = DispatchTime.init(uptimeNanoseconds: 0)
-        let dispatchDelay = DispatchTimeInterval.milliseconds(interval)
-        
-        return {
-            lastFireTime = DispatchTime.now()
-            let dispatchTime: DispatchTime = DispatchTime.now() + dispatchDelay
-            
-            queue.asyncAfter(deadline: dispatchTime) {
-                let when: DispatchTime = lastFireTime + dispatchDelay
-                let now = DispatchTime.now()
-                if now.rawValue >= when.rawValue {
-                    action()
                 }
             }
         }
