@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         //performSegue(withIdentifier: "showVideoVC", sender: nil)
         //performSegue(withIdentifier: "showTableMidPageVC", sender: nil)
         //performSegue(withIdentifier: "showCollectionMidPageVC", sender: nil)
+        //performSegue(withIdentifier: "showStackViewVC", sender: nil)
     }
 }
 
