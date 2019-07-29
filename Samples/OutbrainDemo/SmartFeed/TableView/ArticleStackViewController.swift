@@ -1,8 +1,8 @@
 //
-//  ArticleTableViewController.swift
+//  ArticleStackViewController.swift
 //  ios-SmartFeed
 //
-//  Created by oded regev on 1/30/18.
+//  Created by oded regev on 7/29/19.
 //  Copyright © 2018 Outbrain. All rights reserved.
 //
 
@@ -52,10 +52,7 @@ class ArticleStackViewController: UIViewController, UITableViewDelegate, UITable
         self.smartFeedManager.delegate = self
         self.smartFeedManager.isInMiddleOfScreen = true
         self.smartFeedManager.outbrainSectionIndex = 0
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0) { // Change `2.0` to the desired number of seconds.
-            // Code you want to be delayed
-            self.smartFeedManager.fetchMoreRecommendations() // start fetching manually because Smartfeed is in the middle
-        }
+        self.smartFeedManager.fetchMoreRecommendations() // start fetching manually because Smartfeed is in the middle
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
