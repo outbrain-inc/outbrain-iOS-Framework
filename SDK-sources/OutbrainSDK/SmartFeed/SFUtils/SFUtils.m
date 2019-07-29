@@ -73,16 +73,18 @@ NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATI
 }
 
 +(void) addDropShadowToView:(UIView *)view shadowColor:(UIColor *)shadowColor {
-    view.layer.cornerRadius = 4.0f;
-    view.layer.borderWidth = 1.0f;
-    view.layer.borderColor = [UIColor clearColor].CGColor;
-    
-    view.layer.shadowColor = shadowColor != nil ? shadowColor.CGColor : [[UIColor lightGrayColor] CGColor];
-    view.layer.shadowOffset = CGSizeMake(0, 2.0f);
-    view.layer.shadowRadius = 2.0f;
-    view.layer.shadowOpacity = 1.0f;
-    view.layer.masksToBounds = NO;
-    view.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:view.layer.cornerRadius].CGPath;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        view.layer.cornerRadius = 4.0f;
+        view.layer.borderWidth = 1.0f;
+        view.layer.borderColor = [UIColor clearColor].CGColor;
+
+        view.layer.shadowColor = shadowColor != nil ? shadowColor.CGColor : [[UIColor lightGrayColor] CGColor];
+        view.layer.shadowOffset = CGSizeMake(0, 2.0f);
+        view.layer.shadowRadius = 2.0f;
+        view.layer.shadowOpacity = 1.0f;
+        view.layer.masksToBounds = NO;
+        view.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:view.layer.cornerRadius].CGPath;
+    });
 }
 
 + (void) removePaidLabelFromImageView:(UIImageView *)recImageView {
