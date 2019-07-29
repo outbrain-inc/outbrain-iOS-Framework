@@ -14,6 +14,7 @@
 #import "SFHorizontalWithVideoTableViewCell.h"
 #import "SFCollectionViewCell.h"
 #import "SFTableViewCell.h"
+#import "SFDefaultCollectionViewDelegate.h"
 #import "SFHorizontalTableViewCell.h"
 #import "SFVideoCollectionViewCell.h"
 #import "SFVideoTableViewCell.h"
@@ -47,6 +48,7 @@
 @property (nonatomic, assign) BOOL isSmartfeedWithNoChildren;
 
 @property (nonatomic, strong) SFCollectionViewManager *sfCollectionViewManager;
+@property (nonatomic, strong) SFDefaultCollectionViewDelegate *sfDefaultCollectionViewDelegate;
 @property (nonatomic, strong) SFTableViewManager *sfTableViewManager;
 
 
@@ -180,6 +182,15 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     else {
         [self fetchMoreRecommendationsWithMultivac];
+    }
+}
+
+- (void)setUseDefaultCollectionViewDelegate:(BOOL)useDefaultCollectionViewDelegate {
+    _useDefaultCollectionViewDelegate = useDefaultCollectionViewDelegate;
+    self.sfDefaultCollectionViewDelegate = [[SFDefaultCollectionViewDelegate alloc] initWithSmartfeedManager:self];
+    if (useDefaultCollectionViewDelegate && self.sfCollectionViewManager) {
+        self.sfCollectionViewManager.collectionView.delegate = self.sfDefaultCollectionViewDelegate;
+        self.sfCollectionViewManager.collectionView.dataSource = self.sfDefaultCollectionViewDelegate;
     }
 }
 

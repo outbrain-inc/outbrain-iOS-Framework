@@ -52,6 +52,7 @@ class ArticleStackViewController: UIViewController, UITableViewDelegate, UITable
         self.smartFeedManager.delegate = self
         self.smartFeedManager.isInMiddleOfScreen = true
         self.smartFeedManager.outbrainSectionIndex = 0
+        self.smartFeedManager.useDefaultCollectionViewDelegate = true
         self.smartFeedManager.fetchMoreRecommendations() // start fetching manually because Smartfeed is in the middle
     }
     
@@ -172,41 +173,6 @@ extension ArticleStackViewController : SmartFeedDelegate {
 }
 
 
-// Smartfeed Collection View
-extension ArticleStackViewController : UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.smartFeedManager.numberOfSectionsInCollectionView()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int {
-        // There is only 1 section and it's the Smartfeed
-        return self.smartFeedManager.smartFeedItemsCount()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        // create a new cell if needed or reuse an old one
-        return self.smartFeedManager.collectionView(collectionView, cellForItemAt: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        self.smartFeedManager.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
-    }
-}
-
-extension ArticleStackViewController : UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return self.smartFeedManager.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
-    }
-}
-
-
 extension ArticleStackViewController : UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -219,15 +185,5 @@ extension ArticleStackViewController : UIScrollViewDelegate {
                 }
             }
         }
-    }
-}
-
-extension Date {
-    var millisecondsSince1970:Int64 {
-        return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
-    }
-    
-    init(milliseconds:Int64) {
-        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
     }
 }
