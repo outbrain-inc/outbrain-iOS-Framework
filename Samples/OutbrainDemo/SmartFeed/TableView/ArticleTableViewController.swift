@@ -19,7 +19,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
     
-    let originalArticleItemsCount = 5
+    let originalArticleItemsCount = 15
     var outbrainIdx = 0
     var isLoadingOutrainRecs = false
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
@@ -67,7 +67,10 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             return originalArticleItemsCount
         }
         else {
-            return self.smartFeedManager.smartFeedItemsCount()
+            //let count = self.smartFeedManager.smartFeedItemsCount()
+            let count = 24
+            print("smartFeedItemsCount: \(count)")
+            return count
         }
     }
         
@@ -89,6 +92,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         case 2,3,4:
             cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
         default:
+            cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
             break;
         }
         
@@ -120,7 +124,9 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
-            return self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
+            let height = self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
+            print("heightForRowAt: \(height)")
+            return height
         }
         
         if (indexPath.section == 0) {

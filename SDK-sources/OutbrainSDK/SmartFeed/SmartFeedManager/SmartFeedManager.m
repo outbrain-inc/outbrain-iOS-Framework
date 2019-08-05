@@ -468,11 +468,13 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     else if (self.sfTableViewManager) {
         if (self.sfTableViewManager.tableView != nil) {
             // tell the table view to update (at all of the inserted index paths)
-            UITableView *tableView = self.sfTableViewManager.tableView;
-            [tableView beginUpdates];
             [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-            [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-            [tableView endUpdates];
+//            UITableView *tableView = self.sfTableViewManager.tableView;
+//            [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+//            [tableView beginUpdates];
+//            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+//            [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+//            [tableView endUpdates];
         }
     }
 }
@@ -481,6 +483,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section != self.outbrainSectionIndex) {
         return nil;
+    }
+    
+    if (indexPath.row >= [self smartFeedItemsCount]) {
+        return [[UITableViewCell alloc] init];
     }
     
     if (indexPath.row == 0) {
@@ -531,6 +537,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         return;
     }
     
+    if (indexPath.row >= [self smartFeedItemsCount]) {
+        return;
+    }
+    
     if (indexPath.row == 0) {
         // Smartfeed header
         [self configureSmartFeedHeaderTableViewCell:cell atIndexPath:indexPath];
@@ -572,6 +582,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         // Smartfeed header
         return UITableViewAutomaticDimension;
     }
+    if (indexPath.row >= [self smartFeedItemsCount]) {
+        return 2.0;
+    }
+    
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     return [self.sfTableViewManager heightForRowAtIndexPath:indexPath withSFItem:sfItem];
 }
