@@ -131,6 +131,8 @@
 		E64366CE1FAF0F1500FA617E /* OBHorizontalWidgetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366CD1FAF0F1500FA617E /* OBHorizontalWidgetCell.m */; };
 		E64366D41FAF492900FA617E /* PostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D11FAF491E00FA617E /* PostViewCell.m */; };
 		E64366D51FAF492C00FA617E /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */; };
+		E647EE7422EEFF3100313178 /* ArticleStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E647EE7122EEFF3100313178 /* ArticleStackViewController.swift */; };
+		E647EE7522EEFF3100313178 /* ArticleStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E647EE7122EEFF3100313178 /* ArticleStackViewController.swift */; };
 		E64F603B212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */; };
 		E64F603C212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */; };
 		E64F603E212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */; };
@@ -297,6 +299,7 @@
 		E64366D11FAF491E00FA617E /* PostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostViewCell.m; sourceTree = "<group>"; };
 		E64366D21FAF491E00FA617E /* TopBoxPostViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBoxPostViewCell.h; sourceTree = "<group>"; };
 		E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBoxPostViewCell.m; sourceTree = "<group>"; };
+		E647EE7122EEFF3100313178 /* ArticleStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleStackViewController.swift; sourceTree = "<group>"; };
 		E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleTableViewCell.xib; sourceTree = "<group>"; };
 		E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailCollectionCell.xib; sourceTree = "<group>"; };
@@ -612,6 +615,7 @@
 				E61E6CE02085DC6C0016D79A /* AppSFTableViewCell.xib */,
 				E61E6CE12085DC6C0016D79A /* AppSFTableViewCell.swift */,
 				E61E6CE22085DC6C0016D79A /* ArticleTableViewController.swift */,
+				E647EE7122EEFF3100313178 /* ArticleStackViewController.swift */,
 				E62109F022B7C3F1001B01FD /* ArticleMidPageTableViewController.swift */,
 				E62861532138231800D12A15 /* AppArticleTableViewCell.swift */,
 			);
@@ -1051,6 +1055,7 @@
 				E60DCD3420BC3AAD0023FE93 /* ArticleTableViewController.swift in Sources */,
 				E60DCD3520BC3AAD0023FE93 /* AppSFHorizontalItemCell.swift in Sources */,
 				E62109EE22B7C3E2001B01FD /* ArticleMidPageCollectionViewController.swift in Sources */,
+				E647EE7422EEFF3100313178 /* ArticleStackViewController.swift in Sources */,
 				E62109F122B7C3F1001B01FD /* ArticleMidPageTableViewController.swift in Sources */,
 				E60DCD3620BC3AAD0023FE93 /* ArticleCollectionViewController.swift in Sources */,
 				E60DCD3720BC3AAD0023FE93 /* AppSFTableViewCell.swift in Sources */,
@@ -1107,6 +1112,7 @@
 				E61E6CEC2085DC6C0016D79A /* ArticleTableViewController.swift in Sources */,
 				E61E6CEE2085DC6C0016D79A /* AppSFHorizontalItemCell.swift in Sources */,
 				E62109EF22B7C3E2001B01FD /* ArticleMidPageCollectionViewController.swift in Sources */,
+				E647EE7522EEFF3100313178 /* ArticleStackViewController.swift in Sources */,
 				E62109F222B7C3F1001B01FD /* ArticleMidPageTableViewController.swift in Sources */,
 				E61E6CED2085DC6C0016D79A /* ArticleCollectionViewController.swift in Sources */,
 				E61E6CEB2085DC6C0016D79A /* AppSFTableViewCell.swift in Sources */,
