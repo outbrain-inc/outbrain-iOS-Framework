@@ -37,6 +37,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         self.smartFeedManager = SmartFeedManager(url: OBConf.baseURL, widgetID: OBConf.widgetID, tableView: self.tableView)
         self.smartFeedManager.delegate = self
         
+        // self.smartFeedManager.disableCellShadows = true
         // self.smartFeedManager.displaySourceOnOrganicRec = true
         // self.smartFeedManager.horizontalContainerMargin = 40.0
         
