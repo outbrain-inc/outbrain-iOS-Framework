@@ -161,6 +161,16 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
 }
 
+-(void) setDisableCellShadows:(BOOL)disableCellShadows {
+    _disableCellShadows = disableCellShadows;
+    if (self.sfCollectionViewManager) {
+        self.sfCollectionViewManager.disableCellShadows = disableCellShadows;
+    }
+    if (self.sfTableViewManager) {
+        self.sfTableViewManager.disableCellShadows = disableCellShadows;
+    }
+}
+
 #pragma mark - Fetch Recommendations
 - (void) fetchMoreRecommendations {
     if (self.isLoading) {
@@ -547,7 +557,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     else if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
-        if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
+        if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle)) {
             [SFUtils addDropShadowToView: cell];
         }
     }
@@ -656,6 +666,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     horizontalView.sfItem = sfItem;
     horizontalView.shadowColor = sfItem.shadowColor;
     horizontalView.displaySourceOnOrganicRec = self.displaySourceOnOrganicRec;
+    horizontalView.disableCellShadows = self.disableCellShadows;
     
     [horizontalView setupView];
     [horizontalView setOnRecommendationClick:^(OBRecommendation *rec) {
@@ -810,7 +821,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     else if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
-        if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) {
+        if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle)) {
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
     }

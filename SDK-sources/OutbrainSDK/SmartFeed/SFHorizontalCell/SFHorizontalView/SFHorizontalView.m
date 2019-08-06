@@ -120,7 +120,9 @@
     
     OBRecommendation *rec = self.sfItem.outbrainRecs[indexPath.row];
     UIColor *shadowColor = rec.isPaidLink && (self.shadowColor != nil) ? self.shadowColor : [UIColor lightGrayColor];
-    [self addShadowOnCell:cell shadowColor:shadowColor];
+    if (!self.disableCellShadows) {
+        [self addShadowOnCell:cell shadowColor:shadowColor];
+    }
     
     if (self.configureHorizontalItem) {
         self.configureHorizontalItem((SFCollectionViewCell *)cell, rec);

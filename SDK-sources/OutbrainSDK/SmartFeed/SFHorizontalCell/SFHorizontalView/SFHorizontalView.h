@@ -37,5 +37,6 @@ typedef void(^ConfigureHorizontalItem)(SFCollectionViewCell * _Nonnull cell, OBR
 @property (nonatomic, assign) BOOL didInitCollectionViewLayout;
 @property (nonatomic, assign) CGSize itemSize;
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
+@property (nonatomic) BOOL disableCellShadows;
 
 @end
