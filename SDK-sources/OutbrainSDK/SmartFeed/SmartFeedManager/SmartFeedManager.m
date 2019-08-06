@@ -187,7 +187,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     
     self.isLoading = YES;
-    if (self.smartFeedItemsArray.count == 0 || self.feedContentArray == nil) {
+    if (self.smartFeedItemsArray.count == 0) {
         [self loadFirstTimeForFeed];
     }
     else {
