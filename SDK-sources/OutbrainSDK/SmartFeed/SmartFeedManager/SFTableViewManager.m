@@ -277,11 +277,13 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
             singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
         }
     }
-    if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
-        [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
-    }
-    else {
-        [SFUtils addDropShadowToView: singleCell];
+    if (!self.disableCellShadows) {
+        if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
+            [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
+        }
+        else {
+            [SFUtils addDropShadowToView: singleCell];
+        }
     }
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget  action:@selector(recommendationClicked:)];

@@ -232,7 +232,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         singleCell.cardContentView.tag = cellTag;
     }
     
-    [SFCollectionViewManager configureSingleCell:cell withSFItem:sfItem eventListenerTarget:self.eventListenerTarget cellTag:cellTag tapGestureDelegate:self displaySourceOnOrganicRec:self.displaySourceOnOrganicRec];
+    [SFCollectionViewManager configureSingleCell:cell withSFItem:sfItem eventListenerTarget:self.eventListenerTarget cellTag:cellTag tapGestureDelegate:self displaySourceOnOrganicRec:self.displaySourceOnOrganicRec disableCellShadows:self.disableCellShadows];
 }
 
 + (void) configureSingleCell:(UICollectionViewCell *)cell
@@ -247,7 +247,8 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
           eventListenerTarget:eventListenerTarget
                       cellTag:cellTag
            tapGestureDelegate:tapGestureDelegate
-    displaySourceOnOrganicRec:NO];
+    displaySourceOnOrganicRec:NO
+     disableCellShadows:NO];
 }
 
 + (void) configureSingleCell:(UICollectionViewCell *)cell
@@ -256,6 +257,7 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
                      cellTag:(NSInteger)cellTag
           tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate
    displaySourceOnOrganicRec:(BOOL)displaySourceOnOrganicRec
+          disableCellShadows:(BOOL)disableCellShadows
 {
     SFCollectionViewCell *singleCell = (SFCollectionViewCell *)cell;
     
@@ -316,11 +318,13 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         sfItem.itemType == SFTypeStripWithThumbnailWithTitle ||
         sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle)
     {
-        if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
-            [SFUtils addDropShadowToView: singleCell.cardContentView shadowColor:sfItem.shadowColor];
-        }
-        else {
-            [SFUtils addDropShadowToView: singleCell.cardContentView];
+        if (!disableCellShadows) {
+            if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
+                [SFUtils addDropShadowToView: singleCell.cardContentView shadowColor:sfItem.shadowColor];
+            }
+            else {
+                [SFUtils addDropShadowToView: singleCell.cardContentView];
+            }
         }
         
         if (sfItem.widgetTitle) {
@@ -340,11 +344,13 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         [singleCell.cardContentView addGestureRecognizer:tapGesture];
     }
     else {
-        if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
-            [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
-        }
-        else {
-            [SFUtils addDropShadowToView: singleCell];
+        if (!disableCellShadows) {
+            if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
+                [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
+            }
+            else {
+                [SFUtils addDropShadowToView: singleCell];
+            }
         }
         
         [singleCell.contentView addGestureRecognizer:tapGesture];
