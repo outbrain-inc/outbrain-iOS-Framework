@@ -471,7 +471,18 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
             [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
             
             UITableView *tableView = self.sfTableViewManager.tableView;
-            [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            NSArray *visibleIndexPathArray = [tableView indexPathsForVisibleRows];
+            
+            NSMutableSet *set1 = [NSMutableSet setWithArray: visibleIndexPathArray];
+            NSSet *set2 = [NSSet setWithArray: indexPaths];
+            [set1 intersectSet: set2];
+            NSArray *resultArray = [set1 allObjects];
+            
+            if ([resultArray count] > 1) {
+                NSLog(@"Outbrain SDK - Detected overlap - calling reloadRowsAtIndexPaths");
+                [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+            
 
             
 //            [tableView beginUpdates];
