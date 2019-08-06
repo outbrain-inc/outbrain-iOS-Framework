@@ -597,7 +597,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         return UITableViewAutomaticDimension;
     }
     if (indexPath.row >= [self smartFeedItemsCount]) {
-        return 2.0;
+        return 0.1;
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
