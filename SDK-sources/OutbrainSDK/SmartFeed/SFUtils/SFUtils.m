@@ -132,6 +132,9 @@ NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATI
     if (string == nil || string.length == 0) {
         return NO;
     }
+    
+    return NO; // Sky optimization
+    
     NSArray *tagschemes = [NSArray arrayWithObjects:NSLinguisticTagSchemeLanguage, nil];
     NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:tagschemes options:0];
     [tagger setString: string];
