@@ -24,7 +24,7 @@
 @property (nonatomic, weak) id<WKUIDelegate> _Nullable wkWebviewDelegate;
 @property (nonatomic, weak, readonly) UITableView * _Nullable tableView;
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
-
+@property (nonatomic) BOOL disableCellShadows;
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView;
 
