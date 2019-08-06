@@ -469,8 +469,11 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         if (self.sfTableViewManager.tableView != nil) {
             // tell the table view to update (at all of the inserted index paths)
             [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+            
 //            UITableView *tableView = self.sfTableViewManager.tableView;
 //            [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+
+            
 //            [tableView beginUpdates];
 //            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
 //            [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
@@ -972,6 +975,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     if (indexPath.row == 0) {
         // Smartfeed header cell
         return SFTypeSmartfeedHeader;
+    }
+    
+    if (indexPath.row >= [self smartFeedItemsCount]) {
+        return SFTypeBadType;
     }
     
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
