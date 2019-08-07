@@ -3,6 +3,7 @@
 ## Development 
 
 - Feature: add `disableCellShadows` flag to SmartFeedManager
+- Feature: add `useDefaultCollectionViewDelegate` flag to SmartfeedManager for StackView solution.
 
 ## v3.7.6 - July 20, 2019 
 
