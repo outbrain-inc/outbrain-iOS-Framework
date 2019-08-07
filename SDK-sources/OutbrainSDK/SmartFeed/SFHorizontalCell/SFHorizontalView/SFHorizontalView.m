@@ -33,7 +33,19 @@
     if (self.didInitCollectionViewLayout) {
         return;
     }
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    
+    CGFloat screenWidth = 0;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // iPad usually supports both orientations
+        screenWidth = [UIScreen mainScreen].bounds.size.width;
+    }
+    else {
+        UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+        screenWidth = UIInterfaceOrientationIsLandscape(orientation) ?
+        [UIScreen mainScreen].bounds.size.height :
+        [UIScreen mainScreen].bounds.size.width;
+    }
+    
     CGRect collectionViewframe = CGRectMake(0, 0, screenWidth, self.frame.size.height);
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
