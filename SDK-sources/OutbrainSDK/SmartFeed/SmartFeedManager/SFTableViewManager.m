@@ -110,6 +110,20 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     return self;
 }
 
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    NSLog(@"Smartfeed detected orientationChanged");
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+        return;
+    }
+    UITableView *tableView = self.tableView;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        NSArray *visibleIndexPathArray = [tableView indexPathsForVisibleRows];
+        [tableView reloadRowsAtIndexPaths:visibleIndexPathArray withRowAnimation:UITableViewRowAnimationAutomatic];
+    });
+}
+
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier {
     if (self.tableView != nil) {
         [self.tableView registerNib:nib forCellReuseIdentifier:identifier];
