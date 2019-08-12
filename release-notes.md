@@ -3,6 +3,11 @@
 ## Development 
 
 - Feature: add `disableCellShadows` flag to SmartFeedManager
+- Feature: add UIStackView implementation support, see [UIStackView Integration Guide](https://developer.outbrain.com/ios-sdk-v3-x-smartfeed-uistackview-integration-guide).
+- Feature: StackView solution, added `setUseDefaultCollectionViewDelegate` to set the SDK as the default delegate for the UICollectionView.
+- Improvement: Sample apps should support portrait mode only
+- Bug fix: Drop shadow on SF cells sometimes was drawn wrong.
+- Internal: Support "shake" gesture in sample app for GTO testing.
 
 ## v3.7.6 - July 20, 2019 
 
