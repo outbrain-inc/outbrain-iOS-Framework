@@ -480,9 +480,8 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
             UITableView *tableView = self.sfTableViewManager.tableView;
             
             // Check if Sky solution is needed
-            NSInteger currentNumberOfSections = [tableView numberOfSections];
-            NSInteger currentNumberOfItemsInSection = [tableView numberOfRowsInSection:self.outbrainSectionIndex];
-            if (self.outbrainSectionIndex < currentNumberOfSections && baseIndex < currentNumberOfItemsInSection ) {
+            BOOL isSkySolutionActive = [self isSkySolutionActive:tableView baseIndex:baseIndex];
+            if (isSkySolutionActive) {
                 [self skySolutionForTableViewReload:tableView newSmartfeedItems:newSmartfeedItems indexPaths:indexPaths];
                 return;
             }
@@ -746,6 +745,12 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(outbrainLabelClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
+}
+
+- (BOOL) isSkySolutionActive:(UITableView *)tableView baseIndex:(NSInteger)baseIndex {
+    NSInteger currentNumberOfSections = [tableView numberOfSections];
+    NSInteger currentNumberOfItemsInSection = [tableView numberOfRowsInSection:self.outbrainSectionIndex];
+    return self.outbrainSectionIndex < currentNumberOfSections && baseIndex < currentNumberOfItemsInSection;
 }
 
 - (void) skySolutionForTableViewReload:(UITableView *)tableView newSmartfeedItems:(NSArray *)newSmartfeedItems indexPaths:(NSArray *)indexPaths {
