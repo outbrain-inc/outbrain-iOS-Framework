@@ -750,6 +750,8 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
 
 - (void) skySolutionForTableViewReload:(UITableView *)tableView newSmartfeedItems:(NSArray *)newSmartfeedItems indexPaths:(NSArray *)indexPaths {
     [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+    
+    // Check if there is an overlap between visibleIndexPathArray and the new IndexPaths we are about to add.
     NSArray *visibleIndexPathArray = [tableView indexPathsForVisibleRows];
     NSMutableSet *set1 = [NSMutableSet setWithArray: visibleIndexPathArray];
     NSSet *set2 = [NSSet setWithArray: indexPaths];
@@ -757,7 +759,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     NSArray *resultArray = [set1 allObjects];
     
     if ([resultArray count] > 1) {
-        NSLog(@"Outbrain SDK - Detected overlap - calling reloadRowsAtIndexPaths");
+        // Detected overlap - calling reloadRowsAtIndexPaths (this will initiate a call to heightForRowAt:
         [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
