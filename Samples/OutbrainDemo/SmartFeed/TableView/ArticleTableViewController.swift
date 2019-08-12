@@ -126,7 +126,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
             let height = self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
-            print("heightForRowAt: \(height)")
             return height
         }
         
