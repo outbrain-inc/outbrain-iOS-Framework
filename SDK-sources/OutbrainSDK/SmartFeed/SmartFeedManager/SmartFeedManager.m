@@ -445,7 +445,6 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     // build the index paths for insertion
     // since you're adding to the end of datasource, the new rows will start at count + 1 (header)
     NSInteger baseIndex = self.smartFeedItemsArray.count+1;
-    
     for (int i = 0; i < newSmartfeedItems.count; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:baseIndex+i inSection:self.outbrainSectionIndex]];
     }
@@ -478,27 +477,20 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     else if (self.sfTableViewManager) {
         if (self.sfTableViewManager.tableView != nil) {
             // tell the table view to update (at all of the inserted index paths)
-            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-            
             UITableView *tableView = self.sfTableViewManager.tableView;
-            NSArray *visibleIndexPathArray = [tableView indexPathsForVisibleRows];
             
-            NSMutableSet *set1 = [NSMutableSet setWithArray: visibleIndexPathArray];
-            NSSet *set2 = [NSSet setWithArray: indexPaths];
-            [set1 intersectSet: set2];
-            NSArray *resultArray = [set1 allObjects];
-            
-            if ([resultArray count] > 1) {
-                NSLog(@"Outbrain SDK - Detected overlap - calling reloadRowsAtIndexPaths");
-                [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            // Check if Sky solution is needed
+            NSInteger currentNumberOfSections = [tableView numberOfSections];
+            NSInteger currentNumberOfItemsInSection = [tableView numberOfRowsInSection:self.outbrainSectionIndex];
+            if (self.outbrainSectionIndex < currentNumberOfSections && baseIndex < currentNumberOfItemsInSection ) {
+                [self skySolutionForTableViewReload:tableView newSmartfeedItems:newSmartfeedItems indexPaths:indexPaths];
+                return;
             }
             
-
-            
-//            [tableView beginUpdates];
-//            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
-//            [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-//            [tableView endUpdates];
+            [tableView beginUpdates];
+            [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+            [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+            [tableView endUpdates];
         }
     }
 }
@@ -754,6 +746,20 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(outbrainLabelClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
+}
+
+- (void) skySolutionForTableViewReload:(UITableView *)tableView newSmartfeedItems:(NSArray *)newSmartfeedItems indexPaths:(NSArray *)indexPaths {
+    [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+    NSArray *visibleIndexPathArray = [tableView indexPathsForVisibleRows];
+    NSMutableSet *set1 = [NSMutableSet setWithArray: visibleIndexPathArray];
+    NSSet *set2 = [NSSet setWithArray: indexPaths];
+    [set1 intersectSet: set2];
+    NSArray *resultArray = [set1 allObjects];
+    
+    if ([resultArray count] > 1) {
+        NSLog(@"Outbrain SDK - Detected overlap - calling reloadRowsAtIndexPaths");
+        [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 #pragma mark - Collection View methods
