@@ -43,6 +43,9 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 
 @interface SFUtils : NSObject
 
++ (BOOL) skipRTL;
++ (void) setSkipRTL:(BOOL)val;
+
 +(void) addConstraintsToFillParent:(UIView *)view;
 
 +(void) addConstraintsToFillParentWithHorizontalMargin:(UIView *)view;

@@ -16,6 +16,16 @@ NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATI
 
 @implementation SFUtils
 
+// Skip RTL (Sky optimization)
+static BOOL skipRTL;
++ (BOOL) skipRTL {
+    return skipRTL;
+}
++ (void) setSkipRTL:(BOOL)val {
+    skipRTL = val;
+}
+// End
+
 +(void) addConstraintsToFillParent:(UIView *)view {
     UIView *parentView = view.superview;
     
@@ -129,9 +139,14 @@ NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATI
 }
 
 +(BOOL) isRTL:(NSString *)string {
+    if (skipRTL) {
+        return NO; // Sky optimization
+    }
+
     if (string == nil || string.length == 0) {
         return NO;
     }
+
     NSArray *tagschemes = [NSArray arrayWithObjects:NSLinguisticTagSchemeLanguage, nil];
     NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:tagschemes options:0];
     [tagger setString: string];
@@ -184,7 +199,7 @@ NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATI
         [videoCell.contentView setNeedsLayout];
         return YES;
     }
-    
+
     if (videoCell.webview) {
         [videoCell.webview removeFromSuperview];
         videoCell.webview = nil;

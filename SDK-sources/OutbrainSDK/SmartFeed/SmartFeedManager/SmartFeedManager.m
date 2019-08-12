@@ -218,7 +218,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         if (response.settings.isSmartFeed == YES) {
             self.feedContentArray = response.settings.feedContentArray;
             self.isRTL = response.settings.isRTL;
-            
+            [SFUtils setSkipRTL:!self.isRTL]; // Sky optimization
             if (self.feedContentArray == nil || self.feedContentArray.count == 0) {
                 self.isSmartfeedWithNoChildren = YES;
             }
