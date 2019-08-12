@@ -118,7 +118,6 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
 
 - (void) orientationChanged:(NSNotification *)note
 {
-    NSLog(@"Smartfeed detected orientationChanged");
     if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
         return;
     }
