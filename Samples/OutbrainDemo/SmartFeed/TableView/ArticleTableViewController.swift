@@ -19,7 +19,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
     
-    let originalArticleItemsCount = 15
+    let originalArticleItemsCount = 5
     var outbrainIdx = 0
     var isLoadingOutrainRecs = false
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
@@ -68,10 +68,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             return originalArticleItemsCount
         }
         else {
-            //let count = self.smartFeedManager.smartFeedItemsCount()
-            let count = 24
-            print("smartFeedItemsCount: \(count)")
-            return count
+            return self.smartFeedManager.smartFeedItemsCount()
+            // return 24 // Test Sky Solution
         }
     }
         
