@@ -7,6 +7,7 @@
 - Feature: StackView solution, added `setUseDefaultCollectionViewDelegate` to set the SDK as the default delegate for the UICollectionView.
 - Improvement: Sample apps should support portrait mode only
 - Improvement: Add `skipRTL` flag to improve performance (Sky optimization).
+- Improvement: Smartfeed tableview will detect if "Sky Solution" is activated and if so, will act accordingly.
 - Bug fix: Drop shadow on SF cells sometimes was drawn wrong.
 - Bug fix: On orientation change should reload the visible cells in the table view if on iPad.
 - Bug fix: Mobile device on landscape should load the same cell sizes as portrait (used different width)
