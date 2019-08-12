@@ -8,6 +8,8 @@
 - Improvement: Sample apps should support portrait mode only
 - Improvement: Add `skipRTL` flag to improve performance (Sky optimization).
 - Bug fix: Drop shadow on SF cells sometimes was drawn wrong.
+- Bug fix: On orientation change should reload the visible cells in the table view if on iPad.
+- Bug fix: Mobile device on landscape should load the same cell sizes as portrait (used different width)
 - Internal: Support "shake" gesture in sample app for GTO testing.
 
 
