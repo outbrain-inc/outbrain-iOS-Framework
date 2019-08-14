@@ -54,6 +54,7 @@
             <viewLayoutGuide key="safeArea" id="Jv7-Qn-bdH"/>
             <size key="customSize" width="597" height="277"/>
             <connections>
+                <outlet property="horizontalView" destination="WVo-54-bOr" id="Jcp-OU-XBx"/>
                 <outlet property="titleLabel" destination="r7t-Vm-6s5" id="Ksb-WM-0CD"/>
             </connections>
             <point key="canvasLocation" x="322.39999999999998" y="-46.326836581709152"/>
