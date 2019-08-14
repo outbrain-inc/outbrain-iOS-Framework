@@ -399,6 +399,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
 
 -(void) addTwoItemsInLineWithVideoToNewItemsList:(NSMutableArray *) newSmartfeedItems response:(OBRecommendationResponse *)response videoItemIndex:(int)videoItemIndex templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
+    BOOL isParentResponse = response.settings.isSmartFeed;
     
     NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
     while (recommendationsMutableArray.count >= 2) {
@@ -414,7 +415,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
                                                           videoParamsStr:videoParamsStr
                                                                  reclist:singleLineRecs
                                                              odbResponse:response
-                                                                    type: widgetTitle ? SFTypeGridTwoInRowWithTitleWithVideo : SFTypeGridTwoInRowWithVideo];
+                                                                    type: !isParentResponse && widgetTitle ? SFTypeGridTwoInRowWithTitleWithVideo : SFTypeGridTwoInRowWithVideo];
             
             [newSmartfeedItems addObject:videoItem];
             continue;
