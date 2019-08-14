@@ -411,11 +411,14 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
             // Add SFTypeGridTwoInRowWithVideo for the middle of the grid
             NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
             NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
+            SFItemType newTemplateType = !isParentResponse && widgetTitle ?
+                SFTypeGridTwoInRowWithTitleWithVideo :
+                SFTypeGridTwoInRowWithVideo;
             SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                           videoParamsStr:videoParamsStr
                                                                  reclist:singleLineRecs
                                                              odbResponse:response
-                                                                    type: !isParentResponse && widgetTitle ? SFTypeGridTwoInRowWithTitleWithVideo : SFTypeGridTwoInRowWithVideo];
+                                                                    type: newTemplateType];
             
             [newSmartfeedItems addObject:videoItem];
             continue;
