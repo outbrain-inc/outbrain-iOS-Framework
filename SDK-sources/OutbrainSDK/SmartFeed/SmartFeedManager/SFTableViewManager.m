@@ -37,6 +37,7 @@ NSString * const kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
 NSString * const kTableViewSingleVideoWithTitleReuseId = @"SFSingleVideoWithTitleTableViewCell";
 NSString * const kTableViewSingleVideoNoTitleReuseId = @"SFSingleVideoNoTitleTableViewCell";
 NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWithVideoTableViewCell";
+NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontalFixedWithTitleWithVideoTableViewCell";
 
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView {
     self = [super init];
@@ -69,6 +70,10 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithVideoTableViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithVideoTableViewCell should not be null");
         [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedWithVideoCellReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithTitleWithVideoTableViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithTitleWithVideoTableViewCell should not be null");
+        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedWithTitleWithVideoCellReuseId];
         
         // Smartfeed header cell
         UINib *nib = [UINib nibWithNibName:@"SFTableViewHeaderCell" bundle:bundle];
@@ -150,6 +155,8 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleVideoNoTitleReuseId forIndexPath:indexPath];
         case SFTypeGridTwoInRowWithVideo:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewHorizontalFixedWithVideoCellReuseId forIndexPath:indexPath];
+        case SFTypeGridTwoInRowWithTitleWithVideo:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewHorizontalFixedWithTitleWithVideoCellReuseId forIndexPath:indexPath];
         default:
             NSAssert(false, @"sfItem.itemType must be covered in this switch/case statement");
             return [[UITableViewCell alloc] init];
@@ -169,7 +176,9 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
              sfItemType == SFTypeGridTwoInRowWithVideo) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : kTableViewRowHeight;
     }
-    else if ((sfItemType == SFTypeGridTwoInRowWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {
+    else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
+             sfItemType == SFTypeStripVideoWithPaidRecAndTitle ||
+             sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 270.0;
     }
     else if (sfItemType == SFTypeStripWithTitle || sfItemType == SFTypeStripVideoWithPaidRecAndTitle) {

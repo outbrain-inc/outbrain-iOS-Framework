@@ -389,7 +389,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     
     if (shouldIncludeVideo) {
         BOOL videoItemIndex = recommendations.count == 6 ? 1 : 0;
-        [self addTwoItemsInLineWithVideoToNewItemsList:newSmartfeedItems response:response videoItemIndex:videoItemIndex templateType:templateType];
+        [self addTwoItemsInLineWithVideoToNewItemsList:newSmartfeedItems response:response videoItemIndex:videoItemIndex templateType:templateType widgetTitle:widgetTitle];
     } else {
         [self addItemsInLineToNewItemsList:newSmartfeedItems response:response templateType:templateType];
     }
@@ -397,7 +397,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     return newSmartfeedItems;
 }
 
--(void) addTwoItemsInLineWithVideoToNewItemsList:(NSMutableArray *) newSmartfeedItems response:(OBRecommendationResponse *)response videoItemIndex:(int)videoItemIndex templateType:(SFItemType)templateType {
+-(void) addTwoItemsInLineWithVideoToNewItemsList:(NSMutableArray *) newSmartfeedItems response:(OBRecommendationResponse *)response videoItemIndex:(int)videoItemIndex templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     
     NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
@@ -414,7 +414,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
                                                           videoParamsStr:videoParamsStr
                                                                  reclist:singleLineRecs
                                                              odbResponse:response
-                                                                    type:SFTypeGridTwoInRowWithVideo];
+                                                                    type: widgetTitle ? SFTypeGridTwoInRowWithTitleWithVideo : SFTypeGridTwoInRowWithVideo];
             
             [newSmartfeedItems addObject:videoItem];
             continue;

@@ -22,4 +22,6 @@
 @property (nonatomic, strong) SFItemData *sfItem;
 @property (nonatomic, strong, readonly) SFScriptMessageHandler *wkScriptMessageHandler;
 
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+
 @end

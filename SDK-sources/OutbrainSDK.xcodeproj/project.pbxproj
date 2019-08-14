@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1649FC782301A90800273994 /* SFHorizontalFixedWithTitleWithVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1649FC772301A90800273994 /* SFHorizontalFixedWithTitleWithVideoCollectionViewCell.xib */; };
+		1649FC7A2301ACAD00273994 /* SFHorizontalFixedWithTitleWithVideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1649FC792301ACAD00273994 /* SFHorizontalFixedWithTitleWithVideoTableViewCell.xib */; };
 		16B1F9A02185E95C00023DDD /* GDPRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F99E2185E95C00023DDD /* GDPRUtils.m */; };
 		16B1F9A12185E95C00023DDD /* GDPRUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 16B1F99F2185E95C00023DDD /* GDPRUtils.h */; };
 		16C48D55227739160003A892 /* SFDefaultDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C48D53227739150003A892 /* SFDefaultDelegate.h */; };
@@ -193,6 +195,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1649FC772301A90800273994 /* SFHorizontalFixedWithTitleWithVideoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalFixedWithTitleWithVideoCollectionViewCell.xib; sourceTree = "<group>"; };
+		1649FC792301ACAD00273994 /* SFHorizontalFixedWithTitleWithVideoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalFixedWithTitleWithVideoTableViewCell.xib; sourceTree = "<group>"; };
 		16B1F99E2185E95C00023DDD /* GDPRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDPRUtils.m; sourceTree = "<group>"; };
 		16B1F99F2185E95C00023DDD /* GDPRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPRUtils.h; sourceTree = "<group>"; };
 		16C48D53227739150003A892 /* SFDefaultDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDefaultDelegate.h; sourceTree = "<group>"; };
@@ -785,8 +789,9 @@
 				E6FEB3E120FF2E78002A9020 /* SFHorizontalCollectionViewCell.h */,
 				E6FEB3DF20FF2E78002A9020 /* SFHorizontalCollectionViewCell.m */,
 				E6FEB3E020FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib */,
-				E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */,
 				E64F6111213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib */,
+				E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */,
+				1649FC772301A90800273994 /* SFHorizontalFixedWithTitleWithVideoCollectionViewCell.xib */,
 				E6FEB3E220FF2E78002A9020 /* SFHorizontalCarouselWithTitleCollectionViewCell.xib */,
 				E64F6043212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib */,
 			);
@@ -802,6 +807,7 @@
 				E64F611321352823008BBDFB /* SFHorizontalFixedWithTitleTableViewCell.xib */,
 				E64F6045212C4129008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib */,
 				E6B930BA21733BB300EC7A4A /* SFHorizontalFixedWithVideoTableViewCell.xib */,
+				1649FC792301ACAD00273994 /* SFHorizontalFixedWithTitleWithVideoTableViewCell.xib */,
 				E6FEB3E720FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib */,
 			);
 			path = CellContainersTableView;
@@ -1021,7 +1027,9 @@
 				E64F6112213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib in Resources */,
 				E6FEB7502105AAFB002A9020 /* SFCollectionViewCell.xib in Resources */,
 				E6FEB3EF20FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib in Resources */,
+				1649FC7A2301ACAD00273994 /* SFHorizontalFixedWithTitleWithVideoTableViewCell.xib in Resources */,
 				E64F611621352E06008BBDFB /* SFSingleWithThumbnailWithTitleCollectionCell.xib in Resources */,
+				1649FC782301A90800273994 /* SFHorizontalFixedWithTitleWithVideoCollectionViewCell.xib in Resources */,
 				E64F611821357DCA008BBDFB /* SFSingleWithThumbnailWithTitleTableCell.xib in Resources */,
 				E6FEB3EB20FF2E78002A9020 /* SFHorizontalCarouselWithTitleCollectionViewCell.xib in Resources */,
 				E6FEB3E920FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib in Resources */,
