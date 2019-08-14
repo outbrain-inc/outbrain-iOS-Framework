@@ -9,7 +9,7 @@
 - Improvement: Add `skipRTL` flag to improve performance (Sky optimization).
 - Improvement: Smartfeed tableview will detect if "Sky Solution" is activated and if so, will act accordingly.
 - Bug fix: Drop shadow on SF cells sometimes was drawn wrong.
-- Bug fix: On orientation change should reload the visible cells in the table view if on iPad.
+- Bug fix: Smartfeed - on orientation change should reload the visible cells if on iPad.
 - Bug fix: Mobile device on landscape should load the same cell sizes as portrait (used different width)
 - Internal: Support "shake" gesture in sample app for GTO testing.
 - Internal: Upgrade project to build with Xcode 10.2.1 (iOS 12.2)
