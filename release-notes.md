@@ -14,7 +14,7 @@
 - Bug fix: On orientation change should reload the visible cells in the table view if on iPad.
 - Bug fix: Mobile device on landscape should load the same cell sizes as portrait (used different width)
 - Internal: Support "shake" gesture in sample app for GTO testing.
-
+- Internal: Upgrade project to build with Xcode 10.2.1 (iOS 12.2)
 
 ## v3.7.6 - July 20, 2019 
 
