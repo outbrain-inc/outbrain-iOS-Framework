@@ -382,7 +382,8 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     
     BOOL shouldIncludeVideo =
         [SFUtils isVideoIncludedInResponse:response] &&
-        templateType == SFTypeGridTwoInRowNoTitle &&
+        (templateType == SFTypeGridTwoInRowNoTitle ||
+         templateType == SFTypeGridTwoInRowWithTitle) &&
         self.isVideoEligible;
     
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
@@ -408,7 +409,6 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         [recommendationsMutableArray removeObjectsInRange:subRange];
         
         if (newSmartfeedItems.count == videoItemIndex) {
-            // Add SFTypeGridTwoInRowWithVideo for the middle of the grid
             NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
             NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
             SFItemType newTemplateType = !isParentResponse && widgetTitle ?
