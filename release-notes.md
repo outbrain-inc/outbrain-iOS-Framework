@@ -13,7 +13,7 @@
 - Bug fix: Drop shadow on SF cells sometimes was drawn wrong.
 - Bug fix: Smartfeed - on orientation change should reload the visible cells if on iPad.
 - Bug fix: Mobile device on landscape should load the same cell sizes as portrait (used different width)
-- Bug fix: viewability per listing should work for UITableView as well
+- Bug fix: Viewability per listing should work for UITableView as well
 - Internal: Support "shake" gesture in sample app for GTO testing.
 - Internal: Upgrade project to build with Xcode 10.2.1 (iOS 12.2)
 
