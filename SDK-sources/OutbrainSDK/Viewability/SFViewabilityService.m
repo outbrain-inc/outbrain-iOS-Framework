@@ -24,6 +24,8 @@
 
 @implementation SFViewabilityService
 
+int const OBVIEW_DEFAULT_TAG = 12345678;
+
 NSString * const kLogViewabilityUrl = @"https://log.outbrainimg.com/api/loggerBatch/log-viewability";
 NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@_%@";
 
@@ -47,6 +49,21 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     if (self) {
     }
     return self;
+}
+
+- (void) configureViewabilityPerListingForCell:(UIView *)cell withSFItem:(SFItemData *)sfItem initializationTime:(NSDate *)initializationTime {
+    OBView *existingOBView = (OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG];
+    if (existingOBView) {
+        [existingOBView removeFromSuperview];
+    }
+    if (![self isAlreadyReportedForRequestId:sfItem.requestId position:sfItem.positions[0]]) {
+        OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
+        obview.tag = OBVIEW_DEFAULT_TAG;
+        obview.opaque = NO;
+        [self registerOBView:obview positions:sfItem.positions requestId:sfItem.requestId smartFeedInitializationTime: initializationTime];
+        obview.userInteractionEnabled = NO;
+        [cell addSubview: obview];
+    }
 }
 
 - (void) registerOBView:(OBView *)obView positions:(NSArray *)positions requestId:(NSString *)reqId smartFeedInitializationTime:(NSDate *)initializationTime {

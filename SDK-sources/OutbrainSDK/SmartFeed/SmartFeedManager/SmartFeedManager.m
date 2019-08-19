@@ -77,7 +77,6 @@
 
 NSString * const kCustomUINib = @"CustomUINib";
 NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
-int const OBVIEW_DEFAULT_TAG = 12345678;
 
 #pragma mark - init methods
 - (id)init
@@ -566,6 +565,9 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     
     // Report Viewability
     [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:sfItem.responseRequest];
+    if (self.isViewabilityPerListingEnabled) {
+        [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
+    }
     
     if ([cell isKindOfClass:[SFHorizontalWithVideoTableViewCell class]]) {
         [self configureHorizontalVideoTableViewCell:cell atIndexPath:indexPath];
@@ -842,19 +844,8 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     
     // Report Viewability
     [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:sfItem.responseRequest];
-    
-    OBView *existingOBView = (OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG];
-    if (existingOBView) {
-        [existingOBView removeFromSuperview];
-    }
-    if (![[SFViewabilityService sharedInstance] isAlreadyReportedForRequestId:sfItem.requestId position:sfItem.positions[0]]
-        && self.isViewabilityPerListingEnabled) {
-        OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
-        obview.tag = OBVIEW_DEFAULT_TAG;
-        obview.opaque = NO;
-        [[SFViewabilityService sharedInstance] registerOBView:obview positions:sfItem.positions requestId:sfItem.requestId smartFeedInitializationTime:self.initializationTime];
-        obview.userInteractionEnabled = NO;
-        [cell addSubview: obview];
+    if (self.isViewabilityPerListingEnabled) {
+        [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
     }
     
     if ([cell isKindOfClass:[SFHorizontalWithVideoCollectionViewCell class]]) {
