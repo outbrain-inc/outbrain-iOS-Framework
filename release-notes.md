@@ -2,6 +2,8 @@
 
 ## Development 
 
+## v3.8.0 - August 14, 2019 
+
 - Feature: add `disableCellShadows` flag to SmartFeedManager
 - Feature: add UIStackView implementation support, see [UIStackView Integration Guide](https://developer.outbrain.com/ios-sdk-v3-x-smartfeed-uistackview-integration-guide).
 - Feature: StackView solution, added `setUseDefaultCollectionViewDelegate` to set the SDK as the default delegate for the UICollectionView.
