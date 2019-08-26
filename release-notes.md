@@ -2,6 +2,9 @@
 
 ## Development 
 
+
+## v3.8.1 - August 26, 2019
+
 - Bug fix - When `SFTypeStripVideo` is at the parent response, header text should have been ignored and moved to the Smartfeed header.
 
 ## v3.8.0 - August 19, 2019 
