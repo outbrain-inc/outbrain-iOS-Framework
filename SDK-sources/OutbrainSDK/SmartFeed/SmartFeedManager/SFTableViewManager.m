@@ -247,7 +247,9 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
     
     singleCell.recTitleLabel.text = rec.content;
     singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
-    
+    if (!sfItem.isCustomUI) {
+        singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+    }
     [SFUtils removePaidLabelFromImageView:singleCell.recImageView];
     
     if ([rec isPaidLink]) {
@@ -289,10 +291,6 @@ NSString * const kTableViewHorizontalFixedWithVideoCellReuseId = @"SFHorizontalF
         else {
             // fallback
             singleCell.cellTitleLabel.text = @"Around the web";
-        }
-        
-        if (!sfItem.isCustomUI) {
-            singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
         }
     }
     if (!self.disableCellShadows) {
