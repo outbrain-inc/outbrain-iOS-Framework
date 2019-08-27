@@ -6,6 +6,8 @@
 ## v3.8.1 - August 26, 2019
 
 - Bug fix - When `SFTypeStripVideo` is at the parent response, header text should have been ignored and moved to the Smartfeed header.
+- Bug fix - Smartfeed "source label" was showing for organic rec if "publisher logo" image was missing.
+- Bug fix - Smartfeed, rec title should be gray for organic recs on all 1 col templates.
 
 ## v3.8.0 - August 19, 2019 
 
