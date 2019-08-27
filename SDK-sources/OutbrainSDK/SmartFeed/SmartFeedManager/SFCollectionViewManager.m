@@ -294,6 +294,10 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     singleCell.recTitleLabel.text = rec.content;
     singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
     
+    if (!sfItem.isCustomUI) {
+        singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+    }
+    
     NSAssert(eventListenerTarget != nil, @"clickListenerTarget must not be nil");
     
     [SFUtils removePaidLabelFromImageView:singleCell.recImageView];
@@ -354,9 +358,6 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         }
         
         singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];
-        if (!sfItem.isCustomUI) {
-            singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
-        }
         
         [singleCell.outbrainLabelingContainer addTarget:eventListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
         [singleCell.cardContentView addGestureRecognizer:tapGesture];
