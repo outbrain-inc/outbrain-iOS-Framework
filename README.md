@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="75" src="assets/outbrain-logo.png" />
+  <img height="75" src="assets/outbrain-logo.jpg" />
 </p>
 
 ---
