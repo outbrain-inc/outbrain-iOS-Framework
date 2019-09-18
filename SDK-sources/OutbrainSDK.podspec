@@ -18,12 +18,12 @@ Pod::Spec.new do |s|
   s.name                = "OutbrainSDK"
   s.version             = "3.8.0"
   s.summary             = "Outbrain iOS SDK for app developers"
-  s.description         = "Outbrain iOS SDK for app developers"
+  s.description         = "Outbrain iOS SDK for app developers, please review our guidelines at https://developer.outbrain.com/ios-sdk-v3-developer-guide/"
   s.homepage            = "http://www.outbrain.com"
   s.license             = { :type => 'Proprietary', :text => 'Copyright 2018 Outbrain. All rights reserved.' }
   s.author              = { "Oded Regev" => "oregev@outbrain.com" }
   s.platform            = :ios, "9.0"
-  s.source              = { :git => "https://github.com/outbrain/outbrain-iOS-Framework", :tag => "#{s.version}" }
+  s.source              = { :git => "https://github.com/outbrain/outbrain-iOS-Framework.git", :tag => "#{s.version}" }
   s.frameworks          = "SystemConfiguration", "AdSupport"
   s.requires_arc        = true
   s.static_framework    = true
