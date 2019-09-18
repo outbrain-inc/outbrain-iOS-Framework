@@ -4,13 +4,16 @@
 
 ---
 
-## About [Outbrain](https://www.outbrain.com/) 
+## Outbrain iOS SDK Framework
 
-## [Outbrain SDK Developers Site](https://developer.outbrain.com/outbrain-sdk-v3-documentation-download-links/) 
+About [Outbrain](https://www.outbrain.com/) 
 
+Please make sure to review [Outbrain SDK Developers Site](https://developer.outbrain.com/outbrain-sdk-v3-documentation-download-links/) 
 
+<p align="center">
+  <img height="275" src="assets/iphonex-smartfeed-demo-mock.jpg" />
+</p>
 
-&nbsp;
 ## Compatibility and Requirements
 
 | **Outbrain SDK**  	| **Requirements**                                     	|
