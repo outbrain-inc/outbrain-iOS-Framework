@@ -111,8 +111,26 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         nib = [UINib nibWithNibName:@"SFSingleVideoWithTitleTableViewCell" bundle:bundle];
         NSAssert(nib != nil, @"SFSingleVideoWithTitleTableViewCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleVideoWithTitleReuseId];
+        
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        [[NSNotificationCenter defaultCenter]
+            addObserver:self selector:@selector(orientationChanged:)
+            name:UIDeviceOrientationDidChangeNotification
+            object:[UIDevice currentDevice]];
     }
     return self;
+}
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+        return;
+    }
+    UITableView *tableView = self.tableView;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        NSArray *visibleIndexPathArray = [tableView indexPathsForVisibleRows];
+        [tableView reloadRowsAtIndexPaths:visibleIndexPathArray withRowAnimation:UITableViewRowAnimationAutomatic];
+    });
 }
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier {
@@ -193,7 +211,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     else if (sfItemType == SFTypeStripVideo) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0;
     }
-    
+
     return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : kTableViewRowHeight;
 }
 
@@ -238,7 +256,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     
     singleCell.recTitleLabel.text = rec.content;
     singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
-    
+    if (!sfItem.isCustomUI) {
+        singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+    }
     [SFUtils removePaidLabelFromImageView:singleCell.recImageView];
     
     if ([rec isPaidLink]) {
@@ -262,9 +282,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
             singleCell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
             singleCell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
-            if (!sfItem.isCustomUI && !self.displaySourceOnOrganicRec) {
-                singleCell.recSourceLabel.text = @"";
-            }
+        }
+        if (!sfItem.isCustomUI && !self.displaySourceOnOrganicRec) {
+            singleCell.recSourceLabel.text = @"";
         }
     }
     
@@ -280,10 +300,6 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         else {
             // fallback
             singleCell.cellTitleLabel.text = @"Around the web";
-        }
-        
-        if (!sfItem.isCustomUI) {
-            singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
         }
     }
     if (!self.disableCellShadows) {

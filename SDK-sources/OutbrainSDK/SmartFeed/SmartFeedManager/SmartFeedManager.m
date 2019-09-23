@@ -77,7 +77,6 @@
 
 NSString * const kCustomUINib = @"CustomUINib";
 NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
-int const OBVIEW_DEFAULT_TAG = 12345678;
 
 #pragma mark - init methods
 - (id)init
@@ -187,7 +186,7 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     }
     
     self.isLoading = YES;
-    if (self.smartFeedItemsArray.count == 0 || self.feedContentArray == nil) {
+    if (self.smartFeedItemsArray.count == 0) {
         [self loadFirstTimeForFeed];
     }
     else {
@@ -475,7 +474,6 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     // build the index paths for insertion
     // since you're adding to the end of datasource, the new rows will start at count + 1 (header)
     NSInteger baseIndex = self.smartFeedItemsArray.count+1;
-    
     for (int i = 0; i < newSmartfeedItems.count; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:baseIndex+i inSection:self.outbrainSectionIndex]];
     }
@@ -509,6 +507,14 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         if (self.sfTableViewManager.tableView != nil) {
             // tell the table view to update (at all of the inserted index paths)
             UITableView *tableView = self.sfTableViewManager.tableView;
+            
+            // Check if Sky solution is needed
+            BOOL isSkySolutionActive = [self isSkySolutionActive:tableView baseIndex:baseIndex];
+            if (isSkySolutionActive) {
+                [self skySolutionForTableViewReload:tableView newSmartfeedItems:newSmartfeedItems indexPaths:indexPaths];
+                return;
+            }
+            
             [tableView beginUpdates];
             [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
             [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
@@ -521,6 +527,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section != self.outbrainSectionIndex) {
         return nil;
+    }
+    
+    if (indexPath.row >= [self smartFeedItemsCount]) {
+        return [[UITableViewCell alloc] init];
     }
     
     if (indexPath.row == 0) {
@@ -571,6 +581,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         return;
     }
     
+    if (indexPath.row >= [self smartFeedItemsCount]) {
+        return;
+    }
+    
     if (indexPath.row == 0) {
         // Smartfeed header
         [self configureSmartFeedHeaderTableViewCell:cell atIndexPath:indexPath];
@@ -581,6 +595,9 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     
     // Report Viewability
     [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:sfItem.responseRequest];
+    if (self.isViewabilityPerListingEnabled) {
+        [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
+    }
     
     if ([cell isKindOfClass:[SFHorizontalWithVideoTableViewCell class]]) {
         [self configureHorizontalVideoTableViewCell:cell atIndexPath:indexPath];
@@ -612,6 +629,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         // Smartfeed header
         return UITableViewAutomaticDimension;
     }
+    if (indexPath.row >= [self smartFeedItemsCount]) {
+        return 0.1;
+    }
+    
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     return [self.sfTableViewManager heightForRowAtIndexPath:indexPath withSFItem:sfItem];
 }
@@ -758,6 +779,28 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
 }
 
+- (BOOL) isSkySolutionActive:(UITableView *)tableView baseIndex:(NSInteger)baseIndex {
+    NSInteger currentNumberOfSections = [tableView numberOfSections];
+    NSInteger currentNumberOfItemsInSection = [tableView numberOfRowsInSection:self.outbrainSectionIndex];
+    return self.outbrainSectionIndex < currentNumberOfSections && baseIndex < currentNumberOfItemsInSection;
+}
+
+- (void) skySolutionForTableViewReload:(UITableView *)tableView newSmartfeedItems:(NSArray *)newSmartfeedItems indexPaths:(NSArray *)indexPaths {
+    [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+    
+    // Check if there is an overlap between visibleIndexPathArray and the new IndexPaths we are about to add.
+    NSArray *visibleIndexPathArray = [tableView indexPathsForVisibleRows];
+    NSMutableSet *set1 = [NSMutableSet setWithArray: visibleIndexPathArray];
+    NSSet *set2 = [NSSet setWithArray: indexPaths];
+    [set1 intersectSet: set2];
+    NSArray *resultArray = [set1 allObjects];
+    
+    if ([resultArray count] > 1) {
+        // Detected overlap - calling reloadRowsAtIndexPaths (this will initiate a call to heightForRowAt:
+        [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
 #pragma mark - Collection View methods
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -831,19 +874,8 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     
     // Report Viewability
     [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:sfItem.responseRequest];
-    
-    OBView *existingOBView = (OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG];
-    if (existingOBView) {
-        [existingOBView removeFromSuperview];
-    }
-    if (![[SFViewabilityService sharedInstance] isAlreadyReportedForRequestId:sfItem.requestId position:sfItem.positions[0]]
-        && self.isViewabilityPerListingEnabled) {
-        OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
-        obview.tag = OBVIEW_DEFAULT_TAG;
-        obview.opaque = NO;
-        [[SFViewabilityService sharedInstance] registerOBView:obview positions:sfItem.positions requestId:sfItem.requestId smartFeedInitializationTime:self.initializationTime];
-        obview.userInteractionEnabled = NO;
-        [cell addSubview: obview];
+    if (self.isViewabilityPerListingEnabled) {
+        [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
     }
     
     if ([cell isKindOfClass:[SFHorizontalWithVideoCollectionViewCell class]]) {
@@ -1001,6 +1033,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
         return SFTypeSmartfeedHeader;
     }
     
+    if (indexPath.row >= [self smartFeedItemsCount]) {
+        return SFTypeBadType;
+    }
+    
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     return sfItem.itemType;
 }
@@ -1049,6 +1085,10 @@ int const OBVIEW_DEFAULT_TAG = 12345678;
     
     if (indexPath.row == 0) {
         // Smartfeed header        
+        return nil;
+    }
+    
+    if (indexPath.row >= [self smartFeedItemsCount]) {
         return nil;
     }
     

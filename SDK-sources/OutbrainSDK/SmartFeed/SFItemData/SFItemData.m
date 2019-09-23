@@ -53,7 +53,8 @@ NSInteger kVideoFinishedStatus = 1114;
 - (id)initWithVideoUrl:(NSURL *)videoUrl videoParamsStr:(NSString *)videoParamsStr singleRecommendation:(OBRecommendation *)rec odbResponse:(OBRecommendationResponse *)odbResponse {
     self = [super init];
     if (self) {
-        NSString *widgetTitle = odbResponse.settings.widgetHeaderText;
+        BOOL isParentResponse = odbResponse.settings.isSmartFeed;
+        NSString *widgetTitle = isParentResponse ? nil : odbResponse.settings.widgetHeaderText;
         
         self.videoUrl = videoUrl;
         self.videoPlayerStatus = kVideoInitStatus;

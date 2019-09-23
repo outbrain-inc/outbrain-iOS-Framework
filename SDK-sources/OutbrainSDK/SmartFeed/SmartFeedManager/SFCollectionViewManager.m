@@ -111,9 +111,27 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         NSAssert(collectionViewCellNib != nil, @"SFSingleVideoNoTitleCollectionViewReuseId should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: SFSingleVideoNoTitleCollectionViewReuseId];
         
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        [[NSNotificationCenter defaultCenter]
+            addObserver:self selector:@selector(orientationChanged:)
+            name:UIDeviceOrientationDidChangeNotification
+            object:[UIDevice currentDevice]];
     }
     return self;
 }
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+        return;
+    }
+    UICollectionView *collectionView = self.collectionView;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        NSArray *visibleIndexPathArray = [collectionView indexPathsForVisibleItems];
+        [collectionView reloadItemsAtIndexPaths:visibleIndexPathArray];
+    });
+}
+
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier {
     if (self.collectionView != nil) {
@@ -283,6 +301,10 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     singleCell.recTitleLabel.text = rec.content;
     singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
     
+    if (!sfItem.isCustomUI) {
+        singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+    }
+    
     NSAssert(eventListenerTarget != nil, @"clickListenerTarget must not be nil");
     
     [SFUtils removePaidLabelFromImageView:singleCell.recImageView];
@@ -307,9 +329,9 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
             [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
             singleCell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
             singleCell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
-            if (!sfItem.isCustomUI && !displaySourceOnOrganicRec) {
-                singleCell.recSourceLabel.text = @"";
-            }
+        }
+        if (!sfItem.isCustomUI && !displaySourceOnOrganicRec) {
+            singleCell.recSourceLabel.text = @"";
         }
     }
     
@@ -343,9 +365,6 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         }
         
         singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];
-        if (!sfItem.isCustomUI) {
-            singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
-        }
         
         [singleCell.outbrainLabelingContainer addTarget:eventListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
         [singleCell.cardContentView addGestureRecognizer:tapGesture];

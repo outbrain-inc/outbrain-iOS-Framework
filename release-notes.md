@@ -2,14 +2,27 @@
 
 ## Development 
 
+
+## v3.8.1 - August 26, 2019
+
+- Bug fix - When `SFTypeStripVideo` is at the parent response, header text should have been ignored and moved to the Smartfeed header.
+- Bug fix - Smartfeed "source label" was showing for organic rec if "publisher logo" image was missing.
+- Bug fix - Smartfeed, rec title should be gray for organic recs on all 1 col templates.
+
+## v3.8.0 - August 19, 2019 
+
 - Feature: add `disableCellShadows` flag to SmartFeedManager
 - Feature: add UIStackView implementation support, see [UIStackView Integration Guide](https://developer.outbrain.com/ios-sdk-v3-x-smartfeed-uistackview-integration-guide).
 - Feature: StackView solution, added `setUseDefaultCollectionViewDelegate` to set the SDK as the default delegate for the UICollectionView.
 - Improvement: Sample apps should support portrait mode only
 - Improvement: Add `skipRTL` flag to improve performance (Sky optimization).
+- Improvement: Smartfeed tableview will detect if "Sky Solution" is activated and if so, will act accordingly.
 - Bug fix: Drop shadow on SF cells sometimes was drawn wrong.
+- Bug fix: Smartfeed - on orientation change should reload the visible cells if on iPad.
+- Bug fix: Mobile device on landscape should load the same cell sizes as portrait (used different width)
+- Bug fix: Viewability per listing should work for UITableView as well
 - Internal: Support "shake" gesture in sample app for GTO testing.
-
+- Internal: Upgrade project to build with Xcode 10.2.1 (iOS 12.2)
 
 ## v3.7.6 - July 20, 2019 
 

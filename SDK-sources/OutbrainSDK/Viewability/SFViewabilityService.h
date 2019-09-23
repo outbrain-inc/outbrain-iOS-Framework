@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "OBView.h"
+#import "SFItemData.h"
 
 @interface SFViewabilityService : NSObject
 
 + (instancetype)sharedInstance;
+
+- (void) configureViewabilityPerListingForCell:(UIView *)cell withSFItem:(SFItemData *)sfItem initializationTime:(NSDate *)initializationTime;
 
 - (void) reportViewabilityForOBView:(OBView *)obview;
 

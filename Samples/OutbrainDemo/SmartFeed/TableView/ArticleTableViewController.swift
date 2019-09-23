@@ -69,6 +69,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         }
         else {
             return self.smartFeedManager.smartFeedItemsCount()
+            // return 24 // Test Sky Solution
         }
     }
         
@@ -90,6 +91,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         case 2,3,4:
             cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
         default:
+            cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
             break;
         }
         
@@ -121,7 +123,8 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
-            return self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
+            let height = self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
+            return height
         }
         
         if (indexPath.section == 0) {
