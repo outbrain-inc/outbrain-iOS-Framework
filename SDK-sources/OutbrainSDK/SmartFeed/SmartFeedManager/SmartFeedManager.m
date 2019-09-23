@@ -379,42 +379,45 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 -(NSArray *) createGridItemsFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     
-    NSUInteger itemsPerRow = 0;
-    if (templateType == SFTypeGridTwoInRowNoTitle || templateType == SFTypeGridTwoInRowWithTitle) {
-        itemsPerRow = 2;
-    }
-    else if (templateType == SFTypeGridThreeInRowNoTitle || templateType == SFTypeGridThreeInRowWithTitle) {
-        itemsPerRow = 3;
-    }
-    else {
-        NSAssert(NO, @"templateType has illegal value");
-    }
-    
-    BOOL shouldIncludeVideoInTheMiddle =
+    BOOL shouldIncludeVideo =
         [SFUtils isVideoIncludedInResponse:response] &&
-        templateType == SFTypeGridTwoInRowNoTitle &&
-        self.isVideoEligible &&
-        recommendations.count == 6;
+        (templateType == SFTypeGridTwoInRowNoTitle ||
+         templateType == SFTypeGridTwoInRowWithTitle) &&
+        self.isVideoEligible;
     
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
+    
+    if (shouldIncludeVideo) {
+        BOOL videoItemIndex = recommendations.count == 6 ? 1 : 0;
+        [self addTwoItemsInLineWithVideoToNewItemsList:newSmartfeedItems response:response videoItemIndex:videoItemIndex templateType:templateType widgetTitle:widgetTitle];
+    } else {
+        [self addItemsInLineToNewItemsList:newSmartfeedItems response:response templateType:templateType];
+    }
+
+    return newSmartfeedItems;
+}
+
+-(void) addTwoItemsInLineWithVideoToNewItemsList:(NSMutableArray *) newSmartfeedItems response:(OBRecommendationResponse *)response videoItemIndex:(int)videoItemIndex templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
+    NSArray *recommendations = response.recommendations;
+    BOOL isParentResponse = response.settings.isSmartFeed;
+    
     NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
-    while (recommendationsMutableArray.count >= itemsPerRow) {
-        NSRange subRange = NSMakeRange(0, itemsPerRow);
+    while (recommendationsMutableArray.count >= 2) {
+        NSRange subRange = NSMakeRange(0, 2);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
-             
-        if (shouldIncludeVideoInTheMiddle &&
-            newSmartfeedItems.count == 1)
-        {
-            // Add SFTypeGridTwoInRowWithVideo for the middle of the grid
+        
+        if (newSmartfeedItems.count == videoItemIndex) {
             NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
             NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
+            SFItemType newTemplateType = !isParentResponse && widgetTitle ?
+                SFTypeGridTwoInRowWithTitleWithVideo :
+                SFTypeGridTwoInRowWithVideo;
             SFItemData *videoItem = [[SFItemData alloc] initWithVideoUrl:videoURL
-                                                             videoParamsStr:videoParamsStr
+                                                          videoParamsStr:videoParamsStr
                                                                  reclist:singleLineRecs
                                                              odbResponse:response
-                                                                    type:SFTypeGridTwoInRowWithVideo];
-            
+                                                                    type: newTemplateType];
             
             [newSmartfeedItems addObject:videoItem];
             continue;
@@ -426,9 +429,36 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         
         [newSmartfeedItems addObject:item];
     }
-
-    return newSmartfeedItems;
 }
+
+-(void) addItemsInLineToNewItemsList:(NSMutableArray *) newSmartfeedItems response:(OBRecommendationResponse *)response templateType:(SFItemType)templateType {
+    NSArray *recommendations = response.recommendations;
+    
+    NSUInteger itemsPerRow = 0;
+    if (templateType == SFTypeGridTwoInRowNoTitle || templateType == SFTypeGridTwoInRowWithTitle) {
+        itemsPerRow = 2;
+    }
+    else if (templateType == SFTypeGridThreeInRowNoTitle || templateType == SFTypeGridThreeInRowWithTitle) {
+        itemsPerRow = 3;
+    }
+    else {
+        NSAssert(NO, @"templateType has illegal value");
+    }
+    
+    NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
+    while (recommendationsMutableArray.count >= itemsPerRow) {
+        NSRange subRange = NSMakeRange(0, itemsPerRow);
+        NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
+        [recommendationsMutableArray removeObjectsInRange:subRange];
+        
+        SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs
+                                                odbResponse:response
+                                                       type:templateType];
+        
+        [newSmartfeedItems addObject:item];
+    }
+}
+
 
 -(void) reloadUIData:(NSArray *) newSmartfeedItems {
     

@@ -37,6 +37,7 @@ NSString * const kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVide
 NSString * const SFSingleVideoWithTitleCollectionViewReuseId = @"SFSingleVideoWithTitleCollectionViewCell";
 NSString * const SFSingleVideoNoTitleCollectionViewReuseId = @"SFSingleVideoNoTitleCollectionViewCell";
 NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWithVideoCollectionViewCell";
+NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontalFixedWithTitleWithVideoCollectionViewCell";
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView
 {
@@ -80,6 +81,10 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
         horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithVideoCollectionViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithVideoCollectionViewCell should not be null");
         [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: SFHorizontalFixedWithVideoCellReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithTitleWithVideoCollectionViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithTitleWithVideoCollectionViewCell should not be null");
+        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: SFHorizontalFixedWithTitleWithVideoCellReuseId];
         
         // Single item cell
         UINib *collectionViewCellNib = [UINib nibWithNibName:@"SFCollectionViewCell" bundle:bundle];
@@ -166,9 +171,10 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
             return [collectionView dequeueReusableCellWithReuseIdentifier: SFSingleVideoWithTitleCollectionViewReuseId forIndexPath:indexPath];
         case SFTypeStripVideoWithPaidRecNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: SFSingleVideoNoTitleCollectionViewReuseId forIndexPath:indexPath];
-            
         case SFTypeGridTwoInRowWithVideo:
             return [collectionView dequeueReusableCellWithReuseIdentifier: SFHorizontalFixedWithVideoCellReuseId forIndexPath:indexPath];
+        case SFTypeGridTwoInRowWithTitleWithVideo:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: SFHorizontalFixedWithTitleWithVideoCellReuseId forIndexPath:indexPath];
         default:
             return nil;
     }
@@ -192,7 +198,8 @@ NSString * const SFHorizontalFixedWithVideoCellReuseId = @"SFHorizontalFixedWith
     else if (sfItemType == SFTypeGridThreeInRowNoTitle) {
         return CGSizeMake(screenWidth, 280.0);
     }
-    else if (sfItemType == SFTypeGridTwoInRowWithTitle) {
+    else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
+             sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
         return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 270.0);
     }
     else if ((sfItemType == SFTypeStripWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {

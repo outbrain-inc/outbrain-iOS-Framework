@@ -99,6 +99,7 @@ typedef enum
     SFTypeStripVideoWithPaidRecAndTitle,
     SFTypeStripVideoWithPaidRecNoTitle,
     SFTypeGridTwoInRowWithVideo,
+    SFTypeGridTwoInRowWithTitleWithVideo,
     SFTypeBadType
 } SFItemType;
 
