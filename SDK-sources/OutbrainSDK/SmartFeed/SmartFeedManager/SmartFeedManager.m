@@ -43,7 +43,7 @@
 
 
 @property (nonatomic, assign) BOOL isRTL;
-
+@property (nonatomic, assign) BOOL isSkySolutionActive;
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, assign) BOOL isSmartfeedWithNoChildren;
 
@@ -509,8 +509,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             UITableView *tableView = self.sfTableViewManager.tableView;
             
             // Check if Sky solution is needed
-            BOOL isSkySolutionActive = [self isSkySolutionActive:tableView baseIndex:baseIndex];
-            if (isSkySolutionActive) {
+            self.isSkySolutionActive = self.isSkySolutionActive || [self isSkySolutionActive:tableView baseIndex:baseIndex];
+            if (self.isSkySolutionActive) {
                 [self skySolutionForTableViewReload:tableView newSmartfeedItems:newSmartfeedItems indexPaths:indexPaths];
                 return;
             }
