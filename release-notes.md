@@ -3,6 +3,10 @@
 ## Development 
 
 
+## v3.8.1 - September 26, 2019
+
+- Bug fix - crash in "Sky solution" if `numberOfRowsInSection` value < total items in the feed.
+
 ## v3.8.1 - August 26, 2019
 
 - Bug fix - When `SFTypeStripVideo` is at the parent response, header text should have been ignored and moved to the Smartfeed header.
