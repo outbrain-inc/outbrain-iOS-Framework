@@ -11,8 +11,8 @@ import OutbrainSDK
 
 
 struct OBConf {
-    static var widgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
-    // static var widgetID = "SFD_MAIN_5"
+    //static var widgetID = UIDevice.current.userInterfaceIdiom == .pad ? "SFD_MAIN_3" : "SFD_MAIN_2"
+    static var widgetID = "SDK_MAIN_1"
     // static var widgetID = "SFD_MAIN_4"
     static var baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
 }
