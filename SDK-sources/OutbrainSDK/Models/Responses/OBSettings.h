@@ -18,7 +18,7 @@
 @property (nonatomic, assign, readonly) NSInteger feedCyclesLimit;
 @property (nonatomic, assign, readonly) NSInteger feedChunkSize;
 @property (nonatomic, copy, readonly, nullable) NSString *recMode;
-@property (nonatomic, copy, readonly, nullable) NSString *widgetHeaderText;
+@property (nonatomic, copy, nullable) NSString *widgetHeaderText;
 @property (nonatomic, copy, readonly, nullable) NSURL *videoUrl;
 @property (nonatomic, copy, readonly, nullable) NSString *smartfeedShadowColor;
 @property (nonatomic, strong, readonly, nullable) NSArray *feedContentArray;

@@ -19,7 +19,6 @@
 @property (nonatomic, assign) NSInteger feedChunkSize;
 @property (nonatomic, strong) NSArray *feedContentArray;
 @property (nonatomic, copy) NSString *recMode;
-@property (nonatomic, copy) NSString *widgetHeaderText;
 @property (nonatomic, copy) NSURL *videoUrl;
 @property (nonatomic, copy) NSString *smartfeedShadowColor;
 @property (nonatomic, copy) NSString *paidLabelText;
@@ -42,7 +41,7 @@
         self.apv = [[payload valueForKey:@"apv"] boolValue];
         self.isRTL = [payload valueForKey:@"dynamicWidgetDirection"] && [[payload valueForKey:@"dynamicWidgetDirection"] isEqualToString:@"RTL"];
         self.isSmartFeed = [[payload valueForKey:@"isSmartFeed"] boolValue];
-        self.isTrendingInCategoryCard = [[payload valueForKey:@""] boolValue]; //TODO probably need to replace with the actual key (baruch should fix).
+        self.isTrendingInCategoryCard = [payload valueForKey:@""] && [[payload valueForKey:@""] isEqualToString:@"CONTEXTUAL_TRENDING_IN_CATEGORY"];; //TODO probably need to replace with the actual key (baruch should fix).
         self.feedCyclesLimit = [[payload valueForKey:@"feedCyclesLimit"] integerValue];
         self.feedChunkSize = [[payload valueForKey:@"feedLoadChunkSize"] integerValue];
         self.recMode = [payload valueForKey:@"recMode"];
