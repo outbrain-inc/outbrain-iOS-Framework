@@ -14,6 +14,7 @@
 @property (nonatomic, assign) BOOL apv;
 @property (nonatomic, assign) BOOL isRTL;
 @property (nonatomic, assign) BOOL isSmartFeed;
+@property (nonatomic, assign) BOOL isTrendingInCategoryCard;
 @property (nonatomic, assign) NSInteger feedCyclesLimit;
 @property (nonatomic, assign) NSInteger feedChunkSize;
 @property (nonatomic, strong) NSArray *feedContentArray;
@@ -41,6 +42,7 @@
         self.apv = [[payload valueForKey:@"apv"] boolValue];
         self.isRTL = [payload valueForKey:@"dynamicWidgetDirection"] && [[payload valueForKey:@"dynamicWidgetDirection"] isEqualToString:@"RTL"];
         self.isSmartFeed = [[payload valueForKey:@"isSmartFeed"] boolValue];
+        self.isTrendingInCategoryCard = [[payload valueForKey:@""] boolValue]; //TODO probably need to replace with the actual key (baruch should fix).
         self.feedCyclesLimit = [[payload valueForKey:@"feedCyclesLimit"] integerValue];
         self.feedChunkSize = [[payload valueForKey:@"feedLoadChunkSize"] integerValue];
         self.recMode = [payload valueForKey:@"recMode"];

@@ -61,6 +61,8 @@
 @property (nonatomic, strong, readonly, nullable) NSArray *pixels;
 /** @brief The audience campaigns label - null if not audience campaigns. */
 @property (nonatomic, copy, readonly, nullable) NSString * audienceCampaignsLabel;
+/** @brief Apply for Smartfeed "trending in category" card only. */
+@property (nonatomic, copy, readonly, nullable) NSString * categoryName;
 
 -(BOOL) isRTB __deprecated_msg("use shouldDisplayDisclosureIcon() instead.");
 
