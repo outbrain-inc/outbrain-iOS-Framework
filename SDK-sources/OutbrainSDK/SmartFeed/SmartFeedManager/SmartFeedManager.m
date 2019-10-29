@@ -594,7 +594,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     // Report Viewability
-    [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:sfItem.responseRequest];
+    if (!self.isViewabilityPerListingEnabled) {
+        NSString *reqId = [sfItem.responseRequest getStringValueForPayloadKey:@"req_id"];
+        [[OBViewabilityService sharedInstance] reportRecsShownForRequestId:reqId];
+    }
+    // else.. will be reported in OBViewability (per listing)
+    
     if (self.isViewabilityPerListingEnabled) {
         [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
     }
@@ -873,7 +878,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     // Report Viewability
-    [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:sfItem.responseRequest];
+    if (!self.isViewabilityPerListingEnabled) {
+        NSString *reqId = [sfItem.responseRequest getStringValueForPayloadKey:@"req_id"];
+        [[OBViewabilityService sharedInstance] reportRecsShownForRequestId:reqId];
+    }
+    // else.. will be reported in OBViewability (per listing)
+    
     if (self.isViewabilityPerListingEnabled) {
         [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
     }

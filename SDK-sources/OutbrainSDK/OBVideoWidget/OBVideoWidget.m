@@ -79,7 +79,8 @@
                                                         odbResponse:response];
             
             // Report Viewability
-            [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:self.sfItem.responseRequest];
+            NSString *reqId = [self.sfItem.responseRequest getStringValueForPayloadKey:@"req_id"];
+            [[OBViewabilityService sharedInstance] reportRecsShownForRequestId:reqId];
             
             [SFCollectionViewManager configureVideoCell:self.videoCell withSFItem:self.sfItem wkUIDelegate:self eventListenerTarget:self tapGestureDelegate:self];
             
