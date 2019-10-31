@@ -128,8 +128,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     [self reportRecsShownForKey:viewabilityKeyForOBRequest];
 }
 
-- (void) reportRecsShownForResponseRequest:(OBResponseRequest *)responseRequest {
-    NSString *reqId = [responseRequest getStringValueForPayloadKey:@"req_id"];
+- (void) reportRecsShownForRequestId:(NSString *)reqId {
     NSString *viewabilityKeyForRequestId = [self viewabilityKeyForRequestId:reqId];
     [self reportRecsShownForKey:viewabilityKeyForRequestId];
 }

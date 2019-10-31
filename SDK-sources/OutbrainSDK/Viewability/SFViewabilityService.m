@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SFViewabilityService.h"
 #import "OBNetworkManager.h"
+#import "OBViewabilityService.h"
 
 @interface SFViewabilityService()
 
@@ -102,6 +103,9 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
         
         [self.itemsToReportMap setObject:itemMap forKey:key];
     }
+    
+    // Viewability widget level (eT=3)
+    [[OBViewabilityService sharedInstance] reportRecsShownForRequestId:requestId];
 }
 
 - (void) startReportViewabilityWithTimeInterval:(NSInteger)reportingIntervalMillis {
