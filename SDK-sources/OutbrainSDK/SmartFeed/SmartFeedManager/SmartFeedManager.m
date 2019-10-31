@@ -623,7 +623,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
-    if (!self.isInMiddleOfScreen && (indexPath.row >= (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
+    BOOL smartfeedScrollNearBottom = indexPath.row >= (self.smartFeedItemsArray.count - 4);
+    BOOL smartfeedCountVerySmall = self.smartFeedItemsArray.count < 6;
+    if (!self.isInMiddleOfScreen && (smartfeedScrollNearBottom || smartfeedCountVerySmall)) {
         [self fetchMoreRecommendations];
     }
 }
