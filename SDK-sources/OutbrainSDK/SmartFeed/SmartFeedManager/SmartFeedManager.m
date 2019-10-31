@@ -598,7 +598,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         NSString *reqId = [sfItem.responseRequest getStringValueForPayloadKey:@"req_id"];
         [[OBViewabilityService sharedInstance] reportRecsShownForRequestId:reqId];
     }
-    // else.. will be reported in OBViewability (per listing)
+    // else.. will be reported in SFViewabilityService (per listing)
     
     if (self.isViewabilityPerListingEnabled) {
         [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
@@ -882,7 +882,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         NSString *reqId = [sfItem.responseRequest getStringValueForPayloadKey:@"req_id"];
         [[OBViewabilityService sharedInstance] reportRecsShownForRequestId:reqId];
     }
-    // else.. will be reported in OBViewability (per listing)
+    // else.. will be reported in SFViewabilityService (per listing)
     
     if (self.isViewabilityPerListingEnabled) {
         [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
