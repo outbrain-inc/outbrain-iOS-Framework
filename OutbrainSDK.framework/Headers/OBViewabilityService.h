@@ -19,7 +19,7 @@
 
 - (void) reportRecsShownForOBLabel:(OBLabel *)obLabel;
 
-- (void) reportRecsShownForResponseRequest:(OBResponseRequest *)responseRequest;
+- (void) reportRecsShownForRequestId:(NSString *)reqId;
 
 - (void) updateViewabilitySetting:(NSNumber *)value key:(NSString *)key;
 
