@@ -14,7 +14,7 @@
 @interface OBLabel()
 
 @property (nonatomic, copy) NSDate *visibleImpressionTime;
-@property (nonatomic, strong) NSTimer *viewVisibleTimer;
+@property (nonatomic, weak) NSTimer *viewVisibleTimer;
 
 @end
 
@@ -36,7 +36,7 @@ CGFloat viewThresholdBeforeReportingToServer = 1.0;
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (id) initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
         if ([[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
             [self trackViewability];
@@ -44,6 +44,10 @@ CGFloat viewThresholdBeforeReportingToServer = 1.0;
     }
 
     return self;
+}
+
+- (void) dealloc {
+    [self stopViewabilityTimer];
 }
 
 
@@ -66,27 +70,25 @@ CGFloat viewThresholdBeforeReportingToServer = 1.0;
     
     int viewabilityThresholdMilliseconds = [[OBViewabilityService sharedInstance] viewabilityThresholdMilliseconds];
     viewThresholdBeforeReportingToServer =  viewabilityThresholdMilliseconds / 1000.0;
-    
-    self.viewVisibleTimer = [NSTimer timerWithTimeInterval:kTIMER_INTERVAL
-                                             target:self
-                                           selector:@selector(checkIfViewIsVisible:)
-                                           userInfo:[@{@"view": self} mutableCopy]
-                                            repeats:YES];
+
+    __weak OBLabel* weakSelf = self;
+
+    self.viewVisibleTimer = [NSTimer scheduledTimerWithTimeInterval:kTIMER_INTERVAL
+                                                             target:weakSelf
+                                                           selector:@selector(checkIfViewIsVisible:)
+                                                           userInfo:[@{} mutableCopy]
+                                                            repeats:YES];
     
     self.viewVisibleTimer.tolerance = kTIMER_INTERVAL * 0.5;
-    
-    [[NSRunLoop mainRunLoop] addTimer:self.viewVisibleTimer forMode:NSRunLoopCommonModes];
-    
-    
 }
 
 
-- (void)checkIfViewIsVisible:(NSTimer *)timer {
-    UIView *view = timer.userInfo[@"view"];
+- (void) checkIfViewIsVisible:(NSTimer *)timer {
+    UIView *view = self;
     
-    if (!view.superview) {
+    if (view.superview == nil) {
         // NSLog(@"Warning: The ad view is not in a super view. No visibility tracking will occur.");
-        [self.viewVisibleTimer invalidate];
+        [self stopViewabilityTimer];
         return;
     }
     
@@ -109,14 +111,19 @@ CGFloat viewThresholdBeforeReportingToServer = 1.0;
 //    NSLog(@"Reporting viewability for widget id: %@, url: ...%@, shown for %.02f seconds", self.widgetId, trimmedUrlString,
 //          [timer.userInfo[@"secondsVisible"] floatValue]);
     [[OBViewabilityService sharedInstance] reportRecsShownForOBLabel:self];
-    [timer invalidate];
+
+    [self stopViewabilityTimer];
+}
+
+- (void) stopViewabilityTimer
+{
+    [self.viewVisibleTimer invalidate];
+    self.viewVisibleTimer = nil;
 }
 
 - (void) removeFromSuperview
 {
-    if (self.viewVisibleTimer) {
-        [self.viewVisibleTimer invalidate];
-    }
+    [self stopViewabilityTimer];
     
     [super removeFromSuperview];
 }
