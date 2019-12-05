@@ -14,7 +14,7 @@
 @interface OBLabel()
 
 @property (nonatomic, copy) NSDate *visibleImpressionTime;
-@property (nonatomic, weak) NSTimer *viewVisibleTimer;
+@property (nonatomic, strong) NSTimer *viewVisibleTimer;
 
 @end
 
