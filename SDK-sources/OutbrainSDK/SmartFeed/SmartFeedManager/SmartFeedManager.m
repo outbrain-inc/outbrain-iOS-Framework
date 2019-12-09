@@ -795,14 +795,14 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if ([self.smartFeedItemsArray count] == 0) {
         [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems]; // manipulation to simulate adding items to the feed (before it supposed to happen).
         currentNumberOfSections = [tableView numberOfSections];
-        [tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone]; // numberOfRowsInSection cache previous valure unless we call [tableView reloadSections..]
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone]; // numberOfRowsInSection cache previous value unless we call [tableView reloadSections..]
         currentNumberOfItemsInOutbrainSection = [tableView numberOfRowsInSection:self.outbrainSectionIndex];
         // expected currentNumberOfItemsInOutbrainSection to be > 0
         self.smartFeedItemsArray = [[NSMutableArray alloc] init]; // reset self.smartFeedItemsArray
         
         if (currentNumberOfItemsInOutbrainSection == 0) {
             // Sky returns 0 for currentNumberOfItemsInOutbrainSection even though there are items there
-            return YES; // return YES to avoid crash
+            return YES; // return YES to detect Sky special case and avoid crash
         } else {
             // back to normal value without manipulation
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
@@ -810,9 +810,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         }
     }
     
-    // Test #2 - Sky solution is basically to return a fix number (24) for [tableView numberOfRowsInSection:self.outbrainSectionIndex]
-    // instead of the usual implementation in which [tableView numberOfRowsInSection:self.outbrainSectionIndex] returns the current
-    // number of items in the feed. Note, when we run this line we are BEFORE newSmartfeedItems are added to the feed.
+    /*
+     * Test #2 - Sky solution is basically to return a fix number (24) for [tableView numberOfRowsInSection:self.outbrainSectionIndex]
+     * instead of the usual implementation in which [tableView numberOfRowsInSection:self.outbrainSectionIndex] returns the current
+     * number of items in the feed. Note, when we run this line we are BEFORE newSmartfeedItems are added to the feed.
+     */
     return self.outbrainSectionIndex < currentNumberOfSections && baseIndex < currentNumberOfItemsInOutbrainSection;
 }
 
