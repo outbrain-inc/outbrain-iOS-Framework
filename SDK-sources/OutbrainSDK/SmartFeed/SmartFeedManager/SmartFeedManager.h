@@ -120,6 +120,7 @@ typedef enum
 
 @property (nonatomic) BOOL isVideoEligible;
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
+@property (nonatomic) BOOL isSkySolutionActive;
 
 -(NSInteger) smartFeedItemsCount;
 
