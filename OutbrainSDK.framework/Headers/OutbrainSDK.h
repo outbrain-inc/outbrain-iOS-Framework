@@ -25,7 +25,7 @@ FOUNDATION_EXPORT const unsigned char DynamicOutbrainSDKVersionString[];
 #import <OutbrainSDK/OBBridge.h>
 #import <OutbrainSDK/OBDisclosure.h>
 #import <OutbrainSDK/OBContent.h>
-#import <OutbrainSDK/OBImage.h>
+#import <OutbrainSDK/OBImageInfo.h>
 #import <OutbrainSDK/OBDisclosure.h>
 #import <OutbrainSDK/OBSettings.h>
 #import <OutbrainSDK/OBResponseRequest.h>
