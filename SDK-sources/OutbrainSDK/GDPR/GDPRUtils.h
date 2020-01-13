@@ -57,4 +57,10 @@ typedef NS_ENUM(NSInteger, SubjectToGDPR) {
  */
 - (BOOL)isPurposeConsentGivenFor:(int)purposeId;
 
+/**
+ * https://iabtechlab.com/wp-content/uploads/2019/10/CCPA_Compliance_Framework_US_Privacy_USER_SIGNAL_API_SPEC_IABTechLab_DRAFT_for_Public_Comment.pdf
+ * iAB US Privacy String (CCPA)
+ */
+@property (nonatomic, readonly) NSString *ccpaPrivacyString;
+
 @end
