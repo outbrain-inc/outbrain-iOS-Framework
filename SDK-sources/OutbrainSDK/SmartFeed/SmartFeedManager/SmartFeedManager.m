@@ -368,7 +368,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 -(NSArray *) createCarouselItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
 
-    if (response.settings.isTrendingInCategoryCard) {
+    if (response.settings.isTrendingInCategoryCard && recommendations.count > 0) {
         OBRecommendation *rec = recommendations[0];
         response.settings.widgetHeaderText = [NSString stringWithFormat:@"%@ %@", response.settings.widgetHeaderText, rec.categoryName];
     }
