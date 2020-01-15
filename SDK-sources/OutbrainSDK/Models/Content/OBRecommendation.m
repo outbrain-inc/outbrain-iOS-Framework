@@ -33,9 +33,9 @@
 /** @brief Is the recommendation a link to a video clip. */
 @property (nonatomic, assign, getter = isVideo) BOOL video;
 /** @brief An image related to the recommendation. */
-@property (nonatomic, strong) OBImage *image;
+@property (nonatomic, strong) OBImageInfo *image;
 /** @brief An image related to the recommendation. */
-@property (nonatomic, strong) OBImage *publisherLogoImage;
+@property (nonatomic, strong) OBImageInfo *publisherLogoImage;
 /** @brief The appflow settings for the content, currently only shouldOpenInExternalBrowser is supported. */
 @property (nonatomic, strong) NSDictionary *appflow;
 /** @brief Disclosure icon for conversion campaigns */
@@ -120,8 +120,8 @@
 
 + (Class)propertyClassForKey:(NSString *)key
 {
-    if ([key isEqualToString:@"thumbnail"])         return [OBImage class];
-    if ([key isEqualToString:@"logo"])              return [OBImage class];
+    if ([key isEqualToString:@"thumbnail"])         return [OBImageInfo class];
+    if ([key isEqualToString:@"logo"])              return [OBImageInfo class];
     if ([key isEqualToString:@"disclosure"])        return [OBDisclosure class];
     if ([key isEqualToString:@"publish_date"])      return [NSDate class];
     if ([key isEqualToString:@"url"])               return [NSURL class];

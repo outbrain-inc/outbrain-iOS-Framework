@@ -7,7 +7,7 @@
 //
 
 #import "OBContent.h"
-#import "OBImage.h"
+#import "OBImageInfo.h"
 
 
 /** @brief An interface that represents a single content recommendation.
@@ -29,7 +29,7 @@
  * @note Please see the "Outbrain iOS SDK Programming Guide" for more detailed explanations about how to integrate with Outbrain.
  *
  * @see OBRecommendationResponse
- * @see OBImage
+ * @see OBImageInfo
  */
 @class OBDisclosure;
 
@@ -52,9 +52,9 @@
 /** @brief Is the recommendation a link to a video clip. */
 @property (nonatomic, assign, getter = isVideo, readonly) BOOL video;
 /** @brief An image related to the recommendation. */
-@property (nonatomic, strong, readonly, nullable) OBImage *image;
+@property (nonatomic, strong, readonly, nullable) OBImageInfo *image;
 /** @brief Publisher logo image */
-@property (nonatomic, strong, readonly, nullable) OBImage *publisherLogoImage;
+@property (nonatomic, strong, readonly, nullable) OBImageInfo *publisherLogoImage;
 /** @brief Disclosure icon for conversion campaigns */
 @property (nonatomic, strong, readonly, nullable) OBDisclosure *disclosure;
 /** @brief Pixels array for a recommendation to be fired when recommendation received from the server */

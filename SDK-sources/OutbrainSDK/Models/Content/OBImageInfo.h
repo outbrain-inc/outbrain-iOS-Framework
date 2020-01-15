@@ -1,5 +1,5 @@
 //
-//  OBImage.h
+//  OBImageInfo.h
 //  OutbrainSDK
 //
 //  Created by Oded Regev on 12/12/13.
@@ -22,11 +22,7 @@
  * </ul>
  *
  */
-@interface OBImage : OBContent {
-    NSURL           *url;
-    CGFloat         width;
-    CGFloat         height;
-}
+@interface OBImageInfo : OBContent 
 
 /** @brief The image URL */
 @property (nonatomic, copy, nullable) NSURL *url;

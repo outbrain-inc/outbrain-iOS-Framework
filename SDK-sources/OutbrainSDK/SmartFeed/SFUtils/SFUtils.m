@@ -122,7 +122,14 @@ static BOOL skipRTL;
     BOOL isRTL = [SFUtils isRTL:settings.paidLabelText];
     [recImageView addSubview:paidLabel];
     
-    CGSize expectedLabelSize = [settings.paidLabelText sizeWithFont:paidLabel.font constrainedToSize:recImageView.frame.size lineBreakMode:paidLabel.lineBreakMode];
+    // Calculate label size
+    NSAttributedString *attributedText =
+        [[NSAttributedString alloc] initWithString:settings.paidLabelText
+                                        attributes:@{NSFontAttributeName: paidLabel.font}];
+    CGRect rect = [attributedText boundingRectWithSize:recImageView.frame.size
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                               context:nil];
+    CGSize expectedLabelSize = rect.size;
     
     [self addConstraint:NSLayoutAttributeHeight constant:expectedLabelSize.height + 6.0 toView:paidLabel];
     [self addConstraint:NSLayoutAttributeWidth constant:expectedLabelSize.width + 20.0 toView:paidLabel];

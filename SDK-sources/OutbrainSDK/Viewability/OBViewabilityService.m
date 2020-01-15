@@ -101,7 +101,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     
     NSDate *timeNow = [NSDate date];
     NSTimeInterval timeIntervalSinceRequestStart = [timeNow timeIntervalSinceDate:requestStartDate];
-    NSString *timeToProcessRequest = [NSString stringWithFormat:@"%d", (long) (timeIntervalSinceRequestStart * 1000)];
+    NSString *timeToProcessRequest = [NSString stringWithFormat:@"%ld", (long) (timeIntervalSinceRequestStart * 1000)];
     
     if (viewabilityData.reportServedUrl == nil) {
         NSLog(@"Error - reportRecsReceived, reportServedUrl is nil");
@@ -128,8 +128,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     [self reportRecsShownForKey:viewabilityKeyForOBRequest];
 }
 
-- (void) reportRecsShownForResponseRequest:(OBResponseRequest *)responseRequest {
-    NSString *reqId = [responseRequest getStringValueForPayloadKey:@"req_id"];
+- (void) reportRecsShownForRequestId:(NSString *)reqId {
     NSString *viewabilityKeyForRequestId = [self viewabilityKeyForRequestId:reqId];
     [self reportRecsShownForKey:viewabilityKeyForRequestId];
 }
@@ -169,7 +168,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
         
         
         
-        NSString *executionTime = [NSString stringWithFormat:@"%d", (long) (executionTimeInterval * 1000)];
+        NSString *executionTime = [NSString stringWithFormat:@"%ld", (long) (executionTimeInterval * 1000)];
         
         [self.reqIdAlreadyReportedArray addObject:viewabilityData.rId];
         

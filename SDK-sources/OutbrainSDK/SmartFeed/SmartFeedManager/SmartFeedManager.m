@@ -43,7 +43,6 @@
 
 
 @property (nonatomic, assign) BOOL isRTL;
-@property (nonatomic, assign) BOOL isSkySolutionActive;
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, assign) BOOL isSmartfeedWithNoChildren;
 
@@ -513,12 +512,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             UITableView *tableView = self.sfTableViewManager.tableView;
             
             // Check if Sky solution is needed
-            self.isSkySolutionActive = self.isSkySolutionActive || [self isSkySolutionActive:tableView baseIndex:baseIndex];
             if (self.isSkySolutionActive) {
                 [self skySolutionForTableViewReload:tableView newSmartfeedItems:newSmartfeedItems indexPaths:indexPaths];
                 return;
             }
-            
+
             [tableView beginUpdates];
             [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
             [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
@@ -598,7 +596,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     // Report Viewability
-    [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:sfItem.responseRequest];
+    if (!self.isViewabilityPerListingEnabled) {
+        NSString *reqId = [sfItem.responseRequest getStringValueForPayloadKey:@"req_id"];
+        [[OBViewabilityService sharedInstance] reportRecsShownForRequestId:reqId];
+    }
+    // else.. will be reported in SFViewabilityService (per listing)
+    
     if (self.isViewabilityPerListingEnabled) {
         [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
     }
@@ -622,7 +625,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
-    if (!self.isInMiddleOfScreen && (indexPath.row >= (self.smartFeedItemsArray.count - 4)) || (self.smartFeedItemsArray.count < 6)) {
+    BOOL smartfeedScrollNearBottom = indexPath.row >= (self.smartFeedItemsArray.count - 4);
+    BOOL smartfeedCountVerySmall = self.smartFeedItemsArray.count < 6;
+    if (!self.isInMiddleOfScreen && (smartfeedScrollNearBottom || smartfeedCountVerySmall)) {
         [self fetchMoreRecommendations];
     }
 }
@@ -783,12 +788,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     [sfHeaderCell.contentView addGestureRecognizer:tapGesture];
 }
 
-- (BOOL) isSkySolutionActive:(UITableView *)tableView baseIndex:(NSInteger)baseIndex {
-    NSInteger currentNumberOfSections = [tableView numberOfSections];
-    NSInteger currentNumberOfItemsInSection = [tableView numberOfRowsInSection:self.outbrainSectionIndex];
-    return self.outbrainSectionIndex < currentNumberOfSections && baseIndex < currentNumberOfItemsInSection;
-}
-
 - (void) skySolutionForTableViewReload:(UITableView *)tableView newSmartfeedItems:(NSArray *)newSmartfeedItems indexPaths:(NSArray *)indexPaths {
     [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
     
@@ -877,7 +876,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     // Report Viewability
-    [[OBViewabilityService sharedInstance] reportRecsShownForResponseRequest:sfItem.responseRequest];
+    if (!self.isViewabilityPerListingEnabled) {
+        NSString *reqId = [sfItem.responseRequest getStringValueForPayloadKey:@"req_id"];
+        [[OBViewabilityService sharedInstance] reportRecsShownForRequestId:reqId];
+    }
+    // else.. will be reported in SFViewabilityService (per listing)
+    
     if (self.isViewabilityPerListingEnabled) {
         [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
     }

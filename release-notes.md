@@ -3,7 +3,19 @@
 ## Development 
 
 
-## v3.8.1 - September 26, 2019
+## v3.8.4 - January 6, 2020
+
+- Improvement: potential memory leak in Viewability on regualar widget in some cases (Barstool fix)
+- Improvement: rename OBImage --> OBImageInfo due to conflict with Apple OnBoarding library
+- Improvement: isSkySolutionActive will now be set manually by the app developer
+
+## v3.8.3 - October 31, 2019
+
+- Infrastructure - update CircleCI to use Xcode 11.1
+- Infrastructure - Xcode11 (iOS 13) support (clean warnings for new Xcode).
+- Bug fix - Viewability per widget didn't work for StackView solution. 
+
+## v3.8.2 - September 26, 2019
 
 - Bug fix - crash in "Sky solution" if `numberOfRowsInSection` value < total items in the feed.
 
