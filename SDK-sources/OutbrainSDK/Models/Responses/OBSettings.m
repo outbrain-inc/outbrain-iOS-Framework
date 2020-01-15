@@ -14,11 +14,11 @@
 @property (nonatomic, assign) BOOL apv;
 @property (nonatomic, assign) BOOL isRTL;
 @property (nonatomic, assign) BOOL isSmartFeed;
+@property (nonatomic, assign) BOOL isTrendingInCategoryCard;
 @property (nonatomic, assign) NSInteger feedCyclesLimit;
 @property (nonatomic, assign) NSInteger feedChunkSize;
 @property (nonatomic, strong) NSArray *feedContentArray;
 @property (nonatomic, copy) NSString *recMode;
-@property (nonatomic, copy) NSString *widgetHeaderText;
 @property (nonatomic, copy) NSURL *videoUrl;
 @property (nonatomic, copy) NSString *smartfeedShadowColor;
 @property (nonatomic, copy) NSString *paidLabelText;
@@ -41,6 +41,7 @@
         self.apv = [[payload valueForKey:@"apv"] boolValue];
         self.isRTL = [payload valueForKey:@"dynamicWidgetDirection"] && [[payload valueForKey:@"dynamicWidgetDirection"] isEqualToString:@"RTL"];
         self.isSmartFeed = [[payload valueForKey:@"isSmartFeed"] boolValue];
+        self.isTrendingInCategoryCard = [payload valueForKey:@"feedCardType"] && [[payload valueForKey:@"feedCardType"] isEqualToString:@"CONTEXTUAL_TRENDING_IN_CATEGORY"];
         self.feedCyclesLimit = [[payload valueForKey:@"feedCyclesLimit"] integerValue];
         self.feedChunkSize = [[payload valueForKey:@"feedLoadChunkSize"] integerValue];
         self.recMode = [payload valueForKey:@"recMode"];

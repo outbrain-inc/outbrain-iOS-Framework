@@ -44,7 +44,8 @@
 @property (nonatomic, strong) NSArray *pixels;
 /** @brief The audience campaigns label - null if not audience campaigns. */
 @property (nonatomic, copy) NSString *audienceCampaignsLabel;
-
+/** @brief Apply for Smartfeed "trending in category" card only. */
+@property (nonatomic, copy) NSString * categoryName;
 @end
 
 
@@ -64,7 +65,7 @@
 {
     OBRecommendation * recommendation = [super contentWithPayload:payload];
     
-    if(payload[@"pc_id"])
+    if (payload[@"pc_id"])
     {
         recommendation.paidLink = YES;
     }
@@ -87,6 +88,13 @@
         }
     }
     
+    if (payload[@"card"] && [payload[@"card"] isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *dict = payload[@"card"];
+        if (dict[@"contextual_topic"]) {
+            recommendation.categoryName = dict[@"contextual_topic"];
+        }
+    }
+
     return recommendation;
 }
 

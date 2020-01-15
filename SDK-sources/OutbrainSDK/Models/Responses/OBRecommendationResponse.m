@@ -19,7 +19,7 @@
     
     // Parse settings
     id settingsPayload = payload[@"settings"];
-    if([settingsPayload isKindOfClass:[NSDictionary class]])
+    if ([settingsPayload isKindOfClass:[NSDictionary class]])
     {
         // The actual docs here
         // Let's convert the recommendations to actual objects
@@ -34,10 +34,10 @@
     
     // Parse documents, i.e. recommadations
     id documents = payload[@"documents"];
-    if([documents isKindOfClass:[NSDictionary class]])
+    if ([documents isKindOfClass:[NSDictionary class]])
     {
         // The actual docs here
-        if(documents[@"doc"] && [documents[@"doc"] isKindOfClass:[NSArray class]])
+        if (documents[@"doc"] && [documents[@"doc"] isKindOfClass:[NSArray class]])
         {
             // Let's convert the recommendations to actual objects
             NSMutableArray * recommendations = [NSMutableArray arrayWithCapacity:[documents[@"doc"] count]];
@@ -51,7 +51,7 @@
     
     // Parse request
     id requestPayload = payload[@"request"];
-    if([requestPayload isKindOfClass:[NSDictionary class]])
+    if ([requestPayload isKindOfClass:[NSDictionary class]])
     {
         // The response request here
         res.responseRequest = [[OBResponseRequest alloc] initWithPayload:requestPayload];
