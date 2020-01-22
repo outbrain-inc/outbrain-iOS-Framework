@@ -5,6 +5,8 @@
 
 #import "GDPRUtils.h"
 
+NSString *const IAB_US_Privacy_String = @"IABUSPrivacy_String";
+
 NSString *const IABConsent_SubjectToGDPRKey = @"IABConsent_SubjectToGDPR";
 NSString *const IABConsent_ConsentStringKey = @"IABConsent_ConsentString";
 NSString *const IABConsent_ParsedVendorConsentsKey = @"IABConsent_ParsedVendorConsents";
@@ -24,6 +26,10 @@ NSString *const IABConsent_CMPPresentKey = @"IABConsent_CMPPresent";
 
 -(NSString *)consentString {
     return [self.userDefaults objectForKey:IABConsent_ConsentStringKey];
+}
+
+-(NSString *)ccpaPrivacyString {
+    return [self.userDefaults objectForKey:IAB_US_Privacy_String];
 }
 
 -(SubjectToGDPR)subjectToGDPR {

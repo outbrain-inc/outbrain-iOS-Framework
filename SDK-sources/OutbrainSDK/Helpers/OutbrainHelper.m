@@ -170,6 +170,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
         NSString *consentString = GDPRUtils.sharedInstance.consentString;
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"cnsnt" value: consentString]];
     }
+    if (GDPRUtils.sharedInstance.ccpaPrivacyString) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ccpa" value: GDPRUtils.sharedInstance.ccpaPrivacyString]];
+    }
     
     // Multivac
     if (request.isMultivac) {
