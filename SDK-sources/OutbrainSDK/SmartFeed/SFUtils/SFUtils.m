@@ -251,7 +251,6 @@ static BOOL skipRTL;
 
 +(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
     NSString *videoUrlStr = response.settings.videoUrl.absoluteString;
-    //NSString *videoUrlStr = @"https://broadsay-sdk-mock-server.herokuapp.com/static/vidgetInApp.html";
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:videoUrlStr];
     NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
     NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
