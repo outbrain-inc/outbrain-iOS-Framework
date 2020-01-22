@@ -77,7 +77,7 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 
 +(NSString *) videoParamsStringFromResponse:(OBRecommendationResponse *)response;
 
-+(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response;
++(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response url:(NSString *)url;
 
 +(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat;
 

@@ -71,7 +71,7 @@
         
         if ([SFUtils isVideoIncludedInResponse:response] && response.recommendations.count == 1) {
             NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
-            NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
+            NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response url:self.obRequest.url];
             OBRecommendation *rec = response.recommendations[0];
             self.sfItem = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                      videoParamsStr:videoParamsStr

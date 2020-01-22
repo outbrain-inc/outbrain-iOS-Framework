@@ -280,7 +280,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     if ([SFUtils isVideoIncludedInResponse:response] && response.recommendations.count == 1 && self.isVideoEligible) {
         NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
-        NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
+        
+        NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response url:self.url];
         OBRecommendation *rec = response.recommendations[0];
         SFItemData *item = [[SFItemData alloc] initWithVideoUrl:videoURL
                                                     videoParamsStr:videoParamsStr
@@ -412,7 +413,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         
         if (newSmartfeedItems.count == videoItemIndex) {
             NSString *videoParamsStr = [SFUtils videoParamsStringFromResponse:response];
-            NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response];
+            NSURL *videoURL = [SFUtils appendParamsToVideoUrl: response url:self.url];
             SFItemType newTemplateType = !isParentResponse && widgetTitle ?
                 SFTypeGridTwoInRowWithTitleWithVideo :
                 SFTypeGridTwoInRowWithVideo;

@@ -249,7 +249,7 @@ static BOOL skipRTL;
     }
 }
 
-+(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response {
++(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response url:(NSString *)url {
     NSString *videoUrlStr = response.settings.videoUrl.absoluteString;
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:videoUrlStr];
     NSMutableArray *odbQueryItems = [[NSMutableArray alloc] initWithArray:components.queryItems];
@@ -262,6 +262,12 @@ static BOOL skipRTL;
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appBundle" value: bundleIdentifier]];
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"deviceIfa" value: apiUserId]];
+    if (url != nil) {
+        NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
+        NSString *formattedUrl = [url stringByAddingPercentEncodingWithAllowedCharacters:set];
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"articleUrl" value: formattedUrl]];
+    }
+    
     if ([OutbrainManager sharedInstance].testMode) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"testMode" value: @"true"]];
     }
