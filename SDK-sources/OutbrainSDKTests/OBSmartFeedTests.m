@@ -30,7 +30,7 @@
 
 -(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response;
 
--(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response;
++(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response url:(NSString *)url;
 
 @end
 
@@ -91,13 +91,15 @@
 - (void)testSmartFeedVideoUrlWithParams {
     XCTAssertTrue([self.responseParent.settings.videoUrl.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222"]);
     
-    NSURL *videoUrlWithParams = [SFUtils appendParamsToVideoUrl:self.responseParent];
+    NSURL *videoUrlWithParams = [SFUtils appendParamsToVideoUrl:self.responseParent url:@"https://edition.cnn.com/2020/01/21/us/bronny-james-basketball-game-lebron-james-disappointed-spt-trnd/index.html"];
+    
     NSArray *queryItems = [[[NSURLComponents alloc] initWithURL:videoUrlWithParams resolvingAgainstBaseURL:nil] queryItems];
     NSLog(@"videoUrlWithParams.absoluteString: %@", videoUrlWithParams.absoluteString);
     
     XCTAssertNotNil([OBTestUtils valueForKey:@"platform" fromQueryItems:queryItems]);
     XCTAssertNotNil([OBTestUtils valueForKey:@"inApp" fromQueryItems:queryItems]);
     XCTAssertNotNil([OBTestUtils valueForKey:@"deviceIfa" fromQueryItems:queryItems]);
+    XCTAssertNotNil([OBTestUtils valueForKey:@"articleUrl" fromQueryItems:queryItems]);
 }
 
 - (void)testSmartFeedResponsesVideoIsIncluded {
