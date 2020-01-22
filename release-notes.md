@@ -1,6 +1,11 @@
 # Release Notes
 
-## Development 
+
+## v3.8.5 - January 22, 2020
+
+- Feature: support CCPA according to [the official iAB guidelines](https://iabtechlab.com/wp-content/uploads/2019/10/CCPA_Compliance_Framework_US_Privacy_USER_SIGNAL_API_SPEC_IABTechLab_DRAFT_for_Public_Comment.pdf) (last page)
+- Feature: new Smartfeed card - `trending in category`
+- Internal - add `article url` to video url params
 
 
 ## v3.8.4 - January 6, 2020
