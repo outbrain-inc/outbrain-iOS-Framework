@@ -1,7 +1,7 @@
 #!/bin/bash
 
 API_KEY=$BINTRAY_KEY
-REPO="obsdk"
+REPO="OBPublic"
 
 if [[ $# != 4 ]]; then
 echo "parameters are missing"
