@@ -158,12 +158,12 @@ static BOOL skipRTL;
     NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:tagschemes options:0];
     [tagger setString: string];
     NSString *language = [tagger tagAtIndex:0 scheme:NSLinguisticTagSchemeLanguage tokenRange:NULL sentenceRange:NULL];
-    BOOL testBegining = [language isEqualToString:@"he"];
+    BOOL testBegining = [language isEqualToString:@"he"] || [language isEqualToString:@"ar"];
     
     NSInteger middleIndex = string.length/2;
     middleIndex = [string characterAtIndex:middleIndex] == ' ' ? middleIndex + 1 : middleIndex;
     language = [tagger tagAtIndex:middleIndex scheme:NSLinguisticTagSchemeLanguage tokenRange:NULL sentenceRange:NULL];
-    BOOL testMiddle = [language isEqualToString:@"he"];
+    BOOL testMiddle = [language isEqualToString:@"he"] || [language isEqualToString:@"ar"];
     
     return testBegining || testMiddle;
 }
