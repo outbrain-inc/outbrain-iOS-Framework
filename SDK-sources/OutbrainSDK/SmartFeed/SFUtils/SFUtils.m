@@ -146,6 +146,7 @@ static BOOL skipRTL;
 }
 
 +(BOOL) isRTL:(NSString *)string {
+    NSArray *rtlLanguages = @[@"he", @"ar", @"fa"];
     if (skipRTL) {
         return NO; // Sky optimization
     }
@@ -158,12 +159,12 @@ static BOOL skipRTL;
     NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes:tagschemes options:0];
     [tagger setString: string];
     NSString *language = [tagger tagAtIndex:0 scheme:NSLinguisticTagSchemeLanguage tokenRange:NULL sentenceRange:NULL];
-    BOOL testBegining = [language isEqualToString:@"he"] || [language isEqualToString:@"ar"];
+    BOOL testBegining = [rtlLanguages containsObject:language];
     
     NSInteger middleIndex = string.length/2;
     middleIndex = [string characterAtIndex:middleIndex] == ' ' ? middleIndex + 1 : middleIndex;
     language = [tagger tagAtIndex:middleIndex scheme:NSLinguisticTagSchemeLanguage tokenRange:NULL sentenceRange:NULL];
-    BOOL testMiddle = [language isEqualToString:@"he"] || [language isEqualToString:@"ar"];
+    BOOL testMiddle = [rtlLanguages containsObject:language];
     
     return testBegining || testMiddle;
 }
