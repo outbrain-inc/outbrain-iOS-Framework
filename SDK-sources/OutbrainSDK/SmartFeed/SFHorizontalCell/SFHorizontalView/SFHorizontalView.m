@@ -79,6 +79,7 @@
 {
     [self.collectionView registerNib:self.horizontalItemCellNib forCellWithReuseIdentifier:self.horizontalCellIdentifier];
     SFCollectionViewCell *cell = (SFCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier: self.horizontalCellIdentifier forIndexPath:indexPath];
+    
     OBRecommendation *rec = self.sfItem.outbrainRecs[indexPath.row];
     
     // If rec title is RTL we will set the source text alignment to be the same, otherwise it will look weird in the UI.
@@ -93,6 +94,11 @@
     
     cell.recTitleLabel.text = rec.content;
     cell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:self.sfItem.odbSettings.sourceFormat];
+    
+    if (!self.sfItem.isCustomUI) {
+        cell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
+        cell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
+    }
     
     [SFUtils removePaidLabelFromImageView:cell.recImageView];
     
@@ -138,6 +144,11 @@
     
     if (self.configureHorizontalItem) {
         self.configureHorizontalItem((SFCollectionViewCell *)cell, rec);
+    }
+    
+    if (!self.sfItem.isCustomUI) {
+        cell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+        cell.contentView.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
     }
 }
 

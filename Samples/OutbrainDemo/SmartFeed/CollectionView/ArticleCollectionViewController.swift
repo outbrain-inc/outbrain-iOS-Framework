@@ -14,7 +14,7 @@ import OutbrainSDK
 
 class ArticleCollectionViewController: UICollectionViewController {
     
-    let darkMode = false
+    let darkMode = true
     let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
     let textHeaderCellReuseIdentifier = "textHeaderCollectionCell"
     let contentCellReuseIdentifier = "contentCollectionCell"

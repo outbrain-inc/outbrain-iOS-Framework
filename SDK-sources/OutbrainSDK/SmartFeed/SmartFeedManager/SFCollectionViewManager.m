@@ -218,10 +218,16 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 250.0);
 }
 
-- (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withTitle:(NSString *)title isSmartfeedWithNoChildren:(BOOL)isSmartfeedWithNoChildren {
+- (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem isSmartfeedWithNoChildren:(BOOL)isSmartfeedWithNoChildren {
     SFCollectionViewHeaderCell *sfHeaderCell = (SFCollectionViewHeaderCell *)cell;
-    if (title) {
-        sfHeaderCell.headerLabel.text = title;
+    NSString *headerTitle = sfItem.widgetTitle;
+    if (headerTitle) {
+        sfHeaderCell.headerLabel.text = headerTitle;
+    }
+    
+    if (!sfItem.isCustomUI) {
+        sfHeaderCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+        sfHeaderCell.headerLabel.textColor = [[SFUtils sharedInstance] titleColor:YES];
     }
     
     if (isSmartfeedWithNoChildren) {
