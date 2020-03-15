@@ -278,7 +278,7 @@ static BOOL skipRTL;
 }
 
 +(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat {
-    if (sourceFormat && [sourceFormat containsString:@"$SOURCE"]) {
+    if (sourceFormat && [sourceFormat containsString:@"$SOURCE"] && recSource) {
         return [sourceFormat stringByReplacingOccurrencesOfString:@"$SOURCE" withString:recSource];
     } else {
         return recSource;
