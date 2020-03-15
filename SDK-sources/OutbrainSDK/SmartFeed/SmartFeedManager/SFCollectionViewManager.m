@@ -286,6 +286,12 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
 {
     SFCollectionViewCell *singleCell = (SFCollectionViewCell *)cell;
     
+    if (!sfItem.isCustomUI) {
+        singleCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+        singleCell.cardContentView.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+    }
+    
+    
     OBRecommendation *rec = sfItem.singleRec;
     
     // If rec title is RTL we will set the source text alignment to be the same, otherwise it will look weird in the UI.
@@ -302,7 +308,8 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
     
     if (!sfItem.isCustomUI) {
-        singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+        singleCell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
+        singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
     }
     
     NSAssert(eventListenerTarget != nil, @"clickListenerTarget must not be nil");
@@ -362,6 +369,10 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         else {
             // fallback
             singleCell.cellTitleLabel.text = @"Around the web";
+        }
+        
+        if (!sfItem.isCustomUI) {
+            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
         }
         
         singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];

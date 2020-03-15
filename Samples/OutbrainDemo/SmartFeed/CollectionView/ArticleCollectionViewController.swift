@@ -14,6 +14,7 @@ import OutbrainSDK
 
 class ArticleCollectionViewController: UICollectionViewController {
     
+    let darkMode = false
     let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
     let textHeaderCellReuseIdentifier = "textHeaderCollectionCell"
     let contentCellReuseIdentifier = "contentCollectionCell"
@@ -137,6 +138,8 @@ class ArticleCollectionViewController: UICollectionViewController {
         self.smartFeedManager = SmartFeedManager(url: OBConf.baseURL, widgetID: OBConf.widgetID, collectionView: collectionView)
         
         self.smartFeedManager.delegate = self
+        self.smartFeedManager.darkMode = self.darkMode
+        self.collectionView.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
         
         // self.smartFeedManager.displaySourceOnOrganicRec = true
         // self.smartFeedManager.horizontalContainerMargin = 40.0
@@ -217,14 +220,19 @@ extension ArticleCollectionViewController {
         // App Developer should configure the app cells here..
         if (indexPath.row == 1) {
             if let articleCell = cell as? AppArticleCollectionViewCell {
+                articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
                 articleCell.headerLabel.font = UIFont(name: articleCell.headerLabel.font!.fontName, size: CGFloat(fontSize))
+                articleCell.headerLabel.textColor = self.darkMode ? UIColor.white : UIColor.black
+                
             }
         }
         if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4) {
             if let articleCell = cell as? AppArticleCollectionViewCell {
+                articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
                 articleCell.contentTextView.font = UIFont(name: articleCell.contentTextView.font!.fontName, size: CGFloat(fontSize))
+                articleCell.contentTextView.textColor = self.darkMode ? UIColor.white : UIColor.black
             }
         }
     }

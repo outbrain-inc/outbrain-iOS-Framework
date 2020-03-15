@@ -169,6 +169,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
 }
 
+-(void) setDarkMode:(BOOL)darkMode {
+    _darkMode = darkMode;
+    [[SFUtils sharedInstance] setDarkMode:darkMode];
+}
+
 #pragma mark - Fetch Recommendations
 - (void) fetchMoreRecommendations {
     if (self.isLoading) {
