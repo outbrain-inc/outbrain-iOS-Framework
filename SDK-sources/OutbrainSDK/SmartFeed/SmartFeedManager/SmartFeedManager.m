@@ -762,7 +762,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [horizontalView setupView];
         [horizontalView.collectionView reloadData];
         
-        UIColor *defaultBGColor = UIColor.whiteColor;
+        if (!sfItem.isCustomUI && cellTitleLabel) {
+            cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
+        }
+        
+        UIColor *defaultBGColor = !sfItem.isCustomUI ? [[SFUtils sharedInstance] primaryBackgroundColor] : UIColor.whiteColor;
         
         if (self.isTransparentBackground) {
             defaultBGColor = UIColor.clearColor;
@@ -780,6 +784,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     SFTableViewHeaderCell *sfHeaderCell = (SFTableViewHeaderCell *)cell;
     if (sfItem.widgetTitle) {
         sfHeaderCell.headerLabel.text = sfItem.widgetTitle;
+    }
+    
+    if (!sfItem.isCustomUI) {
+        sfHeaderCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+        sfHeaderCell.headerLabel.textColor = [[SFUtils sharedInstance] titleColor:YES];
     }
     
     if (self.isSmartfeedWithNoChildren) {
@@ -875,7 +884,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         // Smartfeed header
         SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
         
-        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withTitle:sfItem.widgetTitle isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren];
+        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withSFItem:sfItem isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren];
         return;
     }
     
