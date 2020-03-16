@@ -85,7 +85,7 @@
 
 - (void)testSmartFeedResponsesVideoUrl {
     XCTAssertTrue([self.responseParent.settings.videoUrl.absoluteString isEqualToString:@"https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222"]);
-    XCTAssertNil(self.responseChild1.settings.videoUrl);
+    XCTAssertTrue([@"https://libs.outbrain.com/video/app/vidgetInApp.html" isEqualToString:self.responseChild1.settings.videoUrl.absoluteString]);
 }
 
 - (void)testSmartFeedVideoUrlWithParams {

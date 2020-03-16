@@ -46,10 +46,16 @@
         self.feedChunkSize = [[payload valueForKey:@"feedLoadChunkSize"] integerValue];
         self.recMode = [payload valueForKey:@"recMode"];
         self.widgetHeaderText = [payload valueForKey:@"nanoOrganicsHeader"];
-        NSString *videoUrlStr = [payload valueForKey:@"sdk_sf_vidget_url"];
-        if (videoUrlStr) {
-            self.videoUrl = [NSURL URLWithString:videoUrlStr];
+        
+        // vidget URL
+        NSString *vidgetUrlStr = [payload valueForKey:@"sdk_sf_vidget_url"];
+        if (vidgetUrlStr && [NSURL URLWithString:vidgetUrlStr]) {
+            self.videoUrl = [NSURL URLWithString:vidgetUrlStr];
         }
+        else {
+            self.videoUrl = [NSURL URLWithString:@"https://libs.outbrain.com/video/app/vidgetInApp.html"];
+        }
+        
         self.smartfeedShadowColor = [payload valueForKey:@"sdk_sf_shadow_color"];
         
         self.paidLabelText = [payload valueForKey:@"dynamic:PaidLabel"];
