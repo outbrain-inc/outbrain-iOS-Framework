@@ -222,11 +222,8 @@ static BOOL skipRTL;
 }
 
 +(BOOL) isVideoIncludedInResponse:(OBRecommendationResponse *)response {
-//    NSLog(@"response.responseRequest: %@", [response.responseRequest payload]);
-    
     BOOL videoIsIncludedInRequest = [[response.responseRequest getStringValueForPayloadKey:@"vid"] integerValue] == 1;
-    BOOL videoURLIsIncludedInSettings = response.settings.videoUrl != nil;
-    return videoIsIncludedInRequest && videoURLIsIncludedInSettings;
+    return videoIsIncludedInRequest;
 }
 
 +(NSString *) videoParamsStringFromResponse:(OBRecommendationResponse *)response {
