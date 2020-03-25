@@ -15,6 +15,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
+    let darkMode = true
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
@@ -36,6 +37,9 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     func setupSmartFeed() {
         self.smartFeedManager = SmartFeedManager(url: OBConf.baseURL, widgetID: OBConf.widgetID, tableView: self.tableView)
         self.smartFeedManager.delegate = self
+        self.smartFeedManager.darkMode = self.darkMode
+        self.view.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
+        self.tableView.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
         
         // self.smartFeedManager.disableCellShadows = true
         // self.smartFeedManager.displaySourceOnOrganicRec = true
@@ -109,14 +113,18 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         // App Developer should configure the app cells here..
         if (indexPath.row == 1) {
             if let articleCell = cell as? AppArticleTableViewCell {
+                articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
                 articleCell.headerLabel.font = UIFont(name: articleCell.headerLabel.font!.fontName, size: CGFloat(fontSize))
+                articleCell.headerLabel.textColor = self.darkMode ? UIColor.white : UIColor.black
             }
         }
         if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4) {
             if let articleCell = cell as? AppArticleTableViewCell {
+                articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
                 articleCell.contentTextView.font = UIFont(name: articleCell.contentTextView.font!.fontName, size: CGFloat(fontSize))
+                articleCell.contentTextView.textColor = self.darkMode ? UIColor.white : UIColor.black
             }
         }
     }

@@ -242,6 +242,11 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         singleCell.cardContentView.tag = cellTag;
     }
     
+    if (!sfItem.isCustomUI) {
+        singleCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+        singleCell.cardContentView.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+    }
+    
     OBRecommendation *rec = sfItem.singleRec;
     
     // If rec title is RTL we will set the source text alignment to be the same, otherwise it will look weird in the UI.
@@ -257,7 +262,8 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     singleCell.recTitleLabel.text = rec.content;
     singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
     if (!sfItem.isCustomUI) {
-        singleCell.recTitleLabel.textColor = [rec isPaidLink] ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+        singleCell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
+        singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
     }
     [SFUtils removePaidLabelFromImageView:singleCell.recImageView];
     
@@ -300,6 +306,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         else {
             // fallback
             singleCell.cellTitleLabel.text = @"Around the web";
+        }
+        if (!sfItem.isCustomUI) {
+            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
         }
     }
     if (!self.disableCellShadows) {
