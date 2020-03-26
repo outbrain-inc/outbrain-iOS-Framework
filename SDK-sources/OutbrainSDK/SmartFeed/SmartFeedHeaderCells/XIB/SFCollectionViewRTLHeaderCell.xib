@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="433" height="68"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" tag="455" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="כתבות נוספות" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imd-ra-IE4" userLabel="Header Label">
-                                <rect key="frame" x="329.33333333333331" y="25" width="92.666666666666686" height="19.333333333333329"/>
+                                <rect key="frame" x="329.33333333333331" y="24.333333333333336" width="92.666666666666686" height="19.333333333333336"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -32,7 +30,7 @@
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smartfeed" translatesAutoresizingMaskIntoConstraints="NO" id="CAP-KL-ahl">
-                                <rect key="frame" x="11" y="23.666666666666671" width="73" height="22"/>
+                                <rect key="frame" x="11" y="12" width="73" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="73" id="jKi-7V-4H6">
                                         <variation key="heightClass=regular-widthClass=regular" constant="125"/>
@@ -40,7 +38,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adchoices-icon" translatesAutoresizingMaskIntoConstraints="NO" id="D9b-tS-IaU">
-                                <rect key="frame" x="89" y="29.666666666666671" width="10" height="10"/>
+                                <rect key="frame" x="89" y="29" width="10" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="Wxx-VS-O92"/>
                                     <constraint firstAttribute="width" constant="10" id="szh-mD-hE0"/>
@@ -59,6 +57,7 @@
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="SvZ-DD-Tga" secondAttribute="trailing" id="1Sy-Oo-mGd"/>
                 <constraint firstItem="SvZ-DD-Tga" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9Dr-P6-fSn"/>
@@ -76,7 +75,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="adchoices-icon" width="75" height="78"/>
+        <image name="adchoices-icon" width="75" height="78.666664123535156"/>
         <image name="smartfeed" width="139" height="22"/>
     </resources>
 </document>

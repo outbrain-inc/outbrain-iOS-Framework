@@ -169,6 +169,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
 }
 
+-(void) setDarkMode:(BOOL)darkMode {
+    _darkMode = darkMode;
+    [[SFUtils sharedInstance] setDarkMode:darkMode];
+}
+
 #pragma mark - Fetch Recommendations
 - (void) fetchMoreRecommendations {
     if (self.isLoading) {
@@ -651,6 +656,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     [self commonConfigureHorizontalCell:horizontalCell withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
+    
+    if (!sfItem.isCustomUI) {
+        horizontalCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+    }
 }
 
 - (void) configureHorizontalVideoTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -672,6 +681,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     horizontalVideoCell.webview = [SFUtils createVideoWebViewInsideView:horizontalVideoCell.horizontalView withSFItem:sfItem scriptMessageHandler:horizontalVideoCell.wkScriptMessageHandler uiDelegate:self withHorizontalMargin:YES];
     
     [SFUtils loadVideoURLIn:horizontalVideoCell sfItem:sfItem];
+    
+    if (!sfItem.isCustomUI) {
+        horizontalVideoCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+    }
 }
 
 -(void) commonConfigureHorizontalCell:(id<SFHorizontalCellCommonProps>)horizontalCell withCellTitleLabel:(UILabel *)cellTitleLabel sfItem:(SFItemData *)sfItem {
@@ -757,7 +770,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [horizontalView setupView];
         [horizontalView.collectionView reloadData];
         
-        UIColor *defaultBGColor = UIColor.whiteColor;
+        if (!sfItem.isCustomUI && cellTitleLabel) {
+            cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
+        }
+        
+        UIColor *defaultBGColor = !sfItem.isCustomUI ? [[SFUtils sharedInstance] primaryBackgroundColor] : UIColor.whiteColor;
         
         if (self.isTransparentBackground) {
             defaultBGColor = UIColor.clearColor;
@@ -775,6 +792,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     SFTableViewHeaderCell *sfHeaderCell = (SFTableViewHeaderCell *)cell;
     if (sfItem.widgetTitle) {
         sfHeaderCell.headerLabel.text = sfItem.widgetTitle;
+    }
+    
+    if (!sfItem.isCustomUI) {
+        sfHeaderCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+        sfHeaderCell.headerLabel.textColor = [[SFUtils sharedInstance] titleColor:YES];
     }
     
     if (self.isSmartfeedWithNoChildren) {
@@ -870,7 +892,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         // Smartfeed header
         SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
         
-        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withTitle:sfItem.widgetTitle isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren];
+        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withSFItem:sfItem isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren];
         return;
     }
     

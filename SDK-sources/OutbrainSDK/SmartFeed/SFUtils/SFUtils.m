@@ -16,6 +16,52 @@ NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATI
 
 @implementation SFUtils
 
+static SFUtils *sharedSingleton;
+
++ (void)initialize
+{
+    static BOOL initialized = NO;
+    if(!initialized)
+    {
+        initialized = YES;
+        sharedSingleton = [[SFUtils alloc] init];
+    }
+}
+
++(SFUtils *) sharedInstance {
+    return sharedSingleton;
+}
+
+-(UIColor *) primaryBackgroundColor {
+    if (self.darkMode) {
+        return UIColor.blackColor;
+    }
+    else {
+        return UIColor.whiteColor;
+    }
+}
+
+-(UIColor *) titleColor:(BOOL) isPaid {
+    if (self.darkMode) {
+        return UIColor.whiteColor;
+    }
+    else {
+        return isPaid ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+    }
+}
+
+-(UIColor *) subtitleColor {
+    if (self.darkMode) {
+        return UIColorFromRGB(0xA4A3A8);
+    }
+    else {
+        return UIColorFromRGB(0x93908);
+    }
+}
+
+
+
+
 // Skip RTL (Sky optimization)
 static BOOL skipRTL;
 + (BOOL) skipRTL {

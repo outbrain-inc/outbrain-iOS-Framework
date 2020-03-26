@@ -43,6 +43,14 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 
 @interface SFUtils : NSObject
 
+@property (nonatomic, assign) BOOL darkMode;
+
++(SFUtils *) sharedInstance;
+-(UIColor *) primaryBackgroundColor;
+-(UIColor *) titleColor:(BOOL) isPaid;
+-(UIColor *) subtitleColor;
+
+
 + (BOOL) skipRTL;
 + (void) setSkipRTL:(BOOL)val;
 
@@ -80,6 +88,5 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 +(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response url:(NSString *)url;
 
 +(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat;
-
 
 @end
