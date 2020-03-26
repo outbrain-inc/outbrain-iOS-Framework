@@ -165,11 +165,18 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"extid" value: request.externalID]];
     }
     
-    // GDPR
+    // GDPR v1
+    NSString *consentString;
     if (GDPRUtils.sharedInstance.cmpPresent) {
-        NSString *consentString = GDPRUtils.sharedInstance.consentString;
+        consentString = GDPRUtils.sharedInstance.gdprV1ConsentString;
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"cnsnt" value: consentString]];
     }
+    // GDPR v2
+    if (GDPRUtils.sharedInstance.gdprV2ConsentString) {
+        consentString = GDPRUtils.sharedInstance.gdprV2ConsentString;
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"cnsntv2" value: consentString]];
+    }
+    // CCPA
     if (GDPRUtils.sharedInstance.ccpaPrivacyString) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ccpa" value: GDPRUtils.sharedInstance.ccpaPrivacyString]];
     }
