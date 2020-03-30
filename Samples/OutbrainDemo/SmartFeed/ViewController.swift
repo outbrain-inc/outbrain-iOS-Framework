@@ -15,7 +15,7 @@ struct OBConf {
     // use SDK_MAIN_1 to test "trending in category"
     // static var widgetID = "SFD_MAIN_5"
     // static var widgetID = "SFD_MAIN_4"
-    static var baseURL = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
+    static var baseURL = "http://mobile-demo.outbrain.com/2014/01/26/4-steps-to-re-launching-your-company-blog"
 }
 
 class ViewController: UIViewController {
