@@ -15,7 +15,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    let darkMode = true
+    let darkMode = false
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
