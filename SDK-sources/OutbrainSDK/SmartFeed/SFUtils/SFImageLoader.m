@@ -10,6 +10,7 @@
 
 @interface SFImageLoader()
 @property (nonatomic, strong) NSCache *imageCache;
+@property (nonatomic, strong) NSMutableDictionary *imageLoadedOnceDict;
 @property (nonatomic, strong) NSOperationQueue *imageQueue;
 @property (nonatomic, strong) UIImage *placeholderImage;
 @property (nonatomic, strong) UIImage *adChoicesDefaultImage;
@@ -25,6 +26,7 @@
         sharedInstance = [[SFImageLoader alloc] init];
         sharedInstance.imageCache = [[NSCache alloc] init];
         sharedInstance.imageQueue = [[NSOperationQueue alloc] init];
+        sharedInstance.imageLoadedOnceDict = [[NSMutableDictionary alloc] init];
         sharedInstance.imageQueue.maxConcurrentOperationCount = 4;
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         sharedInstance.placeholderImage = [UIImage imageNamed:@"placeholder-image" inBundle:bundle compatibleWithTraitCollection:nil];
@@ -42,7 +44,13 @@
         // NSLog(@"SFImageLoader: loading image from cache");
         UIImage *cachedImage = [UIImage imageWithData:imageData];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self loadImage:cachedImage withFadeInDuration:0.5 toImageView:imageView];
+            if (self.imageLoadedOnceDict[imageUrl.absoluteString] != nil) {
+                imageView.image = cachedImage;
+            }
+            else {
+                self.imageLoadedOnceDict[imageUrl.absoluteString] = @1;
+                [self loadImage:cachedImage withFadeInDuration:0.5 toImageView:imageView];
+            }
         }];
         return;
     }
@@ -62,6 +70,7 @@
                 // NSLog(@"SFImageLoader: imageView has changed - no need to load with image..");
                 return;
             }
+            self.imageLoadedOnceDict[imageUrl.absoluteString] = @1;
             [self loadImage:downloadedImage withFadeInDuration:0.5 toImageView:imageView];
         }];
         [self.imageCache setObject:data forKey:imageUrl.absoluteString];
