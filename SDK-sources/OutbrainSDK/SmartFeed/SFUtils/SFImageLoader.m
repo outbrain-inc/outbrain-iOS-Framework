@@ -42,7 +42,7 @@
         // NSLog(@"SFImageLoader: loading image from cache");
         UIImage *cachedImage = [UIImage imageWithData:imageData];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            imageView.image = cachedImage;
+            [self loadImage:cachedImage withFadeInDuration:0.5 toImageView:imageView];
         }];
         return;
     }
@@ -62,10 +62,21 @@
                 // NSLog(@"SFImageLoader: imageView has changed - no need to load with image..");
                 return;
             }
-            imageView.image = downloadedImage;
+            [self loadImage:downloadedImage withFadeInDuration:0.5 toImageView:imageView];
         }];
         [self.imageCache setObject:data forKey:imageUrl.absoluteString];
     }];
+}
+
+-(void) loadImage:(UIImage *)image withFadeInDuration:(CGFloat)duration toImageView:(UIImageView *)imageView {
+    imageView.alpha = 0.f;
+    imageView.image = image;
+    
+    //fade in
+    [UIView animateWithDuration:duration delay:0.1f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        imageView.alpha = 1.0f;
+        
+    } completion: nil];
 }
 
 -(void) loadImage:(NSString *)imageUrlStr intoButton:(UIButton *)button {
