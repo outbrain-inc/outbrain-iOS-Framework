@@ -141,7 +141,13 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
 
 #pragma mark - UITableView methods
 - (UITableViewCell *)tableView:(UITableView *)tableView headerCellForRowAtIndexPath:(NSIndexPath *)indexPath isRTL:(BOOL)isRTL {
-    NSString * const reuseId = isRTL ? kTableViewSmartfeedRTLHeaderReuseId : kTableViewSmartfeedHeaderReuseId;
+    NSString *reuseId = isRTL ? kTableViewSmartfeedRTLHeaderReuseId : kTableViewSmartfeedHeaderReuseId;
+    // https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/TestingYourInternationalApp/TestingYourInternationalApp.html#//apple_ref/doc/uid/10000171i-CH7-SW3
+    // if the app already supports RTL - auto switching xib layout constrains direction - we can just use the default xib anyway.
+    if ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft) {
+        reuseId = kTableViewSmartfeedHeaderReuseId;
+    }
+    
     return [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
 }
 
