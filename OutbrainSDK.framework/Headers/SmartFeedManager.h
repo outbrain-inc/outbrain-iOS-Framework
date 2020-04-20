@@ -105,6 +105,7 @@ typedef enum
 
 @property (nonatomic, assign) NSInteger outbrainWidgetIndex;
 @property (nonatomic, assign) BOOL isInMiddleOfScreen;
+@property (nonatomic, assign) BOOL darkMode;
 @property (nonatomic, assign) BOOL disableCellShadows;
 @property (nonatomic, assign) BOOL useDefaultCollectionViewDelegate;
 @property (nonatomic, assign, readonly) BOOL hasMore;
