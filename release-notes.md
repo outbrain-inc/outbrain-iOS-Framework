@@ -1,6 +1,16 @@
 # Release Notes
 
 
+## v3.8.6 - April 20, 2020
+
+- Feature: Darkmode support (configure with `self.smartFeedManager.darkMode = true`)
+- Feature: [GDPR v2 support](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md)
+- Bug fix - for apps that support RTL locale, use the default xib and let ios auto-layout RTL support work.
+- Improvement: Fade-in animation when loading an image in Smartfeed.
+- Improvement: RTL now checks for arabic, farsi and hebrew languages.
+- Internal: SDK is built with Xcode 11.3.1 on CircleCI
+- Internal: Add defualt value for vidget url
+
 ## v3.8.5 - January 22, 2020
 
 - Feature: support CCPA according to [the official iAB guidelines](https://iabtechlab.com/wp-content/uploads/2019/10/CCPA_Compliance_Framework_US_Privacy_USER_SIGNAL_API_SPEC_IABTechLab_DRAFT_for_Public_Comment.pdf) (last page)
