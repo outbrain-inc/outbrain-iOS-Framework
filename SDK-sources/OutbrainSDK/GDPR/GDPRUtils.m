@@ -8,7 +8,8 @@
 NSString *const IAB_US_Privacy_String = @"IABUSPrivacy_String";
 
 NSString *const IABConsent_SubjectToGDPRKey = @"IABConsent_SubjectToGDPR";
-NSString *const IABConsent_ConsentStringKey = @"IABConsent_ConsentString";
+NSString *const IABConsent_V1_ConsentStringKey = @"IABConsent_ConsentString";
+NSString *const IABConsent_V2_ConsentStringKey = @"IABTCF_TCString";
 NSString *const IABConsent_ParsedVendorConsentsKey = @"IABConsent_ParsedVendorConsents";
 NSString *const IABConsent_ParsedPurposeConsentsKey = @"IABConsent_ParsedPurposeConsents";
 NSString *const IABConsent_CMPPresentKey = @"IABConsent_CMPPresent";
@@ -24,8 +25,12 @@ NSString *const IABConsent_CMPPresentKey = @"IABConsent_CMPPresent";
     return sharedInstance;
 }
 
--(NSString *)consentString {
-    return [self.userDefaults objectForKey:IABConsent_ConsentStringKey];
+-(NSString *)gdprV1ConsentString {
+    return [self.userDefaults objectForKey:IABConsent_V1_ConsentStringKey];
+}
+
+-(NSString *)gdprV2ConsentString {
+    return [self.userDefaults objectForKey:IABConsent_V2_ConsentStringKey];
 }
 
 -(NSString *)ccpaPrivacyString {
@@ -82,9 +87,8 @@ NSString *const IABConsent_CMPPresentKey = @"IABConsent_CMPPresent";
     if (!_userDefaults) {
         _userDefaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *dataStorageDefaultValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                  @"", IABConsent_ConsentStringKey,
-                                                  @"", IABConsent_ParsedVendorConsentsKey,
-                                                  @"", IABConsent_ParsedPurposeConsentsKey,
+                                                  @"", IABConsent_V1_ConsentStringKey,
+                                                  @"", IABConsent_V2_ConsentStringKey,
                                                   [NSNumber numberWithBool:NO], IABConsent_CMPPresentKey,
                                                   nil];
         [_userDefaults registerDefaults:dataStorageDefaultValues];

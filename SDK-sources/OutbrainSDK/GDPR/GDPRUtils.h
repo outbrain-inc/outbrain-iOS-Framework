@@ -23,7 +23,12 @@ typedef NS_ENUM(NSInteger, SubjectToGDPR) {
 /**
  The consent string passed as a websafe base64-encoded string.
  */
-@property (nonatomic, readonly) NSString *consentString;
+@property (nonatomic, readonly) NSString *gdprV1ConsentString;
+
+/**
+ The consent string passed as a websafe base64-encoded string.
+ */
+@property (nonatomic, readonly) NSString *gdprV2ConsentString;
 
 /**
  Enum that indicates    'SubjectToGDPR_Unknown'- value -1, unset.
