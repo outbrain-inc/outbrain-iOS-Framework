@@ -141,7 +141,13 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
 
 #pragma mark - Collection View methods
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView headerCellForItemAtIndexPath:(NSIndexPath *)indexPath isRTL:(BOOL)isRTL {
-    NSString * const reuseId = isRTL ? kCollectionViewSmartfeedRTLHeaderReuseId : kCollectionViewSmartfeedHeaderReuseId;
+    NSString *reuseId = isRTL ? kCollectionViewSmartfeedRTLHeaderReuseId : kCollectionViewSmartfeedHeaderReuseId;
+    // https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/TestingYourInternationalApp/TestingYourInternationalApp.html#//apple_ref/doc/uid/10000171i-CH7-SW3
+    // if the app already supports RTL - auto switching xib layout constrains direction - we can just use the default xib anyway.
+    if ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft) {
+        reuseId = kCollectionViewSmartfeedHeaderReuseId;
+    }
+    
     return [collectionView dequeueReusableCellWithReuseIdentifier: reuseId forIndexPath:indexPath];
 }
 
