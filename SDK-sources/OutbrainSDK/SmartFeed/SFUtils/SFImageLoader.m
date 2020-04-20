@@ -10,6 +10,7 @@
 
 @interface SFImageLoader()
 @property (nonatomic, strong) NSCache *imageCache;
+@property (nonatomic, strong) NSMutableDictionary *imageLoadedOnceDict;
 @property (nonatomic, strong) NSOperationQueue *imageQueue;
 @property (nonatomic, strong) UIImage *placeholderImage;
 @property (nonatomic, strong) UIImage *adChoicesDefaultImage;
@@ -25,6 +26,7 @@
         sharedInstance = [[SFImageLoader alloc] init];
         sharedInstance.imageCache = [[NSCache alloc] init];
         sharedInstance.imageQueue = [[NSOperationQueue alloc] init];
+        sharedInstance.imageLoadedOnceDict = [[NSMutableDictionary alloc] init];
         sharedInstance.imageQueue.maxConcurrentOperationCount = 4;
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         sharedInstance.placeholderImage = [UIImage imageNamed:@"placeholder-image" inBundle:bundle compatibleWithTraitCollection:nil];
@@ -42,7 +44,13 @@
         // NSLog(@"SFImageLoader: loading image from cache");
         UIImage *cachedImage = [UIImage imageWithData:imageData];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            imageView.image = cachedImage;
+            if (self.imageLoadedOnceDict[imageUrl.absoluteString] != nil) {
+                imageView.image = cachedImage;
+            }
+            else {
+                self.imageLoadedOnceDict[imageUrl.absoluteString] = @1;
+                [self loadImage:cachedImage withFadeInDuration:0.5 toImageView:imageView];
+            }
         }];
         return;
     }
@@ -62,10 +70,22 @@
                 // NSLog(@"SFImageLoader: imageView has changed - no need to load with image..");
                 return;
             }
-            imageView.image = downloadedImage;
+            self.imageLoadedOnceDict[imageUrl.absoluteString] = @1;
+            [self loadImage:downloadedImage withFadeInDuration:0.5 toImageView:imageView];
         }];
         [self.imageCache setObject:data forKey:imageUrl.absoluteString];
     }];
+}
+
+-(void) loadImage:(UIImage *)image withFadeInDuration:(CGFloat)duration toImageView:(UIImageView *)imageView {
+    imageView.alpha = 0.f;
+    imageView.image = image;
+    
+    //fade in
+    [UIView animateWithDuration:duration delay:0.1f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        imageView.alpha = 1.0f;
+        
+    } completion: nil];
 }
 
 -(void) loadImage:(NSString *)imageUrlStr intoButton:(UIButton *)button {
