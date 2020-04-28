@@ -115,6 +115,24 @@
     XCTAssertEqual(self.responseChild3.recommendations.count, 1);
 }
 
+- (void)testAbTestsOptimizationsSettingsFromParentResponse {
+    XCTAssertEqual(self.responseParent.settings.abTitleFontSize, 14);
+    XCTAssertEqual(self.responseParent.settings.abSourceFontSize, 12);
+    XCTAssertEqual(self.responseParent.settings.abTitleFontStyle, 1);
+    XCTAssertTrue([self.responseParent.settings.abSourceFontColor isEqualToString:@"#ffa511"]);
+    XCTAssertTrue(self.responseParent.settings.abImageFadeAnimation);
+    XCTAssertEqual(self.responseParent.settings.abImageFadeDuration, 400);
+}
+
+- (void)testAbTestsOptimizationsSettingsWhenResponseEmpty {
+    XCTAssertEqual(self.responseChild1.settings.abTitleFontSize, 0);
+    XCTAssertEqual(self.responseChild1.settings.abSourceFontSize, 0);
+    XCTAssertEqual(self.responseChild1.settings.abTitleFontStyle, 0);
+    XCTAssertNil(self.responseChild1.settings.abSourceFontColor);
+    XCTAssertTrue(self.responseChild1.settings.abImageFadeAnimation);
+    XCTAssertEqual(self.responseChild1.settings.abImageFadeDuration, 750);
+}
+
 - (void)testRecModeIsFetchedCorrectlyFromResponse {
     XCTAssertTrue([self.responseParent.settings.recMode isEqualToString:@"sdk_sfd_2_columns"]);
     XCTAssertTrue([self.responseChild1.settings.recMode isEqualToString:@"sdk_sfd_1_column"]);
