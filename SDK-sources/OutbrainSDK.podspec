@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name                = "OutbrainSDK"
-  s.version             = "3.8.6"
+  s.version             = "3.8.7"
   s.summary             = "Outbrain iOS SDK for app developers"
   s.description         = "Outbrain iOS SDK for app developers, please review our guidelines at https://developer.outbrain.com/ios-sdk-v3-developer-guide/"
   s.homepage            = "http://www.outbrain.com"
