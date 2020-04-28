@@ -343,4 +343,31 @@
     XCTAssertNotNil(cell.cellTitleLabel);
 }
 
+-(void) testSFItemDataChildWidget {
+    NSArray *recommendations = self.responseChild1.recommendations;
+    OBRecommendation *rec = recommendations[0];
+    SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec
+                                                                     odbResponse:self.responseChild1
+                                                                            type:SFTypeStripWithTitle];
+    XCTAssertTrue([item.widgetTitle isEqualToString: @"Around CNN"]);
+    XCTAssertTrue([item.widgetId isEqualToString: @"SDK_SFD_1"]);
+    XCTAssertTrue([item.requestId isEqualToString: @"c9b44236deaeda06b243b584e596e737"]);
+}
+
+-(void) testSFItemDataParentWidget {
+    NSArray *recommendations = self.responseParent.recommendations;
+    NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
+    NSRange subRange = NSMakeRange(0, 2);
+    NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
+    
+    SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs
+                                            odbResponse:self.responseParent
+                                                   type:SFTypeGridTwoInRowNoTitle];
+    
+    XCTAssertEqual(item.outbrainRecs.count, 2);
+    XCTAssertTrue([item.widgetId isEqualToString: @"SFD_MAIN_2"]);
+    XCTAssertTrue([item.requestId isEqualToString: @"b4b6ea633069219626e103dc55da993c"]);
+}
+        
+
 @end

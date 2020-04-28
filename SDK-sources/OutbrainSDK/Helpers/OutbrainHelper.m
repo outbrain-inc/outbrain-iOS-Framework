@@ -187,6 +187,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
         NSString *lastIdx = [NSString stringWithFormat:@"%li", (long)request.widgetIndex];
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"lastCardIdx" value: lastCardIdx]];
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"lastIdx" value: lastIdx]];
+        if (request.fab) {
+            [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fab" value: request.fab]];
+        }
     }
     
     components.queryItems = odbQueryItems;

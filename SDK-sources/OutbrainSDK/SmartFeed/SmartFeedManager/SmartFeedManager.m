@@ -43,6 +43,7 @@
 
 
 @property (nonatomic, assign) BOOL isRTL;
+@property (nonatomic, strong) NSString *fab;
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, assign) BOOL isSmartfeedWithNoChildren;
 
@@ -230,6 +231,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             if (self.isViewabilityPerListingEnabled) {
                 [[SFViewabilityService sharedInstance] startReportViewabilityWithTimeInterval:viewabilityPerListingReportingIntervalMillis];
             }
+            self.fab = [response.responseRequest getStringValueForPayloadKey:@"abTestVal"];
+            if ([self.fab isEqualToString:@"no_abtest"]) {
+                self.fab = nil;
+            }
         }
         
         if (response.recommendations.count == 0) {
@@ -259,8 +264,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     request.lastCardIdx = self.lastCardIdx;
     request.lastIdx = self.lastIdx;
     request.isMultivac = YES;
+    request.fab = self.fab;
     
-    // request.fid = self.fid;
     if (self.externalID) {
         request.externalID = self.externalID;
     }
