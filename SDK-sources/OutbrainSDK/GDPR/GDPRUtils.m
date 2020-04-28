@@ -88,7 +88,6 @@ NSString *const IABConsent_CMPPresentKey = @"IABConsent_CMPPresent";
         _userDefaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *dataStorageDefaultValues = [NSDictionary dictionaryWithObjectsAndKeys:
                                                   @"", IABConsent_V1_ConsentStringKey,
-                                                  @"", IABConsent_V2_ConsentStringKey,
                                                   [NSNumber numberWithBool:NO], IABConsent_CMPPresentKey,
                                                   nil];
         [_userDefaults registerDefaults:dataStorageDefaultValues];
