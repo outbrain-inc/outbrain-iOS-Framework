@@ -50,16 +50,24 @@ static SFUtils *sharedSingleton;
     }
 }
 
--(UIColor *) subtitleColor {
+-(UIColor *) subtitleColor:(NSString *)abTestSourceFontColor {
     if (self.darkMode) {
         return UIColorFromRGB(0xA4A3A8);
     }
     else {
-        return UIColorFromRGB(0x93908);
+        return abTestSourceFontColor ?
+            [SFUtils colorFromHexString: abTestSourceFontColor] :
+            UIColorFromRGB(0x93908);
     }
 }
 
-
++ (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
 
 
 // Skip RTL (Sky optimization)
@@ -181,14 +189,6 @@ static BOOL skipRTL;
     [self addConstraint:NSLayoutAttributeWidth constant:expectedLabelSize.width + 20.0 toView:paidLabel];
     [self addConstraint:(isRTL ? NSLayoutAttributeLeading : NSLayoutAttributeTrailing) constant:0 baseView:recImageView toView:paidLabel];
     [self addConstraint:NSLayoutAttributeBottom constant:10 baseView:recImageView toView:paidLabel];
-}
-
-+ (UIColor *)colorFromHexString:(NSString *)hexString {
-    unsigned rgbValue = 0;
-    NSScanner *scanner = [NSScanner scannerWithString:hexString];
-    [scanner setScanLocation:1]; // bypass '#' character
-    [scanner scanHexInt:&rgbValue];
-    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 +(BOOL) isRTL:(NSString *)string {

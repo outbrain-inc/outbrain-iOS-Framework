@@ -776,7 +776,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [horizontalView.collectionView reloadData];
         
         if (!sfItem.isCustomUI && cellTitleLabel) {
-            cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
+            cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
         }
         
         UIColor *defaultBGColor = !sfItem.isCustomUI ? [[SFUtils sharedInstance] primaryBackgroundColor] : UIColor.whiteColor;

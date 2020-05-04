@@ -321,7 +321,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     
     if (!sfItem.isCustomUI) {
         singleCell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
-        singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
+        singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor:sfItem.odbSettings.abSourceFontColor];
     }
     
     NSAssert(eventListenerTarget != nil, @"clickListenerTarget must not be nil");
@@ -384,7 +384,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         }
         
         if (!sfItem.isCustomUI) {
-            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
+            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
         }
         
         singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];
