@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v3.8.7 - April 28, 2020
+
+- Internal: `cnstv2` was sent in odb all the time because of wrong default value
+
 ## v3.8.6 - April 20, 2020
 
 - Feature: Darkmode support (configure with `self.smartFeedManager.darkMode = true`)
