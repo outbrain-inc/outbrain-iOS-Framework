@@ -91,6 +91,9 @@
 -(void) loadImage:(NSString *)imageUrlStr intoButton:(UIButton *)button {
     [button setImage:self.adChoicesDefaultImage forState:UIControlStateNormal];
     NSURL *imageUrl = [NSURL URLWithString:imageUrlStr];
+    if (imageUrl == nil) {
+        return;
+    }
     button.imageView.tag = [imageUrl.absoluteString hash];
 
     NSData *imageData = [self.imageCache objectForKey:imageUrl.absoluteString];
