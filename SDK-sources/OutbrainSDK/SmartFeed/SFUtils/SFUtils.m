@@ -13,6 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 NSString * const OB_VIDEO_PAUSE_NOTIFICATION     =   @"OB_VIDEO_PAUSE_NOTIFICATION";
+NSInteger const AB_TEST_FONT_STYLE_BOLD = 1;
 
 @implementation SFUtils
 
@@ -330,6 +331,7 @@ static BOOL skipRTL;
 
 +(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings {
     
+    // AB test abTitleFontSize
     if (settings.abTitleFontSize > 12 && settings.abTitleFontSize < 20) {
         titleLabel.font = [titleLabel.font fontWithSize:settings.abTitleFontSize];
     }
@@ -337,6 +339,12 @@ static BOOL skipRTL;
         titleLabel.font = [titleLabel.font fontWithSize: 16]; // 16 is the default
     }
     
+    // AB test abTitleFontStyle
+    UIFontDescriptor *fontD = [titleLabel.font.fontDescriptor
+                                fontDescriptorWithSymbolicTraits:settings.abTitleFontStyle == AB_TEST_FONT_STYLE_BOLD ? UIFontDescriptorTraitBold : !UIFontDescriptorTraitBold];
+    titleLabel.font = [UIFont fontWithDescriptor:fontD size:0];
+    
+    // AB test abSourceFontSize
     if (settings.abSourceFontSize >= 10 && settings.abSourceFontSize < 16) {
         sourceLabel.font = [sourceLabel.font fontWithSize:settings.abSourceFontSize];
     }
