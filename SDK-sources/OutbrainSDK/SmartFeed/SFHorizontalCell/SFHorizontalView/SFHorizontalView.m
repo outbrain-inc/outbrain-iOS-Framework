@@ -123,13 +123,14 @@
         }
         
         if (rec.publisherLogoImage) {
-            [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:cell.publisherLogo];
+            [[SFImageLoader sharedInstance] loadImageUrl:rec.publisherLogoImage.url into:cell.publisherLogo];
             cell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
             cell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
         }
     }
     
-    [[SFImageLoader sharedInstance] loadImage:rec.image.url into:cell.recImageView];
+    NSInteger abTestDuration = self.sfItem.odbSettings.abImageFadeAnimation ? self.sfItem.odbSettings.abImageFadeDuration : -1;
+    [[SFImageLoader sharedInstance] loadImageUrl:rec.image.url into:cell.recImageView withFadeDuration:abTestDuration];
     
     return cell;
 }

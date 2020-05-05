@@ -345,7 +345,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     }
     else {
         if (rec.publisherLogoImage) {
-            [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
+            [[SFImageLoader sharedInstance] loadImageUrl:rec.publisherLogoImage.url into:singleCell.publisherLogo];
             singleCell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
             singleCell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
         }
@@ -354,7 +354,8 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         }
     }
     
-    [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
+    NSInteger abTestDuration = sfItem.odbSettings.abImageFadeAnimation ? sfItem.odbSettings.abImageFadeDuration : -1;
+    [[SFImageLoader sharedInstance] loadImageUrl:rec.image.url into:singleCell.recImageView withFadeDuration:abTestDuration];
     
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:eventListenerTarget  action:@selector(recommendationClicked:)];
