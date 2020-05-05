@@ -100,6 +100,8 @@
         cell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor:self.sfItem.odbSettings.abSourceFontColor];
     }
     
+    [SFUtils setFontSizeForTitleLabel:cell.recTitleLabel andSourceLabel:cell.recSourceLabel withAbTestSettings: self.sfItem.odbSettings];
+    
     [SFUtils removePaidLabelFromImageView:cell.recImageView];
     
     if ([rec isPaidLink]) {

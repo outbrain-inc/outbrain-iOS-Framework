@@ -328,4 +328,20 @@ static BOOL skipRTL;
     }
 }
 
++(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings {
+    
+    if (settings.abTitleFontSize > 12 && settings.abTitleFontSize < 20) {
+        titleLabel.font = [titleLabel.font fontWithSize:settings.abTitleFontSize];
+    }
+    else {
+        titleLabel.font = [titleLabel.font fontWithSize: 16]; // 16 is the default
+    }
+    
+    if (settings.abSourceFontSize >= 10 && settings.abSourceFontSize < 16) {
+        sourceLabel.font = [sourceLabel.font fontWithSize:settings.abSourceFontSize];
+    }
+    else {
+        sourceLabel.font = [sourceLabel.font fontWithSize: 12]; // 12 is the default
+    }
+}
 @end

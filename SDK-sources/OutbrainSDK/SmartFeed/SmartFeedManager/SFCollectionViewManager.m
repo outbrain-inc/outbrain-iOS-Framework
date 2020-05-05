@@ -324,6 +324,8 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor:sfItem.odbSettings.abSourceFontColor];
     }
     
+    [SFUtils setFontSizeForTitleLabel:singleCell.recTitleLabel andSourceLabel:singleCell.recSourceLabel withAbTestSettings:sfItem.odbSettings];
+    
     NSAssert(eventListenerTarget != nil, @"clickListenerTarget must not be nil");
     
     [SFUtils removePaidLabelFromImageView:singleCell.recImageView];

@@ -89,4 +89,6 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 
 +(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat;
 
++(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings;
+
 @end
