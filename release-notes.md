@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## v3.9.0 - May 12, 2020
+
+- Feature: support for optimizations (A\B tests) in Smartfeed
+
+
 ## v3.8.7 - April 28, 2020
 
 - Internal: `cnstv2` was sent in odb all the time because of wrong default value
