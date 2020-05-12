@@ -130,7 +130,7 @@
     XCTAssertEqual(self.responseChild1.settings.abTitleFontStyle, 0);
     XCTAssertNil(self.responseChild1.settings.abSourceFontColor);
     XCTAssertTrue(self.responseChild1.settings.abImageFadeAnimation);
-    XCTAssertEqual(self.responseChild1.settings.abImageFadeDuration, 750);
+    XCTAssertEqual(self.responseChild1.settings.abImageFadeDuration, 500);
 }
 
 - (void)testRecModeIsFetchedCorrectlyFromResponse {
