@@ -48,7 +48,7 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 +(SFUtils *) sharedInstance;
 -(UIColor *) primaryBackgroundColor;
 -(UIColor *) titleColor:(BOOL) isPaid;
--(UIColor *) subtitleColor;
+-(UIColor *) subtitleColor:(NSString *)abTestSourceFontColor;
 
 
 + (BOOL) skipRTL;
@@ -88,5 +88,7 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 +(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response url:(NSString *)url;
 
 +(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat;
+
++(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings;
 
 @end

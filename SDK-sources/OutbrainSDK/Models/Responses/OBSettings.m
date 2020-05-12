@@ -29,6 +29,14 @@
 @property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
 @property (nonatomic, assign) NSInteger viewabilityPerListingReportingIntervalMillis;
 
+// AB tests
+@property (nonatomic, assign)   NSInteger abTitleFontSize;
+@property (nonatomic, assign)   NSInteger abTitleFontStyle; // (Bold (1) or normal (0)
+@property (nonatomic, assign)   NSInteger abSourceFontSize;
+@property (nonatomic, copy)     NSString *abSourceFontColor;
+@property (nonatomic, assign)   BOOL abImageFadeAnimation;
+@property (nonatomic, assign)   NSInteger abImageFadeDuration;
+
 @end
 
 
@@ -63,6 +71,14 @@
         self.paidLabelBackgroundColor = [payload valueForKey:@"dynamic:PaidLabelBackgroundColor"];
         
         self.sourceFormat = [payload valueForKey:@"dynamicSourceFormat"];
+        
+        // AB tests
+        self.abTitleFontSize = [payload valueForKey:@"dynamic:TitleFontSize"] ? [[payload valueForKey:@"dynamic:TitleFontSize"] integerValue] : 0;
+        self.abSourceFontSize = [payload valueForKey:@"dynamic:SourceFontSize"] ? [[payload valueForKey:@"dynamic:SourceFontSize"] integerValue] : 0;
+        self.abTitleFontStyle = [payload valueForKey:@"dynamic:TitleTextStyle"] ? [[payload valueForKey:@"dynamic:TitleTextStyle"] integerValue] : 0;
+        self.abSourceFontColor = [payload valueForKey:@"dynamic:SourceColor"];
+        self.abImageFadeDuration = [payload valueForKey:@"imgFadeDur"] ? [[payload valueForKey:@"imgFadeDur"] integerValue] : 750;
+        self.abImageFadeAnimation = [payload valueForKey:@"imgFade"] ? [[payload valueForKey:@"imgFade"] boolValue] : YES;
         
         NSString *feedContentStr = [payload valueForKey:@"feedContent"];
         if (self.isSmartFeed && feedContentStr != nil) {

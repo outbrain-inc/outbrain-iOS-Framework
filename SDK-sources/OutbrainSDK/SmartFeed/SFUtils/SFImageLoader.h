@@ -13,7 +13,12 @@
 
 + (instancetype)sharedInstance;
 
--(void) loadImage:(NSURL *)imageUrl into:(UIImageView *)imageView;
+-(void) loadImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView;
+
+//
+// @param abTestDuration - (-1) if fade = false in abTest, (milliseconds value) if abTest apply or default value of 750m
+//
+-(void) loadImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView withFadeDuration:(NSInteger)abTestDuration;
 
 -(void) loadImage:(NSString *)imageUrlStr intoButton:(UIButton *)button;
 

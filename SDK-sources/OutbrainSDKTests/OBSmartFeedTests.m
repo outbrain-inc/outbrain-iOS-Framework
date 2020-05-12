@@ -115,6 +115,24 @@
     XCTAssertEqual(self.responseChild3.recommendations.count, 1);
 }
 
+- (void)testAbTestsOptimizationsSettingsFromParentResponse {
+    XCTAssertEqual(self.responseParent.settings.abTitleFontSize, 14);
+    XCTAssertEqual(self.responseParent.settings.abSourceFontSize, 12);
+    XCTAssertEqual(self.responseParent.settings.abTitleFontStyle, 1);
+    XCTAssertTrue([self.responseParent.settings.abSourceFontColor isEqualToString:@"#ffa511"]);
+    XCTAssertTrue(self.responseParent.settings.abImageFadeAnimation);
+    XCTAssertEqual(self.responseParent.settings.abImageFadeDuration, 400);
+}
+
+- (void)testAbTestsOptimizationsSettingsWhenResponseEmpty {
+    XCTAssertEqual(self.responseChild1.settings.abTitleFontSize, 0);
+    XCTAssertEqual(self.responseChild1.settings.abSourceFontSize, 0);
+    XCTAssertEqual(self.responseChild1.settings.abTitleFontStyle, 0);
+    XCTAssertNil(self.responseChild1.settings.abSourceFontColor);
+    XCTAssertTrue(self.responseChild1.settings.abImageFadeAnimation);
+    XCTAssertEqual(self.responseChild1.settings.abImageFadeDuration, 750);
+}
+
 - (void)testRecModeIsFetchedCorrectlyFromResponse {
     XCTAssertTrue([self.responseParent.settings.recMode isEqualToString:@"sdk_sfd_2_columns"]);
     XCTAssertTrue([self.responseChild1.settings.recMode isEqualToString:@"sdk_sfd_1_column"]);
@@ -324,5 +342,32 @@
     XCTAssertNotNil(cell.cardContentView);
     XCTAssertNotNil(cell.cellTitleLabel);
 }
+
+-(void) testSFItemDataChildWidget {
+    NSArray *recommendations = self.responseChild1.recommendations;
+    OBRecommendation *rec = recommendations[0];
+    SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec
+                                                                     odbResponse:self.responseChild1
+                                                                            type:SFTypeStripWithTitle];
+    XCTAssertTrue([item.widgetTitle isEqualToString: @"Around CNN"]);
+    XCTAssertTrue([item.widgetId isEqualToString: @"SDK_SFD_1"]);
+    XCTAssertTrue([item.requestId isEqualToString: @"c9b44236deaeda06b243b584e596e737"]);
+}
+
+-(void) testSFItemDataParentWidget {
+    NSArray *recommendations = self.responseParent.recommendations;
+    NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
+    NSRange subRange = NSMakeRange(0, 2);
+    NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
+    
+    SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs
+                                            odbResponse:self.responseParent
+                                                   type:SFTypeGridTwoInRowNoTitle];
+    
+    XCTAssertEqual(item.outbrainRecs.count, 2);
+    XCTAssertTrue([item.widgetId isEqualToString: @"SFD_MAIN_2"]);
+    XCTAssertTrue([item.requestId isEqualToString: @"b4b6ea633069219626e103dc55da993c"]);
+}
+        
 
 @end

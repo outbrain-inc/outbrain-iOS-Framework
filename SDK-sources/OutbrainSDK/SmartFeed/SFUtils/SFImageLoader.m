@@ -18,6 +18,9 @@
 
 @implementation SFImageLoader
 
+NSInteger const AB_TEST_NO_FADE = -1;
+
+
 + (instancetype)sharedInstance
 {
     static SFImageLoader *sharedInstance = nil;
@@ -35,7 +38,20 @@
     return sharedInstance;
 }
 
--(void) loadImage:(NSURL *)imageUrl into:(UIImageView *)imageView {
+
+-(void) loadImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView {
+    [self loadImageUrl:imageUrl into:imageView withFadeDuration:1];
+}
+
+//
+// @param abTestDuration - (-1) if fade = false in abTest, (milliseconds value) if abTest apply
+//
+-(void) loadImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView withFadeDuration:(NSInteger)abTestDuration {
+    CGFloat adjustedDuration = abTestDuration / 1000.0;
+    if (adjustedDuration > 1.5 || adjustedDuration < 0) {
+        adjustedDuration = 0.75; // back to default
+    }
+
     imageView.image = self.placeholderImage;
     imageView.tag = [imageUrl.absoluteString hash];
     
@@ -49,7 +65,12 @@
             }
             else {
                 self.imageLoadedOnceDict[imageUrl.absoluteString] = @1;
-                [self loadImage:cachedImage withFadeInDuration:0.5 toImageView:imageView];
+                if (abTestDuration == AB_TEST_NO_FADE) {
+                    imageView.image = cachedImage;
+                }
+                else {
+                    [self loadImage:cachedImage withFadeInDuration:adjustedDuration toImageView:imageView];
+                }
             }
         }];
         return;
@@ -71,7 +92,12 @@
                 return;
             }
             self.imageLoadedOnceDict[imageUrl.absoluteString] = @1;
-            [self loadImage:downloadedImage withFadeInDuration:0.5 toImageView:imageView];
+            if (abTestDuration == AB_TEST_NO_FADE) {
+                imageView.image = downloadedImage;
+            }
+            else {
+                [self loadImage:downloadedImage withFadeInDuration:adjustedDuration toImageView:imageView];
+            }
         }];
         [self.imageCache setObject:data forKey:imageUrl.absoluteString];
     }];
@@ -91,6 +117,9 @@
 -(void) loadImage:(NSString *)imageUrlStr intoButton:(UIButton *)button {
     [button setImage:self.adChoicesDefaultImage forState:UIControlStateNormal];
     NSURL *imageUrl = [NSURL URLWithString:imageUrlStr];
+    if (imageUrl == nil) {
+        return;
+    }
     button.imageView.tag = [imageUrl.absoluteString hash];
 
     NSData *imageData = [self.imageCache objectForKey:imageUrl.absoluteString];

@@ -321,8 +321,10 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     
     if (!sfItem.isCustomUI) {
         singleCell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
-        singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
+        singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor:sfItem.odbSettings.abSourceFontColor];
     }
+    
+    [SFUtils setFontSizeForTitleLabel:singleCell.recTitleLabel andSourceLabel:singleCell.recSourceLabel withAbTestSettings:sfItem.odbSettings];
     
     NSAssert(eventListenerTarget != nil, @"clickListenerTarget must not be nil");
     
@@ -345,7 +347,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     }
     else {
         if (rec.publisherLogoImage) {
-            [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
+            [[SFImageLoader sharedInstance] loadImageUrl:rec.publisherLogoImage.url into:singleCell.publisherLogo];
             singleCell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
             singleCell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
         }
@@ -354,7 +356,8 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         }
     }
     
-    [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
+    NSInteger abTestDuration = sfItem.odbSettings.abImageFadeAnimation ? sfItem.odbSettings.abImageFadeDuration : -1;
+    [[SFImageLoader sharedInstance] loadImageUrl:rec.image.url into:singleCell.recImageView withFadeDuration:abTestDuration];
     
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:eventListenerTarget  action:@selector(recommendationClicked:)];
@@ -384,7 +387,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         }
         
         if (!sfItem.isCustomUI) {
-            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
+            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
         }
         
         singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];

@@ -269,8 +269,11 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
     if (!sfItem.isCustomUI) {
         singleCell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
-        singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
+        singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor: sfItem.odbSettings.abSourceFontColor];
     }
+    
+    [SFUtils setFontSizeForTitleLabel:singleCell.recTitleLabel andSourceLabel:singleCell.recSourceLabel withAbTestSettings:sfItem.odbSettings];
+    
     [SFUtils removePaidLabelFromImageView:singleCell.recImageView];
     
     if ([rec isPaidLink]) {
@@ -291,7 +294,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
     else {
         if (rec.publisherLogoImage) {
-            [[SFImageLoader sharedInstance] loadImage:rec.publisherLogoImage.url into:singleCell.publisherLogo];
+            [[SFImageLoader sharedInstance] loadImageUrl:rec.publisherLogoImage.url into:singleCell.publisherLogo];
             singleCell.publisherLogoWidth.constant = rec.publisherLogoImage.width;
             singleCell.publisherLogoHeight.constant = rec.publisherLogoImage.height;
         }
@@ -300,7 +303,8 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         }
     }
     
-    [[SFImageLoader sharedInstance] loadImage:rec.image.url into:singleCell.recImageView];
+    NSInteger abTestDuration = sfItem.odbSettings.abImageFadeAnimation ? sfItem.odbSettings.abImageFadeDuration : -1;
+    [[SFImageLoader sharedInstance] loadImageUrl:rec.image.url into:singleCell.recImageView withFadeDuration:abTestDuration];
     
     if ((sfItem.itemType == SFTypeStripWithTitle) ||
         (sfItem.itemType == SFTypeStripWithThumbnailWithTitle) ||
@@ -314,7 +318,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
             singleCell.cellTitleLabel.text = @"Around the web";
         }
         if (!sfItem.isCustomUI) {
-            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor];
+            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
         }
     }
     if (!self.disableCellShadows) {
