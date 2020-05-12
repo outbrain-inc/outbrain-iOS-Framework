@@ -77,7 +77,7 @@
         self.abSourceFontSize = [payload valueForKey:@"dynamic:SourceFontSize"] ? [[payload valueForKey:@"dynamic:SourceFontSize"] integerValue] : 0;
         self.abTitleFontStyle = [payload valueForKey:@"dynamic:TitleTextStyle"] ? [[payload valueForKey:@"dynamic:TitleTextStyle"] integerValue] : 0;
         self.abSourceFontColor = [payload valueForKey:@"dynamic:SourceColor"];
-        self.abImageFadeDuration = [payload valueForKey:@"imgFadeDur"] ? [[payload valueForKey:@"imgFadeDur"] integerValue] : 750;
+        self.abImageFadeDuration = [payload valueForKey:@"imgFadeDur"] ? [[payload valueForKey:@"imgFadeDur"] integerValue] : 500;
         self.abImageFadeAnimation = [payload valueForKey:@"imgFade"] ? [[payload valueForKey:@"imgFade"] boolValue] : YES;
         
         NSString *feedContentStr = [payload valueForKey:@"feedContent"];
