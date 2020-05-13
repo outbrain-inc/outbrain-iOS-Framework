@@ -84,6 +84,12 @@
 @property (nonatomic, copy) NSString * _Nullable externalID;
 
 /**
+ *  @brief fab is the AB test value (internal use only)
+ *
+ **/
+@property (nonatomic, copy) NSString * _Nullable fab;
+
+/**
  *  @brief A constructor for defining an OBRequest object.
  *
  *  @param url - the URL that the user is currently viewing.

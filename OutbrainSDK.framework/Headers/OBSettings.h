@@ -34,6 +34,15 @@
 
 @property (nonatomic, strong, nullable) OBViewabilityActions *viewabilityActions;
 
+// AB tests
+@property (nonatomic, assign, readonly) NSInteger abTitleFontSize;
+@property (nonatomic, assign, readonly) NSInteger abTitleFontStyle; // (Bold (1) or normal (0)
+@property (nonatomic, assign, readonly) NSInteger abSourceFontSize;
+@property (nonatomic, copy, readonly, nullable) NSString *abSourceFontColor;
+@property (nonatomic, assign, readonly) BOOL abImageFadeAnimation;
+@property (nonatomic, assign, readonly) NSInteger abImageFadeDuration;
+
+
 - (instancetype _Nonnull) initWithPayload:(NSDictionary * _Nullable) payload;
 
 

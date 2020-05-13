@@ -36,6 +36,7 @@ extern NSInteger kVideoFinishedStatus;
 @property (nonatomic, assign, readonly) SFItemType itemType;
 @property (nonatomic, copy, readonly) NSString *widgetTitle;
 @property (nonatomic, copy, readonly) NSString *widgetId;
+@property (nonatomic, copy, readonly) NSString *abTestVal;
 @property (nonatomic, strong, readonly) OBRequest *request;
 @property (nonatomic, strong, readonly) OBResponseRequest *responseRequest;
 @property (nonatomic, strong, readonly) NSURL *videoUrl;
