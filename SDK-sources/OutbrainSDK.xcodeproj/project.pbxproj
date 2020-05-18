@@ -119,6 +119,7 @@
 		E63B7861212AD9750018C225 /* SFCollectionViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */; };
 		E647EE8522EF2E6E00313178 /* SFDefaultCollectionViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E647EE8322EF2E6E00313178 /* SFDefaultCollectionViewDelegate.h */; };
 		E647EE8622EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E647EE8422EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m */; };
+		E64AE0B82472AA8A0070A471 /* SFBrandedCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64AE0B72472AA890070A471 /* SFBrandedCarouselCollectionViewCell.xib */; };
 		E64F6044212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6043212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib */; };
 		E64F6046212C412A008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6045212C4129008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib */; };
 		E64F6112213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6111213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib */; };
@@ -304,6 +305,7 @@
 		E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFCollectionViewHeaderCell.m; sourceTree = "<group>"; };
 		E647EE8322EF2E6E00313178 /* SFDefaultCollectionViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFDefaultCollectionViewDelegate.h; sourceTree = "<group>"; };
 		E647EE8422EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFDefaultCollectionViewDelegate.m; sourceTree = "<group>"; };
+		E64AE0B72472AA890070A471 /* SFBrandedCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFBrandedCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 		E64F6043212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalCarouselNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E64F6045212C4129008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalCarouselNoTitleTableViewCell.xib; sourceTree = "<group>"; };
 		E64F6111213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -792,6 +794,7 @@
 				E64F6111213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib */,
 				E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */,
 				1649FC772301A90800273994 /* SFHorizontalFixedWithTitleWithVideoCollectionViewCell.xib */,
+				E64AE0B72472AA890070A471 /* SFBrandedCarouselCollectionViewCell.xib */,
 				E6FEB3E220FF2E78002A9020 /* SFHorizontalCarouselWithTitleCollectionViewCell.xib */,
 				E64F6043212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib */,
 			);
@@ -1023,6 +1026,7 @@
 				E67A718F21931139008DB54F /* SFTableViewRTLHeaderCell.xib in Resources */,
 				E6FEB74E2105AAFB002A9020 /* SFHorizontalFixedItemCell.xib in Resources */,
 				E6FEB7512105AAFB002A9020 /* SFTableViewCell.xib in Resources */,
+				E64AE0B82472AA8A0070A471 /* SFBrandedCarouselCollectionViewCell.xib in Resources */,
 				E6B930A6216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib in Resources */,
 				E64F6112213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib in Resources */,
 				E6FEB7502105AAFB002A9020 /* SFCollectionViewCell.xib in Resources */,
