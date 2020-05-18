@@ -19,8 +19,8 @@
     }
     else {
         const BOOL isTablet = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
-        const CGFloat itemWidth = MAX(self.collectionView.frame.size.width*(isTablet ? 0.4 : 0.6), 220.0);
-        const CGFloat itemHeight = MIN(itemWidth*0.85, self.collectionView.frame.size.height);
+        const CGFloat itemWidth = MAX(self.collectionView.frame.size.width*0.65, 300.0);
+        const CGFloat itemHeight = MIN(itemWidth*1.23, self.collectionView.frame.size.height);
         self.itemSize = CGSizeMake(itemWidth, itemHeight);
     }
     
