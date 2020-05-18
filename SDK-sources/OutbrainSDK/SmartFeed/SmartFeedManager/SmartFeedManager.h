@@ -87,6 +87,7 @@ typedef enum
     SFTypeSmartfeedHeader = 1,
     SFTypeStripNoTitle,
     SFTypeCarouselWithTitle,
+    SFTypeBrandedCarouselWithTitle,
     SFTypeCarouselNoTitle,
     SFTypeGridTwoInRowNoTitle,
     SFTypeGridThreeInRowNoTitle,

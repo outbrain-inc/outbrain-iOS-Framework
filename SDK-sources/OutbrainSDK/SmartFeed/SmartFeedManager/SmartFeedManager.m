@@ -357,6 +357,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     else if ([recMode isEqualToString:@"sdk_sfd_thumbnails"]) {
         return widgetHeader ? SFTypeStripWithThumbnailWithTitle : SFTypeStripWithThumbnailNoTitle;        
     }
+    else if ([recMode isEqualToString:@"odb_dynamic_ad-carousel"]) {
+        return SFTypeBrandedCarouselWithTitle;
+    }
     
     NSLog(@"recMode value is not currently covered in the SDK - (%@)", recMode);
     return SFTypeStripWithTitle;
