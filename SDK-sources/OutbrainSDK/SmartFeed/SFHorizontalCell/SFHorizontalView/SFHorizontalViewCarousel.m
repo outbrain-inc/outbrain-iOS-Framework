@@ -12,6 +12,8 @@
 @implementation SFHorizontalViewCarousel
 
 -(void) setupView {
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
     [super setupView];
     
     if (self.carouselItemSizeCallback) { // app developer override point
@@ -19,8 +21,9 @@
     }
     else {
         const BOOL isTablet = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
-        const CGFloat itemWidth = MAX(self.collectionView.frame.size.width*0.65, 300.0);
-        const CGFloat itemHeight = MIN(itemWidth*1.23, self.collectionView.frame.size.height);
+        const CGFloat itemWidth = screenWidth*0.7;
+        const CGFloat itemHeight = self.collectionView.frame.size.height*0.95;
+        
         self.itemSize = CGSizeMake(itemWidth, itemHeight);
     }
     
