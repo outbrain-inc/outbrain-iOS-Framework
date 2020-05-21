@@ -11,17 +11,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SFBrandedCarouselCollectionViewCell" id="5WA-yK-Vag" customClass="SFBrandedCarouselCollectionCell">
-            <rect key="frame" x="0.0" y="0.0" width="317" height="393"/>
+            <rect key="frame" x="0.0" y="0.0" width="317" height="429"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                <rect key="frame" x="0.0" y="0.0" width="317" height="393"/>
+                <rect key="frame" x="0.0" y="0.0" width="317" height="429"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJD-mi-P9N">
-                        <rect key="frame" x="0.0" y="0.0" width="317" height="393"/>
+                        <rect key="frame" x="0.0" y="0.0" width="317" height="429"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSE-ha-ESX" customClass="SFHorizontalViewCarousel">
-                                <rect key="frame" x="0.0" y="97" width="317" height="246"/>
+                                <rect key="frame" x="0.0" y="80" width="317" height="299"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsored by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEy-cl-S9c">
@@ -44,7 +44,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ble-2Y-an4">
-                                <rect key="frame" x="50" y="353" width="217" height="40"/>
+                                <rect key="frame" x="50" y="389" width="217" height="40"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LOJ-PH-LQG"/>
@@ -63,7 +63,7 @@
                             <constraint firstAttribute="trailing" secondItem="lhg-3b-cg1" secondAttribute="trailing" constant="15" id="1VN-uc-5uX"/>
                             <constraint firstItem="XMz-T5-1Gg" firstAttribute="leading" secondItem="SEy-cl-S9c" secondAttribute="trailing" constant="2" id="4wQ-QX-Wdc"/>
                             <constraint firstItem="SEy-cl-S9c" firstAttribute="leading" secondItem="teG-MK-3cN" secondAttribute="trailing" constant="14" id="6Lh-zT-oRd"/>
-                            <constraint firstItem="ZSE-ha-ESX" firstAttribute="top" secondItem="jJD-mi-P9N" secondAttribute="top" constant="97" id="C5Y-x1-YCe"/>
+                            <constraint firstItem="ZSE-ha-ESX" firstAttribute="top" secondItem="jJD-mi-P9N" secondAttribute="top" constant="80" id="C5Y-x1-YCe"/>
                             <constraint firstItem="XMz-T5-1Gg" firstAttribute="centerY" secondItem="SEy-cl-S9c" secondAttribute="centerY" id="FhO-H7-Zay"/>
                             <constraint firstItem="teG-MK-3cN" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" constant="23" id="I6v-nO-rnM"/>
                             <constraint firstItem="Ble-2Y-an4" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" constant="50" id="Im2-13-Pna"/>
@@ -86,7 +86,7 @@
                 <constraint firstAttribute="trailing" secondItem="jJD-mi-P9N" secondAttribute="trailing" id="vKO-aP-C4J"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="AgH-sS-i8G"/>
-            <size key="customSize" width="317" height="386"/>
+            <size key="customSize" width="317" height="422"/>
             <connections>
                 <outlet property="cellBrandLogoImageView" destination="teG-MK-3cN" id="cwS-et-ecg"/>
                 <outlet property="cellView" destination="jJD-mi-P9N" id="hde-uj-2eR"/>
@@ -98,7 +98,7 @@
                 <outlet property="titleSourceLabel" destination="XMz-T5-1Gg" id="lBU-WT-kLV"/>
                 <outlet property="titleSponsoredByLabel" destination="SEy-cl-S9c" id="njI-sz-wKe"/>
             </connections>
-            <point key="canvasLocation" x="-188" y="71.514242878560722"/>
+            <point key="canvasLocation" x="-188" y="84.605911330049267"/>
         </collectionViewCell>
     </objects>
     <resources>
