@@ -326,7 +326,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             [newSmartfeedItems addObjectsFromArray:[self createSingleItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         default:
-            NSLog(@"Error - createSmartfeedItemsArrayFromResponse - itemType (%@) not found", itemType);
+            NSLog(@"Error - createSmartfeedItemsArrayFromResponse - itemType (%@) not found", [SFItemData itemTypeString:itemType]);
             break;
     }
    
