@@ -310,6 +310,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     switch (itemType) {
         case SFTypeCarouselWithTitle:
         case SFTypeCarouselNoTitle:
+        case SFTypeBrandedCarouselWithTitle:
             [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         case SFTypeGridTwoInRowNoTitle:
@@ -325,6 +326,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             [newSmartfeedItems addObjectsFromArray:[self createSingleItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         default:
+            NSLog(@"Error - createSmartfeedItemsArrayFromResponse - itemType (%@) not found", itemType);
             break;
     }
    
@@ -343,7 +345,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     
     if ([recMode isEqualToString:@"sdk_sfd_swipe"]) {
-        return widgetHeader ? SFTypeCarouselWithTitle : SFTypeCarouselNoTitle;
+        return SFTypeBrandedCarouselWithTitle; //TODO remove this line
+//        return widgetHeader ? SFTypeCarouselWithTitle : SFTypeCarouselNoTitle;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_1_column"]) {
         return widgetHeader ? SFTypeStripWithTitle : SFTypeStripNoTitle;
@@ -738,6 +741,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) { // carousel
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
+        }
+        if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) { // branded carousel
+            horizontalItemCellNib = [UINib nibWithNibName:@"SFBrandedCardItemCell" bundle:bundle];
+            [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFBrandedCardItemCell"];
         }
         else { // SFHorizontalFixed
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
