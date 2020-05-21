@@ -10,6 +10,7 @@
 #import "SFTableViewHeaderCell.h"
 #import "SFCollectionViewHeaderCell.h"
 #import "SFHorizontalCollectionViewCell.h"
+#import "SFBrandedCarouselCollectionCell.h"
 #import "SFHorizontalWithVideoCollectionViewCell.h"
 #import "SFHorizontalWithVideoTableViewCell.h"
 #import "SFCollectionViewCell.h"
@@ -929,7 +930,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     else if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
-        if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle)) {
+        if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) {
+            [self configureBrandedCarouselCell:cell atIndexPath:indexPath];
+        }
+        if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle || sfItem.itemType == SFTypeBrandedCarouselWithTitle)) {
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
     }
@@ -958,6 +962,14 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     [self commonConfigureHorizontalCell:horizontalCell withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
 }
+
+- (void) configureBrandedCarouselCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SFBrandedCarouselCollectionCell *brandedCarouselCell = (SFBrandedCarouselCollectionCell *)cell;
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    brandedCarouselCell.cellBrandLogoImageView.image = [UIImage imageNamed:@"cnn-logo"];
+    NSLog(@"total recs in branded carousel: %d", sfItem.outbrainRecs.count);
+}
+
 
 - (void) configureHorizontalVideoCollectionCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalWithVideoCollectionViewCell *horizontalVideoCell = (SFHorizontalWithVideoCollectionViewCell *)cell;
