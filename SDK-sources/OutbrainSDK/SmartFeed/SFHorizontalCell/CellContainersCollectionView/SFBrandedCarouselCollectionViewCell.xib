@@ -25,13 +25,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsored by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEy-cl-S9c">
-                                <rect key="frame" x="77" y="30.333333333333332" width="79" height="15.333333333333332"/>
+                                <rect key="frame" x="77" y="30.333333333333332" width="78.666666666666686" height="15.333333333333332"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="13"/>
                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pottery Barn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMz-T5-1Gg">
-                                <rect key="frame" x="158" y="30.333333333333332" width="76" height="15.333333333333332"/>
+                                <rect key="frame" x="157.66666666666666" y="30.333333333333332" width="76" height="15.666666666666668"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
                                 <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -43,9 +43,18 @@
                                     <constraint firstAttribute="height" constant="40" id="YCm-GC-KIm"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ble-2Y-an4">
-                                <rect key="frame" x="50" y="389" width="217" height="40"/>
-                                <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ble-2Y-an4">
+                                <rect key="frame" x="153.66666666666666" y="389" width="10" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8HG-5l-tcu">
+                                        <rect key="frame" x="0.0" y="15" width="10" height="10"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="10" id="CVz-kv-fp2"/>
+                                            <constraint firstAttribute="height" constant="10" id="w7Y-QV-IoH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LOJ-PH-LQG"/>
                                 </constraints>
@@ -63,11 +72,10 @@
                             <constraint firstAttribute="trailing" secondItem="lhg-3b-cg1" secondAttribute="trailing" constant="15" id="1VN-uc-5uX"/>
                             <constraint firstItem="XMz-T5-1Gg" firstAttribute="leading" secondItem="SEy-cl-S9c" secondAttribute="trailing" constant="2" id="4wQ-QX-Wdc"/>
                             <constraint firstItem="SEy-cl-S9c" firstAttribute="leading" secondItem="teG-MK-3cN" secondAttribute="trailing" constant="14" id="6Lh-zT-oRd"/>
+                            <constraint firstItem="Ble-2Y-an4" firstAttribute="centerX" secondItem="jJD-mi-P9N" secondAttribute="centerX" id="7en-W4-AgJ"/>
                             <constraint firstItem="ZSE-ha-ESX" firstAttribute="top" secondItem="jJD-mi-P9N" secondAttribute="top" constant="80" id="C5Y-x1-YCe"/>
                             <constraint firstItem="XMz-T5-1Gg" firstAttribute="centerY" secondItem="SEy-cl-S9c" secondAttribute="centerY" id="FhO-H7-Zay"/>
                             <constraint firstItem="teG-MK-3cN" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" constant="23" id="I6v-nO-rnM"/>
-                            <constraint firstItem="Ble-2Y-an4" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" constant="50" id="Im2-13-Pna"/>
-                            <constraint firstAttribute="trailing" secondItem="Ble-2Y-an4" secondAttribute="trailing" constant="50" id="Kvp-jB-Dua"/>
                             <constraint firstItem="teG-MK-3cN" firstAttribute="top" secondItem="jJD-mi-P9N" secondAttribute="top" constant="28" id="XKF-Lm-dPI"/>
                             <constraint firstAttribute="bottom" secondItem="ZSE-ha-ESX" secondAttribute="bottom" constant="50" id="d12-tl-LCx"/>
                             <constraint firstItem="lhg-3b-cg1" firstAttribute="leading" secondItem="SEy-cl-S9c" secondAttribute="leading" id="jDf-Wh-84K"/>
