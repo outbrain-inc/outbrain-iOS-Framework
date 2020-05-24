@@ -967,21 +967,13 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     SFBrandedCarouselCollectionCell *brandedCarouselCell = (SFBrandedCarouselCollectionCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     brandedCarouselCell.cellBrandLogoImageView.image = [UIImage imageNamed:@"cnn-logo"];
-    for (UIView *v in brandedCarouselCell.horizontalPagerIndicatorStackView.arrangedSubviews) {
-        [v removeFromSuperview];
-    }
-    for (int i=0; i <= 5; i++) {
-        UIView *v = [[UIView alloc] init];
-        v.backgroundColor = (i == 0) ? UIColor.blackColor : UIColor.whiteColor;
-        v.layer.borderWidth = 2.0;
-        v.layer.borderColor = (i == 0) ? UIColor.blackColor.CGColor : UIColorFromRGB(0x9b9b9b).CGColor;
-        v.layer.cornerRadius = 5.0;
-        
-        v.tag = i;
-        [v.heightAnchor constraintEqualToConstant:10].active = true;
-        [v.widthAnchor constraintEqualToConstant:10].active = true;
-        [brandedCarouselCell.horizontalPagerIndicatorStackView addArrangedSubview:v];
-    }
+    NSInteger totalItems = sfItem.outbrainRecs.count > 9 ? 5 : sfItem.outbrainRecs.count;
+    [brandedCarouselCell setupDotsIndicator:totalItems - 1];
+    [brandedCarouselCell setDotsIndicatorWithCurrentIndex:0];
+    
+    [brandedCarouselCell.horizontalView setOnBrandedCarouselEndScroll:^(NSInteger centerItemIdx) {
+        [brandedCarouselCell setDotsIndicatorWithCurrentIndex:centerItemIdx];
+    }];
     
     NSLog(@"total recs in branded carousel: %d", sfItem.outbrainRecs.count);
 }

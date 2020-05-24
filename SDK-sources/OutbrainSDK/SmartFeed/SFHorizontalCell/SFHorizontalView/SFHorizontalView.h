@@ -17,6 +17,7 @@ typedef void(^OnRecommendationClick)(OBRecommendation * _Nullable rec);
 typedef void(^OnAdChoicesIconClick)(NSURL * _Nullable url);
 typedef CGSize(^CarouselItemSizeCallback)(void);
 typedef void(^ConfigureHorizontalItem)(SFCollectionViewCell * _Nonnull cell, OBRecommendation * _Nonnull rec);
+typedef void(^OnBrandedCarouselEndScroll)(NSInteger centerItemIdx);
 
 - (void) setupView;
 
@@ -28,6 +29,7 @@ typedef void(^ConfigureHorizontalItem)(SFCollectionViewCell * _Nonnull cell, OBR
 @property (nonatomic) OnAdChoicesIconClick _Nonnull onAdChoicesIconClick;
 @property (nonatomic) CarouselItemSizeCallback _Nullable carouselItemSizeCallback;
 @property (nonatomic) ConfigureHorizontalItem _Nullable configureHorizontalItem;
+@property (nonatomic) OnBrandedCarouselEndScroll _Nullable onBrandedCarouselEndScroll;
 
 // This section was private, now its here for the children classes
 @property (nonatomic, strong) UICollectionView * _Nullable collectionView;

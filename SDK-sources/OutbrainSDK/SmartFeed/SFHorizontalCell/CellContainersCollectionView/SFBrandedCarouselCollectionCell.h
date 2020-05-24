@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet UIImageView *cellBrandLogoImageView;
 @property (nonatomic, weak) IBOutlet UIStackView *horizontalPagerIndicatorStackView;
 
+-(void) setupDotsIndicator:(NSInteger) totalItems;
+
+-(void) setDotsIndicatorWithCurrentIndex:(NSInteger) currIndex;
+
 @end
 
 NS_ASSUME_NONNULL_END

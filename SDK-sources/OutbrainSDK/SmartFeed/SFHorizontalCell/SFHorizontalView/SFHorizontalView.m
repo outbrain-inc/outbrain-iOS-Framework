@@ -202,4 +202,13 @@
     }
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGPoint centerPoint = CGPointMake(self.collectionView.contentOffset.x + screenWidth/2, self.collectionView.frame.size.height / 2);
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:centerPoint];
+    if (self.onBrandedCarouselEndScroll) {
+        self.onBrandedCarouselEndScroll(indexPath.item);
+    }
+}
+
 @end
