@@ -40,15 +40,16 @@
                                     <constraint firstAttribute="height" constant="12" id="uVW-qH-4bO"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="Lookup Your Name to See If You Get a PPI Payout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-J8-7zV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="Lookup Your Name to See If You Get a PPI Payout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.84999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-J8-7zV">
                                 <rect key="frame" x="10" y="221.5" width="142" height="45.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read more" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5Z-3f-mcC">
-                                <rect key="frame" x="157" y="229.5" width="50" height="32.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read more" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g5Z-3f-mcC">
+                                <rect key="frame" x="157" y="226.5" width="50" height="35"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="7VR-6W-RPz"/>
                                     <constraint firstAttribute="width" constant="50" id="ugf-l5-oCe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
@@ -59,13 +60,12 @@
                         <constraints>
                             <constraint firstItem="vW4-J8-7zV" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" constant="10" id="Byi-27-eJv"/>
                             <constraint firstItem="g77-bX-xEg" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" id="Cmb-sV-E8V"/>
-                            <constraint firstItem="g5Z-3f-mcC" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="bottom" constant="8" id="DuL-l7-yn0"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="bottom" secondItem="vW4-J8-7zV" secondAttribute="bottom" constant="3" id="IsT-OL-4hs"/>
                             <constraint firstItem="g5Z-3f-mcC" firstAttribute="trailing" secondItem="EZ3-tA-2YS" secondAttribute="trailing" constant="-10" id="NUD-JB-kMg"/>
                             <constraint firstItem="ofG-qc-XMN" firstAttribute="leading" secondItem="g77-bX-xEg" secondAttribute="leading" constant="4" id="PfF-0A-qQv"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="trailing" secondItem="X5m-0R-CNu" secondAttribute="trailing" id="UJA-Tb-Jzd"/>
-                            <constraint firstItem="EZ3-tA-2YS" firstAttribute="bottom" secondItem="g5Z-3f-mcC" secondAttribute="bottom" constant="8" id="UlX-Gb-Lfo"/>
                             <constraint firstItem="g77-bX-xEg" firstAttribute="trailing" secondItem="EZ3-tA-2YS" secondAttribute="trailing" id="Xsu-Vi-cEZ"/>
+                            <constraint firstItem="g5Z-3f-mcC" firstAttribute="centerY" secondItem="vW4-J8-7zV" secondAttribute="centerY" id="crT-61-oXQ"/>
                             <constraint firstItem="ofG-qc-XMN" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="top" constant="4" id="hG3-bk-Sdy"/>
                             <constraint firstItem="g5Z-3f-mcC" firstAttribute="leading" secondItem="vW4-J8-7zV" secondAttribute="trailing" constant="5" id="hNk-cm-dYQ"/>
                             <constraint firstItem="vW4-J8-7zV" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="bottom" id="hY9-cv-aA7"/>
@@ -87,6 +87,7 @@
             <size key="customSize" width="217" height="270"/>
             <connections>
                 <outlet property="adChoicesButton" destination="X5m-0R-CNu" id="gD4-Ms-T0e"/>
+                <outlet property="brandedCtaButtonLabel" destination="g5Z-3f-mcC" id="qZj-J9-zcr"/>
                 <outlet property="publisherLogo" destination="ofG-qc-XMN" id="LMp-o2-7Yo"/>
                 <outlet property="publisherLogoHeight" destination="uVW-qH-4bO" id="ILh-X8-Xve"/>
                 <outlet property="publisherLogoWidth" destination="6DY-gy-1en" id="4vK-Sx-CRt"/>

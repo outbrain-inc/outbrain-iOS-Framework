@@ -131,6 +131,12 @@
         }
     }
     
+    if (cell.brandedCtaButtonLabel) {
+        cell.brandedCtaButtonLabel.layer.borderWidth = 1.0;
+        cell.brandedCtaButtonLabel.layer.borderColor = UIColorFromRGB(0x4a90e2).CGColor;
+        cell.brandedCtaButtonLabel.layer.cornerRadius = 3.0;
+    }
+    
     NSInteger abTestDuration = self.sfItem.odbSettings.abImageFadeAnimation ? self.sfItem.odbSettings.abImageFadeDuration : -1;
     [[SFImageLoader sharedInstance] loadImageUrl:rec.image.url into:cell.recImageView withFadeDuration:abTestDuration];
     
