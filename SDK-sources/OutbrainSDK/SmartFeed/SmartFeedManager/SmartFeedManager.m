@@ -346,8 +346,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     
     if ([recMode isEqualToString:@"sdk_sfd_swipe"]) {
-        return SFTypeBrandedCarouselWithTitle; //TODO remove this line
-//        return widgetHeader ? SFTypeCarouselWithTitle : SFTypeCarouselNoTitle;
+        return widgetHeader ? SFTypeCarouselWithTitle : SFTypeCarouselNoTitle;
     }
     else if ([recMode isEqualToString:@"sdk_sfd_1_column"]) {
         return widgetHeader ? SFTypeStripWithTitle : SFTypeStripNoTitle;
@@ -966,7 +965,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 - (void) configureBrandedCarouselCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFBrandedCarouselCollectionCell *brandedCarouselCell = (SFBrandedCarouselCollectionCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
-    brandedCarouselCell.cellBrandLogoImageView.image = [UIImage imageNamed:@"cnn-logo"];
+    
     NSInteger totalItems = sfItem.outbrainRecs.count > 9 ? 5 : sfItem.outbrainRecs.count;
     [brandedCarouselCell setupDotsIndicator:totalItems - 1];
     [brandedCarouselCell setDotsIndicatorWithCurrentIndex:0];
@@ -975,7 +974,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [brandedCarouselCell setDotsIndicatorWithCurrentIndex:centerItemIdx];
     }];
     
-    NSLog(@"total recs in branded carousel: %d", sfItem.outbrainRecs.count);
+    brandedCarouselCell.titleLabel.text = sfItem.odbSettings.brandedCarouselSettings.carouselTitle;
+    brandedCarouselCell.titleSourceLabel.text = sfItem.odbSettings.brandedCarouselSettings.carouselSponsor;
+    [[SFImageLoader sharedInstance] loadImageUrl:sfItem.odbSettings.brandedCarouselSettings.image.url into:brandedCarouselCell.cellBrandLogoImageView];
 }
 
 
