@@ -31,9 +31,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pottery Barn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMz-T5-1Gg">
-                                <rect key="frame" x="157.66666666666666" y="30.333333333333332" width="76" height="15.666666666666668"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
-                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="159.66666666666666" y="29.666666666666671" width="82" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cnn-logo" translatesAutoresizingMaskIntoConstraints="NO" id="teG-MK-3cN">
@@ -70,7 +70,7 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Ble-2Y-an4" secondAttribute="bottom" id="0IU-TF-HCh"/>
                             <constraint firstAttribute="trailing" secondItem="lhg-3b-cg1" secondAttribute="trailing" constant="15" id="1VN-uc-5uX"/>
-                            <constraint firstItem="XMz-T5-1Gg" firstAttribute="leading" secondItem="SEy-cl-S9c" secondAttribute="trailing" constant="2" id="4wQ-QX-Wdc"/>
+                            <constraint firstItem="XMz-T5-1Gg" firstAttribute="leading" secondItem="SEy-cl-S9c" secondAttribute="trailing" constant="4" id="4wQ-QX-Wdc"/>
                             <constraint firstItem="SEy-cl-S9c" firstAttribute="leading" secondItem="teG-MK-3cN" secondAttribute="trailing" constant="14" id="6Lh-zT-oRd"/>
                             <constraint firstItem="Ble-2Y-an4" firstAttribute="centerX" secondItem="jJD-mi-P9N" secondAttribute="centerX" id="7en-W4-AgJ"/>
                             <constraint firstItem="ZSE-ha-ESX" firstAttribute="top" secondItem="jJD-mi-P9N" secondAttribute="top" constant="80" id="C5Y-x1-YCe"/>
