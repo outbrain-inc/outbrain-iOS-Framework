@@ -123,6 +123,8 @@
 		E64AE0BB2472BD610070A471 /* SFBrandedCarouselCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E64AE0B92472BD610070A471 /* SFBrandedCarouselCollectionCell.h */; };
 		E64AE0BC2472BD610070A471 /* SFBrandedCarouselCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64AE0BA2472BD610070A471 /* SFBrandedCarouselCollectionCell.m */; };
 		E64AE0BE2476671A0070A471 /* SFBrandedCardItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64AE0BD2476671A0070A471 /* SFBrandedCardItemCell.xib */; };
+		E64AE0C0247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E64AE0BF247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m */; };
+		E64AE0C2247BA24F0070A471 /* smart_feed_response_branded_carousel.json in Resources */ = {isa = PBXBuildFile; fileRef = E64AE0C1247BA24F0070A471 /* smart_feed_response_branded_carousel.json */; };
 		E64F6044212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6043212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib */; };
 		E64F6046212C412A008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6045212C4129008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib */; };
 		E64F6112213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6111213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib */; };
@@ -312,6 +314,8 @@
 		E64AE0B92472BD610070A471 /* SFBrandedCarouselCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFBrandedCarouselCollectionCell.h; sourceTree = "<group>"; };
 		E64AE0BA2472BD610070A471 /* SFBrandedCarouselCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFBrandedCarouselCollectionCell.m; sourceTree = "<group>"; };
 		E64AE0BD2476671A0070A471 /* SFBrandedCardItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFBrandedCardItemCell.xib; sourceTree = "<group>"; };
+		E64AE0BF247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBSmartFeedBrandedCarouselTests.m; sourceTree = "<group>"; };
+		E64AE0C1247BA24F0070A471 /* smart_feed_response_branded_carousel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_branded_carousel.json; sourceTree = "<group>"; };
 		E64F6043212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalCarouselNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E64F6045212C4129008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalCarouselNoTitleTableViewCell.xib; sourceTree = "<group>"; };
 		E64F6111213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -625,6 +629,7 @@
 				E61E6C1120836C180016D79A /* OBTestUtils.h */,
 				E61E6C1020836C180016D79A /* OutbrainSDKTests.m */,
 				E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */,
+				E64AE0BF247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m */,
 				E6355C0022367EC000C3D1D5 /* MultivacResponseTests.m */,
 				E61E6C1320836C180016D79A /* OBParseODBTests.m */,
 				E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */,
@@ -643,6 +648,7 @@
 				E6D26D8C20D7C16A00D6D00A /* rtb_rec_with_disclosure_empty_values.json */,
 				E6D26D8D20D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json */,
 				E6D26D8E20D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json */,
+				E64AE0C1247BA24F0070A471 /* smart_feed_response_branded_carousel.json */,
 				E6EA3785209B30E1009B687B /* smart_feed_response_parent.json */,
 				E6EA3786209B30E1009B687B /* smart_feed_response_child1.json */,
 				E6EA3787209B30E1009B687B /* smart_feed_response_child2.json */,
@@ -1075,6 +1081,7 @@
 				E6355BFF22367E7D00C3D1D5 /* outbrain_multivac_response.json in Resources */,
 				E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */,
 				E6D26D8F20D7C16A00D6D00A /* rtb_rec_with_disclosure_empty_values.json in Resources */,
+				E64AE0C2247BA24F0070A471 /* smart_feed_response_branded_carousel.json in Resources */,
 				E6D26D8B20D7C0A900D6D00A /* non_rtb_rec.json in Resources */,
 				E6D26D9120D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json in Resources */,
 				E6D26D9020D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json in Resources */,
@@ -1169,6 +1176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6250CCD21BD5E8900C329B9 /* SFUtilsTests.m in Sources */,
+				E64AE0C0247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m in Sources */,
 				E6355C0122367EC000C3D1D5 /* MultivacResponseTests.m in Sources */,
 				E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */,
 				E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */,
