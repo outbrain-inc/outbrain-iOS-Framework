@@ -46,6 +46,8 @@
 @property (nonatomic, copy) NSString *audienceCampaignsLabel;
 /** @brief Apply for Smartfeed "trending in category" card only. */
 @property (nonatomic, copy) NSString * categoryName;
+/** @brief Apply for Smartfeed "branded carousel" rec only. */
+@property (nonatomic, copy) NSString * brandedCardCtaText;
 @end
 
 
@@ -114,7 +116,8 @@
              @"video":                              @"isVideo",
              @"appflow":                            @"appflow",
              @"disclosure":                         @"disclosure",
-             @"pixels":                             @"pixels"
+             @"pixels":                             @"pixels",
+             @"brandedCardCtaText":                 @"cta"
              };
 }
 
