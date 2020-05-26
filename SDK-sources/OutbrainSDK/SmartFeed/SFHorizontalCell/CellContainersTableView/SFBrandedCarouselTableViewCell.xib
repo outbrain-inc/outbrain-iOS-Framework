@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SFBrandedCarouselTableViewCell" rowHeight="429" id="3AM-RT-MAO" customClass="SFBrandedCarouselTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="317" height="429"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3AM-RT-MAO" id="5QZ-0j-ktj">
+                <rect key="frame" x="0.0" y="0.0" width="317" height="429"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="51n-mb-hfd">
+                        <rect key="frame" x="0.0" y="0.0" width="317" height="429"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNG-I7-piv" customClass="SFHorizontalViewCarousel">
+                                <rect key="frame" x="0.0" y="80" width="317" height="299"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsored by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eio-0c-O7T">
+                                <rect key="frame" x="77" y="30.5" width="79" height="15.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pottery Barn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fon-bD-3RY">
+                                <rect key="frame" x="160" y="29.5" width="82" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cnn-logo" translatesAutoresizingMaskIntoConstraints="NO" id="XDd-Uc-Uhs">
+                                <rect key="frame" x="23" y="28" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Tjt-bf-KEl"/>
+                                    <constraint firstAttribute="height" constant="40" id="oPL-ys-Uov"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="reY-oe-gIt">
+                                <rect key="frame" x="153.5" y="389" width="10" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJn-ZI-Kq9">
+                                        <rect key="frame" x="0.0" y="15" width="10" height="10"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="8tu-4P-Bil"/>
+                                            <constraint firstAttribute="width" constant="10" id="ocV-xF-kKu"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hFg-1G-KMA"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treat yourself. You (and your home) deserve this!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emm-6Y-ZmP">
+                                <rect key="frame" x="77" y="50.5" width="225" height="33.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XDd-Uc-Uhs" firstAttribute="leading" secondItem="51n-mb-hfd" secondAttribute="leading" constant="23" id="3IP-yx-z2G"/>
+                            <constraint firstAttribute="bottom" secondItem="reY-oe-gIt" secondAttribute="bottom" id="5RM-7A-4VJ"/>
+                            <constraint firstAttribute="bottom" secondItem="mNG-I7-piv" secondAttribute="bottom" constant="50" id="8Qb-W9-mHG"/>
+                            <constraint firstItem="reY-oe-gIt" firstAttribute="centerX" secondItem="51n-mb-hfd" secondAttribute="centerX" id="QeE-FE-agJ"/>
+                            <constraint firstAttribute="trailing" secondItem="emm-6Y-ZmP" secondAttribute="trailing" constant="15" id="UZh-vx-w9p"/>
+                            <constraint firstItem="Fon-bD-3RY" firstAttribute="centerY" secondItem="eio-0c-O7T" secondAttribute="centerY" id="Vld-Pm-uvp"/>
+                            <constraint firstItem="emm-6Y-ZmP" firstAttribute="leading" secondItem="eio-0c-O7T" secondAttribute="leading" id="W3Q-Iv-on6"/>
+                            <constraint firstItem="eio-0c-O7T" firstAttribute="leading" secondItem="XDd-Uc-Uhs" secondAttribute="trailing" constant="14" id="W7s-gP-sT5"/>
+                            <constraint firstItem="mNG-I7-piv" firstAttribute="leading" secondItem="51n-mb-hfd" secondAttribute="leading" id="ZnC-ho-hnZ"/>
+                            <constraint firstItem="Fon-bD-3RY" firstAttribute="leading" secondItem="eio-0c-O7T" secondAttribute="trailing" constant="4" id="bnO-8g-xpd"/>
+                            <constraint firstItem="eio-0c-O7T" firstAttribute="centerY" secondItem="XDd-Uc-Uhs" secondAttribute="centerY" constant="-10" id="cvP-lO-pmm"/>
+                            <constraint firstItem="XDd-Uc-Uhs" firstAttribute="top" secondItem="51n-mb-hfd" secondAttribute="top" constant="28" id="r4R-2x-ybt"/>
+                            <constraint firstItem="mNG-I7-piv" firstAttribute="top" secondItem="51n-mb-hfd" secondAttribute="top" constant="80" id="rj0-yj-JDH"/>
+                            <constraint firstItem="emm-6Y-ZmP" firstAttribute="top" secondItem="eio-0c-O7T" secondAttribute="bottom" constant="4.5" id="xKA-Ws-JXU"/>
+                            <constraint firstAttribute="trailing" secondItem="mNG-I7-piv" secondAttribute="trailing" id="zZg-f2-NK1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="51n-mb-hfd" firstAttribute="top" secondItem="5QZ-0j-ktj" secondAttribute="top" id="BZS-3T-cOq"/>
+                    <constraint firstItem="51n-mb-hfd" firstAttribute="leading" secondItem="5QZ-0j-ktj" secondAttribute="leading" id="Xlg-pl-7lu"/>
+                    <constraint firstAttribute="trailing" secondItem="51n-mb-hfd" secondAttribute="trailing" id="hso-Mw-3Oi"/>
+                    <constraint firstAttribute="bottom" secondItem="51n-mb-hfd" secondAttribute="bottom" id="hxz-1x-GOh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellBrandLogoImageView" destination="XDd-Uc-Uhs" id="aEx-cZ-8v0"/>
+                <outlet property="horizontalPagerIndicatorStackView" destination="reY-oe-gIt" id="LXn-8I-BOY"/>
+                <outlet property="horizontalView" destination="mNG-I7-piv" id="Opj-8Y-RZs"/>
+                <outlet property="horizontalViewLeadingConstraint" destination="ZnC-ho-hnZ" id="CL5-Si-jQO"/>
+                <outlet property="horizontalViewTrailingConstraint" destination="zZg-f2-NK1" id="c6v-Z0-J5d"/>
+                <outlet property="titleLabel" destination="emm-6Y-ZmP" id="qeI-So-CLi"/>
+                <outlet property="titleSourceLabel" destination="Fon-bD-3RY" id="TPY-FB-cfR"/>
+                <outlet property="titleSponsoredByLabel" destination="eio-0c-O7T" id="xRA-eu-uMN"/>
+            </connections>
+            <point key="canvasLocation" x="115.21739130434783" y="-65.959821428571431"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cnn-logo" width="256" height="256"/>
+    </resources>
+</document>

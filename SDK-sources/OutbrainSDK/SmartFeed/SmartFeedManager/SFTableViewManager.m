@@ -30,6 +30,7 @@ NSString * const kTableViewHorizontalCarouselWithTitleReuseId = @"SFCarouselWith
 NSString * const kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitleReuseId";
 NSString * const kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
 NSString * const kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
+NSString * const kTableViewBrandedCarouselWithTitleReuseId = @"SFBrandedCarouselTableViewCell";
 NSString * const kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
 NSString * const kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
 NSString * const kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleTableCell";
@@ -74,6 +75,10 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         horizontalCellNib = [UINib nibWithNibName:@"SFHorizontalFixedWithTitleWithVideoTableViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFHorizontalFixedWithTitleWithVideoTableViewCell should not be null");
         [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewHorizontalFixedWithTitleWithVideoCellReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFBrandedCarouselTableViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFBrandedCarouselTableViewCell should not be null");
+        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewBrandedCarouselWithTitleReuseId];
         
         // Smartfeed header cell
         UINib *nib = [UINib nibWithNibName:@"SFTableViewHeaderCell" bundle:bundle];
@@ -159,6 +164,8 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalCarouselWithTitleReuseId forIndexPath:indexPath];
         case SFTypeCarouselNoTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalCarouselNoTitleReuseId forIndexPath:indexPath];
+        case SFTypeBrandedCarouselWithTitle:
+            return [tableView dequeueReusableCellWithIdentifier: kTableViewBrandedCarouselWithTitleReuseId forIndexPath:indexPath];
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridThreeInRowNoTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
@@ -190,6 +197,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
 - (CGFloat) heightForRowAtIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem {
     SFItemType sfItemType = sfItem.itemType;
     CGFloat screenWidth = self.tableView.frame.size.width;
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
     if (sfItemType == SFTypeGridThreeInRowNoTitle) {
         return 280.0;
@@ -199,6 +207,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
              sfItemType == SFTypeCarouselNoTitle ||
              sfItemType == SFTypeGridTwoInRowWithVideo) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : kTableViewRowHeight;
+    }
+    else if (sfItemType == SFTypeBrandedCarouselWithTitle) {
+        return MAX(screenHeight*0.62, 450);
     }
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
              sfItemType == SFTypeStripVideoWithPaidRecAndTitle ||

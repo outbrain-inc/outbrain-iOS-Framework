@@ -628,6 +628,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     else if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
+        if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) {
+            [self configureBrandedCarouselCell:cell atIndexPath:indexPath];
+        }
         if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle)) {
             [SFUtils addDropShadowToView: cell];
         }
@@ -962,8 +965,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     [self commonConfigureHorizontalCell:horizontalCell withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
 }
 
-- (void) configureBrandedCarouselCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    SFBrandedCarouselCollectionCell *brandedCarouselCell = (SFBrandedCarouselCollectionCell *)cell;
+- (void) configureBrandedCarouselCell:(id<SFBrandedCarouselCellCommonProps>)brandedCarouselCell atIndexPath:(NSIndexPath *)indexPath {
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
     
     NSInteger totalItems = sfItem.outbrainRecs.count > 9 ? 5 : sfItem.outbrainRecs.count;

@@ -6,9 +6,23 @@
 //  Copyright © 2020 Outbrain. All rights reserved.
 //
 
-#import <OutbrainSDK/OutbrainSDK.h>
 
-NS_ASSUME_NONNULL_BEGIN
+#import "SFHorizontalCollectionViewCell.h"
+
+@protocol SFBrandedCarouselCellCommonProps
+@required
+// list of required methods
+@property (nonatomic, weak) IBOutlet SFHorizontalView *horizontalView;
+@property (nonatomic, weak) IBOutlet UILabel *titleSourceLabel;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *cellBrandLogoImageView;
+
+-(void) setupDotsIndicator:(NSInteger) totalItems;
+
+-(void) setDotsIndicatorWithCurrentIndex:(NSInteger) currIndex;
+
+@end
+
 
 @interface SFBrandedCarouselCollectionCell : SFHorizontalCollectionViewCell
 
@@ -23,4 +37,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
+
