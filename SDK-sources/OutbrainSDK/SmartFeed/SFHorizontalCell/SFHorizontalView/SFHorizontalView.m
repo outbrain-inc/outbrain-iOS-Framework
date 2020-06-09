@@ -98,9 +98,8 @@
     if (!self.sfItem.isCustomUI) {
         cell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
         cell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor:self.sfItem.odbSettings.abSourceFontColor];
+        [SFUtils setFontSizeForTitleLabel:cell.recTitleLabel andSourceLabel:cell.recSourceLabel withAbTestSettings: self.sfItem.odbSettings];
     }
-    
-    [SFUtils setFontSizeForTitleLabel:cell.recTitleLabel andSourceLabel:cell.recSourceLabel withAbTestSettings: self.sfItem.odbSettings];
     
     [SFUtils removePaidLabelFromImageView:cell.recImageView];
     
