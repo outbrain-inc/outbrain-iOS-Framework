@@ -322,6 +322,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             break;
         case SFTypeStripNoTitle:
         case SFTypeStripWithTitle:
+        case SFTypeStripAppInstall:
         case SFTypeStripWithThumbnailNoTitle:
         case SFTypeStripWithThumbnailWithTitle:
             [newSmartfeedItems addObjectsFromArray:[self createSingleItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
@@ -361,7 +362,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return widgetHeader ? SFTypeStripWithThumbnailWithTitle : SFTypeStripWithThumbnailNoTitle;        
     }
     else if ([recMode isEqualToString:@"odb_dynamic_ad-carousel"]) {
-        return SFTypeBrandedCarouselWithTitle;
+        return [response.settings.brandedCarouselSettings.carouselType isEqualToString:@"AppInstall"] ? SFTypeStripAppInstall : SFTypeBrandedCarouselWithTitle;
     }
     
     NSLog(@"recMode value is not currently covered in the SDK - (%@)", recMode);

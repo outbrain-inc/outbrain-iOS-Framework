@@ -96,6 +96,7 @@ typedef enum
     SFTypeStripWithTitle,
     SFTypeStripWithThumbnailNoTitle,
     SFTypeStripWithThumbnailWithTitle,
+    SFTypeStripAppInstall,
     SFTypeStripVideo,
     SFTypeStripVideoWithPaidRecAndTitle,
     SFTypeStripVideoWithPaidRecNoTitle,

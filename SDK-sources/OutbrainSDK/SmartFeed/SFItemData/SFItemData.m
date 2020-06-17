@@ -154,6 +154,9 @@ NSInteger kVideoFinishedStatus = 1114;
     else if (type == SFTypeGridTwoInRowWithTitle) {
         return @"SFTypeGridTwoInRowWithTitle";
     }
+    else if (type == SFTypeStripAppInstall) {
+        return @"SFTypeStripAppInstall";
+    }
     else if (type == SFTypeStripVideo) {
         return @"SFTypeStripVideo";
     }

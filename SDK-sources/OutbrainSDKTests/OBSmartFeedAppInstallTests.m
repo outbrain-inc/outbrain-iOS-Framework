@@ -69,11 +69,11 @@
     NSArray *parentItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
     XCTAssertEqual(parentItems.count, 1);
     SFItemData *sfItem = parentItems[0];
-    XCTAssertEqual(sfItem.itemType, SFTypeBrandedCarouselWithTitle);
-    XCTAssertNil(sfItem.singleRec);
-    XCTAssertNotNil(sfItem.outbrainRecs);
+    XCTAssertEqual(sfItem.itemType, SFTypeStripAppInstall);
+    XCTAssertNotNil(sfItem.singleRec);
+    XCTAssertNil(sfItem.outbrainRecs);
     XCTAssertTrue([sfItem.widgetId isEqualToString:@"SFD_BCR_1"]);
-    OBRecommendation *singleRec = sfItem.outbrainRecs[0];
+    OBRecommendation *singleRec = sfItem.singleRec;
     XCTAssertTrue([singleRec.content isEqualToString:@"Build an empire & travel through the ages!"]);
     XCTAssertNil(singleRec.brandedCardCtaText);
     

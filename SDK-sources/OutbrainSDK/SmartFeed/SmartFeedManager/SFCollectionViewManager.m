@@ -33,6 +33,7 @@ NSString * const kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFi
 NSString * const kCollectionViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleCollectionViewCell";
 NSString * const kCollectionViewBrandedCarouselWithTitleReuseId = @"SFBrandedCarouselCollectionViewCell";
 NSString * const kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
+NSString * const kCollectionViewSingleAppInstallReuseId = @"SFSingleAppInstallCollectionCell";
 NSString * const kCollectionViewSingleReuseId = @"SFCollectionViewCell";
 NSString * const kCollectionViewSingleVideoReuseId = @"kCollectionViewSingleVideoReuseId";
 NSString * const SFSingleVideoWithTitleCollectionViewReuseId = @"SFSingleVideoWithTitleCollectionViewCell";
@@ -99,6 +100,11 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithTitleCollectionViewCell" bundle:bundle];
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithTitleCollectionViewCell should not be null");
         [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleWithTitleReuseId];
+        
+        collectionViewCellNib = [UINib nibWithNibName:@"SFSingleAppInstallCollectionCell" bundle:bundle];
+        NSAssert(collectionViewCellNib != nil, @"SFSingleAppInstallCollectionCell should not be null");
+        [self registerSingleItemNib: collectionViewCellNib forCellWithReuseIdentifier: kCollectionViewSingleAppInstallReuseId];
+        
         
         collectionViewCellNib = [UINib nibWithNibName:@"SFSingleWithThumbnailCollectionCell" bundle:bundle];
         NSAssert(collectionViewCellNib != nil, @"SFSingleWithThumbnailCollectionCell should not be null");
@@ -184,6 +190,8 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
             return [collectionView dequeueReusableCellWithReuseIdentifier: SFSingleVideoWithTitleCollectionViewReuseId forIndexPath:indexPath];
         case SFTypeStripVideoWithPaidRecNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: SFSingleVideoNoTitleCollectionViewReuseId forIndexPath:indexPath];
+        case SFTypeStripAppInstall:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewSingleAppInstallReuseId forIndexPath:indexPath];
         case SFTypeGridTwoInRowWithVideo:
             return [collectionView dequeueReusableCellWithReuseIdentifier: SFHorizontalFixedWithVideoCellReuseId forIndexPath:indexPath];
         case SFTypeGridTwoInRowWithTitleWithVideo:
@@ -216,7 +224,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
              sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
         return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 270.0);
     }
-    else if (sfItemType == SFTypeBrandedCarouselWithTitle) {
+    else if (sfItemType == SFTypeBrandedCarouselWithTitle || sfItemType == SFTypeStripAppInstall) {
         CGFloat brandedCarouselHeight = MAX(screenHeight*0.62, 450);
         return CGSizeMake(screenWidth, brandedCarouselHeight);
     }
@@ -336,7 +344,9 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor:sfItem.odbSettings.abSourceFontColor];
     }
     
-    [SFUtils setFontSizeForTitleLabel:singleCell.recTitleLabel andSourceLabel:singleCell.recSourceLabel withAbTestSettings:sfItem.odbSettings];
+    if (sfItem.itemType != SFTypeStripAppInstall) {
+        [SFUtils setFontSizeForTitleLabel:singleCell.recTitleLabel andSourceLabel:singleCell.recSourceLabel withAbTestSettings:sfItem.odbSettings];
+    }
     
     NSAssert(eventListenerTarget != nil, @"clickListenerTarget must not be nil");
     
@@ -406,6 +416,18 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         
         [singleCell.outbrainLabelingContainer addTarget:eventListenerTarget action:@selector(outbrainLabelClicked:) forControlEvents:UIControlEventTouchUpInside];
         [singleCell.cardContentView addGestureRecognizer:tapGesture];
+    }
+    else if (sfItem.itemType == SFTypeStripAppInstall) {
+        [SFUtils addDropShadowToView: singleCell.cardContentView]; // shadow
+        [singleCell.contentView addGestureRecognizer:tapGesture]; // tap handler
+        [[SFImageLoader sharedInstance] loadImageUrl:sfItem.odbSettings.brandedCarouselSettings.image.url into:singleCell.cellBrandLogoImageView]; // top right image
+        
+        if (singleCell.brandedCtaButtonLabel) {
+            singleCell.brandedCtaButtonLabel.layer.borderWidth = 1.0;
+            singleCell.brandedCtaButtonLabel.layer.borderColor = UIColorFromRGB(0x4a90e2).CGColor;
+            singleCell.brandedCtaButtonLabel.layer.backgroundColor = UIColorFromRGB(0x4a90e2).CGColor;
+            singleCell.brandedCtaButtonLabel.layer.cornerRadius = 4.0;
+        }
     }
     else {
         if (!disableCellShadows) {
