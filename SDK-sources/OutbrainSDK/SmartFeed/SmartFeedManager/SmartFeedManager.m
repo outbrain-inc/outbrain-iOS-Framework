@@ -10,6 +10,7 @@
 #import "SFTableViewHeaderCell.h"
 #import "SFCollectionViewHeaderCell.h"
 #import "SFHorizontalCollectionViewCell.h"
+#import "SFBrandedCarouselCollectionCell.h"
 #import "SFHorizontalWithVideoCollectionViewCell.h"
 #import "SFHorizontalWithVideoTableViewCell.h"
 #import "SFCollectionViewCell.h"
@@ -310,6 +311,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     switch (itemType) {
         case SFTypeCarouselWithTitle:
         case SFTypeCarouselNoTitle:
+        case SFTypeBrandedCarouselWithTitle:
             [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         case SFTypeGridTwoInRowNoTitle:
@@ -320,11 +322,13 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             break;
         case SFTypeStripNoTitle:
         case SFTypeStripWithTitle:
+        case SFTypeStripAppInstall:
         case SFTypeStripWithThumbnailNoTitle:
         case SFTypeStripWithThumbnailWithTitle:
             [newSmartfeedItems addObjectsFromArray:[self createSingleItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         default:
+            NSLog(@"Error - createSmartfeedItemsArrayFromResponse - itemType (%@) not found", [SFItemData itemTypeString:itemType]);
             break;
     }
    
@@ -356,6 +360,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     else if ([recMode isEqualToString:@"sdk_sfd_thumbnails"]) {
         return widgetHeader ? SFTypeStripWithThumbnailWithTitle : SFTypeStripWithThumbnailNoTitle;        
+    }
+    else if ([recMode isEqualToString:@"odb_dynamic_ad-carousel"]) {
+        return [response.settings.brandedCarouselSettings.carouselType isEqualToString:@"AppInstall"] ? SFTypeStripAppInstall : SFTypeBrandedCarouselWithTitle;
     }
     
     NSLog(@"recMode value is not currently covered in the SDK - (%@)", recMode);
@@ -622,6 +629,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     else if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
+        if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) {
+            [self configureBrandedCarouselCell:cell atIndexPath:indexPath];
+        }
         if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle)) {
             [SFUtils addDropShadowToView: cell];
         }
@@ -735,6 +745,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) { // carousel
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
+        }
+        if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) { // branded carousel
+            horizontalItemCellNib = [UINib nibWithNibName:@"SFBrandedCardItemCell" bundle:bundle];
+            [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFBrandedCardItemCell"];
         }
         else { // SFHorizontalFixed
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
@@ -919,7 +933,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     else if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
-        if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle)) {
+        if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) {
+            [self configureBrandedCarouselCell:cell atIndexPath:indexPath];
+        }
+        if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle || sfItem.itemType == SFTypeBrandedCarouselWithTitle)) {
             [SFUtils addDropShadowToView: cell]; // add shadow
         }
     }
@@ -948,6 +965,23 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     [self commonConfigureHorizontalCell:horizontalCell withCellTitleLabel:horizontalCell.titleLabel sfItem:sfItem];
 }
+
+- (void) configureBrandedCarouselCell:(id<SFBrandedCarouselCellCommonProps>)brandedCarouselCell atIndexPath:(NSIndexPath *)indexPath {
+    SFItemData *sfItem = [self itemForIndexPath:indexPath];
+    
+    NSInteger totalItems = sfItem.outbrainRecs.count > 9 ? 5 : sfItem.outbrainRecs.count;
+    [brandedCarouselCell setupDotsIndicator:totalItems - 1];
+    [brandedCarouselCell setDotsIndicatorWithCurrentIndex:0];
+    
+    [brandedCarouselCell.horizontalView setOnBrandedCarouselEndScroll:^(NSInteger centerItemIdx) {
+        [brandedCarouselCell setDotsIndicatorWithCurrentIndex:centerItemIdx];
+    }];
+    
+    brandedCarouselCell.titleLabel.text = sfItem.odbSettings.brandedCarouselSettings.carouselTitle;
+    brandedCarouselCell.titleSourceLabel.text = sfItem.odbSettings.brandedCarouselSettings.carouselSponsor;
+    [[SFImageLoader sharedInstance] loadImageUrl:sfItem.odbSettings.brandedCarouselSettings.image.url into:brandedCarouselCell.cellBrandLogoImageView];
+}
+
 
 - (void) configureHorizontalVideoCollectionCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalWithVideoCollectionViewCell *horizontalVideoCell = (SFHorizontalWithVideoCollectionViewCell *)cell;

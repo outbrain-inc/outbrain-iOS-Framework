@@ -1,0 +1,242 @@
+{
+  "response": {
+    "exec_time": 28,
+    "timestamp": 1590388324771,
+    "status": {
+      "id": 0,
+      "content": "Request succeeded"
+    },
+    "request": {
+      "lang": "en",
+      "idx": "0",
+      "lastIdx": "9999",
+      "lastCardIdx": "9999",
+      "did": "2715921295",
+      "pid": "4737",
+      "lsd": "f22700d5-1d49-42cc-a183-f3676526035f",
+      "enu": "3nwx1f-7FDD19BYCUPn1a5_-GK_ebJI9j4bvWer8Mm2tkeZo66CFX401l47WHqT6",
+      "api_user_id": "F22700D5-1D49-42CC-A183-F3676526035F",
+      "t": "NWU0MjdiYjJiNDVjMjc1NDJlNzA2MGI1ZTFlZTE0M2I=",
+      "pvId": "5e427bb2b45c27542e7060b5e1ee143b",
+      "pad": "1",
+      "org": "0",
+      "abTestVal": "no_abtest",
+      "obRecsAbtestAndVars": "386-1126,770-2360,691-2165,596-1902,565-2000,669-2112",
+      "widgetJsId": "BCR_1",
+      "readerPlatform": "desktop",
+      "isHttps": "true",
+      "rtbEnabled": "true",
+      "rtbTest": "false",
+      "rtbBidTestMode": "false",
+      "rtbTestRecsNum": "0",
+      "amplifyEnabled": "true",
+      "gdpr": "0",
+      "sid": 5291479,
+      "wnid": 1353,
+      "req_id": "5e427bb2b45c27542e7060b5e1ee143b",
+      "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+      "vid": 0,
+      "ref": 0
+    },
+    "documents": {
+      "total_count": 1,
+      "count": 1,
+      "doc": [
+        {
+          "on-viewed": [
+            "https://log.outbrainimg.com/loggerServices/log-viewability?requestId=5e427bb2b45c27542e7060b5e1ee143b&position=0"
+          ],
+          "source_name": "World Health Organization",
+          "same_source": "false",
+          "source_display_name": "World Health Organization",
+          "pc_id": 161922603,
+          "adv_name": "EarnedMedia - 29648 - Signups",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters",
+          "rec-cats": [
+            1699
+          ],
+          "ads_type": 1,
+          "rec_en_did": "SAhDqkI-8GHb7Z8imq1bhw",
+          "url": "https://paid.outbrain.com/network/redir?p=7dZr1pjulFQhjZZQHvYB9_Q-WWwhn-sWucZYkenIq0LltlYY6eRWqnAqkJ8WZ2JIxBe161eosL1s3igXIeel12Wubqyw9AtZ3rjMstfkJgryZi7qdJrqIu3kdWx6sj4ODUYnJdlQ8kkmtYLI4rzHS0YPvsAdrc1o6LBRBY6v8kqVWCSs6OYGsvFnokO97j1x-dZRSUR3Vp2NnfveXqcOWDbCOPhPKA0lWALVIkARd27wE2hA7E1HI0ln6VwlZV2gszOQNmd9TGyIZddeBhVI8lsGl-TR6WC5wSg6tsuzOrvNKR3jzEZJWC6OVNZWOVPxJXWSJKs9e7lW_k8WyiPYBNywg7lN0_7LG_lX1h_zGS-tUx19vMgIvbPmeniuLESaS9fq-9ZYiZKVXJD-TAtcpk4INS2KoV1YIkjmYw9csBipVjVwDdl3ZHHvMoYuWUfOiupucEdcVc6FEn_JL3p9Ix3JnMcekK0m0k7OcorQttjUOouFWzi0q61ZBipeVp2hyO0VEaPTTHxb2G8MyslkaIL0gfxNkwMVWUw9gXmEdp6txCSPlcW9ButFlKFGBNbMl9KYVVHh5obf2wzkLW1ijXjtBnH2gNk6A6ze8SgZvvjyztv3yjuA6RXmEvGpiY75r_0i6yKAwmuMXhzZ1aSYBkndGStmw0EXsoO5yyUZHJC-1j_EmN7-S82KWHHAix7e__5KB36V4Gdva347J1UE9i9QZzH9y-tnOGvG7Tyq-IhakfPCOHKVvi3UoM5hnBA-2NeXO9E9oqH_Wliz2HXMaYcMiCA_v_Fa_VtAAR9ZUgb9cjuaGG7hS0KApoxy_1MwkYZXWLW14-wllef1MYoe1rO1KeHGYCWrU9AYkqpe37HJ8nmtpss_n_4Smjnm4Bv9C1Ua5qkOr8gtFDKVVIc38X01FrLhJRkC2vKG2IT7oJ8jsqeTRp_K66eH-Z6nlZGOMxuVv_Rp3-NY78O-DpKkQfYKHpTn5DV-Attnhp6I18QCsTe9tkYaTUhh4C23AaMWkMUri6iqr6wZXYxQeegNX8T0FfQnEsKsALu7X5B08HuptBIOQ8xvXAbotTREILg4cSHvv5_vMZPryYWvgP03h_13pv5jJkSBpPY9U4zsF1mryfyZhJ_KDe73EeYwNK1_EDINYIhuuE9d9Go7S5Wfqm7fvzt9HRnkvkRQy47L_RyBDxoOmFpmeczBaXifBlY6vT0rHH1Epy9uVm1ZvaDLRA&c=786e076b&v=3",
+          "author": "",
+          "content": "Fact: Coronavirus Can Be Transmitted in Hot Climates",
+          "pc_cmp_id": 1011991286,
+          "pos": "0",
+          "ttid": 3,
+          "advId": "29648",
+          "cta": "Learn More",
+          "thumbnail": {
+            "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjBiNmQwOWQwNGE0Yzk2Nzg5YTc0NjA0NmZiNWVkYzU5NTE2NDRlMzRlZTVmM2ZkZmYzOTJhZGM2MTQxNWM5MDEiLCJ3IjozMDAsImgiOjMwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp",
+            "width": 300,
+            "height": 300,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "on-viewed": [
+            "https://log.outbrainimg.com/loggerServices/log-viewability?requestId=5e427bb2b45c27542e7060b5e1ee143b&position=0"
+          ],
+          "source_name": "World Health Organization",
+          "same_source": "false",
+          "source_display_name": "World Health Organization",
+          "pc_id": 161922599,
+          "adv_name": "EarnedMedia - 29648 - Signups",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters",
+          "rec-cats": [
+            1699
+          ],
+          "ads_type": 1,
+          "rec_en_did": "SAhDqkI-8GHb7Z8imq1bhw",
+          "url": "https://paid.outbrain.com/network/redir?p=7dZr1pjulFQhjZZQHvYB9_Q-WWwhn-sWucZYkenIq0LltlYY6eRWqnAqkJ8WZ2JIxBe161eosL1s3igXIeel12Wubqyw9AtZ3rjMstfkJgryZi7qdJrqIu3kdWx6sj4ODUYnJdlQ8kkmtYLI4rzHS0YPvsAdrc1o6LBRBY6v8kqVWCSs6OYGsvFnokO97j1x-dZRSUR3Vp2NnfveXqcOWDbCOPhPKA0lWALVIkARd27wE2hA7E1HI0ln6VwlZV2gszOQNmd9TGyIZddeBhVI8lsGl-TR6WC5wSg6tsuzOrvNKR3jzEZJWC6OVNZWOVPxJXWSJKs9e7lW_k8WyiPYBNywg7lN0_7LG_lX1h_zGS-tUx19vMgIvbPmeniuLESaS9fq-9ZYiZKVXJD-TAtcpk4INS2KoV1YIkjmYw9csBipVjVwDdl3ZHHvMoYuWUfOiupucEdcVc6FEn_JL3p9Ix3JnMcekK0m0k7OcorQttjUOouFWzi0q61ZBipeVp2hyO0VEaPTTHxb2G8MyslkaIL0gfxNkwMVWUw9gXmEdp6txCSPlcW9ButFlKFGBNbMl9KYVVHh5obf2wzkLW1ijXjtBnH2gNk6A6ze8SgZvvjyztv3yjuA6RXmEvGpiY75r_0i6yKAwmuMXhzZ1aSYBkndGStmw0EXsoO5yyUZHJC-1j_EmN7-S82KWHHAix7e__5KB36V4Gdva347J1UE9i9QZzH9y-tnOGvG7Tyq-IhakfPCOHKVvi3UoM5hnBA-2NeXO9E9oqH_Wliz2HXMaYcMiCA_v_Fa_VtAAR9ZUgb9cjuaGG7hS0KApoxy_1MwkYZXWLW14-wllef1MYoe1rO1KeHGYCWrU9AYkqpe37HJ8nmtpss_n_4Smjnm4Bv9C1Ua5qkOr8gtFDKVVIc38X01FrLhJRkC2vKG2IT7oJ8jsqeTRp_K66eH-Z6nlZGOMxuVv_Rp3-NY78O-DpKkQfYKHpTn5DV-Attnhp6I18QCsTe9tkYaTUhh4C23AaMWkMUri6iqr6wZXYxQeegNX8T0FfQnEsKsALu7X5B08HtQpIwTSqyJJJ1EjGynyS0XOMRdoHy0ShZYkWpAwcznW4o5mfXBaSWMrDC31I7QW6r48QKo7HebpSIlwHvaToTAoh440Q2FpEIHgp8vtnHE54vYt7NXKDv-vH8Ve2EJMYxDfuowtV8aHIHyxHfGsK-ddoOvp2l5_qOUIKMIV_ojog&c=fe12a75a&v=3",
+          "author": "",
+          "content": "Fact: Coronavirus Can Be Transmitted in Hot Climates",
+          "pc_cmp_id": 1011991286,
+          "pos": "0",
+          "ttid": 3,
+          "advId": "29648",
+          "cta": "Learn More",
+          "thumbnail": {
+            "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjE1ODRhYWVjYjQ5MWM2ZDM1OGZiYTVlNmZiMTFjM2U5NDE1YjdjOGM3Y2Q2MGUzY2UxZTEwMTkzZTczZTBlMWIiLCJ3IjozMDAsImgiOjMwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp",
+            "width": 300,
+            "height": 300,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "on-viewed": [
+            "https://log.outbrainimg.com/loggerServices/log-viewability?requestId=5e427bb2b45c27542e7060b5e1ee143b&position=0"
+          ],
+          "source_name": "World Health Organization",
+          "same_source": "false",
+          "source_display_name": "World Health Organization",
+          "pc_id": 161922600,
+          "adv_name": "EarnedMedia - 29648 - Signups",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters",
+          "rec-cats": [
+            1699
+          ],
+          "ads_type": 1,
+          "rec_en_did": "SAhDqkI-8GHb7Z8imq1bhw",
+          "url": "https://paid.outbrain.com/network/redir?p=7dZr1pjulFQhjZZQHvYB9_Q-WWwhn-sWucZYkenIq0LltlYY6eRWqnAqkJ8WZ2JIxBe161eosL1s3igXIeel12Wubqyw9AtZ3rjMstfkJgryZi7qdJrqIu3kdWx6sj4ODUYnJdlQ8kkmtYLI4rzHS0YPvsAdrc1o6LBRBY6v8kqVWCSs6OYGsvFnokO97j1x-dZRSUR3Vp2NnfveXqcOWDbCOPhPKA0lWALVIkARd27wE2hA7E1HI0ln6VwlZV2gszOQNmd9TGyIZddeBhVI8lsGl-TR6WC5wSg6tsuzOrvNKR3jzEZJWC6OVNZWOVPxJXWSJKs9e7lW_k8WyiPYBNywg7lN0_7LG_lX1h_zGS-tUx19vMgIvbPmeniuLESaS9fq-9ZYiZKVXJD-TAtcpk4INS2KoV1YIkjmYw9csBipVjVwDdl3ZHHvMoYuWUfOiupucEdcVc6FEn_JL3p9Ix3JnMcekK0m0k7OcorQttjUOouFWzi0q61ZBipeVp2hyO0VEaPTTHxb2G8MyslkaIL0gfxNkwMVWUw9gXmEdp6txCSPlcW9ButFlKFGBNbMl9KYVVHh5obf2wzkLW1ijXjtBnH2gNk6A6ze8SgZvvjyztv3yjuA6RXmEvGpiY75r_0i6yKAwmuMXhzZ1aSYBkndGStmw0EXsoO5yyUZHJC-1j_EmN7-S82KWHHAix7e__5KB36V4Gdva347J1UE9i9QZzH9y-tnOGvG7Tyq-IhakfPCOHKVvi3UoM5hnBA-2NeXO9E9oqH_Wliz2HXMaYcMiCA_v_Fa_VtAAR9ZUgb9cjuaGG7hS0KApoxy_1MwkYZXWLW14-wllef1MYoe1rO1KeHGYCWrU9AYkqpe37HJ8nmtpss_n_4Smjnm4Bv9C1Ua5qkOr8gtFDKVVIc38X01FrLhJRkC2vKG2IT7oJ8jsqeTRp_K66eH-Z6nlZGOMxuVv_Rp3-NY78O-DpKkQfYKHpTn5DV-Attnhp6I18QCsTe9tkYaTUhh4C23AaMWkMUri6iqr6wZXYxQeegNX8T0FfQnEsKsALu7X5B08HtqD7JvagUHf6SZggJJ3TBVLgTy38_3NUpVHl0HfqXfZ0_uBqRbI9DA2_YzpLAl_dE6OBKfTTFL4ue6FWuMeeTu-6EepHvFA_kxvBEpru_Bq8f7KTnxpLlay5ZlIHIYK8KxYWNiedn_xUoDIDDvW8wqFjsb-CfM_fz1uRWNvyRxnA&c=403e5089&v=3",
+          "author": "",
+          "content": "Fact: Taking a Hot Bath Does Not Prevent the Coronavirus",
+          "pc_cmp_id": 1011991286,
+          "pos": "0",
+          "ttid": 3,
+          "advId": "29648",
+          "cta": "Learn More",
+          "thumbnail": {
+            "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjI5NTAwNTM4ZDY4YjZiYTgxZmNlZTZhNzVhOWI0Y2FhMGU5ODBmNjE4OGVmNGU5NDJjYzg1MmQ3YzMxYmUxMjAiLCJ3IjozMDAsImgiOjMwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp",
+            "width": 300,
+            "height": 300,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "on-viewed": [
+            "https://log.outbrainimg.com/loggerServices/log-viewability?requestId=5e427bb2b45c27542e7060b5e1ee143b&position=0"
+          ],
+          "source_name": "World Health Organization",
+          "same_source": "false",
+          "source_display_name": "World Health Organization",
+          "pc_id": 161922601,
+          "adv_name": "EarnedMedia - 29648 - Signups",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters",
+          "rec-cats": [
+            1699
+          ],
+          "ads_type": 1,
+          "rec_en_did": "SAhDqkI-8GHb7Z8imq1bhw",
+          "url": "https://paid.outbrain.com/network/redir?p=7dZr1pjulFQhjZZQHvYB9_Q-WWwhn-sWucZYkenIq0LltlYY6eRWqnAqkJ8WZ2JIxBe161eosL1s3igXIeel12Wubqyw9AtZ3rjMstfkJgryZi7qdJrqIu3kdWx6sj4ODUYnJdlQ8kkmtYLI4rzHS0YPvsAdrc1o6LBRBY6v8kqVWCSs6OYGsvFnokO97j1x-dZRSUR3Vp2NnfveXqcOWDbCOPhPKA0lWALVIkARd27wE2hA7E1HI0ln6VwlZV2gszOQNmd9TGyIZddeBhVI8lsGl-TR6WC5wSg6tsuzOrvNKR3jzEZJWC6OVNZWOVPxJXWSJKs9e7lW_k8WyiPYBNywg7lN0_7LG_lX1h_zGS-tUx19vMgIvbPmeniuLESaS9fq-9ZYiZKVXJD-TAtcpk4INS2KoV1YIkjmYw9csBipVjVwDdl3ZHHvMoYuWUfOiupucEdcVc6FEn_JL3p9Ix3JnMcekK0m0k7OcorQttjUOouFWzi0q61ZBipeVp2hyO0VEaPTTHxb2G8MyslkaIL0gfxNkwMVWUw9gXmEdp6txCSPlcW9ButFlKFGBNbMl9KYVVHh5obf2wzkLW1ijXjtBnH2gNk6A6ze8SgZvvjyztv3yjuA6RXmEvGpiY75r_0i6yKAwmuMXhzZ1aSYBkndGStmw0EXsoO5yyUZHJC-1j_EmN7-S82KWHHAix7e__5KB36V4Gdva347J1UE9i9QZzH9y-tnOGvG7Tyq-IhakfPCOHKVvi3UoM5hnBA-2NeXO9E9oqH_Wliz2HXMaYcMiCA_v_Fa_VtAAR9ZUgb9cjuaGG7hS0KApoxy_1MwkYZXWLW14-wllef1MYoe1rO1KeHGYCWrU9AYkqpe37HJ8nmtpss_n_4Smjnm4Bv9C1Ua5qkOr8gtFDKVVIc38X01FrLhJRkC2vKG2IT7oJ8jsqeTRp_K66eH-Z6nlZGOMxuVv_Rp3-NY78O-DpKkQfYKHpTn5DV-Attnhp6I18QCsTe9tkYaTUhh4C23AaMWkMUri6iqr6wZXYxQeegNX8T0FfQnEsKsALu7X5B08HvEuc5fIBEQPBMtRp5JqzwHaWCoNs4YyLN0tGFIWXyfwoTxE42Fyl_i2WXLflRhShlbsUP9oxm4Ko6O3nZydLykhGrpKy5dJmQAv-x4mYoK03NdcWUgfb9QfsyjjEWa0SLFb3YixRHWVjbl5dO1IZmH4uBAjrqlXqF57IxIILLCUQ&c=72566f80&v=3",
+          "author": "",
+          "content": "Don’t Fall For the Myths, Get the Facts",
+          "pc_cmp_id": 1011991286,
+          "pos": "0",
+          "ttid": 3,
+          "advId": "29648",
+          "cta": "Learn More",
+          "thumbnail": {
+            "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjUzMzMyNDNiNjM3MmUxYTJjMzNmYWE3YWE3ZWEyNGJhNzBmODM1ZmQ3ZTQ1MDk0MWNiMjcwMWE2MWYzYzdjYzYiLCJ3IjozMDAsImgiOjMwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp",
+            "width": 300,
+            "height": 300,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "on-viewed": [
+            "https://log.outbrainimg.com/loggerServices/log-viewability?requestId=5e427bb2b45c27542e7060b5e1ee143b&position=0"
+          ],
+          "source_name": "World Health Organization",
+          "same_source": "false",
+          "source_display_name": "World Health Organization",
+          "pc_id": 161922602,
+          "adv_name": "EarnedMedia - 29648 - Signups",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters",
+          "rec-cats": [
+            1699
+          ],
+          "ads_type": 1,
+          "rec_en_did": "SAhDqkI-8GHb7Z8imq1bhw",
+          "url": "https://paid.outbrain.com/network/redir?p=7dZr1pjulFQhjZZQHvYB9_Q-WWwhn-sWucZYkenIq0LltlYY6eRWqnAqkJ8WZ2JIxBe161eosL1s3igXIeel12Wubqyw9AtZ3rjMstfkJgryZi7qdJrqIu3kdWx6sj4ODUYnJdlQ8kkmtYLI4rzHS0YPvsAdrc1o6LBRBY6v8kqVWCSs6OYGsvFnokO97j1x-dZRSUR3Vp2NnfveXqcOWDbCOPhPKA0lWALVIkARd27wE2hA7E1HI0ln6VwlZV2gszOQNmd9TGyIZddeBhVI8lsGl-TR6WC5wSg6tsuzOrvNKR3jzEZJWC6OVNZWOVPxJXWSJKs9e7lW_k8WyiPYBNywg7lN0_7LG_lX1h_zGS-tUx19vMgIvbPmeniuLESaS9fq-9ZYiZKVXJD-TAtcpk4INS2KoV1YIkjmYw9csBipVjVwDdl3ZHHvMoYuWUfOiupucEdcVc6FEn_JL3p9Ix3JnMcekK0m0k7OcorQttjUOouFWzi0q61ZBipeVp2hyO0VEaPTTHxb2G8MyslkaIL0gfxNkwMVWUw9gXmEdp6txCSPlcW9ButFlKFGBNbMl9KYVVHh5obf2wzkLW1ijXjtBnH2gNk6A6ze8SgZvvjyztv3yjuA6RXmEvGpiY75r_0i6yKAwmuMXhzZ1aSYBkndGStmw0EXsoO5yyUZHJC-1j_EmN7-S82KWHHAix7e__5KB36V4Gdva347J1UE9i9QZzH9y-tnOGvG7Tyq-IhakfPCOHKVvi3UoM5hnBA-2NeXO9E9oqH_Wliz2HXMaYcMiCA_v_Fa_VtAAR9ZUgb9cjuaGG7hS0KApoxy_1MwkYZXWLW14-wllef1MYoe1rO1KeHGYCWrU9AYkqpe37HJ8nmtpss_n_4Smjnm4Bv9C1Ua5qkOr8gtFDKVVIc38X01FrLhJRkC2vKG2IT7oJ8jsqeTRp_K66eH-Z6nlZGOMxuVv_Rp3-NY78O-DpKkQfYKHpTn5DV-Attnhp6I18QCsTe9tkYaTUhh4C23AaMWkMUri6iqr6wZXYxQeegNX8T0FfQnEsKsALu7X5B08HsNv18gg6jG8s0m-N6VRv7jjnGlgOKCc088RxXxg31LZzm5qRvlYR0btYHO-aXnhz09kMT78TP26G1GjjUnT3_0WZqO6_l4I7ctVOp4YZg5fT6gP24pS3fbVzdjfxay3y3V4u0dkV7qtTinoXCap0mfYwbOMJjXCnq5gn_oImIwfA&c=b2928d50&v=3",
+          "author": "",
+          "content": "Fact: Antibiotics Do Not Kill Viruses",
+          "pc_cmp_id": 1011991286,
+          "pos": "0",
+          "ttid": 3,
+          "advId": "29648",
+          "cta": "Learn More",
+          "thumbnail": {
+            "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjI3MTliMTc2YTZhMWQ2YWQ4YTBhNmRlZDc5NmMyNTE0OGExYTE3NzVkYzkwNmUxOGViNjMyNTJlNDdiNzcxOWEiLCJ3IjozMDAsImgiOjMwMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp",
+            "width": 300,
+            "height": 300,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        }
+      ]
+    },
+    "features": {
+      "carousel": {
+        "on-viewed": [
+          "https://log.outbrainimg.com/loggerServices/log-viewability?requestId=5e427bb2b45c27542e7060b5e1ee143b&position=null"
+        ],
+        "pc_id": 1950000301,
+        "adv_name": "EarnedMedia - 29648 - Signups",
+        "rec-cats": [
+          1699
+        ],
+        "ads_type": 1,
+        "url": "https://paid.outbrain.com/network/redir?p=TV-jqloioZ5gh9rbmhG_8hGi5SyowVGcgT7q1Mmv264LQJS9JQOgk6lGNxlypgykkS7o2iFV2kIjj4ErjCTovw9dd8o4o43t32YI1SAoTALOKp-ooeVJ8uoXi3Cov7x93uF9mG1YgwxImNytvcqAeoCcrcmHM18-bzKDl4gqZQGlBMOtw9fnBidXa5Nvp7K6FjEYZ_nZWxPl3vsxYTj4z57FI995Qbht1tY39Y3cXpYpYUiQPGjjp8C4ibSXVrzWQnyiojQAXiiStmlVGFp19q2KdhQIcOgiwn6stlxhcBhXsqSzXvK8YcAKrLqEushl1egiedldXLr3O_WK1HECNamxa6zJUBxMzLBbzZF8FAGhRc7WsJWztd4effXQLs6AnvCevaaI_jRfiMAblUUySHQCmBCATz8VMIiag21rDpsmyun39JH0Jaipvvhs57qFiZ1jGh-NW17Wr8Yd3-bf2rJTwQfjGePO0_1yZp4V1yk3NRaXIF33pn9L7Grwk-W_onwU3jor665IdDE56wv7hwvA2FG9yDtiwmh6u0kG5exrvDKjp58HfI1VKFuD2Cn6tIkbi40aajjZ55fg6-kwSITtxWMy5Gwv7KExU-DAmQT2IB8CuWOragsn_-OurCqfQGvwnnQL29ODv-qD-VqreIitC-joleO8x1J2Au2BeHgwlwsisr6ZBkyVjpf-4b4PrSomeSWn2OvZpD9RRsu6PXI-Jj4UPvd945y__iVR_HT0NLRC7GVTI5-33SKw7wko3-s49xyIYxoRlaiRzMklgUqeyssz3zxgMbOekkcHcnM&c=579a87f7&v=3",
+        "content": "COVID-19 Mythbusters: Get the Facts",
+        "pc_cmp_id": 1011991286,
+        "ttid": 3,
+        "advId": "29648",
+        "carouselSponsor": "Outbrain",
+        "carousel_type": "Carousel",
+        "thumbnail": {
+          "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjM0ZGI3YzFhYWZhNTZjOTU0MjY4MmU0ZTVhMzdlNDQ3NWExZmY0NzlmNDZhYWI4NjEzMjdjMDBjZTEwOWIyYzEiLCJ3Ijo0MiwiaCI6NDIsImQiOjEuNSwiY3MiOjAsImYiOjR9.webp",
+          "width": 42,
+          "height": 42,
+          "imageImpressionType": "DOCUMENT_IMAGE"
+        }
+      }
+    },
+    "settings": {
+      "recMode": "odb_dynamic_ad-carousel",
+      "apv": true,
+      "dynamicImageWidth": 300,
+      "listingsViewability": true,
+      "dynamic:SponsoredColor": "#757575",
+      "dynamicWidgetLayout": "ad-carousel",
+      "dynamicImageHeight": 300
+    },
+    "viewability_actions": {
+      "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=5e427bb2b45c27542e7060b5e1ee143b&pvId=5e427bb2b45c27542e7060b5e1ee143b&sid=5291479&pid=4737&idx=0&wId=1353&pad=1&org=0&tm=0&eT=0",
+      "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=5e427bb2b45c27542e7060b5e1ee143b&pvId=5e427bb2b45c27542e7060b5e1ee143b&sid=5291479&pid=4737&idx=0&wId=1353&pad=1&org=0&tm=0&eT=3"
+    }
+  }
+}

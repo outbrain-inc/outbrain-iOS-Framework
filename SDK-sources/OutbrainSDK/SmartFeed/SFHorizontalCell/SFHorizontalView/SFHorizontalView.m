@@ -130,6 +130,13 @@
         }
     }
     
+    if (cell.brandedCtaButtonLabel) {
+        cell.brandedCtaButtonLabel.layer.borderWidth = 1.0;
+        cell.brandedCtaButtonLabel.layer.borderColor = UIColorFromRGB(0x4a90e2).CGColor;
+        cell.brandedCtaButtonLabel.layer.cornerRadius = 3.0;
+        cell.brandedCtaButtonLabel.text = rec.brandedCardCtaText;
+    }
+    
     NSInteger abTestDuration = self.sfItem.odbSettings.abImageFadeAnimation ? self.sfItem.odbSettings.abImageFadeDuration : -1;
     [[SFImageLoader sharedInstance] loadImageUrl:rec.image.url into:cell.recImageView withFadeDuration:abTestDuration];
     
@@ -192,6 +199,15 @@
     OBRecommendation *rec = self.sfItem.outbrainRecs[adChoicesButton.tag];
     if (self.onAdChoicesIconClick != nil && rec != nil) {
         self.onAdChoicesIconClick(rec.disclosure.clickUrl);
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    CGPoint centerPoint = CGPointMake(self.collectionView.contentOffset.x + screenWidth/2, self.collectionView.frame.size.height / 2);
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:centerPoint];
+    if (self.onBrandedCarouselEndScroll) {
+        self.onBrandedCarouselEndScroll(indexPath.item);
     }
 }
 

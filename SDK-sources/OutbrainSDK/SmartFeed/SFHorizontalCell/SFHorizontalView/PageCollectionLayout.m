@@ -91,35 +91,37 @@ BOOL scaleItems = YES;
     NSArray *layoutAttributes = [self layoutAttributesForElementsInRect:proposedRect];
     CGFloat proposedContentOffsetCenterX = proposedContentOffset.x + self.collectionView.bounds.size.width / 2;
     UICollectionViewLayoutAttributes *candidateAttributes = nil;
-    
+
     for (UICollectionViewLayoutAttributes *attributes in layoutAttributes) {
         if ([attributes representedElementCategory] != UICollectionElementCategoryCell) {
             continue;
         }
-        
+
         if (candidateAttributes == nil) {
             candidateAttributes = attributes;
             continue;
         }
-        
+
         if (fabs(attributes.center.x - proposedContentOffsetCenterX) < fabs(candidateAttributes.center.x - proposedContentOffsetCenterX)) {
             candidateAttributes = attributes;
         }
     }
-    
+
     if (candidateAttributes == nil) {
         return proposedContentOffset;
     }
-    
+
     CGFloat newOffsetX = candidateAttributes.center.x - self.collectionView.bounds.size.width / 2;
     CGFloat offset = newOffsetX - self.collectionView.contentOffset.x;
     if ((velocity.x < 0 && offset > 0) || (velocity.x > 0 && offset < 0)) {
         CGFloat pageWidth = self.itemSize.width + self.minimumLineSpacing;
         newOffsetX += velocity.x > 0 ? pageWidth : -pageWidth;
     }
-    
+
     return CGPointMake(newOffsetX, proposedContentOffset.y);
 }
+
+
 
 @end
 

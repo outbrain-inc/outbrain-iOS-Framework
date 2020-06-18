@@ -9,7 +9,6 @@
 #import "OBRecommendationResponse.h"
 #import "OBContent_Private.h"
 
-
 @implementation OBRecommendationResponse
 
 
@@ -21,8 +20,6 @@
     id settingsPayload = payload[@"settings"];
     if ([settingsPayload isKindOfClass:[NSDictionary class]])
     {
-        // The actual docs here
-        // Let's convert the recommendations to actual objects
         res.settings = [[OBSettings alloc] initWithPayload:settingsPayload];
     }
     
@@ -30,6 +27,12 @@
     id viewabilityActionsPayload = payload[@"viewability_actions"];
     if ([viewabilityActionsPayload isKindOfClass:[NSDictionary class]]) {
         res.settings.viewabilityActions = [[OBViewabilityActions alloc] initWithPayload:viewabilityActionsPayload];
+    }
+    
+    // Parse branded carousel settings (if exists)
+    id brandedCarouselPayload = [payload[@"features"] objectForKey:@"carousel"];
+    if ([brandedCarouselPayload isKindOfClass:[NSDictionary class]]) {
+        res.settings.brandedCarouselSettings = [[OBBrandedCarouselSettings alloc] initWithPayload:brandedCarouselPayload];
     }
     
     // Parse documents, i.e. recommadations

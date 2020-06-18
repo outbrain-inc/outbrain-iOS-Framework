@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SFSingleAppInstallCollectionCell" id="Gg3-8H-tpC" customClass="SFCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="363" height="466"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="363" height="466"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dea-37-4QF" userLabel="Content View">
+                        <rect key="frame" x="0.0" y="0.0" width="363" height="466"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SnF-Q0-xDG">
+                                <rect key="frame" x="15" y="15" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="AMQ-m2-gjS"/>
+                                    <constraint firstAttribute="width" constant="50" id="BAX-BV-8fa"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Lwk-eR-FF7"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1L-1q-EwP" userLabel="cardContainer">
+                                <rect key="frame" x="15" y="75" width="333" height="371"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g77-bX-xEg">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="302"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="Lookup Your Name to See If You Get a PPI Payout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.84999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-J8-7zV">
+                                        <rect key="frame" x="12" y="305" width="186" height="63"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" red="0.45490196078431372" green="0.45098039215686275" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g5Z-3f-mcC">
+                                        <rect key="frame" x="203" y="319" width="120" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="7VR-6W-RPz"/>
+                                            <constraint firstAttribute="width" constant="120" id="ugf-l5-oCe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="vW4-J8-7zV" firstAttribute="leading" secondItem="y1L-1q-EwP" secondAttribute="leading" constant="12" id="090-LZ-8SO"/>
+                                    <constraint firstItem="g77-bX-xEg" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" id="Cmb-sV-E8V"/>
+                                    <constraint firstItem="g5Z-3f-mcC" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="bottom" constant="17" id="IpR-jK-kfe"/>
+                                    <constraint firstItem="EZ3-tA-2YS" firstAttribute="bottom" secondItem="vW4-J8-7zV" secondAttribute="bottom" constant="3" id="IsT-OL-4hs"/>
+                                    <constraint firstItem="g77-bX-xEg" firstAttribute="top" secondItem="EZ3-tA-2YS" secondAttribute="top" id="LBq-Yg-aDd"/>
+                                    <constraint firstItem="EZ3-tA-2YS" firstAttribute="bottom" secondItem="g5Z-3f-mcC" secondAttribute="bottom" constant="17" id="MmU-Tt-JaK"/>
+                                    <constraint firstItem="g5Z-3f-mcC" firstAttribute="trailing" secondItem="EZ3-tA-2YS" secondAttribute="trailing" constant="-10" id="NUD-JB-kMg"/>
+                                    <constraint firstItem="g77-bX-xEg" firstAttribute="trailing" secondItem="EZ3-tA-2YS" secondAttribute="trailing" id="Xsu-Vi-cEZ"/>
+                                    <constraint firstItem="g5Z-3f-mcC" firstAttribute="centerY" secondItem="vW4-J8-7zV" secondAttribute="centerY" id="crT-61-oXQ"/>
+                                    <constraint firstItem="g5Z-3f-mcC" firstAttribute="leading" secondItem="vW4-J8-7zV" secondAttribute="trailing" constant="5" id="hNk-cm-dYQ"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="EZ3-tA-2YS"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsored by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrn-E9-UYQ">
+                                <rect key="frame" x="73" y="22" width="85" height="16.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.44313725490196076" green="0.4392156862745098" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looney Tunes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWH-xg-7U6">
+                                <rect key="frame" x="73" y="38" width="103" height="19.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.44313725490196076" green="0.4392156862745098" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="y1L-1q-EwP" secondAttribute="bottom" constant="20" id="8JS-Tc-bWG"/>
+                            <constraint firstItem="SnF-Q0-xDG" firstAttribute="top" secondItem="dea-37-4QF" secondAttribute="top" constant="15" id="Owe-Fm-M3E"/>
+                            <constraint firstItem="SnF-Q0-xDG" firstAttribute="leading" secondItem="dea-37-4QF" secondAttribute="leading" constant="15" id="Sr4-Js-z4q"/>
+                            <constraint firstItem="RWH-xg-7U6" firstAttribute="leading" secondItem="Yrn-E9-UYQ" secondAttribute="leading" id="WUB-7M-HyW"/>
+                            <constraint firstItem="Yrn-E9-UYQ" firstAttribute="leading" secondItem="SnF-Q0-xDG" secondAttribute="trailing" constant="8" id="XyU-DM-Jj9"/>
+                            <constraint firstItem="Yrn-E9-UYQ" firstAttribute="centerY" secondItem="SnF-Q0-xDG" secondAttribute="centerY" constant="-10" id="aaJ-O5-V1t"/>
+                            <constraint firstItem="y1L-1q-EwP" firstAttribute="leading" secondItem="dea-37-4QF" secondAttribute="leading" constant="15" id="b7e-Zu-Che"/>
+                            <constraint firstItem="y1L-1q-EwP" firstAttribute="top" secondItem="dea-37-4QF" secondAttribute="top" constant="75" id="fIn-F2-fb5"/>
+                            <constraint firstAttribute="trailing" secondItem="y1L-1q-EwP" secondAttribute="trailing" constant="15" id="maL-wO-ajs"/>
+                            <constraint firstItem="RWH-xg-7U6" firstAttribute="top" secondItem="Yrn-E9-UYQ" secondAttribute="bottom" constant="-0.5" id="ovF-hz-UWC"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="dea-37-4QF" secondAttribute="trailing" id="1Nr-su-eP1"/>
+                <constraint firstItem="dea-37-4QF" firstAttribute="top" secondItem="Gg3-8H-tpC" secondAttribute="top" id="2zo-0e-EFd"/>
+                <constraint firstItem="dea-37-4QF" firstAttribute="leading" secondItem="Gg3-8H-tpC" secondAttribute="leading" id="5Kk-Oy-IKd"/>
+                <constraint firstAttribute="bottom" secondItem="dea-37-4QF" secondAttribute="bottom" id="XhK-lr-kAW"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
+            <size key="customSize" width="363" height="466"/>
+            <connections>
+                <outlet property="brandedCtaButtonLabel" destination="g5Z-3f-mcC" id="qZj-J9-zcr"/>
+                <outlet property="cardContentView" destination="y1L-1q-EwP" id="zyy-Pb-Zvp"/>
+                <outlet property="cellBrandLogoImageView" destination="SnF-Q0-xDG" id="2Kr-kM-IQJ"/>
+                <outlet property="cellTitleLabel" destination="RWH-xg-7U6" id="och-G1-VD5"/>
+                <outlet property="recImageView" destination="g77-bX-xEg" id="tlv-Db-JuO"/>
+                <outlet property="recTitleLabel" destination="vW4-J8-7zV" id="Z6p-Gc-V9D"/>
+            </connections>
+            <point key="canvasLocation" x="-871.20000000000005" y="46.776611694152926"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -2,12 +2,13 @@
 //  OBSettingsResponse.h
 //  OutbrainSDK
 //
-//  Created by Daniel Gorlovetsky on 7/24/14.
-//  Copyright (c) 2014 Outbrain. All rights reserved.
+//  Created by oded regev on 25/05/2020.
+//  Copyright © 2020 Outbrain. All rights reserved.
 //
 
 #import "Outbrain.h"
 #import "OBViewabilityActions.h"
+#import "OBBrandedCarouselSettings.h"
 
 @interface OBSettings : NSObject
 
@@ -33,6 +34,7 @@
 @property (nonatomic, assign, readonly) NSInteger viewabilityPerListingReportingIntervalMillis;
 
 @property (nonatomic, strong, nullable) OBViewabilityActions *viewabilityActions;
+@property (nonatomic, strong, nullable) OBBrandedCarouselSettings *brandedCarouselSettings;
 
 // AB tests
 @property (nonatomic, assign, readonly) NSInteger abTitleFontSize;

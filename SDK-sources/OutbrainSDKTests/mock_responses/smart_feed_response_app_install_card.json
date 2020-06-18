@@ -1,0 +1,111 @@
+{
+  "response": {
+            "exec_time": 24,
+            "timestamp": 1592379598431,
+            "status": {
+                "id": 0,
+                "content": "Request succeeded"
+            },
+            "request": {
+                "lang": "en",
+                "idx": "2",
+                "lastIdx": "0",
+                "lastCardIdx": "0",
+                "did": "2868933075",
+                "pid": "4737",
+                "lsd": "f22700d5-1d49-42cc-a183-f3676526035f",
+                "enu": "3nwx1f-7FDD19BYCUPn1a5_-GK_ebJI9j4bvWer8Mm2tkeZo66CFX401l47WHqT6",
+                "api_user_id": "F22700D5-1D49-42CC-A183-F3676526035F",
+                "t": "Nzk3YmVhMzE2ODY0OTY4ZWQ5MWQ1YmE4NTQzNWIwMjA=",
+                "pvId": "797bea316864968ed91d5ba85435b020",
+                "pad": "1",
+                "org": "0",
+                "abTestVal": "no_abtest",
+                "obRecsAbtestAndVars": "691-2165,772-2365,596-1902,565-2000,781-2390,669-2112",
+                "widgetJsId": "SFD_BCR_1",
+                "readerPlatform": "mobile",
+                "isHttps": "true",
+                "rtbEnabled": "true",
+                "rtbTest": "false",
+                "rtbBidTestMode": "false",
+                "rtbTestRecsNum": "0",
+                "amplifyEnabled": "true",
+                "fid": "1444",
+                "gdpr": "0",
+                "fCard": "2",
+                "feedIdx": "0",
+                "feedVersion": "1",
+                "sid": 5291479,
+                "wnid": 1356,
+                "req_id": "91190507ffc0d6900b117b4b2dd4f876",
+                "gl": "gfNnkdgsz42MqsHq31gfvg",
+                "vid": 0
+            },
+            "documents": {
+                "total_count": 1,
+                "count": 1,
+                "doc": [{
+                    "on-viewed": ["https://log.outbrainimg.com/loggerServices/log-viewability?requestId=91190507ffc0d6900b117b4b2dd4f876&position=0"],
+                    "source_name": "Forge of Empires",
+                    "same_source": "false",
+                    "source_display_name": "Forge of Empires",
+                    "pc_id": 169179644,
+                    "adv_name": "Selfserve_meden",
+                    "publish_date": "1969-12-31 19:00",
+                    "orig_url": "https://app.adjust.com/1sshjj",
+                    "rec-cats": [1804],
+                    "ads_type": 1,
+                    "rec_en_did": "CqWxpdu1-y0LmzXHilK88Q",
+                    "url": "https://paid.outbrain.com/network/redir?p=kwEgm2BWrCgUiLbhwCNZ4F6jOp9vX1HVTAoKNtFiT2PE12decA1kxB9IKTt7iCFup-AL-AxzpLBSkuxn-sOmx6OaLWjVVRchDSzDtx0-1YdH658g1nJZ4S-VqAkloWEC5aikXaNSElw5sYkzdm3cO0ekeeEOoaENdwpGSgTO9AJmPLpGm38RuGGkgJ4r5YZ50h116BKTh_1oLmbEfwimWjZ4T0HE8NBx_9zZpZpkpFPzYNjHwwVkxexk8EhC7oM8Cw8vU5OfNzB7gTTUyFAmP8-7zG0r_B7Y9Fjij5JfXEl6OC2bPC02PoZVdUWd1Kzot_JTK7aWgl2T7bpvQmPEvicEaAGYmR7GPlJjDDFDzTzs8eEp6GMz9wCEvc8NgZ8O7N3eZCpG0erg6k2dUtF3HJT7sVK23HYpq7BAiYVVZrIBc_bLBGc5lTvTFpd2FKzEF1aZQrqndWKGOYzKDYEtg697BtaaL-0_qNXmHa59OWYwyrV2DjgBW9hK7z-NKDRcx3vTdG7KzGg49P2pnc4x9UiLJ6GoOoUqNJID2xTlLU5XawxQ5wd7I3FNg5fz3gBsjxR8Tg4u0bxydzfGu_7cPEv95rOr2HyMGGJRU3CqH6c54-rYQvayLxtC66dBYdkpreMGtdMod330r8xJVqoNGzwCLWUupRU343heiKrF6WVk5ELftGEUjyZO7UctB_vxaBki75v1y0d7HOhm2hCYKbjRHR4JwJM334Rm0Q2p0AHdMdalhD9-4bzduYHhKCMTReXyJLLqTkKnseNAKY4HUp9PVKKTEauLUxo8qzmuYkXU2-S3h_Wbz6qjTirRwmUSJlVH3y6wdfuWyMnon7AZiB8g7W6XQN5HKfpl-DytpHNV6GTd8Xj_5In-5mUNo7hnrwb_qwLbeKxrfuu9RfhV0cQtLAVjTpGC-G8bOTNXV_Tci7tvum7gMwinU80nnU6wDZzrJrNhKHVoT7mBoS4j4f0iDSUHQpfNxZ1OSXdKZvuxctYGacUNcvXU9tVbyz9qa8FOpVKw7SKk5J4hNr3AOnTcxLC5XSjJG1spb5mEkYi-EKZkAqq202hcT4Lq1IPdoR_dSiogXBdOQQ7jgVEVhpNSUlyWxXfpUM1cq2V-S9SI3JIWFl78HQxSE1LGr9TR5eXYeAPFdgAHhhe0PEJywU98rzzQlc3AfwRYjE7yFz-xz9sx09B8JKjGiPXBtR8mKtO9xROYmtPx0goHMDzV7ZMZQ1aSWlTBeHkquElfNc5EP239_rM6WNBN6oDG_RptNLmebNAVXPTeKV3tJ7jscwC2pYENgMnbClfMJmZnJ3o&c=23416b49&v=3",
+                    "author": "",
+                    "content": "Build an empire & travel through the ages!",
+                    "pc_cmp_id": 1012403442,
+                    "pos": "0",
+                    "ttid": 3,
+                    "advId": "13604",
+                    "thumbnail": {
+                        "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImI3ZDg4MWY0OTM4NDFkYzFlMTMzNGI0YjhmNDBhOWRjZjJkMWI5ZmNjZTMyNzRkODg3NDMxMTAzNWYxNDUxZmUiLCJ3IjozMDAsImgiOjMwMCwiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+                        "width": 300,
+                        "height": 300,
+                        "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
+                }]
+            },
+            "features": {
+                "carousel": {
+                    "on-viewed": ["https://log.outbrainimg.com/loggerServices/log-viewability?requestId=91190507ffc0d6900b117b4b2dd4f876&position=null"],
+                    "pc_id": 1950000734,
+                    "adv_name": "Selfserve_meden",
+                    "rec-cats": [1804],
+                    "ads_type": 1,
+                    "url": "https://paid.outbrain.com/network/redir?p=TV-jqloioZ5gh9rbmhG_8hGi5SyowVGcgT7q1Mmv265cxefdnU_ulR71pJ8nMPMVlb1VPs5d5vZrTxPxhKmOx4cUkBT-PUk7GilaBbhhz8ZhNoADkX9yjiqB5Y8-AB9MdakC2DFCeOupVZJEcNWQYf51D0jeZCmX8LDQwxh9fBlD7JLq7BltVJJ8t8KKY_E5JG8aYegrcsX6psKjardYad5AJfyINTH9He29Zk0BT_27pyZlYdvc23ajqZTAhese-0t0dQu_qS0fFZynG82HdRQO_w5AqtMJcze_62NZ-cx9r8P9azdwX7r8Dj1WUPQzhhQjLsXAaXvI3yhmPNmx3F8zuiFiptbREX4HqU9nYBoTpyRas14jPjmhQnV5DLINy4_P56s_maOicr6VYlEadvgaR6ku51fKLK7bsX-wx1F3untQemDFtaC8kqA7LVpJW-Vop3kzWUTh3JZUzwtVl69JRN7dm6DB-OhW_CXVfcBn2cyLx0Ww1NuzWyRdlJqFqv2H6AWNw2JfuZRhseFv85x7TgcfcJX-srdcWcncNrvYFwnCAdeBVMQKiOSF6HunKr9HvfkT8UQqVH12-jZcKJINNrM9npqGTN6sDD20sDz8am6wgnZaQmUo3AN_SQn1Ksma6e9mMAAVPSYCQ6dH5qssyuZrD1INNjTqHvgpE8bcecI2g5f3FiPNdpwMokUMS_PdHAk2VGxpvv16-Txrr0t00rSFkw_5PdjP2ylsFI3GVEubijjCZYAW2UxI_YSZ06Bl7bxG3Cx2RyqyI14KM_PPPODXqn4mouvPmIjiwhHP5laVnoWXrFUKrlviof3qzZ04UmCoLoZK0SAQjnOWeQ&c=8c7b45f&v=3",
+                    "pc_cmp_id": 1012403442,
+                    "ttid": 3,
+                    "advId": "13604",
+                    "carouselSponsor": "YAHTZEE Rating Apps",
+                    "carousel_type": "AppInstall",
+                    "app_score": "4.4",
+                    "thumbnail": {
+                        "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjgzYWMxOTM5YTZlNDdkMGUwYWU1ZWY3NDZjMTZhNTg1YmM1ZmMzZDc4MDUxZDc5N2ZlZTM1NzI5Nzg2NmFlNjMiLCJ3Ijo0MiwiaCI6NDIsImQiOjEuNSwiY3MiOjAsImYiOjB9.jpg",
+                        "width": 42,
+                        "height": 42,
+                        "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
+                }
+            },
+            "settings": {
+                "recMode": "odb_dynamic_ad-carousel",
+                "apv": true,
+                "dynamicImageWidth": 300,
+                "listingsViewability": true,
+                "dynamic:SponsoredColor": "#757575",
+                "title_similarity.return_rejected_ads_when_no_fill": true,
+                "dynamicImageHeight": 300,
+                "dynamicWidgetLayout": "ad-carousel"
+            },
+            "viewability_actions": {
+                "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=91190507ffc0d6900b117b4b2dd4f876&pvId=797bea316864968ed91d5ba85435b020&sid=5291479&pid=4737&idx=2&wId=1356&pad=1&org=0&tm=0&eT=0",
+                "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=91190507ffc0d6900b117b4b2dd4f876&pvId=797bea316864968ed91d5ba85435b020&sid=5291479&pid=4737&idx=2&wId=1356&pad=1&org=0&tm=0&eT=3"
+            }
+        }
+}

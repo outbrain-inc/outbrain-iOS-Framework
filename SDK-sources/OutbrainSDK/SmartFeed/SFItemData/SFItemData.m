@@ -46,6 +46,9 @@ NSInteger kVideoFinishedStatus = 1114;
             [self.positions addObject:rec.position];
         }
         [self commonInitWithResponse:odbResponse];
+        if (self.itemType == SFTypeStripAppInstall) {
+            self.widgetTitle = odbResponse.settings.brandedCarouselSettings.carouselSponsor;
+        }
     }
     return self;
 }
@@ -153,6 +156,9 @@ NSInteger kVideoFinishedStatus = 1114;
     }
     else if (type == SFTypeGridTwoInRowWithTitle) {
         return @"SFTypeGridTwoInRowWithTitle";
+    }
+    else if (type == SFTypeStripAppInstall) {
+        return @"SFTypeStripAppInstall";
     }
     else if (type == SFTypeStripVideo) {
         return @"SFTypeStripVideo";

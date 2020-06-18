@@ -18,4 +18,6 @@
 
 @property (nonatomic, copy, readonly) NSDictionary *originalOBPayload;
 
++ (instancetype)contentWithPayload:(NSDictionary *)payload;
+
 @end

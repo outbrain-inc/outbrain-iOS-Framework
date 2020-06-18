@@ -119,6 +119,17 @@
 		E63B7861212AD9750018C225 /* SFCollectionViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */; };
 		E647EE8522EF2E6E00313178 /* SFDefaultCollectionViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E647EE8322EF2E6E00313178 /* SFDefaultCollectionViewDelegate.h */; };
 		E647EE8622EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E647EE8422EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m */; };
+		E64AE0B82472AA8A0070A471 /* SFBrandedCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64AE0B72472AA890070A471 /* SFBrandedCarouselCollectionViewCell.xib */; };
+		E64AE0BB2472BD610070A471 /* SFBrandedCarouselCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E64AE0B92472BD610070A471 /* SFBrandedCarouselCollectionCell.h */; };
+		E64AE0BC2472BD610070A471 /* SFBrandedCarouselCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64AE0BA2472BD610070A471 /* SFBrandedCarouselCollectionCell.m */; };
+		E64AE0BE2476671A0070A471 /* SFSingleAppInstallCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64AE0BD2476671A0070A471 /* SFSingleAppInstallCollectionCell.xib */; };
+		E64AE0C0247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E64AE0BF247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m */; };
+		E64AE0C2247BA24F0070A471 /* smart_feed_response_branded_carousel.json in Resources */ = {isa = PBXBuildFile; fileRef = E64AE0C1247BA24F0070A471 /* smart_feed_response_branded_carousel.json */; };
+		E64AE0C5247BA6350070A471 /* OBBrandedCarouselSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = E64AE0C3247BA6340070A471 /* OBBrandedCarouselSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E64AE0C6247BA6350070A471 /* OBBrandedCarouselSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E64AE0C4247BA6340070A471 /* OBBrandedCarouselSettings.m */; };
+		E64AE0C9247D3D260070A471 /* SFBrandedCarouselTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E64AE0C7247D3D260070A471 /* SFBrandedCarouselTableCell.h */; };
+		E64AE0CA247D3D260070A471 /* SFBrandedCarouselTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64AE0C8247D3D260070A471 /* SFBrandedCarouselTableCell.m */; };
+		E64AE0CC247D40240070A471 /* SFBrandedCarouselTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64AE0CB247D40240070A471 /* SFBrandedCarouselTableViewCell.xib */; };
 		E64F6044212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6043212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib */; };
 		E64F6046212C412A008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6045212C4129008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib */; };
 		E64F6112213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6111213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib */; };
@@ -129,6 +140,12 @@
 		E67A718D21931139008DB54F /* SFCollectionViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A718921931139008DB54F /* SFCollectionViewHeaderCell.xib */; };
 		E67A718E21931139008DB54F /* SFCollectionViewRTLHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A718A21931139008DB54F /* SFCollectionViewRTLHeaderCell.xib */; };
 		E67A718F21931139008DB54F /* SFTableViewRTLHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A718B21931139008DB54F /* SFTableViewRTLHeaderCell.xib */; };
+		E69B5E2E249A00F400A9178C /* smart_feed_response_app_install_card.json in Resources */ = {isa = PBXBuildFile; fileRef = E69B5E2D249A00F400A9178C /* smart_feed_response_app_install_card.json */; };
+		E69B5E30249A020200A9178C /* OBSmartFeedAppInstallTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E69B5E2F249A020100A9178C /* OBSmartFeedAppInstallTests.m */; };
+		E69B5E32249A4A4C00A9178C /* SFBrandedCardItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69B5E31249A4A4C00A9178C /* SFBrandedCardItemCell.xib */; };
+		E69B5E34249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */; };
+		E69B5E37249B888600A9178C /* BrandedCarouselCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */; };
+		E69B5E38249B888600A9178C /* BrandedCarouselCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */; };
 		E6B930A6216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */; };
 		E6B930AC216F794C00EC7A4A /* SFVideoCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */; };
 		E6B930AD216F794C00EC7A4A /* SFVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */; };
@@ -304,6 +321,17 @@
 		E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFCollectionViewHeaderCell.m; sourceTree = "<group>"; };
 		E647EE8322EF2E6E00313178 /* SFDefaultCollectionViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFDefaultCollectionViewDelegate.h; sourceTree = "<group>"; };
 		E647EE8422EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFDefaultCollectionViewDelegate.m; sourceTree = "<group>"; };
+		E64AE0B72472AA890070A471 /* SFBrandedCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFBrandedCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		E64AE0B92472BD610070A471 /* SFBrandedCarouselCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFBrandedCarouselCollectionCell.h; sourceTree = "<group>"; };
+		E64AE0BA2472BD610070A471 /* SFBrandedCarouselCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFBrandedCarouselCollectionCell.m; sourceTree = "<group>"; };
+		E64AE0BD2476671A0070A471 /* SFSingleAppInstallCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleAppInstallCollectionCell.xib; sourceTree = "<group>"; };
+		E64AE0BF247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBSmartFeedBrandedCarouselTests.m; sourceTree = "<group>"; };
+		E64AE0C1247BA24F0070A471 /* smart_feed_response_branded_carousel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_branded_carousel.json; sourceTree = "<group>"; };
+		E64AE0C3247BA6340070A471 /* OBBrandedCarouselSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBBrandedCarouselSettings.h; sourceTree = "<group>"; };
+		E64AE0C4247BA6340070A471 /* OBBrandedCarouselSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBBrandedCarouselSettings.m; sourceTree = "<group>"; };
+		E64AE0C7247D3D260070A471 /* SFBrandedCarouselTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFBrandedCarouselTableCell.h; sourceTree = "<group>"; };
+		E64AE0C8247D3D260070A471 /* SFBrandedCarouselTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFBrandedCarouselTableCell.m; sourceTree = "<group>"; };
+		E64AE0CB247D40240070A471 /* SFBrandedCarouselTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFBrandedCarouselTableViewCell.xib; sourceTree = "<group>"; };
 		E64F6043212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalCarouselNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E64F6045212C4129008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalCarouselNoTitleTableViewCell.xib; sourceTree = "<group>"; };
 		E64F6111213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -315,6 +343,12 @@
 		E67A718A21931139008DB54F /* SFCollectionViewRTLHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFCollectionViewRTLHeaderCell.xib; sourceTree = "<group>"; };
 		E67A718B21931139008DB54F /* SFTableViewRTLHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTableViewRTLHeaderCell.xib; sourceTree = "<group>"; };
 		E699B8B21E30C6D100FD5BE2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E69B5E2D249A00F400A9178C /* smart_feed_response_app_install_card.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_app_install_card.json; sourceTree = "<group>"; };
+		E69B5E2F249A020100A9178C /* OBSmartFeedAppInstallTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSmartFeedAppInstallTests.m; sourceTree = "<group>"; };
+		E69B5E31249A4A4C00A9178C /* SFBrandedCardItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFBrandedCardItemCell.xib; sourceTree = "<group>"; };
+		E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSingleAppInstallTableCell.xib; sourceTree = "<group>"; };
+		E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandedCarouselCollectionLayout.h; sourceTree = "<group>"; };
+		E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandedCarouselCollectionLayout.m; sourceTree = "<group>"; };
 		E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedWithVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFVideoCollectionViewCell.h; sourceTree = "<group>"; };
 		E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFVideoTableViewCell.m; sourceTree = "<group>"; };
@@ -534,6 +568,8 @@
 				E61E6BE920836C180016D79A /* OBSettings.h */,
 				16F81EF1224141F000DC0D03 /* OBViewabilityActions.h */,
 				16F81EF22241420400DC0D03 /* OBViewabilityActions.m */,
+				E64AE0C3247BA6340070A471 /* OBBrandedCarouselSettings.h */,
+				E64AE0C4247BA6340070A471 /* OBBrandedCarouselSettings.m */,
 				E61E6BE520836C180016D79A /* OBResponse.m */,
 				E61E6BE820836C180016D79A /* OBResponse.h */,
 				E61E6BE620836C180016D79A /* OBResponseRequest.m */,
@@ -617,6 +653,8 @@
 				E61E6C1120836C180016D79A /* OBTestUtils.h */,
 				E61E6C1020836C180016D79A /* OutbrainSDKTests.m */,
 				E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */,
+				E64AE0BF247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m */,
+				E69B5E2F249A020100A9178C /* OBSmartFeedAppInstallTests.m */,
 				E6355C0022367EC000C3D1D5 /* MultivacResponseTests.m */,
 				E61E6C1320836C180016D79A /* OBParseODBTests.m */,
 				E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */,
@@ -635,6 +673,8 @@
 				E6D26D8C20D7C16A00D6D00A /* rtb_rec_with_disclosure_empty_values.json */,
 				E6D26D8D20D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json */,
 				E6D26D8E20D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json */,
+				E64AE0C1247BA24F0070A471 /* smart_feed_response_branded_carousel.json */,
+				E69B5E2D249A00F400A9178C /* smart_feed_response_app_install_card.json */,
 				E6EA3785209B30E1009B687B /* smart_feed_response_parent.json */,
 				E6EA3786209B30E1009B687B /* smart_feed_response_child1.json */,
 				E6EA3787209B30E1009B687B /* smart_feed_response_child2.json */,
@@ -680,6 +720,8 @@
 				E6FEB18D20FCB053002A9020 /* SFHorizontalViewCarousel.m */,
 				E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */,
 				E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */,
+				E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */,
+				E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */,
 			);
 			path = SFHorizontalView;
 			sourceTree = "<group>";
@@ -788,10 +830,13 @@
 			children = (
 				E6FEB3E120FF2E78002A9020 /* SFHorizontalCollectionViewCell.h */,
 				E6FEB3DF20FF2E78002A9020 /* SFHorizontalCollectionViewCell.m */,
+				E64AE0B92472BD610070A471 /* SFBrandedCarouselCollectionCell.h */,
+				E64AE0BA2472BD610070A471 /* SFBrandedCarouselCollectionCell.m */,
 				E6FEB3E020FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib */,
 				E64F6111213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib */,
 				E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */,
 				1649FC772301A90800273994 /* SFHorizontalFixedWithTitleWithVideoCollectionViewCell.xib */,
+				E64AE0B72472AA890070A471 /* SFBrandedCarouselCollectionViewCell.xib */,
 				E6FEB3E220FF2E78002A9020 /* SFHorizontalCarouselWithTitleCollectionViewCell.xib */,
 				E64F6043212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib */,
 			);
@@ -803,12 +848,15 @@
 			children = (
 				E6FEB3E420FF2E78002A9020 /* SFHorizontalTableViewCell.h */,
 				E6FEB3E620FF2E78002A9020 /* SFHorizontalTableViewCell.m */,
+				E64AE0C7247D3D260070A471 /* SFBrandedCarouselTableCell.h */,
+				E64AE0C8247D3D260070A471 /* SFBrandedCarouselTableCell.m */,
 				E6FEB3E520FF2E78002A9020 /* SFHorizontalCarouselWithTitleTableViewCell.xib */,
 				E64F611321352823008BBDFB /* SFHorizontalFixedWithTitleTableViewCell.xib */,
 				E64F6045212C4129008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib */,
 				E6B930BA21733BB300EC7A4A /* SFHorizontalFixedWithVideoTableViewCell.xib */,
 				1649FC792301ACAD00273994 /* SFHorizontalFixedWithTitleWithVideoTableViewCell.xib */,
 				E6FEB3E720FF2E78002A9020 /* SFHorizontalFixedNoTitleTableViewCell.xib */,
+				E64AE0CB247D40240070A471 /* SFBrandedCarouselTableViewCell.xib */,
 			);
 			path = CellContainersTableView;
 			sourceTree = "<group>";
@@ -828,6 +876,7 @@
 		E6FEB7482105AAFB002A9020 /* SingleItemInHorizontalView */ = {
 			isa = PBXGroup;
 			children = (
+				E69B5E31249A4A4C00A9178C /* SFBrandedCardItemCell.xib */,
 				E6FEB7492105AAFB002A9020 /* SFHorizontalFixedItemCell.xib */,
 				E6FEB74A2105AAFB002A9020 /* SFHorizontalItemCell.xib */,
 			);
@@ -846,6 +895,8 @@
 		E6FEB7542105ACFC002A9020 /* SingleWithTitle */ = {
 			isa = PBXGroup;
 			children = (
+				E64AE0BD2476671A0070A471 /* SFSingleAppInstallCollectionCell.xib */,
+				E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */,
 				E6FEB7552105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib */,
 				E6FEB7572105BF0F002A9020 /* SFSingleWithTitleTableViewCell.xib */,
 			);
@@ -873,6 +924,7 @@
 				E61E6C2320836C180016D79A /* OBRecommendationRequestOperation.h in Headers */,
 				E61E6C2F20836C180016D79A /* OBResponseRequest.h in Headers */,
 				E6F8F464211C3D580069C72C /* SFCollectionViewManager.h in Headers */,
+				E64AE0C5247BA6350070A471 /* OBBrandedCarouselSettings.h in Headers */,
 				E61E6C2C20836C180016D79A /* OBRecommendationResponse.h in Headers */,
 				E63B7860212AD9750018C225 /* SFCollectionViewHeaderCell.h in Headers */,
 				E63B785A212AB3500018C225 /* SFTableViewHeaderCell.h in Headers */,
@@ -886,6 +938,7 @@
 				E6355BE922353A0600C3D1D5 /* MultivacResponseDelegate.h in Headers */,
 				E6FEB3EC20FF2E78002A9020 /* SFHorizontalTableViewCell.h in Headers */,
 				E6B930AC216F794C00EC7A4A /* SFVideoCollectionViewCell.h in Headers */,
+				E64AE0C9247D3D260070A471 /* SFBrandedCarouselTableCell.h in Headers */,
 				E6F8F460211C3D400069C72C /* SFTableViewManager.h in Headers */,
 				E6B930BE2173691900EC7A4A /* SFScriptMessageHandler.h in Headers */,
 				E63B7850212AB1860018C225 /* SFItemData.h in Headers */,
@@ -919,11 +972,13 @@
 				E61E6C4920836C180016D79A /* OBRecommendationsTokenHandler.h in Headers */,
 				E61E6C4420836C180016D79A /* OBUtils.h in Headers */,
 				E63B784D212AB1860018C225 /* SFUtils.h in Headers */,
+				E69B5E37249B888600A9178C /* BrandedCarouselCollectionLayout.h in Headers */,
 				E63B7855212AB1860018C225 /* SFTableViewCell.h in Headers */,
 				E61E6C2020836C180016D79A /* UIView+Visible.h in Headers */,
 				E61E6C3C20836C180016D79A /* Outbrain.h in Headers */,
 				E6FEB19420FCB8B4002A9020 /* SFHorizontalViewFixed.h in Headers */,
 				E647EE8522EF2E6E00313178 /* SFDefaultCollectionViewDelegate.h in Headers */,
+				E64AE0BB2472BD610070A471 /* SFBrandedCarouselCollectionCell.h in Headers */,
 				E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */,
 				E61E6C3120836C180016D79A /* OBContent.h in Headers */,
 				E61E6C3320836C180016D79A /* OBContent_Private.h in Headers */,
@@ -1023,6 +1078,7 @@
 				E67A718F21931139008DB54F /* SFTableViewRTLHeaderCell.xib in Resources */,
 				E6FEB74E2105AAFB002A9020 /* SFHorizontalFixedItemCell.xib in Resources */,
 				E6FEB7512105AAFB002A9020 /* SFTableViewCell.xib in Resources */,
+				E64AE0B82472AA8A0070A471 /* SFBrandedCarouselCollectionViewCell.xib in Resources */,
 				E6B930A6216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib in Resources */,
 				E64F6112213522FC008BBDFB /* SFHorizontalFixedWithTitleCollectionViewCell.xib in Resources */,
 				E6FEB7502105AAFB002A9020 /* SFCollectionViewCell.xib in Resources */,
@@ -1031,15 +1087,19 @@
 				E64F611621352E06008BBDFB /* SFSingleWithThumbnailWithTitleCollectionCell.xib in Resources */,
 				1649FC782301A90800273994 /* SFHorizontalFixedWithTitleWithVideoCollectionViewCell.xib in Resources */,
 				E64F611821357DCA008BBDFB /* SFSingleWithThumbnailWithTitleTableCell.xib in Resources */,
+				E69B5E34249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib in Resources */,
 				E6FEB3EB20FF2E78002A9020 /* SFHorizontalCarouselWithTitleCollectionViewCell.xib in Resources */,
 				E6FEB3E920FF2E78002A9020 /* SFHorizontalFixedNoTitleCollectionViewCell.xib in Resources */,
 				E6FEB7562105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib in Resources */,
 				E64F6044212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib in Resources */,
 				E64F611421352824008BBDFB /* SFHorizontalFixedWithTitleTableViewCell.xib in Resources */,
+				E64AE0CC247D40240070A471 /* SFBrandedCarouselTableViewCell.xib in Resources */,
 				E61AE206216B560C001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib in Resources */,
+				E64AE0BE2476671A0070A471 /* SFSingleAppInstallCollectionCell.xib in Resources */,
 				E67A718E21931139008DB54F /* SFCollectionViewRTLHeaderCell.xib in Resources */,
 				E67A718C21931139008DB54F /* SFTableViewHeaderCell.xib in Resources */,
 				E64F6046212C412A008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib in Resources */,
+				E69B5E32249A4A4C00A9178C /* SFBrandedCardItemCell.xib in Resources */,
 				E6FEB3ED20FF2E78002A9020 /* SFHorizontalCarouselWithTitleTableViewCell.xib in Resources */,
 				E61AE207216B560C001F7405 /* SFSingleVideoNoTitleTableViewCell.xib in Resources */,
 				E61AE205216B560C001F7405 /* SFSingleVideoWithTitleTableViewCell.xib in Resources */,
@@ -1060,6 +1120,8 @@
 				E6355BFF22367E7D00C3D1D5 /* outbrain_multivac_response.json in Resources */,
 				E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */,
 				E6D26D8F20D7C16A00D6D00A /* rtb_rec_with_disclosure_empty_values.json in Resources */,
+				E64AE0C2247BA24F0070A471 /* smart_feed_response_branded_carousel.json in Resources */,
+				E69B5E2E249A00F400A9178C /* smart_feed_response_app_install_card.json in Resources */,
 				E6D26D8B20D7C0A900D6D00A /* non_rtb_rec.json in Resources */,
 				E6D26D9120D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json in Resources */,
 				E6D26D9020D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json in Resources */,
@@ -1095,6 +1157,7 @@
 				16F81EF32241420400DC0D03 /* OBViewabilityActions.m in Sources */,
 				E6B930B7217339DD00EC7A4A /* SFHorizontalWithVideoTableViewCell.m in Sources */,
 				E61E6C4820836C180016D79A /* OBUtils.m in Sources */,
+				E64AE0BC2472BD610070A471 /* SFBrandedCarouselCollectionCell.m in Sources */,
 				E6FEB3E820FF2E78002A9020 /* SFHorizontalCollectionViewCell.m in Sources */,
 				E61E6C1B20836C180016D79A /* OBAdsChoicesManager.m in Sources */,
 				E61E6C4220836C180016D79A /* Outbrain.m in Sources */,
@@ -1104,6 +1167,7 @@
 				E6355E2122411DF200C3D1D5 /* OBView.m in Sources */,
 				E63B784F212AB1860018C225 /* SFUtils.m in Sources */,
 				16C48D56227739160003A892 /* SFDefaultDelegate.m in Sources */,
+				E69B5E38249B888600A9178C /* BrandedCarouselCollectionLayout.m in Sources */,
 				E61E6C3620836C180016D79A /* OBContent.m in Sources */,
 				E61E6C1D20836C180016D79A /* OBLabel.m in Sources */,
 				E6F8F465211C3D580069C72C /* SFCollectionViewManager.m in Sources */,
@@ -1125,6 +1189,7 @@
 				E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */,
 				E6B930AD216F794C00EC7A4A /* SFVideoTableViewCell.m in Sources */,
 				E61E6CBD2085D98F0016D79A /* PageCollectionLayout.m in Sources */,
+				E64AE0C6247BA6350070A471 /* OBBrandedCarouselSettings.m in Sources */,
 				E61E6C3A20836C180016D79A /* OBRequest.m in Sources */,
 				16B1F9A02185E95C00023DDD /* GDPRUtils.m in Sources */,
 				E61E6C2420836C180016D79A /* OBReachability.m in Sources */,
@@ -1136,6 +1201,7 @@
 				E625100621CA866A00C329B9 /* OBVideoWidget.m in Sources */,
 				E647EE8622EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m in Sources */,
 				E63B785B212AB3500018C225 /* SFTableViewHeaderCell.m in Sources */,
+				E64AE0CA247D3D260070A471 /* SFBrandedCarouselTableCell.m in Sources */,
 				E6355BED223544CA00C3D1D5 /* OBMultivacRequestOperation.m in Sources */,
 				E63B7861212AD9750018C225 /* SFCollectionViewHeaderCell.m in Sources */,
 				E6F8F45C211C3C6D0069C72C /* SmartFeedManager.m in Sources */,
@@ -1153,8 +1219,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6250CCD21BD5E8900C329B9 /* SFUtilsTests.m in Sources */,
+				E64AE0C0247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m in Sources */,
 				E6355C0122367EC000C3D1D5 /* MultivacResponseTests.m in Sources */,
 				E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */,
+				E69B5E30249A020200A9178C /* OBSmartFeedAppInstallTests.m in Sources */,
 				E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */,
 				E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */,
 				E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */,

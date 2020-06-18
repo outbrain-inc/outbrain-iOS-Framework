@@ -17,7 +17,9 @@
 @property (nonatomic, weak) IBOutlet UILabel *recTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *recSourceLabel;
 @property (nonatomic, weak) IBOutlet UIButton *adChoicesButton;
+@property (nonatomic, weak) IBOutlet UILabel *brandedCtaButtonLabel;
 @property (nonatomic, weak) IBOutlet UILabel *cellTitleLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *cellBrandLogoImageView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *publisherLogoWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *publisherLogoHeight;
