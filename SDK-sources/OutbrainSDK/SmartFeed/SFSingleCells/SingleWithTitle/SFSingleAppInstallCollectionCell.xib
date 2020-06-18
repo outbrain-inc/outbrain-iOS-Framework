@@ -107,8 +107,8 @@
                 <outlet property="brandedCtaButtonLabel" destination="g5Z-3f-mcC" id="qZj-J9-zcr"/>
                 <outlet property="cardContentView" destination="y1L-1q-EwP" id="zyy-Pb-Zvp"/>
                 <outlet property="cellBrandLogoImageView" destination="SnF-Q0-xDG" id="2Kr-kM-IQJ"/>
+                <outlet property="cellTitleLabel" destination="RWH-xg-7U6" id="och-G1-VD5"/>
                 <outlet property="recImageView" destination="g77-bX-xEg" id="tlv-Db-JuO"/>
-                <outlet property="recSourceLabel" destination="RWH-xg-7U6" id="Ya9-pr-eXz"/>
                 <outlet property="recTitleLabel" destination="vW4-J8-7zV" id="Z6p-Gc-V9D"/>
             </connections>
             <point key="canvasLocation" x="-871.20000000000005" y="46.776611694152926"/>

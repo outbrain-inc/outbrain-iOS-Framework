@@ -418,6 +418,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         [singleCell.cardContentView addGestureRecognizer:tapGesture];
     }
     else if (sfItem.itemType == SFTypeStripAppInstall) {
+        singleCell.cellTitleLabel.text = sfItem.widgetTitle;
         [SFUtils addDropShadowToView: singleCell.cardContentView]; // shadow
         [singleCell.contentView addGestureRecognizer:tapGesture]; // tap handler
         [[SFImageLoader sharedInstance] loadImageUrl:sfItem.odbSettings.brandedCarouselSettings.image.url into:singleCell.cellBrandLogoImageView]; // top right image
@@ -427,6 +428,9 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
             singleCell.brandedCtaButtonLabel.layer.borderColor = UIColorFromRGB(0x4a90e2).CGColor;
             singleCell.brandedCtaButtonLabel.layer.backgroundColor = UIColorFromRGB(0x4a90e2).CGColor;
             singleCell.brandedCtaButtonLabel.layer.cornerRadius = 4.0;
+        }
+        if (singleCell.cellBrandLogoImageView) {
+            singleCell.cellBrandLogoImageView.layer.cornerRadius = 8.0;
         }
     }
     else {

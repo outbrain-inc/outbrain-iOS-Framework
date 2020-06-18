@@ -46,6 +46,9 @@ NSInteger kVideoFinishedStatus = 1114;
             [self.positions addObject:rec.position];
         }
         [self commonInitWithResponse:odbResponse];
+        if (self.itemType == SFTypeStripAppInstall) {
+            self.widgetTitle = odbResponse.settings.brandedCarouselSettings.carouselSponsor;
+        }
     }
     return self;
 }
