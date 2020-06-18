@@ -32,6 +32,7 @@ NSString * const kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNo
 NSString * const kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
 NSString * const kTableViewBrandedCarouselWithTitleReuseId = @"SFBrandedCarouselTableViewCell";
 NSString * const kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
+NSString * const kTableViewSingleAppInstallReuseId = @"SFSingleAppInstallTableCell";
 NSString * const kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
 NSString * const kTableViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleTableCell";
 NSString * const kTableViewSingleVideoReuseId = @"kTableViewSingleVideoReuseId";
@@ -100,6 +101,10 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         nib = [UINib nibWithNibName:@"SFSingleWithTitleTableViewCell" bundle:bundle];
         NSAssert(nib != nil, @"SFSingleWithTitleTableViewCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleWithTitleReuseId];
+        
+        nib = [UINib nibWithNibName:@"SFSingleAppInstallTableCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFSingleAppInstallTableCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSingleAppInstallReuseId];
         
         nib = [UINib nibWithNibName:@"SFSingleWithThumbnailTableCell" bundle:bundle];
         NSAssert(nib != nil, @"SFSingleWithThumbnailTableCell should not be null");
@@ -174,6 +179,8 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedWithTitleReuseId forIndexPath:indexPath];
         case SFTypeStripWithTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithTitleReuseId forIndexPath:indexPath];
+        case SFTypeStripAppInstall:
+            return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleAppInstallReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnailNoTitle:
             return [tableView dequeueReusableCellWithIdentifier:kTableViewSingleWithThumbnailReuseId forIndexPath:indexPath];
         case SFTypeStripWithThumbnailWithTitle:
@@ -208,7 +215,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
              sfItemType == SFTypeGridTwoInRowWithVideo) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : kTableViewRowHeight;
     }
-    else if (sfItemType == SFTypeBrandedCarouselWithTitle) {
+    else if (sfItemType == SFTypeBrandedCarouselWithTitle || sfItemType == SFTypeStripAppInstall) {
         return MAX(screenHeight*0.62, 450);
     }
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
@@ -278,12 +285,14 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     
     singleCell.recTitleLabel.text = rec.content;
     singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
-    if (!sfItem.isCustomUI) {
+    if (!sfItem.isCustomUI && sfItem.itemType != SFTypeStripAppInstall) {
         singleCell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
         singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor: sfItem.odbSettings.abSourceFontColor];
     }
     
-    [SFUtils setFontSizeForTitleLabel:singleCell.recTitleLabel andSourceLabel:singleCell.recSourceLabel withAbTestSettings:sfItem.odbSettings];
+    if (sfItem.itemType != SFTypeStripAppInstall) {
+        [SFUtils setFontSizeForTitleLabel:singleCell.recTitleLabel andSourceLabel:singleCell.recSourceLabel withAbTestSettings:sfItem.odbSettings];
+    }
     
     [SFUtils removePaidLabelFromImageView:singleCell.recImageView];
     
@@ -330,6 +339,21 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         }
         if (!sfItem.isCustomUI) {
             singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+        }
+    }
+    else if (sfItem.itemType == SFTypeStripAppInstall) {
+        singleCell.cellTitleLabel.text = sfItem.widgetTitle;
+        [SFUtils addDropShadowToView: singleCell.cardContentView]; // shadow
+        [[SFImageLoader sharedInstance] loadImageUrl:sfItem.odbSettings.brandedCarouselSettings.image.url into:singleCell.cellBrandLogoImageView]; // top right image
+        
+        if (singleCell.brandedCtaButtonLabel) {
+            singleCell.brandedCtaButtonLabel.layer.borderWidth = 1.0;
+            singleCell.brandedCtaButtonLabel.layer.borderColor = UIColorFromRGB(0x4a90e2).CGColor;
+            singleCell.brandedCtaButtonLabel.layer.backgroundColor = UIColorFromRGB(0x4a90e2).CGColor;
+            singleCell.brandedCtaButtonLabel.layer.cornerRadius = 4.0;
+        }
+        if (singleCell.cellBrandLogoImageView) {
+            singleCell.cellBrandLogoImageView.layer.cornerRadius = 8.0;
         }
     }
     if (!self.disableCellShadows) {
