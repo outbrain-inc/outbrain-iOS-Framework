@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dea-37-4QF" userLabel="Content View">
                         <rect key="frame" x="0.0" y="0.0" width="363" height="466"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cnn-logo" translatesAutoresizingMaskIntoConstraints="NO" id="SnF-Q0-xDG">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SnF-Q0-xDG">
                                 <rect key="frame" x="15" y="15" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AMQ-m2-gjS"/>
@@ -114,7 +114,4 @@
             <point key="canvasLocation" x="-871.20000000000005" y="46.776611694152926"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="cnn-logo" width="256" height="256"/>
-    </resources>
 </document>
