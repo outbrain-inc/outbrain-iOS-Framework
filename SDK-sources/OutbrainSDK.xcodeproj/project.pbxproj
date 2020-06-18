@@ -144,6 +144,8 @@
 		E69B5E30249A020200A9178C /* OBSmartFeedAppInstallTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E69B5E2F249A020100A9178C /* OBSmartFeedAppInstallTests.m */; };
 		E69B5E32249A4A4C00A9178C /* SFBrandedCardItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69B5E31249A4A4C00A9178C /* SFBrandedCardItemCell.xib */; };
 		E69B5E34249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */; };
+		E69B5E37249B888600A9178C /* BrandedCarouselCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */; };
+		E69B5E38249B888600A9178C /* BrandedCarouselCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */; };
 		E6B930A6216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */; };
 		E6B930AC216F794C00EC7A4A /* SFVideoCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */; };
 		E6B930AD216F794C00EC7A4A /* SFVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */; };
@@ -345,6 +347,8 @@
 		E69B5E2F249A020100A9178C /* OBSmartFeedAppInstallTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSmartFeedAppInstallTests.m; sourceTree = "<group>"; };
 		E69B5E31249A4A4C00A9178C /* SFBrandedCardItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFBrandedCardItemCell.xib; sourceTree = "<group>"; };
 		E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSingleAppInstallTableCell.xib; sourceTree = "<group>"; };
+		E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandedCarouselCollectionLayout.h; sourceTree = "<group>"; };
+		E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandedCarouselCollectionLayout.m; sourceTree = "<group>"; };
 		E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedWithVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFVideoCollectionViewCell.h; sourceTree = "<group>"; };
 		E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFVideoTableViewCell.m; sourceTree = "<group>"; };
@@ -716,6 +720,8 @@
 				E6FEB18D20FCB053002A9020 /* SFHorizontalViewCarousel.m */,
 				E61E6CAD2085D98F0016D79A /* PageCollectionLayout.m */,
 				E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */,
+				E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */,
+				E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */,
 			);
 			path = SFHorizontalView;
 			sourceTree = "<group>";
@@ -966,6 +972,7 @@
 				E61E6C4920836C180016D79A /* OBRecommendationsTokenHandler.h in Headers */,
 				E61E6C4420836C180016D79A /* OBUtils.h in Headers */,
 				E63B784D212AB1860018C225 /* SFUtils.h in Headers */,
+				E69B5E37249B888600A9178C /* BrandedCarouselCollectionLayout.h in Headers */,
 				E63B7855212AB1860018C225 /* SFTableViewCell.h in Headers */,
 				E61E6C2020836C180016D79A /* UIView+Visible.h in Headers */,
 				E61E6C3C20836C180016D79A /* Outbrain.h in Headers */,
@@ -1160,6 +1167,7 @@
 				E6355E2122411DF200C3D1D5 /* OBView.m in Sources */,
 				E63B784F212AB1860018C225 /* SFUtils.m in Sources */,
 				16C48D56227739160003A892 /* SFDefaultDelegate.m in Sources */,
+				E69B5E38249B888600A9178C /* BrandedCarouselCollectionLayout.m in Sources */,
 				E61E6C3620836C180016D79A /* OBContent.m in Sources */,
 				E61E6C1D20836C180016D79A /* OBLabel.m in Sources */,
 				E6F8F465211C3D580069C72C /* SFCollectionViewManager.m in Sources */,
