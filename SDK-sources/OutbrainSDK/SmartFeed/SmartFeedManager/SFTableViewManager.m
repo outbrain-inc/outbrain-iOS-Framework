@@ -288,6 +288,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     if (!sfItem.isCustomUI && sfItem.itemType != SFTypeStripAppInstall) {
         singleCell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
         singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor: sfItem.odbSettings.abSourceFontColor];
+        [SFUtils setFontSizeForTitleLabel:singleCell.recTitleLabel andSourceLabel:singleCell.recSourceLabel withAbTestSettings:sfItem.odbSettings];
     }
     
     if (sfItem.itemType != SFTypeStripAppInstall) {
