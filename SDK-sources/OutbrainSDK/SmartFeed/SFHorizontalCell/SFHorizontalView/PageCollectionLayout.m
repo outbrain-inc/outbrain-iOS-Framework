@@ -86,72 +86,42 @@ BOOL scaleItems = YES;
     return newAttributesArray;
 }
 
-//-(CGPoint) targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
-//    CGRect proposedRect = CGRectMake(proposedContentOffset.x, 0, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
-//    NSArray *layoutAttributes = [self layoutAttributesForElementsInRect:proposedRect];
-//    CGFloat proposedContentOffsetCenterX = proposedContentOffset.x + self.collectionView.bounds.size.width / 2;
-//    UICollectionViewLayoutAttributes *candidateAttributes = nil;
-//
-//    for (UICollectionViewLayoutAttributes *attributes in layoutAttributes) {
-//        if ([attributes representedElementCategory] != UICollectionElementCategoryCell) {
-//            continue;
-//        }
-//
-//        if (candidateAttributes == nil) {
-//            candidateAttributes = attributes;
-//            continue;
-//        }
-//
-//        if (fabs(attributes.center.x - proposedContentOffsetCenterX) < fabs(candidateAttributes.center.x - proposedContentOffsetCenterX)) {
-//            candidateAttributes = attributes;
-//        }
-//    }
-//
-//    if (candidateAttributes == nil) {
-//        return proposedContentOffset;
-//    }
-//
-//    CGFloat newOffsetX = candidateAttributes.center.x - self.collectionView.bounds.size.width / 2;
-//    CGFloat offset = newOffsetX - self.collectionView.contentOffset.x;
-//    if ((velocity.x < 0 && offset > 0) || (velocity.x > 0 && offset < 0)) {
-//        CGFloat pageWidth = self.itemSize.width + self.minimumLineSpacing;
-//        newOffsetX += velocity.x > 0 ? pageWidth : -pageWidth;
-//    }
-//
-//    return CGPointMake(newOffsetX, proposedContentOffset.y);
-//}
+-(CGPoint) targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
+    CGRect proposedRect = CGRectMake(proposedContentOffset.x, 0, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+    NSArray *layoutAttributes = [self layoutAttributesForElementsInRect:proposedRect];
+    CGFloat proposedContentOffsetCenterX = proposedContentOffset.x + self.collectionView.bounds.size.width / 2;
+    UICollectionViewLayoutAttributes *candidateAttributes = nil;
 
-// Branded Carousel
-- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity
-{
-    CGSize collectionViewSize = self.collectionView.bounds.size;
-    CGFloat width = collectionViewSize.width;
-    CGFloat halfWidth = width * 0.5;
+    for (UICollectionViewLayoutAttributes *attributes in layoutAttributes) {
+        if ([attributes representedElementCategory] != UICollectionElementCategoryCell) {
+            continue;
+        }
 
-    CGFloat direction = (proposedContentOffset.x > self.collectionView.contentOffset.x ? 1 : 0);
-    CGFloat pageOffsetX = self.itemSize.width * floor(self.collectionView.contentOffset.x / self.itemSize.width);
-    CGFloat proposedContentOffsetCenterX = pageOffsetX + (width * direction);
-    CGRect proposedRect = CGRectMake(proposedContentOffsetCenterX, 0, collectionViewSize.width, collectionViewSize.height);
+        if (candidateAttributes == nil) {
+            candidateAttributes = attributes;
+            continue;
+        }
 
-    UICollectionViewLayoutAttributes *candidateAttributes;
-
-    for (UICollectionViewLayoutAttributes *attributes in [self layoutAttributesForElementsInRect:proposedRect]) {
-        if (attributes.representedElementCategory != UICollectionElementCategoryCell) continue;
-
-        candidateAttributes = attributes;
-        if (direction == 1) {
-            break; // if direction right, take the first item (break), else take the last
+        if (fabs(attributes.center.x - proposedContentOffsetCenterX) < fabs(candidateAttributes.center.x - proposedContentOffsetCenterX)) {
+            candidateAttributes = attributes;
         }
     }
-    
-    if (direction == 1)
-        proposedContentOffset.x = candidateAttributes.center.x - halfWidth;
-    else {
-        proposedContentOffset.x = candidateAttributes.center.x - halfWidth - self.itemSize.width;
+
+    if (candidateAttributes == nil) {
+        return proposedContentOffset;
     }
 
-    return proposedContentOffset;
+    CGFloat newOffsetX = candidateAttributes.center.x - self.collectionView.bounds.size.width / 2;
+    CGFloat offset = newOffsetX - self.collectionView.contentOffset.x;
+    if ((velocity.x < 0 && offset > 0) || (velocity.x > 0 && offset < 0)) {
+        CGFloat pageWidth = self.itemSize.width + self.minimumLineSpacing;
+        newOffsetX += velocity.x > 0 ? pageWidth : -pageWidth;
+    }
+
+    return CGPointMake(newOffsetX, proposedContentOffset.y);
 }
+
+
 
 @end
 
