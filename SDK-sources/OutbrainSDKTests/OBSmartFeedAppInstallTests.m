@@ -60,7 +60,7 @@
     OBBrandedCarouselSettings *brandedCarouselSettings = settings.brandedCarouselSettings;
     XCTAssertNotNil(brandedCarouselSettings);
     XCTAssertNil(brandedCarouselSettings.carouselTitle);
-    XCTAssertTrue([brandedCarouselSettings.carouselSponsor isEqualToString:@"test"]);
+    XCTAssertTrue([brandedCarouselSettings.carouselSponsor isEqualToString:@"YAHTZEE Rating Apps"]);
     XCTAssertTrue([brandedCarouselSettings.carouselType isEqualToString:@"AppInstall"]);
     XCTAssertTrue([brandedCarouselSettings.image.url.absoluteString isEqualToString:@"https://images.outbrainimg.com/transform/v3/eyJpdSI6IjgzYWMxOTM5YTZlNDdkMGUwYWU1ZWY3NDZjMTZhNTg1YmM1ZmMzZDc4MDUxZDc5N2ZlZTM1NzI5Nzg2NmFlNjMiLCJ3Ijo0MiwiaCI6NDIsImQiOjEuNSwiY3MiOjAsImYiOjB9.jpg"]);
 }
