@@ -1,6 +1,14 @@
 # Release Notes
 
 
+## v3.9.2 - June 22, 2020
+
+- Feature: Branded Carousel card
+- Feature: App install card
+- Bug fix: if "custom ui" is configured - font should stay "as is" (bypass optimizations)
+- Internal: add `sdkVersion` param to video url
+
+
 ## v3.9.0 - May 12, 2020
 
 - Feature: support for optimizations (A\B tests) in Smartfeed
