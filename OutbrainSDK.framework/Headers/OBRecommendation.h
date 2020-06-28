@@ -63,6 +63,9 @@
 @property (nonatomic, copy, readonly, nullable) NSString * audienceCampaignsLabel;
 /** @brief Apply for Smartfeed "trending in category" card only. */
 @property (nonatomic, copy, readonly, nullable) NSString * categoryName;
+/** @brief Apply for Smartfeed "branded carousel" rec only. */
+@property (nonatomic, copy, readonly, nullable) NSString * brandedCardCtaText;
+
 
 -(BOOL) isRTB __deprecated_msg("use shouldDisplayDisclosureIcon() instead.");
 
