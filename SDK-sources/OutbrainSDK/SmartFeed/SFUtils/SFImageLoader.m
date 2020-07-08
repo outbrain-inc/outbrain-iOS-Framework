@@ -124,10 +124,17 @@ NSInteger const GIF_WEBVIEW_TAG = 223344;
 
 -(void) loadGifImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView {
     WKWebView *webView = [[WKWebView alloc] initWithFrame:imageView.frame];
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *path = [bundle pathForResource:@"gif-image-template" ofType:@"html"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSString *htmlString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"IMAGE" withString:imageUrl.absoluteString];
+    
     webView.tag = GIF_WEBVIEW_TAG;
+    [webView loadHTMLString:htmlString baseURL:nil];
     [imageView addSubview:webView];
     [SFUtils addConstraintsToFillParent:webView];
-    [webView loadRequest:[NSURLRequest requestWithURL:imageUrl]];
 }
 
 -(void) loadImage:(UIImage *)image withFadeInDuration:(CGFloat)duration toImageView:(UIImageView *)imageView {
