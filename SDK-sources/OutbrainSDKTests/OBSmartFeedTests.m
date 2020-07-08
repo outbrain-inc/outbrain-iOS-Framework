@@ -369,5 +369,19 @@
     XCTAssertTrue([item.requestId isEqualToString: @"b4b6ea633069219626e103dc55da993c"]);
 }
         
+- (void)testSmartFeedImageType {
+    NSArray *recommendations = self.responseChild1.recommendations;
+    OBRecommendation *rec = recommendations[0];
+    XCTAssertFalse(rec.image.isGif);
+    
+    recommendations = self.responseChild2.recommendations;
+    rec = recommendations[0];
+    XCTAssertFalse(rec.image.isGif);
+    
+    recommendations = self.responseChild3.recommendations;
+    rec = recommendations[0];
+    XCTAssertTrue(rec.image.isGif);
+}
+
 
 @end

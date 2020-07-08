@@ -12,6 +12,18 @@
 
 @implementation OBImageInfo
 
++ (instancetype)contentWithPayload:(NSDictionary *)payload
+{
+    OBImageInfo * imageInfo = [super contentWithPayload:payload];
+    
+    if (payload[@"imageImpressionType"])
+    {
+        imageInfo.isGif = [payload[@"imageImpressionType"] isEqualToString:@"DOCUMENT_ANIMATED_IMAGE"];
+    }
+
+    return imageInfo;
+}
+
 + (NSArray *)requiredKeys
 {
     return @[@"url"];
