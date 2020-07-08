@@ -138,7 +138,7 @@
     }
     
     NSInteger abTestDuration = self.sfItem.odbSettings.abImageFadeAnimation ? self.sfItem.odbSettings.abImageFadeDuration : -1;
-    [[SFImageLoader sharedInstance] loadImageUrl:rec.image.url into:cell.recImageView withFadeDuration:abTestDuration];
+    [[SFImageLoader sharedInstance] loadRecImage:rec.image into:cell.recImageView withFadeDuration:abTestDuration];
     
     return cell;
 }

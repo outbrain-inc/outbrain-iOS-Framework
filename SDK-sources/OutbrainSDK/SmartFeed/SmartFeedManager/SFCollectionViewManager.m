@@ -380,7 +380,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     }
     
     NSInteger abTestDuration = sfItem.odbSettings.abImageFadeAnimation ? sfItem.odbSettings.abImageFadeDuration : -1;
-    [[SFImageLoader sharedInstance] loadImageUrl:rec.image.url into:singleCell.recImageView withFadeDuration:abTestDuration];
+    [[SFImageLoader sharedInstance] loadRecImage:rec.image into:singleCell.recImageView withFadeDuration:abTestDuration];
     
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:eventListenerTarget  action:@selector(recommendationClicked:)];

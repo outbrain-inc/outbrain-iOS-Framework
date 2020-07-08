@@ -41,6 +41,22 @@ NSInteger const GIF_WEBVIEW_TAG = 223344;
     return sharedInstance;
 }
 
+//
+// @param abTestDuration - (-1) if fade = false in abTest, (milliseconds value) if abTest apply
+//
+-(void) loadRecImage:(OBImageInfo *)imageInfo into:(UIImageView *)imageView withFadeDuration:(NSInteger)abTestDuration {
+    UIView *wkWebView = [imageView viewWithTag:GIF_WEBVIEW_TAG];
+    if (wkWebView) {
+        [wkWebView removeFromSuperview];
+    }
+    
+    if (imageInfo.isGif) {
+        [self loadGifImageUrl:imageInfo.url into:imageView];
+    }
+    else {
+        [self loadImageUrl:imageInfo.url into:imageView withFadeDuration:abTestDuration];
+    }
+}
 
 -(void) loadImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView {
     [self loadImageUrl:imageUrl into:imageView withFadeDuration:1];
