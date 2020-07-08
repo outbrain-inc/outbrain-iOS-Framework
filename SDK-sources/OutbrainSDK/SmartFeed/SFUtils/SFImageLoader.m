@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSOperationQueue *imageQueue;
 @property (nonatomic, strong) UIImage *placeholderImage;
 @property (nonatomic, strong) UIImage *adChoicesDefaultImage;
+@property (nonatomic, strong) NSString *gifImageTemplateHTML;
 @end
 
 @implementation SFImageLoader
@@ -37,6 +38,11 @@ NSInteger const GIF_WEBVIEW_TAG = 223344;
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         sharedInstance.placeholderImage = [UIImage imageNamed:@"placeholder-image" inBundle:bundle compatibleWithTraitCollection:nil];
         sharedInstance.adChoicesDefaultImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
+        
+        // Gif HTML
+        NSString *path = [bundle pathForResource:@"gif-image-template" ofType:@"html"];
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        sharedInstance.gifImageTemplateHTML = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     });
     return sharedInstance;
 }
@@ -124,12 +130,7 @@ NSInteger const GIF_WEBVIEW_TAG = 223344;
 
 -(void) loadGifImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView {
     WKWebView *webView = [[WKWebView alloc] initWithFrame:imageView.frame];
-    
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *path = [bundle pathForResource:@"gif-image-template" ofType:@"html"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    NSString *htmlString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"IMAGE" withString:imageUrl.absoluteString];
+    NSString *htmlString = [self.gifImageTemplateHTML stringByReplacingOccurrencesOfString:@"IMAGE" withString:imageUrl.absoluteString];
     
     webView.tag = GIF_WEBVIEW_TAG;
     [webView loadHTMLString:htmlString baseURL:nil];
