@@ -7,6 +7,8 @@
 //
 
 #import "SFImageLoader.h"
+#import "SFUtils.h"
+@import WebKit;
 
 @interface SFImageLoader()
 @property (nonatomic, strong) NSCache *imageCache;
@@ -19,6 +21,7 @@
 @implementation SFImageLoader
 
 NSInteger const AB_TEST_NO_FADE = -1;
+NSInteger const GIF_WEBVIEW_TAG = 223344;
 
 
 + (instancetype)sharedInstance
@@ -101,6 +104,14 @@ NSInteger const AB_TEST_NO_FADE = -1;
         }];
         [self.imageCache setObject:data forKey:imageUrl.absoluteString];
     }];
+}
+
+-(void) loadGifImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView {
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:imageView.frame];
+    webView.tag = GIF_WEBVIEW_TAG;
+    [imageView addSubview:webView];
+    [SFUtils addConstraintsToFillParent:webView];
+    [webView loadRequest:[NSURLRequest requestWithURL:imageUrl]];
 }
 
 -(void) loadImage:(UIImage *)image withFadeInDuration:(CGFloat)duration toImageView:(UIImageView *)imageView {

@@ -20,6 +20,8 @@
 //
 -(void) loadImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView withFadeDuration:(NSInteger)abTestDuration;
 
+-(void) loadGifImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView;
+    
 -(void) loadImage:(NSString *)imageUrlStr intoButton:(UIButton *)button;
 
 -(void) loadImageToCacheIfNeeded:(NSURL *)imageUrl;
