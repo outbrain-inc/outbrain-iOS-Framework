@@ -7,6 +7,8 @@
 //
 
 #import "SFImageLoader.h"
+#import "SFUtils.h"
+@import WebKit;
 
 @interface SFImageLoader()
 @property (nonatomic, strong) NSCache *imageCache;
@@ -14,11 +16,14 @@
 @property (nonatomic, strong) NSOperationQueue *imageQueue;
 @property (nonatomic, strong) UIImage *placeholderImage;
 @property (nonatomic, strong) UIImage *adChoicesDefaultImage;
+@property (nonatomic, strong) NSString *gifImageTemplateHTML;
 @end
 
 @implementation SFImageLoader
 
 NSInteger const AB_TEST_NO_FADE = -1;
+NSInteger const GIF_WEBVIEW_TAG = 223344;
+NSInteger const GIF_LOADER_INDICATOR_TAG = 223355;
 
 
 + (instancetype)sharedInstance
@@ -34,10 +39,29 @@ NSInteger const AB_TEST_NO_FADE = -1;
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         sharedInstance.placeholderImage = [UIImage imageNamed:@"placeholder-image" inBundle:bundle compatibleWithTraitCollection:nil];
         sharedInstance.adChoicesDefaultImage = [UIImage imageNamed:@"adchoices-icon" inBundle:bundle compatibleWithTraitCollection:nil];
+        
+        // Gif HTML
+        NSString *path = [bundle pathForResource:@"gif-image-template" ofType:@"html"];
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        sharedInstance.gifImageTemplateHTML = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     });
     return sharedInstance;
 }
 
+//
+// @param abTestDuration - (-1) if fade = false in abTest, (milliseconds value) if abTest apply
+//
+-(void) loadRecImage:(OBImageInfo *)imageInfo into:(UIImageView *)imageView withFadeDuration:(NSInteger)abTestDuration {
+    [self removeViewWithTag:GIF_WEBVIEW_TAG             fromSuperView:imageView];
+    [self removeViewWithTag:GIF_LOADER_INDICATOR_TAG    fromSuperView:imageView];
+    
+    if (imageInfo.isGif) {
+        [self loadGifImageUrl:imageInfo.url into:imageView];
+    }
+    else {
+        [self loadImageUrl:imageInfo.url into:imageView withFadeDuration:abTestDuration];
+    }
+}
 
 -(void) loadImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView {
     [self loadImageUrl:imageUrl into:imageView withFadeDuration:1];
@@ -103,6 +127,28 @@ NSInteger const AB_TEST_NO_FADE = -1;
     }];
 }
 
+-(void) loadGifImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView {
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:imageView.frame];
+    NSString *htmlString = [self.gifImageTemplateHTML stringByReplacingOccurrencesOfString:@"IMAGE" withString:imageUrl.absoluteString];
+    
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
+        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView.tag = GIF_LOADER_INDICATOR_TAG;
+    activityView.center = imageView.center;
+    activityView.hidesWhenStopped = YES;
+    [activityView startAnimating];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [activityView stopAnimating];
+    });
+    [imageView addSubview:activityView];
+    
+    webView.tag = GIF_WEBVIEW_TAG;
+    webView.backgroundColor = [UIColor clearColor];
+    [webView loadHTMLString:htmlString baseURL:nil];
+    [imageView addSubview:webView];
+    [SFUtils addConstraintsToFillParent:webView];
+}
+
 -(void) loadImage:(UIImage *)image withFadeInDuration:(CGFloat)duration toImageView:(UIImageView *)imageView {
     imageView.alpha = 0.f;
     imageView.image = image;
@@ -163,6 +209,13 @@ NSInteger const AB_TEST_NO_FADE = -1;
             return;
         [self.imageCache setObject:data forKey:imageUrl.absoluteString];
     }];
+}
+
+-(void) removeViewWithTag:(NSInteger)tag fromSuperView:(UIView *)superView {
+    UIView *subview = [superView viewWithTag:tag];
+    if (subview) {
+        [subview removeFromSuperview];
+    }
 }
 
 @end

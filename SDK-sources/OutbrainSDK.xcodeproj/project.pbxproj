@@ -136,6 +136,7 @@
 		E64F611421352824008BBDFB /* SFHorizontalFixedWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F611321352823008BBDFB /* SFHorizontalFixedWithTitleTableViewCell.xib */; };
 		E64F611621352E06008BBDFB /* SFSingleWithThumbnailWithTitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F611521352E05008BBDFB /* SFSingleWithThumbnailWithTitleCollectionCell.xib */; };
 		E64F611821357DCA008BBDFB /* SFSingleWithThumbnailWithTitleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F611721357DCA008BBDFB /* SFSingleWithThumbnailWithTitleTableCell.xib */; };
+		E652D02924B5D06B006A9F73 /* gif-image-template.html in Resources */ = {isa = PBXBuildFile; fileRef = E652D02824B5D06B006A9F73 /* gif-image-template.html */; };
 		E67A718C21931139008DB54F /* SFTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A718821931139008DB54F /* SFTableViewHeaderCell.xib */; };
 		E67A718D21931139008DB54F /* SFCollectionViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A718921931139008DB54F /* SFCollectionViewHeaderCell.xib */; };
 		E67A718E21931139008DB54F /* SFCollectionViewRTLHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A718A21931139008DB54F /* SFCollectionViewRTLHeaderCell.xib */; };
@@ -338,6 +339,7 @@
 		E64F611321352823008BBDFB /* SFHorizontalFixedWithTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedWithTitleTableViewCell.xib; sourceTree = "<group>"; };
 		E64F611521352E05008BBDFB /* SFSingleWithThumbnailWithTitleCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleWithThumbnailWithTitleCollectionCell.xib; sourceTree = "<group>"; };
 		E64F611721357DCA008BBDFB /* SFSingleWithThumbnailWithTitleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSingleWithThumbnailWithTitleTableCell.xib; sourceTree = "<group>"; };
+		E652D02824B5D06B006A9F73 /* gif-image-template.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "gif-image-template.html"; sourceTree = "<group>"; };
 		E67A718821931139008DB54F /* SFTableViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFTableViewHeaderCell.xib; sourceTree = "<group>"; };
 		E67A718921931139008DB54F /* SFCollectionViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFCollectionViewHeaderCell.xib; sourceTree = "<group>"; };
 		E67A718A21931139008DB54F /* SFCollectionViewRTLHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFCollectionViewRTLHeaderCell.xib; sourceTree = "<group>"; };
@@ -745,6 +747,7 @@
 				E63B7843212AB1860018C225 /* SFUtils.m */,
 				E6B930BC2173691900EC7A4A /* SFScriptMessageHandler.h */,
 				E6B930BD2173691900EC7A4A /* SFScriptMessageHandler.m */,
+				E652D02824B5D06B006A9F73 /* gif-image-template.html */,
 			);
 			path = SFUtils;
 			sourceTree = "<group>";
@@ -1093,6 +1096,7 @@
 				E6FEB7562105ACFC002A9020 /* SFSingleWithTitleCollectionViewCell.xib in Resources */,
 				E64F6044212C3CBC008BBDFB /* SFHorizontalCarouselNoTitleCollectionViewCell.xib in Resources */,
 				E64F611421352824008BBDFB /* SFHorizontalFixedWithTitleTableViewCell.xib in Resources */,
+				E652D02924B5D06B006A9F73 /* gif-image-template.html in Resources */,
 				E64AE0CC247D40240070A471 /* SFBrandedCarouselTableViewCell.xib in Resources */,
 				E61AE206216B560C001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib in Resources */,
 				E64AE0BE2476671A0070A471 /* SFSingleAppInstallCollectionCell.xib in Resources */,

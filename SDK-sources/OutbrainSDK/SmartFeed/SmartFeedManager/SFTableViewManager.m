@@ -325,7 +325,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
     
     NSInteger abTestDuration = sfItem.odbSettings.abImageFadeAnimation ? sfItem.odbSettings.abImageFadeDuration : -1;
-    [[SFImageLoader sharedInstance] loadImageUrl:rec.image.url into:singleCell.recImageView withFadeDuration:abTestDuration];
+    [[SFImageLoader sharedInstance] loadRecImage:rec.image into:singleCell.recImageView withFadeDuration:abTestDuration];
     
     if ((sfItem.itemType == SFTypeStripWithTitle) ||
         (sfItem.itemType == SFTypeStripWithThumbnailWithTitle) ||
