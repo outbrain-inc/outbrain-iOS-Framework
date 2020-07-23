@@ -291,10 +291,6 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         [SFUtils setFontSizeForTitleLabel:singleCell.recTitleLabel andSourceLabel:singleCell.recSourceLabel withAbTestSettings:sfItem.odbSettings];
     }
     
-    if (sfItem.itemType != SFTypeStripAppInstall) {
-        [SFUtils setFontSizeForTitleLabel:singleCell.recTitleLabel andSourceLabel:singleCell.recSourceLabel withAbTestSettings:sfItem.odbSettings];
-    }
-    
     [SFUtils removePaidLabelFromImageView:singleCell.recImageView];
     
     if ([rec isPaidLink]) {
