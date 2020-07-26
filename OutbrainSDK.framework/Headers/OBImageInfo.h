@@ -33,4 +33,8 @@
 /** @brief The image height in pixels. */
 @property (nonatomic, assign) CGFloat height;
 
+/** @brief True if the image format is gif. */
+@property (nonatomic, assign) BOOL isGif;
+
+
 @end
