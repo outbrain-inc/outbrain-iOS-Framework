@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## v3.9.2 - July 26, 2020
+
+- Feature: support for GIF images in Smartfeed.
+- Bug fix - Custom UI was overriden because of sdk optimization params.
+
+
 ## v3.9.2 - June 22, 2020
 
 - Feature: Branded Carousel card
