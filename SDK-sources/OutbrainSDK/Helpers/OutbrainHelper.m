@@ -11,6 +11,7 @@
 #import "OutbrainManager.h"
 #import "OBDisclosure.h"
 #import "OBResponse.h"
+#import "OBPlatformRequest.h"
 #import "OBViewabilityService.h"
 #import "OBRecommendation.h"
 #import "OBAppleAdIdUtil.h"
@@ -56,11 +57,15 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     NSMutableArray *odbQueryItems = [[NSMutableArray alloc] init];
     NSInteger randInteger = (arc4random() % 10000);
+    BOOL isPlatfromRequest = [request isKindOfClass:[OBPlatformRequest class]];
     
-    NSMutableString *requestUrlString = [NSMutableString stringWithString:request.url];
     NSString *base = [NSString stringWithFormat:request.isMultivac ? @"https://mv.outbrain.com/Multivac/api/get" : @"https://odb.outbrain.com/utils/get"];
-    NSURLComponents *components = [NSURLComponents componentsWithString: base];
     
+    if (isPlatfromRequest) {
+        base = @"https://odb.outbrain.com/utils/platforms";
+    }
+    
+    NSURLComponents *components = [NSURLComponents componentsWithString: base];
     
     //Key
     NSString *partnerKey = [OutbrainManager sharedInstance].partnerKey;
@@ -92,8 +97,19 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     // Request URL - percent encode the urlString
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
-    NSString *formattedUrl = [requestUrlString stringByAddingPercentEncodingWithAllowedCharacters:set];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"url" value: formattedUrl]];
+    NSMutableString *requestUrlString = nil;
+    if (isPlatfromRequest) {
+        OBPlatformRequest *req = (OBPlatformRequest *)request;
+        NSString *platformUrl = req.bundleUrl ? req.bundleUrl : req.portalUrl;
+        requestUrlString = [NSMutableString stringWithString:platformUrl];
+        NSString *formattedUrl = [requestUrlString stringByAddingPercentEncodingWithAllowedCharacters:set];
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:req.bundleUrl ? @"bundleUrl" : @"portalUrl" value: formattedUrl]];
+    }
+    else {
+        requestUrlString = [NSMutableString stringWithString:request.url];
+        NSString *formattedUrl = [requestUrlString stringByAddingPercentEncodingWithAllowedCharacters:set];
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"url" value: formattedUrl]];
+    }
     
     //Format
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"format" value: @"vjnc"]];
@@ -150,9 +166,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     // APV
     if (request.widgetIndex == 0) { // Reset APV on index = 0
-        self.apvCache[request.url] = [NSNumber numberWithBool:NO];
+        self.apvCache[requestUrlString] = [NSNumber numberWithBool:NO];
     }
-    if ([self.apvCache[request.url] boolValue]) {
+    if ([self.apvCache[requestUrlString] boolValue]) {
         // We need to append apv=true to our request
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"apv" value: @"true"]];
     }
@@ -189,6 +205,17 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"lastIdx" value: lastIdx]];
         if (request.fab) {
             [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"fab" value: request.fab]];
+        }
+    }
+    
+    // Platforms
+    if (isPlatfromRequest) {
+        OBPlatformRequest *req = (OBPlatformRequest *)request;
+        if (req.lang) {
+            [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"lang" value: req.lang]];
+        }
+        if (req.psub) {
+            [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"psub" value: req.psub]];
         }
     }
     
@@ -238,7 +265,12 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     OBRequest *request = [response performSelector:@selector(getPrivateRequest)];
     if (request == nil) return; // sanity
     
+    BOOL isPlatfromRequest = [request isKindOfClass:[OBPlatformRequest class]];
     NSString *requestUrl = request.url;
+    if (isPlatfromRequest) {
+        OBPlatformRequest *req = (OBPlatformRequest *)request;
+        requestUrl = req.bundleUrl ? req.bundleUrl : req.portalUrl;
+    }
     
     // If apv = true we don't want to set anything;
     if (self.apvCache[requestUrl] && ([self.apvCache[requestUrl] boolValue] == YES)) {
