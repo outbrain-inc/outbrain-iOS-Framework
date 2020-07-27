@@ -97,16 +97,13 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     // Request URL - percent encode the urlString
     NSCharacterSet *set = [NSCharacterSet URLQueryAllowedCharacterSet];
-    NSMutableString *requestUrlString = nil;
+    NSString *requestUrlString = [OBUtils getRequestUrl:request];
     if (isPlatfromRequest) {
         OBPlatformRequest *req = (OBPlatformRequest *)request;
-        NSString *platformUrl = req.bundleUrl ? req.bundleUrl : req.portalUrl;
-        requestUrlString = [NSMutableString stringWithString:platformUrl];
         NSString *formattedUrl = [requestUrlString stringByAddingPercentEncodingWithAllowedCharacters:set];
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:req.bundleUrl ? @"bundleUrl" : @"portalUrl" value: formattedUrl]];
     }
     else {
-        requestUrlString = [NSMutableString stringWithString:request.url];
         NSString *formattedUrl = [requestUrlString stringByAddingPercentEncodingWithAllowedCharacters:set];
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"url" value: formattedUrl]];
     }
@@ -264,13 +261,8 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     OBRequest *request = [response performSelector:@selector(getPrivateRequest)];
     if (request == nil) return; // sanity
-    
-    BOOL isPlatfromRequest = [request isKindOfClass:[OBPlatformRequest class]];
-    NSString *requestUrl = request.url;
-    if (isPlatfromRequest) {
-        OBPlatformRequest *req = (OBPlatformRequest *)request;
-        requestUrl = req.bundleUrl ? req.bundleUrl : req.portalUrl;
-    }
+
+    NSString *requestUrl = [OBUtils getRequestUrl:request];
     
     // If apv = true we don't want to set anything;
     if (self.apvCache[requestUrl] && ([self.apvCache[requestUrl] boolValue] == YES)) {

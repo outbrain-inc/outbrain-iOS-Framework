@@ -6,9 +6,12 @@
 //  Copyright © 2017 Outbrain. All rights reserved.
 //
 
-#import "OBUtils.h"
 #import <sys/utsname.h>
 #import <UIKit/UIKit.h>
+
+#import "OBUtils.h"
+#import "OBPlatformRequest.h"
+
 
 @implementation OBUtils
 
@@ -180,5 +183,18 @@
     
     return result ?: @"";
 }
+
++(NSString *) getRequestUrl:(OBRequest *)request {
+    BOOL isPlatfromRequest = [request isKindOfClass:[OBPlatformRequest class]];
+    if (isPlatfromRequest) {
+        OBPlatformRequest *req = (OBPlatformRequest *)request;
+        return req.bundleUrl ? req.bundleUrl : req.portalUrl;
+    }
+    else {
+        return request.url;
+    }
+}
+
+
 
 @end

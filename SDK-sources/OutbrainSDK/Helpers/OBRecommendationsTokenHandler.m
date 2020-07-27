@@ -8,7 +8,7 @@
 
 #import "OBRecommendationsTokenHandler.h"
 #import "OBRequest.h"
-#import "OBPlatformRequest.h"
+#import "OBUtils.h"
 #import "OBRecommendationResponse.h"
 
 
@@ -60,24 +60,13 @@
         return nil;
     }
     
-    NSString *requestUrl = [self getRequestUrl:request];
+    NSString *requestUrl = [OBUtils getRequestUrl:request];
     return self.tokensDictionary[requestUrl];
 }
 
 - (void)setTokenForRequest:(OBRequest *)request response:(OBRecommendationResponse *)response {
-    NSString *requestUrl = [self getRequestUrl:request];
+    NSString *requestUrl = [OBUtils getRequestUrl:request];
     self.tokensDictionary[requestUrl] = response.responseRequest.token;
-}
-
--(NSString *) getRequestUrl:(OBRequest *)request {
-    BOOL isPlatfromRequest = [request isKindOfClass:[OBPlatformRequest class]];
-    if (isPlatfromRequest) {
-        OBPlatformRequest *req = (OBPlatformRequest *)request;
-        return req.bundleUrl ? req.bundleUrl : req.portalUrl;
-    }
-    else {
-        return request.url;
-    }
 }
 
 @end

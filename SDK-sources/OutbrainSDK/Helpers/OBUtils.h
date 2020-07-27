@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OBRequest.h"
 
 @interface OBUtils : NSObject
 
 +(NSString *) deviceModel;
 
 +(NSString *) decodeHTMLEnocdedString:(NSString *)htmlEncodedString;
+
++(NSString *) getRequestUrl:(OBRequest *)request;
 
 @end
