@@ -8,6 +8,7 @@
 
 #import "OutbrainManager.h"
 #import "Outbrain.h"
+#import "OBPlatformRequest.h"
 #import "OBRecommendationRequestOperation.h"
 #import "OBMultivacRequestOperation.h"
 #import "OBRecommendationResponse.h"
@@ -37,11 +38,8 @@
 - (void) fetchRecommendationsWithRequest:(OBRequest *)request andCallback:(OBResponseCompletionHandler)handler {
     
     NSAssert(self.partnerKey != nil, @"Please +initializeOutbrainWithPartnerKey: before trying to use outbrain");
-    
-    // This is where the magic happens
-    // Let's first validate any parameters that we can.
-    // AKA sanity checks
-    if (![self _isValid:request.url] || ![self _isValid:request.widgetId]) {
+
+    if ([self isOBRequestMissingParam:request]) {
         OBRecommendationResponse * response = [[OBRecommendationResponse alloc] init];
         response.error = [NSError errorWithDomain:OBNativeErrorDomain code:OBInvalidParametersErrorCode userInfo:@{@"msg" : @"Missing parameter in OBRequest"}];
         if(handler)
@@ -55,6 +53,21 @@
     OBRecommendationRequestOperation *recommendationOperation = [[OBRecommendationRequestOperation alloc] initWithRequest:request];
     recommendationOperation.handler = handler;
     [self.odbFetchQueue addOperation:recommendationOperation];
+}
+
+- (BOOL) isOBRequestMissingParam:(OBRequest *)request {
+    BOOL isPlatfromRequest = [request isKindOfClass:[OBPlatformRequest class]];
+    
+    if (isPlatfromRequest) {
+        OBPlatformRequest *platformRequest = (OBPlatformRequest *)request;
+        BOOL missingParam = (![self _isValid:platformRequest.bundleUrl] && ![self _isValid:platformRequest.portalUrl]);
+        return missingParam || ![self _isValid:request.widgetId] || ![self _isValid:platformRequest.lang];
+    }
+    else if (![self _isValid:request.url] || ![self _isValid:request.widgetId]) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void) fetchMultivacWithRequest:(OBRequest *)request andDelegate:(id<MultivacResponseDelegate>)multivacDelegate {
