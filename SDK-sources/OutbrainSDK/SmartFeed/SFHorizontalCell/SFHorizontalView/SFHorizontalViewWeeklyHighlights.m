@@ -10,12 +10,16 @@
 #import "SFWeeklyHighlightsItemCell.h"
 #import "SFImageLoader.h"
 #import "SFUtils.h"
+#import "UIView+Visible.h"
 
 @interface SFHorizontalViewWeeklyHighlights()
 
 @property (nonatomic, strong) NSTimer *autoScrollTimer;
+@property (nonatomic, strong) NSTimer *viewabilityTimer;
 @property (nonatomic, assign) CGFloat scrollOffsetX;
-@property (nonatomic, assign) BOOL isAutoScrollStarted;
+@property (nonatomic, assign) BOOL isForegroundBackgroundObserversAdded;
+@property (nonatomic, assign) BOOL isAutoScrollTimerRunning;
+@property (nonatomic, assign) BOOL isViewabilityTimerRunning;
 @property (nonatomic, strong) NSArray *sortedRecsByDate;
 
 @end
@@ -26,9 +30,65 @@
     [super setupView];
     [self storeSortedRecsByDate];
     [self registerWeeklyHighlightsNibs];
-    if (!self.isAutoScrollStarted) {
-        [self startAutoScrollTimer];
+    [self startAutoScrollTimerIfNeeded];
+    [self addForegroundBackgroundObserversIfNeeded];
+}
+
+- (void)startViewabilityTimerIfNeeded {
+    if (self.isViewabilityTimerRunning) {
+        return;
     }
+    self.viewabilityTimer = [NSTimer
+                            timerWithTimeInterval:0.3
+                            target:self
+                            selector:@selector(checkViewability)
+                            userInfo:nil
+                            repeats:YES];
+    
+    [NSRunLoop.currentRunLoop addTimer:self.viewabilityTimer forMode: NSRunLoopCommonModes];
+    self.isViewabilityTimerRunning = true;
+}
+
+- (void)stopViewabilityTimerIfNeeded {
+    if (self.isViewabilityTimerRunning) {
+        [self.viewabilityTimer invalidate];
+        self.isViewabilityTimerRunning = false;
+    }
+}
+
+- (void)checkViewability {
+    if (self.percentVisible > 0) {
+        [self startAutoScrollTimerIfNeeded];
+        [self stopViewabilityTimerIfNeeded];
+    }
+}
+
+- (void)addForegroundBackgroundObserversIfNeeded {
+    if (!self.isForegroundBackgroundObserversAdded) {
+        // app swiched to foreground
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(appSwitchedToForeground:)
+         name:UIApplicationDidBecomeActiveNotification
+         object:nil];
+        // app switched to background
+        [[NSNotificationCenter defaultCenter]
+        addObserver:self
+        selector:@selector(appSwitchedToBackground:)
+        name:UIApplicationWillResignActiveNotification
+        object:nil];
+        
+        self.isForegroundBackgroundObserversAdded = true;
+    }
+}
+
+- (void)appSwitchedToBackground:(NSNotification *)note {
+    [self stopAutoScrollTimerIfNeeded];
+    [self stopViewabilityTimerIfNeeded];
+}
+
+- (void)appSwitchedToForeground:(NSNotification *)note {
+    [self startViewabilityTimerIfNeeded];
 }
 
 - (void)storeSortedRecsByDate {
@@ -49,7 +109,10 @@
     [self.collectionView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFWeeklyHighlightsItemTwoCell"];
 }
 
-- (void)startAutoScrollTimer {
+- (void)startAutoScrollTimerIfNeeded {
+    if (self.isAutoScrollTimerRunning) {
+        return;
+    }
     float timeInterval = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 0.02 : 0.045;
     self.autoScrollTimer = [NSTimer
                             timerWithTimeInterval:timeInterval
@@ -59,10 +122,21 @@
                             repeats:YES];
     
     [NSRunLoop.currentRunLoop addTimer:self.autoScrollTimer forMode: NSRunLoopCommonModes];
-    self.isAutoScrollStarted = true;
+    self.isAutoScrollTimerRunning = true;
+}
+
+- (void)stopAutoScrollTimerIfNeeded {
+    if (self.isAutoScrollTimerRunning) {
+        [self.autoScrollTimer invalidate];
+        self.isAutoScrollTimerRunning = false;
+    }
 }
 
 - (void)updateCollectionViewOffset {
+    if (self.percentVisible == 0) {
+        [self stopAutoScrollTimerIfNeeded];
+        [self startViewabilityTimerIfNeeded];
+    }
     float scrollOffsetXBy = 0.7;
     CGPoint newContentOffset = CGPointMake(self.collectionView.contentOffset.x + scrollOffsetXBy, 0);
     self.collectionView.contentOffset = newContentOffset;
@@ -162,11 +236,11 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self.autoScrollTimer invalidate];
+    [self stopAutoScrollTimerIfNeeded];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [self startAutoScrollTimer];
+    [self startAutoScrollTimerIfNeeded];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
