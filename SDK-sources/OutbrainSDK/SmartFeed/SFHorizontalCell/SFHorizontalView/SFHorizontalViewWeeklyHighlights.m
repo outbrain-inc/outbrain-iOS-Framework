@@ -34,34 +34,52 @@
     [self addForegroundBackgroundObserversIfNeeded];
 }
 
-- (void)startViewabilityTimerIfNeeded {
-    if (self.isViewabilityTimerRunning) {
+- (void)storeSortedRecsByDate {
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"publishDate" ascending:NO];
+    self.sortedRecsByDate = [self.sfItem.outbrainRecs sortedArrayUsingDescriptors:@[sortDescriptor]];
+}
+
+#pragma mark - Auto scroll methods
+
+- (void)startAutoScrollTimerIfNeeded {
+    if (self.isAutoScrollTimerRunning) { // timer already running
         return;
     }
-    self.viewabilityTimer = [NSTimer
-                            timerWithTimeInterval:0.3
+    float timeInterval = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 0.02 : 0.045;
+    self.autoScrollTimer = [NSTimer
+                            timerWithTimeInterval:timeInterval
                             target:self
-                            selector:@selector(checkViewability)
+                            selector:@selector(updateCollectionViewOffset)
                             userInfo:nil
                             repeats:YES];
     
-    [NSRunLoop.currentRunLoop addTimer:self.viewabilityTimer forMode: NSRunLoopCommonModes];
-    self.isViewabilityTimerRunning = true;
+    [NSRunLoop.currentRunLoop addTimer:self.autoScrollTimer forMode: NSRunLoopCommonModes];
+    self.isAutoScrollTimerRunning = true;
 }
 
-- (void)stopViewabilityTimerIfNeeded {
-    if (self.isViewabilityTimerRunning) {
-        [self.viewabilityTimer invalidate];
-        self.isViewabilityTimerRunning = false;
+- (void)stopAutoScrollTimerIfNeeded {
+    if (self.isAutoScrollTimerRunning) { // timer already stoped
+        [self.autoScrollTimer invalidate];
+        self.isAutoScrollTimerRunning = false;
     }
 }
 
-- (void)checkViewability {
-    if (self.percentVisible > 0) {
-        [self startAutoScrollTimerIfNeeded];
-        [self stopViewabilityTimerIfNeeded];
+- (void)updateCollectionViewOffset {
+    // stop auto scrolling if view is out of the viewport
+    // and start observing for viewability changes
+    if (self.percentVisible == 0) {
+        [self stopAutoScrollTimerIfNeeded];
+        [self startViewabilityTimerIfNeeded];
     }
+    // scroll to the new position
+    float scrollOffsetXBy = 0.7;
+    CGPoint newContentOffset = CGPointMake(self.collectionView.contentOffset.x + scrollOffsetXBy, 0);
+    self.collectionView.contentOffset = newContentOffset;
 }
+
+
+#pragma mark - Lifecycle methods
 
 - (void)addForegroundBackgroundObserversIfNeeded {
     if (!self.isForegroundBackgroundObserversAdded) {
@@ -91,56 +109,38 @@
     [self startViewabilityTimerIfNeeded];
 }
 
-- (void)storeSortedRecsByDate {
-    NSSortDescriptor *sortDescriptor;
-    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"publishDate" ascending:NO];
-    self.sortedRecsByDate = [self.sfItem.outbrainRecs sortedArrayUsingDescriptors:@[sortDescriptor]];
-}
+#pragma mark - Viewability methods
 
-
-- (void)registerWeeklyHighlightsNibs {
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UINib *horizontalItemCellNib = nil;
-    
-    horizontalItemCellNib = [UINib nibWithNibName:@"SFWeeklyHighlightsItemOneCell" bundle:bundle];
-    [self.collectionView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFWeeklyHighlightsItemOneCell"];
-    
-    horizontalItemCellNib = [UINib nibWithNibName:@"SFWeeklyHighlightsItemTwoCell" bundle:bundle];
-    [self.collectionView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFWeeklyHighlightsItemTwoCell"];
-}
-
-- (void)startAutoScrollTimerIfNeeded {
-    if (self.isAutoScrollTimerRunning) {
+- (void)startViewabilityTimerIfNeeded {
+    if (self.isViewabilityTimerRunning) { // timer already running
         return;
     }
-    float timeInterval = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 0.02 : 0.045;
-    self.autoScrollTimer = [NSTimer
-                            timerWithTimeInterval:timeInterval
+    self.viewabilityTimer = [NSTimer
+                            timerWithTimeInterval:0.3
                             target:self
-                            selector:@selector(updateCollectionViewOffset)
+                            selector:@selector(checkViewability)
                             userInfo:nil
                             repeats:YES];
     
-    [NSRunLoop.currentRunLoop addTimer:self.autoScrollTimer forMode: NSRunLoopCommonModes];
-    self.isAutoScrollTimerRunning = true;
+    [NSRunLoop.currentRunLoop addTimer:self.viewabilityTimer forMode: NSRunLoopCommonModes];
+    self.isViewabilityTimerRunning = true;
 }
 
-- (void)stopAutoScrollTimerIfNeeded {
-    if (self.isAutoScrollTimerRunning) {
-        [self.autoScrollTimer invalidate];
-        self.isAutoScrollTimerRunning = false;
+- (void)stopViewabilityTimerIfNeeded {
+    if (self.isViewabilityTimerRunning) { // timer already stoped
+        [self.viewabilityTimer invalidate];
+        self.isViewabilityTimerRunning = false;
     }
 }
 
-- (void)updateCollectionViewOffset {
-    if (self.percentVisible == 0) {
-        [self stopAutoScrollTimerIfNeeded];
-        [self startViewabilityTimerIfNeeded];
+- (void)checkViewability {
+    if (self.percentVisible > 0) { // check if the view is entering the viewport
+        [self startAutoScrollTimerIfNeeded];
+        [self stopViewabilityTimerIfNeeded];
     }
-    float scrollOffsetXBy = 0.7;
-    CGPoint newContentOffset = CGPointMake(self.collectionView.contentOffset.x + scrollOffsetXBy, 0);
-    self.collectionView.contentOffset = newContentOffset;
 }
+
+#pragma mark - Collection View methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return (self.sortedRecsByDate.count / 3) * 2;
@@ -186,6 +186,42 @@
     return weeklyHighlightsCell;
 }
 
+-(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // override method to avoid clicks on cells
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self stopAutoScrollTimerIfNeeded];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self startAutoScrollTimerIfNeeded];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    long screenWidth = UIScreen.mainScreen.bounds.size.width;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) { // ipad
+        return CGSizeMake(screenWidth * 0.5, self.frame.size.height);
+    } else {
+        return CGSizeMake(screenWidth * 0.7, self.frame.size.height);
+    }
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 15.0;
+}
+
+- (void)registerWeeklyHighlightsNibs {
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    UINib *horizontalItemCellNib = nil;
+    
+    horizontalItemCellNib = [UINib nibWithNibName:@"SFWeeklyHighlightsItemOneCell" bundle:bundle];
+    [self.collectionView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFWeeklyHighlightsItemOneCell"];
+    
+    horizontalItemCellNib = [UINib nibWithNibName:@"SFWeeklyHighlightsItemTwoCell" bundle:bundle];
+    [self.collectionView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFWeeklyHighlightsItemTwoCell"];
+}
+
 - (void) configureWeeklyHighlightsCell: (SFWeeklyHighlightsItemCell *)cell withFirstPositionInSortedRecsArray:(long)firstPositionOfRec {
     
     NSArray<OBRecommendation *> *recs = @[
@@ -229,31 +265,6 @@
 - (void) handleClickOnRecommendation: (UITapGestureRecognizer *)tapGesture {
     long recIndex = tapGesture.view.tag;
     self.onRecommendationClick(self.sortedRecsByDate[recIndex]);
-}
-
--(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // override method to avoid clicks on cells
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self stopAutoScrollTimerIfNeeded];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [self startAutoScrollTimerIfNeeded];
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    long screenWidth = UIScreen.mainScreen.bounds.size.width;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        return CGSizeMake(screenWidth * 0.5, self.frame.size.height);
-    } else {
-        return CGSizeMake(screenWidth * 0.7, self.frame.size.height);
-    }
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 15.0;
 }
 
 - (void)roundedCorners:(float) cornerRadius forView:(UIView *)view onlyBottom:(bool) onlyBottom  {
