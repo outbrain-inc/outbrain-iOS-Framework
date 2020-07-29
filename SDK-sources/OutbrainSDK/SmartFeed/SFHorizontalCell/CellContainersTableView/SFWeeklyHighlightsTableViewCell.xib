@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SFWeeklyHighlightsTableViewCell" rowHeight="345" id="zMM-fg-aeM" customClass="SFHorizontalTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="441" height="345"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zMM-fg-aeM" id="IPW-7e-9wK">
+                <rect key="frame" x="0.0" y="0.0" width="441" height="345"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-Ub-Sgo">
+                        <rect key="frame" x="0.0" y="45" width="441" height="2"/>
+                        <color key="backgroundColor" red="0.1450980392" green="0.1529411765" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="RdE-H9-VC9"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbd-fo-b3d" customClass="SFHorizontalViewWeeklyHighlights">
+                        <rect key="frame" x="0.0" y="47" width="441" height="298"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST WEEK HIGHLIGHTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ced-iI-vjB">
+                        <rect key="frame" x="14" y="15" width="168" height="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.93725490196078431" green="0.50980392156862742" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fwD-Ub-Sgo" firstAttribute="leading" secondItem="IPW-7e-9wK" secondAttribute="leading" id="8l0-hd-wXg"/>
+                    <constraint firstAttribute="trailing" secondItem="fwD-Ub-Sgo" secondAttribute="trailing" id="G3r-lP-s7E"/>
+                    <constraint firstItem="ced-iI-vjB" firstAttribute="top" secondItem="IPW-7e-9wK" secondAttribute="top" constant="15" id="O8e-UD-7g5"/>
+                    <constraint firstItem="Lbd-fo-b3d" firstAttribute="top" secondItem="fwD-Ub-Sgo" secondAttribute="bottom" id="QbQ-xP-13y"/>
+                    <constraint firstAttribute="bottom" secondItem="Lbd-fo-b3d" secondAttribute="bottom" id="aWu-Aj-SfE"/>
+                    <constraint firstItem="Lbd-fo-b3d" firstAttribute="leading" secondItem="IPW-7e-9wK" secondAttribute="leading" id="bhv-RC-sf9"/>
+                    <constraint firstItem="Lbd-fo-b3d" firstAttribute="top" secondItem="ced-iI-vjB" secondAttribute="bottom" constant="15" id="fLD-pH-yWL"/>
+                    <constraint firstAttribute="trailing" secondItem="Lbd-fo-b3d" secondAttribute="trailing" id="t6k-z5-O4X"/>
+                    <constraint firstItem="ced-iI-vjB" firstAttribute="leading" secondItem="IPW-7e-9wK" secondAttribute="leading" constant="14" id="tBG-V6-oGW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellTitleLeadingConstraint" destination="tBG-V6-oGW" id="k8l-cq-Ind"/>
+                <outlet property="horizontalView" destination="Lbd-fo-b3d" id="3hd-aZ-Rqe"/>
+                <outlet property="horizontalViewLeadingConstraint" destination="bhv-RC-sf9" id="mK4-Rr-z5Z"/>
+                <outlet property="horizontalViewTrailingConstraint" destination="t6k-z5-O4X" id="6vv-og-YfW"/>
+                <outlet property="titleLabel" destination="ced-iI-vjB" id="REL-Mk-2V9"/>
+            </connections>
+            <point key="canvasLocation" x="-147.10144927536234" y="-45.200892857142854"/>
+        </tableViewCell>
+    </objects>
+</document>

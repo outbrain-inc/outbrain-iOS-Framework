@@ -312,6 +312,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         case SFTypeCarouselWithTitle:
         case SFTypeCarouselNoTitle:
         case SFTypeBrandedCarouselWithTitle:
+        case SFTypeWeeklyHighlightsWithTitle:
             [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         case SFTypeGridTwoInRowNoTitle:
@@ -363,6 +364,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     else if ([recMode isEqualToString:@"odb_dynamic_ad-carousel"]) {
         return [response.settings.brandedCarouselSettings.carouselType isEqualToString:@"AppInstall"] ? SFTypeStripAppInstall : SFTypeBrandedCarouselWithTitle;
+    }
+    else if ([recMode isEqualToString:@"odb_timeline"]) {
+        return SFTypeWeeklyHighlightsWithTitle;
     }
     
     NSLog(@"recMode value is not currently covered in the SDK - (%@)", recMode);
@@ -731,7 +735,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if (sfItem.widgetTitle) {
             cellTitleLabel.text = sfItem.widgetTitle;
         }
-        else {
+        else if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle){
             // fallback
             cellTitleLabel.text = @"Around the web";
         }
@@ -750,7 +754,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             horizontalItemCellNib = [UINib nibWithNibName:@"SFBrandedCardItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFBrandedCardItemCell"];
         }
-        else { // SFHorizontalFixed
+        if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) { // SFHorizontalFixed
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalFixedItemCell"];
         }
@@ -789,7 +793,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [horizontalView setupView];
         [horizontalView.collectionView reloadData];
         
-        if (!sfItem.isCustomUI && cellTitleLabel) {
+        if (!sfItem.isCustomUI && cellTitleLabel && sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
             cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
         }
         
