@@ -46,7 +46,7 @@
     if (self.isAutoScrollTimerRunning) { // timer already running
         return;
     }
-    float timeInterval = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 0.02 : 0.045;
+    CGFloat timeInterval = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 0.02 : 0.045;
     self.autoScrollTimer = [NSTimer
                             timerWithTimeInterval:timeInterval
                             target:self
@@ -55,13 +55,13 @@
                             repeats:YES];
     
     [NSRunLoop.currentRunLoop addTimer:self.autoScrollTimer forMode: NSRunLoopCommonModes];
-    self.isAutoScrollTimerRunning = true;
+    self.isAutoScrollTimerRunning = YES;
 }
 
 - (void)stopAutoScrollTimerIfNeeded {
     if (self.isAutoScrollTimerRunning) { // timer already stoped
         [self.autoScrollTimer invalidate];
-        self.isAutoScrollTimerRunning = false;
+        self.isAutoScrollTimerRunning = NO;
     }
 }
 
