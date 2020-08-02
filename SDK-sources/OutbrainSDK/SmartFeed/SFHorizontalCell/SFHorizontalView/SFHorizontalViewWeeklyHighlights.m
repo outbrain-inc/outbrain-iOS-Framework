@@ -30,7 +30,7 @@
     [super setupView];
     [self storeSortedRecsByDate];
     [self registerWeeklyHighlightsNibs];
-    [self startAutoScrollTimerIfNeeded];
+    [self startViewabilityTrackTimerIfNeeded];
     [self addForegroundBackgroundObserversIfNeeded];
 }
 
@@ -46,6 +46,8 @@
     if (self.isAutoScrollTimerRunning) { // timer already running
         return;
     }
+    self.isAutoScrollTimerRunning = YES;
+    
     CGFloat timeInterval = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 0.02 : 0.045;
     self.autoScrollTimer = [NSTimer
                             timerWithTimeInterval:timeInterval
@@ -55,7 +57,6 @@
                             repeats:YES];
     
     [NSRunLoop.currentRunLoop addTimer:self.autoScrollTimer forMode: NSRunLoopCommonModes];
-    self.isAutoScrollTimerRunning = YES;
 }
 
 - (void)stopAutoScrollTimerIfNeeded {
@@ -66,12 +67,6 @@
 }
 
 - (void)updateCollectionViewOffset {
-    // stop auto scrolling if view is out of the viewport
-    // and start observing for viewability changes
-    if (self.percentVisible == 0) {
-        [self stopAutoScrollTimerIfNeeded];
-        [self startViewabilityTrackTimerIfNeeded];
-    }
     // scroll to the new position
     float scrollOffsetXBy = 0.7;
     CGPoint newContentOffset = CGPointMake(self.collectionView.contentOffset.x + scrollOffsetXBy, 0);
@@ -127,16 +122,17 @@
 }
 
 - (void)stopViewabilityTrackTimerIfNeeded {
-    if (self.isViewabilityTrackTimerRunning) { // timer already stoped
+    if (self.isViewabilityTrackTimerRunning) { // timer is running
         [self.viewabilityTimer invalidate];
         self.isViewabilityTrackTimerRunning = NO;
     }
 }
 
 - (void)checkViewability {
-    if (self.percentVisible > 0) { // check if the view is entering the viewport
+    if (self.percentVisible > 0) { // view is in the viewport
         [self startAutoScrollTimerIfNeeded];
-        [self stopViewabilityTrackTimerIfNeeded];
+    } else {
+        [self stopAutoScrollTimerIfNeeded];
     }
 }
 
@@ -191,10 +187,12 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self stopViewabilityTrackTimerIfNeeded];
     [self stopAutoScrollTimerIfNeeded];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self startViewabilityTrackTimerIfNeeded];
     [self startAutoScrollTimerIfNeeded];
 }
 
