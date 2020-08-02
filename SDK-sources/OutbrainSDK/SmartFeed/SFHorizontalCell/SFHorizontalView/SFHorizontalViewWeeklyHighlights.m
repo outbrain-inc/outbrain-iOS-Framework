@@ -19,7 +19,7 @@
 @property (nonatomic, assign) CGFloat scrollOffsetX;
 @property (nonatomic, assign) BOOL isForegroundBackgroundObserversAdded;
 @property (nonatomic, assign) BOOL isAutoScrollTimerRunning;
-@property (nonatomic, assign) BOOL isViewabilityTimerRunning;
+@property (nonatomic, assign) BOOL isViewabilityTrackTimerRunning;
 @property (nonatomic, strong) NSArray *sortedRecsByDate;
 
 @end
@@ -70,7 +70,7 @@
     // and start observing for viewability changes
     if (self.percentVisible == 0) {
         [self stopAutoScrollTimerIfNeeded];
-        [self startViewabilityTimerIfNeeded];
+        [self startViewabilityTrackTimerIfNeeded];
     }
     // scroll to the new position
     float scrollOffsetXBy = 0.7;
@@ -96,23 +96,23 @@
         name:UIApplicationWillResignActiveNotification
         object:nil];
         
-        self.isForegroundBackgroundObserversAdded = true;
+        self.isForegroundBackgroundObserversAdded = YES;
     }
 }
 
 - (void)appSwitchedToBackground:(NSNotification *)note {
     [self stopAutoScrollTimerIfNeeded];
-    [self stopViewabilityTimerIfNeeded];
+    [self stopViewabilityTrackTimerIfNeeded];
 }
 
 - (void)appSwitchedToForeground:(NSNotification *)note {
-    [self startViewabilityTimerIfNeeded];
+    [self startViewabilityTrackTimerIfNeeded];
 }
 
 #pragma mark - Viewability methods
 
-- (void)startViewabilityTimerIfNeeded {
-    if (self.isViewabilityTimerRunning) { // timer already running
+- (void)startViewabilityTrackTimerIfNeeded {
+    if (self.isViewabilityTrackTimerRunning) { // timer already running
         return;
     }
     self.viewabilityTimer = [NSTimer
@@ -123,20 +123,20 @@
                             repeats:YES];
     
     [NSRunLoop.currentRunLoop addTimer:self.viewabilityTimer forMode: NSRunLoopCommonModes];
-    self.isViewabilityTimerRunning = true;
+    self.isViewabilityTrackTimerRunning = YES;
 }
 
-- (void)stopViewabilityTimerIfNeeded {
-    if (self.isViewabilityTimerRunning) { // timer already stoped
+- (void)stopViewabilityTrackTimerIfNeeded {
+    if (self.isViewabilityTrackTimerRunning) { // timer already stoped
         [self.viewabilityTimer invalidate];
-        self.isViewabilityTimerRunning = false;
+        self.isViewabilityTrackTimerRunning = NO;
     }
 }
 
 - (void)checkViewability {
     if (self.percentVisible > 0) { // check if the view is entering the viewport
         [self startAutoScrollTimerIfNeeded];
-        [self stopViewabilityTimerIfNeeded];
+        [self stopViewabilityTrackTimerIfNeeded];
     }
 }
 
@@ -162,15 +162,15 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     // for continuously scroll
-    long cells = self.sortedRecsByDate.count / 3;
+    long numberOfCells = self.sortedRecsByDate.count / 3;
     long index = indexPath.item;
-    if (index > cells - 1) {
-        index -= cells;
+    if (index > numberOfCells - 1) {
+        index -= numberOfCells;
     }
     
     NSArray *cellTypeOnePositions = @[@0,@2,@4,@5];
     
-    NSString *reuseIdentifier = [cellTypeOnePositions containsObject:[NSNumber numberWithLong:index % cells]] ? @"SFWeeklyHighlightsItemOneCell" : @"SFWeeklyHighlightsItemTwoCell";
+    NSString *reuseIdentifier = [cellTypeOnePositions containsObject:[NSNumber numberWithLong:index % numberOfCells]] ? @"SFWeeklyHighlightsItemOneCell" : @"SFWeeklyHighlightsItemTwoCell";
     
     UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
@@ -180,7 +180,7 @@
     
     // configure cell
     SFWeeklyHighlightsItemCell *weeklyHighlightsCell = (SFWeeklyHighlightsItemCell *) cell;
-    long firstPositionOfRec = (index % cells) * 3;
+    long firstPositionOfRec = (index % numberOfCells) * 3;
     [self configureWeeklyHighlightsCell:weeklyHighlightsCell withFirstPositionInSortedRecsArray:firstPositionOfRec];
     
     return weeklyHighlightsCell;
@@ -236,7 +236,7 @@
     [dateFormatter setDateFormat:@"dd/MM EEE"];
     [cell.dateLabel setText:[dateFormatter stringFromDate:recs.firstObject.publishDate]];
     [cell.dateLabel setTextColor:[UIColor whiteColor]];
-    [self roundedCorners:4 forView:cell.dateView onlyBottom:true];
+    [self roundedCorners:4 forView:cell.dateView onlyBottom:YES];
     
     NSArray<SFWeeklyHighlightsSingleRecView *> *recViews = @[
         cell.recOneView,
@@ -253,7 +253,7 @@
         [[SFImageLoader sharedInstance] loadRecImage:rec.image into:recView.recImageView withFadeDuration:-1];
         
         // rounded corners for rec view
-        [self roundedCorners:4 forView:recView onlyBottom:false];
+        [self roundedCorners:4 forView:recView onlyBottom:NO];
         
         // click on rec view
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleClickOnRecommendation:)];
@@ -267,8 +267,8 @@
     self.onRecommendationClick(self.sortedRecsByDate[recIndex]);
 }
 
-- (void)roundedCorners:(float) cornerRadius forView:(UIView *)view onlyBottom:(bool) onlyBottom  {
-    int options = UIRectCornerBottomLeft | UIRectCornerBottomRight;
+- (void)roundedCorners:(CGFloat) cornerRadius forView:(UIView *)view onlyBottom:(BOOL) onlyBottom  {
+    NSInteger options = UIRectCornerBottomLeft | UIRectCornerBottomRight;
     if (!onlyBottom) {
         options = options | UIRectCornerTopLeft | UIRectCornerTopRight;
     }
