@@ -366,11 +366,43 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return [response.settings.brandedCarouselSettings.carouselType isEqualToString:@"AppInstall"] ? SFTypeStripAppInstall : SFTypeBrandedCarouselWithTitle;
     }
     else if ([recMode isEqualToString:@"odb_timeline"]) {
-        return SFTypeWeeklyHighlightsWithTitle;
+        return [self isWeeklyHighlightsItemValid:response] ? SFTypeWeeklyHighlightsWithTitle : SFTypeStripNoTitle;
     }
     
     NSLog(@"recMode value is not currently covered in the SDK - (%@)", recMode);
     return SFTypeStripWithTitle;
+}
+
+-(bool) isWeeklyHighlightsItemValid:(OBRecommendationResponse *)response {
+    if (response.recommendations.count % 3 != 0) {
+        NSLog(@"Weekly highlights recommendations size is not multiplier of 3")
+        return false;
+    }
+    
+    NSMutableDictionary *dateToCountOfRecs = [[NSMutableDictionary alloc] init];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM EEE"];
+    
+    NSArray<OBRecommendation*> *recs = response.recommendations;
+    
+    for (OBRecommendation *rec in recs) {
+        NSString *formatedDate = [dateFormatter stringFromDate:rec.publishDate];
+        if ([dateToCountOfRecs objectForKey:formatedDate]) {
+            NSInteger currentCount = [[dateToCountOfRecs objectForKey:formatedDate] integerValue];
+            [dateToCountOfRecs setValue:[NSNumber numberWithInteger:(currentCount + 1)] forKey:formatedDate];
+        } else {
+            [dateToCountOfRecs setValue:[NSNumber numberWithInt: 1] forKey:formatedDate];
+        }
+    }
+    
+    for (id count in [dateToCountOfRecs allValues]) {
+        if ([count integerValue] != 3) {
+            NSLog(@"Weekly highlights item - should be 3 recommendations for each date")
+            return false;
+        }
+    }
+    
+    return true;
 }
 
 -(NSArray *) createSingleItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
