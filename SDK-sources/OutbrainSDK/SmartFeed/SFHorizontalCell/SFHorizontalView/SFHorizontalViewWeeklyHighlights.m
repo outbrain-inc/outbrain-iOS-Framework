@@ -146,7 +146,7 @@
     // for continuously scroll
     // https://stackoverflow.com/questions/35938580/making-a-uicollectionview-continuously-scroll
     CGPoint offset = self.collectionView.contentOffset;
-    double width = self.collectionView.contentSize.width;
+    CGFloat width = self.collectionView.contentSize.width;
     if (offset.x < width/4) {
         offset.x += width/2;
         [self.collectionView setContentOffset:offset];
