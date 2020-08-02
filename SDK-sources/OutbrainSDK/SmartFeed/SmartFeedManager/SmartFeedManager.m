@@ -312,8 +312,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         case SFTypeCarouselWithTitle:
         case SFTypeCarouselNoTitle:
         case SFTypeBrandedCarouselWithTitle:
-        case SFTypeWeeklyHighlightsWithTitle:
             [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
+            break;
+        case SFTypeWeeklyHighlightsWithTitle:
+            if ([self isWeeklyHighlightsItemValid:response]) {
+                [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
+            }
             break;
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridTwoInRowWithTitle:
@@ -366,7 +370,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return [response.settings.brandedCarouselSettings.carouselType isEqualToString:@"AppInstall"] ? SFTypeStripAppInstall : SFTypeBrandedCarouselWithTitle;
     }
     else if ([recMode isEqualToString:@"odb_timeline"]) {
-        return [self isWeeklyHighlightsItemValid:response] ? SFTypeWeeklyHighlightsWithTitle : SFTypeStripNoTitle;
+        return SFTypeWeeklyHighlightsWithTitle;
     }
     
     NSLog(@"recMode value is not currently covered in the SDK - (%@)", recMode);
