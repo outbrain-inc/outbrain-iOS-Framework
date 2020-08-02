@@ -383,6 +383,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return NO;
     }
     
+    if (response.recommendations.count / 3 < 5) {
+        NSLog(@"Weekly highlights item supports minimum 5 date items");
+        return NO;
+    }
+    
     NSMutableDictionary *dateToCountOfRecs = [[NSMutableDictionary alloc] init];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd/MM EEE"];
