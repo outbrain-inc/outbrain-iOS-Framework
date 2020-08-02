@@ -377,10 +377,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     return SFTypeStripWithTitle;
 }
 
--(bool) isWeeklyHighlightsItemValid:(OBRecommendationResponse *)response {
+-(BOOL) isWeeklyHighlightsItemValid:(OBRecommendationResponse *)response {
     if (response.recommendations.count % 3 != 0) {
         NSLog(@"Weekly highlights recommendations size is not multiplier of 3");
-        return false;
+        return NO;
     }
     
     NSMutableDictionary *dateToCountOfRecs = [[NSMutableDictionary alloc] init];
@@ -402,11 +402,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     for (id count in [dateToCountOfRecs allValues]) {
         if ([count integerValue] != 3) {
             NSLog(@"Weekly highlights item - should be 3 recommendations for each date");
-            return false;
+            return NO;
         }
     }
     
-    return true;
+    return YES;
 }
 
 -(NSArray *) createSingleItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
