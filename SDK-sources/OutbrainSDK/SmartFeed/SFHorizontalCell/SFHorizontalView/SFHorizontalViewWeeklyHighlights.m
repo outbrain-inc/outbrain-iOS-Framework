@@ -221,6 +221,10 @@
 }
 
 - (void) configureWeeklyHighlightsCell: (SFWeeklyHighlightsItemCell *)cell withFirstPositionInSortedRecsArray:(long)firstPositionOfRec {
+    // make sure that the number of recommendations is a multiple of 3
+    if (firstPositionOfRec + 2 >= self.sortedRecsByDate.count) {
+        return;
+    }
     
     NSArray<OBRecommendation *> *recs = @[
         self.sortedRecsByDate[firstPositionOfRec],
