@@ -72,6 +72,8 @@
 
 @property (nonatomic, strong) SFDefaultDelegate *defaultDelegate;
 
+@property (nonatomic, assign) BOOL hasWeeklyHighlightsItem;
+
 @end
 
 @implementation SmartFeedManager
@@ -315,8 +317,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
         case SFTypeWeeklyHighlightsWithTitle:
-            if ([self isWeeklyHighlightsItemValid:response]) {
+            if (!self.hasWeeklyHighlightsItem && [self isWeeklyHighlightsItemValid:response]) {
                 [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
+                self.hasWeeklyHighlightsItem = YES;
             }
             break;
         case SFTypeGridTwoInRowNoTitle:
