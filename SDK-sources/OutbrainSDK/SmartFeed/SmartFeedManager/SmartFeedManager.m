@@ -773,12 +773,17 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     
     if (cellTitleLabel) {
+        // text
         if (sfItem.widgetTitle) {
             cellTitleLabel.text = sfItem.widgetTitle;
         }
-        else if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle){
+        else if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
             // fallback
             cellTitleLabel.text = @"Around the web";
+        }
+        // text color
+        if (sfItem.widgetTitleTextColor && sfItem.itemType == SFTypeWeeklyHighlightsWithTitle) {
+            cellTitleLabel.textColor = sfItem.widgetTitleTextColor;
         }
     }
     
