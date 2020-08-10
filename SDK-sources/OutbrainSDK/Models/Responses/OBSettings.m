@@ -54,6 +54,7 @@
         self.feedChunkSize = [[payload valueForKey:@"feedLoadChunkSize"] integerValue];
         self.recMode = [payload valueForKey:@"recMode"];
         self.widgetHeaderText = [payload valueForKey:@"nanoOrganicsHeader"];
+        self.widgetHeaderTextColor = [payload valueForKey:@"dynamic:HeaderColor"];
         
         // vidget URL
         NSString *vidgetUrlStr = [payload valueForKey:@"sdk_sf_vidget_url"];

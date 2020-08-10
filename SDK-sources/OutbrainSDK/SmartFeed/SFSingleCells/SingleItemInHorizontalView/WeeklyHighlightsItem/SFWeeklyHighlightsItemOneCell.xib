@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SFWeeklyHighlightsItemOneCell" id="Mhj-bn-R0e" customClass="SFWeeklyHighlightsItemCell">
+            <rect key="frame" x="0.0" y="0.0" width="435" height="711"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="igo-1S-R2W">
+                <rect key="frame" x="0.0" y="0.0" width="435" height="711"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCV-aU-ccr">
+                        <rect key="frame" x="0.0" y="0.0" width="435" height="28"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16/7 MON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lh-Hs-IYb">
+                                <rect key="frame" x="178" y="4" width="79.5" height="20.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Lh-Hs-IYb" firstAttribute="centerX" secondItem="KCV-aU-ccr" secondAttribute="centerX" id="TgO-eN-4RQ"/>
+                            <constraint firstItem="9Lh-Hs-IYb" firstAttribute="centerY" secondItem="KCV-aU-ccr" secondAttribute="centerY" id="wtT-lG-beY"/>
+                            <constraint firstAttribute="height" constant="28" id="ydo-J8-whV"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xL-fo-7hj" customClass="SFWeeklyHighlightsSingleRecView">
+                        <rect key="frame" x="0.0" y="43" width="435" height="435"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aXd-k5-ofd">
+                                <rect key="frame" x="0.0" y="0.0" width="435" height="435"/>
+                            </imageView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZv-ik-8ie" customClass="SFGradientView">
+                                <rect key="frame" x="0.0" y="0.0" width="435" height="435"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More photos released to mark Princess Beatrice's wedding" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Paf-3w-Rsz">
+                                        <rect key="frame" x="15" y="373" width="405" height="47"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Paf-3w-Rsz" firstAttribute="leading" secondItem="OZv-ik-8ie" secondAttribute="leading" constant="15" id="5hu-Kd-Ue7"/>
+                                    <constraint firstAttribute="bottom" secondItem="Paf-3w-Rsz" secondAttribute="bottom" constant="15" id="QSu-ki-AZX"/>
+                                    <constraint firstAttribute="trailing" secondItem="Paf-3w-Rsz" secondAttribute="trailing" constant="15" id="vnh-ty-d24"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aXd-k5-ofd" secondAttribute="bottom" id="6mD-OA-Uxc"/>
+                            <constraint firstItem="OZv-ik-8ie" firstAttribute="leading" secondItem="6xL-fo-7hj" secondAttribute="leading" id="DwE-2A-gvv"/>
+                            <constraint firstAttribute="width" secondItem="6xL-fo-7hj" secondAttribute="height" id="GHs-1I-dgS"/>
+                            <constraint firstAttribute="trailing" secondItem="OZv-ik-8ie" secondAttribute="trailing" id="HQt-EX-C1S"/>
+                            <constraint firstAttribute="trailing" secondItem="aXd-k5-ofd" secondAttribute="trailing" id="MIX-IO-SK7"/>
+                            <constraint firstItem="OZv-ik-8ie" firstAttribute="top" secondItem="6xL-fo-7hj" secondAttribute="top" id="VOe-WW-JRo"/>
+                            <constraint firstAttribute="bottom" secondItem="OZv-ik-8ie" secondAttribute="bottom" id="opI-xb-4hf"/>
+                            <constraint firstItem="aXd-k5-ofd" firstAttribute="top" secondItem="6xL-fo-7hj" secondAttribute="top" id="tFX-tB-ZJN"/>
+                            <constraint firstItem="aXd-k5-ofd" firstAttribute="leading" secondItem="6xL-fo-7hj" secondAttribute="leading" id="xXO-0I-m8a"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="recImageView" destination="aXd-k5-ofd" id="HXT-ok-2lk"/>
+                            <outlet property="recTitleLabel" destination="Paf-3w-Rsz" id="lgO-bi-NY8"/>
+                        </connections>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ntv-9o-Ck9" customClass="SFWeeklyHighlightsSingleRecView">
+                        <rect key="frame" x="0.0" y="493" width="204.5" height="204.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MTd-9q-jTx">
+                                <rect key="frame" x="0.0" y="0.0" width="204.5" height="204.5"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fyc-1E-xqX" customClass="SFGradientView">
+                                <rect key="frame" x="0.0" y="0.0" width="204.5" height="204.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More photos released to mark Princess Beatrice's wedding" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9y6-0L-H7d">
+                                        <rect key="frame" x="7" y="141.5" width="190.5" height="56"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9y6-0L-H7d" firstAttribute="leading" secondItem="Fyc-1E-xqX" secondAttribute="leading" constant="7" id="0UG-UK-ox8"/>
+                                    <constraint firstAttribute="trailing" secondItem="9y6-0L-H7d" secondAttribute="trailing" constant="7" id="SkH-Ev-24E"/>
+                                    <constraint firstAttribute="bottom" secondItem="9y6-0L-H7d" secondAttribute="bottom" constant="7" id="oCe-yn-po6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="MTd-9q-jTx" firstAttribute="leading" secondItem="Ntv-9o-Ck9" secondAttribute="leading" id="IbA-iI-JAb"/>
+                            <constraint firstAttribute="width" secondItem="Ntv-9o-Ck9" secondAttribute="height" multiplier="1:1" id="JoX-O2-6Hp"/>
+                            <constraint firstItem="Fyc-1E-xqX" firstAttribute="leading" secondItem="Ntv-9o-Ck9" secondAttribute="leading" id="QOy-8d-IJg"/>
+                            <constraint firstAttribute="trailing" secondItem="Fyc-1E-xqX" secondAttribute="trailing" id="UEj-Tg-wma"/>
+                            <constraint firstItem="MTd-9q-jTx" firstAttribute="top" secondItem="Ntv-9o-Ck9" secondAttribute="top" id="UgB-qS-fnX"/>
+                            <constraint firstAttribute="bottom" secondItem="Fyc-1E-xqX" secondAttribute="bottom" id="bYo-VB-i8T"/>
+                            <constraint firstAttribute="trailing" secondItem="MTd-9q-jTx" secondAttribute="trailing" id="fc0-Yk-PDe"/>
+                            <constraint firstItem="Fyc-1E-xqX" firstAttribute="top" secondItem="Ntv-9o-Ck9" secondAttribute="top" id="iQd-fT-pUE"/>
+                            <constraint firstAttribute="bottom" secondItem="MTd-9q-jTx" secondAttribute="bottom" id="uBj-gF-Tfi"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="recImageView" destination="MTd-9q-jTx" id="Z12-DB-Y4V"/>
+                            <outlet property="recTitleLabel" destination="9y6-0L-H7d" id="6ah-R3-LXJ"/>
+                        </connections>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azh-Wu-ygk" customClass="SFWeeklyHighlightsSingleRecView">
+                        <rect key="frame" x="230.5" y="493" width="204.5" height="204.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VAL-tI-wBi">
+                                <rect key="frame" x="0.0" y="0.0" width="204.5" height="204.5"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmj-ln-fTh" customClass="SFGradientView">
+                                <rect key="frame" x="0.0" y="0.0" width="204.5" height="204.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More photos released to mark Princess Beatrice's wedding" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOz-xM-m6o">
+                                        <rect key="frame" x="7" y="141.5" width="190.5" height="56"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="AOz-xM-m6o" secondAttribute="bottom" constant="7" id="11V-0g-MYX"/>
+                                    <constraint firstItem="AOz-xM-m6o" firstAttribute="leading" secondItem="zmj-ln-fTh" secondAttribute="leading" constant="7" id="2hQ-Fg-n1l"/>
+                                    <constraint firstAttribute="trailing" secondItem="AOz-xM-m6o" secondAttribute="trailing" constant="7" id="UtT-Sn-e13"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zmj-ln-fTh" firstAttribute="leading" secondItem="azh-Wu-ygk" secondAttribute="leading" id="AUi-7W-fwd"/>
+                            <constraint firstAttribute="trailing" secondItem="VAL-tI-wBi" secondAttribute="trailing" id="YTQ-x6-ceN"/>
+                            <constraint firstItem="zmj-ln-fTh" firstAttribute="top" secondItem="azh-Wu-ygk" secondAttribute="top" id="iAm-ze-6vm"/>
+                            <constraint firstAttribute="bottom" secondItem="zmj-ln-fTh" secondAttribute="bottom" id="kh7-cZ-zRb"/>
+                            <constraint firstAttribute="trailing" secondItem="zmj-ln-fTh" secondAttribute="trailing" id="llZ-e4-6AR"/>
+                            <constraint firstItem="VAL-tI-wBi" firstAttribute="leading" secondItem="azh-Wu-ygk" secondAttribute="leading" id="oEe-9U-y59"/>
+                            <constraint firstAttribute="bottom" secondItem="VAL-tI-wBi" secondAttribute="bottom" id="vOu-Od-AHk"/>
+                            <constraint firstItem="VAL-tI-wBi" firstAttribute="top" secondItem="azh-Wu-ygk" secondAttribute="top" id="wks-89-oqv"/>
+                            <constraint firstAttribute="width" secondItem="azh-Wu-ygk" secondAttribute="height" multiplier="1:1" id="zhG-p4-GEw"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="recImageView" destination="VAL-tI-wBi" id="OVC-k6-xdk"/>
+                            <outlet property="recTitleLabel" destination="AOz-xM-m6o" id="2F1-bo-kVO"/>
+                        </connections>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KCV-aU-ccr" firstAttribute="top" secondItem="igo-1S-R2W" secondAttribute="top" id="39Z-jO-nXb"/>
+                    <constraint firstItem="6xL-fo-7hj" firstAttribute="leading" secondItem="igo-1S-R2W" secondAttribute="leading" id="3Ub-AE-L95"/>
+                    <constraint firstItem="KCV-aU-ccr" firstAttribute="leading" secondItem="igo-1S-R2W" secondAttribute="leading" id="Gzf-35-fMO"/>
+                    <constraint firstAttribute="trailing" secondItem="azh-Wu-ygk" secondAttribute="trailing" id="OgG-lk-3cV"/>
+                    <constraint firstItem="azh-Wu-ygk" firstAttribute="top" secondItem="6xL-fo-7hj" secondAttribute="bottom" constant="15" id="Tw7-HF-vDm"/>
+                    <constraint firstAttribute="trailing" secondItem="6xL-fo-7hj" secondAttribute="trailing" id="WA8-4z-r7T"/>
+                    <constraint firstItem="Ntv-9o-Ck9" firstAttribute="width" secondItem="igo-1S-R2W" secondAttribute="width" multiplier="0.47" id="mhy-aa-zLi"/>
+                    <constraint firstItem="Ntv-9o-Ck9" firstAttribute="leading" secondItem="igo-1S-R2W" secondAttribute="leading" id="ptO-19-nHz"/>
+                    <constraint firstAttribute="trailing" secondItem="KCV-aU-ccr" secondAttribute="trailing" id="qHd-HB-zdD"/>
+                    <constraint firstItem="6xL-fo-7hj" firstAttribute="top" secondItem="KCV-aU-ccr" secondAttribute="bottom" constant="15" id="sXu-nV-oQf"/>
+                    <constraint firstItem="Ntv-9o-Ck9" firstAttribute="top" secondItem="6xL-fo-7hj" secondAttribute="bottom" constant="15" id="tWb-57-NrY"/>
+                    <constraint firstItem="azh-Wu-ygk" firstAttribute="width" secondItem="igo-1S-R2W" secondAttribute="width" multiplier="0.47" id="tlc-eC-rpS"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="435" height="711"/>
+            <connections>
+                <outlet property="dateLabel" destination="9Lh-Hs-IYb" id="Vww-mY-iBY"/>
+                <outlet property="dateView" destination="KCV-aU-ccr" id="6Hl-eF-rA2"/>
+                <outlet property="recOneView" destination="6xL-fo-7hj" id="gxb-la-tQ9"/>
+                <outlet property="recThreeView" destination="azh-Wu-ygk" id="7RG-VB-kPj"/>
+                <outlet property="recTwoView" destination="Ntv-9o-Ck9" id="fsj-6o-kNh"/>
+            </connections>
+            <point key="canvasLocation" x="107.97101449275362" y="129.57589285714286"/>
+        </collectionViewCell>
+    </objects>
+</document>

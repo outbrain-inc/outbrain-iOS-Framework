@@ -72,6 +72,8 @@
 
 @property (nonatomic, strong) SFDefaultDelegate *defaultDelegate;
 
+@property (nonatomic, assign) BOOL hasWeeklyHighlightsItem;
+
 @end
 
 @implementation SmartFeedManager
@@ -314,6 +316,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         case SFTypeBrandedCarouselWithTitle:
             [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
+        case SFTypeWeeklyHighlightsWithTitle:
+            if (!self.hasWeeklyHighlightsItem && [self isWeeklyHighlightsItemValid:response]) {
+                [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
+                self.hasWeeklyHighlightsItem = YES;
+            }
+            break;
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridTwoInRowWithTitle:
         case SFTypeGridThreeInRowNoTitle:
@@ -364,9 +372,49 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     else if ([recMode isEqualToString:@"odb_dynamic_ad-carousel"]) {
         return [response.settings.brandedCarouselSettings.carouselType isEqualToString:@"AppInstall"] ? SFTypeStripAppInstall : SFTypeBrandedCarouselWithTitle;
     }
+    else if ([recMode isEqualToString:@"odb_timeline"]) {
+        return SFTypeWeeklyHighlightsWithTitle;
+    }
     
     NSLog(@"recMode value is not currently covered in the SDK - (%@)", recMode);
     return SFTypeStripWithTitle;
+}
+
+-(BOOL) isWeeklyHighlightsItemValid:(OBRecommendationResponse *)response {
+    if (response.recommendations.count % 3 != 0) {
+        NSLog(@"Weekly highlights recommendations size is not multiplier of 3");
+        return NO;
+    }
+    
+    if (response.recommendations.count / 3 < 5) {
+        NSLog(@"Weekly highlights item supports minimum 5 date items");
+        return NO;
+    }
+    
+    NSMutableDictionary *dateToCountOfRecs = [[NSMutableDictionary alloc] init];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM EEE"];
+    
+    NSArray<OBRecommendation*> *recs = response.recommendations;
+    
+    for (OBRecommendation *rec in recs) {
+        NSString *formatedDate = [dateFormatter stringFromDate:rec.publishDate];
+        if ([dateToCountOfRecs objectForKey:formatedDate]) {
+            NSInteger currentCount = [[dateToCountOfRecs objectForKey:formatedDate] integerValue];
+            [dateToCountOfRecs setValue:[NSNumber numberWithInteger:(currentCount + 1)] forKey:formatedDate];
+        } else {
+            [dateToCountOfRecs setValue:[NSNumber numberWithInt: 1] forKey:formatedDate];
+        }
+    }
+    
+    for (id count in [dateToCountOfRecs allValues]) {
+        if ([count integerValue] != 3) {
+            NSLog(@"Weekly highlights item - should be 3 recommendations for each date");
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 -(NSArray *) createSingleItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
@@ -728,12 +776,17 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     
     if (cellTitleLabel) {
+        // text
         if (sfItem.widgetTitle) {
             cellTitleLabel.text = sfItem.widgetTitle;
         }
-        else {
+        else if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
             // fallback
             cellTitleLabel.text = @"Around the web";
+        }
+        // text color
+        if (sfItem.widgetTitleTextColor && sfItem.itemType == SFTypeWeeklyHighlightsWithTitle) {
+            cellTitleLabel.textColor = sfItem.widgetTitleTextColor;
         }
     }
     
@@ -750,7 +803,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             horizontalItemCellNib = [UINib nibWithNibName:@"SFBrandedCardItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFBrandedCardItemCell"];
         }
-        else { // SFHorizontalFixed
+        if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) { // SFHorizontalFixed
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalFixedItemCell"];
         }
@@ -789,7 +842,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [horizontalView setupView];
         [horizontalView.collectionView reloadData];
         
-        if (!sfItem.isCustomUI && cellTitleLabel) {
+        if (!sfItem.isCustomUI && cellTitleLabel && sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
             cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
         }
         

@@ -19,6 +19,7 @@
 @property (nonatomic, strong) OBSettings *odbSettings;
 @property (nonatomic, assign) SFItemType itemType;
 @property (nonatomic, copy) NSString *widgetTitle;
+@property (nonatomic, strong) UIColor *widgetTitleTextColor;
 @property (nonatomic, copy) NSString *widgetId;
 @property (nonatomic, strong) OBRequest *request;
 @property (nonatomic, strong) OBResponseRequest *responseRequest;
@@ -115,6 +116,9 @@ NSInteger kVideoFinishedStatus = 1114;
     self.request = odbResponse.request;
     self.responseRequest = odbResponse.responseRequest;
     self.widgetTitle = self.odbSettings.widgetHeaderText;
+    if (self.odbSettings.widgetHeaderTextColor) {
+        self.widgetTitleTextColor = [SFUtils colorFromHexString:self.odbSettings.widgetHeaderTextColor];
+    }
     self.widgetId = [odbResponse.responseRequest getStringValueForPayloadKey:@"widgetJsId"];
     if (self.odbSettings.smartfeedShadowColor) {
         self.shadowColor = [SFUtils colorFromHexString:self.odbSettings.smartfeedShadowColor];

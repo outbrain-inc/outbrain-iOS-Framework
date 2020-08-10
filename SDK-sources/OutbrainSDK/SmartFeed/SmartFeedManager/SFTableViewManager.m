@@ -31,6 +31,7 @@ NSString * const kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitl
 NSString * const kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
 NSString * const kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
 NSString * const kTableViewBrandedCarouselWithTitleReuseId = @"SFBrandedCarouselTableViewCell";
+NSString * const kTableViewWeeklyHighlightsWithTitleReuseId = @"SFWeeklyHighlightsTableViewCell";
 NSString * const kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
 NSString * const kTableViewSingleAppInstallReuseId = @"SFSingleAppInstallTableCell";
 NSString * const kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
@@ -80,6 +81,10 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         horizontalCellNib = [UINib nibWithNibName:@"SFBrandedCarouselTableViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFBrandedCarouselTableViewCell should not be null");
         [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewBrandedCarouselWithTitleReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFWeeklyHighlightsTableViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFWeeklyHighlightsTableViewCell should not be null");
+        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewWeeklyHighlightsWithTitleReuseId];
         
         // Smartfeed header cell
         UINib *nib = [UINib nibWithNibName:@"SFTableViewHeaderCell" bundle:bundle];
@@ -171,6 +176,8 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalCarouselNoTitleReuseId forIndexPath:indexPath];
         case SFTypeBrandedCarouselWithTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewBrandedCarouselWithTitleReuseId forIndexPath:indexPath];
+        case SFTypeWeeklyHighlightsWithTitle:
+            return [tableView dequeueReusableCellWithIdentifier: kTableViewWeeklyHighlightsWithTitleReuseId forIndexPath:indexPath];
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridThreeInRowNoTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
@@ -217,6 +224,13 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
     else if (sfItemType == SFTypeBrandedCarouselWithTitle || sfItemType == SFTypeStripAppInstall) {
         return MAX(screenHeight*0.62, 450);
+    }
+    else if (sfItemType == SFTypeWeeklyHighlightsWithTitle) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            return screenWidth * 0.86;
+        } else {
+            return screenWidth * 1.35;
+        }
     }
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
              sfItemType == SFTypeStripVideoWithPaidRecAndTitle ||

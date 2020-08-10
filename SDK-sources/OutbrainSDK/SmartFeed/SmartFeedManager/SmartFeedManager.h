@@ -88,6 +88,7 @@ typedef enum
     SFTypeStripNoTitle,
     SFTypeCarouselWithTitle,
     SFTypeBrandedCarouselWithTitle,
+    SFTypeWeeklyHighlightsWithTitle,
     SFTypeCarouselNoTitle,
     SFTypeGridTwoInRowNoTitle,
     SFTypeGridThreeInRowNoTitle,

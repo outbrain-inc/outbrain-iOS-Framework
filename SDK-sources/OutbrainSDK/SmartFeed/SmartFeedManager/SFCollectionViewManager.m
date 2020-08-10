@@ -32,6 +32,7 @@ NSString * const kCollectionViewSingleWithThumbnailWithTitleReuseId = @"SFSingle
 NSString * const kCollectionViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleCollectionViewCell";
 NSString * const kCollectionViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleCollectionViewCell";
 NSString * const kCollectionViewBrandedCarouselWithTitleReuseId = @"SFBrandedCarouselCollectionViewCell";
+NSString * const kCollectionViewWeeklyHighlightsWithTitleReuseId = @"SFWeeklyHighlightsCollectionViewCell";
 NSString * const kCollectionViewSingleWithTitleReuseId = @"SFSingleWithTitleCollectionViewCell";
 NSString * const kCollectionViewSingleAppInstallReuseId = @"SFSingleAppInstallCollectionCell";
 NSString * const kCollectionViewSingleReuseId = @"SFCollectionViewCell";
@@ -91,6 +92,10 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         horizontalCellNib = [UINib nibWithNibName:@"SFBrandedCarouselCollectionViewCell" bundle:bundle];
         NSAssert(horizontalCellNib != nil, @"SFBrandedCarouselCollectionViewCell should not be null");
         [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewBrandedCarouselWithTitleReuseId];
+        
+        horizontalCellNib = [UINib nibWithNibName:@"SFWeeklyHighlightsCollectionViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFWeeklyHighlightsCollectionViewCell should not be null");
+        [collectionView registerNib:horizontalCellNib forCellWithReuseIdentifier: kCollectionViewWeeklyHighlightsWithTitleReuseId];
         
         // Single item cell
         UINib *collectionViewCellNib = [UINib nibWithNibName:@"SFCollectionViewCell" bundle:bundle];
@@ -172,6 +177,8 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalCarouselNoTitleReuseId forIndexPath:indexPath];
         case SFTypeBrandedCarouselWithTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewBrandedCarouselWithTitleReuseId forIndexPath:indexPath];
+        case SFTypeWeeklyHighlightsWithTitle:
+            return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewWeeklyHighlightsWithTitleReuseId forIndexPath:indexPath];
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridThreeInRowNoTitle:
             return [collectionView dequeueReusableCellWithReuseIdentifier: kCollectionViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
@@ -227,6 +234,13 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     else if (sfItemType == SFTypeBrandedCarouselWithTitle || sfItemType == SFTypeStripAppInstall) {
         CGFloat brandedCarouselHeight = MAX(screenHeight*0.62, 450);
         return CGSizeMake(screenWidth, brandedCarouselHeight);
+    }
+    else if (sfItemType == SFTypeWeeklyHighlightsWithTitle) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            return CGSizeMake(screenWidth, screenWidth * 0.86);
+        } else {
+            return CGSizeMake(screenWidth, screenWidth * 1.35);
+        }
     }
     else if ((sfItemType == SFTypeStripWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {
         return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 280.0);
