@@ -71,10 +71,6 @@
 }
 
 -(BOOL) checkIfSkAdNetworkIsConfiguredCorrectly {
-    if (SYSTEM_VERSION_LESS_THAN(@"14.0")) {
-        NSLog(@"** Outbrain SKAdNetworkIdentifier is NOT configured in plist (iOS version < 14.0)");
-        return NO;
-    }
     NSArray *SKAdNetworkItems = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SKAdNetworkItems"];
     for (NSDictionary *entry in SKAdNetworkItems) {
         NSString *adNetworkId = entry[@"SKAdNetworkIdentifier"];
