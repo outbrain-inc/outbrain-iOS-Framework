@@ -6,8 +6,11 @@
 //  Copyright © 2018 Outbrain. All rights reserved.
 //
 
+@import StoreKit;
+
 #import "OutbrainManager.h"
 #import "Outbrain.h"
+#import "OBUtils.h"
 #import "OBRecommendationRequestOperation.h"
 #import "OBMultivacRequestOperation.h"
 #import "OBRecommendationResponse.h"
@@ -82,5 +85,36 @@
     NSLog(@"** Outbrain SKAdNetworkIdentifier NOT configured in plist (iOS version >= 14.0)");
     return NO;
 }
- 
+
+-(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController {
+    BOOL isDeviceSimulator = [OBUtils isDeviceSimulator];
+    if (@available(iOS 11.3, *) && !isDeviceSimulator) {
+        SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+        NSMutableDictionary* productParameters = [[NSMutableDictionary alloc] init];
+        [productParameters setObject: rec.appInstallItunesItemIdentifier forKey:SKStoreProductParameterITunesItemIdentifier];
+        [productParameters setObject: OB_AD_NETWORK_ID forKey:SKStoreProductParameterAdNetworkIdentifier];
+        if (@available(iOS 14, *)) {
+            // [productParameters setObject:@"2.0" forKey:SKStoreProductParameterAdNetworkVersion];
+            // [[productParameters setObject:@"342432" forKey:forKey:SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
+        }
+        NSLog(@"loadProductWithParameters: %@", productParameters);
+        [storeViewController loadProductWithParameters:productParameters completionBlock:^(BOOL result, NSError * _Nullable error) {
+            // result -  true if the product information was successfully loaded, otherwise false.
+            NSLog(@"loadProductWithParameters - result: %@, error: %@", result ? @"true" : @"false", [error localizedDescription]);
+        }];
+        [navController presentViewController:storeViewController animated:YES completion:nil];
+    }
+    else if (isDeviceSimulator) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"App Install Error"
+                                                                                 message:@"App Install should be opened with loadProduct() which is not avialable on Simulator"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        //We add buttons to the alert controller by creating UIAlertActions:
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil]; //You can use a block here to handle a press on this button
+        [alertController addAction:actionOk];
+        [navController presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
 @end

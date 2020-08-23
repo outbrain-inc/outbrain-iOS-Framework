@@ -19,6 +19,8 @@
 // The current version of the sdk
 extern NSString * _Nonnull const OB_SDK_VERSION;
 
+extern NSString * _Nonnull const OB_AD_NETWORK_ID;
+
 #define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 /**
@@ -167,6 +169,15 @@ extern NSString * _Nonnull const OB_SDK_VERSION;
  */
 + (void)testLocation:(NSString * _Nonnull)location;
 
+/**
+ * @brief Used for "App install" ads, on click the app developer should call this method to open the advertiser app via loadProduct method
+ *
+ * App developer must call this method if (rec.isAppInstall) is "true" after a recommendation click.
+ *
+ * @param rec - the rec the user has clicked on
+ * @param navController - the app navigation controller the app ad should open in.
+ */
++(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController;
 
 
 @end
