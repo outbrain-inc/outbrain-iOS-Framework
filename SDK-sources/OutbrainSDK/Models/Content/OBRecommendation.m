@@ -48,6 +48,11 @@
 @property (nonatomic, copy) NSString * categoryName;
 /** @brief Apply for Smartfeed "branded carousel" rec only. */
 @property (nonatomic, copy) NSString * brandedCardCtaText;
+
+/** @brief Is the recommendation an "app install" ad */
+@property (nonatomic, assign, getter = isAppInstall) BOOL appInstall;
+/** @brief for app install rec - this is the advertiding app itunes identifier (app store id) */
+@property (nonatomic, copy) NSString * appInstallItunesItemIdentifier;
 @end
 
 
@@ -95,6 +100,11 @@
         if (dict[@"contextual_topic"]) {
             recommendation.categoryName = dict[@"contextual_topic"];
         }
+    }
+    
+    if ([recommendation.content containsString:@"Yahtzee lovers"] || [recommendation.content containsString:@"Forge of Empires"] || [recommendation.content containsString:@"Duolingo"]) {
+        recommendation.appInstall = YES;
+        recommendation.appInstallItunesItemIdentifier = @"711455226";
     }
 
     return recommendation;

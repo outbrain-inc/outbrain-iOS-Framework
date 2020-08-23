@@ -66,6 +66,11 @@
 /** @brief Apply for Smartfeed "branded carousel" rec only. */
 @property (nonatomic, copy, readonly, nullable) NSString * brandedCardCtaText;
 
+/** @brief Is the recommendation an "app install" ad */
+@property (nonatomic, assign, getter = isAppInstall, readonly) BOOL appInstall;
+/** @brief for app install rec - this is the advertiding app itunes identifier (app store id) */
+@property (nonatomic, copy, readonly, nullable) NSString * appInstallItunesItemIdentifier;
+
 
 -(BOOL) isRTB __deprecated_msg("use shouldDisplayDisclosureIcon() instead.");
 
