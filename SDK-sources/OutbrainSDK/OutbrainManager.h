@@ -26,4 +26,6 @@
 
 -(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController;
 
+-(BOOL) publisherAppPlistValid;
+
 @end

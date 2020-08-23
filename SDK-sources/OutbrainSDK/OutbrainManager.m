@@ -34,7 +34,7 @@
         sharedInstance.odbFetchQueue = [[NSOperationQueue alloc] init];
         sharedInstance.odbFetchQueue.name = @"com.outbrain.sdk.odbFetchQueue";
         sharedInstance.odbFetchQueue.maxConcurrentOperationCount = 1;
-        [sharedInstance checkIfSkAdNetworkIsConfiguredCorrectly];
+        [sharedInstance publisherAppPlistValid];
     });
     
     return sharedInstance;
@@ -73,11 +73,11 @@
     return (value != nil && [value length] > 0);
 }
 
--(BOOL) checkIfSkAdNetworkIsConfiguredCorrectly {
+-(BOOL) publisherAppPlistValid {
     NSArray *SKAdNetworkItems = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SKAdNetworkItems"];
     for (NSDictionary *entry in SKAdNetworkItems) {
         NSString *adNetworkId = entry[@"SKAdNetworkIdentifier"];
-        if ([@"97r2b46745.skadnetwork" isEqualToString:adNetworkId]) {
+        if ([OB_AD_NETWORK_ID isEqualToString:adNetworkId]) {
             NSLog(@"** Outbrain SKAdNetworkIdentifier is configured in plist ***");
             return YES;
         }
