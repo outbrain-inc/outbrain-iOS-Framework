@@ -14,6 +14,7 @@
 #import "OBErrors.h"
 #import "MultivacResponseDelegate.h"
 
+
 @interface OutbrainManager()
 
 @property (nonatomic, strong) NSOperationQueue *odbFetchQueue;
@@ -30,7 +31,9 @@
         sharedInstance.odbFetchQueue = [[NSOperationQueue alloc] init];
         sharedInstance.odbFetchQueue.name = @"com.outbrain.sdk.odbFetchQueue";
         sharedInstance.odbFetchQueue.maxConcurrentOperationCount = 1;
+        [sharedInstance checkIfSkAdNetworkIsConfiguredCorrectly];
     });
+    
     return sharedInstance;
 }
 
@@ -66,4 +69,22 @@
 - (BOOL) _isValid:(NSString *)value {
     return (value != nil && [value length] > 0);
 }
+
+-(BOOL) checkIfSkAdNetworkIsConfiguredCorrectly {
+    if (SYSTEM_VERSION_LESS_THAN(@"14.0")) {
+        NSLog(@"** Outbrain SKAdNetworkIdentifier is NOT configured in plist (iOS version < 14.0)");
+        return NO;
+    }
+    NSArray *SKAdNetworkItems = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SKAdNetworkItems"];
+    for (NSDictionary *entry in SKAdNetworkItems) {
+        NSString *adNetworkId = entry[@"SKAdNetworkIdentifier"];
+        if ([@"97r2b46745.skadnetwork" isEqualToString:adNetworkId]) {
+            NSLog(@"** Outbrain SKAdNetworkIdentifier is configured in plist ***");
+            return YES;
+        }
+    }
+    NSLog(@"** Outbrain SKAdNetworkIdentifier NOT configured in plist (iOS version >= 14.0)");
+    return NO;
+}
+ 
 @end
