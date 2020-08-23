@@ -10,7 +10,7 @@
 #import "OBDisclosure.h"
 #import "OBContent_Private.h"
 #import "OBUtils.h"
-
+#import "OutbrainManager.h"
 
 @interface OBRecommendation()
 
@@ -102,7 +102,17 @@
         }
     }
     
-    if ([recommendation.content containsString:@"Yahtzee lovers"] || [recommendation.content containsString:@"Forge of Empires"] || [recommendation.content containsString:@"Duolingo"]) {
+    BOOL iosVerValidForLoadProduct = YES;
+    if (@available(iOS 11.3, *)) {
+        iosVerValidForLoadProduct = YES;
+    }
+    else {
+        iosVerValidForLoadProduct = NO;
+    }
+    BOOL publisherAppPlistValid = [[OutbrainManager sharedInstance] publisherAppPlistValid];
+    BOOL appContentIsAppInstall = [recommendation.content containsString:@"Yahtzee lovers"] || [recommendation.content containsString:@"Forge of Empires"] || [recommendation.content containsString:@"Duolingo"];
+    
+    if (iosVerValidForLoadProduct && publisherAppPlistValid && appContentIsAppInstall) {
         recommendation.appInstall = YES;
         recommendation.appInstallItunesItemIdentifier = @"711455226";
     }
