@@ -23,6 +23,8 @@
 
 @implementation OutbrainManager
 
+NSString * const OUTBRAIN_AD_NETWORK_ID = @"97r2b46745.skadnetwork";
+
 +(OutbrainManager *) sharedInstance {
     static OutbrainManager *sharedInstance = nil;
     static dispatch_once_t onceToken;
@@ -74,7 +76,7 @@
     NSArray *SKAdNetworkItems = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SKAdNetworkItems"];
     for (NSDictionary *entry in SKAdNetworkItems) {
         NSString *adNetworkId = entry[@"SKAdNetworkIdentifier"];
-        if ([@"97r2b46745.skadnetwork" isEqualToString:adNetworkId]) {
+        if ([OUTBRAIN_AD_NETWORK_ID isEqualToString:adNetworkId]) {
             NSLog(@"** Outbrain SKAdNetworkIdentifier is configured in plist ***");
             return YES;
         }
