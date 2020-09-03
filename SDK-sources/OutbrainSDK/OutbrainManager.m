@@ -18,7 +18,8 @@
 @interface OutbrainManager()
 
 @property (nonatomic, strong) NSOperationQueue *odbFetchQueue;
-@property (nonatomic, retain) NSUserDefaults *userDefaults;
+@property (nonatomic, strong) NSUserDefaults *userDefaults;
+
 @end
 
 @implementation OutbrainManager
