@@ -13,15 +13,21 @@
 #import "OBRecommendationResponse.h"
 #import "OBErrors.h"
 #import "MultivacResponseDelegate.h"
-
+#import "OBNetworkManager.h"
 
 @interface OutbrainManager()
 
 @property (nonatomic, strong) NSOperationQueue *odbFetchQueue;
+@property (nonatomic, strong) NSUserDefaults *userDefaults;
 
 @end
 
 @implementation OutbrainManager
+
+NSString * const OUTBRAIN_AD_NETWORK_ID = @"97r2b46745.skadnetwork";
+
+NSString *const OUTBRAIN_URL_REPORT_PLIST_DATA = @"https://log.outbrainimg.com/api/loggerBatch/obsd_sdk_plist_stats";
+NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"APP_USER_REPORTED_PLIST_TO_SERVER_FOR_APPVER_%@_KEY";
 
 +(OutbrainManager *) sharedInstance {
     static OutbrainManager *sharedInstance = nil;
@@ -31,7 +37,7 @@
         sharedInstance.odbFetchQueue = [[NSOperationQueue alloc] init];
         sharedInstance.odbFetchQueue.name = @"com.outbrain.sdk.odbFetchQueue";
         sharedInstance.odbFetchQueue.maxConcurrentOperationCount = 1;
-        [sharedInstance checkIfSkAdNetworkIsConfiguredCorrectly];
+        sharedInstance.userDefaults = [NSUserDefaults standardUserDefaults];
     });
     
     return sharedInstance;
@@ -70,11 +76,59 @@
     return (value != nil && [value length] > 0);
 }
 
+-(void) reportPlistIsValidToServerIfNeeded {
+    NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
+    
+    NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY = [NSString stringWithFormat: APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT, appVersionString];
+    // Check if already reported to server
+    if ([self.userDefaults objectForKey:APP_USER_REPORTED_PLIST_TO_SERVER_KEY]) {
+        NSLog(@"reportPlistIsValidToServerIfNeeded - user already reported to server (for key: %@)", APP_USER_REPORTED_PLIST_TO_SERVER_KEY);
+        return;
+    }
+    
+    // Prepare params to send to server
+    BOOL isPlistConfiguredOk = [self checkIfSkAdNetworkIsConfiguredCorrectly];
+    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+    NSTimeInterval intervalUnixTime = [[NSDate date] timeIntervalSince1970];
+    NSInteger timeNow = intervalUnixTime;
+    
+    NSMutableDictionary *paramsDict = [@{} mutableCopy];
+    paramsDict[@"timestamp"] = [NSString stringWithFormat:@"%@", @(timeNow)];
+    paramsDict[@"appId"] = bundleIdentifier;
+    paramsDict[@"appVersion"] = appVersionString;
+    paramsDict[@"sdkVersion"] = OB_SDK_VERSION;
+    paramsDict[@"isCompliant"] = isPlistConfiguredOk ? @"true" : @"false";
+    NSArray *paramsArray = @[paramsDict];
+    
+    // Report to server
+    // NSLog(@"reportPlistIsValidToServerIfNeeded - send POST %@ with params: %@", OUTBRAIN_URL_REPORT_PLIST_DATA, paramsArray);
+    NSURL *reportUrl = [NSURL URLWithString: OUTBRAIN_URL_REPORT_PLIST_DATA];
+    [[OBNetworkManager sharedManager] sendPost:reportUrl postData:paramsArray completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"reportPlistIsValidToServerIfNeeded - error: %@", error);
+            return;
+        }
+
+        // handle HTTP errors here
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+            NSLog(@"reportPlistIsValidToServerIfNeeded - HTTP status code: %d", statusCode);
+            if (statusCode != 200) {
+                return;
+            }
+            else {
+                [self.userDefaults setObject:@YES forKey: APP_USER_REPORTED_PLIST_TO_SERVER_KEY];
+            }
+        }
+    }];
+}
+
 -(BOOL) checkIfSkAdNetworkIsConfiguredCorrectly {
     NSArray *SKAdNetworkItems = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SKAdNetworkItems"];
     for (NSDictionary *entry in SKAdNetworkItems) {
         NSString *adNetworkId = entry[@"SKAdNetworkIdentifier"];
-        if ([@"97r2b46745.skadnetwork" isEqualToString:adNetworkId]) {
+        if ([OUTBRAIN_AD_NETWORK_ID isEqualToString:adNetworkId]) {
             NSLog(@"** Outbrain SKAdNetworkIdentifier is configured in plist ***");
             return YES;
         }
