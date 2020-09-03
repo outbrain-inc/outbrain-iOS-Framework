@@ -24,4 +24,6 @@
 
 -(void) fetchMultivacWithRequest:(OBRequest *)request andDelegate:(id<MultivacResponseDelegate>)multivacDelegate;
 
+-(void) reportPlistIsValidToServerIfNeeded;
+
 @end

@@ -13,17 +13,20 @@
 #import "OBRecommendationResponse.h"
 #import "OBErrors.h"
 #import "MultivacResponseDelegate.h"
-
+#import "OBNetworkManager.h"
 
 @interface OutbrainManager()
 
 @property (nonatomic, strong) NSOperationQueue *odbFetchQueue;
-
+@property (nonatomic, retain) NSUserDefaults *userDefaults;
 @end
 
 @implementation OutbrainManager
 
 NSString * const OUTBRAIN_AD_NETWORK_ID = @"97r2b46745.skadnetwork";
+
+NSString *const OUTBRAIN_URL_REPORT_PLIST_DATA = @"https://log.outbrainimg.com/api/loggerBatch/obsd_sdk_plist_stats";
+NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY = @"APP_USER_REPORTED_PLIST_TO_SERVER_KEY";
 
 +(OutbrainManager *) sharedInstance {
     static OutbrainManager *sharedInstance = nil;
@@ -33,7 +36,7 @@ NSString * const OUTBRAIN_AD_NETWORK_ID = @"97r2b46745.skadnetwork";
         sharedInstance.odbFetchQueue = [[NSOperationQueue alloc] init];
         sharedInstance.odbFetchQueue.name = @"com.outbrain.sdk.odbFetchQueue";
         sharedInstance.odbFetchQueue.maxConcurrentOperationCount = 1;
-        [sharedInstance checkIfSkAdNetworkIsConfiguredCorrectly];
+        sharedInstance.userDefaults = [NSUserDefaults standardUserDefaults];
     });
     
     return sharedInstance;
@@ -70,6 +73,52 @@ NSString * const OUTBRAIN_AD_NETWORK_ID = @"97r2b46745.skadnetwork";
 
 - (BOOL) _isValid:(NSString *)value {
     return (value != nil && [value length] > 0);
+}
+
+-(void) reportPlistIsValidToServerIfNeeded {
+    // Check if already reported to server
+    if ([self.userDefaults objectForKey:APP_USER_REPORTED_PLIST_TO_SERVER_KEY]) {
+        NSLog(@"reportPlistIsValidToServerIfNeeded - user already reported to server");
+        return;
+    }
+    
+    // Prepare params to send to server
+    BOOL isPlistConfiguredOk = [self checkIfSkAdNetworkIsConfiguredCorrectly];
+    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+    NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
+    NSTimeInterval intervalUnixTime = [[NSDate date] timeIntervalSince1970];
+    NSInteger timeNow = intervalUnixTime;
+    
+    NSMutableDictionary *paramsDict = [@{} mutableCopy];
+    paramsDict[@"timestamp"] = [NSString stringWithFormat:@"%@", @(timeNow)];
+    paramsDict[@"appId"] = bundleIdentifier;
+    paramsDict[@"appVersion"] = appVersionString;
+    paramsDict[@"sdkVersion"] = OB_SDK_VERSION;
+    paramsDict[@"isCompliant"] = isPlistConfiguredOk ? @"true" : @"false";
+    NSArray *paramsArray = @[paramsDict];
+    
+    // Report to server
+    NSLog(@"reportPlistIsValidToServerIfNeeded - send POST %@ with params: %@", OUTBRAIN_URL_REPORT_PLIST_DATA, paramsArray);
+    NSURL *reportUrl = [NSURL URLWithString: OUTBRAIN_URL_REPORT_PLIST_DATA];
+    [[OBNetworkManager sharedManager] sendPost:reportUrl postData:paramsArray completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"reportPlistIsValidToServerIfNeeded - error: %@", error);
+            return;
+        }
+
+        // handle HTTP errors here
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+            NSLog(@"reportPlistIsValidToServerIfNeeded - HTTP status code: %d", statusCode);
+            if (statusCode != 200) {
+                return;
+            }
+        }
+
+        // otherwise, everything is probably fine and you should interpret the `data` contents
+        NSLog(@"reportPlistIsValidToServerIfNeeded - response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    }];
 }
 
 -(BOOL) checkIfSkAdNetworkIsConfiguredCorrectly {
