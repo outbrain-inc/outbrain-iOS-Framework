@@ -26,7 +26,7 @@
 NSString * const OUTBRAIN_AD_NETWORK_ID = @"97r2b46745.skadnetwork";
 
 NSString *const OUTBRAIN_URL_REPORT_PLIST_DATA = @"https://log.outbrainimg.com/api/loggerBatch/obsd_sdk_plist_stats";
-NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY = @"APP_USER_REPORTED_PLIST_TO_SERVER_KEY";
+NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"APP_USER_REPORTED_PLIST_TO_SERVER_FOR_APPVER_%@_KEY";
 
 +(OutbrainManager *) sharedInstance {
     static OutbrainManager *sharedInstance = nil;
@@ -76,17 +76,19 @@ NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY = @"APP_USER_REPORTED_PLIS
 }
 
 -(void) reportPlistIsValidToServerIfNeeded {
+    NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
+    
+    NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY = [NSString stringWithFormat: APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT, appVersionString];
     // Check if already reported to server
     if ([self.userDefaults objectForKey:APP_USER_REPORTED_PLIST_TO_SERVER_KEY]) {
-        NSLog(@"reportPlistIsValidToServerIfNeeded - user already reported to server");
+        NSLog(@"reportPlistIsValidToServerIfNeeded - user already reported to server (for key: %@)", APP_USER_REPORTED_PLIST_TO_SERVER_KEY);
         return;
     }
     
     // Prepare params to send to server
     BOOL isPlistConfiguredOk = [self checkIfSkAdNetworkIsConfiguredCorrectly];
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
     NSTimeInterval intervalUnixTime = [[NSDate date] timeIntervalSince1970];
     NSInteger timeNow = intervalUnixTime;
     
@@ -113,6 +115,9 @@ NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY = @"APP_USER_REPORTED_PLIS
             NSLog(@"reportPlistIsValidToServerIfNeeded - HTTP status code: %d", statusCode);
             if (statusCode != 200) {
                 return;
+            }
+            else {
+                [self.userDefaults setObject:@YES forKey: APP_USER_REPORTED_PLIST_TO_SERVER_KEY];
             }
         }
 
