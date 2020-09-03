@@ -102,7 +102,7 @@ NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"APP_USER_REPORT
     NSArray *paramsArray = @[paramsDict];
     
     // Report to server
-    NSLog(@"reportPlistIsValidToServerIfNeeded - send POST %@ with params: %@", OUTBRAIN_URL_REPORT_PLIST_DATA, paramsArray);
+    // NSLog(@"reportPlistIsValidToServerIfNeeded - send POST %@ with params: %@", OUTBRAIN_URL_REPORT_PLIST_DATA, paramsArray);
     NSURL *reportUrl = [NSURL URLWithString: OUTBRAIN_URL_REPORT_PLIST_DATA];
     [[OBNetworkManager sharedManager] sendPost:reportUrl postData:paramsArray completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
@@ -121,9 +121,6 @@ NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"APP_USER_REPORT
                 [self.userDefaults setObject:@YES forKey: APP_USER_REPORTED_PLIST_TO_SERVER_KEY];
             }
         }
-
-        // otherwise, everything is probably fine and you should interpret the `data` contents
-        NSLog(@"reportPlistIsValidToServerIfNeeded - response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     }];
 }
 
