@@ -50,6 +50,7 @@ BOOL WAS_INITIALIZED     =   NO;
         NSAssert(partnerKey != nil, @"Partner Key Must not be nil");
         NSAssert([partnerKey length] > 0, @"Partner Key Must not be empty string");
         [OutbrainManager sharedInstance].partnerKey = partnerKey;
+        [[OutbrainManager sharedInstance] reportPlistIsValidToServerIfNeeded];
         WAS_INITIALIZED = YES;
         NSLog(@"OutbrainSDK init");
     }
