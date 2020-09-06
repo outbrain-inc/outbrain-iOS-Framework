@@ -19,7 +19,7 @@
 @property (nonatomic, copy, nullable) NSString *adNetworkId;
 
 /** @brief campaign ID -  A campaign number the ad network provide */
-@property (nonatomic, copy, nullable) NSString *campaignId;
+@property (nonatomic, copy, nullable) NSNumber *campaignId;
 
 /** @brief The app install iTunes ID */
 @property (nonatomic, copy, nullable) NSString *iTunesItemId;
@@ -28,7 +28,7 @@
 @property (nonatomic, copy, nullable) NSString *nonce;
 
 /** @brief A timestamp the ad network generate near the time of the ad impression */
-@property (nonatomic, copy, nullable) NSString *timestamp;
+@property (nonatomic, copy, nullable) NSNumber *timestamp;
 
 /** @brief The App Store ID of the app displaying the ad */
 @property (nonatomic, copy, nullable) NSString *sourceAppId;

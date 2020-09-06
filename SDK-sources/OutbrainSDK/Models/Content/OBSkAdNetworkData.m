@@ -10,22 +10,30 @@
 
 @implementation OBSkAdNetworkData
 
-- (instancetype)initWithPayload:(NSDictionary *)payload
++ (instancetype)contentWithPayload:(NSDictionary *)payload
 {
-    if (self = [super init]) {
-        
+    OBSkAdNetworkData * obSkAdNetworkData = [super contentWithPayload:payload];
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    if (payload[@"campaign_id"])
+    {
+        obSkAdNetworkData.campaignId = [f numberFromString: payload[@"campaign_id"]];
     }
-    return self;
+    if (payload[@"timestamp"])
+    {
+        obSkAdNetworkData.timestamp = [f numberFromString: payload[@"timestamp"]];
+    }
+
+    return obSkAdNetworkData;
 }
 
 + (NSDictionary *)propertiesMap
 {
     return @{
         @"adNetworkId"      :  @"ad_network_id",
-        @"campaignId"       :  @"campaign_id",
         @"iTunesItemId"     :  @"itunes_item_id",
         @"nonce"            :  @"nonce",
-        @"timestamp"        :  @"timestamp",
         @"sourceAppId"      :  @"source_app_id",
         @"skNetworkVersion" :  @"sk_network_version",
         @"signature"        :  @"signature",
