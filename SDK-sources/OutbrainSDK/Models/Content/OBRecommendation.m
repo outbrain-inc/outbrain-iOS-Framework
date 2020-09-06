@@ -109,12 +109,14 @@
     else {
         iosVerValidForLoadProduct = NO;
     }
-    BOOL publisherAppPlistValid = [[OutbrainManager sharedInstance] publisherAppPlistValid];
-    BOOL appContentIsAppInstall = [recommendation.content containsString:@"Yahtzee lovers"] || [recommendation.content containsString:@"Forge of Empires"] || [recommendation.content containsString:@"Duolingo"];
-    
-    if (iosVerValidForLoadProduct && publisherAppPlistValid && appContentIsAppInstall) {
-        recommendation.appInstall = YES;
-        recommendation.appInstallItunesItemIdentifier = @"711455226";
+
+    if (YES) { //TODO - remove this code - just for simulation
+        BOOL appContentIsAppInstall = [recommendation.content containsString:@"Yahtzee lovers"] || [recommendation.content containsString:@"Forge of Empires"] || [recommendation.content containsString:@"Duolingo"];
+        
+        if (iosVerValidForLoadProduct && appContentIsAppInstall) {
+            recommendation.appInstall = YES;
+            recommendation.appInstallItunesItemIdentifier = @"711455226";
+        }
     }
 
     return recommendation;
