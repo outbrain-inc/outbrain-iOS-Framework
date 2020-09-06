@@ -8,6 +8,7 @@
 
 #import "OBRecommendation.h"
 #import "OBDisclosure.h"
+#import "OBSkAdNetworkData.h"
 #import "OBContent_Private.h"
 #import "OBUtils.h"
 #import "OutbrainManager.h"
@@ -48,6 +49,10 @@
 @property (nonatomic, copy) NSString * categoryName;
 /** @brief Apply for Smartfeed "branded carousel" rec only. */
 @property (nonatomic, copy) NSString * brandedCardCtaText;
+/** @brief metadata for app install ads according to the new iOS14 SkAdNetwork spec. */
+@property (nonatomic, strong) OBSkAdNetworkData *skAdNetworkData;
+
+//TODO remove the props below:
 
 /** @brief Is the recommendation an "app install" ad */
 @property (nonatomic, assign, getter = isAppInstall) BOOL appInstall;
@@ -109,7 +114,12 @@
     else {
         iosVerValidForLoadProduct = NO;
     }
-
+    
+    if ((iosVerValidForLoadProduct == NO) && payload[@"sk_adnetwork_data"]) {
+        // skAdNetworkData is relevant only if the device iOS version is >= 11.3 (see https://developer.apple.com/documentation/storekit/skadnetwork)
+        recommendation.skAdNetworkData = nil;
+    }
+    
     if (YES) { //TODO - remove this code - just for simulation
         BOOL appContentIsAppInstall = [recommendation.content containsString:@"Yahtzee lovers"] || [recommendation.content containsString:@"Forge of Empires"] || [recommendation.content containsString:@"Duolingo"];
         
@@ -139,17 +149,19 @@
              @"appflow":                            @"appflow",
              @"disclosure":                         @"disclosure",
              @"pixels":                             @"pixels",
-             @"brandedCardCtaText":                 @"cta"
+             @"brandedCardCtaText":                 @"cta",
+             @"skAdNetworkData":                    @"sk_adnetwork_data"
              };
 }
 
 + (Class)propertyClassForKey:(NSString *)key
 {
-    if ([key isEqualToString:@"thumbnail"])         return [OBImageInfo class];
-    if ([key isEqualToString:@"logo"])              return [OBImageInfo class];
-    if ([key isEqualToString:@"disclosure"])        return [OBDisclosure class];
-    if ([key isEqualToString:@"publish_date"])      return [NSDate class];
-    if ([key isEqualToString:@"url"])               return [NSURL class];
+    if ([key isEqualToString:@"thumbnail"])             return [OBImageInfo class];
+    if ([key isEqualToString:@"logo"])                  return [OBImageInfo class];
+    if ([key isEqualToString:@"disclosure"])            return [OBDisclosure class];
+    if ([key isEqualToString:@"publish_date"])          return [NSDate class];
+    if ([key isEqualToString:@"url"])                   return [NSURL class];
+    if ([key isEqualToString:@"sk_adnetwork_data"])     return [OBSkAdNetworkData class];
     
     return [super propertyClassForKey:key];
 }

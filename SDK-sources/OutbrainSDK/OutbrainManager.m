@@ -143,7 +143,18 @@ NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"APP_USER_REPORT
 
 -(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController {
     BOOL isDeviceSimulator = [OBUtils isDeviceSimulator];
-    if (@available(iOS 11.3, *) && !isDeviceSimulator) {
+    if (isDeviceSimulator) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"App Install Error"
+                                                                                 message:@"App Install should be opened with loadProduct() which is not avialable on Simulator"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        //We add buttons to the alert controller by creating UIAlertActions:
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil]; //You can use a block here to handle a press on this button
+        [alertController addAction:actionOk];
+        [navController presentViewController:alertController animated:YES completion:nil];
+    }
+    else if (@available(iOS 11.3, *)) {
         SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
         NSMutableDictionary* productParameters = [[NSMutableDictionary alloc] init];
         [productParameters setObject: rec.appInstallItunesItemIdentifier forKey:SKStoreProductParameterITunesItemIdentifier];
@@ -158,17 +169,6 @@ NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"APP_USER_REPORT
             NSLog(@"loadProductWithParameters - result: %@, error: %@", result ? @"true" : @"false", [error localizedDescription]);
         }];
         [navController presentViewController:storeViewController animated:YES completion:nil];
-    }
-    else if (isDeviceSimulator) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"App Install Error"
-                                                                                 message:@"App Install should be opened with loadProduct() which is not avialable on Simulator"
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        //We add buttons to the alert controller by creating UIAlertActions:
-        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:nil]; //You can use a block here to handle a press on this button
-        [alertController addAction:actionOk];
-        [navController presentViewController:alertController animated:YES completion:nil];
     }
 }
 

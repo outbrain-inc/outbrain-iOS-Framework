@@ -32,6 +32,7 @@
  * @see OBImageInfo
  */
 @class OBDisclosure;
+@class OBSkAdNetworkData;
 
 @interface OBRecommendation : OBContent
 
@@ -65,6 +66,10 @@
 @property (nonatomic, copy, readonly, nullable) NSString * categoryName;
 /** @brief Apply for Smartfeed "branded carousel" rec only. */
 @property (nonatomic, copy, readonly, nullable) NSString * brandedCardCtaText;
+
+/** @brief metadata for app install ads according to the new iOS14 SkAdNetwork spec. */
+@property (nonatomic, strong, readonly, nullable) OBSkAdNetworkData *skAdNetworkData;
+
 
 /** @brief Is the recommendation an "app install" ad */
 @property (nonatomic, assign, getter = isAppInstall, readonly) BOOL appInstall;
