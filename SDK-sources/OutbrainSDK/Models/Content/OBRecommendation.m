@@ -120,13 +120,20 @@
         recommendation.skAdNetworkData = nil;
     }
     
-    if (YES) { //TODO - remove this code - just for simulation
-        BOOL appContentIsAppInstall = [recommendation.content containsString:@"Yahtzee lovers"] || [recommendation.content containsString:@"Forge of Empires"] || [recommendation.content containsString:@"Duolingo"];
-        
-        if (iosVerValidForLoadProduct && appContentIsAppInstall) {
-            recommendation.appInstall = YES;
-            recommendation.appInstallItunesItemIdentifier = @"711455226";
-        }
+    BOOL appContentIsAppInstall = [recommendation.content containsString:@"Yahtzee lovers"] || [recommendation.content containsString:@"Forge of Empires"] || [recommendation.content containsString:@"Duolingo"];
+    
+    if (iosVerValidForLoadProduct && appContentIsAppInstall) {
+        recommendation.appInstall = YES;
+        NSMutableDictionary *skNetworkDataDict = [@{} mutableCopy];
+        skNetworkDataDict[@"ad_network_id"] = @"97r2b46745.skadnetwork";
+        skNetworkDataDict[@"itunes_item_id"] = @"711455226";
+        skNetworkDataDict[@"campaign_id"] = @"33";
+        skNetworkDataDict[@"nonce"] = @"e7b315b5-5d3d-4ceb-bb90-b617dee5e173";
+        skNetworkDataDict[@"timestamp"] = @"1598441577";
+        skNetworkDataDict[@"source_app_id"] = @"331786748";
+        skNetworkDataDict[@"sk_network_version"] = @"1";
+        skNetworkDataDict[@"signature"] = @"MDUCGQCNA3MQj19RNnAzSq2HBuJw5Y/GF1egz5cCGED6ncLPofiHKernghDGf7QWcF2fz3FiKg==";
+        recommendation.skAdNetworkData = [OBSkAdNetworkData contentWithPayload:skNetworkDataDict];
     }
 
     return recommendation;
