@@ -8,6 +8,7 @@
 
 @import StoreKit;
 
+
 #import "OutbrainManager.h"
 #import "Outbrain.h"
 #import "OBUtils.h"
@@ -17,6 +18,7 @@
 #import "OBErrors.h"
 #import "MultivacResponseDelegate.h"
 #import "OBNetworkManager.h"
+#import "OBSkAdNetworkData.h"
 
 @interface OutbrainManager()
 
@@ -157,12 +159,28 @@ NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"APP_USER_REPORT
     else if (@available(iOS 11.3, *)) {
         SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
         NSMutableDictionary* productParameters = [[NSMutableDictionary alloc] init];
-        [productParameters setObject: rec.appInstallItunesItemIdentifier forKey:SKStoreProductParameterITunesItemIdentifier];
-        [productParameters setObject: OB_AD_NETWORK_ID forKey:SKStoreProductParameterAdNetworkIdentifier];
-        if (@available(iOS 14, *)) {
-            // [productParameters setObject:@"2.0" forKey:SKStoreProductParameterAdNetworkVersion];
-            // [[productParameters setObject:@"342432" forKey:forKey:SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
+        
+        [productParameters setObject: rec.skAdNetworkData.iTunesItemId    forKey: SKStoreProductParameterITunesItemIdentifier];
+        [productParameters setObject: rec.skAdNetworkData.adNetworkId     forKey: SKStoreProductParameterAdNetworkIdentifier];
+        [productParameters setObject: rec.skAdNetworkData.signature       forKey: SKStoreProductParameterAdNetworkAttributionSignature];
+        
+        // timestamp and campaignId must be NSNumber
+        if ([rec.skAdNetworkData.timestamp isKindOfClass: [NSNumber class]] && [rec.skAdNetworkData.campaignId isKindOfClass: [NSNumber class]]) {
+            [productParameters setObject: @([rec.skAdNetworkData.timestamp intValue])     forKey: SKStoreProductParameterAdNetworkTimestamp];
+            [productParameters setObject: @([rec.skAdNetworkData.campaignId intValue])    forKey: SKStoreProductParameterAdNetworkCampaignIdentifier];
         }
+        
+        if (@available(iOS 14, *)) {
+            // These product params are only included in SKAdNetwork version 2.0
+            if ([rec.skAdNetworkData.skNetworkVersion isEqualToString:@"2"]) {
+                // [productParameters setObject: @"2.0"     forKey: SKStoreProductParameterAdNetworkVersion];
+                // [productParameters setObject: rec.skAdNetworkData.sourceAppId     forKey: SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
+            }
+        }
+        
+        [productParameters setObject:[[NSUUID alloc] initWithUUIDString:rec.skAdNetworkData.nonce] forKey:SKStoreProductParameterAdNetworkNonce];
+
+        
         NSLog(@"loadProductWithParameters: %@", productParameters);
         [storeViewController loadProductWithParameters:productParameters completionBlock:^(BOOL result, NSError * _Nullable error) {
             // result -  true if the product information was successfully loaded, otherwise false.
