@@ -120,6 +120,7 @@
         recommendation.skAdNetworkData = nil;
     }
     
+    //TODO remove this code after we integrate with ODB response for iOS14 app install
     BOOL appContentIsAppInstall = [recommendation.content containsString:@"Yahtzee lovers"] || [recommendation.content containsString:@"Forge of Empires"] || [recommendation.content containsString:@"Duolingo"];
     
     if (iosVerValidForLoadProduct && appContentIsAppInstall) {
