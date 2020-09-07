@@ -123,6 +123,13 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     // RTB support
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"rtbEnabled" value: @"true"]];
     
+    // sk_network_version
+    // if app built with SDK14 - SKStoreProductParameterAdNetworkVersion will be available
+    if (@available(iOS 11.3, *)) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sk_network_version" value: @"1.0"]];
+    }
+    // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sk_network_version" value: SKStoreProductParameterAdNetworkVersion]];
+    
     // APP ID \ Bundle ID
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"app_id" value: bundleIdentifier]];
