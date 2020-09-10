@@ -32,7 +32,8 @@
 NSString * const OUTBRAIN_AD_NETWORK_ID = @"97r2b46745.skadnetwork";
 
 NSString *const OUTBRAIN_URL_REPORT_PLIST_DATA = @"https://log.outbrainimg.com/api/loggerBatch/obsd_sdk_plist_stats";
-NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"APP_USER_REPORTED_PLIST_TO_SERVER_FOR_APPVER_%@_KEY";
+NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"REPORTED_PLIST_TO_SERVER_FOR_V_%@";
+NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALID_VALUE";
 
 +(OutbrainManager *) sharedInstance {
     static OutbrainManager *sharedInstance = nil;
@@ -89,7 +90,7 @@ NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"APP_USER_REPORT
     NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY = [NSString stringWithFormat: APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT, appVersionString];
     // Check if already reported to server
     if ([self.userDefaults objectForKey:APP_USER_REPORTED_PLIST_TO_SERVER_KEY]) {
-        NSLog(@"reportPlistIsValidToServerIfNeeded - user already reported to server (for key: %@)", APP_USER_REPORTED_PLIST_TO_SERVER_KEY);
+        NSLog(@"reportPlistIsValidToServerIfNeeded - user already reported to server (for key: %@) - is compliant?: %@", APP_USER_REPORTED_PLIST_TO_SERVER_KEY, [self.userDefaults objectForKey:USER_DEFAULT_PLIST_IS_VALID_VALUE]);
         return;
     }
     
@@ -125,6 +126,7 @@ NSString *const APP_USER_REPORTED_PLIST_TO_SERVER_KEY_FORMAT = @"APP_USER_REPORT
             }
             else {
                 [self.userDefaults setObject:@YES forKey: APP_USER_REPORTED_PLIST_TO_SERVER_KEY];
+                [self.userDefaults setObject:paramsDict[@"isCompliant"] forKey: USER_DEFAULT_PLIST_IS_VALID_VALUE];
             }
         }
     }];
