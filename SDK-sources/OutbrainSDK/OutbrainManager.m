@@ -91,6 +91,9 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
     // Check if already reported to server
     if ([self.userDefaults objectForKey:APP_USER_REPORTED_PLIST_TO_SERVER_KEY]) {
         NSLog(@"reportPlistIsValidToServerIfNeeded - user already reported to server (for key: %@) - is compliant?: %@", APP_USER_REPORTED_PLIST_TO_SERVER_KEY, [self.userDefaults objectForKey:USER_DEFAULT_PLIST_IS_VALID_VALUE]);
+#ifdef DEBUG
+        [self checkIfSkAdNetworkIsConfiguredCorrectly];
+#endif
         return;
     }
     
