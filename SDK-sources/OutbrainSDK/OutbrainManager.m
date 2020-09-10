@@ -19,6 +19,7 @@
 #import "MultivacResponseDelegate.h"
 #import "OBNetworkManager.h"
 #import "OBSkAdNetworkData.h"
+#import "OBContent_Private.h"
 
 @interface OutbrainManager()
 
@@ -162,6 +163,11 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
         [navController presentViewController:alertController animated:YES completion:nil];
     }
     else if (@available(iOS 11.3, *)) {
+        // First call paid.outbrain with noRedirect=true
+        NSString *paidUrlString = [[rec originalValueForKeyPath:@"url"] stringByAppendingString:@"&noRedirect=true"];
+        NSURL * paidUrlRedirectFalse = [NSURL URLWithString:paidUrlString];
+        [[OBNetworkManager sharedManager] sendGet:paidUrlRedirectFalse completionHandler:nil];
+        
         SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
         NSMutableDictionary* productParameters = [[NSMutableDictionary alloc] init];
         
