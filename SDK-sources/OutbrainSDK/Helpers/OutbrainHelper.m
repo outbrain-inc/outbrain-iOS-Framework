@@ -17,6 +17,7 @@
 #import "OBUtils.h"
 #import "GDPRUtils.h"
 
+@import StoreKit;
 
 @interface OutbrainHelper()
 
@@ -125,10 +126,8 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     // sk_network_version
     // if app built with SDK14 - SKStoreProductParameterAdNetworkVersion will be available
-    if (@available(iOS 11.3, *)) {
-        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sk_network_version" value: @"1.0"]];
-    }
-    // [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sk_network_version" value: SKStoreProductParameterAdNetworkVersion]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sk_network_version" value: @"2.0"]];
+
     
     // APP ID \ Bundle ID
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
@@ -200,7 +199,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     }
     
     components.queryItems = odbQueryItems;
-
+    NSLog(@"URL: %@", components.URL);
     return components.URL;
 }
 
