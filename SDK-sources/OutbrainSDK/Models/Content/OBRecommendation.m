@@ -114,27 +114,12 @@
     else {
         iosVerValidForLoadProduct = NO;
     }
+
     
-    if ((iosVerValidForLoadProduct == NO) && payload[@"sk_adnetwork_data"]) {
-        // skAdNetworkData is relevant only if the device iOS version is >= 11.3 (see https://developer.apple.com/documentation/storekit/skadnetwork)
-        recommendation.skAdNetworkData = nil;
-    }
-    
-    //TODO remove this code after we integrate with ODB response for iOS14 app install
-    BOOL appContentIsAppInstall = [recommendation.content containsString:@"Yahtzee lovers"] || [recommendation.content containsString:@"Forge of Empires"] || [recommendation.content containsString:@"Duolingo"];
-    
-    if (iosVerValidForLoadProduct && appContentIsAppInstall) {
+    if (iosVerValidForLoadProduct && payload[@"sk_adnetwork_data"]) {
         recommendation.appInstall = YES;
-        NSMutableDictionary *skNetworkDataDict = [@{} mutableCopy];
-        skNetworkDataDict[@"ad_network_id"] = @"97r2b46745.skadnetwork";
-        skNetworkDataDict[@"itunes_item_id"] = @"711455226";
-        skNetworkDataDict[@"campaign_id"] = @"33";
-        skNetworkDataDict[@"nonce"] = @"e7b315b5-5d3d-4ceb-bb90-b617dee5e173";
-        skNetworkDataDict[@"timestamp"] = @"1598441577";
-        skNetworkDataDict[@"source_app_id"] = @"331786748";
-        skNetworkDataDict[@"sk_network_version"] = @"1";
-        skNetworkDataDict[@"signature"] = @"MDUCGQCNA3MQj19RNnAzSq2HBuJw5Y/GF1egz5cCGED6ncLPofiHKernghDGf7QWcF2fz3FiKg==";
-        recommendation.skAdNetworkData = [OBSkAdNetworkData contentWithPayload:skNetworkDataDict];
+        NSLog(@"sk_adnetwork_data: %@", payload[@"sk_adnetwork_data"]);
+        recommendation.skAdNetworkData = [OBSkAdNetworkData contentWithPayload:payload[@"sk_adnetwork_data"]];
     }
 
     return recommendation;
