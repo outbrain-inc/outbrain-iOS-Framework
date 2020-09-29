@@ -177,15 +177,15 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
         
         // timestamp and campaignId must be NSNumber
         if ([rec.skAdNetworkData.timestamp isKindOfClass: [NSNumber class]] && [rec.skAdNetworkData.campaignId isKindOfClass: [NSNumber class]]) {
-            [productParameters setObject: @([rec.skAdNetworkData.timestamp intValue])     forKey: SKStoreProductParameterAdNetworkTimestamp];
+            [productParameters setObject: @([rec.skAdNetworkData.timestamp longValue])     forKey: SKStoreProductParameterAdNetworkTimestamp];
             [productParameters setObject: @([rec.skAdNetworkData.campaignId intValue])    forKey: SKStoreProductParameterAdNetworkCampaignIdentifier];
         }
         
         if (@available(iOS 14, *)) {
             // These product params are only included in SKAdNetwork version 2.0
-            if ([rec.skAdNetworkData.skNetworkVersion isEqualToString:@"2"]) {
-                // [productParameters setObject: @"2.0"     forKey: SKStoreProductParameterAdNetworkVersion];
-                // [productParameters setObject: rec.skAdNetworkData.sourceAppId     forKey: SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
+            if ([rec.skAdNetworkData.skNetworkVersion isEqualToString:@"2.0"]) {
+                 [productParameters setObject: @"2.0"     forKey: SKStoreProductParameterAdNetworkVersion];
+                 [productParameters setObject: rec.skAdNetworkData.sourceAppId     forKey: SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
             }
         }
         
