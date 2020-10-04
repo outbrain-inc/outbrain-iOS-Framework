@@ -44,6 +44,7 @@
     XCTAssertNotNil(self.rec);
     XCTAssertNotNil(self.rec.skAdNetworkData);
     
+    XCTAssertTrue(self.rec.isAppInstall);
     XCTAssert([self.rec.skAdNetworkData.adNetworkId isEqualToString:@"97r2b46745.skadnetwork"]);
     XCTAssert([self.rec.skAdNetworkData.campaignId intValue] == 33);
     XCTAssert(self.rec.skAdNetworkData.timestamp == 1601792957748);
