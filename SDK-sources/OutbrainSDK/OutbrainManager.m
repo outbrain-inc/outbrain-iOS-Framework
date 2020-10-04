@@ -175,9 +175,9 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
         [productParameters setObject: rec.skAdNetworkData.adNetworkId     forKey: SKStoreProductParameterAdNetworkIdentifier];
         [productParameters setObject: rec.skAdNetworkData.signature       forKey: SKStoreProductParameterAdNetworkAttributionSignature];
         
-        // timestamp and campaignId must be NSNumber
-        if ([rec.skAdNetworkData.timestamp isKindOfClass: [NSNumber class]] && [rec.skAdNetworkData.campaignId isKindOfClass: [NSNumber class]]) {
-            [productParameters setObject: @([rec.skAdNetworkData.timestamp longValue])     forKey: SKStoreProductParameterAdNetworkTimestamp];
+        // timestamp and campaignId must be valid
+        if (rec.skAdNetworkData.timestamp > 0 && [rec.skAdNetworkData.campaignId isKindOfClass: [NSNumber class]]) {
+            [productParameters setObject: @(rec.skAdNetworkData.timestamp) forKey: SKStoreProductParameterAdNetworkTimestamp];
             [productParameters setObject: @([rec.skAdNetworkData.campaignId intValue])    forKey: SKStoreProductParameterAdNetworkCampaignIdentifier];
         }
         

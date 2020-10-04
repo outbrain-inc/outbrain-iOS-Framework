@@ -46,11 +46,11 @@
     
     XCTAssert([self.rec.skAdNetworkData.adNetworkId isEqualToString:@"97r2b46745.skadnetwork"]);
     XCTAssert([self.rec.skAdNetworkData.campaignId intValue] == 33);
-    XCTAssert([self.rec.skAdNetworkData.timestamp intValue] == 1598441577);
-    XCTAssert([self.rec.skAdNetworkData.iTunesItemId isEqualToString:@"711455226"]);
-    XCTAssert([self.rec.skAdNetworkData.nonce isEqualToString:@"e7b315b5-5d3d-4ceb-bb90-b617dee5e173"]);
-    XCTAssert([self.rec.skAdNetworkData.signature isEqualToString:@"MDUCGQCNA3MQj19RNnAzSq2HBuJw5Y/GF1egz5cCGED6ncLPofiHKernghDGf7QWcF2fz3FiKg=="]);
-    XCTAssert([self.rec.skAdNetworkData.skNetworkVersion isEqualToString:@"1"]);
+    XCTAssert(self.rec.skAdNetworkData.timestamp == 1601792957748);
+    XCTAssert([self.rec.skAdNetworkData.iTunesItemId isEqualToString:@"866450515"]);
+    XCTAssert([self.rec.skAdNetworkData.nonce isEqualToString:@"feb35745-f54f-416f-b961-6b79c749507c"]);
+    XCTAssert([self.rec.skAdNetworkData.signature isEqualToString:@"MDUCGG6IpdcS+8/XTe9TM0/j3JWJ0ajzefVVfgIZAKo/92CtCPcyxjJz9DqSfm3TSTgHVk0gAg=="]);
+    XCTAssert([self.rec.skAdNetworkData.skNetworkVersion isEqualToString:@"2.0"]);
     XCTAssert([self.rec.skAdNetworkData.sourceAppId isEqualToString:@"331786748"]);
 }
 

@@ -28,7 +28,7 @@
 @property (nonatomic, copy, nullable) NSString *nonce;
 
 /** @brief A timestamp the ad network generate near the time of the ad impression */
-@property (nonatomic, copy, nullable) NSNumber *timestamp;
+@property (nonatomic, assign) long timestamp;
 
 /** @brief The App Store ID of the app displaying the ad */
 @property (nonatomic, copy, nullable) NSString *sourceAppId;

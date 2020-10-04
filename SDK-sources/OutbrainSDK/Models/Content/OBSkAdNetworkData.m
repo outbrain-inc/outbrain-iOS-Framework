@@ -22,7 +22,8 @@
     }
     if (payload[@"timestamp"])
     {
-        obSkAdNetworkData.timestamp = [f numberFromString: payload[@"timestamp"]];
+        NSNumber *timestampsNumber = [f numberFromString: payload[@"timestamp"]];
+        obSkAdNetworkData.timestamp = [timestampsNumber longValue];
     }
 
     return obSkAdNetworkData;
