@@ -126,8 +126,11 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     // sk_network_version
     // if app built with SDK14 - SKStoreProductParameterAdNetworkVersion will be available
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sk_network_version" value: @"2.0"]];
-
+    NSString *skNetworkVersion = @"1.0";
+    if (@available(iOS 14, *)) {
+        skNetworkVersion = @"2.0";
+    }
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sk_network_version" value: skNetworkVersion]];
     
     // APP ID \ Bundle ID
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
