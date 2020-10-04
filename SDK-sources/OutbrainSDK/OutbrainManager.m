@@ -169,12 +169,25 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
         [[OBNetworkManager sharedManager] sendGet:paidUrlRedirectFalse completionHandler:nil];
         
         SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
-        NSMutableDictionary* productParameters = [[NSMutableDictionary alloc] init];
+        NSDictionary *productParameters = [self prepareLoadProductParams:rec];
         
+        NSLog(@"loadProductWithParameters: %@", productParameters);
+        [storeViewController loadProductWithParameters:productParameters completionBlock:^(BOOL result, NSError * _Nullable error) {
+            // result -  true if the product information was successfully loaded, otherwise false.
+            NSLog(@"loadProductWithParameters - result: %@, error: %@", result ? @"true" : @"false", [error localizedDescription]);
+        }];
+        [navController presentViewController:storeViewController animated:YES completion:nil];
+    }
+}
+
+-(NSDictionary *) prepareLoadProductParams:(OBRecommendation * _Nonnull)rec {
+    NSMutableDictionary* productParameters = [[NSMutableDictionary alloc] init];
+    
+    if (@available(iOS 11.3, *)) {
         [productParameters setObject: rec.skAdNetworkData.iTunesItemId    forKey: SKStoreProductParameterITunesItemIdentifier];
         [productParameters setObject: rec.skAdNetworkData.adNetworkId     forKey: SKStoreProductParameterAdNetworkIdentifier];
         [productParameters setObject: rec.skAdNetworkData.signature       forKey: SKStoreProductParameterAdNetworkAttributionSignature];
-        
+        [productParameters setObject:[[NSUUID alloc] initWithUUIDString:rec.skAdNetworkData.nonce] forKey:SKStoreProductParameterAdNetworkNonce];
         // timestamp and campaignId must be valid
         if (rec.skAdNetworkData.timestamp > 0 && [rec.skAdNetworkData.campaignId isKindOfClass: [NSNumber class]]) {
             [productParameters setObject: @(rec.skAdNetworkData.timestamp) forKey: SKStoreProductParameterAdNetworkTimestamp];
@@ -188,17 +201,11 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
                  [productParameters setObject: rec.skAdNetworkData.sourceAppId     forKey: SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
             }
         }
-        
-        [productParameters setObject:[[NSUUID alloc] initWithUUIDString:rec.skAdNetworkData.nonce] forKey:SKStoreProductParameterAdNetworkNonce];
-
-        
-        NSLog(@"loadProductWithParameters: %@", productParameters);
-        [storeViewController loadProductWithParameters:productParameters completionBlock:^(BOOL result, NSError * _Nullable error) {
-            // result -  true if the product information was successfully loaded, otherwise false.
-            NSLog(@"loadProductWithParameters - result: %@, error: %@", result ? @"true" : @"false", [error localizedDescription]);
-        }];
-        [navController presentViewController:storeViewController animated:YES completion:nil];
+    } else {
+        return nil;
     }
+    
+    return productParameters;
 }
 
 @end
