@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.author              = { "Oded Regev" => "oregev@outbrain.com" }
   s.platform            = :ios, "9.0"
   s.source              = { :git => "https://github.com/outbrain/outbrain-iOS-Framework.git", :tag => "version/#{s.version}" }
-  s.frameworks          = "SystemConfiguration", "AdSupport"
+  s.frameworks          = "SystemConfiguration", "AdSupport", "StoreKit"
   s.requires_arc        = true
   s.static_framework    = true
   s.preserve_paths      = "OutbrainSDK.framework"
