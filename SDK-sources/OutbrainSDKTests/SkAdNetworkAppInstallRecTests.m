@@ -72,7 +72,7 @@ long const SK_CAMPAIGN_ID = 33;
     XCTAssert([self.rec.skAdNetworkData.nonce isEqualToString: SK_NONCE]);
     XCTAssert([self.rec.skAdNetworkData.signature isEqualToString: SK_ATTRIBUTION_SIGNATURE]);
     XCTAssert([self.rec.skAdNetworkData.skNetworkVersion isEqualToString: SK_SIG_VERSION]);
-    XCTAssert([self.rec.skAdNetworkData.sourceAppId isEqualToString: SK_SOURCE_APP_ID]);
+    XCTAssert([self.rec.skAdNetworkData.sourceAppId intValue] == 331786748);
 }
 
 - (void) testPrepareLoadProductParams {

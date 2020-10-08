@@ -31,7 +31,7 @@
 @property (nonatomic, assign) long timestamp;
 
 /** @brief The App Store ID of the app displaying the ad */
-@property (nonatomic, copy, nullable) NSString *sourceAppId;
+@property (nonatomic, copy, nullable) NSNumber *sourceAppId;
 
 /** @brief Version 2.0. Use the API version value “2.0” */
 @property (nonatomic, copy, nullable) NSString *skNetworkVersion;
