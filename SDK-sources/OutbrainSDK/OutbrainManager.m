@@ -198,7 +198,6 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
         if (@available(iOS 14, *)) {
             // These product params are only included in SKAdNetwork version 2.0
             if ([rec.skAdNetworkData.skNetworkVersion isEqualToString:@"2.0"]) {
-                NSLog(@"sourceAppId: %@", [rec.skAdNetworkData.sourceAppId class]);
                 [productParameters setObject: @"2.0"            forKey: SKStoreProductParameterAdNetworkVersion];
                 [productParameters setObject: rec.skAdNetworkData.sourceAppId    forKey: SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
             }
