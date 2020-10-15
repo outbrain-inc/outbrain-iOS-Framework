@@ -25,6 +25,10 @@
         NSNumber *timestampsNumber = [f numberFromString: payload[@"timestamp"]];
         obSkAdNetworkData.timestamp = [timestampsNumber longValue];
     }
+    if (payload[@"source_app_id"]) {
+        NSNumber *sourceAppIdNumber = [f numberFromString: payload[@"source_app_id"]];
+        obSkAdNetworkData.sourceAppId = sourceAppIdNumber;
+    }
 
     return obSkAdNetworkData;
 }
@@ -35,7 +39,6 @@
         @"adNetworkId"      :  @"ad_network_id",
         @"iTunesItemId"     :  @"itunes_item_id",
         @"nonce"            :  @"nonce",
-        @"sourceAppId"      :  @"source_app_id",
         @"skNetworkVersion" :  @"sk_network_version",
         @"signature"        :  @"signature",
     };
