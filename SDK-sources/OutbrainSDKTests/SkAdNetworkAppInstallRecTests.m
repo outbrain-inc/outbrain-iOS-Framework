@@ -39,7 +39,7 @@ NSString * const SK_NETWORK_ID = @"97r2b46745.skadnetwork";
 NSString * const SK_ITUNES_ID = @"866450515";
 NSString * const SK_NONCE = @"feb35745-f54f-416f-b961-6b79c749507c";
 NSString * const SK_SIG_VERSION = @"2.0";
-NSString * const SK_SOURCE_APP_ID = @"331786748";
+NSInteger const SK_SOURCE_APP_ID = 331786748;
 long const SK_TIMESTAMP = 1601792957748;
 long const SK_CAMPAIGN_ID = 33;
 
@@ -89,7 +89,8 @@ long const SK_CAMPAIGN_ID = 33;
     }
     if (@available(iOS 14.0, *)) {
         XCTAssert([[productParameters objectForKey:SKStoreProductParameterAdNetworkVersion] isEqualToString: SK_SIG_VERSION]);
-        XCTAssert([[productParameters objectForKey:SKStoreProductParameterAdNetworkSourceAppStoreIdentifier] isEqualToString: SK_SOURCE_APP_ID]);
+        XCTAssert([[productParameters objectForKey:SKStoreProductParameterAdNetworkSourceAppStoreIdentifier]  isKindOfClass:[NSNumber class]]);
+        XCTAssert([[productParameters objectForKey:SKStoreProductParameterAdNetworkSourceAppStoreIdentifier] intValue] == SK_SOURCE_APP_ID);
     }
 }
 
