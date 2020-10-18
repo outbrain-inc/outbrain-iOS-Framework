@@ -51,7 +51,7 @@
     {
         // Loop through the propertiesMap and map the payload to properties
         [[self propertiesMap] enumerateKeysAndObjectsUsingBlock:^(NSString * propertyKey, NSString * payloadKey, BOOL *stop) {
-            if(payload[payloadKey] && [self propertyClassForKey:payloadKey] != NULL)
+            if (payload[payloadKey] && [self propertyClassForKey:payloadKey] != NULL)
             {
                 // Here we got a dictionary as the value.  So we should convert it to an object
                 Class c = [self propertyClassForKey:payloadKey];

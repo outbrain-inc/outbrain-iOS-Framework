@@ -19,7 +19,9 @@
 
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"3.9.3";
+NSString * const OB_SDK_VERSION     =   @"4.0.0";
+
+NSString * const OB_AD_NETWORK_ID   =   @"97r2b46745.skadnetwork";
 
 BOOL WAS_INITIALIZED     =   NO;
 
@@ -151,6 +153,10 @@ BOOL WAS_INITIALIZED     =   NO;
         [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
         [label trackViewability];
     }
+}
+
++(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController {
+    [[OutbrainManager sharedInstance] openAppInstallRec:rec inNavController:navController];
 }
 
 @end

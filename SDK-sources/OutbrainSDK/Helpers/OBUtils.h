@@ -12,6 +12,8 @@
 
 +(NSString *) deviceModel;
 
++(BOOL) isDeviceSimulator;
+
 +(NSString *) decodeHTMLEnocdedString:(NSString *)htmlEncodedString;
 
 @end

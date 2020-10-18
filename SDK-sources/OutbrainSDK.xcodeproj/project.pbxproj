@@ -158,6 +158,9 @@
 		E69B5E34249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */; };
 		E69B5E37249B888600A9178C /* BrandedCarouselCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */; };
 		E69B5E38249B888600A9178C /* BrandedCarouselCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */; };
+		E6AB15462504EE41001E56E2 /* app_install_ios14_rec.json in Resources */ = {isa = PBXBuildFile; fileRef = E6AB15452504EE41001E56E2 /* app_install_ios14_rec.json */; };
+		E6AB15492504EF4E001E56E2 /* OBSkAdNetworkData.h in Headers */ = {isa = PBXBuildFile; fileRef = E6AB15472504EF4E001E56E2 /* OBSkAdNetworkData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6AB154A2504EF4E001E56E2 /* OBSkAdNetworkData.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AB15482504EF4E001E56E2 /* OBSkAdNetworkData.m */; };
 		E6B930A6216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */; };
 		E6B930AC216F794C00EC7A4A /* SFVideoCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */; };
 		E6B930AD216F794C00EC7A4A /* SFVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */; };
@@ -183,6 +186,7 @@
 		E6EA378A209B30E2009B687B /* smart_feed_response_child2.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA3787209B30E1009B687B /* smart_feed_response_child2.json */; };
 		E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */; };
 		E6EA378F209B376F009B687B /* smart_feed_response_child3.json in Resources */ = {isa = PBXBuildFile; fileRef = E6EA378D209B376E009B687B /* smart_feed_response_child3.json */; };
+		E6F3A9A42504F8D10057CADB /* SkAdNetworkAppInstallRecTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F3A9A32504F8D10057CADB /* SkAdNetworkAppInstallRecTests.m */; };
 		E6F8F45C211C3C6D0069C72C /* SmartFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F8F45A211C3C6D0069C72C /* SmartFeedManager.m */; };
 		E6F8F45D211C3C6D0069C72C /* SmartFeedManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E6F8F45B211C3C6D0069C72C /* SmartFeedManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6F8F460211C3D400069C72C /* SFTableViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E6F8F45E211C3D400069C72C /* SFTableViewManager.h */; };
@@ -374,6 +378,9 @@
 		E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSingleAppInstallTableCell.xib; sourceTree = "<group>"; };
 		E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandedCarouselCollectionLayout.h; sourceTree = "<group>"; };
 		E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandedCarouselCollectionLayout.m; sourceTree = "<group>"; };
+		E6AB15452504EE41001E56E2 /* app_install_ios14_rec.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = app_install_ios14_rec.json; sourceTree = "<group>"; };
+		E6AB15472504EF4E001E56E2 /* OBSkAdNetworkData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBSkAdNetworkData.h; sourceTree = "<group>"; };
+		E6AB15482504EF4E001E56E2 /* OBSkAdNetworkData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBSkAdNetworkData.m; sourceTree = "<group>"; };
 		E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedWithVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFVideoCollectionViewCell.h; sourceTree = "<group>"; };
 		E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFVideoTableViewCell.m; sourceTree = "<group>"; };
@@ -397,6 +404,7 @@
 		E6EA3787209B30E1009B687B /* smart_feed_response_child2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_child2.json; sourceTree = "<group>"; };
 		E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBSmartFeedTests.m; sourceTree = "<group>"; };
 		E6EA378D209B376E009B687B /* smart_feed_response_child3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = smart_feed_response_child3.json; sourceTree = "<group>"; };
+		E6F3A9A32504F8D10057CADB /* SkAdNetworkAppInstallRecTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkAdNetworkAppInstallRecTests.m; sourceTree = "<group>"; };
 		E6F8F45A211C3C6D0069C72C /* SmartFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartFeedManager.m; sourceTree = "<group>"; };
 		E6F8F45B211C3C6D0069C72C /* SmartFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartFeedManager.h; sourceTree = "<group>"; };
 		E6F8F45E211C3D400069C72C /* SFTableViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFTableViewManager.h; sourceTree = "<group>"; };
@@ -637,6 +645,8 @@
 				E61E6BEF20836C180016D79A /* OBContent_Private.h */,
 				E61E6BF020836C180016D79A /* OBRecommendation.m */,
 				E61E6BF420836C180016D79A /* OBRecommendation.h */,
+				E6AB15472504EF4E001E56E2 /* OBSkAdNetworkData.h */,
+				E6AB15482504EF4E001E56E2 /* OBSkAdNetworkData.m */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -702,6 +712,7 @@
 				E69B5E2F249A020100A9178C /* OBSmartFeedAppInstallTests.m */,
 				E6355C0022367EC000C3D1D5 /* MultivacResponseTests.m */,
 				E61E6C1320836C180016D79A /* OBParseODBTests.m */,
+				E6F3A9A32504F8D10057CADB /* SkAdNetworkAppInstallRecTests.m */,
 				E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */,
 				E61E6C1420836C180016D79A /* OutbrainHelperTests.m */,
 				E6250CCC21BD5E8900C329B9 /* SFUtilsTests.m */,
@@ -726,6 +737,7 @@
 				E6EA378D209B376E009B687B /* smart_feed_response_child3.json */,
 				E61E6C0E20836C180016D79A /* odb_normal_response.json */,
 				E6355BFE22367E7D00C3D1D5 /* outbrain_multivac_response.json */,
+				E6AB15452504EE41001E56E2 /* app_install_ios14_rec.json */,
 			);
 			path = mock_responses;
 			sourceTree = "<group>";
@@ -1030,6 +1042,7 @@
 				E61E6C4420836C180016D79A /* OBUtils.h in Headers */,
 				E63B784D212AB1860018C225 /* SFUtils.h in Headers */,
 				E69B5E37249B888600A9178C /* BrandedCarouselCollectionLayout.h in Headers */,
+				E6AB15492504EF4E001E56E2 /* OBSkAdNetworkData.h in Headers */,
 				E63B7855212AB1860018C225 /* SFTableViewCell.h in Headers */,
 				E61E6C2020836C180016D79A /* UIView+Visible.h in Headers */,
 				E61E6C3C20836C180016D79A /* Outbrain.h in Headers */,
@@ -1187,6 +1200,7 @@
 				E69B5E2E249A00F400A9178C /* smart_feed_response_app_install_card.json in Resources */,
 				E6D26D8B20D7C0A900D6D00A /* non_rtb_rec.json in Resources */,
 				E6D26D9120D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json in Resources */,
+				E6AB15462504EE41001E56E2 /* app_install_ios14_rec.json in Resources */,
 				E6D26D9020D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json in Resources */,
 				E6EA378F209B376F009B687B /* smart_feed_response_child3.json in Resources */,
 				E6EA3789209B30E2009B687B /* smart_feed_response_child1.json in Resources */,
@@ -1223,6 +1237,7 @@
 				E61E6C4820836C180016D79A /* OBUtils.m in Sources */,
 				E64AE0BC2472BD610070A471 /* SFBrandedCarouselCollectionCell.m in Sources */,
 				E6FEB3E820FF2E78002A9020 /* SFHorizontalCollectionViewCell.m in Sources */,
+				E6AB154A2504EF4E001E56E2 /* OBSkAdNetworkData.m in Sources */,
 				E61E6C1B20836C180016D79A /* OBAdsChoicesManager.m in Sources */,
 				E61E6C4220836C180016D79A /* Outbrain.m in Sources */,
 				E61E6C1F20836C180016D79A /* OBViewabilityService.m in Sources */,
@@ -1287,6 +1302,7 @@
 			files = (
 				E6250CCD21BD5E8900C329B9 /* SFUtilsTests.m in Sources */,
 				E64AE0C0247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m in Sources */,
+				E6F3A9A42504F8D10057CADB /* SkAdNetworkAppInstallRecTests.m in Sources */,
 				E6355C0122367EC000C3D1D5 /* MultivacResponseTests.m in Sources */,
 				E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */,
 				E69B5E30249A020200A9178C /* OBSmartFeedAppInstallTests.m in Sources */,
@@ -1457,7 +1473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = OutbrainSDK/SupportingFiles/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1467,6 +1483,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.OutbrainSDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1499,7 +1516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = OutbrainSDK/SupportingFiles/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1509,6 +1526,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.OutbrainSDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";

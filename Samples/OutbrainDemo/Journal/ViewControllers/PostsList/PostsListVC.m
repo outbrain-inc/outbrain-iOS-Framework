@@ -310,6 +310,12 @@
 
 - (void)widgetView:(id<OBWidgetViewProtocol>)widgetView tappedRecommendation:(OBRecommendation *)recommendation
 {
+    
+    if ([recommendation isAppInstall]) {
+        [Outbrain openAppInstallRec:recommendation inNavController:self.navigationController];
+        return;
+    }
+    
     // First report the click to the SDK and receive the URL to open.
     NSURL * url = [Outbrain getUrl:recommendation];
     
