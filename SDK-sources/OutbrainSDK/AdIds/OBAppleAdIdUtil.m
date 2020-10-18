@@ -10,14 +10,17 @@
 #import "OutbrainManager.h"
 #import "OBAppleAdIdUtil.h"
 #import <AdSupport/AdSupport.h>
-
-#define LAST_AD_ID_KEY @"LAST_SAVED_AD_ID"
-
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
 
 @implementation OBAppleAdIdUtil
 
 + (BOOL)isOptedOut {
-    return ![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled];
+    if (@available(iOS 14, *)) {
+        return [ATTrackingManager trackingAuthorizationStatus] != ATTrackingManagerAuthorizationStatusAuthorized;
+    }
+    else { // for devices with iOS < 14.0
+        return ![[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled];
+    }
 }
 
 + (NSString *)getAdvertiserId {
@@ -29,15 +32,5 @@
     return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
 }
 
-+ (BOOL)didUserResetAdvertiserId {
-    NSString *lastSavedId = [[NSUserDefaults standardUserDefaults] objectForKey:LAST_AD_ID_KEY];
-    NSString *currentId = [self getAdvertiserId];
-    
-    return ![lastSavedId isEqualToString:currentId];
-}
-
-+ (void)refreshAdId {
-    [[NSUserDefaults standardUserDefaults] setObject:[self getAdvertiserId] forKey:LAST_AD_ID_KEY];
-}
 
 @end
