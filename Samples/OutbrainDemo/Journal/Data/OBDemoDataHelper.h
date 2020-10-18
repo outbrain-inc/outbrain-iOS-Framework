@@ -3,7 +3,7 @@
 //  OutbrainDemo
 //
 //  Created by Joseph Ridenour on 12/27/13.
-//  Copyright (c) 2013 Mercury. All rights reserved.
+//  Copyright (c) 2014 Outbrain. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
