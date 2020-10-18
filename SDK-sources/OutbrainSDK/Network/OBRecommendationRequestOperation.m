@@ -107,7 +107,7 @@
     self.url = [[OutbrainHelper sharedInstance] recommendationURLForRequest: self.request];
     self.requestStartDate = [NSDate date];
     
-     NSLog(@"ODB: %@", self.url);
+    // NSLog(@"ODB: %@", self.url);
     
     [[OBNetworkManager sharedManager] sendGet:self.url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         [self taskCompletedWith:data response:response error:error];
