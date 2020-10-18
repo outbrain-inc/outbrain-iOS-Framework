@@ -9,6 +9,7 @@
 
 import UIKit
 import SafariServices
+import AdSupport
 import AppTrackingTransparency
 import OutbrainSDK
 
@@ -39,10 +40,9 @@ class ArticleCollectionViewController: UICollectionViewController {
         self.collectionView!.addSubview(refresher)
         
         if #available(iOS 14, *) {
-            if (ATTrackingManager.trackingAuthorizationStatus == .notDetermined) {
-                ATTrackingManager.requestTrackingAuthorization { authStatus in
-                    print("user authStatus is: \(authStatus)")
-                }
+            ATTrackingManager.requestTrackingAuthorization { authStatus in
+                print("user authStatus is: \(authStatus)")
+                print("advertisingIdentifier: \(ASIdentifierManager.shared().advertisingIdentifier)")
             }
         }
     }
