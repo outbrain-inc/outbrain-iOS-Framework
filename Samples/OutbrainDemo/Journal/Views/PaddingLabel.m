@@ -3,7 +3,7 @@
 //  Journal
 //
 //  Created by oded regev on 11/1/17.
-//  Copyright © 2017 Mercury Intermedia. All rights reserved.
+//  Copyright (c) 2017 Outbrain. All rights reserved.
 //
 
 #import "PaddingLabel.h"
