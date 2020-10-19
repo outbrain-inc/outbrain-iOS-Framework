@@ -1,12 +1,13 @@
 # Release Notes
 
 
-## v4.0.1 - October XX, 2020
+## v4.0.1 - October 19, 2020
 
 - Feature: Weekly Highlights card
 - Feature: iOS14 SKAdNetwork app install validation support. 
-- Internal: Built with Xcode 12.0.1, iOS14 SDK
 - Feature: support for GIF images in Smartfeed.
+- Internal: Built with Xcode 12.0.1, iOS14 SDK
+- Internal: SDK and sample apps use `ATTrackingManager` for IDFA logic (instead of deprecated `[[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]`)
 
 
 ## v3.9.2 - July 26, 2020
