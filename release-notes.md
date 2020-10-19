@@ -1,7 +1,7 @@
 # Release Notes
 
 
-## v4.0.1 - October 19, 2020
+## v4.0.0 - October 19, 2020
 
 - Feature: Weekly Highlights card
 - Feature: iOS14 SKAdNetwork app install validation support. 
