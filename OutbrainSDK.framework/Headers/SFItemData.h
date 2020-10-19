@@ -35,6 +35,7 @@ extern NSInteger kVideoFinishedStatus;
 @property (nonatomic, strong, readonly) UIColor *shadowColor;
 @property (nonatomic, assign, readonly) SFItemType itemType;
 @property (nonatomic, copy, readonly) NSString *widgetTitle;
+@property (nonatomic, strong, readonly) UIColor *widgetTitleTextColor;
 @property (nonatomic, copy, readonly) NSString *widgetId;
 @property (nonatomic, copy, readonly) NSString *abTestVal;
 @property (nonatomic, strong, readonly) OBRequest *request;
