@@ -9,7 +9,8 @@
 
 import UIKit
 import SafariServices
-
+import AdSupport
+import AppTrackingTransparency
 import OutbrainSDK
 
 class ArticleCollectionViewController: UICollectionViewController {
@@ -37,6 +38,13 @@ class ArticleCollectionViewController: UICollectionViewController {
         self.refresher.tintColor = UIColor.blue
         self.refresher.addTarget(self, action: #selector(loadData), for: .valueChanged)
         self.collectionView!.addSubview(refresher)
+        
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { authStatus in
+                print("user authStatus is: \(authStatus)")
+                print("advertisingIdentifier: \(ASIdentifierManager.shared().advertisingIdentifier)")
+            }
+        }
     }
     
     override var canBecomeFirstResponder: Bool {

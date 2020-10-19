@@ -84,9 +84,6 @@
     // Here we will ignore all cached data to ensure we attempt to make a request each time
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:15.f];
     
-    if ([OBAppleAdIdUtil isOptedOut] || [OBAppleAdIdUtil didUserResetAdvertiserId]) {
-        [OBAppleAdIdUtil refreshAdId];
-    }
     [self addUserAgentHeaderTo:request];
     
     return request;
