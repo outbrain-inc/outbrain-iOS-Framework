@@ -153,7 +153,7 @@ jobs:
             -project OutbrainDemo.xcodeproj \
             -scheme Journal \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
             build
           working_directory: Samples/OutbrainDemo
       
@@ -164,7 +164,7 @@ jobs:
             -project OutbrainDemo.xcodeproj \
             -scheme SmartFeed \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
             build
           working_directory: Samples/OutbrainDemo
 
@@ -175,7 +175,7 @@ jobs:
             -project OutbrainSDK.xcodeproj \
             -scheme OutbrainSDK \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
             test
           working_directory: SDK-sources
 
