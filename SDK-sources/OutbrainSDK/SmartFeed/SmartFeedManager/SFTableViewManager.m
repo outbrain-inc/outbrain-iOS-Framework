@@ -143,6 +143,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
     UITableView *tableView = self.tableView;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if ([tableView superview] == nil) {
+            return;
+        }
         NSArray *visibleIndexPathArray = [tableView indexPathsForVisibleRows];
         [tableView reloadRowsAtIndexPaths:visibleIndexPathArray withRowAnimation:UITableViewRowAnimationAutomatic];
     });
