@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v4.0.1 - October 29, 2020
+
+- Bug fix - Smartfeed via UITableView on iPad crashed on orientation change after view controller was removed from screen.
+
 ## v4.0.0 - October 19, 2020
 
 - Feature: Weekly Highlights card
