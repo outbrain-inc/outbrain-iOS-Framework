@@ -9,6 +9,8 @@
 #import "SmartFeedManager.h"
 #import "SFTableViewHeaderCell.h"
 #import "SFCollectionViewHeaderCell.h"
+#import "SFTableViewReadMoreCell.h"
+#import "SFCollectionViewReadMoreCell.h"
 #import "SFHorizontalCollectionViewCell.h"
 #import "SFBrandedCarouselCollectionCell.h"
 #import "SFHorizontalWithVideoCollectionViewCell.h"
@@ -135,6 +137,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.horizontalContainerMargin = 0;
     self.isVideoEligible = YES; // default value
     
+    self.isReadMoreModuleEnabled = NO;
+    
     self.defaultDelegate = [[SFDefaultDelegate alloc] init];
     self.delegate = self.defaultDelegate;
 }
@@ -146,10 +150,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 -(NSInteger) smartFeedItemsCount {
     if (self.smartFeedItemsArray.count > 0) {
-        return self.smartFeedItemsArray.count + 1; // plus header cell
+        if (self.isReadMoreModuleEnabled) {
+            // plus header and read more button
+            return self.smartFeedItemsArray.count + 2;
+        }
+        // plus header
+        return self.smartFeedItemsArray.count + 1;
     }
     else {
-        return 0;
+        // show read more button if read more module is enabled
+        return self.isReadMoreModuleEnabled ? 1 : 0;
     }
 }
 
@@ -601,7 +611,15 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return [[UITableViewCell alloc] init];
     }
     
-    if (indexPath.row == 0) {
+    NSInteger headerRowIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            return [self.sfTableViewManager tableView:tableView readMoreCellForRowAtIndexPath:indexPath];
+        }
+        headerRowIndex = 1;
+    }
+    
+    if (indexPath.row == headerRowIndex) {
         // Smartfeed header cell
         if (self.smartFeedHeadercCustomUIReuseIdentifier) {
             return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
@@ -653,7 +671,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return;
     }
     
-    if (indexPath.row == 0) {
+    NSInteger headerRowIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            [self.sfTableViewManager configureReadMoreTableViewCell:cell atIndexPath:indexPath];
+            return;
+        }
+        headerRowIndex = 1;
+    }
+    
+    if (indexPath.row == headerRowIndex) {
         // Smartfeed header
         [self configureSmartFeedHeaderTableViewCell:cell atIndexPath:indexPath];
         return;
@@ -701,9 +728,23 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
 }
 
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount {
+    if (!self.isReadMoreModuleEnabled) {
+        return collapsableItemCount;
+    }
+    return [self.sfTableViewManager tableView:tableView numberOfRowsInCollapsableSection:section collapsableItemCount:collapsableItemCount];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    NSInteger headerRowIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            return [self.sfTableViewManager heightForReadMoreRowAtIndexPath: indexPath];
+        }
+        headerRowIndex = 1;
+    }
+    if (indexPath.row == headerRowIndex) {
         // Smartfeed header
         return UITableViewAutomaticDimension;
     }
@@ -860,7 +901,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (void) configureSmartFeedHeaderTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
+    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow: self.isReadMoreModuleEnabled ? 2 : 1 inSection:self.outbrainSectionIndex]];
     SFTableViewHeaderCell *sfHeaderCell = (SFTableViewHeaderCell *)cell;
     if (sfItem.widgetTitle) {
         sfHeaderCell.headerLabel.text = sfItem.widgetTitle;
@@ -1009,7 +1050,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
-    return self.smartFeedItemsArray[indexPath.row-1];
+    return self.smartFeedItemsArray[indexPath.row - (self.isReadMoreModuleEnabled ? 2 : 1)];
 }
     
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

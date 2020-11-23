@@ -20,7 +20,13 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     let textHeaderCellReuseIdentifier = "textHeaderCell"
     let contentCellReuseIdentifier = "contentHeaderCell"
     
-    let originalArticleItemsCount = 5
+    let originalArticleItemsCount = 6
+    
+    // For read more module
+    let isReadMoreModuleEnabled = true
+    let collapsableItemCount = 3
+    let collapsableSection = 1
+    
     var outbrainIdx = 0
     var isLoadingOutrainRecs = false
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
@@ -37,6 +43,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     func setupSmartFeed() {
         self.smartFeedManager = SmartFeedManager(url: OBConf.baseURL, widgetID: OBConf.widgetID, tableView: self.tableView)
         self.smartFeedManager.delegate = self
+        self.smartFeedManager.isReadMoreModuleEnabled = isReadMoreModuleEnabled
         self.smartFeedManager.darkMode = self.darkMode
         self.view.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
         self.tableView.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
@@ -63,13 +70,18 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index, must be the last one.
+        self.smartFeedManager.outbrainSectionIndex = 2 // update smartFeedManager with outbrain section index, must be the last one.
         return self.smartFeedManager.numberOfSectionsInTableView()
     }
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section < self.smartFeedManager.outbrainSectionIndex {
-            return originalArticleItemsCount
+            // For read more module
+            if section == self.collapsableSection {
+                return self.smartFeedManager.tableView(tableView, numberOfRowsInCollapsableSection: section, collapsableItemCount: self.collapsableItemCount)
+            } else {
+                return self.originalArticleItemsCount - self.collapsableItemCount
+            }
         }
         else {
             return self.smartFeedManager.smartFeedItemsCount()
@@ -87,12 +99,12 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             return self.smartFeedManager.tableView(tableView, cellForRowAt: indexPath)
         }
         
-        switch indexPath.row {
-        case 0:
+        switch (indexPath.section, indexPath.row) {
+        case (0,0):
             cell = self.tableView.dequeueReusableCell(withIdentifier: imageHeaderCellReuseIdentifier) as UITableViewCell?
-        case 1:
+        case (0,1):
             cell = self.tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell?
-        case 2,3,4:
+        case (1,_):
             cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
         default:
             cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
@@ -111,7 +123,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         self.smartFeedManager.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
         
         // App Developer should configure the app cells here..
-        if (indexPath.row == 1) {
+        if indexPath.section == 0 && indexPath.row == 1 {
             if let articleCell = cell as? AppArticleTableViewCell {
                 articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
@@ -119,7 +131,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
                 articleCell.headerLabel.textColor = self.darkMode ? UIColor.white : UIColor.black
             }
         }
-        if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4) {
+        if (indexPath.section == 1) {
             if let articleCell = cell as? AppArticleTableViewCell {
                 articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0

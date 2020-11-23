@@ -126,6 +126,9 @@ typedef enum
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
 @property (nonatomic) BOOL isSkySolutionActive;
 
+// Read more module
+@property (nonatomic) BOOL isReadMoreModuleEnabled;
+
 -(NSInteger) smartFeedItemsCount;
 
 // TableView
@@ -141,6 +144,10 @@ typedef enum
 - (void)tableView:(UITableView * _Nonnull)tableView willDisplayCell:(UITableViewCell * _Nonnull)cell forRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+
+// Read More Module
+
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount;
 
 // CollectionView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url

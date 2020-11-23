@@ -9,6 +9,7 @@
 #import "SFTableViewManager.h"
 #import "SFItemData.h"
 #import "SFHorizontalTableViewCell.h"
+#import "SFTableViewReadMoreCell.h"
 #import "SFUtils.h"
 #import "SFImageLoader.h"
 #import "SFVideoTableViewCell.h"
@@ -18,6 +19,10 @@
 
 @property (nonatomic, weak) UITableView *tableView;
 
+@property (nonatomic, assign) BOOL shouldExpand;
+@property (nonatomic, assign) BOOL shouldCollapseReadMoreCell;
+@property (nonatomic, assign) NSInteger readMoreCollapsableSection;
+
 @end
 
 @implementation SFTableViewManager
@@ -25,6 +30,7 @@
 const CGFloat kTableViewRowHeight = 250.0;
 NSString * const kTableViewSingleReuseId = @"SFTableViewCell";
 NSString * const kTableViewSmartfeedHeaderReuseId = @"SFTableViewHeaderCell";
+NSString * const kTableViewReadMoreCellReuseId = @"SFTableViewReadMoreCell";
 NSString * const kTableViewSmartfeedRTLHeaderReuseId = @"SFTableViewRTLHeaderCell";
 NSString * const kTableViewHorizontalCarouselWithTitleReuseId = @"SFCarouselWithTitleReuseId";
 NSString * const kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitleReuseId";
@@ -94,6 +100,11 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         nib = [UINib nibWithNibName:@"SFTableViewRTLHeaderCell" bundle:bundle];
         NSAssert(nib != nil, @"SFTableViewRTLHeaderCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSmartfeedRTLHeaderReuseId];
+        
+        // Read More module cell
+        nib = [UINib nibWithNibName:@"SFTableViewReadMoreCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFTableViewReadMoreCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewReadMoreCellReuseId];
         
         // video cell
         [self.tableView registerClass:[SFVideoTableViewCell class] forCellReuseIdentifier:kTableViewSingleVideoReuseId];
@@ -165,6 +176,12 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     if ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft) {
         reuseId = kTableViewSmartfeedHeaderReuseId;
     }
+    
+    return [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView readMoreCellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *reuseId = kTableViewReadMoreCellReuseId;
     
     return [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
 }
@@ -387,6 +404,39 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     else {
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
+}
+
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount {
+    self.readMoreCollapsableSection = section;
+    return self.shouldExpand ? collapsableItemCount : 0;
+}
+
+- (CGFloat) heightForReadMoreRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
+    return self.shouldCollapseReadMoreCell ? 0 : UITableViewAutomaticDimension;
+}
+
+- (void) configureReadMoreTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    SFTableViewReadMoreCell *readMoreCell = (SFTableViewReadMoreCell *)cell;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(readMoreButonClicked:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [readMoreCell.readMoreLable addGestureRecognizer:tapGesture];
+}
+
+- (void) readMoreButonClicked:(id)sender {
+    NSLog(@"readMoreButonClicked");
+    
+    self.shouldExpand = true;
+    
+    [UIView animateWithDuration:1 delay:0 options: UIViewAnimationOptionTransitionNone animations:^{
+        NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:self.readMoreCollapsableSection];
+        [[self tableView] reloadSections: indexSet withRowAnimation:UITableViewRowAnimationFade];
+        
+    } completion:^(BOOL finished) {
+        self.shouldCollapseReadMoreCell = true;
+        [[self tableView] beginUpdates];
+        [[self tableView] endUpdates];
+    }];
 }
 
 @end
