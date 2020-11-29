@@ -43,7 +43,9 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     func setupSmartFeed() {
         self.smartFeedManager = SmartFeedManager(url: OBConf.baseURL, widgetID: OBConf.widgetID, tableView: self.tableView)
         self.smartFeedManager.delegate = self
-        self.smartFeedManager.isReadMoreModuleEnabled = isReadMoreModuleEnabled
+        if (isReadMoreModuleEnabled) {
+            self.smartFeedManager.setReadMoreModule()
+        }
         self.smartFeedManager.darkMode = self.darkMode
         self.view.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
         self.tableView.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;

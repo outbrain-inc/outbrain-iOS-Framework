@@ -34,6 +34,7 @@
 #import <OutbrainSDK/OutbrainSDK.h>
 #import "MultivacResponseDelegate.h"
 #import "SFDefaultDelegate.h"
+#import "SFReadMoreModuleHelper.h"
 
 @interface SmartFeedManager() <SFPrivateEventListener, WKUIDelegate, MultivacResponseDelegate>
 
@@ -75,6 +76,9 @@
 @property (nonatomic, strong) SFDefaultDelegate *defaultDelegate;
 
 @property (nonatomic, assign) BOOL hasWeeklyHighlightsItem;
+
+@property (nonatomic, assign) BOOL isReadMoreModuleEnabled;
+@property (nonatomic, strong) SFReadMoreModuleHelper *readMoreModuleHelper;
 
 @end
 
@@ -146,6 +150,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 -(void) setOutbrainWidgetIndex:(NSInteger)widgetIndex {
     _outbrainWidgetIndex = widgetIndex;
     self.lastIdx = widgetIndex;
+}
+
+- (void) setReadMoreModule {
+    self.isReadMoreModuleEnabled = YES;
+    self.readMoreModuleHelper = [[SFReadMoreModuleHelper alloc] init];
+    if (self.sfCollectionViewManager != nil) {
+        [self.sfCollectionViewManager setReadMoreModuleHelper:self.readMoreModuleHelper];
+    } else if (self.sfTableViewManager != nil) {
+        [self.sfTableViewManager setReadMoreModuleHelper:self.readMoreModuleHelper];
+    }
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -570,7 +584,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             [self.sfCollectionViewManager.collectionView performBatchUpdates:^{
                 [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
                 
-                if (firstIdx.row == 0) {
+                if (!self.isReadMoreModuleEnabled && firstIdx.row == 0) {
                     [self.sfCollectionViewManager.collectionView insertSections:[NSIndexSet indexSetWithIndex:self.outbrainSectionIndex]];
                 }
                 [self.sfCollectionViewManager.collectionView insertItemsAtIndexPaths:indexPaths];
@@ -614,7 +628,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     NSInteger headerRowIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
-            return [self.sfTableViewManager tableView:tableView readMoreCellForRowAtIndexPath:indexPath];
+            return [self.sfTableViewManager tableView:tableView readMoreCellAtIndexPath:indexPath];
         }
         headerRowIndex = 1;
     }
@@ -667,7 +681,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if (self.isReadMoreModuleEnabled && indexPath.section == self.outbrainSectionIndex - 2) {
         NSInteger numberOfRowsInSection = [tableView numberOfRowsInSection:indexPath.section];
         if (numberOfRowsInSection - 1 == indexPath.item) { // is last item in section
-            [self.sfTableViewManager addShadowViewForCell:cell];
+            UIView *cellContentView = cell.contentView;
+            [self.readMoreModuleHelper addShadowViewForCell:cellContentView];
             return;
         }
     }
@@ -741,7 +756,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if (!self.isReadMoreModuleEnabled) {
         return collapsableItemCount;
     }
-    return [self.sfTableViewManager tableView:tableView numberOfRowsInCollapsableSection:section collapsableItemCount:collapsableItemCount];
+    return [self.readMoreModuleHelper numberOfItemsInCollapsableSection:section collapsableItemCount:collapsableItemCount];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -749,7 +764,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     NSInteger headerRowIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
-            return [self.sfTableViewManager heightForReadMoreRowAtIndexPath: indexPath];
+            return [self.readMoreModuleHelper heightForReadMoreItem];
         }
         headerRowIndex = 1;
     }
@@ -952,7 +967,14 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 #pragma mark - Collection View methods
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    NSInteger headerCellIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            return [self.sfCollectionViewManager collectionView:collectionView readMoreCellAtIndexPath:indexPath];
+        }
+        headerCellIndex = 1;
+    }
+    if (indexPath.row == headerCellIndex) {
         // Smartfeed header cell
         if (self.smartFeedHeadercCustomUIReuseIdentifier) {
             return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
@@ -978,7 +1000,18 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (NSInteger)numberOfSectionsInCollectionView {
-    return self.smartFeedItemsArray.count > 0 ? self.outbrainSectionIndex + 1 : self.outbrainSectionIndex;
+    if (self.smartFeedItemsArray.count > 0 || self.isReadMoreModuleEnabled) {
+        return self.outbrainSectionIndex + 1;
+    } else {
+        return self.outbrainSectionIndex;
+    }
+}
+
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount {
+    if (!self.isReadMoreModuleEnabled) {
+        return collapsableItemCount;
+    }
+    return [self.readMoreModuleHelper numberOfItemsInCollapsableSection:section collapsableItemCount:collapsableItemCount];
 }
 
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView
@@ -986,7 +1019,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
   sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
     
     if (indexPath.section == self.outbrainSectionIndex) {
-        if (indexPath.row == 0) {
+        
+        NSInteger headerCellIndex = 0;
+        if (self.isReadMoreModuleEnabled) {
+            if (indexPath.row == 0) {
+                CGFloat height = [self.readMoreModuleHelper heightForReadMoreItem];
+                return CGSizeMake(collectionView.frame.size.width, height);
+            }
+            headerCellIndex = 1;
+        }
+        if (indexPath.row == headerCellIndex) {
             // Smartfeed header
             return CGSizeMake(collectionView.frame.size.width, 35);
         }
@@ -1003,16 +1045,34 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     if (indexPath.section == 0 && self.smartFeedItemsArray.count == 0) {
         [self fetchMoreRecommendations];
-        return;
+    }
+    
+    // for read more module
+    // add shadow to the last item in the section before the collapsable section
+    if (self.isReadMoreModuleEnabled && indexPath.section == self.outbrainSectionIndex - 2) {
+        NSInteger numberOfRowsInSection = [collectionView numberOfItemsInSection:indexPath.section];
+        if (numberOfRowsInSection - 1 == indexPath.item) { // is last item in section
+            UIView *cellContentView = cell.contentView;
+            [self.readMoreModuleHelper addShadowViewForCell:cellContentView];
+            return;
+        }
     }
     
     if (indexPath.section != self.outbrainSectionIndex) {
         return;
     }
     
-    if (indexPath.row == 0) {
+    NSInteger headerCellIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            [self.sfCollectionViewManager configureReadMoreCollectionViewCell:cell atIndexPath:indexPath];
+            return;
+        }
+        headerCellIndex = 1;
+    }
+    if (indexPath.row == headerCellIndex) {
         // Smartfeed header
-        SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
+        SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow: self.isReadMoreModuleEnabled ? 2 : 1 inSection:self.outbrainSectionIndex]];
         
         [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withSFItem:sfItem isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren];
         return;

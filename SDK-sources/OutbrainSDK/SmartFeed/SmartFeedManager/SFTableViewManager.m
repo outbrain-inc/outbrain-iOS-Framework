@@ -13,11 +13,14 @@
 #import "SFUtils.h"
 #import "SFImageLoader.h"
 #import "SFVideoTableViewCell.h"
+#import "SFReadMoreModuleHelper.h"
 #import "OBDisclosure.h"
 
 @interface SFTableViewManager() <UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak) UITableView *tableView;
+
+@property (nonatomic, weak) SFReadMoreModuleHelper *readMoreModuleHelper;
 
 @property (nonatomic, assign) BOOL shouldExpandCollapsableSectionCells;
 @property (nonatomic, assign) BOOL shouldCollapseReadMoreCell;
@@ -181,7 +184,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     return [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView readMoreCellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView readMoreCellAtIndexPath:(NSIndexPath *)indexPath {
     NSString *reuseId = kTableViewReadMoreCellReuseId;
     
     return [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
@@ -407,43 +410,8 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
 }
 
-- (void) addShadowViewForCell:(UITableViewCell * _Nonnull)cell {
-    if (self.readMoreShadowView != nil) {
-        return;
-    }
-    UIView * shadowView = [[UIView alloc] init];
-    [cell addSubview:shadowView];
-    
-    shadowView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [[shadowView leadingAnchor] constraintEqualToAnchor:[cell leadingAnchor] constant:0].active = YES;
-    [[shadowView trailingAnchor] constraintEqualToAnchor:[cell trailingAnchor] constant:0].active = YES;
-    [[shadowView heightAnchor] constraintEqualToConstant:100].active = YES;
-    [[shadowView bottomAnchor] constraintEqualToAnchor:[cell bottomAnchor] constant:0].active = YES;
-    
-    [shadowView layoutIfNeeded];
-    
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-
-    gradient.frame = shadowView.bounds;
-    gradient.colors = @[(id)[UIColor colorWithWhite:1 alpha:0].CGColor, (id)[UIColor whiteColor].CGColor];
-    
-    gradient.locations = @[@0.0, @1.0];
-
-    [shadowView.layer insertSublayer:gradient atIndex:0];
-    
-    [shadowView setNeedsLayout];
-    
-    self.readMoreShadowView = shadowView;
-}
-
-- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount {
-    self.readMoreCollapsableSection = section;
-    return self.shouldExpandCollapsableSectionCells ? collapsableItemCount : 0;
-}
-
-- (CGFloat) heightForReadMoreRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
-    return self.shouldCollapseReadMoreCell ? 0 : UITableViewAutomaticDimension;
+- (void) setReadMoreModuleHelper:(SFReadMoreModuleHelper * _Nonnull) readMoreModuleHelper {
+    self->_readMoreModuleHelper = readMoreModuleHelper;
 }
 
 - (void) configureReadMoreTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -455,23 +423,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
 }
 
 - (void) readMoreButonClicked:(id)sender {
-    NSLog(@"readMoreButonClicked");
-    
-    self.shouldExpandCollapsableSectionCells = true;
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        self.readMoreShadowView.alpha = 0;
-    }];
-    
-    [UIView animateWithDuration:1 delay:0 options: UIViewAnimationOptionTransitionNone animations:^{
-        NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:self.readMoreCollapsableSection];
-        [[self tableView] reloadSections: indexSet withRowAnimation:UITableViewRowAnimationFade];
-        
-    } completion:^(BOOL finished) {
-        self.shouldCollapseReadMoreCell = true;
-        [[self tableView] beginUpdates];
-        [[self tableView] endUpdates];
-    }];
+    if (self.readMoreModuleHelper != nil) {
+        [self.readMoreModuleHelper readMoreButonClickedOnTableView:self.tableView];
+    }
 }
 
 @end

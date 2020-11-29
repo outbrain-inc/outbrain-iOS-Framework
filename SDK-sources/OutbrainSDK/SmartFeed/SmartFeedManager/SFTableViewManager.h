@@ -10,6 +10,7 @@
 #import "SmartFeedManager.h"
 #import "SFUtils.h"
 #import "SFTableViewCell.h"
+#import "SFReadMoreModuleHelper.h"
 
 @import WebKit;
 
@@ -30,17 +31,11 @@
 
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView headerCellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath isRTL:(BOOL)isRTL;
 
-- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView readMoreCellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-
-- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView readMoreCellAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 - (void) configureReadMoreTableViewCell:(UITableViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
-- (void) addShadowViewForCell:(UITableViewCell * _Nonnull)cell;
-
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath sfItemType:(SFItemType)sfItemType;
-
-- (CGFloat) heightForReadMoreRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 - (CGFloat) heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath withSFItem:(SFItemData * _Nonnull)sfItem;
 
@@ -49,5 +44,7 @@
 - (void) configureVideoCell:(UITableViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath withSFItem:(SFItemData * _Nonnull)sfItem;
 
 - (void) registerSingleItemNib:( UINib * _Nonnull )nib forCellWithReuseIdentifier:( NSString * _Nonnull )identifier;
+
+- (void) setReadMoreModuleHelper:(SFReadMoreModuleHelper * _Nonnull) readMoreModuleHelper;
 
 @end

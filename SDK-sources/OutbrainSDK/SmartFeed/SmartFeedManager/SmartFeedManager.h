@@ -127,7 +127,7 @@ typedef enum
 @property (nonatomic) BOOL isSkySolutionActive;
 
 // Read more module
-@property (nonatomic) BOOL isReadMoreModuleEnabled;
+- (void) setReadMoreModule;
 
 -(NSInteger) smartFeedItemsCount;
 
@@ -165,6 +165,10 @@ typedef enum
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView
        willDisplayCell:(UICollectionViewCell * _Nonnull)cell
     forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+
+// Read More Module
+
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount;
 
 // Common Methods
 -(NSString * _Nullable) sfItemTypeStringFor:(NSIndexPath * _Nonnull)indexPath;
