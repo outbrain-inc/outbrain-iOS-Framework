@@ -104,7 +104,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             cell = self.tableView.dequeueReusableCell(withIdentifier: imageHeaderCellReuseIdentifier) as UITableViewCell?
         case (0,1):
             cell = self.tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell?
-        case (1,_):
+        case (0,2), (1,_):
             cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
         default:
             cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
@@ -131,7 +131,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
                 articleCell.headerLabel.textColor = self.darkMode ? UIColor.white : UIColor.black
             }
         }
-        if (indexPath.section == 1) {
+        if (indexPath.section == 1 || (indexPath.section == 0 && indexPath.row == 2)) {
             if let articleCell = cell as? AppArticleTableViewCell {
                 articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
