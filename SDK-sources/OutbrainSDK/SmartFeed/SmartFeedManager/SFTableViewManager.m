@@ -19,9 +19,10 @@
 
 @property (nonatomic, weak) UITableView *tableView;
 
-@property (nonatomic, assign) BOOL shouldExpand;
+@property (nonatomic, assign) BOOL shouldExpandCollapsableSectionCells;
 @property (nonatomic, assign) BOOL shouldCollapseReadMoreCell;
 @property (nonatomic, assign) NSInteger readMoreCollapsableSection;
+@property (nonatomic, weak) UIView *readMoreShadowView;
 
 @end
 
@@ -406,9 +407,39 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
 }
 
+- (void) addShadowViewForCell:(UITableViewCell * _Nonnull)cell {
+    if (self.readMoreShadowView != nil) {
+        return;
+    }
+    UIView * shadowView = [[UIView alloc] init];
+    [cell addSubview:shadowView];
+    
+    shadowView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [[shadowView leadingAnchor] constraintEqualToAnchor:[cell leadingAnchor] constant:0].active = YES;
+    [[shadowView trailingAnchor] constraintEqualToAnchor:[cell trailingAnchor] constant:0].active = YES;
+    [[shadowView heightAnchor] constraintEqualToConstant:100].active = YES;
+    [[shadowView bottomAnchor] constraintEqualToAnchor:[cell bottomAnchor] constant:0].active = YES;
+    
+    [shadowView layoutIfNeeded];
+    
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+
+    gradient.frame = shadowView.bounds;
+    gradient.colors = @[(id)[UIColor colorWithWhite:1 alpha:0].CGColor, (id)[UIColor whiteColor].CGColor];
+    
+    gradient.locations = @[@0.0, @1.0];
+
+    [shadowView.layer insertSublayer:gradient atIndex:0];
+    
+    [shadowView setNeedsLayout];
+    
+    self.readMoreShadowView = shadowView;
+}
+
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount {
     self.readMoreCollapsableSection = section;
-    return self.shouldExpand ? collapsableItemCount : 0;
+    return self.shouldExpandCollapsableSectionCells ? collapsableItemCount : 0;
 }
 
 - (CGFloat) heightForReadMoreRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
@@ -426,7 +457,11 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
 - (void) readMoreButonClicked:(id)sender {
     NSLog(@"readMoreButonClicked");
     
-    self.shouldExpand = true;
+    self.shouldExpandCollapsableSectionCells = true;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.readMoreShadowView.alpha = 0;
+    }];
     
     [UIView animateWithDuration:1 delay:0 options: UIViewAnimationOptionTransitionNone animations:^{
         NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:self.readMoreCollapsableSection];

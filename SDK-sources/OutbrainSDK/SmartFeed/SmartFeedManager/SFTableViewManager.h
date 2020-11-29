@@ -36,6 +36,8 @@
 
 - (void) configureReadMoreTableViewCell:(UITableViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
+- (void) addShadowViewForCell:(UITableViewCell * _Nonnull)cell;
+
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath sfItemType:(SFItemType)sfItemType;
 
 - (CGFloat) heightForReadMoreRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;

@@ -660,7 +660,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     if (indexPath.section == 0 && self.smartFeedItemsArray.count == 0) {
         [self fetchMoreRecommendations];
-        return;
+    }
+    
+    // for read more module
+    // add shadow to the last item in the section before the collapsable section
+    if (self.isReadMoreModuleEnabled && indexPath.section == self.outbrainSectionIndex - 2) {
+        NSInteger numberOfRowsInSection = [tableView numberOfRowsInSection:indexPath.section];
+        if (numberOfRowsInSection - 1 == indexPath.item) { // is last item in section
+            [self.sfTableViewManager addShadowViewForCell:cell];
+            return;
+        }
     }
     
     if (indexPath.section != self.outbrainSectionIndex) {
