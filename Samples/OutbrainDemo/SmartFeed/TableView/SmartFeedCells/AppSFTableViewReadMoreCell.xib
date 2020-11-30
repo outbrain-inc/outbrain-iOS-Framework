@@ -33,6 +33,9 @@
                     <constraint firstItem="rfW-sq-SCa" firstAttribute="centerY" secondItem="GQt-Ii-ITP" secondAttribute="centerY" id="eBR-zg-7RN"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="readMoreLabel" destination="rfW-sq-SCa" id="0LS-MM-und"/>
+            </connections>
             <point key="canvasLocation" x="128.98550724637681" y="-139.28571428571428"/>
         </tableViewCell>
     </objects>
