@@ -498,11 +498,11 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
 - (void) configureReadMoreCollectionViewCell:(UICollectionViewCell * _Nonnull)cell withButtonText:(NSString * _Nonnull)buttonText; {
     SFCollectionViewReadMoreCell *readMoreCell = (SFCollectionViewReadMoreCell *)cell;
     
-    readMoreCell.readMoreLable.text = buttonText;
+    readMoreCell.readMoreLabel.text = buttonText;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget action:@selector(readMoreButtonClicked:)];
     tapGesture.numberOfTapsRequired = 1;
-    [readMoreCell.readMoreLable addGestureRecognizer:tapGesture];
+    [readMoreCell.readMoreLabel addGestureRecognizer:tapGesture];
 }
 
 @end

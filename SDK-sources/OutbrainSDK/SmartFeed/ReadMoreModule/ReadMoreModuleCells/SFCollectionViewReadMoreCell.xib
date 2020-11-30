@@ -35,7 +35,7 @@
             </collectionViewCellContentView>
             <size key="customSize" width="370" height="55"/>
             <connections>
-                <outlet property="readMoreLable" destination="WSK-a9-cDp" id="QXc-2E-Dtf"/>
+                <outlet property="readMoreLabel" destination="WSK-a9-cDp" id="QXc-2E-Dtf"/>
             </connections>
             <point key="canvasLocation" x="147.82608695652175" y="2.34375"/>
         </collectionViewCell>

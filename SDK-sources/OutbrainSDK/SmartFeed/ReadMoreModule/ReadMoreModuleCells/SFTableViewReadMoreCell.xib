@@ -33,7 +33,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="readMoreLable" destination="rfW-sq-SCa" id="4pZ-tw-NQR"/>
+                <outlet property="readMoreLabel" destination="rfW-sq-SCa" id="4pZ-tw-NQR"/>
             </connections>
             <point key="canvasLocation" x="128.98550724637681" y="-139.28571428571428"/>
         </tableViewCell>

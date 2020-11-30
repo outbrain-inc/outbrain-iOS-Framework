@@ -10,6 +10,6 @@
 
 @interface SFCollectionViewReadMoreCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *readMoreLable;
+@property (weak, nonatomic) IBOutlet UILabel *readMoreLabel;
 
 @end

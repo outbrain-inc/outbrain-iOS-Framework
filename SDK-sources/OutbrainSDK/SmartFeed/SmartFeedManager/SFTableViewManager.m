@@ -406,11 +406,11 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
 - (void) configureReadMoreTableViewCell:(UITableViewCell *)cell withButtonText:(NSString * _Nonnull)buttonText; {
     SFTableViewReadMoreCell *readMoreCell = (SFTableViewReadMoreCell *)cell;
     
-    readMoreCell.readMoreLable.text = buttonText;
+    readMoreCell.readMoreLabel.text = buttonText;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget action:@selector(readMoreButtonClicked:)];
     tapGesture.numberOfTapsRequired = 1;
-    [readMoreCell.readMoreLable addGestureRecognizer:tapGesture];
+    [readMoreCell.readMoreLabel addGestureRecognizer:tapGesture];
 }
 
 @end

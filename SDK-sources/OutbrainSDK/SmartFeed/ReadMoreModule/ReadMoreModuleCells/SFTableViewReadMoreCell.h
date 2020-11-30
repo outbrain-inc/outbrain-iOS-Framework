@@ -10,6 +10,6 @@
 
 @interface SFTableViewReadMoreCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *readMoreLable;
+@property (weak, nonatomic) IBOutlet UILabel *readMoreLabel;
 
 @end

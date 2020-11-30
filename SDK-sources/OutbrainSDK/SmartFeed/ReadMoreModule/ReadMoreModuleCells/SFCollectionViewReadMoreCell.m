@@ -14,9 +14,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.readMoreLable.layer.borderWidth = 1.0;
-    self.readMoreLable.layer.borderColor = UIColorFromRGB(0x4a90e2).CGColor;
-    self.readMoreLable.layer.cornerRadius = 3.0;
+    self.readMoreLabel.layer.borderWidth = 1.0;
+    self.readMoreLabel.layer.borderColor = UIColorFromRGB(0x4a90e2).CGColor;
+    self.readMoreLabel.layer.cornerRadius = 3.0;
 }
 
 @end
