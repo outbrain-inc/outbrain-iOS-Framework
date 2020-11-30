@@ -678,9 +678,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     // for read more module
     // add shadow to the last item in the section before the collapsable section
-    if (self.isReadMoreModuleEnabled && indexPath.section == self.outbrainSectionIndex - 2) {
+    if (self.isReadMoreModuleEnabled && indexPath.section == (self.outbrainSectionIndex - 2)) {
         NSInteger numberOfRowsInSection = [tableView numberOfRowsInSection:indexPath.section];
-        if (numberOfRowsInSection - 1 == indexPath.item) { // is last item in section
+        if ((numberOfRowsInSection - 1) == indexPath.item) { // is last item in section
             UIView *cellContentView = cell.contentView;
             [self.readMoreModuleHelper addShadowViewForCell:cellContentView];
             return;
@@ -1049,9 +1049,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     // for read more module
     // add shadow to the last item in the section before the collapsable section
-    if (self.isReadMoreModuleEnabled && indexPath.section == self.outbrainSectionIndex - 2) {
+    if (self.isReadMoreModuleEnabled && indexPath.section == (self.outbrainSectionIndex - 2)) {
         NSInteger numberOfRowsInSection = [collectionView numberOfItemsInSection:indexPath.section];
-        if (numberOfRowsInSection - 1 == indexPath.item) { // is last item in section
+        if ((numberOfRowsInSection - 1) == indexPath.item) { // is last item in section
             UIView *cellContentView = cell.contentView;
             [self.readMoreModuleHelper addShadowViewForCell:cellContentView];
             return;
