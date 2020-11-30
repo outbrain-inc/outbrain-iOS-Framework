@@ -25,7 +25,6 @@ class ArticleCollectionViewController: UICollectionViewController {
     fileprivate let itemsPerRow: CGFloat = 1
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
     let originalArticleItemsCount = 5
-    
 
     
     override func viewDidLoad() {
@@ -149,7 +148,6 @@ class ArticleCollectionViewController: UICollectionViewController {
         self.smartFeedManager.delegate = self
         self.smartFeedManager.darkMode = self.darkMode
         self.collectionView.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
-        
         
         // self.smartFeedManager.displaySourceOnOrganicRec = true
         // self.smartFeedManager.horizontalContainerMargin = 40.0
