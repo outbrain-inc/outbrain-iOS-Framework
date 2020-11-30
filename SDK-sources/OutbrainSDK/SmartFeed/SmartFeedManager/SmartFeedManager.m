@@ -79,6 +79,7 @@
 
 @property (nonatomic, assign) BOOL isReadMoreModuleEnabled;
 @property (nonatomic, strong) NSString * _Nullable readMoreButtonText;
+@property (nonatomic, copy) NSString *smartFeedReadMoreButtonCustomUIReuseIdentifier;
 @property (nonatomic, strong) SFReadMoreModuleHelper *readMoreModuleHelper;
 
 @end
@@ -628,6 +629,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
+            // Custom UI
+            if (self.smartFeedReadMoreButtonCustomUIReuseIdentifier) {
+                return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:self.smartFeedReadMoreButtonCustomUIReuseIdentifier forIndexPath:indexPath];
+            }
             return [self.sfTableViewManager tableView:tableView readMoreCellAtIndexPath:indexPath];
         }
         smartfeedHeaderCellIndex = 1;
@@ -973,6 +978,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
+            if (self.smartFeedReadMoreButtonCustomUIReuseIdentifier) {
+                return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier:self.smartFeedReadMoreButtonCustomUIReuseIdentifier forIndexPath:indexPath];
+            }
             return [self.sfCollectionViewManager collectionView:collectionView readMoreCellAtIndexPath:indexPath];
         }
         smartfeedHeaderCellIndex = 1;
@@ -1275,6 +1283,13 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return SFTypeBadType;
     }
     
+    NSInteger smartfeedHeaderCellIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            return SFTypeReadMoreButton;
+        }
+        smartfeedHeaderCellIndex = 1;
+    }
     if (indexPath.row == 0) {
         // Smartfeed header cell
         return SFTypeSmartfeedHeader;
@@ -1294,31 +1309,48 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [self registerHeaderNib:nib withReuseIdentifier:identifier];
         return;
     }
+    // For read more module
+    if (itemType == SFTypeReadMoreButton) {
+        [self registerReadMoreNib:nib withReuseIdentifier:identifier];
+        return;
+    }
     
     NSNumber *convertedItemType = [NSNumber numberWithInteger: itemType];
     self.customNibsForItemType[convertedItemType] = nib;
     self.reuseIdentifierItemType[convertedItemType] = identifier;
 }
 
-- (void) registerHeaderNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
+- (BOOL) tryRegisterNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
     UIView *rootView = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
     
     if (self.sfCollectionViewManager != nil) {
         if (![rootView isKindOfClass:[UICollectionViewCell class]]) {
             NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UICollectionViewCell. --> reverting back to default", identifier]);
-            return; // reverting back to default
+            return NO; // reverting back to default
         }
         [self.sfCollectionViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
+        return YES;
     }
     else {
         if (![rootView isKindOfClass:[UITableViewCell class]]) {
             NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UITableViewCell. --> reverting back to default", identifier]);
-            return; // reverting back to default
+            return NO; // reverting back to default
         }
         [self.sfTableViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
+        return YES;
     }
-    
-    self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
+}
+
+- (void) registerReadMoreNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
+    if ([self tryRegisterNib:nib withReuseIdentifier:identifier]) {
+        self.smartFeedReadMoreButtonCustomUIReuseIdentifier = identifier;
+    }
+}
+
+- (void) registerHeaderNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
+    if ([self tryRegisterNib:nib withReuseIdentifier:identifier]) {
+        self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
+    }
 }
 
 - (void) setTransparentBackground:(BOOL)isTransparentBackground {

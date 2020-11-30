@@ -25,8 +25,8 @@
 		1649FC7A2301ACAD00273994 /* SFHorizontalFixedWithTitleWithVideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1649FC792301ACAD00273994 /* SFHorizontalFixedWithTitleWithVideoTableViewCell.xib */; };
 		1698D97E256BBD49004C90FF /* SFTableViewReadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1698D97D256BBD49004C90FF /* SFTableViewReadMoreCell.xib */; };
 		1698D989256BBFD6004C90FF /* SFCollectionViewReadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1698D988256BBFD6004C90FF /* SFCollectionViewReadMoreCell.xib */; };
-		1698D98E256BC05C004C90FF /* SFTableViewReadMoreCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1698D98D256BC05C004C90FF /* SFTableViewReadMoreCell.h */; };
-		1698D993256BC06D004C90FF /* SFCollectionViewReadMoreCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1698D992256BC06D004C90FF /* SFCollectionViewReadMoreCell.h */; };
+		1698D98E256BC05C004C90FF /* SFTableViewReadMoreCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1698D98D256BC05C004C90FF /* SFTableViewReadMoreCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1698D993256BC06D004C90FF /* SFCollectionViewReadMoreCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1698D992256BC06D004C90FF /* SFCollectionViewReadMoreCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1698D998256BC28D004C90FF /* SFTableViewReadMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1698D997256BC28D004C90FF /* SFTableViewReadMoreCell.m */; };
 		1698D99D256BC2A2004C90FF /* SFCollectionViewReadMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1698D99C256BC2A2004C90FF /* SFCollectionViewReadMoreCell.m */; };
 		1698D9A22573E49A004C90FF /* SFReadMoreModuleHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 1698D9A12573E49A004C90FF /* SFReadMoreModuleHelper.h */; };
@@ -240,8 +240,8 @@
 		1649FC792301ACAD00273994 /* SFHorizontalFixedWithTitleWithVideoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFHorizontalFixedWithTitleWithVideoTableViewCell.xib; sourceTree = "<group>"; };
 		1698D97D256BBD49004C90FF /* SFTableViewReadMoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFTableViewReadMoreCell.xib; sourceTree = "<group>"; };
 		1698D988256BBFD6004C90FF /* SFCollectionViewReadMoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFCollectionViewReadMoreCell.xib; sourceTree = "<group>"; };
-		1698D98D256BC05C004C90FF /* SFTableViewReadMoreCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFTableViewReadMoreCell.h; sourceTree = "<group>"; };
-		1698D992256BC06D004C90FF /* SFCollectionViewReadMoreCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFCollectionViewReadMoreCell.h; sourceTree = "<group>"; };
+		1698D98D256BC05C004C90FF /* SFTableViewReadMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewReadMoreCell.h; sourceTree = "<group>"; };
+		1698D992256BC06D004C90FF /* SFCollectionViewReadMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCollectionViewReadMoreCell.h; sourceTree = "<group>"; };
 		1698D997256BC28D004C90FF /* SFTableViewReadMoreCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFTableViewReadMoreCell.m; sourceTree = "<group>"; };
 		1698D99C256BC2A2004C90FF /* SFCollectionViewReadMoreCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFCollectionViewReadMoreCell.m; sourceTree = "<group>"; };
 		1698D9A12573E49A004C90FF /* SFReadMoreModuleHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFReadMoreModuleHelper.h; sourceTree = "<group>"; };
