@@ -383,5 +383,9 @@
     XCTAssertTrue(rec.image.isGif);
 }
 
+- (void)testReadMoreText {
+    XCTAssertTrue([self.responseParent.settings.readMoreButtonText isEqualToString:@"Read More"]);
+}
+
 
 @end

@@ -25,6 +25,7 @@
 @property (nonatomic, copy) NSString *paidLabelTextColor;
 @property (nonatomic, copy) NSString *paidLabelBackgroundColor;
 @property (nonatomic, copy) NSString *sourceFormat;
+@property (nonatomic, copy) NSString *readMoreButtonText;
 
 @property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
 @property (nonatomic, assign) NSInteger viewabilityPerListingReportingIntervalMillis;
@@ -72,6 +73,8 @@
         self.paidLabelBackgroundColor = [payload valueForKey:@"dynamic:PaidLabelBackgroundColor"];
         
         self.sourceFormat = [payload valueForKey:@"dynamicSourceFormat"];
+        
+        self.readMoreButtonText = [payload valueForKey:@"readMoreText"];
         
         // AB tests
         self.abTitleFontSize = [payload valueForKey:@"dynamic:TitleFontSize"] ? [[payload valueForKey:@"dynamic:TitleFontSize"] integerValue] : 0;

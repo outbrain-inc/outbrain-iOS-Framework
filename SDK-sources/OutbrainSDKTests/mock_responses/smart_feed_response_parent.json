@@ -221,6 +221,7 @@
             "nanoOrganicsHeader": "Sponsored Links",
             "feedCyclesLimit": 5,
             "sdk_sf_shadow_color": "#ffa500",
+            "readMoreText": "Read More",
             "VidgetEnabled": true
         },
         "features": {
