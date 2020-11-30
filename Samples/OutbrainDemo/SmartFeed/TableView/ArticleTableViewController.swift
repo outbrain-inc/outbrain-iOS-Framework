@@ -21,7 +21,6 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     let contentCellReuseIdentifier = "contentHeaderCell"
     
     let originalArticleItemsCount = 5
-    
     var outbrainIdx = 0
     var isLoadingOutrainRecs = false
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
