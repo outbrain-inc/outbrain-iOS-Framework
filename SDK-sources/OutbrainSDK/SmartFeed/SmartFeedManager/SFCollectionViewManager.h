@@ -48,8 +48,6 @@
         eventListenerTarget:(id<SFPrivateEventListener> _Nullable) eventListenerTarget
          tapGestureDelegate:(id<UIGestureRecognizerDelegate> _Nullable)tapGestureDelegate;
 
-- (void) setReadMoreModuleHelper:(SFReadMoreModuleHelper * _Nonnull) readMoreModuleHelper;
-
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView readMoreCellAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 - (void) configureReadMoreCollectionViewCell:(UICollectionViewCell * _Nonnull)cell withButtonText:(NSString * _Nonnull)buttonText;

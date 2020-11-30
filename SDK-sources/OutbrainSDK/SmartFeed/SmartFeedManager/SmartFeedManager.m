@@ -157,11 +157,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.isReadMoreModuleEnabled = YES;
     self.readMoreModuleHelper = [[SFReadMoreModuleHelper alloc] init];
     self.readMoreButtonText = @"Read More"; // Default
-    if (self.sfCollectionViewManager != nil) {
-        [self.sfCollectionViewManager setReadMoreModuleHelper:self.readMoreModuleHelper];
-    } else if (self.sfTableViewManager != nil) {
-        [self.sfTableViewManager setReadMoreModuleHelper:self.readMoreModuleHelper];
-    }
 }
 
 -(NSInteger) smartFeedItemsCount {
@@ -1229,6 +1224,14 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
         
     return NO;
+}
+
+- (void)readMoreButtonClicked:(id)sender {
+    if (self.sfCollectionViewManager != nil) {
+        [self.readMoreModuleHelper readMoreButonClickedOnCollectionView:self.sfCollectionViewManager.collectionView];
+    } else if (self.sfTableViewManager != nil) {
+        [self.readMoreModuleHelper readMoreButonClickedOnTableView:self.sfTableViewManager.tableView];
+    }
 }
 
 #pragma mark - Common methods

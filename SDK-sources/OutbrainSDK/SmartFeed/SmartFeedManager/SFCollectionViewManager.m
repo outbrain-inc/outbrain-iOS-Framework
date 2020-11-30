@@ -20,13 +20,6 @@
 
 @property (nonatomic, weak) UICollectionView *collectionView;
 
-@property (nonatomic, assign) SFReadMoreModuleHelper *readMoreModuleHelper;
-
-@property (nonatomic, assign) BOOL shouldExpandCollapsableSectionCells;
-@property (nonatomic, assign) BOOL shouldCollapseReadMoreCell;
-@property (nonatomic, assign) NSInteger readMoreCollapsableSection;
-@property (nonatomic, weak) UIView *readMoreShadowView;
-
 @end
 
 
@@ -496,10 +489,6 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     [SFUtils loadVideoURLIn:videoCell sfItem:sfItem];
 }
 
-- (void) setReadMoreModuleHelper:(SFReadMoreModuleHelper * _Nonnull) readMoreModuleHelper {
-    self->_readMoreModuleHelper = readMoreModuleHelper;
-}
-
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView readMoreCellAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
     NSString *reuseId = kCollectionViewReadMoreReuseId;
     
@@ -511,15 +500,9 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     
     readMoreCell.readMoreLable.text = buttonText;
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(readMoreButonClicked:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget action:@selector(readMoreButtonClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [readMoreCell.readMoreLable addGestureRecognizer:tapGesture];
-}
-
-- (void) readMoreButonClicked:(id)sender {
-    if (self.readMoreModuleHelper != nil) {
-        [self.readMoreModuleHelper readMoreButonClickedOnCollectionView:self.collectionView];
-    }
 }
 
 @end

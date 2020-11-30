@@ -20,13 +20,6 @@
 
 @property (nonatomic, weak) UITableView *tableView;
 
-@property (nonatomic, weak) SFReadMoreModuleHelper *readMoreModuleHelper;
-
-@property (nonatomic, assign) BOOL shouldExpandCollapsableSectionCells;
-@property (nonatomic, assign) BOOL shouldCollapseReadMoreCell;
-@property (nonatomic, assign) NSInteger readMoreCollapsableSection;
-@property (nonatomic, weak) UIView *readMoreShadowView;
-
 @end
 
 @implementation SFTableViewManager
@@ -410,24 +403,14 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
 }
 
-- (void) setReadMoreModuleHelper:(SFReadMoreModuleHelper * _Nonnull) readMoreModuleHelper {
-    self->_readMoreModuleHelper = readMoreModuleHelper;
-}
-
 - (void) configureReadMoreTableViewCell:(UITableViewCell *)cell withButtonText:(NSString * _Nonnull)buttonText; {
     SFTableViewReadMoreCell *readMoreCell = (SFTableViewReadMoreCell *)cell;
     
     readMoreCell.readMoreLable.text = buttonText;
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(readMoreButonClicked:)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget action:@selector(readMoreButtonClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     [readMoreCell.readMoreLable addGestureRecognizer:tapGesture];
-}
-
-- (void) readMoreButonClicked:(id)sender {
-    if (self.readMoreModuleHelper != nil) {
-        [self.readMoreModuleHelper readMoreButonClickedOnTableView:self.tableView];
-    }
 }
 
 @end
