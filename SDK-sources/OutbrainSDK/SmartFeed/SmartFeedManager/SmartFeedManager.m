@@ -625,15 +625,15 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return [[UITableViewCell alloc] init];
     }
     
-    NSInteger headerRowIndex = 0;
+    NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
             return [self.sfTableViewManager tableView:tableView readMoreCellAtIndexPath:indexPath];
         }
-        headerRowIndex = 1;
+        smartfeedHeaderCellIndex = 1;
     }
     
-    if (indexPath.row == headerRowIndex) {
+    if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header cell
         if (self.smartFeedHeadercCustomUIReuseIdentifier) {
             return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
@@ -695,16 +695,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return;
     }
     
-    NSInteger headerRowIndex = 0;
+    NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
             [self.sfTableViewManager configureReadMoreTableViewCell:cell withButtonText:self.readMoreButtonText];
             return;
         }
-        headerRowIndex = 1;
+        smartfeedHeaderCellIndex = 1;
     }
     
-    if (indexPath.row == headerRowIndex) {
+    if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header
         [self configureSmartFeedHeaderTableViewCell:cell atIndexPath:indexPath];
         return;
@@ -761,14 +761,14 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger headerRowIndex = 0;
+    NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
             return [self.readMoreModuleHelper heightForReadMoreItem];
         }
-        headerRowIndex = 1;
+        smartfeedHeaderCellIndex = 1;
     }
-    if (indexPath.row == headerRowIndex) {
+    if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header
         return UITableViewAutomaticDimension;
     }
@@ -967,14 +967,14 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 #pragma mark - Collection View methods
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger headerCellIndex = 0;
+    NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
             return [self.sfCollectionViewManager collectionView:collectionView readMoreCellAtIndexPath:indexPath];
         }
-        headerCellIndex = 1;
+        smartfeedHeaderCellIndex = 1;
     }
-    if (indexPath.row == headerCellIndex) {
+    if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header cell
         if (self.smartFeedHeadercCustomUIReuseIdentifier) {
             return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
@@ -1020,15 +1020,15 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     if (indexPath.section == self.outbrainSectionIndex) {
         
-        NSInteger headerCellIndex = 0;
+        NSInteger smartfeedHeaderCellIndex = 0;
         if (self.isReadMoreModuleEnabled) {
             if (indexPath.row == 0) {
                 CGFloat height = [self.readMoreModuleHelper heightForReadMoreItem];
                 return CGSizeMake(collectionView.frame.size.width, height);
             }
-            headerCellIndex = 1;
+            smartfeedHeaderCellIndex = 1;
         }
-        if (indexPath.row == headerCellIndex) {
+        if (indexPath.row == smartfeedHeaderCellIndex) {
             // Smartfeed header
             return CGSizeMake(collectionView.frame.size.width, 35);
         }
@@ -1062,15 +1062,15 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return;
     }
     
-    NSInteger headerCellIndex = 0;
+    NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
             [self.sfCollectionViewManager configureReadMoreCollectionViewCell:cell withButtonText:self.readMoreButtonText];
             return;
         }
-        headerCellIndex = 1;
+        smartfeedHeaderCellIndex = 1;
     }
-    if (indexPath.row == headerCellIndex) {
+    if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header
         SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow: self.isReadMoreModuleEnabled ? 2 : 1 inSection:self.outbrainSectionIndex]];
         
