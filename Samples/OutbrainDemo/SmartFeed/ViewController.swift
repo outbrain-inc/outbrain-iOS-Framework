@@ -32,6 +32,8 @@ class ViewController: UIViewController {
         //performSegue(withIdentifier: "showTableMidPageVC", sender: nil)
         //performSegue(withIdentifier: "showCollectionMidPageVC", sender: nil)
         //performSegue(withIdentifier: "showStackViewVC", sender: nil)
+        //performSegue(withIdentifier: "showTableReadMoreModuleVC", sender: nil)
+        //performSegue(withIdentifier: "showCollectionReadMoreModuleVC", sender: nil)
     }
 }
 
