@@ -24,12 +24,8 @@ class ArticleCollectionViewController: UICollectionViewController {
     
     fileprivate let itemsPerRow: CGFloat = 1
     var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
-    let originalArticleItemsCount = 6
+    let originalArticleItemsCount = 5
     
-    // For read more module
-    let isReadMoreModuleEnabled = true
-    let collapsableItemCount = 3
-    let collapsableSection = 1
 
     
     override func viewDidLoad() {
@@ -154,9 +150,6 @@ class ArticleCollectionViewController: UICollectionViewController {
         self.smartFeedManager.darkMode = self.darkMode
         self.collectionView.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
         
-        if self.isReadMoreModuleEnabled {
-            self.smartFeedManager.setReadMoreModule()
-        }
         
         // self.smartFeedManager.displaySourceOnOrganicRec = true
         // self.smartFeedManager.horizontalContainerMargin = 40.0
@@ -187,19 +180,14 @@ class ArticleCollectionViewController: UICollectionViewController {
 extension ArticleCollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        self.smartFeedManager.outbrainSectionIndex = 2 // update smartFeedManager with outbrain section index, must be the last one.
+        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index, must be the last one.
         return self.smartFeedManager.numberOfSectionsInCollectionView()
     }
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         if section < self.smartFeedManager.outbrainSectionIndex {
-            // For read more module
-            if section == self.collapsableSection {
-                return self.smartFeedManager.collectionView(collectionView, numberOfItemsInCollapsableSection: section, collapsableItemCount: self.collapsableItemCount)
-            } else {
-                return self.originalArticleItemsCount - self.collapsableItemCount
-            }
+            return originalArticleItemsCount
         }
         else {
             return self.smartFeedManager.smartFeedItemsCount()
@@ -215,14 +203,14 @@ extension ArticleCollectionViewController {
             return self.smartFeedManager.collectionView(collectionView, cellForItemAt: indexPath)
         }
         
-        switch (indexPath.section, indexPath.row) {
-        case (0,0):
+        switch indexPath.row {
+        case 0:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageHeaderCellReuseIdentifier,
                                                       for: indexPath)
-        case (0,1):
+        case 1:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: textHeaderCellReuseIdentifier,
                                                       for: indexPath)
-        case (0,2),(1,_):
+        case 2,3,4:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: contentCellReuseIdentifier,
                                                       for: indexPath)
         default:
@@ -240,7 +228,7 @@ extension ArticleCollectionViewController {
         }
         
         // App Developer should configure the app cells here..
-        if (indexPath.section == 0 && indexPath.row == 1) {
+        if (indexPath.row == 1) {
             if let articleCell = cell as? AppArticleCollectionViewCell {
                 articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
@@ -249,7 +237,7 @@ extension ArticleCollectionViewController {
                 
             }
         }
-        if (indexPath.section == 1 || (indexPath.section == 0 && indexPath.row == 2)) {
+        if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4) {
             if let articleCell = cell as? AppArticleCollectionViewCell {
                 articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
@@ -311,12 +299,12 @@ extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {
             return self.smartFeedManager.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
         }
         
-        switch (indexPath.section, indexPath.row) {
-        case (0,0):
+        switch indexPath.row {
+        case 0:
             return CGSize(width: width, height: 0.5625*width)
-        case (0,1):
+        case 1:
             return CGSize(width: width, height: 0.35*width)
-        case (1,_):
+        case 2,3,4:
             return CGSize(width: width, height: 200.0)
         default:
             break
