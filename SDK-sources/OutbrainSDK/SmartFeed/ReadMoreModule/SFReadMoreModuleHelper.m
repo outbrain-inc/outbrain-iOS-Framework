@@ -7,6 +7,7 @@
 //
 
 #import "SFReadMoreModuleHelper.h"
+#import "SFUtils.h"
 
 @interface SFReadMoreModuleHelper()
 
@@ -50,7 +51,12 @@
     CAGradientLayer *gradient = [CAGradientLayer layer];
 
     gradient.frame = shadowView.bounds;
-    gradient.colors = @[(id)[UIColor colorWithWhite:1 alpha:0].CGColor, (id)[UIColor whiteColor].CGColor];
+    bool isDarkMode = [[SFUtils sharedInstance] darkMode];
+    if (isDarkMode) {
+        gradient.colors = @[(id)[UIColor colorWithWhite:0 alpha:0].CGColor, (id) [UIColor blackColor].CGColor];
+    } else {
+        gradient.colors = @[(id)[UIColor colorWithWhite:1 alpha:0].CGColor, (id) [UIColor whiteColor].CGColor];
+    }
     
     gradient.locations = @[@0.0, @1.0];
 
