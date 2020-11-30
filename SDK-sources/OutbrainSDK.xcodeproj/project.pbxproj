@@ -484,14 +484,22 @@
 		1698D97B256BBD0C004C90FF /* ReadMoreModuleCells */ = {
 			isa = PBXGroup;
 			children = (
-				1698D97D256BBD49004C90FF /* SFTableViewReadMoreCell.xib */,
-				1698D988256BBFD6004C90FF /* SFCollectionViewReadMoreCell.xib */,
+				1698DA4E25754D57004C90FF /* XIB */,
 				1698D98D256BC05C004C90FF /* SFTableViewReadMoreCell.h */,
 				1698D992256BC06D004C90FF /* SFCollectionViewReadMoreCell.h */,
 				1698D997256BC28D004C90FF /* SFTableViewReadMoreCell.m */,
 				1698D99C256BC2A2004C90FF /* SFCollectionViewReadMoreCell.m */,
 			);
 			path = ReadMoreModuleCells;
+			sourceTree = "<group>";
+		};
+		1698DA4E25754D57004C90FF /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				1698D97D256BBD49004C90FF /* SFTableViewReadMoreCell.xib */,
+				1698D988256BBFD6004C90FF /* SFCollectionViewReadMoreCell.xib */,
+			);
+			path = XIB;
 			sourceTree = "<group>";
 		};
 		16AC5D9D24CDABBD00F492C1 /* WeeklyHighlightsItem */ = {
