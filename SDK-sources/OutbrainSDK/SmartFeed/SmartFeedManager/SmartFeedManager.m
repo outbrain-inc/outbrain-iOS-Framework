@@ -676,8 +676,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [self fetchMoreRecommendations];
     }
     
-    // for read more module
-    // add shadow to the last item in the section before the collapsable section
+    // For read more module
+    // We are adding the shadow to the last cell in the section before the collapsible section.
+    // self.outbrainSectionIndex - SF section
+    // self.outbrainSectionIndex - 1 - collapsible section
+    // self.outbrainSectionIndex - 2 - section before the collapsible section
     if (self.isReadMoreModuleEnabled && indexPath.section == (self.outbrainSectionIndex - 2)) {
         NSInteger numberOfRowsInSection = [tableView numberOfRowsInSection:indexPath.section];
         if ((numberOfRowsInSection - 1) == indexPath.item) { // is last item in section
@@ -1047,8 +1050,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [self fetchMoreRecommendations];
     }
     
-    // for read more module
-    // add shadow to the last item in the section before the collapsable section
+    // For read more module
+    // We are adding the shadow to the last cell in the section before the collapsible section.
+    // self.outbrainSectionIndex - SF section
+    // self.outbrainSectionIndex - 1 - collapsible section
+    // self.outbrainSectionIndex - 2 - section before the collapsible section
     if (self.isReadMoreModuleEnabled && indexPath.section == (self.outbrainSectionIndex - 2)) {
         NSInteger numberOfRowsInSection = [collectionView numberOfItemsInSection:indexPath.section];
         if ((numberOfRowsInSection - 1) == indexPath.item) { // is last item in section
