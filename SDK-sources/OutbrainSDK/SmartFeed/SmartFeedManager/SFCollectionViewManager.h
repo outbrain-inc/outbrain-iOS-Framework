@@ -52,6 +52,6 @@
 
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView readMoreCellAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
-- (void) configureReadMoreCollectionViewCell:(UICollectionViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void) configureReadMoreCollectionViewCell:(UICollectionViewCell * _Nonnull)cell withButtonText:(NSString * _Nonnull)buttonText;
 
 @end

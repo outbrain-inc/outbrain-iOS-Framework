@@ -78,6 +78,7 @@
 @property (nonatomic, assign) BOOL hasWeeklyHighlightsItem;
 
 @property (nonatomic, assign) BOOL isReadMoreModuleEnabled;
+@property (nonatomic, strong) NSString * _Nullable readMoreButtonText;
 @property (nonatomic, strong) SFReadMoreModuleHelper *readMoreModuleHelper;
 
 @end
@@ -155,6 +156,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 - (void) setReadMoreModule {
     self.isReadMoreModuleEnabled = YES;
     self.readMoreModuleHelper = [[SFReadMoreModuleHelper alloc] init];
+    self.readMoreButtonText = @"Read More"; // Default
     if (self.sfCollectionViewManager != nil) {
         [self.sfCollectionViewManager setReadMoreModuleHelper:self.readMoreModuleHelper];
     } else if (self.sfTableViewManager != nil) {
@@ -261,6 +263,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             self.fab = [response.responseRequest getStringValueForPayloadKey:@"abTestVal"];
             if ([self.fab isEqualToString:@"no_abtest"]) {
                 self.fab = nil;
+            }
+            if (self.isReadMoreModuleEnabled && response.settings.readMoreButtonText != nil) {
+                self.readMoreButtonText = response.settings.readMoreButtonText;
             }
         }
         
@@ -698,7 +703,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     NSInteger headerRowIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
-            [self.sfTableViewManager configureReadMoreTableViewCell:cell atIndexPath:indexPath];
+            [self.sfTableViewManager configureReadMoreTableViewCell:cell withButtonText:self.readMoreButtonText];
             return;
         }
         headerRowIndex = 1;
@@ -1065,7 +1070,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     NSInteger headerCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
         if (indexPath.row == 0) {
-            [self.sfCollectionViewManager configureReadMoreCollectionViewCell:cell atIndexPath:indexPath];
+            [self.sfCollectionViewManager configureReadMoreCollectionViewCell:cell withButtonText:self.readMoreButtonText];
             return;
         }
         headerCellIndex = 1;

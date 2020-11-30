@@ -506,8 +506,10 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     return [collectionView dequeueReusableCellWithReuseIdentifier:reuseId forIndexPath:indexPath];
 }
 
-- (void) configureReadMoreCollectionViewCell:(UICollectionViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath {
+- (void) configureReadMoreCollectionViewCell:(UICollectionViewCell * _Nonnull)cell withButtonText:(NSString * _Nonnull)buttonText; {
     SFCollectionViewReadMoreCell *readMoreCell = (SFCollectionViewReadMoreCell *)cell;
+    
+    readMoreCell.readMoreLable.text = buttonText;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(readMoreButonClicked:)];
     tapGesture.numberOfTapsRequired = 1;

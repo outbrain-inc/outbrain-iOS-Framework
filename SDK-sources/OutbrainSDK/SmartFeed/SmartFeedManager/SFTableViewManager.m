@@ -414,8 +414,10 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     self->_readMoreModuleHelper = readMoreModuleHelper;
 }
 
-- (void) configureReadMoreTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void) configureReadMoreTableViewCell:(UITableViewCell *)cell withButtonText:(NSString * _Nonnull)buttonText; {
     SFTableViewReadMoreCell *readMoreCell = (SFTableViewReadMoreCell *)cell;
+    
+    readMoreCell.readMoreLable.text = buttonText;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(readMoreButonClicked:)];
     tapGesture.numberOfTapsRequired = 1;

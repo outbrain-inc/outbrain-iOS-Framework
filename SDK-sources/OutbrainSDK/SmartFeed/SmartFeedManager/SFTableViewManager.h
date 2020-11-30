@@ -33,7 +33,7 @@
 
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView readMoreCellAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
-- (void) configureReadMoreTableViewCell:(UITableViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void) configureReadMoreTableViewCell:(UITableViewCell * _Nonnull)cell withButtonText:(NSString * _Nonnull)buttonText;
 
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath sfItemType:(SFItemType)sfItemType;
 
