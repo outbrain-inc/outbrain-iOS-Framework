@@ -57,7 +57,7 @@ func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection s
 
 #### `numberOfSections` method
 
-Notice that `numberOfSections` method is the placee we are updating the `smartFeedManager` with the section index of the SmartFeed.
+Notice that `numberOfSections` method is the place to update the `smartFeedManager` with the section index of the SmartFeed.
 Make sure that you are updating the `outbrainSectionIndex` with the correct index:
 
 ```Swift
