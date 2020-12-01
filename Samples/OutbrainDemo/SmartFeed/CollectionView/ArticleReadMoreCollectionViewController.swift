@@ -170,7 +170,7 @@ class ArticleReadMoreCollectionViewController: UICollectionViewController {
         // Read more button custom UI
         let readMoreCellNib = UINib(nibName: "AppSFCollectionViewReadMoreCell", bundle: bundle)
         
-        self.smartFeedManager.register(readMoreCellNib, withReuseIdentifier: "AppSFCollectionViewReadMoreCell", for: SFTypeReadMoreButton)
+        // self.smartFeedManager.register(readMoreCellNib, withReuseIdentifier: "AppSFCollectionViewReadMoreCell", for: SFTypeReadMoreButton)
     }
 }
 

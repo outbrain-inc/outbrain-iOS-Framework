@@ -64,7 +64,7 @@ class ArticleReadMoreTableViewController: UIViewController, UITableViewDelegate,
         // Read more button custom UI
         let readMoreCellNib = UINib(nibName: "AppSFTableViewReadMoreCell", bundle: bundle)
         
-        self.smartFeedManager.register(readMoreCellNib, withReuseIdentifier: "AppSFTableViewReadMoreCell", for: SFTypeReadMoreButton)
+        // self.smartFeedManager.register(readMoreCellNib, withReuseIdentifier: "AppSFTableViewReadMoreCell", for: SFTypeReadMoreButton)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
