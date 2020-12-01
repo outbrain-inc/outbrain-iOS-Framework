@@ -20,6 +20,7 @@ rm -fr OBSDK-CustomUI
 mkdir OBSDK-CustomUI
 mkdir OBSDK-CustomUI/SFSingleCells/
 mkdir OBSDK-CustomUI/SFHeaderCells/
+mkdir OBSDK-CustomUI/SFReadMoreModuleCells/
 
 echo ""
 echo "****************************************"
