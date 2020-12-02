@@ -14,6 +14,17 @@ See example of how this module works below:
 
 TODO: Add a video!
 
+
+## Download SDK and Sample App
+
+Download links are available at [Outbrain SDK – Documentation & Download Links](https://developer.outbrain.com/outbrain-sdk-documentation-download-links/)
+
+In `ViewController.swift`, uncomment one of those lines to test the module:
+```Swift
+performSegue(withIdentifier: "showTableReadMoreModuleVC", sender: nil) // For TableView
+performSegue(withIdentifier: "showCollectionReadMoreModuleVC", sender: nil) // For CollectionView
+```
+
 ## Setup The Module
 
 ### Step 1 - Choose Items To Collapse
