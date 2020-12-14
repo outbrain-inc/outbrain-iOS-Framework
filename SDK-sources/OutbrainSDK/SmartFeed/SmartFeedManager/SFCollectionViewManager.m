@@ -12,6 +12,8 @@
 #import "SFImageLoader.h"
 #import "SFCollectionViewHeaderCell.h"
 #import "SFVideoCollectionViewCell.h"
+#import "SFCollectionViewReadMoreCell.h"
+#import "SFReadMoreModuleHelper.h"
 #import "OBDisclosure.h"
 
 @interface SFCollectionViewManager() <UIGestureRecognizerDelegate>
@@ -26,6 +28,7 @@
 NSString * const kCollectionViewHorizontalCarouselWithTitleReuseId = @"SFHorizontalCarouselWithTitleCollectionViewCell";
 NSString * const kCollectionViewHorizontalCarouselNoTitleReuseId = @"SFHorizontalCarouselNoTitleCollectionViewCell";
 NSString * const kCollectionViewSmartfeedHeaderReuseId = @"SFCollectionViewHeaderCell";
+NSString * const kCollectionViewReadMoreReuseId = @"SFCollectionViewReadMoreCell";
 NSString * const kCollectionViewSmartfeedRTLHeaderReuseId = @"SFCollectionViewRTLHeaderCell";
 NSString * const kCollectionViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailCollectionCell";
 NSString * const kCollectionViewSingleWithThumbnailWithTitleReuseId = @"SFSingleWithThumbnailWithTitleCollectionCell";
@@ -60,6 +63,11 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         headerCellNib = [UINib nibWithNibName:@"SFCollectionViewRTLHeaderCell" bundle:bundle];
         NSAssert(headerCellNib != nil, @"SFCollectionViewRTLHeaderCell should not be null");
         [collectionView registerNib:headerCellNib forCellWithReuseIdentifier: kCollectionViewSmartfeedRTLHeaderReuseId];
+        
+        // Read More module cell
+        UINib *readMoreCellNib = [UINib nibWithNibName:@"SFCollectionViewReadMoreCell" bundle:bundle];
+        NSAssert(headerCellNib != nil, @"SFCollectionViewReadMoreCell should not be null");
+        [collectionView registerNib:readMoreCellNib forCellWithReuseIdentifier: kCollectionViewReadMoreReuseId];
         
         // video cell
         [collectionView registerClass:[SFVideoCollectionViewCell class] forCellWithReuseIdentifier:kCollectionViewSingleVideoReuseId];
@@ -479,6 +487,22 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell.wkScriptMessageHandler uiDelegate:wkUIDelegate withHorizontalMargin:NO];
     
     [SFUtils loadVideoURLIn:videoCell sfItem:sfItem];
+}
+
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView readMoreCellAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
+    NSString *reuseId = kCollectionViewReadMoreReuseId;
+    
+    return [collectionView dequeueReusableCellWithReuseIdentifier:reuseId forIndexPath:indexPath];
+}
+
+- (void) configureReadMoreCollectionViewCell:(UICollectionViewCell * _Nonnull)cell withButtonText:(NSString * _Nonnull)buttonText; {
+    SFCollectionViewReadMoreCell *readMoreCell = (SFCollectionViewReadMoreCell *)cell;
+    
+    readMoreCell.readMoreLabel.text = buttonText;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget action:@selector(readMoreButtonClicked:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [readMoreCell.readMoreLabel addGestureRecognizer:tapGesture];
 }
 
 @end

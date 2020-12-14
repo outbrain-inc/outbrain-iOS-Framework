@@ -9,9 +9,11 @@
 #import "SFTableViewManager.h"
 #import "SFItemData.h"
 #import "SFHorizontalTableViewCell.h"
+#import "SFTableViewReadMoreCell.h"
 #import "SFUtils.h"
 #import "SFImageLoader.h"
 #import "SFVideoTableViewCell.h"
+#import "SFReadMoreModuleHelper.h"
 #import "OBDisclosure.h"
 
 @interface SFTableViewManager() <UIGestureRecognizerDelegate>
@@ -25,6 +27,7 @@
 const CGFloat kTableViewRowHeight = 250.0;
 NSString * const kTableViewSingleReuseId = @"SFTableViewCell";
 NSString * const kTableViewSmartfeedHeaderReuseId = @"SFTableViewHeaderCell";
+NSString * const kTableViewReadMoreCellReuseId = @"SFTableViewReadMoreCell";
 NSString * const kTableViewSmartfeedRTLHeaderReuseId = @"SFTableViewRTLHeaderCell";
 NSString * const kTableViewHorizontalCarouselWithTitleReuseId = @"SFCarouselWithTitleReuseId";
 NSString * const kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitleReuseId";
@@ -94,6 +97,11 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         nib = [UINib nibWithNibName:@"SFTableViewRTLHeaderCell" bundle:bundle];
         NSAssert(nib != nil, @"SFTableViewRTLHeaderCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSmartfeedRTLHeaderReuseId];
+        
+        // Read More module cell
+        nib = [UINib nibWithNibName:@"SFTableViewReadMoreCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFTableViewReadMoreCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewReadMoreCellReuseId];
         
         // video cell
         [self.tableView registerClass:[SFVideoTableViewCell class] forCellReuseIdentifier:kTableViewSingleVideoReuseId];
@@ -165,6 +173,12 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     if ([UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft) {
         reuseId = kTableViewSmartfeedHeaderReuseId;
     }
+    
+    return [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView readMoreCellAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *reuseId = kTableViewReadMoreCellReuseId;
     
     return [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
 }
@@ -387,6 +401,18 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     else {
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
+}
+
+- (void) configureReadMoreTableViewCell:(UITableViewCell *)cell withButtonText:(NSString * _Nonnull)buttonText; {
+    SFTableViewReadMoreCell *readMoreCell = (SFTableViewReadMoreCell *)cell;
+    
+    readMoreCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+    
+    readMoreCell.readMoreLabel.text = buttonText;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget action:@selector(readMoreButtonClicked:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [readMoreCell.readMoreLabel addGestureRecognizer:tapGesture];
 }
 
 @end

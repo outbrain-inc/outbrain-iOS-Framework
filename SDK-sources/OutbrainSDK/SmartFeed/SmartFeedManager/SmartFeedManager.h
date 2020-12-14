@@ -85,6 +85,7 @@
 typedef enum
 {
     SFTypeSmartfeedHeader = 1,
+    SFTypeReadMoreButton,
     SFTypeStripNoTitle,
     SFTypeCarouselWithTitle,
     SFTypeBrandedCarouselWithTitle,
@@ -126,6 +127,9 @@ typedef enum
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
 @property (nonatomic) BOOL isSkySolutionActive;
 
+// Read more module
+- (void) setReadMoreModule;
+
 -(NSInteger) smartFeedItemsCount;
 
 // TableView
@@ -141,6 +145,10 @@ typedef enum
 - (void)tableView:(UITableView * _Nonnull)tableView willDisplayCell:(UITableViewCell * _Nonnull)cell forRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+
+// Read More Module
+
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount;
 
 // CollectionView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
@@ -158,6 +166,10 @@ typedef enum
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView
        willDisplayCell:(UICollectionViewCell * _Nonnull)cell
     forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+
+// Read More Module
+
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount;
 
 // Common Methods
 -(NSString * _Nullable) sfItemTypeStringFor:(NSIndexPath * _Nonnull)indexPath;

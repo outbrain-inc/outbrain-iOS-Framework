@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1698DA2825752FD1004C90FF /* ArticleReadMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA2725752FD1004C90FF /* ArticleReadMoreTableViewController.swift */; };
+		1698DA2925752FD1004C90FF /* ArticleReadMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA2725752FD1004C90FF /* ArticleReadMoreTableViewController.swift */; };
+		1698DA2B25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA2A25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift */; };
+		1698DA2C25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA2A25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift */; };
+		1698DA2E25754147004C90FF /* AppSFCollectionViewReadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA2D25754146004C90FF /* AppSFCollectionViewReadMoreCell.swift */; };
+		1698DA2F25754147004C90FF /* AppSFCollectionViewReadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA2D25754146004C90FF /* AppSFCollectionViewReadMoreCell.swift */; };
+		1698DA312575414F004C90FF /* AppSFCollectionViewReadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1698DA302575414F004C90FF /* AppSFCollectionViewReadMoreCell.xib */; };
+		1698DA322575414F004C90FF /* AppSFCollectionViewReadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1698DA302575414F004C90FF /* AppSFCollectionViewReadMoreCell.xib */; };
+		1698DA3425754185004C90FF /* AppSFTableViewReadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1698DA3325754185004C90FF /* AppSFTableViewReadMoreCell.xib */; };
+		1698DA3525754185004C90FF /* AppSFTableViewReadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1698DA3325754185004C90FF /* AppSFTableViewReadMoreCell.xib */; };
+		1698DA37257541B0004C90FF /* AppSFTableViewReadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA36257541B0004C90FF /* AppSFTableViewReadMoreCell.swift */; };
+		1698DA38257541B0004C90FF /* AppSFTableViewReadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA36257541B0004C90FF /* AppSFTableViewReadMoreCell.swift */; };
 		16B1F96B2185DC8100023DDD /* GDPRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9552185DC8100023DDD /* GDPRViewController.m */; };
 		16B1F96C2185DC8100023DDD /* GDPRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9552185DC8100023DDD /* GDPRViewController.m */; };
 		16B1F96D2185DC8100023DDD /* CMPConsentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9582185DC8100023DDD /* CMPConsentParser.m */; };
@@ -205,6 +217,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1698DA2725752FD1004C90FF /* ArticleReadMoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleReadMoreTableViewController.swift; sourceTree = "<group>"; };
+		1698DA2A25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleReadMoreCollectionViewController.swift; sourceTree = "<group>"; };
+		1698DA2D25754146004C90FF /* AppSFCollectionViewReadMoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFCollectionViewReadMoreCell.swift; sourceTree = "<group>"; };
+		1698DA302575414F004C90FF /* AppSFCollectionViewReadMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFCollectionViewReadMoreCell.xib; sourceTree = "<group>"; };
+		1698DA3325754185004C90FF /* AppSFTableViewReadMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFTableViewReadMoreCell.xib; sourceTree = "<group>"; };
+		1698DA36257541B0004C90FF /* AppSFTableViewReadMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSFTableViewReadMoreCell.swift; sourceTree = "<group>"; };
 		16B1F9552185DC8100023DDD /* GDPRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDPRViewController.m; sourceTree = "<group>"; };
 		16B1F9582185DC8100023DDD /* CMPConsentParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPConsentParser.m; sourceTree = "<group>"; };
 		16B1F9592185DC8100023DDD /* CMPConsentConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPConsentConstant.h; sourceTree = "<group>"; };
@@ -265,7 +283,7 @@
 		E62109ED22B7C3E2001B01FD /* ArticleMidPageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleMidPageCollectionViewController.swift; sourceTree = "<group>"; };
 		E62109F022B7C3F1001B01FD /* ArticleMidPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleMidPageTableViewController.swift; sourceTree = "<group>"; };
 		E6250D8521C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFTableViewHeaderCell.xib; sourceTree = "<group>"; };
-		E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AppSFCollectionViewHeaderCell.xib; path = SmartFeedCells/AppSFCollectionViewHeaderCell.xib; sourceTree = "<group>"; };
+		E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFCollectionViewHeaderCell.xib; sourceTree = "<group>"; };
 		E62729E021ECD41900C8CEFD /* OBVideoWidgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBVideoWidgetViewController.swift; sourceTree = "<group>"; };
 		E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		E62861532138231800D12A15 /* AppArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -377,6 +395,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1698DA2625752F71004C90FF /* SmartFeedCells */ = {
+			isa = PBXGroup;
+			children = (
+				E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */,
+				E6250D8521C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib */,
+				E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */,
+				E61E6CE02085DC6C0016D79A /* AppSFTableViewCell.xib */,
+				1698DA3325754185004C90FF /* AppSFTableViewReadMoreCell.xib */,
+				E61E6CE12085DC6C0016D79A /* AppSFTableViewCell.swift */,
+				1698DA36257541B0004C90FF /* AppSFTableViewReadMoreCell.swift */,
+			);
+			path = SmartFeedCells;
+			sourceTree = "<group>";
+		};
 		16B1F9542185DC8100023DDD /* GDPR */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,14 +641,11 @@
 		E61E6CDF2085DC6C0016D79A /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */,
-				E6250D8521C0FEF600C329B9 /* AppSFTableViewHeaderCell.xib */,
-				E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */,
-				E61E6CE02085DC6C0016D79A /* AppSFTableViewCell.xib */,
-				E61E6CE12085DC6C0016D79A /* AppSFTableViewCell.swift */,
+				1698DA2625752F71004C90FF /* SmartFeedCells */,
 				E61E6CE22085DC6C0016D79A /* ArticleTableViewController.swift */,
 				E647EE7122EEFF3100313178 /* ArticleStackViewController.swift */,
 				E62109F022B7C3F1001B01FD /* ArticleMidPageTableViewController.swift */,
+				1698DA2725752FD1004C90FF /* ArticleReadMoreTableViewController.swift */,
 				E62861532138231800D12A15 /* AppArticleTableViewCell.swift */,
 			);
 			path = TableView;
@@ -625,12 +654,12 @@
 		E61E6CE32085DC6C0016D79A /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				E61E6CE52085DC6C0016D79A /* SmartFeedCells */,
 				E62729DF21ECD3FD00C8CEFD /* OBVideoWidget */,
-				E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */,
 				E61E6CE42085DC6C0016D79A /* ArticleCollectionViewController.swift */,
 				E62109ED22B7C3E2001B01FD /* ArticleMidPageCollectionViewController.swift */,
 				E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */,
-				E61E6CE52085DC6C0016D79A /* SmartFeedCells */,
+				1698DA2A25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -638,14 +667,17 @@
 		E61E6CE52085DC6C0016D79A /* SmartFeedCells */ = {
 			isa = PBXGroup;
 			children = (
+				E6250D8821C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib */,
 				E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */,
 				E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */,
 				E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */,
+				1698DA302575414F004C90FF /* AppSFCollectionViewReadMoreCell.xib */,
 				E61E6CE62085DC6C0016D79A /* AppSFHorizontalItemCell.swift */,
 				E61E6CE72085DC6C0016D79A /* AppSFCollectionViewCell.swift */,
 				E6286166213C0EED00D12A15 /* AppSFHorizontalItemCell.xib */,
 				E61E6CE82085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib */,
 				E61E6CE92085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib */,
+				1698DA2D25754146004C90FF /* AppSFCollectionViewReadMoreCell.swift */,
 			);
 			path = SmartFeedCells;
 			sourceTree = "<group>";
@@ -946,7 +978,9 @@
 				E64F6041212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
 				E64F603B212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */,
 				E6250D8921C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib in Resources */,
+				1698DA3425754185004C90FF /* AppSFTableViewReadMoreCell.xib in Resources */,
 				E60DCD3E20BC3AAD0023FE93 /* AppSFHorizontalFixedItemCell.xib in Resources */,
+				1698DA312575414F004C90FF /* AppSFCollectionViewReadMoreCell.xib in Resources */,
 				E60DCD3F20BC3AAD0023FE93 /* AppSingleNoTitleCollectionViewCell.xib in Resources */,
 				E64F603E212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
 				E67A71A0219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib in Resources */,
@@ -981,7 +1015,9 @@
 				E64F6042212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
 				E64F603C212C35E7008BBDFB /* AppSFSingleWithTitleTableViewCell.xib in Resources */,
 				E6250D8A21C0FFC200C329B9 /* AppSFCollectionViewHeaderCell.xib in Resources */,
+				1698DA3525754185004C90FF /* AppSFTableViewReadMoreCell.xib in Resources */,
 				E61E6CF02085DC6C0016D79A /* AppSFHorizontalFixedItemCell.xib in Resources */,
+				1698DA322575414F004C90FF /* AppSFCollectionViewReadMoreCell.xib in Resources */,
 				E61E6CF12085DC6C0016D79A /* AppSingleNoTitleCollectionViewCell.xib in Resources */,
 				E64F603F212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
 				E67A71A1219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib in Resources */,
@@ -1052,6 +1088,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1698DA37257541B0004C90FF /* AppSFTableViewReadMoreCell.swift in Sources */,
+				1698DA2E25754147004C90FF /* AppSFCollectionViewReadMoreCell.swift in Sources */,
 				E60DCD3320BC3AAD0023FE93 /* AppSFCollectionViewCell.swift in Sources */,
 				E60DCD3420BC3AAD0023FE93 /* ArticleTableViewController.swift in Sources */,
 				E60DCD3520BC3AAD0023FE93 /* AppSFHorizontalItemCell.swift in Sources */,
@@ -1061,7 +1099,9 @@
 				E60DCD3620BC3AAD0023FE93 /* ArticleCollectionViewController.swift in Sources */,
 				E60DCD3720BC3AAD0023FE93 /* AppSFTableViewCell.swift in Sources */,
 				E62861542138231800D12A15 /* AppArticleTableViewCell.swift in Sources */,
+				1698DA2825752FD1004C90FF /* ArticleReadMoreTableViewController.swift in Sources */,
 				E628614F2137FC8700D12A15 /* AppArticleCollectionViewCell.swift in Sources */,
+				1698DA2B25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift in Sources */,
 				E62729E121ECD41900C8CEFD /* OBVideoWidgetViewController.swift in Sources */,
 				E60DCD3820BC3AAD0023FE93 /* ViewController.swift in Sources */,
 				E60DCD3920BC3AAD0023FE93 /* AppDelegate.swift in Sources */,
@@ -1109,6 +1149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1698DA38257541B0004C90FF /* AppSFTableViewReadMoreCell.swift in Sources */,
+				1698DA2F25754147004C90FF /* AppSFCollectionViewReadMoreCell.swift in Sources */,
 				E61E6CEF2085DC6C0016D79A /* AppSFCollectionViewCell.swift in Sources */,
 				E61E6CEC2085DC6C0016D79A /* ArticleTableViewController.swift in Sources */,
 				E61E6CEE2085DC6C0016D79A /* AppSFHorizontalItemCell.swift in Sources */,
@@ -1118,7 +1160,9 @@
 				E61E6CED2085DC6C0016D79A /* ArticleCollectionViewController.swift in Sources */,
 				E61E6CEB2085DC6C0016D79A /* AppSFTableViewCell.swift in Sources */,
 				E62861552138231800D12A15 /* AppArticleTableViewCell.swift in Sources */,
+				1698DA2925752FD1004C90FF /* ArticleReadMoreTableViewController.swift in Sources */,
 				E62861502137FC8700D12A15 /* AppArticleCollectionViewCell.swift in Sources */,
+				1698DA2C25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift in Sources */,
 				E62729E221ECD41900C8CEFD /* OBVideoWidgetViewController.swift in Sources */,
 				E61E6CD22085DBD50016D79A /* ViewController.swift in Sources */,
 				E61E6CD02085DBD50016D79A /* AppDelegate.swift in Sources */,

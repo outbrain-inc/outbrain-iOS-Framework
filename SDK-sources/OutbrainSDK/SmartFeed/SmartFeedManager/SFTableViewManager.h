@@ -10,6 +10,7 @@
 #import "SmartFeedManager.h"
 #import "SFUtils.h"
 #import "SFTableViewCell.h"
+#import "SFReadMoreModuleHelper.h"
 
 @import WebKit;
 
@@ -29,6 +30,10 @@
 - (id _Nonnull )initWithTableView:(UITableView * _Nonnull)tableView;
 
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView headerCellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath isRTL:(BOOL)isRTL;
+
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView readMoreCellAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+
+- (void) configureReadMoreTableViewCell:(UITableViewCell * _Nonnull)cell withButtonText:(NSString * _Nonnull)buttonText;
 
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath sfItemType:(SFItemType)sfItemType;
 

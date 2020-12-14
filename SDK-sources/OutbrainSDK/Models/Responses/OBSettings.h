@@ -34,6 +34,8 @@
 @property (nonatomic, assign, readonly) BOOL isViewabilityPerListingEnabled;
 @property (nonatomic, assign, readonly) NSInteger viewabilityPerListingReportingIntervalMillis;
 
+@property (nonatomic, copy, readonly, nullable) NSString *readMoreButtonText;
+
 @property (nonatomic, strong, nullable) OBViewabilityActions *viewabilityActions;
 @property (nonatomic, strong, nullable) OBBrandedCarouselSettings *brandedCarouselSettings;
 
