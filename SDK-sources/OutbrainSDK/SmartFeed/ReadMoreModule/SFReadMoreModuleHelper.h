@@ -23,6 +23,8 @@
 
 - (void) readMoreButonClickedOnCollectionView:(UICollectionView * _Nonnull)collectionView;
 
-- (void) addShadowViewForCell:(UIView * _Nonnull)cell;
+- (void) collectionView:(UICollectionView * _Nonnull)collectionView handleShadowViewForCell:(UICollectionViewCell * _Nonnull)cell atIndexPath:(NSIndexPath *_Nonnull)indexPath;
+
+- (void) tableView:(UITableView * _Nonnull)tableView handleShadowViewForCell:(UITableViewCell * _Nonnull)cell atIndexPath:(NSIndexPath *_Nonnull)indexPath;
 
 @end
