@@ -26,7 +26,43 @@
     return self.shouldExpandCollapsableSectionCells ? collapsableItemCount : 0;
 }
 
-- (void) addShadowViewForCell:(UIView * _Nonnull)cell {
+// We are adding the shadow to the last cell in the section before the collapsible section.
+// readMoreCollapsableSection : collapsible section
+// readMoreCollapsableSection - 1 : section before the collapsible section
+- (void) collectionView:(UICollectionView *)collectionView handleShadowViewForCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == self.readMoreCollapsableSection - 1) {
+        NSInteger numberOfItemsInSection = [collectionView numberOfItemsInSection:indexPath.section];
+        if ((numberOfItemsInSection - 1) == indexPath.item) { // is last item in section
+            [self addShadowViewForCell:cell.contentView];
+            return;
+        }
+    } else { // make sure we remove the shadow view for reuse cells
+        [self removeShadowViewIfNeededForCell:cell.contentView];
+    }
+}
+
+// We are adding the shadow to the last cell in the section before the collapsible section.
+// readMoreCollapsableSection : collapsible section
+// readMoreCollapsableSection - 1 : section before the collapsible section
+- (void) tableView:(UITableView *)tableView handleShadowViewForCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == self.readMoreCollapsableSection - 1) {
+        NSInteger numberOfItemsInSection = [tableView numberOfRowsInSection:indexPath.section];
+        if ((numberOfItemsInSection - 1) == indexPath.item) { // is last item in section
+            [self addShadowViewForCell:cell.contentView];
+            return;
+        }
+    } else { // make sure we remove the shadow view for reuse cells
+        [self removeShadowViewIfNeededForCell:cell.contentView];
+    }
+}
+
+- (void) removeShadowViewIfNeededForCell:(UIView *)cell {
+    if ([cell.subviews containsObject: self.readMoreShadowView]) {
+        [self.readMoreShadowView removeFromSuperview];
+    }
+}
+
+- (void) addShadowViewForCell:(UIView *)cell {
     if ([cell.subviews containsObject: self.readMoreShadowView]) {
         if (self.shouldCollapseReadMoreCell) {
             [self.readMoreShadowView removeFromSuperview];
