@@ -464,6 +464,10 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
+    
+    if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripNoTitle) {
+        [self configureCtaLabelInCell:singleCell withCtaText:rec.ctaText isRecWithTitle:sfItem.itemType == SFTypeStripWithTitle isCustomUI:sfItem.isCustomUI];
+    }
 }
 
 + (void) configureVideoCell:(SFVideoCollectionViewCell *)videoCell
@@ -487,6 +491,57 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     videoCell.webview = [SFUtils createVideoWebViewInsideView:videoCell.cardContentView withSFItem:sfItem scriptMessageHandler:videoCell.wkScriptMessageHandler uiDelegate:wkUIDelegate withHorizontalMargin:NO];
     
     [SFUtils loadVideoURLIn:videoCell sfItem:sfItem];
+}
+
++ (void) configureCtaLabelInCell:(SFCollectionViewCell *)singleCell withCtaText:(NSString *) ctaText isRecWithTitle:(BOOL) withTitle isCustomUI:(BOOL) isCustomUI {
+    NSInteger ctaLabelTag = 112233445566;
+    UILabel * existingCtaLabelView = [singleCell viewWithTag:ctaLabelTag];
+    if (existingCtaLabelView != nil) { // CTA view exists
+        // Remove existing CTA view
+        [existingCtaLabelView removeFromSuperview];
+        
+        // Add constraint for rec title view
+        NSLayoutConstraint *recTitleTrailingConstraint = [[singleCell.recTitleLabel trailingAnchor] constraintEqualToAnchor:[singleCell trailingAnchor] constant:-8];
+        recTitleTrailingConstraint.identifier = @"recTitleTrailingConstraint";
+        recTitleTrailingConstraint.active = YES;
+    }
+    
+    if (ctaText == nil || [ctaText isEqual: @""] || isCustomUI) { // No CTA label to show
+        [singleCell.recTitleLabel layoutIfNeeded];
+        return;
+    }
+    
+    UILabel * ctaLabelView = [SFUtils getRecCtaLabelWithText: ctaText];
+    
+    ctaLabelView.tag = ctaLabelTag;
+    [singleCell addSubview:ctaLabelView];
+    
+    ctaLabelView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    // Remove existing constraints of storyboard
+    for (NSLayoutConstraint *constraint in singleCell.recTitleLabel.superview.constraints) {
+        if ((constraint.secondAttribute == NSLayoutAttributeTrailing &&
+             constraint.secondItem == singleCell.recTitleLabel)) {
+            [singleCell.recTitleLabel.superview removeConstraint:constraint];
+        }
+    }
+    
+    // Remove existing constraints added programmatically
+    for (NSLayoutConstraint *constraint in singleCell.constraints) {
+        if ([constraint.identifier isEqual: @"recTitleTrailingConstraint"]) {
+            [singleCell removeConstraint:constraint];
+        }
+    }
+    
+    // Set CTA view constraints
+    [[singleCell.recTitleLabel trailingAnchor] constraintEqualToAnchor:[ctaLabelView leadingAnchor] constant:-12].active = YES;
+    [[ctaLabelView widthAnchor] constraintEqualToConstant:ctaLabelView.intrinsicContentSize.width + 12].active = YES;
+    NSInteger trailingConstant = withTitle ? 16 : 8;
+    [[singleCell trailingAnchor] constraintEqualToAnchor:[ctaLabelView trailingAnchor] constant:trailingConstant].active = YES;
+    [[ctaLabelView heightAnchor] constraintEqualToConstant:25].active = YES;
+    [[ctaLabelView topAnchor] constraintEqualToAnchor:[singleCell.recTitleLabel topAnchor] constant:-3].active = YES;
+    
+    [ctaLabelView layoutIfNeeded];
 }
 
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView readMoreCellAtIndexPath:(NSIndexPath * _Nonnull)indexPath {

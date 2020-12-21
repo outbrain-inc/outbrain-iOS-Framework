@@ -353,4 +353,25 @@ static BOOL skipRTL;
         sourceLabel.font = [sourceLabel.font fontWithSize: 12]; // 12 is the default
     }
 }
+
+
++(UILabel *) getRecCtaLabelWithText:(NSString *)ctaText {
+    UILabel * ctaLabelView = [[UILabel alloc] init];
+    
+    NSDictionary *attribs = @{
+        NSForegroundColorAttributeName: UIColorFromRGB(0x5295e3),
+        NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:14]
+    };
+    NSMutableAttributedString *attributedText =
+            [[NSMutableAttributedString alloc] initWithString: ctaText
+                                                   attributes:attribs];
+    ctaLabelView.attributedText = attributedText;
+    ctaLabelView.textAlignment = NSTextAlignmentCenter;
+    
+    ctaLabelView.layer.borderWidth = 1;
+    ctaLabelView.layer.borderColor = UIColorFromRGB(0x5295e3).CGColor;
+    ctaLabelView.layer.cornerRadius = 3;
+    
+    return ctaLabelView;
+}
 @end
