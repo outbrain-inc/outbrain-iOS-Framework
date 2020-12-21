@@ -78,7 +78,7 @@
     XCTAssertTrue([sfItem.widgetId isEqualToString:@"BCR_1"]);
     OBRecommendation *singleRec = sfItem.outbrainRecs[0];
     XCTAssertTrue([singleRec.content isEqualToString:@"Fact: Coronavirus Can Be Transmitted in Hot Climates"]);
-    XCTAssertTrue([singleRec.brandedCardCtaText isEqualToString:@"Learn More"]);
+    XCTAssertTrue([singleRec.ctaText isEqualToString:@"Learn More"]);
     
 }
 

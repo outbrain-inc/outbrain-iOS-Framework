@@ -47,8 +47,8 @@
 @property (nonatomic, copy) NSString *audienceCampaignsLabel;
 /** @brief Apply for Smartfeed "trending in category" card only. */
 @property (nonatomic, copy) NSString * categoryName;
-/** @brief Apply for Smartfeed "branded carousel" rec only. */
-@property (nonatomic, copy) NSString * brandedCardCtaText;
+/** @brief The CTA text of a recommendation. */
+@property (nonatomic, copy) NSString * ctaText;
 /** @brief metadata for app install ads according to the new iOS14 SkAdNetwork spec. */
 @property (nonatomic, strong) OBSkAdNetworkData *skAdNetworkData;
 
@@ -142,7 +142,7 @@
              @"appflow":                            @"appflow",
              @"disclosure":                         @"disclosure",
              @"pixels":                             @"pixels",
-             @"brandedCardCtaText":                 @"cta",
+             @"ctaText":                            @"cta",
              @"skAdNetworkData":                    @"sk_adnetwork_data"
              };
 }
