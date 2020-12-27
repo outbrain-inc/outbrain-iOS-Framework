@@ -862,12 +862,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) { // carousel
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
-        }
-        if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) { // branded carousel
+        } else if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) { // branded carousel
             horizontalItemCellNib = [UINib nibWithNibName:@"SFBrandedCardItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFBrandedCardItemCell"];
-        }
-        if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) { // SFHorizontalFixed
+        } else if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) { // SFHorizontalFixed
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalFixedItemCell"];
         }
