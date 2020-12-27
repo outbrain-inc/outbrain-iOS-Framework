@@ -75,7 +75,7 @@
     XCTAssertTrue([sfItem.widgetId isEqualToString:@"SFD_BCR_1"]);
     OBRecommendation *singleRec = sfItem.singleRec;
     XCTAssertTrue([singleRec.content isEqualToString:@"Build an empire & travel through the ages!"]);
-    XCTAssertNil(singleRec.brandedCardCtaText);
+    XCTAssertNil(singleRec.ctaText);
     
 }
 

@@ -64,8 +64,8 @@
 @property (nonatomic, copy, readonly, nullable) NSString * audienceCampaignsLabel;
 /** @brief Apply for Smartfeed "trending in category" card only. */
 @property (nonatomic, copy, readonly, nullable) NSString * categoryName;
-/** @brief Apply for Smartfeed "branded carousel" rec only. */
-@property (nonatomic, copy, readonly, nullable) NSString * brandedCardCtaText;
+/** @brief The CTA text of a recommendation. */
+@property (nonatomic, copy, readonly, nullable) NSString * ctaText;
 
 /** @brief metadata for app install ads according to the new iOS14 SkAdNetwork spec. */
 @property (nonatomic, strong, readonly, nullable) OBSkAdNetworkData *skAdNetworkData;
