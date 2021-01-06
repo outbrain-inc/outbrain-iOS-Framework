@@ -252,7 +252,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
              sfItemType == SFTypeStripVideoWithPaidRecAndTitle ||
              sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 270.0;
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 290.0;
     }
     else if (sfItemType == SFTypeStripWithTitle || sfItemType == SFTypeStripVideoWithPaidRecAndTitle) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 280.0;
