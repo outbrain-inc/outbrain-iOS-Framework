@@ -931,6 +931,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if (!sfItem.isCustomUI) {
         sfHeaderCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
         sfHeaderCell.headerLabel.textColor = [[SFUtils sharedInstance] titleColor:YES];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            sfHeaderCell.headerLabel.font = [sfHeaderCell.headerLabel.font fontWithSize:22.0];
+        }
     }
     
     if (self.isSmartfeedWithNoChildren) {
