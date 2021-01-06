@@ -906,6 +906,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         
         if (!sfItem.isCustomUI && cellTitleLabel && sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
             cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                cellTitleLabel.font = [cellTitleLabel.font fontWithSize:22.0];
+            }
         }
         
         UIColor *defaultBGColor = !sfItem.isCustomUI ? [[SFUtils sharedInstance] primaryBackgroundColor] : UIColor.whiteColor;
