@@ -367,6 +367,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         }
         if (!sfItem.isCustomUI) {
             singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                singleCell.cellTitleLabel.font = [singleCell.cellTitleLabel.font fontWithSize: 22.0];
+            }
         }
     }
     else if (sfItem.itemType == SFTypeStripAppInstall) {
