@@ -230,14 +230,14 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         sfItemType == SFTypeCarouselWithTitle ||
         sfItemType == SFTypeCarouselNoTitle ||
         sfItemType == SFTypeGridTwoInRowWithVideo) {
-        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 240.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 250.0);
     }
     else if (sfItemType == SFTypeGridThreeInRowNoTitle) {
-        return CGSizeMake(screenWidth, 280.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 320.0 : 280.0);
     }
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
              sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
-        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 270.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 285.0);
     }
     else if (sfItemType == SFTypeBrandedCarouselWithTitle || sfItemType == SFTypeStripAppInstall) {
         CGFloat brandedCarouselHeight = MAX(screenHeight*0.62, 450);
@@ -276,6 +276,9 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     if (!sfItem.isCustomUI) {
         sfHeaderCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
         sfHeaderCell.headerLabel.textColor = [[SFUtils sharedInstance] titleColor:YES];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            sfHeaderCell.headerLabel.font = [sfHeaderCell.headerLabel.font fontWithSize:22.0];
+        }
     }
     
     if (isSmartfeedWithNoChildren) {
@@ -429,6 +432,9 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         
         if (!sfItem.isCustomUI) {
             singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                singleCell.cellTitleLabel.font = [singleCell.cellTitleLabel.font fontWithSize:22.0];
+            }
         }
         
         singleCell.outbrainLabelingContainer.hidden = ![rec isPaidLink];

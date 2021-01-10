@@ -906,6 +906,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         
         if (!sfItem.isCustomUI && cellTitleLabel && sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
             cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                cellTitleLabel.font = [cellTitleLabel.font fontWithSize:22.0];
+            }
         }
         
         UIColor *defaultBGColor = !sfItem.isCustomUI ? [[SFUtils sharedInstance] primaryBackgroundColor] : UIColor.whiteColor;
@@ -931,6 +934,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     if (!sfItem.isCustomUI) {
         sfHeaderCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
         sfHeaderCell.headerLabel.textColor = [[SFUtils sharedInstance] titleColor:YES];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            sfHeaderCell.headerLabel.font = [sfHeaderCell.headerLabel.font fontWithSize:22.0];
+        }
     }
     
     if (self.isSmartfeedWithNoChildren) {

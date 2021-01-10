@@ -337,7 +337,8 @@ static BOOL skipRTL;
         titleLabel.font = [titleLabel.font fontWithSize:settings.abTitleFontSize];
     }
     else {
-        titleLabel.font = [titleLabel.font fontWithSize: 16]; // 16 is the default
+        CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 19.0 : 16.0;
+        titleLabel.font = [titleLabel.font fontWithSize: defaultSize];
     }
     
     // AB test abTitleFontStyle
@@ -350,7 +351,8 @@ static BOOL skipRTL;
         sourceLabel.font = [sourceLabel.font fontWithSize:settings.abSourceFontSize];
     }
     else {
-        sourceLabel.font = [sourceLabel.font fontWithSize: 12]; // 12 is the default
+        CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 15.0 : 12.0;
+        sourceLabel.font = [sourceLabel.font fontWithSize: defaultSize]; 
     }
 }
 
