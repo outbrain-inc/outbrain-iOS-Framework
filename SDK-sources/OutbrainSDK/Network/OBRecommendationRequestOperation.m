@@ -66,6 +66,11 @@
     NSError *error = nil;
     NSDictionary *jsonResponse = nil;
     
+    // Mock response
+//    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+//    NSString *path = [bundle pathForResource:@"app_install_response" ofType:@"json"];
+//    responseData = [NSData dataWithContentsOfFile:path];
+    
     if (responseData != nil)
     {
         jsonResponse = [NSJSONSerialization JSONObjectWithData:responseData options:(0) error:&error];

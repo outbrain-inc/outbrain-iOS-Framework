@@ -136,6 +136,7 @@
 		E63B785B212AB3500018C225 /* SFTableViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7858212AB3500018C225 /* SFTableViewHeaderCell.m */; };
 		E63B7860212AD9750018C225 /* SFCollectionViewHeaderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B785D212AD9750018C225 /* SFCollectionViewHeaderCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E63B7861212AD9750018C225 /* SFCollectionViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */; };
+		E647286F25AC4BFB00867DE3 /* app_install_response.json in Resources */ = {isa = PBXBuildFile; fileRef = E647286E25AC4BFA00867DE3 /* app_install_response.json */; };
 		E647EE8522EF2E6E00313178 /* SFDefaultCollectionViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E647EE8322EF2E6E00313178 /* SFDefaultCollectionViewDelegate.h */; };
 		E647EE8622EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E647EE8422EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m */; };
 		E64AE0B82472AA8A0070A471 /* SFBrandedCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64AE0B72472AA890070A471 /* SFBrandedCarouselCollectionViewCell.xib */; };
@@ -363,6 +364,7 @@
 		E63B7858212AB3500018C225 /* SFTableViewHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFTableViewHeaderCell.m; sourceTree = "<group>"; };
 		E63B785D212AD9750018C225 /* SFCollectionViewHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFCollectionViewHeaderCell.h; sourceTree = "<group>"; };
 		E63B785E212AD9750018C225 /* SFCollectionViewHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFCollectionViewHeaderCell.m; sourceTree = "<group>"; };
+		E647286E25AC4BFA00867DE3 /* app_install_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = app_install_response.json; sourceTree = "<group>"; };
 		E647EE8322EF2E6E00313178 /* SFDefaultCollectionViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFDefaultCollectionViewDelegate.h; sourceTree = "<group>"; };
 		E647EE8422EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFDefaultCollectionViewDelegate.m; sourceTree = "<group>"; };
 		E64AE0B72472AA890070A471 /* SFBrandedCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFBrandedCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -712,6 +714,7 @@
 			children = (
 				E61E6BFC20836C180016D79A /* OutbrainSDK.h */,
 				E61E6BFD20836C180016D79A /* Info.plist */,
+				E647286E25AC4BFA00867DE3 /* app_install_response.json */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -1224,6 +1227,7 @@
 				E61AE206216B560C001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib in Resources */,
 				E64AE0BE2476671A0070A471 /* SFSingleAppInstallCollectionCell.xib in Resources */,
 				1698D97E256BBD49004C90FF /* SFTableViewReadMoreCell.xib in Resources */,
+				E647286F25AC4BFB00867DE3 /* app_install_response.json in Resources */,
 				E67A718E21931139008DB54F /* SFCollectionViewRTLHeaderCell.xib in Resources */,
 				E67A718C21931139008DB54F /* SFTableViewHeaderCell.xib in Resources */,
 				E64F6046212C412A008BBDFB /* SFHorizontalCarouselNoTitleTableViewCell.xib in Resources */,

@@ -1,0 +1,130 @@
+{
+    "response": {
+        "exec_time": 101,
+        "timestamp": 1609768676159,
+        "status": {
+            "id": 0,
+            "content": "Request succeeded"
+        },
+        "request": {
+            "lang": "he",
+            "idx": "0",
+            "lastIdx": "9999",
+            "lastCardIdx": "9999",
+            "did": "978932916",
+            "pid": "1642",
+            "lsd": "6f759507-032d-4aa9-bdfb-111b639957aa",
+            "enu": "TxD22DM9WFBASHNe94NufEmPt_HhE_xknMB7Syfg0FO9ujY6Z9CUkk2BROFTFI4z",
+            "api_user_id": "6F759507-032D-4AA9-BDFB-111B639957AA",
+            "country": "US",
+            "t": "Y2FjNWVkNGFiNmMwMzYxMjI4MzY3MDA0ZTU3MDMzZjU=",
+            "pvId": "cac5ed4ab6c0361228367004e57033f5",
+            "pad": "1",
+            "org": "0",
+            "abTestVal": "no_abtest",
+            "obRecsAbtestAndVars": "852-2628,565-2000,822-2520,792-2427,840-2594,841-2598,699-2184,811-2474,844-2632",
+            "widgetJsId": "SDK_1",
+            "readerPlatform": "mobile",
+            "isHttps": "true",
+            "app_id": "com.keshet.mako",
+            "rtbEnabled": "true",
+            "rtbTest": "false",
+            "rtbBidTestMode": "false",
+            "rtbTestRecsNum": "0",
+            "amplifyEnabled": "true",
+            "gdpr": "0",
+            "pcer": "p=EKRSxZExcsFO1Pkf-IVfEslz8-ny1w9q2LqXaZJ6p70&c=14aa1f&v=3",
+            "sk_network_version": "1.0",
+            "sid": 7728513,
+            "wnid": 219,
+            "req_id": "cac5ed4ab6c0361228367004e57033f5",
+            "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+            "vid": 0,
+            "ref": 0
+        },
+        "documents": {
+            "total_count": 1,
+            "count": 1,
+            "doc": [{
+                "on-viewed": ["https://log.outbrainimg.com/loggerServices/log-viewability?requestId=c7ed793ad7375b77c5d6f038c59b7938&position=0"],
+                "source_name": "Download Yahtzee\u00AE\u00A0with Buddies",
+                "same_source": "false",
+                "source_display_name": "Download Yahtzee\u00AE\u00A0with Buddies",
+                "pc_id": 166297965,
+                "adv_name": "Scopely (Yahtzee)",
+                "publish_date": "1969-12-31 19:00",
+                "orig_url": "https://app.adjust.com/gm6jnb3?campaign=yux-outbrain-ios-us-interest_tech_rec_elec_travel&adgroup=$section_id$&creative=000806591bf947262171378f2e8bdced39&install_callback=https%3A%2F%2Ftr.outbrain.com%2Fpixel%3Fob_click_id%3D$ob_click_id$%26name%3DInstall&event_callback_awmvoe=https%3A%2F%2Ftr.outbrain.com%2Fpixel%3Fob_click_id%3D$ob_click_id$%26name%3Ddmccomplete&event_callback_vnxpe8=https%3A%2F%2Ftr.outbrain.com%2Fpixel%3Fob_click_id%3D$ob_click_id$%26name%3Dequipvanitydice&event_callback_c440dx=https%3A%2F%2Ftr.outbrain.com%2Fpixel%3Fob_click_id%3D$ob_click_id$%26name%3Dfacebookconnect&event_callback_qzdb9m=https%3A%2F%2Ftr.outbrain.com%2Fpixel%3Fob_click_id%3D$ob_click_id$%26name%3Drevenue&event_callback_6qvkby=https%3A%2F%2Ftr.outbrain.com%2Fpixel%3Fob_click_id%3D$ob_click_id$%26name%3Dsetuserid&event_callback_qua61a=https%3A%2F%2Ftr.outbrain.com%2Fpixel%3Fob_click_id%3D$ob_click_id$%26name%3Dtournamentx&event_callback_rfcefc=https%3A%2F%2Ftr.outbrain.com%2Fpixel%3Fob_click_id%3D$ob_click_id$%26name%3Dxplevel3&event_callback_kifen9=https%3A%2F%2Ftr.outbrain.com%2Fpixel%3Fob_click_id%3D$ob_click_id$%26name%3Dxplevel7",
+                "rec-cats": [1804],
+                "ads_type": 1,
+                "rec_en_did": "2fljnpUVX0kbbITb1RQ_Zw",
+                "url": "https://paid.outbrain.com/network/redir?p=qFy9Am1EIzK3Waltd8gR69JyVe7ENnefMM_lfHgIqesO6XdCx5EXNHtVPDJ481Y5ftbTsFW_czUm1XHCyQ2P7Hdlg7IcSpbL0uW8La32tyWDRPPPUOx-TGtBz49BKtdMHKTywkF4hbvUhClaOfeGkG6WEXkh6TisVyW5oQSt6wlnyn1aaerWCSnHCVeQ_Huy-TXfLfAwhIdOWi9yZliTcxX8JCzEkv-tMrSNt03MCK-FF4ksE3mShsQmPq0u1ZWAkANS-W6TD_G_OJFyw4_cXu87qYlOiVx7PVnL31y0xkTxfeMgBhs3ji0I9IechYdS3JcCwM_Z0c2DwexEYqpVX6Xy7kFd9ryfI2zgZBcW-pAPU2jMAYSZ6SABafnUG4FQoWUXFyapJMVdZkEmPBuhamJfs_LtEgAOO0_eZ3yzKkAr3ZI6XE3mgNayjs_6Hc73z3_cVuVwGBvkCAFCsYTzzVP664bY3yrecqt3JG3p8r3U5YmBIF9u77EU0xKzMBykvm8r_UwzIs2Ruow2dN5LV1w96BAGZaOpB_83Q4QFyDT5VqzHmukHEi_4FukLNOZ5YzFhZ5JxNGeKseJZe_w3FAbHv27hiK6SvWlwZZkxkGGFZ0NZw2lIWvu9h1siJl1FaGMu-B3wt54C7xy10MV_wntpCEWv4za2S-aRp4J-H4tPXZFmplxLaQdO_9H4u4u7m8vLJTUN3DGQXm7RaOtSVay2PkVZF0caZjQ3hyuziYzjg9p9QrsjEv9ikZwqxPCyEPkLvE1iRgIQPvFefGa_ZBWTW4zH9AwTksll46NFi7uo0KFnOuHp1XUedDGX2oaxFtl-eD12C-BSkCvYmnzGEWrSCCLKfSiZJsrvWlrvStUB0qbPOueYEYmI3JYV2Uro3hUtH88kE_4F3LPPp8r4siMxL6tQ2tvw2x9GdmMr0IcNc3MRQkKkmcUu42gw9cqorv-zYruaeycnlNytXrm-UjWzOmcMYW13PJRnL9X1WZiYPhpZS5dvE6Oi6IRm1P5r8-aGInOfLeXhWWyJwue43U_rieM-MgEQHQNcnsaaI0RtFX2iYdYSIvLWDD_dXZ7De4cxnQaUPvFCqvad3P2216pFhNpAF3AGoXFWBXB1--Ceu37pLl-pK37CKPpKGcOJ4Sidal9lE3_VRVV96ZBm9Nmyxc3yRPTyZJavudvgP0tJ_MXZBcI85fn9onZifEA9hnYfhRhIHDTsldRT5udwfQIMulclHW3dRJAn31pTDQKr3u0Ig8cjgWNW-90iyavxZK0DIdWiyeZTnjDfqU3wKFpws_s-T2qevfbz44Y2ojVv5fP7yYb2KMbohBWuBLZ5lUSN5rr1yeU-2dUvRpDfLOOjKB_jr_srvIlbc7_-vE0wHkod6zy9lLAYJ6EdD-aA&c=412ec89b&v=3",
+                "author": "",
+                "content": "If you have an iPhone, this dice game is highly addicting",
+                "pc_cmp_id": 1002585853,
+                "pixels": ["https://view.adjust.com/impression/gm6jnb3?campaign=yux-outbrain-ios-us-interest_tech_rec_elec_travel&adgroup=00d924c852c87b1af4a480021b3706e35f&creative=000806591bf947262171378f2e8bdced39&obRequestId=a4KSAqisxqV2DZb7NtxaKioZ4jywDS6ELc2Vuoe_MHFtr42Gq5lZpDV1v1mp7lW9&obTimestamp=1609768587494"],
+                "pos": "0",
+                "ttid": 3,
+                "advId": "133146",
+                "creativeFormat": "Standard",
+                "recLang": "en",
+                "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImY2N2QyZTQ0ODI5NDRhOTdjMzRiZDUxYTVjMTE1NTc3NmNlZDhiOTEzMzVhYTc5ZGQ3ZTg2YWQxZWZiMDFmNGQiLCJ3IjozMDAsImgiOjIyMCwiZCI6MS41LCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                },
+                "appflow": {
+                    "shouldOpenInExternalBrowser": "true"
+                },
+                "sk_adnetwork_data": {
+                    "ad_network_id": "97r2b46745.skadnetwork",
+                    "campaign_id": "7",
+                    "itunes_item_id": "1206967173",
+                    "nonce": "69a4c7a7-eb1b-4437-a6f2-8d765dfc4b48",
+                    "timestamp": "1609768587495",
+                    "sk_network_version": "1.0",
+                    "signature": "MDUCGDS/8+Sfp9mUqRcKwcpEH9FsBBUnwtyWzgIZAJ7DdCGhtrFCVm5TDEcwy5zQ67gG7+iT4Q=="
+                }
+            }]
+        },
+        "settings": {
+            "flagPublisherZappingFeature": true,
+            "MaxAnimatedGifs": 1,
+            "excludeSameSource": true,
+            "isLimitedRecommend": false,
+            "showHttpsInURLForRecs": true,
+            "recMode": "odb_jsonData",
+            "useImagesLazyLoad": true,
+            "apv": true,
+            "listingsViewability": true,
+            "feedAutoInjectCarouselEnabled": false,
+            "ImpressionPixelsSupported": "false",
+            "comScoreOnPage": true,
+            "globalWidgetStatistics": true,
+            "placementType": "in-feed",
+            "adChoicesEnabled": true,
+            "ImpressionTrackersSupported": "false",
+            "InstallationType": "mobile-app-sdk"
+        },
+        "viewability_actions": {
+            "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=cac5ed4ab6c0361228367004e57033f5&pvId=cac5ed4ab6c0361228367004e57033f5&sid=7728513&pid=1642&idx=0&wId=219&pad=1&org=2&tm=0&eT=0",
+            "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=cac5ed4ab6c0361228367004e57033f5&pvId=cac5ed4ab6c0361228367004e57033f5&sid=7728513&pid=1642&idx=0&wId=219&pad=1&org=2&tm=0&eT=3"
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
