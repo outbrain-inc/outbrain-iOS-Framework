@@ -170,7 +170,9 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
         
         NSString *executionTime = [NSString stringWithFormat:@"%ld", (long) (executionTimeInterval * 1000)];
         
-        [self.reqIdAlreadyReportedArray addObject:viewabilityData.rId];
+        if (viewabilityData.rId) {
+            [self.reqIdAlreadyReportedArray addObject:viewabilityData.rId];
+        }
         
         if (viewabilityData.reportViewedUrl == nil) {
             NSLog(@"Error - reportRecsShownForKey, reportViewedUrl is nil");
