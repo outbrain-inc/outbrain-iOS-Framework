@@ -13,6 +13,7 @@
 #import "OBAdsChoicesManager.h"
 #import "OBErrors.h"
 #import "OutbrainHelper.h"
+#import "OutbrainManager.h"
 #import "OBNetworkManager.h"
 #import "OBContent_Private.h"
 #import "OBViewabilityService.h"
@@ -66,10 +67,12 @@
     NSError *error = nil;
     NSDictionary *jsonResponse = nil;
     
-    // Mock response
-//    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-//    NSString *path = [bundle pathForResource:@"app_install_response" ofType:@"json"];
-//    responseData = [NSData dataWithContentsOfFile:path];
+    // Mock App Install response
+    if ([OutbrainManager sharedInstance].testAppInstall) {
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        NSString *path = [bundle pathForResource:@"app_install_response" ofType:@"json"];
+        responseData = [NSData dataWithContentsOfFile:path];
+    }
     
     if (responseData != nil)
     {
