@@ -1,6 +1,15 @@
 # Release Notes
 
 
+## v4.1.0 - February 22, 2021
+
+- Feature: "Read More" ([see instructions here](https://developer.outbrain.com/ios-smartfeed-read-more-button/))
+- Feauture: CTA button on paid rec
+- Bug fix - Viewability on shown, fix rare crash if "req_id" is null
+- Bug fix - smartfeed header for RTL in dark mode didnt change color
+- UI fixes - Smartfeed on tablet (iPad) looks much better (font size, image ratio, etc)
+- Dev - add a new flag to simulate app install rec `Outbrain.testAppInstall(true)`
+
 ## v4.0.1 - October 29, 2020
 
 - Bug fix - Smartfeed via UITableView on iPad crashed on orientation change after view controller was removed from screen.
