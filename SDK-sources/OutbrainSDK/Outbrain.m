@@ -72,6 +72,10 @@ BOOL WAS_INITIALIZED     =   NO;
     [OutbrainManager sharedInstance].testLocation = location;
 }
 
++ (void)testAppInstall:(BOOL)testAppInstall {
+    [OutbrainManager sharedInstance].testAppInstall = testAppInstall; 
+}
+
 #pragma mark - Fetching
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request withCallback:(OBResponseCompletionHandler)handler

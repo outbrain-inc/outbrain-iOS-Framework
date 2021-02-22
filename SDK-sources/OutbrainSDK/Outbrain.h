@@ -170,6 +170,15 @@ extern NSString * _Nonnull const OB_AD_NETWORK_ID;
 + (void)testLocation:(NSString * _Nonnull)location;
 
 /**
+ * @brief Simulate app install recommendation
+ *
+ * Setting this flag to "true" will return a mock response with "app install" rec for each ODB call
+ *
+ * @param testAppInstall - a boolean flag; set to true to activate this test mode, or false to deactivate test mode.
+ */
++ (void)testAppInstall:(BOOL)testAppInstall;
+
+/**
  * @brief Used for "App install" ads, on click the app developer should call this method to open the advertiser app via loadProduct method
  *
  * App developer must call this method if (rec.isAppInstall) is "true" after a recommendation click.

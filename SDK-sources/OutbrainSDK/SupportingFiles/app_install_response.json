@@ -87,13 +87,35 @@
                 }
             }]
         },
+        "features": {
+            "carousel": {
+                "on-viewed": ["https://log.outbrainimg.com/loggerServices/log-viewability?requestId=91190507ffc0d6900b117b4b2dd4f876&position=null"],
+                "pc_id": 1950000734,
+                "adv_name": "Selfserve_meden",
+                "rec-cats": [1804],
+                "ads_type": 1,
+                "url": "https://paid.outbrain.com/network/redir?p=TV-jqloioZ5gh9rbmhG_8hGi5SyowVGcgT7q1Mmv265cxefdnU_ulR71pJ8nMPMVlb1VPs5d5vZrTxPxhKmOx4cUkBT-PUk7GilaBbhhz8ZhNoADkX9yjiqB5Y8-AB9MdakC2DFCeOupVZJEcNWQYf51D0jeZCmX8LDQwxh9fBlD7JLq7BltVJJ8t8KKY_E5JG8aYegrcsX6psKjardYad5AJfyINTH9He29Zk0BT_27pyZlYdvc23ajqZTAhese-0t0dQu_qS0fFZynG82HdRQO_w5AqtMJcze_62NZ-cx9r8P9azdwX7r8Dj1WUPQzhhQjLsXAaXvI3yhmPNmx3F8zuiFiptbREX4HqU9nYBoTpyRas14jPjmhQnV5DLINy4_P56s_maOicr6VYlEadvgaR6ku51fKLK7bsX-wx1F3untQemDFtaC8kqA7LVpJW-Vop3kzWUTh3JZUzwtVl69JRN7dm6DB-OhW_CXVfcBn2cyLx0Ww1NuzWyRdlJqFqv2H6AWNw2JfuZRhseFv85x7TgcfcJX-srdcWcncNrvYFwnCAdeBVMQKiOSF6HunKr9HvfkT8UQqVH12-jZcKJINNrM9npqGTN6sDD20sDz8am6wgnZaQmUo3AN_SQn1Ksma6e9mMAAVPSYCQ6dH5qssyuZrD1INNjTqHvgpE8bcecI2g5f3FiPNdpwMokUMS_PdHAk2VGxpvv16-Txrr0t00rSFkw_5PdjP2ylsFI3GVEubijjCZYAW2UxI_YSZ06Bl7bxG3Cx2RyqyI14KM_PPPODXqn4mouvPmIjiwhHP5laVnoWXrFUKrlviof3qzZ04UmCoLoZK0SAQjnOWeQ&c=8c7b45f&v=3",
+                "pc_cmp_id": 1012403442,
+                "ttid": 3,
+                "advId": "13604",
+                "carouselSponsor": "YAHTZEE Rating Apps",
+                "carousel_type": "AppInstall",
+                "app_score": "4.4",
+                "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjgzYWMxOTM5YTZlNDdkMGUwYWU1ZWY3NDZjMTZhNTg1YmM1ZmMzZDc4MDUxZDc5N2ZlZTM1NzI5Nzg2NmFlNjMiLCJ3Ijo0MiwiaCI6NDIsImQiOjEuNSwiY3MiOjAsImYiOjB9.jpg",
+                    "width": 42,
+                    "height": 42,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                }
+            }
+        },
         "settings": {
             "flagPublisherZappingFeature": true,
             "MaxAnimatedGifs": 1,
             "excludeSameSource": true,
             "isLimitedRecommend": false,
             "showHttpsInURLForRecs": true,
-            "recMode": "odb_jsonData",
+            "recMode": "odb_dynamic_ad-carousel",
             "useImagesLazyLoad": true,
             "apv": true,
             "listingsViewability": true,
