@@ -26,8 +26,8 @@ Pod::Spec.new do |s|
   s.source              = { :git => "https://github.com/outbrain/outbrain-iOS-Framework.git", :tag => "version/#{s.version}" }
   s.frameworks          = "SystemConfiguration", "AdSupport", "StoreKit"
   s.requires_arc        = true
-  s.preserve_paths      = "OutbrainSDK.framework"
-  s.vendored_frameworks = "OutbrainSDK.framework"
+  s.preserve_paths      = "OutbrainSDK.xcframework"
+  s.vendored_frameworks = "OutbrainSDK.xcframework"
   s.exclude_files       = ""
 
 end
