@@ -19,49 +19,29 @@ export SF_MASTER_SCRIPT_RUNNING=1
 SRCROOT=`pwd`
 TARGET_NAME="OutbrainSDK"
 FRAMEWORK_NAME="OutbrainSDK"
-SF_WRAPPER_NAME="${FRAMEWORK_NAME}.framework"
+SF_WRAPPER_NAME="${FRAMEWORK_NAME}.xcframework"
 SF_RELEASE_DIR="${SRCROOT}/Release/"
 
-if [[ "$SDK_NAME" =~ ([A-Za-z]+) ]]
-then
-    SF_SDK_PLATFORM=${BASH_REMATCH[1]}
-else
-    echo "Could not find platform name from SDK_NAME: $SDK_NAME"
-    exit 1
-fi
 
-if [[ "$SF_SDK_PLATFORM" = "iphoneos" ]]
-then
-    SF_OTHER_PLATFORM=iphonesimulator
-else
-    SF_OTHER_PLATFORM=iphoneos
-fi
 
-if [[ "$BUILT_PRODUCTS_DIR" =~ (.*)$SF_SDK_PLATFORM$ ]]
-then
-    SF_OTHER_BUILT_PRODUCTS_DIR="${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}"
-else
-    echo "Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR"
-    exit 1
-fi
 
 # 3
 # If remnants from a previous build exist, delete them.
-if [ -d "${SRCROOT}/build" ]; then
-rm -rf "${SRCROOT}/build"
-fi
+# if [ -d "${SRCROOT}/build" ]; then
+# rm -rf "${SRCROOT}/build"
+# fi
 
-if [ -d "${SRCROOT}/Release" ]; then
-rm -rf "${SRCROOT}/Release"
-fi
+# if [ -d "${SRCROOT}/Release" ]; then
+# rm -rf "${SRCROOT}/Release"
+# fi
 
-mkdir "${SRCROOT}/Release"
+# mkdir "${SRCROOT}/Release"
 
 # 4
 # Build the framework for device and for simulator (using
 # all needed architectures).
-xcodebuild -target "${TARGET_NAME}" -configuration Release ENABLE_BITCODE=YES OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk "iphoneos"
-xcodebuild -target "${TARGET_NAME}" -configuration Release ENABLE_BITCODE=YES OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk "iphonesimulator"
+# xcodebuild archive -scheme "${TARGET_NAME}" -destination="iOS" -sdk iphonesimulator SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${SRCROOT}/build/Release-iphonesimulator"
+# xcodebuild archive -scheme "${TARGET_NAME}" -destination="iOS" -sdk iphoneos        SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${SRCROOT}/build/Release-iphoneos"
 
 # SKIP_INSTALL=YES BUILD_LIBRARY_FOR_DISTRIBUTION=YES --> XCFramework maybe..
 
@@ -71,35 +51,29 @@ if [ -d "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}" ]; then
 rm -rf "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}"
 fi
 
-ls -l "${SRCROOT}/build/Release-iphoneos/"
+ls -l "${SRCROOT}/build/"
 
 
-# 6
-# Copy the device version of framework to Desktop.
-cp -r "${SRCROOT}/build/Release-iphoneos/${SF_WRAPPER_NAME}" "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}"
 
-# 7
-# Replace the framework executable within the framework with
-# a new version created by merging the device and simulator
-# frameworks' executables with lipo.
-lipo -create -output "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}/${FRAMEWORK_NAME}" "${SRCROOT}/build/Release-iphoneos/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}" "${SRCROOT}/build/Release-iphonesimulator/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}"
+# # 6
+# # Copy the device version of framework to Desktop.
+# cp -r "${SRCROOT}/build/Release-iphoneos/${SF_WRAPPER_NAME}" "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}"
 
-lipo -info "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}/${FRAMEWORK_NAME}"
-otool -arch arm64 -l "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}/${FRAMEWORK_NAME}" | grep __LLVM
+
 
 # XCFramework 
 xcodebuild -create-xcframework -allow-internal-distribution \
-    -framework "${SRCROOT}/build/Release-iphoneos/${FRAMEWORK_NAME}.framework" \
-    -framework "${SRCROOT}/build/Release-iphonesimulator/${FRAMEWORK_NAME}.framework" \
+    -framework "${SRCROOT}/build/Release-iphonesimulator.xcarchive/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework" \
+    -framework "${SRCROOT}/build/Release-iphoneos.xcarchive/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework" \
     -output "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
 
 # 8
 # Copy the framework back for the Journal app to use
-cp -a "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}" "${SRCROOT}/../Samples/OutbrainDemo"
-cp -a "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework" "${SRCROOT}/../Samples/OutbrainDemo"
+# cp -a "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}" "${SRCROOT}/../Samples/OutbrainDemo"
+# cp -a "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework" "${SRCROOT}/../Samples/OutbrainDemo"
 
 # 9
 # Delete the most recent build.
-if [ -d "${SRCROOT}/build" ]; then
-rm -rf "${SRCROOT}/build"
-fi
+# if [ -d "${SRCROOT}/build" ]; then
+# rm -rf "${SRCROOT}/build"
+# fi
