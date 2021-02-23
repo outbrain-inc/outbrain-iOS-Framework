@@ -24,41 +24,27 @@ SF_RELEASE_DIR="${SRCROOT}/Release/"
 
 
 
-
-# 3
 # If remnants from a previous build exist, delete them.
-# if [ -d "${SRCROOT}/build" ]; then
-# rm -rf "${SRCROOT}/build"
-# fi
-
-# if [ -d "${SRCROOT}/Release" ]; then
-# rm -rf "${SRCROOT}/Release"
-# fi
-
-# mkdir "${SRCROOT}/Release"
-
-# 4
-# Build the framework for device and for simulator (using
-# all needed architectures).
-# xcodebuild archive -scheme "${TARGET_NAME}" -destination="iOS" -sdk iphonesimulator SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${SRCROOT}/build/Release-iphonesimulator"
-# xcodebuild archive -scheme "${TARGET_NAME}" -destination="iOS" -sdk iphoneos        SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${SRCROOT}/build/Release-iphoneos"
-
-# SKIP_INSTALL=YES BUILD_LIBRARY_FOR_DISTRIBUTION=YES --> XCFramework maybe..
-
-# 5
-# Remove .framework file if exists on Desktop from previous run.
-if [ -d "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}" ]; then
-rm -rf "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}"
+if [ -d "${SRCROOT}/build" ]; then
+rm -rf "${SRCROOT}/build"
 fi
 
+if [ -d "${SRCROOT}/Release" ]; then
+rm -rf "${SRCROOT}/Release"
+fi
+
+mkdir "${SRCROOT}/Release"
+
+# https://medium.com/@er.mayursharma14/how-to-create-xcframework-855817f854cf
+
+# Build the framework for device and for simulator (using
+# all needed architectures).
+xcodebuild archive -scheme "${TARGET_NAME}" -destination="iOS" -sdk iphonesimulator SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${SRCROOT}/build/Release-iphonesimulator"
+xcodebuild archive -scheme "${TARGET_NAME}" -destination="iOS" -sdk iphoneos        SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${SRCROOT}/build/Release-iphoneos"
+
+
+
 ls -l "${SRCROOT}/build/"
-
-
-
-# # 6
-# # Copy the device version of framework to Desktop.
-# cp -r "${SRCROOT}/build/Release-iphoneos/${SF_WRAPPER_NAME}" "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}"
-
 
 
 # XCFramework 
@@ -69,11 +55,11 @@ xcodebuild -create-xcframework -allow-internal-distribution \
 
 # 8
 # Copy the framework back for the Journal app to use
-# cp -a "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}" "${SRCROOT}/../Samples/OutbrainDemo"
-# cp -a "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework" "${SRCROOT}/../Samples/OutbrainDemo"
+cp -a "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework" "${SRCROOT}/../Samples/OutbrainDemo"
+
 
 # 9
 # Delete the most recent build.
-# if [ -d "${SRCROOT}/build" ]; then
-# rm -rf "${SRCROOT}/build"
-# fi
+if [ -d "${SRCROOT}/build" ]; then
+rm -rf "${SRCROOT}/build"
+fi
