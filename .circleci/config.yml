@@ -32,10 +32,10 @@ jobs:
       - checkout
 
       - run:
-          name: Clean previous OutbrainSDK.framework
+          name: Clean previous OutbrainSDK.xcframework
           command: |
-            if [ -d OutbrainSDK.framework ]; then
-              rm -fr OutbrainSDK.framework
+            if [ -d OutbrainSDK.xcframework ]; then
+              rm -fr OutbrainSDK.xcframework
             fi
           working_directory: Samples/OutbrainDemo
             
@@ -57,7 +57,7 @@ jobs:
       - run:
           name: Check if framework is where we think it is
           command: |
-            if [ ! -d "OutbrainSDK.framework" ]; then
+            if [ ! -d "OutbrainSDK.xcframework" ]; then
               echo "framework is NOT where we think it is"
               exit 1
             fi
@@ -115,10 +115,10 @@ jobs:
           command: bash -x ./bump_sdk_version.sh
 
       - run:
-          name: Clean previous OutbrainSDK.framework
+          name: Clean previous OutbrainSDK.xcframework
           command: |
-            if [ -d OutbrainSDK.framework ]; then
-              rm -fr OutbrainSDK.framework
+            if [ -d OutbrainSDK.xcframework ]; then
+              rm -fr OutbrainSDK.xcframework
             fi
           working_directory: Samples/OutbrainDemo
           
@@ -138,9 +138,9 @@ jobs:
           working_directory: SDK-sources
 
       - run:
-          name: Check if framework is where we think it is
+          name: Check if OutbrainSDK.xcframework is where we think it is
           command: |
-            if [ ! -d "OutbrainSDK.framework" ]; then
+            if [ ! -d "OutbrainSDK.xcframework" ]; then
               echo "framework is NOT where we think it is"
               exit 1
             fi
@@ -187,23 +187,23 @@ jobs:
             mkdir OBSDK-Release/Samples/
 
       - run:
-          name: Copy the OutbrainSDK.framework and sample apps into OBSDK-Release
+          name: Copy the OutbrainSDK.xcframework and sample apps into OBSDK-Release
           command: |
-            cp -a Samples/OutbrainDemo/OutbrainSDK.framework OBSDK-Release/SDK/
+            cp -a Samples/OutbrainDemo/OutbrainSDK.xcframework OBSDK-Release/SDK/
             cp -fa Samples/ OBSDK-Release/Samples/
             cp -rf README.md OBSDK-Release/
 
       - run:
-          name: Prepare iOS-SampleApps.zip and OutbrainSDK.framework.zip
+          name: Prepare iOS-SampleApps.zip and OutbrainSDK.xcframework.zip
           command: |
             zip --symlinks -r iOS-SampleApps.zip . -x ".*" -x "*/.*" > /dev/null
-            cd SDK/OutbrainSDK.framework
-            zip --symlinks -r ../../OutbrainSDK.framework.zip *
+            cd SDK/OutbrainSDK.xcframework
+            zip --symlinks -r ../../OutbrainSDK.xcframework.zip *
           working_directory: OBSDK-Release
 
       - run:
-          name: Upload OutbrainSDK.framework.zip to Bintray
-          command: bash -x ./upload_to_bintray.sh OBSDK-Release/OutbrainSDK.framework.zip iOS-SDK $RELEASE_VERSION OutbrainSDK.framework.zip
+          name: Upload OutbrainSDK.xcframework.zip to Bintray
+          command: bash -x ./upload_to_bintray.sh OBSDK-Release/OutbrainSDK.xcframework.zip iOS-SDK $RELEASE_VERSION OutbrainSDK.xcframework.zip
 
       - run:
           name: Upload iOS-SampleApps.zip to Bintray
