@@ -322,12 +322,29 @@ static BOOL skipRTL;
     return components.URL;
 }
 
-+(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat {
-    if (sourceFormat && [sourceFormat containsString:@"$SOURCE"] && recSource) {
-        return [sourceFormat stringByReplacingOccurrencesOfString:@"$SOURCE" withString:recSource];
-    } else {
-        return recSource;
++(NSString *) getSourceTextForRec:(OBRecommendation *)rec withSettings:(OBSettings *)obSettings {
+    if (rec.isPaidLink) {
+        if (obSettings.paidSourceFormat) {
+            if ([obSettings.paidSourceFormat containsString:@"$SOURCE"] && rec.source) {
+                return [obSettings.paidSourceFormat stringByReplacingOccurrencesOfString:@"$SOURCE" withString:rec.source];
+            }
+            else {
+                return obSettings.paidSourceFormat;
+            }
+        }
     }
+    else { // Organic rec
+        if (obSettings.organicSourceFormat) {
+            if ([obSettings.organicSourceFormat containsString:@"$SOURCE"] && rec.source) {
+                return [obSettings.organicSourceFormat stringByReplacingOccurrencesOfString:@"$SOURCE" withString:rec.source];
+            }
+            else {
+                return obSettings.organicSourceFormat;
+            }
+        }
+    }
+    
+    return rec.source;
 }
 
 +(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings {

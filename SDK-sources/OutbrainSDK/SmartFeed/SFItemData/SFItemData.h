@@ -44,7 +44,6 @@ extern NSInteger kVideoFinishedStatus;
 @property (nonatomic, copy, readonly) NSString *videoParamsStr;
 @property (nonatomic, assign) NSInteger videoPlayerStatus;
 @property (nonatomic, assign) BOOL isCustomUI;
-@property (nonatomic, copy, readonly) NSString *sourceFormat;
 @property (nonatomic, strong, readonly) NSMutableArray *positions;
 @property (nonatomic, copy, readonly) NSString *requestId;
 

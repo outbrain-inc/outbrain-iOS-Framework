@@ -29,7 +29,8 @@
 @property (nonatomic, copy, readonly, nullable) NSString *paidLabelTextColor;
 @property (nonatomic, copy, readonly, nullable) NSString *paidLabelBackgroundColor;
 
-@property (nonatomic, copy, readonly, nullable) NSString *sourceFormat;
+@property (nonatomic, copy, readonly, nullable) NSString *organicSourceFormat;
+@property (nonatomic, copy, readonly, nullable) NSString *paidSourceFormat;
 
 @property (nonatomic, assign, readonly) BOOL isViewabilityPerListingEnabled;
 @property (nonatomic, assign, readonly) NSInteger viewabilityPerListingReportingIntervalMillis;

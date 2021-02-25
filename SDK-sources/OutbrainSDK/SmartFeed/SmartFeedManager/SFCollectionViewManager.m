@@ -362,7 +362,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     }
     
     singleCell.recTitleLabel.text = rec.content;
-    singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
+    singleCell.recSourceLabel.text = [SFUtils getSourceTextForRec:rec withSettings:sfItem.odbSettings];
     
     if (!sfItem.isCustomUI && sfItem.itemType != SFTypeStripAppInstall) {
         singleCell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];

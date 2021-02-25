@@ -90,7 +90,7 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 
 +(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response url:(NSString *)url;
 
-+(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat;
++(NSString *) getSourceTextForRec:(OBRecommendation *)rec withSettings:(OBSettings *)obSettings;
 
 +(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings;
 
