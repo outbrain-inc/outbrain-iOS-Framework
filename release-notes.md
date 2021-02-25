@@ -1,6 +1,15 @@
 # Release Notes
 
 
+## v4.2.0 - February 25, 2021
+
+- Important - Migrating from Xcode dynamic framework to XCFramework - [see Apple details here](https://developer.apple.com/videos/play/wwdc2019/416/)
+- Internal - parse and use ODB settings `dynamic:IsShowButton` from odb response
+- Internal - implement support for new ODB settings `dynamic:OrganicSourceFormat` and `dynamic:PaidSourceFormat`
+- Bug fix - Walla crash on iOS12 devices
+- Bug fix - Widget header should appear only once per widget
+
+
 ## v4.1.0 - February 22, 2021
 
 - Feature: "Read More" ([see instructions here](https://developer.outbrain.com/ios-smartfeed-read-more-button/))
