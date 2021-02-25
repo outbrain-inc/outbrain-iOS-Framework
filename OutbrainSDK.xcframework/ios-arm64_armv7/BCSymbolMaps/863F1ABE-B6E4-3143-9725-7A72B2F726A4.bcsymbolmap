@@ -1,0 +1,2857 @@
+BCSymbolMap Version: 2.0
+Apple clang version 12.0.0 (clang-1200.0.32.28)
+/Applications/Xcode-12.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.3.sdk
+iPhoneOS14.3.sdk
+/Users/distiller/Library/Developer/Xcode/DerivedData/OutbrainSDK-amfqcffqcfjfevfphrweheniafhm/Build/Intermediates.noindex/ArchiveIntermediates/OutbrainSDK/IntermediateBuildFilesPath/OutbrainSDK.build/Release-iphoneos/OutbrainSDK.build/DerivedSources/OutbrainSDK_vers.c
+/Users/distiller/repo/SDK-sources
+-[OBViewabilityActions initWithPayload:]
+-[OBViewabilityActions reportServedUrl]
+-[OBViewabilityActions setReportServedUrl:]
+-[OBViewabilityActions reportViewedUrl]
+-[OBViewabilityActions setReportViewedUrl:]
+-[OBViewabilityActions .cxx_destruct]
+_OBJC_SELECTOR_REFERENCES_
+_OBJC_SELECTOR_REFERENCES_.2
+_OBJC_SELECTOR_REFERENCES_.4
+_OBJC_SELECTOR_REFERENCES_.8
+__OBJC_METACLASS_RO_$_OBViewabilityActions
+__OBJC_$_INSTANCE_METHODS_OBViewabilityActions
+_OBJC_IVAR_$_OBViewabilityActions._reportServedUrl
+_OBJC_IVAR_$_OBViewabilityActions._reportViewedUrl
+__OBJC_$_INSTANCE_VARIABLES_OBViewabilityActions
+__OBJC_$_PROP_LIST_OBViewabilityActions
+__OBJC_CLASS_RO_$_OBViewabilityActions
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Responses/OBViewabilityActions.m
+OutbrainSDK/Models/Responses/OBViewabilityActions.m
+OutbrainSDK/Models/Responses/OBViewabilityActions.h
+-[SFHorizontalViewWeeklyHighlights setupView]
+-[SFHorizontalViewWeeklyHighlights storeSortedRecsByDate]
+-[SFHorizontalViewWeeklyHighlights startAutoScrollTimerIfNeeded]
+-[SFHorizontalViewWeeklyHighlights stopAutoScrollTimerIfNeeded]
+-[SFHorizontalViewWeeklyHighlights updateCollectionViewOffset]
+-[SFHorizontalViewWeeklyHighlights addForegroundBackgroundObserversIfNeeded]
+-[SFHorizontalViewWeeklyHighlights appSwitchedToBackground:]
+-[SFHorizontalViewWeeklyHighlights appSwitchedToForeground:]
+-[SFHorizontalViewWeeklyHighlights startViewabilityTrackTimerIfNeeded]
+-[SFHorizontalViewWeeklyHighlights stopViewabilityTrackTimerIfNeeded]
+-[SFHorizontalViewWeeklyHighlights checkViewability]
+-[SFHorizontalViewWeeklyHighlights collectionView:numberOfItemsInSection:]
+-[SFHorizontalViewWeeklyHighlights collectionView:willDisplayCell:forItemAtIndexPath:]
+-[SFHorizontalViewWeeklyHighlights collectionView:cellForItemAtIndexPath:]
+-[SFHorizontalViewWeeklyHighlights collectionView:didSelectItemAtIndexPath:]
+-[SFHorizontalViewWeeklyHighlights scrollViewWillBeginDragging:]
+-[SFHorizontalViewWeeklyHighlights scrollViewDidEndDragging:willDecelerate:]
+-[SFHorizontalViewWeeklyHighlights collectionView:layout:sizeForItemAtIndexPath:]
+-[SFHorizontalViewWeeklyHighlights collectionView:layout:minimumLineSpacingForSectionAtIndex:]
+-[SFHorizontalViewWeeklyHighlights registerWeeklyHighlightsNibs]
+-[SFHorizontalViewWeeklyHighlights configureWeeklyHighlightsCell:withFirstPositionInSortedRecsArray:]
+-[SFHorizontalViewWeeklyHighlights handleClickOnRecommendation:]
+-[SFHorizontalViewWeeklyHighlights roundedCorners:forView:onlyBottom:]
+-[SFHorizontalViewWeeklyHighlights autoScrollTimer]
+-[SFHorizontalViewWeeklyHighlights setAutoScrollTimer:]
+-[SFHorizontalViewWeeklyHighlights viewabilityTimer]
+-[SFHorizontalViewWeeklyHighlights setViewabilityTimer:]
+-[SFHorizontalViewWeeklyHighlights scrollOffsetX]
+-[SFHorizontalViewWeeklyHighlights setScrollOffsetX:]
+-[SFHorizontalViewWeeklyHighlights isForegroundBackgroundObserversAdded]
+-[SFHorizontalViewWeeklyHighlights setIsForegroundBackgroundObserversAdded:]
+-[SFHorizontalViewWeeklyHighlights isAutoScrollTimerRunning]
+-[SFHorizontalViewWeeklyHighlights setIsAutoScrollTimerRunning:]
+-[SFHorizontalViewWeeklyHighlights isViewabilityTrackTimerRunning]
+-[SFHorizontalViewWeeklyHighlights setIsViewabilityTrackTimerRunning:]
+-[SFHorizontalViewWeeklyHighlights sortedRecsByDate]
+-[SFHorizontalViewWeeklyHighlights setSortedRecsByDate:]
+-[SFHorizontalViewWeeklyHighlights .cxx_destruct]
+_OBJC_SELECTOR_REFERENCES_.6
+_OBJC_CLASSLIST_REFERENCES_$_
+_OBJC_SELECTOR_REFERENCES_.10
+_OBJC_SELECTOR_REFERENCES_.12
+_OBJC_SELECTOR_REFERENCES_.14
+_OBJC_CLASSLIST_REFERENCES_$_.15
+_OBJC_SELECTOR_REFERENCES_.17
+_OBJC_SELECTOR_REFERENCES_.19
+_OBJC_SELECTOR_REFERENCES_.21
+_OBJC_SELECTOR_REFERENCES_.23
+_OBJC_SELECTOR_REFERENCES_.25
+_OBJC_CLASSLIST_REFERENCES_$_.26
+_OBJC_SELECTOR_REFERENCES_.28
+_OBJC_SELECTOR_REFERENCES_.30
+_OBJC_SELECTOR_REFERENCES_.32
+_OBJC_CLASSLIST_REFERENCES_$_.33
+_OBJC_SELECTOR_REFERENCES_.35
+_OBJC_SELECTOR_REFERENCES_.37
+_OBJC_SELECTOR_REFERENCES_.39
+_OBJC_SELECTOR_REFERENCES_.41
+_OBJC_SELECTOR_REFERENCES_.43
+_OBJC_SELECTOR_REFERENCES_.45
+_OBJC_SELECTOR_REFERENCES_.47
+_OBJC_SELECTOR_REFERENCES_.49
+_OBJC_CLASSLIST_REFERENCES_$_.50
+_OBJC_SELECTOR_REFERENCES_.52
+_OBJC_SELECTOR_REFERENCES_.54
+_OBJC_SELECTOR_REFERENCES_.56
+_OBJC_SELECTOR_REFERENCES_.58
+_OBJC_SELECTOR_REFERENCES_.60
+_OBJC_SELECTOR_REFERENCES_.62
+_OBJC_SELECTOR_REFERENCES_.64
+_OBJC_SELECTOR_REFERENCES_.66
+_OBJC_SELECTOR_REFERENCES_.68
+_OBJC_SELECTOR_REFERENCES_.70
+_OBJC_SELECTOR_REFERENCES_.72
+_OBJC_SELECTOR_REFERENCES_.74
+_OBJC_SELECTOR_REFERENCES_.76
+_OBJC_SELECTOR_REFERENCES_.78
+_OBJC_SELECTOR_REFERENCES_.80
+_OBJC_SELECTOR_REFERENCES_.82
+_OBJC_SELECTOR_REFERENCES_.84
+_OBJC_SELECTOR_REFERENCES_.86
+_OBJC_CLASSLIST_REFERENCES_$_.87
+_OBJC_SELECTOR_REFERENCES_.89
+_OBJC_SELECTOR_REFERENCES_.91
+_OBJC_SELECTOR_REFERENCES_.93
+_OBJC_SELECTOR_REFERENCES_.99
+_OBJC_CLASSLIST_REFERENCES_$_.100
+_OBJC_SELECTOR_REFERENCES_.102
+_OBJC_SELECTOR_REFERENCES_.104
+_OBJC_SELECTOR_REFERENCES_.106
+_OBJC_CLASSLIST_REFERENCES_$_.107
+_OBJC_SELECTOR_REFERENCES_.109
+_OBJC_SELECTOR_REFERENCES_.111
+_OBJC_SELECTOR_REFERENCES_.113
+_OBJC_CLASSLIST_REFERENCES_$_.114
+_OBJC_SELECTOR_REFERENCES_.116
+_OBJC_CLASSLIST_REFERENCES_$_.117
+_OBJC_SELECTOR_REFERENCES_.119
+_OBJC_SELECTOR_REFERENCES_.121
+_OBJC_SELECTOR_REFERENCES_.123
+_OBJC_SELECTOR_REFERENCES_.125
+_OBJC_CLASSLIST_REFERENCES_$_.126
+_OBJC_SELECTOR_REFERENCES_.130
+_OBJC_SELECTOR_REFERENCES_.132
+_OBJC_CLASSLIST_REFERENCES_$_.133
+_OBJC_SELECTOR_REFERENCES_.135
+_OBJC_SELECTOR_REFERENCES_.139
+_OBJC_SELECTOR_REFERENCES_.141
+_OBJC_SELECTOR_REFERENCES_.143
+_OBJC_SELECTOR_REFERENCES_.145
+_OBJC_SELECTOR_REFERENCES_.147
+_OBJC_SELECTOR_REFERENCES_.149
+_OBJC_CLASSLIST_REFERENCES_$_.150
+_OBJC_SELECTOR_REFERENCES_.152
+_OBJC_SELECTOR_REFERENCES_.154
+_OBJC_SELECTOR_REFERENCES_.156
+_OBJC_SELECTOR_REFERENCES_.158
+_OBJC_SELECTOR_REFERENCES_.160
+_OBJC_SELECTOR_REFERENCES_.162
+_OBJC_SELECTOR_REFERENCES_.164
+_OBJC_SELECTOR_REFERENCES_.166
+_OBJC_CLASSLIST_REFERENCES_$_.167
+_OBJC_SELECTOR_REFERENCES_.169
+_OBJC_SELECTOR_REFERENCES_.171
+_OBJC_SELECTOR_REFERENCES_.173
+_OBJC_SELECTOR_REFERENCES_.175
+_OBJC_CLASSLIST_REFERENCES_$_.176
+_OBJC_SELECTOR_REFERENCES_.178
+_OBJC_SELECTOR_REFERENCES_.180
+_OBJC_SELECTOR_REFERENCES_.182
+_OBJC_SELECTOR_REFERENCES_.184
+_OBJC_SELECTOR_REFERENCES_.186
+_OBJC_SELECTOR_REFERENCES_.188
+_OBJC_SELECTOR_REFERENCES_.190
+_OBJC_CLASSLIST_REFERENCES_$_.191
+_OBJC_SELECTOR_REFERENCES_.193
+_OBJC_CLASSLIST_REFERENCES_$_.194
+_OBJC_SELECTOR_REFERENCES_.196
+_OBJC_SELECTOR_REFERENCES_.198
+_OBJC_SELECTOR_REFERENCES_.200
+_OBJC_SELECTOR_REFERENCES_.202
+_OBJC_SELECTOR_REFERENCES_.204
+_OBJC_IVAR_$_SFHorizontalViewWeeklyHighlights._autoScrollTimer
+_OBJC_IVAR_$_SFHorizontalViewWeeklyHighlights._viewabilityTimer
+_OBJC_IVAR_$_SFHorizontalViewWeeklyHighlights._scrollOffsetX
+_OBJC_IVAR_$_SFHorizontalViewWeeklyHighlights._isForegroundBackgroundObserversAdded
+_OBJC_IVAR_$_SFHorizontalViewWeeklyHighlights._isAutoScrollTimerRunning
+_OBJC_IVAR_$_SFHorizontalViewWeeklyHighlights._isViewabilityTrackTimerRunning
+_OBJC_IVAR_$_SFHorizontalViewWeeklyHighlights._sortedRecsByDate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+__OBJC_$_PROP_LIST_NSObject
+__OBJC_$_PROTOCOL_METHOD_TYPES_NSObject
+__OBJC_PROTOCOL_$_NSObject
+__OBJC_LABEL_PROTOCOL_$_NSObject
+__OBJC_$_PROTOCOL_REFS_UIScrollViewDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_UIScrollViewDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_UIScrollViewDelegate
+__OBJC_PROTOCOL_$_UIScrollViewDelegate
+__OBJC_LABEL_PROTOCOL_$_UIScrollViewDelegate
+__OBJC_$_PROTOCOL_REFS_UICollectionViewDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_UICollectionViewDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_UICollectionViewDelegate
+__OBJC_PROTOCOL_$_UICollectionViewDelegate
+__OBJC_LABEL_PROTOCOL_$_UICollectionViewDelegate
+__OBJC_$_PROTOCOL_REFS_UICollectionViewDelegateFlowLayout
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_UICollectionViewDelegateFlowLayout
+__OBJC_$_PROTOCOL_METHOD_TYPES_UICollectionViewDelegateFlowLayout
+__OBJC_PROTOCOL_$_UICollectionViewDelegateFlowLayout
+__OBJC_LABEL_PROTOCOL_$_UICollectionViewDelegateFlowLayout
+__OBJC_CLASS_PROTOCOLS_$_SFHorizontalViewWeeklyHighlights
+__OBJC_METACLASS_RO_$_SFHorizontalViewWeeklyHighlights
+__OBJC_$_INSTANCE_METHODS_SFHorizontalViewWeeklyHighlights
+__OBJC_$_INSTANCE_VARIABLES_SFHorizontalViewWeeklyHighlights
+__OBJC_$_PROP_LIST_SFHorizontalViewWeeklyHighlights
+__OBJC_CLASS_RO_$_SFHorizontalViewWeeklyHighlights
+_OBJC_CLASSLIST_REFERENCES_$_.385
+_OBJC_SELECTOR_REFERENCES_.387
+_OBJC_SELECTOR_REFERENCES_.389
+_OBJC_SELECTOR_REFERENCES_.390
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalViewWeeklyHighlights.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalViewWeeklyHighlights.m
+UI_USER_INTERFACE_IDIOM
+/Applications/Xcode-12.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDevice.h
+-[SFHorizontalWithVideoTableViewCell initWithCoder:]
+-[SFHorizontalWithVideoTableViewCell webview]
+-[SFHorizontalWithVideoTableViewCell setWebview:]
+-[SFHorizontalWithVideoTableViewCell sfItem]
+-[SFHorizontalWithVideoTableViewCell setSfItem:]
+-[SFHorizontalWithVideoTableViewCell wkScriptMessageHandler]
+-[SFHorizontalWithVideoTableViewCell setWkScriptMessageHandler:]
+-[SFHorizontalWithVideoTableViewCell .cxx_destruct]
+_OBJC_IVAR_$_SFHorizontalWithVideoTableViewCell._webview
+_OBJC_IVAR_$_SFHorizontalWithVideoTableViewCell._sfItem
+_OBJC_IVAR_$_SFHorizontalWithVideoTableViewCell._wkScriptMessageHandler
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_SFVideoCellType
+__OBJC_$_PROP_LIST_SFVideoCellType
+__OBJC_$_PROTOCOL_METHOD_TYPES_SFVideoCellType
+__OBJC_PROTOCOL_$_SFVideoCellType
+__OBJC_LABEL_PROTOCOL_$_SFVideoCellType
+__OBJC_CLASS_PROTOCOLS_$_SFHorizontalWithVideoTableViewCell
+__OBJC_METACLASS_RO_$_SFHorizontalWithVideoTableViewCell
+__OBJC_$_INSTANCE_METHODS_SFHorizontalWithVideoTableViewCell
+__OBJC_$_INSTANCE_VARIABLES_SFHorizontalWithVideoTableViewCell
+__OBJC_$_PROP_LIST_SFHorizontalWithVideoTableViewCell
+__OBJC_CLASS_RO_$_SFHorizontalWithVideoTableViewCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFHorizontalWithVideoTableViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFHorizontalWithVideoTableViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFHorizontalWithVideoTableViewCell.h
++[OBUtils deviceModel]
++[OBUtils isDeviceSimulator]
++[OBUtils decodeHTMLEnocdedString:]
++[OBUtils stripHTMLTags:]
++[OBUtils replaceCommonHTMLEntities:]
+_deviceModel.deviceNamesByCode
+_OBJC_CLASSLIST_REFERENCES_$_.159
+_OBJC_SELECTOR_REFERENCES_.161
+_OBJC_SELECTOR_REFERENCES_.163
+_OBJC_SELECTOR_REFERENCES_.167
+_OBJC_SELECTOR_REFERENCES_.177
+_OBJC_SELECTOR_REFERENCES_.179
+_stripHTMLTags:.htmlRegex
+_OBJC_CLASSLIST_REFERENCES_$_.184
+_replaceCommonHTMLEntities:.characterMapping
+_OBJC_SELECTOR_REFERENCES_.382
+_OBJC_SELECTOR_REFERENCES_.384
+_OBJC_SELECTOR_REFERENCES_.386
+_OBJC_SELECTOR_REFERENCES_.388
+__OBJC_$_CLASS_METHODS_OBUtils
+__OBJC_METACLASS_RO_$_OBUtils
+__OBJC_CLASS_RO_$_OBUtils
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Helpers/OBUtils.m
+OutbrainSDK/Helpers/OBUtils.m
+NSMakeRange
+/Applications/Xcode-12.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSRange.h
+-[SFBrandedCarouselCollectionCell setupDotsIndicator:]
+-[SFBrandedCarouselCollectionCell setDotsIndicatorWithCurrentIndex:]
+-[SFBrandedCarouselCollectionCell titleSponsoredByLabel]
+-[SFBrandedCarouselCollectionCell setTitleSponsoredByLabel:]
+-[SFBrandedCarouselCollectionCell titleSourceLabel]
+-[SFBrandedCarouselCollectionCell setTitleSourceLabel:]
+-[SFBrandedCarouselCollectionCell cellBrandLogoImageView]
+-[SFBrandedCarouselCollectionCell setCellBrandLogoImageView:]
+-[SFBrandedCarouselCollectionCell horizontalPagerIndicatorStackView]
+-[SFBrandedCarouselCollectionCell setHorizontalPagerIndicatorStackView:]
+-[SFBrandedCarouselCollectionCell .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.9
+_OBJC_SELECTOR_REFERENCES_.11
+_OBJC_SELECTOR_REFERENCES_.13
+_OBJC_SELECTOR_REFERENCES_.15
+_OBJC_SELECTOR_REFERENCES_.27
+_OBJC_SELECTOR_REFERENCES_.29
+_OBJC_SELECTOR_REFERENCES_.31
+_OBJC_SELECTOR_REFERENCES_.33
+_OBJC_IVAR_$_SFBrandedCarouselCollectionCell._titleSponsoredByLabel
+_OBJC_IVAR_$_SFBrandedCarouselCollectionCell._titleSourceLabel
+_OBJC_IVAR_$_SFBrandedCarouselCollectionCell._cellBrandLogoImageView
+_OBJC_IVAR_$_SFBrandedCarouselCollectionCell._horizontalPagerIndicatorStackView
+__OBJC_METACLASS_RO_$_SFBrandedCarouselCollectionCell
+__OBJC_$_INSTANCE_METHODS_SFBrandedCarouselCollectionCell
+__OBJC_$_INSTANCE_VARIABLES_SFBrandedCarouselCollectionCell
+__OBJC_$_PROP_LIST_SFBrandedCarouselCollectionCell
+__OBJC_CLASS_RO_$_SFBrandedCarouselCollectionCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersCollectionView/SFBrandedCarouselCollectionCell.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersCollectionView/SFBrandedCarouselCollectionCell.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersCollectionView/SFBrandedCarouselCollectionCell.h
+-[SFHorizontalCollectionViewCell initWithFrame:]
+-[SFHorizontalCollectionViewCell horizontalView]
+-[SFHorizontalCollectionViewCell setHorizontalView:]
+-[SFHorizontalCollectionViewCell cellView]
+-[SFHorizontalCollectionViewCell setCellView:]
+-[SFHorizontalCollectionViewCell titleLabel]
+-[SFHorizontalCollectionViewCell setTitleLabel:]
+-[SFHorizontalCollectionViewCell publisherImageView]
+-[SFHorizontalCollectionViewCell setPublisherImageView:]
+-[SFHorizontalCollectionViewCell horizontalViewTrailingConstraint]
+-[SFHorizontalCollectionViewCell setHorizontalViewTrailingConstraint:]
+-[SFHorizontalCollectionViewCell horizontalViewLeadingConstraint]
+-[SFHorizontalCollectionViewCell setHorizontalViewLeadingConstraint:]
+-[SFHorizontalCollectionViewCell cellTitleLeadingConstraint]
+-[SFHorizontalCollectionViewCell setCellTitleLeadingConstraint:]
+-[SFHorizontalCollectionViewCell .cxx_destruct]
+_OBJC_IVAR_$_SFHorizontalCollectionViewCell._horizontalView
+_OBJC_IVAR_$_SFHorizontalCollectionViewCell._cellView
+_OBJC_IVAR_$_SFHorizontalCollectionViewCell._titleLabel
+_OBJC_IVAR_$_SFHorizontalCollectionViewCell._publisherImageView
+_OBJC_IVAR_$_SFHorizontalCollectionViewCell._horizontalViewTrailingConstraint
+_OBJC_IVAR_$_SFHorizontalCollectionViewCell._horizontalViewLeadingConstraint
+_OBJC_IVAR_$_SFHorizontalCollectionViewCell._cellTitleLeadingConstraint
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_SFHorizontalCellCommonProps
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_SFHorizontalCellCommonProps
+__OBJC_$_PROP_LIST_SFHorizontalCellCommonProps
+__OBJC_$_PROTOCOL_METHOD_TYPES_SFHorizontalCellCommonProps
+__OBJC_PROTOCOL_$_SFHorizontalCellCommonProps
+__OBJC_LABEL_PROTOCOL_$_SFHorizontalCellCommonProps
+__OBJC_CLASS_PROTOCOLS_$_SFHorizontalCollectionViewCell
+__OBJC_METACLASS_RO_$_SFHorizontalCollectionViewCell
+__OBJC_$_INSTANCE_METHODS_SFHorizontalCollectionViewCell
+__OBJC_$_INSTANCE_VARIABLES_SFHorizontalCollectionViewCell
+__OBJC_$_PROP_LIST_SFHorizontalCollectionViewCell
+__OBJC_CLASS_RO_$_SFHorizontalCollectionViewCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersCollectionView/SFHorizontalCollectionViewCell.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersCollectionView/SFHorizontalCollectionViewCell.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersCollectionView/SFHorizontalCollectionViewCell.h
++[OBSkAdNetworkData contentWithPayload:]
++[OBSkAdNetworkData propertiesMap]
+-[OBSkAdNetworkData adNetworkId]
+-[OBSkAdNetworkData setAdNetworkId:]
+-[OBSkAdNetworkData campaignId]
+-[OBSkAdNetworkData setCampaignId:]
+-[OBSkAdNetworkData iTunesItemId]
+-[OBSkAdNetworkData setITunesItemId:]
+-[OBSkAdNetworkData nonce]
+-[OBSkAdNetworkData setNonce:]
+-[OBSkAdNetworkData timestamp]
+-[OBSkAdNetworkData setTimestamp:]
+-[OBSkAdNetworkData sourceAppId]
+-[OBSkAdNetworkData setSourceAppId:]
+-[OBSkAdNetworkData skNetworkVersion]
+-[OBSkAdNetworkData setSkNetworkVersion:]
+-[OBSkAdNetworkData signature]
+-[OBSkAdNetworkData setSignature:]
+-[OBSkAdNetworkData .cxx_destruct]
+_OBJC_SELECTOR_REFERENCES_.16
+_OBJC_SELECTOR_REFERENCES_.20
+_OBJC_CLASSLIST_REFERENCES_$_.37
+_OBJC_IVAR_$_OBSkAdNetworkData._adNetworkId
+_OBJC_IVAR_$_OBSkAdNetworkData._campaignId
+_OBJC_IVAR_$_OBSkAdNetworkData._iTunesItemId
+_OBJC_IVAR_$_OBSkAdNetworkData._nonce
+_OBJC_IVAR_$_OBSkAdNetworkData._timestamp
+_OBJC_IVAR_$_OBSkAdNetworkData._sourceAppId
+_OBJC_IVAR_$_OBSkAdNetworkData._skNetworkVersion
+_OBJC_IVAR_$_OBSkAdNetworkData._signature
+__OBJC_$_CLASS_METHODS_OBSkAdNetworkData
+__OBJC_METACLASS_RO_$_OBSkAdNetworkData
+__OBJC_$_INSTANCE_METHODS_OBSkAdNetworkData
+__OBJC_$_INSTANCE_VARIABLES_OBSkAdNetworkData
+__OBJC_$_PROP_LIST_OBSkAdNetworkData
+__OBJC_CLASS_RO_$_OBSkAdNetworkData
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Content/OBSkAdNetworkData.m
+OutbrainSDK/Models/Content/OBSkAdNetworkData.m
+OutbrainSDK/Models/Content/OBSkAdNetworkData.h
++[OBAdsChoicesManager reportAdsChoicesPixels:]
+_OBJC_CLASSLIST_REFERENCES_$_.7
+_OBJC_SELECTOR_REFERENCES_.9
+__OBJC_$_CLASS_METHODS_OBAdsChoicesManager
+__OBJC_METACLASS_RO_$_OBAdsChoicesManager
+__OBJC_CLASS_RO_$_OBAdsChoicesManager
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Viewability/OBAdsChoicesManager.m
+OutbrainSDK/Viewability/OBAdsChoicesManager.m
+-[SFCollectionViewReadMoreCell awakeFromNib]
+-[SFCollectionViewReadMoreCell readMoreLabel]
+-[SFCollectionViewReadMoreCell setReadMoreLabel:]
+-[SFCollectionViewReadMoreCell .cxx_destruct]
+_OBJC_IVAR_$_SFCollectionViewReadMoreCell._readMoreLabel
+__OBJC_METACLASS_RO_$_SFCollectionViewReadMoreCell
+__OBJC_$_INSTANCE_METHODS_SFCollectionViewReadMoreCell
+__OBJC_$_INSTANCE_VARIABLES_SFCollectionViewReadMoreCell
+__OBJC_$_PROP_LIST_SFCollectionViewReadMoreCell
+__OBJC_CLASS_RO_$_SFCollectionViewReadMoreCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/ReadMoreModule/ReadMoreModuleCells/SFCollectionViewReadMoreCell.m
+OutbrainSDK/SmartFeed/ReadMoreModule/ReadMoreModuleCells/SFCollectionViewReadMoreCell.m
+OutbrainSDK/SmartFeed/ReadMoreModule/ReadMoreModuleCells/SFCollectionViewReadMoreCell.h
++[Outbrain _throwAssertIfNotInitalized]
++[Outbrain initializeOutbrainWithPartnerKey:]
++[Outbrain SDKInitialized]
++[Outbrain setTestMode:]
++[Outbrain testRTB:]
++[Outbrain testLocation:]
++[Outbrain testAppInstall:]
++[Outbrain fetchRecommendationsForRequest:withCallback:]
++[Outbrain fetchRecommendationsForRequest:withDelegate:]
+___56+[Outbrain fetchRecommendationsForRequest:withDelegate:]_block_invoke
+___copy_helper_block_e8_32w
+___destroy_helper_block_e8_32w
++[Outbrain getUrl:]
++[Outbrain getOutbrainAboutURL]
++[Outbrain registerOBLabel:withWidgetId:andUrl:]
++[Outbrain registerOBLabel:withOBRequest:]
++[Outbrain openAppInstallRec:inNavController:]
+_OBJC_SELECTOR_REFERENCES_.18
+_OBJC_SELECTOR_REFERENCES_.22
+_OBJC_SELECTOR_REFERENCES_.24
+_OBJC_SELECTOR_REFERENCES_.26
+___block_descriptor_40_e8_32w_e34_v16?0"OBRecommendationResponse"8l
+_OBJC_CLASSLIST_REFERENCES_$_.36
+_OBJC_SELECTOR_REFERENCES_.38
+_OBJC_SELECTOR_REFERENCES_.44
+_OBJC_CLASSLIST_REFERENCES_$_.45
+_OBJC_CLASSLIST_REFERENCES_$_.55
+_OBJC_SELECTOR_REFERENCES_.57
+_OBJC_CLASSLIST_REFERENCES_$_.58
+_OBJC_CLASSLIST_REFERENCES_$_.65
+_OBJC_SELECTOR_REFERENCES_.67
+_OBJC_SELECTOR_REFERENCES_.69
+_OBJC_SELECTOR_REFERENCES_.71
+_OBJC_SELECTOR_REFERENCES_.73
+_OBJC_SELECTOR_REFERENCES_.77
+_OBJC_CLASSLIST_REFERENCES_$_.78
+__OBJC_$_CLASS_METHODS_Outbrain
+__OBJC_METACLASS_RO_$_Outbrain
+__OBJC_CLASS_RO_$_Outbrain
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Outbrain.m
+OutbrainSDK/Outbrain.m
+__destroy_helper_block_e8_32w
+__copy_helper_block_e8_32w
+__56+[Outbrain fetchRecommendationsForRequest:withDelegate:]_block_invoke
+-[ViewabilityData reportServedUrl]
+-[ViewabilityData setReportServedUrl:]
+-[ViewabilityData reportViewedUrl]
+-[ViewabilityData setReportViewedUrl:]
+-[ViewabilityData rId]
+-[ViewabilityData setRId:]
+-[ViewabilityData requestStartDate]
+-[ViewabilityData setRequestStartDate:]
+-[ViewabilityData .cxx_destruct]
++[OBViewabilityService sharedInstance]
+___38+[OBViewabilityService sharedInstance]_block_invoke
+-[OBViewabilityService init]
+-[OBViewabilityService addOBLabelToMap:]
+-[OBViewabilityService reportRecsReceived:timestamp:]
+-[OBViewabilityService reportRecsShownForOBLabel:]
+-[OBViewabilityService reportRecsShownForRequestId:]
+-[OBViewabilityService reportRecsShownForKey:]
+-[OBViewabilityService updateViewabilitySetting:key:]
+-[OBViewabilityService isViewabilityEnabled]
+-[OBViewabilityService viewabilityThresholdMilliseconds]
+-[OBViewabilityService editTmParameterInUrl:tm:]
+-[OBViewabilityService viewabilityKeyForRequestId:]
+-[OBViewabilityService viewabilityKeyForOBRequest:]
+-[OBViewabilityService viewabilityKeyForURL:widgetId:widgetIndex:]
+-[OBViewabilityService obLabelMap]
+-[OBViewabilityService setObLabelMap:]
+-[OBViewabilityService viewabilityDataMap]
+-[OBViewabilityService setViewabilityDataMap:]
+-[OBViewabilityService obLabelkeyToRequestIdKeyMap]
+-[OBViewabilityService setObLabelkeyToRequestIdKeyMap:]
+-[OBViewabilityService reqIdAlreadyReportedArray]
+-[OBViewabilityService setReqIdAlreadyReportedArray:]
+-[OBViewabilityService .cxx_destruct]
+__OBJC_METACLASS_RO_$_ViewabilityData
+__OBJC_$_INSTANCE_METHODS_ViewabilityData
+_OBJC_IVAR_$_ViewabilityData._reportServedUrl
+_OBJC_IVAR_$_ViewabilityData._reportViewedUrl
+_OBJC_IVAR_$_ViewabilityData._rId
+_OBJC_IVAR_$_ViewabilityData._requestStartDate
+__OBJC_$_INSTANCE_VARIABLES_ViewabilityData
+__OBJC_$_PROP_LIST_ViewabilityData
+__OBJC_CLASS_RO_$_ViewabilityData
+_sharedInstance.sharedInstance
+_sharedInstance.onceToken
+___block_descriptor_32_e5_v8?0l
+___block_literal_global
+_OBJC_CLASSLIST_REFERENCES_$_.40
+_OBJC_SELECTOR_REFERENCES_.42
+_OBJC_SELECTOR_REFERENCES_.46
+_OBJC_SELECTOR_REFERENCES_.48
+_OBJC_SELECTOR_REFERENCES_.50
+_OBJC_CLASSLIST_REFERENCES_$_.53
+_OBJC_SELECTOR_REFERENCES_.55
+_OBJC_SELECTOR_REFERENCES_.59
+_OBJC_SELECTOR_REFERENCES_.65
+_OBJC_CLASSLIST_REFERENCES_$_.81
+_OBJC_SELECTOR_REFERENCES_.83
+_OBJC_SELECTOR_REFERENCES_.85
+_OBJC_CLASSLIST_REFERENCES_$_.86
+_OBJC_SELECTOR_REFERENCES_.90
+_OBJC_SELECTOR_REFERENCES_.94
+_OBJC_CLASSLIST_REFERENCES_$_.95
+_OBJC_SELECTOR_REFERENCES_.97
+_OBJC_CLASSLIST_REFERENCES_$_.98
+_OBJC_SELECTOR_REFERENCES_.100
+_OBJC_SELECTOR_REFERENCES_.108
+_OBJC_SELECTOR_REFERENCES_.110
+_OBJC_SELECTOR_REFERENCES_.112
+_OBJC_SELECTOR_REFERENCES_.114
+_OBJC_SELECTOR_REFERENCES_.115
+_OBJC_SELECTOR_REFERENCES_.117
+_OBJC_CLASSLIST_REFERENCES_$_.120
+_OBJC_SELECTOR_REFERENCES_.122
+_OBJC_SELECTOR_REFERENCES_.124
+_OBJC_SELECTOR_REFERENCES_.126
+_OBJC_SELECTOR_REFERENCES_.134
+_OBJC_SELECTOR_REFERENCES_.136
+_OBJC_CLASSLIST_REFERENCES_$_.137
+_OBJC_SELECTOR_REFERENCES_.153
+_OBJC_SELECTOR_REFERENCES_.155
+_OBJC_SELECTOR_REFERENCES_.157
+_OBJC_SELECTOR_REFERENCES_.159
+__OBJC_$_CLASS_METHODS_OBViewabilityService
+__OBJC_METACLASS_RO_$_OBViewabilityService
+__OBJC_$_INSTANCE_METHODS_OBViewabilityService
+_OBJC_IVAR_$_OBViewabilityService._obLabelMap
+_OBJC_IVAR_$_OBViewabilityService._viewabilityDataMap
+_OBJC_IVAR_$_OBViewabilityService._obLabelkeyToRequestIdKeyMap
+_OBJC_IVAR_$_OBViewabilityService._reqIdAlreadyReportedArray
+__OBJC_$_INSTANCE_VARIABLES_OBViewabilityService
+__OBJC_$_PROP_LIST_OBViewabilityService
+__OBJC_CLASS_RO_$_OBViewabilityService
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Viewability/OBViewabilityService.m
+OutbrainSDK/Viewability/OBViewabilityService.m
+__38+[OBViewabilityService sharedInstance]_block_invoke
+/Applications/Xcode-12.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.3.sdk/usr/include/dispatch/once.h
+-[SFTableViewReadMoreCell awakeFromNib]
+-[SFTableViewReadMoreCell readMoreLabel]
+-[SFTableViewReadMoreCell setReadMoreLabel:]
+-[SFTableViewReadMoreCell .cxx_destruct]
+_OBJC_IVAR_$_SFTableViewReadMoreCell._readMoreLabel
+__OBJC_METACLASS_RO_$_SFTableViewReadMoreCell
+__OBJC_$_INSTANCE_METHODS_SFTableViewReadMoreCell
+__OBJC_$_INSTANCE_VARIABLES_SFTableViewReadMoreCell
+__OBJC_$_PROP_LIST_SFTableViewReadMoreCell
+__OBJC_CLASS_RO_$_SFTableViewReadMoreCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/ReadMoreModule/ReadMoreModuleCells/SFTableViewReadMoreCell.m
+OutbrainSDK/SmartFeed/ReadMoreModule/ReadMoreModuleCells/SFTableViewReadMoreCell.m
+OutbrainSDK/SmartFeed/ReadMoreModule/ReadMoreModuleCells/SFTableViewReadMoreCell.h
++[SFViewabilityService sharedInstance]
+___38+[SFViewabilityService sharedInstance]_block_invoke
+-[SFViewabilityService init]
+-[SFViewabilityService configureViewabilityPerListingForCell:withSFItem:initializationTime:]
+-[SFViewabilityService registerOBView:positions:requestId:smartFeedInitializationTime:]
+-[SFViewabilityService reportViewabilityForOBView:]
+-[SFViewabilityService startReportViewabilityWithTimeInterval:]
+-[SFViewabilityService isAlreadyReportedForRequestId:position:]
+-[SFViewabilityService reportViewability]
+___41-[SFViewabilityService reportViewability]_block_invoke
+___copy_helper_block_e8_32s40s
+___destroy_helper_block_e8_32s40s
+-[SFViewabilityService viewabilityKeyForRequestId:position:]
+-[SFViewabilityService reportViewabilityTimer]
+-[SFViewabilityService setReportViewabilityTimer:]
+-[SFViewabilityService itemAlreadyReportedMap]
+-[SFViewabilityService setItemAlreadyReportedMap:]
+-[SFViewabilityService itemsToReportMap]
+-[SFViewabilityService setItemsToReportMap:]
+-[SFViewabilityService obViewsData]
+-[SFViewabilityService setObViewsData:]
+-[SFViewabilityService isLoading]
+-[SFViewabilityService setIsLoading:]
+-[SFViewabilityService .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.4
+_OBJC_CLASSLIST_REFERENCES_$_.23
+_OBJC_CLASSLIST_REFERENCES_$_.60
+_OBJC_SELECTOR_REFERENCES_.75
+_OBJC_CLASSLIST_REFERENCES_$_.84
+_OBJC_SELECTOR_REFERENCES_.88
+_OBJC_CLASSLIST_REFERENCES_$_.91
+_OBJC_SELECTOR_REFERENCES_.95
+_OBJC_SELECTOR_REFERENCES_.118
+_OBJC_SELECTOR_REFERENCES_.120
+___block_descriptor_48_e8_32s40s_e46_v32?0"NSData"8"NSURLResponse"16"NSError"24l
+_OBJC_SELECTOR_REFERENCES_.128
+__OBJC_$_CLASS_METHODS_SFViewabilityService
+__OBJC_METACLASS_RO_$_SFViewabilityService
+__OBJC_$_INSTANCE_METHODS_SFViewabilityService
+_OBJC_IVAR_$_SFViewabilityService._isLoading
+_OBJC_IVAR_$_SFViewabilityService._reportViewabilityTimer
+_OBJC_IVAR_$_SFViewabilityService._itemAlreadyReportedMap
+_OBJC_IVAR_$_SFViewabilityService._itemsToReportMap
+_OBJC_IVAR_$_SFViewabilityService._obViewsData
+__OBJC_$_INSTANCE_VARIABLES_SFViewabilityService
+__OBJC_$_PROP_LIST_SFViewabilityService
+__OBJC_CLASS_RO_$_SFViewabilityService
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Viewability/SFViewabilityService.m
+OutbrainSDK/Viewability/SFViewabilityService.m
+__destroy_helper_block_e8_32s40s
+__copy_helper_block_e8_32s40s
+__41-[SFViewabilityService reportViewability]_block_invoke
+__38+[SFViewabilityService sharedInstance]_block_invoke
+-[SFItemData initWithSingleRecommendation:odbResponse:type:]
+-[SFItemData initWithVideoUrl:videoParamsStr:singleRecommendation:odbResponse:]
+-[SFItemData initWithVideoUrl:videoParamsStr:reclist:odbResponse:type:]
+-[SFItemData initWithList:odbResponse:type:]
+-[SFItemData commonInitWithResponse:]
++[SFItemData itemTypeString:]
+-[SFItemData outbrainRecs]
+-[SFItemData setOutbrainRecs:]
+-[SFItemData singleRec]
+-[SFItemData setSingleRec:]
+-[SFItemData odbSettings]
+-[SFItemData setOdbSettings:]
+-[SFItemData shadowColor]
+-[SFItemData setShadowColor:]
+-[SFItemData itemType]
+-[SFItemData setItemType:]
+-[SFItemData widgetTitle]
+-[SFItemData setWidgetTitle:]
+-[SFItemData widgetTitleTextColor]
+-[SFItemData setWidgetTitleTextColor:]
+-[SFItemData widgetId]
+-[SFItemData setWidgetId:]
+-[SFItemData abTestVal]
+-[SFItemData request]
+-[SFItemData setRequest:]
+-[SFItemData responseRequest]
+-[SFItemData setResponseRequest:]
+-[SFItemData videoUrl]
+-[SFItemData setVideoUrl:]
+-[SFItemData videoParamsStr]
+-[SFItemData setVideoParamsStr:]
+-[SFItemData videoPlayerStatus]
+-[SFItemData setVideoPlayerStatus:]
+-[SFItemData isCustomUI]
+-[SFItemData setIsCustomUI:]
+-[SFItemData positions]
+-[SFItemData setPositions:]
+-[SFItemData requestId]
+-[SFItemData setRequestId:]
+-[SFItemData .cxx_destruct]
+_OBJC_SELECTOR_REFERENCES_.34
+_OBJC_SELECTOR_REFERENCES_.36
+_OBJC_SELECTOR_REFERENCES_.40
+_OBJC_SELECTOR_REFERENCES_.61
+_OBJC_SELECTOR_REFERENCES_.63
+__OBJC_$_CLASS_METHODS_SFItemData
+__OBJC_METACLASS_RO_$_SFItemData
+__OBJC_$_INSTANCE_METHODS_SFItemData
+_OBJC_IVAR_$_SFItemData._isCustomUI
+_OBJC_IVAR_$_SFItemData._itemType
+_OBJC_IVAR_$_SFItemData._outbrainRecs
+_OBJC_IVAR_$_SFItemData._singleRec
+_OBJC_IVAR_$_SFItemData._odbSettings
+_OBJC_IVAR_$_SFItemData._shadowColor
+_OBJC_IVAR_$_SFItemData._widgetTitle
+_OBJC_IVAR_$_SFItemData._widgetTitleTextColor
+_OBJC_IVAR_$_SFItemData._widgetId
+_OBJC_IVAR_$_SFItemData._abTestVal
+_OBJC_IVAR_$_SFItemData._request
+_OBJC_IVAR_$_SFItemData._responseRequest
+_OBJC_IVAR_$_SFItemData._videoUrl
+_OBJC_IVAR_$_SFItemData._videoParamsStr
+_OBJC_IVAR_$_SFItemData._videoPlayerStatus
+_OBJC_IVAR_$_SFItemData._positions
+_OBJC_IVAR_$_SFItemData._requestId
+__OBJC_$_INSTANCE_VARIABLES_SFItemData
+__OBJC_$_PROP_LIST_SFItemData
+__OBJC_CLASS_RO_$_SFItemData
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFItemData/SFItemData.m
+OutbrainSDK/SmartFeed/SFItemData/SFItemData.m
+OutbrainSDK/SmartFeed/SFItemData/SFItemData.h
+-[OBView initWithFrame:]
+-[OBView initWithCoder:]
+-[OBView drawRect:]
+-[OBView isTimerRunning]
+-[OBView trackViewability]
+-[OBView checkIfViewIsVisible:]
+-[OBView reportViewability:]
+-[OBView removeFromSuperview]
+-[OBView key]
+-[OBView setKey:]
+-[OBView viewVisibleTimer]
+-[OBView setViewVisibleTimer:]
+-[OBView .cxx_destruct]
+_OBJC_SELECTOR_REFERENCES_.51
+_OBJC_SELECTOR_REFERENCES_.53
+_OBJC_CLASSLIST_REFERENCES_$_.56
+_OBJC_IVAR_$_OBView._key
+_OBJC_IVAR_$_OBView._viewVisibleTimer
+__OBJC_METACLASS_RO_$_OBView
+__OBJC_$_INSTANCE_METHODS_OBView
+__OBJC_$_INSTANCE_VARIABLES_OBView
+__OBJC_$_PROP_LIST_OBView
+__OBJC_CLASS_RO_$_OBView
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Viewability/OBView.m
+OutbrainSDK/Viewability/OBView.m
+OutbrainSDK/Viewability/OBView.h
++[SFUtils initialize]
++[SFUtils sharedInstance]
+-[SFUtils primaryBackgroundColor]
+-[SFUtils titleColor:]
+-[SFUtils subtitleColor:]
++[SFUtils colorFromHexString:]
++[SFUtils skipRTL]
++[SFUtils setSkipRTL:]
++[SFUtils addConstraintsToFillParent:]
++[SFUtils addConstraintsToFillParentWithHorizontalMargin:]
++[SFUtils addConstraint:constant:toView:]
++[SFUtils addConstraint:constant:baseView:toView:]
++[SFUtils addDropShadowToView:]
++[SFUtils addDropShadowToView:shadowColor:]
+___43+[SFUtils addDropShadowToView:shadowColor:]_block_invoke
++[SFUtils removePaidLabelFromImageView:]
++[SFUtils configurePaidLabelToImageViewIfneeded:withSettings:]
++[SFUtils isRTL:]
++[SFUtils createVideoWebViewInsideView:withSFItem:scriptMessageHandler:uiDelegate:withHorizontalMargin:]
++[SFUtils configureGenericVideoCell:sfItem:]
++[SFUtils loadVideoURLIn:sfItem:]
++[SFUtils isVideoIncludedInResponse:]
++[SFUtils videoParamsStringFromResponse:]
++[SFUtils appendParamsToVideoUrl:url:]
++[SFUtils getSourceTextForRec:withSettings:]
++[SFUtils setFontSizeForTitleLabel:andSourceLabel:withAbTestSettings:]
++[SFUtils getRecCtaLabelWithText:]
+-[SFUtils darkMode]
+-[SFUtils setDarkMode:]
+_initialize.initialized
+_sharedSingleton
+_OBJC_CLASSLIST_REFERENCES_$_.3
+_OBJC_SELECTOR_REFERENCES_.5
+_OBJC_SELECTOR_REFERENCES_.7
+_OBJC_CLASSLIST_REFERENCES_$_.12
+_skipRTL
+_OBJC_CLASSLIST_REFERENCES_$_.68
+___block_descriptor_48_e8_32s40s_e5_v8?0l
+_OBJC_SELECTOR_REFERENCES_.81
+_OBJC_CLASSLIST_REFERENCES_$_.90
+_OBJC_SELECTOR_REFERENCES_.92
+_OBJC_SELECTOR_REFERENCES_.101
+_OBJC_SELECTOR_REFERENCES_.103
+_OBJC_SELECTOR_REFERENCES_.105
+_OBJC_SELECTOR_REFERENCES_.107
+_OBJC_CLASSLIST_REFERENCES_$_.123
+_OBJC_SELECTOR_REFERENCES_.127
+_OBJC_SELECTOR_REFERENCES_.129
+_OBJC_SELECTOR_REFERENCES_.131
+_OBJC_SELECTOR_REFERENCES_.133
+_OBJC_CLASSLIST_REFERENCES_$_.142
+_OBJC_SELECTOR_REFERENCES_.144
+_OBJC_SELECTOR_REFERENCES_.146
+_OBJC_SELECTOR_REFERENCES_.148
+_OBJC_CLASSLIST_REFERENCES_$_.149
+_OBJC_SELECTOR_REFERENCES_.151
+_OBJC_CLASSLIST_REFERENCES_$_.160
+_OBJC_CLASSLIST_REFERENCES_$_.163
+_OBJC_CLASSLIST_REFERENCES_$_.164
+_OBJC_SELECTOR_REFERENCES_.168
+_OBJC_SELECTOR_REFERENCES_.170
+_OBJC_SELECTOR_REFERENCES_.172
+_OBJC_SELECTOR_REFERENCES_.174
+_OBJC_CLASSLIST_REFERENCES_$_.175
+_OBJC_SELECTOR_REFERENCES_.181
+_OBJC_SELECTOR_REFERENCES_.183
+_OBJC_SELECTOR_REFERENCES_.185
+_OBJC_SELECTOR_REFERENCES_.187
+_OBJC_SELECTOR_REFERENCES_.189
+_OBJC_SELECTOR_REFERENCES_.191
+_OBJC_SELECTOR_REFERENCES_.195
+_OBJC_SELECTOR_REFERENCES_.197
+_OBJC_SELECTOR_REFERENCES_.199
+_OBJC_CLASSLIST_REFERENCES_$_.200
+_OBJC_SELECTOR_REFERENCES_.206
+_OBJC_SELECTOR_REFERENCES_.208
+_OBJC_SELECTOR_REFERENCES_.212
+_OBJC_SELECTOR_REFERENCES_.214
+_OBJC_CLASSLIST_REFERENCES_$_.215
+_OBJC_SELECTOR_REFERENCES_.217
+_OBJC_SELECTOR_REFERENCES_.221
+_OBJC_SELECTOR_REFERENCES_.223
+_OBJC_CLASSLIST_REFERENCES_$_.226
+_OBJC_SELECTOR_REFERENCES_.228
+_OBJC_CLASSLIST_REFERENCES_$_.231
+_OBJC_SELECTOR_REFERENCES_.233
+_OBJC_SELECTOR_REFERENCES_.235
+_OBJC_SELECTOR_REFERENCES_.237
+_OBJC_CLASSLIST_REFERENCES_$_.238
+_OBJC_SELECTOR_REFERENCES_.240
+_OBJC_CLASSLIST_REFERENCES_$_.241
+_OBJC_SELECTOR_REFERENCES_.243
+_OBJC_SELECTOR_REFERENCES_.245
+_OBJC_CLASSLIST_REFERENCES_$_.246
+_OBJC_SELECTOR_REFERENCES_.248
+_OBJC_SELECTOR_REFERENCES_.250
+_OBJC_SELECTOR_REFERENCES_.252
+_OBJC_CLASSLIST_REFERENCES_$_.253
+_OBJC_SELECTOR_REFERENCES_.255
+_OBJC_SELECTOR_REFERENCES_.259
+_OBJC_SELECTOR_REFERENCES_.261
+_OBJC_CLASSLIST_REFERENCES_$_.262
+_OBJC_SELECTOR_REFERENCES_.268
+_OBJC_SELECTOR_REFERENCES_.270
+_OBJC_CLASSLIST_REFERENCES_$_.283
+_OBJC_SELECTOR_REFERENCES_.285
+_OBJC_SELECTOR_REFERENCES_.287
+_OBJC_CLASSLIST_REFERENCES_$_.290
+_OBJC_SELECTOR_REFERENCES_.292
+_OBJC_SELECTOR_REFERENCES_.294
+_OBJC_SELECTOR_REFERENCES_.298
+_OBJC_SELECTOR_REFERENCES_.300
+_OBJC_SELECTOR_REFERENCES_.302
+_OBJC_SELECTOR_REFERENCES_.304
+_OBJC_SELECTOR_REFERENCES_.308
+_OBJC_SELECTOR_REFERENCES_.310
+_OBJC_SELECTOR_REFERENCES_.312
+_OBJC_SELECTOR_REFERENCES_.314
+_OBJC_SELECTOR_REFERENCES_.316
+_OBJC_SELECTOR_REFERENCES_.318
+_OBJC_SELECTOR_REFERENCES_.320
+_OBJC_SELECTOR_REFERENCES_.322
+_OBJC_SELECTOR_REFERENCES_.324
+_OBJC_SELECTOR_REFERENCES_.326
+_OBJC_SELECTOR_REFERENCES_.328
+_OBJC_CLASSLIST_REFERENCES_$_.331
+_OBJC_SELECTOR_REFERENCES_.333
+__OBJC_$_CLASS_METHODS_SFUtils
+__OBJC_METACLASS_RO_$_SFUtils
+__OBJC_$_INSTANCE_METHODS_SFUtils
+_OBJC_IVAR_$_SFUtils._darkMode
+__OBJC_$_INSTANCE_VARIABLES_SFUtils
+__OBJC_$_PROP_LIST_SFUtils
+__OBJC_CLASS_RO_$_SFUtils
+_OBJC_CLASSLIST_REFERENCES_$_.370
+_OBJC_SELECTOR_REFERENCES_.372
+_OBJC_SELECTOR_REFERENCES_.374
+_OBJC_SELECTOR_REFERENCES_.376
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFUtils/SFUtils.m
+OutbrainSDK/SmartFeed/SFUtils/SFUtils.h
+OutbrainSDK/SmartFeed/SFUtils/SFUtils.m
+__43+[SFUtils addDropShadowToView:shadowColor:]_block_invoke
+-[SFDefaultDelegate userTappedOnRecommendation:]
+-[SFDefaultDelegate userTappedOnAdChoicesIcon:]
+-[SFDefaultDelegate userTappedOnVideoRec:]
+-[SFDefaultDelegate userTappedOnOutbrainLabeling]
+-[SFDefaultDelegate presentSFSafariViewController:]
+___51-[SFDefaultDelegate presentSFSafariViewController:]_block_invoke
+_OBJC_CLASSLIST_REFERENCES_$_.5
+_OBJC_CLASSLIST_REFERENCES_$_.8
+__OBJC_$_PROTOCOL_REFS_SmartFeedDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_SmartFeedDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_SmartFeedDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_SmartFeedDelegate
+__OBJC_PROTOCOL_$_SmartFeedDelegate
+__OBJC_LABEL_PROTOCOL_$_SmartFeedDelegate
+__OBJC_CLASS_PROTOCOLS_$_SFDefaultDelegate
+__OBJC_METACLASS_RO_$_SFDefaultDelegate
+__OBJC_$_INSTANCE_METHODS_SFDefaultDelegate
+__OBJC_$_PROP_LIST_SFDefaultDelegate
+__OBJC_CLASS_RO_$_SFDefaultDelegate
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SmartFeedManager/SFDefaultDelegate.m
+__51-[SFDefaultDelegate presentSFSafariViewController:]_block_invoke
+OutbrainSDK/SmartFeed/SmartFeedManager/SFDefaultDelegate.m
+-[BrandedCarouselCollectionLayout targetContentOffsetForProposedContentOffset:withScrollingVelocity:]
+__OBJC_METACLASS_RO_$_BrandedCarouselCollectionLayout
+__OBJC_$_INSTANCE_METHODS_BrandedCarouselCollectionLayout
+__OBJC_CLASS_RO_$_BrandedCarouselCollectionLayout
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/BrandedCarouselCollectionLayout.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/BrandedCarouselCollectionLayout.m
++[OBContent payloadIsValid:]
++[OBContent contentWithPayload:]
+___32+[OBContent contentWithPayload:]_block_invoke
+___copy_helper_block_e8_32s48s
+___destroy_helper_block_e8_32s48s
++[OBContent convertedValue:withClass:]
++[OBContent requiredKeys]
++[OBContent propertiesMap]
++[OBContent propertyClassForKey:]
+-[OBContent originalValueForKeyPath:]
+-[OBContent originalOBPayload]
+-[OBContent setOriginalOBPayload:]
+-[OBContent .cxx_destruct]
+___block_descriptor_56_e8_32s48s_e35_v32?0"NSString"8"NSString"16^B24l
+_OBJC_CLASSLIST_REFERENCES_$_.34
+_convertedValue:withClass:.formatter
+_OBJC_CLASSLIST_REFERENCES_$_.35
+_OBJC_CLASSLIST_REFERENCES_$_.41
+_OBJC_CLASSLIST_REFERENCES_$_.44
+__OBJC_$_CLASS_METHODS_OBContent
+__OBJC_METACLASS_RO_$_OBContent
+__OBJC_$_INSTANCE_METHODS_OBContent
+_OBJC_IVAR_$_OBContent._originalOBPayload
+__OBJC_$_INSTANCE_VARIABLES_OBContent
+__OBJC_$_PROP_LIST_OBContent
+__OBJC_CLASS_RO_$_OBContent
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Content/OBContent.m
+OutbrainSDK/Models/Content/OBContent.m
+OutbrainSDK/Models/Content/OBContent.h
+__destroy_helper_block_e8_32s48s
+__copy_helper_block_e8_32s48s
+__32+[OBContent contentWithPayload:]_block_invoke
+-[OBLabel initWithFrame:]
+-[OBLabel initWithCoder:]
+-[OBLabel dealloc]
+-[OBLabel drawRect:]
+-[OBLabel setObRequest:]
+-[OBLabel isTimerRunning]
+-[OBLabel trackViewability]
+-[OBLabel checkIfViewIsVisible:]
+-[OBLabel reportViewability:]
+-[OBLabel stopViewabilityTimer]
+-[OBLabel removeFromSuperview]
+-[OBLabel obRequest]
+-[OBLabel visibleImpressionTime]
+-[OBLabel setVisibleImpressionTime:]
+-[OBLabel viewVisibleTimer]
+-[OBLabel setViewVisibleTimer:]
+-[OBLabel .cxx_destruct]
+_OBJC_IVAR_$_OBLabel._obRequest
+_OBJC_CLASSLIST_REFERENCES_$_.32
+_OBJC_IVAR_$_OBLabel._visibleImpressionTime
+_OBJC_IVAR_$_OBLabel._viewVisibleTimer
+__OBJC_METACLASS_RO_$_OBLabel
+__OBJC_$_INSTANCE_METHODS_OBLabel
+__OBJC_$_INSTANCE_VARIABLES_OBLabel
+__OBJC_$_PROP_LIST_OBLabel
+__OBJC_CLASS_RO_$_OBLabel
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Viewability/OBLabel.m
+OutbrainSDK/Viewability/OBLabel.m
+OutbrainSDK/Viewability/OBLabel.h
+-[SFCollectionViewManager initWitCollectionView:]
+-[SFCollectionViewManager orientationChanged:]
+___46-[SFCollectionViewManager orientationChanged:]_block_invoke
+___copy_helper_block_e8_32s
+___destroy_helper_block_e8_32s
+-[SFCollectionViewManager registerSingleItemNib:forCellWithReuseIdentifier:]
+-[SFCollectionViewManager collectionView:headerCellForItemAtIndexPath:isRTL:]
+-[SFCollectionViewManager collectionView:cellForItemAtIndexPath:sfItem:]
+-[SFCollectionViewManager collectionView:sizeForItemAtIndexPath:sfItem:]
+-[SFCollectionViewManager configureSmartfeedHeaderCell:atIndexPath:withSFItem:isSmartfeedWithNoChildren:]
+-[SFCollectionViewManager configureVideoCell:atIndexPath:withSFItem:]
+-[SFCollectionViewManager configureSingleCell:atIndexPath:withSFItem:]
++[SFCollectionViewManager configureSingleCell:withSFItem:eventListenerTarget:cellTag:tapGestureDelegate:]
++[SFCollectionViewManager configureSingleCell:withSFItem:eventListenerTarget:cellTag:tapGestureDelegate:displaySourceOnOrganicRec:disableCellShadows:]
++[SFCollectionViewManager configureVideoCell:withSFItem:wkUIDelegate:eventListenerTarget:tapGestureDelegate:]
++[SFCollectionViewManager configureVideoInCell:withSFItem:wkUIDelegate:]
++[SFCollectionViewManager configureCtaLabelInCell:withCtaText:isRecWithTitle:isCustomUI:shouldShowCtaButton:]
+-[SFCollectionViewManager collectionView:readMoreCellAtIndexPath:]
+-[SFCollectionViewManager configureReadMoreCollectionViewCell:withButtonText:]
+-[SFCollectionViewManager eventListenerTarget]
+-[SFCollectionViewManager setEventListenerTarget:]
+-[SFCollectionViewManager wkWebviewDelegate]
+-[SFCollectionViewManager setWkWebviewDelegate:]
+-[SFCollectionViewManager collectionView]
+-[SFCollectionViewManager setCollectionView:]
+-[SFCollectionViewManager displaySourceOnOrganicRec]
+-[SFCollectionViewManager setDisplaySourceOnOrganicRec:]
+-[SFCollectionViewManager disableCellShadows]
+-[SFCollectionViewManager setDisableCellShadows:]
+-[SFCollectionViewManager .cxx_destruct]
+___block_descriptor_40_e8_32s_e5_v8?0l
+_OBJC_CLASSLIST_REFERENCES_$_.74
+_OBJC_CLASSLIST_REFERENCES_$_.83
+_OBJC_SELECTOR_REFERENCES_.87
+_OBJC_CLASSLIST_REFERENCES_$_.115
+_OBJC_CLASSLIST_REFERENCES_$_.128
+_OBJC_SELECTOR_REFERENCES_.138
+_OBJC_SELECTOR_REFERENCES_.140
+_OBJC_SELECTOR_REFERENCES_.142
+_OBJC_CLASSLIST_REFERENCES_$_.147
+_OBJC_SELECTOR_REFERENCES_.165
+_OBJC_SELECTOR_REFERENCES_.201
+_OBJC_SELECTOR_REFERENCES_.203
+_OBJC_CLASSLIST_REFERENCES_$_.204
+_OBJC_SELECTOR_REFERENCES_.210
+_OBJC_SELECTOR_REFERENCES_.216
+_OBJC_SELECTOR_REFERENCES_.218
+_OBJC_SELECTOR_REFERENCES_.220
+_OBJC_SELECTOR_REFERENCES_.222
+_OBJC_SELECTOR_REFERENCES_.224
+_OBJC_SELECTOR_REFERENCES_.226
+_OBJC_SELECTOR_REFERENCES_.230
+_OBJC_SELECTOR_REFERENCES_.232
+_OBJC_SELECTOR_REFERENCES_.234
+_OBJC_SELECTOR_REFERENCES_.238
+_OBJC_SELECTOR_REFERENCES_.242
+_OBJC_SELECTOR_REFERENCES_.244
+_OBJC_SELECTOR_REFERENCES_.246
+_OBJC_SELECTOR_REFERENCES_.254
+_OBJC_SELECTOR_REFERENCES_.256
+_OBJC_SELECTOR_REFERENCES_.260
+_OBJC_SELECTOR_REFERENCES_.262
+_OBJC_SELECTOR_REFERENCES_.264
+_OBJC_SELECTOR_REFERENCES_.266
+_OBJC_CLASSLIST_REFERENCES_$_.271
+_OBJC_SELECTOR_REFERENCES_.273
+_OBJC_SELECTOR_REFERENCES_.275
+_OBJC_SELECTOR_REFERENCES_.277
+_OBJC_SELECTOR_REFERENCES_.279
+_OBJC_SELECTOR_REFERENCES_.281
+_OBJC_SELECTOR_REFERENCES_.283
+_OBJC_SELECTOR_REFERENCES_.289
+_OBJC_SELECTOR_REFERENCES_.291
+_OBJC_SELECTOR_REFERENCES_.293
+_OBJC_SELECTOR_REFERENCES_.295
+_OBJC_SELECTOR_REFERENCES_.297
+_OBJC_SELECTOR_REFERENCES_.299
+_OBJC_SELECTOR_REFERENCES_.301
+_OBJC_SELECTOR_REFERENCES_.303
+_OBJC_SELECTOR_REFERENCES_.307
+_OBJC_SELECTOR_REFERENCES_.309
+_OBJC_SELECTOR_REFERENCES_.311
+_OBJC_SELECTOR_REFERENCES_.313
+_OBJC_SELECTOR_REFERENCES_.315
+_OBJC_SELECTOR_REFERENCES_.317
+_OBJC_SELECTOR_REFERENCES_.319
+_OBJC_SELECTOR_REFERENCES_.321
+_OBJC_SELECTOR_REFERENCES_.323
+_OBJC_SELECTOR_REFERENCES_.325
+_OBJC_SELECTOR_REFERENCES_.327
+_OBJC_SELECTOR_REFERENCES_.329
+_OBJC_SELECTOR_REFERENCES_.331
+_OBJC_SELECTOR_REFERENCES_.335
+_OBJC_SELECTOR_REFERENCES_.337
+_OBJC_SELECTOR_REFERENCES_.339
+_OBJC_SELECTOR_REFERENCES_.341
+_OBJC_SELECTOR_REFERENCES_.343
+_OBJC_SELECTOR_REFERENCES_.345
+_OBJC_SELECTOR_REFERENCES_.347
+_OBJC_SELECTOR_REFERENCES_.349
+__OBJC_$_CLASS_METHODS_SFCollectionViewManager
+__OBJC_$_PROTOCOL_REFS_UIGestureRecognizerDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_UIGestureRecognizerDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_UIGestureRecognizerDelegate
+__OBJC_PROTOCOL_$_UIGestureRecognizerDelegate
+__OBJC_LABEL_PROTOCOL_$_UIGestureRecognizerDelegate
+__OBJC_CLASS_PROTOCOLS_$_SFCollectionViewManager
+__OBJC_METACLASS_RO_$_SFCollectionViewManager
+__OBJC_$_INSTANCE_METHODS_SFCollectionViewManager
+_OBJC_IVAR_$_SFCollectionViewManager._displaySourceOnOrganicRec
+_OBJC_IVAR_$_SFCollectionViewManager._disableCellShadows
+_OBJC_IVAR_$_SFCollectionViewManager._eventListenerTarget
+_OBJC_IVAR_$_SFCollectionViewManager._wkWebviewDelegate
+_OBJC_IVAR_$_SFCollectionViewManager._collectionView
+__OBJC_$_INSTANCE_VARIABLES_SFCollectionViewManager
+__OBJC_$_PROP_LIST_SFCollectionViewManager
+__OBJC_CLASS_RO_$_SFCollectionViewManager
+_OBJC_SELECTOR_REFERENCES_.451
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SmartFeedManager/SFCollectionViewManager.m
+OutbrainSDK/SmartFeed/SmartFeedManager/SFCollectionViewManager.m
+OutbrainSDK/SmartFeed/SmartFeedManager/SFCollectionViewManager.h
+__destroy_helper_block_e8_32s
+__copy_helper_block_e8_32s
+__46-[SFCollectionViewManager orientationChanged:]_block_invoke
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Errors/OBErrors.m
+-[OBRecommendation isRTB]
+-[OBRecommendation shouldDisplayDisclosureIcon]
++[OBRecommendation contentWithPayload:]
++[OBRecommendation propertiesMap]
++[OBRecommendation propertyClassForKey:]
+-[OBRecommendation setValue:forKey:]
+-[OBRecommendation description]
+-[OBRecommendation position]
+-[OBRecommendation setPosition:]
+-[OBRecommendation publishDate]
+-[OBRecommendation setPublishDate:]
+-[OBRecommendation author]
+-[OBRecommendation setAuthor:]
+-[OBRecommendation content]
+-[OBRecommendation setContent:]
+-[OBRecommendation source]
+-[OBRecommendation setSource:]
+-[OBRecommendation isSameSource]
+-[OBRecommendation setSameSource:]
+-[OBRecommendation isPaidLink]
+-[OBRecommendation setPaidLink:]
+-[OBRecommendation isVideo]
+-[OBRecommendation setVideo:]
+-[OBRecommendation image]
+-[OBRecommendation setImage:]
+-[OBRecommendation publisherLogoImage]
+-[OBRecommendation setPublisherLogoImage:]
+-[OBRecommendation disclosure]
+-[OBRecommendation setDisclosure:]
+-[OBRecommendation pixels]
+-[OBRecommendation setPixels:]
+-[OBRecommendation audienceCampaignsLabel]
+-[OBRecommendation setAudienceCampaignsLabel:]
+-[OBRecommendation categoryName]
+-[OBRecommendation setCategoryName:]
+-[OBRecommendation ctaText]
+-[OBRecommendation setCtaText:]
+-[OBRecommendation skAdNetworkData]
+-[OBRecommendation setSkAdNetworkData:]
+-[OBRecommendation isAppInstall]
+-[OBRecommendation setAppInstall:]
+-[OBRecommendation appInstallItunesItemIdentifier]
+-[OBRecommendation setAppInstallItunesItemIdentifier:]
+-[OBRecommendation redirectURL]
+-[OBRecommendation setRedirectURL:]
+-[OBRecommendation appflow]
+-[OBRecommendation setAppflow:]
+-[OBRecommendation .cxx_destruct]
+___clang_at_available_requires_core_foundation_framework
+_OBJC_CLASSLIST_REFERENCES_$_.51
+_OBJC_CLASSLIST_REFERENCES_$_.106
+_OBJC_CLASSLIST_REFERENCES_$_.108
+_OBJC_CLASSLIST_REFERENCES_$_.109
+_OBJC_CLASSLIST_REFERENCES_$_.112
+_OBJC_CLASSLIST_REFERENCES_$_.113
+_OBJC_CLASSLIST_REFERENCES_$_.118
+_OBJC_CLASSLIST_REFERENCES_$_.119
+_OBJC_IVAR_$_OBRecommendation._position
+_OBJC_IVAR_$_OBRecommendation._publishDate
+_OBJC_IVAR_$_OBRecommendation._author
+_OBJC_IVAR_$_OBRecommendation._content
+_OBJC_IVAR_$_OBRecommendation._source
+_OBJC_IVAR_$_OBRecommendation._sameSource
+_OBJC_IVAR_$_OBRecommendation._paidLink
+_OBJC_IVAR_$_OBRecommendation._video
+_OBJC_IVAR_$_OBRecommendation._image
+_OBJC_IVAR_$_OBRecommendation._publisherLogoImage
+_OBJC_IVAR_$_OBRecommendation._disclosure
+_OBJC_IVAR_$_OBRecommendation._pixels
+_OBJC_IVAR_$_OBRecommendation._audienceCampaignsLabel
+_OBJC_IVAR_$_OBRecommendation._categoryName
+_OBJC_IVAR_$_OBRecommendation._ctaText
+_OBJC_IVAR_$_OBRecommendation._skAdNetworkData
+_OBJC_IVAR_$_OBRecommendation._appInstall
+_OBJC_IVAR_$_OBRecommendation._appInstallItunesItemIdentifier
+_OBJC_IVAR_$_OBRecommendation._redirectURL
+_OBJC_IVAR_$_OBRecommendation._appflow
+__OBJC_$_CLASS_METHODS_OBRecommendation
+__OBJC_METACLASS_RO_$_OBRecommendation
+__OBJC_$_INSTANCE_METHODS_OBRecommendation
+__OBJC_$_INSTANCE_VARIABLES_OBRecommendation
+__OBJC_$_PROP_LIST_OBRecommendation
+__OBJC_CLASS_RO_$_OBRecommendation
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Content/OBRecommendation.m
+OutbrainSDK/Models/Content/OBRecommendation.m
+OutbrainSDK/Models/Content/OBRecommendation.h
+-[SFScriptMessageHandler initWithSFVideoCell:]
+-[SFScriptMessageHandler dealloc]
+-[SFScriptMessageHandler userContentController:didReceiveScriptMessage:]
+-[SFScriptMessageHandler receiveVideoPauseNotification:]
+-[SFScriptMessageHandler videoCell]
+-[SFScriptMessageHandler setVideoCell:]
+-[SFScriptMessageHandler .cxx_destruct]
+__OBJC_$_PROTOCOL_REFS_WKScriptMessageHandler
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_WKScriptMessageHandler
+__OBJC_$_PROTOCOL_METHOD_TYPES_WKScriptMessageHandler
+__OBJC_PROTOCOL_$_WKScriptMessageHandler
+__OBJC_LABEL_PROTOCOL_$_WKScriptMessageHandler
+__OBJC_CLASS_PROTOCOLS_$_SFScriptMessageHandler
+__OBJC_METACLASS_RO_$_SFScriptMessageHandler
+__OBJC_$_INSTANCE_METHODS_SFScriptMessageHandler
+_OBJC_IVAR_$_SFScriptMessageHandler._videoCell
+__OBJC_$_INSTANCE_VARIABLES_SFScriptMessageHandler
+__OBJC_$_PROP_LIST_SFScriptMessageHandler
+__OBJC_CLASS_RO_$_SFScriptMessageHandler
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFUtils/SFScriptMessageHandler.m
+OutbrainSDK/SmartFeed/SFUtils/SFScriptMessageHandler.m
+-[SFReadMoreModuleHelper heightForReadMoreItem]
+-[SFReadMoreModuleHelper numberOfItemsInCollapsableSection:collapsableItemCount:]
+-[SFReadMoreModuleHelper collectionView:handleShadowViewForCell:atIndexPath:]
+-[SFReadMoreModuleHelper tableView:handleShadowViewForCell:atIndexPath:]
+-[SFReadMoreModuleHelper removeShadowViewIfNeededForCell:]
+-[SFReadMoreModuleHelper addShadowViewForCell:]
+-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]
+___63-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]_block_invoke
+___63-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]_block_invoke.95
+___63-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]_block_invoke.101
+___63-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]_block_invoke_2
+-[SFReadMoreModuleHelper readMoreButonClickedOnTableView:]
+___58-[SFReadMoreModuleHelper readMoreButonClickedOnTableView:]_block_invoke
+___58-[SFReadMoreModuleHelper readMoreButonClickedOnTableView:]_block_invoke_2
+___58-[SFReadMoreModuleHelper readMoreButonClickedOnTableView:]_block_invoke_3
+-[SFReadMoreModuleHelper shouldExpandCollapsableSectionCells]
+-[SFReadMoreModuleHelper setShouldExpandCollapsableSectionCells:]
+-[SFReadMoreModuleHelper shouldCollapseReadMoreCell]
+-[SFReadMoreModuleHelper setShouldCollapseReadMoreCell:]
+-[SFReadMoreModuleHelper readMoreCollapsableSection]
+-[SFReadMoreModuleHelper setReadMoreCollapsableSection:]
+-[SFReadMoreModuleHelper readMoreShadowView]
+-[SFReadMoreModuleHelper setReadMoreShadowView:]
+-[SFReadMoreModuleHelper .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.63
+_OBJC_CLASSLIST_REFERENCES_$_.70
+_OBJC_CLASSLIST_REFERENCES_$_.77
+_OBJC_SELECTOR_REFERENCES_.79
+_OBJC_CLASSLIST_REFERENCES_$_.96
+_OBJC_SELECTOR_REFERENCES_.98
+___block_descriptor_48_e8_32s40s_e8_v12?0B8l
+__OBJC_METACLASS_RO_$_SFReadMoreModuleHelper
+__OBJC_$_INSTANCE_METHODS_SFReadMoreModuleHelper
+_OBJC_IVAR_$_SFReadMoreModuleHelper._shouldExpandCollapsableSectionCells
+_OBJC_IVAR_$_SFReadMoreModuleHelper._shouldCollapseReadMoreCell
+_OBJC_IVAR_$_SFReadMoreModuleHelper._readMoreCollapsableSection
+_OBJC_IVAR_$_SFReadMoreModuleHelper._readMoreShadowView
+__OBJC_$_INSTANCE_VARIABLES_SFReadMoreModuleHelper
+__OBJC_$_PROP_LIST_SFReadMoreModuleHelper
+__OBJC_CLASS_RO_$_SFReadMoreModuleHelper
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/ReadMoreModule/SFReadMoreModuleHelper.m
+OutbrainSDK/SmartFeed/ReadMoreModule/SFReadMoreModuleHelper.m
+OutbrainSDK/SmartFeed/ReadMoreModule/SFReadMoreModuleHelper.h
+__58-[SFReadMoreModuleHelper readMoreButonClickedOnTableView:]_block_invoke_3
+__58-[SFReadMoreModuleHelper readMoreButonClickedOnTableView:]_block_invoke_2
+__58-[SFReadMoreModuleHelper readMoreButonClickedOnTableView:]_block_invoke
+__63-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]_block_invoke_2
+__63-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]_block_invoke.101
+__63-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]_block_invoke.95
+__63-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]_block_invoke
++[OBNetworkManager sharedManager]
+___33+[OBNetworkManager sharedManager]_block_invoke
+___copy_helper_block_e8_
+___destroy_helper_block_e8_
+-[OBNetworkManager sendGet:completionHandler:]
+___46-[OBNetworkManager sendGet:completionHandler:]_block_invoke
+___copy_helper_block_e8_32b
+-[OBNetworkManager sendPost:postData:completionHandler:]
+___56-[OBNetworkManager sendPost:postData:completionHandler:]_block_invoke
+-[OBNetworkManager generateMutableRequest:]
++[OBNetworkManager webviewUserAgent]
++[OBNetworkManager createWebViewAndFetchUserAgent]
+___50+[OBNetworkManager createWebViewAndFetchUserAgent]_block_invoke
+-[OBNetworkManager addUserAgentHeaderTo:]
+-[OBNetworkManager userAgent]
+-[OBNetworkManager setUserAgent:]
+-[OBNetworkManager defaultSession]
+-[OBNetworkManager setDefaultSession:]
+-[OBNetworkManager wkWebview]
+-[OBNetworkManager setWkWebview:]
+-[OBNetworkManager .cxx_destruct]
+_sharedManager.sharedManager
+_sharedManager.onceToken
+___block_descriptor_40_e8__e5_v8?0l
+___block_descriptor_40_e8_32bs_e46_v32?0"NSData"8"NSURLResponse"16"NSError"24l
+_OBJC_CLASSLIST_REFERENCES_$_.17
+___block_descriptor_40_e8__e20_v24?08"NSError"16l
+__OBJC_$_CLASS_METHODS_OBNetworkManager
+__OBJC_METACLASS_RO_$_OBNetworkManager
+__OBJC_$_INSTANCE_METHODS_OBNetworkManager
+_OBJC_IVAR_$_OBNetworkManager._userAgent
+_OBJC_IVAR_$_OBNetworkManager._defaultSession
+_OBJC_IVAR_$_OBNetworkManager._wkWebview
+__OBJC_$_INSTANCE_VARIABLES_OBNetworkManager
+__OBJC_$_PROP_LIST_OBNetworkManager
+__OBJC_CLASS_RO_$_OBNetworkManager
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Network/OBNetworkManager.m
+OutbrainSDK/Network/OBNetworkManager.m
+__50+[OBNetworkManager createWebViewAndFetchUserAgent]_block_invoke
+__56-[OBNetworkManager sendPost:postData:completionHandler:]_block_invoke
+__copy_helper_block_e8_32b
+__46-[OBNetworkManager sendGet:completionHandler:]_block_invoke
+__destroy_helper_block_e8_
+__copy_helper_block_e8_
+__33+[OBNetworkManager sharedManager]_block_invoke
++[OutbrainManager sharedInstance]
+___33+[OutbrainManager sharedInstance]_block_invoke
+-[OutbrainManager fetchRecommendationsWithRequest:andCallback:]
+-[OutbrainManager fetchMultivacWithRequest:andDelegate:]
+-[OutbrainManager _isValid:]
+-[OutbrainManager reportPlistIsValidToServerIfNeeded]
+___53-[OutbrainManager reportPlistIsValidToServerIfNeeded]_block_invoke
+___copy_helper_block_e8_32s40s48s
+___destroy_helper_block_e8_32s40s48s
+-[OutbrainManager checkIfSkAdNetworkIsConfiguredCorrectly]
+-[OutbrainManager openAppInstallRec:inNavController:]
+___53-[OutbrainManager openAppInstallRec:inNavController:]_block_invoke
+-[OutbrainManager prepareLoadProductParams:]
+-[OutbrainManager partnerKey]
+-[OutbrainManager setPartnerKey:]
+-[OutbrainManager testMode]
+-[OutbrainManager setTestMode:]
+-[OutbrainManager testRTB]
+-[OutbrainManager setTestRTB:]
+-[OutbrainManager testAppInstall]
+-[OutbrainManager setTestAppInstall:]
+-[OutbrainManager testLocation]
+-[OutbrainManager setTestLocation:]
+-[OutbrainManager odbFetchQueue]
+-[OutbrainManager setOdbFetchQueue:]
+-[OutbrainManager userDefaults]
+-[OutbrainManager setUserDefaults:]
+-[OutbrainManager .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.29
+_OBJC_CLASSLIST_REFERENCES_$_.30
+_OBJC_CLASSLIST_REFERENCES_$_.42
+_OBJC_CLASSLIST_REFERENCES_$_.49
+_OBJC_CLASSLIST_REFERENCES_$_.54
+_OBJC_CLASSLIST_REFERENCES_$_.67
+_OBJC_CLASSLIST_REFERENCES_$_.80
+_OBJC_CLASSLIST_REFERENCES_$_.89
+_OBJC_CLASSLIST_REFERENCES_$_.111
+___block_descriptor_56_e8_32s40s48s_e46_v32?0"NSData"8"NSURLResponse"16"NSError"24l
+_OBJC_CLASSLIST_REFERENCES_$_.152
+_OBJC_CLASSLIST_REFERENCES_$_.178
+___block_descriptor_32_e20_v20?0B8"NSError"12l
+_OBJC_CLASSLIST_REFERENCES_$_.190
+_OBJC_SELECTOR_REFERENCES_.192
+_OBJC_SELECTOR_REFERENCES_.194
+_OBJC_CLASSLIST_REFERENCES_$_.199
+_OBJC_SELECTOR_REFERENCES_.205
+_OBJC_SELECTOR_REFERENCES_.207
+_OBJC_SELECTOR_REFERENCES_.209
+_OBJC_SELECTOR_REFERENCES_.211
+_OBJC_SELECTOR_REFERENCES_.213
+_OBJC_SELECTOR_REFERENCES_.215
+_OBJC_SELECTOR_REFERENCES_.219
+__OBJC_$_CLASS_METHODS_OutbrainManager
+__OBJC_METACLASS_RO_$_OutbrainManager
+__OBJC_$_INSTANCE_METHODS_OutbrainManager
+_OBJC_IVAR_$_OutbrainManager._testMode
+_OBJC_IVAR_$_OutbrainManager._testRTB
+_OBJC_IVAR_$_OutbrainManager._testAppInstall
+_OBJC_IVAR_$_OutbrainManager._partnerKey
+_OBJC_IVAR_$_OutbrainManager._testLocation
+_OBJC_IVAR_$_OutbrainManager._odbFetchQueue
+_OBJC_IVAR_$_OutbrainManager._userDefaults
+__OBJC_$_INSTANCE_VARIABLES_OutbrainManager
+__OBJC_$_PROP_LIST_OutbrainManager
+__OBJC_CLASS_RO_$_OutbrainManager
+/Users/distiller/repo/SDK-sources/OutbrainSDK/OutbrainManager.m
+OutbrainSDK/OutbrainManager.m
+OutbrainSDK/OutbrainManager.h
+__53-[OutbrainManager openAppInstallRec:inNavController:]_block_invoke
+__destroy_helper_block_e8_32s40s48s
+__copy_helper_block_e8_32s40s48s
+__53-[OutbrainManager reportPlistIsValidToServerIfNeeded]_block_invoke
+__33+[OutbrainManager sharedInstance]_block_invoke
++[OutbrainHelper sharedInstance]
+___32+[OutbrainHelper sharedInstance]_block_invoke
+-[OutbrainHelper recommendationURLForRequest:]
+___46-[OutbrainHelper recommendationURLForRequest:]_block_invoke
+-[OutbrainHelper updateODBSettings:]
+-[OutbrainHelper _updateViewbilityStatsForResponse:]
+___52-[OutbrainHelper _updateViewbilityStatsForResponse:]_block_invoke
+___52-[OutbrainHelper _updateViewbilityStatsForResponse:]_block_invoke_2
+-[OutbrainHelper _updateAPVCacheForResponse:]
+-[OutbrainHelper _updateODBSetting:defaultValue:saveValueBlock:]
+-[OutbrainHelper advertiserIdURLParams]
+-[OutbrainHelper tokensHandler]
+-[OutbrainHelper setTokensHandler:]
+-[OutbrainHelper apvCache]
+-[OutbrainHelper setApvCache:]
+-[OutbrainHelper .cxx_destruct]
+_recommendationURLForRequest:.onceToken
+_OBJC_CLASSLIST_REFERENCES_$_.14
+_OBJC_CLASSLIST_REFERENCES_$_.20
+_OBJC_CLASSLIST_REFERENCES_$_.48
+_OBJC_CLASSLIST_REFERENCES_$_.88
+_OBJC_CLASSLIST_REFERENCES_$_.143
+_OBJC_CLASSLIST_REFERENCES_$_.161
+_OBJC_CLASSLIST_REFERENCES_$_.180
+_OBJC_CLASSLIST_REFERENCES_$_.219
+_OBJC_SELECTOR_REFERENCES_.225
+_OBJC_SELECTOR_REFERENCES_.227
+___block_descriptor_32_e18_v16?0"NSNumber"8l
+___block_literal_global.229
+_OBJC_CLASSLIST_REFERENCES_$_.230
+_OBJC_SELECTOR_REFERENCES_.236
+___block_literal_global.237
+_OBJC_SELECTOR_REFERENCES_.239
+_OBJC_CLASSLIST_REFERENCES_$_.240
+__OBJC_$_CLASS_METHODS_OutbrainHelper
+__OBJC_METACLASS_RO_$_OutbrainHelper
+__OBJC_$_INSTANCE_METHODS_OutbrainHelper
+_OBJC_IVAR_$_OutbrainHelper._tokensHandler
+_OBJC_IVAR_$_OutbrainHelper._apvCache
+__OBJC_$_INSTANCE_VARIABLES_OutbrainHelper
+__OBJC_$_PROP_LIST_OutbrainHelper
+__OBJC_CLASS_RO_$_OutbrainHelper
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Helpers/OutbrainHelper.m
+OutbrainSDK/Helpers/OutbrainHelper.m
+OutbrainSDK/Helpers/OutbrainHelper.h
+__52-[OutbrainHelper _updateViewbilityStatsForResponse:]_block_invoke_2
+__52-[OutbrainHelper _updateViewbilityStatsForResponse:]_block_invoke
+__46-[OutbrainHelper recommendationURLForRequest:]_block_invoke
+__32+[OutbrainHelper sharedInstance]_block_invoke
++[OBDisclosure requiredKeys]
++[OBDisclosure propertiesMap]
++[OBDisclosure propertyClassForKey:]
++[OBDisclosure convertedValue:withClass:]
+-[OBDisclosure imageUrl]
+-[OBDisclosure setImageUrl:]
+-[OBDisclosure clickUrl]
+-[OBDisclosure setClickUrl:]
+-[OBDisclosure .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.22
+_OBJC_IVAR_$_OBDisclosure._imageUrl
+_OBJC_IVAR_$_OBDisclosure._clickUrl
+__OBJC_$_CLASS_METHODS_OBDisclosure
+__OBJC_METACLASS_RO_$_OBDisclosure
+__OBJC_$_INSTANCE_METHODS_OBDisclosure
+__OBJC_$_INSTANCE_VARIABLES_OBDisclosure
+__OBJC_$_PROP_LIST_OBDisclosure
+__OBJC_CLASS_RO_$_OBDisclosure
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Content/OBDisclosure.m
+OutbrainSDK/Models/Content/OBDisclosure.m
+OutbrainSDK/Models/Content/OBDisclosure.h
++[OBRecommendationResponse contentWithPayload:]
++[OBRecommendationResponse requiredKeys]
+-[OBRecommendationResponse recommendations]
+-[OBRecommendationResponse setRecommendations:]
+-[OBRecommendationResponse settings]
+-[OBRecommendationResponse setSettings:]
+-[OBRecommendationResponse responseRequest]
+-[OBRecommendationResponse setResponseRequest:]
+-[OBRecommendationResponse .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.25
+_OBJC_IVAR_$_OBRecommendationResponse._recommendations
+_OBJC_IVAR_$_OBRecommendationResponse._settings
+_OBJC_IVAR_$_OBRecommendationResponse._responseRequest
+__OBJC_$_CLASS_METHODS_OBRecommendationResponse
+__OBJC_METACLASS_RO_$_OBRecommendationResponse
+__OBJC_$_INSTANCE_METHODS_OBRecommendationResponse
+__OBJC_$_INSTANCE_VARIABLES_OBRecommendationResponse
+__OBJC_$_PROP_LIST_OBRecommendationResponse
+__OBJC_CLASS_RO_$_OBRecommendationResponse
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Responses/OBRecommendationResponse.m
+OutbrainSDK/Models/Responses/OBRecommendationResponse.m
+OutbrainSDK/Models/Responses/OBRecommendationResponse.h
+-[SFHorizontalTableViewCell horizontalView]
+-[SFHorizontalTableViewCell setHorizontalView:]
+-[SFHorizontalTableViewCell titleLabel]
+-[SFHorizontalTableViewCell setTitleLabel:]
+-[SFHorizontalTableViewCell publisherImageView]
+-[SFHorizontalTableViewCell setPublisherImageView:]
+-[SFHorizontalTableViewCell horizontalViewTrailingConstraint]
+-[SFHorizontalTableViewCell setHorizontalViewTrailingConstraint:]
+-[SFHorizontalTableViewCell horizontalViewLeadingConstraint]
+-[SFHorizontalTableViewCell setHorizontalViewLeadingConstraint:]
+-[SFHorizontalTableViewCell cellTitleLeadingConstraint]
+-[SFHorizontalTableViewCell setCellTitleLeadingConstraint:]
+-[SFHorizontalTableViewCell .cxx_destruct]
+_OBJC_IVAR_$_SFHorizontalTableViewCell._horizontalView
+_OBJC_IVAR_$_SFHorizontalTableViewCell._titleLabel
+_OBJC_IVAR_$_SFHorizontalTableViewCell._publisherImageView
+_OBJC_IVAR_$_SFHorizontalTableViewCell._horizontalViewTrailingConstraint
+_OBJC_IVAR_$_SFHorizontalTableViewCell._horizontalViewLeadingConstraint
+_OBJC_IVAR_$_SFHorizontalTableViewCell._cellTitleLeadingConstraint
+__OBJC_CLASS_PROTOCOLS_$_SFHorizontalTableViewCell
+__OBJC_METACLASS_RO_$_SFHorizontalTableViewCell
+__OBJC_$_INSTANCE_METHODS_SFHorizontalTableViewCell
+__OBJC_$_INSTANCE_VARIABLES_SFHorizontalTableViewCell
+__OBJC_$_PROP_LIST_SFHorizontalTableViewCell
+__OBJC_CLASS_RO_$_SFHorizontalTableViewCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersTableView/SFHorizontalTableViewCell.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersTableView/SFHorizontalTableViewCell.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersTableView/SFHorizontalTableViewCell.h
+-[SFHorizontalViewFixed setupView]
+-[SFHorizontalViewFixed collectionView:layout:insetForSectionAtIndex:]
+-[SFHorizontalViewFixed collectionView:layout:sizeForItemAtIndexPath:]
+__OBJC_METACLASS_RO_$_SFHorizontalViewFixed
+__OBJC_$_INSTANCE_METHODS_SFHorizontalViewFixed
+__OBJC_CLASS_RO_$_SFHorizontalViewFixed
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalViewFixed.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalViewFixed.m
+-[OBRecommendationRequestOperation initWithRequest:]
+-[OBRecommendationRequestOperation main]
+-[OBRecommendationRequestOperation createResponseWithDict:withError:]
+-[OBRecommendationRequestOperation parseResponseData:]
+-[OBRecommendationRequestOperation didFailWithError:]
+-[OBRecommendationRequestOperation startODBRequest]
+___51-[OBRecommendationRequestOperation startODBRequest]_block_invoke
+-[OBRecommendationRequestOperation taskCompletedWith:response:error:]
+-[OBRecommendationRequestOperation notifyAppHandler:]
+___53-[OBRecommendationRequestOperation notifyAppHandler:]_block_invoke
+-[OBRecommendationRequestOperation didReceiveResponseReturnedWithError:]
+-[OBRecommendationRequestOperation generateOBRecResponseWithNetworkError:]
++[OBRecommendationRequestOperation _filterInvalidRecsForResponse:]
+-[OBRecommendationRequestOperation handler]
+-[OBRecommendationRequestOperation setHandler:]
+-[OBRecommendationRequestOperation requestStartDate]
+-[OBRecommendationRequestOperation setRequestStartDate:]
+-[OBRecommendationRequestOperation request]
+-[OBRecommendationRequestOperation setRequest:]
+-[OBRecommendationRequestOperation url]
+-[OBRecommendationRequestOperation setUrl:]
+-[OBRecommendationRequestOperation .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.13
+_OBJC_CLASSLIST_REFERENCES_$_.16
+_OBJC_CLASSLIST_REFERENCES_$_.39
+_OBJC_SELECTOR_REFERENCES_.96
+_OBJC_CLASSLIST_REFERENCES_$_.97
+_OBJC_CLASSLIST_REFERENCES_$_.102
+_OBJC_CLASSLIST_REFERENCES_$_.127
+_OBJC_SELECTOR_REFERENCES_.137
+_OBJC_IVAR_$_OBRecommendationRequestOperation._handler
+_OBJC_IVAR_$_OBRecommendationRequestOperation._requestStartDate
+_OBJC_IVAR_$_OBRecommendationRequestOperation._request
+_OBJC_IVAR_$_OBRecommendationRequestOperation._url
+__OBJC_$_CLASS_METHODS_OBRecommendationRequestOperation
+__OBJC_METACLASS_RO_$_OBRecommendationRequestOperation
+__OBJC_$_INSTANCE_METHODS_OBRecommendationRequestOperation
+__OBJC_$_INSTANCE_VARIABLES_OBRecommendationRequestOperation
+__OBJC_$_PROP_LIST_OBRecommendationRequestOperation
+__OBJC_CLASS_RO_$_OBRecommendationRequestOperation
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Network/OBRecommendationRequestOperation.m
+OutbrainSDK/Network/OBRecommendationRequestOperation.m
+OutbrainSDK/Network/OBRecommendationRequestOperation.h
+__53-[OBRecommendationRequestOperation notifyAppHandler:]_block_invoke
+__51-[OBRecommendationRequestOperation startODBRequest]_block_invoke
++[SFImageLoader sharedInstance]
+___31+[SFImageLoader sharedInstance]_block_invoke
+-[SFImageLoader loadRecImage:into:withFadeDuration:]
+-[SFImageLoader loadImageUrl:into:]
+-[SFImageLoader loadImageUrl:into:withFadeDuration:]
+___52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke
+___copy_helper_block_e8_32s40s48s56s
+___destroy_helper_block_e8_32s40s48s56s
+___52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke.84
+___52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke_2
+-[SFImageLoader loadGifImageUrl:into:]
+___38-[SFImageLoader loadGifImageUrl:into:]_block_invoke
+-[SFImageLoader loadImage:withFadeInDuration:toImageView:]
+___58-[SFImageLoader loadImage:withFadeInDuration:toImageView:]_block_invoke
+-[SFImageLoader loadImage:intoButton:]
+___38-[SFImageLoader loadImage:intoButton:]_block_invoke
+___38-[SFImageLoader loadImage:intoButton:]_block_invoke.143
+___38-[SFImageLoader loadImage:intoButton:]_block_invoke_2
+-[SFImageLoader loadImageToCacheIfNeeded:]
+___42-[SFImageLoader loadImageToCacheIfNeeded:]_block_invoke
+-[SFImageLoader removeViewWithTag:fromSuperView:]
+-[SFImageLoader imageCache]
+-[SFImageLoader setImageCache:]
+-[SFImageLoader imageLoadedOnceDict]
+-[SFImageLoader setImageLoadedOnceDict:]
+-[SFImageLoader imageQueue]
+-[SFImageLoader setImageQueue:]
+-[SFImageLoader placeholderImage]
+-[SFImageLoader setPlaceholderImage:]
+-[SFImageLoader adChoicesDefaultImage]
+-[SFImageLoader setAdChoicesDefaultImage:]
+-[SFImageLoader gifImageTemplateHTML]
+-[SFImageLoader setGifImageTemplateHTML:]
+-[SFImageLoader .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.1
+_OBJC_SELECTOR_REFERENCES_.3
+_OBJC_CLASSLIST_REFERENCES_$_.19
+_OBJC_CLASSLIST_REFERENCES_$_.75
+___block_descriptor_80_e8_32s40s48s56s_e5_v8?0l
+___block_descriptor_72_e8_32s40s48s_e5_v8?0l
+_OBJC_CLASSLIST_REFERENCES_$_.93
+_OBJC_CLASSLIST_REFERENCES_$_.104
+_OBJC_CLASSLIST_REFERENCES_$_.131
+_OBJC_CLASSLIST_REFERENCES_$_.138
+___block_descriptor_56_e8_32s40s48s_e5_v8?0l
+__OBJC_$_CLASS_METHODS_SFImageLoader
+__OBJC_METACLASS_RO_$_SFImageLoader
+__OBJC_$_INSTANCE_METHODS_SFImageLoader
+_OBJC_IVAR_$_SFImageLoader._imageCache
+_OBJC_IVAR_$_SFImageLoader._imageLoadedOnceDict
+_OBJC_IVAR_$_SFImageLoader._imageQueue
+_OBJC_IVAR_$_SFImageLoader._placeholderImage
+_OBJC_IVAR_$_SFImageLoader._adChoicesDefaultImage
+_OBJC_IVAR_$_SFImageLoader._gifImageTemplateHTML
+__OBJC_$_INSTANCE_VARIABLES_SFImageLoader
+__OBJC_$_PROP_LIST_SFImageLoader
+__OBJC_CLASS_RO_$_SFImageLoader
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFUtils/SFImageLoader.m
+OutbrainSDK/SmartFeed/SFUtils/SFImageLoader.m
+__42-[SFImageLoader loadImageToCacheIfNeeded:]_block_invoke
+__38-[SFImageLoader loadImage:intoButton:]_block_invoke_2
+__38-[SFImageLoader loadImage:intoButton:]_block_invoke.143
+__38-[SFImageLoader loadImage:intoButton:]_block_invoke
+__58-[SFImageLoader loadImage:withFadeInDuration:toImageView:]_block_invoke
+__38-[SFImageLoader loadGifImageUrl:into:]_block_invoke
+__52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke_2
+__52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke.84
+__destroy_helper_block_e8_32s40s48s56s
+__copy_helper_block_e8_32s40s48s56s
+__52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke
+__31+[SFImageLoader sharedInstance]_block_invoke
+-[OBSettings initWithPayload:]
+-[OBSettings apv]
+-[OBSettings setApv:]
+-[OBSettings isRTL]
+-[OBSettings setIsRTL:]
+-[OBSettings isSmartFeed]
+-[OBSettings setIsSmartFeed:]
+-[OBSettings isTrendingInCategoryCard]
+-[OBSettings setIsTrendingInCategoryCard:]
+-[OBSettings feedCyclesLimit]
+-[OBSettings setFeedCyclesLimit:]
+-[OBSettings feedChunkSize]
+-[OBSettings setFeedChunkSize:]
+-[OBSettings recMode]
+-[OBSettings setRecMode:]
+-[OBSettings widgetHeaderText]
+-[OBSettings setWidgetHeaderText:]
+-[OBSettings widgetHeaderTextColor]
+-[OBSettings setWidgetHeaderTextColor:]
+-[OBSettings videoUrl]
+-[OBSettings setVideoUrl:]
+-[OBSettings smartfeedShadowColor]
+-[OBSettings setSmartfeedShadowColor:]
+-[OBSettings feedContentArray]
+-[OBSettings setFeedContentArray:]
+-[OBSettings paidLabelText]
+-[OBSettings setPaidLabelText:]
+-[OBSettings paidLabelTextColor]
+-[OBSettings setPaidLabelTextColor:]
+-[OBSettings paidLabelBackgroundColor]
+-[OBSettings setPaidLabelBackgroundColor:]
+-[OBSettings organicSourceFormat]
+-[OBSettings setOrganicSourceFormat:]
+-[OBSettings paidSourceFormat]
+-[OBSettings setPaidSourceFormat:]
+-[OBSettings isViewabilityPerListingEnabled]
+-[OBSettings setIsViewabilityPerListingEnabled:]
+-[OBSettings viewabilityPerListingReportingIntervalMillis]
+-[OBSettings setViewabilityPerListingReportingIntervalMillis:]
+-[OBSettings readMoreButtonText]
+-[OBSettings setReadMoreButtonText:]
+-[OBSettings viewabilityActions]
+-[OBSettings setViewabilityActions:]
+-[OBSettings brandedCarouselSettings]
+-[OBSettings setBrandedCarouselSettings:]
+-[OBSettings shouldShowCtaButton]
+-[OBSettings setShouldShowCtaButton:]
+-[OBSettings abTitleFontSize]
+-[OBSettings setAbTitleFontSize:]
+-[OBSettings abTitleFontStyle]
+-[OBSettings setAbTitleFontStyle:]
+-[OBSettings abSourceFontSize]
+-[OBSettings setAbSourceFontSize:]
+-[OBSettings abSourceFontColor]
+-[OBSettings setAbSourceFontColor:]
+-[OBSettings abImageFadeAnimation]
+-[OBSettings setAbImageFadeAnimation:]
+-[OBSettings abImageFadeDuration]
+-[OBSettings setAbImageFadeDuration:]
+-[OBSettings .cxx_destruct]
+__OBJC_METACLASS_RO_$_OBSettings
+__OBJC_$_INSTANCE_METHODS_OBSettings
+_OBJC_IVAR_$_OBSettings._apv
+_OBJC_IVAR_$_OBSettings._isRTL
+_OBJC_IVAR_$_OBSettings._isSmartFeed
+_OBJC_IVAR_$_OBSettings._isTrendingInCategoryCard
+_OBJC_IVAR_$_OBSettings._isViewabilityPerListingEnabled
+_OBJC_IVAR_$_OBSettings._shouldShowCtaButton
+_OBJC_IVAR_$_OBSettings._abImageFadeAnimation
+_OBJC_IVAR_$_OBSettings._feedCyclesLimit
+_OBJC_IVAR_$_OBSettings._feedChunkSize
+_OBJC_IVAR_$_OBSettings._recMode
+_OBJC_IVAR_$_OBSettings._widgetHeaderText
+_OBJC_IVAR_$_OBSettings._widgetHeaderTextColor
+_OBJC_IVAR_$_OBSettings._videoUrl
+_OBJC_IVAR_$_OBSettings._smartfeedShadowColor
+_OBJC_IVAR_$_OBSettings._feedContentArray
+_OBJC_IVAR_$_OBSettings._paidLabelText
+_OBJC_IVAR_$_OBSettings._paidLabelTextColor
+_OBJC_IVAR_$_OBSettings._paidLabelBackgroundColor
+_OBJC_IVAR_$_OBSettings._organicSourceFormat
+_OBJC_IVAR_$_OBSettings._paidSourceFormat
+_OBJC_IVAR_$_OBSettings._viewabilityPerListingReportingIntervalMillis
+_OBJC_IVAR_$_OBSettings._readMoreButtonText
+_OBJC_IVAR_$_OBSettings._viewabilityActions
+_OBJC_IVAR_$_OBSettings._brandedCarouselSettings
+_OBJC_IVAR_$_OBSettings._abTitleFontSize
+_OBJC_IVAR_$_OBSettings._abTitleFontStyle
+_OBJC_IVAR_$_OBSettings._abSourceFontSize
+_OBJC_IVAR_$_OBSettings._abSourceFontColor
+_OBJC_IVAR_$_OBSettings._abImageFadeDuration
+__OBJC_$_INSTANCE_VARIABLES_OBSettings
+__OBJC_$_PROP_LIST_OBSettings
+__OBJC_CLASS_RO_$_OBSettings
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Responses/OBSettings.m
+OutbrainSDK/Models/Responses/OBSettings.m
+OutbrainSDK/Models/Responses/OBSettings.h
+-[SFTableViewManager initWithTableView:]
+-[SFTableViewManager orientationChanged:]
+___41-[SFTableViewManager orientationChanged:]_block_invoke
+-[SFTableViewManager registerSingleItemNib:forCellWithReuseIdentifier:]
+-[SFTableViewManager tableView:headerCellForRowAtIndexPath:isRTL:]
+-[SFTableViewManager tableView:readMoreCellAtIndexPath:]
+-[SFTableViewManager tableView:cellForRowAtIndexPath:sfItemType:]
+-[SFTableViewManager heightForRowAtIndexPath:withSFItem:]
+-[SFTableViewManager configureVideoCell:atIndexPath:withSFItem:]
+-[SFTableViewManager configureSingleTableViewCell:atIndexPath:withSFItem:]
+-[SFTableViewManager configureCtaLabelInCell:withCtaText:isCustomUI:shouldShowCtaButton:]
+-[SFTableViewManager configureReadMoreTableViewCell:withButtonText:]
+-[SFTableViewManager eventListenerTarget]
+-[SFTableViewManager setEventListenerTarget:]
+-[SFTableViewManager wkWebviewDelegate]
+-[SFTableViewManager setWkWebviewDelegate:]
+-[SFTableViewManager tableView]
+-[SFTableViewManager setTableView:]
+-[SFTableViewManager displaySourceOnOrganicRec]
+-[SFTableViewManager setDisplaySourceOnOrganicRec:]
+-[SFTableViewManager disableCellShadows]
+-[SFTableViewManager setDisableCellShadows:]
+-[SFTableViewManager .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.47
+_OBJC_CLASSLIST_REFERENCES_$_.82
+_OBJC_CLASSLIST_REFERENCES_$_.94
+_OBJC_CLASSLIST_REFERENCES_$_.182
+_OBJC_CLASSLIST_REFERENCES_$_.249
+_OBJC_SELECTOR_REFERENCES_.251
+_OBJC_SELECTOR_REFERENCES_.253
+_OBJC_SELECTOR_REFERENCES_.257
+_OBJC_SELECTOR_REFERENCES_.263
+_OBJC_SELECTOR_REFERENCES_.265
+_OBJC_SELECTOR_REFERENCES_.267
+_OBJC_SELECTOR_REFERENCES_.269
+_OBJC_CLASSLIST_REFERENCES_$_.270
+_OBJC_SELECTOR_REFERENCES_.272
+_OBJC_SELECTOR_REFERENCES_.274
+_OBJC_SELECTOR_REFERENCES_.276
+_OBJC_SELECTOR_REFERENCES_.278
+_OBJC_SELECTOR_REFERENCES_.280
+_OBJC_SELECTOR_REFERENCES_.282
+_OBJC_SELECTOR_REFERENCES_.284
+_OBJC_SELECTOR_REFERENCES_.286
+_OBJC_SELECTOR_REFERENCES_.290
+_OBJC_SELECTOR_REFERENCES_.296
+_OBJC_SELECTOR_REFERENCES_.306
+_OBJC_SELECTOR_REFERENCES_.330
+__OBJC_CLASS_PROTOCOLS_$_SFTableViewManager
+__OBJC_METACLASS_RO_$_SFTableViewManager
+__OBJC_$_INSTANCE_METHODS_SFTableViewManager
+_OBJC_IVAR_$_SFTableViewManager._displaySourceOnOrganicRec
+_OBJC_IVAR_$_SFTableViewManager._disableCellShadows
+_OBJC_IVAR_$_SFTableViewManager._eventListenerTarget
+_OBJC_IVAR_$_SFTableViewManager._wkWebviewDelegate
+_OBJC_IVAR_$_SFTableViewManager._tableView
+__OBJC_$_INSTANCE_VARIABLES_SFTableViewManager
+__OBJC_$_PROP_LIST_SFTableViewManager
+__OBJC_CLASS_RO_$_SFTableViewManager
+_OBJC_SELECTOR_REFERENCES_.426
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SmartFeedManager/SFTableViewManager.m
+OutbrainSDK/SmartFeed/SmartFeedManager/SFTableViewManager.m
+OutbrainSDK/SmartFeed/SmartFeedManager/SFTableViewManager.h
+__41-[SFTableViewManager orientationChanged:]_block_invoke
+-[SFVideoCollectionViewCell initWithCoder:]
+-[SFVideoCollectionViewCell prepareForReuse]
+-[SFVideoCollectionViewCell webview]
+-[SFVideoCollectionViewCell setWebview:]
+-[SFVideoCollectionViewCell sfItem]
+-[SFVideoCollectionViewCell setSfItem:]
+-[SFVideoCollectionViewCell wkScriptMessageHandler]
+-[SFVideoCollectionViewCell setWkScriptMessageHandler:]
+-[SFVideoCollectionViewCell .cxx_destruct]
+_OBJC_IVAR_$_SFVideoCollectionViewCell._webview
+_OBJC_IVAR_$_SFVideoCollectionViewCell._sfItem
+_OBJC_IVAR_$_SFVideoCollectionViewCell._wkScriptMessageHandler
+__OBJC_CLASS_PROTOCOLS_$_SFVideoCollectionViewCell
+__OBJC_METACLASS_RO_$_SFVideoCollectionViewCell
+__OBJC_$_INSTANCE_METHODS_SFVideoCollectionViewCell
+__OBJC_$_INSTANCE_VARIABLES_SFVideoCollectionViewCell
+__OBJC_$_PROP_LIST_SFVideoCollectionViewCell
+__OBJC_CLASS_RO_$_SFVideoCollectionViewCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFVideoCollectionViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFVideoCollectionViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFVideoCollectionViewCell.h
++[OBAppleAdIdUtil isOptedOut]
++[OBAppleAdIdUtil getAdvertiserId]
+_OBJC_CLASSLIST_REFERENCES_$_.6
+_OBJC_CLASSLIST_REFERENCES_$_.11
+__OBJC_$_CLASS_METHODS_OBAppleAdIdUtil
+__OBJC_METACLASS_RO_$_OBAppleAdIdUtil
+__OBJC_CLASS_RO_$_OBAppleAdIdUtil
+/Users/distiller/repo/SDK-sources/OutbrainSDK/AdIds/OBAppleAdIdUtil.m
+OutbrainSDK/AdIds/OBAppleAdIdUtil.m
+-[SFVideoTableViewCell awakeFromNib]
+-[SFVideoTableViewCell initWithCoder:]
+-[SFVideoTableViewCell webview]
+-[SFVideoTableViewCell setWebview:]
+-[SFVideoTableViewCell sfItem]
+-[SFVideoTableViewCell setSfItem:]
+-[SFVideoTableViewCell wkScriptMessageHandler]
+-[SFVideoTableViewCell setWkScriptMessageHandler:]
+-[SFVideoTableViewCell .cxx_destruct]
+_OBJC_IVAR_$_SFVideoTableViewCell._webview
+_OBJC_IVAR_$_SFVideoTableViewCell._sfItem
+_OBJC_IVAR_$_SFVideoTableViewCell._wkScriptMessageHandler
+__OBJC_CLASS_PROTOCOLS_$_SFVideoTableViewCell
+__OBJC_METACLASS_RO_$_SFVideoTableViewCell
+__OBJC_$_INSTANCE_METHODS_SFVideoTableViewCell
+__OBJC_$_INSTANCE_VARIABLES_SFVideoTableViewCell
+__OBJC_$_PROP_LIST_SFVideoTableViewCell
+__OBJC_CLASS_RO_$_SFVideoTableViewCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFVideoTableViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFVideoTableViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFVideoTableViewCell.h
+-[PageCollectionLayout init]
+-[PageCollectionLayout initWithItemSize:]
+-[PageCollectionLayout invalidateLayoutWithContext:]
+-[PageCollectionLayout configureInset]
+-[PageCollectionLayout shouldInvalidateLayoutForBoundsChange:]
+-[PageCollectionLayout layoutAttributesForElementsInRect:]
+-[PageCollectionLayout targetContentOffsetForProposedContentOffset:withScrollingVelocity:]
+__OBJC_METACLASS_RO_$_PageCollectionLayout
+__OBJC_$_INSTANCE_METHODS_PageCollectionLayout
+__OBJC_CLASS_RO_$_PageCollectionLayout
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/PageCollectionLayout.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/PageCollectionLayout.m
+__CGSizeEqualToSize
+/Applications/Xcode-12.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.3.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
+-[SFWeeklyHighlightsSingleRecView recImageView]
+-[SFWeeklyHighlightsSingleRecView setRecImageView:]
+-[SFWeeklyHighlightsSingleRecView recTitleLabel]
+-[SFWeeklyHighlightsSingleRecView setRecTitleLabel:]
+-[SFWeeklyHighlightsSingleRecView .cxx_destruct]
+_OBJC_IVAR_$_SFWeeklyHighlightsSingleRecView._recImageView
+_OBJC_IVAR_$_SFWeeklyHighlightsSingleRecView._recTitleLabel
+__OBJC_METACLASS_RO_$_SFWeeklyHighlightsSingleRecView
+__OBJC_$_INSTANCE_METHODS_SFWeeklyHighlightsSingleRecView
+__OBJC_$_INSTANCE_VARIABLES_SFWeeklyHighlightsSingleRecView
+__OBJC_$_PROP_LIST_SFWeeklyHighlightsSingleRecView
+__OBJC_CLASS_RO_$_SFWeeklyHighlightsSingleRecView
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/BaseCellClasses/WeeklyHighlightsBaseClasses/SFWeeklyHighlightsSingleRecView.m
+OutbrainSDK/SmartFeed/BaseCellClasses/WeeklyHighlightsBaseClasses/SFWeeklyHighlightsSingleRecView.m
+OutbrainSDK/SmartFeed/BaseCellClasses/WeeklyHighlightsBaseClasses/SFWeeklyHighlightsSingleRecView.h
+-[OBBrandedCarouselSettings initWithPayload:]
+-[OBBrandedCarouselSettings carouselTitle]
+-[OBBrandedCarouselSettings setCarouselTitle:]
+-[OBBrandedCarouselSettings carouselSponsor]
+-[OBBrandedCarouselSettings setCarouselSponsor:]
+-[OBBrandedCarouselSettings carouselType]
+-[OBBrandedCarouselSettings setCarouselType:]
+-[OBBrandedCarouselSettings carouselClickUrl]
+-[OBBrandedCarouselSettings setCarouselClickUrl:]
+-[OBBrandedCarouselSettings image]
+-[OBBrandedCarouselSettings setImage:]
+-[OBBrandedCarouselSettings .cxx_destruct]
+__OBJC_METACLASS_RO_$_OBBrandedCarouselSettings
+__OBJC_$_INSTANCE_METHODS_OBBrandedCarouselSettings
+_OBJC_IVAR_$_OBBrandedCarouselSettings._carouselTitle
+_OBJC_IVAR_$_OBBrandedCarouselSettings._carouselSponsor
+_OBJC_IVAR_$_OBBrandedCarouselSettings._carouselType
+_OBJC_IVAR_$_OBBrandedCarouselSettings._carouselClickUrl
+_OBJC_IVAR_$_OBBrandedCarouselSettings._image
+__OBJC_$_INSTANCE_VARIABLES_OBBrandedCarouselSettings
+__OBJC_$_PROP_LIST_OBBrandedCarouselSettings
+__OBJC_CLASS_RO_$_OBBrandedCarouselSettings
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Responses/OBBrandedCarouselSettings.m
+OutbrainSDK/Models/Responses/OBBrandedCarouselSettings.m
+OutbrainSDK/Models/Responses/OBBrandedCarouselSettings.h
++[OBRequest requestWithURL:widgetID:]
++[OBRequest requestWithURL:widgetID:widgetIndex:]
++[OBRequest privateRequestWithURL:widgetID:widgetIndex:]
+-[OBRequest isEqualToOBRequest:]
+-[OBRequest isEqual:]
+-[OBRequest hash]
+-[OBRequest description]
+-[OBRequest url]
+-[OBRequest setUrl:]
+-[OBRequest widgetId]
+-[OBRequest setWidgetId:]
+-[OBRequest widgetIndex]
+-[OBRequest setWidgetIndex:]
+-[OBRequest lastCardIdx]
+-[OBRequest setLastCardIdx:]
+-[OBRequest lastIdx]
+-[OBRequest setLastIdx:]
+-[OBRequest isMultivac]
+-[OBRequest setIsMultivac:]
+-[OBRequest externalID]
+-[OBRequest setExternalID:]
+-[OBRequest fab]
+-[OBRequest setFab:]
+-[OBRequest .cxx_destruct]
+__OBJC_$_CLASS_METHODS_OBRequest
+__OBJC_METACLASS_RO_$_OBRequest
+__OBJC_$_INSTANCE_METHODS_OBRequest
+_OBJC_IVAR_$_OBRequest._isMultivac
+_OBJC_IVAR_$_OBRequest._url
+_OBJC_IVAR_$_OBRequest._widgetId
+_OBJC_IVAR_$_OBRequest._widgetIndex
+_OBJC_IVAR_$_OBRequest._lastCardIdx
+_OBJC_IVAR_$_OBRequest._lastIdx
+_OBJC_IVAR_$_OBRequest._externalID
+_OBJC_IVAR_$_OBRequest._fab
+__OBJC_$_INSTANCE_VARIABLES_OBRequest
+__OBJC_$_PROP_LIST_OBRequest
+__OBJC_CLASS_RO_$_OBRequest
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Requests/OBRequest.m
+OutbrainSDK/Models/Requests/OBRequest.m
+OutbrainSDK/Models/Requests/OBRequest.h
++[GDPRUtils sharedInstance]
+___27+[GDPRUtils sharedInstance]_block_invoke
+-[GDPRUtils gdprV1ConsentString]
+-[GDPRUtils gdprV2ConsentString]
+-[GDPRUtils ccpaPrivacyString]
+-[GDPRUtils subjectToGDPR]
+-[GDPRUtils cmpPresent]
+-[GDPRUtils parsedVendorConsents]
+-[GDPRUtils parsedPurposeConsents]
+-[GDPRUtils isVendorConsentGivenFor:]
+-[GDPRUtils isPurposeConsentGivenFor:]
+-[GDPRUtils userDefaults]
+-[GDPRUtils setUserDefaults:]
+-[GDPRUtils .cxx_destruct]
+__OBJC_$_CLASS_METHODS_GDPRUtils
+__OBJC_METACLASS_RO_$_GDPRUtils
+__OBJC_$_INSTANCE_METHODS_GDPRUtils
+_OBJC_IVAR_$_GDPRUtils._userDefaults
+__OBJC_$_INSTANCE_VARIABLES_GDPRUtils
+__OBJC_$_PROP_LIST_GDPRUtils
+__OBJC_CLASS_RO_$_GDPRUtils
+/Users/distiller/repo/SDK-sources/OutbrainSDK/GDPR/GDPRUtils.m
+OutbrainSDK/GDPR/GDPRUtils.m
+OutbrainSDK/GDPR/GDPRUtils.h
+__27+[GDPRUtils sharedInstance]_block_invoke
++[OBReachability reachabilityWithHostName:]
++[OBReachability reachabilityWithAddress:]
++[OBReachability reachabilityForInternetConnection]
+-[OBReachability startNotifier]
+_ReachabilityCallback
+-[OBReachability stopNotifier]
+-[OBReachability dealloc]
+-[OBReachability networkStatusForFlags:]
+-[OBReachability connectionRequired]
+-[OBReachability currentReachabilityStatus]
+__OBJC_$_CLASS_METHODS_OBReachability
+__OBJC_METACLASS_RO_$_OBReachability
+__OBJC_$_INSTANCE_METHODS_OBReachability
+_OBJC_IVAR_$_OBReachability._reachabilityRef
+__OBJC_$_INSTANCE_VARIABLES_OBReachability
+__OBJC_CLASS_RO_$_OBReachability
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Network/Reachability/OBReachability.m
+OutbrainSDK/Network/Reachability/OBReachability.m
+ReachabilityCallback
+-[UIView(Visible) percentVisible]
+__OBJC_$_CATEGORY_INSTANCE_METHODS_UIView_$_Visible
+__OBJC_$_CATEGORY_UIView_$_Visible
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Viewability/UIView+Visible.m
+OutbrainSDK/Viewability/UIView+Visible.m
+-[SFWeeklyHighlightsItemCell dateView]
+-[SFWeeklyHighlightsItemCell setDateView:]
+-[SFWeeklyHighlightsItemCell dateLabel]
+-[SFWeeklyHighlightsItemCell setDateLabel:]
+-[SFWeeklyHighlightsItemCell recOneView]
+-[SFWeeklyHighlightsItemCell setRecOneView:]
+-[SFWeeklyHighlightsItemCell recTwoView]
+-[SFWeeklyHighlightsItemCell setRecTwoView:]
+-[SFWeeklyHighlightsItemCell recThreeView]
+-[SFWeeklyHighlightsItemCell setRecThreeView:]
+-[SFWeeklyHighlightsItemCell .cxx_destruct]
+_OBJC_IVAR_$_SFWeeklyHighlightsItemCell._dateView
+_OBJC_IVAR_$_SFWeeklyHighlightsItemCell._dateLabel
+_OBJC_IVAR_$_SFWeeklyHighlightsItemCell._recOneView
+_OBJC_IVAR_$_SFWeeklyHighlightsItemCell._recTwoView
+_OBJC_IVAR_$_SFWeeklyHighlightsItemCell._recThreeView
+__OBJC_METACLASS_RO_$_SFWeeklyHighlightsItemCell
+__OBJC_$_INSTANCE_METHODS_SFWeeklyHighlightsItemCell
+__OBJC_$_INSTANCE_VARIABLES_SFWeeklyHighlightsItemCell
+__OBJC_$_PROP_LIST_SFWeeklyHighlightsItemCell
+__OBJC_CLASS_RO_$_SFWeeklyHighlightsItemCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/BaseCellClasses/WeeklyHighlightsBaseClasses/SFWeeklyHighlightsItemCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/WeeklyHighlightsBaseClasses/SFWeeklyHighlightsItemCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/WeeklyHighlightsBaseClasses/SFWeeklyHighlightsItemCell.h
+-[SFHorizontalWithVideoCollectionViewCell initWithCoder:]
+-[SFHorizontalWithVideoCollectionViewCell webview]
+-[SFHorizontalWithVideoCollectionViewCell setWebview:]
+-[SFHorizontalWithVideoCollectionViewCell sfItem]
+-[SFHorizontalWithVideoCollectionViewCell setSfItem:]
+-[SFHorizontalWithVideoCollectionViewCell wkScriptMessageHandler]
+-[SFHorizontalWithVideoCollectionViewCell setWkScriptMessageHandler:]
+-[SFHorizontalWithVideoCollectionViewCell .cxx_destruct]
+_OBJC_IVAR_$_SFHorizontalWithVideoCollectionViewCell._webview
+_OBJC_IVAR_$_SFHorizontalWithVideoCollectionViewCell._sfItem
+_OBJC_IVAR_$_SFHorizontalWithVideoCollectionViewCell._wkScriptMessageHandler
+__OBJC_CLASS_PROTOCOLS_$_SFHorizontalWithVideoCollectionViewCell
+__OBJC_METACLASS_RO_$_SFHorizontalWithVideoCollectionViewCell
+__OBJC_$_INSTANCE_METHODS_SFHorizontalWithVideoCollectionViewCell
+__OBJC_$_INSTANCE_VARIABLES_SFHorizontalWithVideoCollectionViewCell
+__OBJC_$_PROP_LIST_SFHorizontalWithVideoCollectionViewCell
+__OBJC_CLASS_RO_$_SFHorizontalWithVideoCollectionViewCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFHorizontalWithVideoCollectionViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFHorizontalWithVideoCollectionViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/VideoBaseClasses/SFHorizontalWithVideoCollectionViewCell.h
+-[SFHorizontalViewCarousel setupView]
+-[SFHorizontalViewCarousel resetLayout:]
+__OBJC_METACLASS_RO_$_SFHorizontalViewCarousel
+__OBJC_$_INSTANCE_METHODS_SFHorizontalViewCarousel
+__OBJC_CLASS_RO_$_SFHorizontalViewCarousel
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalViewCarousel.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalViewCarousel.m
++[OBImageInfo contentWithPayload:]
++[OBImageInfo requiredKeys]
++[OBImageInfo propertiesMap]
++[OBImageInfo propertyClassForKey:]
+-[OBImageInfo url]
+-[OBImageInfo setUrl:]
+-[OBImageInfo width]
+-[OBImageInfo setWidth:]
+-[OBImageInfo height]
+-[OBImageInfo setHeight:]
+-[OBImageInfo isGif]
+-[OBImageInfo setIsGif:]
+-[OBImageInfo .cxx_destruct]
+_OBJC_IVAR_$_OBImageInfo._url
+_OBJC_IVAR_$_OBImageInfo._width
+_OBJC_IVAR_$_OBImageInfo._height
+_OBJC_IVAR_$_OBImageInfo._isGif
+__OBJC_$_CLASS_METHODS_OBImageInfo
+__OBJC_METACLASS_RO_$_OBImageInfo
+__OBJC_$_INSTANCE_METHODS_OBImageInfo
+__OBJC_$_INSTANCE_VARIABLES_OBImageInfo
+__OBJC_$_PROP_LIST_OBImageInfo
+__OBJC_CLASS_RO_$_OBImageInfo
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Content/OBImageInfo.m
+OutbrainSDK/Models/Content/OBImageInfo.m
+OutbrainSDK/Models/Content/OBImageInfo.h
+-[OBResponse request]
+-[OBResponse setRequest:]
+-[OBResponse error]
+-[OBResponse setError:]
+-[OBResponse getPrivateError]
+-[OBResponse getPrivateRequest]
+-[OBResponse .cxx_destruct]
+_OBJC_IVAR_$_OBResponse._request
+_OBJC_IVAR_$_OBResponse._error
+__OBJC_METACLASS_RO_$_OBResponse
+__OBJC_$_INSTANCE_METHODS_OBResponse
+__OBJC_$_INSTANCE_VARIABLES_OBResponse
+__OBJC_$_PROP_LIST_OBResponse
+__OBJC_CLASS_RO_$_OBResponse
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Responses/OBResponse.m
+OutbrainSDK/Models/Responses/OBResponse.m
+-[OBVideoWidget initRequest:containerView:]
+-[OBVideoWidget start]
+-[OBVideoWidget loadUIInContainerView]
+-[OBVideoWidget fetchRecommendationFromOutbrain]
+___48-[OBVideoWidget fetchRecommendationFromOutbrain]_block_invoke
+-[OBVideoWidget webView:createWebViewWithConfiguration:forNavigationAction:windowFeatures:]
+-[OBVideoWidget recommendationClicked:]
+-[OBVideoWidget adChoicesClicked:]
+-[OBVideoWidget outbrainLabelClicked:]
+-[OBVideoWidget obRequest]
+-[OBVideoWidget setObRequest:]
+-[OBVideoWidget delegate]
+-[OBVideoWidget setDelegate:]
+-[OBVideoWidget odbResponse]
+-[OBVideoWidget setOdbResponse:]
+-[OBVideoWidget containerView]
+-[OBVideoWidget setContainerView:]
+-[OBVideoWidget sfItem]
+-[OBVideoWidget setSfItem:]
+-[OBVideoWidget videoCell]
+-[OBVideoWidget setVideoCell:]
+-[OBVideoWidget .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.66
+_OBJC_CLASSLIST_REFERENCES_$_.79
+___block_descriptor_40_e8_32s_e34_v16?0"OBRecommendationResponse"8l
+__OBJC_$_PROTOCOL_REFS_SFPrivateEventListener
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_SFPrivateEventListener
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_SFPrivateEventListener
+__OBJC_$_PROTOCOL_METHOD_TYPES_SFPrivateEventListener
+__OBJC_PROTOCOL_$_SFPrivateEventListener
+__OBJC_LABEL_PROTOCOL_$_SFPrivateEventListener
+__OBJC_$_PROTOCOL_REFS_WKUIDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_WKUIDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_WKUIDelegate
+__OBJC_PROTOCOL_$_WKUIDelegate
+__OBJC_LABEL_PROTOCOL_$_WKUIDelegate
+__OBJC_CLASS_PROTOCOLS_$_OBVideoWidget
+__OBJC_METACLASS_RO_$_OBVideoWidget
+__OBJC_$_INSTANCE_METHODS_OBVideoWidget
+_OBJC_IVAR_$_OBVideoWidget._obRequest
+_OBJC_IVAR_$_OBVideoWidget._delegate
+_OBJC_IVAR_$_OBVideoWidget._odbResponse
+_OBJC_IVAR_$_OBVideoWidget._containerView
+_OBJC_IVAR_$_OBVideoWidget._sfItem
+_OBJC_IVAR_$_OBVideoWidget._videoCell
+__OBJC_$_INSTANCE_VARIABLES_OBVideoWidget
+__OBJC_$_PROP_LIST_OBVideoWidget
+__OBJC_CLASS_RO_$_OBVideoWidget
+/Users/distiller/repo/SDK-sources/OutbrainSDK/OBVideoWidget/OBVideoWidget.m
+OutbrainSDK/OBVideoWidget/OBVideoWidget.m
+OutbrainSDK/OBVideoWidget/OBVideoWidget.h
+__48-[OBVideoWidget fetchRecommendationFromOutbrain]_block_invoke
+-[SFDefaultCollectionViewDelegate initWithSmartfeedManager:]
+-[SFDefaultCollectionViewDelegate numberOfSectionsInCollectionView:]
+-[SFDefaultCollectionViewDelegate collectionView:numberOfItemsInSection:]
+-[SFDefaultCollectionViewDelegate collectionView:cellForItemAtIndexPath:]
+-[SFDefaultCollectionViewDelegate collectionView:willDisplayCell:forItemAtIndexPath:]
+-[SFDefaultCollectionViewDelegate collectionView:layout:sizeForItemAtIndexPath:]
+-[SFDefaultCollectionViewDelegate smartfeedManager]
+-[SFDefaultCollectionViewDelegate setSmartfeedManager:]
+-[SFDefaultCollectionViewDelegate .cxx_destruct]
+__OBJC_$_PROTOCOL_REFS_UICollectionViewDataSource
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_UICollectionViewDataSource
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_UICollectionViewDataSource
+__OBJC_$_PROTOCOL_METHOD_TYPES_UICollectionViewDataSource
+__OBJC_PROTOCOL_$_UICollectionViewDataSource
+__OBJC_LABEL_PROTOCOL_$_UICollectionViewDataSource
+__OBJC_CLASS_PROTOCOLS_$_SFDefaultCollectionViewDelegate
+__OBJC_METACLASS_RO_$_SFDefaultCollectionViewDelegate
+__OBJC_$_INSTANCE_METHODS_SFDefaultCollectionViewDelegate
+_OBJC_IVAR_$_SFDefaultCollectionViewDelegate._smartfeedManager
+__OBJC_$_INSTANCE_VARIABLES_SFDefaultCollectionViewDelegate
+__OBJC_$_PROP_LIST_SFDefaultCollectionViewDelegate
+__OBJC_CLASS_RO_$_SFDefaultCollectionViewDelegate
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SmartFeedManager/SFDefaultCollectionViewDelegate.m
+OutbrainSDK/SmartFeed/SmartFeedManager/SFDefaultCollectionViewDelegate.m
+OutbrainSDK/SmartFeed/SmartFeedManager/SFDefaultCollectionViewDelegate.h
+-[SFTableViewHeaderCell awakeFromNib]
+-[SFTableViewHeaderCell setSelected:animated:]
+-[SFTableViewHeaderCell headerLabel]
+-[SFTableViewHeaderCell setHeaderLabel:]
+-[SFTableViewHeaderCell headerImageView]
+-[SFTableViewHeaderCell setHeaderImageView:]
+-[SFTableViewHeaderCell adChoicesImageView]
+-[SFTableViewHeaderCell setAdChoicesImageView:]
+-[SFTableViewHeaderCell .cxx_destruct]
+_OBJC_IVAR_$_SFTableViewHeaderCell._headerLabel
+_OBJC_IVAR_$_SFTableViewHeaderCell._headerImageView
+_OBJC_IVAR_$_SFTableViewHeaderCell._adChoicesImageView
+__OBJC_METACLASS_RO_$_SFTableViewHeaderCell
+__OBJC_$_INSTANCE_METHODS_SFTableViewHeaderCell
+__OBJC_$_INSTANCE_VARIABLES_SFTableViewHeaderCell
+__OBJC_$_PROP_LIST_SFTableViewHeaderCell
+__OBJC_CLASS_RO_$_SFTableViewHeaderCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SmartFeedHeaderCells/SFTableViewHeaderCell.m
+OutbrainSDK/SmartFeed/SmartFeedHeaderCells/SFTableViewHeaderCell.m
+OutbrainSDK/SmartFeed/SmartFeedHeaderCells/SFTableViewHeaderCell.h
+-[SFGradientView layoutSubviews]
+-[SFGradientView configure]
+-[SFGradientView isConfigured]
+-[SFGradientView setIsConfigured:]
+_OBJC_CLASSLIST_REFERENCES_$_.18
+_OBJC_IVAR_$_SFGradientView._isConfigured
+__OBJC_METACLASS_RO_$_SFGradientView
+__OBJC_$_INSTANCE_METHODS_SFGradientView
+__OBJC_$_INSTANCE_VARIABLES_SFGradientView
+__OBJC_$_PROP_LIST_SFGradientView
+__OBJC_CLASS_RO_$_SFGradientView
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFUtils/SFGradientView.m
+OutbrainSDK/SmartFeed/SFUtils/SFGradientView.m
+-[SFBrandedCarouselTableCell setupDotsIndicator:]
+-[SFBrandedCarouselTableCell setDotsIndicatorWithCurrentIndex:]
+-[SFBrandedCarouselTableCell titleSponsoredByLabel]
+-[SFBrandedCarouselTableCell setTitleSponsoredByLabel:]
+-[SFBrandedCarouselTableCell titleSourceLabel]
+-[SFBrandedCarouselTableCell setTitleSourceLabel:]
+-[SFBrandedCarouselTableCell cellBrandLogoImageView]
+-[SFBrandedCarouselTableCell setCellBrandLogoImageView:]
+-[SFBrandedCarouselTableCell horizontalPagerIndicatorStackView]
+-[SFBrandedCarouselTableCell setHorizontalPagerIndicatorStackView:]
+-[SFBrandedCarouselTableCell .cxx_destruct]
+_OBJC_IVAR_$_SFBrandedCarouselTableCell._titleSponsoredByLabel
+_OBJC_IVAR_$_SFBrandedCarouselTableCell._titleSourceLabel
+_OBJC_IVAR_$_SFBrandedCarouselTableCell._cellBrandLogoImageView
+_OBJC_IVAR_$_SFBrandedCarouselTableCell._horizontalPagerIndicatorStackView
+__OBJC_METACLASS_RO_$_SFBrandedCarouselTableCell
+__OBJC_$_INSTANCE_METHODS_SFBrandedCarouselTableCell
+__OBJC_$_INSTANCE_VARIABLES_SFBrandedCarouselTableCell
+__OBJC_$_PROP_LIST_SFBrandedCarouselTableCell
+__OBJC_CLASS_RO_$_SFBrandedCarouselTableCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersTableView/SFBrandedCarouselTableCell.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersTableView/SFBrandedCarouselTableCell.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/CellContainersTableView/SFBrandedCarouselTableCell.h
+-[OBMultivacRequestOperation initWithRequest:]
+-[OBMultivacRequestOperation main]
+-[OBMultivacRequestOperation createResponseWithDict:]
+-[OBMultivacRequestOperation parseResponseData:]
+-[OBMultivacRequestOperation startMultivacRequest]
+___50-[OBMultivacRequestOperation startMultivacRequest]_block_invoke
+-[OBMultivacRequestOperation taskCompletedWith:response:error:]
+-[OBMultivacRequestOperation didReceiveResponseReturnedWithError:]
++[OBMultivacRequestOperation _filterInvalidRecsForResponse:]
+-[OBMultivacRequestOperation multivacDelegate]
+-[OBMultivacRequestOperation setMultivacDelegate:]
+-[OBMultivacRequestOperation requestStartDate]
+-[OBMultivacRequestOperation setRequestStartDate:]
+-[OBMultivacRequestOperation request]
+-[OBMultivacRequestOperation setRequest:]
+-[OBMultivacRequestOperation url]
+-[OBMultivacRequestOperation setUrl:]
+-[OBMultivacRequestOperation .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.28
+_OBJC_CLASSLIST_REFERENCES_$_.31
+_OBJC_CLASSLIST_REFERENCES_$_.72
+_OBJC_CLASSLIST_REFERENCES_$_.135
+_OBJC_IVAR_$_OBMultivacRequestOperation._multivacDelegate
+_OBJC_IVAR_$_OBMultivacRequestOperation._requestStartDate
+_OBJC_IVAR_$_OBMultivacRequestOperation._request
+_OBJC_IVAR_$_OBMultivacRequestOperation._url
+__OBJC_$_CLASS_METHODS_OBMultivacRequestOperation
+__OBJC_METACLASS_RO_$_OBMultivacRequestOperation
+__OBJC_$_INSTANCE_METHODS_OBMultivacRequestOperation
+__OBJC_$_INSTANCE_VARIABLES_OBMultivacRequestOperation
+__OBJC_$_PROP_LIST_OBMultivacRequestOperation
+__OBJC_CLASS_RO_$_OBMultivacRequestOperation
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Network/OBMultivacRequestOperation.m
+OutbrainSDK/Network/OBMultivacRequestOperation.m
+OutbrainSDK/Network/OBMultivacRequestOperation.h
+__50-[OBMultivacRequestOperation startMultivacRequest]_block_invoke
+-[SFCollectionViewHeaderCell awakeFromNib]
+-[SFCollectionViewHeaderCell headerLabel]
+-[SFCollectionViewHeaderCell setHeaderLabel:]
+-[SFCollectionViewHeaderCell headerImageView]
+-[SFCollectionViewHeaderCell setHeaderImageView:]
+-[SFCollectionViewHeaderCell adChoicesImageView]
+-[SFCollectionViewHeaderCell setAdChoicesImageView:]
+-[SFCollectionViewHeaderCell .cxx_destruct]
+_OBJC_IVAR_$_SFCollectionViewHeaderCell._headerLabel
+_OBJC_IVAR_$_SFCollectionViewHeaderCell._headerImageView
+_OBJC_IVAR_$_SFCollectionViewHeaderCell._adChoicesImageView
+__OBJC_METACLASS_RO_$_SFCollectionViewHeaderCell
+__OBJC_$_INSTANCE_METHODS_SFCollectionViewHeaderCell
+__OBJC_$_INSTANCE_VARIABLES_SFCollectionViewHeaderCell
+__OBJC_$_PROP_LIST_SFCollectionViewHeaderCell
+__OBJC_CLASS_RO_$_SFCollectionViewHeaderCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SmartFeedHeaderCells/SFCollectionViewHeaderCell.m
+OutbrainSDK/SmartFeed/SmartFeedHeaderCells/SFCollectionViewHeaderCell.m
+OutbrainSDK/SmartFeed/SmartFeedHeaderCells/SFCollectionViewHeaderCell.h
+-[SmartFeedManager init]
+-[SmartFeedManager initWithUrl:widgetID:collectionView:]
+-[SmartFeedManager initWithUrl:widgetID:tableView:]
+-[SmartFeedManager commonInitWithUrl:widgetID:]
+-[SmartFeedManager setOutbrainWidgetIndex:]
+-[SmartFeedManager setReadMoreModule]
+-[SmartFeedManager smartFeedItemsCount]
+-[SmartFeedManager setDisplaySourceOnOrganicRec:]
+-[SmartFeedManager setDisableCellShadows:]
+-[SmartFeedManager setDarkMode:]
+-[SmartFeedManager fetchMoreRecommendations]
+-[SmartFeedManager setUseDefaultCollectionViewDelegate:]
+-[SmartFeedManager loadFirstTimeForFeed]
+___40-[SmartFeedManager loadFirstTimeForFeed]_block_invoke
+-[SmartFeedManager fetchMoreRecommendationsWithMultivac]
+-[SmartFeedManager createSmartfeedItemsArrayFromResponse:]
+-[SmartFeedManager sfItemTypeFromResponse:]
+-[SmartFeedManager isWeeklyHighlightsItemValid:]
+-[SmartFeedManager createSingleItemArrayFromResponse:templateType:widgetTitle:]
+-[SmartFeedManager createCarouselItemArrayFromResponse:templateType:widgetTitle:]
+-[SmartFeedManager createGridItemsFromResponse:templateType:widgetTitle:]
+-[SmartFeedManager addTwoItemsInLineWithVideoToNewItemsList:response:videoItemIndex:templateType:widgetTitle:]
+-[SmartFeedManager addItemsInLineToNewItemsList:response:templateType:]
+-[SmartFeedManager reloadUIData:]
+___33-[SmartFeedManager reloadUIData:]_block_invoke
+___33-[SmartFeedManager reloadUIData:]_block_invoke.361
+-[SmartFeedManager tableView:cellForRowAtIndexPath:]
+-[SmartFeedManager numberOfSectionsInTableView]
+-[SmartFeedManager tableView:willDisplayCell:forRowAtIndexPath:]
+-[SmartFeedManager tableView:numberOfRowsInCollapsableSection:collapsableItemCount:]
+-[SmartFeedManager tableView:heightForRowAtIndexPath:]
+-[SmartFeedManager configureHorizontalTableViewCell:atIndexPath:]
+-[SmartFeedManager configureHorizontalVideoTableViewCell:atIndexPath:]
+-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]
+___76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke
+___76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.547
+___76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.555
+___76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.561
+___76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.565
+___copy_helper_block_e8_32s40s48s56s64s
+___destroy_helper_block_e8_32s40s48s56s64s
+-[SmartFeedManager configureSmartFeedHeaderTableViewCell:atIndexPath:]
+-[SmartFeedManager skySolutionForTableViewReload:newSmartfeedItems:indexPaths:]
+-[SmartFeedManager collectionView:cellForItemAtIndexPath:]
+-[SmartFeedManager numberOfSectionsInCollectionView]
+-[SmartFeedManager collectionView:numberOfItemsInCollapsableSection:collapsableItemCount:]
+-[SmartFeedManager collectionView:layout:sizeForItemAtIndexPath:]
+-[SmartFeedManager collectionView:willDisplayCell:forItemAtIndexPath:]
+-[SmartFeedManager itemForIndexPath:]
+-[SmartFeedManager configureHorizontalCell:atIndexPath:]
+-[SmartFeedManager configureBrandedCarouselCell:atIndexPath:]
+___61-[SmartFeedManager configureBrandedCarouselCell:atIndexPath:]_block_invoke
+-[SmartFeedManager configureHorizontalVideoCollectionCell:atIndexPath:]
+-[SmartFeedManager getCustomNibAndIdentifierForSFItem:]
+-[SmartFeedManager recommendationClicked:]
+-[SmartFeedManager adChoicesClicked:]
+-[SmartFeedManager outbrainLabelClicked:]
+-[SmartFeedManager isVideoCurrentlyPlaying]
+-[SmartFeedManager readMoreButtonClicked:]
+-[SmartFeedManager finishedLoadingAllItemsInSmartfeed]
+-[SmartFeedManager keyForCellType:]
+-[SmartFeedManager registerSingleItemNib:forCellWithReuseIdentifier:]
+-[SmartFeedManager registerNib:withReuseIdentifier:forWidgetId:]
+-[SmartFeedManager sfItemTypeStringFor:]
+-[SmartFeedManager sfItemTypeFor:]
+-[SmartFeedManager registerNib:withReuseIdentifier:forSFItemType:]
+-[SmartFeedManager tryRegisterNib:withReuseIdentifier:]
+-[SmartFeedManager registerReadMoreNib:withReuseIdentifier:]
+-[SmartFeedManager registerHeaderNib:withReuseIdentifier:]
+-[SmartFeedManager setTransparentBackground:]
+-[SmartFeedManager recommendationsForIndexPath:]
+-[SmartFeedManager pauseVideo]
+-[SmartFeedManager webView:createWebViewWithConfiguration:forNavigationAction:windowFeatures:]
+-[SmartFeedManager onMultivacSuccess:feedIdx:hasMore:]
+___54-[SmartFeedManager onMultivacSuccess:feedIdx:hasMore:]_block_invoke
+-[SmartFeedManager onMultivacFailure:]
+-[SmartFeedManager outbrainWidgetIndex]
+-[SmartFeedManager isInMiddleOfScreen]
+-[SmartFeedManager setIsInMiddleOfScreen:]
+-[SmartFeedManager darkMode]
+-[SmartFeedManager disableCellShadows]
+-[SmartFeedManager useDefaultCollectionViewDelegate]
+-[SmartFeedManager hasMore]
+-[SmartFeedManager setHasMore:]
+-[SmartFeedManager url]
+-[SmartFeedManager setUrl:]
+-[SmartFeedManager widgetId]
+-[SmartFeedManager setWidgetId:]
+-[SmartFeedManager externalID]
+-[SmartFeedManager setExternalID:]
+-[SmartFeedManager outbrainSectionIndex]
+-[SmartFeedManager setOutbrainSectionIndex:]
+-[SmartFeedManager smartFeedItemsArray]
+-[SmartFeedManager setSmartFeedItemsArray:]
+-[SmartFeedManager delegate]
+-[SmartFeedManager setDelegate:]
+-[SmartFeedManager horizontalContainerMargin]
+-[SmartFeedManager setHorizontalContainerMargin:]
+-[SmartFeedManager isVideoEligible]
+-[SmartFeedManager setIsVideoEligible:]
+-[SmartFeedManager displaySourceOnOrganicRec]
+-[SmartFeedManager isSkySolutionActive]
+-[SmartFeedManager setIsSkySolutionActive:]
+-[SmartFeedManager isWallaSolutionActive]
+-[SmartFeedManager setIsWallaSolutionActive:]
+-[SmartFeedManager lastCardIdx]
+-[SmartFeedManager setLastCardIdx:]
+-[SmartFeedManager lastIdx]
+-[SmartFeedManager setLastIdx:]
+-[SmartFeedManager isRTL]
+-[SmartFeedManager setIsRTL:]
+-[SmartFeedManager fab]
+-[SmartFeedManager setFab:]
+-[SmartFeedManager isLoading]
+-[SmartFeedManager setIsLoading:]
+-[SmartFeedManager isSmartfeedWithNoChildren]
+-[SmartFeedManager setIsSmartfeedWithNoChildren:]
+-[SmartFeedManager sfCollectionViewManager]
+-[SmartFeedManager setSfCollectionViewManager:]
+-[SmartFeedManager sfDefaultCollectionViewDelegate]
+-[SmartFeedManager setSfDefaultCollectionViewDelegate:]
+-[SmartFeedManager sfTableViewManager]
+-[SmartFeedManager setSfTableViewManager:]
+-[SmartFeedManager pendingItems]
+-[SmartFeedManager setPendingItems:]
+-[SmartFeedManager feedContentArray]
+-[SmartFeedManager setFeedContentArray:]
+-[SmartFeedManager customNibsForWidgetId]
+-[SmartFeedManager setCustomNibsForWidgetId:]
+-[SmartFeedManager reuseIdentifierWidgetId]
+-[SmartFeedManager setReuseIdentifierWidgetId:]
+-[SmartFeedManager customNibsForItemType]
+-[SmartFeedManager setCustomNibsForItemType:]
+-[SmartFeedManager reuseIdentifierItemType]
+-[SmartFeedManager setReuseIdentifierItemType:]
+-[SmartFeedManager smartFeedHeadercCustomUIReuseIdentifier]
+-[SmartFeedManager setSmartFeedHeadercCustomUIReuseIdentifier:]
+-[SmartFeedManager isTransparentBackground]
+-[SmartFeedManager setIsTransparentBackground:]
+-[SmartFeedManager initializationTime]
+-[SmartFeedManager setInitializationTime:]
+-[SmartFeedManager isViewabilityPerListingEnabled]
+-[SmartFeedManager setIsViewabilityPerListingEnabled:]
+-[SmartFeedManager defaultDelegate]
+-[SmartFeedManager setDefaultDelegate:]
+-[SmartFeedManager hasWeeklyHighlightsItem]
+-[SmartFeedManager setHasWeeklyHighlightsItem:]
+-[SmartFeedManager isReadMoreModuleEnabled]
+-[SmartFeedManager setIsReadMoreModuleEnabled:]
+-[SmartFeedManager readMoreButtonText]
+-[SmartFeedManager setReadMoreButtonText:]
+-[SmartFeedManager smartFeedReadMoreButtonCustomUIReuseIdentifier]
+-[SmartFeedManager setSmartFeedReadMoreButtonCustomUIReuseIdentifier:]
+-[SmartFeedManager readMoreModuleHelper]
+-[SmartFeedManager setReadMoreModuleHelper:]
+-[SmartFeedManager .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.43
+_OBJC_CLASSLIST_REFERENCES_$_.46
+_OBJC_CLASSLIST_REFERENCES_$_.61
+_OBJC_CLASSLIST_REFERENCES_$_.130
+_OBJC_SELECTOR_REFERENCES_.150
+___block_descriptor_48_e8_32s40s_e34_v16?0"OBRecommendationResponse"8l
+_OBJC_CLASSLIST_REFERENCES_$_.207
+_OBJC_CLASSLIST_REFERENCES_$_.220
+_OBJC_CLASSLIST_REFERENCES_$_.235
+_OBJC_SELECTOR_REFERENCES_.241
+_OBJC_SELECTOR_REFERENCES_.247
+_OBJC_SELECTOR_REFERENCES_.249
+_OBJC_CLASSLIST_REFERENCES_$_.288
+_OBJC_CLASSLIST_REFERENCES_$_.301
+_OBJC_SELECTOR_REFERENCES_.305
+_OBJC_CLASSLIST_REFERENCES_$_.316
+_OBJC_CLASSLIST_REFERENCES_$_.327
+_OBJC_CLASSLIST_REFERENCES_$_.344
+_OBJC_SELECTOR_REFERENCES_.346
+_OBJC_SELECTOR_REFERENCES_.348
+_OBJC_SELECTOR_REFERENCES_.350
+_OBJC_SELECTOR_REFERENCES_.352
+_OBJC_CLASSLIST_REFERENCES_$_.353
+_OBJC_SELECTOR_REFERENCES_.355
+_OBJC_SELECTOR_REFERENCES_.357
+_OBJC_SELECTOR_REFERENCES_.359
+___block_descriptor_64_e8_32s40s48s56s_e5_v8?0l
+___block_descriptor_40_e8_32s_e8_v12?0B8l
+_OBJC_SELECTOR_REFERENCES_.364
+_OBJC_SELECTOR_REFERENCES_.366
+_OBJC_SELECTOR_REFERENCES_.368
+_OBJC_SELECTOR_REFERENCES_.370
+_OBJC_CLASSLIST_REFERENCES_$_.373
+_OBJC_SELECTOR_REFERENCES_.375
+_OBJC_SELECTOR_REFERENCES_.377
+_OBJC_SELECTOR_REFERENCES_.381
+_OBJC_SELECTOR_REFERENCES_.383
+_OBJC_SELECTOR_REFERENCES_.385
+_OBJC_SELECTOR_REFERENCES_.391
+_OBJC_SELECTOR_REFERENCES_.393
+_OBJC_CLASSLIST_REFERENCES_$_.394
+_OBJC_SELECTOR_REFERENCES_.396
+_OBJC_SELECTOR_REFERENCES_.398
+_OBJC_SELECTOR_REFERENCES_.400
+_OBJC_SELECTOR_REFERENCES_.402
+_OBJC_SELECTOR_REFERENCES_.404
+_OBJC_SELECTOR_REFERENCES_.406
+_OBJC_SELECTOR_REFERENCES_.408
+_OBJC_SELECTOR_REFERENCES_.410
+_OBJC_SELECTOR_REFERENCES_.412
+_OBJC_SELECTOR_REFERENCES_.414
+_OBJC_SELECTOR_REFERENCES_.416
+_OBJC_SELECTOR_REFERENCES_.418
+_OBJC_SELECTOR_REFERENCES_.420
+_OBJC_SELECTOR_REFERENCES_.428
+_OBJC_SELECTOR_REFERENCES_.430
+_OBJC_SELECTOR_REFERENCES_.432
+_OBJC_SELECTOR_REFERENCES_.434
+_OBJC_SELECTOR_REFERENCES_.436
+_OBJC_SELECTOR_REFERENCES_.438
+_OBJC_SELECTOR_REFERENCES_.440
+_OBJC_SELECTOR_REFERENCES_.442
+_OBJC_CLASSLIST_REFERENCES_$_.443
+_OBJC_SELECTOR_REFERENCES_.445
+_OBJC_SELECTOR_REFERENCES_.447
+_OBJC_SELECTOR_REFERENCES_.449
+_OBJC_CLASSLIST_REFERENCES_$_.450
+_OBJC_SELECTOR_REFERENCES_.452
+_OBJC_CLASSLIST_REFERENCES_$_.453
+_OBJC_SELECTOR_REFERENCES_.455
+_OBJC_SELECTOR_REFERENCES_.457
+_OBJC_SELECTOR_REFERENCES_.459
+_OBJC_SELECTOR_REFERENCES_.461
+_OBJC_CLASSLIST_REFERENCES_$_.462
+_OBJC_SELECTOR_REFERENCES_.464
+_OBJC_SELECTOR_REFERENCES_.466
+_OBJC_SELECTOR_REFERENCES_.468
+_OBJC_SELECTOR_REFERENCES_.470
+_OBJC_SELECTOR_REFERENCES_.472
+_OBJC_SELECTOR_REFERENCES_.474
+_OBJC_SELECTOR_REFERENCES_.476
+_OBJC_SELECTOR_REFERENCES_.478
+_OBJC_SELECTOR_REFERENCES_.480
+_OBJC_SELECTOR_REFERENCES_.482
+_OBJC_SELECTOR_REFERENCES_.484
+_OBJC_SELECTOR_REFERENCES_.486
+_OBJC_SELECTOR_REFERENCES_.488
+_OBJC_SELECTOR_REFERENCES_.490
+_OBJC_SELECTOR_REFERENCES_.492
+_OBJC_SELECTOR_REFERENCES_.494
+_OBJC_SELECTOR_REFERENCES_.496
+_OBJC_SELECTOR_REFERENCES_.498
+_OBJC_SELECTOR_REFERENCES_.500
+_OBJC_SELECTOR_REFERENCES_.502
+_OBJC_SELECTOR_REFERENCES_.504
+_OBJC_CLASSLIST_REFERENCES_$_.505
+_OBJC_SELECTOR_REFERENCES_.507
+_OBJC_CLASSLIST_REFERENCES_$_.508
+_OBJC_SELECTOR_REFERENCES_.512
+_OBJC_SELECTOR_REFERENCES_.514
+_OBJC_SELECTOR_REFERENCES_.518
+_OBJC_SELECTOR_REFERENCES_.520
+_OBJC_SELECTOR_REFERENCES_.522
+_OBJC_CLASSLIST_REFERENCES_$_.523
+_OBJC_SELECTOR_REFERENCES_.527
+_OBJC_SELECTOR_REFERENCES_.533
+_OBJC_SELECTOR_REFERENCES_.535
+_OBJC_SELECTOR_REFERENCES_.537
+_OBJC_SELECTOR_REFERENCES_.539
+_OBJC_SELECTOR_REFERENCES_.541
+_OBJC_SELECTOR_REFERENCES_.543
+___block_descriptor_40_e8_32s_e26_v16?0"OBRecommendation"8l
+_OBJC_SELECTOR_REFERENCES_.546
+_OBJC_SELECTOR_REFERENCES_.549
+___block_descriptor_40_e8_32s_e15_v16?0"NSURL"8l
+_OBJC_SELECTOR_REFERENCES_.552
+_OBJC_SELECTOR_REFERENCES_.554
+___block_descriptor_40_e8_32s_e15_{CGSize=dd}8?0l
+_OBJC_SELECTOR_REFERENCES_.558
+_OBJC_SELECTOR_REFERENCES_.560
+___block_descriptor_40_e8_32s_e51_v24?0"SFCollectionViewCell"8"OBRecommendation"16l
+_OBJC_SELECTOR_REFERENCES_.564
+_OBJC_SELECTOR_REFERENCES_.567
+_OBJC_SELECTOR_REFERENCES_.569
+_OBJC_SELECTOR_REFERENCES_.571
+_OBJC_SELECTOR_REFERENCES_.573
+_OBJC_CLASSLIST_REFERENCES_$_.574
+_OBJC_SELECTOR_REFERENCES_.576
+_OBJC_SELECTOR_REFERENCES_.578
+_OBJC_SELECTOR_REFERENCES_.580
+_OBJC_SELECTOR_REFERENCES_.582
+___block_descriptor_72_e8_32s40s48s56s64s_e5_v8?0l
+_OBJC_SELECTOR_REFERENCES_.584
+_OBJC_SELECTOR_REFERENCES_.586
+_OBJC_CLASSLIST_REFERENCES_$_.587
+_OBJC_SELECTOR_REFERENCES_.591
+_OBJC_SELECTOR_REFERENCES_.593
+_OBJC_SELECTOR_REFERENCES_.595
+_OBJC_SELECTOR_REFERENCES_.597
+_OBJC_SELECTOR_REFERENCES_.599
+_OBJC_CLASSLIST_REFERENCES_$_.600
+_OBJC_SELECTOR_REFERENCES_.602
+_OBJC_SELECTOR_REFERENCES_.604
+_OBJC_SELECTOR_REFERENCES_.606
+_OBJC_SELECTOR_REFERENCES_.608
+_OBJC_SELECTOR_REFERENCES_.610
+_OBJC_SELECTOR_REFERENCES_.612
+_OBJC_CLASSLIST_REFERENCES_$_.613
+_OBJC_SELECTOR_REFERENCES_.615
+_OBJC_CLASSLIST_REFERENCES_$_.616
+_OBJC_SELECTOR_REFERENCES_.618
+_OBJC_SELECTOR_REFERENCES_.620
+_OBJC_SELECTOR_REFERENCES_.622
+_OBJC_SELECTOR_REFERENCES_.624
+_OBJC_SELECTOR_REFERENCES_.626
+_OBJC_SELECTOR_REFERENCES_.628
+_OBJC_SELECTOR_REFERENCES_.630
+_OBJC_SELECTOR_REFERENCES_.632
+_OBJC_SELECTOR_REFERENCES_.634
+_OBJC_SELECTOR_REFERENCES_.636
+_OBJC_SELECTOR_REFERENCES_.638
+_OBJC_SELECTOR_REFERENCES_.640
+_OBJC_CLASSLIST_REFERENCES_$_.641
+_OBJC_SELECTOR_REFERENCES_.643
+_OBJC_CLASSLIST_REFERENCES_$_.644
+_OBJC_SELECTOR_REFERENCES_.646
+_OBJC_CLASSLIST_REFERENCES_$_.647
+_OBJC_SELECTOR_REFERENCES_.649
+_OBJC_SELECTOR_REFERENCES_.651
+_OBJC_SELECTOR_REFERENCES_.653
+_OBJC_SELECTOR_REFERENCES_.655
+___block_descriptor_40_e8_32s_e8_v16?0q8l
+_OBJC_SELECTOR_REFERENCES_.658
+_OBJC_SELECTOR_REFERENCES_.660
+_OBJC_SELECTOR_REFERENCES_.662
+_OBJC_SELECTOR_REFERENCES_.664
+_OBJC_SELECTOR_REFERENCES_.666
+_OBJC_SELECTOR_REFERENCES_.668
+_OBJC_SELECTOR_REFERENCES_.670
+_OBJC_SELECTOR_REFERENCES_.672
+_OBJC_SELECTOR_REFERENCES_.674
+_OBJC_SELECTOR_REFERENCES_.676
+_OBJC_SELECTOR_REFERENCES_.678
+_OBJC_SELECTOR_REFERENCES_.680
+_OBJC_SELECTOR_REFERENCES_.682
+_OBJC_SELECTOR_REFERENCES_.684
+_OBJC_SELECTOR_REFERENCES_.686
+_OBJC_SELECTOR_REFERENCES_.688
+_OBJC_SELECTOR_REFERENCES_.692
+_OBJC_SELECTOR_REFERENCES_.694
+_OBJC_SELECTOR_REFERENCES_.696
+_OBJC_SELECTOR_REFERENCES_.698
+_OBJC_SELECTOR_REFERENCES_.702
+_OBJC_SELECTOR_REFERENCES_.704
+_OBJC_SELECTOR_REFERENCES_.706
+_OBJC_SELECTOR_REFERENCES_.708
+_OBJC_SELECTOR_REFERENCES_.710
+_OBJC_SELECTOR_REFERENCES_.712
+_OBJC_SELECTOR_REFERENCES_.714
+_OBJC_SELECTOR_REFERENCES_.716
+_OBJC_CLASSLIST_REFERENCES_$_.717
+_OBJC_SELECTOR_REFERENCES_.719
+_OBJC_SELECTOR_REFERENCES_.721
+_OBJC_SELECTOR_REFERENCES_.723
+_OBJC_SELECTOR_REFERENCES_.725
+_OBJC_SELECTOR_REFERENCES_.727
+_OBJC_SELECTOR_REFERENCES_.729
+_OBJC_SELECTOR_REFERENCES_.731
+_OBJC_SELECTOR_REFERENCES_.733
+__OBJC_$_PROTOCOL_REFS_MultivacResponseDelegate
+__OBJC_$_PROTOCOL_INSTANCE_METHODS_MultivacResponseDelegate
+__OBJC_$_PROTOCOL_METHOD_TYPES_MultivacResponseDelegate
+__OBJC_PROTOCOL_$_MultivacResponseDelegate
+__OBJC_LABEL_PROTOCOL_$_MultivacResponseDelegate
+__OBJC_CLASS_PROTOCOLS_$_SmartFeedManager
+__OBJC_METACLASS_RO_$_SmartFeedManager
+__OBJC_$_INSTANCE_METHODS_SmartFeedManager
+_OBJC_IVAR_$_SmartFeedManager._isInMiddleOfScreen
+_OBJC_IVAR_$_SmartFeedManager._darkMode
+_OBJC_IVAR_$_SmartFeedManager._disableCellShadows
+_OBJC_IVAR_$_SmartFeedManager._useDefaultCollectionViewDelegate
+_OBJC_IVAR_$_SmartFeedManager._hasMore
+_OBJC_IVAR_$_SmartFeedManager._isVideoEligible
+_OBJC_IVAR_$_SmartFeedManager._displaySourceOnOrganicRec
+_OBJC_IVAR_$_SmartFeedManager._isSkySolutionActive
+_OBJC_IVAR_$_SmartFeedManager._isWallaSolutionActive
+_OBJC_IVAR_$_SmartFeedManager._isRTL
+_OBJC_IVAR_$_SmartFeedManager._isLoading
+_OBJC_IVAR_$_SmartFeedManager._isSmartfeedWithNoChildren
+_OBJC_IVAR_$_SmartFeedManager._isTransparentBackground
+_OBJC_IVAR_$_SmartFeedManager._isViewabilityPerListingEnabled
+_OBJC_IVAR_$_SmartFeedManager._hasWeeklyHighlightsItem
+_OBJC_IVAR_$_SmartFeedManager._isReadMoreModuleEnabled
+_OBJC_IVAR_$_SmartFeedManager._outbrainWidgetIndex
+_OBJC_IVAR_$_SmartFeedManager._url
+_OBJC_IVAR_$_SmartFeedManager._widgetId
+_OBJC_IVAR_$_SmartFeedManager._externalID
+_OBJC_IVAR_$_SmartFeedManager._outbrainSectionIndex
+_OBJC_IVAR_$_SmartFeedManager._smartFeedItemsArray
+_OBJC_IVAR_$_SmartFeedManager._delegate
+_OBJC_IVAR_$_SmartFeedManager._horizontalContainerMargin
+_OBJC_IVAR_$_SmartFeedManager._lastCardIdx
+_OBJC_IVAR_$_SmartFeedManager._lastIdx
+_OBJC_IVAR_$_SmartFeedManager._fab
+_OBJC_IVAR_$_SmartFeedManager._sfCollectionViewManager
+_OBJC_IVAR_$_SmartFeedManager._sfDefaultCollectionViewDelegate
+_OBJC_IVAR_$_SmartFeedManager._sfTableViewManager
+_OBJC_IVAR_$_SmartFeedManager._pendingItems
+_OBJC_IVAR_$_SmartFeedManager._feedContentArray
+_OBJC_IVAR_$_SmartFeedManager._customNibsForWidgetId
+_OBJC_IVAR_$_SmartFeedManager._reuseIdentifierWidgetId
+_OBJC_IVAR_$_SmartFeedManager._customNibsForItemType
+_OBJC_IVAR_$_SmartFeedManager._reuseIdentifierItemType
+_OBJC_IVAR_$_SmartFeedManager._smartFeedHeadercCustomUIReuseIdentifier
+_OBJC_IVAR_$_SmartFeedManager._initializationTime
+_OBJC_IVAR_$_SmartFeedManager._defaultDelegate
+_OBJC_IVAR_$_SmartFeedManager._readMoreButtonText
+_OBJC_IVAR_$_SmartFeedManager._smartFeedReadMoreButtonCustomUIReuseIdentifier
+_OBJC_IVAR_$_SmartFeedManager._readMoreModuleHelper
+__OBJC_$_INSTANCE_VARIABLES_SmartFeedManager
+__OBJC_$_PROP_LIST_SmartFeedManager
+__OBJC_CLASS_RO_$_SmartFeedManager
+_OBJC_SELECTOR_REFERENCES_.1004
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SmartFeedManager/SmartFeedManager.m
+OutbrainSDK/SmartFeed/SmartFeedManager/SmartFeedManager.m
+OutbrainSDK/SmartFeed/SmartFeedManager/SmartFeedManager.h
+__54-[SmartFeedManager onMultivacSuccess:feedIdx:hasMore:]_block_invoke
+__61-[SmartFeedManager configureBrandedCarouselCell:atIndexPath:]_block_invoke
+__destroy_helper_block_e8_32s40s48s56s64s
+__copy_helper_block_e8_32s40s48s56s64s
+__76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.565
+__76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.561
+__76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.555
+__76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.547
+__76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke
+__33-[SmartFeedManager reloadUIData:]_block_invoke.361
+__33-[SmartFeedManager reloadUIData:]_block_invoke
+__40-[SmartFeedManager loadFirstTimeForFeed]_block_invoke
+-[SFHorizontalView initWithCoder:]
+-[SFHorizontalView setupView]
+-[SFHorizontalView registerNib:forCellWithReuseIdentifier:]
+-[SFHorizontalView collectionView:numberOfItemsInSection:]
+-[SFHorizontalView collectionView:cellForItemAtIndexPath:]
+-[SFHorizontalView collectionView:willDisplayCell:forItemAtIndexPath:]
+-[SFHorizontalView addShadowOnCell:shadowColor:]
+-[SFHorizontalView collectionView:didSelectItemAtIndexPath:]
+-[SFHorizontalView setSfItem:]
+___30-[SFHorizontalView setSfItem:]_block_invoke
+-[SFHorizontalView adChoicesClicked:]
+-[SFHorizontalView scrollViewDidEndDecelerating:]
+-[SFHorizontalView sfItem]
+-[SFHorizontalView shadowColor]
+-[SFHorizontalView setShadowColor:]
+-[SFHorizontalView onRecommendationClick]
+-[SFHorizontalView setOnRecommendationClick:]
+-[SFHorizontalView onAdChoicesIconClick]
+-[SFHorizontalView setOnAdChoicesIconClick:]
+-[SFHorizontalView carouselItemSizeCallback]
+-[SFHorizontalView setCarouselItemSizeCallback:]
+-[SFHorizontalView configureHorizontalItem]
+-[SFHorizontalView setConfigureHorizontalItem:]
+-[SFHorizontalView onBrandedCarouselEndScroll]
+-[SFHorizontalView setOnBrandedCarouselEndScroll:]
+-[SFHorizontalView collectionView]
+-[SFHorizontalView setCollectionView:]
+-[SFHorizontalView horizontalCellIdentifier]
+-[SFHorizontalView setHorizontalCellIdentifier:]
+-[SFHorizontalView horizontalItemCellNib]
+-[SFHorizontalView setHorizontalItemCellNib:]
+-[SFHorizontalView didInitCollectionViewLayout]
+-[SFHorizontalView setDidInitCollectionViewLayout:]
+-[SFHorizontalView itemSize]
+-[SFHorizontalView setItemSize:]
+-[SFHorizontalView displaySourceOnOrganicRec]
+-[SFHorizontalView setDisplaySourceOnOrganicRec:]
+-[SFHorizontalView disableCellShadows]
+-[SFHorizontalView setDisableCellShadows:]
+-[SFHorizontalView .cxx_destruct]
+_OBJC_CLASSLIST_REFERENCES_$_.122
+_OBJC_SELECTOR_REFERENCES_.176
+_OBJC_CLASSLIST_REFERENCES_$_.203
+_OBJC_IVAR_$_SFHorizontalView._sfItem
+_OBJC_CLASSLIST_REFERENCES_$_.216
+_OBJC_SELECTOR_REFERENCES_.229
+_OBJC_SELECTOR_REFERENCES_.231
+_OBJC_IVAR_$_SFHorizontalView._shadowColor
+_OBJC_IVAR_$_SFHorizontalView._onRecommendationClick
+_OBJC_IVAR_$_SFHorizontalView._onAdChoicesIconClick
+_OBJC_IVAR_$_SFHorizontalView._carouselItemSizeCallback
+_OBJC_IVAR_$_SFHorizontalView._configureHorizontalItem
+_OBJC_IVAR_$_SFHorizontalView._onBrandedCarouselEndScroll
+_OBJC_IVAR_$_SFHorizontalView._collectionView
+_OBJC_IVAR_$_SFHorizontalView._horizontalCellIdentifier
+_OBJC_IVAR_$_SFHorizontalView._horizontalItemCellNib
+_OBJC_IVAR_$_SFHorizontalView._didInitCollectionViewLayout
+_OBJC_IVAR_$_SFHorizontalView._itemSize
+_OBJC_IVAR_$_SFHorizontalView._displaySourceOnOrganicRec
+_OBJC_IVAR_$_SFHorizontalView._disableCellShadows
+__OBJC_CLASS_PROTOCOLS_$_SFHorizontalView
+__OBJC_METACLASS_RO_$_SFHorizontalView
+__OBJC_$_INSTANCE_METHODS_SFHorizontalView
+__OBJC_$_INSTANCE_VARIABLES_SFHorizontalView
+__OBJC_$_PROP_LIST_SFHorizontalView
+__OBJC_CLASS_RO_$_SFHorizontalView
+_OBJC_SELECTOR_REFERENCES_.458
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalView.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalView.m
+OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalView.h
+__30-[SFHorizontalView setSfItem:]_block_invoke
+UIInterfaceOrientationIsLandscape
+/Applications/Xcode-12.3.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h
+-[SFCollectionViewCell prepareForReuse]
+-[SFCollectionViewCell outbrainLabelingContainer]
+-[SFCollectionViewCell setOutbrainLabelingContainer:]
+-[SFCollectionViewCell cardContentView]
+-[SFCollectionViewCell setCardContentView:]
+-[SFCollectionViewCell publisherLogo]
+-[SFCollectionViewCell setPublisherLogo:]
+-[SFCollectionViewCell recImageView]
+-[SFCollectionViewCell setRecImageView:]
+-[SFCollectionViewCell recTitleLabel]
+-[SFCollectionViewCell setRecTitleLabel:]
+-[SFCollectionViewCell recSourceLabel]
+-[SFCollectionViewCell setRecSourceLabel:]
+-[SFCollectionViewCell adChoicesButton]
+-[SFCollectionViewCell setAdChoicesButton:]
+-[SFCollectionViewCell brandedCtaButtonLabel]
+-[SFCollectionViewCell setBrandedCtaButtonLabel:]
+-[SFCollectionViewCell cellTitleLabel]
+-[SFCollectionViewCell setCellTitleLabel:]
+-[SFCollectionViewCell cellBrandLogoImageView]
+-[SFCollectionViewCell setCellBrandLogoImageView:]
+-[SFCollectionViewCell publisherLogoWidth]
+-[SFCollectionViewCell setPublisherLogoWidth:]
+-[SFCollectionViewCell publisherLogoHeight]
+-[SFCollectionViewCell setPublisherLogoHeight:]
+-[SFCollectionViewCell .cxx_destruct]
+_OBJC_IVAR_$_SFCollectionViewCell._outbrainLabelingContainer
+_OBJC_IVAR_$_SFCollectionViewCell._cardContentView
+_OBJC_IVAR_$_SFCollectionViewCell._publisherLogo
+_OBJC_IVAR_$_SFCollectionViewCell._recImageView
+_OBJC_IVAR_$_SFCollectionViewCell._recTitleLabel
+_OBJC_IVAR_$_SFCollectionViewCell._recSourceLabel
+_OBJC_IVAR_$_SFCollectionViewCell._adChoicesButton
+_OBJC_IVAR_$_SFCollectionViewCell._brandedCtaButtonLabel
+_OBJC_IVAR_$_SFCollectionViewCell._cellTitleLabel
+_OBJC_IVAR_$_SFCollectionViewCell._cellBrandLogoImageView
+_OBJC_IVAR_$_SFCollectionViewCell._publisherLogoWidth
+_OBJC_IVAR_$_SFCollectionViewCell._publisherLogoHeight
+__OBJC_METACLASS_RO_$_SFCollectionViewCell
+__OBJC_$_INSTANCE_METHODS_SFCollectionViewCell
+__OBJC_$_INSTANCE_VARIABLES_SFCollectionViewCell
+__OBJC_$_PROP_LIST_SFCollectionViewCell
+__OBJC_CLASS_RO_$_SFCollectionViewCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/BaseCellClasses/SFCollectionViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/SFCollectionViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/SFCollectionViewCell.h
++[OBBridge isOutbrainPaidUrl:]
++[OBBridge shouldOpenInSafariViewController:]
++[OBBridge registerOutbrainResponse:]
++[OBBridge initializeOutbrainWithPartnerKey:]
+__OBJC_$_CLASS_METHODS_OBBridge
+__OBJC_METACLASS_RO_$_OBBridge
+__OBJC_CLASS_RO_$_OBBridge
+/Users/distiller/repo/SDK-sources/OutbrainSDK/OBBridge.m
+OutbrainSDK/OBBridge.m
+-[OBRequestResponseWrapper initWithRequest:response:]
+-[OBRequestResponseWrapper request]
+-[OBRequestResponseWrapper setRequest:]
+-[OBRequestResponseWrapper response]
+-[OBRequestResponseWrapper setResponse:]
+-[OBRequestResponseWrapper .cxx_destruct]
+-[OBRecommendationsTokenHandler init]
+-[OBRecommendationsTokenHandler getTokenForRequest:]
+-[OBRecommendationsTokenHandler setTokenForRequest:response:]
+-[OBRecommendationsTokenHandler tokensDictionary]
+-[OBRecommendationsTokenHandler setTokensDictionary:]
+-[OBRecommendationsTokenHandler .cxx_destruct]
+__OBJC_METACLASS_RO_$_OBRequestResponseWrapper
+__OBJC_$_INSTANCE_METHODS_OBRequestResponseWrapper
+_OBJC_IVAR_$_OBRequestResponseWrapper._request
+_OBJC_IVAR_$_OBRequestResponseWrapper._response
+__OBJC_$_INSTANCE_VARIABLES_OBRequestResponseWrapper
+__OBJC_$_PROP_LIST_OBRequestResponseWrapper
+__OBJC_CLASS_RO_$_OBRequestResponseWrapper
+__OBJC_METACLASS_RO_$_OBRecommendationsTokenHandler
+__OBJC_$_INSTANCE_METHODS_OBRecommendationsTokenHandler
+_OBJC_IVAR_$_OBRecommendationsTokenHandler._tokensDictionary
+__OBJC_$_INSTANCE_VARIABLES_OBRecommendationsTokenHandler
+__OBJC_$_PROP_LIST_OBRecommendationsTokenHandler
+__OBJC_CLASS_RO_$_OBRecommendationsTokenHandler
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Helpers/OBRecommendationsTokenHandler.m
+OutbrainSDK/Helpers/OBRecommendationsTokenHandler.m
+-[SFTableViewCell awakeFromNib]
+-[SFTableViewCell setSelected:animated:]
+-[SFTableViewCell prepareForReuse]
+-[SFTableViewCell cardContentView]
+-[SFTableViewCell setCardContentView:]
+-[SFTableViewCell publisherLogo]
+-[SFTableViewCell setPublisherLogo:]
+-[SFTableViewCell recImageView]
+-[SFTableViewCell setRecImageView:]
+-[SFTableViewCell recTitleLabel]
+-[SFTableViewCell setRecTitleLabel:]
+-[SFTableViewCell recSourceLabel]
+-[SFTableViewCell setRecSourceLabel:]
+-[SFTableViewCell brandedCtaButtonLabel]
+-[SFTableViewCell setBrandedCtaButtonLabel:]
+-[SFTableViewCell adChoicesButton]
+-[SFTableViewCell setAdChoicesButton:]
+-[SFTableViewCell cellTitleLabel]
+-[SFTableViewCell setCellTitleLabel:]
+-[SFTableViewCell cellBrandLogoImageView]
+-[SFTableViewCell setCellBrandLogoImageView:]
+-[SFTableViewCell publisherLogoWidth]
+-[SFTableViewCell setPublisherLogoWidth:]
+-[SFTableViewCell publisherLogoHeight]
+-[SFTableViewCell setPublisherLogoHeight:]
+-[SFTableViewCell .cxx_destruct]
+_OBJC_IVAR_$_SFTableViewCell._cardContentView
+_OBJC_IVAR_$_SFTableViewCell._publisherLogo
+_OBJC_IVAR_$_SFTableViewCell._recImageView
+_OBJC_IVAR_$_SFTableViewCell._recTitleLabel
+_OBJC_IVAR_$_SFTableViewCell._recSourceLabel
+_OBJC_IVAR_$_SFTableViewCell._brandedCtaButtonLabel
+_OBJC_IVAR_$_SFTableViewCell._adChoicesButton
+_OBJC_IVAR_$_SFTableViewCell._cellTitleLabel
+_OBJC_IVAR_$_SFTableViewCell._cellBrandLogoImageView
+_OBJC_IVAR_$_SFTableViewCell._publisherLogoWidth
+_OBJC_IVAR_$_SFTableViewCell._publisherLogoHeight
+__OBJC_METACLASS_RO_$_SFTableViewCell
+__OBJC_$_INSTANCE_METHODS_SFTableViewCell
+__OBJC_$_INSTANCE_VARIABLES_SFTableViewCell
+__OBJC_$_PROP_LIST_SFTableViewCell
+__OBJC_CLASS_RO_$_SFTableViewCell
+/Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/BaseCellClasses/SFTableViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/SFTableViewCell.m
+OutbrainSDK/SmartFeed/BaseCellClasses/SFTableViewCell.h
+-[OBResponseRequest initWithPayload:]
+-[OBResponseRequest getStringValueForPayloadKey:]
+-[OBResponseRequest getNSNumberValueForPayloadKey:]
+-[OBResponseRequest payload]
+-[OBResponseRequest setPayload:]
+-[OBResponseRequest token]
+-[OBResponseRequest setToken:]
+-[OBResponseRequest .cxx_destruct]
+__OBJC_METACLASS_RO_$_OBResponseRequest
+__OBJC_$_INSTANCE_METHODS_OBResponseRequest
+_OBJC_IVAR_$_OBResponseRequest._payload
+_OBJC_IVAR_$_OBResponseRequest._token
+__OBJC_$_INSTANCE_VARIABLES_OBResponseRequest
+__OBJC_$_PROP_LIST_OBResponseRequest
+__OBJC_CLASS_RO_$_OBResponseRequest
+/Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Responses/OBResponseRequest.m
+OutbrainSDK/Models/Responses/OBResponseRequest.m
+OutbrainSDK/Models/Responses/OBResponseRequest.h

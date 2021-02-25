@@ -29,7 +29,8 @@
 @property (nonatomic, copy, readonly, nullable) NSString *paidLabelTextColor;
 @property (nonatomic, copy, readonly, nullable) NSString *paidLabelBackgroundColor;
 
-@property (nonatomic, copy, readonly, nullable) NSString *sourceFormat;
+@property (nonatomic, copy, readonly, nullable) NSString *organicSourceFormat;
+@property (nonatomic, copy, readonly, nullable) NSString *paidSourceFormat;
 
 @property (nonatomic, assign, readonly) BOOL isViewabilityPerListingEnabled;
 @property (nonatomic, assign, readonly) NSInteger viewabilityPerListingReportingIntervalMillis;
@@ -38,6 +39,8 @@
 
 @property (nonatomic, strong, nullable) OBViewabilityActions *viewabilityActions;
 @property (nonatomic, strong, nullable) OBBrandedCarouselSettings *brandedCarouselSettings;
+
+@property (nonatomic, assign, readonly) BOOL shouldShowCtaButton;
 
 // AB tests
 @property (nonatomic, assign, readonly) NSInteger abTitleFontSize;

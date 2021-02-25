@@ -126,6 +126,7 @@ typedef enum
 @property (nonatomic) BOOL isVideoEligible;
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
 @property (nonatomic) BOOL isSkySolutionActive;
+@property (nonatomic) BOOL isWallaSolutionActive;
 
 // Read more module
 - (void) setReadMoreModule;
