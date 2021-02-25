@@ -472,7 +472,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     }
     
     if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripNoTitle) {
-        [self configureCtaLabelInCell:singleCell withCtaText:rec.ctaText isRecWithTitle:sfItem.itemType == SFTypeStripWithTitle isCustomUI:sfItem.isCustomUI];
+        [self configureCtaLabelInCell:singleCell withCtaText:rec.ctaText isRecWithTitle:sfItem.itemType == SFTypeStripWithTitle isCustomUI:sfItem.isCustomUI shouldShowCtaButton:sfItem.odbSettings.shouldShowCtaButton];
     }
 }
 
@@ -499,7 +499,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     [SFUtils loadVideoURLIn:videoCell sfItem:sfItem];
 }
 
-+ (void) configureCtaLabelInCell:(SFCollectionViewCell *)singleCell withCtaText:(NSString *) ctaText isRecWithTitle:(BOOL) withTitle isCustomUI:(BOOL) isCustomUI {
++ (void) configureCtaLabelInCell:(SFCollectionViewCell *)singleCell withCtaText:(NSString *) ctaText isRecWithTitle:(BOOL) withTitle isCustomUI:(BOOL) isCustomUI shouldShowCtaButton:(BOOL) shouldShowCtaButton {
     NSInteger ctaLabelTag = 112233445566;
     UILabel * existingCtaLabelView = [singleCell viewWithTag:ctaLabelTag];
     if (existingCtaLabelView != nil) { // CTA view exists
@@ -512,7 +512,8 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         recTitleTrailingConstraint.active = YES;
     }
     
-    if (ctaText == nil || [ctaText isEqual: @""] || isCustomUI) { // No CTA label to show
+    // No CTA label to show or custom-ui or disabled by settings
+    if (ctaText == nil || [ctaText isEqual: @""] || isCustomUI || !shouldShowCtaButton) {
         [singleCell.recTitleLabel layoutIfNeeded];
         return;
     }
@@ -545,7 +546,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     NSInteger trailingConstant = withTitle ? 16 : 8;
     [[singleCell trailingAnchor] constraintEqualToAnchor:[ctaLabelView trailingAnchor] constant:trailingConstant].active = YES;
     [[ctaLabelView heightAnchor] constraintEqualToConstant:25].active = YES;
-    [[ctaLabelView topAnchor] constraintEqualToAnchor:[singleCell.recTitleLabel topAnchor] constant:-3].active = YES;
+    [[ctaLabelView topAnchor] constraintEqualToAnchor:[singleCell.recTitleLabel topAnchor] constant:0].active = YES;
     
     [ctaLabelView layoutIfNeeded];
 }

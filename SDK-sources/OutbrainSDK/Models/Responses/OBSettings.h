@@ -39,6 +39,8 @@
 @property (nonatomic, strong, nullable) OBViewabilityActions *viewabilityActions;
 @property (nonatomic, strong, nullable) OBBrandedCarouselSettings *brandedCarouselSettings;
 
+@property (nonatomic, assign, readonly) BOOL shouldShowCtaButton;
+
 // AB tests
 @property (nonatomic, assign, readonly) NSInteger abTitleFontSize;
 @property (nonatomic, assign, readonly) NSInteger abTitleFontStyle; // (Bold (1) or normal (0)
