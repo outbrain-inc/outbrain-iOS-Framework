@@ -36,6 +36,9 @@
 #import "SFDefaultDelegate.h"
 #import "SFReadMoreModuleHelper.h"
 
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
+
 @interface SmartFeedManager() <SFPrivateEventListener, WKUIDelegate, MultivacResponseDelegate>
 
 @property (nonatomic, strong) NSString * _Nullable url;
@@ -605,6 +608,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             // Check if Sky solution is needed
             if (self.isSkySolutionActive) {
                 [self skySolutionForTableViewReload:tableView newSmartfeedItems:newSmartfeedItems indexPaths:indexPaths];
+                return;
+            }
+            // Check if Sky solution is needed
+            if (self.isWallaSolutionActive && SYSTEM_VERSION_LESS_THAN(@"13.0")) {
+                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+                [tableView reloadData];
                 return;
             }
 
