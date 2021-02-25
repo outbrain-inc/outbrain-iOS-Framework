@@ -25,8 +25,9 @@
 @property (nonatomic, copy) NSString *paidLabelText;
 @property (nonatomic, copy) NSString *paidLabelTextColor;
 @property (nonatomic, copy) NSString *paidLabelBackgroundColor;
-@property (nonatomic, copy) NSString *sourceFormat;
 @property (nonatomic, copy) NSString *readMoreButtonText;
+@property (nonatomic, copy) NSString *organicSourceFormat;
+@property (nonatomic, copy) NSString *paidSourceFormat;
 
 @property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
 @property (nonatomic, assign) NSInteger viewabilityPerListingReportingIntervalMillis;
@@ -74,7 +75,8 @@
         self.paidLabelTextColor = [payload valueForKey:@"dynamic:PaidLabelTextColor"];
         self.paidLabelBackgroundColor = [payload valueForKey:@"dynamic:PaidLabelBackgroundColor"];
         
-        self.sourceFormat = [payload valueForKey:@"dynamicSourceFormat"];
+        self.paidSourceFormat = [payload valueForKey:@"dynamic:PaidSourceFormat"];
+        self.organicSourceFormat = [payload valueForKey:@"dynamic:OrganicSourceFormat"];
         
         self.readMoreButtonText = [payload valueForKey:@"readMoreText"];
         

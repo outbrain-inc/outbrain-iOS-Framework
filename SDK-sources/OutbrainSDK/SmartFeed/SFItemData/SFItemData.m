@@ -26,7 +26,6 @@
 @property (nonatomic, strong) NSURL *videoUrl;
 @property (nonatomic, copy) NSString *videoParamsStr;
 @property (nonatomic, strong) UIColor *shadowColor;
-@property (nonatomic, copy) NSString *sourceFormat;
 @property (nonatomic, strong) NSMutableArray *positions;
 @property (nonatomic, copy) NSString *requestId;
 @end
@@ -123,7 +122,6 @@ NSInteger kVideoFinishedStatus = 1114;
     if (self.odbSettings.smartfeedShadowColor) {
         self.shadowColor = [SFUtils colorFromHexString:self.odbSettings.smartfeedShadowColor];
     }
-    self.sourceFormat = self.odbSettings.sourceFormat;
     self.requestId = [odbResponse.responseRequest getStringValueForPayloadKey:@"req_id"];
 }
 

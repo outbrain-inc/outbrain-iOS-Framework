@@ -99,7 +99,9 @@
             "apv": false,
             "flagPublisherZappingFeature": true,
             "globalWidgetStatistics": true,
-            "InstallationType": "mobile-app-sdk"
+            "InstallationType": "mobile-app-sdk",
+            "dynamic:PaidSourceFormat": "Paid provider",
+            "dynamic:OrganicSourceFormat": "Custom Organic Source"
         }
     }
 }

@@ -93,7 +93,7 @@
     }
     
     cell.recTitleLabel.text = rec.content;
-    cell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:self.sfItem.odbSettings.sourceFormat];
+    cell.recSourceLabel.text = [SFUtils getSourceTextForRec:rec withSettings:self.sfItem.odbSettings];
     
     if (!self.sfItem.isCustomUI) {
         cell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
