@@ -397,7 +397,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
     
     if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripNoTitle) {
-        [self configureCtaLabelInCell:singleCell withCtaText:rec.ctaText isCustomUI:sfItem.isCustomUI];
+        [self configureCtaLabelInCell:singleCell withCtaText:rec.ctaText isCustomUI:sfItem.isCustomUI shouldShowCtaButton:sfItem.odbSettings.shouldShowCtaButton];
     }
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget  action:@selector(recommendationClicked:)];
@@ -410,7 +410,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
 }
 
-- (void) configureCtaLabelInCell:(SFTableViewCell *)singleCell withCtaText:(NSString *) ctaText isCustomUI:(BOOL) isCustomUI  {
+- (void) configureCtaLabelInCell:(SFTableViewCell *)singleCell withCtaText:(NSString *) ctaText isCustomUI:(BOOL) isCustomUI shouldShowCtaButton:(BOOL) shouldShowCtaButton  {
     NSInteger ctaLabelTag = 112233445566;
     UILabel * existingCtaLabelView = [singleCell viewWithTag:ctaLabelTag];
     if (existingCtaLabelView != nil) { // CTA view exists
@@ -423,7 +423,8 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         recTitleTrailingConstraint.active = YES;
     }
     
-    if (ctaText == nil || [ctaText isEqual: @""] || isCustomUI) { // No CTA label to show
+    // No CTA label to show or custom-ui or disabled by settings
+    if (ctaText == nil || [ctaText isEqual: @""] || isCustomUI || !shouldShowCtaButton) {
         [singleCell.recTitleLabel layoutIfNeeded];
         return;
     }
