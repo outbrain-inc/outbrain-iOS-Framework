@@ -546,7 +546,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     NSInteger trailingConstant = withTitle ? 16 : 8;
     [[singleCell trailingAnchor] constraintEqualToAnchor:[ctaLabelView trailingAnchor] constant:trailingConstant].active = YES;
     [[ctaLabelView heightAnchor] constraintEqualToConstant:25].active = YES;
-    [[ctaLabelView topAnchor] constraintEqualToAnchor:[singleCell.recTitleLabel topAnchor] constant:-3].active = YES;
+    [[ctaLabelView topAnchor] constraintEqualToAnchor:[singleCell.recTitleLabel topAnchor] constant:0].active = YES;
     
     [ctaLabelView layoutIfNeeded];
 }
