@@ -100,8 +100,8 @@
             "flagPublisherZappingFeature": true,
             "globalWidgetStatistics": true,
             "InstallationType": "mobile-app-sdk",
-            "dynamic:PaidSourceFormat": "Paid provider",
-            "dynamic:OrganicSourceFormat": "Custom Organic Source"
+            "dynamicPaidSourceFormat": "Paid provider",
+            "dynamicOrganicSourceFormat": "Custom Organic Source"
         }
     }
 }

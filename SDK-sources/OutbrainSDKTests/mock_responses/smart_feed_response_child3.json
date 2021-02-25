@@ -77,8 +77,8 @@
             "globalWidgetStatistics": true,
             "InstallationType": "mobile-app-sdk",
             "nanoOrganicsHeader": "Sponsored Links",
-            "dynamic:PaidSourceFormat": "Provided to you by $SOURCE",
-            "dynamic:OrganicSourceFormat": "Recommended by $SOURCE"
+            "dynamicPaidSourceFormat": "Provided to you by $SOURCE",
+            "dynamicOrganicSourceFormat": "Recommended by $SOURCE"
         }
     }
 }

@@ -75,8 +75,8 @@
         self.paidLabelTextColor = [payload valueForKey:@"dynamic:PaidLabelTextColor"];
         self.paidLabelBackgroundColor = [payload valueForKey:@"dynamic:PaidLabelBackgroundColor"];
         
-        self.paidSourceFormat = [payload valueForKey:@"dynamic:PaidSourceFormat"];
-        self.organicSourceFormat = [payload valueForKey:@"dynamic:OrganicSourceFormat"];
+        self.paidSourceFormat = [payload valueForKey:@"dynamicPaidSourceFormat"];
+        self.organicSourceFormat = [payload valueForKey:@"dynamicOrganicSourceFormat"];
         
         self.readMoreButtonText = [payload valueForKey:@"readMoreText"];
         
