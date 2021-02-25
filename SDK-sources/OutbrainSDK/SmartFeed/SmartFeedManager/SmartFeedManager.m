@@ -448,11 +448,20 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 -(NSArray *) createSingleItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
+    BOOL didCreatedFirstItem = NO;
     for (OBRecommendation *rec in recommendations) {
+        SFItemType templateTypeFix = templateType; //default
+        if ((templateType == SFTypeStripWithTitle) && didCreatedFirstItem) {
+            templateTypeFix = SFTypeStripNoTitle;
+        }
+        if ((templateType == SFTypeStripWithThumbnailWithTitle) && didCreatedFirstItem) {
+            templateTypeFix = SFTypeStripWithThumbnailNoTitle;
+        }
+        
         SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec
                                                                  odbResponse:response
-                                                                        type:templateType];
-        
+                                                                        type:templateTypeFix];
+        didCreatedFirstItem = YES;
         [newSmartfeedItems addObject:item];
         
     }
