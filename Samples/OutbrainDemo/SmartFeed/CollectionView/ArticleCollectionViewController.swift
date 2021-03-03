@@ -251,7 +251,7 @@ extension ArticleCollectionViewController : SmartFeedDelegate {
         print("You tapped rec \(rec.content).")
         if rec.isAppInstall {
             print("rec tapped: \(rec.content) - is App Install");
-            Outbrain.openAppInstallRec(rec, inNavController: self.navigationController!)
+            Outbrain.openAppInstallRec(rec, in: self)
             return;
         }
         

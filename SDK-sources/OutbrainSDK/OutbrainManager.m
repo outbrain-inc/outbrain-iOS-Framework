@@ -149,7 +149,7 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
     return NO;
 }
 
--(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController {
+-(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inViewController:(UIViewController * _Nonnull)viewController {
     BOOL isDeviceSimulator = [OBUtils isDeviceSimulator];
     if (isDeviceSimulator) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"App Install Error"
@@ -160,7 +160,7 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
                                                            style:UIAlertActionStyleDefault
                                                          handler:nil]; //You can use a block here to handle a press on this button
         [alertController addAction:actionOk];
-        [navController presentViewController:alertController animated:YES completion:nil];
+        [viewController presentViewController:alertController animated:YES completion:nil];
     }
     else if (@available(iOS 11.3, *)) {
         // First call paid.outbrain with noRedirect=true
@@ -176,7 +176,7 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
             // result -  true if the product information was successfully loaded, otherwise false.
             NSLog(@"loadProductWithParameters - result: %@, error: %@", result ? @"true" : @"false", [error localizedDescription]);
         }];
-        [navController presentViewController:storeViewController animated:YES completion:nil];
+        [viewController presentViewController:storeViewController animated:YES completion:nil];
     }
 }
 
