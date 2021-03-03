@@ -25,6 +25,11 @@
 
 @property (nonatomic, strong) NSOperationQueue *odbFetchQueue;
 @property (nonatomic, strong) NSUserDefaults *userDefaults;
+@property (nonatomic, weak) UIViewController *presentingViewController;
+
+@end
+
+@interface OutbrainManager() <SKStoreProductViewControllerDelegate>
 
 @end
 
@@ -168,7 +173,9 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
         NSURL * paidUrlRedirectFalse = [NSURL URLWithString:paidUrlString];
         [[OBNetworkManager sharedManager] sendGet:paidUrlRedirectFalse completionHandler:nil];
         
+        self.presentingViewController = viewController;
         SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+        storeViewController.delegate = self;
         NSDictionary *productParameters = [self prepareLoadProductParams:rec];
         
         NSLog(@"loadProductWithParameters: %@", productParameters);
@@ -207,6 +214,13 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
     }
     
     return productParameters;
+}
+
+#pragma mark - SKStoreProductViewControllerDelegate
+-(void) productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    if (self.presentingViewController) {
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end
