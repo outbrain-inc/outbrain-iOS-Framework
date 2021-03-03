@@ -161,6 +161,12 @@ extension ArticleTableViewController : SmartFeedDelegate {
     
     func userTapped(on rec: OBRecommendation) {
         print("You tapped rec \(rec.content).")
+        if rec.isAppInstall {
+            print("rec tapped: \(rec.content) - is App Install");
+            Outbrain.openAppInstallRec(rec, in: self)
+            return;
+        }
+        
         guard let url = Outbrain.getUrl(rec) else {
             print("Error: no url for rec.")
             return

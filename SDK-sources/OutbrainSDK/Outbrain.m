@@ -160,7 +160,10 @@ BOOL WAS_INITIALIZED     =   NO;
 }
 
 +(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController {
-    [[OutbrainManager sharedInstance] openAppInstallRec:rec inNavController:navController];
+    [self openAppInstallRec:rec inViewController:navController];
+}
++(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inViewController:(UIViewController * _Nonnull)viewController {
+    [[OutbrainManager sharedInstance] openAppInstallRec:rec inViewController:viewController];
 }
 
 @end
