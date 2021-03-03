@@ -178,15 +178,18 @@ extern NSString * _Nonnull const OB_AD_NETWORK_ID;
  */
 + (void)testAppInstall:(BOOL)testAppInstall;
 
+
++(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController __deprecated_msg("use openAppInstallRec:inViewController: instead.");
+
 /**
  * @brief Used for "App install" ads, on click the app developer should call this method to open the advertiser app via loadProduct method
  *
  * App developer must call this method if (rec.isAppInstall) is "true" after a recommendation click.
  *
  * @param rec - the rec the user has clicked on
- * @param navController - the app navigation controller the app ad should open in.
+ * @param viewController - the current view controller from which we will present the SKStoreProductViewController
  */
-+(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController;
++(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inViewController:(UIViewController * _Nonnull)viewController;
 
 
 @end
