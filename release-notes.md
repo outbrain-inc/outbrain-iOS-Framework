@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v4.2.1 - March 3, 2021
+
+- Bug Fix - new method `openAppInstallRec:inViewController:` together with implementing `SKStoreProductViewControllerDelegate` internally to solve some cases in which `SKStoreProductViewController` didn't close correctly.
+
 ## v4.2.0 - February 25, 2021
 
 - Important - Migrating from Xcode dynamic framework to XCFramework - [see Apple details here](https://developer.apple.com/videos/play/wwdc2019/416/)
