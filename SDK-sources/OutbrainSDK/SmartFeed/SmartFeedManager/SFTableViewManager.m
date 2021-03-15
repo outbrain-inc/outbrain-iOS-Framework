@@ -230,8 +230,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     CGFloat screenWidth = self.tableView.frame.size.width;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
-    if (sfItemType == SFTypeGridThreeInRowNoTitle) {
-        return 280.0;
+    if (sfItemType == SFTypeGridThreeInRowNoTitle || sfItemType == SFTypeGridThreeInRowWithTitle) {
+        CGFloat EXTRA_FOR_HEADER = (sfItemType == SFTypeGridThreeInRowWithTitle) ? 60 : 0;
+        return EXTRA_FOR_HEADER + 280.0;
     }
     else if (sfItemType == SFTypeGridTwoInRowNoTitle ||
              sfItemType == SFTypeCarouselWithTitle ||
