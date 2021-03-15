@@ -375,6 +375,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
     else if (sfItem.itemType == SFTypeStripAppInstall) {
         singleCell.cellTitleLabel.text = sfItem.widgetTitle;
+        singleCell.cellTitleLabel.textColor = [SFUtils sharedInstance].darkMode ? UIColor.whiteColor : [SFUtils colorFromHexString:@"#717075"];
+        singleCell.recTitleLabel.textColor =  [SFUtils sharedInstance].darkMode ? UIColor.whiteColor : [SFUtils colorFromHexString:@"#717075"];
+        
         [SFUtils addDropShadowToView: singleCell.cardContentView]; // shadow
         [[SFImageLoader sharedInstance] loadImageUrl:sfItem.odbSettings.brandedCarouselSettings.image.url into:singleCell.cellBrandLogoImageView]; // top right image
         

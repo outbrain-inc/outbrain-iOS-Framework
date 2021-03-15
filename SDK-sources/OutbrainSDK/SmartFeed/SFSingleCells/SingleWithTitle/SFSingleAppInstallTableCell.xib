@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,6 +51,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="45i-VJ-Oec"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="xcH-kg-dFg" firstAttribute="leading" secondItem="46j-6F-H0e" secondAttribute="leading" constant="12" id="Gvo-1b-7LD"/>
@@ -64,7 +65,6 @@
                                     <constraint firstItem="45i-VJ-Oec" firstAttribute="bottom" secondItem="KAt-kO-mAk" secondAttribute="bottom" constant="17" id="vmg-aF-TaH"/>
                                     <constraint firstItem="KAt-kO-mAk" firstAttribute="centerY" secondItem="xcH-kg-dFg" secondAttribute="centerY" id="xCU-Gp-99a"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="45i-VJ-Oec"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsored by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VD9-P4-sZi">
                                 <rect key="frame" x="73" y="22" width="85" height="16.5"/>
@@ -79,7 +79,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="utJ-AW-zAT" firstAttribute="top" secondItem="VD9-P4-sZi" secondAttribute="bottom" constant="-0.5" id="3zR-Rl-3uM"/>
                             <constraint firstItem="46j-6F-H0e" firstAttribute="leading" secondItem="PYd-3E-uAM" secondAttribute="leading" constant="15" id="HLJ-Lb-S0v"/>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,6 +51,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="EZ3-tA-2YS"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="vW4-J8-7zV" firstAttribute="leading" secondItem="y1L-1q-EwP" secondAttribute="leading" constant="12" id="090-LZ-8SO"/>
@@ -64,7 +65,6 @@
                                     <constraint firstItem="g5Z-3f-mcC" firstAttribute="centerY" secondItem="vW4-J8-7zV" secondAttribute="centerY" id="crT-61-oXQ"/>
                                     <constraint firstItem="g5Z-3f-mcC" firstAttribute="leading" secondItem="vW4-J8-7zV" secondAttribute="trailing" constant="5" id="hNk-cm-dYQ"/>
                                 </constraints>
-                                <viewLayoutGuide key="safeArea" id="EZ3-tA-2YS"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsored by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrn-E9-UYQ">
                                 <rect key="frame" x="73" y="22" width="85" height="16.5"/>
@@ -79,7 +79,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="y1L-1q-EwP" secondAttribute="bottom" constant="20" id="8JS-Tc-bWG"/>
                             <constraint firstItem="SnF-Q0-xDG" firstAttribute="top" secondItem="dea-37-4QF" secondAttribute="top" constant="15" id="Owe-Fm-M3E"/>
@@ -95,13 +95,13 @@
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="dea-37-4QF" secondAttribute="trailing" id="1Nr-su-eP1"/>
                 <constraint firstItem="dea-37-4QF" firstAttribute="top" secondItem="Gg3-8H-tpC" secondAttribute="top" id="2zo-0e-EFd"/>
                 <constraint firstItem="dea-37-4QF" firstAttribute="leading" secondItem="Gg3-8H-tpC" secondAttribute="leading" id="5Kk-Oy-IKd"/>
                 <constraint firstAttribute="bottom" secondItem="dea-37-4QF" secondAttribute="bottom" id="XhK-lr-kAW"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
             <size key="customSize" width="363" height="466"/>
             <connections>
                 <outlet property="brandedCtaButtonLabel" destination="g5Z-3f-mcC" id="qZj-J9-zcr"/>
