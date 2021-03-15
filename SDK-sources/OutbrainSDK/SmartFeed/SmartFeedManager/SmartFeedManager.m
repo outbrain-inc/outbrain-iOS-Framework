@@ -552,15 +552,24 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     
     NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
+    BOOL didCreatedFirstItem = NO;
     while (recommendationsMutableArray.count >= itemsPerRow) {
         NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
         
+        SFItemType templateTypeFix = templateType; //default
+        if ((templateType == SFTypeGridTwoInRowWithTitle) && didCreatedFirstItem) {
+            templateTypeFix = SFTypeGridTwoInRowNoTitle;
+        }
+        if ((templateType == SFTypeGridThreeInRowWithTitle) && didCreatedFirstItem) {
+            templateTypeFix = SFTypeGridThreeInRowNoTitle;
+        }
+        
         SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs
                                                 odbResponse:response
-                                                       type:templateType];
-        
+                                                       type:templateTypeFix];
+        didCreatedFirstItem = YES;
         [newSmartfeedItems addObject:item];
     }
 }
