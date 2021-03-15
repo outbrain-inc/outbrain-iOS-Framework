@@ -47,7 +47,7 @@ static SFUtils *sharedSingleton;
         return UIColor.whiteColor;
     }
     else {
-        return isPaid ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+        return UIColorFromRGB(0x171717);
     }
 }
 
