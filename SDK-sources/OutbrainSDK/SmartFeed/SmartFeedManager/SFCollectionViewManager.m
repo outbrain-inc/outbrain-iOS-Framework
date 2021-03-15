@@ -232,8 +232,9 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         sfItemType == SFTypeGridTwoInRowWithVideo) {
         return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 250.0);
     }
-    else if (sfItemType == SFTypeGridThreeInRowNoTitle) {
-        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 320.0 : 280.0);
+    else if (sfItemType == SFTypeGridThreeInRowNoTitle || sfItemType == SFTypeGridThreeInRowWithTitle) {
+        CGFloat EXTRA_FOR_HEADER = (sfItemType == SFTypeGridThreeInRowWithTitle) ? 60 : 0;
+        return CGSizeMake(screenWidth, EXTRA_FOR_HEADER + (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 320.0 : 280.0));
     }
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
              sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
