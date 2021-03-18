@@ -275,6 +275,9 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     }
     
     if (!sfItem.isCustomUI) {
+        if (sfItem.odbSettings.smartfeedHeaderFontSize != 0) {
+            sfHeaderCell.headerLabel.font = [sfHeaderCell.headerLabel.font fontWithSize: sfItem.odbSettings.smartfeedHeaderFontSize];
+        }
         sfHeaderCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
         sfHeaderCell.headerLabel.textColor = [[SFUtils sharedInstance] titleColor:YES];
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {

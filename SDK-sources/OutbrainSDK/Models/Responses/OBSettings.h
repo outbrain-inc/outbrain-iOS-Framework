@@ -41,6 +41,7 @@
 @property (nonatomic, strong, nullable) OBBrandedCarouselSettings *brandedCarouselSettings;
 
 @property (nonatomic, assign, readonly) BOOL shouldShowCtaButton;
+@property (nonatomic, assign, readonly) NSInteger smartfeedHeaderFontSize;
 
 // AB tests
 @property (nonatomic, assign, readonly) NSInteger abTitleFontSize;
