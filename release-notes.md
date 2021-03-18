@@ -1,6 +1,15 @@
 # Release Notes
 
 
+## v4.3.0 - March 18, 2021
+
+- Feature - add support for a new setting `dynamic:HeaderFontSize` from ODB response.
+- Bug fix - add support for dark-mode for app install card
+- Bug fix - widget header should appear once per widget for grid types as well.
+- Bug fix - in tableview the source sometimes disappeared with layout constraints issue
+- Improvement - titleColor should be the same for both organic and paid rec
+
+
 ## v4.2.1 - March 3, 2021
 
 - Bug Fix - new method `openAppInstallRec:inViewController:` together with implementing `SKStoreProductViewControllerDelegate` internally to solve some cases in which `SKStoreProductViewController` didn't close correctly.
