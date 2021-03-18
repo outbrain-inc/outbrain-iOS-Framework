@@ -16,6 +16,7 @@
 @property (nonatomic, assign) BOOL isSmartFeed;
 @property (nonatomic, assign) BOOL isTrendingInCategoryCard;
 @property (nonatomic, assign) BOOL shouldShowCtaButton;
+@property (nonatomic, assign) NSInteger smartfeedHeaderFontSize;
 @property (nonatomic, assign) NSInteger feedCyclesLimit;
 @property (nonatomic, assign) NSInteger feedChunkSize;
 @property (nonatomic, strong) NSArray *feedContentArray;
@@ -59,6 +60,7 @@
         self.widgetHeaderText = [payload valueForKey:@"nanoOrganicsHeader"];
         self.widgetHeaderTextColor = [payload valueForKey:@"dynamic:HeaderColor"];
         self.shouldShowCtaButton = [[payload valueForKey:@"dynamic:IsShowButton"] boolValue];
+        self.smartfeedHeaderFontSize = [[payload valueForKey:@"dynamic:HeaderFontSize"] integerValue];
         
         // vidget URL
         NSString *vidgetUrlStr = [payload valueForKey:@"sdk_sf_vidget_url"];
