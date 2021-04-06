@@ -186,10 +186,10 @@ static BOOL skipRTL;
                                                context:nil];
     CGSize expectedLabelSize = rect.size;
     
-    [self addConstraint:NSLayoutAttributeHeight constant:expectedLabelSize.height + 6.0 toView:paidLabel];
-    [self addConstraint:NSLayoutAttributeWidth constant:expectedLabelSize.width + 20.0 toView:paidLabel];
-    [self addConstraint:(isRTL ? NSLayoutAttributeLeading : NSLayoutAttributeTrailing) constant:0 baseView:recImageView toView:paidLabel];
-    [self addConstraint:NSLayoutAttributeBottom constant:10 baseView:recImageView toView:paidLabel];
+    [self addConstraint:NSLayoutAttributeHeight     constant:expectedLabelSize.height + 6.0 toView:paidLabel];
+    [self addConstraint:NSLayoutAttributeWidth      constant:expectedLabelSize.width + 20.0 toView:paidLabel];
+    [self addConstraint:(isRTL ? NSLayoutAttributeTrailing : NSLayoutAttributeLeading)    constant:0 baseView:recImageView        toView:paidLabel];
+    [self addConstraint:NSLayoutAttributeBottom 	constant:0 baseView:recImageView        toView:paidLabel];
 }
 
 +(BOOL) isRTL:(NSString *)string {
