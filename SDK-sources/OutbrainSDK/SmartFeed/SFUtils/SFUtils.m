@@ -172,7 +172,7 @@ static BOOL skipRTL;
     paidLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12.0];
     paidLabel.textColor = settings.paidLabelTextColor ? [self colorFromHexString:settings.paidLabelTextColor] : UIColor.whiteColor;
     paidLabel.textAlignment = NSTextAlignmentCenter;
-    paidLabel.backgroundColor = [self colorFromHexString:settings.paidLabelBackgroundColor ? settings.paidLabelBackgroundColor : @"#666666"];
+    paidLabel.backgroundColor = [self colorFromHexString:settings.paidLabelBackgroundColor ? settings.paidLabelBackgroundColor : @"#4d4d4d"];
     paidLabel.tag = SPONSORED_LABEL_TAG;
     BOOL isRTL = [SFUtils isRTL:settings.paidLabelText];
     [recImageView addSubview:paidLabel];
