@@ -263,6 +263,9 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     else if (sfItemType == SFTypeStripVideo) {
         return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0);
     }
+    else if (sfItemType == SFTypeStripNoTitle) {
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 310.0);
+    }
     
     return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 250.0);
 }
@@ -417,15 +420,6 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         sfItem.itemType == SFTypeStripWithThumbnailWithTitle ||
         sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle)
     {
-//        if (!disableCellShadows) {
-//            if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
-//                [SFUtils addDropShadowToView: singleCell.cardContentView shadowColor:sfItem.shadowColor];
-//            }
-//            else {
-//                [SFUtils addDropShadowToView: singleCell.cardContentView];
-//            }
-//        }
-        
         if (sfItem.widgetTitle) {
             singleCell.cellTitleLabel.text = sfItem.widgetTitle;
         }
@@ -465,16 +459,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
             singleCell.cellBrandLogoImageView.layer.cornerRadius = 8.0;
         }
     }
-    else {
-        if (!disableCellShadows) {
-            if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
-                [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
-            }
-            else {
-                [SFUtils addDropShadowToView: singleCell];
-            }
-        }
-        
+    else {        
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
     
