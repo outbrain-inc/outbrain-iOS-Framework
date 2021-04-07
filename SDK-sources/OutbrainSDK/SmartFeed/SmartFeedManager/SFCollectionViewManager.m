@@ -252,7 +252,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         }
     }
     else if ((sfItemType == SFTypeStripWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {
-        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 280.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 360.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
         return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0);
@@ -417,14 +417,14 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         sfItem.itemType == SFTypeStripWithThumbnailWithTitle ||
         sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle)
     {
-        if (!disableCellShadows) {
-            if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
-                [SFUtils addDropShadowToView: singleCell.cardContentView shadowColor:sfItem.shadowColor];
-            }
-            else {
-                [SFUtils addDropShadowToView: singleCell.cardContentView];
-            }
-        }
+//        if (!disableCellShadows) {
+//            if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
+//                [SFUtils addDropShadowToView: singleCell.cardContentView shadowColor:sfItem.shadowColor];
+//            }
+//            else {
+//                [SFUtils addDropShadowToView: singleCell.cardContentView];
+//            }
+//        }
         
         if (sfItem.widgetTitle) {
             singleCell.cellTitleLabel.text = sfItem.widgetTitle;

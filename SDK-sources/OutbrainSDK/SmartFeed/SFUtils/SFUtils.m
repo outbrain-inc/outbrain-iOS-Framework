@@ -47,7 +47,7 @@ static SFUtils *sharedSingleton;
         return UIColor.whiteColor;
     }
     else {
-        return UIColorFromRGB(0x171717);
+        return UIColorFromRGB(0x282828);
     }
 }
 
@@ -58,7 +58,7 @@ static SFUtils *sharedSingleton;
     else {
         return abTestSourceFontColor ?
             [SFUtils colorFromHexString: abTestSourceFontColor] :
-            UIColorFromRGB(0x93908);
+            UIColorFromRGB(0x707070);
     }
 }
 
@@ -360,7 +360,7 @@ static BOOL skipRTL;
     
     // AB test abTitleFontStyle
     UIFontDescriptor *fontD = [titleLabel.font.fontDescriptor
-                                fontDescriptorWithSymbolicTraits:settings.abTitleFontStyle == AB_TEST_FONT_STYLE_BOLD ? UIFontDescriptorTraitBold : !UIFontDescriptorTraitBold];
+                                fontDescriptorWithSymbolicTraits:settings.abTitleFontStyle == AB_TEST_FONT_STYLE_BOLD || settings.abTitleFontStyle == -1 ? UIFontDescriptorTraitBold : !UIFontDescriptorTraitBold];
     titleLabel.font = [UIFont fontWithDescriptor:fontD size:0];
     
     // AB test abSourceFontSize
@@ -368,7 +368,7 @@ static BOOL skipRTL;
         sourceLabel.font = [sourceLabel.font fontWithSize:settings.abSourceFontSize];
     }
     else {
-        CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 15.0 : 12.0;
+        CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 15.0 : 14.0;
         sourceLabel.font = [sourceLabel.font fontWithSize: defaultSize]; 
     }
 }
