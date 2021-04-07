@@ -348,21 +348,28 @@ static BOOL skipRTL;
 }
 
 +(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings {
-    
+    BOOL isNotSingleColumn = [settings.recMode isEqualToString:@"sdk_sfd_2_columns"] || [settings.recMode isEqualToString:@"sdk_sfd_3_columns"];
+    CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 19.0 : 18.0;
+    if (isNotSingleColumn) {
+        defaultSize = 16.0; // according to Zeplin
+    }
+    CGFloat titleFontSize = defaultSize;
     // AB test abTitleFontSize
     if (settings.abTitleFontSize > 12 && settings.abTitleFontSize < 20) {
-        titleLabel.font = [titleLabel.font fontWithSize:settings.abTitleFontSize];
-    }
-    else {
-        CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 19.0 : 16.0;
-        titleLabel.font = [titleLabel.font fontWithSize: defaultSize];
+        titleFontSize = settings.abTitleFontSize;
     }
     
     // AB test abTitleFontStyle
-    UIFontDescriptor *fontD = [titleLabel.font.fontDescriptor
-                                fontDescriptorWithSymbolicTraits:settings.abTitleFontStyle == AB_TEST_FONT_STYLE_BOLD || settings.abTitleFontStyle == -1 ? UIFontDescriptorTraitBold : !UIFontDescriptorTraitBold];
-    titleLabel.font = [UIFont fontWithDescriptor:fontD size:0];
+    BOOL isBold = settings.abTitleFontStyle == AB_TEST_FONT_STYLE_BOLD || settings.abTitleFontStyle == -1;
+    if (isBold) {
+        titleLabel.font = [UIFont systemFontOfSize:titleFontSize weight:UIFontWeightSemibold];
+    }
+    else {
+        UIFontDescriptor *fontD = [titleLabel.font.fontDescriptor fontDescriptorWithSymbolicTraits: !UIFontDescriptorTraitBold];
+        titleLabel.font = [UIFont fontWithDescriptor:fontD size: titleFontSize];
+    }
     
+
     // AB test abSourceFontSize
     if (settings.abSourceFontSize >= 10 && settings.abSourceFontSize < 16) {
         sourceLabel.font = [sourceLabel.font fontWithSize:settings.abSourceFontSize];
