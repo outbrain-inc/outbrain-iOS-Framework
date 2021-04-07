@@ -42,6 +42,10 @@ static SFUtils *sharedSingleton;
     }
 }
 
+-(UIColor *) titleColor {
+    return [self titleColor:NO];
+}
+
 -(UIColor *) titleColor:(BOOL) isPaid {
     if (self.darkMode) {
         return UIColor.whiteColor;

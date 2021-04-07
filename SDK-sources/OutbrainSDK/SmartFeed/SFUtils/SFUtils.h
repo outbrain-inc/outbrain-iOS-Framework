@@ -50,6 +50,7 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 
 +(SFUtils *) sharedInstance;
 -(UIColor *) primaryBackgroundColor;
+-(UIColor *) titleColor;
 -(UIColor *) titleColor:(BOOL) isPaid;
 -(UIColor *) subtitleColor:(NSString *)abTestSourceFontColor;
 
