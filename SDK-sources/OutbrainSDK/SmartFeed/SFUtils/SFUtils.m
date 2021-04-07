@@ -348,9 +348,10 @@ static BOOL skipRTL;
 }
 
 +(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings {
-    BOOL isNotSingleColumn = [settings.recMode isEqualToString:@"sdk_sfd_2_columns"] || [settings.recMode isEqualToString:@"sdk_sfd_3_columns"];
+    BOOL useSmallerFontSize = [@[@"sdk_sfd_2_columns", @"sdk_sfd_3_columns", @"sdk_sfd_thumbnails"] containsObject:settings.recMode]; // According to Zeplin
+        
     CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 19.0 : 18.0;
-    if (isNotSingleColumn) {
+    if (useSmallerFontSize) {
         defaultSize = 16.0; // according to Zeplin
     }
     CGFloat titleFontSize = defaultSize;
