@@ -1,95 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SFSingleWithThumbnailCollectionCell" id="Ohw-S0-8AW" customClass="SFCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="372" height="104"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SFSingleWithThumbnailCollectionCell" id="h0j-mC-9H4" customClass="SFCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="475" height="132"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                <rect key="frame" x="0.0" y="0.0" width="372" height="104"/>
+                <rect key="frame" x="0.0" y="0.0" width="475" height="132"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNs-fM-9vp" userLabel="ContentView">
-                        <rect key="frame" x="0.0" y="0.0" width="372" height="104"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kez-If-Ynu" userLabel="ContentView">
+                        <rect key="frame" x="0.0" y="0.0" width="475" height="132"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="61q-cI-eoC">
-                                <rect key="frame" x="12" y="12" width="108" height="80"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOQ-1r-yFS" userLabel="CardContentView">
+                                <rect key="frame" x="20" y="5" width="435" height="122"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TTc-fK-2Br">
+                                        <rect key="frame" x="0.0" y="10" width="102" height="102"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="TTc-fK-2Br" secondAttribute="height" id="2Tp-g4-7o2"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="npc-W9-vKd" userLabel="publisherLogo">
+                                        <rect key="frame" x="4" y="14" width="44" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="TG1-mB-sGu"/>
+                                            <constraint firstAttribute="width" constant="44" id="ed4-Of-tcG"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtq-va-Ne4">
+                                        <rect key="frame" x="72" y="10" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="EPJ-9N-evD"/>
+                                            <constraint firstAttribute="height" constant="30" id="cxe-Ti-F03"/>
+                                        </constraints>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Christiano Ronaldo is about to join the old lady next season" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iA9-Ga-ktq">
+                                        <rect key="frame" x="114" y="10" width="316" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Market Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCD-rJ-b8K">
+                                        <rect key="frame" x="114" y="50.5" width="316" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.57647058819999997" green="0.56470588239999997" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="61q-cI-eoC" secondAttribute="height" multiplier="1.35" id="8St-cs-6dQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="TTc-fK-2Br" secondAttribute="bottom" constant="10" id="CCF-I3-9rg"/>
+                                    <constraint firstItem="npc-W9-vKd" firstAttribute="top" secondItem="TTc-fK-2Br" secondAttribute="top" constant="4" id="EnP-k1-QY4"/>
+                                    <constraint firstItem="jtq-va-Ne4" firstAttribute="trailing" secondItem="TTc-fK-2Br" secondAttribute="trailing" id="IAd-8q-qs5"/>
+                                    <constraint firstItem="iA9-Ga-ktq" firstAttribute="leading" secondItem="TTc-fK-2Br" secondAttribute="trailing" constant="12" id="SZ4-9h-ODo"/>
+                                    <constraint firstItem="sCD-rJ-b8K" firstAttribute="leading" secondItem="iA9-Ga-ktq" secondAttribute="leading" id="UaL-rz-mov"/>
+                                    <constraint firstItem="iA9-Ga-ktq" firstAttribute="top" secondItem="TTc-fK-2Br" secondAttribute="top" id="e1B-ia-pCy"/>
+                                    <constraint firstItem="sCD-rJ-b8K" firstAttribute="top" secondItem="iA9-Ga-ktq" secondAttribute="bottom" constant="2" id="e77-rL-Wb0"/>
+                                    <constraint firstItem="TTc-fK-2Br" firstAttribute="leading" secondItem="MOQ-1r-yFS" secondAttribute="leading" id="foK-EO-WlB"/>
+                                    <constraint firstItem="TTc-fK-2Br" firstAttribute="top" secondItem="MOQ-1r-yFS" secondAttribute="top" constant="10" id="ovS-TJ-Ln6"/>
+                                    <constraint firstAttribute="trailing" secondItem="sCD-rJ-b8K" secondAttribute="trailing" constant="5" id="qMT-IK-GhG"/>
+                                    <constraint firstItem="jtq-va-Ne4" firstAttribute="top" secondItem="TTc-fK-2Br" secondAttribute="top" id="rly-v7-O1P"/>
+                                    <constraint firstItem="npc-W9-vKd" firstAttribute="leading" secondItem="TTc-fK-2Br" secondAttribute="leading" constant="4" id="rmR-c4-Ypt"/>
+                                    <constraint firstAttribute="trailing" secondItem="iA9-Ga-ktq" secondAttribute="trailing" constant="5" id="tTS-QV-emK"/>
                                 </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OTt-Gd-VRW" userLabel="publisherLogo">
-                                <rect key="frame" x="16" y="16" width="44" height="12"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="RgF-pE-yDb"/>
-                                    <constraint firstAttribute="height" constant="12" id="b6X-ns-99J"/>
-                                </constraints>
-                            </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pid-Q1-1t8">
-                                <rect key="frame" x="90" y="12" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="VFp-7x-FWQ"/>
-                                    <constraint firstAttribute="width" constant="30" id="ha7-fJ-74B"/>
-                                </constraints>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Christiano Ronaldo is about to join the old lady next season" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuD-GR-QrN">
-                                <rect key="frame" x="134" y="33.5" width="233" height="37.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Market Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wj0-Rd-o7N">
-                                <rect key="frame" x="134" y="73" width="233" height="14"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" red="0.57647058819999997" green="0.56470588239999997" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="E5m-Y8-aiu"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wj0-Rd-o7N" firstAttribute="leading" secondItem="NuD-GR-QrN" secondAttribute="leading" id="1LA-hB-LI1"/>
-                            <constraint firstAttribute="bottom" secondItem="61q-cI-eoC" secondAttribute="bottom" constant="12" id="8i6-53-Xym"/>
-                            <constraint firstItem="NuD-GR-QrN" firstAttribute="centerY" secondItem="hNs-fM-9vp" secondAttribute="centerY" id="8rp-YU-qZJ"/>
-                            <constraint firstItem="OTt-Gd-VRW" firstAttribute="leading" secondItem="61q-cI-eoC" secondAttribute="leading" constant="4" id="DoT-2b-Bmb"/>
-                            <constraint firstItem="NuD-GR-QrN" firstAttribute="leading" secondItem="61q-cI-eoC" secondAttribute="trailing" constant="14" id="Hlv-BU-Ez1"/>
-                            <constraint firstItem="61q-cI-eoC" firstAttribute="leading" secondItem="hNs-fM-9vp" secondAttribute="leading" constant="12" id="K3r-dg-xd7"/>
-                            <constraint firstItem="pid-Q1-1t8" firstAttribute="trailing" secondItem="61q-cI-eoC" secondAttribute="trailing" id="KE9-tE-YMa"/>
-                            <constraint firstAttribute="trailing" secondItem="NuD-GR-QrN" secondAttribute="trailing" constant="5" id="NJP-Pd-2Mm"/>
-                            <constraint firstItem="OTt-Gd-VRW" firstAttribute="top" secondItem="61q-cI-eoC" secondAttribute="top" constant="4" id="Skh-JU-w5u"/>
-                            <constraint firstItem="61q-cI-eoC" firstAttribute="top" secondItem="hNs-fM-9vp" secondAttribute="top" constant="12" id="e1h-LW-DGR"/>
-                            <constraint firstItem="wj0-Rd-o7N" firstAttribute="top" secondItem="NuD-GR-QrN" secondAttribute="bottom" constant="2" id="h4N-nu-cxL"/>
-                            <constraint firstAttribute="trailing" secondItem="wj0-Rd-o7N" secondAttribute="trailing" constant="5" id="v7v-pv-WXf"/>
-                            <constraint firstItem="pid-Q1-1t8" firstAttribute="top" secondItem="61q-cI-eoC" secondAttribute="top" id="ybY-IY-eP5"/>
+                            <constraint firstItem="MOQ-1r-yFS" firstAttribute="leading" secondItem="Kez-If-Ynu" secondAttribute="leading" constant="20" id="800-i6-Nsb"/>
+                            <constraint firstAttribute="bottom" secondItem="MOQ-1r-yFS" secondAttribute="bottom" constant="5" id="ImL-Yh-Erv"/>
+                            <constraint firstAttribute="trailing" secondItem="MOQ-1r-yFS" secondAttribute="trailing" constant="20" id="S1Z-nd-ey5"/>
+                            <constraint firstItem="MOQ-1r-yFS" firstAttribute="top" secondItem="E5m-Y8-aiu" secondAttribute="top" constant="5" id="WoR-yc-6Bc"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="zXd-ZP-hJX"/>
             <constraints>
-                <constraint firstItem="hNs-fM-9vp" firstAttribute="top" secondItem="Ohw-S0-8AW" secondAttribute="top" id="7do-vs-SSN"/>
-                <constraint firstAttribute="bottom" secondItem="hNs-fM-9vp" secondAttribute="bottom" id="8eN-ut-C0R"/>
-                <constraint firstItem="hNs-fM-9vp" firstAttribute="leading" secondItem="Ohw-S0-8AW" secondAttribute="leading" id="mRN-Tg-q6d"/>
-                <constraint firstAttribute="trailing" secondItem="hNs-fM-9vp" secondAttribute="trailing" id="rDA-nb-guG"/>
+                <constraint firstAttribute="trailing" secondItem="Kez-If-Ynu" secondAttribute="trailing" id="1RV-3c-3R4"/>
+                <constraint firstAttribute="bottom" secondItem="Kez-If-Ynu" secondAttribute="bottom" id="72R-lZ-rHK"/>
+                <constraint firstItem="Kez-If-Ynu" firstAttribute="leading" secondItem="h0j-mC-9H4" secondAttribute="leading" id="UWY-OU-nt8"/>
+                <constraint firstItem="Kez-If-Ynu" firstAttribute="top" secondItem="h0j-mC-9H4" secondAttribute="top" id="fA9-TO-5tQ"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="dIL-n5-wKq"/>
-            <size key="customSize" width="372" height="104"/>
+            <size key="customSize" width="475" height="132"/>
             <connections>
-                <outlet property="adChoicesButton" destination="pid-Q1-1t8" id="YZn-8D-tU4"/>
-                <outlet property="publisherLogo" destination="OTt-Gd-VRW" id="vkW-0Z-1Xg"/>
-                <outlet property="publisherLogoHeight" destination="b6X-ns-99J" id="706-nu-jBo"/>
-                <outlet property="publisherLogoWidth" destination="RgF-pE-yDb" id="izy-p5-CPn"/>
-                <outlet property="recImageView" destination="61q-cI-eoC" id="h5T-SK-yc1"/>
-                <outlet property="recSourceLabel" destination="wj0-Rd-o7N" id="ewe-Ay-93z"/>
-                <outlet property="recTitleLabel" destination="NuD-GR-QrN" id="wd8-Ri-8fa"/>
+                <outlet property="adChoicesButton" destination="jtq-va-Ne4" id="8Em-tl-dbC"/>
+                <outlet property="cardContentView" destination="MOQ-1r-yFS" id="JT6-iV-nvc"/>
+                <outlet property="publisherLogo" destination="npc-W9-vKd" id="AST-nK-mCm"/>
+                <outlet property="publisherLogoHeight" destination="TG1-mB-sGu" id="yJq-c2-rds"/>
+                <outlet property="publisherLogoWidth" destination="ed4-Of-tcG" id="PDg-ll-UTK"/>
+                <outlet property="recImageView" destination="TTc-fK-2Br" id="p6j-Vo-2k1"/>
+                <outlet property="recSourceLabel" destination="sCD-rJ-b8K" id="Fxj-2r-qTn"/>
+                <outlet property="recTitleLabel" destination="iA9-Ga-ktq" id="KNk-XC-JYS"/>
             </connections>
-            <point key="canvasLocation" x="145" y="-43"/>
+            <point key="canvasLocation" x="125.59999999999999" y="-28.785607196401802"/>
         </collectionViewCell>
     </objects>
 </document>

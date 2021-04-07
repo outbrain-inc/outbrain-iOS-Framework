@@ -255,7 +255,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 360.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
-        return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 114.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
         return CGSizeMake(screenWidth, 155.0);
