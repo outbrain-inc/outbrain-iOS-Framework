@@ -111,8 +111,8 @@ jobs:
       - *define_var_release_version
 
       - run:
-        name: Install jk
-        command: brew install jq
+          name: Install jk
+          command: brew install jq
 
       - run:
           name: Updating SDK version
