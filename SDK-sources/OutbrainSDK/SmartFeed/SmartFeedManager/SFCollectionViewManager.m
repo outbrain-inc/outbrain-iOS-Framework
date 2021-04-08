@@ -321,7 +321,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         singleCell.cardContentView.tag = cellTag;
     }
     
-    [SFCollectionViewManager configureSingleCell:cell withSFItem:sfItem eventListenerTarget:self.eventListenerTarget cellTag:cellTag tapGestureDelegate:self displaySourceOnOrganicRec:self.displaySourceOnOrganicRec disableCellShadows:self.disableCellShadows];
+    [SFCollectionViewManager configureSingleCell:cell withSFItem:sfItem eventListenerTarget:self.eventListenerTarget cellTag:cellTag tapGestureDelegate:self displaySourceOnOrganicRec:self.displaySourceOnOrganicRec];
 }
 
 + (void) configureSingleCell:(UICollectionViewCell *)cell
@@ -336,8 +336,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
           eventListenerTarget:eventListenerTarget
                       cellTag:cellTag
            tapGestureDelegate:tapGestureDelegate
-    displaySourceOnOrganicRec:NO
-     disableCellShadows:NO];
+    displaySourceOnOrganicRec:NO];
 }
 
 + (void) configureSingleCell:(UICollectionViewCell *)cell
@@ -346,7 +345,6 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
                      cellTag:(NSInteger)cellTag
           tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate
    displaySourceOnOrganicRec:(BOOL)displaySourceOnOrganicRec
-          disableCellShadows:(BOOL)disableCellShadows
 {
     SFCollectionViewCell *singleCell = (SFCollectionViewCell *)cell;
     

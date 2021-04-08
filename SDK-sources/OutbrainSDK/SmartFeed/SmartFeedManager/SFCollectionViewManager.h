@@ -22,7 +22,6 @@
 @property (nonatomic, weak) id<WKUIDelegate> _Nullable wkWebviewDelegate;
 @property (nonatomic, weak, readonly) UICollectionView * _Nullable collectionView;
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
-@property (nonatomic, assign) BOOL disableCellShadows;
 
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView;

@@ -190,9 +190,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 -(void) setDisableCellShadows:(BOOL)disableCellShadows {
     _disableCellShadows = disableCellShadows;
-    if (self.sfCollectionViewManager) {
-        self.sfCollectionViewManager.disableCellShadows = disableCellShadows;
-    }
+//    if (self.sfCollectionViewManager) {
+//        self.sfCollectionViewManager.disableCellShadows = disableCellShadows;
+//    }
     if (self.sfTableViewManager) {
         self.sfTableViewManager.disableCellShadows = disableCellShadows;
     }
