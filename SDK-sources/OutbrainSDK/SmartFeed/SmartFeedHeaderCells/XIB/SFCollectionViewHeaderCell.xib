@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,16 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="433" height="68"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" tag="455" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Sponsored Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imd-ra-IE4" userLabel="Header Label">
-                                <rect key="frame" x="11" y="26" width="105.33333333333333" height="16.333333333333329"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="11" y="23.666666666666671" width="137" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smartfeed" translatesAutoresizingMaskIntoConstraints="NO" id="CAP-KL-ahl">
-                                <rect key="frame" x="315" y="12" width="90" height="44"/>
+                                <rect key="frame" x="315" y="23" width="90" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="jKi-7V-4H6">
                                         <variation key="heightClass=regular-widthClass=regular" constant="125"/>
@@ -58,13 +58,13 @@
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="SvZ-DD-Tga" secondAttribute="trailing" id="1Sy-Oo-mGd"/>
                 <constraint firstItem="SvZ-DD-Tga" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9Dr-P6-fSn"/>
                 <constraint firstItem="SvZ-DD-Tga" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9Zf-6q-Hrl"/>
                 <constraint firstAttribute="bottom" secondItem="SvZ-DD-Tga" secondAttribute="bottom" id="g03-r2-b42"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="433" height="68"/>
             <connections>
                 <outlet property="adChoicesImageView" destination="D9b-tS-IaU" id="c99-2g-qUf"/>
