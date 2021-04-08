@@ -111,8 +111,12 @@ jobs:
       - *define_var_release_version
 
       - run:
+        name: Install jk
+        command: brew install jq
+
+      - run:
           name: Updating SDK version
-          command: bash -x ./bump_sdk_version.sh
+          command: # bash -x ./bump_sdk_version.sh
 
       - run:
           name: Clean previous OutbrainSDK.xcframework
@@ -202,16 +206,34 @@ jobs:
           working_directory: OBSDK-Release
 
       - run:
-          name: Upload OutbrainSDK.xcframework.zip to Bintray
-          command: bash -x ./upload_to_bintray.sh OBSDK-Release/OutbrainSDK.xcframework.zip iOS-SDK $RELEASE_VERSION OutbrainSDK.xcframework.zip
+          name: Upload OutbrainSDK.xcframework.zip to GCP Storage
+          command: cd scripts; bash -x ./upload_to_gcp_storage.sh ../OBSDK-Release/OutbrainSDK.xcframework.zip OutbrainSDK.xcframework.zip $RELEASE_VERSION 
 
       - run:
-          name: Upload iOS-SampleApps.zip to Bintray
-          command: bash -x ./upload_to_bintray.sh OBSDK-Release/iOS-SampleApps.zip iOS-SampleApps $RELEASE_VERSION iOS-SampleApps.zip
+          name: Upload iOS-SampleApps.zip to GCP Storage
+          command: cd scripts; bash -x ./upload_to_gcp_storage.sh ../OBSDK-Release/iOS-SampleApps.zip iOS-SampleApps.zip $RELEASE_VERSION 
 
       - run:
           name: Upload Custom UI
-          command: bash -x ./update_custom_ui.sh $RELEASE_VERSION
+          command: bash -x ./scripts/update_custom_ui.sh $RELEASE_VERSION
+
+      -run:
+        name: Artifacts Paths
+        command: |
+          echo "*********************************************************************************************************"
+          echo "* Links:                                                                                                *"
+          echo "*                                                                                                       *"
+          echo "* iOS SDK on GCP:                                                                                       *"
+          echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/OutbrainSDK.xcframework.zip              *"
+          echo "*                                                                                                       *"
+          echo "* iOS Sample Apps on GCP:                                                                               *"
+          echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/iOS-SampleApps.zip                       *"
+          echo "*                                                                                                       *"
+          echo "* iOS Custom UI on GCP:                                                                                 *"
+          echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/Custom-UI-iOS-SDK-Smartfeed.zip          *"
+          echo "*                                                                                                       *"
+          echo "*********************************************************************************************************"
+
 
 workflows:
   version: 2
