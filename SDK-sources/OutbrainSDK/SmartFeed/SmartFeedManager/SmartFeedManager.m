@@ -931,7 +931,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [horizontalView.collectionView reloadData];
         
         if (!sfItem.isCustomUI && cellTitleLabel && sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
-            cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            cellTitleLabel.textColor = [[SFUtils sharedInstance] titleColor];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 cellTitleLabel.font = [cellTitleLabel.font fontWithSize:22.0];
             }
