@@ -12,6 +12,8 @@ echo " Updating SDK version from ${CURRENT_SDK_VERSION} to ${RELEASE_VERSION}"
 echo "*********************"
 ./update_version.sh ${RELEASE_VERSION}
 
+cd ..
+
 git add SDK-sources/OutbrainSDK/Outbrain.m
 git add Samples/OutbrainDemo/Journal/Resources/plists/Journal-Dev-Info.plist
 git add Samples/OutbrainDemo/Journal/Resources/plists/Journal-Info.plist
