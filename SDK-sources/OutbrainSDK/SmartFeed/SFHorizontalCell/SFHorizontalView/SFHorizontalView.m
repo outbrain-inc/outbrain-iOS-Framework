@@ -147,9 +147,6 @@
     
     OBRecommendation *rec = self.sfItem.outbrainRecs[indexPath.row];
     UIColor *shadowColor = rec.isPaidLink && (self.shadowColor != nil) ? self.shadowColor : [UIColor lightGrayColor];
-    if (!self.disableCellShadows) {
-        [self addShadowOnCell:cell shadowColor:shadowColor];
-    }
     
     if (self.configureHorizontalItem) {
         self.configureHorizontalItem((SFCollectionViewCell *)cell, rec);
@@ -159,21 +156,6 @@
         cell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
         cell.contentView.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
     }
-}
-
--(void) addShadowOnCell:(UICollectionViewCell *)cell shadowColor:(UIColor *)shadowColor {
-    cell.contentView.backgroundColor = UIColor.whiteColor;
-    cell.contentView.layer.cornerRadius = 4.0f;
-    cell.contentView.layer.borderWidth = 1.0f;
-    cell.contentView.layer.borderColor = [UIColor clearColor].CGColor;
-    cell.contentView.layer.masksToBounds = YES;
-    
-    cell.layer.shadowColor = shadowColor.CGColor;
-    cell.layer.shadowOffset = CGSizeMake(0, 2.0f);
-    cell.layer.shadowRadius = 2.0f;
-    cell.layer.shadowOpacity = 1.0f;
-    cell.layer.masksToBounds = NO;
-    cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
 }
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

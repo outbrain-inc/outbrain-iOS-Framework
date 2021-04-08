@@ -901,7 +901,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     horizontalView.sfItem = sfItem;
     horizontalView.shadowColor = sfItem.shadowColor;
     horizontalView.displaySourceOnOrganicRec = self.displaySourceOnOrganicRec;
-    horizontalView.disableCellShadows = self.disableCellShadows;
     
     [horizontalView setupView];
     [horizontalView setOnRecommendationClick:^(OBRecommendation *rec) {
@@ -1128,9 +1127,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [self configureHorizontalCell:cell atIndexPath:indexPath];
         if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) {
             [self configureBrandedCarouselCell:cell atIndexPath:indexPath];
-        }
-        if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle || sfItem.itemType == SFTypeBrandedCarouselWithTitle)) {
-            [SFUtils addDropShadowToView: cell]; // add shadow
         }
     }
     else if ([cell isKindOfClass:[SFVideoCollectionViewCell class]] ||
