@@ -218,21 +218,21 @@ jobs:
           command: bash -x ./scripts/update_custom_ui.sh $RELEASE_VERSION
 
       - run:
-        name: Artifacts Paths
-        command: |
-          echo "*********************************************************************************************************"
-          echo "* Links:                                                                                                *"
-          echo "*                                                                                                       *"
-          echo "* iOS SDK on GCP:                                                                                       *"
-          echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/OutbrainSDK.xcframework.zip              *"
-          echo "*                                                                                                       *"
-          echo "* iOS Sample Apps on GCP:                                                                               *"
-          echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/iOS-SampleApps.zip                       *"
-          echo "*                                                                                                       *"
-          echo "* iOS Custom UI on GCP:                                                                                 *"
-          echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/Custom-UI-iOS-SDK-Smartfeed.zip          *"
-          echo "*                                                                                                       *"
-          echo "*********************************************************************************************************"
+          name: Artifacts Paths
+          command: |
+            echo "*********************************************************************************************************"
+            echo "* Links:                                                                                                *"
+            echo "*                                                                                                       *"
+            echo "* iOS SDK on GCP:                                                                                       *"
+            echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/OutbrainSDK.xcframework.zip              *"
+            echo "*                                                                                                       *"
+            echo "* iOS Sample Apps on GCP:                                                                               *"
+            echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/iOS-SampleApps.zip                       *"
+            echo "*                                                                                                       *"
+            echo "* iOS Custom UI on GCP:                                                                                 *"
+            echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/Custom-UI-iOS-SDK-Smartfeed.zip          *"
+            echo "*                                                                                                       *"
+            echo "*********************************************************************************************************"
 
 
 workflows:
