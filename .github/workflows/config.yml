@@ -23,7 +23,7 @@ jobs:
         PREVIOUS_VERSION=`cat OutbrainSDK.podspec | grep "s.version" | head -1 | cut -d "=" -f2 | cut -d \" -f2`
         sed -ie "s/\([[:space:]]*s\.version[[:space:]]*= \"\)${PREVIOUS_VERSION}/\1$NEW_VERSION/" OutbrainSDK.podspec
         
-    - name: Push changes of VoltaxSDK.podspec file
+    - name: Push changes of OutbrainSDK.podspec file
       run: |
         git config user.name "Oded Regev via CI"
         git config user.email "oregev@outbrain.com"
@@ -31,7 +31,7 @@ jobs:
         git add OutbrainSDK.podspec
         git commit -m "Bump version in OutbrainSDK.podspec"
         
-        git push -u origin HEAD:main
+        git push -u origin HEAD:master
     - name: Run pod spec lint
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
