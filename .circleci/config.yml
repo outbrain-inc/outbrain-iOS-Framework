@@ -116,7 +116,7 @@ jobs:
 
       - run:
           name: Updating SDK version
-          command: # bash -x ./bump_sdk_version.sh
+          command: bash -x ./bump_sdk_version.sh
 
       - run:
           name: Clean previous OutbrainSDK.xcframework
