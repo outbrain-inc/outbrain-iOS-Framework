@@ -217,7 +217,7 @@ jobs:
           name: Upload Custom UI
           command: bash -x ./scripts/update_custom_ui.sh $RELEASE_VERSION
 
-      -run:
+      - run:
         name: Artifacts Paths
         command: |
           echo "*********************************************************************************************************"
