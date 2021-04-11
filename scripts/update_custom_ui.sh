@@ -50,12 +50,14 @@ cd ..
 
 echo ""
 echo "*******************"
-echo " Upload to Bintray "
+echo " Upload to GCP Storage "
 echo "*******************"
 
-PACKAGE_IOS_CUSTOM_UI="iOS-Custom-UI-SDK-Smartfeed"
+pwd
+ls -l OBSDK-CustomUI/Custom-UI-iOS-SDK-Smartfeed.zip
 
-./upload_to_bintray.sh OBSDK-CustomUI/Custom-UI-iOS-SDK-Smartfeed.zip $PACKAGE_IOS_CUSTOM_UI $NEW_SDK_VER Custom-UI-iOS-SDK-Smartfeed.zip
+cd scripts
+./upload_to_gcp_storage.sh ../OBSDK-CustomUI/Custom-UI-iOS-SDK-Smartfeed.zip Custom-UI-iOS-SDK-Smartfeed.zip $NEW_SDK_VER
 
 echo ""
 echo ""
