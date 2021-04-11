@@ -116,7 +116,9 @@ jobs:
 
       - run:
           name: Updating SDK version
-          command: bash -x ./bump_sdk_version.sh
+          command: |
+            cd scripts
+            bash -x ./bump_sdk_version.sh
 
       - run:
           name: Clean previous OutbrainSDK.xcframework
@@ -204,6 +206,37 @@ jobs:
             cd SDK/OutbrainSDK.xcframework
             zip --symlinks -r ../../OutbrainSDK.xcframework.zip *
           working_directory: OBSDK-Release
+
+      - run:
+          name: Upload OutbrainSDK.xcframework.zip to GCP Storage
+          command: cd scripts; bash -x ./upload_to_gcp_storage.sh ../OBSDK-Release/OutbrainSDK.xcframework.zip OutbrainSDK.xcframework.zip $RELEASE_VERSION 
+
+      - run:
+          name: Upload iOS-SampleApps.zip to GCP Storage
+          command: cd scripts; bash -x ./upload_to_gcp_storage.sh ../OBSDK-Release/iOS-SampleApps.zip iOS-SampleApps.zip $RELEASE_VERSION 
+
+      - run:
+          name: Upload Custom UI
+          command: bash -x ./scripts/update_custom_ui.sh $RELEASE_VERSION
+
+      - run:
+          name: Update public Github repo outbrain/outbrain-iOS-Framework with new SDK version
+          command: |
+            git clone git@github.com:outbrain/outbrain-iOS-Framework.git
+            cd outbrain-iOS-Framework
+            echo "remove the old xcframework"
+            rm -fr OutbrainSDK.xcframework
+            cp -r ../OBSDK-Release/SDK/OutbrainSDK.xcframework .
+            git status
+            git add .
+            git status
+            git config credential.helper 'cache --timeout=120'
+            git config --global user.email "oregev@outbrain.com"
+            git config --global user.name "Oded Regev via CircleCI"
+            git commit -m "update OutbrainSDK.xcframework to version $RELEASE_VERSION"
+            git tag $RELEASE_VERSION
+            git push origin master
+            git push origin --tags
 
       - run:
           name: Upload OutbrainSDK.xcframework.zip to GCP Storage
