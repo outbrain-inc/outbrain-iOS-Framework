@@ -208,18 +208,6 @@ jobs:
           working_directory: OBSDK-Release
 
       - run:
-          name: Upload OutbrainSDK.xcframework.zip to GCP Storage
-          command: cd scripts; bash -x ./upload_to_gcp_storage.sh ../OBSDK-Release/OutbrainSDK.xcframework.zip OutbrainSDK.xcframework.zip $RELEASE_VERSION 
-
-      - run:
-          name: Upload iOS-SampleApps.zip to GCP Storage
-          command: cd scripts; bash -x ./upload_to_gcp_storage.sh ../OBSDK-Release/iOS-SampleApps.zip iOS-SampleApps.zip $RELEASE_VERSION 
-
-      - run:
-          name: Upload Custom UI
-          command: bash -x ./scripts/update_custom_ui.sh $RELEASE_VERSION
-
-      - run:
           name: Update public Github repo outbrain/outbrain-iOS-Framework with new SDK version
           command: |
             git clone git@github.com:outbrain/outbrain-iOS-Framework.git
