@@ -374,13 +374,13 @@ static BOOL skipRTL;
         titleLabel.font = [UIFont fontWithDescriptor:fontD size: titleFontSize];
     }
     
-
+    
     // AB test abSourceFontSize
     if (settings.abSourceFontSize >= 10 && settings.abSourceFontSize < 16) {
         sourceLabel.font = [sourceLabel.font fontWithSize:settings.abSourceFontSize];
     }
     else {
-        CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 15.0 : 14.0;
+        CGFloat defaultSize = useSmallerFontSize ? 12.0 : 14.0;
         sourceLabel.font = [sourceLabel.font fontWithSize: defaultSize]; 
     }
 }
