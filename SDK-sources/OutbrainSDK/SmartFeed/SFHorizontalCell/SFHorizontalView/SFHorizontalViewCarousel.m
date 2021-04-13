@@ -23,7 +23,6 @@ NSInteger const kBrandedCarouselTag = 111;
         self.itemSize = self.carouselItemSizeCallback();
     }
     else {
-        const BOOL isTablet = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
         const BOOL isBrandedCarousel = self.tag == kBrandedCarouselTag;
         if (isBrandedCarousel) {
             const CGFloat itemWidth = screenWidth*0.7;
@@ -31,8 +30,8 @@ NSInteger const kBrandedCarouselTag = 111;
             self.itemSize = CGSizeMake(itemWidth, itemHeight);
         }
         else {
-            const CGFloat itemWidth = MAX(self.collectionView.frame.size.width*(isTablet ? 0.4 : 0.6), 220.0);
-            const CGFloat itemHeight = MIN(itemWidth*0.85, self.collectionView.frame.size.height);
+            const CGFloat itemHeight = MAX(self.collectionView.frame.size.height*(0.95), 220.0);
+            const CGFloat itemWidth = itemHeight;
             self.itemSize = CGSizeMake(itemWidth, itemHeight);
         }
     }

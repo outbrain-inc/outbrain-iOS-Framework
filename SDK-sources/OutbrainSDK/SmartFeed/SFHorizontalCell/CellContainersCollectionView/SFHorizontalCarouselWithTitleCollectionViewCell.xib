@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="461" height="304"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSE-ha-ESX" customClass="SFHorizontalViewCarousel">
-                                <rect key="frame" x="0.0" y="51.5" width="461" height="247.5"/>
+                                <rect key="frame" x="0.0" y="41.5" width="461" height="257.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around Sky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEy-cl-S9c">
@@ -40,7 +40,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZSE-ha-ESX" firstAttribute="top" secondItem="lND-Vk-5hJ" secondAttribute="bottom" constant="16" id="49h-QR-9CT"/>
+                            <constraint firstItem="ZSE-ha-ESX" firstAttribute="top" secondItem="lND-Vk-5hJ" secondAttribute="bottom" constant="6" id="49h-QR-9CT"/>
                             <constraint firstItem="SEy-cl-S9c" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" constant="14" id="BLx-7B-HW8"/>
                             <constraint firstItem="SEy-cl-S9c" firstAttribute="top" secondItem="jJD-mi-P9N" secondAttribute="top" constant="8" id="DPG-BY-usb"/>
                             <constraint firstAttribute="bottom" secondItem="ZSE-ha-ESX" secondAttribute="bottom" constant="5" id="LUw-23-WGk"/>
