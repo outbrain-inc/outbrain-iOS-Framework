@@ -243,7 +243,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         return MAX(screenHeight*0.62, 450);
     }
     else if (sfItemType == SFTypeCarouselWithTitle) {
-        return MAX(screenHeight*0.62, 300);
+        return 300;
     }
     else if (sfItemType == SFTypeWeeklyHighlightsWithTitle) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
