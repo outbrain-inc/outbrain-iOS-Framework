@@ -232,11 +232,11 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         return CGSizeMake(screenWidth-20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 220.0);
     }
     else if (sfItemType == SFTypeCarouselWithTitle) {
-        return CGSizeMake(screenWidth-20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 300.0);
+        return CGSizeMake(screenWidth-20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 300.0);
     }
     else if (sfItemType == SFTypeGridThreeInRowNoTitle || sfItemType == SFTypeGridThreeInRowWithTitle) {
         CGFloat EXTRA_FOR_HEADER = (sfItemType == SFTypeGridThreeInRowWithTitle) ? 60 : 0;
-        return CGSizeMake(screenWidth, EXTRA_FOR_HEADER + (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 320.0 : 280.0));
+        return CGSizeMake(screenWidth-20.0, EXTRA_FOR_HEADER + (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 320.0 : 280.0));
     }
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
              sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
