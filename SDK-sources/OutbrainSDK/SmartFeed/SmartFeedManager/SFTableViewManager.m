@@ -243,7 +243,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         return MAX(screenHeight*0.62, 450);
     }
     else if (sfItemType == SFTypeCarouselWithTitle) {
-        return 300;
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 300.0; 
     }
     else if (sfItemType == SFTypeWeeklyHighlightsWithTitle) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -261,7 +261,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 345.0;
     }
     else if (sfItemType == SFTypeStripNoTitle) {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 310.0;
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 310.0;
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0;
