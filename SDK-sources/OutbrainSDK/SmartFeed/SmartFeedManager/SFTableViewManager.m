@@ -235,13 +235,15 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         return EXTRA_FOR_HEADER + 280.0;
     }
     else if (sfItemType == SFTypeGridTwoInRowNoTitle ||
-             sfItemType == SFTypeCarouselWithTitle ||
              sfItemType == SFTypeCarouselNoTitle ||
              sfItemType == SFTypeGridTwoInRowWithVideo) {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : kTableViewRowHeight;
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 220.0;
     }
     else if (sfItemType == SFTypeBrandedCarouselWithTitle || sfItemType == SFTypeStripAppInstall) {
         return MAX(screenHeight*0.62, 450);
+    }
+    else if (sfItemType == SFTypeCarouselWithTitle) {
+        return MAX(screenHeight*0.62, 300);
     }
     else if (sfItemType == SFTypeWeeklyHighlightsWithTitle) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
