@@ -229,7 +229,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     if (sfItemType == SFTypeGridTwoInRowNoTitle ||
         sfItemType == SFTypeCarouselNoTitle ||
         sfItemType == SFTypeGridTwoInRowWithVideo) {
-        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 220.0);
+        return CGSizeMake(screenWidth-20, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 220.0);
     }
     else if (sfItemType == SFTypeCarouselWithTitle) {
         return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 380.0);
