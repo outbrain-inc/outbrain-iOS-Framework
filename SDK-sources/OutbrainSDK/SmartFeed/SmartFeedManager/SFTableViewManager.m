@@ -258,7 +258,10 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 290.0;
     }
     else if (sfItemType == SFTypeStripWithTitle || sfItemType == SFTypeStripVideoWithPaidRecAndTitle) {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 280.0;
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 360.0;
+    }
+    else if (sfItemType == SFTypeStripNoTitle) {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 310.0;
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0;
@@ -369,7 +372,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
             singleCell.cellTitleLabel.text = @"Around the web";
         }
         if (!sfItem.isCustomUI) {
-            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] titleColor];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 singleCell.cellTitleLabel.font = [singleCell.cellTitleLabel.font fontWithSize: 22.0];
             }
@@ -380,7 +383,6 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         singleCell.cellTitleLabel.textColor = [SFUtils sharedInstance].darkMode ? UIColor.whiteColor : [SFUtils colorFromHexString:@"#717075"];
         singleCell.recTitleLabel.textColor =  [SFUtils sharedInstance].darkMode ? UIColor.whiteColor : [SFUtils colorFromHexString:@"#717075"];
         
-        [SFUtils addDropShadowToView: singleCell.cardContentView]; // shadow
         [[SFImageLoader sharedInstance] loadImageUrl:sfItem.odbSettings.brandedCarouselSettings.image.url into:singleCell.cellBrandLogoImageView]; // top right image
         
         if (singleCell.brandedCtaButtonLabel) {
@@ -391,14 +393,6 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         }
         if (singleCell.cellBrandLogoImageView) {
             singleCell.cellBrandLogoImageView.layer.cornerRadius = 8.0;
-        }
-    }
-    if (!self.disableCellShadows) {
-        if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
-            [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
-        }
-        else {
-            [SFUtils addDropShadowToView: singleCell];
         }
     }
     

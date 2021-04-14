@@ -757,9 +757,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) {
             [self configureBrandedCarouselCell:cell atIndexPath:indexPath];
         }
-        if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle)) {
-            [SFUtils addDropShadowToView: cell];
-        }
     }
     else if ([cell isKindOfClass:[SFVideoTableViewCell class]] ||
              sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle ||

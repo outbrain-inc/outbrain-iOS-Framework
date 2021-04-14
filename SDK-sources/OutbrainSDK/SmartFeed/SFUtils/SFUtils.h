@@ -62,10 +62,6 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 
 +(void) addConstraintsToFillParentWithHorizontalMargin:(UIView *)view;
 
-+(void) addDropShadowToView:(UIView *)view;
-
-+(void) addDropShadowToView:(UIView *)view shadowColor:(UIColor *)shadowColor;
-
 + (UIColor *)colorFromHexString:(NSString *)hexString;
 
 +(BOOL) isRTL:(NSString *)string;
