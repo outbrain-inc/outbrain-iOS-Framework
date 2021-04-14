@@ -31,7 +31,7 @@ NSInteger const kBrandedCarouselTag = 111;
         }
         else {
             const CGFloat itemHeight = MAX(self.collectionView.frame.size.height*(0.95), 220.0);
-            const CGFloat itemWidth = itemHeight;
+            const CGFloat itemWidth = MAX(self.collectionView.frame.size.width*(0.83), itemHeight); ;
             self.itemSize = CGSizeMake(itemWidth, itemHeight);
         }
     }
