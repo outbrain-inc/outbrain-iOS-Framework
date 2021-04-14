@@ -534,8 +534,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     // Set CTA view constraints
     [[singleCell.recTitleLabel trailingAnchor] constraintEqualToAnchor:[ctaLabelView leadingAnchor] constant:-12].active = YES;
     [[ctaLabelView widthAnchor] constraintEqualToConstant:ctaLabelView.intrinsicContentSize.width + 12].active = YES;
-    NSInteger trailingConstant = withTitle ? 16 : 8;
-    [[singleCell trailingAnchor] constraintEqualToAnchor:[ctaLabelView trailingAnchor] constant:trailingConstant].active = YES;
+    [[singleCell.cardContentView trailingAnchor] constraintEqualToAnchor:[ctaLabelView trailingAnchor] constant:0].active = YES;
     [[ctaLabelView heightAnchor] constraintEqualToConstant:25].active = YES;
     [[ctaLabelView topAnchor] constraintEqualToAnchor:[singleCell.recTitleLabel topAnchor] constant:0].active = YES;
     
