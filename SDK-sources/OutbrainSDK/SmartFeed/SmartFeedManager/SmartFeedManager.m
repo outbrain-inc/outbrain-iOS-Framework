@@ -865,7 +865,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     if (cellTitleLabel) {
         // text
-        if (sfItem.widgetTitle) {
+        if (sfItem.widgetTitle && sfItem.widgetTitle.length > 1) {
             cellTitleLabel.text = sfItem.widgetTitle;
         }
         else if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
