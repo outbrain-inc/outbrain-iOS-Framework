@@ -16,24 +16,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="426" height="399"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around Sky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCU-zY-8Tq">
-                        <rect key="frame" x="20" y="30" width="95.5" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Around Sky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCU-zY-8Tq">
+                        <rect key="frame" x="20" y="15" width="95.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                         <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3j-sN-Ncn" userLabel="BorderLine">
-                        <rect key="frame" x="20" y="56" width="386" height="1"/>
+                        <rect key="frame" x="20" y="41" width="386" height="1"/>
                         <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="Yk7-uE-l7S"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoe-vy-cmK" userLabel="cardContentView">
-                        <rect key="frame" x="20" y="71" width="386" height="323"/>
+                        <rect key="frame" x="20" y="56" width="386" height="338"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Wd0-1Y-wPl">
-                                <rect key="frame" x="0.0" y="0.0" width="386" height="257.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="386" height="272.5"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Raf-ex-94E" userLabel="publisherLogo">
                                 <rect key="frame" x="10" y="10" width="65" height="20"/>
@@ -50,13 +50,13 @@
                                 </constraints>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Lyft is creating more new jobs in San Francisco  than any other major startup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNT-0c-aHF">
-                                <rect key="frame" x="0.0" y="262.5" width="386" height="38.5"/>
+                                <rect key="frame" x="0.0" y="277.5" width="386" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Global Market Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnJ-4y-X2Q">
-                                <rect key="frame" x="0.0" y="305" width="124" height="14"/>
+                                <rect key="frame" x="0.0" y="320" width="124" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.57647058819999997" green="0.56470588239999997" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                     <constraint firstItem="C3j-sN-Ncn" firstAttribute="top" secondItem="CCU-zY-8Tq" secondAttribute="bottom" constant="5" id="0ud-ru-g6H"/>
                     <constraint firstAttribute="trailing" secondItem="hoe-vy-cmK" secondAttribute="trailing" constant="20" id="1rP-NE-SCS"/>
                     <constraint firstItem="C3j-sN-Ncn" firstAttribute="leading" secondItem="PHV-5e-kCJ" secondAttribute="leading" constant="20" id="9sX-p3-ftS"/>
-                    <constraint firstItem="CCU-zY-8Tq" firstAttribute="top" secondItem="PHV-5e-kCJ" secondAttribute="top" constant="30" id="E3n-VE-Xq1"/>
+                    <constraint firstItem="CCU-zY-8Tq" firstAttribute="top" secondItem="PHV-5e-kCJ" secondAttribute="top" constant="15" id="E3n-VE-Xq1"/>
                     <constraint firstItem="hoe-vy-cmK" firstAttribute="top" secondItem="C3j-sN-Ncn" secondAttribute="top" constant="15" id="Hu6-Yb-fpe"/>
                     <constraint firstAttribute="trailing" secondItem="C3j-sN-Ncn" secondAttribute="trailing" constant="20" id="NHp-DQ-ctK"/>
                     <constraint firstItem="C3j-sN-Ncn" firstAttribute="leading" secondItem="CCU-zY-8Tq" secondAttribute="leading" id="jKy-vc-6aH"/>
