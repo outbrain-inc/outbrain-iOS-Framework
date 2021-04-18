@@ -127,7 +127,7 @@
 - (void)testAbTestsOptimizationsSettingsWhenResponseEmpty {
     XCTAssertEqual(self.responseChild1.settings.abTitleFontSize, 0);
     XCTAssertEqual(self.responseChild1.settings.abSourceFontSize, 0);
-    XCTAssertEqual(self.responseChild1.settings.abTitleFontStyle, 0);
+    XCTAssertEqual(self.responseChild1.settings.abTitleFontStyle, -1);
     XCTAssertNil(self.responseChild1.settings.abSourceFontColor);
     XCTAssertTrue(self.responseChild1.settings.abImageFadeAnimation);
     XCTAssertEqual(self.responseChild1.settings.abImageFadeDuration, 500);
