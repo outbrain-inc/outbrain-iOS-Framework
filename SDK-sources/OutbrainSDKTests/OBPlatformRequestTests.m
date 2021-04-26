@@ -40,9 +40,22 @@ NSString *const OUTBRAIN_SAMPLE_PORTAL_URL = @"https://lp.outbrain.com/increase-
     XCTAssertTrue([platformRequest.widgetId isEqualToString:OBDemoWidgetID]);
     XCTAssertNil(platformRequest.portalUrl);
     XCTAssertNil(platformRequest.url);
-    
+    XCTAssertNil(platformRequest.psub);
+    platformRequest.psub = @"Sports";
+    XCTAssertTrue([platformRequest.psub isEqualToString:@"Sports"]);
 }
 
+- (void)testPlatformRequestWithPortalUrl {
+    OBPlatformRequest *platformRequest = [OBPlatformRequest requestWithPortalURL:OUTBRAIN_SAMPLE_PORTAL_URL lang:@"en" widgetID:OBDemoWidgetID];
+    XCTAssertTrue([platformRequest.portalUrl isEqualToString:OUTBRAIN_SAMPLE_PORTAL_URL]);
+    XCTAssertTrue([platformRequest.lang isEqualToString:@"en"]);
+    XCTAssertTrue([platformRequest.widgetId isEqualToString:OBDemoWidgetID]);
+    XCTAssertNil(platformRequest.bundleUrl);
+    XCTAssertNil(platformRequest.url);
+    XCTAssertNil(platformRequest.psub);
+    platformRequest.psub = @"Sports";
+    XCTAssertTrue([platformRequest.psub isEqualToString:@"Sports"]);
+}
 
 
 @end
