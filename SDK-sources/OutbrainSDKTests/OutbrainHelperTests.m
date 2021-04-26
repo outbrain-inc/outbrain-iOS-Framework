@@ -33,41 +33,53 @@
     NSURL *odbUrl = [[OutbrainHelper sharedInstance] recommendationURLForRequest:request];
     
     NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:odbUrl resolvingAgainstBaseURL:NO];
-
+    NSInteger testsCount = 0;
+    
     for (NSURLQueryItem *queryItem in urlComponents.queryItems) {
         if ([queryItem.name isEqualToString:@"widgetJSId"]) {
             XCTAssert([queryItem.value isEqualToString:@"APP_1"]);
+            testsCount++;
         }
         else if ([queryItem.name isEqualToString:@"idx"]) {
             XCTAssert([queryItem.value isEqualToString:@"2"]);
+            testsCount++;
         }
         else if ([queryItem.name isEqualToString:@"url"]) {
             XCTAssert([queryItem.value isEqualToString: @"http://edition.cnn.com/2017/10/02/sport/kosei-inoue-judo-japan-supercoach-interview/index.html"]);
+            testsCount++;
         }
         else if ([queryItem.name isEqualToString:@"format"]) {
             XCTAssert([queryItem.value isEqualToString:@"vjnc"]);
+            testsCount++;
         }
         else if ([queryItem.name isEqualToString:@"installationType"]) {
             XCTAssert([queryItem.value isEqualToString:@"ios_sdk"]);
+            testsCount++;
         }
         else if ([queryItem.name isEqualToString:@"secured"]) {
             XCTAssert([queryItem.value isEqualToString:@"true"]);
+            testsCount++;
         }
         else if ([queryItem.name isEqualToString:@"rtbEnabled"]) {
             XCTAssert([queryItem.value isEqualToString:@"true"]);
+            testsCount++;
         }
         else if ([queryItem.name isEqualToString:@"api_user_id"]) {
             XCTAssertNotNil(queryItem.value);
+            testsCount++;
         }
         else if ([queryItem.name isEqualToString:@"rand"]) {
             XCTAssertNotNil(queryItem.value);
+            testsCount++;
         }
         else if ([queryItem.name isEqualToString:@"key"]) {
             XCTAssertNotNil(queryItem.value);
+            testsCount++;
         }
     }
     
     urlComponents.query = nil;
+    XCTAssertEqual(testsCount, 10);
     XCTAssert([urlComponents.string isEqualToString:@"https://odb.outbrain.com/utils/get"]);
 }
 
