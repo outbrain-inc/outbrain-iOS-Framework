@@ -43,6 +43,17 @@ NS_ASSUME_NONNULL_BEGIN
  **/
 + (instancetype _Nonnull)requestWithBundleURL:(NSString * _Nonnull)bundleUrl lang:(NSString * _Nonnull)lang widgetID:(NSString * _Nonnull)widgetId;
 
+/**
+ *  @brief A constructor for defining an OBRequest object.
+ *
+ *  @param portalUrl - for platforms -  instead of URL of the of the page this will include the source representation logic or a page representing the activity
+ *  @param lang - For language breakdown of the sources
+ *  @param widgetId - a string ID (assigned by your account manager) for the widget in which content recommendations will be displayed.
+ *
+ *  @note: If you have more than one widgetID on the same page, use widgetIndex to set the corresponding index on the page.
+ **/
++ (instancetype _Nonnull)requestWithPortalURL:(NSString * _Nonnull)portalUrl lang:(NSString * _Nonnull)lang widgetID:(NSString * _Nonnull)widgetId;
+
 @end
 
 NS_ASSUME_NONNULL_END
