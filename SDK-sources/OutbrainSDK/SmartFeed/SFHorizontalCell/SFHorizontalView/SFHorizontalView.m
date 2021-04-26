@@ -93,7 +93,7 @@
     }
     
     cell.recTitleLabel.text = rec.content;
-    cell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:self.sfItem.odbSettings.sourceFormat];
+    cell.recSourceLabel.text = [SFUtils getSourceTextForRec:rec withSettings:self.sfItem.odbSettings];
     
     if (!self.sfItem.isCustomUI) {
         cell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
@@ -134,7 +134,7 @@
         cell.brandedCtaButtonLabel.layer.borderWidth = 1.0;
         cell.brandedCtaButtonLabel.layer.borderColor = UIColorFromRGB(0x4a90e2).CGColor;
         cell.brandedCtaButtonLabel.layer.cornerRadius = 3.0;
-        cell.brandedCtaButtonLabel.text = rec.brandedCardCtaText;
+        cell.brandedCtaButtonLabel.text = rec.ctaText;
     }
     
     NSInteger abTestDuration = self.sfItem.odbSettings.abImageFadeAnimation ? self.sfItem.odbSettings.abImageFadeDuration : -1;

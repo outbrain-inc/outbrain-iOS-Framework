@@ -19,6 +19,8 @@
 // The current version of the sdk
 extern NSString * _Nonnull const OB_SDK_VERSION;
 
+extern NSString * _Nonnull const OB_AD_NETWORK_ID;
+
 #define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 /**
@@ -167,6 +169,27 @@ extern NSString * _Nonnull const OB_SDK_VERSION;
  */
 + (void)testLocation:(NSString * _Nonnull)location;
 
+/**
+ * @brief Simulate app install recommendation
+ *
+ * Setting this flag to "true" will return a mock response with "app install" rec for each ODB call
+ *
+ * @param testAppInstall - a boolean flag; set to true to activate this test mode, or false to deactivate test mode.
+ */
++ (void)testAppInstall:(BOOL)testAppInstall;
+
+
++(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController __deprecated_msg("use openAppInstallRec:inViewController: instead.");
+
+/**
+ * @brief Used for "App install" ads, on click the app developer should call this method to open the advertiser app via loadProduct method
+ *
+ * App developer must call this method if (rec.isAppInstall) is "true" after a recommendation click.
+ *
+ * @param rec - the rec the user has clicked on
+ * @param viewController - the current view controller from which we will present the SKStoreProductViewController
+ */
++(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inViewController:(UIViewController * _Nonnull)viewController;
 
 
 @end

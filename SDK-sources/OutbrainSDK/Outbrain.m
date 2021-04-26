@@ -19,7 +19,9 @@
 
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"3.9.3";
+NSString * const OB_SDK_VERSION     =   @"4.3.0";
+
+NSString * const OB_AD_NETWORK_ID   =   @"97r2b46745.skadnetwork";
 
 BOOL WAS_INITIALIZED     =   NO;
 
@@ -48,6 +50,7 @@ BOOL WAS_INITIALIZED     =   NO;
         NSAssert(partnerKey != nil, @"Partner Key Must not be nil");
         NSAssert([partnerKey length] > 0, @"Partner Key Must not be empty string");
         [OutbrainManager sharedInstance].partnerKey = partnerKey;
+        [[OutbrainManager sharedInstance] reportPlistIsValidToServerIfNeeded];
         WAS_INITIALIZED = YES;
         NSLog(@"OutbrainSDK init");
     }
@@ -67,6 +70,10 @@ BOOL WAS_INITIALIZED     =   NO;
 
 + (void)testLocation:(NSString *)location {
     [OutbrainManager sharedInstance].testLocation = location;
+}
+
++ (void)testAppInstall:(BOOL)testAppInstall {
+    [OutbrainManager sharedInstance].testAppInstall = testAppInstall; 
 }
 
 #pragma mark - Fetching
@@ -150,6 +157,13 @@ BOOL WAS_INITIALIZED     =   NO;
         [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
         [label trackViewability];
     }
+}
+
++(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController {
+    [self openAppInstallRec:rec inViewController:navController];
+}
++(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inViewController:(UIViewController * _Nonnull)viewController {
+    [[OutbrainManager sharedInstance] openAppInstallRec:rec inViewController:viewController];
 }
 
 @end

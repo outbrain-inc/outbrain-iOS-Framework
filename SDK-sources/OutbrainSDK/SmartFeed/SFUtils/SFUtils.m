@@ -47,7 +47,7 @@ static SFUtils *sharedSingleton;
         return UIColor.whiteColor;
     }
     else {
-        return isPaid ? UIColorFromRGB(0x171717) : UIColorFromRGB(0x808080);
+        return UIColorFromRGB(0x171717);
     }
 }
 
@@ -172,7 +172,7 @@ static BOOL skipRTL;
     paidLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12.0];
     paidLabel.textColor = settings.paidLabelTextColor ? [self colorFromHexString:settings.paidLabelTextColor] : UIColor.whiteColor;
     paidLabel.textAlignment = NSTextAlignmentCenter;
-    paidLabel.backgroundColor = [self colorFromHexString:settings.paidLabelBackgroundColor ? settings.paidLabelBackgroundColor : @"#666666"];
+    paidLabel.backgroundColor = [self colorFromHexString:settings.paidLabelBackgroundColor ? settings.paidLabelBackgroundColor : @"#4d4d4d"];
     paidLabel.tag = SPONSORED_LABEL_TAG;
     BOOL isRTL = [SFUtils isRTL:settings.paidLabelText];
     [recImageView addSubview:paidLabel];
@@ -186,10 +186,10 @@ static BOOL skipRTL;
                                                context:nil];
     CGSize expectedLabelSize = rect.size;
     
-    [self addConstraint:NSLayoutAttributeHeight constant:expectedLabelSize.height + 6.0 toView:paidLabel];
-    [self addConstraint:NSLayoutAttributeWidth constant:expectedLabelSize.width + 20.0 toView:paidLabel];
-    [self addConstraint:(isRTL ? NSLayoutAttributeLeading : NSLayoutAttributeTrailing) constant:0 baseView:recImageView toView:paidLabel];
-    [self addConstraint:NSLayoutAttributeBottom constant:10 baseView:recImageView toView:paidLabel];
+    [self addConstraint:NSLayoutAttributeHeight     constant:expectedLabelSize.height + 6.0 toView:paidLabel];
+    [self addConstraint:NSLayoutAttributeWidth      constant:expectedLabelSize.width + 20.0 toView:paidLabel];
+    [self addConstraint:(isRTL ? NSLayoutAttributeTrailing : NSLayoutAttributeLeading)    constant:0 baseView:recImageView        toView:paidLabel];
+    [self addConstraint:NSLayoutAttributeBottom 	constant:0 baseView:recImageView        toView:paidLabel];
 }
 
 +(BOOL) isRTL:(NSString *)string {
@@ -322,12 +322,29 @@ static BOOL skipRTL;
     return components.URL;
 }
 
-+(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat {
-    if (sourceFormat && [sourceFormat containsString:@"$SOURCE"] && recSource) {
-        return [sourceFormat stringByReplacingOccurrencesOfString:@"$SOURCE" withString:recSource];
-    } else {
-        return recSource;
++(NSString *) getSourceTextForRec:(OBRecommendation *)rec withSettings:(OBSettings *)obSettings {
+    if (rec.isPaidLink) {
+        if (obSettings.paidSourceFormat) {
+            if ([obSettings.paidSourceFormat containsString:@"$SOURCE"] && rec.source) {
+                return [obSettings.paidSourceFormat stringByReplacingOccurrencesOfString:@"$SOURCE" withString:rec.source];
+            }
+            else {
+                return obSettings.paidSourceFormat;
+            }
+        }
     }
+    else { // Organic rec
+        if (obSettings.organicSourceFormat) {
+            if ([obSettings.organicSourceFormat containsString:@"$SOURCE"] && rec.source) {
+                return [obSettings.organicSourceFormat stringByReplacingOccurrencesOfString:@"$SOURCE" withString:rec.source];
+            }
+            else {
+                return obSettings.organicSourceFormat;
+            }
+        }
+    }
+    
+    return rec.source;
 }
 
 +(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings {
@@ -337,7 +354,8 @@ static BOOL skipRTL;
         titleLabel.font = [titleLabel.font fontWithSize:settings.abTitleFontSize];
     }
     else {
-        titleLabel.font = [titleLabel.font fontWithSize: 16]; // 16 is the default
+        CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 19.0 : 16.0;
+        titleLabel.font = [titleLabel.font fontWithSize: defaultSize];
     }
     
     // AB test abTitleFontStyle
@@ -350,7 +368,29 @@ static BOOL skipRTL;
         sourceLabel.font = [sourceLabel.font fontWithSize:settings.abSourceFontSize];
     }
     else {
-        sourceLabel.font = [sourceLabel.font fontWithSize: 12]; // 12 is the default
+        CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 15.0 : 12.0;
+        sourceLabel.font = [sourceLabel.font fontWithSize: defaultSize]; 
     }
+}
+
+
++(UILabel *) getRecCtaLabelWithText:(NSString *)ctaText {
+    UILabel * ctaLabelView = [[UILabel alloc] init];
+    
+    NSDictionary *attribs = @{
+        NSForegroundColorAttributeName: UIColorFromRGB(0x5295e3),
+        NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:14]
+    };
+    NSMutableAttributedString *attributedText =
+            [[NSMutableAttributedString alloc] initWithString: ctaText
+                                                   attributes:attribs];
+    ctaLabelView.attributedText = attributedText;
+    ctaLabelView.textAlignment = NSTextAlignmentCenter;
+    
+    ctaLabelView.layer.borderWidth = 1;
+    ctaLabelView.layer.borderColor = UIColorFromRGB(0x5295e3).CGColor;
+    ctaLabelView.layer.cornerRadius = 3;
+    
+    return ctaLabelView;
 }
 @end

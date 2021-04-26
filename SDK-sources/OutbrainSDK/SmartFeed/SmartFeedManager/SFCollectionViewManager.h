@@ -11,6 +11,7 @@
 #import "SFItemData.h"
 #import "SFUtils.h"
 #import "SFVideoCollectionViewCell.h"
+#import "SFReadMoreModuleHelper.h"
 
 @import WebKit;
 
@@ -46,5 +47,9 @@
                wkUIDelegate:(id <WKUIDelegate> _Nullable)wkUIDelegate
         eventListenerTarget:(id<SFPrivateEventListener> _Nullable) eventListenerTarget
          tapGestureDelegate:(id<UIGestureRecognizerDelegate> _Nullable)tapGestureDelegate;
+
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView readMoreCellAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+
+- (void) configureReadMoreCollectionViewCell:(UICollectionViewCell * _Nonnull)cell withButtonText:(NSString * _Nonnull)buttonText;
 
 @end

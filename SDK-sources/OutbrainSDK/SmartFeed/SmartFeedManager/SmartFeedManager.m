@@ -9,6 +9,8 @@
 #import "SmartFeedManager.h"
 #import "SFTableViewHeaderCell.h"
 #import "SFCollectionViewHeaderCell.h"
+#import "SFTableViewReadMoreCell.h"
+#import "SFCollectionViewReadMoreCell.h"
 #import "SFHorizontalCollectionViewCell.h"
 #import "SFBrandedCarouselCollectionCell.h"
 #import "SFHorizontalWithVideoCollectionViewCell.h"
@@ -32,6 +34,10 @@
 #import <OutbrainSDK/OutbrainSDK.h>
 #import "MultivacResponseDelegate.h"
 #import "SFDefaultDelegate.h"
+#import "SFReadMoreModuleHelper.h"
+
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 
 @interface SmartFeedManager() <SFPrivateEventListener, WKUIDelegate, MultivacResponseDelegate>
 
@@ -71,6 +77,13 @@
 @property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
 
 @property (nonatomic, strong) SFDefaultDelegate *defaultDelegate;
+
+@property (nonatomic, assign) BOOL hasWeeklyHighlightsItem;
+
+@property (nonatomic, assign) BOOL isReadMoreModuleEnabled;
+@property (nonatomic, strong) NSString * _Nullable readMoreButtonText;
+@property (nonatomic, copy) NSString *smartFeedReadMoreButtonCustomUIReuseIdentifier;
+@property (nonatomic, strong) SFReadMoreModuleHelper *readMoreModuleHelper;
 
 @end
 
@@ -133,6 +146,8 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.horizontalContainerMargin = 0;
     self.isVideoEligible = YES; // default value
     
+    self.isReadMoreModuleEnabled = NO;
+    
     self.defaultDelegate = [[SFDefaultDelegate alloc] init];
     self.delegate = self.defaultDelegate;
 }
@@ -142,12 +157,24 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     self.lastIdx = widgetIndex;
 }
 
+- (void) setReadMoreModule {
+    self.isReadMoreModuleEnabled = YES;
+    self.readMoreModuleHelper = [[SFReadMoreModuleHelper alloc] init];
+    self.readMoreButtonText = @"Read More"; // Default
+}
+
 -(NSInteger) smartFeedItemsCount {
     if (self.smartFeedItemsArray.count > 0) {
-        return self.smartFeedItemsArray.count + 1; // plus header cell
+        if (self.isReadMoreModuleEnabled) {
+            // plus header and read more button
+            return self.smartFeedItemsArray.count + 2;
+        }
+        // plus header
+        return self.smartFeedItemsArray.count + 1;
     }
     else {
-        return 0;
+        // show read more button if read more module is enabled
+        return self.isReadMoreModuleEnabled ? 1 : 0;
     }
 }
 
@@ -236,6 +263,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             if ([self.fab isEqualToString:@"no_abtest"]) {
                 self.fab = nil;
             }
+            if (self.isReadMoreModuleEnabled && response.settings.readMoreButtonText != nil) {
+                self.readMoreButtonText = response.settings.readMoreButtonText;
+            }
         }
         
         if (response.recommendations.count == 0) {
@@ -314,6 +344,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         case SFTypeBrandedCarouselWithTitle:
             [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
             break;
+        case SFTypeWeeklyHighlightsWithTitle:
+            if (!self.hasWeeklyHighlightsItem && [self isWeeklyHighlightsItemValid:response]) {
+                [newSmartfeedItems addObjectsFromArray:[self createCarouselItemArrayFromResponse:response templateType:itemType widgetTitle:widgetTitle]];
+                self.hasWeeklyHighlightsItem = YES;
+            }
+            break;
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridTwoInRowWithTitle:
         case SFTypeGridThreeInRowNoTitle:
@@ -364,19 +400,68 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     else if ([recMode isEqualToString:@"odb_dynamic_ad-carousel"]) {
         return [response.settings.brandedCarouselSettings.carouselType isEqualToString:@"AppInstall"] ? SFTypeStripAppInstall : SFTypeBrandedCarouselWithTitle;
     }
+    else if ([recMode isEqualToString:@"odb_timeline"]) {
+        return SFTypeWeeklyHighlightsWithTitle;
+    }
     
     NSLog(@"recMode value is not currently covered in the SDK - (%@)", recMode);
     return SFTypeStripWithTitle;
 }
 
+-(BOOL) isWeeklyHighlightsItemValid:(OBRecommendationResponse *)response {
+    if (response.recommendations.count % 3 != 0) {
+        NSLog(@"Weekly highlights recommendations size is not multiplier of 3");
+        return NO;
+    }
+    
+    if (response.recommendations.count / 3 < 5) {
+        NSLog(@"Weekly highlights item supports minimum 5 date items");
+        return NO;
+    }
+    
+    NSMutableDictionary *dateToCountOfRecs = [[NSMutableDictionary alloc] init];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM EEE"];
+    
+    NSArray<OBRecommendation*> *recs = response.recommendations;
+    
+    for (OBRecommendation *rec in recs) {
+        NSString *formatedDate = [dateFormatter stringFromDate:rec.publishDate];
+        if ([dateToCountOfRecs objectForKey:formatedDate]) {
+            NSInteger currentCount = [[dateToCountOfRecs objectForKey:formatedDate] integerValue];
+            [dateToCountOfRecs setValue:[NSNumber numberWithInteger:(currentCount + 1)] forKey:formatedDate];
+        } else {
+            [dateToCountOfRecs setValue:[NSNumber numberWithInt: 1] forKey:formatedDate];
+        }
+    }
+    
+    for (id count in [dateToCountOfRecs allValues]) {
+        if ([count integerValue] != 3) {
+            NSLog(@"Weekly highlights item - should be 3 recommendations for each date");
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 -(NSArray *) createSingleItemArrayFromResponse:(OBRecommendationResponse *)response templateType:(SFItemType)templateType widgetTitle:(NSString *)widgetTitle {
     NSArray *recommendations = response.recommendations;
     NSMutableArray *newSmartfeedItems = [[NSMutableArray alloc] init];
+    BOOL didCreatedFirstItem = NO;
     for (OBRecommendation *rec in recommendations) {
+        SFItemType templateTypeFix = templateType; //default
+        if ((templateType == SFTypeStripWithTitle) && didCreatedFirstItem) {
+            templateTypeFix = SFTypeStripNoTitle;
+        }
+        if ((templateType == SFTypeStripWithThumbnailWithTitle) && didCreatedFirstItem) {
+            templateTypeFix = SFTypeStripWithThumbnailNoTitle;
+        }
+        
         SFItemData *item = [[SFItemData alloc] initWithSingleRecommendation:rec
                                                                  odbResponse:response
-                                                                        type:templateType];
-        
+                                                                        type:templateTypeFix];
+        didCreatedFirstItem = YES;
         [newSmartfeedItems addObject:item];
         
     }
@@ -467,15 +552,24 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     
     NSMutableArray *recommendationsMutableArray = [recommendations mutableCopy];
+    BOOL didCreatedFirstItem = NO;
     while (recommendationsMutableArray.count >= itemsPerRow) {
         NSRange subRange = NSMakeRange(0, itemsPerRow);
         NSArray *singleLineRecs = [recommendationsMutableArray subarrayWithRange:subRange];
         [recommendationsMutableArray removeObjectsInRange:subRange];
         
+        SFItemType templateTypeFix = templateType; //default
+        if ((templateType == SFTypeGridTwoInRowWithTitle) && didCreatedFirstItem) {
+            templateTypeFix = SFTypeGridTwoInRowNoTitle;
+        }
+        if ((templateType == SFTypeGridThreeInRowWithTitle) && didCreatedFirstItem) {
+            templateTypeFix = SFTypeGridThreeInRowNoTitle;
+        }
+        
         SFItemData *item = [[SFItemData alloc] initWithList:singleLineRecs
                                                 odbResponse:response
-                                                       type:templateType];
-        
+                                                       type:templateTypeFix];
+        didCreatedFirstItem = YES;
         [newSmartfeedItems addObject:item];
     }
 }
@@ -512,7 +606,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
             [self.sfCollectionViewManager.collectionView performBatchUpdates:^{
                 [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
                 
-                if (firstIdx.row == 0) {
+                if (!self.isReadMoreModuleEnabled && firstIdx.row == 0) {
                     [self.sfCollectionViewManager.collectionView insertSections:[NSIndexSet indexSetWithIndex:self.outbrainSectionIndex]];
                 }
                 [self.sfCollectionViewManager.collectionView insertItemsAtIndexPaths:indexPaths];
@@ -534,6 +628,12 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
                 [self skySolutionForTableViewReload:tableView newSmartfeedItems:newSmartfeedItems indexPaths:indexPaths];
                 return;
             }
+            // Check if Sky solution is needed
+            if (self.isWallaSolutionActive && SYSTEM_VERSION_LESS_THAN(@"13.0")) {
+                [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
+                [tableView reloadData];
+                return;
+            }
 
             [tableView beginUpdates];
             [self.smartFeedItemsArray addObjectsFromArray:newSmartfeedItems];
@@ -553,7 +653,19 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return [[UITableViewCell alloc] init];
     }
     
-    if (indexPath.row == 0) {
+    NSInteger smartfeedHeaderCellIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            // Custom UI
+            if (self.smartFeedReadMoreButtonCustomUIReuseIdentifier) {
+                return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:self.smartFeedReadMoreButtonCustomUIReuseIdentifier forIndexPath:indexPath];
+            }
+            return [self.sfTableViewManager tableView:tableView readMoreCellAtIndexPath:indexPath];
+        }
+        smartfeedHeaderCellIndex = 1;
+    }
+    
+    if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header cell
         if (self.smartFeedHeadercCustomUIReuseIdentifier) {
             return [self.sfTableViewManager.tableView dequeueReusableCellWithIdentifier:self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
@@ -594,7 +706,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     if (indexPath.section == 0 && self.smartFeedItemsArray.count == 0) {
         [self fetchMoreRecommendations];
-        return;
+    }
+    
+    // For read more module
+    if (self.isReadMoreModuleEnabled) {
+        [self.readMoreModuleHelper tableView:tableView handleShadowViewForCell:cell atIndexPath:indexPath];
     }
     
     if (indexPath.section != self.outbrainSectionIndex) {
@@ -605,7 +721,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return;
     }
     
-    if (indexPath.row == 0) {
+    NSInteger smartfeedHeaderCellIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            [self.sfTableViewManager configureReadMoreTableViewCell:cell withButtonText:self.readMoreButtonText];
+            return;
+        }
+        smartfeedHeaderCellIndex = 1;
+    }
+    
+    if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header
         [self configureSmartFeedHeaderTableViewCell:cell atIndexPath:indexPath];
         return;
@@ -653,9 +778,23 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
 }
 
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount {
+    if (!self.isReadMoreModuleEnabled) {
+        return collapsableItemCount;
+    }
+    return [self.readMoreModuleHelper numberOfItemsInCollapsableSection:section collapsableItemCount:collapsableItemCount];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    NSInteger smartfeedHeaderCellIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            return [self.readMoreModuleHelper heightForReadMoreItem];
+        }
+        smartfeedHeaderCellIndex = 1;
+    }
+    if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header
         return UITableViewAutomaticDimension;
     }
@@ -728,12 +867,17 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     
     if (cellTitleLabel) {
+        // text
         if (sfItem.widgetTitle) {
             cellTitleLabel.text = sfItem.widgetTitle;
         }
-        else {
+        else if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
             // fallback
             cellTitleLabel.text = @"Around the web";
+        }
+        // text color
+        if (sfItem.widgetTitleTextColor && sfItem.itemType == SFTypeWeeklyHighlightsWithTitle) {
+            cellTitleLabel.textColor = sfItem.widgetTitleTextColor;
         }
     }
     
@@ -745,12 +889,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle) { // carousel
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalItemCell"];
-        }
-        if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) { // branded carousel
+        } else if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) { // branded carousel
             horizontalItemCellNib = [UINib nibWithNibName:@"SFBrandedCardItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFBrandedCardItemCell"];
-        }
-        else { // SFHorizontalFixed
+        } else if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) { // SFHorizontalFixed
             horizontalItemCellNib = [UINib nibWithNibName:@"SFHorizontalFixedItemCell" bundle:bundle];
             [horizontalView registerNib:horizontalItemCellNib forCellWithReuseIdentifier: @"SFHorizontalFixedItemCell"];
         }
@@ -789,8 +931,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [horizontalView setupView];
         [horizontalView.collectionView reloadData];
         
-        if (!sfItem.isCustomUI && cellTitleLabel) {
+        if (!sfItem.isCustomUI && cellTitleLabel && sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
             cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                cellTitleLabel.font = [cellTitleLabel.font fontWithSize:22.0];
+            }
         }
         
         UIColor *defaultBGColor = !sfItem.isCustomUI ? [[SFUtils sharedInstance] primaryBackgroundColor] : UIColor.whiteColor;
@@ -807,15 +952,21 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (void) configureSmartFeedHeaderTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
+    SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow: self.isReadMoreModuleEnabled ? 2 : 1 inSection:self.outbrainSectionIndex]];
     SFTableViewHeaderCell *sfHeaderCell = (SFTableViewHeaderCell *)cell;
     if (sfItem.widgetTitle) {
         sfHeaderCell.headerLabel.text = sfItem.widgetTitle;
     }
     
     if (!sfItem.isCustomUI) {
+        if (sfItem.odbSettings.smartfeedHeaderFontSize != 0) {
+            sfHeaderCell.headerLabel.font = [sfHeaderCell.headerLabel.font fontWithSize: sfItem.odbSettings.smartfeedHeaderFontSize];
+        }
         sfHeaderCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
         sfHeaderCell.headerLabel.textColor = [[SFUtils sharedInstance] titleColor:YES];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            sfHeaderCell.headerLabel.font = [sfHeaderCell.headerLabel.font fontWithSize:22.0];
+        }
     }
     
     if (self.isSmartfeedWithNoChildren) {
@@ -849,7 +1000,17 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 #pragma mark - Collection View methods
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    NSInteger smartfeedHeaderCellIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            if (self.smartFeedReadMoreButtonCustomUIReuseIdentifier) {
+                return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier:self.smartFeedReadMoreButtonCustomUIReuseIdentifier forIndexPath:indexPath];
+            }
+            return [self.sfCollectionViewManager collectionView:collectionView readMoreCellAtIndexPath:indexPath];
+        }
+        smartfeedHeaderCellIndex = 1;
+    }
+    if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header cell
         if (self.smartFeedHeadercCustomUIReuseIdentifier) {
             return [self.sfCollectionViewManager.collectionView dequeueReusableCellWithReuseIdentifier: self.smartFeedHeadercCustomUIReuseIdentifier forIndexPath:indexPath];
@@ -875,7 +1036,18 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (NSInteger)numberOfSectionsInCollectionView {
-    return self.smartFeedItemsArray.count > 0 ? self.outbrainSectionIndex + 1 : self.outbrainSectionIndex;
+    if (self.smartFeedItemsArray.count > 0 || self.isReadMoreModuleEnabled) {
+        return self.outbrainSectionIndex + 1;
+    } else {
+        return self.outbrainSectionIndex;
+    }
+}
+
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount {
+    if (!self.isReadMoreModuleEnabled) {
+        return collapsableItemCount;
+    }
+    return [self.readMoreModuleHelper numberOfItemsInCollapsableSection:section collapsableItemCount:collapsableItemCount];
 }
 
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView
@@ -883,7 +1055,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
   sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
     
     if (indexPath.section == self.outbrainSectionIndex) {
-        if (indexPath.row == 0) {
+        
+        NSInteger smartfeedHeaderCellIndex = 0;
+        if (self.isReadMoreModuleEnabled) {
+            if (indexPath.row == 0) {
+                CGFloat height = [self.readMoreModuleHelper heightForReadMoreItem];
+                return CGSizeMake(collectionView.frame.size.width, height);
+            }
+            smartfeedHeaderCellIndex = 1;
+        }
+        if (indexPath.row == smartfeedHeaderCellIndex) {
             // Smartfeed header
             return CGSizeMake(collectionView.frame.size.width, 35);
         }
@@ -900,16 +1081,28 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     if (indexPath.section == 0 && self.smartFeedItemsArray.count == 0) {
         [self fetchMoreRecommendations];
-        return;
+    }
+    
+    // For read more module
+    if (self.isReadMoreModuleEnabled) {
+        [self.readMoreModuleHelper collectionView:collectionView handleShadowViewForCell:cell atIndexPath:indexPath];
     }
     
     if (indexPath.section != self.outbrainSectionIndex) {
         return;
     }
     
-    if (indexPath.row == 0) {
+    NSInteger smartfeedHeaderCellIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            [self.sfCollectionViewManager configureReadMoreCollectionViewCell:cell withButtonText:self.readMoreButtonText];
+            return;
+        }
+        smartfeedHeaderCellIndex = 1;
+    }
+    if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header
-        SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow:1 inSection:self.outbrainSectionIndex]];
+        SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow: self.isReadMoreModuleEnabled ? 2 : 1 inSection:self.outbrainSectionIndex]];
         
         [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withSFItem:sfItem isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren];
         return;
@@ -956,7 +1149,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
-    return self.smartFeedItemsArray[indexPath.row-1];
+    return self.smartFeedItemsArray[indexPath.row - (self.isReadMoreModuleEnabled ? 2 : 1)];
 }
     
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -1063,6 +1256,14 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     return NO;
 }
 
+- (void)readMoreButtonClicked:(id)sender {
+    if (self.sfCollectionViewManager != nil) {
+        [self.readMoreModuleHelper readMoreButonClickedOnCollectionView:self.sfCollectionViewManager.collectionView];
+    } else if (self.sfTableViewManager != nil) {
+        [self.readMoreModuleHelper readMoreButonClickedOnTableView:self.sfTableViewManager.tableView];
+    }
+}
+
 #pragma mark - Common methods
 -(BOOL) finishedLoadingAllItemsInSmartfeed {
     return [self.smartFeedItemsArray count] > 0 && !self.hasMore;
@@ -1098,6 +1299,13 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         return SFTypeBadType;
     }
     
+    NSInteger smartfeedHeaderCellIndex = 0;
+    if (self.isReadMoreModuleEnabled) {
+        if (indexPath.row == 0) {
+            return SFTypeReadMoreButton;
+        }
+        smartfeedHeaderCellIndex = 1;
+    }
     if (indexPath.row == 0) {
         // Smartfeed header cell
         return SFTypeSmartfeedHeader;
@@ -1117,31 +1325,48 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [self registerHeaderNib:nib withReuseIdentifier:identifier];
         return;
     }
+    // For read more module
+    if (itemType == SFTypeReadMoreButton) {
+        [self registerReadMoreNib:nib withReuseIdentifier:identifier];
+        return;
+    }
     
     NSNumber *convertedItemType = [NSNumber numberWithInteger: itemType];
     self.customNibsForItemType[convertedItemType] = nib;
     self.reuseIdentifierItemType[convertedItemType] = identifier;
 }
 
-- (void) registerHeaderNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
+- (BOOL) tryRegisterNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
     UIView *rootView = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
     
     if (self.sfCollectionViewManager != nil) {
         if (![rootView isKindOfClass:[UICollectionViewCell class]]) {
             NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UICollectionViewCell. --> reverting back to default", identifier]);
-            return; // reverting back to default
+            return NO; // reverting back to default
         }
         [self.sfCollectionViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
+        return YES;
     }
     else {
         if (![rootView isKindOfClass:[UITableViewCell class]]) {
             NSLog(@"%@", [NSString stringWithFormat:@"Nib for reuseIdentifier (%@) is not type of UITableViewCell. --> reverting back to default", identifier]);
-            return; // reverting back to default
+            return NO; // reverting back to default
         }
         [self.sfTableViewManager registerSingleItemNib:nib forCellWithReuseIdentifier:identifier];
+        return YES;
     }
-    
-    self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
+}
+
+- (void) registerReadMoreNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
+    if ([self tryRegisterNib:nib withReuseIdentifier:identifier]) {
+        self.smartFeedReadMoreButtonCustomUIReuseIdentifier = identifier;
+    }
+}
+
+- (void) registerHeaderNib:(UINib * _Nonnull )nib withReuseIdentifier:( NSString * _Nonnull )identifier {
+    if ([self tryRegisterNib:nib withReuseIdentifier:identifier]) {
+        self.smartFeedHeadercCustomUIReuseIdentifier = identifier;
+    }
 }
 
 - (void) setTransparentBackground:(BOOL)isTransparentBackground {

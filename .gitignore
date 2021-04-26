@@ -1,7 +1,8 @@
 # Xcode
 .DS_Store
 build/
-OutbrainSDK.framework/ 
+OutbrainSDK.framework/
+OutbrainSDK.xcframework/
 *.pbxuser
 *.xcuserdatad
 !default.pbxuser

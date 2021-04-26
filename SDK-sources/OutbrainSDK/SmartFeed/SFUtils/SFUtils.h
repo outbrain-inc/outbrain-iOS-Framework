@@ -35,6 +35,9 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 - (void) adChoicesClicked:(id)sender;
 - (void) outbrainLabelClicked:(id)sender;
 
+// Read more module
+- (void) readMoreButtonClicked:(id)sender;
+
 @optional
 
 - (BOOL) isVideoCurrentlyPlaying;
@@ -87,8 +90,10 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 
 +(NSURL *) appendParamsToVideoUrl:(OBRecommendationResponse *)response url:(NSString *)url;
 
-+(NSString *) getRecSourceText:(NSString *)recSource withSourceFormat:(NSString *)sourceFormat;
++(NSString *) getSourceTextForRec:(OBRecommendation *)rec withSettings:(OBSettings *)obSettings;
 
 +(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings;
+
++ (UILabel *) getRecCtaLabelWithText:(NSString *)ctaText;
 
 @end

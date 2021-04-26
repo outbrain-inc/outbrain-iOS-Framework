@@ -296,18 +296,60 @@
     XCTAssertNil(rec2.audienceCampaignsLabel);
 }
 
--(void) testSourceFormat {
-    XCTAssertTrue([self.responseChild3.settings.sourceFormat isEqualToString:@"Recommended by $SOURCE"]);
-    OBRecommendation *firstRecOfChild3 = self.responseChild3.recommendations[0];
-    OBRecommendation *firstRecOfChild2 = self.responseChild2.recommendations[0];
-    XCTAssertTrue(
-                  [[SFUtils getRecSourceText:firstRecOfChild3.source withSourceFormat:self.responseChild3.settings.sourceFormat]
-                  isEqualToString:[@"Recommended by " stringByAppendingString:firstRecOfChild3.source]]
-                  );
-    XCTAssertTrue(
-                  [[SFUtils getRecSourceText:firstRecOfChild2.source withSourceFormat:self.responseChild2.settings.sourceFormat]
-                   isEqualToString:firstRecOfChild2.source]
-                  );
+-(void) testSourceFormatParsing {
+    XCTAssertTrue([self.responseChild3.settings.paidSourceFormat isEqualToString:@"Provided to you by $SOURCE"]);
+    XCTAssertTrue([self.responseChild3.settings.organicSourceFormat isEqualToString:@"Recommended by $SOURCE"]);
+    
+    XCTAssertTrue([self.responseChild2.settings.paidSourceFormat isEqualToString:@"Paid provider"]);
+    XCTAssertTrue([self.responseChild2.settings.organicSourceFormat isEqualToString:@"Custom Organic Source"]);
+}
+
+-(void) testGetRecSourceTextWithSettingsForOrganicRec {
+    OBRecommendation *testRec = self.responseChild2.recommendations[0];
+    XCTAssertFalse(testRec.isPaidLink);
+    
+    
+    // Organic with "Recommended by $SOURCE"
+    OBSettings *testSettings = self.responseChild3.settings;
+    XCTAssertTrue([testSettings.organicSourceFormat isEqualToString:@"Recommended by $SOURCE"]);
+    NSString *sourceText = [SFUtils getSourceTextForRec:testRec withSettings:testSettings];
+    XCTAssertTrue([sourceText isEqualToString:[@"Recommended by " stringByAppendingString:testRec.source]]);
+    
+    // Organic with "Custom Organic Source"
+    testSettings = self.responseChild2.settings;
+    XCTAssertTrue([testSettings.organicSourceFormat isEqualToString:@"Custom Organic Source"]);
+    sourceText = [SFUtils getSourceTextForRec:testRec withSettings:testSettings];
+    XCTAssertTrue([sourceText isEqualToString: @"Custom Organic Source"]);
+    
+    // Organic with "Custom Organic Source"
+    testSettings = self.responseChild1.settings;
+    XCTAssertNil(testSettings.organicSourceFormat);
+    sourceText = [SFUtils getSourceTextForRec:testRec withSettings:testSettings];
+    XCTAssertTrue([sourceText isEqualToString: testRec.source]);
+}
+
+-(void) testGetRecSourceTextWithSettingsForPaidRec {
+    OBRecommendation *testRec = self.responseChild3.recommendations[0];
+    XCTAssertTrue(testRec.isPaidLink);
+    
+    
+    // Paid with "Recommended by $SOURCE"
+    OBSettings *testSettings = self.responseChild3.settings;
+    XCTAssertTrue([testSettings.paidSourceFormat isEqualToString:@"Provided to you by $SOURCE"]);
+    NSString *sourceText = [SFUtils getSourceTextForRec:testRec withSettings:testSettings];
+    XCTAssertTrue([sourceText isEqualToString:[@"Provided to you by " stringByAppendingString:testRec.source]]);
+    
+    // Paid with "Custom Organic Source"
+    testSettings = self.responseChild2.settings;
+    XCTAssertTrue([testSettings.paidSourceFormat isEqualToString:@"Paid provider"]);
+    sourceText = [SFUtils getSourceTextForRec:testRec withSettings:testSettings];
+    XCTAssertTrue([sourceText isEqualToString: @"Paid provider"]);
+    
+    // Paid with "Custom Organic Source"
+    testSettings = self.responseChild1.settings;
+    XCTAssertNil(testSettings.paidSourceFormat);
+    sourceText = [SFUtils getSourceTextForRec:testRec withSettings:testSettings];
+    XCTAssertTrue([sourceText isEqualToString: testRec.source]);
 }
 
 #pragma mark - utilities methods
@@ -381,6 +423,10 @@
     recommendations = self.responseChild3.recommendations;
     rec = recommendations[0];
     XCTAssertTrue(rec.image.isGif);
+}
+
+- (void)testReadMoreText {
+    XCTAssertTrue([self.responseParent.settings.readMoreButtonText isEqualToString:@"Read More"]);
 }
 
 

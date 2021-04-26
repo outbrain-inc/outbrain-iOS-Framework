@@ -19,33 +19,11 @@ export SF_MASTER_SCRIPT_RUNNING=1
 SRCROOT=`pwd`
 TARGET_NAME="OutbrainSDK"
 FRAMEWORK_NAME="OutbrainSDK"
-SF_WRAPPER_NAME="${FRAMEWORK_NAME}.framework"
+SF_WRAPPER_NAME="${FRAMEWORK_NAME}.xcframework"
 SF_RELEASE_DIR="${SRCROOT}/Release/"
 
-if [[ "$SDK_NAME" =~ ([A-Za-z]+) ]]
-then
-    SF_SDK_PLATFORM=${BASH_REMATCH[1]}
-else
-    echo "Could not find platform name from SDK_NAME: $SDK_NAME"
-    exit 1
-fi
 
-if [[ "$SF_SDK_PLATFORM" = "iphoneos" ]]
-then
-    SF_OTHER_PLATFORM=iphonesimulator
-else
-    SF_OTHER_PLATFORM=iphoneos
-fi
 
-if [[ "$BUILT_PRODUCTS_DIR" =~ (.*)$SF_SDK_PLATFORM$ ]]
-then
-    SF_OTHER_BUILT_PRODUCTS_DIR="${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}"
-else
-    echo "Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR"
-    exit 1
-fi
-
-# 3
 # If remnants from a previous build exist, delete them.
 if [ -d "${SRCROOT}/build" ]; then
 rm -rf "${SRCROOT}/build"
@@ -57,39 +35,43 @@ fi
 
 mkdir "${SRCROOT}/Release"
 
-# 4
+# https://medium.com/@er.mayursharma14/how-to-create-xcframework-855817f854cf
+
 # Build the framework for device and for simulator (using
 # all needed architectures).
-xcodebuild -target "${TARGET_NAME}" -configuration Release ENABLE_BITCODE=YES OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk "iphoneos"
-xcodebuild -target "${TARGET_NAME}" -configuration Release ENABLE_BITCODE=YES OTHER_CFLAGS="-fembed-bitcode" BITCODE_GENERATION_MODE=bitcode -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk "iphonesimulator"
-
-# 5
-# Remove .framework file if exists on Desktop from previous run.
-if [ -d "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}" ]; then
-rm -rf "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}"
-fi
-
-ls -l "${SRCROOT}/build/Release-iphoneos/"
+xcodebuild archive -scheme "${TARGET_NAME}" -destination="iOS" -sdk iphonesimulator SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${SRCROOT}/build/Release-iphonesimulator"
+xcodebuild archive -scheme "${TARGET_NAME}" -destination="iOS" -sdk iphoneos        SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${SRCROOT}/build/Release-iphoneos"
 
 
-# 6
-# Copy the device version of framework to Desktop.
-cp -r "${SRCROOT}/build/Release-iphoneos/${SF_WRAPPER_NAME}" "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}"
 
-# 7
-# Replace the framework executable within the framework with
-# a new version created by merging the device and simulator
-# frameworks' executables with lipo.
-lipo -create -output "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}/${FRAMEWORK_NAME}" "${SRCROOT}/build/Release-iphoneos/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}" "${SRCROOT}/build/Release-iphonesimulator/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}"
+ls -l "${SRCROOT}/build/"
 
-lipo -info "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}/${FRAMEWORK_NAME}"
-otool -arch arm64 -l "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}/${FRAMEWORK_NAME}" | grep __LLVM
+# https://developer.apple.com/forums/thread/655768
 
+# First, get all the UUID filepaths for BCSymbolMaps, because these are randomly generated and need to be individually added as the `-debug-symbols` parameter. The dSYM path is always the same so that one is manually added
+echo "XCFramework: Generating IPHONE BCSymbolMap paths..."
+IPHONE_BCSYMBOLMAP_PATHS=(${SRCROOT}/build/Release-iphoneos.xcarchive/BCSymbolMaps/*)
+IPHONE_BCSYMBOLMAP_COMMANDS=""
+for path in "${IPHONE_BCSYMBOLMAP_PATHS[@]}"; do
+  IPHONE_BCSYMBOLMAP_COMMANDS="$IPHONE_BCSYMBOLMAP_COMMANDS -debug-symbols $path "
+  echo $IPHONE_BCSYMBOLMAP_COMMANDS
+done
 
+echo "XCFramework: Generating IPHONE BCSymbolMap paths... --> Done"
+
+# XCFramework with debug symbols - see https://pspdfkit.com/blog/2021/advances-in-xcframeworks/#built-in-support-for-bcsymbolmaps-and-dsyms
+xcodebuild -create-xcframework -allow-internal-distribution \
+    -framework "${SRCROOT}/build/Release-iphoneos.xcarchive/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework" \
+    -debug-symbols "${SRCROOT}/build/Release-iphoneos.xcarchive/dSYMs/${FRAMEWORK_NAME}.framework.dSYM" \
+    $IPHONE_BCSYMBOLMAP_COMMANDS \
+    -framework "${SRCROOT}/build/Release-iphonesimulator.xcarchive/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework" \
+    -debug-symbols "${SRCROOT}/build/Release-iphonesimulator.xcarchive/dSYMs/${FRAMEWORK_NAME}.framework.dSYM" \
+    -output "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
 
 # 8
 # Copy the framework back for the Journal app to use
-cp -a "${SF_RELEASE_DIR}/${SF_WRAPPER_NAME}" "${SRCROOT}/../Samples/OutbrainDemo"
+cp -a "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework" "${SRCROOT}/../Samples/OutbrainDemo"
+
 
 # 9
 # Delete the most recent build.

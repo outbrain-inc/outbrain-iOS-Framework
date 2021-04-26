@@ -15,6 +15,8 @@
 @property (nonatomic, assign) BOOL isRTL;
 @property (nonatomic, assign) BOOL isSmartFeed;
 @property (nonatomic, assign) BOOL isTrendingInCategoryCard;
+@property (nonatomic, assign) BOOL shouldShowCtaButton;
+@property (nonatomic, assign) NSInteger smartfeedHeaderFontSize;
 @property (nonatomic, assign) NSInteger feedCyclesLimit;
 @property (nonatomic, assign) NSInteger feedChunkSize;
 @property (nonatomic, strong) NSArray *feedContentArray;
@@ -24,7 +26,9 @@
 @property (nonatomic, copy) NSString *paidLabelText;
 @property (nonatomic, copy) NSString *paidLabelTextColor;
 @property (nonatomic, copy) NSString *paidLabelBackgroundColor;
-@property (nonatomic, copy) NSString *sourceFormat;
+@property (nonatomic, copy) NSString *readMoreButtonText;
+@property (nonatomic, copy) NSString *organicSourceFormat;
+@property (nonatomic, copy) NSString *paidSourceFormat;
 
 @property (nonatomic, assign) BOOL isViewabilityPerListingEnabled;
 @property (nonatomic, assign) NSInteger viewabilityPerListingReportingIntervalMillis;
@@ -54,6 +58,9 @@
         self.feedChunkSize = [[payload valueForKey:@"feedLoadChunkSize"] integerValue];
         self.recMode = [payload valueForKey:@"recMode"];
         self.widgetHeaderText = [payload valueForKey:@"nanoOrganicsHeader"];
+        self.widgetHeaderTextColor = [payload valueForKey:@"dynamic:HeaderColor"];
+        self.shouldShowCtaButton = [[payload valueForKey:@"dynamic:IsShowButton"] boolValue];
+        self.smartfeedHeaderFontSize = [[payload valueForKey:@"dynamic:HeaderFontSize"] integerValue];
         
         // vidget URL
         NSString *vidgetUrlStr = [payload valueForKey:@"sdk_sf_vidget_url"];
@@ -70,7 +77,10 @@
         self.paidLabelTextColor = [payload valueForKey:@"dynamic:PaidLabelTextColor"];
         self.paidLabelBackgroundColor = [payload valueForKey:@"dynamic:PaidLabelBackgroundColor"];
         
-        self.sourceFormat = [payload valueForKey:@"dynamicSourceFormat"];
+        self.paidSourceFormat = [payload valueForKey:@"dynamicPaidSourceFormat"];
+        self.organicSourceFormat = [payload valueForKey:@"dynamicOrganicSourceFormat"];
+        
+        self.readMoreButtonText = [payload valueForKey:@"readMoreText"];
         
         // AB tests
         self.abTitleFontSize = [payload valueForKey:@"dynamic:TitleFontSize"] ? [[payload valueForKey:@"dynamic:TitleFontSize"] integerValue] : 0;

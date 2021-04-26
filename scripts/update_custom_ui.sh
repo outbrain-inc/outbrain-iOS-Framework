@@ -20,6 +20,7 @@ rm -fr OBSDK-CustomUI
 mkdir OBSDK-CustomUI
 mkdir OBSDK-CustomUI/SFSingleCells/
 mkdir OBSDK-CustomUI/SFHeaderCells/
+mkdir OBSDK-CustomUI/SFReadMoreModuleCells/
 
 echo ""
 echo "****************************************"
@@ -28,10 +29,12 @@ echo "****************************************"
 
 SINGLE_CELLS_PATH="SDK-sources/OutbrainSDK/SmartFeed/SFSingleCells"
 HEADER_CELLS_PATH="SDK-sources/OutbrainSDK/SmartFeed/SmartFeedHeaderCells/XIB"
+READ_MORE_MODULE_CELLS_PATH="SDK-sources/OutbrainSDK/SmartFeed/ReadMoreModule/ReadMoreModuleCells/XIB"
 
 cp -r ${SINGLE_CELLS_PATH}/ OBSDK-CustomUI/SFSingleCells/
 cp -r ${HEADER_CELLS_PATH}/SFTableViewHeaderCell.xib OBSDK-CustomUI/SFHeaderCells/
 cp -r ${HEADER_CELLS_PATH}/SFCollectionViewHeaderCell.xib OBSDK-CustomUI/SFHeaderCells/
+cp -r ${READ_MORE_MODULE_CELLS_PATH}/ OBSDK-CustomUI/SFReadMoreModuleCells/
 
 echo ""
 echo "*********************************************************"
@@ -42,20 +45,22 @@ cd OBSDK-CustomUI/
 zip -r Custom-UI-iOS-SDK-Smartfeed.zip .
 rm -fr SFSingleCells/
 rm -fr SFHeaderCells/
+rm -fr SFReadMoreModuleCells/
 cd ..
 
 echo ""
 echo "*******************"
-echo " Upload to Bintray "
+echo " Upload to GCP Storage "
 echo "*******************"
 
-PACKAGE_IOS_CUSTOM_UI="iOS-Custom-UI-SDK-Smartfeed"
+pwd
+ls -l OBSDK-CustomUI/Custom-UI-iOS-SDK-Smartfeed.zip
 
-./upload_to_bintray.sh OBSDK-CustomUI/Custom-UI-iOS-SDK-Smartfeed.zip $PACKAGE_IOS_CUSTOM_UI $NEW_SDK_VER Custom-UI-iOS-SDK-Smartfeed.zip
+cd scripts
+./upload_to_gcp_storage.sh ../OBSDK-CustomUI/Custom-UI-iOS-SDK-Smartfeed.zip Custom-UI-iOS-SDK-Smartfeed.zip $NEW_SDK_VER
 
 echo ""
 echo ""
 echo "***************************"
 echo "* Finish update Custom UI *"
 echo "***************************"
-

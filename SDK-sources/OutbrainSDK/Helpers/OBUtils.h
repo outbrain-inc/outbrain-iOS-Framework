@@ -13,6 +13,8 @@
 
 +(NSString *) deviceModel;
 
++(BOOL) isDeviceSimulator;
+
 +(NSString *) decodeHTMLEnocdedString:(NSString *)htmlEncodedString;
 
 +(NSString *) getRequestUrl:(OBRequest *)request;

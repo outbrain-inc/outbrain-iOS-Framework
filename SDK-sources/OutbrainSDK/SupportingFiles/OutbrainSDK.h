@@ -28,6 +28,7 @@ FOUNDATION_EXPORT const unsigned char DynamicOutbrainSDKVersionString[];
 #import <OutbrainSDK/OBContent.h>
 #import <OutbrainSDK/OBImageInfo.h>
 #import <OutbrainSDK/OBDisclosure.h>
+#import <OutbrainSDK/OBSkAdNetworkData.h>
 #import <OutbrainSDK/OBSettings.h>
 #import <OutbrainSDK/OBResponseRequest.h>
 
@@ -36,7 +37,9 @@ FOUNDATION_EXPORT const unsigned char DynamicOutbrainSDKVersionString[];
 #import <OutbrainSDK/SmartFeedManager.h>
 
 #import <OutbrainSDK/SFTableViewHeaderCell.h>
+#import <OutbrainSDK/SFTableViewReadMoreCell.h>
 #import <OutbrainSDK/SFCollectionViewHeaderCell.h>
+#import <OutbrainSDK/SFCollectionViewReadMoreCell.h>
 #import <OutbrainSDK/SFHorizontalView.h>
 #import <OutbrainSDK/SFHorizontalTableViewCell.h>
 #import <OutbrainSDK/SFHorizontalCollectionViewCell.h>

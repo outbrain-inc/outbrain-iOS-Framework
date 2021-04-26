@@ -85,9 +85,11 @@
 typedef enum
 {
     SFTypeSmartfeedHeader = 1,
+    SFTypeReadMoreButton,
     SFTypeStripNoTitle,
     SFTypeCarouselWithTitle,
     SFTypeBrandedCarouselWithTitle,
+    SFTypeWeeklyHighlightsWithTitle,
     SFTypeCarouselNoTitle,
     SFTypeGridTwoInRowNoTitle,
     SFTypeGridThreeInRowNoTitle,
@@ -124,6 +126,10 @@ typedef enum
 @property (nonatomic) BOOL isVideoEligible;
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
 @property (nonatomic) BOOL isSkySolutionActive;
+@property (nonatomic) BOOL isWallaSolutionActive;
+
+// Read more module
+- (void) setReadMoreModule;
 
 -(NSInteger) smartFeedItemsCount;
 
@@ -141,6 +147,10 @@ typedef enum
 
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 
+// Read More Module
+
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount;
+
 // CollectionView
 - (id _Nonnull )initWithUrl:(NSString * _Nonnull)url
                    widgetID:(NSString * _Nonnull)widgetId
@@ -157,6 +167,10 @@ typedef enum
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView
        willDisplayCell:(UICollectionViewCell * _Nonnull)cell
     forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+
+// Read More Module
+
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInCollapsableSection: (NSInteger)section collapsableItemCount: (NSInteger)collapsableItemCount;
 
 // Common Methods
 -(NSString * _Nullable) sfItemTypeStringFor:(NSIndexPath * _Nonnull)indexPath;

@@ -3,7 +3,7 @@
 //  OutbrainDemo
 //
 //  Created by Oded Regev on 3/1/15.
-//  Copyright (c) 2015 Mercury Intermedia. All rights reserved.
+//  Copyright (c) 2014 Outbrain. All rights reserved.
 //
 
 #import "TopBoxPostViewCell.h"

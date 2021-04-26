@@ -1,6 +1,50 @@
 # Release Notes
 
 
+## v4.3.0 - March 18, 2021
+
+- Feature - add support for a new setting `dynamic:HeaderFontSize` from ODB response.
+- Bug fix - add support for dark-mode for app install card
+- Bug fix - widget header should appear once per widget for grid types as well.
+- Bug fix - in tableview the source sometimes disappeared with layout constraints issue
+- Improvement - titleColor should be the same for both organic and paid rec
+
+
+## v4.2.1 - March 3, 2021
+
+- Bug Fix - new method `openAppInstallRec:inViewController:` together with implementing `SKStoreProductViewControllerDelegate` internally to solve some cases in which `SKStoreProductViewController` didn't close correctly.
+
+## v4.2.0 - February 25, 2021
+
+- Important - Migrating from Xcode dynamic framework to XCFramework - [see Apple details here](https://developer.apple.com/videos/play/wwdc2019/416/)
+- Internal - parse and use ODB settings `dynamic:IsShowButton` from odb response
+- Internal - implement support for new ODB settings `dynamic:OrganicSourceFormat` and `dynamic:PaidSourceFormat`
+- Bug fix - Walla crash on iOS12 devices
+- Bug fix - Widget header should appear only once per widget
+
+
+## v4.1.0 - February 22, 2021
+
+- Feature: "Read More" ([see instructions here](https://developer.outbrain.com/ios-smartfeed-read-more-button/))
+- Feauture: CTA button on paid rec
+- Bug fix - Viewability on shown, fix rare crash if "req_id" is null
+- Bug fix - smartfeed header for RTL in dark mode didnt change color
+- UI fixes - Smartfeed on tablet (iPad) looks much better (font size, image ratio, etc)
+- Dev - add a new flag to simulate app install rec `Outbrain.testAppInstall(true)`
+
+## v4.0.1 - October 29, 2020
+
+- Bug fix - Smartfeed via UITableView on iPad crashed on orientation change after view controller was removed from screen.
+
+## v4.0.0 - October 19, 2020
+
+- Feature: Weekly Highlights card
+- Feature: iOS14 SKAdNetwork app install validation support. 
+- Feature: support for GIF images in Smartfeed.
+- Internal: Built with Xcode 12.0.1, iOS14 SDK
+- Internal: SDK and sample apps use `ATTrackingManager` for IDFA logic (instead of deprecated `[[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]`)
+
+
 ## v3.9.2 - July 26, 2020
 
 - Feature: support for GIF images in Smartfeed.

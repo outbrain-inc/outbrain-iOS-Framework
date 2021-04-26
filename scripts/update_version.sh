@@ -5,10 +5,11 @@ OUTBRAIN_SDK_M_PATH="SDK-sources/OutbrainSDK/Outbrain.m"
 if [ "$1" != "" ]; then
     echo "updating version to --> $1"
 else
-    echo "version parameter is missing is empty"
+    echo "version parameter is missing or empty"
     exit 1
 fi
 
+cd ..
 echo ""
 echo "- edit the plist files"
 plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/Journal/Resources/plists/Journal-Info.plist

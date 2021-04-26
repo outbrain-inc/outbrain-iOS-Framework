@@ -78,6 +78,8 @@
     OBSettings *settings = self.response.settings;
     XCTAssertNotNil(settings);
     XCTAssertEqual(settings.apv, YES);
+    XCTAssertEqual(settings.shouldShowCtaButton, YES);
+    XCTAssertEqual(settings.smartfeedHeaderFontSize, 18);
     
     XCTAssert([settings.smartfeedShadowColor isEqualToString:@"#ffa500"]);
     XCTAssert([settings.paidLabelText isEqualToString:@"Sponsored"]);

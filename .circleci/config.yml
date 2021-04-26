@@ -11,7 +11,7 @@ references:
   ios_config: &ios_config
     working_directory: ~/repo
     macos:
-      xcode: "11.5.0"
+      xcode: "12.3.0"
 
   # Export environment variables
   define_var_previous_release_version: &define_var_previous_release_version
@@ -32,10 +32,10 @@ jobs:
       - checkout
 
       - run:
-          name: Clean previous OutbrainSDK.framework
+          name: Clean previous OutbrainSDK.xcframework
           command: |
-            if [ -d OutbrainSDK.framework ]; then
-              rm -fr OutbrainSDK.framework
+            if [ -d OutbrainSDK.xcframework ]; then
+              rm -fr OutbrainSDK.xcframework
             fi
           working_directory: Samples/OutbrainDemo
             
@@ -57,7 +57,7 @@ jobs:
       - run:
           name: Check if framework is where we think it is
           command: |
-            if [ ! -d "OutbrainSDK.framework" ]; then
+            if [ ! -d "OutbrainSDK.xcframework" ]; then
               echo "framework is NOT where we think it is"
               exit 1
             fi
@@ -70,7 +70,7 @@ jobs:
             -project OutbrainDemo.xcodeproj \
             -scheme Journal \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
             build
           working_directory: Samples/OutbrainDemo
       
@@ -81,7 +81,7 @@ jobs:
             -project OutbrainDemo.xcodeproj \
             -scheme SmartFeed \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
             build
           working_directory: Samples/OutbrainDemo
 
@@ -92,7 +92,7 @@ jobs:
             -project OutbrainSDK.xcodeproj \
             -scheme OutbrainSDK \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
             test
           working_directory: SDK-sources
 
@@ -111,14 +111,20 @@ jobs:
       - *define_var_release_version
 
       - run:
-          name: Updating SDK version
-          command: bash -x ./bump_sdk_version.sh
+          name: Install jk
+          command: brew install jq
 
       - run:
-          name: Clean previous OutbrainSDK.framework
+          name: Updating SDK version
           command: |
-            if [ -d OutbrainSDK.framework ]; then
-              rm -fr OutbrainSDK.framework
+            cd scripts
+            bash -x ./bump_sdk_version.sh
+
+      - run:
+          name: Clean previous OutbrainSDK.xcframework
+          command: |
+            if [ -d OutbrainSDK.xcframework ]; then
+              rm -fr OutbrainSDK.xcframework
             fi
           working_directory: Samples/OutbrainDemo
           
@@ -138,9 +144,9 @@ jobs:
           working_directory: SDK-sources
 
       - run:
-          name: Check if framework is where we think it is
+          name: Check if OutbrainSDK.xcframework is where we think it is
           command: |
-            if [ ! -d "OutbrainSDK.framework" ]; then
+            if [ ! -d "OutbrainSDK.xcframework" ]; then
               echo "framework is NOT where we think it is"
               exit 1
             fi
@@ -153,7 +159,7 @@ jobs:
             -project OutbrainDemo.xcodeproj \
             -scheme Journal \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
             build
           working_directory: Samples/OutbrainDemo
       
@@ -164,7 +170,7 @@ jobs:
             -project OutbrainDemo.xcodeproj \
             -scheme SmartFeed \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
             build
           working_directory: Samples/OutbrainDemo
 
@@ -175,7 +181,7 @@ jobs:
             -project OutbrainSDK.xcodeproj \
             -scheme OutbrainSDK \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 6' \
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
             test
           working_directory: SDK-sources
 
@@ -187,31 +193,68 @@ jobs:
             mkdir OBSDK-Release/Samples/
 
       - run:
-          name: Copy the OutbrainSDK.framework and sample apps into OBSDK-Release
+          name: Copy the OutbrainSDK.xcframework and sample apps into OBSDK-Release
           command: |
-            cp -a Samples/OutbrainDemo/OutbrainSDK.framework OBSDK-Release/SDK/
+            cp -a Samples/OutbrainDemo/OutbrainSDK.xcframework OBSDK-Release/SDK/
             cp -fa Samples/ OBSDK-Release/Samples/
             cp -rf README.md OBSDK-Release/
 
       - run:
-          name: Prepare iOS-SampleApps.zip and OutbrainSDK.framework.zip
+          name: Prepare iOS-SampleApps.zip and OutbrainSDK.xcframework.zip
           command: |
             zip --symlinks -r iOS-SampleApps.zip . -x ".*" -x "*/.*" > /dev/null
-            cd SDK/OutbrainSDK.framework
-            zip --symlinks -r ../../OutbrainSDK.framework.zip *
+            cd SDK/OutbrainSDK.xcframework
+            zip --symlinks -r ../../OutbrainSDK.xcframework.zip *
           working_directory: OBSDK-Release
 
       - run:
-          name: Upload OutbrainSDK.framework.zip to Bintray
-          command: bash -x ./upload_to_bintray.sh OBSDK-Release/OutbrainSDK.framework.zip iOS-SDK $RELEASE_VERSION OutbrainSDK.framework.zip
+          name: Update public Github repo outbrain/outbrain-iOS-Framework with new SDK version
+          command: |
+            git clone git@github.com:outbrain/outbrain-iOS-Framework.git
+            cd outbrain-iOS-Framework
+            echo "remove the old xcframework"
+            rm -fr OutbrainSDK.xcframework
+            cp -r ../OBSDK-Release/SDK/OutbrainSDK.xcframework .
+            git status
+            git add .
+            git status
+            git config credential.helper 'cache --timeout=120'
+            git config --global user.email "oregev@outbrain.com"
+            git config --global user.name "Oded Regev via CircleCI"
+            git commit -m "update OutbrainSDK.xcframework to version $RELEASE_VERSION"
+            git tag $RELEASE_VERSION
+            git push origin master
+            git push origin --tags
 
       - run:
-          name: Upload iOS-SampleApps.zip to Bintray
-          command: bash -x ./upload_to_bintray.sh OBSDK-Release/iOS-SampleApps.zip iOS-SampleApps $RELEASE_VERSION iOS-SampleApps.zip
+          name: Upload OutbrainSDK.xcframework.zip to GCP Storage
+          command: cd scripts; bash -x ./upload_to_gcp_storage.sh ../OBSDK-Release/OutbrainSDK.xcframework.zip OutbrainSDK.xcframework.zip $RELEASE_VERSION 
+
+      - run:
+          name: Upload iOS-SampleApps.zip to GCP Storage
+          command: cd scripts; bash -x ./upload_to_gcp_storage.sh ../OBSDK-Release/iOS-SampleApps.zip iOS-SampleApps.zip $RELEASE_VERSION 
 
       - run:
           name: Upload Custom UI
-          command: bash -x ./update_custom_ui.sh $RELEASE_VERSION
+          command: bash -x ./scripts/update_custom_ui.sh $RELEASE_VERSION
+
+      - run:
+          name: Artifacts Paths
+          command: |
+            echo "*********************************************************************************************************"
+            echo "* Links:                                                                                                *"
+            echo "*                                                                                                       *"
+            echo "* iOS SDK on GCP:                                                                                       *"
+            echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/OutbrainSDK.xcframework.zip              *"
+            echo "*                                                                                                       *"
+            echo "* iOS Sample Apps on GCP:                                                                               *"
+            echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/iOS-SampleApps.zip                       *"
+            echo "*                                                                                                       *"
+            echo "* iOS Custom UI on GCP:                                                                                 *"
+            echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/Custom-UI-iOS-SDK-Smartfeed.zip          *"
+            echo "*                                                                                                       *"
+            echo "*********************************************************************************************************"
+
 
 workflows:
   version: 2

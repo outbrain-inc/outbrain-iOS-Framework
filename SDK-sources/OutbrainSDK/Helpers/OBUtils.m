@@ -106,6 +106,11 @@
     
 }
 
++(BOOL) isDeviceSimulator {
+    NSString *deviceModel = [self deviceModel];
+    return [deviceModel isEqualToString:@"Simulator"];
+}
+
 +(NSString *) decodeHTMLEnocdedString:(NSString *)htmlEncodedString {
     NSString *result = [self stripHTMLTags:[self replaceCommonHTMLEntities:htmlEncodedString]];
     return result;

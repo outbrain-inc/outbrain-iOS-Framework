@@ -13,15 +13,20 @@
 
 @interface OutbrainManager : NSObject
 
-@property (nonatomic, copy)     NSString *  partnerKey;
-@property (nonatomic, assign)   BOOL        testMode;
-@property (nonatomic, assign)   BOOL        testRTB;
-@property (nonatomic, copy)     NSString *  testLocation;
+@property (nonatomic, copy)     NSString * _Nonnull     partnerKey;
+@property (nonatomic, assign)   BOOL                    testMode;
+@property (nonatomic, assign)   BOOL                    testRTB;
+@property (nonatomic, assign)   BOOL                    testAppInstall;
+@property (nonatomic, copy)     NSString *_Nullable     testLocation;
 
-+(OutbrainManager *) sharedInstance;
++(OutbrainManager * _Nonnull) sharedInstance;
 
--(void) fetchRecommendationsWithRequest:(OBRequest *)request andCallback:(OBResponseCompletionHandler)handler;
+-(void) fetchRecommendationsWithRequest:(OBRequest * _Nonnull)request andCallback:(OBResponseCompletionHandler _Nonnull)handler;
 
--(void) fetchMultivacWithRequest:(OBRequest *)request andDelegate:(id<MultivacResponseDelegate>)multivacDelegate;
+-(void) fetchMultivacWithRequest:(OBRequest * _Nonnull)request andDelegate:(id<MultivacResponseDelegate> _Nonnull)multivacDelegate;
+
+-(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inViewController:(UIViewController * _Nonnull)viewController;
+
+-(void) reportPlistIsValidToServerIfNeeded;
 
 @end

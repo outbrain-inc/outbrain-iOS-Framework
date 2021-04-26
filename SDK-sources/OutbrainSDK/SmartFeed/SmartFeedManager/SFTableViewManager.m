@@ -9,9 +9,11 @@
 #import "SFTableViewManager.h"
 #import "SFItemData.h"
 #import "SFHorizontalTableViewCell.h"
+#import "SFTableViewReadMoreCell.h"
 #import "SFUtils.h"
 #import "SFImageLoader.h"
 #import "SFVideoTableViewCell.h"
+#import "SFReadMoreModuleHelper.h"
 #import "OBDisclosure.h"
 
 @interface SFTableViewManager() <UIGestureRecognizerDelegate>
@@ -25,12 +27,14 @@
 const CGFloat kTableViewRowHeight = 250.0;
 NSString * const kTableViewSingleReuseId = @"SFTableViewCell";
 NSString * const kTableViewSmartfeedHeaderReuseId = @"SFTableViewHeaderCell";
+NSString * const kTableViewReadMoreCellReuseId = @"SFTableViewReadMoreCell";
 NSString * const kTableViewSmartfeedRTLHeaderReuseId = @"SFTableViewRTLHeaderCell";
 NSString * const kTableViewHorizontalCarouselWithTitleReuseId = @"SFCarouselWithTitleReuseId";
 NSString * const kTableViewHorizontalCarouselNoTitleReuseId = @"SFCarouselNoTitleReuseId";
 NSString * const kTableViewHorizontalFixedNoTitleReuseId = @"SFHorizontalFixedNoTitleTableViewCell";
 NSString * const kTableViewHorizontalFixedWithTitleReuseId = @"SFHorizontalFixedWithTitleTableViewCell";
 NSString * const kTableViewBrandedCarouselWithTitleReuseId = @"SFBrandedCarouselTableViewCell";
+NSString * const kTableViewWeeklyHighlightsWithTitleReuseId = @"SFWeeklyHighlightsTableViewCell";
 NSString * const kTableViewSingleWithTitleReuseId = @"SFSingleWithTitleTableViewCell";
 NSString * const kTableViewSingleAppInstallReuseId = @"SFSingleAppInstallTableCell";
 NSString * const kTableViewSingleWithThumbnailReuseId = @"SFSingleWithThumbnailTableCell";
@@ -81,6 +85,10 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         NSAssert(horizontalCellNib != nil, @"SFBrandedCarouselTableViewCell should not be null");
         [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewBrandedCarouselWithTitleReuseId];
         
+        horizontalCellNib = [UINib nibWithNibName:@"SFWeeklyHighlightsTableViewCell" bundle:bundle];
+        NSAssert(horizontalCellNib != nil, @"SFWeeklyHighlightsTableViewCell should not be null");
+        [self.tableView registerNib:horizontalCellNib forCellReuseIdentifier: kTableViewWeeklyHighlightsWithTitleReuseId];
+        
         // Smartfeed header cell
         UINib *nib = [UINib nibWithNibName:@"SFTableViewHeaderCell" bundle:bundle];
         NSAssert(nib != nil, @"SFTableViewHeaderCell should not be null");
@@ -89,6 +97,11 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         nib = [UINib nibWithNibName:@"SFTableViewRTLHeaderCell" bundle:bundle];
         NSAssert(nib != nil, @"SFTableViewRTLHeaderCell should not be null");
         [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewSmartfeedRTLHeaderReuseId];
+        
+        // Read More module cell
+        nib = [UINib nibWithNibName:@"SFTableViewReadMoreCell" bundle:bundle];
+        NSAssert(nib != nil, @"SFTableViewReadMoreCell should not be null");
+        [self registerSingleItemNib:nib forCellWithReuseIdentifier: kTableViewReadMoreCellReuseId];
         
         // video cell
         [self.tableView registerClass:[SFVideoTableViewCell class] forCellReuseIdentifier:kTableViewSingleVideoReuseId];
@@ -138,6 +151,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
     UITableView *tableView = self.tableView;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if ([tableView superview] == nil) {
+            return;
+        }
         NSArray *visibleIndexPathArray = [tableView indexPathsForVisibleRows];
         [tableView reloadRowsAtIndexPaths:visibleIndexPathArray withRowAnimation:UITableViewRowAnimationAutomatic];
     });
@@ -161,6 +177,12 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     return [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView readMoreCellAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *reuseId = kTableViewReadMoreCellReuseId;
+    
+    return [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath sfItemType:(SFItemType)sfItemType {
     switch (sfItemType) {
         case SFTypeStripNoTitle:
@@ -171,6 +193,8 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalCarouselNoTitleReuseId forIndexPath:indexPath];
         case SFTypeBrandedCarouselWithTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewBrandedCarouselWithTitleReuseId forIndexPath:indexPath];
+        case SFTypeWeeklyHighlightsWithTitle:
+            return [tableView dequeueReusableCellWithIdentifier: kTableViewWeeklyHighlightsWithTitleReuseId forIndexPath:indexPath];
         case SFTypeGridTwoInRowNoTitle:
         case SFTypeGridThreeInRowNoTitle:
             return [tableView dequeueReusableCellWithIdentifier: kTableViewHorizontalFixedNoTitleReuseId forIndexPath:indexPath];
@@ -206,8 +230,9 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     CGFloat screenWidth = self.tableView.frame.size.width;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     
-    if (sfItemType == SFTypeGridThreeInRowNoTitle) {
-        return 280.0;
+    if (sfItemType == SFTypeGridThreeInRowNoTitle || sfItemType == SFTypeGridThreeInRowWithTitle) {
+        CGFloat EXTRA_FOR_HEADER = (sfItemType == SFTypeGridThreeInRowWithTitle) ? 60 : 0;
+        return EXTRA_FOR_HEADER + 280.0;
     }
     else if (sfItemType == SFTypeGridTwoInRowNoTitle ||
              sfItemType == SFTypeCarouselWithTitle ||
@@ -218,10 +243,17 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     else if (sfItemType == SFTypeBrandedCarouselWithTitle || sfItemType == SFTypeStripAppInstall) {
         return MAX(screenHeight*0.62, 450);
     }
+    else if (sfItemType == SFTypeWeeklyHighlightsWithTitle) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            return screenWidth * 0.86;
+        } else {
+            return screenWidth * 1.35;
+        }
+    }
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
              sfItemType == SFTypeStripVideoWithPaidRecAndTitle ||
              sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 270.0;
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 290.0;
     }
     else if (sfItemType == SFTypeStripWithTitle || sfItemType == SFTypeStripVideoWithPaidRecAndTitle) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 280.0;
@@ -284,7 +316,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
     
     singleCell.recTitleLabel.text = rec.content;
-    singleCell.recSourceLabel.text = [SFUtils getRecSourceText:rec.source withSourceFormat:sfItem.odbSettings.sourceFormat];
+    singleCell.recSourceLabel.text = [SFUtils getSourceTextForRec:rec withSettings:sfItem.odbSettings];
     if (!sfItem.isCustomUI && sfItem.itemType != SFTypeStripAppInstall) {
         singleCell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
         singleCell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor: sfItem.odbSettings.abSourceFontColor];
@@ -336,10 +368,16 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         }
         if (!sfItem.isCustomUI) {
             singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                singleCell.cellTitleLabel.font = [singleCell.cellTitleLabel.font fontWithSize: 22.0];
+            }
         }
     }
     else if (sfItem.itemType == SFTypeStripAppInstall) {
         singleCell.cellTitleLabel.text = sfItem.widgetTitle;
+        singleCell.cellTitleLabel.textColor = [SFUtils sharedInstance].darkMode ? UIColor.whiteColor : [SFUtils colorFromHexString:@"#717075"];
+        singleCell.recTitleLabel.textColor =  [SFUtils sharedInstance].darkMode ? UIColor.whiteColor : [SFUtils colorFromHexString:@"#717075"];
+        
         [SFUtils addDropShadowToView: singleCell.cardContentView]; // shadow
         [[SFImageLoader sharedInstance] loadImageUrl:sfItem.odbSettings.brandedCarouselSettings.image.url into:singleCell.cellBrandLogoImageView]; // top right image
         
@@ -362,6 +400,10 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         }
     }
     
+    if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripNoTitle) {
+        [self configureCtaLabelInCell:singleCell withCtaText:rec.ctaText isCustomUI:sfItem.isCustomUI shouldShowCtaButton:sfItem.odbSettings.shouldShowCtaButton];
+    }
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget  action:@selector(recommendationClicked:)];
     tapGesture.numberOfTapsRequired = 1;
     if (singleCell.cardContentView) {
@@ -370,6 +412,70 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     else {
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
+}
+
+- (void) configureCtaLabelInCell:(SFTableViewCell *)singleCell withCtaText:(NSString *) ctaText isCustomUI:(BOOL) isCustomUI shouldShowCtaButton:(BOOL) shouldShowCtaButton  {
+    NSInteger ctaLabelTag = 112233445566;
+    UILabel * existingCtaLabelView = [singleCell viewWithTag:ctaLabelTag];
+    if (existingCtaLabelView != nil) { // CTA view exists
+        // Remove existing CTA view
+        [existingCtaLabelView removeFromSuperview];
+        
+        // Add constraint for rec title view
+        NSLayoutConstraint *recTitleTrailingConstraint = [[singleCell.recTitleLabel trailingAnchor] constraintEqualToAnchor:[singleCell trailingAnchor] constant:-8];
+        recTitleTrailingConstraint.identifier = @"recTitleTrailingConstraint";
+        recTitleTrailingConstraint.active = YES;
+    }
+    
+    // No CTA label to show or custom-ui or disabled by settings
+    if (ctaText == nil || [ctaText isEqual: @""] || isCustomUI || !shouldShowCtaButton) {
+        [singleCell.recTitleLabel layoutIfNeeded];
+        return;
+    }
+    
+    UILabel * ctaLabelView = [SFUtils getRecCtaLabelWithText: ctaText];
+    
+    ctaLabelView.tag = ctaLabelTag;
+    [singleCell addSubview:ctaLabelView];
+    
+    ctaLabelView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    // Remove existing constraints of storyboard
+    for (NSLayoutConstraint *constraint in singleCell.recTitleLabel.superview.constraints) {
+        if ((constraint.secondAttribute == NSLayoutAttributeTrailing &&
+             constraint.secondItem == singleCell.recTitleLabel)) {
+            [singleCell.recTitleLabel.superview removeConstraint:constraint];
+        }
+    }
+    
+    // Remove existing constraints added programmatically
+    for (NSLayoutConstraint *constraint in singleCell.constraints) {
+        if ([constraint.identifier isEqual: @"recTitleTrailingConstraint"]) {
+            [singleCell removeConstraint:constraint];
+        }
+    }
+    
+    // Set CTA view constraints
+    [[singleCell.recTitleLabel trailingAnchor] constraintEqualToAnchor:[ctaLabelView leadingAnchor] constant:-12].active = YES;
+    [[ctaLabelView widthAnchor] constraintEqualToConstant:ctaLabelView.intrinsicContentSize.width + 12].active = YES;
+    NSInteger trailingConstant = 8;
+    [[singleCell trailingAnchor] constraintEqualToAnchor:[ctaLabelView trailingAnchor] constant:trailingConstant].active = YES;
+    [[ctaLabelView heightAnchor] constraintEqualToConstant:25].active = YES;
+    [[ctaLabelView topAnchor] constraintEqualToAnchor:[singleCell.recTitleLabel topAnchor] constant:3].active = YES;
+    
+    [ctaLabelView layoutIfNeeded];
+}
+
+- (void) configureReadMoreTableViewCell:(UITableViewCell *)cell withButtonText:(NSString * _Nonnull)buttonText; {
+    SFTableViewReadMoreCell *readMoreCell = (SFTableViewReadMoreCell *)cell;
+    
+    readMoreCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
+    
+    readMoreCell.readMoreLabel.text = buttonText;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget action:@selector(readMoreButtonClicked:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [readMoreCell.readMoreLabel addGestureRecognizer:tapGesture];
 }
 
 @end

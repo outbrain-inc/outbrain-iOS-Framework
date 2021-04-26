@@ -19,13 +19,13 @@
 @property (nonatomic, strong) OBSettings *odbSettings;
 @property (nonatomic, assign) SFItemType itemType;
 @property (nonatomic, copy) NSString *widgetTitle;
+@property (nonatomic, strong) UIColor *widgetTitleTextColor;
 @property (nonatomic, copy) NSString *widgetId;
 @property (nonatomic, strong) OBRequest *request;
 @property (nonatomic, strong) OBResponseRequest *responseRequest;
 @property (nonatomic, strong) NSURL *videoUrl;
 @property (nonatomic, copy) NSString *videoParamsStr;
 @property (nonatomic, strong) UIColor *shadowColor;
-@property (nonatomic, copy) NSString *sourceFormat;
 @property (nonatomic, strong) NSMutableArray *positions;
 @property (nonatomic, copy) NSString *requestId;
 @end
@@ -115,11 +115,13 @@ NSInteger kVideoFinishedStatus = 1114;
     self.request = odbResponse.request;
     self.responseRequest = odbResponse.responseRequest;
     self.widgetTitle = self.odbSettings.widgetHeaderText;
+    if (self.odbSettings.widgetHeaderTextColor) {
+        self.widgetTitleTextColor = [SFUtils colorFromHexString:self.odbSettings.widgetHeaderTextColor];
+    }
     self.widgetId = [odbResponse.responseRequest getStringValueForPayloadKey:@"widgetJsId"];
     if (self.odbSettings.smartfeedShadowColor) {
         self.shadowColor = [SFUtils colorFromHexString:self.odbSettings.smartfeedShadowColor];
     }
-    self.sourceFormat = self.odbSettings.sourceFormat;
     self.requestId = [odbResponse.responseRequest getStringValueForPayloadKey:@"req_id"];
 }
 

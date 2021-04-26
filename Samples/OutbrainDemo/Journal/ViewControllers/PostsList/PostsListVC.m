@@ -12,13 +12,13 @@
 #import "Post.h"
 #import "OBAppDelegate.h"
 #import "PostPreviewCell.h"
-
-#import <OutbrainSDK/OutbrainSDK.h>
-
 #import "OBRecommendationSlideCell.h"
-
 #import "PostsSwipeVC.h"
 #import "OBDemoDataHelper.h"
+
+#import <OutbrainSDK/OutbrainSDK.h>
+@import AppTrackingTransparency;
+
 
 // How many cells between OB Recommended content
 #define OB_INLINE_RECOMMENDATION_INTERVAL   3
@@ -51,6 +51,11 @@
     UIRefreshControl * refreshControl = [self refreshControl];
     [refreshControl addTarget:self action:@selector(refreshPostsList) forControlEvents:UIControlEventValueChanged];
     [self becomeFirstResponder];
+    if (@available(iOS 14, *)) {
+        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+            NSLog(@"ATTrackingManagerAuthorizationStatus: %lu", (unsigned long)status);
+        }];
+    } 
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -310,6 +315,12 @@
 
 - (void)widgetView:(id<OBWidgetViewProtocol>)widgetView tappedRecommendation:(OBRecommendation *)recommendation
 {
+    
+    if ([recommendation isAppInstall]) {
+        [Outbrain openAppInstallRec:recommendation inNavController:self.navigationController];
+        return;
+    }
+    
     // First report the click to the SDK and receive the URL to open.
     NSURL * url = [Outbrain getUrl:recommendation];
     

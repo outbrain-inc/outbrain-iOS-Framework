@@ -8,9 +8,10 @@
 
 #import "OBRecommendation.h"
 #import "OBDisclosure.h"
+#import "OBSkAdNetworkData.h"
 #import "OBContent_Private.h"
 #import "OBUtils.h"
-
+#import "OutbrainManager.h"
 
 @interface OBRecommendation()
 
@@ -46,8 +47,17 @@
 @property (nonatomic, copy) NSString *audienceCampaignsLabel;
 /** @brief Apply for Smartfeed "trending in category" card only. */
 @property (nonatomic, copy) NSString * categoryName;
-/** @brief Apply for Smartfeed "branded carousel" rec only. */
-@property (nonatomic, copy) NSString * brandedCardCtaText;
+/** @brief The CTA text of a recommendation. */
+@property (nonatomic, copy) NSString * ctaText;
+/** @brief metadata for app install ads according to the new iOS14 SkAdNetwork spec. */
+@property (nonatomic, strong) OBSkAdNetworkData *skAdNetworkData;
+
+//TODO remove the props below:
+
+/** @brief Is the recommendation an "app install" ad */
+@property (nonatomic, assign, getter = isAppInstall) BOOL appInstall;
+/** @brief for app install rec - this is the advertiding app itunes identifier (app store id) */
+@property (nonatomic, copy) NSString * appInstallItunesItemIdentifier;
 @end
 
 
@@ -96,6 +106,21 @@
             recommendation.categoryName = dict[@"contextual_topic"];
         }
     }
+    
+    BOOL iosVerValidForLoadProduct = YES;
+    if (@available(iOS 11.3, *)) {
+        iosVerValidForLoadProduct = YES;
+    }
+    else {
+        iosVerValidForLoadProduct = NO;
+    }
+
+    
+    if (iosVerValidForLoadProduct && payload[@"sk_adnetwork_data"]) {
+        recommendation.appInstall = YES;
+        NSLog(@"sk_adnetwork_data: %@", payload[@"sk_adnetwork_data"]);
+        recommendation.skAdNetworkData = [OBSkAdNetworkData contentWithPayload:payload[@"sk_adnetwork_data"]];
+    }
 
     return recommendation;
 }
@@ -117,17 +142,19 @@
              @"appflow":                            @"appflow",
              @"disclosure":                         @"disclosure",
              @"pixels":                             @"pixels",
-             @"brandedCardCtaText":                 @"cta"
+             @"ctaText":                            @"cta",
+             @"skAdNetworkData":                    @"sk_adnetwork_data"
              };
 }
 
 + (Class)propertyClassForKey:(NSString *)key
 {
-    if ([key isEqualToString:@"thumbnail"])         return [OBImageInfo class];
-    if ([key isEqualToString:@"logo"])              return [OBImageInfo class];
-    if ([key isEqualToString:@"disclosure"])        return [OBDisclosure class];
-    if ([key isEqualToString:@"publish_date"])      return [NSDate class];
-    if ([key isEqualToString:@"url"])               return [NSURL class];
+    if ([key isEqualToString:@"thumbnail"])             return [OBImageInfo class];
+    if ([key isEqualToString:@"logo"])                  return [OBImageInfo class];
+    if ([key isEqualToString:@"disclosure"])            return [OBDisclosure class];
+    if ([key isEqualToString:@"publish_date"])          return [NSDate class];
+    if ([key isEqualToString:@"url"])                   return [NSURL class];
+    if ([key isEqualToString:@"sk_adnetwork_data"])     return [OBSkAdNetworkData class];
     
     return [super propertyClassForKey:key];
 }
