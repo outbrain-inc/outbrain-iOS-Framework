@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "OBTestUtils.h"
 #import "OutbrainSDK.h"
-
+#import "SFUtils.h"
 
 @interface OBPlatformRequestTests : XCTestCase
 
@@ -55,6 +55,16 @@ NSString *const OUTBRAIN_SAMPLE_PORTAL_URL = @"https://lp.outbrain.com/increase-
     XCTAssertNil(platformRequest.psub);
     platformRequest.psub = @"Sports";
     XCTAssertTrue([platformRequest.psub isEqualToString:@"Sports"]);
+}
+
+- (void)testGetUrlFromOBRequest {
+    OBPlatformRequest *platformRequestWithBundle = [OBPlatformRequest requestWithBundleURL:OUTBRAIN_SAMPLE_BUNDLE_URL lang:@"en" widgetID:OBDemoWidgetID];
+    OBPlatformRequest *platformRequestWithPortal = [OBPlatformRequest requestWithPortalURL:OUTBRAIN_SAMPLE_PORTAL_URL lang:@"en" widgetID:OBDemoWidgetID];
+    OBRequest *obRequest = [OBRequest requestWithURL:OBDemoUrl widgetID:OBDemoWidgetID];
+    
+    XCTAssertTrue([[OBUtils getRequestUrl:platformRequestWithBundle] isEqualToString:OUTBRAIN_SAMPLE_BUNDLE_URL]);
+    XCTAssertTrue([[OBUtils getRequestUrl:platformRequestWithPortal] isEqualToString:OUTBRAIN_SAMPLE_PORTAL_URL]);
+    XCTAssertTrue([[OBUtils getRequestUrl:obRequest] isEqualToString:OBDemoUrl]);
 }
 
 
