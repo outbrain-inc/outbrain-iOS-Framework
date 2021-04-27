@@ -168,6 +168,7 @@
 		E69B5E37249B888600A9178C /* BrandedCarouselCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */; };
 		E69B5E38249B888600A9178C /* BrandedCarouselCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */; };
 		E6A1ECBB2636ED61006E1517 /* OBPlatformRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A1ECBA2636ED60006E1517 /* OBPlatformRequestTests.m */; };
+		E6A1ECC32637E7B5006E1517 /* OBApvParamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A1ECC22637E7B4006E1517 /* OBApvParamTests.m */; };
 		E6AB15462504EE41001E56E2 /* app_install_ios14_rec.json in Resources */ = {isa = PBXBuildFile; fileRef = E6AB15452504EE41001E56E2 /* app_install_ios14_rec.json */; };
 		E6AB15492504EF4E001E56E2 /* OBSkAdNetworkData.h in Headers */ = {isa = PBXBuildFile; fileRef = E6AB15472504EF4E001E56E2 /* OBSkAdNetworkData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6AB154A2504EF4E001E56E2 /* OBSkAdNetworkData.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AB15482504EF4E001E56E2 /* OBSkAdNetworkData.m */; };
@@ -400,6 +401,7 @@
 		E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandedCarouselCollectionLayout.h; sourceTree = "<group>"; };
 		E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandedCarouselCollectionLayout.m; sourceTree = "<group>"; };
 		E6A1ECBA2636ED60006E1517 /* OBPlatformRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBPlatformRequestTests.m; sourceTree = "<group>"; };
+		E6A1ECC22637E7B4006E1517 /* OBApvParamTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBApvParamTests.m; sourceTree = "<group>"; };
 		E6AB15452504EE41001E56E2 /* app_install_ios14_rec.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = app_install_ios14_rec.json; sourceTree = "<group>"; };
 		E6AB15472504EF4E001E56E2 /* OBSkAdNetworkData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBSkAdNetworkData.h; sourceTree = "<group>"; };
 		E6AB15482504EF4E001E56E2 /* OBSkAdNetworkData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBSkAdNetworkData.m; sourceTree = "<group>"; };
@@ -767,6 +769,7 @@
 				E61E6C1020836C180016D79A /* OutbrainSDKTests.m */,
 				E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */,
 				E64AE0BF247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m */,
+				E6A1ECC22637E7B4006E1517 /* OBApvParamTests.m */,
 				E69B5E2F249A020100A9178C /* OBSmartFeedAppInstallTests.m */,
 				E6355C0022367EC000C3D1D5 /* MultivacResponseTests.m */,
 				E6A1ECBA2636ED60006E1517 /* OBPlatformRequestTests.m */,
@@ -1383,6 +1386,7 @@
 				E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */,
 				E6D26D8920D7BEA300D6D00A /* OBRecRTBTests.m in Sources */,
 				E61E6C5220836DF00016D79A /* OutbrainHelperTests.m in Sources */,
+				E6A1ECC32637E7B5006E1517 /* OBApvParamTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
