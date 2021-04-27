@@ -10,7 +10,7 @@
 #import "OBNetworkManager.h"
 #import "OBRequest.h"
 #import "OBLabel.h"
-
+#import "OBUtils.h"
 
 @interface ViewabilityData : NSObject
 
@@ -237,7 +237,8 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 }
 
 -(NSString *) viewabilityKeyForOBRequest:(OBRequest *)obRequest {
-    return [self viewabilityKeyForURL:obRequest.url widgetId:obRequest.widgetId widgetIndex:obRequest.widgetIndex];
+    NSString *url = [OBUtils getRequestUrl:obRequest];
+    return [self viewabilityKeyForURL:url widgetId:obRequest.widgetId widgetIndex:obRequest.widgetIndex];
 }
 
 -(NSString *) viewabilityKeyForURL:(NSString *)url widgetId:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex {
