@@ -237,7 +237,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     NSDictionary * responseSettingsDict = [response originalValueForKeyPath:@"settings"];
     
     // Sanity
-    if (responseSettings == nil || (responseSettingsDict == nil) || ![responseSettingsDict isKindOfClass:[NSDictionary class]])) {
+    if (responseSettings == nil || (responseSettingsDict == nil) || ![responseSettingsDict isKindOfClass:[NSDictionary class]]) {
         NSAssert(NO, @"We expect OBSettings to be included in the response as expected");
         return;
     }
