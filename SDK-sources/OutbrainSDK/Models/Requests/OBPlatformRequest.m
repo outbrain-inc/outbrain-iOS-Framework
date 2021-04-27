@@ -57,5 +57,17 @@
     return request;
 }
 
++ (instancetype)requestWithURL:(NSString *)link widgetID:(NSString *)widgetID
+{
+    NSAssert(NO, @"requestWithURL should not be used by OBPlatformRequest");
+    return nil;
+}
+
++ (instancetype)requestWithURL:(NSString *)link widgetID:(NSString *)widgetID widgetIndex:(NSInteger)widgetIndex
+{
+    NSAssert(NO, @"requestWithURL should not be used by OBPlatformRequest");
+    return nil;
+}
+
 
 @end

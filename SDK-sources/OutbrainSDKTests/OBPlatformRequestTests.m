@@ -67,5 +67,9 @@ NSString *const OUTBRAIN_SAMPLE_PORTAL_URL = @"https://lp.outbrain.com/increase-
     XCTAssertTrue([[OBUtils getRequestUrl:obRequest] isEqualToString:OBDemoUrl]);
 }
 
+- (void)testCorrectUseOfOBPlatfromRequest {
+    // OBPlatformRequest with OBRequest (super) constructor should throw
+    XCTAssertThrows([OBPlatformRequest requestWithURL:OBDemoUrl widgetID:OBDemoWidgetID]);
+}
 
 @end
