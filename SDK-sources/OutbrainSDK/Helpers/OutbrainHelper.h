@@ -22,7 +22,7 @@
 
 - (NSArray *) advertiserIdURLParams;
 
-- (void) updateODBSettings:(OBResponse *)response;
+- (void) updateApvCacheAndViewabilitySettings:(OBRecommendationResponse *)response;
 
 - (NSURL *) recommendationURLForRequest:(OBRequest *)request;
 

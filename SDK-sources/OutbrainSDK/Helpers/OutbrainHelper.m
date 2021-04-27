@@ -171,11 +171,8 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     }
     
     // APV
-    if (request.widgetIndex == 0) { // Reset APV on index = 0
-        self.apvCache[requestUrlString] = [NSNumber numberWithBool:NO];
-    }
-    if ([self.apvCache[requestUrlString] boolValue]) {
-        // We need to append apv=true to our request
+    BOOL apvValue = [self _getApvForRequest:request];
+    if (apvValue) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"apv" value: @"true"]];
     }
     
@@ -231,15 +228,17 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 }
 
 #pragma mark - ODB Settings
-- (void) updateODBSettings:(OBResponse *)response {
+- (void) updateApvCacheAndViewabilitySettings:(OBRecommendationResponse *)response {
     // We only update Settings in the case the response did not error.
     if ([response performSelector:@selector(getPrivateError)]) {
         return;
     }
+    OBSettings *responseSettings = response.settings;
+    NSDictionary * responseSettingsDict = [response originalValueForKeyPath:@"settings"];
     
-    NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
     // Sanity
-    if ((responseSettings == nil) || ![responseSettings isKindOfClass:[NSDictionary class]]) {
+    if (responseSettings == nil || (responseSettingsDict == nil) || ![responseSettingsDict isKindOfClass:[NSDictionary class]])) {
+        NSAssert(NO, @"We expect OBSettings to be included in the response as expected");
         return;
     }
     
@@ -247,25 +246,45 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     // instead, we sometimes use:
     // NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
     [self _updateAPVCacheForResponse:response];
-    [self _updateViewbilityStatsForResponse:responseSettings];
+    [self _updateViewbilityStatsForResponse:responseSettingsDict];
 }
 
 #pragma mark - ODB Settings - Private Methods
-- (void)_updateViewbilityStatsForResponse:(NSDictionary *)responseSettings {
+- (void)_updateViewbilityStatsForResponse:(NSDictionary *)responseSettingsDict {
     // Update kViewabilityEnabledKey
-    [self _updateODBSetting:responseSettings[kGLOBAL_WIDGET_STATISTICS] defaultValue:[NSNumber numberWithBool:YES] saveValueBlock:^(NSNumber *value) {
+    [self _updateODBSetting:responseSettingsDict[kGLOBAL_WIDGET_STATISTICS] defaultValue:[NSNumber numberWithBool:YES] saveValueBlock:^(NSNumber *value) {
         [[OBViewabilityService sharedInstance] updateViewabilitySetting:value key:kViewabilityEnabledKey];
     }];
     
     // Update kViewabilityThresholdKey
-    [self _updateODBSetting:responseSettings[kVIEWABILITY_THRESHOLD] defaultValue:[NSNumber numberWithInt:1000] saveValueBlock:^(NSNumber *value) {
+    [self _updateODBSetting:responseSettingsDict[kVIEWABILITY_THRESHOLD] defaultValue:[NSNumber numberWithInt:1000] saveValueBlock:^(NSNumber *value) {
         [[OBViewabilityService sharedInstance] updateViewabilitySetting:value key:kViewabilityThresholdKey];
     }];
 }
 
-- (void)_updateAPVCacheForResponse:(OBResponse *)response
+#pragma mark - APV logic
+- (void) _cleanAPVCache {
+    self.apvCache = [[NSMutableDictionary alloc] init];
+}
+
+- (NSInteger) _getApvCacheSize {
+    return self.apvCache.allKeys.count;
+}
+
+- (BOOL) _getApvForRequest:(OBRequest *)request {
+    NSString *requestUrlString = [OBUtils getRequestUrl:request];
+    if (request.widgetIndex == 0) { // Reset APV on index = 0
+        self.apvCache[requestUrlString] = [NSNumber numberWithBool:NO];
+    }
+    if ([self.apvCache[requestUrlString] boolValue]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void) _updateAPVCacheForResponse:(OBRecommendationResponse *)response
 {
-    NSDictionary * responseSettings = [response originalValueForKeyPath:@"settings"];
+    OBSettings *responseSettings = response.settings;
     BOOL apvReturnValue = NO;
     
     OBRequest *request = [response performSelector:@selector(getPrivateRequest)];
@@ -278,16 +297,11 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
         return;
     }
     
-    if (responseSettings[@"apv"] && ![responseSettings[@"apv"] isKindOfClass:[NSNull class]])
-    {
-        apvReturnValue = [responseSettings[@"apv"] boolValue];
-    }
-    
     // If apvReturnValue is false we don't want to set anything
-    if (apvReturnValue == NO) return;
+    if (responseSettings.apv == NO) return;
     
     // Finally, if we got here, we need to save the apv value to the apvCache
-    self.apvCache[requestUrl] = [NSNumber numberWithBool:apvReturnValue]; // apvReturnValue mush be equal to YES;
+    self.apvCache[requestUrl] = [NSNumber numberWithBool:YES]; 
 }
 
 - (void) _updateODBSetting:(NSNumber *)settingValue defaultValue:(NSNumber *)defaultValue saveValueBlock:(void (^)(NSNumber *))saveBlock {
