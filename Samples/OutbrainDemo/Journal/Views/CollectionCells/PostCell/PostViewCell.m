@@ -8,6 +8,7 @@
 
 #import "PostViewCell.h"
 #import "Post.h"
+#import "OBAppDelegate.h"
 #import "OBHorizontalWidget.h"
 #import <OutbrainSDK/OutbrainSDK.h>
 
@@ -28,7 +29,6 @@
     BOOL _adhesionLocked;   // If yes then the adhesion is locked at the bottom of the scroll view
     BOOL _scrolledDown;
 }
-
 
 @end
 
@@ -53,7 +53,7 @@
     if(_outbrainLoaded || _loadingOutbrain) return;
     
     self.mainScrollView.delegate = nil;
-    OBRequest * request = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID3];
+    OBRequest * request = [self prepareOutbrainBaseRequest];
     [Outbrain fetchRecommendationsForRequest:request withDelegate:self];
 }
 
@@ -157,7 +157,8 @@
         
 
         // Call for the second request, we need to use the token we received from the server
-        OBRequest * secondRequest = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID1 widgetIndex:1];
+        OBRequest * secondRequest = [self prepareOutbrainBaseRequest];
+        secondRequest.widgetIndex = 1;
         [Outbrain fetchRecommendationsForRequest:secondRequest withDelegate:self];
     }
     else {
@@ -167,6 +168,28 @@
         
         self.outbrainHoverView.alpha = 0.f;
     }
+}
+
+- (OBRequest *) prepareOutbrainBaseRequest {
+    BOOL shouldTestPlatformApi = [[NSUserDefaults standardUserDefaults] boolForKey:SHOULD_TEST_PLATFORM_KEY];
+    BOOL shouldTestPlatformBundleRequest = [[NSUserDefaults standardUserDefaults] boolForKey:SHOULD_TEST_PLATFORM_BUNDLE_REQUEST_KEY];
+    
+    OBRequest * request;
+    if (shouldTestPlatformApi) {
+        [Outbrain setPartnerKey: @"DEMOP1MN24J3E1MGLQ92067LH"];
+        
+        if (shouldTestPlatformBundleRequest) {
+            request = [OBPlatformRequest requestWithBundleURL: PLATFORM_SAMPLE_BUNDLE_URL lang: @"en" widgetID: PLATFORM_SAMPLE_WIDGET_ID];
+        }
+        else {
+            request = [OBPlatformRequest requestWithPortalURL: PLATFORM_SAMPLE_PORTAL_URL lang: @"en" widgetID: PLATFORM_SAMPLE_WIDGET_ID];
+        }
+    }
+    else {
+        // regular ODB request
+        request = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID3];
+    }
+    return request;
 }
 
 - (void)outbrainResponseDidFail:(NSError *)response
