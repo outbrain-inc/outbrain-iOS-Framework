@@ -159,6 +159,7 @@
         // Call for the second request, we need to use the token we received from the server
         OBRequest * secondRequest = [self prepareOutbrainBaseRequest];
         secondRequest.widgetIndex = 1;
+        self.outbrainHoverView.obRequest = secondRequest;
         [Outbrain fetchRecommendationsForRequest:secondRequest withDelegate:self];
     }
     else {
