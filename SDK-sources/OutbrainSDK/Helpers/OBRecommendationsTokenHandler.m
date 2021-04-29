@@ -8,6 +8,7 @@
 
 #import "OBRecommendationsTokenHandler.h"
 #import "OBRequest.h"
+#import "OBUtils.h"
 #import "OBRecommendationResponse.h"
 
 
@@ -59,11 +60,13 @@
         return nil;
     }
     
-    return self.tokensDictionary[request.url];
+    NSString *requestUrl = [OBUtils getRequestUrl:request];
+    return self.tokensDictionary[requestUrl];
 }
 
 - (void)setTokenForRequest:(OBRequest *)request response:(OBRecommendationResponse *)response {
-    self.tokensDictionary[request.url] = response.responseRequest.token;
+    NSString *requestUrl = [OBUtils getRequestUrl:request];
+    self.tokensDictionary[requestUrl] = response.responseRequest.token;
 }
 
 @end

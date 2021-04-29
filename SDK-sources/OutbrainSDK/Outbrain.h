@@ -58,6 +58,12 @@ extern NSString * _Nonnull const OB_AD_NETWORK_ID;
  **/
 + (BOOL) SDKInitialized;
 
+/**
+ *  @brief Change the partner key after Outbrain.init (for tests mostly)
+ *
+ **/
++ (void) setPartnerKey:(NSString * _Nonnull)partnerKey;
+
 /** @section Fetching **/
 
 /**
