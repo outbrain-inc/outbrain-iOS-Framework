@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## v4.4.0 - April 29, 2021
+
+- Feature - support for "Platform Endpoint"
+- UI Fix - "sponsor label" position and color.
+- Internal - Migrate CI artifcat hosting from Bintray to GCP.
+
+
 ## v4.3.0 - March 18, 2021
 
 - Feature - add support for a new setting `dynamic:HeaderFontSize` from ODB response.
