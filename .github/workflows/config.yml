@@ -30,7 +30,7 @@ jobs:
         
         git add OutbrainSDK.podspec
         git commit -m "Bump version in OutbrainSDK.podspec"
-        
+        git pull
         git push -u origin HEAD:master
     - name: Run pod spec lint
       env:
