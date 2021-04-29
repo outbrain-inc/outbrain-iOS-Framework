@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OBRequest.h"
 
 @interface OBUtils : NSObject
 
@@ -15,5 +16,7 @@
 +(BOOL) isDeviceSimulator;
 
 +(NSString *) decodeHTMLEnocdedString:(NSString *)htmlEncodedString;
+
++(NSString *) getRequestUrl:(OBRequest *)request;
 
 @end
