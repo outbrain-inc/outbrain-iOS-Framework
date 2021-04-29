@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/CAShapeLayer.h>
 #import <QuartzCore/CAAnimation.h>
-
+#import <OutbrainSDK/Outbrain.h>
 #import "OBWidgetViewProtocol.h"
 
 @class OBRecommendation;
@@ -85,8 +85,11 @@ typedef NS_ENUM(NSInteger,OBHoverArrowState) {
  **/
 @property (nonatomic, strong) OBRecommendationResponse * recommendationResponse;
 
-
-
+/**
+ *  Discussion:
+ *      The OBRequest instance used for fetching the recommendations for this widget
+ **/
+@property (nonatomic, strong) OBRequest *obRequest;
 
 @property (nonatomic, weak) IBOutlet id <OBAdhesionViewDelegate> delegate;
 
