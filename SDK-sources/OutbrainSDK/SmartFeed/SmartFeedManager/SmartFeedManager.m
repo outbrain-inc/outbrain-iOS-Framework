@@ -1052,7 +1052,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         }
         if (indexPath.row == smartfeedHeaderCellIndex) {
             // Smartfeed header
-            return CGSizeMake(collectionView.frame.size.width, 35);
+            return CGSizeMake(collectionView.frame.size.width, 70);
         }
         SFItemData *sfItem = [self itemForIndexPath:indexPath];
         return [self.sfCollectionViewManager collectionView:collectionView sizeForItemAtIndexPath:indexPath sfItem:sfItem];
