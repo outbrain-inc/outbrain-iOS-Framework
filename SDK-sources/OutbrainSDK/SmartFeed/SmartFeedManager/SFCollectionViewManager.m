@@ -240,7 +240,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     }
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
              sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
-        return CGSizeMake(screenWidth-20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 285.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 250.0);
     }
     else if (sfItemType == SFTypeBrandedCarouselWithTitle || sfItemType == SFTypeStripAppInstall) {
         CGFloat brandedCarouselHeight = MAX(screenHeight*0.62, 450);
