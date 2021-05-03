@@ -20,6 +20,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD5-iE-f5d" userLabel="ContentView">
                         <rect key="frame" x="0.0" y="0.0" width="475" height="186"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oh2-pk-yXk" userLabel="SeparatorLine">
+                                <rect key="frame" x="20" y="185" width="435" height="1"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="X18-OE-rf6"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around Sky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-vn-6Ta">
                                 <rect key="frame" x="20" y="8" width="95.5" height="22"/>
                                 <constraints>
@@ -93,14 +100,17 @@
                         <viewLayoutGuide key="safeArea" id="F9g-MH-CY5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="oh2-pk-yXk" firstAttribute="leading" secondItem="hNs-fM-9vp" secondAttribute="leading" id="1dw-G9-7oe"/>
                             <constraint firstItem="DUo-Ck-hoc" firstAttribute="top" secondItem="dyd-vn-6Ta" secondAttribute="bottom" constant="5" id="1iZ-e3-b4r"/>
                             <constraint firstAttribute="trailing" secondItem="hNs-fM-9vp" secondAttribute="trailing" constant="20" id="6iV-ZR-6q5"/>
                             <constraint firstItem="hNs-fM-9vp" firstAttribute="top" secondItem="dyd-vn-6Ta" secondAttribute="bottom" constant="16" id="7M9-tq-hCt"/>
                             <constraint firstItem="DUo-Ck-hoc" firstAttribute="trailing" secondItem="hNs-fM-9vp" secondAttribute="trailing" id="CZU-Cl-kT3"/>
                             <constraint firstItem="dyd-vn-6Ta" firstAttribute="leading" secondItem="MD5-iE-f5d" secondAttribute="leading" constant="20" id="Mfj-JK-Ugj"/>
                             <constraint firstItem="DUo-Ck-hoc" firstAttribute="leading" secondItem="dyd-vn-6Ta" secondAttribute="leading" id="Nau-Eb-M4f"/>
+                            <constraint firstItem="oh2-pk-yXk" firstAttribute="trailing" secondItem="hNs-fM-9vp" secondAttribute="trailing" id="Q9F-me-AhZ"/>
                             <constraint firstItem="hNs-fM-9vp" firstAttribute="leading" secondItem="MD5-iE-f5d" secondAttribute="leading" constant="20" id="Vdq-zv-QRn"/>
                             <constraint firstAttribute="bottom" secondItem="hNs-fM-9vp" secondAttribute="bottom" constant="5" id="hmP-Bw-Ihb"/>
+                            <constraint firstItem="F9g-MH-CY5" firstAttribute="bottom" secondItem="oh2-pk-yXk" secondAttribute="bottom" id="t07-Rf-1ja"/>
                             <constraint firstItem="dyd-vn-6Ta" firstAttribute="top" secondItem="MD5-iE-f5d" secondAttribute="top" constant="8" id="yuH-sB-hOw"/>
                         </constraints>
                     </view>

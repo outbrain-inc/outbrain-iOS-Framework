@@ -20,6 +20,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kez-If-Ynu" userLabel="ContentView">
                         <rect key="frame" x="0.0" y="0.0" width="475" height="132"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCu-jb-ByN" userLabel="SeparatorLine">
+                                <rect key="frame" x="20" y="131" width="435" height="1"/>
+                                <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="UZ1-c8-ADo"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOQ-1r-yFS" userLabel="CardContentView">
                                 <rect key="frame" x="20" y="5" width="435" height="122"/>
                                 <subviews>
@@ -77,7 +84,10 @@
                         <viewLayoutGuide key="safeArea" id="E5m-Y8-aiu"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="oCu-jb-ByN" firstAttribute="trailing" secondItem="MOQ-1r-yFS" secondAttribute="trailing" id="6Sy-Xq-8zS"/>
                             <constraint firstItem="MOQ-1r-yFS" firstAttribute="leading" secondItem="Kez-If-Ynu" secondAttribute="leading" constant="20" id="800-i6-Nsb"/>
+                            <constraint firstItem="E5m-Y8-aiu" firstAttribute="bottom" secondItem="oCu-jb-ByN" secondAttribute="bottom" id="AHi-b5-ozq"/>
+                            <constraint firstItem="oCu-jb-ByN" firstAttribute="leading" secondItem="MOQ-1r-yFS" secondAttribute="leading" id="Cu9-mm-7Fe"/>
                             <constraint firstAttribute="bottom" secondItem="MOQ-1r-yFS" secondAttribute="bottom" constant="5" id="ImL-Yh-Erv"/>
                             <constraint firstAttribute="trailing" secondItem="MOQ-1r-yFS" secondAttribute="trailing" constant="20" id="S1Z-nd-ey5"/>
                             <constraint firstItem="MOQ-1r-yFS" firstAttribute="top" secondItem="E5m-Y8-aiu" secondAttribute="top" constant="5" id="WoR-yc-6Bc"/>
