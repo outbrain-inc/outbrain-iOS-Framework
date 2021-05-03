@@ -21,17 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="461" height="251"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSE-ha-ESX" customClass="SFHorizontalViewFixed">
-                                <rect key="frame" x="0.0" y="45.5" width="461" height="200.5"/>
+                                <rect key="frame" x="10" y="45.5" width="441" height="200.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around Sky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEy-cl-S9c">
-                                <rect key="frame" x="14" y="8" width="95.5" height="21.5"/>
+                                <rect key="frame" x="20" y="8" width="95.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMY-sG-eYJ" userLabel="BorderLine">
-                                <rect key="frame" x="14" y="34.5" width="433" height="1"/>
+                                <rect key="frame" x="20" y="34.5" width="421" height="1"/>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="3Mv-IX-D3m"/>
@@ -42,13 +42,13 @@
                         <constraints>
                             <constraint firstItem="ZSE-ha-ESX" firstAttribute="top" secondItem="lMY-sG-eYJ" secondAttribute="bottom" constant="10" id="75a-vf-MHb"/>
                             <constraint firstItem="lMY-sG-eYJ" firstAttribute="top" secondItem="SEy-cl-S9c" secondAttribute="bottom" constant="5" id="9KP-Tz-mRk"/>
-                            <constraint firstItem="SEy-cl-S9c" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" constant="14" id="BLx-7B-HW8"/>
+                            <constraint firstItem="SEy-cl-S9c" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" constant="20" id="BLx-7B-HW8"/>
                             <constraint firstItem="SEy-cl-S9c" firstAttribute="top" secondItem="jJD-mi-P9N" secondAttribute="top" constant="8" id="DPG-BY-usb"/>
-                            <constraint firstAttribute="trailing" secondItem="lMY-sG-eYJ" secondAttribute="trailing" constant="14" id="LAR-1M-aYj"/>
+                            <constraint firstAttribute="trailing" secondItem="lMY-sG-eYJ" secondAttribute="trailing" constant="20" id="LAR-1M-aYj"/>
                             <constraint firstAttribute="bottom" secondItem="ZSE-ha-ESX" secondAttribute="bottom" constant="5" id="LUw-23-WGk"/>
                             <constraint firstItem="lMY-sG-eYJ" firstAttribute="leading" secondItem="SEy-cl-S9c" secondAttribute="leading" id="U4p-k4-ual"/>
-                            <constraint firstAttribute="trailing" secondItem="ZSE-ha-ESX" secondAttribute="trailing" id="qYt-Rg-xni"/>
-                            <constraint firstItem="ZSE-ha-ESX" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" id="wMb-QC-m0l"/>
+                            <constraint firstAttribute="trailing" secondItem="ZSE-ha-ESX" secondAttribute="trailing" constant="10" id="qYt-Rg-xni"/>
+                            <constraint firstItem="ZSE-ha-ESX" firstAttribute="leading" secondItem="jJD-mi-P9N" secondAttribute="leading" constant="10" id="wMb-QC-m0l"/>
                         </constraints>
                     </view>
                 </subviews>
