@@ -22,7 +22,8 @@ CGSize lastCollectionViewSize;
 CGFloat scalingOffset = 200.0;
 CGFloat minimumScaleFactor = 0.9;
 CGFloat minimumAlphaFactor = 0.3;
-BOOL scaleItems = YES;
+
+BOOL scaleItems = NO;
 
 - (instancetype)init
 {
@@ -34,7 +35,7 @@ BOOL scaleItems = YES;
     self = [super init];
     if (self) {
         self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        self.minimumLineSpacing = 5.0;
+        self.minimumLineSpacing = 15.0;
         self.itemSize = itemSize;
         lastCollectionViewSize = CGSizeZero;
     }
