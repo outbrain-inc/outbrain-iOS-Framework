@@ -1134,7 +1134,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
     return self.smartFeedItemsArray[indexPath.row - (self.isReadMoreModuleEnabled ? 2 : 1)];
 }
-    
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0.0;
+}
+
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];
