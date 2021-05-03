@@ -91,7 +91,7 @@
         [OBAdsChoicesManager reportAdsChoicesPixels: recResponse];
         
         // Here we update Settings from the respones
-        [[OutbrainHelper sharedInstance] updateODBSettings: recResponse];
+        [[OutbrainHelper sharedInstance] updateApvCacheAndViewabilitySettings: recResponse];
         
         recResponse.recommendations = [OBMultivacRequestOperation _filterInvalidRecsForResponse: recResponse];
         [[OutbrainHelper sharedInstance].tokensHandler setTokenForRequest: self.request response: recResponse];

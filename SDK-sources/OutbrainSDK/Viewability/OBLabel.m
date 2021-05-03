@@ -55,10 +55,6 @@ CGFloat viewThresholdBeforeReportingToServer = 1.0;
     [super drawRect:rect];
 }
 
--(void) setObRequest:(OBRequest *)obRequest {
-    _obRequest = [OBRequest requestWithURL:obRequest.url widgetID:obRequest.widgetId widgetIndex:obRequest.widgetIndex];
-}
-
 - (BOOL) isTimerRunning {
     return ((self.viewVisibleTimer != nil) && [self.viewVisibleTimer isValid]);
 }

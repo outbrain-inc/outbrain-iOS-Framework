@@ -11,7 +11,7 @@
 
 @interface OBLabel : UILabel;
 
-@property (nonatomic) OBRequest * obRequest;
+@property (nonatomic, strong) OBRequest * obRequest;
 
 - (void) trackViewability;
 

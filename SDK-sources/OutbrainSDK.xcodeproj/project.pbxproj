@@ -167,9 +167,14 @@
 		E69B5E34249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */; };
 		E69B5E37249B888600A9178C /* BrandedCarouselCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */; };
 		E69B5E38249B888600A9178C /* BrandedCarouselCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */; };
+		E6A1ECBB2636ED61006E1517 /* OBPlatformRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A1ECBA2636ED60006E1517 /* OBPlatformRequestTests.m */; };
+		E6A1ECC32637E7B5006E1517 /* OBApvParamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A1ECC22637E7B4006E1517 /* OBApvParamTests.m */; };
+		E6A1ECC8263802D3006E1517 /* OBTokenHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A1ECC7263802D2006E1517 /* OBTokenHandlerTests.m */; };
 		E6AB15462504EE41001E56E2 /* app_install_ios14_rec.json in Resources */ = {isa = PBXBuildFile; fileRef = E6AB15452504EE41001E56E2 /* app_install_ios14_rec.json */; };
 		E6AB15492504EF4E001E56E2 /* OBSkAdNetworkData.h in Headers */ = {isa = PBXBuildFile; fileRef = E6AB15472504EF4E001E56E2 /* OBSkAdNetworkData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6AB154A2504EF4E001E56E2 /* OBSkAdNetworkData.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AB15482504EF4E001E56E2 /* OBSkAdNetworkData.m */; };
+		E6B6496024CEE8AD00C072C0 /* OBPlatformRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B6495E24CEE8AD00C072C0 /* OBPlatformRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6B6496124CEE8AD00C072C0 /* OBPlatformRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B6495F24CEE8AD00C072C0 /* OBPlatformRequest.m */; };
 		E6B930A6216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */; };
 		E6B930AC216F794C00EC7A4A /* SFVideoCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */; };
 		E6B930AD216F794C00EC7A4A /* SFVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */; };
@@ -396,9 +401,14 @@
 		E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSingleAppInstallTableCell.xib; sourceTree = "<group>"; };
 		E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandedCarouselCollectionLayout.h; sourceTree = "<group>"; };
 		E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandedCarouselCollectionLayout.m; sourceTree = "<group>"; };
+		E6A1ECBA2636ED60006E1517 /* OBPlatformRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBPlatformRequestTests.m; sourceTree = "<group>"; };
+		E6A1ECC22637E7B4006E1517 /* OBApvParamTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBApvParamTests.m; sourceTree = "<group>"; };
+		E6A1ECC7263802D2006E1517 /* OBTokenHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBTokenHandlerTests.m; sourceTree = "<group>"; };
 		E6AB15452504EE41001E56E2 /* app_install_ios14_rec.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = app_install_ios14_rec.json; sourceTree = "<group>"; };
 		E6AB15472504EF4E001E56E2 /* OBSkAdNetworkData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBSkAdNetworkData.h; sourceTree = "<group>"; };
 		E6AB15482504EF4E001E56E2 /* OBSkAdNetworkData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBSkAdNetworkData.m; sourceTree = "<group>"; };
+		E6B6495E24CEE8AD00C072C0 /* OBPlatformRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBPlatformRequest.h; sourceTree = "<group>"; };
+		E6B6495F24CEE8AD00C072C0 /* OBPlatformRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBPlatformRequest.m; sourceTree = "<group>"; };
 		E6B930A5216F763200EC7A4A /* SFHorizontalFixedWithVideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFHorizontalFixedWithVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		E6B930A8216F794C00EC7A4A /* SFVideoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFVideoCollectionViewCell.h; sourceTree = "<group>"; };
 		E6B930A9216F794C00EC7A4A /* SFVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFVideoTableViewCell.m; sourceTree = "<group>"; };
@@ -705,6 +715,8 @@
 			children = (
 				E61E6BF720836C180016D79A /* OBRequest.m */,
 				E61E6BF820836C180016D79A /* OBRequest.h */,
+				E6B6495E24CEE8AD00C072C0 /* OBPlatformRequest.h */,
+				E6B6495F24CEE8AD00C072C0 /* OBPlatformRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -759,8 +771,11 @@
 				E61E6C1020836C180016D79A /* OutbrainSDKTests.m */,
 				E6EA378B209B30F9009B687B /* OBSmartFeedTests.m */,
 				E64AE0BF247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m */,
+				E6A1ECC22637E7B4006E1517 /* OBApvParamTests.m */,
+				E6A1ECC7263802D2006E1517 /* OBTokenHandlerTests.m */,
 				E69B5E2F249A020100A9178C /* OBSmartFeedAppInstallTests.m */,
 				E6355C0022367EC000C3D1D5 /* MultivacResponseTests.m */,
+				E6A1ECBA2636ED60006E1517 /* OBPlatformRequestTests.m */,
 				E61E6C1320836C180016D79A /* OBParseODBTests.m */,
 				E6F3A9A32504F8D10057CADB /* SkAdNetworkAppInstallRecTests.m */,
 				E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */,
@@ -1105,6 +1120,7 @@
 				E64AE0BB2472BD610070A471 /* SFBrandedCarouselCollectionCell.h in Headers */,
 				E61E6C1A20836C180016D79A /* OBViewabilityService.h in Headers */,
 				E61E6C3120836C180016D79A /* OBContent.h in Headers */,
+				E6B6496024CEE8AD00C072C0 /* OBPlatformRequest.h in Headers */,
 				E61E6C3320836C180016D79A /* OBContent_Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1326,6 +1342,7 @@
 				E6F8F461211C3D400069C72C /* SFTableViewManager.m in Sources */,
 				E6B930AE216F794C00EC7A4A /* SFVideoCollectionViewCell.m in Sources */,
 				E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */,
+				E6B6496124CEE8AD00C072C0 /* OBPlatformRequest.m in Sources */,
 				E6B930AD216F794C00EC7A4A /* SFVideoTableViewCell.m in Sources */,
 				E61E6CBD2085D98F0016D79A /* PageCollectionLayout.m in Sources */,
 				16AC5DB724CF08E400F492C1 /* SFWeeklyHighlightsSingleRecView.m in Sources */,
@@ -1365,12 +1382,15 @@
 				E6F3A9A42504F8D10057CADB /* SkAdNetworkAppInstallRecTests.m in Sources */,
 				E6355C0122367EC000C3D1D5 /* MultivacResponseTests.m in Sources */,
 				E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */,
+				E6A1ECBB2636ED61006E1517 /* OBPlatformRequestTests.m in Sources */,
 				E69B5E30249A020200A9178C /* OBSmartFeedAppInstallTests.m in Sources */,
 				E61E6C5620836E060016D79A /* OutbrainSDKTests.m in Sources */,
 				E6EA378C209B30F9009B687B /* OBSmartFeedTests.m in Sources */,
 				E61E6C5520836E040016D79A /* OBTestUtils.m in Sources */,
 				E6D26D8920D7BEA300D6D00A /* OBRecRTBTests.m in Sources */,
+				E6A1ECC8263802D3006E1517 /* OBTokenHandlerTests.m in Sources */,
 				E61E6C5220836DF00016D79A /* OutbrainHelperTests.m in Sources */,
+				E6A1ECC32637E7B5006E1517 /* OBApvParamTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

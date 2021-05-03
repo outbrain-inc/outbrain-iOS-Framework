@@ -467,14 +467,15 @@
         highlightLine.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [container addSubview:highlightLine];
         
-        UILabel * alsoOnWeb = [UILabel new];
-        alsoOnWeb.backgroundColor = [UIColor clearColor];
-        alsoOnWeb.textColor = [UIColor colorWithRed:0.600 green:0.600 blue:0.600 alpha:1.000];
-        alsoOnWeb.font = [UIFont boldSystemFontOfSize:12];
-        alsoOnWeb.text = @"Recommended to you";
-        [alsoOnWeb sizeToFit];
-        alsoOnWeb.center = CGPointMake(10.f + (alsoOnWeb.frame.size.width/2.f), container.bounds.size.height / 2.f);
-        [container addSubview:alsoOnWeb];
+        OBLabel * widgetHeaderLabel = [OBLabel new];
+        widgetHeaderLabel.backgroundColor = [UIColor clearColor];
+        widgetHeaderLabel.textColor = UIColor.orangeColor;
+        widgetHeaderLabel.font = [UIFont boldSystemFontOfSize:14];
+        widgetHeaderLabel.text = @"Recommended to you";
+        [widgetHeaderLabel sizeToFit];
+        widgetHeaderLabel.center = CGPointMake(10.f + (widgetHeaderLabel.frame.size.width/2.f), container.bounds.size.height / 2.f);
+        [container addSubview:widgetHeaderLabel];
+        [Outbrain registerOBLabel:widgetHeaderLabel withOBRequest:self.obRequest];
         
         [container.layer addSublayer:self.arrowLayer];
         
@@ -488,7 +489,7 @@
         r.origin.x = (container.frame.size.width - r.size.width - 5.f);
         brandingImageButton.frame = r;
         brandingImageButton.center = CGPointMake(brandingImageButton.frame.size.width / 2,
-                                                 alsoOnWeb.center.y);
+                                                 widgetHeaderLabel.center.y);
         [container addSubview:brandingImageButton];
     }
     

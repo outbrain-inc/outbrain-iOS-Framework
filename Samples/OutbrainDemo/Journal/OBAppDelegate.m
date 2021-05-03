@@ -17,9 +17,16 @@
 #import "OBRecommendationWebVC.h"
 
 @interface OBAppDelegate()<UISplitViewControllerDelegate>
+
 @end
 
 @implementation OBAppDelegate
+
+NSString *const SHOULD_TEST_PLATFORM_KEY =                  @"SHOULD_TEST_PLATFORM_KEY";
+NSString *const SHOULD_TEST_PLATFORM_BUNDLE_REQUEST_KEY =   @"SHOULD_TEST_PLATFORM_BUNDLE_REQUEST_KEY";
+NSString *const PLATFORM_SAMPLE_BUNDLE_URL =                @"https://play.google.com/store/apps/details?id=com.outbrain";
+NSString *const PLATFORM_SAMPLE_PORTAL_URL =                @"https://lp.outbrain.com/increase-sales-native-ads/";
+NSString *const PLATFORM_SAMPLE_WIDGET_ID =                 @"SDK_1";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initWholeApp];
@@ -34,6 +41,8 @@
     
     [Outbrain setTestMode:YES]; // Skipping all billing, statistics, information gathering, and all other action mechanisms.
     
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SHOULD_TEST_PLATFORM_KEY];
+    
     // Initialize appearance here.
     [self initializeForiPhone];
 }
@@ -41,19 +50,6 @@
 - (void)initializeForiPhone
 {
     [JLoadingView showLoadingViewInView:self.window.rootViewController.view withDelay:2.5f animated:NO];
-}
-
-- (void)initializeForiPad
-{
-    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-    splitViewController.delegate = self;
-    
-    UINavigationController * nav = splitViewController.viewControllers[0];
-    
-    PostsListVC * listVC = (PostsListVC *)[nav topViewController];
-    
-    PostsSwipeVC * detailVC = (PostsSwipeVC *)[[[splitViewController.viewControllers lastObject] viewControllers] firstObject];
-    listVC.detailVC = detailVC;
 }
 
 

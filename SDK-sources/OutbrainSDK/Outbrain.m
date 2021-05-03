@@ -14,12 +14,13 @@
 #import "OutbrainHelper.h"
 #import "OBNetworkManager.h"
 #import "OBLabel.h"
+#import "OBUtils.h"
 #import "OBViewabilityService.h"
 #import <UIKit/UIKit.h>
 
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"4.3.0";
+NSString * const OB_SDK_VERSION     =   @"4.4.0";
 
 NSString * const OB_AD_NETWORK_ID   =   @"97r2b46745.skadnetwork";
 
@@ -54,6 +55,10 @@ BOOL WAS_INITIALIZED     =   NO;
         WAS_INITIALIZED = YES;
         NSLog(@"OutbrainSDK init");
     }
+}
+
++ (void) setPartnerKey:(NSString *)partnerKey {
+    [OutbrainManager sharedInstance].partnerKey = partnerKey;
 }
 
 + (BOOL) SDKInitialized {
@@ -146,8 +151,8 @@ BOOL WAS_INITIALIZED     =   NO;
 
 + (void) registerOBLabel:(OBLabel * _Nonnull)label withOBRequest:(OBRequest * _Nonnull)obRequest {
     NSAssert([label isKindOfClass:[OBLabel class]], @"Outbrain - label must be of type OBLabel.");
-    if (obRequest.widgetId == nil || obRequest.url == nil) {
-        NSLog(@"Outbrain Error: registerOBLabel() --> url and widgetId must not be null");
+    if (obRequest.widgetId == nil || [OBUtils getRequestUrl:obRequest] == nil) {
+        NSLog(@"Outbrain Error: registerOBLabel() --> request url and widgetId must not be null");
         return;
     }
     

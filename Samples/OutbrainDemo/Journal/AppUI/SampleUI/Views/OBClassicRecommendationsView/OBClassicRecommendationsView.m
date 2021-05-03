@@ -135,22 +135,22 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
         } NSInteger;
         
         // Get the labels
-        OBLabel * alsoOnTheWebLabel = (OBLabel *)[brandingHeader viewWithTag:AlsoOnTheWebTag];
+        OBLabel * widgetHeaderLabel = (OBLabel *)[brandingHeader viewWithTag:AlsoOnTheWebTag];
         UIButton * brandingImageButton = (UIButton *)[brandingHeader viewWithTag:AmeliaHeadLogoTag];
         
         // If not available create them
-        if(!alsoOnTheWebLabel)
+        if(!widgetHeaderLabel)
         {
             // Example for implementing Viewability in code
-            // For the full explanation please refer to: http://developer.outbrain.com/sdk_ios_2-0_developer_guide/#widget_viewability
-            alsoOnTheWebLabel = [[OBLabel alloc] init];
-            alsoOnTheWebLabel.textColor = [UIColor colorWithRed:0.600 green:0.600 blue:0.600 alpha:1.000];
-            alsoOnTheWebLabel.backgroundColor = [UIColor clearColor];
-            alsoOnTheWebLabel.font = [UIFont boldSystemFontOfSize:14];
-            alsoOnTheWebLabel.tag = AlsoOnTheWebTag;
-            alsoOnTheWebLabel.text = @"Recommended to you";
-            [alsoOnTheWebLabel sizeToFit];
-            [brandingHeader addSubview:alsoOnTheWebLabel];
+            // For the full explanation please refer to: https://developer.outbrain.com/
+            widgetHeaderLabel = [[OBLabel alloc] init];
+            widgetHeaderLabel.textColor = UIColor.orangeColor;
+            widgetHeaderLabel.backgroundColor = [UIColor clearColor];
+            widgetHeaderLabel.font = [UIFont boldSystemFontOfSize:14];
+            widgetHeaderLabel.tag = AlsoOnTheWebTag;
+            widgetHeaderLabel.text = @"Recommended to you";
+            [widgetHeaderLabel sizeToFit];
+            [brandingHeader addSubview:widgetHeaderLabel];
             
             brandingImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
             brandingImageButton.tag = AmeliaHeadLogoTag;
@@ -162,15 +162,15 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
             r.origin.x = (brandingHeader.frame.size.width - r.size.width - 5.f);
             brandingImageButton.frame = r;
             brandingImageButton.center = CGPointMake(brandingImageButton.frame.size.width / 2,
-                                                       alsoOnTheWebLabel.center.y);
+                                                       widgetHeaderLabel.center.y);
             
             [brandingHeader addSubview:brandingImageButton];
         }
         
-        [Outbrain registerOBLabel:alsoOnTheWebLabel withOBRequest:_recommendationResponse.request];
+        [Outbrain registerOBLabel:widgetHeaderLabel withOBRequest:_recommendationResponse.request];
         CGFloat centerY = brandingHeader.frame.size.height/2.f;
-        alsoOnTheWebLabel.center = CGPointMake(10.f + (alsoOnTheWebLabel.frame.size.width/2.f), centerY);
-        brandingImageButton.center = CGPointMake(CGRectGetWidth(brandingHeader.frame) - (brandingImageButton.frame.size.width/2.f) - 10.f, CGRectGetMaxY(alsoOnTheWebLabel.frame) - (brandingImageButton.bounds.size.height/2.f));
+        widgetHeaderLabel.center = CGPointMake(10.f + (widgetHeaderLabel.frame.size.width/2.f), centerY);
+        brandingImageButton.center = CGPointMake(CGRectGetWidth(brandingHeader.frame) - (brandingImageButton.frame.size.width/2.f) - 10.f, CGRectGetMaxY(widgetHeaderLabel.frame) - (brandingImageButton.bounds.size.height/2.f));
         return brandingHeader;
     }
     return nil;
