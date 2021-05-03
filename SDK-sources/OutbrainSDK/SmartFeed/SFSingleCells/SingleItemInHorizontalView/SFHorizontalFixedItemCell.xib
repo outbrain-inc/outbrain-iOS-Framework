@@ -11,17 +11,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SFHorizontalFixedItemCell" id="Gg3-8H-tpC" userLabel="SFHorizontalFixedItemCell" customClass="SFCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="338"/>
+            <rect key="frame" x="0.0" y="0.0" width="395" height="387"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="338"/>
+                <rect key="frame" x="0.0" y="0.0" width="395" height="387"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1L-1q-EwP" userLabel="Content View">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="338"/>
+                        <rect key="frame" x="0.0" y="0.0" width="395" height="387"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3c5-yh-4Py" userLabel="Ad Choices Button">
-                                <rect key="frame" x="270" y="44" width="30" height="30"/>
+                                <rect key="frame" x="365" y="44" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PZb-E5-g9i"/>
                                     <constraint firstAttribute="width" constant="30" id="Y9i-gu-LZg"/>
@@ -35,19 +35,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Lookup Your Name to See If You Get a PPI Payout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-J8-7zV">
-                                <rect key="frame" x="5" y="248" width="290" height="38.5"/>
+                                <rect key="frame" x="0.0" y="315.5" width="390" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="751" verticalCompressionResistancePriority="1000" text="The Daily Reporter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97O-YX-tW6">
-                                <rect key="frame" x="5" y="290.5" width="290" height="14"/>
+                                <rect key="frame" x="0.0" y="339" width="390" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.57647058823529407" green="0.56470588235294117" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g77-bX-xEg">
-                                <rect key="frame" x="0.0" y="44" width="300" height="200"/>
+                                <rect key="frame" x="0.0" y="44" width="395" height="263.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="g77-bX-xEg" secondAttribute="height" multiplier="15:10" id="eOm-dh-jrH"/>
                                     <constraint firstAttribute="width" secondItem="g77-bX-xEg" secondAttribute="height" multiplier="15:8" id="iT4-xj-DWg"/>
@@ -72,12 +72,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EZ3-tA-2YS"/>
                         <constraints>
-                            <constraint firstItem="EZ3-tA-2YS" firstAttribute="leading" secondItem="vW4-J8-7zV" secondAttribute="leading" constant="-5" id="0I6-LN-7u5"/>
+                            <constraint firstItem="EZ3-tA-2YS" firstAttribute="leading" secondItem="vW4-J8-7zV" secondAttribute="leading" id="0I6-LN-7u5"/>
                             <constraint firstItem="97O-YX-tW6" firstAttribute="top" secondItem="vW4-J8-7zV" secondAttribute="bottom" constant="4" id="39R-oV-nMx"/>
                             <constraint firstItem="3c5-yh-4Py" firstAttribute="top" secondItem="EZ3-tA-2YS" secondAttribute="top" id="AZW-NJ-OYo"/>
                             <constraint firstItem="g77-bX-xEg" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" id="Cmb-sV-E8V"/>
-                            <constraint firstItem="97O-YX-tW6" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" constant="5" id="LtX-aA-vPg"/>
-                            <constraint firstItem="vW4-J8-7zV" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="bottom" constant="4" id="NBP-a3-ogj"/>
+                            <constraint firstItem="97O-YX-tW6" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" id="LtX-aA-vPg"/>
+                            <constraint firstItem="vW4-J8-7zV" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="bottom" constant="8" id="NBP-a3-ogj"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="trailing" secondItem="3c5-yh-4Py" secondAttribute="trailing" id="OBC-aq-8hd"/>
                             <constraint firstItem="3FK-GB-RYH" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="top" constant="4" id="QA8-bn-S72"/>
                             <constraint firstItem="3FK-GB-RYH" firstAttribute="leading" secondItem="g77-bX-xEg" secondAttribute="leading" constant="4" id="RLj-OV-Mze"/>
@@ -97,7 +97,7 @@
                 <constraint firstItem="y1L-1q-EwP" firstAttribute="leading" secondItem="Gg3-8H-tpC" secondAttribute="leading" id="PF6-sg-SJA"/>
                 <constraint firstItem="y1L-1q-EwP" firstAttribute="top" secondItem="Gg3-8H-tpC" secondAttribute="top" id="o5k-Kv-iaH"/>
             </constraints>
-            <size key="customSize" width="300" height="338"/>
+            <size key="customSize" width="395" height="387"/>
             <connections>
                 <outlet property="adChoicesButton" destination="3c5-yh-4Py" id="CaN-mZ-cbY"/>
                 <outlet property="publisherLogo" destination="3FK-GB-RYH" id="Efc-Ut-loT"/>
@@ -107,7 +107,7 @@
                 <outlet property="recSourceLabel" destination="97O-YX-tW6" id="P5t-39-exc"/>
                 <outlet property="recTitleLabel" destination="vW4-J8-7zV" id="Z6p-Gc-V9D"/>
             </connections>
-            <point key="canvasLocation" x="-410.76923076923077" y="-5.6872037914691944"/>
+            <point key="canvasLocation" x="-342.75362318840581" y="-25.78125"/>
         </collectionViewCell>
     </objects>
 </document>
