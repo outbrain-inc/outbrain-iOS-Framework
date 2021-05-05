@@ -10,7 +10,6 @@ references:
 
   ios_config: &ios_config
     working_directory: ~/repo
-    resource_class: m2.medium
     macos:
       xcode: "110.12.5"
 
