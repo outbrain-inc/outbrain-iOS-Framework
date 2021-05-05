@@ -6,16 +6,16 @@
 //  Copyright © 2020 Outbrain. All rights reserved.
 //
 
-#import "SFGradientView.h"
+#import "SMFGradientView.h"
 
-@interface SFGradientView()
+@interface SMFGradientView()
 
 @property (nonatomic, assign) BOOL isConfigured;
 
 @end
 
 IB_DESIGNABLE
-@implementation SFGradientView
+@implementation SMFGradientView
 
 - (void)layoutSubviews {
     [super layoutSubviews];
