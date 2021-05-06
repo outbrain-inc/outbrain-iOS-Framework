@@ -57,7 +57,7 @@ static SFUtils *sharedSingleton;
 
 -(UIColor *) subtitleColor:(NSString *)abTestSourceFontColor {
     if (self.darkMode) {
-        return UIColorFromRGB(0xA4A3A8);
+        return [UIColor.whiteColor colorWithAlphaComponent:0.75];
     }
     else {
         return abTestSourceFontColor ?
