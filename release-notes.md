@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## v4.5.0 - May 5, 2021
+
+- Infra - build SDK with Xcode 12.5 (iOS 14.5)
+- Fix - name conflict fix SFGradientView --> SMFradientView
+
 ## v4.4.0 - April 29, 2021
 
 - Feature - support for "Platform Endpoint"

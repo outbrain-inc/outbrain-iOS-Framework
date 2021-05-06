@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 IB_DESIGNABLE
-@interface SFGradientView : UIView
+@interface SMFGradientView : UIView
 
 @end
