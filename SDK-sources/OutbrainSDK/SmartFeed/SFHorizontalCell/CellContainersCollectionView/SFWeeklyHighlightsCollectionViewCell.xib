@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,17 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="461" height="362"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UgV-Ck-W01" customClass="SFHorizontalViewWeeklyHighlights">
-                                <rect key="frame" x="0.0" y="55.5" width="461" height="301.5"/>
+                                <rect key="frame" x="0.0" y="62.5" width="461" height="294.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST WEEK HIGHLIGHTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCU-jJ-dMb">
-                                <rect key="frame" x="14" y="8" width="206.5" height="21.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="14" y="15" width="210.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fkC-hs-3JG" userLabel="BorderLine">
-                                <rect key="frame" x="14" y="34.5" width="433" height="1"/>
+                                <rect key="frame" x="14" y="41.5" width="433" height="1"/>
                                 <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="pdY-me-cNC"/>
@@ -45,7 +45,7 @@
                             <constraint firstItem="UgV-Ck-W01" firstAttribute="top" secondItem="fkC-hs-3JG" secondAttribute="bottom" constant="20" id="13x-XT-OQB"/>
                             <constraint firstAttribute="bottom" secondItem="UgV-Ck-W01" secondAttribute="bottom" constant="5" id="1bu-CK-fQc"/>
                             <constraint firstItem="UgV-Ck-W01" firstAttribute="leading" secondItem="MjC-Rh-FrA" secondAttribute="leading" id="9bQ-Nu-aTX"/>
-                            <constraint firstItem="yCU-jJ-dMb" firstAttribute="top" secondItem="MjC-Rh-FrA" secondAttribute="top" constant="8" id="HkQ-pm-ZTY"/>
+                            <constraint firstItem="yCU-jJ-dMb" firstAttribute="top" secondItem="MjC-Rh-FrA" secondAttribute="top" constant="15" id="HkQ-pm-ZTY"/>
                             <constraint firstAttribute="trailing" secondItem="fkC-hs-3JG" secondAttribute="trailing" constant="14" id="Oub-lI-iND"/>
                             <constraint firstItem="yCU-jJ-dMb" firstAttribute="leading" secondItem="MjC-Rh-FrA" secondAttribute="leading" constant="14" id="VuJ-Z7-QQR"/>
                             <constraint firstItem="fkC-hs-3JG" firstAttribute="top" secondItem="yCU-jJ-dMb" secondAttribute="bottom" constant="5" id="Zb4-6n-OUV"/>
