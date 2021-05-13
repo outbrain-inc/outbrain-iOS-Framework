@@ -61,6 +61,9 @@ NSInteger const GIF_LOADER_INDICATOR_TAG = 223355;
     else {
         [self loadImageUrl:imageInfo.url into:imageView withFadeDuration:abTestDuration];
     }
+    if ([[SFUtils sharedInstance] darkMode]) {
+        imageView.alpha = 0.95;
+    }
 }
 
 -(void) loadImageUrl:(NSURL *)imageUrl into:(UIImageView *)imageView {
