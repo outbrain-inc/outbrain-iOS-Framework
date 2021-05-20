@@ -229,6 +229,8 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     SFItemType sfItemType = sfItem.itemType;
     CGFloat screenWidth = self.tableView.frame.size.width;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    const BOOL isLandscape = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
+    const BOOL isTablet = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
     
     if (sfItemType == SFTypeGridThreeInRowNoTitle || sfItemType == SFTypeGridThreeInRowWithTitle) {
         CGFloat EXTRA_FOR_HEADER = (sfItemType == SFTypeGridThreeInRowWithTitle) ? 60 : 0;
@@ -258,9 +260,15 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 260.0;
     }
     else if (sfItemType == SFTypeStripWithTitle || sfItemType == SFTypeStripVideoWithPaidRecAndTitle) {
+        if (isTablet && isLandscape) {
+            return screenWidth*0.5 + 40.0;
+        }
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 350.0;
     }
     else if (sfItemType == SFTypeStripNoTitle) {
+        if (isTablet && isLandscape) {
+            return screenWidth*0.5;
+        }
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 305.0;
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
