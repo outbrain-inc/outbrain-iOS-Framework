@@ -224,6 +224,8 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     // iPhone 11 pro - 812
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     SFItemType sfItemType = sfItem.itemType;
+    const BOOL isLandscape = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
+    const BOOL isTablet = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
     
     CGFloat screenWidth = collectionView.frame.size.width;
     if (sfItemType == SFTypeGridTwoInRowNoTitle ||
@@ -248,7 +250,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     }
     else if (sfItemType == SFTypeWeeklyHighlightsWithTitle) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            return CGSizeMake(screenWidth, screenWidth * 0.86);
+            return isLandscape ? CGSizeMake(screenWidth, screenWidth * 0.6) : CGSizeMake(screenWidth, screenWidth * 0.9);
         } else {
             return CGSizeMake(screenWidth, screenWidth * 1.35);
         }
