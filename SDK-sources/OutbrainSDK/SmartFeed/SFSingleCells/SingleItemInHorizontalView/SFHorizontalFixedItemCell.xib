@@ -43,22 +43,15 @@
                                 <rect key="frame" x="0.0" y="44" width="395" height="263.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="g77-bX-xEg" secondAttribute="height" multiplier="15:10" id="eOm-dh-jrH"/>
-                                    <constraint firstAttribute="width" secondItem="g77-bX-xEg" secondAttribute="height" multiplier="15:8" id="iT4-xj-DWg"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="eOm-dh-jrH"/>
-                                        <exclude reference="iT4-xj-DWg"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="eOm-dh-jrH"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="iT4-xj-DWg"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -76,6 +69,7 @@
                             <constraint firstItem="97O-YX-tW6" firstAttribute="top" secondItem="vW4-J8-7zV" secondAttribute="bottom" constant="4" id="39R-oV-nMx"/>
                             <constraint firstItem="3c5-yh-4Py" firstAttribute="top" secondItem="EZ3-tA-2YS" secondAttribute="top" id="AZW-NJ-OYo"/>
                             <constraint firstItem="g77-bX-xEg" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" id="Cmb-sV-E8V"/>
+                            <constraint firstItem="g77-bX-xEg" firstAttribute="height" secondItem="y1L-1q-EwP" secondAttribute="height" multiplier="0.68" id="LbN-4A-6o6"/>
                             <constraint firstItem="97O-YX-tW6" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" id="LtX-aA-vPg"/>
                             <constraint firstItem="vW4-J8-7zV" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="bottom" constant="8" id="NBP-a3-ogj"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="trailing" secondItem="3c5-yh-4Py" secondAttribute="trailing" id="OBC-aq-8hd"/>
@@ -87,6 +81,16 @@
                             <constraint firstItem="g77-bX-xEg" firstAttribute="top" secondItem="EZ3-tA-2YS" secondAttribute="top" id="aiY-HH-zCY"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="bottom" secondItem="97O-YX-tW6" secondAttribute="bottom" priority="750" constant="5" id="mnn-1Q-NFD"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LbN-4A-6o6"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="LbN-4A-6o6"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
             </view>
