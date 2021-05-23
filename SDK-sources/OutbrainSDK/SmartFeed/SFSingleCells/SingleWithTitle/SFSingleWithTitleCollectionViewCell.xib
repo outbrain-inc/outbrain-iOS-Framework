@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,19 +34,19 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRb-Ef-t8j" userLabel="CardContentView">
-                                <rect key="frame" x="20" y="44" width="392" height="357"/>
+                                <rect key="frame" x="20" y="57" width="392" height="344"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyft is creating more new jobs in San Francisco  than any other major startup" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCy-6W-9WN">
-                                        <rect key="frame" x="0.0" y="285" width="392" height="43"/>
+                                        <rect key="frame" x="0.0" y="272" width="392" height="43"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="S4o-aF-NXt">
-                                        <rect key="frame" x="0.0" y="13" width="392" height="262"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="392" height="262"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e5u-QE-oNb" userLabel="publisherLogo">
-                                        <rect key="frame" x="10" y="23" width="65" height="20"/>
+                                        <rect key="frame" x="10" y="10" width="65" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="3j7-9v-eb1"/>
                                             <constraint firstAttribute="width" constant="65" id="EgC-EE-Df0"/>
@@ -60,7 +60,7 @@
                                         </constraints>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Market Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sex-9M-qeC">
-                                        <rect key="frame" x="0.0" y="332" width="392" height="17"/>
+                                        <rect key="frame" x="0.0" y="319" width="392" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -79,6 +79,7 @@
                                     <constraint firstItem="sex-9M-qeC" firstAttribute="top" secondItem="iCy-6W-9WN" secondAttribute="bottom" constant="4" id="iIk-qm-6Xx"/>
                                     <constraint firstAttribute="trailing" secondItem="S4o-aF-NXt" secondAttribute="trailing" id="kqz-yA-cm3"/>
                                     <constraint firstItem="e5u-QE-oNb" firstAttribute="top" secondItem="S4o-aF-NXt" secondAttribute="top" constant="10" id="nvs-os-k3w"/>
+                                    <constraint firstItem="S4o-aF-NXt" firstAttribute="top" secondItem="HRb-Ef-t8j" secondAttribute="top" id="rrA-wN-mlP"/>
                                     <constraint firstItem="sex-9M-qeC" firstAttribute="leading" secondItem="HRb-Ef-t8j" secondAttribute="leading" id="vc5-0c-bW2"/>
                                     <constraint firstItem="iCy-6W-9WN" firstAttribute="leading" secondItem="HRb-Ef-t8j" secondAttribute="leading" id="wk9-ye-4bJ"/>
                                 </constraints>
@@ -89,9 +90,8 @@
                             <constraint firstItem="a3u-xg-zNF" firstAttribute="top" secondItem="YWC-NK-sLS" secondAttribute="bottom" constant="5" id="4Mp-z4-FjH"/>
                             <constraint firstItem="a3u-xg-zNF" firstAttribute="trailing" secondItem="HRb-Ef-t8j" secondAttribute="trailing" id="GZH-9N-Jcb"/>
                             <constraint firstItem="a3u-xg-zNF" firstAttribute="leading" secondItem="YWC-NK-sLS" secondAttribute="leading" id="NV6-nA-lZ2"/>
-                            <constraint firstItem="S4o-aF-NXt" firstAttribute="top" secondItem="YWC-NK-sLS" secondAttribute="bottom" constant="21" id="Ndg-Mg-KHo"/>
+                            <constraint firstItem="HRb-Ef-t8j" firstAttribute="top" secondItem="a3u-xg-zNF" secondAttribute="bottom" constant="15" id="b5F-Xi-SjT"/>
                             <constraint firstAttribute="bottom" secondItem="HRb-Ef-t8j" secondAttribute="bottom" constant="5" id="j4o-GI-miy"/>
-                            <constraint firstItem="HRb-Ef-t8j" firstAttribute="top" secondItem="YWC-NK-sLS" secondAttribute="bottom" constant="8" id="sCB-6m-UiW"/>
                             <constraint firstItem="YWC-NK-sLS" firstAttribute="top" secondItem="CQ6-H9-AuQ" secondAttribute="top" constant="15" id="t8v-Eb-MAE"/>
                             <constraint firstAttribute="trailing" secondItem="HRb-Ef-t8j" secondAttribute="trailing" constant="20" id="v0Q-Qu-jO7"/>
                             <constraint firstItem="YWC-NK-sLS" firstAttribute="leading" secondItem="CQ6-H9-AuQ" secondAttribute="leading" constant="20" id="vma-ww-Qxm"/>
