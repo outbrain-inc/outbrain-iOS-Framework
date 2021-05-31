@@ -952,13 +952,14 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (void) configureSmartFeedHeaderTableViewCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    BOOL isCustomUI = self.smartFeedHeadercCustomUIReuseIdentifier != nil;
     SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow: self.isReadMoreModuleEnabled ? 2 : 1 inSection:self.outbrainSectionIndex]];
     SFTableViewHeaderCell *sfHeaderCell = (SFTableViewHeaderCell *)cell;
     if (sfItem.widgetTitle) {
         sfHeaderCell.headerLabel.text = sfItem.widgetTitle;
     }
     
-    if (!sfItem.isCustomUI) {
+    if (!isCustomUI) {
         if (sfItem.odbSettings.smartfeedHeaderFontSize != 0) {
             sfHeaderCell.headerLabel.font = [sfHeaderCell.headerLabel.font fontWithSize: sfItem.odbSettings.smartfeedHeaderFontSize];
         }
