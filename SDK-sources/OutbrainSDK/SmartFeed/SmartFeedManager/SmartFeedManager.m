@@ -1103,9 +1103,10 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
     if (indexPath.row == smartfeedHeaderCellIndex) {
         // Smartfeed header
+        BOOL isCustomUI = self.smartFeedHeadercCustomUIReuseIdentifier != nil;
         SFItemData *sfItem = [self itemForIndexPath:[NSIndexPath indexPathForRow: self.isReadMoreModuleEnabled ? 2 : 1 inSection:self.outbrainSectionIndex]];
         
-        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withSFItem:sfItem isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren];
+        [self.sfCollectionViewManager configureSmartfeedHeaderCell:cell atIndexPath:indexPath withSFItem:sfItem isSmartfeedWithNoChildren:self.isSmartfeedWithNoChildren isCustomUI:isCustomUI];
         return;
     }
     
