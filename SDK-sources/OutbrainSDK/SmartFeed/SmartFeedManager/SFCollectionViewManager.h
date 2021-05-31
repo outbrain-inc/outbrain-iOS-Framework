@@ -27,7 +27,7 @@
 
 - (id _Nonnull )initWitCollectionView:(UICollectionView * _Nonnull)collectionView;
 
-- (void) configureSmartfeedHeaderCell:(UICollectionViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath withSFItem:(SFItemData * _Nullable)sfItem isSmartfeedWithNoChildren:(BOOL)isSmartfeedWithNoChildren;
+- (void) configureSmartfeedHeaderCell:(UICollectionViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath withSFItem:(SFItemData * _Nullable)sfItem isSmartfeedWithNoChildren:(BOOL)isSmartfeedWithNoChildren isCustomUI:(BOOL)isCustomUI;
 
 - (void) configureSingleCell:(UICollectionViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath withSFItem:(SFItemData * _Nonnull)sfItem;
 - (void) configureVideoCell:(UICollectionViewCell * _Nonnull)cell atIndexPath:(NSIndexPath * _Nonnull)indexPath withSFItem:(SFItemData * _Nonnull)sfItem;
