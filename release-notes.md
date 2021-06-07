@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## v4.5.1 - June 7, 2021
+
+- Fix - custom UI for header didn't work as expected (SDK override the font size and color).
+- Internal - CircleCI finally supports Xcode 12.5.0
+
+
 ## v4.5.0 - May 5, 2021
 
 - Infra - build SDK with Xcode 12.5 (iOS 14.5)
