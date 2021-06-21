@@ -157,6 +157,16 @@
 		E66B9C9426809C01006DB0AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9226809C01006DB0AB /* Main.storyboard */; };
 		E66B9C9626809C03006DB0AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9526809C03006DB0AB /* Assets.xcassets */; };
 		E66B9C9926809C03006DB0AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9726809C03006DB0AB /* LaunchScreen.storyboard */; };
+		E66B9CAB2680A199006DB0AB /* SFWidgetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9C9F2680A199006DB0AB /* SFWidgetDelegate.swift */; };
+		E66B9CAC2680A199006DB0AB /* SFMessageHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA02680A199006DB0AB /* SFMessageHandlerDelegate.swift */; };
+		E66B9CAD2680A199006DB0AB /* SFWidgetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA12680A199006DB0AB /* SFWidgetCollectionViewCell.swift */; };
+		E66B9CAE2680A199006DB0AB /* SFWidgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA22680A199006DB0AB /* SFWidgetTableViewCell.swift */; };
+		E66B9CAF2680A199006DB0AB /* SFWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA32680A199006DB0AB /* SFWidget.swift */; };
+		E66B9CB02680A199006DB0AB /* SFScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA42680A199006DB0AB /* SFScriptMessageHandler.swift */; };
+		E66B9CB12680A199006DB0AB /* AppArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA62680A199006DB0AB /* AppArticleCollectionViewCell.swift */; };
+		E66B9CB22680A199006DB0AB /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA72680A199006DB0AB /* CollectionVC.swift */; };
+		E66B9CB32680A199006DB0AB /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA92680A199006DB0AB /* TableVC.swift */; };
+		E66B9CB42680A199006DB0AB /* AppArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */; };
 		E67A719D21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */; };
 		E67A719E21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */; };
 		E67A71A0219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */; };
@@ -332,6 +342,16 @@
 		E66B9C9526809C03006DB0AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E66B9C9826809C03006DB0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E66B9C9A26809C03006DB0AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E66B9C9F2680A199006DB0AB /* SFWidgetDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFWidgetDelegate.swift; sourceTree = "<group>"; };
+		E66B9CA02680A199006DB0AB /* SFMessageHandlerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFMessageHandlerDelegate.swift; sourceTree = "<group>"; };
+		E66B9CA12680A199006DB0AB /* SFWidgetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFWidgetCollectionViewCell.swift; sourceTree = "<group>"; };
+		E66B9CA22680A199006DB0AB /* SFWidgetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFWidgetTableViewCell.swift; sourceTree = "<group>"; };
+		E66B9CA32680A199006DB0AB /* SFWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFWidget.swift; sourceTree = "<group>"; };
+		E66B9CA42680A199006DB0AB /* SFScriptMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFScriptMessageHandler.swift; sourceTree = "<group>"; };
+		E66B9CA62680A199006DB0AB /* AppArticleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppArticleCollectionViewCell.swift; sourceTree = "<group>"; };
+		E66B9CA72680A199006DB0AB /* CollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		E66B9CA92680A199006DB0AB /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
+		E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppArticleTableViewCell.swift; sourceTree = "<group>"; };
 		E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailRTLCollectionCell.xib; sourceTree = "<group>"; };
 		E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailRTLTableCell.xib; sourceTree = "<group>"; };
 		E68A90561FCD4755008318EB /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWidgetViewProtocol.h; sourceTree = "<group>"; };
@@ -798,6 +818,9 @@
 		E66B9C8B26809C01006DB0AB /* SFWebView-Dev */ = {
 			isa = PBXGroup;
 			children = (
+				E66B9CA52680A199006DB0AB /* CollectionView */,
+				E66B9C9E2680A199006DB0AB /* OBSDK */,
+				E66B9CA82680A199006DB0AB /* TableView */,
 				E66B9C8C26809C01006DB0AB /* AppDelegate.swift */,
 				E66B9C9026809C01006DB0AB /* ViewController.swift */,
 				E66B9C9226809C01006DB0AB /* Main.storyboard */,
@@ -806,6 +829,37 @@
 				E66B9C9A26809C03006DB0AB /* Info.plist */,
 			);
 			path = "SFWebView-Dev";
+			sourceTree = "<group>";
+		};
+		E66B9C9E2680A199006DB0AB /* OBSDK */ = {
+			isa = PBXGroup;
+			children = (
+				E66B9C9F2680A199006DB0AB /* SFWidgetDelegate.swift */,
+				E66B9CA02680A199006DB0AB /* SFMessageHandlerDelegate.swift */,
+				E66B9CA12680A199006DB0AB /* SFWidgetCollectionViewCell.swift */,
+				E66B9CA22680A199006DB0AB /* SFWidgetTableViewCell.swift */,
+				E66B9CA32680A199006DB0AB /* SFWidget.swift */,
+				E66B9CA42680A199006DB0AB /* SFScriptMessageHandler.swift */,
+			);
+			path = OBSDK;
+			sourceTree = "<group>";
+		};
+		E66B9CA52680A199006DB0AB /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E66B9CA62680A199006DB0AB /* AppArticleCollectionViewCell.swift */,
+				E66B9CA72680A199006DB0AB /* CollectionVC.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		E66B9CA82680A199006DB0AB /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				E66B9CA92680A199006DB0AB /* TableVC.swift */,
+				E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		E68A90551FCD4755008318EB /* SampleUI */ = {
@@ -1234,8 +1288,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E66B9CB32680A199006DB0AB /* TableVC.swift in Sources */,
+				E66B9CB02680A199006DB0AB /* SFScriptMessageHandler.swift in Sources */,
+				E66B9CAC2680A199006DB0AB /* SFMessageHandlerDelegate.swift in Sources */,
+				E66B9CAD2680A199006DB0AB /* SFWidgetCollectionViewCell.swift in Sources */,
 				E66B9C9126809C01006DB0AB /* ViewController.swift in Sources */,
+				E66B9CB22680A199006DB0AB /* CollectionVC.swift in Sources */,
+				E66B9CB12680A199006DB0AB /* AppArticleCollectionViewCell.swift in Sources */,
 				E66B9C8D26809C01006DB0AB /* AppDelegate.swift in Sources */,
+				E66B9CB42680A199006DB0AB /* AppArticleTableViewCell.swift in Sources */,
+				E66B9CAF2680A199006DB0AB /* SFWidget.swift in Sources */,
+				E66B9CAE2680A199006DB0AB /* SFWidgetTableViewCell.swift in Sources */,
+				E66B9CAB2680A199006DB0AB /* SFWidgetDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
