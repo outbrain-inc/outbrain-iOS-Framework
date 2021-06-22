@@ -167,6 +167,7 @@
 		E66B9CB22680A199006DB0AB /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA72680A199006DB0AB /* CollectionVC.swift */; };
 		E66B9CB32680A199006DB0AB /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA92680A199006DB0AB /* TableVC.swift */; };
 		E66B9CB42680A199006DB0AB /* AppArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */; };
+		E66B9CB72681C7D9006DB0AB /* ScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CB62681C7D9006DB0AB /* ScrollViewVC.swift */; };
 		E67A719D21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */; };
 		E67A719E21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */; };
 		E67A71A0219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */; };
@@ -352,6 +353,7 @@
 		E66B9CA72680A199006DB0AB /* CollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		E66B9CA92680A199006DB0AB /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppArticleTableViewCell.swift; sourceTree = "<group>"; };
+		E66B9CB62681C7D9006DB0AB /* ScrollViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewVC.swift; sourceTree = "<group>"; };
 		E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailRTLCollectionCell.xib; sourceTree = "<group>"; };
 		E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailRTLTableCell.xib; sourceTree = "<group>"; };
 		E68A90561FCD4755008318EB /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWidgetViewProtocol.h; sourceTree = "<group>"; };
@@ -818,6 +820,7 @@
 		E66B9C8B26809C01006DB0AB /* SFWebView-Dev */ = {
 			isa = PBXGroup;
 			children = (
+				E66B9CB52681C7D9006DB0AB /* ScrollViewVC */,
 				E66B9CA52680A199006DB0AB /* CollectionView */,
 				E66B9C9E2680A199006DB0AB /* OBSDK */,
 				E66B9CA82680A199006DB0AB /* TableView */,
@@ -860,6 +863,14 @@
 				E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		E66B9CB52681C7D9006DB0AB /* ScrollViewVC */ = {
+			isa = PBXGroup;
+			children = (
+				E66B9CB62681C7D9006DB0AB /* ScrollViewVC.swift */,
+			);
+			path = ScrollViewVC;
 			sourceTree = "<group>";
 		};
 		E68A90551FCD4755008318EB /* SampleUI */ = {
@@ -1295,6 +1306,7 @@
 				E66B9C9126809C01006DB0AB /* ViewController.swift in Sources */,
 				E66B9CB22680A199006DB0AB /* CollectionVC.swift in Sources */,
 				E66B9CB12680A199006DB0AB /* AppArticleCollectionViewCell.swift in Sources */,
+				E66B9CB72681C7D9006DB0AB /* ScrollViewVC.swift in Sources */,
 				E66B9C8D26809C01006DB0AB /* AppDelegate.swift in Sources */,
 				E66B9CB42680A199006DB0AB /* AppArticleTableViewCell.swift in Sources */,
 				E66B9CAF2680A199006DB0AB /* SFWidget.swift in Sources */,
