@@ -213,7 +213,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTO-av-qHu" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1188"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1198"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="article_image" translatesAutoresizingMaskIntoConstraints="NO" id="U7K-6k-5mo">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
@@ -256,20 +256,30 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wg4-Fh-01d" userLabel="SFWidget" customClass="SFWidget" customModule="SFWebView_Dev" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="1158" width="375" height="20"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="43V-cJ-yMH"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="iqN-sh-dG9" firstAttribute="top" secondItem="YJh-rb-QQD" secondAttribute="bottom" constant="10" id="0bK-Hr-3SC"/>
                                             <constraint firstItem="5Fb-Yb-ptK" firstAttribute="leading" secondItem="iTO-av-qHu" secondAttribute="leading" id="7vg-sg-BaX"/>
-                                            <constraint firstAttribute="bottom" secondItem="iqN-sh-dG9" secondAttribute="bottom" constant="20" id="AlW-Ib-CNi"/>
+                                            <constraint firstItem="wg4-Fh-01d" firstAttribute="leading" secondItem="iTO-av-qHu" secondAttribute="leading" id="8FM-bp-MYo"/>
                                             <constraint firstAttribute="trailing" secondItem="YJh-rb-QQD" secondAttribute="trailing" id="BcX-15-teS"/>
+                                            <constraint firstAttribute="bottom" secondItem="wg4-Fh-01d" secondAttribute="bottom" constant="20" id="Eom-SW-Rng"/>
                                             <constraint firstItem="5Fb-Yb-ptK" firstAttribute="top" secondItem="U7K-6k-5mo" secondAttribute="bottom" id="Gyu-l0-ehw"/>
                                             <constraint firstItem="U7K-6k-5mo" firstAttribute="top" secondItem="iTO-av-qHu" secondAttribute="top" id="PsT-dY-fXb"/>
                                             <constraint firstItem="5Fb-Yb-ptK" firstAttribute="bottom" secondItem="YJh-rb-QQD" secondAttribute="top" constant="10" id="Qb2-HL-HfF"/>
                                             <constraint firstItem="U7K-6k-5mo" firstAttribute="width" secondItem="iTO-av-qHu" secondAttribute="width" id="V6P-X1-bQ4"/>
                                             <constraint firstAttribute="trailing" secondItem="5Fb-Yb-ptK" secondAttribute="trailing" id="bSk-QA-trJ"/>
+                                            <constraint firstItem="iqN-sh-dG9" firstAttribute="bottom" secondItem="wg4-Fh-01d" secondAttribute="top" constant="10" id="br5-59-eAQ"/>
                                             <constraint firstItem="U7K-6k-5mo" firstAttribute="leading" secondItem="iTO-av-qHu" secondAttribute="leading" id="cYr-aP-SBQ"/>
                                             <constraint firstAttribute="trailing" secondItem="iqN-sh-dG9" secondAttribute="trailing" id="kQg-UD-msL"/>
+                                            <constraint firstAttribute="trailing" secondItem="wg4-Fh-01d" secondAttribute="trailing" id="nPD-d8-lvN"/>
                                             <constraint firstItem="iqN-sh-dG9" firstAttribute="leading" secondItem="iTO-av-qHu" secondAttribute="leading" id="rrc-Pa-i4B"/>
                                             <constraint firstItem="YJh-rb-QQD" firstAttribute="leading" secondItem="iTO-av-qHu" secondAttribute="leading" id="wFE-aC-TDd"/>
                                         </constraints>
@@ -303,6 +313,8 @@
                     <connections>
                         <outlet property="contentView" destination="iTO-av-qHu" id="XdW-u4-MMy"/>
                         <outlet property="scrollView" destination="fcb-lh-0e3" id="5Qg-ak-qYs"/>
+                        <outlet property="sfWidget" destination="wg4-Fh-01d" id="jdm-pT-YN9"/>
+                        <outlet property="sfWidgetHeightConstraint" destination="43V-cJ-yMH" id="bLb-EM-LfO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWK-zF-i9w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

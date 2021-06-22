@@ -13,18 +13,14 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var sfWidget: SFWidget!
     
-    var sfWidget: SFWidget!
+    @IBOutlet weak var sfWidgetHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let contentRect: CGRect = contentView.subviews.reduce(into: .zero) { rect, view in
-            rect = rect.union(view.frame)
-        }
-        scrollView.contentSize = contentRect.size
         
-        sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
-        sfWidget.setProperties(
+        self.sfWidget.setProperties(
             delegate: self,
             url: "http://mobile-demo.outbrain.com",
             widgetId: "MB_1",
@@ -34,12 +30,14 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        sfWidget.viewWillTransition(coordinator: coordinator)
+        self.sfWidget.viewWillTransition(coordinator: coordinator)
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.scrollView.contentSize = CGSize(width: self.scrollView.frame.size.width, height: self.contentView.frame.size.height)
+        }
     }
     
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        sfWidget.scrollViewDidScroll(scrollView: scrollView)
+        self.sfWidget.scrollViewDidScroll(scrollView: scrollView)
     }
 }
 
@@ -47,10 +45,7 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
 extension ScrollViewVC: SFWidgetDelegate {
     func didChangeHeight() {
         //TODO change height
-        let contentRect: CGRect = scrollView.subviews.reduce(into: .zero) { rect, view in
-            rect = rect.union(view.frame)
-        }
-        scrollView.contentSize = contentRect.size
+        self.sfWidgetHeightConstraint.constant = self.sfWidget.getCurrentHeight()
     }
     
 //    func onOrganicRecClick(url: URL) {
