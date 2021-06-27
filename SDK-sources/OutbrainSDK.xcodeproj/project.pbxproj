@@ -62,7 +62,6 @@
 		E61E6C1E20836C180016D79A /* OBAdsChoicesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD520836C180016D79A /* OBAdsChoicesManager.h */; };
 		E61E6C1F20836C180016D79A /* OBViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD620836C180016D79A /* OBViewabilityService.m */; };
 		E61E6C2020836C180016D79A /* UIView+Visible.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BD720836C180016D79A /* UIView+Visible.h */; };
-		E61E6C2120836C180016D79A /* OBBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BD820836C180016D79A /* OBBridge.m */; };
 		E61E6C2220836C180016D79A /* OBNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BDA20836C180016D79A /* OBNetworkManager.h */; };
 		E61E6C2320836C180016D79A /* OBRecommendationRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BDB20836C180016D79A /* OBRecommendationRequestOperation.h */; };
 		E61E6C2420836C180016D79A /* OBReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BDD20836C180016D79A /* OBReachability.m */; };
@@ -90,7 +89,6 @@
 		E61E6C3D20836C180016D79A /* OutbrainSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6BFC20836C180016D79A /* OutbrainSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6C3F20836C180016D79A /* OBErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6BFF20836C180016D79A /* OBErrors.m */; };
 		E61E6C4020836C180016D79A /* OBErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0020836C180016D79A /* OBErrors.h */; };
-		E61E6C4120836C180016D79A /* OBBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0120836C180016D79A /* OBBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6C4220836C180016D79A /* Outbrain.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6C0220836C180016D79A /* Outbrain.m */; };
 		E61E6C4320836C180016D79A /* OBProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0420836C180016D79A /* OBProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E61E6C4420836C180016D79A /* OBUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6C0620836C180016D79A /* OBUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -290,7 +288,6 @@
 		E61E6BD520836C180016D79A /* OBAdsChoicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBAdsChoicesManager.h; sourceTree = "<group>"; };
 		E61E6BD620836C180016D79A /* OBViewabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityService.m; sourceTree = "<group>"; };
 		E61E6BD720836C180016D79A /* UIView+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Visible.h"; sourceTree = "<group>"; };
-		E61E6BD820836C180016D79A /* OBBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBBridge.m; sourceTree = "<group>"; };
 		E61E6BDA20836C180016D79A /* OBNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNetworkManager.h; sourceTree = "<group>"; };
 		E61E6BDB20836C180016D79A /* OBRecommendationRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBRecommendationRequestOperation.h; sourceTree = "<group>"; };
 		E61E6BDD20836C180016D79A /* OBReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBReachability.m; sourceTree = "<group>"; };
@@ -320,7 +317,6 @@
 		E61E6BFD20836C180016D79A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E61E6BFF20836C180016D79A /* OBErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBErrors.m; sourceTree = "<group>"; };
 		E61E6C0020836C180016D79A /* OBErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBErrors.h; sourceTree = "<group>"; };
-		E61E6C0120836C180016D79A /* OBBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBBridge.h; sourceTree = "<group>"; };
 		E61E6C0220836C180016D79A /* Outbrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Outbrain.m; sourceTree = "<group>"; };
 		E61E6C0420836C180016D79A /* OBProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBProtocols.h; sourceTree = "<group>"; };
 		E61E6C0620836C180016D79A /* OBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBUtils.h; sourceTree = "<group>"; };
@@ -599,8 +595,6 @@
 				E61E6BE220836C180016D79A /* Models */,
 				E61E6BFA20836C180016D79A /* SupportingFiles */,
 				E61E6BFE20836C180016D79A /* Errors */,
-				E61E6C0120836C180016D79A /* OBBridge.h */,
-				E61E6BD820836C180016D79A /* OBBridge.m */,
 				E61E6BF920836C180016D79A /* Outbrain.h */,
 				E61E6C0220836C180016D79A /* Outbrain.m */,
 				E62B7E4420D12C490096F5BD /* OutbrainManager.h */,
@@ -1064,7 +1058,6 @@
 				E63B785A212AB3500018C225 /* SFTableViewHeaderCell.h in Headers */,
 				E6FC8F8D23A0DDDE00CF1672 /* OBImageInfo.h in Headers */,
 				E63B7852212AB1860018C225 /* SFCollectionViewCell.h in Headers */,
-				E61E6C4120836C180016D79A /* OBBridge.h in Headers */,
 				E6FEB18E20FCB053002A9020 /* SFHorizontalViewCarousel.h in Headers */,
 				E61E6C3B20836C180016D79A /* OBRequest.h in Headers */,
 				E6B930B3216F79F500EC7A4A /* SFHorizontalWithVideoCollectionViewCell.h in Headers */,
@@ -1366,7 +1359,6 @@
 				E6F8F45C211C3C6D0069C72C /* SmartFeedManager.m in Sources */,
 				E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */,
 				E63B7854212AB1860018C225 /* SFCollectionViewCell.m in Sources */,
-				E61E6C2120836C180016D79A /* OBBridge.m in Sources */,
 				E61E6C4620836C180016D79A /* OBRecommendationsTokenHandler.m in Sources */,
 				E63B7853212AB1860018C225 /* SFTableViewCell.m in Sources */,
 				E61E6C2B20836C180016D79A /* OBResponseRequest.m in Sources */,
