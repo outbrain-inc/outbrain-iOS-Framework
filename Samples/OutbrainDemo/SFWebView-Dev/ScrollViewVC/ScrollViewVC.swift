@@ -44,7 +44,6 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
 // MARK: SFWidgetDelegate
 extension ScrollViewVC: SFWidgetDelegate {
     func didChangeHeight() {
-        //TODO change height
         self.sfWidgetHeightConstraint.constant = self.sfWidget.getCurrentHeight()
     }
     
