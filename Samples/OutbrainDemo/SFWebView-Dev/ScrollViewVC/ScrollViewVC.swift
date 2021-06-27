@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import OutbrainSDK
 
 class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     
@@ -20,24 +21,19 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sfWidget.setProperties(
-            delegate: self,
-            url: "http://mobile-demo.outbrain.com",
-            widgetId: "MB_1",
-            installationKey: "NANOWDGT01"
-        )
+        self.sfWidget.configure(with: self, url: "http://mobile-demo.outbrain.com", widgetId: "MB_1", installationKey: "NANOWDGT01", userId: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        self.sfWidget.viewWillTransition(coordinator: coordinator)
+        self.sfWidget.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil) { _ in
             self.scrollView.contentSize = CGSize(width: self.scrollView.frame.size.width, height: self.contentView.frame.size.height)
         }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.sfWidget.scrollViewDidScroll(scrollView: scrollView)
+        self.sfWidget.scrollViewDidScroll(scrollView)
     }
 }
 
@@ -51,7 +47,7 @@ extension ScrollViewVC: SFWidgetDelegate {
 //        // handle click on organic url
 //    }
     
-    func onRecClick(url: URL) {
+    func onRecClick(_ url: URL) {
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }

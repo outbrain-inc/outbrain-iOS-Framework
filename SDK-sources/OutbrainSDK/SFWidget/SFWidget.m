@@ -10,7 +10,7 @@
 #import "SFWidgetMessageHandler.h"
 #import "SFUtils.h"
 
-@interface SFWidget()
+@interface SFWidget() <SFMessageHandlerDelegate>
 
 @property (nonatomic, strong) WKWebView *webview;
 @property (nonatomic, assign) NSInteger currentHeight;
@@ -38,7 +38,7 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        //TODO messageHandler = SFScriptMessageHandler()
+        self.messageHandler = [[SFWidgetMessageHandler alloc] init];
     }
     return self;
 }
@@ -47,7 +47,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        //TODO messageHandler = SFScriptMessageHandler()
+        self.messageHandler = [[SFWidgetMessageHandler alloc] init];
     }
     return self;
 }
@@ -60,6 +60,8 @@
     self.widgetId = widgetId;
     self.installationKey = installationKey;
     self.userId = userId;
+    self.messageHandler.delegate = self;
+    [self configureSFWidget];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size
@@ -81,12 +83,16 @@
 
 #pragma mark - UITableView
 -(void) willDisplaySFWidgetTableCell:(SFWidgetTableCell *)cell {
-    //TODO
+    [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [cell.contentView addSubview:self];
+    [SFUtils addConstraintsToFillParent:self];
 }
 
 #pragma mark - UICollectionView
 -(void) willDisplaySFWidgetCollectionCell:(SFWidgetCollectionCell *)cell {
-    //TODO
+    [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [cell.contentView addSubview:self];
+    [SFUtils addConstraintsToFillParent:self];
 }
 
 #pragma mark - UIScrollView Delegate
@@ -104,8 +110,32 @@
 
 #pragma mark - Private Methods
 -(void) loadMore {
+    self.isLoading = YES;
+    [self evaluateLoadMore];
     
 }
+
+-(void) evaluateHeightScript:(NSInteger) timeout {
+    if (self.webview == nil) {
+        return;
+    }
+    NSString *script = [NSString stringWithFormat:@""
+                        @"setTimeout(function() {"
+                        @"  let result = {}"
+                        @"  let height = document.body.scrollHeight"
+                        @"  result[\"height\"] = height"
+                        @"  window['ReactNativeWebView'].postMessage(JSON.stringify(result))"
+                        @"}, %ld);", (long)timeout];
+    
+    [self.webview evaluateJavaScript:script completionHandler:nil];
+}
+
+-(void) evaluateLoadMore {
+    NSLog(@"loading more --->");
+    [self.webview evaluateJavaScript:@"OBR.viewHandler.loadMore(); true;" completionHandler:nil];
+    [self evaluateHeightScript:500];
+}
+
 
 -(void) configureSFWidget {
     if (self.webview != nil) {
@@ -159,6 +189,61 @@
     }
     [components setQueryItems:newQueryItems];
     return components.URL;
+}
+
+#pragma mark - SFWidgetMessageHandlerDelegate
+- (void)didHeightChanged:(NSInteger)height {
+    self.currentHeight = height;
+    self.frame = CGRectMake(0, 0, self.frame.size.width, (CGFloat)height);
+    [self setNeedsLayout];
+    [self.delegate didChangeHeight];
+    if (self.isLoading) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            self.isLoading = NO;
+        });
+    }
+}
+
+- (void)didClickOnRec:(NSString *)url {
+    NSURL *recURL = [NSURL URLWithString:url];
+    if (recURL != nil) {
+        [self.delegate onRecClick: recURL];
+    }
+}
+
+- (void)didClickOnOrganicRec:(NSString *)url orgUrl:(NSString *)orgUrl {
+    NSURL *recURL = [NSURL URLWithString:url];
+    NSURL *recOriginalURL = [NSURL URLWithString:orgUrl];
+    if (recURL == nil) {
+        return;
+    }
+    if ([self.delegate respondsToSelector:@selector(onOrganicRecClick:)]) {
+        NSURLComponents *components = [[NSURLComponents alloc] initWithString:url];
+        NSMutableArray * newQueryItems = [components.queryItems mutableCopy];
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"noRedirect" value: @"true"]];
+        [components setQueryItems:newQueryItems];
+        NSURL *trafficURL = components.URL;
+        if (trafficURL) {
+            NSURLSession *session = [NSURLSession sharedSession];
+            NSURLSessionDataTask *dataTask = [session dataTaskWithURL:trafficURL
+                                                    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+            {
+                if (error) {
+                    NSLog(@"Error reporting organic click: %@, error: %@", trafficURL, error);
+                }
+                else {
+                    NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+                    NSLog(@"Report organic click response code: %ld", (long)statusCode);
+                }
+                
+            }];
+            [dataTask resume];
+        }
+        [self.delegate onOrganicRecClick:recOriginalURL];
+    }
+    else {
+        [self.delegate onRecClick:recURL];
+    }
 }
 
 @end

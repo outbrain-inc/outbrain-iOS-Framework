@@ -47,4 +47,9 @@ FOUNDATION_EXPORT const unsigned char DynamicOutbrainSDKVersionString[];
 #import <OutbrainSDK/SFItemData.h>
 #import <OutbrainSDK/OBViewabilityService.h>
 
+#import <OutbrainSDK/SFWidget.h>
+#import <OutbrainSDK/SFWidgetTableCell.h>
+#import <OutbrainSDK/SFWidgetCollectionCell.h>
+
+
 

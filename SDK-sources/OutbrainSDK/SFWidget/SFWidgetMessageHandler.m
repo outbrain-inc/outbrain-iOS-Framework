@@ -15,7 +15,10 @@
         NSLog(@"SFWidgetMessageHandler - message is not ReactNativeWebView");
         return;
     }
-    NSDictionary *msgBody = message.body;
+    NSString *jsonString = message.body;
+    NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *msgBody = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+
     if ([msgBody valueForKey:@"height"]) {
         NSInteger newHeight = [[msgBody valueForKey:@"height"] integerValue];
         [self.delegate didHeightChanged:newHeight];

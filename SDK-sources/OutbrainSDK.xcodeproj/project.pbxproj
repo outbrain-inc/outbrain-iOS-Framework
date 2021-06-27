@@ -106,11 +106,11 @@
 		E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */; };
 		E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */; };
 		E61E6CFE208611380016D79A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFD208611380016D79A /* Assets.xcassets */; };
-		E62312E626886BED00677B35 /* SFWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312E426886BED00677B35 /* SFWidget.h */; };
+		E62312E626886BED00677B35 /* SFWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312E426886BED00677B35 /* SFWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E62312E726886BED00677B35 /* SFWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = E62312E526886BED00677B35 /* SFWidget.m */; };
-		E62312EA268873B200677B35 /* SFWidgetCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312E8268873B200677B35 /* SFWidgetCollectionCell.h */; };
+		E62312EA268873B200677B35 /* SFWidgetCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312E8268873B200677B35 /* SFWidgetCollectionCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E62312EB268873B200677B35 /* SFWidgetCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E62312E9268873B200677B35 /* SFWidgetCollectionCell.m */; };
-		E62312EE268873C900677B35 /* SFWidgetTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312EC268873C900677B35 /* SFWidgetTableCell.h */; };
+		E62312EE268873C900677B35 /* SFWidgetTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312EC268873C900677B35 /* SFWidgetTableCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E62312EF268873C900677B35 /* SFWidgetTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E62312ED268873C900677B35 /* SFWidgetTableCell.m */; };
 		E62312F22688786A00677B35 /* SFWidgetMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312F02688786A00677B35 /* SFWidgetMessageHandler.h */; };
 		E62312F32688786A00677B35 /* SFWidgetMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E62312F12688786A00677B35 /* SFWidgetMessageHandler.m */; };

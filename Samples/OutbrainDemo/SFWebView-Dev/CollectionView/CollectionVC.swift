@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import OutbrainSDK
 
 class CollectionVC : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
@@ -21,21 +22,16 @@ class CollectionVC : UICollectionViewController, UICollectionViewDelegateFlowLay
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.register(SFWidgetCollectionViewCell.self, forCellWithReuseIdentifier: "SFWidgetCell")
+        collectionView.register(SFWidgetCollectionCell.self, forCellWithReuseIdentifier: "SFWidgetCell")
         
         sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
-        sfWidget.setProperties(
-            delegate: self,
-            url: "http://mobile-demo.outbrain.com",
-            widgetId: "MB_1",
-            installationKey: "NANOWDGT01"
-        )
+        self.sfWidget.configure(with: self, url: "http://mobile-demo.outbrain.com", widgetId: "MB_1", installationKey: "NANOWDGT01", userId: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         collectionView.collectionViewLayout.invalidateLayout()
-        sfWidget.viewWillTransition(coordinator: coordinator)
+        self.sfWidget.viewWillTransition(to: size, with: coordinator)
     }
     
     // MARK: UICollectionView methods
@@ -53,7 +49,7 @@ class CollectionVC : UICollectionViewController, UICollectionViewDelegateFlowLay
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: contentCellReuseIdentifier,
                                                       for: indexPath)
         default:
-            if let sfWidgetCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SFWidgetCell", for: indexPath) as? SFWidgetCollectionViewCell {
+            if let sfWidgetCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SFWidgetCell", for: indexPath) as? SFWidgetCollectionCell {
                 cell = sfWidgetCell
             }
             break;
@@ -84,8 +80,8 @@ class CollectionVC : UICollectionViewController, UICollectionViewDelegateFlowLay
             }
             break
         default:
-            if let sfWidgetCell = cell as? SFWidgetCollectionViewCell {
-                sfWidget.willDisplaySFWidgetCell(cell: sfWidgetCell)
+            if let sfWidgetCell = cell as? SFWidgetCollectionCell {
+                sfWidget.willDisplay(sfWidgetCell)
             }
             break
         }
@@ -113,7 +109,7 @@ class CollectionVC : UICollectionViewController, UICollectionViewDelegateFlowLay
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        sfWidget.scrollViewDidScroll(scrollView: scrollView)
+        sfWidget.scrollViewDidScroll(scrollView)
     }
 }
 
@@ -127,7 +123,7 @@ extension CollectionVC: SFWidgetDelegate {
 //        // handle click on organic url
 //    }
     
-    func onRecClick(url: URL) {
+    func onRecClick(_ url: URL) {
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }

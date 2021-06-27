@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import SafariServices
+import OutbrainSDK
 
 class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -27,20 +28,16 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(SFWidgetTableViewCell.self, forCellReuseIdentifier: "SFWidgetCell")
+        tableView.register(SFWidgetTableCell.self, forCellReuseIdentifier: "SFWidgetCell")
         
         sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
-        sfWidget.setProperties(
-            delegate: self,
-            url: "http://mobile-demo.outbrain.com",
-            widgetId: "MB_1",
-            installationKey: "NANOWDGT01"
-        )
+        
+        self.sfWidget.configure(with: self, url: "http://mobile-demo.outbrain.com", widgetId: "MB_1", installationKey: "NANOWDGT01", userId: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        sfWidget.viewWillTransition(coordinator: coordinator)
+        self.sfWidget.viewWillTransition(to: size, with: coordinator)
     }
     
     // MARK: UITableView methods
@@ -64,7 +61,7 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         case 2,3,4:
             cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
         default:
-            if let sfWidgetCell = self.tableView.dequeueReusableCell(withIdentifier: "SFWidgetCell") as? SFWidgetTableViewCell {
+            if let sfWidgetCell = self.tableView.dequeueReusableCell(withIdentifier: "SFWidgetCell") as? SFWidgetTableCell {
                 cell = sfWidgetCell
             }
             break;
@@ -91,8 +88,8 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
                 articleCell.contentTextView.textColor = UIColor.black
             }
         default:
-            if let sfWidgetCell = cell as? SFWidgetTableViewCell {
-                sfWidget.willDisplaySFWidgetCell(cell: sfWidgetCell)
+            if let sfWidgetCell = cell as? SFWidgetTableCell {
+                self.sfWidget.willDisplay(sfWidgetCell)
             }
             break
         }
@@ -112,7 +109,7 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        sfWidget.scrollViewDidScroll(scrollView: scrollView)
+        sfWidget.scrollViewDidScroll(scrollView)
     }
 }
 
@@ -128,7 +125,7 @@ extension TableVC: SFWidgetDelegate {
 //        // handle click on organic url
 //    }
     
-    func onRecClick(url: URL) {
+    func onRecClick(_ url: URL) {
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
