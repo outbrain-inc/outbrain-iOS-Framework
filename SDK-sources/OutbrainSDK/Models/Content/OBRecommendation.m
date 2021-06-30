@@ -25,6 +25,8 @@
 @property (nonatomic, copy) NSString * author;
 /** @brief The recommendation's title. */
 @property (nonatomic, copy) NSString * content;
+/** @brief (Optional) The recommendation's description (only if provided by the publsher) */
+@property (nonatomic, copy) NSString * desc;
 /** @brief The name of the recommendation's source. */
 @property (nonatomic, copy) NSString * source;
 /** @brief Is the recommendation from the same source as the one the user is currently viewing. */
@@ -135,6 +137,7 @@
              @"redirectURL":                        @"url",
              @"publishDate":                        @"publish_date",
              @"content":                            @"content",
+             @"desc":                               @"desc",
              @"sameSource":                         @"same_source",
              @"image":                              @"thumbnail",
              @"publisherLogoImage":                 @"logo",

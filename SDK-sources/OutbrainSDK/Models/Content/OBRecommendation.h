@@ -44,6 +44,8 @@
 @property (nonatomic, copy, readonly, nullable) NSString * author;
 /** @brief The recommendation's title. */
 @property (nonatomic, copy, readonly, nullable) NSString * content;
+/** @brief (Optional) The recommendation's description (only if provided by the publsher) */
+@property (nonatomic, copy, readonly, nullable) NSString * desc;
 /** @brief The name of the recommendation's source. */
 @property (nonatomic, copy, readonly, nullable) NSString * source;
 /** @brief Is the recommendation from the same source as the one the user is currently viewing. */
