@@ -36,8 +36,10 @@ extension YourVC: SFWidgetDelegate {
         // See implementation for UITableView \ UICollectionView \ UIScrollView (at the bottom of this section)
     }
     
-    func onOrganicRecClick(url: URL) { // optional
-        // handle click on organic recommendation
+	func onOrganicRecClick(_ url: URL) {
+        // handle click on organic url
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
     
     func onRecClick(url: URL) {
