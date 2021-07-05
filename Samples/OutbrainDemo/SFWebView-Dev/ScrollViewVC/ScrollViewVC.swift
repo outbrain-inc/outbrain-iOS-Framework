@@ -43,9 +43,11 @@ extension ScrollViewVC: SFWidgetDelegate {
         self.sfWidgetHeightConstraint.constant = self.sfWidget.getCurrentHeight()
     }
     
-//    func onOrganicRecClick(url: URL) {
-//        // handle click on organic url
-//    }
+    func onOrganicRecClick(_ url: URL) {
+        // handle click on organic url
+        let safariVC = SFSafariViewController(url: url)
+        self.navigationController?.present(safariVC, animated: true, completion: nil)
+    }
     
     func onRecClick(_ url: URL) {
         let safariVC = SFSafariViewController(url: url)
