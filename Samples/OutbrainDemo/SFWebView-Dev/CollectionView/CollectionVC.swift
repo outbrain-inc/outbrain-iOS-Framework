@@ -25,7 +25,7 @@ class CollectionVC : UICollectionViewController, UICollectionViewDelegateFlowLay
         collectionView.register(SFWidgetCollectionCell.self, forCellWithReuseIdentifier: "SFWidgetCell")
         
         sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
-        self.sfWidget.configure(with: self, url: "http://mobile-demo.outbrain.com", widgetId: "MB_1", installationKey: "NANOWDGT01", userId: nil)
+        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.widgetID, installationKey: OBConf.installationKey, userId: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -21,7 +21,7 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sfWidget.configure(with: self, url: "http://mobile-demo.outbrain.com", widgetId: "MB_1", installationKey: "NANOWDGT01", userId: nil)
+        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.widgetID, installationKey: OBConf.installationKey, userId: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
