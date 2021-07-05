@@ -38,11 +38,20 @@
                                     <segue destination="68l-CM-ywK" kind="show" id="Okm-BW-KOl"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake device to change default &quot;url&quot; and &quot;widget_id&quot; params" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8a-xE-wXZ">
+                                <rect key="frame" x="50" y="608" width="275" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="t8a-xE-wXZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="61D-KR-NOI"/>
                             <constraint firstItem="rqK-df-hoe" firstAttribute="top" secondItem="i3j-16-CgZ" secondAttribute="bottom" constant="45" id="8oA-Di-f84"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="t8a-xE-wXZ" secondAttribute="bottom" constant="30" id="ETg-fg-vfN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t8a-xE-wXZ" secondAttribute="trailing" constant="50" id="LpS-5W-FBc"/>
                             <constraint firstItem="rrk-sc-fFj" firstAttribute="top" secondItem="rqK-df-hoe" secondAttribute="bottom" constant="45" id="Mxk-dg-K8o"/>
                             <constraint firstItem="rrk-sc-fFj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OWL-35-OZF"/>
                             <constraint firstItem="rqK-df-hoe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="POj-20-1HR"/>
