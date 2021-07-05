@@ -68,11 +68,10 @@
        withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     self.inTransition = YES;
     
-    // TODO self.evaluateHeightScript(timeout: 300)
-    
     // run after transition finished
     // https://stackoverflow.com/questions/26943808/ios-how-to-run-a-function-after-device-has-rotated-swift
     [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        [self evaluateHeightScript:300];
         self.inTransition = NO;
     }];
 }
@@ -121,9 +120,9 @@
     }
     NSString *script = [NSString stringWithFormat:@""
                         @"setTimeout(function() {"
-                        @"  let result = {}"
-                        @"  let height = document.body.scrollHeight"
-                        @"  result[\"height\"] = height"
+                        @"  let result = {};"
+                        @"  let height = document.body.scrollHeight;"
+                        @"  result[\"height\"] = height;"
                         @"  window['ReactNativeWebView'].postMessage(JSON.stringify(result))"
                         @"}, %ld);", (long)timeout];
     
