@@ -106,6 +106,14 @@
 		E61E6CBE2085D98F0016D79A /* SFHorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */; };
 		E61E6CBF2085D98F0016D79A /* PageCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */; };
 		E61E6CFE208611380016D79A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CFD208611380016D79A /* Assets.xcassets */; };
+		E62312E626886BED00677B35 /* SFWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312E426886BED00677B35 /* SFWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E62312E726886BED00677B35 /* SFWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = E62312E526886BED00677B35 /* SFWidget.m */; };
+		E62312EA268873B200677B35 /* SFWidgetCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312E8268873B200677B35 /* SFWidgetCollectionCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E62312EB268873B200677B35 /* SFWidgetCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E62312E9268873B200677B35 /* SFWidgetCollectionCell.m */; };
+		E62312EE268873C900677B35 /* SFWidgetTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312EC268873C900677B35 /* SFWidgetTableCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E62312EF268873C900677B35 /* SFWidgetTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E62312ED268873C900677B35 /* SFWidgetTableCell.m */; };
+		E62312F22688786A00677B35 /* SFWidgetMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = E62312F02688786A00677B35 /* SFWidgetMessageHandler.h */; };
+		E62312F32688786A00677B35 /* SFWidgetMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E62312F12688786A00677B35 /* SFWidgetMessageHandler.m */; };
 		E6250CCD21BD5E8900C329B9 /* SFUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6250CCC21BD5E8900C329B9 /* SFUtilsTests.m */; };
 		E625100521CA866A00C329B9 /* OBVideoWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = E625100321CA866A00C329B9 /* OBVideoWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E625100621CA866A00C329B9 /* OBVideoWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = E625100421CA866A00C329B9 /* OBVideoWidget.m */; };
@@ -337,6 +345,14 @@
 		E61E6CAE2085D98F0016D79A /* SFHorizontalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHorizontalView.m; sourceTree = "<group>"; };
 		E61E6CAF2085D98F0016D79A /* PageCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageCollectionLayout.h; sourceTree = "<group>"; };
 		E61E6CFD208611380016D79A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E62312E426886BED00677B35 /* SFWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFWidget.h; sourceTree = "<group>"; };
+		E62312E526886BED00677B35 /* SFWidget.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFWidget.m; sourceTree = "<group>"; };
+		E62312E8268873B200677B35 /* SFWidgetCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFWidgetCollectionCell.h; sourceTree = "<group>"; };
+		E62312E9268873B200677B35 /* SFWidgetCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFWidgetCollectionCell.m; sourceTree = "<group>"; };
+		E62312EC268873C900677B35 /* SFWidgetTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFWidgetTableCell.h; sourceTree = "<group>"; };
+		E62312ED268873C900677B35 /* SFWidgetTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFWidgetTableCell.m; sourceTree = "<group>"; };
+		E62312F02688786A00677B35 /* SFWidgetMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFWidgetMessageHandler.h; sourceTree = "<group>"; };
+		E62312F12688786A00677B35 /* SFWidgetMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFWidgetMessageHandler.m; sourceTree = "<group>"; };
 		E6250CCC21BD5E8900C329B9 /* SFUtilsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFUtilsTests.m; sourceTree = "<group>"; };
 		E625100321CA866A00C329B9 /* OBVideoWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBVideoWidget.h; sourceTree = "<group>"; };
 		E625100421CA866A00C329B9 /* OBVideoWidget.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBVideoWidget.m; sourceTree = "<group>"; };
@@ -585,6 +601,7 @@
 		E61E6BCA20836C180016D79A /* OutbrainSDK */ = {
 			isa = PBXGroup;
 			children = (
+				E62312E326886B9900677B35 /* SFWidget */,
 				E61E6CFD208611380016D79A /* Assets.xcassets */,
 				16B1F9892185E76700023DDD /* GDPR */,
 				E61E6CA62085D98F0016D79A /* SmartFeed */,
@@ -845,6 +862,21 @@
 			path = SFHorizontalView;
 			sourceTree = "<group>";
 		};
+		E62312E326886B9900677B35 /* SFWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E62312E426886BED00677B35 /* SFWidget.h */,
+				E62312E526886BED00677B35 /* SFWidget.m */,
+				E62312E8268873B200677B35 /* SFWidgetCollectionCell.h */,
+				E62312E9268873B200677B35 /* SFWidgetCollectionCell.m */,
+				E62312EC268873C900677B35 /* SFWidgetTableCell.h */,
+				E62312ED268873C900677B35 /* SFWidgetTableCell.m */,
+				E62312F02688786A00677B35 /* SFWidgetMessageHandler.h */,
+				E62312F12688786A00677B35 /* SFWidgetMessageHandler.m */,
+			);
+			path = SFWidget;
+			sourceTree = "<group>";
+		};
 		E625100221CA863100C329B9 /* OBVideoWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -1069,7 +1101,9 @@
 				E6F8F460211C3D400069C72C /* SFTableViewManager.h in Headers */,
 				E6B930BE2173691900EC7A4A /* SFScriptMessageHandler.h in Headers */,
 				E63B7850212AB1860018C225 /* SFItemData.h in Headers */,
+				E62312EE268873C900677B35 /* SFWidgetTableCell.h in Headers */,
 				E6355BEC223544CA00C3D1D5 /* OBMultivacRequestOperation.h in Headers */,
+				E62312EA268873B200677B35 /* SFWidgetCollectionCell.h in Headers */,
 				E6FEB3EA20FF2E78002A9020 /* SFHorizontalCollectionViewCell.h in Headers */,
 				E6355E2222411DF200C3D1D5 /* OBView.h in Headers */,
 				E61E6C3820836C180016D79A /* OBRecommendation.h in Headers */,
@@ -1082,7 +1116,9 @@
 				16B1F9A12185E95C00023DDD /* GDPRUtils.h in Headers */,
 				E6355E2522411E3B00C3D1D5 /* SFViewabilityService.h in Headers */,
 				E61E6C1720836C180016D79A /* OBAppleAdIdUtil.h in Headers */,
+				E62312E626886BED00677B35 /* SFWidget.h in Headers */,
 				E61E6C4020836C180016D79A /* OBErrors.h in Headers */,
+				E62312F22688786A00677B35 /* SFWidgetMessageHandler.h in Headers */,
 				E6F8F45D211C3C6D0069C72C /* SmartFeedManager.h in Headers */,
 				E61E6C2520836C180016D79A /* OBReachability.h in Headers */,
 				16C48D55227739160003A892 /* SFDefaultDelegate.h in Headers */,
@@ -1310,8 +1346,10 @@
 				E61E6C1F20836C180016D79A /* OBViewabilityService.m in Sources */,
 				1698D998256BC28D004C90FF /* SFTableViewReadMoreCell.m in Sources */,
 				E6355E2622411E3B00C3D1D5 /* SFViewabilityService.m in Sources */,
+				E62312F32688786A00677B35 /* SFWidgetMessageHandler.m in Sources */,
 				E63B7851212AB1860018C225 /* SFItemData.m in Sources */,
 				E6355E2122411DF200C3D1D5 /* OBView.m in Sources */,
+				E62312EF268873C900677B35 /* SFWidgetTableCell.m in Sources */,
 				E63B784F212AB1860018C225 /* SFUtils.m in Sources */,
 				16C48D56227739160003A892 /* SFDefaultDelegate.m in Sources */,
 				E69B5E38249B888600A9178C /* BrandedCarouselCollectionLayout.m in Sources */,
@@ -1327,6 +1365,7 @@
 				E61E6C4520836C180016D79A /* OutbrainHelper.m in Sources */,
 				E61E6C3720836C180016D79A /* OBDisclosure.m in Sources */,
 				E61E6C3020836C180016D79A /* OBRecommendationResponse.m in Sources */,
+				E62312EB268873B200677B35 /* SFWidgetCollectionCell.m in Sources */,
 				E6FEB3EE20FF2E78002A9020 /* SFHorizontalTableViewCell.m in Sources */,
 				E6FEB19520FCB8B4002A9020 /* SFHorizontalViewFixed.m in Sources */,
 				E61E6C2820836C180016D79A /* OBRecommendationRequestOperation.m in Sources */,
@@ -1351,6 +1390,7 @@
 				E61E6C2A20836C180016D79A /* OBResponse.m in Sources */,
 				E625100621CA866A00C329B9 /* OBVideoWidget.m in Sources */,
 				E647EE8622EF2E6E00313178 /* SFDefaultCollectionViewDelegate.m in Sources */,
+				E62312E726886BED00677B35 /* SFWidget.m in Sources */,
 				E63B785B212AB3500018C225 /* SFTableViewHeaderCell.m in Sources */,
 				16AC5DB224CEC1D300F492C1 /* SMFGradientView.m in Sources */,
 				E64AE0CA247D3D260070A471 /* SFBrandedCarouselTableCell.m in Sources */,
