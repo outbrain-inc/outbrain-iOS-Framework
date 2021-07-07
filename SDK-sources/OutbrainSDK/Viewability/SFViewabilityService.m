@@ -67,7 +67,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     }
 }
 
-- (void) configureViewabilityPerListingFor:(UIView *)view withRequest:(OBRecommendation *)rec {
+- (void) configureViewabilityPerListingFor:(UIView *)view withRec:(OBRecommendation *)rec {
     NSString *position = rec.position;
     NSString *requestId = rec.reqId;
     OBView *existingOBView = (OBView *)[view viewWithTag: OBVIEW_DEFAULT_TAG];
