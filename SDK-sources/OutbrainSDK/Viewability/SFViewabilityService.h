@@ -16,7 +16,7 @@
 
 - (void) configureViewabilityPerListingForCell:(UIView *)cell withSFItem:(SFItemData *)sfItem initializationTime:(NSDate *)initializationTime;
 
-- (void) configureViewabilityPerListingFor:(UIView *)view withPosition:(NSString *)position requestId:(NSString *)requestId;
+- (void) configureViewabilityPerListingFor:(UIView *)view withRequest:(OBRecommendation *)rec;
 
 - (void) reportViewabilityForOBView:(OBView *)obview;
 

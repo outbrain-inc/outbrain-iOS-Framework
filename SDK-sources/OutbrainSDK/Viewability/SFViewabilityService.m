@@ -67,7 +67,9 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     }
 }
 
-- (void) configureViewabilityPerListingFor:(UIView *)view withPosition:(NSString *)position requestId:(NSString *)requestId {
+- (void) configureViewabilityPerListingFor:(UIView *)view withRequest:(OBRecommendation *)rec {
+    NSString *position = rec.position;
+    NSString *requestId = rec.reqId;
     OBView *existingOBView = (OBView *)[view viewWithTag: OBVIEW_DEFAULT_TAG];
     if (existingOBView) {
         [existingOBView removeFromSuperview];
