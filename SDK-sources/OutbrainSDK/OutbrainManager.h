@@ -17,6 +17,7 @@
 @property (nonatomic, assign)   BOOL                    testMode;
 @property (nonatomic, assign)   BOOL                    testRTB;
 @property (nonatomic, assign)   BOOL                    testAppInstall;
+@property (nonatomic, assign)   BOOL                    testBrandedCarousel;
 @property (nonatomic, copy)     NSString *_Nullable     testLocation;
 
 +(OutbrainManager * _Nonnull) sharedInstance;

@@ -82,6 +82,10 @@ BOOL WAS_INITIALIZED     =   NO;
     [OutbrainManager sharedInstance].testAppInstall = testAppInstall; 
 }
 
++ (void)testBrandedCarousel:(BOOL)testBrandedCarousel {
+    [OutbrainManager sharedInstance].testBrandedCarousel = testBrandedCarousel;
+}
+
 #pragma mark - Fetching
 
 + (void)fetchRecommendationsForRequest:(OBRequest *)request withCallback:(OBResponseCompletionHandler)handler
