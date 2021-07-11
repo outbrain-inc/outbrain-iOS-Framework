@@ -16,11 +16,12 @@
 #import "OBLabel.h"
 #import "OBUtils.h"
 #import "OBViewabilityService.h"
+#import "SFViewabilityService.h"
 #import <UIKit/UIKit.h>
 
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"4.5.0";
+NSString * const OB_SDK_VERSION     =   @"4.5.1";
 
 NSString * const OB_AD_NETWORK_ID   =   @"97r2b46745.skadnetwork";
 
@@ -162,6 +163,11 @@ BOOL WAS_INITIALIZED     =   NO;
         [[OBViewabilityService sharedInstance] addOBLabelToMap:label];
         [label trackViewability];
     }
+}
+
++ (void) configureViewabilityPerListingFor:(UIView * _Nonnull)view withRec:(OBRecommendation * _Nonnull)rec {
+    [[SFViewabilityService sharedInstance] startReportViewabilityWithTimeInterval:2000]; // 2 seconds interval
+    [[SFViewabilityService sharedInstance] configureViewabilityPerListingFor:view withRec:rec];
 }
 
 +(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController {

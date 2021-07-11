@@ -16,11 +16,11 @@
 
 - (void) configureViewabilityPerListingForCell:(UIView *)cell withSFItem:(SFItemData *)sfItem initializationTime:(NSDate *)initializationTime;
 
+- (void) configureViewabilityPerListingFor:(UIView *)view withRec:(OBRecommendation *)rec;
+
 - (void) reportViewabilityForOBView:(OBView *)obview;
 
 - (BOOL) isAlreadyReportedForRequestId:(NSString *)requestId position:(NSString *)pos;
-
-- (void) registerOBView:(OBView *)obView positions:(NSArray *)positions requestId:(NSString *)reqId smartFeedInitializationTime:(NSDate *)initializationTime;
 
 - (void) startReportViewabilityWithTimeInterval:(NSInteger)reportingIntervalMillis;
 

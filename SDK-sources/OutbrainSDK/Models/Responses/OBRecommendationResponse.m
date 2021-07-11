@@ -35,29 +35,33 @@
         res.settings.brandedCarouselSettings = [[OBBrandedCarouselSettings alloc] initWithPayload:brandedCarouselPayload];
     }
     
-    // Parse documents, i.e. recommadations
-    id documents = payload[@"documents"];
-    if ([documents isKindOfClass:[NSDictionary class]])
-    {
-        // The actual docs here
-        if (documents[@"doc"] && [documents[@"doc"] isKindOfClass:[NSArray class]])
-        {
-            // Let's convert the recommendations to actual objects
-            NSMutableArray * recommendations = [NSMutableArray arrayWithCapacity:[documents[@"doc"] count]];
-            for (NSDictionary *rec in documents[@"doc"])
-            {
-                [recommendations addObject:[OBRecommendation contentWithPayload:rec]];
-            }
-            res.recommendations = [recommendations copy];
-        }
-    }
-    
     // Parse request
     id requestPayload = payload[@"request"];
     if ([requestPayload isKindOfClass:[NSDictionary class]])
     {
         // The response request here
         res.responseRequest = [[OBResponseRequest alloc] initWithPayload:requestPayload];
+    }
+    
+    // Parse documents, i.e. recommadations
+    id documents = payload[@"documents"];
+    if ([documents isKindOfClass:[NSDictionary class]])
+    {
+        NSString * const reqId = [res.responseRequest getStringValueForPayloadKey:@"req_id"];
+        
+        // The actual docs here
+        if (documents[@"doc"] && [documents[@"doc"] isKindOfClass:[NSArray class]])
+        {
+            // Let's convert the recommendations to actual objects
+            NSMutableArray * recommendations = [NSMutableArray arrayWithCapacity:[documents[@"doc"] count]];
+            for (NSDictionary *recDict in documents[@"doc"])
+            {
+                NSMutableDictionary *rec = [recDict mutableCopy];
+                [rec setValue:reqId forKey:@"reqId"];
+                [recommendations addObject:[OBRecommendation contentWithPayload:rec]];
+            }
+            res.recommendations = [recommendations copy];
+        }
     }
  
     return res;

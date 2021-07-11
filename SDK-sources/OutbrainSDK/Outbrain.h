@@ -115,6 +115,18 @@ extern NSString * _Nonnull const OB_AD_NETWORK_ID;
  **/
 + (void) registerOBLabel:(OBLabel * _Nonnull)label withOBRequest:(OBRequest * _Nonnull)obRequest;
 
+
+/**
+ * @brief configure Viewablity on a per-listing basis for regular widget only
+ *
+ * By configuring the "view" param for VPL (viewability per listing) the SDK will take care of monitoring and reporting the viewability event on a per listing basis.
+ *
+ * @param view - The parent view holding the recommendation content
+ * @param rec - The associated OBRecommendation for which the content is displayed.
+ **/
++ (void) configureViewabilityPerListingFor:(UIView * _Nonnull)view withRec:(OBRecommendation * _Nonnull)rec;
+
+
 /** @section Click Handling **/
 
 /**

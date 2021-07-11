@@ -246,4 +246,10 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     return [NSString stringWithFormat:kViewabilityKeyFor_urlhash_widgetId_idx, (long)urlHash, widgetId, (long)widgetIndex];
 }
 
+-(NSDate *) initializationTimeForReqId:(NSString *)reqId {
+    NSString *viewabilityKey = [self viewabilityKeyForRequestId:reqId];
+    ViewabilityData *viewabilityData = [self.viewabilityDataMap objectForKey:viewabilityKey];
+    return viewabilityData.requestStartDate;
+}
+
 @end

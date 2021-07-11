@@ -11,7 +11,7 @@ references:
   ios_config: &ios_config
     working_directory: ~/repo
     macos:
-      xcode: "110.12.5"
+      xcode: "12.5.0"
 
   # Export environment variables
   define_var_previous_release_version: &define_var_previous_release_version

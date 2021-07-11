@@ -245,6 +245,11 @@ NSInteger const kNumberOfLinesAsNeeded = 0;
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    OBRecommendation * rec = self.recommendationResponse.recommendations[indexPath.row];
+    [Outbrain configureViewabilityPerListingFor:cell.contentView withRec:rec];
+}
+
 - (CGFloat) getWidthForTitleLabelAndSourceLabel {
     UICollectionViewFlowLayout * l = (UICollectionViewFlowLayout *)self.internalCollectionView.collectionViewLayout;
     CGSize itemSize = l.itemSize;

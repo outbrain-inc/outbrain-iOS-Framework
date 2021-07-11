@@ -152,6 +152,16 @@
 		E64F6041212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */; };
 		E64F6042212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */; };
 		E666D04D25E4ED4F009F04D4 /* OutbrainSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E666D04C25E4ED4F009F04D4 /* OutbrainSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E66B9C8D26809C01006DB0AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9C8C26809C01006DB0AB /* AppDelegate.swift */; };
+		E66B9C9126809C01006DB0AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9C9026809C01006DB0AB /* ViewController.swift */; };
+		E66B9C9426809C01006DB0AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9226809C01006DB0AB /* Main.storyboard */; };
+		E66B9C9626809C03006DB0AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9526809C03006DB0AB /* Assets.xcassets */; };
+		E66B9C9926809C03006DB0AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9726809C03006DB0AB /* LaunchScreen.storyboard */; };
+		E66B9CB12680A199006DB0AB /* AppArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA62680A199006DB0AB /* AppArticleCollectionViewCell.swift */; };
+		E66B9CB22680A199006DB0AB /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA72680A199006DB0AB /* CollectionVC.swift */; };
+		E66B9CB32680A199006DB0AB /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA92680A199006DB0AB /* TableVC.swift */; };
+		E66B9CB42680A199006DB0AB /* AppArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */; };
+		E66B9CB72681C7D9006DB0AB /* ScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CB62681C7D9006DB0AB /* ScrollViewVC.swift */; };
 		E67A719D21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */; };
 		E67A719E21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */; };
 		E67A71A0219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */; };
@@ -320,6 +330,18 @@
 		E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailCollectionCell.xib; sourceTree = "<group>"; };
 		E666D04C25E4ED4F009F04D4 /* OutbrainSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OutbrainSDK.xcframework; sourceTree = "<group>"; };
+		E66B9C8A26809C01006DB0AB /* SFWebView-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFWebView-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E66B9C8C26809C01006DB0AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E66B9C9026809C01006DB0AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E66B9C9326809C01006DB0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E66B9C9526809C03006DB0AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E66B9C9826809C03006DB0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E66B9C9A26809C03006DB0AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E66B9CA62680A199006DB0AB /* AppArticleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppArticleCollectionViewCell.swift; sourceTree = "<group>"; };
+		E66B9CA72680A199006DB0AB /* CollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		E66B9CA92680A199006DB0AB /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
+		E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppArticleTableViewCell.swift; sourceTree = "<group>"; };
+		E66B9CB62681C7D9006DB0AB /* ScrollViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewVC.swift; sourceTree = "<group>"; };
 		E67A719C21931F78008DB54F /* AppSingleWithThumbnailRTLCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailRTLCollectionCell.xib; sourceTree = "<group>"; };
 		E67A719F219320E9008DB54F /* AppSingleWithThumbnailRTLTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailRTLTableCell.xib; sourceTree = "<group>"; };
 		E68A90561FCD4755008318EB /* OBWidgetViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBWidgetViewProtocol.h; sourceTree = "<group>"; };
@@ -382,6 +404,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E61E6CCA2085DBD50016D79A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E66B9C8726809C01006DB0AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -578,6 +607,7 @@
 				E666D04C25E4ED4F009F04D4 /* OutbrainSDK.xcframework */,
 				D83456431885A543002B2368 /* Journal */,
 				E61E6CCE2085DBD50016D79A /* SmartFeed */,
+				E66B9C8B26809C01006DB0AB /* SFWebView-Dev */,
 				D8B5923B186376B1009422D5 /* Frameworks */,
 				D8B5923A186376B1009422D5 /* Products */,
 			);
@@ -590,6 +620,7 @@
 				E61E6C99208384A00016D79A /* Journal-Dev.app */,
 				E61E6CCD2085DBD50016D79A /* SmartFeed-Dev.app */,
 				E60DCD4820BC3AAD0023FE93 /* SmartFeed.app */,
+				E66B9C8A26809C01006DB0AB /* SFWebView-Dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -774,6 +805,48 @@
 			path = PostCell;
 			sourceTree = "<group>";
 		};
+		E66B9C8B26809C01006DB0AB /* SFWebView-Dev */ = {
+			isa = PBXGroup;
+			children = (
+				E66B9CB52681C7D9006DB0AB /* ScrollViewVC */,
+				E66B9CA52680A199006DB0AB /* CollectionView */,
+				E66B9CA82680A199006DB0AB /* TableView */,
+				E66B9C8C26809C01006DB0AB /* AppDelegate.swift */,
+				E66B9C9026809C01006DB0AB /* ViewController.swift */,
+				E66B9C9226809C01006DB0AB /* Main.storyboard */,
+				E66B9C9526809C03006DB0AB /* Assets.xcassets */,
+				E66B9C9726809C03006DB0AB /* LaunchScreen.storyboard */,
+				E66B9C9A26809C03006DB0AB /* Info.plist */,
+			);
+			path = "SFWebView-Dev";
+			sourceTree = "<group>";
+		};
+		E66B9CA52680A199006DB0AB /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E66B9CA72680A199006DB0AB /* CollectionVC.swift */,
+				E66B9CA62680A199006DB0AB /* AppArticleCollectionViewCell.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		E66B9CA82680A199006DB0AB /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				E66B9CA92680A199006DB0AB /* TableVC.swift */,
+				E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		E66B9CB52681C7D9006DB0AB /* ScrollViewVC */ = {
+			isa = PBXGroup;
+			children = (
+				E66B9CB62681C7D9006DB0AB /* ScrollViewVC.swift */,
+			);
+			path = ScrollViewVC;
+			sourceTree = "<group>";
+		};
 		E68A90551FCD4755008318EB /* SampleUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -902,6 +975,23 @@
 			productReference = E61E6CCD2085DBD50016D79A /* SmartFeed-Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E66B9C8926809C01006DB0AB /* SFWebView-Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E66B9C9D26809C03006DB0AB /* Build configuration list for PBXNativeTarget "SFWebView-Dev" */;
+			buildPhases = (
+				E66B9C8626809C01006DB0AB /* Sources */,
+				E66B9C8726809C01006DB0AB /* Frameworks */,
+				E66B9C8826809C01006DB0AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SFWebView-Dev";
+			productName = "SFWebView-Dev";
+			productReference = E66B9C8A26809C01006DB0AB /* SFWebView-Dev.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -909,7 +999,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = OB;
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Outbrain inc";
 				TargetAttributes = {
@@ -923,6 +1013,9 @@
 					E61E6CCC2085DBD50016D79A = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+					};
+					E66B9C8926809C01006DB0AB = {
+						CreatedOnToolsVersion = 12.5;
 					};
 				};
 			};
@@ -944,6 +1037,7 @@
 				E60DCD2D20BC3AAD0023FE93 /* SmartFeed */,
 				E61E6C67208384A00016D79A /* Journal-Dev */,
 				E61E6CCC2085DBD50016D79A /* SmartFeed-Dev */,
+				E66B9C8926809C01006DB0AB /* SFWebView-Dev */,
 			);
 		};
 /* End PBXProject section */
@@ -1020,6 +1114,16 @@
 				E61E6CDA2085DBD50016D79A /* LaunchScreen.storyboard in Resources */,
 				E61E6CD72085DBD50016D79A /* Assets.xcassets in Resources */,
 				E61E6CD52085DBD50016D79A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E66B9C8826809C01006DB0AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E66B9C9926809C03006DB0AB /* LaunchScreen.storyboard in Resources */,
+				E66B9C9626809C03006DB0AB /* Assets.xcassets in Resources */,
+				E66B9C9426809C01006DB0AB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,6 +1269,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E66B9C8626809C01006DB0AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E66B9CB32680A199006DB0AB /* TableVC.swift in Sources */,
+				E66B9C9126809C01006DB0AB /* ViewController.swift in Sources */,
+				E66B9CB22680A199006DB0AB /* CollectionVC.swift in Sources */,
+				E66B9CB12680A199006DB0AB /* AppArticleCollectionViewCell.swift in Sources */,
+				E66B9CB72681C7D9006DB0AB /* ScrollViewVC.swift in Sources */,
+				E66B9C8D26809C01006DB0AB /* AppDelegate.swift in Sources */,
+				E66B9CB42680A199006DB0AB /* AppArticleTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -1180,6 +1298,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				E61E6CD92085DBD50016D79A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E66B9C9226809C01006DB0AB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E66B9C9326809C01006DB0AB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E66B9C9726809C03006DB0AB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E66B9C9826809C03006DB0AB /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1575,6 +1709,74 @@
 			};
 			name = Release;
 		};
+		E66B9C9B26809C03006DB0AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 97R2B46745;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "SFWebView-Dev/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.SFWebView-Dev";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E66B9C9C26809C03006DB0AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 97R2B46745;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "SFWebView-Dev/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.SFWebView-Dev";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1619,6 +1821,15 @@
 			buildConfigurations = (
 				E61E6CDD2085DBD50016D79A /* Debug */,
 				E61E6CDE2085DBD50016D79A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E66B9C9D26809C03006DB0AB /* Build configuration list for PBXNativeTarget "SFWebView-Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E66B9C9B26809C03006DB0AB /* Debug */,
+				E66B9C9C26809C03006DB0AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -274,14 +274,15 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 250.0);
 }
 
-- (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem isSmartfeedWithNoChildren:(BOOL)isSmartfeedWithNoChildren {
+- (void) configureSmartfeedHeaderCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withSFItem:(SFItemData *)sfItem isSmartfeedWithNoChildren:(BOOL)isSmartfeedWithNoChildren isCustomUI:(BOOL)isCustomUI
+{
     SFCollectionViewHeaderCell *sfHeaderCell = (SFCollectionViewHeaderCell *)cell;
     NSString *headerTitle = sfItem.widgetTitle;
     if (headerTitle) {
         sfHeaderCell.headerLabel.text = headerTitle;
     }
     
-    if (!sfItem.isCustomUI) {
+    if (!isCustomUI) {
         if (sfItem.odbSettings.smartfeedHeaderFontSize != 0) {
             sfHeaderCell.headerLabel.font = [sfHeaderCell.headerLabel.font fontWithSize: sfItem.odbSettings.smartfeedHeaderFontSize];
         }
