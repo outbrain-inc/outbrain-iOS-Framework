@@ -68,6 +68,8 @@
 @property (nonatomic, copy, readonly, nullable) NSString * categoryName;
 /** @brief The CTA text of a recommendation. */
 @property (nonatomic, copy, readonly, nullable) NSString * ctaText;
+/** @brief The request ID associated with the recommendation. */
+@property (nonatomic, copy, readonly, nullable) NSString * reqId;
 
 /** @brief metadata for app install ads according to the new iOS14 SkAdNetwork spec. */
 @property (nonatomic, strong, readonly, nullable) OBSkAdNetworkData *skAdNetworkData;

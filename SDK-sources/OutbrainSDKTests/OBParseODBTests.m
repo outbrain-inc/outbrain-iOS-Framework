@@ -72,6 +72,8 @@
     
     XCTAssert([rec.image.url.absoluteString isEqualToString:@"http://images.outbrain.com/Imaginarium/api/uuid/0b7181e69865b86c585ee8f8de33b511041effa59b8f5ba68887b3f691029883/200/200/1.0/webp"]);
     
+    XCTAssertNotNil(rec.reqId);
+    XCTAssert([rec.reqId isEqualToString:@"bcae7cf523c2c3d2bc49c3dfcef826cf"]);
 }
 
 - (void)testParsingOfSettingsFromNormalResponse {

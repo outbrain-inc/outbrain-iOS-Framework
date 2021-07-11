@@ -103,6 +103,7 @@
     cell.recImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.recImageView.layer.borderWidth = 1.0f;
     cell.recImageView.image = nil;
+    [Outbrain configureViewabilityPerListingFor:cell.contentView withRec:rec];
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     spinner.color = UIColor.grayColor;

@@ -51,6 +51,9 @@
 @property (nonatomic, copy) NSString * categoryName;
 /** @brief The CTA text of a recommendation. */
 @property (nonatomic, copy) NSString * ctaText;
+/** @brief The request ID associated with the recommendation. */
+@property (nonatomic, copy) NSString * reqId;
+
 /** @brief metadata for app install ads according to the new iOS14 SkAdNetwork spec. */
 @property (nonatomic, strong) OBSkAdNetworkData *skAdNetworkData;
 
@@ -146,6 +149,7 @@
              @"disclosure":                         @"disclosure",
              @"pixels":                             @"pixels",
              @"ctaText":                            @"cta",
+             @"reqId":                              @"reqId",
              @"skAdNetworkData":                    @"sk_adnetwork_data"
              };
 }
