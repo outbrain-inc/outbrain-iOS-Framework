@@ -19,8 +19,8 @@ static UIColor *NonSelectedColor;
 {
     self = [super initWithCoder:coder];
     if (self) {
-        SelectedColor = UIColor.blackColor;
-        NonSelectedColor = UIColorFromRGB(0xcccccc);
+        SelectedColor = [[SFUtils sharedInstance] darkMode] ? UIColor.whiteColor : UIColor.blackColor;
+        NonSelectedColor = [[SFUtils sharedInstance] darkMode] ? UIColorFromRGB(0x777777) : UIColorFromRGB(0xcccccc);
     }
     return self;
 }
