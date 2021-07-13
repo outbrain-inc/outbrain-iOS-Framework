@@ -9,30 +9,40 @@
 #import "SFBrandedCarouselCollectionCell.h"
 #import "SFUtils.h"
 
+
 @implementation SFBrandedCarouselCollectionCell
 
+static UIColor *SelectedColor;
+static UIColor *NonSelectedColor;
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        SelectedColor = UIColor.blackColor;
+        NonSelectedColor = UIColorFromRGB(0xcccccc);
+    }
+    return self;
+}
 -(void) setupDotsIndicator:(NSInteger) totalItems {
     for (UIView *v in self.horizontalPagerIndicatorStackView.arrangedSubviews) {
         [v removeFromSuperview];
     }
     for (int i=0; i <= totalItems; i++) {
         UIView *v = [[UIView alloc] init];
-        v.backgroundColor = UIColor.whiteColor;
-        v.layer.borderWidth = 2.0;
-        v.layer.borderColor = UIColorFromRGB(0x9b9b9b).CGColor;
-        v.layer.cornerRadius = 5.0;
+        v.backgroundColor = NonSelectedColor;
+        v.layer.cornerRadius = 4.0;
         
         v.tag = i;
-        [v.heightAnchor constraintEqualToConstant:10].active = true;
-        [v.widthAnchor constraintEqualToConstant:10].active = true;
+        [v.heightAnchor constraintEqualToConstant:8].active = true;
+        [v.widthAnchor constraintEqualToConstant:8].active = true;
         [self.horizontalPagerIndicatorStackView addArrangedSubview:v];
     }
 }
 
 -(void) setDotsIndicatorWithCurrentIndex:(NSInteger) currIndex {
     for (UIView *v in self.horizontalPagerIndicatorStackView.arrangedSubviews) {
-        v.backgroundColor = (v.tag == currIndex) ? UIColor.blackColor : UIColor.whiteColor;
-        v.layer.borderColor = (v.tag == currIndex) ? UIColor.blackColor.CGColor : UIColorFromRGB(0x9b9b9b).CGColor;
+        v.backgroundColor = (v.tag == currIndex) ? SelectedColor : NonSelectedColor;
     }
 }
 
