@@ -95,7 +95,7 @@
     cell.recTitleLabel.text = rec.content;
     cell.recSourceLabel.text = [SFUtils getSourceTextForRec:rec withSettings:self.sfItem.odbSettings];
     
-    if (!self.sfItem.isCustomUI) {
+    if (!self.sfItem.isCustomUI && self.sfItem.itemType != SFTypeBrandedCarouselWithTitle) {
         cell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor:[rec isPaidLink]];
         cell.recSourceLabel.textColor = [[SFUtils sharedInstance] subtitleColor:self.sfItem.odbSettings.abSourceFontColor];
         [SFUtils setFontSizeForTitleLabel:cell.recTitleLabel andSourceLabel:cell.recSourceLabel withAbTestSettings: self.sfItem.odbSettings];
