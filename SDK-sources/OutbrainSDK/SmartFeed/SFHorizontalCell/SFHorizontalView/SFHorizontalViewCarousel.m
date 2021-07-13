@@ -9,7 +9,7 @@
 #import "SFHorizontalViewCarousel.h"
 #import "PageCollectionLayout.h"
 #import "BrandedCarouselCollectionLayout.h"
-
+#import "SFUtils.h"
 
 @implementation SFHorizontalViewCarousel
 
@@ -56,5 +56,13 @@ NSInteger const kBrandedCarouselTag = 111;
     // NSLog(@"resetLayout - self.itemSize: width: %f, height: %f", self.itemSize.width, self.itemSize.height);
 }
 
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [super collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    cell.layer.borderColor = UIColorFromRGB(0xd9d9d9).CGColor;
+    cell.layer.cornerRadius = 5.0f;
+    cell.layer.borderWidth = 1.0f;
+    return cell;
+}
 
 @end
