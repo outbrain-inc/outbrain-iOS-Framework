@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="217" height="270"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g77-bX-xEg">
-                                <rect key="frame" x="0.0" y="0.0" width="217" height="221.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="217" height="229.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="g77-bX-xEg" secondAttribute="height" multiplier="360:220" priority="750" id="35V-fs-GaU"/>
                                 </constraints>
@@ -41,13 +41,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="Lookup Your Name to See If You Get a PPI Payout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.84999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-J8-7zV">
-                                <rect key="frame" x="10" y="221.5" width="142" height="45.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="10" y="229.5" width="142" height="37.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.29803921568627451" green="0.30196078431372547" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read more" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g5Z-3f-mcC">
-                                <rect key="frame" x="157" y="226.5" width="50" height="35"/>
+                                <rect key="frame" x="157" y="231" width="50" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="7VR-6W-RPz"/>
                                     <constraint firstAttribute="width" constant="50" id="ugf-l5-oCe"/>
@@ -57,6 +57,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="EZ3-tA-2YS"/>
                         <constraints>
                             <constraint firstItem="vW4-J8-7zV" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" constant="10" id="Byi-27-eJv"/>
                             <constraint firstItem="g77-bX-xEg" firstAttribute="leading" secondItem="EZ3-tA-2YS" secondAttribute="leading" id="Cmb-sV-E8V"/>
@@ -69,13 +70,13 @@
                             <constraint firstItem="ofG-qc-XMN" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="top" constant="4" id="hG3-bk-Sdy"/>
                             <constraint firstItem="g5Z-3f-mcC" firstAttribute="leading" secondItem="vW4-J8-7zV" secondAttribute="trailing" constant="5" id="hNk-cm-dYQ"/>
                             <constraint firstItem="vW4-J8-7zV" firstAttribute="top" secondItem="g77-bX-xEg" secondAttribute="bottom" id="hY9-cv-aA7"/>
-                            <constraint firstItem="g77-bX-xEg" firstAttribute="height" secondItem="y1L-1q-EwP" secondAttribute="height" multiplier="0.82" id="nf1-uJ-7jQ"/>
+                            <constraint firstItem="g77-bX-xEg" firstAttribute="height" secondItem="y1L-1q-EwP" secondAttribute="height" multiplier="0.85" id="nf1-uJ-7jQ"/>
                             <constraint firstItem="X5m-0R-CNu" firstAttribute="top" secondItem="EZ3-tA-2YS" secondAttribute="top" id="rid-ja-s9A"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="EZ3-tA-2YS"/>
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="y1L-1q-EwP" secondAttribute="bottom" id="10U-27-i0x"/>
                 <constraint firstAttribute="trailing" secondItem="y1L-1q-EwP" secondAttribute="trailing" id="Eg3-Yc-Kiq"/>
@@ -83,7 +84,6 @@
                 <constraint firstItem="y1L-1q-EwP" firstAttribute="top" secondItem="Gg3-8H-tpC" secondAttribute="top" id="o5k-Kv-iaH"/>
                 <constraint firstItem="g77-bX-xEg" firstAttribute="top" secondItem="vgc-B6-X7U" secondAttribute="top" id="vbp-N0-ZZp"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
             <size key="customSize" width="217" height="270"/>
             <connections>
                 <outlet property="adChoicesButton" destination="X5m-0R-CNu" id="gD4-Ms-T0e"/>
