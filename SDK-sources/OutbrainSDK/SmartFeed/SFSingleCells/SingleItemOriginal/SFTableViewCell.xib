@@ -43,7 +43,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Global Market Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tc6-Qq-R5N">
-                                <rect key="frame" x="0.0" y="301" width="124" height="14"/>
+                                <rect key="frame" x="0.0" y="301" width="386" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.57647058819999997" green="0.56470588239999997" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -51,6 +51,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tc6-Qq-R5N" secondAttribute="trailing" id="5hg-7A-IWX"/>
                             <constraint firstAttribute="trailing" secondItem="O6L-WF-8ye" secondAttribute="trailing" id="ApH-xs-UWV"/>
                             <constraint firstItem="5gH-VN-hEj" firstAttribute="top" secondItem="M5t-9V-x3S" secondAttribute="top" id="Dmo-eA-ANa"/>
                             <constraint firstAttribute="bottom" secondItem="tc6-Qq-R5N" secondAttribute="bottom" constant="4" id="KT5-gO-9kt"/>
