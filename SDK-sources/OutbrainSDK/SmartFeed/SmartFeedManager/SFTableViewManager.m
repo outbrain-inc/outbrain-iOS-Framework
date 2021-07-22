@@ -318,6 +318,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     
     OBRecommendation *rec = sfItem.singleRec;
     
+    
     // If rec title is RTL we will set the source text alignment to be the same, otherwise it will look weird in the UI.
     NSTextAlignment textAlignment = [SFUtils isRTL:rec.content] ? NSTextAlignmentRight : NSTextAlignmentLeft;
     singleCell.recTitleLabel.textAlignment = textAlignment;
@@ -406,6 +407,14 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     
     if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripNoTitle) {
         [self configureCtaLabelInCell:singleCell withCtaText:rec.ctaText isCustomUI:sfItem.isCustomUI shouldShowCtaButton:sfItem.odbSettings.shouldShowCtaButton];
+    }
+    
+    if (sfItem.itemType == SFTypeStripNoTitle || sfItem.itemType == SFTypeStripWithThumbnailNoTitle) {
+        // remove bottom border for the last card
+        UIView *seperatorView = [cell.contentView viewWithTag:4444];
+        if (seperatorView) {
+            seperatorView.alpha = sfItem.isLastInWidget ? 0.0 : 1.0;
+        }
     }
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget  action:@selector(recommendationClicked:)];
