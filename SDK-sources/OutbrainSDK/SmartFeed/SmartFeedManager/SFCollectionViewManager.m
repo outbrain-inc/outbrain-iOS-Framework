@@ -358,7 +358,6 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         singleCell.cardContentView.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
     }
     
-    
     OBRecommendation *rec = sfItem.singleRec;
     
     // If rec title is RTL we will set the source text alignment to be the same, otherwise it will look weird in the UI.
@@ -467,6 +466,14 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     
     if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripNoTitle) {
         [self configureCtaLabelInCell:singleCell withCtaText:rec.ctaText isRecWithTitle:sfItem.itemType == SFTypeStripWithTitle isCustomUI:sfItem.isCustomUI shouldShowCtaButton:sfItem.odbSettings.shouldShowCtaButton];
+    }
+    
+    if (sfItem.itemType == SFTypeStripNoTitle || sfItem.itemType == SFTypeStripWithThumbnailNoTitle) {
+        // remove bottom border for the last card
+        UIView *seperatorView = [cell.contentView viewWithTag:4444];
+        if (seperatorView) {
+            seperatorView.alpha = sfItem.isLastInWidget ? 0.0 : 1.0;
+        }
     }
 }
 
