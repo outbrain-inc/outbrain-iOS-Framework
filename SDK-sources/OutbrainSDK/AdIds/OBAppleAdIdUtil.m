@@ -29,7 +29,11 @@
     {
         return @"F22700D5-1D49-42CC-A183-F3676526035F"; // dev hack because simulator returns 0000-0000-0000-0000
     }
-    return [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    if (idfa != nil) {
+        return idfa;
+    }
+    return @"null";
 }
 
 
