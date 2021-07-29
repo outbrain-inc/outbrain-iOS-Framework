@@ -85,6 +85,7 @@
 @property (nonatomic, copy) NSString *smartFeedReadMoreButtonCustomUIReuseIdentifier;
 @property (nonatomic, strong) SFReadMoreModuleHelper *readMoreModuleHelper;
 
+@property (nonatomic, assign) BOOL verifyMinimumLineSpacingForCollectionViewIsImplemented;
 @end
 
 @implementation SmartFeedManager
@@ -1023,6 +1024,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (NSInteger)numberOfSectionsInCollectionView {
+    // Check if minimumLineSpacingForSectionAt is implemented correctly on the publisher code
+    UICollectionView *collectionView = self.sfCollectionViewManager.collectionView;
+    id<UICollectionViewDelegateFlowLayout> flowDelegate = (id<UICollectionViewDelegateFlowLayout>)collectionView.delegate;
+    if (flowDelegate && !self.verifyMinimumLineSpacingForCollectionViewIsImplemented) {
+        [flowDelegate collectionView:collectionView layout:collectionView.collectionViewLayout minimumLineSpacingForSectionAtIndex:self.outbrainSectionIndex];
+        
+        NSAssert(self.verifyMinimumLineSpacingForCollectionViewIsImplemented, @"Outbrain SDK detected you are missing the implementation for minimumLineSpacingForSectionAtIndex() - please review the official guidelines at - https://developer.outbrain.com/ios-sdk-smart-feed-integration-guide/");
+    }
+    
+    // Now for the actual implementation
     if (self.smartFeedItemsArray.count > 0 || self.isReadMoreModuleEnabled) {
         return self.outbrainSectionIndex + 1;
     } else {
@@ -1138,6 +1149,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    self.verifyMinimumLineSpacingForCollectionViewIsImplemented = YES;
     return 0.0;
 }
 
