@@ -115,6 +115,18 @@ extern NSString * _Nonnull const OB_AD_NETWORK_ID;
  **/
 + (void) registerOBLabel:(OBLabel * _Nonnull)label withOBRequest:(OBRequest * _Nonnull)obRequest;
 
+
+/**
+ * @brief configure Viewablity on a per-listing basis for regular widget only
+ *
+ * By configuring the "view" param for VPL (viewability per listing) the SDK will take care of monitoring and reporting the viewability event on a per listing basis.
+ *
+ * @param view - The parent view holding the recommendation content
+ * @param rec - The associated OBRecommendation for which the content is displayed.
+ **/
++ (void) configureViewabilityPerListingFor:(UIView * _Nonnull)view withRec:(OBRecommendation * _Nonnull)rec;
+
+
 /** @section Click Handling **/
 
 /**
@@ -183,6 +195,15 @@ extern NSString * _Nonnull const OB_AD_NETWORK_ID;
  * @param testAppInstall - a boolean flag; set to true to activate this test mode, or false to deactivate test mode.
  */
 + (void)testAppInstall:(BOOL)testAppInstall;
+
+/**
+ * @brief Simulate branded carousel recommendation
+ *
+ * Setting this flag to "true" will return a mock response with "branded carousel"  for each ODB call
+ *
+ * @param testBrandedCarousel - a boolean flag; set to true to activate this test mode, or false to deactivate test mode.
+ */
++ (void)testBrandedCarousel:(BOOL)testBrandedCarousel;
 
 
 +(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController __deprecated_msg("use openAppInstallRec:inViewController: instead.");
