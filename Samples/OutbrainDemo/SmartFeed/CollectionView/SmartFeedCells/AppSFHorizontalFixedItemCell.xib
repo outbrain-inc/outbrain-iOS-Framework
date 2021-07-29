@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,12 +46,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" text="The Daily Reporter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97O-YX-tW6">
-                                <rect key="frame" x="5" y="264" width="292" height="14"/>
+                                <rect key="frame" x="5" y="264.5" width="292" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.57647058823529407" green="0.56470588235294117" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="EZ3-tA-2YS"/>
                         <constraints>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="leading" secondItem="vW4-J8-7zV" secondAttribute="leading" constant="-5" id="0I6-LN-7u5"/>
                             <constraint firstItem="97O-YX-tW6" firstAttribute="top" secondItem="vW4-J8-7zV" secondAttribute="bottom" constant="4" id="39R-oV-nMx"/>
@@ -72,7 +69,6 @@
                             <constraint firstItem="g77-bX-xEg" firstAttribute="trailing" secondItem="EZ3-tA-2YS" secondAttribute="trailing" id="Xsu-Vi-cEZ"/>
                             <constraint firstItem="EZ3-tA-2YS" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="97O-YX-tW6" secondAttribute="bottom" constant="5" id="mnn-1Q-NFD"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="EZ3-tA-2YS"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="KY3-PX-TbX"/>
@@ -86,6 +82,7 @@
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="y1L-1q-EwP" secondAttribute="bottom" id="10U-27-i0x"/>
                 <constraint firstAttribute="trailing" secondItem="y1L-1q-EwP" secondAttribute="trailing" id="Eg3-Yc-Kiq"/>
@@ -93,7 +90,6 @@
                 <constraint firstItem="y1L-1q-EwP" firstAttribute="top" secondItem="Gg3-8H-tpC" secondAttribute="top" id="o5k-Kv-iaH"/>
                 <constraint firstItem="g77-bX-xEg" firstAttribute="top" secondItem="vgc-B6-X7U" secondAttribute="top" id="vbp-N0-ZZp"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vgc-B6-X7U"/>
             <size key="customSize" width="302" height="296"/>
             <connections>
                 <outlet property="adChoicesButton" destination="3c5-yh-4Py" id="CaN-mZ-cbY"/>

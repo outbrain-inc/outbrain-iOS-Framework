@@ -229,19 +229,23 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     SFItemType sfItemType = sfItem.itemType;
     CGFloat screenWidth = self.tableView.frame.size.width;
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    const BOOL isLandscape = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
+    const BOOL isTablet = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
     
     if (sfItemType == SFTypeGridThreeInRowNoTitle || sfItemType == SFTypeGridThreeInRowWithTitle) {
         CGFloat EXTRA_FOR_HEADER = (sfItemType == SFTypeGridThreeInRowWithTitle) ? 60 : 0;
         return EXTRA_FOR_HEADER + 280.0;
     }
     else if (sfItemType == SFTypeGridTwoInRowNoTitle ||
-             sfItemType == SFTypeCarouselWithTitle ||
              sfItemType == SFTypeCarouselNoTitle ||
              sfItemType == SFTypeGridTwoInRowWithVideo) {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : kTableViewRowHeight;
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 220.0;
     }
     else if (sfItemType == SFTypeBrandedCarouselWithTitle || sfItemType == SFTypeStripAppInstall) {
         return MAX(screenHeight*0.62, 450);
+    }
+    else if (sfItemType == SFTypeCarouselWithTitle) {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 300.0; 
     }
     else if (sfItemType == SFTypeWeeklyHighlightsWithTitle) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -253,13 +257,22 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
              sfItemType == SFTypeStripVideoWithPaidRecAndTitle ||
              sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 450.0 : 290.0;
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 260.0;
     }
     else if (sfItemType == SFTypeStripWithTitle || sfItemType == SFTypeStripVideoWithPaidRecAndTitle) {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 280.0;
+        if (isTablet && isLandscape) {
+            return screenWidth*0.5 + 40.0;
+        }
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 350.0;
+    }
+    else if (sfItemType == SFTypeStripNoTitle) {
+        if (isTablet && isLandscape) {
+            return screenWidth*0.5;
+        }
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 305.0;
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0;
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 110.0;
     }
     else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
         return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 210.0 : 150.0;
@@ -304,6 +317,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     }
     
     OBRecommendation *rec = sfItem.singleRec;
+    
     
     // If rec title is RTL we will set the source text alignment to be the same, otherwise it will look weird in the UI.
     NSTextAlignment textAlignment = [SFUtils isRTL:rec.content] ? NSTextAlignmentRight : NSTextAlignmentLeft;
@@ -367,7 +381,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
             singleCell.cellTitleLabel.text = @"Around the web";
         }
         if (!sfItem.isCustomUI) {
-            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] titleColor];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 singleCell.cellTitleLabel.font = [singleCell.cellTitleLabel.font fontWithSize: 22.0];
             }
@@ -378,7 +392,6 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
         singleCell.cellTitleLabel.textColor = [SFUtils sharedInstance].darkMode ? UIColor.whiteColor : [SFUtils colorFromHexString:@"#717075"];
         singleCell.recTitleLabel.textColor =  [SFUtils sharedInstance].darkMode ? UIColor.whiteColor : [SFUtils colorFromHexString:@"#717075"];
         
-        [SFUtils addDropShadowToView: singleCell.cardContentView]; // shadow
         [[SFImageLoader sharedInstance] loadImageUrl:sfItem.odbSettings.brandedCarouselSettings.image.url into:singleCell.cellBrandLogoImageView]; // top right image
         
         if (singleCell.brandedCtaButtonLabel) {
@@ -391,17 +404,17 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
             singleCell.cellBrandLogoImageView.layer.cornerRadius = 8.0;
         }
     }
-    if (!self.disableCellShadows) {
-        if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
-            [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
-        }
-        else {
-            [SFUtils addDropShadowToView: singleCell];
-        }
-    }
     
     if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripNoTitle) {
         [self configureCtaLabelInCell:singleCell withCtaText:rec.ctaText isCustomUI:sfItem.isCustomUI shouldShowCtaButton:sfItem.odbSettings.shouldShowCtaButton];
+    }
+    
+    if (sfItem.itemType == SFTypeStripNoTitle || sfItem.itemType == SFTypeStripWithThumbnailNoTitle) {
+        // remove bottom border for the last card
+        UIView *seperatorView = [cell.contentView viewWithTag:4444];
+        if (seperatorView) {
+            seperatorView.alpha = sfItem.isLastInWidget ? 0.0 : 1.0;
+        }
     }
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.eventListenerTarget  action:@selector(recommendationClicked:)];
@@ -458,8 +471,7 @@ NSString * const kTableViewHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHo
     // Set CTA view constraints
     [[singleCell.recTitleLabel trailingAnchor] constraintEqualToAnchor:[ctaLabelView leadingAnchor] constant:-12].active = YES;
     [[ctaLabelView widthAnchor] constraintEqualToConstant:ctaLabelView.intrinsicContentSize.width + 12].active = YES;
-    NSInteger trailingConstant = 8;
-    [[singleCell trailingAnchor] constraintEqualToAnchor:[ctaLabelView trailingAnchor] constant:trailingConstant].active = YES;
+    [[singleCell.cardContentView trailingAnchor] constraintEqualToAnchor:[ctaLabelView trailingAnchor] constant:0].active = YES;
     [[ctaLabelView heightAnchor] constraintEqualToConstant:25].active = YES;
     [[ctaLabelView topAnchor] constraintEqualToAnchor:[singleCell.recTitleLabel topAnchor] constant:3].active = YES;
     

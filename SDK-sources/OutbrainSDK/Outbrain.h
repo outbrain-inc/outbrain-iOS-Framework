@@ -196,6 +196,15 @@ extern NSString * _Nonnull const OB_AD_NETWORK_ID;
  */
 + (void)testAppInstall:(BOOL)testAppInstall;
 
+/**
+ * @brief Simulate branded carousel recommendation
+ *
+ * Setting this flag to "true" will return a mock response with "branded carousel"  for each ODB call
+ *
+ * @param testBrandedCarousel - a boolean flag; set to true to activate this test mode, or false to deactivate test mode.
+ */
++ (void)testBrandedCarousel:(BOOL)testBrandedCarousel;
+
 
 +(void) openAppInstallRec:(OBRecommendation * _Nonnull)rec inNavController:(UINavigationController * _Nonnull)navController __deprecated_msg("use openAppInstallRec:inViewController: instead.");
 

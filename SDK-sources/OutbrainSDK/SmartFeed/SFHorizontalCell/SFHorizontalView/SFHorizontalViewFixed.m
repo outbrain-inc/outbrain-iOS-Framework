@@ -21,7 +21,7 @@ const CGFloat kDefaultMinimumLineSpacing = 10.0;
     CGFloat itemsInLine = self.sfItem.outbrainRecs.count;
     const CGFloat itemWidth = (self.collectionView.frame.size.width - kInsetMargin*itemsInLine - kDefaultMinimumLineSpacing*(itemsInLine-1))*(1/itemsInLine);
     
-    const CGFloat itemHeight = self.collectionView.frame.size.height-10.0;
+    const CGFloat itemHeight = self.collectionView.frame.size.height;
     self.itemSize = CGSizeMake(itemWidth, itemHeight);
     self.collectionView.scrollEnabled = NO;
 }

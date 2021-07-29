@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,34 +16,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="441" height="345"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-Ub-Sgo">
-                        <rect key="frame" x="0.0" y="45" width="441" height="2"/>
-                        <color key="backgroundColor" red="0.1450980392" green="0.1529411765" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="LAST WEEK HIGHLIGHTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ced-iI-vjB">
+                        <rect key="frame" x="20" y="15" width="210.5" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                        <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-Ub-Sgo" userLabel="BorderLine">
+                        <rect key="frame" x="20" y="40.5" width="401" height="2"/>
+                        <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="2" id="RdE-H9-VC9"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbd-fo-b3d" customClass="SFHorizontalViewWeeklyHighlights">
-                        <rect key="frame" x="0.0" y="47" width="441" height="298"/>
+                        <rect key="frame" x="0.0" y="57.5" width="441" height="287.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST WEEK HIGHLIGHTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ced-iI-vjB">
-                        <rect key="frame" x="14" y="15" width="168" height="17"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                        <color key="textColor" red="0.93725490196078431" green="0.50980392156862742" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="fwD-Ub-Sgo" firstAttribute="leading" secondItem="IPW-7e-9wK" secondAttribute="leading" id="8l0-hd-wXg"/>
-                    <constraint firstAttribute="trailing" secondItem="fwD-Ub-Sgo" secondAttribute="trailing" id="G3r-lP-s7E"/>
+                    <constraint firstItem="fwD-Ub-Sgo" firstAttribute="leading" secondItem="IPW-7e-9wK" secondAttribute="leading" constant="20" id="8l0-hd-wXg"/>
+                    <constraint firstAttribute="trailing" secondItem="fwD-Ub-Sgo" secondAttribute="trailing" constant="20" id="G3r-lP-s7E"/>
                     <constraint firstItem="ced-iI-vjB" firstAttribute="top" secondItem="IPW-7e-9wK" secondAttribute="top" constant="15" id="O8e-UD-7g5"/>
-                    <constraint firstItem="Lbd-fo-b3d" firstAttribute="top" secondItem="fwD-Ub-Sgo" secondAttribute="bottom" id="QbQ-xP-13y"/>
+                    <constraint firstItem="fwD-Ub-Sgo" firstAttribute="top" secondItem="ced-iI-vjB" secondAttribute="bottom" constant="4" id="TwQ-eL-a6U"/>
                     <constraint firstAttribute="bottom" secondItem="Lbd-fo-b3d" secondAttribute="bottom" id="aWu-Aj-SfE"/>
                     <constraint firstItem="Lbd-fo-b3d" firstAttribute="leading" secondItem="IPW-7e-9wK" secondAttribute="leading" id="bhv-RC-sf9"/>
-                    <constraint firstItem="Lbd-fo-b3d" firstAttribute="top" secondItem="ced-iI-vjB" secondAttribute="bottom" constant="15" id="fLD-pH-yWL"/>
+                    <constraint firstItem="Lbd-fo-b3d" firstAttribute="top" secondItem="fwD-Ub-Sgo" secondAttribute="bottom" constant="15" id="e2b-si-4Ma"/>
                     <constraint firstAttribute="trailing" secondItem="Lbd-fo-b3d" secondAttribute="trailing" id="t6k-z5-O4X"/>
-                    <constraint firstItem="ced-iI-vjB" firstAttribute="leading" secondItem="IPW-7e-9wK" secondAttribute="leading" constant="14" id="tBG-V6-oGW"/>
+                    <constraint firstItem="ced-iI-vjB" firstAttribute="leading" secondItem="IPW-7e-9wK" secondAttribute="leading" constant="20" id="tBG-V6-oGW"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -188,16 +188,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     }
 }
 
--(void) setDisableCellShadows:(BOOL)disableCellShadows {
-    _disableCellShadows = disableCellShadows;
-    if (self.sfCollectionViewManager) {
-        self.sfCollectionViewManager.disableCellShadows = disableCellShadows;
-    }
-    if (self.sfTableViewManager) {
-        self.sfTableViewManager.disableCellShadows = disableCellShadows;
-    }
-}
-
 -(void) setDarkMode:(BOOL)darkMode {
     _darkMode = darkMode;
     [[SFUtils sharedInstance] setDarkMode:darkMode];
@@ -757,9 +747,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) {
             [self configureBrandedCarouselCell:cell atIndexPath:indexPath];
         }
-        if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle)) {
-            [SFUtils addDropShadowToView: cell];
-        }
     }
     else if ([cell isKindOfClass:[SFVideoTableViewCell class]] ||
              sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle ||
@@ -868,16 +855,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     if (cellTitleLabel) {
         // text
-        if (sfItem.widgetTitle) {
+        if (sfItem.widgetTitle && sfItem.widgetTitle.length > 1) {
             cellTitleLabel.text = sfItem.widgetTitle;
         }
         else if (sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
             // fallback
             cellTitleLabel.text = @"Around the web";
         }
-        // text color
-        if (sfItem.widgetTitleTextColor && sfItem.itemType == SFTypeWeeklyHighlightsWithTitle) {
-            cellTitleLabel.textColor = sfItem.widgetTitleTextColor;
+        // text color for Weekly Highlights
+        if (sfItem.itemType == SFTypeWeeklyHighlightsWithTitle) {
+            cellTitleLabel.textColor = sfItem.widgetTitleTextColor ? sfItem.widgetTitleTextColor : [[SFUtils sharedInstance] titleColor];;
         }
     }
     
@@ -901,7 +888,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     horizontalView.sfItem = sfItem;
     horizontalView.shadowColor = sfItem.shadowColor;
     horizontalView.displaySourceOnOrganicRec = self.displaySourceOnOrganicRec;
-    horizontalView.disableCellShadows = self.disableCellShadows;
     
     [horizontalView setupView];
     [horizontalView setOnRecommendationClick:^(OBRecommendation *rec) {
@@ -932,7 +918,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [horizontalView.collectionView reloadData];
         
         if (!sfItem.isCustomUI && cellTitleLabel && sfItem.itemType != SFTypeWeeklyHighlightsWithTitle) {
-            cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            cellTitleLabel.textColor = [[SFUtils sharedInstance] titleColor];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 cellTitleLabel.font = [cellTitleLabel.font fontWithSize:22.0];
             }
@@ -1067,7 +1053,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         }
         if (indexPath.row == smartfeedHeaderCellIndex) {
             // Smartfeed header
-            return CGSizeMake(collectionView.frame.size.width, 35);
+            return CGSizeMake(collectionView.frame.size.width, 70);
         }
         SFItemData *sfItem = [self itemForIndexPath:indexPath];
         return [self.sfCollectionViewManager collectionView:collectionView sizeForItemAtIndexPath:indexPath sfItem:sfItem];
@@ -1131,9 +1117,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) {
             [self configureBrandedCarouselCell:cell atIndexPath:indexPath];
         }
-        if (!self.disableCellShadows && (sfItem.itemType == SFTypeCarouselWithTitle || sfItem.itemType == SFTypeCarouselNoTitle || sfItem.itemType == SFTypeBrandedCarouselWithTitle)) {
-            [SFUtils addDropShadowToView: cell]; // add shadow
-        }
     }
     else if ([cell isKindOfClass:[SFVideoCollectionViewCell class]] ||
              sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle ||
@@ -1153,7 +1136,11 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 - (SFItemData *) itemForIndexPath:(NSIndexPath *)indexPath {
     return self.smartFeedItemsArray[indexPath.row - (self.isReadMoreModuleEnabled ? 2 : 1)];
 }
-    
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0.0;
+}
+
 - (void) configureHorizontalCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SFHorizontalCollectionViewCell *horizontalCell = (SFHorizontalCollectionViewCell *)cell;
     SFItemData *sfItem = [self itemForIndexPath:indexPath];

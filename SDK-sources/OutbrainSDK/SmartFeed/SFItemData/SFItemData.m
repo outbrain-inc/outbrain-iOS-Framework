@@ -28,6 +28,7 @@
 @property (nonatomic, strong) UIColor *shadowColor;
 @property (nonatomic, strong) NSMutableArray *positions;
 @property (nonatomic, copy) NSString *requestId;
+@property (nonatomic, assign) BOOL isLastInWidget; // applies for single rec only
 @end
 
 @implementation SFItemData
@@ -49,6 +50,7 @@ NSInteger kVideoFinishedStatus = 1114;
         if (self.itemType == SFTypeStripAppInstall) {
             self.widgetTitle = odbResponse.settings.brandedCarouselSettings.carouselSponsor;
         }
+        self.isLastInWidget = [rec.position intValue] == (odbResponse.recommendations.count - 1);
     }
     return self;
 }

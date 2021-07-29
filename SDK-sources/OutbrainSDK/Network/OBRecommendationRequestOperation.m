@@ -67,10 +67,18 @@
     NSError *error = nil;
     NSDictionary *jsonResponse = nil;
     
-    // Mock App Install response
-    if ([OutbrainManager sharedInstance].testAppInstall) {
+    // Mock response for "App Install" or "Branded Carousel (tests for dev mode only
+    if ([OutbrainManager sharedInstance].testMode &&
+        ([OutbrainManager sharedInstance].testAppInstall || [OutbrainManager sharedInstance].testBrandedCarousel)) {
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-        NSString *path = [bundle pathForResource:@"app_install_response" ofType:@"json"];
+        NSString *path = nil;
+        if ([OutbrainManager sharedInstance].testAppInstall) {
+            path = [bundle pathForResource:@"app_install_response" ofType:@"json"];
+        }
+        else {
+            path = [bundle pathForResource:@"branded_carousel_response" ofType:@"json"];
+        }
+        
         responseData = [NSData dataWithContentsOfFile:path];
     }
     

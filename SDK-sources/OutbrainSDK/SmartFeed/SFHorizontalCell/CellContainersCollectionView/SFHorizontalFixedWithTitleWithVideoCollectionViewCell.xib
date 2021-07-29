@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,13 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="461" height="251"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVo-54-bOr" userLabel="Horizontal View" customClass="SFHorizontalViewFixed">
-                                <rect key="frame" x="0.0" y="39.5" width="461" height="206.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="461" height="201.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Around Sky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7t-Vm-6s5">
-                                <rect key="frame" x="14" y="8" width="73" height="16.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="14" y="8" width="95.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -45,13 +43,13 @@
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="Jv7-Qn-bdH"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="c8g-0S-9Eu" secondAttribute="bottom" id="L1h-2V-StY"/>
                 <constraint firstAttribute="trailing" secondItem="c8g-0S-9Eu" secondAttribute="trailing" id="QLn-3e-smB"/>
                 <constraint firstItem="c8g-0S-9Eu" firstAttribute="top" secondItem="A4V-uJ-09g" secondAttribute="top" id="dp8-j6-cSu"/>
                 <constraint firstItem="c8g-0S-9Eu" firstAttribute="leading" secondItem="A4V-uJ-09g" secondAttribute="leading" id="g9i-i7-9wD"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="Jv7-Qn-bdH"/>
             <size key="customSize" width="597" height="277"/>
             <connections>
                 <outlet property="cellTitleLeadingConstraint" destination="yK0-UD-UKZ" id="XbK-fX-Dhg"/>

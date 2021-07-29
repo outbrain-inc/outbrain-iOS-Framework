@@ -50,6 +50,7 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 
 +(SFUtils *) sharedInstance;
 -(UIColor *) primaryBackgroundColor;
+-(UIColor *) titleColor;
 -(UIColor *) titleColor:(BOOL) isPaid;
 -(UIColor *) subtitleColor:(NSString *)abTestSourceFontColor;
 
@@ -60,10 +61,6 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 +(void) addConstraintsToFillParent:(UIView *)view;
 
 +(void) addConstraintsToFillParentWithHorizontalMargin:(UIView *)view;
-
-+(void) addDropShadowToView:(UIView *)view;
-
-+(void) addDropShadowToView:(UIView *)view shadowColor:(UIColor *)shadowColor;
 
 + (UIColor *)colorFromHexString:(NSString *)hexString;
 

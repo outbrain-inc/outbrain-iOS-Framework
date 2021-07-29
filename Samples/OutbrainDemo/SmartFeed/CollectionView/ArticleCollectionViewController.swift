@@ -309,6 +309,13 @@ extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {
         }
         return CGSize(width: width, height: 200.0)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if section == self.smartFeedManager.outbrainSectionIndex {
+            return self.smartFeedManager.collectionView(collectionView, layout: collectionViewLayout, minimumLineSpacingForSectionAt: section)
+        }
+        return 5.0
+    }
 }
 
 

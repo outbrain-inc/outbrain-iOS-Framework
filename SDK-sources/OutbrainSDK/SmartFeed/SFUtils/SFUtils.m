@@ -42,23 +42,27 @@ static SFUtils *sharedSingleton;
     }
 }
 
+-(UIColor *) titleColor {
+    return [self titleColor:NO];
+}
+
 -(UIColor *) titleColor:(BOOL) isPaid {
     if (self.darkMode) {
         return UIColor.whiteColor;
     }
     else {
-        return UIColorFromRGB(0x171717);
+        return UIColorFromRGB(0x282828);
     }
 }
 
 -(UIColor *) subtitleColor:(NSString *)abTestSourceFontColor {
     if (self.darkMode) {
-        return UIColorFromRGB(0xA4A3A8);
+        return [UIColor.whiteColor colorWithAlphaComponent:0.75];
     }
     else {
         return abTestSourceFontColor ?
             [SFUtils colorFromHexString: abTestSourceFontColor] :
-            UIColorFromRGB(0x93908);
+            UIColorFromRGB(0x707070);
     }
 }
 
@@ -131,25 +135,6 @@ static BOOL skipRTL;
                                       multiplier:1
                                       constant:constant];
     [baseView addConstraint:constraint];
-}
-
-+(void) addDropShadowToView:(UIView *)view {
-    [self addDropShadowToView:view shadowColor:nil];
-}
-
-+(void) addDropShadowToView:(UIView *)view shadowColor:(UIColor *)shadowColor {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        view.layer.cornerRadius = 4.0f;
-        view.layer.borderWidth = 1.0f;
-        view.layer.borderColor = [UIColor clearColor].CGColor;
-
-        view.layer.shadowColor = shadowColor != nil ? shadowColor.CGColor : [[UIColor lightGrayColor] CGColor];
-        view.layer.shadowOffset = CGSizeMake(0, 2.0f);
-        view.layer.shadowRadius = 2.0f;
-        view.layer.shadowOpacity = 1.0f;
-        view.layer.masksToBounds = NO;
-        view.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds cornerRadius:view.layer.cornerRadius].CGPath;
-    });
 }
 
 + (void) removePaidLabelFromImageView:(UIImageView *)recImageView {
@@ -348,27 +333,35 @@ static BOOL skipRTL;
 }
 
 +(void) setFontSizeForTitleLabel:(UILabel *)titleLabel andSourceLabel:(UILabel *)sourceLabel withAbTestSettings:(OBSettings *)settings {
-    
+    BOOL useSmallerFontSize = [@[@"sdk_sfd_2_columns", @"sdk_sfd_3_columns", @"sdk_sfd_thumbnails"] containsObject:settings.recMode]; // According to Zeplin
+        
+    CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 19.0 : 18.0;
+    if (useSmallerFontSize) {
+        defaultSize = 16.0; // according to Zeplin
+    }
+    CGFloat titleFontSize = defaultSize;
     // AB test abTitleFontSize
     if (settings.abTitleFontSize > 12 && settings.abTitleFontSize < 20) {
-        titleLabel.font = [titleLabel.font fontWithSize:settings.abTitleFontSize];
-    }
-    else {
-        CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 19.0 : 16.0;
-        titleLabel.font = [titleLabel.font fontWithSize: defaultSize];
+        titleFontSize = settings.abTitleFontSize;
     }
     
     // AB test abTitleFontStyle
-    UIFontDescriptor *fontD = [titleLabel.font.fontDescriptor
-                                fontDescriptorWithSymbolicTraits:settings.abTitleFontStyle == AB_TEST_FONT_STYLE_BOLD ? UIFontDescriptorTraitBold : !UIFontDescriptorTraitBold];
-    titleLabel.font = [UIFont fontWithDescriptor:fontD size:0];
+    BOOL isBold = settings.abTitleFontStyle == AB_TEST_FONT_STYLE_BOLD || settings.abTitleFontStyle == -1;
+    if (isBold) {
+        titleLabel.font = [UIFont systemFontOfSize:titleFontSize weight:UIFontWeightSemibold];
+    }
+    else {
+        UIFontDescriptor *fontD = [titleLabel.font.fontDescriptor fontDescriptorWithSymbolicTraits: !UIFontDescriptorTraitBold];
+        titleLabel.font = [UIFont fontWithDescriptor:fontD size: titleFontSize];
+    }
+    
     
     // AB test abSourceFontSize
     if (settings.abSourceFontSize >= 10 && settings.abSourceFontSize < 16) {
         sourceLabel.font = [sourceLabel.font fontWithSize:settings.abSourceFontSize];
     }
     else {
-        CGFloat defaultSize = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 15.0 : 12.0;
+        CGFloat defaultSize = useSmallerFontSize ? 12.0 : 14.0;
         sourceLabel.font = [sourceLabel.font fontWithSize: defaultSize]; 
     }
 }

@@ -224,21 +224,25 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     // iPhone 11 pro - 812
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     SFItemType sfItemType = sfItem.itemType;
+    const BOOL isLandscape = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
+    const BOOL isTablet = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
     
     CGFloat screenWidth = collectionView.frame.size.width;
     if (sfItemType == SFTypeGridTwoInRowNoTitle ||
-        sfItemType == SFTypeCarouselWithTitle ||
         sfItemType == SFTypeCarouselNoTitle ||
         sfItemType == SFTypeGridTwoInRowWithVideo) {
-        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 250.0);
+        return CGSizeMake(screenWidth-20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 380.0 : 210.0);
+    }
+    else if (sfItemType == SFTypeCarouselWithTitle) {
+        return CGSizeMake(screenWidth-20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 300.0);
     }
     else if (sfItemType == SFTypeGridThreeInRowNoTitle || sfItemType == SFTypeGridThreeInRowWithTitle) {
         CGFloat EXTRA_FOR_HEADER = (sfItemType == SFTypeGridThreeInRowWithTitle) ? 60 : 0;
-        return CGSizeMake(screenWidth, EXTRA_FOR_HEADER + (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 320.0 : 280.0));
+        return CGSizeMake(screenWidth-20.0, EXTRA_FOR_HEADER + (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 320.0 : 280.0));
     }
     else if (sfItemType == SFTypeGridTwoInRowWithTitle ||
              sfItemType == SFTypeGridTwoInRowWithTitleWithVideo) {
-        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 285.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 440.0 : 250.0);
     }
     else if (sfItemType == SFTypeBrandedCarouselWithTitle || sfItemType == SFTypeStripAppInstall) {
         CGFloat brandedCarouselHeight = MAX(screenHeight*0.62, 450);
@@ -246,22 +250,25 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     }
     else if (sfItemType == SFTypeWeeklyHighlightsWithTitle) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            return CGSizeMake(screenWidth, screenWidth * 0.86);
+            return isLandscape ? CGSizeMake(screenWidth, screenWidth * 0.6) : CGSizeMake(screenWidth, screenWidth * 0.9);
         } else {
             return CGSizeMake(screenWidth, screenWidth * 1.35);
         }
     }
     else if ((sfItemType == SFTypeStripWithTitle) || (sfItemType == SFTypeStripVideoWithPaidRecAndTitle)) {
-        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 280.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 2*(screenWidth/3) : 360.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailNoTitle) {
-        return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 120.0);
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 180.0 : 114.0);
     }
     else if (sfItemType == SFTypeStripWithThumbnailWithTitle) {
-        return CGSizeMake(screenWidth, 150.0);
+        return CGSizeMake(screenWidth, 155.0);
     }
     else if (sfItemType == SFTypeStripVideo) {
         return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350.0 : 250.0);
+    }
+    else if (sfItemType == SFTypeStripNoTitle) {
+        return CGSizeMake(screenWidth, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 310.0);
     }
     
     return CGSizeMake(screenWidth - 20.0, UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 1.8*(screenWidth/3) : 250.0);
@@ -319,7 +326,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         singleCell.cardContentView.tag = cellTag;
     }
     
-    [SFCollectionViewManager configureSingleCell:cell withSFItem:sfItem eventListenerTarget:self.eventListenerTarget cellTag:cellTag tapGestureDelegate:self displaySourceOnOrganicRec:self.displaySourceOnOrganicRec disableCellShadows:self.disableCellShadows];
+    [SFCollectionViewManager configureSingleCell:cell withSFItem:sfItem eventListenerTarget:self.eventListenerTarget cellTag:cellTag tapGestureDelegate:self displaySourceOnOrganicRec:self.displaySourceOnOrganicRec];
 }
 
 + (void) configureSingleCell:(UICollectionViewCell *)cell
@@ -334,8 +341,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
           eventListenerTarget:eventListenerTarget
                       cellTag:cellTag
            tapGestureDelegate:tapGestureDelegate
-    displaySourceOnOrganicRec:NO
-     disableCellShadows:NO];
+    displaySourceOnOrganicRec:NO];
 }
 
 + (void) configureSingleCell:(UICollectionViewCell *)cell
@@ -344,7 +350,6 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
                      cellTag:(NSInteger)cellTag
           tapGestureDelegate:(id<UIGestureRecognizerDelegate>)tapGestureDelegate
    displaySourceOnOrganicRec:(BOOL)displaySourceOnOrganicRec
-          disableCellShadows:(BOOL)disableCellShadows
 {
     SFCollectionViewCell *singleCell = (SFCollectionViewCell *)cell;
     
@@ -352,7 +357,6 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         singleCell.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
         singleCell.cardContentView.backgroundColor = [[SFUtils sharedInstance] primaryBackgroundColor];
     }
-    
     
     OBRecommendation *rec = sfItem.singleRec;
     
@@ -418,15 +422,6 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         sfItem.itemType == SFTypeStripWithThumbnailWithTitle ||
         sfItem.itemType == SFTypeStripVideoWithPaidRecAndTitle)
     {
-        if (!disableCellShadows) {
-            if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
-                [SFUtils addDropShadowToView: singleCell.cardContentView shadowColor:sfItem.shadowColor];
-            }
-            else {
-                [SFUtils addDropShadowToView: singleCell.cardContentView];
-            }
-        }
-        
         if (sfItem.widgetTitle) {
             singleCell.cellTitleLabel.text = sfItem.widgetTitle;
         }
@@ -436,7 +431,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         }
         
         if (!sfItem.isCustomUI) {
-            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] subtitleColor:nil];
+            singleCell.cellTitleLabel.textColor = [[SFUtils sharedInstance] titleColor];
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
                 singleCell.cellTitleLabel.font = [singleCell.cellTitleLabel.font fontWithSize:22.0];
             }
@@ -452,7 +447,6 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
         singleCell.cellTitleLabel.textColor = [SFUtils sharedInstance].darkMode ? UIColor.whiteColor : [SFUtils colorFromHexString:@"#717075"];
         singleCell.recTitleLabel.textColor = [SFUtils sharedInstance].darkMode ? UIColor.whiteColor : [SFUtils colorFromHexString:@"#717075"];
         
-        [SFUtils addDropShadowToView: singleCell.cardContentView]; // shadow
         [singleCell.contentView addGestureRecognizer:tapGesture]; // tap handler
         [[SFImageLoader sharedInstance] loadImageUrl:sfItem.odbSettings.brandedCarouselSettings.image.url into:singleCell.cellBrandLogoImageView]; // top right image
         
@@ -466,21 +460,20 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
             singleCell.cellBrandLogoImageView.layer.cornerRadius = 8.0;
         }
     }
-    else {
-        if (!disableCellShadows) {
-            if ([rec isPaidLink] && (sfItem.shadowColor != nil)) {
-                [SFUtils addDropShadowToView: singleCell shadowColor:sfItem.shadowColor];
-            }
-            else {
-                [SFUtils addDropShadowToView: singleCell];
-            }
-        }
-        
+    else {        
         [singleCell.contentView addGestureRecognizer:tapGesture];
     }
     
     if (sfItem.itemType == SFTypeStripWithTitle || sfItem.itemType == SFTypeStripNoTitle) {
         [self configureCtaLabelInCell:singleCell withCtaText:rec.ctaText isRecWithTitle:sfItem.itemType == SFTypeStripWithTitle isCustomUI:sfItem.isCustomUI shouldShowCtaButton:sfItem.odbSettings.shouldShowCtaButton];
+    }
+    
+    if (sfItem.itemType == SFTypeStripNoTitle || sfItem.itemType == SFTypeStripWithThumbnailNoTitle) {
+        // remove bottom border for the last card
+        UIView *seperatorView = [cell.contentView viewWithTag:4444];
+        if (seperatorView) {
+            seperatorView.alpha = sfItem.isLastInWidget ? 0.0 : 1.0;
+        }
     }
 }
 
@@ -551,8 +544,7 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     // Set CTA view constraints
     [[singleCell.recTitleLabel trailingAnchor] constraintEqualToAnchor:[ctaLabelView leadingAnchor] constant:-12].active = YES;
     [[ctaLabelView widthAnchor] constraintEqualToConstant:ctaLabelView.intrinsicContentSize.width + 12].active = YES;
-    NSInteger trailingConstant = withTitle ? 16 : 8;
-    [[singleCell trailingAnchor] constraintEqualToAnchor:[ctaLabelView trailingAnchor] constant:trailingConstant].active = YES;
+    [[singleCell.cardContentView trailingAnchor] constraintEqualToAnchor:[ctaLabelView trailingAnchor] constant:0].active = YES;
     [[ctaLabelView heightAnchor] constraintEqualToConstant:25].active = YES;
     [[ctaLabelView topAnchor] constraintEqualToAnchor:[singleCell.recTitleLabel topAnchor] constant:0].active = YES;
     
