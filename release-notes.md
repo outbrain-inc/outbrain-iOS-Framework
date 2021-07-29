@@ -1,6 +1,16 @@
 # Release Notes
 
 
+## v4.6.0 - July 29, 2021
+
+- SFWebView - SDK now contains solution for "Smartfeed on WKWebView" - see https://developer.outbrain.com/ios-sfwidget-guideline/
+- Improvement - Smartfeed default UI has changes significantly - now it is similar to Outbrain latest version on Mobile Web.
+- Improvement - support for Viewablity per listing for regular widget.
+- Internal - adjust current implementation for "widget viewability" in Smartfeed according to new VPL impl.
+- Bug fix - ODB param `api_user_id` was sent with null value. 
+- Internal - verify that `minimumLineSpacing` is implemented correctly by the publisher code
+
+
 ## v4.5.1 - June 7, 2021
 
 - Fix - custom UI for header didn't work as expected (SDK override the font size and color).
