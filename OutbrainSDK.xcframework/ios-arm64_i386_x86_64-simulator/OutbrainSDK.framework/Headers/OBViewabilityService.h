@@ -27,6 +27,8 @@
 
 - (int) viewabilityThresholdMilliseconds;
 
+-(NSDate *) initializationTimeForReqId:(NSString *)reqId;
+
 extern NSString * const kViewabilityEnabledKey;
 extern NSString * const kViewabilityThresholdKey;
 

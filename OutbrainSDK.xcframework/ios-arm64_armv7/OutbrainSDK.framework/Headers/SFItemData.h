@@ -46,6 +46,7 @@ extern NSInteger kVideoFinishedStatus;
 @property (nonatomic, assign) BOOL isCustomUI;
 @property (nonatomic, strong, readonly) NSMutableArray *positions;
 @property (nonatomic, copy, readonly) NSString *requestId;
+@property (nonatomic, assign, readonly) BOOL isLastInWidget; // applies for single rec only
 
 +(NSString *) itemTypeString:(SFItemType) type;
 

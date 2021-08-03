@@ -39,6 +39,5 @@ typedef void(^OnBrandedCarouselEndScroll)(NSInteger centerItemIdx);
 @property (nonatomic, assign) BOOL didInitCollectionViewLayout;
 @property (nonatomic, assign) CGSize itemSize;
 @property (nonatomic) BOOL displaySourceOnOrganicRec;
-@property (nonatomic) BOOL disableCellShadows;
 
 @end

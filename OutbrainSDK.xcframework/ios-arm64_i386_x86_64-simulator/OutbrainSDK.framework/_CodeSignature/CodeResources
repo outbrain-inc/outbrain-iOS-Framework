@@ -6,15 +6,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		AkMUu8kG+urcXKUnuU7VltAA5bk=
+		M9W+t+5L+PHGhK1U2bH1Ps9Zrfs=
 		</data>
 		<key>Headers/OBBrandedCarouselSettings.h</key>
 		<data>
 		/AsObrQym85i6fTkyjDKsbyiUMc=
-		</data>
-		<key>Headers/OBBridge.h</key>
-		<data>
-		QrbxpzG5VZZD7D8lApJfK4b1Lfw=
 		</data>
 		<key>Headers/OBContent.h</key>
 		<data>
@@ -42,7 +38,7 @@
 		</data>
 		<key>Headers/OBRecommendation.h</key>
 		<data>
-		yDLouiRYO0BJgj2hDOBH5kI1xO8=
+		PkvKuum6SwB+tvq8g++AU9HeYBE=
 		</data>
 		<key>Headers/OBRecommendationResponse.h</key>
 		<data>
@@ -82,15 +78,15 @@
 		</data>
 		<key>Headers/OBViewabilityService.h</key>
 		<data>
-		anbU3ks3AyY7PMNSsj1FER977po=
+		lURVq/bShWmNuTlE1nRjFXcQroI=
 		</data>
 		<key>Headers/Outbrain.h</key>
 		<data>
-		enqRMx1qbw/lyHeYNgOIEewUIsg=
+		w/DQ3RMD1RRlU787Saf4hYxK+Sg=
 		</data>
 		<key>Headers/OutbrainSDK.h</key>
 		<data>
-		6JATXwquudReDNOUF9+FrxTqJAA=
+		OPJFbH5ABnVkB4jtI0NRu4+tlaY=
 		</data>
 		<key>Headers/SFCollectionViewCell.h</key>
 		<data>
@@ -114,11 +110,11 @@
 		</data>
 		<key>Headers/SFHorizontalView.h</key>
 		<data>
-		CY4GsYx2TfoEx33aBv9ld4RXDRA=
+		0fUBt8ynZy8syKLE1sCVRIxY9L8=
 		</data>
 		<key>Headers/SFItemData.h</key>
 		<data>
-		ugEMPaqdNw4YZ0w/87YDNv2dqVk=
+		0+0JGWmU6TRb0xLkxuYH/vcjlu8=
 		</data>
 		<key>Headers/SFTableViewCell.h</key>
 		<data>
@@ -132,13 +128,25 @@
 		<data>
 		5NeJmUbhxvoXYoCmplxKk9UjuVU=
 		</data>
+		<key>Headers/SFWidget.h</key>
+		<data>
+		EipoMpXoTxy33cpWsj4zh4BvTuY=
+		</data>
+		<key>Headers/SFWidgetCollectionCell.h</key>
+		<data>
+		oNg8KVVTurZU6zTk/egZnJv9Wp0=
+		</data>
+		<key>Headers/SFWidgetTableCell.h</key>
+		<data>
+		wlRl3F10Z6SliJjTQ1TTr9++kYM=
+		</data>
 		<key>Headers/SmartFeedManager.h</key>
 		<data>
-		lBDPHAZZdbuIjsCdtrkCuRMm0Dc=
+		xcyroA18NqOkVpHrrtEYrCt9ZU0=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ZxtbeSwXEN50PxuOo39a5/EYMmM=
+		qsQD6mMYoRVZNnXZ9tBzuaN+JTs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -146,291 +154,299 @@
 		</data>
 		<key>SFBrandedCardItemCell.nib/objects-11.0+.nib</key>
 		<data>
-		s08NU3bxb49dCCPpMW8SsGRBqaQ=
+		WIKtK8+VZbbxUydcmkgEE5z8zCM=
 		</data>
 		<key>SFBrandedCardItemCell.nib/objects-12.3+.nib</key>
 		<data>
-		zxPKTb322kiWa4YzrxXYECATkjQ=
+		j6SH7+CVLsots/XA3/0BL8gLH6k=
 		</data>
 		<key>SFBrandedCardItemCell.nib/runtime.nib</key>
 		<data>
-		wpwi+DRm9vrmYe2AtXOxr3eemXs=
+		e1su5+1v+kEqdxB9u6Ia5nnbaUw=
 		</data>
 		<key>SFBrandedCarouselCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		Ut7L/Zuod0Zk7+Y1ne+UtkHHRRw=
+		AO55d3M2yGDi6gabQimcx9N8sDU=
 		</data>
 		<key>SFBrandedCarouselCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		BQ0Z6BuramWkAzxmMknZoVaXKCw=
+		sa2c/Ae8VqRlDlBccYpkjI6tabU=
 		</data>
 		<key>SFBrandedCarouselTableViewCell.nib</key>
 		<data>
-		kZo1JRc186JXTA6rTPM4bgUR07w=
-		</data>
-		<key>SFCollectionViewCell.nib/objects-11.0+.nib</key>
-		<data>
-		r/g6qbafROgntauvsIpRk7cPaG4=
+		9ofUTKifhT8FQ9nHqtgCJjrN3Vg=
 		</data>
 		<key>SFCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		+Vb8wWQedKoR4j9AHktx4J3s1sY=
+		hb1yUDYLef8duRTy4TvFXQcHjrM=
 		</data>
 		<key>SFCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		JnI8E8l0xlZD7dEMv41446DDeR8=
+		c5snuvzJckt3kHIB9vaukYf72dY=
 		</data>
 		<key>SFCollectionViewHeaderCell.nib/objects-12.3+.nib</key>
 		<data>
-		V7siTzEdNSld1NwdHh+AMfQ8y0Y=
+		3ToTI84JdkPG2vvTMpzmIxvCPZE=
 		</data>
 		<key>SFCollectionViewHeaderCell.nib/runtime.nib</key>
 		<data>
-		JCXHE5spxrsKO/rDOCPxePHZEt8=
+		MWON/Wzie1Gx9/aJHLa2NcT9qcc=
 		</data>
 		<key>SFCollectionViewRTLHeaderCell.nib/objects-12.3+.nib</key>
 		<data>
-		SYwZOlAJ1ZjyTkP4hqBY6LwfI0c=
+		vJ2jo+aIvwqhNMJvjx1HW+YjbUc=
 		</data>
 		<key>SFCollectionViewRTLHeaderCell.nib/runtime.nib</key>
 		<data>
-		wKI2Sxu/aelIhTr+eJW8UVlaw8U=
+		zKrsQ/Jrv4WjDBE/DRcJQQxdIz8=
 		</data>
 		<key>SFCollectionViewReadMoreCell.nib/objects-12.3+.nib</key>
 		<data>
-		pCPiBrQtj9sSfcAJbVZr8i8/kLY=
+		y07ZI6Zdj17NCs/lOa9Ib0/KHI4=
 		</data>
 		<key>SFCollectionViewReadMoreCell.nib/runtime.nib</key>
 		<data>
-		rmeFnJQR5ZpQB9qFmJOONQLaP5s=
+		PnLfy7Buzptk7QGA+7+1PwjrApo=
 		</data>
 		<key>SFHorizontalCarouselNoTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		t2p8p7LZVe74q6O/ss+EZsFlZPc=
+		y2TNZTF0pooiOy8c8zRdJkhoYBI=
 		</data>
 		<key>SFHorizontalCarouselNoTitleCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		FjCawADms85TghqcAszJSHNQQXY=
+		/zf+rZIm0t6kZzEzjs0NyanMh38=
 		</data>
 		<key>SFHorizontalCarouselNoTitleTableViewCell.nib</key>
 		<data>
-		IG5v+JJgjIQsRfjDRbIOhPlJlVg=
+		LyD6LQU/JyWWDvWJ6NpAWDLNlss=
 		</data>
 		<key>SFHorizontalCarouselWithTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		M4xk5DtXxW+4Ift0IjHxTsS/TLI=
+		njQSsfV1B+UqHfwFXohib5Zw6lU=
 		</data>
 		<key>SFHorizontalCarouselWithTitleCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		9BBu0T7ncUKXqbQt6Fu/+nWKmBg=
+		kMXDPli5z/v9RY29B2bYPkESqT4=
 		</data>
 		<key>SFHorizontalCarouselWithTitleTableViewCell.nib</key>
 		<data>
-		4USRYJQC7IMNZlQlH4Ni0usQWEA=
+		04eM9fj49FmAFKzarDpByTlgWNg=
 		</data>
 		<key>SFHorizontalFixedItemCell.nib/objects-11.0+.nib</key>
 		<data>
-		0jQNT3QQBcnKlkpxHUlXtqBaMkQ=
+		a2PEzuUFshaCYKAE8T4Ubv5z+2Y=
 		</data>
 		<key>SFHorizontalFixedItemCell.nib/objects-12.3+.nib</key>
 		<data>
-		IeJw8SvMgo6oVfyw73uOtWUnPcI=
+		U8AGahJzBhWrAZmNedVXVpxRtgU=
 		</data>
 		<key>SFHorizontalFixedItemCell.nib/runtime.nib</key>
 		<data>
-		wu54FfWl2D8IlYeDPci8ZDGxuxI=
+		FVxA8/2DlZ82XmnwtU/xWijabN0=
 		</data>
 		<key>SFHorizontalFixedNoTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		j8y0xJRatvP4lyYl/ctbXwL37iE=
+		YjxZrs+2SbkNq5XYnt89Y18ohTo=
 		</data>
 		<key>SFHorizontalFixedNoTitleCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		5glwRFn5RXr3sIAYUIzsF6vBN68=
+		E36YpUcg/gMC0ogStGWD/vRY9/I=
 		</data>
 		<key>SFHorizontalFixedNoTitleTableViewCell.nib</key>
 		<data>
-		e5Aji9rZufK+zz47/am0hDXHuw0=
+		X2MrAlA73jLZUeWQQ7I/X5hiK4c=
 		</data>
 		<key>SFHorizontalFixedWithTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		IFi7oEpowdK+ojFuVILpBWeWOs4=
+		WZv4E9eYKwGgrjsRmEGtggovyQ4=
 		</data>
 		<key>SFHorizontalFixedWithTitleCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		aTrdo4RChigcj0Fqpn9bXaKa5gw=
+		LCK7hezVV83ANmq6/agAPOe56QE=
 		</data>
 		<key>SFHorizontalFixedWithTitleTableViewCell.nib</key>
 		<data>
-		pUyZ0URSSeIdaJSmZEjMTcTxQq0=
+		Cb17yfHZeVLYVivaRmuNUIG3EOU=
 		</data>
 		<key>SFHorizontalFixedWithTitleWithVideoCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		6m1W+PjSN5ePzilzhgIKTGR9uHI=
+		NGQCZoeHyCguteNVGXxvBkk39IM=
 		</data>
 		<key>SFHorizontalFixedWithTitleWithVideoCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		ilWMGGjeacR2TWT4d+MAdVJyc9E=
+		vDpDdbebdzXAuiLDVRDBAgKUK34=
 		</data>
 		<key>SFHorizontalFixedWithTitleWithVideoTableViewCell.nib</key>
 		<data>
-		RfvcHM4PCq3EpMs+YrLC72EaDgA=
+		g9sDtBM//x2rSf6Du5ypOJ7WbjQ=
 		</data>
 		<key>SFHorizontalFixedWithVideoCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		vACSR8rFjWcMLjBZVPOI3jsFd+U=
+		k6Cb0XVLUVhjG8w6PSDsgjiKT2o=
 		</data>
 		<key>SFHorizontalFixedWithVideoCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		b/n0UHOe+bJlCJr1zXnkDqJM2s0=
+		dpCJEgjFOkkDDXN0H7igGm3/vE4=
 		</data>
 		<key>SFHorizontalFixedWithVideoTableViewCell.nib</key>
 		<data>
-		DeskYFO25xQncn5oWemutYtsufc=
+		76O9z6T3YSGG924gipRpGVIGnnU=
 		</data>
 		<key>SFHorizontalItemCell.nib/objects-11.0+.nib</key>
 		<data>
-		e583FjSnZzNchDhZk3OWBcL3aLQ=
+		jbHiHHTDu6FxlP/N80uGsgWzNVg=
 		</data>
 		<key>SFHorizontalItemCell.nib/objects-12.3+.nib</key>
 		<data>
-		MAz7NHRxixUry1g0SgkZ+TH9L24=
+		LQhNpk7F9LKEj53l4ec4fHIkVWI=
 		</data>
 		<key>SFHorizontalItemCell.nib/runtime.nib</key>
 		<data>
-		lbYqfjqgS1B5y8PA6jAameTi0YQ=
+		Ibh7dp0mVVaVjdAvaNxA2AJJPrQ=
 		</data>
 		<key>SFSingleAppInstallCollectionCell.nib/objects-11.0+.nib</key>
 		<data>
-		yUepHT/7nj0ps7ksLsmMO7cY3H8=
+		zEbOH6jUI3C45D4HZqnAlzReTeg=
 		</data>
 		<key>SFSingleAppInstallCollectionCell.nib/objects-12.3+.nib</key>
 		<data>
-		Q0M65vNOxK+s6VPVZ6Ru3yUMEvg=
+		QuLsrvspwdKV8bCxgTFzqsWdBDI=
 		</data>
 		<key>SFSingleAppInstallCollectionCell.nib/runtime.nib</key>
 		<data>
-		e58+k71IRHNQQjJKzGHGZ9YLhd8=
+		DrZHTSXLAlr4A2BW+wjRUm7RTyg=
 		</data>
 		<key>SFSingleAppInstallTableCell.nib/objects-11.0+.nib</key>
 		<data>
-		aLQBZTy3unxiR6sJuihyOpcEJhw=
+		75Dj50H6VEsUcT2XqK4zylWi0tI=
 		</data>
 		<key>SFSingleAppInstallTableCell.nib/runtime.nib</key>
 		<data>
-		hOEp27iHgkX1Z40MnxKGvP+Nuc8=
+		kw77A1GkMcvgtk3zlcPnronasRo=
 		</data>
 		<key>SFSingleVideoNoTitleCollectionViewCell.nib/objects-11.0+.nib</key>
 		<data>
-		AkBKjx1sPWLNyep9lbEt5nx6t8s=
+		v2JamIQ5o8elKkhcepsJRSMy75c=
 		</data>
 		<key>SFSingleVideoNoTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		sk5IV/wLG5NoDfq4D6dtdGKrovg=
+		u6DPczij/P9w+DVyd3JZOuqicIg=
 		</data>
 		<key>SFSingleVideoNoTitleCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		475v5JJyKOx4qs08UJ1snqnPDvU=
+		9Mp6lLoOqOt3SQxBb0RZmXLS2K4=
 		</data>
 		<key>SFSingleVideoNoTitleTableViewCell.nib</key>
 		<data>
-		qB12id3gryMwATgXc13N+eNWTj4=
+		etPjo3LgBcp1U3Qnbi6w972O2T8=
 		</data>
 		<key>SFSingleVideoWithTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		0u1FUMmUnpQF6GZoCe5ROW/C2CA=
+		iWIov3QRrWKTmjxgtO1seInO63E=
 		</data>
 		<key>SFSingleVideoWithTitleCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		r2F9AJ/3EsMoncSmUcZp9hVB2vA=
+		nhhUm/URwAXh52bNebKtTiprHds=
 		</data>
 		<key>SFSingleVideoWithTitleTableViewCell.nib</key>
 		<data>
-		QpPR/uJI2yJ3zLhmI6Zszb+n8Vo=
+		d3dF2N8C3pm5VUj4h669GkYHkqM=
+		</data>
+		<key>SFSingleWithThumbnailCollectionCell.nib/objects-11.0+.nib</key>
+		<data>
+		GFkRuQG43gZXcvOnTSwlPxbcdjE=
 		</data>
 		<key>SFSingleWithThumbnailCollectionCell.nib/objects-12.3+.nib</key>
 		<data>
-		6acx4BqttaIDkFFvvJ/rkEFDOTA=
+		La1/AFMNoDv5qxLyxDIiflNpPjE=
 		</data>
 		<key>SFSingleWithThumbnailCollectionCell.nib/runtime.nib</key>
 		<data>
-		Ahy+O4ZtEPnnnUNf0j+lQC9803c=
+		S3ANKiGjfmJZ96XhZnhE3WSmaMk=
 		</data>
 		<key>SFSingleWithThumbnailTableCell.nib</key>
 		<data>
-		a07lQDY5GquPmw/6m6HxUHwL+Fs=
+		CkEimds+gsbNnSdrIPZZQyz7VWI=
+		</data>
+		<key>SFSingleWithThumbnailWithTitleCollectionCell.nib/objects-11.0+.nib</key>
+		<data>
+		WkR6aWPQ2NB4tWezby9WKm27Ofs=
 		</data>
 		<key>SFSingleWithThumbnailWithTitleCollectionCell.nib/objects-12.3+.nib</key>
 		<data>
-		y+OysCz3UsLhQZLn7QZOcO3GQys=
+		sQHHvR+EvEKCOUHt01wcmA4f2aQ=
 		</data>
 		<key>SFSingleWithThumbnailWithTitleCollectionCell.nib/runtime.nib</key>
 		<data>
-		1aQjYsuKM7FVLNEHIvw4esHf9nU=
+		CxKg2wGsLtRyaWIemMQKeDZwfQs=
 		</data>
 		<key>SFSingleWithThumbnailWithTitleTableCell.nib</key>
 		<data>
-		LzjnRSS9CQh5pWHNNyXRALz67EE=
+		DGdfgbobn8L2v9rGCO2Lnk0821o=
 		</data>
 		<key>SFSingleWithTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		dnXtTrOT+UOu/KKySp7DjQOe11k=
+		M3ENDoYbvxR0EyH16OjXd/f9zNs=
 		</data>
 		<key>SFSingleWithTitleCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		udXBtpdMkVFWgbAYtI873H901OQ=
+		1hBGrFZ7UiBzPhXgzAMFaEt86fw=
 		</data>
 		<key>SFSingleWithTitleTableViewCell.nib</key>
 		<data>
-		tJ41q1FJ9t0h5ocUgczVy9ZPJMI=
+		fhSgUzgD+jQ+l7hENrSkvc2EGyU=
 		</data>
 		<key>SFTableViewCell.nib</key>
 		<data>
-		8f2AIVqr/iiXczatuoxUkPaINrU=
+		TvNhfkPlR4I/NR6hf7NJtrYHBoA=
 		</data>
 		<key>SFTableViewHeaderCell.nib</key>
 		<data>
-		xfApT6w9v9W4vZClF3I6Jq+REgE=
+		jCXN1lrraNXnelBsNA2uelq9yX8=
 		</data>
 		<key>SFTableViewRTLHeaderCell.nib</key>
 		<data>
-		uUEciiVDqnkVpHHj0WXN4eXFIro=
+		am8c7MTO4pvJUa7VYMJnSBSEepk=
 		</data>
 		<key>SFTableViewReadMoreCell.nib</key>
 		<data>
-		d31HwqFBFHOLhaPfB/oKUHsngnA=
+		fwXixVFOno8N+/3IopPZlJ+XTm0=
 		</data>
 		<key>SFWeeklyHighlightsCollectionViewCell.nib/objects-12.3+.nib</key>
 		<data>
-		DAg16Ezt9PRB45FEye9Sh7TqlfM=
+		QBF30UGRvfVftFnuvzIZomoQZM8=
 		</data>
 		<key>SFWeeklyHighlightsCollectionViewCell.nib/runtime.nib</key>
 		<data>
-		q2LDfw3LOaGus+Y7O03/FlsbVa4=
+		u6LcyrfkX7wSi+Y1RNHsAOHEDGc=
 		</data>
 		<key>SFWeeklyHighlightsItemOneCell.nib/objects-12.3+.nib</key>
 		<data>
-		/yoBcHsDw0CZ3003SQO1rY8YtDU=
+		Bg6505l7OZ3DFPxdu6ceTk27gRs=
 		</data>
 		<key>SFWeeklyHighlightsItemOneCell.nib/runtime.nib</key>
 		<data>
-		8GNBcuXejNsE98eda8bi2odoHV8=
+		SSvQXONLWEMV+JpAd63ApNuTAIU=
 		</data>
 		<key>SFWeeklyHighlightsItemTwoCell.nib/objects-12.3+.nib</key>
 		<data>
-		+0MhDzLAFvu4AyTH5K13OqQrwPU=
+		QJblONgOhFjNd80UH+UCrJD2Ns0=
 		</data>
 		<key>SFWeeklyHighlightsItemTwoCell.nib/runtime.nib</key>
 		<data>
-		UNFpkCllWlSGhLGS7WCeOtlodl4=
+		7vYJv5iU+SLlTXZ8tLhS3sdRgqU=
 		</data>
 		<key>SFWeeklyHighlightsTableViewCell.nib</key>
 		<data>
-		WJS8ioM9GplJSdVmgpzhFapchvA=
+		kG2ljAtPfTBKtCDDGYhJJrtJZ1o=
 		</data>
 		<key>app_install_response.json</key>
 		<data>
 		IKXIt+TnNPgsQ/9R6jsQHTcepLA=
+		</data>
+		<key>branded_carousel_response.json</key>
+		<data>
+		g5+y9x6IlCxgOQco7VIfXlDnbeg=
 		</data>
 		<key>gif-image-template.html</key>
 		<data>
@@ -443,11 +459,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AkMUu8kG+urcXKUnuU7VltAA5bk=
+			M9W+t+5L+PHGhK1U2bH1Ps9Zrfs=
 			</data>
 			<key>hash2</key>
 			<data>
-			z0yEvhRNSE6aixFomsBwfBbZKX84DDg1TAK1aEKutJY=
+			s/xBStepIKnpTDlhx7XjdipZlRuwWTzs4z3GFs9brms=
 			</data>
 		</dict>
 		<key>Headers/OBBrandedCarouselSettings.h</key>
@@ -459,17 +475,6 @@
 			<key>hash2</key>
 			<data>
 			2KY25nbE1vYojnGKAqHcX7zvdL9NWeCno8c5CdYg86k=
-			</data>
-		</dict>
-		<key>Headers/OBBridge.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			QrbxpzG5VZZD7D8lApJfK4b1Lfw=
-			</data>
-			<key>hash2</key>
-			<data>
-			IRTdVppBSIl8KU44MLUfEVM3c6BNOadbaA3AchJfIvY=
 			</data>
 		</dict>
 		<key>Headers/OBContent.h</key>
@@ -542,11 +547,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yDLouiRYO0BJgj2hDOBH5kI1xO8=
+			PkvKuum6SwB+tvq8g++AU9HeYBE=
 			</data>
 			<key>hash2</key>
 			<data>
-			1s+BLB9iSSg+jPtuYDb3vK2T0xj7GiIkOHQ0eVcjDMQ=
+			pMdaRZ54m3LCctbH97fMbX5/5cgm55TuN9+8vHdlqJg=
 			</data>
 		</dict>
 		<key>Headers/OBRecommendationResponse.h</key>
@@ -652,33 +657,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			anbU3ks3AyY7PMNSsj1FER977po=
+			lURVq/bShWmNuTlE1nRjFXcQroI=
 			</data>
 			<key>hash2</key>
 			<data>
-			DCHOn2AZRQHpo3UomJwLKa4o0kdb8O7wfC7RONPbrNk=
+			LA8enjzvYl2JHWiTX/763YD6XZLRKBYYTrYQmBadEuI=
 			</data>
 		</dict>
 		<key>Headers/Outbrain.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			enqRMx1qbw/lyHeYNgOIEewUIsg=
+			w/DQ3RMD1RRlU787Saf4hYxK+Sg=
 			</data>
 			<key>hash2</key>
 			<data>
-			euq25S1mvQi3LyHzDfyfAfEfGyNXmbdv7CrCFoIaFfI=
+			E8JeuJPpcAunfj1D2QXM1SxkBAYes18BoGmjUom92r8=
 			</data>
 		</dict>
 		<key>Headers/OutbrainSDK.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6JATXwquudReDNOUF9+FrxTqJAA=
+			OPJFbH5ABnVkB4jtI0NRu4+tlaY=
 			</data>
 			<key>hash2</key>
 			<data>
-			gTXseATTF1T71c/nP/L96PIFGd0RfAYHu+jCfmAKQWM=
+			gLYKfzwGJqhzUZKz8RO+QAQNo3aXJTcOQbXAYOf3m+M=
 			</data>
 		</dict>
 		<key>Headers/SFCollectionViewCell.h</key>
@@ -740,22 +745,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CY4GsYx2TfoEx33aBv9ld4RXDRA=
+			0fUBt8ynZy8syKLE1sCVRIxY9L8=
 			</data>
 			<key>hash2</key>
 			<data>
-			S/ZIf54RUnzPOF/oo/YKxxwWSSARs8oBWIasp2efQOM=
+			ASWjpVra++zq14nK/vr9F3KJEHGOqY0WwKOis+zVrx4=
 			</data>
 		</dict>
 		<key>Headers/SFItemData.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ugEMPaqdNw4YZ0w/87YDNv2dqVk=
+			0+0JGWmU6TRb0xLkxuYH/vcjlu8=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZA1RV9sU3YxTJ5JLfmc5NA+5y1peNvLJBsP+6WF6XsU=
+			kF89Yh1j7koVn60yf0kt3sgCxpXquQm0zD5hOSYT5/8=
 			</data>
 		</dict>
 		<key>Headers/SFTableViewCell.h</key>
@@ -791,15 +796,48 @@
 			jfEwfyeutmjkG9JGFCB5o/XfpjLYoWUWqzFYyLtP8jE=
 			</data>
 		</dict>
+		<key>Headers/SFWidget.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			EipoMpXoTxy33cpWsj4zh4BvTuY=
+			</data>
+			<key>hash2</key>
+			<data>
+			TfrCDNp5qubr5YzceS5DwuSzU3qW0dWCZn/L1RHtXKE=
+			</data>
+		</dict>
+		<key>Headers/SFWidgetCollectionCell.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			oNg8KVVTurZU6zTk/egZnJv9Wp0=
+			</data>
+			<key>hash2</key>
+			<data>
+			oyqf/gT+K7yK9xouORGj/fqYOWuKWMTe4JhXKhi8nUc=
+			</data>
+		</dict>
+		<key>Headers/SFWidgetTableCell.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wlRl3F10Z6SliJjTQ1TTr9++kYM=
+			</data>
+			<key>hash2</key>
+			<data>
+			VQe3kHlgd/qlZy8VL2N88HGjz5oOuyG8Ar+LYK9shlk=
+			</data>
+		</dict>
 		<key>Headers/SmartFeedManager.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lBDPHAZZdbuIjsCdtrkCuRMm0Dc=
+			xcyroA18NqOkVpHrrtEYrCt9ZU0=
 			</data>
 			<key>hash2</key>
 			<data>
-			aqvaytn0szHD6Jtr50TAKhxAz/AtGItbDpJOEXwm8xA=
+			kxW4FR/QPvyYNksDFrISRhw52RrJSmUHIrY2uo5NHJM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -817,781 +855,792 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			s08NU3bxb49dCCPpMW8SsGRBqaQ=
+			WIKtK8+VZbbxUydcmkgEE5z8zCM=
 			</data>
 			<key>hash2</key>
 			<data>
-			/rI6+T8J55/NV6DE3G1cENx32LXlEZd+I3qKaS0xKuI=
+			GoldBYQmt4lYLYqeLgQtC6GWzr68aF3XJSPmDDryHH8=
 			</data>
 		</dict>
 		<key>SFBrandedCardItemCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zxPKTb322kiWa4YzrxXYECATkjQ=
+			j6SH7+CVLsots/XA3/0BL8gLH6k=
 			</data>
 			<key>hash2</key>
 			<data>
-			40qfk0awyu6mNQM2fEa2SXj8UgYbN5dI9DRQ46QwOJQ=
+			tlJPONR87bZ58agX19225cFEEcfO6puiP8TCwhaHi3c=
 			</data>
 		</dict>
 		<key>SFBrandedCardItemCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wpwi+DRm9vrmYe2AtXOxr3eemXs=
+			e1su5+1v+kEqdxB9u6Ia5nnbaUw=
 			</data>
 			<key>hash2</key>
 			<data>
-			Z5B6it9KdcbPurTi2kLtWdNERQcCvf+ZVzymwUEBm1w=
+			bSN2ykHRUVOcq4GwnxtH8UzGGtAz5Yc77e0pXpNRGpo=
 			</data>
 		</dict>
 		<key>SFBrandedCarouselCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Ut7L/Zuod0Zk7+Y1ne+UtkHHRRw=
+			AO55d3M2yGDi6gabQimcx9N8sDU=
 			</data>
 			<key>hash2</key>
 			<data>
-			mK2T9pWl70xIl60f5EVVlL3jyGpq8yK0NNT51PWxg58=
+			Ny+83SrzHlszghOmXsB7RRAjWx17RJy7lgNZM1Qdz6k=
 			</data>
 		</dict>
 		<key>SFBrandedCarouselCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			BQ0Z6BuramWkAzxmMknZoVaXKCw=
+			sa2c/Ae8VqRlDlBccYpkjI6tabU=
 			</data>
 			<key>hash2</key>
 			<data>
-			/ONn57x1yQhzXat9+1TCjHy3WdTKC5c8v5KAE4UBNDM=
+			ftPZLnXbMic8t/vqwbCntDDtIIcE2ZrcsnneF29/gWE=
 			</data>
 		</dict>
 		<key>SFBrandedCarouselTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			kZo1JRc186JXTA6rTPM4bgUR07w=
+			9ofUTKifhT8FQ9nHqtgCJjrN3Vg=
 			</data>
 			<key>hash2</key>
 			<data>
-			bJb70LZ9RxprM7Dye6IIoxvINkxtP3qBu8Crv2sx/DQ=
-			</data>
-		</dict>
-		<key>SFCollectionViewCell.nib/objects-11.0+.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			r/g6qbafROgntauvsIpRk7cPaG4=
-			</data>
-			<key>hash2</key>
-			<data>
-			lRivOLX0jXAGpjfozBPrrdX2r8y/P3y2yKRqMYBfZns=
+			uMntlB1cDgKW1XxVTaXdEC2+fsEUicRh1Yr6Ea35QfQ=
 			</data>
 		</dict>
 		<key>SFCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+Vb8wWQedKoR4j9AHktx4J3s1sY=
+			hb1yUDYLef8duRTy4TvFXQcHjrM=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ly+J6Pufhz0ErTGN47bu6/MvabwOj9dfvouuslSF4iU=
+			yIyJVute3P4UFK0FQsZ5R9Eizjtd+bbMXVN8hZpAY/g=
 			</data>
 		</dict>
 		<key>SFCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JnI8E8l0xlZD7dEMv41446DDeR8=
+			c5snuvzJckt3kHIB9vaukYf72dY=
 			</data>
 			<key>hash2</key>
 			<data>
-			qkFfL1rPuHAGNHufk16D4eXgQP0V69ajlXggCCOQHO8=
+			HemJzy5pZ0NMbg3m3X9ANwBOi/ON9GrWKG1x3fDsB5g=
 			</data>
 		</dict>
 		<key>SFCollectionViewHeaderCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			V7siTzEdNSld1NwdHh+AMfQ8y0Y=
+			3ToTI84JdkPG2vvTMpzmIxvCPZE=
 			</data>
 			<key>hash2</key>
 			<data>
-			581cKFgugTlxkb02HiOHkMhU7MFdEBwtabDwqCX8nvE=
+			6MDFz7b6L6Hz5w5iZ3oCgyzI40D+erC8R0qXSTOxtOU=
 			</data>
 		</dict>
 		<key>SFCollectionViewHeaderCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JCXHE5spxrsKO/rDOCPxePHZEt8=
+			MWON/Wzie1Gx9/aJHLa2NcT9qcc=
 			</data>
 			<key>hash2</key>
 			<data>
-			yhicAkBxl4O3cBuGNrlCMWdog0G7J3OCsXrXJzS03Pw=
+			F4UIlRfryBOX82MpLY1NHNBAuUKIcuDnv/s8+yd7G/M=
 			</data>
 		</dict>
 		<key>SFCollectionViewRTLHeaderCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			SYwZOlAJ1ZjyTkP4hqBY6LwfI0c=
+			vJ2jo+aIvwqhNMJvjx1HW+YjbUc=
 			</data>
 			<key>hash2</key>
 			<data>
-			vsp5r9eFtZlH9xrZU90f/dPMhamTwc/SK3+eS7L/xhI=
+			8zXrUPzCcVNnyGX95Ucw8BthfLO4zX+pKYegvQXmmH0=
 			</data>
 		</dict>
 		<key>SFCollectionViewRTLHeaderCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wKI2Sxu/aelIhTr+eJW8UVlaw8U=
+			zKrsQ/Jrv4WjDBE/DRcJQQxdIz8=
 			</data>
 			<key>hash2</key>
 			<data>
-			NlTLe1e1VvqDtGo/2rl+l6pxwDhQCLLjtjnz4RWK7Ds=
+			Y38LxCH+MARRG+KfA22GzLnp7+GO3jCJe7n2SRQrRb4=
 			</data>
 		</dict>
 		<key>SFCollectionViewReadMoreCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			pCPiBrQtj9sSfcAJbVZr8i8/kLY=
+			y07ZI6Zdj17NCs/lOa9Ib0/KHI4=
 			</data>
 			<key>hash2</key>
 			<data>
-			bi0GLMHo/s6jG3t+BrBEBfl5tobOf+UTOSGttcX4iCE=
+			YehNhm+TfMrKOvFHwNo3+w1/Tx/WHdErQ/CsqzwCRkc=
 			</data>
 		</dict>
 		<key>SFCollectionViewReadMoreCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			rmeFnJQR5ZpQB9qFmJOONQLaP5s=
+			PnLfy7Buzptk7QGA+7+1PwjrApo=
 			</data>
 			<key>hash2</key>
 			<data>
-			EiqRZy+OqeYqWT/5KF/gxiluf7p5cSmn4CI3/bz36Y8=
+			XGnyuYkn9htJuCgrX90Z8yQ1+YkIRdWKC3/q4sCli3c=
 			</data>
 		</dict>
 		<key>SFHorizontalCarouselNoTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			t2p8p7LZVe74q6O/ss+EZsFlZPc=
+			y2TNZTF0pooiOy8c8zRdJkhoYBI=
 			</data>
 			<key>hash2</key>
 			<data>
-			inv/79lNkBl6LE3IxGHSfGqOzRwWNv3ov75lI0X/RbM=
+			rtF+f7hS5ZcWTBipoUszvibF2Df24XjMSVjrY8CH7Z0=
 			</data>
 		</dict>
 		<key>SFHorizontalCarouselNoTitleCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			FjCawADms85TghqcAszJSHNQQXY=
+			/zf+rZIm0t6kZzEzjs0NyanMh38=
 			</data>
 			<key>hash2</key>
 			<data>
-			nIneZgeuDE0o+yuSP7pFhOqwhetE8qfESs2ONbDc8BI=
+			TaWZS/lNrrh1Cb53BGurOLp0mWTEnmkR5MCqyAvZ9qo=
 			</data>
 		</dict>
 		<key>SFHorizontalCarouselNoTitleTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IG5v+JJgjIQsRfjDRbIOhPlJlVg=
+			LyD6LQU/JyWWDvWJ6NpAWDLNlss=
 			</data>
 			<key>hash2</key>
 			<data>
-			iuxgNdtYAHDjmJl37lExJToIllilIm0bjNtsxFzc5No=
+			rgL4hCBEjGnFoQC04i10DEnn8NbChhxSvC1uaKjSSrU=
 			</data>
 		</dict>
 		<key>SFHorizontalCarouselWithTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			M4xk5DtXxW+4Ift0IjHxTsS/TLI=
+			njQSsfV1B+UqHfwFXohib5Zw6lU=
 			</data>
 			<key>hash2</key>
 			<data>
-			C4GBtlJnZCtX2qSHcgBXWqmx++yM8bmp6CPoiOg/zcU=
+			WEn+pLE0J/uRHkXkDOo2ddwgpHKEVBWAG5nu/mc9Qcw=
 			</data>
 		</dict>
 		<key>SFHorizontalCarouselWithTitleCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9BBu0T7ncUKXqbQt6Fu/+nWKmBg=
+			kMXDPli5z/v9RY29B2bYPkESqT4=
 			</data>
 			<key>hash2</key>
 			<data>
-			C+jzxuGqGBrz2oBbWu7tkyZ9I5QnjBDlGvzQekRyEhM=
+			sWAjbPlUc6HL+rxHrTivtzpyta99uEXG+VPFgdhZ2vc=
 			</data>
 		</dict>
 		<key>SFHorizontalCarouselWithTitleTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4USRYJQC7IMNZlQlH4Ni0usQWEA=
+			04eM9fj49FmAFKzarDpByTlgWNg=
 			</data>
 			<key>hash2</key>
 			<data>
-			JvYyKWNLaeihO8u/+FkAYdyl3kYORmd1cpo5ozWQRwE=
+			9sGxNghpgE2FsMa/sGBMFqmDdZVzi0BjKn+OZt7oXHs=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedItemCell.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0jQNT3QQBcnKlkpxHUlXtqBaMkQ=
+			a2PEzuUFshaCYKAE8T4Ubv5z+2Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ry5ukS6sFr069qQAyDlpKmuARmXxPIpJs6YK0EKMRBo=
+			SyHJvL1YTQ7+CxhwDvAVo7PtEVUxofDF5HoLBEkJ20s=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedItemCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IeJw8SvMgo6oVfyw73uOtWUnPcI=
+			U8AGahJzBhWrAZmNedVXVpxRtgU=
 			</data>
 			<key>hash2</key>
 			<data>
-			1MhX2k//DTg0f1BzVe1DciE4EaNRE8FDHvRoVGaBX0E=
+			KfypfWqozaST4pkGNxIGvZuCZxaz6zbQcyPJgabobfc=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedItemCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wu54FfWl2D8IlYeDPci8ZDGxuxI=
+			FVxA8/2DlZ82XmnwtU/xWijabN0=
 			</data>
 			<key>hash2</key>
 			<data>
-			Zn3dL52PHJ7VN8NvVnMNktwZEtW3Zds8HiNwNe4uOGE=
+			1OBHrl3ygdHLnK79jLxKUcpXdE4fWSpZZsdt/gcTaF0=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedNoTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			j8y0xJRatvP4lyYl/ctbXwL37iE=
+			YjxZrs+2SbkNq5XYnt89Y18ohTo=
 			</data>
 			<key>hash2</key>
 			<data>
-			OqOgi+j5GJ4GU8oCSNL9kdE3spTJaMdDYsJbNfB6tOU=
+			BW0TYxKpjPL3EdSOtfwXlqyTZVVSU6upG6pKl+LMWMw=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedNoTitleCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5glwRFn5RXr3sIAYUIzsF6vBN68=
+			E36YpUcg/gMC0ogStGWD/vRY9/I=
 			</data>
 			<key>hash2</key>
 			<data>
-			zBjTnwl0kr2Vj0+uF2OyLRwBPVrfBLQZwrjFKR2vRBU=
+			9H2x5BfQLo/ldDkBBSvRumbSBu+Ob8uzakXRYKpn0Mk=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedNoTitleTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			e5Aji9rZufK+zz47/am0hDXHuw0=
+			X2MrAlA73jLZUeWQQ7I/X5hiK4c=
 			</data>
 			<key>hash2</key>
 			<data>
-			8R5s9VoR+C1BBSgxDccGZwc3vlKQS7peg/G94Be6gpw=
+			5eUjXH37SBqJSYzTj1uqqeUU1PuIa8uBKAsnvMPlx2E=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedWithTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IFi7oEpowdK+ojFuVILpBWeWOs4=
+			WZv4E9eYKwGgrjsRmEGtggovyQ4=
 			</data>
 			<key>hash2</key>
 			<data>
-			wfWdlqg1ks2SQLXPhfAHmMNljKLngU5N4Pvk38s7+3s=
+			5gG0HM3+l++ISVsn6CUH0/J8ZuYvsdQVmICysWxY8qY=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedWithTitleCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aTrdo4RChigcj0Fqpn9bXaKa5gw=
+			LCK7hezVV83ANmq6/agAPOe56QE=
 			</data>
 			<key>hash2</key>
 			<data>
-			igAI3lLBU46O3D/xMdP9uJDAxUy0JYsmvrtDN9Domns=
+			DfQjCBCpvKHUI+ThaV+vpraHf63vqLt+YyTW9YUi5CY=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedWithTitleTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			pUyZ0URSSeIdaJSmZEjMTcTxQq0=
+			Cb17yfHZeVLYVivaRmuNUIG3EOU=
 			</data>
 			<key>hash2</key>
 			<data>
-			3sYjrZzm8u6yrlGb7fVXJqh0HnFxle9jxDFwURYvkbc=
+			u00Jd1wJwRUdoCeWgT8o0gvniyi+DH9/sA5rEDvv0e8=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedWithTitleWithVideoCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6m1W+PjSN5ePzilzhgIKTGR9uHI=
+			NGQCZoeHyCguteNVGXxvBkk39IM=
 			</data>
 			<key>hash2</key>
 			<data>
-			vA28Wh2JQSYx4jIZfJH7tBo/ejSDFDolMOsolcjUtGk=
+			TWLr+UrlVHcqP9rYEnCZ2fUKBast25HNeFphz92ksMU=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedWithTitleWithVideoCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ilWMGGjeacR2TWT4d+MAdVJyc9E=
+			vDpDdbebdzXAuiLDVRDBAgKUK34=
 			</data>
 			<key>hash2</key>
 			<data>
-			8/RavuvwWO+YSV2cOUBAv7JEU1LFUFWV32fVe8C0FJ8=
+			3pXc0xKAfiJ40pGuaTbBS1XKuNfpY3Astxt0qkRZIT0=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedWithTitleWithVideoTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			RfvcHM4PCq3EpMs+YrLC72EaDgA=
+			g9sDtBM//x2rSf6Du5ypOJ7WbjQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			wDFkIXJLYOGqwaDGGQ1dw/1KbkdK51O5WrNfc0zXr58=
+			NiBe0bRlKeZGdHWASdviKsDfjkBrFs7sYNaCk7fPmSc=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedWithVideoCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			vACSR8rFjWcMLjBZVPOI3jsFd+U=
+			k6Cb0XVLUVhjG8w6PSDsgjiKT2o=
 			</data>
 			<key>hash2</key>
 			<data>
-			1mUr/AcTXUBxf+1sl8sT2p+xybt5czuOe+w+Pqp8QD4=
+			hWzp9p+Ds8GfXDYNs8bcOOIW66ZYH6WpsRhoquu2qZE=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedWithVideoCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			b/n0UHOe+bJlCJr1zXnkDqJM2s0=
+			dpCJEgjFOkkDDXN0H7igGm3/vE4=
 			</data>
 			<key>hash2</key>
 			<data>
-			FTTsus2eaoSLg6/Tpkb+A/+cEpyPuNe7cMWDjXu3nMU=
+			nrIIvJXSUz/fdrHIsbWHz52il/c6hE3lLZNCC84Bnbg=
 			</data>
 		</dict>
 		<key>SFHorizontalFixedWithVideoTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			DeskYFO25xQncn5oWemutYtsufc=
+			76O9z6T3YSGG924gipRpGVIGnnU=
 			</data>
 			<key>hash2</key>
 			<data>
-			pAUAfqsiHi0MMbWVRZ9qIffqQqYjAjwc/TS9v2VhK9Y=
+			/fpET+TLnnYBPiC2PC6wPZTljLo/2W12vIETCjz+EvM=
 			</data>
 		</dict>
 		<key>SFHorizontalItemCell.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			e583FjSnZzNchDhZk3OWBcL3aLQ=
+			jbHiHHTDu6FxlP/N80uGsgWzNVg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Z23SD9FWxeNps2nuEdgguP/puJ7+lHj7J3EDk4m4fEU=
+			4ecfN5cxYrSuZ+PccjpDwrAP7SML0blrt4PStKYY3DE=
 			</data>
 		</dict>
 		<key>SFHorizontalItemCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MAz7NHRxixUry1g0SgkZ+TH9L24=
+			LQhNpk7F9LKEj53l4ec4fHIkVWI=
 			</data>
 			<key>hash2</key>
 			<data>
-			mBnKt9XBtohU0PIU9Uo9n8xAb17C3m1edI5IkxULOM8=
+			klqtc+5sXu3YtlMyIT/u/HGR2dfmCeqMwKSmHvHsUvQ=
 			</data>
 		</dict>
 		<key>SFHorizontalItemCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lbYqfjqgS1B5y8PA6jAameTi0YQ=
+			Ibh7dp0mVVaVjdAvaNxA2AJJPrQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			UuzbtMFsOHpbuC0QAWF9qbTtTd+4YSao7+y2xXkSPmU=
+			XOnzKtDwnihK9Yu1r+hnPfmee5SxMKdlp3k68j4ivwk=
 			</data>
 		</dict>
 		<key>SFSingleAppInstallCollectionCell.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			yUepHT/7nj0ps7ksLsmMO7cY3H8=
+			zEbOH6jUI3C45D4HZqnAlzReTeg=
 			</data>
 			<key>hash2</key>
 			<data>
-			BgfWfcVEgcij6ytb7Cc7mHQ2OSxvX/anKy5m5e9xrEo=
+			w3Kc0cWADr3Cj+QMgdGTm5hD9cJug0Zc0/VUlqxuR20=
 			</data>
 		</dict>
 		<key>SFSingleAppInstallCollectionCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Q0M65vNOxK+s6VPVZ6Ru3yUMEvg=
+			QuLsrvspwdKV8bCxgTFzqsWdBDI=
 			</data>
 			<key>hash2</key>
 			<data>
-			Lf640zfDBMAy07sL9I8Jbr256Zg9KFGDf6ONFhPxBI4=
+			VIS6R7n4iFdFqjxJ4UK9z0Vj+wzpowhXyAXyUFwcgSQ=
 			</data>
 		</dict>
 		<key>SFSingleAppInstallCollectionCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			e58+k71IRHNQQjJKzGHGZ9YLhd8=
+			DrZHTSXLAlr4A2BW+wjRUm7RTyg=
 			</data>
 			<key>hash2</key>
 			<data>
-			qwoe48b0UNyO8SqVBmDSgRFHXOGJwQyCQziwcSiEF7Y=
+			mCCEyr4EVZ5VORQqkI3DjAbay/OCLaUJlfddhdAX3L8=
 			</data>
 		</dict>
 		<key>SFSingleAppInstallTableCell.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aLQBZTy3unxiR6sJuihyOpcEJhw=
+			75Dj50H6VEsUcT2XqK4zylWi0tI=
 			</data>
 			<key>hash2</key>
 			<data>
-			UaFnqKvdLrTqevgKiE4e6jOPpr0++seRp8WishDqSWg=
+			RP/6eMgJO/CCvEQUccjzJiLyda6fyXACT/mz1Oo7QjM=
 			</data>
 		</dict>
 		<key>SFSingleAppInstallTableCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hOEp27iHgkX1Z40MnxKGvP+Nuc8=
+			kw77A1GkMcvgtk3zlcPnronasRo=
 			</data>
 			<key>hash2</key>
 			<data>
-			P4tQabEKt8gFOQQ0MHJyfNRftd+1kqrbWMW5C53JNBI=
+			WE/VjQunsEGWAzdt8j3+kEp+7hoU+8YVOIPzcQbOzyI=
 			</data>
 		</dict>
 		<key>SFSingleVideoNoTitleCollectionViewCell.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			AkBKjx1sPWLNyep9lbEt5nx6t8s=
+			v2JamIQ5o8elKkhcepsJRSMy75c=
 			</data>
 			<key>hash2</key>
 			<data>
-			/AjSJAVeDiak81TMDV965szQ7B/04ylqCbzGPA4bH7A=
+			0Zk6JfU2WjMrH4puFOA2zJ/A9LvOa4bAwfc6n3SUq5w=
 			</data>
 		</dict>
 		<key>SFSingleVideoNoTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			sk5IV/wLG5NoDfq4D6dtdGKrovg=
+			u6DPczij/P9w+DVyd3JZOuqicIg=
 			</data>
 			<key>hash2</key>
 			<data>
-			NMM8SRhqLpRMYm22XcBzm3LlXm0qnuMT7OGKTPjIbcc=
+			T3CrGCsfF9htxwvpwqf+2UqN5804yeeVTq8k6DguEF4=
 			</data>
 		</dict>
 		<key>SFSingleVideoNoTitleCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			475v5JJyKOx4qs08UJ1snqnPDvU=
+			9Mp6lLoOqOt3SQxBb0RZmXLS2K4=
 			</data>
 			<key>hash2</key>
 			<data>
-			HxmVcigdoWYqzjzZu7eapBf5MiQi9bN2vZROYZEDqCQ=
+			I3GLi9TRUOaE2QoEvvM2kRcT4gfJrqapOKsgL7IoXQM=
 			</data>
 		</dict>
 		<key>SFSingleVideoNoTitleTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			qB12id3gryMwATgXc13N+eNWTj4=
+			etPjo3LgBcp1U3Qnbi6w972O2T8=
 			</data>
 			<key>hash2</key>
 			<data>
-			YCMnQ27jVlMH65/qNqGNfndXflWkYjBnFNGhn49V0Pw=
+			RsXwIEBBROqYwzff2Js4ZzMS29npFY1iBRil09xt3tQ=
 			</data>
 		</dict>
 		<key>SFSingleVideoWithTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0u1FUMmUnpQF6GZoCe5ROW/C2CA=
+			iWIov3QRrWKTmjxgtO1seInO63E=
 			</data>
 			<key>hash2</key>
 			<data>
-			a/eRFShKS/6b8LzxC4r77SSQV+rs9qN28x2ZraXEQ6E=
+			spu8PoBacY/Mc3Rx0w8FeE/MDdp5pY5S2ukgqj3fTJc=
 			</data>
 		</dict>
 		<key>SFSingleVideoWithTitleCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			r2F9AJ/3EsMoncSmUcZp9hVB2vA=
+			nhhUm/URwAXh52bNebKtTiprHds=
 			</data>
 			<key>hash2</key>
 			<data>
-			lZE8J5P4MmtcSccCJKQj51DPXToyMD0HnI7IC/bNG2I=
+			c1Sov7ScZ9nV8aqItN5fmDkTWSpgxnokePDW3TxgSC0=
 			</data>
 		</dict>
 		<key>SFSingleVideoWithTitleTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QpPR/uJI2yJ3zLhmI6Zszb+n8Vo=
+			d3dF2N8C3pm5VUj4h669GkYHkqM=
 			</data>
 			<key>hash2</key>
 			<data>
-			xKYwqKEeJjWZ7n3jn//9bici9PLEnGz0SsOmuoCT368=
+			ymTZGcJhHap/oLfY7pmEDQmmOdU5eLbWaR1hjWY7BUQ=
+			</data>
+		</dict>
+		<key>SFSingleWithThumbnailCollectionCell.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			GFkRuQG43gZXcvOnTSwlPxbcdjE=
+			</data>
+			<key>hash2</key>
+			<data>
+			Qw8BR4YZDBkC0kCk/buFrt80sTUH3bJpJsxiiBevhQI=
 			</data>
 		</dict>
 		<key>SFSingleWithThumbnailCollectionCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6acx4BqttaIDkFFvvJ/rkEFDOTA=
+			La1/AFMNoDv5qxLyxDIiflNpPjE=
 			</data>
 			<key>hash2</key>
 			<data>
-			QdVfVcFOwMPMsaWkqhFKG+zH5yUNKDssaeQz6vx0ekg=
+			VFbbNJXR75MLXRHjnpIn1zPk2PaEa0AGHybGPgoYrUw=
 			</data>
 		</dict>
 		<key>SFSingleWithThumbnailCollectionCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Ahy+O4ZtEPnnnUNf0j+lQC9803c=
+			S3ANKiGjfmJZ96XhZnhE3WSmaMk=
 			</data>
 			<key>hash2</key>
 			<data>
-			hj112pO6wKuIydnRpQQr5eqUEkNXWSW4SPQcOOhpbUY=
+			67N1LU/B9j/6NvYCGnqd7bO/QP1Ui1c05CFehN6stDo=
 			</data>
 		</dict>
 		<key>SFSingleWithThumbnailTableCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			a07lQDY5GquPmw/6m6HxUHwL+Fs=
+			CkEimds+gsbNnSdrIPZZQyz7VWI=
 			</data>
 			<key>hash2</key>
 			<data>
-			CCoFkQUenY+cIqh9k/BU451R1QYCqbq9B71kWhBrHSQ=
+			omOn4ovfkzm9X3dnYX6EKnZ6E8zREYvVaGWhhdoD7oM=
+			</data>
+		</dict>
+		<key>SFSingleWithThumbnailWithTitleCollectionCell.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			WkR6aWPQ2NB4tWezby9WKm27Ofs=
+			</data>
+			<key>hash2</key>
+			<data>
+			WItrWikbDKQqxLQEfs59bkHmoLInYPzPAiLgmeVucjI=
 			</data>
 		</dict>
 		<key>SFSingleWithThumbnailWithTitleCollectionCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			y+OysCz3UsLhQZLn7QZOcO3GQys=
+			sQHHvR+EvEKCOUHt01wcmA4f2aQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			MEvUo/GIBqdc6AjR/us/621TfizvooQg2X0/JvlmnD0=
+			5orvWqGXV9DYzhJG43uC5d6bS+GhjKefvenG5wljmuo=
 			</data>
 		</dict>
 		<key>SFSingleWithThumbnailWithTitleCollectionCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1aQjYsuKM7FVLNEHIvw4esHf9nU=
+			CxKg2wGsLtRyaWIemMQKeDZwfQs=
 			</data>
 			<key>hash2</key>
 			<data>
-			ALMhQiSbEiMBHFRiOg+FOtbGD6cQlO7Z2S9rGbsZJ3U=
+			wIk6UI8W316JRYxxOmg8LJLmVa6RW+1ot3jwp7kGc3s=
 			</data>
 		</dict>
 		<key>SFSingleWithThumbnailWithTitleTableCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LzjnRSS9CQh5pWHNNyXRALz67EE=
+			DGdfgbobn8L2v9rGCO2Lnk0821o=
 			</data>
 			<key>hash2</key>
 			<data>
-			se8alvf3rvnvz7WFl9qLgqFksK2CpYB9l/muM+IhcxA=
+			fO/S1P5AqWWrBxfwO0nh8mhZra7y1qgnYUTHT1TCGlE=
 			</data>
 		</dict>
 		<key>SFSingleWithTitleCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dnXtTrOT+UOu/KKySp7DjQOe11k=
+			M3ENDoYbvxR0EyH16OjXd/f9zNs=
 			</data>
 			<key>hash2</key>
 			<data>
-			zmEcGc4hdCbrF8M10Rs7DLp3nfIH6SAl++mQpF3IYTU=
+			8iReIt6owQb1JGtlgVOntw77BVzS6/8KOAjoSufzxYc=
 			</data>
 		</dict>
 		<key>SFSingleWithTitleCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			udXBtpdMkVFWgbAYtI873H901OQ=
+			1hBGrFZ7UiBzPhXgzAMFaEt86fw=
 			</data>
 			<key>hash2</key>
 			<data>
-			F7jPAlo8uqpvcuNYLD116QXDEfuPaoeG9oDexkaDk2s=
+			jjTie0Af9Rw5l3fxNbT24iKsnDEEj9zqJc5bsy/XmqY=
 			</data>
 		</dict>
 		<key>SFSingleWithTitleTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tJ41q1FJ9t0h5ocUgczVy9ZPJMI=
+			fhSgUzgD+jQ+l7hENrSkvc2EGyU=
 			</data>
 			<key>hash2</key>
 			<data>
-			8IehK3fcTx4qbdQm8yGLGGk2UbrrV0t1CK1Kqr+6gNU=
+			GRFFmT45PRj5Db+76ahKlpklC58UcUp1YnuMRQMI24w=
 			</data>
 		</dict>
 		<key>SFTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8f2AIVqr/iiXczatuoxUkPaINrU=
+			TvNhfkPlR4I/NR6hf7NJtrYHBoA=
 			</data>
 			<key>hash2</key>
 			<data>
-			80DUdayVUJhAoRHF+u2kRvW+yzfNvI6mTD4+Mjn1Qck=
+			A7GoNLP8/C6sLX9Tu3HVO0ult1JIpK2+rJ8i6RY9Yz4=
 			</data>
 		</dict>
 		<key>SFTableViewHeaderCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xfApT6w9v9W4vZClF3I6Jq+REgE=
+			jCXN1lrraNXnelBsNA2uelq9yX8=
 			</data>
 			<key>hash2</key>
 			<data>
-			9yvSePAn+71beBRAtWTUjEDygTFYdgJKY5NdScFpAKg=
+			oELPVFzViP3ymI4P7MXEJtwJjl0MdAjWXYmnviXh25E=
 			</data>
 		</dict>
 		<key>SFTableViewRTLHeaderCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uUEciiVDqnkVpHHj0WXN4eXFIro=
+			am8c7MTO4pvJUa7VYMJnSBSEepk=
 			</data>
 			<key>hash2</key>
 			<data>
-			IOLwnHcorjTIyXiHnH1S9bN6+rThg8CDlBRXji9TYtY=
+			cKMkPk1b2+n+MI2GHOfIhQ/dWl6QpjYx0zgvBUkjS2M=
 			</data>
 		</dict>
 		<key>SFTableViewReadMoreCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			d31HwqFBFHOLhaPfB/oKUHsngnA=
+			fwXixVFOno8N+/3IopPZlJ+XTm0=
 			</data>
 			<key>hash2</key>
 			<data>
-			JKUhBj2iisaOsDgGdg3/96f7LifOpxKdKTAuG8ji2Bw=
+			GfYoDsFLbTBaKMsUSHwBOwHbl81XXQVxEbz5zKIWmas=
 			</data>
 		</dict>
 		<key>SFWeeklyHighlightsCollectionViewCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			DAg16Ezt9PRB45FEye9Sh7TqlfM=
+			QBF30UGRvfVftFnuvzIZomoQZM8=
 			</data>
 			<key>hash2</key>
 			<data>
-			8lyQuNUZfL7yC6mNb5gvnb2noui5dc9VIKUMvFOuwNc=
+			KF+bkt1bp1/aY8gmGy7tX1mFtM1+YiAm7LdG79yVU1A=
 			</data>
 		</dict>
 		<key>SFWeeklyHighlightsCollectionViewCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			q2LDfw3LOaGus+Y7O03/FlsbVa4=
+			u6LcyrfkX7wSi+Y1RNHsAOHEDGc=
 			</data>
 			<key>hash2</key>
 			<data>
-			m53WHebQYQy7iSUJ9h7x73vH50JjyPEpHx6tH7XIM64=
+			TnFsfoxxDd6MrzBO2j+LKq3/I5l6WhMu8zx2bvLGawE=
 			</data>
 		</dict>
 		<key>SFWeeklyHighlightsItemOneCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/yoBcHsDw0CZ3003SQO1rY8YtDU=
+			Bg6505l7OZ3DFPxdu6ceTk27gRs=
 			</data>
 			<key>hash2</key>
 			<data>
-			WPIx7EvRgonDTE+pgVjuExv8bjUsAm87K717P0fN1gE=
+			AyfEPTI6naxzyrhvP4hXjRXcMUaMTo/DLbbCaG2Ye20=
 			</data>
 		</dict>
 		<key>SFWeeklyHighlightsItemOneCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8GNBcuXejNsE98eda8bi2odoHV8=
+			SSvQXONLWEMV+JpAd63ApNuTAIU=
 			</data>
 			<key>hash2</key>
 			<data>
-			O+M9Ah+muWxtDcuZgupQgUlTEKj+U+CzYka/Od6xwT4=
+			5xlTkOKDfuHWMdDndFMKisTHyJW4+ovkKbqlGMtOdDg=
 			</data>
 		</dict>
 		<key>SFWeeklyHighlightsItemTwoCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+0MhDzLAFvu4AyTH5K13OqQrwPU=
+			QJblONgOhFjNd80UH+UCrJD2Ns0=
 			</data>
 			<key>hash2</key>
 			<data>
-			OS16Pmfn8ZuzOcDj16UzBFQjzMkvALuaZABbo4Eh9/A=
+			l9uzE0JuL6B0y1+A3QKQwu/+M8UGJiFxdC4OxQXxyZA=
 			</data>
 		</dict>
 		<key>SFWeeklyHighlightsItemTwoCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			UNFpkCllWlSGhLGS7WCeOtlodl4=
+			7vYJv5iU+SLlTXZ8tLhS3sdRgqU=
 			</data>
 			<key>hash2</key>
 			<data>
-			RyZfysIZkEvBRVbvwvy8XkZndRvlcqPUWZ6jDPTV2m0=
+			hPBsZULjE/9KczEIynM2YD4wEWsYwRF7Oe+vrt2L4nk=
 			</data>
 		</dict>
 		<key>SFWeeklyHighlightsTableViewCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			WJS8ioM9GplJSdVmgpzhFapchvA=
+			kG2ljAtPfTBKtCDDGYhJJrtJZ1o=
 			</data>
 			<key>hash2</key>
 			<data>
-			uY/n2NmpsD5xwROlrWNGqQuuOGpu+tplI3myvEKVJw8=
+			FhXA0G3vlTI487sX1d4clJOx0vJkYHF5tYsVg9JuZKc=
 			</data>
 		</dict>
 		<key>app_install_response.json</key>
@@ -1603,6 +1652,17 @@
 			<key>hash2</key>
 			<data>
 			Xkn4kgcEQglPolObWpQUPQSJFmA9zViu4G3URc17ojU=
+			</data>
+		</dict>
+		<key>branded_carousel_response.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			g5+y9x6IlCxgOQco7VIfXlDnbeg=
+			</data>
+			<key>hash2</key>
+			<data>
+			+hN59MzE2O5JRmNi0a4bb9jPp0wWuE0X4RujxrAA/Ek=
 			</data>
 		</dict>
 		<key>gif-image-template.html</key>
