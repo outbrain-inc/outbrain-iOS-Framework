@@ -62,6 +62,10 @@ BOOL WAS_INITIALIZED     =   NO;
     [OutbrainManager sharedInstance].partnerKey = partnerKey;
 }
 
++ (void) setUserId:(NSString *)userId {
+    [OutbrainManager sharedInstance].customUserId = userId;
+}
+
 + (BOOL) SDKInitialized {
     return WAS_INITIALIZED;
 }

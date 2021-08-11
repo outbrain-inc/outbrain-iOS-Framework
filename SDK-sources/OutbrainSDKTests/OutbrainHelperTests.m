@@ -187,4 +187,25 @@
     XCTAssert([urlComponents.string isEqualToString:@"https://odb.outbrain.com/utils/platforms"]);
 }
 
+- (void)testBuildODBWithCustomUserId {
+    NSString *CUSTOM_USER_ID = @"abcdefg";
+    [Outbrain setUserId: CUSTOM_USER_ID];
+    NSString *pageURLString = @"http://edition.cnn.com/2017/10/02/sport/kosei-inoue-judo-japan-supercoach-interview/index.html";
+    OBRequest *request = [OBRequest requestWithURL:pageURLString widgetID:@"APP_1" widgetIndex:2];
+    
+    NSURL *odbUrl = [[OutbrainHelper sharedInstance] recommendationURLForRequest:request];
+    
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:odbUrl resolvingAgainstBaseURL:NO];
+    NSInteger testsCount = 0;
+    
+    for (NSURLQueryItem *queryItem in urlComponents.queryItems) {
+        if ([queryItem.name isEqualToString:@"api_user_id"]) {
+            testsCount++;
+            XCTAssert([queryItem.value isEqualToString: CUSTOM_USER_ID]);
+        }
+    }
+    
+    XCTAssertEqual(testsCount, 1);
+    [Outbrain setUserId: nil];
+}
 @end
