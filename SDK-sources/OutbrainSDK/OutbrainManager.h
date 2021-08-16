@@ -19,6 +19,7 @@
 @property (nonatomic, assign)   BOOL                    testAppInstall;
 @property (nonatomic, assign)   BOOL                    testBrandedCarousel;
 @property (nonatomic, copy)     NSString *_Nullable     testLocation;
+@property (nonatomic, copy)     NSString * _Nonnull     customUserId;
 
 +(OutbrainManager * _Nonnull) sharedInstance;
 

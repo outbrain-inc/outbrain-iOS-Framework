@@ -114,7 +114,12 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     //User key + opt-out
     NSString *apiUserId = [OBAppleAdIdUtil isOptedOut] ? @"null" : [OBAppleAdIdUtil getAdvertiserId];
+    if ([[OutbrainManager sharedInstance] customUserId]) {
+        apiUserId = [[OutbrainManager sharedInstance] customUserId];
+    }
+    
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"api_user_id" value: apiUserId]];
+    
     
     //Test mode
     if ([OutbrainManager sharedInstance].testMode) {

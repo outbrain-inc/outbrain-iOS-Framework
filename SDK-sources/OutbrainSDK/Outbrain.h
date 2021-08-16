@@ -64,6 +64,12 @@ extern NSString * _Nonnull const OB_AD_NETWORK_ID;
  **/
 + (void) setPartnerKey:(NSString * _Nonnull)partnerKey;
 
+/**
+ *  @brief Optional - publisher can manually set the user ID value (this will be sent as the value for api_user_id in ODB requests).
+ *
+ **/
++ (void) setUserId:(NSString * _Nullable)userId;
+
 /** @section Fetching **/
 
 /**
