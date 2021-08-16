@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## v4.6.1 - August 16, 2021
+
+- Following request from publisher - add support to manually set user id value via `+ (void) setUserId:(NSString * _Nullable)userId;`
+
+
 ## v4.6.0 - July 29, 2021
 
 - SFWebView - SDK now contains solution for "Smartfeed on WKWebView" - see https://developer.outbrain.com/ios-sfwidget-guideline/
