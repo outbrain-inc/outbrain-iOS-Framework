@@ -186,6 +186,11 @@ extension ArticleTableViewController : SmartFeedDelegate {
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
+    
+    // Optional
+    func reloadItemsOnOrientationChanged() -> Bool {
+        return true
+    }
 
       // Optional
 //    func carouselItemSize() -> CGSize {

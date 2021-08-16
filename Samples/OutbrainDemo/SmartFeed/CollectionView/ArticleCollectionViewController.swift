@@ -282,7 +282,9 @@ extension ArticleCollectionViewController : SmartFeedDelegate {
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
     
-    
+    func reloadItemsOnOrientationChanged() -> Bool {
+        return false
+    }
 }
 
 extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {

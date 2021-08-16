@@ -77,6 +77,13 @@
  **/
 -(void) smartfeedIsReadyWithRecs;
 
+/**
+ * @brief default value in "true" \ YES - SDK reloads feed items on orientation change
+ * app developer implement this method to return "false" which will cause the SDK to skip the reload.
+ *
+ **/
+-(BOOL) reloadItemsOnOrientationChanged;
+
 @end
 
 
