@@ -194,6 +194,15 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     [[SFUtils sharedInstance] setDarkMode:darkMode];
 }
 
+-(void) setDelegate:(id<SmartFeedDelegate>)delegate {
+    _delegate = delegate;
+    if ([self.delegate respondsToSelector:@selector(reloadItemsOnOrientationChanged)]) {
+        if ([self.delegate reloadItemsOnOrientationChanged] == NO) {
+            [[NSNotificationCenter defaultCenter] removeObserver:self.sfCollectionViewManager ? self.sfCollectionViewManager : self.sfTableViewManager];
+        }
+    }
+}
+
 #pragma mark - Fetch Recommendations
 - (void) fetchMoreRecommendations {
     if (self.isLoading) {
