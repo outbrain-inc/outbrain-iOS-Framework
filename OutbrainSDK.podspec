@@ -9,15 +9,15 @@
 Pod::Spec.new do |s|
 
   s.name                = "OutbrainSDK"
-  s.version             = "4.6.0"
+  s.version             = "4.6.1"
   s.summary             = "Outbrain iOS SDK for app developers"
   s.description         = "Outbrain iOS SDK for app developers, please review our guidelines at https://developer.outbrain.com/ios-sdk-developer-guide/"
   s.homepage            = "https://www.outbrain.com"
   s.license             = { :type => 'Proprietary', :text => 'Copyright 2018 Outbrain. All rights reserved.' }
   s.author              = { "Oded Regev" => "oregev@outbrain.com" }
   s.platform            = :ios, "10.3"
-  s.source              = { :git => "https://github.com/outbrain/outbrain-iOS-Framework.git", :tag => "#{s.version}" }
-  s.frameworks          = "SystemConfiguration", "AdSupport", "StoreKit"
+  s.source              = { :git => "https://github.com/outbrain/outbrain-iOS-Framework.git", :tag => "4.6.1+no-idfa" }
+  s.frameworks          = "SystemConfiguration", "StoreKit"
   s.requires_arc        = true
   s.preserve_paths      = "OutbrainSDK.xcframework"
   s.vendored_frameworks = "OutbrainSDK.xcframework"
