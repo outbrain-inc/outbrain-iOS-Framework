@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## v4.6.2 - August 16, 2021
+
+- Following [request from a publisher](https://github.com/outbrain/outbrain-iOS-Framework/issues/4) - We added a new optional method to `SmartFeedDelegate` called: `-(BOOL) reloadItemsOnOrientationChanged;`
+
+
 ## v4.6.1 - August 16, 2021
 
 - Following request from publisher - add support to manually set user id value via `+ (void) setUserId:(NSString * _Nullable)userId;`
