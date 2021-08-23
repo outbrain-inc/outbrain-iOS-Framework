@@ -59,9 +59,6 @@ NSInteger const kBrandedCarouselTag = 111;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [super collectionView:collectionView cellForItemAtIndexPath:indexPath];
-    cell.layer.borderColor = UIColorFromRGB(0xd9d9d9).CGColor;
-    cell.layer.cornerRadius = 5.0f;
-    cell.layer.borderWidth = 1.0f;
     if ([[SFUtils sharedInstance] darkMode]) {
         SFCollectionViewCell *sfCell = (SFCollectionViewCell *)cell;
         sfCell.recTitleLabel.textColor = [[SFUtils sharedInstance] titleColor];
