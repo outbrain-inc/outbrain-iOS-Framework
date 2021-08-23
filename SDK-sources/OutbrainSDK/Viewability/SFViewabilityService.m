@@ -157,7 +157,9 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     self.isLoading = true;
     [[OBNetworkManager sharedManager] sendPost:url postData:[self.itemsToReportMap allValues] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil) {
-            [self.itemsToReportMap removeObjectsForKeys:keys];
+            if (keys != nil) {
+                [self.itemsToReportMap removeObjectsForKeys:keys];
+            }
         } else {
             NSLog(@"Error report viewability per listing %@", error);
         }
