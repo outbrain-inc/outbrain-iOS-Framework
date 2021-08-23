@@ -1,6 +1,12 @@
 # Release Notes
 
 
+## v4.6.3 - August 23, 2021
+
+- UI Fix - fix UI design for Carousel item cell - remove border and fix text alignment.
+
+- Bug fix - very rare case, SFViewabilityService crashed on removeObjectsForKeys if "keys" are nil before completion block begin. 
+
 ## v4.6.2 - August 16, 2021
 
 - Following [request from a publisher](https://github.com/outbrain/outbrain-iOS-Framework/issues/4) - We added a new optional method to `SmartFeedDelegate` called: `-(BOOL) reloadItemsOnOrientationChanged;`
