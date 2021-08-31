@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import AppTrackingTransparency
+import AdSupport
 
 struct OBConf {
     static var widgetID = "MB_1"
@@ -21,7 +22,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "SFWebView Demo App"
-        // Do any additional setup after loading the view.
+        
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { authStatus in
+                print("user authStatus is: \(authStatus)")
+                print("advertisingIdentifier: \(ASIdentifierManager.shared().advertisingIdentifier)")
+            }
+        }
     }
 }
 
