@@ -9,6 +9,7 @@
 #import "SFWidget.h"
 #import "SFWidgetMessageHandler.h"
 #import "SFUtils.h"
+#import "OBUtils.h"
 
 @interface SFWidget() <SFMessageHandlerDelegate>
 
@@ -60,6 +61,11 @@
     self.widgetId = widgetId;
     self.installationKey = installationKey;
     self.userId = userId;
+    if (userId == nil && [[OBUtils deviceModel] isEqualToString:@"Simulator"])
+    {
+        self.userId = @"F22700D5-1D49-42CC-A183-F3676526035F"; // dev hack to test Videos
+    }
+    
     self.messageHandler.delegate = self;
     [self configureSFWidget];
 }
@@ -166,6 +172,7 @@
     [self.webview setNeedsLayout];
     
     NSURL *widgetURL = [self getSmartfeedWidgetUrl];
+    NSLog(@"widgetURL: %@", widgetURL);
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:widgetURL];
     [self.webview loadRequest:urlRequest];
     [self.webview setNeedsLayout];
@@ -176,12 +183,22 @@
         NSLog(@"Error in getSmartfeedUrl() - missing mandatory params");
         return nil;
     }
+    NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
+    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+    
     NSString *baseUrl = @"https://widgets.outbrain.com/reactNativeBridge/index.html";
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:baseUrl];
     NSMutableArray * newQueryItems = [NSMutableArray arrayWithCapacity:[components.queryItems count] + 1];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"widgetId" value: self.widgetId]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"installationKey" value: self.installationKey]];
+    
+    // Video Params
+    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"platform" value: @"iOS"]];
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sdkVersion" value: OB_SDK_VERSION]];
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"inApp" value: @"true"]];
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appBundle" value: bundleIdentifier]];
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
     
     if (self.userId) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"userId" value: self.userId]];
