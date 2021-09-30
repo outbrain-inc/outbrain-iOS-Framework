@@ -10,7 +10,7 @@
 #import "SFWidgetMessageHandler.h"
 #import "SFUtils.h"
 
-@interface SFWidget() <SFMessageHandlerDelegate>
+@interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate>
 
 @property (nonatomic, strong) WKWebView *webview;
 @property (nonatomic, assign) NSInteger currentHeight;
@@ -161,11 +161,13 @@
     
     self.webview = [[WKWebView alloc] initWithFrame:self.frame configuration:webviewConf];
     self.webview.scrollView.scrollEnabled = NO;
+    self.webview.UIDelegate = self;
     [self addSubview:self.webview];
     [SFUtils addConstraintsToFillParent:self.webview];
     [self.webview setNeedsLayout];
     
     NSURL *widgetURL = [self getSmartfeedWidgetUrl];
+    NSLog(@"SFWidget load: %@", widgetURL);
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:widgetURL];
     [self.webview loadRequest:urlRequest];
     [self.webview setNeedsLayout];
@@ -176,12 +178,21 @@
         NSLog(@"Error in getSmartfeedUrl() - missing mandatory params");
         return nil;
     }
+    NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
+    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+    
     NSString *baseUrl = @"https://widgets.outbrain.com/reactNativeBridge/index.html";
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:baseUrl];
     NSMutableArray * newQueryItems = [NSMutableArray arrayWithCapacity:[components.queryItems count] + 1];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"widgetId" value: self.widgetId]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"installationKey" value: self.installationKey]];
+    
+    // New params to support video on bridge
+    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"platform" value: @"iOS"]];
+    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"inApp" value: @"true"]];
+    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"appName" value: appNameStr]];
+    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"appBundle" value: bundleIdentifier]];
     
     if (self.userId) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"userId" value: self.userId]];
@@ -244,5 +255,18 @@
         [self.delegate onRecClick:recURL];
     }
 }
+
+#pragma mark - WKUIDelegate
+-(WKWebView *) webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
+{
+    if (navigationAction.targetFrame == nil) {
+        if (self.delegate != nil && navigationAction.request.URL != nil) {
+            [self.delegate onRecClick: navigationAction.request.URL];
+        }
+    }
+    return nil;
+}
+
+
 
 @end
