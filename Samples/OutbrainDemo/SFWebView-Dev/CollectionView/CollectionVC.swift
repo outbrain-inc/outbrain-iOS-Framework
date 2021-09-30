@@ -25,7 +25,7 @@ class CollectionVC : UICollectionViewController, UICollectionViewDelegateFlowLay
         collectionView.register(SFWidgetCollectionCell.self, forCellWithReuseIdentifier: "SFWidgetCell")
         
         sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
-        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.widgetID, installationKey: OBConf.installationKey, userId: nil)
+        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.widgetID, installationKey: OBConf.installationKey, userId: "F22700D5-1D49-42CC-A183-F36765261112")
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
