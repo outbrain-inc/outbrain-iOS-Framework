@@ -9,6 +9,7 @@
 #import "SFWidget.h"
 #import "SFWidgetMessageHandler.h"
 #import "SFUtils.h"
+#import "OBUtils.h"
 
 @interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate>
 
@@ -60,6 +61,11 @@
     self.widgetId = widgetId;
     self.installationKey = installationKey;
     self.userId = userId;
+    if (userId == nil && [[OBUtils deviceModel] isEqualToString:@"Simulator"])
+    {
+        self.userId = @"F22700D5-1D49-42CC-A183-F3676526035F"; // dev hack to test Videos
+    }
+    
     self.messageHandler.delegate = self;
     [self configureSFWidget];
 }
@@ -167,7 +173,8 @@
     [self.webview setNeedsLayout];
     
     NSURL *widgetURL = [self getSmartfeedWidgetUrl];
-    NSLog(@"SFWidget load: %@", widgetURL);
+    NSLog(@"widgetURL: %@", widgetURL);
+    
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:widgetURL];
     [self.webview loadRequest:urlRequest];
     [self.webview setNeedsLayout];
@@ -188,11 +195,12 @@
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"widgetId" value: self.widgetId]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"installationKey" value: self.installationKey]];
     
-    // New params to support video on bridge
+    // Video Params
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"platform" value: @"iOS"]];
-    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"inApp" value: @"true"]];
-    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"appName" value: appNameStr]];
-    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"appBundle" value: bundleIdentifier]];
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sdkVersion" value: OB_SDK_VERSION]];
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"inApp" value: @"true"]];
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appBundle" value: bundleIdentifier]];
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
     
     if (self.userId) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"userId" value: self.userId]];
