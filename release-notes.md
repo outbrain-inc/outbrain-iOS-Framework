@@ -1,6 +1,13 @@
 # Release Notes
 
 
+## v4.6.4 - October 3, 2021
+
+- Fix - add support for ATS for SFWebView sample app
+- Feature - support video on SFWebView (sdk-bridge) solution.
+- Fix - add protection code to try to avoid crash in `SFViewabilityService` reported by Nine app
+
+
 ## v4.6.3 - August 23, 2021
 
 - UI Fix - fix UI design for Carousel item cell - remove border and fix text alignment.
