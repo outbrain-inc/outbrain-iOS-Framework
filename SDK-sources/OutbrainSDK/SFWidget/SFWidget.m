@@ -11,7 +11,7 @@
 #import "SFUtils.h"
 #import "OBUtils.h"
 
-@interface SFWidget() <SFMessageHandlerDelegate>
+@interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate>
 
 @property (nonatomic, strong) WKWebView *webview;
 @property (nonatomic, assign) NSInteger currentHeight;
@@ -167,12 +167,14 @@
     
     self.webview = [[WKWebView alloc] initWithFrame:self.frame configuration:webviewConf];
     self.webview.scrollView.scrollEnabled = NO;
+    self.webview.UIDelegate = self;
     [self addSubview:self.webview];
     [SFUtils addConstraintsToFillParent:self.webview];
     [self.webview setNeedsLayout];
     
     NSURL *widgetURL = [self getSmartfeedWidgetUrl];
     NSLog(@"widgetURL: %@", widgetURL);
+    
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:widgetURL];
     [self.webview loadRequest:urlRequest];
     [self.webview setNeedsLayout];
@@ -261,5 +263,18 @@
         [self.delegate onRecClick:recURL];
     }
 }
+
+#pragma mark - WKUIDelegate
+-(WKWebView *) webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
+{
+    if (navigationAction.targetFrame == nil) {
+        if (self.delegate != nil && navigationAction.request.URL != nil) {
+            [self.delegate onRecClick: navigationAction.request.URL];
+        }
+    }
+    return nil;
+}
+
+
 
 @end
