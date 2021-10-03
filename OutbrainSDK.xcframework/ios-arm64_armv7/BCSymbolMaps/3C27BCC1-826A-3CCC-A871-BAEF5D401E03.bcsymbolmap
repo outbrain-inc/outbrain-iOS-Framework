@@ -2235,6 +2235,7 @@ ___29-[SFWidget didHeightChanged:]_block_invoke
 -[SFWidget didClickOnRec:]
 -[SFWidget didClickOnOrganicRec:orgUrl:]
 ___40-[SFWidget didClickOnOrganicRec:orgUrl:]_block_invoke
+-[SFWidget webView:createWebViewWithConfiguration:forNavigationAction:windowFeatures:]
 -[SFWidget webview]
 -[SFWidget setWebview:]
 -[SFWidget currentHeight]
@@ -2257,9 +2258,14 @@ ___40-[SFWidget didClickOnOrganicRec:orgUrl:]_block_invoke
 -[SFWidget setMessageHandler:]
 -[SFWidget .cxx_destruct]
 ___block_descriptor_40_e8_32s_e56_v16?0"<UIViewControllerTransitionCoordinatorContext>"8l
-_OBJC_CLASSLIST_REFERENCES_$_.92
-_OBJC_CLASSLIST_REFERENCES_$_.105
-_OBJC_CLASSLIST_REFERENCES_$_.173
+_OBJC_CLASSLIST_REFERENCES_$_.101
+_OBJC_CLASSLIST_REFERENCES_$_.118
+_OBJC_CLASSLIST_REFERENCES_$_.131
+_OBJC_CLASSLIST_REFERENCES_$_.145
+_OBJC_CLASSLIST_REFERENCES_$_.152
+_OBJC_CLASSLIST_REFERENCES_$_.196
+_OBJC_CLASSLIST_REFERENCES_$_.209
+_OBJC_SELECTOR_REFERENCES_.215
 ___block_descriptor_40_e8_32s_e46_v32?0"NSData"8"NSURLResponse"16"NSError"24l
 _OBJC_IVAR_$_SFWidget._webview
 _OBJC_IVAR_$_SFWidget._currentHeight
@@ -2364,7 +2370,6 @@ ___50-[OBMultivacRequestOperation startMultivacRequest]_block_invoke
 _OBJC_CLASSLIST_REFERENCES_$_.28
 _OBJC_CLASSLIST_REFERENCES_$_.75
 _OBJC_CLASSLIST_REFERENCES_$_.78
-_OBJC_CLASSLIST_REFERENCES_$_.118
 _OBJC_IVAR_$_OBMultivacRequestOperation._multivacDelegate
 _OBJC_IVAR_$_OBMultivacRequestOperation._requestStartDate
 _OBJC_IVAR_$_OBMultivacRequestOperation._request
