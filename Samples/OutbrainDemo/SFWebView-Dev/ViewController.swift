@@ -29,6 +29,7 @@ class ViewController: UIViewController {
                 print("advertisingIdentifier: \(ASIdentifierManager.shared().advertisingIdentifier)")
             }
         }
+        performSegue(withIdentifier: "showCollectionVC", sender: nil)
     }
 }
 

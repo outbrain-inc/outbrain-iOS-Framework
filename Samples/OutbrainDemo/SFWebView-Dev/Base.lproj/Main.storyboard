@@ -21,7 +21,7 @@
                                 <rect key="frame" x="136.5" y="200.5" width="102" height="30"/>
                                 <state key="normal" title="CollectionView"/>
                                 <connections>
-                                    <segue destination="dZp-Co-Tft" kind="show" id="X24-jF-dTT"/>
+                                    <segue destination="dZp-Co-Tft" kind="show" identifier="showCollectionVC" id="X24-jF-dTT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqK-df-hoe">
