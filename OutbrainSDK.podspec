@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.license             = { :type => 'Proprietary', :text => 'Copyright 2018 Outbrain. All rights reserved.' }
   s.author              = { "Oded Regev" => "oregev@outbrain.com" }
   s.platform            = :ios, "10.3"
-  s.source              = { :git => "https://github.com/outbrain/outbrain-iOS-Framework.git", :tag => "4.6.1+no-idfa" }
+  s.source              = { :git => "https://github.com/outbrain/outbrain-iOS-Framework.git", :tag => "4.6.4+no-idfa" }
   s.frameworks          = "SystemConfiguration", "StoreKit"
   s.requires_arc        = true
   s.preserve_paths      = "OutbrainSDK.xcframework"
