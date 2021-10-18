@@ -85,6 +85,9 @@
         else if ([queryItem.name isEqualToString:@"portalUrl"]) {
             XCTFail(@"portalUrl param should not be here");
         }
+        else if ([queryItem.name isEqualToString:@"darkMode"]) {
+            XCTFail(@"darkMode param should not be here");
+        }
     }
     
     urlComponents.query = nil;
@@ -208,4 +211,48 @@
     XCTAssertEqual(testsCount, 1);
     [Outbrain setUserId: nil];
 }
+
+- (void)testBuildODBForSmartfeedWithDarkMode {
+    SmartFeedManager *manager = [[SmartFeedManager alloc] init];
+    manager.darkMode = YES;
+    NSString *pageURLString = @"http://edition.cnn.com/2017/10/02/sport/kosei-inoue-judo-japan-supercoach-interview/index.html";
+    OBRequest *request = [OBRequest requestWithURL:pageURLString widgetID:@"SDK_1" widgetIndex:0];
+    request.isSmartfeed = YES;
+    
+    NSURL *odbUrl = [[OutbrainHelper sharedInstance] recommendationURLForRequest:request];
+    
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:odbUrl resolvingAgainstBaseURL:NO];
+    NSInteger testsCount = 0;
+    
+    for (NSURLQueryItem *queryItem in urlComponents.queryItems) {
+        if ([queryItem.name isEqualToString:@"darkMode"]) {
+            testsCount++;
+            XCTAssert([queryItem.value isEqualToString: @"true"]);
+        }
+    }
+    
+    XCTAssertEqual(testsCount, 1);
+}
+
+- (void)testBuildODBForSmartfeedWithDarkModeFalse {
+    SmartFeedManager *manager = [[SmartFeedManager alloc] init];
+    NSString *pageURLString = @"http://edition.cnn.com/2017/10/02/sport/kosei-inoue-judo-japan-supercoach-interview/index.html";
+    OBRequest *request = [OBRequest requestWithURL:pageURLString widgetID:@"SDK_1" widgetIndex:0];
+    request.isSmartfeed = YES;
+    
+    NSURL *odbUrl = [[OutbrainHelper sharedInstance] recommendationURLForRequest:request];
+    
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:odbUrl resolvingAgainstBaseURL:NO];
+    NSInteger testsCount = 0;
+    
+    for (NSURLQueryItem *queryItem in urlComponents.queryItems) {
+        if ([queryItem.name isEqualToString:@"darkMode"]) {
+            testsCount++;
+            XCTAssert([queryItem.value isEqualToString: @"false"]);
+        }
+    }
+    
+    XCTAssertEqual(testsCount, 1);
+}
+
 @end

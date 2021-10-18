@@ -17,6 +17,7 @@
 #import "OBAppleAdIdUtil.h"
 #import "OBUtils.h"
 #import "GDPRUtils.h"
+#import "SFUtils.h"
 
 @import StoreKit;
 
@@ -204,6 +205,12 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     if (GDPRUtils.sharedInstance.ccpaPrivacyString) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ccpa" value: GDPRUtils.sharedInstance.ccpaPrivacyString]];
     }
+    
+    // Dark Mode param (Smartfeed only)
+    if (request.isSmartfeed) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"darkMode" value: [[SFUtils sharedInstance] darkMode] ? @"true" : @"false"]];
+    }
+    
     
     // Multivac
     if (request.isMultivac) {

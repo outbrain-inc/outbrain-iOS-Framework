@@ -238,6 +238,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 -(void) loadFirstTimeForFeed {
     OBRequest *request = [OBRequest requestWithURL:self.url widgetID:self.widgetId widgetIndex:self.outbrainWidgetIndex];
+    request.isSmartfeed = YES;
     if (self.externalID) {
         request.externalID = self.externalID;
     }
@@ -295,6 +296,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     request.lastCardIdx = self.lastCardIdx;
     request.lastIdx = self.lastIdx;
     request.isMultivac = YES;
+    request.isSmartfeed = YES;
     request.fab = self.fab;
     
     if (self.externalID) {
