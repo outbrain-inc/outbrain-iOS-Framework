@@ -10,6 +10,7 @@
 #import "SFWidgetMessageHandler.h"
 #import "SFUtils.h"
 #import "OBUtils.h"
+#import "GDPRUtils.h"
 
 @interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate>
 
@@ -194,6 +195,22 @@
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"widgetId" value: self.widgetId]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"installationKey" value: self.installationKey]];
+    
+    // GDPR v1
+    NSString *consentString;
+    if (GDPRUtils.sharedInstance.cmpPresent) {
+        consentString = GDPRUtils.sharedInstance.gdprV1ConsentString;
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"cnsnt" value: consentString]];
+    }
+    // GDPR v2
+    if (GDPRUtils.sharedInstance.gdprV2ConsentString) {
+        consentString = GDPRUtils.sharedInstance.gdprV2ConsentString;
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"cnsntv2" value: consentString]];
+    }
+    // CCPA
+    if (GDPRUtils.sharedInstance.ccpaPrivacyString) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ccpa" value: GDPRUtils.sharedInstance.ccpaPrivacyString]];
+    }
     
     // Video Params
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"platform" value: @"iOS"]];
