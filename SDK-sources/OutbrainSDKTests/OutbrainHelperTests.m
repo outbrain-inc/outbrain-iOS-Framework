@@ -213,9 +213,9 @@
 }
 
 - (void)testBuildODBForSmartfeedWithDarkMode {
-    SmartFeedManager *manager = [[SmartFeedManager alloc] init];
-    manager.darkMode = YES;
     NSString *pageURLString = @"http://edition.cnn.com/2017/10/02/sport/kosei-inoue-judo-japan-supercoach-interview/index.html";
+    SmartFeedManager *manager = [[SmartFeedManager alloc] initWithUrl:pageURLString widgetID:@"SDK_1" tableView:[[UITableView alloc] init]];
+    manager.darkMode = YES;
     OBRequest *request = [OBRequest requestWithURL:pageURLString widgetID:@"SDK_1" widgetIndex:0];
     request.isSmartfeed = YES;
     
@@ -235,8 +235,8 @@
 }
 
 - (void)testBuildODBForSmartfeedWithDarkModeFalse {
-    SmartFeedManager *manager = [[SmartFeedManager alloc] init];
     NSString *pageURLString = @"http://edition.cnn.com/2017/10/02/sport/kosei-inoue-judo-japan-supercoach-interview/index.html";
+    SmartFeedManager *manager = [[SmartFeedManager alloc] initWithUrl:pageURLString widgetID:@"SDK_1" tableView:[[UITableView alloc] init]];
     OBRequest *request = [OBRequest requestWithURL:pageURLString widgetID:@"SDK_1" widgetIndex:0];
     request.isSmartfeed = YES;
     

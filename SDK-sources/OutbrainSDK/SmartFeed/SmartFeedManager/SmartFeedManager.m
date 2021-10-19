@@ -151,6 +151,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     
     self.defaultDelegate = [[SFDefaultDelegate alloc] init];
     self.delegate = self.defaultDelegate;
+    [[SFUtils sharedInstance] setDarkMode:NO];
 }
 
 -(void) setOutbrainWidgetIndex:(NSInteger)widgetIndex {
