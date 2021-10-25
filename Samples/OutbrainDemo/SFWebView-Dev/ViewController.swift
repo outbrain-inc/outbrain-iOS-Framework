@@ -12,6 +12,7 @@ import AdSupport
 
 struct OBConf {
     static var widgetID = "MB_1"
+    static var regularWidgetID = "MB_2"
     static var baseURL = "https://mobile-demo.outbrain.com"
     static var installationKey = "NANOWDGT01"
 }
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
                 print("advertisingIdentifier: \(ASIdentifierManager.shared().advertisingIdentifier)")
             }
         }
-        performSegue(withIdentifier: "showCollectionVC", sender: nil)
+        // performSegue(withIdentifier: "showCollectionVC", sender: nil)
     }
 }
 

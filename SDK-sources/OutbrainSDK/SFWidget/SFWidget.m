@@ -24,6 +24,8 @@
 @property (nonatomic, strong) NSString *widgetId;
 @property (nonatomic, strong) NSString *installationKey;
 @property (nonatomic, strong) NSString *userId;
+@property (nonatomic, assign) NSInteger widgetIndex;
+@property (nonatomic, strong) NSString *tParam;
 
 //
 @property (nonatomic, weak) id<SFWidgetDelegate> delegate;
@@ -32,8 +34,11 @@
 
 @end
 
-@implementation SFWidget
 
+NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready";
+
+
+@implementation SFWidget
 
 #pragma mark - Init Methods
 - (instancetype)initWithCoder:(NSCoder *)coder
@@ -57,9 +62,14 @@
 #pragma mark - Public Methods
 
 -(void) configureWithDelegate:(id<SFWidgetDelegate>)delegate url:(NSString *)url widgetId:(NSString *)widgetId installationKey:(NSString *)installationKey userId:(NSString *)userId {
+    [self configureWithDelegate:delegate url:url widgetId:widgetId widgetIndex:0 installationKey:installationKey userId:userId];
+}
+
+-(void) configureWithDelegate:(id<SFWidgetDelegate>)delegate url:(NSString *)url widgetId:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString *)installationKey userId:(NSString *)userId {
     self.delegate = delegate;
     self.url = url;
     self.widgetId = widgetId;
+    self.widgetIndex = widgetIndex;
     self.installationKey = installationKey;
     self.userId = userId;
     if (userId == nil && [[OBUtils deviceModel] isEqualToString:@"Simulator"])
@@ -173,6 +183,34 @@
     [SFUtils addConstraintsToFillParent:self.webview];
     [self.webview setNeedsLayout];
     
+    if (self.widgetIndex > 0) {
+        NSLog(@"differ fetching until we'll have the \"t\" param ready");
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                      selector:@selector(receiveTParamNotification:)
+                      name:SFWIDGET_T_PARAM_NOTIFICATION
+                      object:nil];
+        return;
+    }
+    else {
+        [self initialLoadUrl];
+    }
+}
+
+-(void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) receiveTParamNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:SFWIDGET_T_PARAM_NOTIFICATION]) {
+        NSLog (@"Successfully received SFWIDGET_T_PARAM_NOTIFICATION");
+        self.tParam = [notification.userInfo valueForKey:@"t"];
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        [self initialLoadUrl];
+    }
+}
+
+- (void) initialLoadUrl {
     NSURL *widgetURL = [self getSmartfeedWidgetUrl];
     NSLog(@"widgetURL: %@", widgetURL);
     
@@ -188,13 +226,17 @@
     }
     NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    
+    NSString *widgetIndex = [NSString stringWithFormat:@"%d", self.widgetIndex];
     NSString *baseUrl = @"https://widgets.outbrain.com/reactNativeBridge/index.html";
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:baseUrl];
     NSMutableArray * newQueryItems = [NSMutableArray arrayWithCapacity:[components.queryItems count] + 1];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"widgetId" value: self.widgetId]];
+    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"idx" value: widgetIndex]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"installationKey" value: self.installationKey]];
+    if (self.tParam) {
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"t" value: self.tParam]];
+    }
     
     // GDPR v1
     NSString *consentString;
