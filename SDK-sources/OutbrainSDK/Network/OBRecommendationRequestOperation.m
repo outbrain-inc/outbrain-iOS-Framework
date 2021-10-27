@@ -162,7 +162,9 @@
     obRecResponse.recommendations = [OBRecommendationRequestOperation _filterInvalidRecsForResponse: obRecResponse];
     [[OutbrainHelper sharedInstance].tokensHandler setTokenForRequest: self.request response: obRecResponse];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:SFWIDGET_T_PARAM_NOTIFICATION object:self userInfo:@{@"t" : [[obRecResponse responseRequest] token]}];
+    if ([[obRecResponse responseRequest] token]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:SFWIDGET_T_PARAM_NOTIFICATION object:self userInfo:@{@"t" : [[obRecResponse responseRequest] token]}];
+    }
     
     [self notifyAppHandler: obRecResponse];
 }
