@@ -26,10 +26,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+extern NSString * _Nonnull const SFWIDGET_T_PARAM_NOTIFICATION;
 
-@interface SFWidget : UIView 
+
+@interface SFWidget : UIView
 
 -(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId installationKey:(NSString * _Nonnull)installationKey userId:(NSString * _Nullable)userId;
+
+-(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString * _Nonnull)installationKey userId:(NSString * _Nullable)userId;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 
