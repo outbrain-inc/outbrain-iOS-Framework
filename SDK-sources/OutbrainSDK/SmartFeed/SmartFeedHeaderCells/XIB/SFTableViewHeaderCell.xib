@@ -25,12 +25,11 @@
                             <constraint firstAttribute="height" constant="12" id="lFd-1J-4pU"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smartfeed" translatesAutoresizingMaskIntoConstraints="NO" id="twE-qz-hgQ" userLabel="Smartfeed Image View">
-                        <rect key="frame" x="244" y="19.666666666666668" width="93" height="22.000000000000004"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new-smartfeed" translatesAutoresizingMaskIntoConstraints="NO" id="twE-qz-hgQ" userLabel="Smartfeed Image View">
+                        <rect key="frame" x="254" y="23" width="83" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="93" id="nqE-XY-lsy">
-                                <variation key="heightClass=regular-widthClass=regular" constant="125"/>
-                            </constraint>
+                            <constraint firstAttribute="width" constant="83" id="HbS-Dl-Ifm"/>
+                            <constraint firstAttribute="height" constant="15" id="dVr-fE-D58"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" tag="455" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Sponsored Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hG-UR-dqa" userLabel="Header Label">
@@ -77,6 +76,6 @@
     </objects>
     <resources>
         <image name="adchoices-icon" width="75" height="78.666664123535156"/>
-        <image name="smartfeed" width="139" height="22"/>
+        <image name="new-smartfeed" width="67" height="13"/>
     </resources>
 </document>
