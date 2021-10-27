@@ -14,7 +14,6 @@
 
 @interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate>
 
-@property (nonatomic, strong) WKWebView *webview;
 @property (nonatomic, assign) NSInteger currentHeight;
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, assign) BOOL inTransition;

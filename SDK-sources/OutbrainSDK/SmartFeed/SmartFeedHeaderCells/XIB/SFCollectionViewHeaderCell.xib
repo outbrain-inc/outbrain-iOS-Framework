@@ -26,10 +26,11 @@
                                 <color key="textColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smartfeed" translatesAutoresizingMaskIntoConstraints="NO" id="CAP-KL-ahl" userLabel="Smartfeed Image View">
-                                <rect key="frame" x="300" y="39" width="93" height="22"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new-smartfeed" translatesAutoresizingMaskIntoConstraints="NO" id="CAP-KL-ahl" userLabel="Smartfeed Image View">
+                                <rect key="frame" x="310" y="42.666666666666664" width="83" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="93" id="jKi-7V-4H6">
+                                    <constraint firstAttribute="height" constant="15" id="Kw7-5n-dky"/>
+                                    <constraint firstAttribute="width" constant="83" id="jKi-7V-4H6">
                                         <variation key="heightClass=regular-widthClass=regular" constant="125"/>
                                     </constraint>
                                 </constraints>
@@ -92,6 +93,6 @@
     </objects>
     <resources>
         <image name="adchoices-icon" width="75" height="78.666664123535156"/>
-        <image name="smartfeed" width="139" height="22"/>
+        <image name="new-smartfeed" width="67" height="13"/>
     </resources>
 </document>
