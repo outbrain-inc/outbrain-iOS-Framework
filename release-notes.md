@@ -1,6 +1,15 @@
 # Release Notes
 
 
+## v4.7.0 - October 27, 2021
+
+- Feature - SDK Bridge - support "t" param and idx param in the SDK bridge (2 widgets on the same page).
+- Improvement - add support for darkMode param for ODB (only for Smartfeed)
+- Improvement - SDK Bridge - add GDPR and CCPA params
+- Improvement - `webview` property in SFWidget should be public
+- Improvement - new Smartfeed logo (new design)
+
+
 ## v4.6.4 - October 3, 2021
 
 - Fix - add support for ATS for SFWebView sample app
