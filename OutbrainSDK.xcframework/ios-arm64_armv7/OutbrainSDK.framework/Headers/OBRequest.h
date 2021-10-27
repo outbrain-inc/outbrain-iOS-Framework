@@ -75,6 +75,11 @@
  **/
 @property (nonatomic, assign) BOOL isMultivac;
 
+/**
+ *  @brief flag to distinguish Smartfeed requests
+ *
+ **/
+@property (nonatomic, assign) BOOL isSmartfeed;
 
 /**
  *  @brief externalID is a custom parmater for the publisher to pass on to our SDK, we will include this in the ODB request
