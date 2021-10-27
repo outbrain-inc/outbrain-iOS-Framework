@@ -17,6 +17,7 @@
 #import "OBNetworkManager.h"
 #import "OBContent_Private.h"
 #import "OBViewabilityService.h"
+#import "SFWidget.h"
 
 @interface OBRecommendationRequestOperation()
 
@@ -160,6 +161,8 @@
     
     obRecResponse.recommendations = [OBRecommendationRequestOperation _filterInvalidRecsForResponse: obRecResponse];
     [[OutbrainHelper sharedInstance].tokensHandler setTokenForRequest: self.request response: obRecResponse];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SFWIDGET_T_PARAM_NOTIFICATION object:self userInfo:@{@"t" : [[obRecResponse responseRequest] token]}];
     
     [self notifyAppHandler: obRecResponse];
 }

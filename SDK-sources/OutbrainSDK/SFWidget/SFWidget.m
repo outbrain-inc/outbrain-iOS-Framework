@@ -205,7 +205,9 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
         NSLog (@"Successfully received SFWIDGET_T_PARAM_NOTIFICATION");
         self.tParam = [notification.userInfo valueForKey:@"t"];
         [[NSNotificationCenter defaultCenter] removeObserver:self];
-        [self initialLoadUrl];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self initialLoadUrl];
+        });
     }
 }
 
