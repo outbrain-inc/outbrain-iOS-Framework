@@ -18,6 +18,11 @@ In order to start developing the SDK you need to:
 
 5) Xcode - General - Embedded Binaries - add OutbrainSDK target
 
+## Google Cloud Uploads (GCP)
+
+We upload this project assets to GCP, in order to do it, the SDK developer should configure the `GCP_API_KEY` env var, which should contain [the content of this json file](https://outbrain.slack.com/files/UFBR82DPS/F01T315C3ST/sdk-assets-33ff7d65d16b.json).
+
+
 ## App Developer Guidelines
 
 [Outbrain SDK v3 – Documentation & Download Links](http://developer.outbrain.com/outbrain-sdk-v3-documentation-download-links/)
