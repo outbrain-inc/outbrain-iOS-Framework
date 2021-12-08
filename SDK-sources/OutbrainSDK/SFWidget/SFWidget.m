@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, assign) NSInteger widgetIndex;
 @property (nonatomic, strong) NSString *tParam;
+@property (nonatomic, assign) BOOL darkMode;
 
 //
 @property (nonatomic, weak) id<SFWidgetDelegate> delegate;
@@ -60,17 +61,19 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 #pragma mark - Public Methods
 
--(void) configureWithDelegate:(id<SFWidgetDelegate>)delegate url:(NSString *)url widgetId:(NSString *)widgetId installationKey:(NSString *)installationKey userId:(NSString *)userId {
-    [self configureWithDelegate:delegate url:url widgetId:widgetId widgetIndex:0 installationKey:installationKey userId:userId];
+-(void) configureWithDelegate:(id<SFWidgetDelegate>)delegate url:(NSString *)url widgetId:(NSString *)widgetId installationKey:(NSString *)installationKey {
+    [self configureWithDelegate:delegate url:url widgetId:widgetId widgetIndex:0 installationKey:installationKey userId:nil darkMode:NO];
 }
 
--(void) configureWithDelegate:(id<SFWidgetDelegate>)delegate url:(NSString *)url widgetId:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString *)installationKey userId:(NSString *)userId {
+-(void) configureWithDelegate:(id<SFWidgetDelegate>)delegate url:(NSString *)url widgetId:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString *)installationKey userId:(NSString *)userId darkMode:(BOOL)darkMode {
     self.delegate = delegate;
     self.url = url;
     self.widgetId = widgetId;
     self.widgetIndex = widgetIndex;
     self.installationKey = installationKey;
     self.userId = userId;
+    self.darkMode = darkMode;
+    
     if (userId == nil && [[OBUtils deviceModel] isEqualToString:@"Simulator"])
     {
         self.userId = @"F22700D5-1D49-42CC-A183-F3676526035F"; // dev hack to test Videos
@@ -237,6 +240,9 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"installationKey" value: self.installationKey]];
     if (self.tParam) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"t" value: self.tParam]];
+    }
+    if (self.darkMode) {
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"darkMode" value: @"true"]];
     }
     
     // GDPR v1
