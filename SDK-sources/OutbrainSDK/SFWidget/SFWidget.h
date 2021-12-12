@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  @brief called on recommendation "click" inside the feed. Publisher should open the URL in an external browser.
  *
- *  @param url - the organic rec "article url", i.e. the publisher url we should navigate to within the app navigation stack.
+ *  @param url - the "click URL" of the recommendation, the publisher should open the URL in an external browser.
  */
 - (void) onRecClick:(NSURL * _Nonnull) url;
 
