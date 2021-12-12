@@ -1,7 +1,7 @@
 BCSymbolMap Version: 2.0
-Apple clang version 12.0.5 (clang-1205.0.22.11)
-/Applications/Xcode-12.5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk
-iPhoneOS14.5.sdk
+Apple clang version 13.0.0 (clang-1300.0.29.3)
+/Applications/Xcode-13.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk
+iPhoneOS15.0.sdk
 /Users/distiller/Library/Developer/Xcode/DerivedData/OutbrainSDK-amfqcffqcfjfevfphrweheniafhm/Build/Intermediates.noindex/ArchiveIntermediates/OutbrainSDK/IntermediateBuildFilesPath/OutbrainSDK.build/Release-iphoneos/OutbrainSDK.build/DerivedSources/OutbrainSDK_vers.c
 /Users/distiller/repo/SDK-sources
 -[OBViewabilityActions initWithPayload:]
@@ -200,16 +200,15 @@ __OBJC_$_INSTANCE_METHODS_SFHorizontalViewWeeklyHighlights
 __OBJC_$_INSTANCE_VARIABLES_SFHorizontalViewWeeklyHighlights
 __OBJC_$_PROP_LIST_SFHorizontalViewWeeklyHighlights
 __OBJC_CLASS_RO_$_SFHorizontalViewWeeklyHighlights
-_OBJC_CLASSLIST_REFERENCES_$_.385
-_OBJC_SELECTOR_REFERENCES_.387
-_OBJC_SELECTOR_REFERENCES_.389
-_OBJC_SELECTOR_REFERENCES_.390
+_OBJC_CLASSLIST_REFERENCES_$_.391
+_OBJC_SELECTOR_REFERENCES_.393
+_OBJC_SELECTOR_REFERENCES_.395
+_OBJC_SELECTOR_REFERENCES_.396
 /Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalViewWeeklyHighlights.m
 OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalViewWeeklyHighlights.m
-CGSizeMake
-/Applications/Xcode-12.5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
+llvm.loop.mustprogress
 UI_USER_INTERFACE_IDIOM
-/Applications/Xcode-12.5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDevice.h
+/Applications/Xcode-13.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIDevice.h
 -[SFHorizontalWithVideoTableViewCell initWithCoder:]
 -[SFHorizontalWithVideoTableViewCell webview]
 -[SFHorizontalWithVideoTableViewCell setWebview:]
@@ -257,8 +256,6 @@ _OBJC_SELECTOR_REFERENCES_.386
 _OBJC_SELECTOR_REFERENCES_.388
 _OBJC_CLASSLIST_REFERENCES_$_.389
 _OBJC_SELECTOR_REFERENCES_.391
-_OBJC_SELECTOR_REFERENCES_.393
-_OBJC_SELECTOR_REFERENCES_.395
 _OBJC_SELECTOR_REFERENCES_.397
 _OBJC_SELECTOR_REFERENCES_.399
 __OBJC_$_CLASS_METHODS_OBUtils
@@ -266,6 +263,8 @@ __OBJC_METACLASS_RO_$_OBUtils
 __OBJC_CLASS_RO_$_OBUtils
 /Users/distiller/repo/SDK-sources/OutbrainSDK/Helpers/OBUtils.m
 OutbrainSDK/Helpers/OBUtils.m
+NSMakeRange
+/Applications/Xcode-13.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSRange.h
 -[SFBrandedCarouselCollectionCell initWithCoder:]
 -[SFBrandedCarouselCollectionCell setupDotsIndicator:]
 -[SFBrandedCarouselCollectionCell setDotsIndicatorWithCurrentIndex:]
@@ -417,8 +416,8 @@ OutbrainSDK/SmartFeed/ReadMoreModule/ReadMoreModuleCells/SFCollectionViewReadMor
 +[Outbrain fetchRecommendationsForRequest:withCallback:]
 +[Outbrain fetchRecommendationsForRequest:withDelegate:]
 ___56+[Outbrain fetchRecommendationsForRequest:withDelegate:]_block_invoke
-___copy_helper_block_e4_20w
-___destroy_helper_block_e4_20w
+___copy_helper_block_e8_32w
+___destroy_helper_block_e8_32w
 +[Outbrain getUrl:]
 +[Outbrain getOutbrainAboutURL]
 +[Outbrain registerOBLabel:withWidgetId:andUrl:]
@@ -427,7 +426,7 @@ ___destroy_helper_block_e4_20w
 +[Outbrain openAppInstallRec:inNavController:]
 +[Outbrain openAppInstallRec:inViewController:]
 _OBJC_SELECTOR_REFERENCES_.18
-___block_descriptor_24_e4_20w_e33_v8?0"OBRecommendationResponse"4l
+___block_descriptor_40_e8_32w_e34_v16?0"OBRecommendationResponse"8l
 _OBJC_SELECTOR_REFERENCES_.33
 _OBJC_CLASSLIST_REFERENCES_$_.40
 _OBJC_SELECTOR_REFERENCES_.48
@@ -455,8 +454,8 @@ __OBJC_METACLASS_RO_$_Outbrain
 __OBJC_CLASS_RO_$_Outbrain
 /Users/distiller/repo/SDK-sources/OutbrainSDK/Outbrain.m
 OutbrainSDK/Outbrain.m
-__destroy_helper_block_e4_20w
-__copy_helper_block_e4_20w
+__destroy_helper_block_e8_32w
+__copy_helper_block_e8_32w
 __56+[Outbrain fetchRecommendationsForRequest:withDelegate:]_block_invoke
 -[ViewabilityData reportServedUrl]
 -[ViewabilityData setReportServedUrl:]
@@ -503,7 +502,7 @@ __OBJC_$_PROP_LIST_ViewabilityData
 __OBJC_CLASS_RO_$_ViewabilityData
 _sharedInstance.sharedInstance
 _sharedInstance.onceToken
-___block_descriptor_20_e5_v4?0l
+___block_descriptor_32_e5_v8?0l
 ___block_literal_global
 _OBJC_SELECTOR_REFERENCES_.44
 _OBJC_SELECTOR_REFERENCES_.46
@@ -550,7 +549,7 @@ __OBJC_CLASS_RO_$_OBViewabilityService
 /Users/distiller/repo/SDK-sources/OutbrainSDK/Viewability/OBViewabilityService.m
 OutbrainSDK/Viewability/OBViewabilityService.m
 __38+[OBViewabilityService sharedInstance]_block_invoke
-/Applications/Xcode-12.5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/usr/include/dispatch/once.h
+/Applications/Xcode-13.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/usr/include/dispatch/once.h
 -[SFTableViewReadMoreCell awakeFromNib]
 -[SFTableViewReadMoreCell readMoreLabel]
 -[SFTableViewReadMoreCell setReadMoreLabel:]
@@ -575,8 +574,8 @@ ___38+[SFViewabilityService sharedInstance]_block_invoke
 -[SFViewabilityService isAlreadyReportedForRequestId:position:]
 -[SFViewabilityService reportViewability]
 ___41-[SFViewabilityService reportViewability]_block_invoke
-___copy_helper_block_e4_20s24s
-___destroy_helper_block_e4_20s24s
+___copy_helper_block_e8_32s40s
+___destroy_helper_block_e8_32s40s
 -[SFViewabilityService viewabilityKeyForRequestId:position:]
 -[SFViewabilityService reportViewabilityTimer]
 -[SFViewabilityService setReportViewabilityTimer:]
@@ -608,7 +607,7 @@ _OBJC_SELECTOR_REFERENCES_.120
 _OBJC_CLASSLIST_REFERENCES_$_.123
 _OBJC_SELECTOR_REFERENCES_.127
 _OBJC_SELECTOR_REFERENCES_.129
-___block_descriptor_28_e4_20s24s_e45_v16?0"NSData"4"NSURLResponse"8"NSError"12l
+___block_descriptor_48_e8_32s40s_e46_v32?0"NSData"8"NSURLResponse"16"NSError"24l
 _OBJC_CLASSLIST_REFERENCES_$_.135
 _OBJC_SELECTOR_REFERENCES_.137
 __OBJC_$_CLASS_METHODS_SFViewabilityService
@@ -624,8 +623,8 @@ __OBJC_$_PROP_LIST_SFViewabilityService
 __OBJC_CLASS_RO_$_SFViewabilityService
 /Users/distiller/repo/SDK-sources/OutbrainSDK/Viewability/SFViewabilityService.m
 OutbrainSDK/Viewability/SFViewabilityService.m
-__destroy_helper_block_e4_20s24s
-__copy_helper_block_e4_20s24s
+__destroy_helper_block_e8_32s40s
+__copy_helper_block_e8_32s40s
 __41-[SFViewabilityService reportViewability]_block_invoke
 __38+[SFViewabilityService sharedInstance]_block_invoke
 -[SFWidgetMessageHandler userContentController:didReceiveScriptMessage:]
@@ -699,11 +698,11 @@ __OBJC_METACLASS_RO_$_SFItemData
 __OBJC_$_INSTANCE_METHODS_SFItemData
 _OBJC_IVAR_$_SFItemData._isCustomUI
 _OBJC_IVAR_$_SFItemData._isLastInWidget
+_OBJC_IVAR_$_SFItemData._itemType
 _OBJC_IVAR_$_SFItemData._outbrainRecs
 _OBJC_IVAR_$_SFItemData._singleRec
 _OBJC_IVAR_$_SFItemData._odbSettings
 _OBJC_IVAR_$_SFItemData._shadowColor
-_OBJC_IVAR_$_SFItemData._itemType
 _OBJC_IVAR_$_SFItemData._widgetTitle
 _OBJC_IVAR_$_SFItemData._widgetTitleTextColor
 _OBJC_IVAR_$_SFItemData._widgetId
@@ -912,12 +911,11 @@ __OBJC_$_INSTANCE_METHODS_BrandedCarouselCollectionLayout
 __OBJC_CLASS_RO_$_BrandedCarouselCollectionLayout
 /Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/BrandedCarouselCollectionLayout.m
 OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/BrandedCarouselCollectionLayout.m
-CGRectMake
 +[OBContent payloadIsValid:]
 +[OBContent contentWithPayload:]
 ___32+[OBContent contentWithPayload:]_block_invoke
-___copy_helper_block_e4_20s28s
-___destroy_helper_block_e4_20s28s
+___copy_helper_block_e8_32s48s
+___destroy_helper_block_e8_32s48s
 +[OBContent convertedValue:withClass:]
 +[OBContent requiredKeys]
 +[OBContent propertiesMap]
@@ -926,7 +924,7 @@ ___destroy_helper_block_e4_20s28s
 -[OBContent originalOBPayload]
 -[OBContent setOriginalOBPayload:]
 -[OBContent .cxx_destruct]
-___block_descriptor_32_e4_20s28s_e34_v16?0"NSString"4"NSString"8^c12l
+___block_descriptor_56_e8_32s48s_e35_v32?0"NSString"8"NSString"16^B24l
 _OBJC_CLASSLIST_REFERENCES_$_.34
 _convertedValue:withClass:.formatter
 _OBJC_CLASSLIST_REFERENCES_$_.35
@@ -941,8 +939,8 @@ __OBJC_CLASS_RO_$_OBContent
 /Users/distiller/repo/SDK-sources/OutbrainSDK/Models/Content/OBContent.m
 OutbrainSDK/Models/Content/OBContent.m
 OutbrainSDK/Models/Content/OBContent.h
-__destroy_helper_block_e4_20s28s
-__copy_helper_block_e4_20s28s
+__destroy_helper_block_e8_32s48s
+__copy_helper_block_e8_32s48s
 __32+[OBContent contentWithPayload:]_block_invoke
 -[OBLabel initWithFrame:]
 -[OBLabel initWithCoder:]
@@ -975,8 +973,8 @@ OutbrainSDK/Viewability/OBLabel.h
 -[SFCollectionViewManager initWitCollectionView:]
 -[SFCollectionViewManager orientationChanged:]
 ___46-[SFCollectionViewManager orientationChanged:]_block_invoke
-___copy_helper_block_e4_20s
-___destroy_helper_block_e4_20s
+___copy_helper_block_e8_32s
+___destroy_helper_block_e8_32s
 -[SFCollectionViewManager registerSingleItemNib:forCellWithReuseIdentifier:]
 -[SFCollectionViewManager collectionView:headerCellForItemAtIndexPath:isRTL:]
 -[SFCollectionViewManager collectionView:cellForItemAtIndexPath:sfItem:]
@@ -1002,7 +1000,7 @@ ___destroy_helper_block_e4_20s
 -[SFCollectionViewManager .cxx_destruct]
 _OBJC_CLASSLIST_REFERENCES_$_.55
 _OBJC_CLASSLIST_REFERENCES_$_.60
-___block_descriptor_24_e4_20s_e5_v4?0l
+___block_descriptor_40_e8_32s_e5_v8?0l
 _OBJC_CLASSLIST_REFERENCES_$_.74
 _OBJC_SELECTOR_REFERENCES_.103
 _OBJC_SELECTOR_REFERENCES_.105
@@ -1103,8 +1101,8 @@ _OBJC_SELECTOR_REFERENCES_.457
 OutbrainSDK/SmartFeed/SmartFeedManager/SFCollectionViewManager.m
 OutbrainSDK/SmartFeed/SmartFeedManager/SFCollectionViewManager.h
 UIDeviceOrientationIsLandscape
-__destroy_helper_block_e4_20s
-__copy_helper_block_e4_20s
+__destroy_helper_block_e8_32s
+__copy_helper_block_e8_32s
 __46-[SFCollectionViewManager orientationChanged:]_block_invoke
 /Users/distiller/repo/SDK-sources/OutbrainSDK/Errors/OBErrors.m
 -[OBRecommendation isRTB]
@@ -1242,8 +1240,8 @@ _OBJC_CLASSLIST_REFERENCES_$_.63
 _OBJC_CLASSLIST_REFERENCES_$_.70
 _OBJC_CLASSLIST_REFERENCES_$_.96
 _OBJC_SELECTOR_REFERENCES_.98
-___block_descriptor_28_e4_20s24s_e5_v4?0l
-___block_descriptor_28_e4_20s24s_e7_v8?0c4l
+___block_descriptor_48_e8_32s40s_e5_v8?0l
+___block_descriptor_48_e8_32s40s_e8_v12?0B8l
 __OBJC_METACLASS_RO_$_SFReadMoreModuleHelper
 __OBJC_$_INSTANCE_METHODS_SFReadMoreModuleHelper
 _OBJC_IVAR_$_SFReadMoreModuleHelper._shouldExpandCollapsableSectionCells
@@ -1265,11 +1263,11 @@ __63-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]_block_invoke
 __63-[SFReadMoreModuleHelper readMoreButonClickedOnCollectionView:]_block_invoke
 +[OBNetworkManager sharedManager]
 ___33+[OBNetworkManager sharedManager]_block_invoke
-___copy_helper_block_e4_
-___destroy_helper_block_e4_
+___copy_helper_block_e8_
+___destroy_helper_block_e8_
 -[OBNetworkManager sendGet:completionHandler:]
 ___46-[OBNetworkManager sendGet:completionHandler:]_block_invoke
-___copy_helper_block_e4_20b
+___copy_helper_block_e8_32b
 -[OBNetworkManager sendPost:postData:completionHandler:]
 ___56-[OBNetworkManager sendPost:postData:completionHandler:]_block_invoke
 -[OBNetworkManager generateMutableRequest:]
@@ -1286,11 +1284,11 @@ ___50+[OBNetworkManager createWebViewAndFetchUserAgent]_block_invoke
 -[OBNetworkManager .cxx_destruct]
 _sharedManager.sharedManager
 _sharedManager.onceToken
-___block_descriptor_24_e4__e5_v4?0l
-___block_descriptor_24_e4_20bs_e45_v16?0"NSData"4"NSURLResponse"8"NSError"12l
+___block_descriptor_40_e8__e5_v8?0l
+___block_descriptor_40_e8_32bs_e46_v32?0"NSData"8"NSURLResponse"16"NSError"24l
 _OBJC_CLASSLIST_REFERENCES_$_.17
 _OBJC_CLASSLIST_REFERENCES_$_.32
-___block_descriptor_24_e4__e19_v12?04"NSError"8l
+___block_descriptor_40_e8__e20_v24?08"NSError"16l
 __OBJC_$_CLASS_METHODS_OBNetworkManager
 __OBJC_METACLASS_RO_$_OBNetworkManager
 __OBJC_$_INSTANCE_METHODS_OBNetworkManager
@@ -1304,10 +1302,10 @@ __OBJC_CLASS_RO_$_OBNetworkManager
 OutbrainSDK/Network/OBNetworkManager.m
 __50+[OBNetworkManager createWebViewAndFetchUserAgent]_block_invoke
 __56-[OBNetworkManager sendPost:postData:completionHandler:]_block_invoke
-__copy_helper_block_e4_20b
+__copy_helper_block_e8_32b
 __46-[OBNetworkManager sendGet:completionHandler:]_block_invoke
-__destroy_helper_block_e4_
-__copy_helper_block_e4_
+__destroy_helper_block_e8_
+__copy_helper_block_e8_
 __33+[OBNetworkManager sharedManager]_block_invoke
 +[OutbrainManager sharedInstance]
 ___33+[OutbrainManager sharedInstance]_block_invoke
@@ -1317,8 +1315,8 @@ ___33+[OutbrainManager sharedInstance]_block_invoke
 -[OutbrainManager _isValid:]
 -[OutbrainManager reportPlistIsValidToServerIfNeeded]
 ___53-[OutbrainManager reportPlistIsValidToServerIfNeeded]_block_invoke
-___copy_helper_block_e4_20s24s28s
-___destroy_helper_block_e4_20s24s28s
+___copy_helper_block_e8_32s40s48s
+___destroy_helper_block_e8_32s40s48s
 -[OutbrainManager checkIfSkAdNetworkIsConfiguredCorrectly]
 -[OutbrainManager openAppInstallRec:inViewController:]
 ___54-[OutbrainManager openAppInstallRec:inViewController:]_block_invoke
@@ -1354,13 +1352,13 @@ _OBJC_CLASSLIST_REFERENCES_$_.102
 _OBJC_CLASSLIST_REFERENCES_$_.121
 _OBJC_CLASSLIST_REFERENCES_$_.124
 _OBJC_CLASSLIST_REFERENCES_$_.127
-___block_descriptor_32_e4_20s24s28s_e45_v16?0"NSData"4"NSURLResponse"8"NSError"12l
+___block_descriptor_56_e8_32s40s48s_e46_v32?0"NSData"8"NSURLResponse"16"NSError"24l
 _OBJC_CLASSLIST_REFERENCES_$_.158
 _OBJC_CLASSLIST_REFERENCES_$_.161
 _OBJC_CLASSLIST_REFERENCES_$_.168
 _OBJC_SELECTOR_REFERENCES_.176
 _OBJC_CLASSLIST_REFERENCES_$_.189
-___block_descriptor_20_e19_v12?0c4"NSError"8l
+___block_descriptor_32_e20_v20?0B8"NSError"12l
 _OBJC_CLASSLIST_REFERENCES_$_.203
 _OBJC_SELECTOR_REFERENCES_.207
 __OBJC_$_CLASS_METHODS_OutbrainManager
@@ -1389,8 +1387,8 @@ __OBJC_CLASS_RO_$_OutbrainManager
 OutbrainSDK/OutbrainManager.m
 OutbrainSDK/OutbrainManager.h
 __54-[OutbrainManager openAppInstallRec:inViewController:]_block_invoke
-__destroy_helper_block_e4_20s24s28s
-__copy_helper_block_e4_20s24s28s
+__destroy_helper_block_e8_32s40s48s
+__copy_helper_block_e8_32s40s48s
 __53-[OutbrainManager reportPlistIsValidToServerIfNeeded]_block_invoke
 __33+[OutbrainManager sharedInstance]_block_invoke
 +[OutbrainHelper sharedInstance]
@@ -1428,7 +1426,7 @@ _OBJC_SELECTOR_REFERENCES_.241
 _OBJC_SELECTOR_REFERENCES_.243
 _OBJC_SELECTOR_REFERENCES_.245
 _OBJC_CLASSLIST_REFERENCES_$_.246
-___block_descriptor_20_e17_v8?0"NSNumber"4l
+___block_descriptor_32_e18_v16?0"NSNumber"8l
 ___block_literal_global.250
 _OBJC_CLASSLIST_REFERENCES_$_.251
 _OBJC_SELECTOR_REFERENCES_.255
@@ -1546,8 +1544,6 @@ __OBJC_$_INSTANCE_METHODS_SFHorizontalViewFixed
 __OBJC_CLASS_RO_$_SFHorizontalViewFixed
 /Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalViewFixed.m
 OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalViewFixed.m
-UIEdgeInsetsMake
-/Applications/Xcode-12.5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIGeometry.h
 -[OBRecommendationRequestOperation initWithRequest:]
 -[OBRecommendationRequestOperation main]
 -[OBRecommendationRequestOperation createResponseWithDict:withError:]
@@ -1599,8 +1595,8 @@ ___31+[SFImageLoader sharedInstance]_block_invoke
 -[SFImageLoader loadImageUrl:into:]
 -[SFImageLoader loadImageUrl:into:withFadeDuration:]
 ___52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke
-___copy_helper_block_e4_20s24s28s32s
-___destroy_helper_block_e4_20s24s28s32s
+___copy_helper_block_e8_32s40s48s56s
+___destroy_helper_block_e8_32s40s48s56s
 ___52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke.91
 ___52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke_2
 -[SFImageLoader loadGifImageUrl:into:]
@@ -1630,10 +1626,10 @@ ___42-[SFImageLoader loadImageToCacheIfNeeded:]_block_invoke
 _OBJC_CLASSLIST_REFERENCES_$_.1
 _OBJC_SELECTOR_REFERENCES_.3
 _OBJC_CLASSLIST_REFERENCES_$_.19
-___block_descriptor_44_e4_20s24s28s32s_e5_v4?0l
-___block_descriptor_40_e4_20s24s28s_e5_v4?0l
+___block_descriptor_80_e8_32s40s48s56s_e5_v8?0l
+___block_descriptor_72_e8_32s40s48s_e5_v8?0l
 _OBJC_CLASSLIST_REFERENCES_$_.142
-___block_descriptor_32_e4_20s24s28s_e5_v4?0l
+___block_descriptor_56_e8_32s40s48s_e5_v8?0l
 __OBJC_$_CLASS_METHODS_SFImageLoader
 __OBJC_METACLASS_RO_$_SFImageLoader
 __OBJC_$_INSTANCE_METHODS_SFImageLoader
@@ -1656,8 +1652,8 @@ __58-[SFImageLoader loadImage:withFadeInDuration:toImageView:]_block_invoke
 __38-[SFImageLoader loadGifImageUrl:into:]_block_invoke
 __52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke_2
 __52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke.91
-__destroy_helper_block_e4_20s24s28s32s
-__copy_helper_block_e4_20s24s28s32s
+__destroy_helper_block_e8_32s40s48s56s
+__copy_helper_block_e8_32s40s48s56s
 __52-[SFImageLoader loadImageUrl:into:withFadeDuration:]_block_invoke
 __31+[SFImageLoader sharedInstance]_block_invoke
 -[OBSettings initWithPayload:]
@@ -1918,8 +1914,8 @@ __OBJC_$_INSTANCE_METHODS_PageCollectionLayout
 __OBJC_CLASS_RO_$_PageCollectionLayout
 /Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/PageCollectionLayout.m
 OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/PageCollectionLayout.m
-CGPointMake
 __CGSizeEqualToSize
+/Applications/Xcode-13.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
 -[SFWeeklyHighlightsSingleRecView recImageView]
 -[SFWeeklyHighlightsSingleRecView setRecImageView:]
 -[SFWeeklyHighlightsSingleRecView recTitleLabel]
@@ -2171,7 +2167,7 @@ ___48-[OBVideoWidget fetchRecommendationFromOutbrain]_block_invoke
 -[OBVideoWidget setVideoCell:]
 -[OBVideoWidget .cxx_destruct]
 _OBJC_CLASSLIST_REFERENCES_$_.84
-___block_descriptor_24_e4_20s_e33_v8?0"OBRecommendationResponse"4l
+___block_descriptor_40_e8_32s_e34_v16?0"OBRecommendationResponse"8l
 __OBJC_$_PROTOCOL_REFS_SFPrivateEventListener
 __OBJC_$_PROTOCOL_INSTANCE_METHODS_SFPrivateEventListener
 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_SFPrivateEventListener
@@ -2226,8 +2222,8 @@ OutbrainSDK/SmartFeed/SmartFeedManager/SFDefaultCollectionViewDelegate.m
 OutbrainSDK/SmartFeed/SmartFeedManager/SFDefaultCollectionViewDelegate.h
 -[SFWidget initWithCoder:]
 -[SFWidget initWithFrame:]
--[SFWidget configureWithDelegate:url:widgetId:installationKey:userId:]
--[SFWidget configureWithDelegate:url:widgetId:widgetIndex:installationKey:userId:]
+-[SFWidget configureWithDelegate:url:widgetId:installationKey:]
+-[SFWidget configureWithDelegate:url:widgetId:widgetIndex:installationKey:userId:darkMode:]
 -[SFWidget viewWillTransitionToSize:withTransitionCoordinator:]
 ___63-[SFWidget viewWillTransitionToSize:withTransitionCoordinator:]_block_invoke
 -[SFWidget getCurrentHeight]
@@ -2269,25 +2265,27 @@ ___40-[SFWidget didClickOnOrganicRec:orgUrl:]_block_invoke
 -[SFWidget setWidgetIndex:]
 -[SFWidget tParam]
 -[SFWidget setTParam:]
+-[SFWidget darkMode]
+-[SFWidget setDarkMode:]
 -[SFWidget delegate]
 -[SFWidget setDelegate:]
 -[SFWidget messageHandler]
 -[SFWidget setMessageHandler:]
 -[SFWidget .cxx_destruct]
-_OBJC_CLASSLIST_REFERENCES_$_.21
-___block_descriptor_24_e4_20s_e55_v8?0"<UIViewControllerTransitionCoordinatorContext>"4l
-_OBJC_CLASSLIST_REFERENCES_$_.85
-_OBJC_CLASSLIST_REFERENCES_$_.92
-_OBJC_CLASSLIST_REFERENCES_$_.180
-_OBJC_CLASSLIST_REFERENCES_$_.190
-_OBJC_CLASSLIST_REFERENCES_$_.205
+___block_descriptor_40_e8_32s_e56_v16?0"<UIViewControllerTransitionCoordinatorContext>"8l
+_OBJC_CLASSLIST_REFERENCES_$_.88
+_OBJC_CLASSLIST_REFERENCES_$_.91
+_OBJC_CLASSLIST_REFERENCES_$_.169
+_OBJC_CLASSLIST_REFERENCES_$_.182
+_OBJC_CLASSLIST_REFERENCES_$_.185
+_OBJC_CLASSLIST_REFERENCES_$_.213
 _OBJC_SELECTOR_REFERENCES_.215
 _OBJC_SELECTOR_REFERENCES_.217
-_OBJC_SELECTOR_REFERENCES_.239
-_OBJC_SELECTOR_REFERENCES_.247
-_OBJC_CLASSLIST_REFERENCES_$_.254
-_OBJC_CLASSLIST_REFERENCES_$_.267
-___block_descriptor_24_e4_20s_e45_v16?0"NSData"4"NSURLResponse"8"NSError"12l
+_OBJC_SELECTOR_REFERENCES_.219
+_OBJC_SELECTOR_REFERENCES_.223
+_OBJC_SELECTOR_REFERENCES_.229
+_OBJC_CLASSLIST_REFERENCES_$_.260
+___block_descriptor_40_e8_32s_e46_v32?0"NSData"8"NSURLResponse"16"NSError"24l
 _OBJC_IVAR_$_SFWidget._webview
 _OBJC_IVAR_$_SFWidget._currentHeight
 _OBJC_IVAR_$_SFWidget._isLoading
@@ -2298,6 +2296,7 @@ _OBJC_IVAR_$_SFWidget._installationKey
 _OBJC_IVAR_$_SFWidget._userId
 _OBJC_IVAR_$_SFWidget._widgetIndex
 _OBJC_IVAR_$_SFWidget._tParam
+_OBJC_IVAR_$_SFWidget._darkMode
 _OBJC_IVAR_$_SFWidget._delegate
 _OBJC_IVAR_$_SFWidget._messageHandler
 __OBJC_$_PROTOCOL_INSTANCE_METHODS_SFMessageHandlerDelegate
@@ -2467,8 +2466,8 @@ ___76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:
 ___76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.562
 ___76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.568
 ___76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.572
-___copy_helper_block_e4_20s24s28s32s36s
-___destroy_helper_block_e4_20s24s28s32s36s
+___copy_helper_block_e8_32s40s48s56s64s
+___destroy_helper_block_e8_32s40s48s56s64s
 -[SmartFeedManager configureSmartFeedHeaderTableViewCell:atIndexPath:]
 -[SmartFeedManager skySolutionForTableViewReload:newSmartfeedItems:indexPaths:]
 -[SmartFeedManager collectionView:cellForItemAtIndexPath:]
@@ -2587,15 +2586,15 @@ ___54-[SmartFeedManager onMultivacSuccess:feedIdx:hasMore:]_block_invoke
 -[SmartFeedManager .cxx_destruct]
 _OBJC_CLASSLIST_REFERENCES_$_.46
 _OBJC_CLASSLIST_REFERENCES_$_.170
-___block_descriptor_28_e4_20s24s_e33_v8?0"OBRecommendationResponse"4l
+___block_descriptor_48_e8_32s40s_e34_v16?0"OBRecommendationResponse"8l
 _OBJC_SELECTOR_REFERENCES_.213
 _OBJC_CLASSLIST_REFERENCES_$_.214
 _OBJC_CLASSLIST_REFERENCES_$_.227
-_OBJC_SELECTOR_REFERENCES_.229
 _OBJC_SELECTOR_REFERENCES_.231
 _OBJC_SELECTOR_REFERENCES_.233
 _OBJC_SELECTOR_REFERENCES_.235
 _OBJC_SELECTOR_REFERENCES_.237
+_OBJC_SELECTOR_REFERENCES_.239
 _OBJC_CLASSLIST_REFERENCES_$_.242
 _OBJC_SELECTOR_REFERENCES_.254
 _OBJC_CLASSLIST_REFERENCES_$_.295
@@ -2613,17 +2612,17 @@ _OBJC_CLASSLIST_REFERENCES_$_.360
 _OBJC_SELECTOR_REFERENCES_.362
 _OBJC_SELECTOR_REFERENCES_.364
 _OBJC_SELECTOR_REFERENCES_.366
-___block_descriptor_36_e4_20s24s28s32s_e5_v4?0l
-___block_descriptor_24_e4_20s_e7_v8?0c4l
+___block_descriptor_64_e8_32s40s48s56s_e5_v8?0l
+___block_descriptor_40_e8_32s_e8_v12?0B8l
 _OBJC_SELECTOR_REFERENCES_.371
 _OBJC_SELECTOR_REFERENCES_.373
 _OBJC_SELECTOR_REFERENCES_.375
 _OBJC_SELECTOR_REFERENCES_.377
 _OBJC_SELECTOR_REFERENCES_.379
 _OBJC_CLASSLIST_REFERENCES_$_.380
+_OBJC_SELECTOR_REFERENCES_.390
 _OBJC_SELECTOR_REFERENCES_.392
 _OBJC_SELECTOR_REFERENCES_.394
-_OBJC_SELECTOR_REFERENCES_.396
 _OBJC_SELECTOR_REFERENCES_.398
 _OBJC_SELECTOR_REFERENCES_.400
 _OBJC_CLASSLIST_REFERENCES_$_.401
@@ -2697,16 +2696,16 @@ _OBJC_SELECTOR_REFERENCES_.544
 _OBJC_SELECTOR_REFERENCES_.546
 _OBJC_SELECTOR_REFERENCES_.548
 _OBJC_SELECTOR_REFERENCES_.550
-___block_descriptor_24_e4_20s_e25_v8?0"OBRecommendation"4l
+___block_descriptor_40_e8_32s_e26_v16?0"OBRecommendation"8l
 _OBJC_SELECTOR_REFERENCES_.553
 _OBJC_SELECTOR_REFERENCES_.556
-___block_descriptor_24_e4_20s_e14_v8?0"NSURL"4l
+___block_descriptor_40_e8_32s_e15_v16?0"NSURL"8l
 _OBJC_SELECTOR_REFERENCES_.559
 _OBJC_SELECTOR_REFERENCES_.561
-___block_descriptor_24_e4_20s_e15_{CGSize=ff}4?0l
+___block_descriptor_40_e8_32s_e15_{CGSize=dd}8?0l
 _OBJC_SELECTOR_REFERENCES_.565
 _OBJC_SELECTOR_REFERENCES_.567
-___block_descriptor_24_e4_20s_e50_v12?0"SFCollectionViewCell"4"OBRecommendation"8l
+___block_descriptor_40_e8_32s_e51_v24?0"SFCollectionViewCell"8"OBRecommendation"16l
 _OBJC_SELECTOR_REFERENCES_.571
 _OBJC_SELECTOR_REFERENCES_.574
 _OBJC_SELECTOR_REFERENCES_.576
@@ -2716,7 +2715,7 @@ _OBJC_SELECTOR_REFERENCES_.581
 _OBJC_SELECTOR_REFERENCES_.583
 _OBJC_SELECTOR_REFERENCES_.585
 _OBJC_SELECTOR_REFERENCES_.587
-___block_descriptor_40_e4_20s24s28s32s36s_e5_v4?0l
+___block_descriptor_72_e8_32s40s48s56s64s_e5_v8?0l
 _OBJC_SELECTOR_REFERENCES_.589
 _OBJC_SELECTOR_REFERENCES_.591
 _OBJC_SELECTOR_REFERENCES_.593
@@ -2762,7 +2761,7 @@ _OBJC_SELECTOR_REFERENCES_.666
 _OBJC_SELECTOR_REFERENCES_.668
 _OBJC_SELECTOR_REFERENCES_.670
 _OBJC_SELECTOR_REFERENCES_.672
-___block_descriptor_24_e4_20s_e7_v8?0i4l
+___block_descriptor_40_e8_32s_e8_v16?0q8l
 _OBJC_SELECTOR_REFERENCES_.675
 _OBJC_SELECTOR_REFERENCES_.677
 _OBJC_SELECTOR_REFERENCES_.679
@@ -2850,14 +2849,14 @@ _OBJC_IVAR_$_SmartFeedManager._readMoreModuleHelper
 __OBJC_$_INSTANCE_VARIABLES_SmartFeedManager
 __OBJC_$_PROP_LIST_SmartFeedManager
 __OBJC_CLASS_RO_$_SmartFeedManager
-_OBJC_SELECTOR_REFERENCES_.1017
+_OBJC_SELECTOR_REFERENCES_.1022
 /Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SmartFeedManager/SmartFeedManager.m
 OutbrainSDK/SmartFeed/SmartFeedManager/SmartFeedManager.m
 OutbrainSDK/SmartFeed/SmartFeedManager/SmartFeedManager.h
 __54-[SmartFeedManager onMultivacSuccess:feedIdx:hasMore:]_block_invoke
 __61-[SmartFeedManager configureBrandedCarouselCell:atIndexPath:]_block_invoke
-__destroy_helper_block_e4_20s24s28s32s36s
-__copy_helper_block_e4_20s24s28s32s36s
+__destroy_helper_block_e8_32s40s48s56s64s
+__copy_helper_block_e8_32s40s48s56s64s
 __76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.572
 __76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.568
 __76-[SmartFeedManager commonConfigureHorizontalCell:withCellTitleLabel:sfItem:]_block_invoke.562
@@ -2923,16 +2922,14 @@ __OBJC_$_INSTANCE_METHODS_SFHorizontalView
 __OBJC_$_INSTANCE_VARIABLES_SFHorizontalView
 __OBJC_$_PROP_LIST_SFHorizontalView
 __OBJC_CLASS_RO_$_SFHorizontalView
-_OBJC_CLASSLIST_REFERENCES_$_.427
-_OBJC_SELECTOR_REFERENCES_.429
-_OBJC_SELECTOR_REFERENCES_.431
-_OBJC_SELECTOR_REFERENCES_.432
+_OBJC_CLASSLIST_REFERENCES_$_.433
+_OBJC_SELECTOR_REFERENCES_.438
 /Users/distiller/repo/SDK-sources/OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalView.m
 OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalView.m
 OutbrainSDK/SmartFeed/SFHorizontalCell/SFHorizontalView/SFHorizontalView.h
 __30-[SFHorizontalView setSfItem:]_block_invoke
 UIInterfaceOrientationIsLandscape
-/Applications/Xcode-12.5.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h
+/Applications/Xcode-13.1.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h
 -[SFCollectionViewCell prepareForReuse]
 -[SFCollectionViewCell outbrainLabelingContainer]
 -[SFCollectionViewCell setOutbrainLabelingContainer:]
