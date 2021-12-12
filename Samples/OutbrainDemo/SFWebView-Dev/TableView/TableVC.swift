@@ -32,7 +32,7 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
         
-        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.widgetID, installationKey: OBConf.installationKey, userId: nil)
+        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.widgetID, installationKey: OBConf.installationKey)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
