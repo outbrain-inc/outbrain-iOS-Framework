@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## v4.8.0 - December 12, 2021
+
+- Feature - support for `darkMode` in SFWidget (SDK-bridge).
+- Infra - Migrate CircleCI to Xcode 13.1.0
+
 ## v4.7.1 - October 27, 2021
 
 - Feature - SDK Bridge - support "t" param and idx param in the SDK bridge (2 widgets on the same page).
