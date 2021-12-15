@@ -249,6 +249,20 @@
     [self verifyTableCellWithTitleOutlets:tableCell];
 }
 
+-(void) testTableViewHorizontalCellsWithTitleTemplateNib {
+    SFHorizontalTableViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFHorizontalFixedWithTitleTableViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    XCTAssertNotNil(cell.titleLabel);
+    
+    cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFHorizontalFixedWithTitleWithVideoTableViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    XCTAssertNotNil(cell.titleLabel);
+    
+    cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFHorizontalCarouselWithTitleTableViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    XCTAssertNotNil(cell.titleLabel);
+}
+
 -(void) testSingleWithThumbnailImageTemplateNib {
     SFCollectionViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleWithThumbnailWithTitleCollectionCell" owner:nil options:nil] objectAtIndex:0];
     
