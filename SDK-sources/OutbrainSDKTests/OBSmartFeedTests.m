@@ -263,6 +263,20 @@
     XCTAssertNotNil(cell.titleLabel);
 }
 
+-(void) testCollectionViewViewHorizontalCellsWithTitleTemplateNib {
+    SFHorizontalCollectionViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFHorizontalFixedWithTitleCollectionViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    XCTAssertNotNil(cell.titleLabel);
+    
+    cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFHorizontalCarouselWithTitleCollectionViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    XCTAssertNotNil(cell.titleLabel);
+    
+    cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFHorizontalFixedWithTitleWithVideoCollectionViewCell" owner:nil options:nil] objectAtIndex:0];
+    
+    XCTAssertNotNil(cell.titleLabel);
+}
+
 -(void) testSingleWithThumbnailImageTemplateNib {
     SFCollectionViewCell *cell = [[[NSBundle bundleForClass:[SmartFeedManager class]] loadNibNamed:@"SFSingleWithThumbnailWithTitleCollectionCell" owner:nil options:nil] objectAtIndex:0];
     
