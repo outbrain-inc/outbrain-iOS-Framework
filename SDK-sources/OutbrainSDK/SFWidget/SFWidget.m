@@ -180,6 +180,7 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     
     self.webview = [[WKWebView alloc] initWithFrame:self.frame configuration:webviewConf];
     self.webview.scrollView.scrollEnabled = NO;
+    [self.webview setOpaque:NO];
     self.webview.UIDelegate = self;
     [self addSubview:self.webview];
     [SFUtils addConstraintsToFillParent:self.webview];
