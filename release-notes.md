@@ -1,6 +1,11 @@
 # Release Notes
 
 
+## v4.8.1 - December 15, 2021
+
+- Bug fix - Smartfeed TableView horizontal cell missing outlet for `titleLabel`
+
+
 ## v4.8.0 - December 12, 2021
 
 - Feature - support for `darkMode` in SFWidget (SDK-bridge).
