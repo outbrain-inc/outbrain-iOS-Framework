@@ -155,8 +155,16 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
 }
 
 -(BOOL) checkIfSkAdNetworkIsConfiguredCorrectly {
-    NSArray *SKAdNetworkItems = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SKAdNetworkItems"];
-    for (NSDictionary *entry in SKAdNetworkItems) {
+    NSArray *skAdNetworkItems = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SKAdNetworkItems"];
+    if (skAdNetworkItems == nil || ![skAdNetworkItems isKindOfClass:[NSArray class]]) {
+        NSLog(@"** Outbrain checkIfSkAdNetworkIsConfiguredCorrectly - SKAdNetworkItems is nil or not of type NSArray ***");
+        return NO;
+    }
+    if ([skAdNetworkItems count] == 0 || ![skAdNetworkItems[0] isKindOfClass:[NSDictionary class]]) {
+        NSLog(@"** Outbrain checkIfSkAdNetworkIsConfiguredCorrectly - skAdNetworkItems array is empty or containing element not of type NSDictionary ***");
+        return NO;
+    }
+    for (NSDictionary *entry in skAdNetworkItems) {
         NSString *adNetworkId = entry[@"SKAdNetworkIdentifier"];
         if ([OUTBRAIN_AD_NETWORK_ID isEqualToString:adNetworkId]) {
             NSLog(@"** Outbrain SKAdNetworkIdentifier is configured in plist ***");
