@@ -11,8 +11,9 @@ import AppTrackingTransparency
 import AdSupport
 
 struct OBConf {
-    static var widgetID = "MB_1"
-    static var regularWidgetID = "MB_2"
+    static let smartFeedWidgetID = "MB_1"
+    static let regularWidgetID = "MB_2"
+    static let smartLogicWidgetID = "MB_3"
     static var baseURL = "https://mobile-demo.outbrain.com"
     static var installationKey = "NANOWDGT01"
 }
@@ -20,9 +21,15 @@ struct OBConf {
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var customWidgetIdTextField: UITextField!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "SFWebView Demo App"
+    
+        
+        customWidgetIdTextField.delegate = self
         
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization { authStatus in
@@ -30,7 +37,40 @@ class ViewController: UIViewController {
                 print("advertisingIdentifier: \(ASIdentifierManager.shared().advertisingIdentifier)")
             }
         }
-        // performSegue(withIdentifier: "showCollectionVC", sender: nil)
+        
+        segmentControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
+        
+        customWidgetIdTextField.isEnabled = false
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard var vc = segue.destination as? OBViewController else { return }
+        vc.widgetId = getWidgetId()
+    }
+    
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 3 {
+            // value for first index selected here
+            customWidgetIdTextField.isEnabled = true
+        } else {
+            customWidgetIdTextField.isEnabled = false
+        }
+    }
+    
+    func getWidgetId() -> String {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            return OBConf.smartFeedWidgetID
+        case 1:
+            return OBConf.regularWidgetID
+        case 2:
+            return OBConf.smartLogicWidgetID
+        case 3:
+            return customWidgetIdTextField.text ?? ""
+        default:
+            return ""
+        }
     }
 }
 
@@ -47,22 +87,14 @@ extension ViewController {
         //1. Create the alert controller.
         let alert = UIAlertController(title: "Edit Fields", message: "Please edit the fields below", preferredStyle: .alert)
         
-        //2. Add the text field. You can configure it however you need.
-        alert.addTextField { (textField) in
-            textField.placeholder = "Widget ID"
-        }
-        
         alert.addTextField { (textField) in
             textField.placeholder = "Page URL"
         }
         
         // 3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            if let widgetID = alert?.textFields?[0].text, var urlString = alert!.textFields?[1].text {
-                print("widgetID: \(widgetID)")
+            if var urlString = alert!.textFields?[0].text {
                 print("url: \(urlString)")
-                
-                OBConf.widgetID = widgetID;
                 
                 if (urlString.starts(with: "www")) {
                     urlString = "https://" + urlString
@@ -77,7 +109,7 @@ extension ViewController {
                     return
                 }
                 
-                let successAlert = UIAlertController(title: "Success", message: "Smartfeed will load with new fields (\(widgetID)) (\(urlString))", preferredStyle: .alert)
+                let successAlert = UIAlertController(title: "Success", message: "Smartfeed will load with new url (\(urlString))", preferredStyle: .alert)
                 successAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(successAlert, animated: true, completion: {
                     
@@ -104,3 +136,9 @@ extension ViewController {
     }
 }
 
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+}

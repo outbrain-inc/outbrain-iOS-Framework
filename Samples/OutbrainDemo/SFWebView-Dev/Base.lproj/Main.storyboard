@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ccF-gM-GFN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ccF-gM-GFN">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,62 +17,107 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3j-16-CgZ">
-                                <rect key="frame" x="136.5" y="200.5" width="102" height="30"/>
-                                <state key="normal" title="CollectionView"/>
-                                <connections>
-                                    <segue destination="dZp-Co-Tft" kind="show" identifier="showCollectionVC" id="X24-jF-dTT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqK-df-hoe">
-                                <rect key="frame" x="153" y="275.5" width="69" height="30"/>
-                                <state key="normal" title="TableView"/>
-                                <connections>
-                                    <segue destination="b3o-ro-WPo" kind="show" id="YIe-eN-jDU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrk-sc-fFj">
-                                <rect key="frame" x="151.5" y="350.5" width="72" height="30"/>
-                                <state key="normal" title="ScrollView"/>
-                                <connections>
-                                    <segue destination="68l-CM-ywK" kind="show" id="Okm-BW-KOl"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake device to change default &quot;url&quot; and &quot;widget_id&quot; params" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8a-xE-wXZ">
-                                <rect key="frame" x="50" y="608" width="275" height="29"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="91y-0e-IPj">
+                                <rect key="frame" x="0.0" y="144" width="375" height="355.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="43o-qJ-FZb">
+                                        <rect key="frame" x="52" y="0.0" width="271" height="55.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Widget ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmm-b3-wQ8">
+                                                <rect key="frame" x="95.5" y="0.0" width="80" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EVE-DN-iSB">
+                                                <rect key="frame" x="0.0" y="24.5" width="271" height="32"/>
+                                                <segments>
+                                                    <segment title="MB_1"/>
+                                                    <segment title="MB_2"/>
+                                                    <segment title="MB_3"/>
+                                                    <segment title="Custom"/>
+                                                </segments>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="icw-YE-fnf">
+                                        <rect key="frame" x="62.5" y="79.5" width="250" height="34"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Custom Widget ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eeD-oS-dha">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="76g-Gi-uX3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3j-16-CgZ">
+                                        <rect key="frame" x="136.5" y="137.5" width="102" height="30"/>
+                                        <state key="normal" title="CollectionView"/>
+                                        <connections>
+                                            <segue destination="dZp-Co-Tft" kind="show" identifier="showCollectionVC" id="X24-jF-dTT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqK-df-hoe">
+                                        <rect key="frame" x="153" y="191.5" width="69" height="30"/>
+                                        <state key="normal" title="TableView"/>
+                                        <connections>
+                                            <segue destination="b3o-ro-WPo" kind="show" id="YIe-eN-jDU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrk-sc-fFj">
+                                        <rect key="frame" x="151.5" y="245.5" width="72" height="30"/>
+                                        <state key="normal" title="ScrollView"/>
+                                        <connections>
+                                            <segue destination="68l-CM-ywK" kind="show" id="Okm-BW-KOl"/>
+                                        </connections>
+                                    </button>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljh-Aq-1Ry">
+                                        <rect key="frame" x="67.5" y="299.5" width="240" height="2"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="5mJ-2l-kmW"/>
+                                            <constraint firstAttribute="width" constant="240" id="x1B-1M-oui"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aK3-9u-Ewb">
+                                        <rect key="frame" x="100" y="325.5" width="175" height="30"/>
+                                        <state key="normal" title="CollectionView 2 Widgets"/>
+                                        <connections>
+                                            <segue destination="Nbq-HQ-5lu" kind="show" id="XRP-dK-FYl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shake device to change default &quot;url&quot; param" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8a-xE-wXZ">
+                                <rect key="frame" x="50" y="622.5" width="275" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aK3-9u-Ewb">
-                                <rect key="frame" x="100" y="425.5" width="175" height="30"/>
-                                <state key="normal" title="CollectionView 2 Widgets"/>
-                                <connections>
-                                    <segue destination="Nbq-HQ-5lu" kind="show" id="XRP-dK-FYl"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="91y-0e-IPj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4AK-YE-StQ"/>
                             <constraint firstItem="t8a-xE-wXZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="61D-KR-NOI"/>
-                            <constraint firstItem="rqK-df-hoe" firstAttribute="top" secondItem="i3j-16-CgZ" secondAttribute="bottom" constant="45" id="8oA-Di-f84"/>
-                            <constraint firstItem="aK3-9u-Ewb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9LG-a6-Ab6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="t8a-xE-wXZ" secondAttribute="bottom" constant="30" id="ETg-fg-vfN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t8a-xE-wXZ" secondAttribute="trailing" constant="50" id="LpS-5W-FBc"/>
-                            <constraint firstItem="rrk-sc-fFj" firstAttribute="top" secondItem="rqK-df-hoe" secondAttribute="bottom" constant="45" id="Mxk-dg-K8o"/>
-                            <constraint firstItem="rrk-sc-fFj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OWL-35-OZF"/>
-                            <constraint firstItem="rqK-df-hoe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="POj-20-1HR"/>
-                            <constraint firstItem="i3j-16-CgZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jSY-xt-Pai"/>
-                            <constraint firstItem="aK3-9u-Ewb" firstAttribute="top" secondItem="rrk-sc-fFj" secondAttribute="bottom" constant="45" id="kL0-ln-IGW"/>
-                            <constraint firstItem="i3j-16-CgZ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-140" id="mya-T3-dZF"/>
+                            <constraint firstItem="91y-0e-IPj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="U5F-w2-VGU"/>
+                            <constraint firstItem="91y-0e-IPj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="lcN-qO-OVC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="q6w-oW-e4X"/>
+                    <connections>
+                        <outlet property="customWidgetIdTextField" destination="eeD-oS-dha" id="H59-NL-Jfr"/>
+                        <outlet property="segmentControl" destination="EVE-DN-iSB" id="vRq-fI-sut"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="473.91304347826093" y="128.57142857142856"/>
+            <point key="canvasLocation" x="472.80000000000001" y="128.18590704647679"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hg8-Q2-6Ku">
@@ -105,7 +150,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageHeaderCell" rowHeight="202" id="MZe-Ot-oFR">
-                                        <rect key="frame" x="0.0" y="24.5" width="375" height="202"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="202"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MZe-Ot-oFR" id="UoC-3v-f7c">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="202"/>
@@ -130,7 +175,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textHeaderCell" rowHeight="88" id="WT1-Ya-H8l" customClass="AppArticleTableViewCell" customModule="SFWebView_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="226.5" width="375" height="88"/>
+                                        <rect key="frame" x="0.0" y="246.5" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WT1-Ya-H8l" id="fe0-kg-xPd">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
@@ -173,7 +218,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contentHeaderCell" id="PM9-N2-Ezt" customClass="AppArticleTableViewCell" customModule="SFWebView_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="314.5" width="375" height="213"/>
+                                        <rect key="frame" x="0.0" y="334.5" width="375" height="213"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PM9-N2-Ezt" id="ZIG-yN-trN">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
@@ -217,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfm-oi-Nhz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="494"/>
+            <point key="canvasLocation" x="1289" y="128"/>
         </scene>
         <!--Scroll ViewVC-->
         <scene sceneID="z9V-zK-wkB">
@@ -337,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWK-zF-i9w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1289" y="1227"/>
+            <point key="canvasLocation" x="473" y="939"/>
         </scene>
         <!--UICollectionView-->
         <scene sceneID="Cp3-nc-JzF">
@@ -458,7 +503,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5K-Ib-x0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1527" y="-367"/>
+            <point key="canvasLocation" x="1289" y="-538"/>
         </scene>
         <!--UICollectionView-->
         <scene sceneID="iDf-N5-wrh">
@@ -579,7 +624,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Id4-WC-fFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="1227"/>
+            <point key="canvasLocation" x="1289" y="904"/>
         </scene>
     </scenes>
     <resources>

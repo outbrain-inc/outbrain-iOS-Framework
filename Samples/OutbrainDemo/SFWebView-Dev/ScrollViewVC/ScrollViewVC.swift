@@ -10,7 +10,8 @@ import UIKit
 import SafariServices
 import OutbrainSDK
 
-class ScrollViewVC : UIViewController, UIScrollViewDelegate {
+class ScrollViewVC : UIViewController, UIScrollViewDelegate, OBViewController {
+    var widgetId: String = OBConf.smartFeedWidgetID
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -21,7 +22,7 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.widgetID, installationKey: OBConf.installationKey)
+        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: self.widgetId, installationKey: OBConf.installationKey)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

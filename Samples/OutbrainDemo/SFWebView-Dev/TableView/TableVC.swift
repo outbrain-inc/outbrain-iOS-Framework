@@ -11,7 +11,9 @@ import WebKit
 import SafariServices
 import OutbrainSDK
 
-class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource, OBViewController {
+    var widgetId: String = OBConf.smartFeedWidgetID
+    
     @IBOutlet weak var tableView: UITableView!
     
     let imageHeaderCellReuseIdentifier = "imageHeaderCell"
@@ -32,7 +34,7 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
         
-        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.widgetID, installationKey: OBConf.installationKey)
+        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: self.widgetId, installationKey: OBConf.installationKey)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

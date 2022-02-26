@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16803F0F27CA851300C0482F /* OBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16803F0E27CA851300C0482F /* OBViewController.swift */; };
 		1698DA2825752FD1004C90FF /* ArticleReadMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA2725752FD1004C90FF /* ArticleReadMoreTableViewController.swift */; };
 		1698DA2925752FD1004C90FF /* ArticleReadMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA2725752FD1004C90FF /* ArticleReadMoreTableViewController.swift */; };
 		1698DA2B25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698DA2A25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift */; };
@@ -181,6 +182,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		163A5AC827A19AF200A4B498 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E60DCD4320BC3AAD0023FE93 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,6 +237,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		16803F0E27CA851300C0482F /* OBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBViewController.swift; sourceTree = "<group>"; };
 		1698DA2725752FD1004C90FF /* ArticleReadMoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleReadMoreTableViewController.swift; sourceTree = "<group>"; };
 		1698DA2A25752FEC004C90FF /* ArticleReadMoreCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleReadMoreCollectionViewController.swift; sourceTree = "<group>"; };
 		1698DA2D25754146004C90FF /* AppSFCollectionViewReadMoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFCollectionViewReadMoreCell.swift; sourceTree = "<group>"; };
@@ -815,6 +827,7 @@
 				E66B9CA82680A199006DB0AB /* TableView */,
 				E66B9C8C26809C01006DB0AB /* AppDelegate.swift */,
 				E66B9C9026809C01006DB0AB /* ViewController.swift */,
+				16803F0E27CA851300C0482F /* OBViewController.swift */,
 				E66B9C9226809C01006DB0AB /* Main.storyboard */,
 				E66B9C9526809C03006DB0AB /* Assets.xcassets */,
 				E66B9C9726809C03006DB0AB /* LaunchScreen.storyboard */,
@@ -985,6 +998,7 @@
 				E66B9C8626809C01006DB0AB /* Sources */,
 				E66B9C8726809C01006DB0AB /* Frameworks */,
 				E66B9C8826809C01006DB0AB /* Resources */,
+				163A5AC827A19AF200A4B498 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1011,7 +1025,6 @@
 					};
 					E60DCD2D20BC3AAD0023FE93 = {
 						LastSwiftMigration = 1010;
-						ProvisioningStyle = Automatic;
 					};
 					E61E6CCC2085DBD50016D79A = {
 						CreatedOnToolsVersion = 9.2;
@@ -1281,6 +1294,7 @@
 				E66B9CB22680A199006DB0AB /* CollectionVC.swift in Sources */,
 				E66B9CB12680A199006DB0AB /* AppArticleCollectionViewCell.swift in Sources */,
 				E66B9CB72681C7D9006DB0AB /* ScrollViewVC.swift in Sources */,
+				16803F0F27CA851300C0482F /* OBViewController.swift in Sources */,
 				E6D5BA5727269CD500FE921D /* CollectionTwoWidgetsVC.swift in Sources */,
 				E66B9C8D26809C01006DB0AB /* AppDelegate.swift in Sources */,
 				E66B9CB42680A199006DB0AB /* AppArticleTableViewCell.swift in Sources */,
@@ -1509,7 +1523,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 97R2B46745;
@@ -1529,6 +1543,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -1546,7 +1561,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1567,6 +1582,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;

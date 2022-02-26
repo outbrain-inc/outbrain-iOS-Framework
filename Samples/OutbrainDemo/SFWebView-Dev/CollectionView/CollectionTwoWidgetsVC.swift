@@ -31,7 +31,7 @@ class CollectionTwoWidgetsVC : UICollectionViewController, UICollectionViewDeleg
         self.obRegularWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.regularWidgetID, widgetIndex: 0, installationKey: OBConf.installationKey, userId: "F22700D5-1D49-42CC-A183-F36765261112", darkMode:true)
         
         
-        self.obSmartfeedWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.widgetID, widgetIndex: 1, installationKey: OBConf.installationKey, userId: "F22700D5-1D49-42CC-A183-F36765261112", darkMode:false)
+        self.obSmartfeedWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.smartFeedWidgetID, widgetIndex: 1, installationKey: OBConf.installationKey, userId: "F22700D5-1D49-42CC-A183-F36765261112", darkMode:false)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
