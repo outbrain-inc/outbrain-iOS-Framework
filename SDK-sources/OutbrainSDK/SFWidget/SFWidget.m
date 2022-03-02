@@ -115,6 +115,25 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGRect viewFrame = [self convertRect:self.bounds toView:nil];
+    CGRect intersection = CGRectIntersection(viewFrame, self.window.frame);
+    
+    CGFloat offsetFromTop = fabs([scrollView.superview convertPoint:self.bounds.origin fromView:self].y);
+    
+    if (intersection.size.height > 0) {
+        // webview on screen
+        if (intersection.origin.y > 0) {
+            // top
+            printf("Alon 0 to %f\n", intersection.size.height);
+        } else if (intersection.size.height < self.window.frame.size.height) {
+            // bottom
+            printf("Alon %f to %f\n", viewFrame.size.height - intersection.size.height, viewFrame.size.height);
+        } else {
+            // full
+            printf("Alon %f to %f\n", offsetFromTop, offsetFromTop + self.window.frame.size.height);
+        }
+    }
+    
     if (self.isLoading || self.inTransition || self.currentHeight <= 1000) {
         return;
     }
