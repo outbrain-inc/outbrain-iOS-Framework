@@ -6,9 +6,9 @@
 
 ## Outbrain iOS SDK Framework
 
-About [Outbrain](https://www.outbrain.com/) 
+About [Outbrain](https://www.outbrain.com/)
 
-Please make sure to review [Outbrain SDK Developers Site](https://developer.outbrain.com/outbrain-sdk-v3-documentation-download-links/) 
+Please make sure to review [Outbrain SDK Developers Site](https://developer.outbrain.com/outbrain-sdk-v3-documentation-download-links/)
 
 <p align="center">
   <img width="275" src="assets/iphonex-smartfeed-demo-mock.jpg" />
@@ -28,14 +28,23 @@ Please make sure to review [Outbrain SDK Developers Site](https://developer.outb
 
 ## Installation
 
-### CocoaPods
+### Add the SDK to your project
 
-Just add `pod 'OutbrainSDK'` into your [Podfile](https://guides.cocoapods.org/syntax/podfile.html).
+#### Using [CocoaPods](https://cocoapods.org)
 
-Then run `pod install`.
+1. Add `pod 'OutbrainSDK'` into your [Podfile](https://guides.cocoapods.org/syntax/podfile.html).
+2. Run `pod install`.
+3. Open workspace file and run the project.
+
+#### Using [Swift Package Manager](https://swift.org/package-manager)
+The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
+Once you have your Swift package set up, adding OutbrainSDK as a dependency is as easy as adding it to the dependencies value of your Package.swift.
+```
+dependencies: [
+    .package(url: "https://github.com/outbrain/outbrain-iOS-Framework", .upToNextMajor(from: "x.x.x"))
+]
+```
+
+### Follow The Official Documentation
 
 Follow the [SDK integration steps](https://developer.outbrain.com/ios-sdk-v3-developer-guide/) on our developer site.
-
-Finally add `import OutbrainSDK` in your Swift implementation.
-
-Or `#import <OutbrainSDK/OutbrainSDK.h>` if you're using Objective-C.<br>
