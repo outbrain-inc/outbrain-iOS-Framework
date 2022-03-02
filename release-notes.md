@@ -1,5 +1,10 @@
 # Release Notes
 
+## v4.8.2 - March 2, 2022
+
+- Bug fix - Avoid crashing the app when check if SKAdNetworks configured correctly
+- Bug fix - Bridge WebView should be transparent
+- Feature - Swift Package Manager support
 
 ## v4.8.1 - December 15, 2021
 
@@ -32,7 +37,7 @@
 
 - UI Fix - fix UI design for Carousel item cell - remove border and fix text alignment.
 
-- Bug fix - very rare case, SFViewabilityService crashed on removeObjectsForKeys if "keys" are nil before completion block begin. 
+- Bug fix - very rare case, SFViewabilityService crashed on removeObjectsForKeys if "keys" are nil before completion block begin.
 
 ## v4.6.2 - August 16, 2021
 
@@ -50,7 +55,7 @@
 - Improvement - Smartfeed default UI has changes significantly - now it is similar to Outbrain latest version on Mobile Web.
 - Improvement - support for Viewablity per listing for regular widget.
 - Internal - adjust current implementation for "widget viewability" in Smartfeed according to new VPL impl.
-- Bug fix - ODB param `api_user_id` was sent with null value. 
+- Bug fix - ODB param `api_user_id` was sent with null value.
 - Internal - verify that `minimumLineSpacing` is implemented correctly by the publisher code
 
 
@@ -110,7 +115,7 @@
 ## v4.0.0 - October 19, 2020
 
 - Feature: Weekly Highlights card
-- Feature: iOS14 SKAdNetwork app install validation support. 
+- Feature: iOS14 SKAdNetwork app install validation support.
 - Feature: support for GIF images in Smartfeed.
 - Internal: Built with Xcode 12.0.1, iOS14 SDK
 - Internal: SDK and sample apps use `ATTrackingManager` for IDFA logic (instead of deprecated `[[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]`)
@@ -166,7 +171,7 @@
 
 - Infrastructure - update CircleCI to use Xcode 11.1
 - Infrastructure - Xcode11 (iOS 13) support (clean warnings for new Xcode).
-- Bug fix - Viewability per widget didn't work for StackView solution. 
+- Bug fix - Viewability per widget didn't work for StackView solution.
 
 ## v3.8.2 - September 26, 2019
 
@@ -178,7 +183,7 @@
 - Bug fix - Smartfeed "source label" was showing for organic rec if "publisher logo" image was missing.
 - Bug fix - Smartfeed, rec title should be gray for organic recs on all 1 col templates.
 
-## v3.8.0 - August 19, 2019 
+## v3.8.0 - August 19, 2019
 
 - Feature: add `disableCellShadows` flag to SmartFeedManager
 - Feature: add UIStackView implementation support, see [UIStackView Integration Guide](https://developer.outbrain.com/ios-sdk-v3-x-smartfeed-uistackview-integration-guide).
@@ -193,12 +198,12 @@
 - Internal: Support "shake" gesture in sample app for GTO testing.
 - Internal: Upgrade project to build with Xcode 10.2.1 (iOS 12.2)
 
-## v3.7.6 - July 20, 2019 
+## v3.7.6 - July 20, 2019
 
 - Bug fix - `smartFeedResponseReceived:forWidgetId:` returned the parent widget id every time.
 - Improvement: smartfeed in middle will fetch recs only on app developer explicit call
 
-## v3.7.5 - July 1, 2019 
+## v3.7.5 - July 1, 2019
 
 - Feature: Smartfeed in the middle of the screen support (possible to have additional custom content below the SF).
 - Improvement: fix all nullability warnings in xcode 10.2.1
@@ -209,7 +214,7 @@
 ## v3.7.0 - June 6, 2019
 
 - Bug fix - Viewablity report served, if url didn't include "tm" the SDK failed to report to server.
-- Bug fix - Viewablity actions, if url is nil the SDK should ignore the report. 
+- Bug fix - Viewablity actions, if url is nil the SDK should ignore the report.
 - Feature: App developer can now use `SmartFeedManager` without implementing `SFDefaultDelegate`, in which case the SDK will handle the click events.
 
 
@@ -227,12 +232,12 @@
 
 ## v3.5.2 - February 10, 2019
 
-- Bug fix: detecting RTL in string was implemented incorrectly. 
+- Bug fix: detecting RTL in string was implemented incorrectly.
 - Bug fix: set a limit on the number of lines in rec title for Thumbnail cells.
-- Add support for displaySourceOnOrganicRec in SmartFeedManager. 
+- Add support for displaySourceOnOrganicRec in SmartFeedManager.
 - `sfItem.isCustomUI` is now supported in the horizontal view as well
 - `HorizontalView` will use `sfItem` instead of recs array and OBSettings directly
-- Make some order in the header file imports in the SDK. 
+- Make some order in the header file imports in the SDK.
 - UI fix - If rec title is RTL we will set the source text alignment to be the same, otherwise it will look weird in the UI.
 
 ## v3.5.1 - February 10, 2019
@@ -297,7 +302,7 @@ self.smartFeedManager.register(headerCellNib, withReuseIdentifier: "AppSFTableVi
 - Bug fix: crash in isRTL method, NSLinguisticTagger Range or index out of bounds
 - Add protection in code for custom ui to make sure we will not crash due to a bad xib file
 - Bug fix - edit constraints to solve a bug in iPad carousel item.
-- Improvement - remove OBLabel from Smartfeed header cell 
+- Improvement - remove OBLabel from Smartfeed header cell
 
 
 
