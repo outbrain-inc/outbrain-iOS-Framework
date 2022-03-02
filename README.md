@@ -36,7 +36,7 @@ Please make sure to review [Outbrain SDK Developers Site](https://developer.outb
 2. Run `pod install`.
 3. Open workspace file and run the project.
 
-##### Using [Swift Package Manager](https://swift.org/package-manager)
+#### Using [Swift Package Manager](https://swift.org/package-manager)
 The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
 Once you have your Swift package set up, adding OutbrainSDK as a dependency is as easy as adding it to the dependencies value of your Package.swift.
 ```
