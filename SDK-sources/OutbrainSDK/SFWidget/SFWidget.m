@@ -115,24 +115,7 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGRect viewFrame = [self convertRect:self.bounds toView:nil];
-    CGRect intersection = CGRectIntersection(viewFrame, self.window.frame);
-    
-    CGFloat offsetFromTop = fabs([scrollView.superview convertPoint:self.bounds.origin fromView:self].y);
-    
-    if (intersection.size.height > 0) {
-        // webview on screen
-        if (intersection.origin.y > 0) {
-            // top
-            printf("Alon 0 to %f\n", intersection.size.height);
-        } else if (intersection.size.height < self.window.frame.size.height) {
-            // bottom
-            printf("Alon %f to %f\n", viewFrame.size.height - intersection.size.height, viewFrame.size.height);
-        } else {
-            // full
-            printf("Alon %f to %f\n", offsetFromTop, offsetFromTop + self.window.frame.size.height);
-        }
-    }
+    [self handleViewability:scrollView];
     
     if (self.isLoading || self.inTransition || self.currentHeight <= 1000) {
         return;
@@ -150,6 +133,54 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     self.isLoading = YES;
     [self evaluateLoadMore];
     
+}
+
+-(void) handleViewability:(UIScrollView *)scrollView {
+    CGRect viewFrame = [self convertRect:self.bounds toView:nil];
+    CGRect intersection = CGRectIntersection(viewFrame, self.window.frame);
+    NSInteger offsetFromTop = (NSInteger) lroundf(fabs([scrollView.superview convertPoint:self.bounds.origin fromView:self].y));
+    CGFloat windowHeight = self.window.frame.size.height;
+    NSInteger roundedWindowHeight = (NSInteger) lroundf(windowHeight);
+    NSInteger intersactionHeight = (NSInteger) lroundf(intersection.size.height);
+    NSInteger webViewHeight = (NSInteger) lroundf(viewFrame.size.height);
+    
+    NSInteger visibleFrom;
+    NSInteger visibleTo;
+    
+    if (intersactionHeight > 0) {
+        // webview on screen
+        if (intersection.origin.y > 0) {
+            // top
+            visibleFrom = 0;
+            visibleTo = intersactionHeight;
+        } else if (intersactionHeight < windowHeight) {
+            // bottom
+            visibleFrom = webViewHeight - intersactionHeight;
+            visibleTo = webViewHeight;
+        } else {
+            // full
+            visibleFrom = offsetFromTop;
+            visibleTo = offsetFromTop + roundedWindowHeight;
+        }
+        
+        [self eveluateViewabilityScriptFrom:visibleFrom to:visibleTo];
+    }
+}
+
+-(void) eveluateViewabilityScriptFrom:(NSInteger)from to:(NSInteger)to {
+    CGRect viewFrame = [self convertRect:self.bounds toView:nil];
+    NSInteger webViewHeight = (NSInteger) lroundf(viewFrame.size.height);
+    NSInteger webViewWidth = (NSInteger) lroundf(viewFrame.size.width);
+        
+    NSString *script = [NSString stringWithFormat:
+                            @"OBBridge.viewHandler.setViewData(%d, %d, %d, %d)",
+                        webViewWidth, // totalWidth
+                        webViewHeight, // totalHeight
+                        from,
+                        to
+    ];
+    
+    [self.webview evaluateJavaScript:script completionHandler:nil];
 }
 
 -(void) evaluateHeightScript:(NSInteger) timeout {
