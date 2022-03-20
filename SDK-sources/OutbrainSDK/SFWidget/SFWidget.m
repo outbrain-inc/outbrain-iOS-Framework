@@ -173,11 +173,11 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     NSInteger webViewWidth = (NSInteger) lroundf(viewFrame.size.width);
         
     NSString *script = [NSString stringWithFormat:
-                            @"OBBridge.viewHandler.setViewData(%d, %d, %d, %d)",
-                        webViewWidth, // totalWidth
-                        webViewHeight, // totalHeight
-                        from,
-                        to
+                            @"OBBridge.viewHandler.setViewData(%ld, %ld, %ld, %ld)",
+                        (long)webViewWidth, // totalWidth
+                        (long)webViewHeight, // totalHeight
+                        (long)from,
+                        (long)to
     ];
     
     [self.webview evaluateJavaScript:script completionHandler:nil];
