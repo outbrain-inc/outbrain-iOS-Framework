@@ -1,5 +1,8 @@
 # Release Notes
 
+## v4.8.3 - April 7, 2022
+- Feature - Bridge viewability
+
 ## v4.8.2 - March 2, 2022
 
 - Bug fix - Avoid crashing the app when check if SKAdNetworks configured correctly
