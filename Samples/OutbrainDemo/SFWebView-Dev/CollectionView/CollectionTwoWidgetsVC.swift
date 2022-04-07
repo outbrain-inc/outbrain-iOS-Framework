@@ -127,6 +127,7 @@ class CollectionTwoWidgetsVC : UICollectionViewController, UICollectionViewDeleg
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        obRegularWidget.scrollViewDidScroll(scrollView)
         obSmartfeedWidget.scrollViewDidScroll(scrollView)
     }
 }

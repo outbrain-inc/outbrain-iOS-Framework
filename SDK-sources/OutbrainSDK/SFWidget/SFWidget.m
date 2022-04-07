@@ -115,6 +115,8 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self handleViewability:scrollView];
+    
     if (self.isLoading || self.inTransition || self.currentHeight <= 1000) {
         return;
     }
@@ -131,6 +133,66 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     self.isLoading = YES;
     [self evaluateLoadMore];
     
+}
+
+-(void) handleViewability:(UIView *)containerView {
+    CGFloat scale = [UIScreen mainScreen].scale;
+    
+    CGRect viewFrame = [self convertRect:self.bounds toView:nil];
+    CGRect intersection = CGRectIntersection(viewFrame, containerView.frame);
+    
+    NSInteger intersactionHeight = (NSInteger) lroundf(intersection.size.height * scale);
+    
+    CGFloat containerViewHeight = containerView.frame.size.height * scale;
+    NSInteger roundedContainerViewHeight = (NSInteger) lroundf(containerViewHeight);
+    
+    NSInteger webViewHeight = (NSInteger) lroundf(viewFrame.size.height * scale);
+    
+    double distanceToContainerTop = (CGRectGetMinY(containerView.frame) - CGRectGetMinY(viewFrame)) * scale;
+    
+    double distanceToContainerBottom = (CGRectGetMaxY(containerView.frame) - CGRectGetMinY(viewFrame)) * scale;
+    
+    BOOL isViewVisible = distanceToContainerBottom > 0 && containerViewHeight != distanceToContainerBottom && intersactionHeight != 0;
+    
+    NSInteger visibleFrom;
+    NSInteger visibleTo;
+    
+    if (isViewVisible) {
+        // webview on screen
+        if (distanceToContainerTop < 0) {
+            // top
+            visibleFrom = 0;
+            visibleTo = distanceToContainerBottom;
+        } else if (intersactionHeight < containerViewHeight) {
+            // bottom
+            visibleFrom = webViewHeight - intersactionHeight;
+            visibleTo = webViewHeight;
+        } else {
+            // full
+            visibleFrom = distanceToContainerTop;
+            visibleTo = distanceToContainerTop + roundedContainerViewHeight;
+        }
+        
+        [self eveluateViewabilityScriptFrom:visibleFrom to:visibleTo];
+    }
+}
+
+-(void) eveluateViewabilityScriptFrom:(NSInteger)from to:(NSInteger)to {
+    CGFloat scale = [UIScreen mainScreen].scale;
+    
+    CGRect viewFrame = [self convertRect:self.bounds toView:nil];
+    NSInteger webViewHeight = (NSInteger) lroundf(viewFrame.size.height * scale);
+    NSInteger webViewWidth = (NSInteger) lroundf(viewFrame.size.width * scale);
+        
+    NSString *script = [NSString stringWithFormat:
+                            @"OBBridge.viewHandler.setViewData(%ld, %ld, %ld, %ld)",
+                        (long)webViewWidth, // totalWidth
+                        (long)webViewHeight, // totalHeight
+                        (long)from,
+                        (long)to
+    ];
+    
+    [self.webview evaluateJavaScript:script completionHandler:nil];
 }
 
 -(void) evaluateHeightScript:(NSInteger) timeout {
@@ -272,6 +334,9 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     if (self.userId) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"userId" value: self.userId]];
     }
+    
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"viewData" value: @"enabled"]];
+    
     [components setQueryItems:newQueryItems];
     return components.URL;
 }
