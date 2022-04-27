@@ -12,6 +12,7 @@
 #import "OBRecommendationRequestOperation.h"
 #import "SFItemData.h"
 #import "SFUtils.h"
+#import "SFViewabilityService.h"
 
 
 @interface OBRecommendationRequestOperation (Testing)
@@ -201,6 +202,24 @@
     XCTAssertTrue([sfItemParentFirst.widgetId isEqualToString:@"SFD_MAIN_2"]);
     OBRecommendation *singleRec = sfItemParentFirst.outbrainRecs[0];
     XCTAssertTrue([singleRec.content isEqualToString:@"How To Start Ecommerce As A Side Income"]);
+}
+
+- (void) testSFViewabilityConfigureViewabilityPerListingForCell {
+    NSArray *parentItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
+    XCTAssertEqual(parentItems.count, 3);
+    SFItemData *sfItemParentFirst = parentItems[0];
+    UICollectionViewCell *cell = [[UICollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    
+    [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItemParentFirst initializationTime:[NSDate date]];
+    [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItemParentFirst initializationTime:[NSDate date]];
+}
+
+- (void) testSFViewabilityConfigureViewabilityPerListingForView {
+    NSArray *parentItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
+    XCTAssertEqual(parentItems.count, 3);
+    SFItemData *sfItemParentFirst = parentItems[0];
+    UIView *sampleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [[SFViewabilityService sharedInstance] configureViewabilityPerListingFor:sampleView withRec:sfItemParentFirst.outbrainRecs[0]];
 }
 
 - (void)testFirstChildSFItemParsing {
