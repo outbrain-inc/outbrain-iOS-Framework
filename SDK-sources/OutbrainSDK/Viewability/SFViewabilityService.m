@@ -57,7 +57,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     if (existingOBView) {
         [existingOBView removeFromSuperview];
     }
-    if (![self isAlreadyReportedForRequestId:sfItem.requestId position:sfItem.positions[0]]) {
+    if (sfItem.positions && sfItem.positions.count > 0 && ![self isAlreadyReportedForRequestId:sfItem.requestId position:sfItem.positions[0]]) {
         OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
         obview.tag = OBVIEW_DEFAULT_TAG;
         obview.opaque = NO;
@@ -74,7 +74,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     if (existingOBView) {
         [existingOBView removeFromSuperview];
     }
-    if (![self isAlreadyReportedForRequestId:requestId position:position]) {
+    if (position && ![self isAlreadyReportedForRequestId:requestId position:position]) {
         NSDate *initializationTime = [[OBViewabilityService sharedInstance] initializationTimeForReqId:requestId];
         OBView *obview = [[OBView alloc] initWithFrame:view.bounds];
         obview.tag = OBVIEW_DEFAULT_TAG;
