@@ -45,6 +45,15 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     return sharedInstance;
 }
 
+// This is an internal method for unit-tests purpose only
++ (void) resetSharedInstance
+{
+    SFViewabilityService *sharedInstance = [SFViewabilityService sharedInstance];
+    sharedInstance.itemAlreadyReportedMap = [[NSMutableDictionary alloc] init];
+    sharedInstance.itemsToReportMap = [[NSMutableDictionary alloc] init];
+    sharedInstance.obViewsData = [[NSMutableDictionary alloc] init];
+}
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -57,11 +66,14 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     if (existingOBView) {
         [existingOBView removeFromSuperview];
     }
-    if (sfItem.positions && sfItem.positions.count > 0 && ![self isAlreadyReportedForRequestId:sfItem.requestId position:sfItem.positions[0]]) {
+    
+    NSArray *_positions = (sfItem.positions && sfItem.positions.count > 0) ? sfItem.positions : @[@"0"];
+    
+    if (![self isAlreadyReportedForRequestId:sfItem.requestId position:_positions[0]]) {
         OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
         obview.tag = OBVIEW_DEFAULT_TAG;
         obview.opaque = NO;
-        [self registerOBView:obview positions:sfItem.positions requestId:sfItem.requestId smartFeedInitializationTime: initializationTime];
+        [self registerOBView:obview positions:_positions requestId:sfItem.requestId smartFeedInitializationTime: initializationTime];
         obview.userInteractionEnabled = NO;
         [cell addSubview: obview];
     }
