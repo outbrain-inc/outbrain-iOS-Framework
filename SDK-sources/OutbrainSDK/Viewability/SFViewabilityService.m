@@ -91,10 +91,17 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     NSString *key = [self viewabilityKeyForRequestId:reqId position:pos];
     obView.key = key;
     
-    NSMutableDictionary *obViewData = [[NSMutableDictionary alloc]init];
-    [obViewData setObject:positions forKey:@"positions"];
-    [obViewData setObject:reqId forKey:@"requestId"];
-    [obViewData setObject:initializationTime forKey:@"smartFeedInitializationTime"];
+    NSMutableDictionary *obViewData = [[NSMutableDictionary alloc] init];
+    
+    if (positions) {
+        [obViewData setObject:positions forKey:@"positions"];
+    }
+    if (reqId) {
+        [obViewData setObject:reqId forKey:@"requestId"];
+    }
+    if (initializationTime) {
+        [obViewData setObject:initializationTime forKey:@"smartFeedInitializationTime"];
+    }
     
     [self.obViewsData setObject:obViewData forKey:key];
 }
@@ -115,9 +122,15 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
         [self.itemAlreadyReportedMap setValue:@"YES" forKey:key];
         
         NSMutableDictionary *itemMap = [[NSMutableDictionary alloc]init];
-        [itemMap setObject:@([pos intValue]) forKey:@"position"];
-        [itemMap setObject:timeElapsedMillis forKey:@"timeElapsed"];
-        [itemMap setObject:requestId forKey:@"requestId"];
+        if (pos) {
+            [itemMap setObject:@([pos intValue]) forKey:@"position"];
+        }
+        if (timeElapsedMillis) {
+            [itemMap setObject:timeElapsedMillis forKey:@"timeElapsed"];
+        }
+        if (requestId) {
+            [itemMap setObject:requestId forKey:@"requestId"];
+        }
         
         [self.itemsToReportMap setObject:itemMap forKey:key];
     }

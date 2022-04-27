@@ -249,7 +249,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 -(NSDate *) initializationTimeForReqId:(NSString *)reqId {
     NSString *viewabilityKey = [self viewabilityKeyForRequestId:reqId];
     ViewabilityData *viewabilityData = [self.viewabilityDataMap objectForKey:viewabilityKey];
-    return viewabilityData.requestStartDate;
+    return viewabilityData ? viewabilityData.requestStartDate : [NSDate date];
 }
 
 @end
