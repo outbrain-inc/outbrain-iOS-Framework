@@ -21,6 +21,12 @@
 
 @end
 
+@interface SFViewabilityService (Testing)
+
+- (void) reportViewabilityForOBView:(OBView *)obview;
+@end
+
+
 @interface SmartFeedManager (Testing)
 
 -(NSArray *) createSmartfeedItemsArrayFromResponse:(OBRecommendationResponse *)response;
@@ -220,6 +226,22 @@
     SFItemData *sfItemParentFirst = parentItems[0];
     UIView *sampleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     [[SFViewabilityService sharedInstance] configureViewabilityPerListingFor:sampleView withRec:sfItemParentFirst.outbrainRecs[0]];
+}
+
+int const OBVIEW_DEFAULT_TAG = 12345678;
+
+- (void) testSFViewabilityReportViewabilityForOBView {
+    NSArray *parentItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
+    XCTAssertEqual(parentItems.count, 3);
+    SFItemData *sfItemParentFirst = parentItems[0];
+    UICollectionViewCell *cell = [[UICollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    
+    // first register the SFItem data and add OBView to the cell
+    [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItemParentFirst initializationTime:[NSDate date]];
+    XCTAssertNotNil([cell viewWithTag: OBVIEW_DEFAULT_TAG]);
+    
+    // now obViewData should be available and OBView instance on the cell - we can test reportViewabilityForOBView
+    [[SFViewabilityService sharedInstance] reportViewabilityForOBView:(OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG]];
 }
 
 - (void)testFirstChildSFItemParsing {
