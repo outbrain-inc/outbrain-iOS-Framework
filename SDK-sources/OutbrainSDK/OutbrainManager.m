@@ -211,6 +211,20 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
 -(NSDictionary *) prepareLoadProductParams:(OBRecommendation * _Nonnull)rec {
     NSMutableDictionary* productParameters = [[NSMutableDictionary alloc] init];
     
+    // Sanity check
+    if (rec.skAdNetworkData.iTunesItemId == nil ||
+        rec.skAdNetworkData.adNetworkId == nil ||
+        rec.skAdNetworkData.signature == nil ||
+        rec.skAdNetworkData.nonce == nil ||
+        rec.skAdNetworkData.timestamp == 0 ||
+        rec.skAdNetworkData.campaignId == nil ||
+        rec.skAdNetworkData.skNetworkVersion == nil ||
+        rec.skAdNetworkData.sourceAppId == nil)
+    {
+        NSLog(@"Error in prepareLoadProductParams() - at least one param is nil");
+        return nil;
+    }
+    
     if (@available(iOS 11.3, *)) {
         [productParameters setObject: rec.skAdNetworkData.iTunesItemId    forKey: SKStoreProductParameterITunesItemIdentifier];
         [productParameters setObject: rec.skAdNetworkData.adNetworkId     forKey: SKStoreProductParameterAdNetworkIdentifier];
