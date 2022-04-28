@@ -218,8 +218,7 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
         rec.skAdNetworkData.nonce == nil ||
         rec.skAdNetworkData.timestamp == 0 ||
         rec.skAdNetworkData.campaignId == nil ||
-        rec.skAdNetworkData.skNetworkVersion == nil ||
-        rec.skAdNetworkData.sourceAppId == nil)
+        rec.skAdNetworkData.skNetworkVersion == nil)
     {
         NSLog(@"Error in prepareLoadProductParams() - at least one param is nil");
         return nil;
@@ -241,7 +240,9 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
             // These product params are only included in SKAdNetwork version 2.0
             if ([rec.skAdNetworkData.skNetworkVersion isEqualToString:@"2.0"]) {
                 [productParameters setObject: @"2.0"            forKey: SKStoreProductParameterAdNetworkVersion];
-                [productParameters setObject: rec.skAdNetworkData.sourceAppId    forKey: SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
+                if (rec.skAdNetworkData.sourceAppId != nil) {
+                    [productParameters setObject: rec.skAdNetworkData.sourceAppId    forKey: SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
+                }
             }
         }
     } else {
