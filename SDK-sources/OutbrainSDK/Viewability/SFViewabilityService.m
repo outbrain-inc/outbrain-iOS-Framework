@@ -80,18 +80,18 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
 }
 
 - (void) configureViewabilityPerListingFor:(UIView *)view withRec:(OBRecommendation *)rec {
-    NSString *position = rec.position;
+    NSString *position = rec.position ? rec.position : @"0";
     NSString *requestId = rec.reqId;
     OBView *existingOBView = (OBView *)[view viewWithTag: OBVIEW_DEFAULT_TAG];
     if (existingOBView) {
         [existingOBView removeFromSuperview];
     }
-    if (position && ![self isAlreadyReportedForRequestId:requestId position:position]) {
+    if (![self isAlreadyReportedForRequestId:requestId position:position]) {
         NSDate *initializationTime = [[OBViewabilityService sharedInstance] initializationTimeForReqId:requestId];
         OBView *obview = [[OBView alloc] initWithFrame:view.bounds];
         obview.tag = OBVIEW_DEFAULT_TAG;
         obview.opaque = NO;
-        [self registerOBView:obview positions:@[position ? position : @"0"] requestId: requestId smartFeedInitializationTime: initializationTime];
+        [self registerOBView:obview positions:@[position] requestId: requestId smartFeedInitializationTime: initializationTime];
         obview.userInteractionEnabled = NO;
         [view addSubview: obview];
     }
