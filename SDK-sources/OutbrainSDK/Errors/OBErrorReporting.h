@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) reportErrorToServer:(NSString *)errorMessage;
 
+@property (nonatomic, copy) NSString * _Nullable sourceId;
+@property (nonatomic, copy) NSString * _Nullable publisherId;
+@property (nonatomic, copy) NSString * _Nullable odbRequestUrlParamValue;
+
 @end
 
 NS_ASSUME_NONNULL_END

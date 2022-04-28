@@ -18,6 +18,7 @@
 #import "OBContent_Private.h"
 #import "OBViewabilityService.h"
 #import "SFWidget.h"
+#import "OBErrorReporting.h"
 
 @interface OBRecommendationRequestOperation()
 
@@ -165,6 +166,11 @@
     if ([[obRecResponse responseRequest] token]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:SFWIDGET_T_PARAM_NOTIFICATION object:self userInfo:@{@"t" : [[obRecResponse responseRequest] token]}];
     }
+    
+    // Set ODB response params on OBErrorReporting for potential error reporting
+    [OBErrorReporting sharedInstance].sourceId = [[obRecResponse.responseRequest getNSNumberValueForPayloadKey:@"sid"] stringValue];
+    [OBErrorReporting sharedInstance].publisherId = [obRecResponse.responseRequest getStringValueForPayloadKey:@"pid"];
+    [OBErrorReporting sharedInstance].odbRequestUrlParamValue = obRecResponse.request.url;
     
     [self notifyAppHandler: obRecResponse];
 }
