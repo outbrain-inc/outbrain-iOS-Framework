@@ -1,0 +1,227 @@
+{
+    "response": {
+        "exec_time": 28,
+        "timestamp": 1537431737848,
+        "status": {
+            "id": 0,
+            "content": "Request succeeded"
+        },
+        "request": {
+            "lang": "en",
+            "idx": "0",
+            "lastIdx": "9999",
+            "lastCardIdx": "9999",
+            "did": "720627693",
+            "pid": "4737",
+            "lsd": "d19a3a3f-8e1f-4e3d-b2bb-d61a75733dea",
+            "enu": "W2T5pEqt57CHDZPvY6M8u3cyZwbVDbZKcU8UBTMqg2Bo_c0dqMDi51aAKl26bNAB",
+            "api_user_id": "D19A3A3F-8E1F-4E3D-B2BB-D61A75733DEA",
+            "t": "MV9iNGI2ZWE2MzMwNjkyMTk2MjZlMTAzZGM1NWRhOTkzY18w",
+            "pvId": "b4b6ea633069219626e103dc55da993c",
+            "pad": "6",
+            "org": "0",
+            "abTestVal": "10364-51695",
+            "obRecsAbtestAndVars": "403-1410,378-1101",
+            "widgetJsId": "SFD_MAIN_2",
+            "readerPlatform": "desktop",
+            "isHttps": "true",
+            "rtbTest": "false",
+            "rtbBidTestMode": "false",
+            "rtbTestRecsNum": "0",
+            "amplifyEnabled": "true",
+            "gdpr": "0",
+            "sid": 5291479,
+            "wnid": 1117,
+            "req_id": "b4b6ea633069219626e103dc55da993c",
+            "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+            "vid": 1,
+            "ref": 0,
+            "forceFeed": "false"
+        },
+        "documents": {
+            "total_count": 6,
+            "count": 6,
+            "doc": [
+                    {
+                    "source_name": "news.myecomclub.com",
+                    "same_source": "false",
+                    "source_display_name": "news.myecomclub.com",
+                    "pc_id": 100284322,
+                    "adv_name": "NativeAds_104275",
+                    "publish_date": "1969-12-31 19:00",
+                    "orig_url": "https://news.myecomclub.com/sideincomeforamericans?utm_c1=A&utm_c2=457088&utm_c3=A_$origsrcid$&utm_c4=120028&utm_source=nativeads_Desktop&utm_medium=A_$origsrcid$&utm_campaign=NA_Desktop_120028_457088&utm_content=How_To_Start_Ecommerce_As_A_Side_Income",
+                    "rec-cats": [
+                                 1211
+                                 ],
+                    "ads_type": 1,
+                    "rec_en_did": "bcbARX5GWYrRsPu_VdbTvA",
+                    "url": "https://paid.outbrain.com/network/redir?p=eOLdoTrP7LDqpI6g5mkrep42J7OoysRJ9y2R-5Kgb5wNyxVlmlZz6UhBZ-vJy8RX71hIqpvVuEsoZ9OT1j8tcgknP7lay8IihwIUdK0B94oqLPt37b5MboQdtJJnmgUDUc9nrp86r2F_h_DbEmP6vcHjqX7ITCsyocN846fWRwEjJCwvPbtpI-crQT1mNcbZ09OYN4hj8Wj0VYTJQODi3JO2y6fPxY9RjkBtlJwI8L-Nmkt-SUIA37yaWaiM6VDdoXQf--e67eWqDUG-JsuixInAOsvFkCG69eD1ae2CfLt9qNDxyOekZZ-kyDrnutp2Hh_JycwngI8pFnfGZcpDi4XwCam1rj11s6bQudi4xbET2XFFN_fCFBqfhEEdxt63VdW8Jl1espNozZ4MLoWZkhIdN0K6jK281A0z6ebz0C23ZZ04b-zW1g9dB5vlA7dA0CF1XwBX7KuEdfEY3a7AjOKwALqrcMZoQKQIpKUILJw8B23XRyJb797YNwZ-1bzBWxUo4N7oilWAHrfmH7lvodZb3DQEXXFUWxJ-vpuly9Gcak8PrEyrEcfUjOoUd9odDPKrAy71IuwkDEC04iWgUGFgivkKN0HEpWD51c2AFYOuBrnY5kAOSDv9McvX7twIS5qRFtToMP1CJOmEYOKwSA9HZUvDLmAeDwIw_mCES37Q-bI_z84c6Qm_rEHTyeUfGfh-XDvI2noMu-ami0eAoZV-NVLp2jwTe6SifZZnp0zRUURkUWkMtU2fMXKCnQR0sCZeyCharg7B85dc7OPR6rFYQFUBjjrjz2RcXNS3Fa6CRDYMWovkukxbVuJYlHbZ4P_pv_-GTpJgZCGc0_3PJ_G2Cs0RyFjbDCALoenOrUkFO0J5IHdHtRyX0CwiNSGK5X2F26OT87F8ZG3mUsx9auAWWhjdZDbzFiSNnFerxBwyTlXuPDSI-Ihi9plI9mcp&c=4da4a2cb&v=3",
+                    "author": "",
+                    "content": "How To Start Ecommerce As A Side Income",
+                    "pc_cmp_id": 1001020472,
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImFjNGUxODNjNjIxZTliMGFlZDBiNTA5NWNjYTVmNWFjOWQ0YjhiZjZjMzcyMGQ3YmI1ZDNjMjI5NzQwMWMwOGYiLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    },
+                    "publisherAds": {
+                    "label": "sponsored",
+                    "isPublisherAds": "true"
+                    }
+                    },
+                    {
+                    "source_name": "www.signarama.com",
+                    "same_source": "false",
+                    "source_display_name": "www.signarama.com",
+                    "pc_id": 100897722,
+                    "adv_name": "Selfserve_signarama@dasverify.com",
+                    "publish_date": "1969-12-31 19:00",
+                    "orig_url": "https://www.signarama.com/blog/signarama-graphics-designers-explain-their-creative-process/?utm_source=promotedblogcontent&utm_medium=seo&utm_campaign=blogs&client=0004&campid=1001",
+                    "rec-cats": [
+                                 1211
+                                 ],
+                    "ads_type": 1,
+                    "rec_en_did": "MIDIi5lZmWW0ua8p25Apqw",
+                    "url": "https://paid.outbrain.com/network/redir?p=gDrJSK2fEQehikZCV7PpxYXbPyPqCmwYkR777rVgjVS8jyN2M7QmVOD15nNyn1M4pek-zHycEYYsi4QZjQvCFqd99mHpEc0Ve-GuHN_usRtTUQFFPGdmWHhWCMKvoL9zYrrsEZFvNqodn3e82w-jrSbpl8kB9y3TCT8VHeqbXxwAKaqvfeGmZu6KVqlW-cdHQh7ze7B_tMFKiidPETNANLn-iSZk8VczMgadLzzfLl3sZG21zB-vhfW6UdCnwm4Vx7QkNH61xvd-8Tkmm-b1l1YwMfbHA6LKj5auFmlNACkk7WBMoHWm44TBTMDdj57SYx3wjEsUsERUYo4tdZ0xYRf6kCeT0BO36A2cpFkObS1yZX35_2KbiLA3DNA-hz1BDN7T06AjCTwU1HXfQw7cxKPVuVIefzax-0XJwD4QaL6iOCpmuL99XRAJ5iLY2r4-ITj8lvpboS294qkm1Vn35tid-kx6-LqdSVLbYVnBoN98cyTaGmJbE4vt0cLRiOybqJ52cIa6IoY57ZAFVtOmxvZvcR-KwhmxXSiFJfR8s1fkeeclSoLiaSQM9XCbmbTYA3-XkfbNwbe2q_O60s5CGURiabudAhXrChEoC-Cl4_aajk903q3LARkjbcCvXhgZGD5MPkSWarBqZa3odTAGdmt8Ywx3jujDcv36JgYY7PuLqG-vcbOVJ7ZBAg34dLU8MPhSf1Ct2NKkApPU-wINES9AsFoefk-mxAPnW9bS1sRsxDJCIsxbWK22cxJuSLw-2YYumpW2mOevTKFBkOh-kIWWiqR2zeL1Sw-D2XbHgJ7D4AFTIRKkBdKqevEMBjGzVhjD_EUUFKAgB1XGp0rzTq36125njPjZKqV4pfMuWpgU3i4qSJvP-AeyiDKXPTno3iZ-KZNp1qi0ys1-faTH0C5zkDinbHK4l7I967SBUrU6jGDrCnk3NLHIUlfTDpZb&c=4f14a54b&v=3",
+                    "author": "",
+                    "content": "Sign Design: Signarama Graphic Designers Explain Their Creative Process",
+                    "pc_cmp_id": 1001045954,
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjQ4M2IwZDUyYjI3YmJjZDY4ZTEwZDdlMGIzNzVhZmU4ZjNlMmI1YzBlMWM5MmRmYjQxZjhlOTA1MWY5OGY4OGQiLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
+                    },
+                    {
+                    "source_name": "www.signarama.com",
+                    "same_source": "false",
+                    "source_display_name": "www.signarama.com",
+                    "pc_id": 100897721,
+                    "adv_name": "Selfserve_signarama@dasverify.com",
+                    "publish_date": "1969-12-31 19:00",
+                    "orig_url": "https://www.signarama.com/blog/basics-of-effective-sign-design/?utm_source=promotedblogcontent&utm_medium=seo&utm_campaign=blogs&client=0004&campid=1001",
+                    "rec-cats": [
+                                 1211
+                                 ],
+                    "ads_type": 1,
+                    "rec_en_did": "q6h3dJcKV8baMV93DGE81g",
+                    "url": "https://paid.outbrain.com/network/redir?p=paiqH4TD9JXoBbtxfm4R_uKkXT5H8wv5XQCTRcRqFWFPPYAqw1pjQj2gCrewUyAkIrTRRaVvZ3U_w_aZnMUxjcD0gKPYKlUcL_O4r5gJj4d6kb0tRTa_5Rtg6EsLH44AO6f6F67LfkE0h8O5l_ZzEtXoRq0gTCoRFSqA0PBdvpkj4ihNUSB3XF9APjOIjfNAXA1gZ_4a3JVP-DN0yJK_q6U0c4DKDG3Bb05e_5Cf1XahBeIWoEmBCwJHIBu1gLTrczejL1LwbFZCAbiWUfkxajclRgiKaaPQdrz8RdlUjn3p_93GFnYzGlGYyZAsRM0B0dU1GK-u03pyqR9WaEEUT0N9Z7o9ZVwVnVqruTGo97glncvBumhgAVHFRzkT39zJNZlezA7mfOgDzHDzRAwYR0_Z4gkV-pdhjZwAqwKj9uB3B1fyaqtnQPT5F6tcbk8dw--RWa2wpSTWxTV3GDDIxb3BUlW91S0g1iag7Edl9wlFBFYY8sd0E4HvJh-mLmdJjZM2069fr6AXy8a7EL_-yV0OZvSK_B73DqqOMs7Jvnd2BcffKYAgl-t-JZlhQcs-p8VLZy4HGPXhBz2zJnVPe2tGOlsvLBXLum_G9ER8hHoTXsPaaoQjvTJJ3kOwX34xcNAh-bSo8GTnNiYkUxT53JF86MJEXgytkftyKHlrVshLq6THCX7XDrSOYw91VgSY8pLUXWGsT9Tld2CN5mHOfEFoZ_4GsjBboxBapF_UFkTqJOVxs6oWapYuaEmk3MfVUjG9ByHtfSkSXPm5yzJrBE7-UxKb7k9rl60ARV83Xx72gqcitUCXzfk2hFN3xJUtSvvXxad8yR_QJLqy7FE3ZEYFFbhKZmuygSFcCs-LxsVETysdUia6mDypv21eDDZgv93vhgqodWS7ySVNk81qMHZC6Gzw0XRV42OhQq6sUS8UuFXqLV_0a-G_HXoFA3L-&c=e85e9d08&v=3",
+                    "author": "",
+                    "content": "Schooled: The Basics of Effective Sign Design - a Refresher",
+                    "pc_cmp_id": 1001045954,
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjhhMDVjY2RkODNjZGJmNDhkZTcyYjc4YzBlY2M3NmEyZGRlMjM4MGU0NGU1MmQ3NzFkZGFiMzU2NjkzNTA0N2QiLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
+                    },
+                    {
+                    "source_name": "Podium Blog - Online Reviews and Local Search - Podium",
+                    "same_source": "false",
+                    "source_display_name": "Podium Blog - Online Reviews and Local Search - Podium",
+                    "pc_id": 95129142,
+                    "adv_name": "Selfserve_nico@podium.co",
+                    "publish_date": "2018-02-13 09:17",
+                    "orig_url": "https://blog.podium.com/reputation-management-techniques/?utm_campaign=reputation-techniques&utm_medium=paid&utm_source=outbrain",
+                    "rec-cats": [
+                                 1211
+                                 ],
+                    "ads_type": 1,
+                    "rec_en_did": "wKHKNdKkZ9TnE3g_j1gJxw",
+                    "url": "https://paid.outbrain.com/network/redir?p=qrrGYQ3BLY7MPr7ktju8lYJqfSKsNYp8H6CjiSI1-8H4kZmEWWjEXeVfNPOkvNZO6O6GKX9cIdx1tw56gW3PK9imHWUIdsLzqo6ItZTsDiUO5KQpdzzvD_88ElNxz_wVV-JbN3OR-q5ElcMRv4P1XTC2g7MMzoragWsUwnDpMcA77uuEt3MzAyn75nJS5gMgCrXiQcf-uUUX63dO9dL1kPbr8AGMEq873XyIaPjaYgUDt4gbc8fxgDKTYfTlKObDjIdqXjxC7tvjCqZ0Qpdzj9N7qsCNmuiqMndhqAmolx17In9ZSJIpQVJuUfTq1GZY6vBeiaKa2kSuNJIFQzugdEwf1_ZTGvlt-jPMScIJTlacOTwq1o0yLvr29YbGLJuK_R-4K0Mm2y2txE70h_Wxwr7HP2vEzPJ3rp8rRUGswkyw4AVlaBRvobmP_8gKz08lR1PWJ4G7Pg38oYpa5ILT68lIwX49kU56ZB1sgSaoMt7gkYlvpDNRbMDYOo3ADZdS1tvC4yx8Tk2UeiiSMkfbUVpsfD7wUpyG5SdprPZswp40d4EkRCoHGxAN-ptKmao8oINssx4nIu253GKhRO3LsJ4EDcqxSfoGkwrOtV5TMY40kJlpbOXu6FOsU6rsNGt47VBk4NoBlp7msYDlfe5ths4UfacPr_T7XJPCFEOjM0_FWGkohQhRwMM-nIQwgVoWm3OjwVBP8Reqefp7bOzqJl4qC6yBKjM1r0fFr9QDmGf5CvTznNmSWthhUdkqGY-Ju8cxBnwFqHimaFMT98RUCRkC7_n4S9JsRIfe0KRRdtsd8nZwMUttZnWuCRc4LIL5j4w8I9YwSqUDs3FIcOXAAylxH90kpGZ8OBV3Ep7ry1vIdoS_71EVw82TuVtZCR-lhQUBaSpWTqQOGd_JY0cpnwRHD4WodxcTiMv31p7WEFP08I0KRJUKj5c9GBNCxhMq&c=512ccaae&v=3",
+                    "author": "",
+                    "content": "Reputation Management Techniques that help you grow your business",
+                    "pc_cmp_id": 1000843005,
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjBiZjRlNmI1ZDVjYTJkYmJkNWEwZjZiZmNlNjM4YzMwOTk1ZDllMjkzZDRmMzdmZWY4OTY1ZGNhMWI1NzkxNDMiLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
+                    },
+                    {
+                    "source_name": "Marketing Dive",
+                    "same_source": "false",
+                    "source_display_name": "Marketing Dive",
+                    "pc_id": 101067750,
+                    "adv_name": "Selfserve_industrydive",
+                    "publish_date": "2018-09-18 00:00",
+                    "orig_url": "https://www.marketingdive.com/news/how-to-price-your-marketing-proposal-for-profitability/532180/?utm_source=outbrain&utm_medium=CPO&utm_campaign=ProposifyMDSept18",
+                    "rec-cats": [
+                                 1211
+                                 ],
+                    "ads_type": 1,
+                    "rec_en_did": "8fuWGtBfj4TwPkT9gzSa6A",
+                    "url": "https://paid.outbrain.com/network/redir?p=b9SAbN6TbFz7mS8XoqJh82BlTAu-b68t_VeLB-HtrkSstIaTFvmWcqZ1cUSCt6pm4EeZfE4Hcrl4ta7bLui1vU1wSRJHN6B7c-I2hHCR1Zai6koPf2kaSvZa1pAHfICZZV-_iYKnHho1rIkLRT54yylZWMVVHc2mXENXEeJKPa8ce6AZWLh_M37kpBhKg3YhghkceRn4HDFjDPYal2fuOh1jvk9g7FBETkejo5xoavST36myFXZE9KKoWBwSbEYKaMO7jzbg9SLAthdO_F3wP_GgJlUW4nPVlpzHuAt7LNrlfEtwvoFtHyEJl2HwGukcL60Wc9k-ipoxXn6SVpTMmvpHoH9H7Cwt547iEuMPSyIituSkRJ3jUPA8XUgagSQT5mYXLwH6LNLkKLV4L7Wk3uBE1PjPXNLMD9OuiJXmtveWU6lEIHOVTvUUQZ_jq-JuHfi_MNJoz_lH8IGONfMOThl0h3zFzjigL438k0iLoFeg2mngmniT5MeGYGb_4HaxMvhM0-Gi_g4UvWsqSgpFy3gS7nO2dWbLWoGz4SfqPfiOJI0hJ4aXzp8y6L4hEbU8ek4_XUt2udeKLtM35HmKa4ec-s4pq0BmeWq-namB7zvxBPjIQ1GPwlf4mCrrOPfdmfcl3NmkS0bVud4IPVDjJ6YvThWiUlEU2J78JJfH6LT_zDXHeWKt4WOCLR3eDfVIUIA67ur1hiOoYybWgwjWAqYv5qwnpnOdDQFLsftbHKROn2LEooFTAj7DCnfiuJ4O6OieZ7rhwwwjPuVoInSAU9zBIa116_AHJdsfTMKsie0mL3Yo16GkM6ylGBjTLo7JU_1LuS5Q1MTB4pN9WKERGSuw2lKo1pqPoQ8p7-PvoqOW81i0oL2-POSr0zYTgSleY5iwf17iWtmGiYEV30M27ejWWDB6giPXJ61EXO0mSxA8VcXo6-GkxeyLG0adjRS9&c=3814ca9e&v=3",
+                    "author": "",
+                    "content": "Deciding on how to price your proposal can require significant consideration",
+                    "pc_cmp_id": 1001053317,
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjQ5YjUxNGZkNWY1NzI5OTRjYTI5ZDg2OWNkYmZhNGJlNGM5YzBlMzVhMTYxMmRmMDNiM2QyYWE5OWM5ZThiOTciLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
+                    },
+                    {
+                    "source_name": "DailySportX",
+                    "same_source": "false",
+                    "source_display_name": "DailySportX",
+                    "pc_id": 100628456,
+                    "adv_name": "DailySportx_SA_PartnersProgram",
+                    "publish_date": "2017-09-24 03:39",
+                    "orig_url": "http://www.dailysportx.com/nba/special-forces-sustainable-cities?utm_medium=outbrain&utm_source=outbrainjk&utm_campaign=ds-special-forces-des-us-0709&utm_term=$origpubname$",
+                    "rec-cats": [
+                                 1211
+                                 ],
+                    "ads_type": 1,
+                    "rec_en_did": "l3dJ3oWxrWyYEkPUdoE4dA",
+                    "url": "https://paid.outbrain.com/network/redir?p=DzZMlNuR6qDVSU3H_MnVecY7V3heyhPGPqmpNIhllbrR6kVcCKg5wPxLXFRUgXFK6Z6_mVBft62dNQQk8l75G8C-LTgaXd4dkOu361LbQZVSqjcn1mLN0BeQvei2q8Aik87YmtQO-FJqcGaI79MTcG_hJdNyh49Ysnlmo7x3SkAbFrm5m5VFd4_bkVcNOHVYQhtp2OFgcdOpWIIW7QTmEKKeNyEi-2OsxhV8WxqycxJM3tTF5CSBNWfbSYFeY4hO4khMtuMNCa750v3blmu9Lk4iJeKMgQRhoxbWOmbl3NegHsOtT2PDukDed9atwZJ8e2wlzboif_PHxjkny_U5a3FR_8FH260snjIHWXGouqtpM83uh0OjF-fxjEHbn56UywTLZBXA9dlmd1VmJhsTy14f8Teu4Zr4COc2wsbIztw9SJX2BtdpDx4ryk6SpOxrvxT8anUUatmIbKcSld5_ehg0yslYFAZPL8weIgso_gT-OQmxRHRPV7tuLxcY6CfKd5Uk9QdhHKKFocou8MfJJ4KnO_uggxiX65_ZrMwF8zE7iChgGjLdnbSW_qzQ7RbD3pJLU6Gnh1o5una3ZQTrcoWlAb0uvfGcWeRz_SBAanpSMdc6TPtA68YNJLiYR8_ji093Lu9XJJXyXX-Tu88Jh0pq8_o_SxVJqGZMJdCd3c3iN9irupGi5cygbHR7__-_Zg1OSrMevaFGXntd5SE4Jx17R7no83uMPbT2STOcPloqa0tZhqJ8L5o8LZRAfk_6thwAXcUJ2z0mSb7Up_wSvcOkiFwAEaKqOI3bHTb698tLEHl5cFiteYD-f495kcFULFYO3le9PPrb8SJbBnxtMVrwc604Kac_bw809nDQ6P5zGf5l9_4SIl-jWQpVgsAAGHU5XignFz4AAlcQLweZxmx8lQhDj7hifFIfLSTN0GNopXxeqncWAIZVfEXSItM1&c=2c59a6c3&v=3",
+                    "author": "",
+                    "content": "Don’t Mess With These Units- They Are The Toughest In The World",
+                    "pc_cmp_id": 1001035466,
+                    "ttid": 3,
+                    "thumbnail": {
+                    "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImMzNWU1NTY2YzFhMDliMjg3NDg3Y2E5MjFmOTUxZWIyMzFjOGU2ODkxMTBjMTI3NzE3NWFiM2QzZWQ3N2JmZGUiLCJ3IjozMDAsImgiOjIyMCwiZCI6Mi4wLCJjcyI6MCwiZiI6MH0.jpg",
+                    "width": 300,
+                    "height": 220,
+                    "imageImpressionType": "DOCUMENT_IMAGE"
+                    }
+                    }
+                    ]
+        },
+        "settings": {
+            "recMode": "sdk_sfd_2_columns",
+            "apv": true,
+            "sdk_sf_vidget_url": "https://static-test.outbrain.com/video/app/vidgetInApp.html?widgetId=AR_1&publisherId=111&sourceId=222",
+            "feedContent": "[{\"type\":\"widget\", \"id\":\"SDK_SFD_1\"},{\"type\":\"widget\", \"id\":\"SDK_SFD_2\"},{\"type\":\"widget\", \"id\":\"SDK_SFD_3\"}]",
+            "DPR": "2.0",
+            "isSmartFeed": true,
+            "dynamic:TitleFontSize": 14,
+            "dynamic:TitleTextStyle": 1,
+            "dynamic:SourceFontSize": 12,
+            "dynamic:SourceColor": "#ffa511",
+            "imgFadeDur": 400,
+            "imgFade": true,
+            "isSmartFeedInjectionEnabled": true,
+            "nanoOrganicsHeader": "Sponsored Links",
+            "feedCyclesLimit": 5,
+            "sdk_sf_shadow_color": "#ffa500",
+            "readMoreText": "Read More",
+            "VidgetEnabled": true
+        },
+        "features": {
+            "smartFeed": {
+                "useBackendFeed": false
+            }
+        }
+    }
+}

@@ -211,6 +211,19 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
 -(NSDictionary *) prepareLoadProductParams:(OBRecommendation * _Nonnull)rec {
     NSMutableDictionary* productParameters = [[NSMutableDictionary alloc] init];
     
+    // Sanity check
+    if (rec.skAdNetworkData.iTunesItemId == nil ||
+        rec.skAdNetworkData.adNetworkId == nil ||
+        rec.skAdNetworkData.signature == nil ||
+        rec.skAdNetworkData.nonce == nil ||
+        rec.skAdNetworkData.timestamp == 0 ||
+        rec.skAdNetworkData.campaignId == nil ||
+        rec.skAdNetworkData.skNetworkVersion == nil)
+    {
+        NSLog(@"Error in prepareLoadProductParams() - at least one param is nil");
+        return nil;
+    }
+    
     if (@available(iOS 11.3, *)) {
         [productParameters setObject: rec.skAdNetworkData.iTunesItemId    forKey: SKStoreProductParameterITunesItemIdentifier];
         [productParameters setObject: rec.skAdNetworkData.adNetworkId     forKey: SKStoreProductParameterAdNetworkIdentifier];
@@ -227,7 +240,9 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
             // These product params are only included in SKAdNetwork version 2.0
             if ([rec.skAdNetworkData.skNetworkVersion isEqualToString:@"2.0"]) {
                 [productParameters setObject: @"2.0"            forKey: SKStoreProductParameterAdNetworkVersion];
-                [productParameters setObject: rec.skAdNetworkData.sourceAppId    forKey: SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
+                if (rec.skAdNetworkData.sourceAppId != nil) {
+                    [productParameters setObject: rec.skAdNetworkData.sourceAppId    forKey: SKStoreProductParameterAdNetworkSourceAppStoreIdentifier];
+                }
             }
         }
     } else {

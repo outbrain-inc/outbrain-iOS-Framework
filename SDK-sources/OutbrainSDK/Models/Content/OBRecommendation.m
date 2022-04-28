@@ -127,6 +127,7 @@
         recommendation.skAdNetworkData = [OBSkAdNetworkData contentWithPayload:payload[@"sk_adnetwork_data"]];
     }
 
+
     return recommendation;
 }
 

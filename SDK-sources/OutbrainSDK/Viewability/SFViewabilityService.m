@@ -45,6 +45,15 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     return sharedInstance;
 }
 
+// This is an internal method for unit-tests purpose only
++ (void) resetSharedInstance
+{
+    SFViewabilityService *sharedInstance = [SFViewabilityService sharedInstance];
+    sharedInstance.itemAlreadyReportedMap = [[NSMutableDictionary alloc] init];
+    sharedInstance.itemsToReportMap = [[NSMutableDictionary alloc] init];
+    sharedInstance.obViewsData = [[NSMutableDictionary alloc] init];
+}
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -57,18 +66,21 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     if (existingOBView) {
         [existingOBView removeFromSuperview];
     }
-    if (![self isAlreadyReportedForRequestId:sfItem.requestId position:sfItem.positions[0]]) {
+    
+    NSArray *_positions = (sfItem.positions && sfItem.positions.count > 0) ? sfItem.positions : @[@"0"];
+    
+    if (![self isAlreadyReportedForRequestId:sfItem.requestId position:_positions[0]]) {
         OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
         obview.tag = OBVIEW_DEFAULT_TAG;
         obview.opaque = NO;
-        [self registerOBView:obview positions:sfItem.positions requestId:sfItem.requestId smartFeedInitializationTime: initializationTime];
+        [self registerOBView:obview positions:_positions requestId:sfItem.requestId smartFeedInitializationTime: initializationTime];
         obview.userInteractionEnabled = NO;
         [cell addSubview: obview];
     }
 }
 
 - (void) configureViewabilityPerListingFor:(UIView *)view withRec:(OBRecommendation *)rec {
-    NSString *position = rec.position;
+    NSString *position = rec.position ? rec.position : @"0";
     NSString *requestId = rec.reqId;
     OBView *existingOBView = (OBView *)[view viewWithTag: OBVIEW_DEFAULT_TAG];
     if (existingOBView) {
@@ -79,7 +91,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
         OBView *obview = [[OBView alloc] initWithFrame:view.bounds];
         obview.tag = OBVIEW_DEFAULT_TAG;
         obview.opaque = NO;
-        [self registerOBView:obview positions:@[position ? position : @"0"] requestId: requestId smartFeedInitializationTime: initializationTime];
+        [self registerOBView:obview positions:@[position] requestId: requestId smartFeedInitializationTime: initializationTime];
         obview.userInteractionEnabled = NO;
         [view addSubview: obview];
     }
@@ -91,10 +103,17 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     NSString *key = [self viewabilityKeyForRequestId:reqId position:pos];
     obView.key = key;
     
-    NSMutableDictionary *obViewData = [[NSMutableDictionary alloc]init];
-    [obViewData setObject:positions forKey:@"positions"];
-    [obViewData setObject:reqId forKey:@"requestId"];
-    [obViewData setObject:initializationTime forKey:@"smartFeedInitializationTime"];
+    NSMutableDictionary *obViewData = [[NSMutableDictionary alloc] init];
+    
+    if (positions) {
+        [obViewData setObject:positions forKey:@"positions"];
+    }
+    if (reqId) {
+        [obViewData setObject:reqId forKey:@"requestId"];
+    }
+    if (initializationTime) {
+        [obViewData setObject:initializationTime forKey:@"smartFeedInitializationTime"];
+    }
     
     [self.obViewsData setObject:obViewData forKey:key];
 }
@@ -115,9 +134,15 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
         [self.itemAlreadyReportedMap setValue:@"YES" forKey:key];
         
         NSMutableDictionary *itemMap = [[NSMutableDictionary alloc]init];
-        [itemMap setObject:@([pos intValue]) forKey:@"position"];
-        [itemMap setObject:timeElapsedMillis forKey:@"timeElapsed"];
-        [itemMap setObject:requestId forKey:@"requestId"];
+        if (pos) {
+            [itemMap setObject:@([pos intValue]) forKey:@"position"];
+        }
+        if (timeElapsedMillis) {
+            [itemMap setObject:timeElapsedMillis forKey:@"timeElapsed"];
+        }
+        if (requestId) {
+            [itemMap setObject:requestId forKey:@"requestId"];
+        }
         
         [self.itemsToReportMap setObject:itemMap forKey:key];
     }

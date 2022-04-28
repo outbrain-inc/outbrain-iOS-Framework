@@ -12,6 +12,7 @@
 #import "OBRecommendationRequestOperation.h"
 #import "SFItemData.h"
 #import "SFUtils.h"
+#import "SFViewabilityService.h"
 
 
 @interface OBRecommendationRequestOperation (Testing)
@@ -19,6 +20,14 @@
 - (OBRecommendationResponse *)createResponseWithDict:(NSDictionary *)responseDict withError:(NSError *)error;
 
 @end
+
+@interface SFViewabilityService (Testing)
+
+- (void) reportViewabilityForOBView:(OBView *)obview;
++ (void) resetSharedInstance;
+
+@end
+
 
 @interface SmartFeedManager (Testing)
 
@@ -40,6 +49,8 @@
 @property (nonatomic, strong) OBRecommendationResponse *responseChild1;
 @property (nonatomic, strong) OBRecommendationResponse *responseChild2;
 @property (nonatomic, strong) OBRecommendationResponse *responseChild3;
+
+@property (nonatomic, strong) OBRecommendationResponse *responseParentWithMissingPositionField;
 
 @property (nonatomic, strong) SmartFeedManager *smartFeedManager;
 
@@ -71,6 +82,10 @@
     responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_child3"];
     XCTAssertNotNil(responseJson);
     self.responseChild3 = [operation createResponseWithDict:responseJson withError:nil];
+    
+    responseJson = [OBTestUtils JSONFromFile: @"smart_feed_response_parent_missing_position_field"];
+    XCTAssertNotNil(responseJson);
+    self.responseParentWithMissingPositionField = [operation createResponseWithDict:responseJson withError:nil];
 }
 
 - (void)tearDown {
@@ -201,6 +216,57 @@
     XCTAssertTrue([sfItemParentFirst.widgetId isEqualToString:@"SFD_MAIN_2"]);
     OBRecommendation *singleRec = sfItemParentFirst.outbrainRecs[0];
     XCTAssertTrue([singleRec.content isEqualToString:@"How To Start Ecommerce As A Side Income"]);
+}
+
+- (void) testSFViewabilityConfigureViewabilityPerListingForCell {
+    NSArray *parentItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
+    XCTAssertEqual(parentItems.count, 3);
+    SFItemData *sfItemParentFirst = parentItems[0];
+    UICollectionViewCell *cell = [[UICollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    
+    [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItemParentFirst initializationTime:[NSDate date]];
+    [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItemParentFirst initializationTime:[NSDate date]];
+}
+
+- (void) testSFViewabilityConfigureViewabilityPerListingForView {
+    [SFViewabilityService resetSharedInstance];
+    NSArray *parentItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
+    XCTAssertEqual(parentItems.count, 3);
+    SFItemData *sfItemParentFirst = parentItems[0];
+    UIView *sampleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    [[SFViewabilityService sharedInstance] configureViewabilityPerListingFor:sampleView withRec:sfItemParentFirst.outbrainRecs[0]];
+}
+
+int const OBVIEW_DEFAULT_TAG = 12345678;
+
+- (void) testSFViewabilityReportViewabilityForOBView {
+    [SFViewabilityService resetSharedInstance];
+    NSArray *parentItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParent];
+    XCTAssertEqual(parentItems.count, 3);
+    SFItemData *sfItemParentFirst = parentItems[0];
+    UICollectionViewCell *cell = [[UICollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    
+    // first register the SFItem data and add OBView to the cell
+    [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItemParentFirst initializationTime:[NSDate date]];
+    XCTAssertNotNil([cell viewWithTag: OBVIEW_DEFAULT_TAG]);
+    
+    // now obViewData should be available and OBView instance on the cell - we can test reportViewabilityForOBView
+    [[SFViewabilityService sharedInstance] reportViewabilityForOBView:(OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG]];
+}
+
+- (void) testSFViewabilityReportViewabilityForOBViewWithPositionFieldMissing {
+    [SFViewabilityService resetSharedInstance];
+    NSArray *parentItems = [self.smartFeedManager createSmartfeedItemsArrayFromResponse:self.responseParentWithMissingPositionField];
+    XCTAssertEqual(parentItems.count, 3);
+    SFItemData *sfItemParentFirst = parentItems[0];
+    UICollectionViewCell *cell = [[UICollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    
+    // first register the SFItem data and add OBView to the cell
+    [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItemParentFirst initializationTime:[NSDate date]];
+    XCTAssertNotNil([cell viewWithTag: OBVIEW_DEFAULT_TAG]);
+    
+    // now obViewData should be available and OBView instance on the cell - we can test reportViewabilityForOBView
+    [[SFViewabilityService sharedInstance] reportViewabilityForOBView:(OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG]];
 }
 
 - (void)testFirstChildSFItemParsing {
