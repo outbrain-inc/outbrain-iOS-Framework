@@ -152,8 +152,6 @@
 		E64F603F212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */; };
 		E64F6041212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */; };
 		E64F6042212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */; };
-		E655A655281951C500F96089 /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E655A650281951B300F96089 /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E655A65828195A8E00F96089 /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E655A650281951B300F96089 /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E666D04D25E4ED4F009F04D4 /* OutbrainSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E666D04C25E4ED4F009F04D4 /* OutbrainSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E66B9C8D26809C01006DB0AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9C8C26809C01006DB0AB /* AppDelegate.swift */; };
 		E66B9C9126809C01006DB0AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9C9026809C01006DB0AB /* ViewController.swift */; };
@@ -182,37 +180,6 @@
 		E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
 		FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E655A64F281951B300F96089 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E655A649281951B300F96089 /* OutbrainSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E61E6B3D2083607B0016D79A;
-			remoteInfo = OutbrainSDK;
-		};
-		E655A651281951B300F96089 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E655A649281951B300F96089 /* OutbrainSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E61E6B452083607B0016D79A;
-			remoteInfo = OutbrainSDKTests;
-		};
-		E655A653281951BE00F96089 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E655A649281951B300F96089 /* OutbrainSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E61E6B3C2083607B0016D79A;
-			remoteInfo = OutbrainSDK;
-		};
-		E655A65628195A8A00F96089 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E655A649281951B300F96089 /* OutbrainSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E61E6B3C2083607B0016D79A;
-			remoteInfo = OutbrainSDK;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		163A5AC827A19AF200A4B498 /* Embed Frameworks */ = {
@@ -253,7 +220,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E655A65828195A8E00F96089 /* OutbrainSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,7 +230,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E655A655281951C500F96089 /* OutbrainSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,7 +342,6 @@
 		E64F6039212C35E6008BBDFB /* AppSFSingleWithTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleTableViewCell.xib; sourceTree = "<group>"; };
 		E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailCollectionCell.xib; sourceTree = "<group>"; };
-		E655A649281951B300F96089 /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = "../../SDK-sources/OutbrainSDK.xcodeproj"; sourceTree = "<group>"; };
 		E666D04C25E4ED4F009F04D4 /* OutbrainSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OutbrainSDK.xcframework; sourceTree = "<group>"; };
 		E66B9C8A26809C01006DB0AB /* SFWebView-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFWebView-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66B9C8C26809C01006DB0AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -654,7 +618,6 @@
 		D8B59230186376B1009422D5 = {
 			isa = PBXGroup;
 			children = (
-				E655A649281951B300F96089 /* OutbrainSDK.xcodeproj */,
 				E666D04C25E4ED4F009F04D4 /* OutbrainSDK.xcframework */,
 				D83456431885A543002B2368 /* Journal */,
 				E61E6CCE2085DBD50016D79A /* SmartFeed */,
@@ -856,15 +819,6 @@
 			path = PostCell;
 			sourceTree = "<group>";
 		};
-		E655A64A281951B300F96089 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E655A650281951B300F96089 /* OutbrainSDK.framework */,
-				E655A652281951B300F96089 /* OutbrainSDKTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E66B9C8B26809C01006DB0AB /* SFWebView-Dev */ = {
 			isa = PBXGroup;
 			children = (
@@ -1013,7 +967,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E655A65728195A8A00F96089 /* PBXTargetDependency */,
 			);
 			name = "Journal-Dev";
 			productName = OutbrainDemo;
@@ -1032,7 +985,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E655A654281951BE00F96089 /* PBXTargetDependency */,
 			);
 			name = "SmartFeed-Dev";
 			productName = SmartFeed;
@@ -1095,12 +1047,6 @@
 			mainGroup = D8B59230186376B1009422D5;
 			productRefGroup = D8B5923A186376B1009422D5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E655A64A281951B300F96089 /* Products */;
-					ProjectRef = E655A649281951B300F96089 /* OutbrainSDK.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D8B59238186376B1009422D5 /* Journal */,
@@ -1111,23 +1057,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		E655A650281951B300F96089 /* OutbrainSDK.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OutbrainSDK.framework;
-			remoteRef = E655A64F281951B300F96089 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E655A652281951B300F96089 /* OutbrainSDKTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OutbrainSDKTests.xctest;
-			remoteRef = E655A651281951B300F96089 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D8B59237186376B1009422D5 /* Resources */ = {
@@ -1373,19 +1302,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E655A654281951BE00F96089 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OutbrainSDK;
-			targetProxy = E655A653281951BE00F96089 /* PBXContainerItemProxy */;
-		};
-		E655A65728195A8A00F96089 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OutbrainSDK;
-			targetProxy = E655A65628195A8A00F96089 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E61E6CD32085DBD50016D79A /* Main.storyboard */ = {
