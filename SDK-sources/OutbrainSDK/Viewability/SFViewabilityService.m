@@ -67,8 +67,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
         [existingOBView removeFromSuperview];
     }
     
-//    sfItem.positions = nil;
-    NSArray *_positions = (NO && sfItem.positions && sfItem.positions.count > 0) ? sfItem.positions : @[@"0"];
+    NSArray *_positions = (sfItem.positions && sfItem.positions.count > 0) ? sfItem.positions : @[@"0"];
     
     if (![self isAlreadyReportedForRequestId:sfItem.requestId position:_positions[0]]) {
         OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
