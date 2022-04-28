@@ -126,8 +126,7 @@
         NSLog(@"sk_adnetwork_data: %@", payload[@"sk_adnetwork_data"]);
         recommendation.skAdNetworkData = [OBSkAdNetworkData contentWithPayload:payload[@"sk_adnetwork_data"]];
     }
-    
-    //recommendation.position = nil;
+
 
     return recommendation;
 }
