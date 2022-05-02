@@ -15,13 +15,13 @@ let package = Package(
     ],
     targets: [
         .binaryTarget(
-            name: "Outbrain",
+            name: "OutbrainSDK",
             path: "OutbrainSDK.xcframework"
         ),
         .target(
             name: "WrapperSPMTarget",
             dependencies: [
-                .target(name: "Outbrain", condition: .when(platforms: .some([.iOS])))
+                .target(name: "OutbrainSDK", condition: .when(platforms: .some([.iOS])))
             ]
         )
     ]
