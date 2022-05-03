@@ -28,7 +28,7 @@ NSString * const kSDK_ERROR_REPORT_NAME = @"TEST_IOS_SDK_ERROR";
     return sharedInstance;
 }
 
-- (NSURL *) erroReportURLForMessage:(NSString *)errorMessage {
+- (NSURL *) errorReportURLForMessage:(NSString *)errorMessage {
     NSMutableArray *odbQueryItems = [[NSMutableArray alloc] init];
     NSURLComponents *components = [NSURLComponents componentsWithString: kReportErrorUrl];
     
@@ -82,7 +82,7 @@ NSString * const kSDK_ERROR_REPORT_NAME = @"TEST_IOS_SDK_ERROR";
  https://widgetmonitor.outbrain.com/WidgetErrorMonitor/api/report?name=IOS_SDK_ERROR&version=ODED_SDK_VERSION&message=ODED_EVENT_MESSAGE&url=ODED_PUBLISHER_URL&referrer=&agent=mozilla/5.0 (iphone; cpu iphone os 13_2_3 like mac os x) applewebkit/605.1.15 (khtml, like gecko) version/13.0.3 mobile/15e148 safari/604.1&stack=undefined&errorEleUrl=&pId=4623&sId=8106322&dId=4361794921'
  */
 - (void) reportErrorToServer:(NSString *)errorMessage {
-    NSURL *url = [self erroReportURLForMessage:errorMessage];
+    NSURL *url = [self errorReportURLForMessage:errorMessage];
     
     [[OBNetworkManager sharedManager] sendGet:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
