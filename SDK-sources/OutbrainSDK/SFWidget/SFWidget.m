@@ -115,7 +115,12 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self handleViewability:scrollView];
+    @try  {
+        [self handleViewability:scrollView];
+    } @catch (NSException *exception) {
+      NSLog(@"Exception in SFWidget - scrollViewDidScroll() - %@ ",exception.name);
+      NSLog(@"Reason: %@ ",exception.reason);
+    }
     
     if (self.isLoading || self.inTransition || self.currentHeight <= 1000) {
         return;
