@@ -15,7 +15,7 @@
 
 
 NSString * const kReportErrorUrl = @"https://widgetmonitor.outbrain.com/WidgetErrorMonitor/api/report";
-NSString * const kSDK_ERROR_REPORT_NAME = @"TEST_IOS_SDK_ERROR";
+NSString * const kSDK_ERROR_REPORT_NAME = @"22_TEST_IOS_SDK_ERROR";
 
 + (instancetype)sharedInstance
 {
@@ -89,6 +89,8 @@ NSString * const kSDK_ERROR_REPORT_NAME = @"TEST_IOS_SDK_ERROR";
             if (error != nil) {
                 NSLog(@"Error OBErrorReporting - reportErrorToServer - %@", error);
             }
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            NSLog(@"reportErrorToServer status code: %ld", (long)[httpResponse statusCode]); 
         }];
     } @catch (NSException *exception) {
       NSLog(@"Exception in OBErrorReporting - reportErrorToServer() - %@ ",exception.name);
