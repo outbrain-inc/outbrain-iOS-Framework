@@ -181,13 +181,7 @@
     [OBErrorReporting sharedInstance].sourceId = [[obRecResponse.responseRequest getNSNumberValueForPayloadKey:@"sid"] stringValue];
     [OBErrorReporting sharedInstance].publisherId = [obRecResponse.responseRequest getStringValueForPayloadKey:@"pid"];
     [OBErrorReporting sharedInstance].odbRequestUrlParamValue = obRecResponse.request.url;
-    
-//    NSTimeInterval delayInSeconds = 2.0;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//        NSLog(@"Do some work");
-//        [[OBErrorReporting sharedInstance] reportErrorToServer:@"Oded test message"];
-//    });
+    [OBErrorReporting sharedInstance].odbRequestUrlParamValue = obRecResponse.request.widgetId;
     
 
     [self notifyAppHandler: obRecResponse];

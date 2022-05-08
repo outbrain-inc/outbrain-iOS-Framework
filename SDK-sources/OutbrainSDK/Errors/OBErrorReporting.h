@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString * _Nullable sourceId;
 @property (nonatomic, copy) NSString * _Nullable publisherId;
+@property (nonatomic, copy) NSString * _Nullable widgetId;
 @property (nonatomic, copy) NSString * _Nullable odbRequestUrlParamValue;
 
 @end

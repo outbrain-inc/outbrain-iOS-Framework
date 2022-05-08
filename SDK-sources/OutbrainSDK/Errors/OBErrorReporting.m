@@ -15,7 +15,7 @@
 
 
 NSString * const kReportErrorUrl = @"https://widgetmonitor.outbrain.com/WidgetErrorMonitor/api/report";
-NSString * const kSDK_ERROR_REPORT_NAME = @"22_TEST_IOS_SDK_ERROR";
+NSString * const kSDK_ERROR_REPORT_NAME = @"IOS_SDK_ERROR";
 
 + (instancetype)sharedInstance
 {
@@ -43,6 +43,9 @@ NSString * const kSDK_ERROR_REPORT_NAME = @"22_TEST_IOS_SDK_ERROR";
     // Partner Key
     NSString *partnerKey = [OutbrainManager sharedInstance].partnerKey;
     extraParams[@"partnerKey"] = partnerKey ? partnerKey : @"(null)";
+    
+    // WidgetId
+    extraParams[@"widgetId"] = self.widgetId;
     
     // SDK Version
     extraParams[@"sdk_version"] = OB_SDK_VERSION;
