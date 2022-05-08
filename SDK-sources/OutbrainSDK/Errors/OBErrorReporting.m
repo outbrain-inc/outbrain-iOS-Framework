@@ -35,28 +35,50 @@ NSString * const kSDK_ERROR_REPORT_NAME = @"22_TEST_IOS_SDK_ERROR";
     // Event Name for SDK error
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"name" value: kSDK_ERROR_REPORT_NAME]];
     
+    /*
+     --> Extra Params
+     */
+    NSMutableDictionary *extraParams = [[NSMutableDictionary alloc] init];
+    
     // Partner Key
     NSString *partnerKey = [OutbrainManager sharedInstance].partnerKey;
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"partnerKey" value: (partnerKey ? partnerKey : @"(null)")]];
+    extraParams[@"partnerKey"] = partnerKey ? partnerKey : @"(null)";
     
     // SDK Version
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"version" value: OB_SDK_VERSION]];
+    extraParams[@"sdk_version"] = OB_SDK_VERSION;
     
     //Device model
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dm" value: [OBUtils deviceModel]]];
+    extraParams[@"dm"] = [OBUtils deviceModel];
     
     //App Version
     NSString * appVersionString = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     appVersionString = [appVersionString stringByReplacingOccurrencesOfString:@" " withString:@""]; // sanity fix
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"app_ver" value: appVersionString]];
+    extraParams[@"app_ver"] = appVersionString;
     
     //OS version
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dosv" value: [[UIDevice currentDevice] systemVersion]]];
+    extraParams[@"dosv"] = [[UIDevice currentDevice] systemVersion];
     
     //Random
     NSInteger randInteger = (arc4random() % 10000);
     NSString *randNumStr = [NSString stringWithFormat:@"%li", (long)randInteger];
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"rand" value: randNumStr]];
+    extraParams[@"rand"] = randNumStr;
+    
+    if ([NSJSONSerialization isValidJSONObject:extraParams]) {
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:extraParams
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:&error];
+
+        if (! jsonData) {
+            NSLog(@"NSJSONSerialization Got an error: %@", error);
+        } else {
+            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"extra" value: jsonString]];
+        }
+    }
+    /*
+     <-- Extra Params
+     */
     
     // SID, PID, URL
     if (self.odbRequestUrlParamValue) {
