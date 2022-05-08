@@ -8,6 +8,7 @@
 
 #import "SFWidgetMessageHandler.h"
 #import "SFWidget.h"
+#import "OBErrorReporting.h"
 
 @implementation SFWidgetMessageHandler
 
@@ -43,8 +44,10 @@
             }
         }
     } @catch (NSException *exception) {
-      NSLog(@"Exception in SFWidgetMessageHandler() - %@ ",exception.name);
-      NSLog(@"Reason: %@ ",exception.reason);
+        NSLog(@"Exception in SFWidgetMessageHandler() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SFWidgetMessageHandler - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
 }
 

@@ -118,8 +118,10 @@ NSString * const kSDK_ERROR_REPORT_NAME = @"IOS_SDK_ERROR";
             NSLog(@"reportErrorToServer status code: %ld", (long)[httpResponse statusCode]); 
         }];
     } @catch (NSException *exception) {
-      NSLog(@"Exception in OBErrorReporting - reportErrorToServer() - %@ ",exception.name);
-      NSLog(@"Reason: %@ ",exception.reason);
+        NSLog(@"Exception in OBErrorReporting - reportErrorToServer() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        
+        // No error report here of course to avoid infinite loop
     }
 }
 

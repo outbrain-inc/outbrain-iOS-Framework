@@ -131,8 +131,10 @@
         @try  {
             [self taskCompletedWith:data response:response error:error];
         } @catch (NSException *exception) {
-          NSLog(@"Exception in startODBRequest() - %@ ",exception.name);
-          NSLog(@"Reason: %@ ",exception.reason);
+            NSLog(@"Exception in startODBRequest() - %@",exception.name);
+            NSLog(@"Reason: %@ ",exception.reason);
+            NSString *errorMsg = [NSString stringWithFormat:@"Exception in startODBRequest() - %@ - reason: %@", exception.name, exception.reason];
+            [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
         } @finally  {
            dispatch_semaphore_signal(sema);
         }

@@ -10,6 +10,8 @@
 #import "SFViewabilityService.h"
 #import "OBNetworkManager.h"
 #import "OBViewabilityService.h"
+#import "OBErrorReporting.h"
+
 
 @interface SFViewabilityService()
 
@@ -79,8 +81,10 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
             [cell addSubview: obview];
         }
     } @catch (NSException *exception) {
-      NSLog(@"Exception in configureViewabilityPerListingForCell() - %@ ",exception.name);
-      NSLog(@"Reason: %@ ",exception.reason);
+        NSLog(@"Exception in configureViewabilityPerListingForCell() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in configureViewabilityPerListingForCell() - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
 }
 
@@ -102,8 +106,10 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
             [view addSubview: obview];
         }
     } @catch (NSException *exception) {
-      NSLog(@"Exception in configureViewabilityPerListingFor:withRec: - %@ ",exception.name);
-      NSLog(@"Reason: %@ ",exception.reason);
+        NSLog(@"Exception in configureViewabilityPerListingFor:withRec: - %@ ",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in configureViewabilityPerListingFor:withRec: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
 }
 

@@ -119,8 +119,10 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     @try  {
         [self handleViewability:scrollView];
     } @catch (NSException *exception) {
-      NSLog(@"Exception in SFWidget - scrollViewDidScroll() - %@ ",exception.name);
-      NSLog(@"Reason: %@ ",exception.reason);
+        NSLog(@"Exception in SFWidget - scrollViewDidScroll() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SFWidget - scrollViewDidScroll() - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
     
     if (self.isLoading || self.inTransition || self.currentHeight <= 1000) {
