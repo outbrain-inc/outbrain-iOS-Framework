@@ -652,8 +652,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     @try  {
         return [self _tableView:tableView cellForRowAtIndexPath:indexPath];
     } @catch (NSException *exception) {
-        NSLog(@"Exception in SmartFeedManager - tableView:cellForRowAtIndexPath: - %@", exception.name);
-        NSLog(@"Reason: %@ ",exception.reason);
         NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - tableView:cellForRowAtIndexPath: - %@ - reason: %@", exception.name, exception.reason];
         [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
@@ -1024,7 +1022,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 #pragma mark - Collection View methods
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    @try  {
+        return [self _collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - collectionView:cellForItemAtIndexPath: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (UICollectionViewCell *)_collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
