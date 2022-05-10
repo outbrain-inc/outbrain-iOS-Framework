@@ -752,6 +752,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
     }
     
+    /*
+     * Start configuring cell with data
+     */
     if ([cell isKindOfClass:[SFHorizontalWithVideoTableViewCell class]]) {
         [self configureHorizontalVideoTableViewCell:cell atIndexPath:indexPath];
     }
@@ -767,7 +770,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     {
         [self.sfTableViewManager configureVideoCell:cell atIndexPath:indexPath withSFItem:sfItem];
     }
-    else { // SFSingleCell
+    else if ([cell isKindOfClass:[SFTableViewCell class]]) { // SFSingleCell
         [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
