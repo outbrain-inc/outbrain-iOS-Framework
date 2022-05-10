@@ -809,7 +809,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     return [self.readMoreModuleHelper numberOfItemsInCollapsableSection:section collapsableItemCount:collapsableItemCount];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    @try  {
+        return [self _tableView:tableView heightForRowAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - tableView:heightForRowAtIndexPath: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (CGFloat)_tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
@@ -1095,7 +1104,19 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView
                   layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
+  sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath
+{
+    @try  {
+        return [self _collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - collectionView:sizeForItemAtIndexPath: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (CGSize)_collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == self.outbrainSectionIndex) {
         
