@@ -35,6 +35,7 @@
 #import "MultivacResponseDelegate.h"
 #import "SFDefaultDelegate.h"
 #import "SFReadMoreModuleHelper.h"
+#import "OBErrorReporting.h"
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
@@ -706,6 +707,17 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    @try  {
+        [self _tableView:tableView willDisplayCell:cell forRowAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in SmartFeedManager - tableView:willDisplayCell: - %@", exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - tableView:willDisplayCell: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (void)_tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0 && self.smartFeedItemsArray.count == 0) {
         [self fetchMoreRecommendations];
