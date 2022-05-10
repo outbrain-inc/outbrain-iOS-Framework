@@ -719,8 +719,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     @try  {
         [self _tableView:tableView willDisplayCell:cell forRowAtIndexPath:indexPath];
     } @catch (NSException *exception) {
-        NSLog(@"Exception in SmartFeedManager - tableView:willDisplayCell: - %@", exception.name);
-        NSLog(@"Reason: %@ ",exception.reason);
         NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - tableView:willDisplayCell: - %@ - reason: %@", exception.name, exception.reason];
         [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
@@ -1146,8 +1144,6 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     @try  {
         [self _collectionView:collectionView willDisplayCell:cell forItemAtIndexPath:indexPath];
     } @catch (NSException *exception) {
-        NSLog(@"Exception in SmartFeedManager - collectionView:willDisplayCell: - %@", exception.name);
-        NSLog(@"Reason: %@ ",exception.reason);
         NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - collectionView:willDisplayCell: - %@ - reason: %@", exception.name, exception.reason];
         [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
