@@ -649,6 +649,17 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 #pragma mark - UITableView methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    @try  {
+        return [self _tableView:tableView cellForRowAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in SmartFeedManager - tableView:cellForRowAtIndexPath: - %@", exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - tableView:cellForRowAtIndexPath: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (UITableViewCell *)_tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section != self.outbrainSectionIndex) {
         return nil;
     }
