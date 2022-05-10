@@ -1102,6 +1102,20 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 - (void) collectionView:(UICollectionView *)collectionView
        willDisplayCell:(UICollectionViewCell *)cell
+    forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    @try  {
+        [self _collectionView:collectionView willDisplayCell:cell forItemAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in SmartFeedManager - collectionView:willDisplayCell: - %@", exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - collectionView:willDisplayCell: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (void) _collectionView:(UICollectionView *)collectionView
+       willDisplayCell:(UICollectionViewCell *)cell
     forItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0 && self.smartFeedItemsArray.count == 0) {
