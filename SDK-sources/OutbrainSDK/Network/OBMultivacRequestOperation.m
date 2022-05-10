@@ -16,7 +16,7 @@
 #import "OBNetworkManager.h"
 #import "OBContent_Private.h"
 #import "OBViewabilityService.h"
-
+#import "OBErrorReporting.h"
 
 @interface OBMultivacRequestOperation()
 
@@ -117,8 +117,16 @@
     // NSLog(@"ODB: %@", self.url);
     
     [[OBNetworkManager sharedManager] sendGet:self.url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [self taskCompletedWith:data response:response error:error];
-        dispatch_semaphore_signal(sema);
+        @try  {
+            [self taskCompletedWith:data response:response error:error];
+        } @catch (NSException *exception) {
+            NSLog(@"Exception in startMultivacRequest() - %@",exception.name);
+            NSLog(@"Reason: %@ ",exception.reason);
+            NSString *errorMsg = [NSString stringWithFormat:@"Exception in startMultivacRequest() - %@ - reason: %@", exception.name, exception.reason];
+            [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+        } @finally  {
+           dispatch_semaphore_signal(sema);
+        }
     }];
     dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 }

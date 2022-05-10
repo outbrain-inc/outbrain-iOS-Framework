@@ -128,6 +128,8 @@
 		E6355E2222411DF200C3D1D5 /* OBView.h in Headers */ = {isa = PBXBuildFile; fileRef = E6355E2022411DF200C3D1D5 /* OBView.h */; };
 		E6355E2522411E3B00C3D1D5 /* SFViewabilityService.h in Headers */ = {isa = PBXBuildFile; fileRef = E6355E2322411E3B00C3D1D5 /* SFViewabilityService.h */; };
 		E6355E2622411E3B00C3D1D5 /* SFViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = E6355E2422411E3B00C3D1D5 /* SFViewabilityService.m */; };
+		E6398C8A281A8BB1001B35D6 /* OBErrorReporting.h in Headers */ = {isa = PBXBuildFile; fileRef = E6398C88281A8BB1001B35D6 /* OBErrorReporting.h */; };
+		E6398C8B281A8BB1001B35D6 /* OBErrorReporting.m in Sources */ = {isa = PBXBuildFile; fileRef = E6398C89281A8BB1001B35D6 /* OBErrorReporting.m */; };
 		E63B784C212AB1860018C225 /* SFImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7840212AB1860018C225 /* SFImageLoader.h */; };
 		E63B784D212AB1860018C225 /* SFUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7841212AB1860018C225 /* SFUtils.h */; };
 		E63B784E212AB1860018C225 /* SFImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7842212AB1860018C225 /* SFImageLoader.m */; };
@@ -369,6 +371,8 @@
 		E6355E2022411DF200C3D1D5 /* OBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBView.h; sourceTree = "<group>"; };
 		E6355E2322411E3B00C3D1D5 /* SFViewabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFViewabilityService.h; sourceTree = "<group>"; };
 		E6355E2422411E3B00C3D1D5 /* SFViewabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFViewabilityService.m; sourceTree = "<group>"; };
+		E6398C88281A8BB1001B35D6 /* OBErrorReporting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBErrorReporting.h; sourceTree = "<group>"; };
+		E6398C89281A8BB1001B35D6 /* OBErrorReporting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBErrorReporting.m; sourceTree = "<group>"; };
 		E63B7840212AB1860018C225 /* SFImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageLoader.h; sourceTree = "<group>"; };
 		E63B7841212AB1860018C225 /* SFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUtils.h; sourceTree = "<group>"; };
 		E63B7842212AB1860018C225 /* SFImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImageLoader.m; sourceTree = "<group>"; };
@@ -752,6 +756,8 @@
 			children = (
 				E61E6BFF20836C180016D79A /* OBErrors.m */,
 				E61E6C0020836C180016D79A /* OBErrors.h */,
+				E6398C88281A8BB1001B35D6 /* OBErrorReporting.h */,
+				E6398C89281A8BB1001B35D6 /* OBErrorReporting.m */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -1113,6 +1119,7 @@
 				E6FEB3EA20FF2E78002A9020 /* SFHorizontalCollectionViewCell.h in Headers */,
 				E6355E2222411DF200C3D1D5 /* OBView.h in Headers */,
 				E61E6C3820836C180016D79A /* OBRecommendation.h in Headers */,
+				E6398C8A281A8BB1001B35D6 /* OBErrorReporting.h in Headers */,
 				E61E6C2D20836C180016D79A /* OBResponse.h in Headers */,
 				E61E6C3220836C180016D79A /* OBDisclosure.h in Headers */,
 				E61E6C4320836C180016D79A /* OBProtocols.h in Headers */,
@@ -1381,6 +1388,7 @@
 				E61E6C2920836C180016D79A /* OBSettings.m in Sources */,
 				E6F8F461211C3D400069C72C /* SFTableViewManager.m in Sources */,
 				E6B930AE216F794C00EC7A4A /* SFVideoCollectionViewCell.m in Sources */,
+				E6398C8B281A8BB1001B35D6 /* OBErrorReporting.m in Sources */,
 				E61E6C1620836C180016D79A /* OBAppleAdIdUtil.m in Sources */,
 				E6B6496124CEE8AD00C072C0 /* OBPlatformRequest.m in Sources */,
 				E6B930AD216F794C00EC7A4A /* SFVideoTableViewCell.m in Sources */,

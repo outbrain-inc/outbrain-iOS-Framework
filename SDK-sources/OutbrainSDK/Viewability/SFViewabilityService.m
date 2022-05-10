@@ -10,6 +10,8 @@
 #import "SFViewabilityService.h"
 #import "OBNetworkManager.h"
 #import "OBViewabilityService.h"
+#import "OBErrorReporting.h"
+
 
 @interface SFViewabilityService()
 
@@ -62,38 +64,52 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
 }
 
 - (void) configureViewabilityPerListingForCell:(UIView *)cell withSFItem:(SFItemData *)sfItem initializationTime:(NSDate *)initializationTime {
-    OBView *existingOBView = (OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG];
-    if (existingOBView) {
-        [existingOBView removeFromSuperview];
-    }
-    
-    NSArray *_positions = (sfItem.positions && sfItem.positions.count > 0) ? sfItem.positions : @[@"0"];
-    
-    if (![self isAlreadyReportedForRequestId:sfItem.requestId position:_positions[0]]) {
-        OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
-        obview.tag = OBVIEW_DEFAULT_TAG;
-        obview.opaque = NO;
-        [self registerOBView:obview positions:_positions requestId:sfItem.requestId smartFeedInitializationTime: initializationTime];
-        obview.userInteractionEnabled = NO;
-        [cell addSubview: obview];
+    @try  {
+        OBView *existingOBView = (OBView *)[cell viewWithTag: OBVIEW_DEFAULT_TAG];
+        if (existingOBView) {
+            [existingOBView removeFromSuperview];
+        }
+        
+        NSArray *_positions = (sfItem.positions && sfItem.positions.count > 0) ? sfItem.positions : @[@"0"];
+        
+        if (![self isAlreadyReportedForRequestId:sfItem.requestId position:_positions[0]]) {
+            OBView *obview = [[OBView alloc] initWithFrame:cell.bounds];
+            obview.tag = OBVIEW_DEFAULT_TAG;
+            obview.opaque = NO;
+            [self registerOBView:obview positions:_positions requestId:sfItem.requestId smartFeedInitializationTime: initializationTime];
+            obview.userInteractionEnabled = NO;
+            [cell addSubview: obview];
+        }
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in configureViewabilityPerListingForCell() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in configureViewabilityPerListingForCell() - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
 }
 
 - (void) configureViewabilityPerListingFor:(UIView *)view withRec:(OBRecommendation *)rec {
-    NSString *position = rec.position ? rec.position : @"0";
-    NSString *requestId = rec.reqId;
-    OBView *existingOBView = (OBView *)[view viewWithTag: OBVIEW_DEFAULT_TAG];
-    if (existingOBView) {
-        [existingOBView removeFromSuperview];
-    }
-    if (![self isAlreadyReportedForRequestId:requestId position:position]) {
-        NSDate *initializationTime = [[OBViewabilityService sharedInstance] initializationTimeForReqId:requestId];
-        OBView *obview = [[OBView alloc] initWithFrame:view.bounds];
-        obview.tag = OBVIEW_DEFAULT_TAG;
-        obview.opaque = NO;
-        [self registerOBView:obview positions:@[position] requestId: requestId smartFeedInitializationTime: initializationTime];
-        obview.userInteractionEnabled = NO;
-        [view addSubview: obview];
+    @try  {
+        NSString *position = rec.position ? rec.position : @"0";
+        NSString *requestId = rec.reqId;
+        OBView *existingOBView = (OBView *)[view viewWithTag: OBVIEW_DEFAULT_TAG];
+        if (existingOBView) {
+            [existingOBView removeFromSuperview];
+        }
+        if (![self isAlreadyReportedForRequestId:requestId position:position]) {
+            NSDate *initializationTime = [[OBViewabilityService sharedInstance] initializationTimeForReqId:requestId];
+            OBView *obview = [[OBView alloc] initWithFrame:view.bounds];
+            obview.tag = OBVIEW_DEFAULT_TAG;
+            obview.opaque = NO;
+            [self registerOBView:obview positions:@[position] requestId: requestId smartFeedInitializationTime: initializationTime];
+            obview.userInteractionEnabled = NO;
+            [view addSubview: obview];
+        }
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in configureViewabilityPerListingFor:withRec: - %@ ",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in configureViewabilityPerListingFor:withRec: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
 }
 

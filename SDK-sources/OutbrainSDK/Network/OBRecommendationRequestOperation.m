@@ -18,6 +18,7 @@
 #import "OBContent_Private.h"
 #import "OBViewabilityService.h"
 #import "SFWidget.h"
+#import "OBErrorReporting.h"
 
 @interface OBRecommendationRequestOperation()
 
@@ -127,8 +128,16 @@
     // NSLog(@"ODB: %@", self.url);
     
     [[OBNetworkManager sharedManager] sendGet:self.url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [self taskCompletedWith:data response:response error:error];
-        dispatch_semaphore_signal(sema);
+        @try  {
+            [self taskCompletedWith:data response:response error:error];
+        } @catch (NSException *exception) {
+            NSLog(@"Exception in startODBRequest() - %@",exception.name);
+            NSLog(@"Reason: %@ ",exception.reason);
+            NSString *errorMsg = [NSString stringWithFormat:@"Exception in startODBRequest() - %@ - reason: %@", exception.name, exception.reason];
+            [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+        } @finally  {
+           dispatch_semaphore_signal(sema);
+        }
     }];
     dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 }
@@ -142,6 +151,7 @@
         [self notifyAppHandler: obRecResponse];
         return;
     }
+
     
     if ([self didReceiveResponseReturnedWithError:response] == YES) {
         obRecResponse = [self generateOBRecResponseWithNetworkError:response];
@@ -150,6 +160,7 @@
     }
     
     obRecResponse = [self parseResponseData: data];
+    
     if ([[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
         [[OBViewabilityService sharedInstance] reportRecsReceived:obRecResponse timestamp:self.requestStartDate];
     }
@@ -166,6 +177,15 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:SFWIDGET_T_PARAM_NOTIFICATION object:self userInfo:@{@"t" : [[obRecResponse responseRequest] token]}];
     }
     
+
+
+    // Set ODB response params on OBErrorReporting for potential error reporting
+    [OBErrorReporting sharedInstance].sourceId = [[obRecResponse.responseRequest getNSNumberValueForPayloadKey:@"sid"] stringValue];
+    [OBErrorReporting sharedInstance].publisherId = [obRecResponse.responseRequest getStringValueForPayloadKey:@"pid"];
+    [OBErrorReporting sharedInstance].odbRequestUrlParamValue = obRecResponse.request.url;
+    [OBErrorReporting sharedInstance].odbRequestUrlParamValue = obRecResponse.request.widgetId;
+    
+
     [self notifyAppHandler: obRecResponse];
 }
 

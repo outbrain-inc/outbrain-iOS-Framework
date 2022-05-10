@@ -9,6 +9,7 @@
 #import "OBView.h"
 #import "UIView+Visible.h"
 #import "SFViewabilityService.h"
+#import "OBErrorReporting.h"
 
 @interface OBView()
 
@@ -90,8 +91,16 @@
 
 - (void) reportViewability:(NSTimer *)timer {
     [timer invalidate];
-    [[SFViewabilityService sharedInstance] reportViewabilityForOBView:self];
-    [self removeFromSuperview];
+    @try  {
+        [[SFViewabilityService sharedInstance] reportViewabilityForOBView:self];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in reportViewability() - %@ ",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in reportViewability() - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    } @finally  {
+        [self removeFromSuperview];
+    }
 }
 
 - (void) removeFromSuperview

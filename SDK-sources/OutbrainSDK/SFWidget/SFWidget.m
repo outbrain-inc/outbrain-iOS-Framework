@@ -11,6 +11,7 @@
 #import "SFUtils.h"
 #import "OBUtils.h"
 #import "GDPRUtils.h"
+#import "OBErrorReporting.h"
 
 @interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate>
 
@@ -115,7 +116,14 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self handleViewability:scrollView];
+    @try  {
+        [self handleViewability:scrollView];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in SFWidget - scrollViewDidScroll() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SFWidget - scrollViewDidScroll() - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
     
     if (self.isLoading || self.inTransition || self.currentHeight <= 1000) {
         return;
@@ -280,6 +288,9 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 - (void) initialLoadUrl {
     NSURL *widgetURL = [self getSmartfeedWidgetUrl];
     NSLog(@"widgetURL: %@", widgetURL);
+    
+    [OBErrorReporting sharedInstance].odbRequestUrlParamValue = self.url;
+    [OBErrorReporting sharedInstance].widgetId = self.widgetId;
     
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:widgetURL];
     [self.webview loadRequest:urlRequest];
