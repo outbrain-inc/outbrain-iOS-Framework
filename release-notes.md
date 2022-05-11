@@ -1,5 +1,14 @@
 # Release Notes
 
+## v4.9.0 - May 11, 2022
+- Bug fix - fix crash when "pos" field is missing (AB test)
+- Bug fix - if skNetworkVersion is 1.0 - the variable sourceAppId can be nil
+- Bug fix - add check for cell type before calling `configureSingleTableViewCell:atIndexPath:` (PR https://github.com/outbrain/OBSDKiOS/pull/206)
+- Improvement - add @try\@catch wrappers around main SDK flows (classic, Smartfeed and Bridge)
+- Improvement - add error reporting to Outbrain in case of SDK un-expected errors.
+- Improvement - add new iPhone models to "dm" field.
+
+
 ## v4.8.3 - April 7, 2022
 - Feature - Bridge viewability
 
