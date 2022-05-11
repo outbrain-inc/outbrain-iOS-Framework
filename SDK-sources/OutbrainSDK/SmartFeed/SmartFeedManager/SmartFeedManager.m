@@ -35,6 +35,7 @@
 #import "MultivacResponseDelegate.h"
 #import "SFDefaultDelegate.h"
 #import "SFReadMoreModuleHelper.h"
+#import "OBErrorReporting.h"
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
@@ -648,6 +649,15 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 #pragma mark - UITableView methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    @try  {
+        return [self _tableView:tableView cellForRowAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - tableView:cellForRowAtIndexPath: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (UITableViewCell *)_tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section != self.outbrainSectionIndex) {
         return nil;
     }
@@ -706,6 +716,15 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    @try  {
+        [self _tableView:tableView willDisplayCell:cell forRowAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - tableView:willDisplayCell: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (void)_tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0 && self.smartFeedItemsArray.count == 0) {
         [self fetchMoreRecommendations];
@@ -752,6 +771,9 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
         [[SFViewabilityService sharedInstance] configureViewabilityPerListingForCell:cell withSFItem:sfItem initializationTime:self.initializationTime];
     }
     
+    /*
+     * Start configuring cell with data
+     */
     if ([cell isKindOfClass:[SFHorizontalWithVideoTableViewCell class]]) {
         [self configureHorizontalVideoTableViewCell:cell atIndexPath:indexPath];
     }
@@ -767,7 +789,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     {
         [self.sfTableViewManager configureVideoCell:cell atIndexPath:indexPath withSFItem:sfItem];
     }
-    else { // SFSingleCell
+    else if ([cell isKindOfClass:[SFTableViewCell class]]) { // SFSingleCell
         [self.sfTableViewManager configureSingleTableViewCell:(SFTableViewCell *)cell atIndexPath:indexPath withSFItem:sfItem];
     }
     
@@ -785,7 +807,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     return [self.readMoreModuleHelper numberOfItemsInCollapsableSection:section collapsableItemCount:collapsableItemCount];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    @try  {
+        return [self _tableView:tableView heightForRowAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - tableView:heightForRowAtIndexPath: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (CGFloat)_tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
@@ -998,7 +1029,16 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 #pragma mark - Collection View methods
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    @try  {
+        return [self _collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - collectionView:cellForItemAtIndexPath: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (UICollectionViewCell *)_collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger smartfeedHeaderCellIndex = 0;
     if (self.isReadMoreModuleEnabled) {
@@ -1062,7 +1102,19 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView
                   layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath {
+  sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath
+{
+    @try  {
+        return [self _collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - collectionView:sizeForItemAtIndexPath: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (CGSize)_collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == self.outbrainSectionIndex) {
         
@@ -1086,6 +1138,18 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
 }
 
 - (void) collectionView:(UICollectionView *)collectionView
+       willDisplayCell:(UICollectionViewCell *)cell
+    forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    @try  {
+        [self _collectionView:collectionView willDisplayCell:cell forItemAtIndexPath:indexPath];
+    } @catch (NSException *exception) {
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SmartFeedManager - collectionView:willDisplayCell: - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (void) _collectionView:(UICollectionView *)collectionView
        willDisplayCell:(UICollectionViewCell *)cell
     forItemAtIndexPath:(NSIndexPath *)indexPath {
     
