@@ -182,8 +182,9 @@
     // Set ODB response params on OBErrorReporting for potential error reporting
     [OBErrorReporting sharedInstance].sourceId = [[obRecResponse.responseRequest getNSNumberValueForPayloadKey:@"sid"] stringValue];
     [OBErrorReporting sharedInstance].publisherId = [obRecResponse.responseRequest getStringValueForPayloadKey:@"pid"];
+    [OBErrorReporting sharedInstance].widgetId = obRecResponse.request.widgetId;
     [OBErrorReporting sharedInstance].odbRequestUrlParamValue = obRecResponse.request.url;
-    [OBErrorReporting sharedInstance].odbRequestUrlParamValue = obRecResponse.request.widgetId;
+    
     
 
     [self notifyAppHandler: obRecResponse];
