@@ -82,7 +82,7 @@
 {
     OBRecommendation * recommendation = [super contentWithPayload:payload];
     
-    if (payload[@"pc_id"])
+    if (payload[@"pc_id"] && [payload[@"pc_id"] integerValue] > 0)
     {
         recommendation.paidLink = YES;
     }
