@@ -360,7 +360,7 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 #pragma mark - SFWidgetMessageHandlerDelegate
 - (void)didHeightChanged:(NSInteger)height {
-    self.currentHeight = height;
+    self.currentHeight = height + 50.0;
     self.frame = CGRectMake(0, 0, self.frame.size.width, (CGFloat)height);
     [self setNeedsLayout];
     [self.delegate didChangeHeight];
