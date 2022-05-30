@@ -32,10 +32,12 @@ class ViewController: UIViewController {
         customWidgetIdTextField.delegate = self
         
         if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { authStatus in
-                print("user authStatus is: \(authStatus)")
-                print("advertisingIdentifier: \(ASIdentifierManager.shared().advertisingIdentifier)")
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                ATTrackingManager.requestTrackingAuthorization { authStatus in
+                    print("user authStatus is: \(authStatus)")
+                    print("advertisingIdentifier: \(ASIdentifierManager.shared().advertisingIdentifier)")
+                }
+            })
         }
         
         segmentControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)

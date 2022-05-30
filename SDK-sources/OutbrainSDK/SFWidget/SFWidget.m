@@ -12,6 +12,7 @@
 #import "OBUtils.h"
 #import "GDPRUtils.h"
 #import "OBErrorReporting.h"
+#import "OBAppleAdIdUtil.h"
 
 @interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate>
 
@@ -75,9 +76,14 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     self.userId = userId;
     self.darkMode = darkMode;
     
-    if (userId == nil && [[OBUtils deviceModel] isEqualToString:@"Simulator"])
+    if (userId == nil)
     {
-        self.userId = @"F22700D5-1D49-42CC-A183-F3676526035F"; // dev hack to test Videos
+        if ([[OBUtils deviceModel] isEqualToString:@"Simulator"]) {
+            self.userId = @"F22700D5-1D49-42CC-A183-F3676526035F"; // dev hack to test Videos
+        }
+        else if (![OBAppleAdIdUtil isOptedOut] && [OBAppleAdIdUtil getAdvertiserId]) {
+            self.userId = [OBAppleAdIdUtil getAdvertiserId];
+        }
     }
     
     self.messageHandler.delegate = self;
