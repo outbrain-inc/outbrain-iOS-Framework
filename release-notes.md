@@ -1,5 +1,13 @@
 # Release Notes
 
+## v4.9.1 - May 30, 2022
+
+- Internal - fix wrong param value for `url` for error reporting
+- Internal - change the logic of `isPaid()` to be similar to the JS widget
+- Bug fix - add 50.0 padding at the end of the WebView to fix *last rec is cut* error
+- Improvement - SDK Bridge will take IDFA is available and app developer didnt pass it through
+
+
 ## v4.9.0 - May 11, 2022
 - Bug fix - fix crash when "pos" field is missing (AB test)
 - Bug fix - if skNetworkVersion is 1.0 - the variable sourceAppId can be nil
