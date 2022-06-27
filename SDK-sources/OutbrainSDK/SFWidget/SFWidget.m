@@ -322,13 +322,12 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     }
     NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    
     NSString *widgetIndex = [NSString stringWithFormat:@"%d", self.widgetIndex];
     NSString *baseUrl = @"https://widgets.outbrain.com/reactNativeBridge/index.html";
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:baseUrl];
+    
     NSMutableArray * newQueryItems = [NSMutableArray arrayWithCapacity:[components.queryItems count] + 1];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
-    
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"widgetId" value: self.widgetId]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"idx" value: widgetIndex]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"installationKey" value: self.installationKey]];
