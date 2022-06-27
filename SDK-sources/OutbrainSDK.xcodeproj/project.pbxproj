@@ -47,6 +47,12 @@
 		16C48D55227739160003A892 /* SFDefaultDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C48D53227739150003A892 /* SFDefaultDelegate.h */; };
 		16C48D56227739160003A892 /* SFDefaultDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C48D54227739160003A892 /* SFDefaultDelegate.m */; };
 		16F81EF32241420400DC0D03 /* OBViewabilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F81EF22241420400DC0D03 /* OBViewabilityActions.m */; };
+		E60440522869DB1C00BDC0F5 /* OBResponseRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E60440512869DB1C00BDC0F5 /* OBResponseRequestTests.m */; };
+		E60440582869DEED00BDC0F5 /* response_request_oo_false_bool.json in Resources */ = {isa = PBXBuildFile; fileRef = E60440532869DEED00BDC0F5 /* response_request_oo_false_bool.json */; };
+		E60440592869DEED00BDC0F5 /* response_request_oo_true_bool.json in Resources */ = {isa = PBXBuildFile; fileRef = E60440542869DEED00BDC0F5 /* response_request_oo_true_bool.json */; };
+		E604405A2869DEED00BDC0F5 /* response_request_oo_false_string.json in Resources */ = {isa = PBXBuildFile; fileRef = E60440552869DEED00BDC0F5 /* response_request_oo_false_string.json */; };
+		E604405B2869DEED00BDC0F5 /* response_request_oo_true_string.json in Resources */ = {isa = PBXBuildFile; fileRef = E60440562869DEED00BDC0F5 /* response_request_oo_true_string.json */; };
+		E604405C2869DEED00BDC0F5 /* response_request_oo_missing.json in Resources */ = {isa = PBXBuildFile; fileRef = E60440572869DEED00BDC0F5 /* response_request_oo_missing.json */; };
 		E61AE205216B560C001F7405 /* SFSingleVideoWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE201216B560B001F7405 /* SFSingleVideoWithTitleTableViewCell.xib */; };
 		E61AE206216B560C001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE202216B560B001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib */; };
 		E61AE207216B560C001F7405 /* SFSingleVideoNoTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61AE203216B560B001F7405 /* SFSingleVideoNoTitleTableViewCell.xib */; };
@@ -284,6 +290,12 @@
 		D8C91A791871FEED005916A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D8D1FD60187327CB0099831C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D8D1FD62187327D20099831C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E60440512869DB1C00BDC0F5 /* OBResponseRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBResponseRequestTests.m; sourceTree = "<group>"; };
+		E60440532869DEED00BDC0F5 /* response_request_oo_false_bool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response_request_oo_false_bool.json; sourceTree = "<group>"; };
+		E60440542869DEED00BDC0F5 /* response_request_oo_true_bool.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response_request_oo_true_bool.json; sourceTree = "<group>"; };
+		E60440552869DEED00BDC0F5 /* response_request_oo_false_string.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response_request_oo_false_string.json; sourceTree = "<group>"; };
+		E60440562869DEED00BDC0F5 /* response_request_oo_true_string.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response_request_oo_true_string.json; sourceTree = "<group>"; };
+		E60440572869DEED00BDC0F5 /* response_request_oo_missing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response_request_oo_missing.json; sourceTree = "<group>"; };
 		E61AE201216B560B001F7405 /* SFSingleVideoWithTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleVideoWithTitleTableViewCell.xib; sourceTree = "<group>"; };
 		E61AE202216B560B001F7405 /* SFSingleVideoNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleVideoNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		E61AE203216B560B001F7405 /* SFSingleVideoNoTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFSingleVideoNoTitleTableViewCell.xib; sourceTree = "<group>"; };
@@ -595,6 +607,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E604404E2869DACD00BDC0F5 /* response_request_test_oo */ = {
+			isa = PBXGroup;
+			children = (
+				E60440532869DEED00BDC0F5 /* response_request_oo_false_bool.json */,
+				E60440552869DEED00BDC0F5 /* response_request_oo_false_string.json */,
+				E60440572869DEED00BDC0F5 /* response_request_oo_missing.json */,
+				E60440542869DEED00BDC0F5 /* response_request_oo_true_bool.json */,
+				E60440562869DEED00BDC0F5 /* response_request_oo_true_string.json */,
+			);
+			path = response_request_test_oo;
+			sourceTree = "<group>";
+		};
 		E61AE200216B560B001F7405 /* SFSingleVideoCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -801,6 +825,7 @@
 				E61E6C1320836C180016D79A /* OBParseODBTests.m */,
 				E6F3A9A32504F8D10057CADB /* SkAdNetworkAppInstallRecTests.m */,
 				E6D26D8820D7BEA300D6D00A /* OBRecRTBTests.m */,
+				E60440512869DB1C00BDC0F5 /* OBResponseRequestTests.m */,
 				E61E6C1420836C180016D79A /* OutbrainHelperTests.m */,
 				E6250CCC21BD5E8900C329B9 /* SFUtilsTests.m */,
 				E61E6C1520836C180016D79A /* Info.plist */,
@@ -811,6 +836,7 @@
 		E61E6C0D20836C180016D79A /* mock_responses */ = {
 			isa = PBXGroup;
 			children = (
+				E604404E2869DACD00BDC0F5 /* response_request_test_oo */,
 				E6D26D8A20D7C0A900D6D00A /* non_rtb_rec.json */,
 				E6D26D8620D7BE6D00D6D00A /* rtb_rec_with_disclosure.json */,
 				E6D26D8C20D7C16A00D6D00A /* rtb_rec_with_disclosure_empty_values.json */,
@@ -1308,17 +1334,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6EA378A209B30E2009B687B /* smart_feed_response_child2.json in Resources */,
+				E604405B2869DEED00BDC0F5 /* response_request_oo_true_string.json in Resources */,
+				E60440582869DEED00BDC0F5 /* response_request_oo_false_bool.json in Resources */,
 				E655A65A2819675400F96089 /* smart_feed_response_parent_missing_position_field.json in Resources */,
 				E6EA3788209B30E2009B687B /* smart_feed_response_parent.json in Resources */,
+				E604405C2869DEED00BDC0F5 /* response_request_oo_missing.json in Resources */,
 				E6355BFF22367E7D00C3D1D5 /* outbrain_multivac_response.json in Resources */,
 				E6EA36BE2096082A009B687B /* odb_normal_response.json in Resources */,
 				E6D26D8F20D7C16A00D6D00A /* rtb_rec_with_disclosure_empty_values.json in Resources */,
+				E60440592869DEED00BDC0F5 /* response_request_oo_true_bool.json in Resources */,
 				E64AE0C2247BA24F0070A471 /* smart_feed_response_branded_carousel.json in Resources */,
 				E69B5E2E249A00F400A9178C /* smart_feed_response_app_install_card.json in Resources */,
 				E6D26D8B20D7C0A900D6D00A /* non_rtb_rec.json in Resources */,
 				E6D26D9120D7C16A00D6D00A /* rtb_rec_with_no_disclosure_image.json in Resources */,
 				E6AB15462504EE41001E56E2 /* app_install_ios14_rec.json in Resources */,
 				E6D26D9020D7C16A00D6D00A /* rtb_rec_with_no_disclosure_click_url.json in Resources */,
+				E604405A2869DEED00BDC0F5 /* response_request_oo_false_string.json in Resources */,
 				E6EA378F209B376F009B687B /* smart_feed_response_child3.json in Resources */,
 				E6EA3789209B30E2009B687B /* smart_feed_response_child1.json in Resources */,
 				E6D26D8720D7BE6D00D6D00A /* rtb_rec_with_disclosure.json in Resources */,
@@ -1426,6 +1457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6250CCD21BD5E8900C329B9 /* SFUtilsTests.m in Sources */,
+				E60440522869DB1C00BDC0F5 /* OBResponseRequestTests.m in Sources */,
 				E64AE0C0247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m in Sources */,
 				E6F3A9A42504F8D10057CADB /* SkAdNetworkAppInstallRecTests.m in Sources */,
 				E6355C0122367EC000C3D1D5 /* MultivacResponseTests.m in Sources */,

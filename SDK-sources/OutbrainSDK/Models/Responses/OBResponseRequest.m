@@ -16,6 +16,7 @@
     if (self = [super init]) {
         self.payload = aPayload;
         self.token = self.payload[@"t"];
+        self.optedOut = [[self.payload valueForKey:@"oo"] boolValue];
     }
     
     return self;
