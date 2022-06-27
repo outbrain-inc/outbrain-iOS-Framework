@@ -305,7 +305,6 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 - (void) initialLoadUrl {
     NSURL *widgetURL = [self getSmartfeedWidgetUrl];
-    NSLog(@"---- SDK test release June 21, 2022 ----");
     NSLog(@"widgetURL: %@", widgetURL);
     
     [OBErrorReporting sharedInstance].odbRequestUrlParamValue = self.url;
@@ -328,9 +327,6 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     NSString *baseUrl = @"https://widgets.outbrain.com/reactNativeBridge/index.html";
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:baseUrl];
     NSMutableArray * newQueryItems = [NSMutableArray arrayWithCapacity:[components.queryItems count] + 1];
-    
-//    NSString *escapedString = [self.url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-    
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
     
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"widgetId" value: self.widgetId]];
