@@ -46,6 +46,7 @@
     
     NSURLSessionDataTask *getDataTask = [self.defaultSession dataTaskWithRequest:request
                                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        NSLog(@"GET %@ - %d", request.URL, ((NSHTTPURLResponse *)response).statusCode);
                                                                    if (completionHandler) {
                                                                        completionHandler(data, response, error);
                                                                    }
