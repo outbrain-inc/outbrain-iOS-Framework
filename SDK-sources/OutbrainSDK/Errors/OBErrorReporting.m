@@ -15,7 +15,7 @@
 
 
 NSString * const kReportErrorUrl = @"https://widgetmonitor.outbrain.com/WidgetErrorMonitor/api/report";
-NSString * const kSDK_ERROR_REPORT_NAME = @"obm-iso_sdk_error";
+NSString * const kSDK_ERROR_REPORT_NAME = @"IOS_SDK_ERROR";
 
 + (instancetype)sharedInstance
 {
