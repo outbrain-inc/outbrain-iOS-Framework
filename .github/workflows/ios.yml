@@ -34,4 +34,4 @@ jobs:
       - name: Run SDK tests
         working-directory: ./SDK-sources
         run: |
-          xcodebuild test-without-building -project OutbrainSDK.xcodeproj -scheme OutbrainSDK -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13 Pro' 
+          xcodebuild test -project OutbrainSDK.xcodeproj -scheme OutbrainSDK -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13 Pro' 
