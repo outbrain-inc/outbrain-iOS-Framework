@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong)   NSDictionary    *payload;
 @property (nonatomic, copy)     NSString        *token;
+@property (nonatomic, assign)   BOOL            optedOut;
 
 - (instancetype)initWithPayload:(NSDictionary *)aPayload;
 

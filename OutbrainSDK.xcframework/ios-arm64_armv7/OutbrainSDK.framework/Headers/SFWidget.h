@@ -77,6 +77,10 @@ extern NSString * _Nonnull const SFWIDGET_T_PARAM_NOTIFICATION;
 
 -(void) willDisplaySFWidgetCollectionCell:(SFWidgetCollectionCell *)cell;
 
+-(void) reportPageViewOnTheSameWidget;
+
+-(void) loadMore;
+
 @end
 
 NS_ASSUME_NONNULL_END
