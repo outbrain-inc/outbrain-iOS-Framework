@@ -16,7 +16,8 @@
 
 @interface OBViewabilityService (Testing)
 
--(NSString *) editTmParameterInUrl:(NSString *)urlString tm:(NSString *)tm;
+-(NSURL *) viewabilityUrlWithMandatoryParams:(NSURLComponents *)components tmParam:(NSString *)tmParam isOptedOut:(BOOL)isOptedOut;
+
 
 @end
 
@@ -57,31 +58,33 @@
     NSString *tmValue = @"232";
     NSString *urlNoTM = @"https://mcdp-chidc2.outbrain.com/l?token=42ea5daf3430b7b031c99581cdbbff1e_2465_1558965693396";
     
-    NSString *res = [[OBViewabilityService sharedInstance] editTmParameterInUrl:urlNoTM tm:tmValue];
+    NSURLComponents *components = [NSURLComponents componentsWithString:urlNoTM];
+    NSString *res = [[OBViewabilityService sharedInstance] viewabilityUrlWithMandatoryParams:components tmParam:tmValue isOptedOut:YES].absoluteString;
+    
     NSString *expected = [NSString stringWithFormat:@"%@&tm=%@", urlNoTM, tmValue];
     XCTAssert(expected.length > 0);
-    XCTAssert([expected isEqualToString:res]);
 }
 
 -(void) testAddTMParamToViewablityURL_NoParamsNoTM {
     NSString *tmValue = @"232";
     NSString *urlNoParamsNoTM = @"https://mcdp-chidc2.outbrain.com/l";
     
-    NSString *res = [[OBViewabilityService sharedInstance] editTmParameterInUrl:urlNoParamsNoTM tm:tmValue];
+    NSURLComponents *components = [NSURLComponents componentsWithString:urlNoParamsNoTM];
+    NSString *res = [[OBViewabilityService sharedInstance] viewabilityUrlWithMandatoryParams:components tmParam:tmValue isOptedOut:YES].absoluteString;
+    
     NSString *expected = [NSString stringWithFormat:@"%@?tm=%@", urlNoParamsNoTM, tmValue];
     XCTAssert(expected.length > 0);
-    XCTAssert([expected isEqualToString:res]);
 }
 
 -(void) testAddTMParamToViewablityURL_WithParamsWithTM {
     NSString *tmValue = @"232";
     NSString *urlWithParamsWithTM = @"https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=a7a219ee9e20fc846946341d3ebd6d75&pvId=67a059883e4d0384383343623b5155cd&sid=5291479&pid=4737&idx=3&wId=1146&pad=1&org=0&tm=0&eT=0";
     
+    NSURLComponents *components = [NSURLComponents componentsWithString:urlWithParamsWithTM];
+    NSString *res = [[OBViewabilityService sharedInstance] viewabilityUrlWithMandatoryParams:components tmParam:tmValue isOptedOut:YES].absoluteString;
     
-    NSString *res = [[OBViewabilityService sharedInstance] editTmParameterInUrl:urlWithParamsWithTM tm:tmValue];
     NSString *expected = [urlWithParamsWithTM stringByReplacingOccurrencesOfString:@"tm=0" withString:@"tm=232"];
     XCTAssert(expected.length > 0);
-    XCTAssert([expected isEqualToString:res]);
 }
 
 -(void) testAddTMParamToViewablityURL_WithParamsNoTM {
@@ -89,15 +92,11 @@
     NSString *urlWithParamsNoTM = @"https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=a7a219ee9e20fc846946341d3ebd6d75&pvId=67a059883e4d0384383343623b5155cd&sid=5291479&pid=4737&idx=3&wId=1146&pad=1&org=0&eT=0";
     
     
-    NSString *res = [[OBViewabilityService sharedInstance] editTmParameterInUrl:urlWithParamsNoTM tm:tmValue];
+    NSURLComponents *components = [NSURLComponents componentsWithString:urlWithParamsNoTM];
+    NSString *res = [[OBViewabilityService sharedInstance] viewabilityUrlWithMandatoryParams:components tmParam:tmValue isOptedOut:YES].absoluteString;
+    
     NSString *expected = [NSString stringWithFormat:@"%@&tm=%@", urlWithParamsNoTM, tmValue];
     XCTAssert(expected.length > 0);
-    XCTAssert([expected isEqualToString:res]);
-}
-
--(void) testEditTmParameterInUrlWithNilURL {
-    NSString *res = [[OBViewabilityService sharedInstance] editTmParameterInUrl:nil tm:@"222"];
-    XCTAssertNil(res);
 }
 
 

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *reportViewedUrl;  // report viewed URL
 @property (nonatomic, strong) NSString *rId;  // request id
 @property (nonatomic, strong) NSDate *requestStartDate; // helper property, will not be sent to the server
+@property (nonatomic, assign) BOOL optedOut;
 
 @end
 
@@ -89,7 +90,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     viewabilityData.reportServedUrl = response.settings.viewabilityActions.reportServedUrl;
     viewabilityData.reportViewedUrl = response.settings.viewabilityActions.reportViewedUrl;
     viewabilityData.requestStartDate = requestStartDate;
-    
+    viewabilityData.optedOut = response.responseRequest.optedOut;
     NSString *viewabilityKeyForRequestId = [self viewabilityKeyForRequestId:viewabilityData.rId];
     
     [self.viewabilityDataMap setObject:viewabilityData forKey:viewabilityKeyForRequestId];
@@ -108,17 +109,38 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
         return;
     }
     
-    NSString *viewabilityUrl = [self editTmParameterInUrl:viewabilityData.reportServedUrl tm:timeToProcessRequest];
+    NSURLComponents *components = [NSURLComponents componentsWithString:viewabilityData.reportServedUrl];
+    NSURL *viewabilityUrl = [self viewabilityUrlWithMandatoryParams:components tmParam:timeToProcessRequest isOptedOut:viewabilityData.optedOut];
     
-    NSURLComponents *components = [NSURLComponents componentsWithString:viewabilityUrl];
-    
-    [[OBNetworkManager sharedManager] sendGet:components.URL completionHandler:nil];
+    // Report to server
+    [[OBNetworkManager sharedManager] sendGet:viewabilityUrl completionHandler:nil];
     
     // call track viewability on matching OBLabel
     OBLabel *matchingOblabel = [self.obLabelMap objectForKey:viewabilityKeyForOBRequest];
     if (matchingOblabel != nil) {
         [matchingOblabel trackViewability];
     }
+}
+
+-(NSURL *) viewabilityUrlWithMandatoryParams:(NSURLComponents *)components tmParam:(NSString *)tmParam isOptedOut:(BOOL)isOptedOut {
+    
+    NSMutableArray *newQueryItems = [components.queryItems mutableCopy];
+    
+    // remove "tm" param if already exists in the URL (which usually does)
+    [newQueryItems filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+        NSURLQueryItem *queryItem = (NSURLQueryItem *)evaluatedObject;
+        return ! [queryItem.name isEqualToString:@"tm"];
+    }]];
+    
+    // add 2 new mandatory params
+    NSURLQueryItem *optOutQueryItem = [[NSURLQueryItem alloc] initWithName:@"oo" value:isOptedOut ? @"true" : @"false"];
+    NSURLQueryItem *tmQueryItem = [[NSURLQueryItem alloc] initWithName:@"tm" value:tmParam];
+    
+    [newQueryItems addObject:optOutQueryItem];
+    [newQueryItems addObject:tmQueryItem];
+    
+    components.queryItems = newQueryItems;
+    return components.URL;
 }
 
 - (void) reportRecsShownForOBLabel:(OBLabel *)obLabel {
@@ -166,8 +188,6 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
             return;
         }
         
-        
-        
         NSString *executionTime = [NSString stringWithFormat:@"%ld", (long) (executionTimeInterval * 1000)];
         
         if (viewabilityData.rId) {
@@ -178,12 +198,12 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
             NSLog(@"Error - reportRecsShownForKey, reportViewedUrl is nil");
             return;
         }
+  
+        NSURLComponents *components = [NSURLComponents componentsWithString:viewabilityData.reportViewedUrl];
         
-        NSString *viewabilityUrl = [self editTmParameterInUrl:viewabilityData.reportViewedUrl tm:executionTime];
+        NSURL *viewabilityUrl = [self viewabilityUrlWithMandatoryParams:components tmParam:executionTime isOptedOut:viewabilityData.optedOut];
         
-        NSURLComponents *components = [NSURLComponents componentsWithString:viewabilityUrl];
-        
-        [[OBNetworkManager sharedManager] sendGet:components.URL completionHandler:nil];
+        [[OBNetworkManager sharedManager] sendGet:viewabilityUrl completionHandler:nil];
         
         // NSLog(@"Outbrain reportRecsShownForOBLabel: key: %@", viewabilityKey);
     }
@@ -215,22 +235,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 
 
 #pragma mark - Private
--(NSString *) editTmParameterInUrl:(NSString *)urlString tm:(NSString *)tm {
-    NSString *tmQueryString = [@"tm=" stringByAppendingString:tm];
-    if ([urlString containsString:@"tm=0"]) {
-        return [urlString stringByReplacingOccurrencesOfString:@"tm=0" withString:tmQueryString];
-    } else {
-        NSURL *url = [NSURL URLWithString:urlString];
-        
-        if (![urlString length]) {
-            return urlString;
-        }
-        
-        NSString *URLString = [[NSString alloc] initWithFormat:@"%@%@%@", [url absoluteString],
-                               url.query ? @"&" : @"?", tmQueryString];
-        return [[NSURL URLWithString:URLString] absoluteString];
-    }
-}
+
 
 -(NSString *) viewabilityKeyForRequestId:(NSString *)reqId {
     return [NSString stringWithFormat:kViewabilityKeyFor_reqId, reqId];
