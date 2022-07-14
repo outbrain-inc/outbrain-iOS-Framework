@@ -1,5 +1,12 @@
 # Release Notes
 
+## v4.10.0 - July 14, 2022
+
+- Minor - add a new method `reportPageViewOnTheSameWidget()` for specific publisher.
+- Minor - SFWidget `loadMore()` method should be public.
+- Internal - add "oo" (opted out) param to widget Viewablity URL reporting.
+- Internal - add new `errorMsg` post message method to the Bridge for errors coming from the HTML
+
 ## v4.9.1 - May 30, 2022
 
 - Internal - fix wrong param value for `url` for error reporting
