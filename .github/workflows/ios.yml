@@ -15,10 +15,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Run SDK tests
+      - name: Building the SDK project
         working-directory: ./SDK-sources
         run: |
-          xcodebuild test -project OutbrainSDK.xcodeproj -scheme OutbrainSDK -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13 Pro' 
+          xcodebuild -target OBFramework -UseModernBuildSystem=NO
+          # xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
       
       - name: Build Sample Apps - Journal
         working-directory: ./Samples/OutbrainDemo
@@ -30,4 +31,7 @@ jobs:
         run: |
           xcodebuild -project OutbrainDemo.xcodeproj -scheme SmartFeed -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13 Pro' build
 
-      
+      - name: Run SDK tests
+        working-directory: ./SDK-sources
+        run: |
+          xcodebuild test -project OutbrainSDK.xcodeproj -scheme OutbrainSDK -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13 Pro' 
