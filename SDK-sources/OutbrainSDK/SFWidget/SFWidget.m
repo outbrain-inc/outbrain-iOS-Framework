@@ -34,6 +34,8 @@
 
 @property (nonatomic, strong) SFWidgetMessageHandler *messageHandler;
 
+@property (nonatomic, strong) WKWebView *hiddenWebView;
+
 @end
 
 
@@ -275,6 +277,16 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     }
 }
 
+
+-(void) reportPageViewOnTheSameWidget {
+    NSLog(@"Outbrain SDK reportPageViewOnTheSameWidget() is called");
+    WKWebViewConfiguration *webviewConf = [[WKWebViewConfiguration alloc] init];
+    self.hiddenWebView = [[WKWebView alloc] initWithFrame:self.frame configuration:webviewConf];
+    NSURL *widgetURL = [self getSmartfeedWidgetUrl];
+    NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:widgetURL];
+    [self.hiddenWebView loadRequest:urlRequest];
+}
+
 -(void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -313,6 +325,7 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     NSString *widgetIndex = [NSString stringWithFormat:@"%d", self.widgetIndex];
     NSString *baseUrl = @"https://widgets.outbrain.com/reactNativeBridge/index.html";
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:baseUrl];
+    
     NSMutableArray * newQueryItems = [NSMutableArray arrayWithCapacity:[components.queryItems count] + 1];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"widgetId" value: self.widgetId]];
