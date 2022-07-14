@@ -43,6 +43,12 @@
                 [self.delegate didClickOnRec:urlString];
             }
         }
+        if ([msgBody valueForKey:@"errorMsg"]) {
+            NSString *errorMsg = [msgBody valueForKey:@"errorMsg"];
+            errorMsg = [NSString stringWithFormat:@"Bridge: %@", errorMsg];
+            [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+        }
+        
     } @catch (NSException *exception) {
         NSLog(@"Exception in SFWidgetMessageHandler() - %@",exception.name);
         NSLog(@"Reason: %@ ",exception.reason);
