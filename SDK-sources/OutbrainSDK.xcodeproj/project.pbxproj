@@ -182,6 +182,7 @@
 		E69B5E34249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */; };
 		E69B5E37249B888600A9178C /* BrandedCarouselCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */; };
 		E69B5E38249B888600A9178C /* BrandedCarouselCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */; };
+		E69F6FD7288000CF005334CB /* OBViewabilityServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E69F6FD6288000CF005334CB /* OBViewabilityServiceTests.m */; };
 		E6A1ECBB2636ED61006E1517 /* OBPlatformRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A1ECBA2636ED60006E1517 /* OBPlatformRequestTests.m */; };
 		E6A1ECC32637E7B5006E1517 /* OBApvParamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A1ECC22637E7B4006E1517 /* OBApvParamTests.m */; };
 		E6A1ECC8263802D3006E1517 /* OBTokenHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A1ECC7263802D2006E1517 /* OBTokenHandlerTests.m */; };
@@ -432,6 +433,7 @@
 		E69B5E33249B5CEB00A9178C /* SFSingleAppInstallTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFSingleAppInstallTableCell.xib; sourceTree = "<group>"; };
 		E69B5E35249B888600A9178C /* BrandedCarouselCollectionLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandedCarouselCollectionLayout.h; sourceTree = "<group>"; };
 		E69B5E36249B888600A9178C /* BrandedCarouselCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandedCarouselCollectionLayout.m; sourceTree = "<group>"; };
+		E69F6FD6288000CF005334CB /* OBViewabilityServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBViewabilityServiceTests.m; sourceTree = "<group>"; };
 		E6A1ECBA2636ED60006E1517 /* OBPlatformRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBPlatformRequestTests.m; sourceTree = "<group>"; };
 		E6A1ECC22637E7B4006E1517 /* OBApvParamTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBApvParamTests.m; sourceTree = "<group>"; };
 		E6A1ECC7263802D2006E1517 /* OBTokenHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBTokenHandlerTests.m; sourceTree = "<group>"; };
@@ -829,6 +831,7 @@
 				E61E6C1420836C180016D79A /* OutbrainHelperTests.m */,
 				E6250CCC21BD5E8900C329B9 /* SFUtilsTests.m */,
 				E61E6C1520836C180016D79A /* Info.plist */,
+				E69F6FD6288000CF005334CB /* OBViewabilityServiceTests.m */,
 			);
 			path = OutbrainSDKTests;
 			sourceTree = "<group>";
@@ -1460,6 +1463,7 @@
 				E60440522869DB1C00BDC0F5 /* OBResponseRequestTests.m in Sources */,
 				E64AE0C0247BA13E0070A471 /* OBSmartFeedBrandedCarouselTests.m in Sources */,
 				E6F3A9A42504F8D10057CADB /* SkAdNetworkAppInstallRecTests.m in Sources */,
+				E69F6FD7288000CF005334CB /* OBViewabilityServiceTests.m in Sources */,
 				E6355C0122367EC000C3D1D5 /* MultivacResponseTests.m in Sources */,
 				E61E6C5420836DFB0016D79A /* OBParseODBTests.m in Sources */,
 				E6A1ECBB2636ED61006E1517 /* OBPlatformRequestTests.m in Sources */,
