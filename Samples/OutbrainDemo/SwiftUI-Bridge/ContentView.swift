@@ -8,27 +8,16 @@
 
 import SwiftUI
 import OutbrainSDK
-import SafariServices
 
-struct SafariView: UIViewControllerRepresentable {
-    let url: URL
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
-        return SFSafariViewController(url: url)
-    }
-
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {
-
-    }
-}
 
 // Our CustomSFWidgetDelegate implementation class that expects to find a SFWidgetObservable object
 // in the environment, and set if needed.
-class MyCustomSFWidgetDelegate : NSObject {
+class CustomSFWidgetDelegate : NSObject {
     var sfWidgetObservable: SFWidgetObservable?
 }
 
-extension MyCustomSFWidgetDelegate : SFWidgetDelegate {
+extension CustomSFWidgetDelegate : SFWidgetDelegate {
     func onRecClick(_ url: URL) {
         if let sfWidgetObservable = self.sfWidgetObservable {
             sfWidgetObservable.url = url
@@ -41,30 +30,7 @@ extension MyCustomSFWidgetDelegate : SFWidgetDelegate {
     }
 }
 
-// Our observable object class
-class SFWidgetObservable: ObservableObject {
-    @Published var showSafari:Bool = false
-    @Published var url:URL?
-    @Published var widgetHeight:CGFloat?
-}
 
-struct SFWidgetWrapper: UIViewRepresentable {
-    @EnvironmentObject var sfWidgetObservable: SFWidgetObservable
-    
-    let widgetId:String
-    let baseURL:String
-    let installationKey:String
-    let myCustomDelegate = MyCustomSFWidgetDelegate()
-    
-    func updateUIView(_ uiView: SFWidget, context: Context) {
-        uiView.configure(with: myCustomDelegate, url: baseURL, widgetId: widgetId, installationKey: installationKey)
-        myCustomDelegate.sfWidgetObservable = sfWidgetObservable
-    }
-    
-    func makeUIView(context: Context) -> SFWidget {
-        SFWidget()
-    }
-}
 
 struct ContentView: View {
     @StateObject var sfWidgetObservable = SFWidgetObservable()
@@ -106,13 +72,10 @@ struct ContentView: View {
                     SFWidgetWrapper(widgetId: widgetId, baseURL: baseURL, installationKey: installationKey)
                         .frame(height: 1000)
                         .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
-                    
-                    
-                    Spacer()
                 }
             }
             .fullScreenCover(isPresented: $sfWidgetObservable.showSafari) {
-                SafariView(url: sfWidgetObservable.url!)
+                OBSafariView(url: sfWidgetObservable.url!)
             }
             .environmentObject(sfWidgetObservable)
     }

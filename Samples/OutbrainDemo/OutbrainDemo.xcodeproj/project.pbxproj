@@ -178,6 +178,7 @@
 		E69F700C28991C7F005334CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69F700B28991C7F005334CB /* Assets.xcassets */; };
 		E69F700F28991C7F005334CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69F700E28991C7F005334CB /* Preview Assets.xcassets */; };
 		E69F701328992635005334CB /* OutbrainSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E666D04C25E4ED4F009F04D4 /* OutbrainSDK.xcframework */; };
+		E69F7015289960CA005334CB /* SFWidgetObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F7014289960C9005334CB /* SFWidgetObservable.swift */; };
 		E6A5E4071F9C869B00D894C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */; };
 		E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
 		E6D5BA5727269CD500FE921D /* CollectionTwoWidgetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5BA5427269CD500FE921D /* CollectionTwoWidgetsVC.swift */; };
@@ -379,6 +380,7 @@
 		E69F700928991C7A005334CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E69F700B28991C7F005334CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E69F700E28991C7F005334CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E69F7014289960C9005334CB /* SFWidgetObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetObservable.swift; sourceTree = "<group>"; };
 		E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainStoryboard.storyboard; sourceTree = "<group>"; };
 		E6D5BA5427269CD500FE921D /* CollectionTwoWidgetsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTwoWidgetsVC.swift; sourceTree = "<group>"; };
@@ -939,6 +941,7 @@
 			isa = PBXGroup;
 			children = (
 				E69F700728991C7A005334CB /* SwiftUI_BridgeApp.swift */,
+				E69F7014289960C9005334CB /* SFWidgetObservable.swift */,
 				E69F700928991C7A005334CB /* ContentView.swift */,
 				E69F700B28991C7F005334CB /* Assets.xcassets */,
 				E69F700D28991C7F005334CB /* Preview Content */,
@@ -1374,6 +1377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E69F7015289960CA005334CB /* SFWidgetObservable.swift in Sources */,
 				E69F700A28991C7A005334CB /* ContentView.swift in Sources */,
 				E69F700828991C7A005334CB /* SwiftUI_BridgeApp.swift in Sources */,
 			);
