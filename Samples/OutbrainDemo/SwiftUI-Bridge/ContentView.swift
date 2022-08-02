@@ -18,6 +18,7 @@ class CustomSFWidgetDelegate : NSObject {
 }
 
 extension CustomSFWidgetDelegate : SFWidgetDelegate {
+    
     func onRecClick(_ url: URL) {
         if let sfWidgetObservable = self.sfWidgetObservable {
             sfWidgetObservable.url = url
@@ -25,8 +26,9 @@ extension CustomSFWidgetDelegate : SFWidgetDelegate {
         }
     }
     
-    func didChangeHeight() {
-        //self.sfWidgetObservable.widgetHeight = 2000
+    func didChangeHeight(_ newHeight: CGFloat) {
+        print("didChangeHeight \(newHeight)")
+        sfWidgetObservable?.widgetHeight = newHeight
     }
 }
 
@@ -70,7 +72,7 @@ struct ContentView: View {
                     ArticleBody()
                     
                     SFWidgetWrapper(widgetId: widgetId, baseURL: baseURL, installationKey: installationKey)
-                        .frame(height: 1000)
+                        .frame(height: sfWidgetObservable.widgetHeight)
                         .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
                 }
             }

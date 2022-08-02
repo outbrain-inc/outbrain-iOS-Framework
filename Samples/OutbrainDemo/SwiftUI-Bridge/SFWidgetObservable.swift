@@ -15,7 +15,7 @@ import OutbrainSDK
 class SFWidgetObservable: ObservableObject {
     @Published var showSafari:Bool = false
     @Published var url:URL?
-    @Published var widgetHeight:CGFloat?
+    @Published var widgetHeight:CGFloat = 800.0
 }
 
 struct SFWidgetWrapper: UIViewRepresentable {
