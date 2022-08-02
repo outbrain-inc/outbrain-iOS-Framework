@@ -173,6 +173,10 @@
 		E68A90731FCD4755008318EB /* OBClassicRecommendationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A906C1FCD4755008318EB /* OBClassicRecommendationsView.m */; };
 		E68A90771FCD4885008318EB /* OBInterstitialHeroGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E68A90761FCD4885008318EB /* OBInterstitialHeroGridView.m */; };
 		E68F199425E5346E000FE851 /* OutbrainSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E666D04C25E4ED4F009F04D4 /* OutbrainSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E69F700828991C7A005334CB /* SwiftUI_BridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F700728991C7A005334CB /* SwiftUI_BridgeApp.swift */; };
+		E69F700A28991C7A005334CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F700928991C7A005334CB /* ContentView.swift */; };
+		E69F700C28991C7F005334CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69F700B28991C7F005334CB /* Assets.xcassets */; };
+		E69F700F28991C7F005334CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69F700E28991C7F005334CB /* Preview Assets.xcassets */; };
 		E6A5E4071F9C869B00D894C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */; };
 		E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
 		E6D5BA5727269CD500FE921D /* CollectionTwoWidgetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5BA5427269CD500FE921D /* CollectionTwoWidgetsVC.swift */; };
@@ -369,6 +373,11 @@
 		E68A906C1FCD4755008318EB /* OBClassicRecommendationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBClassicRecommendationsView.m; sourceTree = "<group>"; };
 		E68A90751FCD4885008318EB /* OBInterstitialHeroGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBInterstitialHeroGridView.h; sourceTree = "<group>"; };
 		E68A90761FCD4885008318EB /* OBInterstitialHeroGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBInterstitialHeroGridView.m; sourceTree = "<group>"; };
+		E69F700528991C7A005334CB /* SwiftUI-Bridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-Bridge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E69F700728991C7A005334CB /* SwiftUI_BridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_BridgeApp.swift; sourceTree = "<group>"; };
+		E69F700928991C7A005334CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E69F700B28991C7F005334CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E69F700E28991C7F005334CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainStoryboard.storyboard; sourceTree = "<group>"; };
 		E6D5BA5427269CD500FE921D /* CollectionTwoWidgetsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTwoWidgetsVC.swift; sourceTree = "<group>"; };
@@ -425,6 +434,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E66B9C8726809C01006DB0AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E69F700228991C7A005334CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -620,8 +636,9 @@
 			children = (
 				E666D04C25E4ED4F009F04D4 /* OutbrainSDK.xcframework */,
 				D83456431885A543002B2368 /* Journal */,
-				E61E6CCE2085DBD50016D79A /* SmartFeed */,
 				E66B9C8B26809C01006DB0AB /* SFWebView-Dev */,
+				E61E6CCE2085DBD50016D79A /* SmartFeed */,
+				E69F700628991C7A005334CB /* SwiftUI-Bridge */,
 				D8B5923B186376B1009422D5 /* Frameworks */,
 				D8B5923A186376B1009422D5 /* Products */,
 			);
@@ -635,6 +652,7 @@
 				E61E6CCD2085DBD50016D79A /* SmartFeed-Dev.app */,
 				E60DCD4820BC3AAD0023FE93 /* SmartFeed.app */,
 				E66B9C8A26809C01006DB0AB /* SFWebView-Dev.app */,
+				E69F700528991C7A005334CB /* SwiftUI-Bridge.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -915,6 +933,25 @@
 			path = OBClassicRecommendationsView;
 			sourceTree = "<group>";
 		};
+		E69F700628991C7A005334CB /* SwiftUI-Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				E69F700728991C7A005334CB /* SwiftUI_BridgeApp.swift */,
+				E69F700928991C7A005334CB /* ContentView.swift */,
+				E69F700B28991C7F005334CB /* Assets.xcassets */,
+				E69F700D28991C7F005334CB /* Preview Content */,
+			);
+			path = "SwiftUI-Bridge";
+			sourceTree = "<group>";
+		};
+		E69F700D28991C7F005334CB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E69F700E28991C7F005334CB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1009,6 +1046,23 @@
 			productReference = E66B9C8A26809C01006DB0AB /* SFWebView-Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E69F700428991C7A005334CB /* SwiftUI-Bridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E69F701028991C7F005334CB /* Build configuration list for PBXNativeTarget "SwiftUI-Bridge" */;
+			buildPhases = (
+				E69F700128991C7A005334CB /* Sources */,
+				E69F700228991C7A005334CB /* Frameworks */,
+				E69F700328991C7A005334CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftUI-Bridge";
+			productName = "SwiftUI-Bridge";
+			productReference = E69F700528991C7A005334CB /* SwiftUI-Bridge.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1016,7 +1070,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = OB;
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Outbrain inc";
 				TargetAttributes = {
@@ -1032,6 +1086,9 @@
 					};
 					E66B9C8926809C01006DB0AB = {
 						CreatedOnToolsVersion = 12.5;
+					};
+					E69F700428991C7A005334CB = {
+						CreatedOnToolsVersion = 13.1;
 					};
 				};
 			};
@@ -1054,6 +1111,7 @@
 				E61E6C67208384A00016D79A /* Journal-Dev */,
 				E61E6CCC2085DBD50016D79A /* SmartFeed-Dev */,
 				E66B9C8926809C01006DB0AB /* SFWebView-Dev */,
+				E69F700428991C7A005334CB /* SwiftUI-Bridge */,
 			);
 		};
 /* End PBXProject section */
@@ -1140,6 +1198,15 @@
 				E66B9C9926809C03006DB0AB /* LaunchScreen.storyboard in Resources */,
 				E66B9C9626809C03006DB0AB /* Assets.xcassets in Resources */,
 				E66B9C9426809C01006DB0AB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E69F700328991C7A005334CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E69F700F28991C7F005334CB /* Preview Assets.xcassets in Resources */,
+				E69F700C28991C7F005334CB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1298,6 +1365,15 @@
 				E6D5BA5727269CD500FE921D /* CollectionTwoWidgetsVC.swift in Sources */,
 				E66B9C8D26809C01006DB0AB /* AppDelegate.swift in Sources */,
 				E66B9CB42680A199006DB0AB /* AppArticleTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E69F700128991C7A005334CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E69F700A28991C7A005334CB /* ContentView.swift in Sources */,
+				E69F700828991C7A005334CB /* SwiftUI_BridgeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1799,6 +1875,94 @@
 			};
 			name = Release;
 		};
+		E69F701128991C7F005334CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI-Bridge/Preview Content\"";
+				DEVELOPMENT_TEAM = 97R2B46745;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.SwiftUI-Bridge";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E69F701228991C7F005334CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI-Bridge/Preview Content\"";
+				DEVELOPMENT_TEAM = 97R2B46745;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.SwiftUI-Bridge";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1852,6 +2016,15 @@
 			buildConfigurations = (
 				E66B9C9B26809C03006DB0AB /* Debug */,
 				E66B9C9C26809C03006DB0AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E69F701028991C7F005334CB /* Build configuration list for PBXNativeTarget "SwiftUI-Bridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E69F701128991C7F005334CB /* Debug */,
+				E69F701228991C7F005334CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
