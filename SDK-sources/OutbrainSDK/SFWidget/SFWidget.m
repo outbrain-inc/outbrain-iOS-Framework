@@ -373,11 +373,11 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 #pragma mark - SFWidgetMessageHandlerDelegate
 - (void)didHeightChanged:(NSInteger)height {
-    self.currentHeight = height + 50.0;
+    self.currentHeight = height;
     self.frame = CGRectMake(0, 0, self.frame.size.width, (CGFloat)height);
     [self setNeedsLayout];
     if ([self.delegate respondsToSelector:@selector(didChangeHeight:)]) {
-        [self.delegate didChangeHeight:height];
+        [self.delegate didChangeHeight:self.currentHeight];
     }
     
     if (self.isLoading) {
