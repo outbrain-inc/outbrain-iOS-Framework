@@ -129,6 +129,7 @@
 		E62861552138231800D12A15 /* AppArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62861532138231800D12A15 /* AppArticleTableViewCell.swift */; };
 		E6286167213C0EEE00D12A15 /* AppSFHorizontalItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6286166213C0EED00D12A15 /* AppSFHorizontalItemCell.xib */; };
 		E6286168213C0EEE00D12A15 /* AppSFHorizontalItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6286166213C0EED00D12A15 /* AppSFHorizontalItemCell.xib */; };
+		E62DED75289FF1FB0092386F /* CustomSFWidgetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62DED74289FF1FB0092386F /* CustomSFWidgetDelegate.swift */; };
 		E64366611FAA10A500FA617E /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366601FAA10A500FA617E /* PaddingLabel.m */; };
 		E64366911FAEF32E00FA617E /* OBLabelWithPadding.m in Sources */ = {isa = PBXBuildFile; fileRef = E643667C1FAEF32D00FA617E /* OBLabelWithPadding.m */; };
 		E64366AD1FAEF3EC00FA617E /* JLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366821FAEF32E00FA617E /* JLoadingView.m */; };
@@ -177,7 +178,6 @@
 		E69F700A28991C7A005334CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F700928991C7A005334CB /* ContentView.swift */; };
 		E69F700C28991C7F005334CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69F700B28991C7F005334CB /* Assets.xcassets */; };
 		E69F700F28991C7F005334CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69F700E28991C7F005334CB /* Preview Assets.xcassets */; };
-		E69F701328992635005334CB /* OutbrainSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E666D04C25E4ED4F009F04D4 /* OutbrainSDK.xcframework */; };
 		E69F7015289960CA005334CB /* SFWidgetObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F7014289960C9005334CB /* SFWidgetObservable.swift */; };
 		E6A5E4071F9C869B00D894C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */; };
 		E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
@@ -315,6 +315,7 @@
 		E628614E2137FC8700D12A15 /* AppArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		E62861532138231800D12A15 /* AppArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppArticleTableViewCell.swift; sourceTree = "<group>"; };
 		E6286166213C0EED00D12A15 /* AppSFHorizontalItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFHorizontalItemCell.xib; sourceTree = "<group>"; };
+		E62DED74289FF1FB0092386F /* CustomSFWidgetDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSFWidgetDelegate.swift; sourceTree = "<group>"; };
 		E643665F1FAA10A500FA617E /* PaddingLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaddingLabel.h; sourceTree = "<group>"; };
 		E64366601FAA10A500FA617E /* PaddingLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaddingLabel.m; sourceTree = "<group>"; };
 		E64366731FAEF2FB00FA617E /* PostsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostsListVC.h; sourceTree = "<group>"; };
@@ -447,7 +448,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E69F701328992635005334CB /* OutbrainSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,6 +942,7 @@
 			children = (
 				E69F700728991C7A005334CB /* SwiftUI_BridgeApp.swift */,
 				E69F7014289960C9005334CB /* SFWidgetObservable.swift */,
+				E62DED74289FF1FB0092386F /* CustomSFWidgetDelegate.swift */,
 				E69F700928991C7A005334CB /* ContentView.swift */,
 				E69F700B28991C7F005334CB /* Assets.xcassets */,
 				E69F700D28991C7F005334CB /* Preview Content */,
@@ -1379,6 +1380,7 @@
 			files = (
 				E69F7015289960CA005334CB /* SFWidgetObservable.swift in Sources */,
 				E69F700A28991C7A005334CB /* ContentView.swift in Sources */,
+				E62DED75289FF1FB0092386F /* CustomSFWidgetDelegate.swift in Sources */,
 				E69F700828991C7A005334CB /* SwiftUI_BridgeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
