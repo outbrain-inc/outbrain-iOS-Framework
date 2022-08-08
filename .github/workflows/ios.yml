@@ -31,6 +31,11 @@ jobs:
         run: |
           xcodebuild -project OutbrainDemo.xcodeproj -scheme SmartFeed -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13 Pro' build
 
+      - name: Build Sample Apps - SwiftUI-Bridge Demo
+        working-directory: ./Samples/OutbrainDemo
+        run: |
+          xcodebuild -project OutbrainDemo.xcodeproj -scheme SwiftUI-Bridge -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13 Pro' build
+
       - name: Run SDK tests
         working-directory: ./SDK-sources
         run: |
