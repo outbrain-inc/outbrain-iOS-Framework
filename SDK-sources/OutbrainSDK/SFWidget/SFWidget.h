@@ -27,8 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  @brief (Optional) called when the "feed widget" inside the WebView changed its height. Publisher might want to be notified when the SFWidget changes its height.
+ *  @param newHeight - the updated height for the SFWidget
  */
-- (void) didChangeHeight;
+- (void) didChangeHeight:(CGFloat) newHeight;
 
 /**
  *  @brief (Optional) publisher may choose to "catch" clicks on "organic recommendations" in order to navigate the user to the clicked recommendation INSIDE the app (instead of the default behavior of openning the link in an external browser)
