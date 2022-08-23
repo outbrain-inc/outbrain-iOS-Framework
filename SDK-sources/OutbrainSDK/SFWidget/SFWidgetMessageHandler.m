@@ -43,6 +43,10 @@
                 [self.delegate didClickOnRec:urlString];
             }
         }
+        if ([msgBody valueForKey:@"event"] && [[msgBody valueForKey:@"event"] isEqualToString:@"widgetRendered"]) {
+            // NSLog(@"SFWidgetMessageHandler - widgetRendered");
+            [self.delegate widgetRendered];
+        }
         if ([msgBody valueForKey:@"errorMsg"]) {
             NSString *errorMsg = [msgBody valueForKey:@"errorMsg"];
             errorMsg = [NSString stringWithFormat:@"Bridge: %@", errorMsg];

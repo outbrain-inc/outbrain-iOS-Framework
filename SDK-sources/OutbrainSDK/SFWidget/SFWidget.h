@@ -38,6 +38,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void) onOrganicRecClick:(NSURL * _Nonnull) url;
 
+/**
+ *  @brief (Optional) called when the JS widget inside the WKWebView has completed rendering.
+ */
+- (void) widgetRendered;
+
 @end
 
 extern NSString * _Nonnull const SFWIDGET_T_PARAM_NOTIFICATION;

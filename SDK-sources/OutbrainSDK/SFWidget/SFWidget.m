@@ -429,6 +429,13 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     }
 }
 
+- (void) widgetRendered {
+    // NSLog(@"SFWidget - widgetRendered");
+    if ([self.delegate respondsToSelector:@selector(widgetRendered)]) {
+        [self.delegate widgetRendered];
+    }
+}
+
 #pragma mark - WKUIDelegate
 -(WKWebView *) webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
 {
