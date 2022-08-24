@@ -379,6 +379,9 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     if ([self.delegate respondsToSelector:@selector(didChangeHeight:)]) {
         [self.delegate didChangeHeight:self.currentHeight];
     }
+    if ([self.delegate respondsToSelector:@selector(didChangeHeight)]) {
+        [self.delegate didChangeHeight];
+    }
     
     if (self.isLoading) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
