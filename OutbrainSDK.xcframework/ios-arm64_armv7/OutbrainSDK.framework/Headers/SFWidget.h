@@ -27,8 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  @brief (Optional) called when the "feed widget" inside the WebView changed its height. Publisher might want to be notified when the SFWidget changes its height.
+ *  @param newHeight - the updated height for the SFWidget
  */
-- (void) didChangeHeight;
+- (void) didChangeHeight:(CGFloat) newHeight;
+
+/**
+ *  @brief (Optional) called when the "feed widget" inside the WebView changed its height. Publisher might want to be notified when the SFWidget changes its height.
+ *  @deprecated - please use didChangeHeight:(CGFloat) newHeight 
+ */
+- (void) didChangeHeight __deprecated;
 
 /**
  *  @brief (Optional) publisher may choose to "catch" clicks on "organic recommendations" in order to navigate the user to the clicked recommendation INSIDE the app (instead of the default behavior of openning the link in an external browser)
@@ -36,6 +43,14 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param url - the organic rec "article url", i.e. the aricle url we should navigate to within the app navigation stack.
  */
 - (void) onOrganicRecClick:(NSURL * _Nonnull) url;
+
+/**
+ *  @brief (Optional) called when the JS widget inside the WKWebView has completed rendering.
+ *  @param articleUrl - the "article URL" of the SFWidget
+ *  @param widgetId - the "widget ID" of the SFWidget
+ *  @param widgetIndex - the "index" of the SFWidget (usually 0 unless there are more than 1 widget on the page)
+ */
+- (void) widgetRendered:(NSString * _Nonnull) articleUrl widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex;
 
 @end
 
