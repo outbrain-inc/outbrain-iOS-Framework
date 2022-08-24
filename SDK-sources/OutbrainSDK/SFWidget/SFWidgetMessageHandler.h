@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) didHeightChanged:(NSInteger)height;
 - (void) didClickOnRec:(NSString *)url;
 - (void) didClickOnOrganicRec:(NSString *)url orgUrl:(NSString *)orgUrl;
-
+- (void) widgetRendered;
 
 @end
 
