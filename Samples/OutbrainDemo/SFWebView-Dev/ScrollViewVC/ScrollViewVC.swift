@@ -55,8 +55,7 @@ extension ScrollViewVC: SFWidgetDelegate {
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
     
-    func widgetRendered() {
-        print("ScrollViewVC - widgetRendered")
+    func widgetRendered(_ articleUrl: String, widgetId: String, widgetIndex: Int) {
+        print("App received widgetRendered event: \(articleUrl) \(widgetId) \(widgetIndex)")
     }
-    
 }
