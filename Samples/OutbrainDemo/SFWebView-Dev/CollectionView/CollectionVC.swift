@@ -132,4 +132,8 @@ extension CollectionVC: SFWidgetDelegate {
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
     }
+
+    func widgetRendered(_ articleUrl: String, widgetId: String, widgetIndex: Int) {
+        print("App received widgetRendered event: \(articleUrl) \(widgetId) \(widgetIndex)")
+    }
 }

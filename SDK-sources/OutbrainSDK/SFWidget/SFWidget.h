@@ -46,8 +46,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  @brief (Optional) called when the JS widget inside the WKWebView has completed rendering.
+ *  @param articleUrl - the "article URL" of the SFWidget
+ *  @param widgetId - the "widget ID" of the SFWidget
+ *  @param widgetIndex - the "index" of the SFWidget (usually 0 unless there are more than 1 widget on the page)
  */
-- (void) widgetRendered;
+- (void) widgetRendered:(NSString * _Nonnull) articleUrl widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex;
 
 @end
 

@@ -434,8 +434,8 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 - (void) widgetRendered {
     // NSLog(@"SFWidget - widgetRendered");
-    if ([self.delegate respondsToSelector:@selector(widgetRendered)]) {
-        [self.delegate widgetRendered];
+    if ([self.delegate respondsToSelector:@selector(widgetRendered:widgetId:widgetIndex:)]) {
+        [self.delegate widgetRendered:self.url widgetId:self.widgetId widgetIndex:self.widgetIndex];
     }
 }
 
