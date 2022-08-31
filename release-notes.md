@@ -1,5 +1,11 @@
 # Release Notes
 
+## v4.12.0 - August 24, 2022
+
+- Project - add a new target to OutbrainDemo.xcodeproj - SwiftUI-Bridge sample app
+- Minor - add a new delegate method to SFWidget called `widgetRendered(_ articleUrl: String, widgetId: String, widgetIndex: Int)` - to notify clients on this event
+
+
 ## v4.10.0 - July 14, 2022
 
 - Minor - add a new method `reportPageViewOnTheSameWidget()` for specific publisher.
