@@ -74,6 +74,49 @@ class ViewController: UIViewController {
             return ""
         }
     }
+    
+    
+    @IBAction func overrideBridgeUrlClick(_ sender: Any) {
+        showOverrideBridgeUrlAlert()
+    }
+    
+    func showOverrideBridgeUrlAlert() {
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "Edit Bridge URL", message: "Please edit the fields below", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "HTML full path"
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            if var urlString = alert!.textFields?[0].text {
+                print("url: \(urlString)")
+                
+                if (urlString.starts(with: "www")) {
+                    urlString = "https://" + urlString
+                }
+                if (self.verifyUrl(urlString: urlString)) {
+                    UserDefaults.standard.set(urlString, forKey: "BridgeUrl")
+                }
+                else {
+                    let errorAlert = UIAlertController(title: "Error", message: "URL is not valid (\(urlString))", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    self.present(errorAlert, animated: true, completion: nil)
+                    return
+                }
+                
+                let successAlert = UIAlertController(title: "Success", message: "URL bridge is now set to (\(urlString))", preferredStyle: .alert)
+                successAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(successAlert, animated: true, completion: {
+                })
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension ViewController {
