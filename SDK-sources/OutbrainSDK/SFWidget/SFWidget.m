@@ -432,10 +432,11 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     }
 }
 
-- (void) widgetRendered {
-    // NSLog(@"SFWidget - widgetRendered");
-    if ([self.delegate respondsToSelector:@selector(widgetRendered:widgetId:widgetIndex:)]) {
-        [self.delegate widgetRendered:self.url widgetId:self.widgetId widgetIndex:self.widgetIndex];
+- (void) widgetEvent:(NSString *)eventName additionalData:(NSDictionary *)additionalData {
+    NSLog(@"$$ received widgetEvent - %@ - %@", eventName, additionalData);
+    if ([self.delegate respondsToSelector:@selector(widgetEvent:additionalData:)]) {
+        //TODO send event to delegate (publisher)
+        NSLog(@"send widgetEvent");
     }
 }
 

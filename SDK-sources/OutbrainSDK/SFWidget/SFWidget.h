@@ -45,12 +45,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) onOrganicRecClick:(NSURL * _Nonnull) url;
 
 /**
- *  @brief (Optional) called when the JS widget inside the WKWebView has completed rendering.
- *  @param articleUrl - the "article URL" of the SFWidget
- *  @param widgetId - the "widget ID" of the SFWidget
- *  @param widgetIndex - the "index" of the SFWidget (usually 0 unless there are more than 1 widget on the page)
+ *  @brief (Optional) called when the JS widget inside the WKWebView dispatch widget events (for example: rendered, error, viewability, etc).
+ *      it should be implemented only if the publisher would like to manually keep track of widget events.
+ *  @param eventName - the name of the event being dispatched
+ *  @param additionalData - additional data that comes with the event. For example you'll find there: "widget ID", "widget index" and "timestamp".
  */
-- (void) widgetRendered:(NSString * _Nonnull) articleUrl widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex;
+- (void) widgetEvent:(NSString * _Nonnull)eventName additionalData:(NSDictionary * _Nonnull)additionalData;
+
 
 @end
 
@@ -78,7 +79,6 @@ extern NSString * _Nonnull const SFWIDGET_T_PARAM_NOTIFICATION;
  *  @param darkMode - should be "false" , unless the publisher wants the display the feed in "dark mode".
  *
  */
-
 -(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString * _Nonnull)installationKey userId:(NSString * _Nullable)userId darkMode:(BOOL)darkMode;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
