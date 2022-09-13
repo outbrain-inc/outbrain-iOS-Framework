@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param eventName - the name of the event being dispatched
  *  @param additionalData - additional data that comes with the event. For example you'll find there: "widget ID", "widget index" and "timestamp".
  */
-- (void) widgetEvent:(NSString * _Nonnull)eventName additionalData:(NSDictionary * _Nonnull)additionalData;
+- (void) widgetEvent:(NSString * _Nonnull)eventName additionalData:(NSDictionary<NSString *, id>  * _Nonnull)additionalData;
 
 
 @end

@@ -436,7 +436,7 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     NSLog(@"$$ received widgetEvent - %@ - %@", eventName, additionalData);
     if ([self.delegate respondsToSelector:@selector(widgetEvent:additionalData:)]) {
         //TODO send event to delegate (publisher)
-        NSLog(@"send widgetEvent");
+        [self.delegate widgetEvent:eventName additionalData:(additionalData ? additionalData : @{})];
     }
 }
 
