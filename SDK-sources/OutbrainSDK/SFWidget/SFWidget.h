@@ -96,6 +96,8 @@ extern NSString * _Nonnull const SFWIDGET_T_PARAM_NOTIFICATION;
 
 -(void) loadMore;
 
+-(void) enableWidgetEvents;
+
 @end
 
 NS_ASSUME_NONNULL_END

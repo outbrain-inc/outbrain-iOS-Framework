@@ -18,6 +18,7 @@
 
 @property (nonatomic, assign) NSInteger currentHeight;
 @property (nonatomic, assign) BOOL isLoading;
+@property (nonatomic, assign) BOOL isWidgetEventsEnabled;
 @property (nonatomic, assign) BOOL inTransition;
 
 // widget properties
@@ -144,12 +145,18 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     }
 }
 
-#pragma mark - Private Methods
 -(void) loadMore {
     self.isLoading = YES;
     [self evaluateLoadMore];
     
 }
+
+
+-(void) enableWidgetEvents {
+    self.isWidgetEventsEnabled = YES;
+}
+
+#pragma mark - Private Methods
 
 -(void) handleViewability:(UIView *)containerView {
     CGFloat scale = [UIScreen mainScreen].scale;
@@ -361,6 +368,14 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appBundle" value: bundleIdentifier]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
     
+    // Widget Events
+#ifdef DEBUG
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetEvents" value: @"test"]];
+#endif
+    if (self.isWidgetEventsEnabled) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetEvents" value: @"all"]];
+    }
+    
     if (self.userId) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"userId" value: self.userId]];
     }
@@ -435,7 +450,6 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 - (void) widgetEvent:(NSString *)eventName additionalData:(NSDictionary *)additionalData {
     NSLog(@"$$ received widgetEvent - %@ - %@", eventName, additionalData);
     if ([self.delegate respondsToSelector:@selector(widgetEvent:additionalData:)]) {
-        //TODO send event to delegate (publisher)
         [self.delegate widgetEvent:eventName additionalData:(additionalData ? additionalData : @{})];
     }
 }
