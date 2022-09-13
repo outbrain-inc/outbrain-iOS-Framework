@@ -27,7 +27,8 @@ class CollectionVC : UICollectionViewController, UICollectionViewDelegateFlowLay
         
         collectionView.register(SFWidgetCollectionCell.self, forCellWithReuseIdentifier: "SFWidgetCell")
         
-        sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
+        self.sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
+        self.sfWidget.enableEvents()
         self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: self.widgetId, installationKey: OBConf.installationKey)
     }
     

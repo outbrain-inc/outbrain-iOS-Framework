@@ -152,7 +152,7 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 }
 
 
--(void) enableWidgetEvents {
+-(void) enableEvents {
     self.isWidgetEventsEnabled = YES;
 }
 
