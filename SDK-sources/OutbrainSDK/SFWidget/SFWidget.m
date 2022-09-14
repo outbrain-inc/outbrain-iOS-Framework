@@ -18,6 +18,8 @@
 
 @property (nonatomic, assign) NSInteger currentHeight;
 @property (nonatomic, assign) BOOL isLoading;
+@property (nonatomic, assign) BOOL isWidgetEventsEnabled;
+@property (nonatomic, assign) BOOL isWidgetEventsTestMode;
 @property (nonatomic, assign) BOOL inTransition;
 
 // widget properties
@@ -144,12 +146,22 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     }
 }
 
-#pragma mark - Private Methods
 -(void) loadMore {
     self.isLoading = YES;
     [self evaluateLoadMore];
     
 }
+
+
+-(void) enableEvents {
+    self.isWidgetEventsEnabled = YES;
+}
+
+-(void) testModeAllEvents {
+    self.isWidgetEventsTestMode = YES;
+}
+
+#pragma mark - Private Methods
 
 -(void) handleViewability:(UIView *)containerView {
     CGFloat scale = [UIScreen mainScreen].scale;
@@ -361,6 +373,14 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appBundle" value: bundleIdentifier]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
     
+    // Widget Events
+    if (self.isWidgetEventsEnabled) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetEvents" value: @"all"]];
+    }
+    else if (self.isWidgetEventsTestMode) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetEvents" value: @"test"]];
+    }
+    
     if (self.userId) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"userId" value: self.userId]];
     }
@@ -432,10 +452,9 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     }
 }
 
-- (void) widgetRendered {
-    // NSLog(@"SFWidget - widgetRendered");
-    if ([self.delegate respondsToSelector:@selector(widgetRendered:widgetId:widgetIndex:)]) {
-        [self.delegate widgetRendered:self.url widgetId:self.widgetId widgetIndex:self.widgetIndex];
+- (void) widgetEvent:(NSString *)eventName additionalData:(NSDictionary *)additionalData {
+    if ([self.delegate respondsToSelector:@selector(widgetEvent:additionalData:)]) {
+        [self.delegate widgetEvent:eventName additionalData:(additionalData ? additionalData : @{})];
     }
 }
 

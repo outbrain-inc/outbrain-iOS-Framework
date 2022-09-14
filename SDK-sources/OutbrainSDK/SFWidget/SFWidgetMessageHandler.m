@@ -43,9 +43,20 @@
                 [self.delegate didClickOnRec:urlString];
             }
         }
-        if ([msgBody valueForKey:@"event"] && [[msgBody valueForKey:@"event"] isEqualToString:@"widgetRendered"]) {
-            // NSLog(@"SFWidgetMessageHandler - widgetRendered");
-            [self.delegate widgetRendered];
+        if ([msgBody valueForKey:@"event"] && ([[msgBody valueForKey:@"event"] isKindOfClass:[NSDictionary class]])) {
+            NSMutableDictionary *eventData = [[msgBody valueForKey:@"event"] mutableCopy];
+            NSString *eventName = @"";
+            if ([[eventData valueForKey:@"name"] isKindOfClass:[NSString class]]) {
+                eventName = [eventData valueForKey:@"name"];
+            }
+            else {
+                eventName = @"** event_name_missing **";
+            }
+            [eventData removeObjectForKey:@"name"];
+            
+            if ([self verifyAllKeysAreTypeString:eventData]) {
+                [self.delegate widgetEvent:eventName additionalData:eventData];
+            }
         }
         if ([msgBody valueForKey:@"errorMsg"]) {
             NSString *errorMsg = [msgBody valueForKey:@"errorMsg"];
@@ -59,6 +70,18 @@
         NSString *errorMsg = [NSString stringWithFormat:@"Exception in SFWidgetMessageHandler - %@ - reason: %@", exception.name, exception.reason];
         [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
+}
+
+- (BOOL) verifyAllKeysAreTypeString:(NSDictionary *) dict {
+    NSEnumerator *keyEnumerator = [dict keyEnumerator];
+    id key;
+    while ((key = [keyEnumerator nextObject])) {
+        if (![key isKindOfClass:[NSString class]]) {
+            NSLog(@"OBSDK The key (%@) does not belong to NSString class", key);
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
