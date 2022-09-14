@@ -156,6 +156,10 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     self.isWidgetEventsEnabled = YES;
 }
 
+-(void) disableEvents {
+    self.isWidgetEventsEnabled = NO;
+}
+
 #pragma mark - Private Methods
 
 -(void) handleViewability:(UIView *)containerView {
