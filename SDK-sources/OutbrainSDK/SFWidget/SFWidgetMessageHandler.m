@@ -22,14 +22,8 @@
         NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *msgBody = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
-        // Oded start
-//        if ([msgBody valueForKey:@"t"]) {
-//            msgBody = @{@"event" : @{@"idx": @2, @"widgetId": @"MB_22", @"name": @"viewability", @"timestamp" : @"1662616918768"}};
-//        }
-        // Oded end
         
         if ([msgBody valueForKey:@"height"]) {
-            NSLog(@"HEIGHT - msgBody: %@", msgBody);
             NSInteger newHeight = [[msgBody valueForKey:@"height"] integerValue];
             [self.delegate didHeightChanged:newHeight];
         }
