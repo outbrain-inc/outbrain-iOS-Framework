@@ -448,7 +448,7 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 }
 
 - (void) widgetEvent:(NSString *)eventName additionalData:(NSDictionary *)additionalData {
-    NSLog(@"$$ received widgetEvent - %@ - %@", eventName, additionalData);
+    NSLog(@"Outbrain SDK received widgetEvent - %@ - %@", eventName, additionalData);
     if ([self.delegate respondsToSelector:@selector(widgetEvent:additionalData:)]) {
         [self.delegate widgetEvent:eventName additionalData:(additionalData ? additionalData : @{})];
     }
