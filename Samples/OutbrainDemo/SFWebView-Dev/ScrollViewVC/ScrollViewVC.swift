@@ -56,6 +56,6 @@ extension ScrollViewVC: SFWidgetDelegate {
     }
     
     func widgetEvent(_ eventName: String, additionalData: [String : Any]) {
-        print("App revceived widgetEvent: \(eventName) with data: \(additionalData)")
+        print("App received widgetEvent: ** \(eventName) ** with data: \(additionalData)")
     }
 }
