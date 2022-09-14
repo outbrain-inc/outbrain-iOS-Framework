@@ -54,17 +54,7 @@
             }
             [eventData removeObjectForKey:@"name"];
             
-            BOOL eventDataKeysAreValid = YES; // initial value
-            NSEnumerator *keyEnumerator = [eventData keyEnumerator];
-            id key;
-            while ((key = [keyEnumerator nextObject])) {
-                if (![key isKindOfClass:[NSString class]]) {
-                    NSLog(@"OBSDK The key (%@) does not belong to NSString class", key);
-                    eventDataKeysAreValid = NO;
-                    break;
-                }
-            }
-            if (eventDataKeysAreValid) {
+            if ([self verifyAllKeysAreTypeString:eventData]) {
                 [self.delegate widgetEvent:eventName additionalData:eventData];
             }
         }
@@ -80,6 +70,18 @@
         NSString *errorMsg = [NSString stringWithFormat:@"Exception in SFWidgetMessageHandler - %@ - reason: %@", exception.name, exception.reason];
         [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
     }
+}
+
+- (BOOL) verifyAllKeysAreTypeString:(NSDictionary *) dict {
+    NSEnumerator *keyEnumerator = [dict keyEnumerator];
+    id key;
+    while ((key = [keyEnumerator nextObject])) {
+        if (![key isKindOfClass:[NSString class]]) {
+            NSLog(@"OBSDK The key (%@) does not belong to NSString class", key);
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
