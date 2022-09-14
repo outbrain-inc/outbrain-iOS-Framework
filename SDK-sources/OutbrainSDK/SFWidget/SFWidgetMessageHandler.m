@@ -22,8 +22,14 @@
         NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *msgBody = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
+        // Oded start
+//        if ([msgBody valueForKey:@"t"]) {
+//            msgBody = @{@"event" : @{@"idx": @2, @"widgetId": @"MB_22", @"name": @"viewability", @"timestamp" : @"1662616918768"}};
+//        }
+        // Oded end
         
         if ([msgBody valueForKey:@"height"]) {
+            NSLog(@"HEIGHT - msgBody: %@", msgBody);
             NSInteger newHeight = [[msgBody valueForKey:@"height"] integerValue];
             [self.delegate didHeightChanged:newHeight];
         }
@@ -43,22 +49,30 @@
                 [self.delegate didClickOnRec:urlString];
             }
         }
-        if ([msgBody valueForKey:@"event"]) {
-            NSMutableDictionary *eventData = [@{} mutableCopy];
-            if ([[msgBody valueForKey:@"event"] isKindOfClass:[NSDictionary class]]) {
-                eventData = [[msgBody valueForKey:@"event"] mutableCopy];
-            }
-            
+        if ([msgBody valueForKey:@"event"] && ([[msgBody valueForKey:@"event"] isKindOfClass:[NSDictionary class]])) {
+            NSMutableDictionary *eventData = [[msgBody valueForKey:@"event"] mutableCopy];
             NSString *eventName = @"";
             if ([[eventData valueForKey:@"name"] isKindOfClass:[NSString class]]) {
                 eventName = [eventData valueForKey:@"name"];
             }
             else {
-                eventName = @"event_name_missing";
+                eventName = @"** event_name_missing **";
             }
             [eventData removeObjectForKey:@"name"];
             
-            [self.delegate widgetEvent:eventName additionalData:eventData];
+            BOOL eventDataKeysAreValid = YES; // initial value
+            NSEnumerator *keyEnumerator = [eventData keyEnumerator];
+            id key;
+            while ((key = [keyEnumerator nextObject])) {
+                if (![key isKindOfClass:[NSString class]]) {
+                    NSLog(@"OBSDK The key (%@) does not belong to NSString class", key);
+                    eventDataKeysAreValid = NO;
+                    break;
+                }
+            }
+            if (eventDataKeysAreValid) {
+                [self.delegate widgetEvent:eventName additionalData:eventData];
+            }
         }
         if ([msgBody valueForKey:@"errorMsg"]) {
             NSString *errorMsg = [msgBody valueForKey:@"errorMsg"];
