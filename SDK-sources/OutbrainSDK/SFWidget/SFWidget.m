@@ -19,6 +19,7 @@
 @property (nonatomic, assign) NSInteger currentHeight;
 @property (nonatomic, assign) BOOL isLoading;
 @property (nonatomic, assign) BOOL isWidgetEventsEnabled;
+@property (nonatomic, assign) BOOL isWidgetEventsTestMode;
 @property (nonatomic, assign) BOOL inTransition;
 
 // widget properties
@@ -156,8 +157,8 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     self.isWidgetEventsEnabled = YES;
 }
 
--(void) disableEvents {
-    self.isWidgetEventsEnabled = NO;
+-(void) testModeAllEvents {
+    self.isWidgetEventsTestMode = YES;
 }
 
 #pragma mark - Private Methods
@@ -373,11 +374,11 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
     
     // Widget Events
-#ifdef DEBUG
-    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetEvents" value: @"test"]];
-#endif
     if (self.isWidgetEventsEnabled) {
         [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetEvents" value: @"all"]];
+    }
+    else if (self.isWidgetEventsTestMode) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetEvents" value: @"test"]];
     }
     
     if (self.userId) {
@@ -452,7 +453,6 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 }
 
 - (void) widgetEvent:(NSString *)eventName additionalData:(NSDictionary *)additionalData {
-    NSLog(@"Outbrain SDK received widgetEvent - %@ - %@", eventName, additionalData);
     if ([self.delegate respondsToSelector:@selector(widgetEvent:additionalData:)]) {
         [self.delegate widgetEvent:eventName additionalData:(additionalData ? additionalData : @{})];
     }

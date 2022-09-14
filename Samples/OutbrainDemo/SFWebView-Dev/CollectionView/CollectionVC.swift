@@ -135,6 +135,6 @@ extension CollectionVC: SFWidgetDelegate {
     }
     
     func widgetEvent(_ eventName: String, additionalData: [String : Any]) {
-        print("App received widgetEvent: ** \(eventName) ** with data: \(additionalData)")
+        print("App received widgetEvent: **\(eventName)** with data: \(additionalData)")
     }
 }
