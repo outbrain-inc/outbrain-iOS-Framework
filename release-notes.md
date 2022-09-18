@@ -1,5 +1,10 @@
 # Release Notes
 
+## v4.14.0 - September 14, 2022
+
+- Feature - Bridge support for "widget external events", passed via `SFWidgetDelegate` optional method.
+
+
 ## v4.12.0 - August 24, 2022
 
 - Project - add a new target to OutbrainDemo.xcodeproj - SwiftUI-Bridge sample app
