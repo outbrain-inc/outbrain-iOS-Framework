@@ -336,6 +336,9 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
     NSString *widgetIndex = [NSString stringWithFormat:@"%d", self.widgetIndex];
     NSString *baseUrl = @"https://widgets.outbrain.com/reactNativeBridge/index.html";
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"BridgeUrl"]) {
+        baseUrl = [[NSUserDefaults standardUserDefaults] valueForKey:@"BridgeUrl"];
+    }
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:baseUrl];
     
     NSMutableArray * newQueryItems = [NSMutableArray arrayWithCapacity:[components.queryItems count] + 1];
