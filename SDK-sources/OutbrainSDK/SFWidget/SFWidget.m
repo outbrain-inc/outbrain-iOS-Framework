@@ -366,12 +366,14 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
         [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ccpa" value: GDPRUtils.sharedInstance.ccpaPrivacyString]];
     }
     
-    // Video Params
-    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"platform" value: @"iOS"]];
+    // Additional Params (Video and more)
+    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"platform" value: @"ios"]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sdkVersion" value: OB_SDK_VERSION]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"inApp" value: @"true"]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appBundle" value: bundleIdentifier]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dosv" value: [[UIDevice currentDevice] systemVersion]]];
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"deviceType" value: [OBUtils deviceTypeShort]]];
     
     // Widget Events
     if (self.isWidgetEventsEnabled) {

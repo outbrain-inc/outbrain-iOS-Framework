@@ -13,6 +13,9 @@
 
 +(NSString *) deviceModel;
 
++(NSString *) deviceTypeShort;
+
+
 +(BOOL) isDeviceSimulator;
 
 +(NSString *) decodeHTMLEnocdedString:(NSString *)htmlEncodedString;
