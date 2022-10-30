@@ -160,12 +160,14 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     //OS
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dos" value: @"ios"]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value: @"ios"]];
     
     //OS version
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dosv" value: [[UIDevice currentDevice] systemVersion]]];
     
     //Device model
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dm" value: [OBUtils deviceModel]]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"deviceType" value: [OBUtils deviceTypeShort]]];
     
     //Viewability actions
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"va" value: @"true"]];
