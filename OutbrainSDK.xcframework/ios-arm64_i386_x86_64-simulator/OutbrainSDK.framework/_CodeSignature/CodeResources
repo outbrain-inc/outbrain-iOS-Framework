@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		SUR4JrjNtQDJlM82ue/OqSFQv0Q=
+		yXdBADRbV1wu81KN9YuRmk4eYCI=
 		</data>
 		<key>Headers/OBBrandedCarouselSettings.h</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Headers/OBUtils.h</key>
 		<data>
-		xZ22E4fWrOtvP/cla2etKH3Ovug=
+		/xIuG0/b7YTs6885cqc8Yw5PaUQ=
 		</data>
 		<key>Headers/OBVideoWidget.h</key>
 		<data>
@@ -134,11 +134,11 @@
 		</data>
 		<key>Headers/SFWidgetCollectionCell.h</key>
 		<data>
-		oNg8KVVTurZU6zTk/egZnJv9Wp0=
+		BADAgvSppYs9aOpSNGQe093VtJc=
 		</data>
 		<key>Headers/SFWidgetTableCell.h</key>
 		<data>
-		wlRl3F10Z6SliJjTQ1TTr9++kYM=
+		jgABDsqMInE0iojGnCWya2rW5l0=
 		</data>
 		<key>Headers/SmartFeedManager.h</key>
 		<data>
@@ -459,11 +459,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SUR4JrjNtQDJlM82ue/OqSFQv0Q=
+			yXdBADRbV1wu81KN9YuRmk4eYCI=
 			</data>
 			<key>hash2</key>
 			<data>
-			95tFFqdhyPtNdAtvWdqnSn1y1QvasUBoXhkmKt895VY=
+			8bq2uRkgqwVqYg2F1wOVxfEt5eWpEU4gxc4M+4kPx8Q=
 			</data>
 		</dict>
 		<key>Headers/OBBrandedCarouselSettings.h</key>
@@ -624,11 +624,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xZ22E4fWrOtvP/cla2etKH3Ovug=
+			/xIuG0/b7YTs6885cqc8Yw5PaUQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			oFsmSttBPnoz29QHkTtu+plpgLZ40J36QBzpxCJEYaE=
+			CpCQjubKNxK4szkjUuLj7w2b+spx0+sPwooJRwmuSVg=
 			</data>
 		</dict>
 		<key>Headers/OBVideoWidget.h</key>
@@ -811,22 +811,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oNg8KVVTurZU6zTk/egZnJv9Wp0=
+			BADAgvSppYs9aOpSNGQe093VtJc=
 			</data>
 			<key>hash2</key>
 			<data>
-			oyqf/gT+K7yK9xouORGj/fqYOWuKWMTe4JhXKhi8nUc=
+			rFVCpuK+qPqY1LNclSU4p6T09G2e1Ta90JvqY4H5IMk=
 			</data>
 		</dict>
 		<key>Headers/SFWidgetTableCell.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wlRl3F10Z6SliJjTQ1TTr9++kYM=
+			jgABDsqMInE0iojGnCWya2rW5l0=
 			</data>
 			<key>hash2</key>
 			<data>
-			VQe3kHlgd/qlZy8VL2N88HGjz5oOuyG8Ar+LYK9shlk=
+			Z5tmhm28tHosrLJncVSnSOtKJ4hj6JTekv+RT0koyB8=
 			</data>
 		</dict>
 		<key>Headers/SmartFeedManager.h</key>

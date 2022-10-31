@@ -13,8 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SFWidgetCollectionCell : UICollectionViewCell
 
-@property (nonatomic, strong) WKWebView *webview;
-
 @end
 
 NS_ASSUME_NONNULL_END
