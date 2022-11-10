@@ -1,5 +1,9 @@
 # Release Notes
 
+## v4.15.0 - October 31, 2022
+
+- Internal - add `deviceType` and `dosv` params to Bridge and ODB requests to improve user-agent detection.
+
 ## v4.14.0 - September 14, 2022
 
 - Feature - Bridge support for "widget external events", passed via `SFWidgetDelegate` optional method.
