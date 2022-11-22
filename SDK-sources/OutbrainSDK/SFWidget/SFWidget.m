@@ -342,10 +342,28 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:baseUrl];
     
     NSMutableArray * newQueryItems = [NSMutableArray arrayWithCapacity:[components.queryItems count] + 1];
-    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"widgetId" value: self.widgetId]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"idx" value: widgetIndex]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"installationKey" value: self.installationKey]];
+    
+    // handle URL for regualr requests and for platforms API (started Nov 2022)
+    if (self.usingBundleUrl || self.usingPortalUrl) {
+        // first verify that mandatory param "lang" is set
+        if (self.lang == nil) {
+            [NSException raise:@"OutbrainSDKError" format:@"It seems you set Bridge to run with platform API and did NOT set the mandatory \"lang\" (language) property"];
+        }
+        NSString *urlParamKey = self.usingBundleUrl ? @"bundleUrl" : @"portalUrl";
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:urlParamKey value: self.url]];
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"lang" value: self.lang]];
+    }
+    else if (self.usingContentUrl) { // this is another platform API option
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"contentUrl" value: self.url]];
+    }
+    else { // this will be used 99% of time (unless publisher uses platform API)
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
+    }
+    
+    
     if (self.tParam) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"t" value: self.tParam]];
     }

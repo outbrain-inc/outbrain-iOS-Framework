@@ -62,6 +62,12 @@ extern NSString * _Nonnull const SFWIDGET_T_PARAM_NOTIFICATION;
 
 @property (nonatomic, strong) WKWebView *webview;
 
+@property (nonatomic, assign) BOOL usingPortalUrl;
+@property (nonatomic, assign) BOOL usingBundleUrl;
+@property (nonatomic, assign) BOOL usingContentUrl;
+@property (nonatomic, strong) NSString *lang; // mandatory field for platforms
+
+
 -(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId installationKey:(NSString * _Nonnull)installationKey;
 
 /**
