@@ -355,9 +355,15 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
         NSString *urlParamKey = self.usingBundleUrl ? @"bundleUrl" : @"portalUrl";
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:urlParamKey value: self.url]];
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"lang" value: self.lang]];
+        if (self.psub) {
+            [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"psub" value: self.psub]];
+        }
     }
     else if (self.usingContentUrl) { // this is another platform API option
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"contentUrl" value: self.url]];
+        if (self.psub) {
+            [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"psub" value: self.psub]];
+        }
     }
     else { // this will be used 99% of time (unless publisher uses platform API)
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
