@@ -174,7 +174,7 @@
     [[OutbrainHelper sharedInstance].tokensHandler setTokenForRequest: self.request response: obRecResponse];
     
     if ([[obRecResponse responseRequest] token]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:SFWIDGET_T_PARAM_NOTIFICATION object:self userInfo:@{@"t" : [[obRecResponse responseRequest] token]}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION object:self userInfo:@{@"t" : [[obRecResponse responseRequest] token]}];
     }
     
 

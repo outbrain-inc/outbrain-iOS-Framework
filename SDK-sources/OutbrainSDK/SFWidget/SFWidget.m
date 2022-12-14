@@ -28,7 +28,7 @@
 @property (nonatomic, strong) NSString *installationKey;
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, assign) NSInteger widgetIndex;
-@property (nonatomic, strong) NSString *tParam;
+@property (nonatomic, strong) NSString *bridgeParams;
 @property (nonatomic, assign) BOOL darkMode;
 
 //
@@ -41,7 +41,7 @@
 @end
 
 
-NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready";
+NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Brdige_Params_Ready";
 
 
 @implementation SFWidget
@@ -279,9 +279,9 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     if (self.widgetIndex > 0) {
         NSLog(@"differ fetching until we'll have the \"t\" param ready");
         [[NSNotificationCenter defaultCenter] addObserver:self
-                      selector:@selector(receiveTParamNotification:)
-                      name:SFWIDGET_T_PARAM_NOTIFICATION
-                      object:nil];
+                                                 selector:@selector(receiveBridgeParamsNotification:)
+                                                     name:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION
+                                                   object:nil];
         return;
     }
     else {
@@ -303,11 +303,11 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) receiveTParamNotification:(NSNotification *) notification
+- (void) receiveBridgeParamsNotification:(NSNotification *) notification
 {
-    if ([[notification name] isEqualToString:SFWIDGET_T_PARAM_NOTIFICATION]) {
-        NSLog (@"Successfully received SFWIDGET_T_PARAM_NOTIFICATION");
-        self.tParam = [notification.userInfo valueForKey:@"t"];
+    if ([[notification name] isEqualToString:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION]) {
+        NSLog (@"Successfully received SFWIDGET_BRIDGE_PARAMS_NOTIFICATION");
+        self.bridgeParams = [notification.userInfo valueForKey:@"bridgeParams"];
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self initialLoadUrl];
@@ -355,6 +355,7 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
         NSString *urlParamKey = self.usingBundleUrl ? @"bundleUrl" : @"portalUrl";
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:urlParamKey value: self.url]];
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"lang" value: self.lang]];
+        
         if (self.psub) {
             [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"psub" value: self.psub]];
         }
@@ -370,8 +371,9 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     }
     
     
-    if (self.tParam) {
-        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"t" value: self.tParam]];
+    
+    if (self.bridgeParams) {
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"bridgeParams" value: self.bridgeParams]];
     }
     if (self.darkMode) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"darkMode" value: @"true"]];
