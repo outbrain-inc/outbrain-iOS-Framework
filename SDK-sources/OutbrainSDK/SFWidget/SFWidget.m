@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSString *installationKey;
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, assign) NSInteger widgetIndex;
+@property (nonatomic, strong) NSString *tParam
 @property (nonatomic, strong) NSString *bridgeParams;
 @property (nonatomic, assign) BOOL darkMode;
 
@@ -40,8 +41,8 @@
 
 @end
 
-
-NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Brdige_Params_Ready";
+NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready";
+NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_Params_Ready";
 
 
 @implementation SFWidget
@@ -277,7 +278,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Brdige_P
     [self.webview setNeedsLayout];
     
     if (self.widgetIndex > 0) {
-        NSLog(@"differ fetching until we'll have the \"t\" param ready");
+        NSLog(@"differ fetching until we'll have the \"t\" or \"bridgeParams\" ready");
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveBridgeParamsNotification:)
                                                      name:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION
@@ -308,6 +309,18 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Brdige_P
     if ([[notification name] isEqualToString:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION]) {
         NSLog (@"Successfully received SFWIDGET_BRIDGE_PARAMS_NOTIFICATION");
         self.bridgeParams = [notification.userInfo valueForKey:@"bridgeParams"];
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self initialLoadUrl];
+        });
+    }
+}
+
+- (void) receiveTParamNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:SFWIDGET_T_PARAM_NOTIFICATION]) {
+        NSLog (@"Successfully received SFWIDGET_T_PARAM_NOTIFICATION");
+        self.tParam = [notification.userInfo valueForKey:@"t"];
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self initialLoadUrl];
@@ -371,7 +384,9 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Brdige_P
     }
     
     
-    
+    if (self.tParam) {
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"t" value: self.tParam]];
+    }
     if (self.bridgeParams) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"bridgeParams" value: self.bridgeParams]];
     }
@@ -403,6 +418,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Brdige_P
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dosv" value: [[UIDevice currentDevice] systemVersion]]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"deviceType" value: [OBUtils deviceTypeShort]]];
+//    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"forceumv" value: @"1"]];
     
     // Widget Events
     if (self.isWidgetEventsEnabled) {
