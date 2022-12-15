@@ -28,7 +28,7 @@
 @property (nonatomic, strong) NSString *installationKey;
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, assign) NSInteger widgetIndex;
-@property (nonatomic, strong) NSString *tParam
+@property (nonatomic, strong) NSString *tParam;
 @property (nonatomic, strong) NSString *bridgeParams;
 @property (nonatomic, assign) BOOL darkMode;
 
