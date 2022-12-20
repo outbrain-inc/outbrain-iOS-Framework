@@ -1,5 +1,11 @@
 # Release Notes
 
+## v4.17.0 - December 20, 2022
+
+- Internal - use `bridgeParams` to pass values between 2 Bridge widget on the same page (instead of `t` param)
+- Feature - add support for platforms API in the SDK Bridge
+
+
 ## v4.15.0 - October 31, 2022
 
 - Internal - add `deviceType` and `dosv` params to Bridge and ODB requests to improve user-agent detection.
