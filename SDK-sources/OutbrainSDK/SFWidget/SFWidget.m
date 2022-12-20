@@ -283,6 +283,10 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
                                                  selector:@selector(receiveBridgeParamsNotification:)
                                                      name:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION
                                                    object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(receiveTParamNotification:)
+                                                     name:SFWIDGET_T_PARAM_NOTIFICATION
+                                                   object:nil];
         return;
     }
     else {
@@ -307,8 +311,8 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
 - (void) receiveBridgeParamsNotification:(NSNotification *) notification
 {
     if ([[notification name] isEqualToString:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION]) {
-        NSLog (@"Successfully received SFWIDGET_BRIDGE_PARAMS_NOTIFICATION");
         self.bridgeParams = [notification.userInfo valueForKey:@"bridgeParams"];
+        NSLog(@"Successfully received SFWIDGET_BRIDGE_PARAMS_NOTIFICATION - %@", self.bridgeParams);
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self initialLoadUrl];
