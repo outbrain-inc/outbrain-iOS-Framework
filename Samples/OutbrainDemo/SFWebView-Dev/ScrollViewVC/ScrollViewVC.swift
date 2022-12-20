@@ -22,7 +22,14 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate, OBViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: self.widgetId, installationKey: OBConf.installationKey)
+        // Test regular widget on the same page together with Bridge widget
+        /*
+        Outbrain.fetchRecommendations(for: OBRequest(url: OBConf.baseURL, widgetID: "SDK_1")) { outbrainRes in
+            print("outbrain response \(outbrainRes?.recommendations)")
+        }
+        */
+        
+        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: self.widgetId, widgetIndex: 1, installationKey: OBConf.installationKey, userId: nil, darkMode: false)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
