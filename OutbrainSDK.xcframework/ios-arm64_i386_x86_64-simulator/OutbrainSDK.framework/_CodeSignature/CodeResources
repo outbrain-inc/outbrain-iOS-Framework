@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		yXdBADRbV1wu81KN9YuRmk4eYCI=
+		SUR4JrjNtQDJlM82ue/OqSFQv0Q=
 		</data>
 		<key>Headers/OBBrandedCarouselSettings.h</key>
 		<data>
@@ -130,7 +130,7 @@
 		</data>
 		<key>Headers/SFWidget.h</key>
 		<data>
-		+yKgvG9pWr60O6WVR52TPGKmUkI=
+		eGXFlnYeEHsKay83wR8bNX3FFyY=
 		</data>
 		<key>Headers/SFWidgetCollectionCell.h</key>
 		<data>
@@ -459,11 +459,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yXdBADRbV1wu81KN9YuRmk4eYCI=
+			SUR4JrjNtQDJlM82ue/OqSFQv0Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			8bq2uRkgqwVqYg2F1wOVxfEt5eWpEU4gxc4M+4kPx8Q=
+			95tFFqdhyPtNdAtvWdqnSn1y1QvasUBoXhkmKt895VY=
 			</data>
 		</dict>
 		<key>Headers/OBBrandedCarouselSettings.h</key>
@@ -800,11 +800,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+yKgvG9pWr60O6WVR52TPGKmUkI=
+			eGXFlnYeEHsKay83wR8bNX3FFyY=
 			</data>
 			<key>hash2</key>
 			<data>
-			xDW8ImaYQSH2oM5gX6aUTbXCNUCkFHc8g+Ck3WAhLgo=
+			LjWnLIMv1HbhTSNTMOi1D1LRGl9RVjNJhnDCI8rp0VE=
 			</data>
 		</dict>
 		<key>Headers/SFWidgetCollectionCell.h</key>
