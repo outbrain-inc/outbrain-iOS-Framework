@@ -56,6 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 extern NSString * _Nonnull const SFWIDGET_T_PARAM_NOTIFICATION;
+extern NSString * _Nonnull const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION;
 
 
 @interface SFWidget : UIView
