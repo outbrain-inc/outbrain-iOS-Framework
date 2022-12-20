@@ -34,7 +34,7 @@
         }
         if ([msgBody valueForKey:@"t"]) {
             NSString *tParam = [msgBody valueForKey:@"t"];
-            NSLog(@"SFWidgetMessageHandler received t param: %@", tParam);
+            NSLog(@"SFWidgetMessageHandler received t param: %@ - Not posting notification (using bridgeParams instead)", tParam);
         }
         if ([msgBody valueForKey:@"t"]) {
             NSString *tParam = [msgBody valueForKey:@"t"];
