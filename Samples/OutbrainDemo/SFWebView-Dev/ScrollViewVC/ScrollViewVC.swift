@@ -29,7 +29,7 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate, OBViewController {
         }
         */
         
-        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: self.widgetId, widgetIndex: 1, installationKey: OBConf.installationKey, userId: nil, darkMode: false)
+        self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: self.widgetId, widgetIndex: 0, installationKey: OBConf.installationKey, userId: nil, darkMode: false)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
