@@ -1,5 +1,7 @@
 # Release Notes
 
+## v4.18.0 - January 11, 2023
+- Internal - add query param to all ODB and MV requests `ref=app.sdk`
 ## v4.17.0 - December 20, 2022
 
 - Internal - use `bridgeParams` to pass values between 2 Bridge widget on the same page (instead of `t` param)
