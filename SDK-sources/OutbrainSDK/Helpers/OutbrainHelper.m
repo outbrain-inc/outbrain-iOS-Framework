@@ -187,6 +187,9 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     // Secure HTTPS
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"secured" value: @"true"]];
     
+    // Refferer
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ref" value: @"app.sdk"]];
+    
     // External ID
     if (request.externalID != nil) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"extid" value: request.externalID]];
