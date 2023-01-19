@@ -21,7 +21,7 @@
 
 
 // The version of the sdk
-NSString * const OB_SDK_VERSION     =   @"4.18.0";
+NSString * const OB_SDK_VERSION     =   @"4.19.0";
 
 NSString * const OB_AD_NETWORK_ID   =   @"97r2b46745.skadnetwork";
 
