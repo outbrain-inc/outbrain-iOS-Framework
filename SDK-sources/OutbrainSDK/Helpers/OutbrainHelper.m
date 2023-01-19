@@ -188,7 +188,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"secured" value: @"true"]];
     
     // Refferer
-    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ref" value: @"app.sdk"]];
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ref" value: @"https://app-sdk.outbrain.com/"]];
     
     // External ID
     if (request.externalID != nil) {

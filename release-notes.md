@@ -1,5 +1,8 @@
 # Release Notes
 
+## v4.19.0 - January 19, 2023
+- Internal - add query param to all ODB and MV requests `ref=https://app-sdk.outbrain.com/`
+
 ## v4.18.0 - January 11, 2023
 - Internal - add query param to all ODB and MV requests `ref=app.sdk`
 ## v4.17.0 - December 20, 2022
