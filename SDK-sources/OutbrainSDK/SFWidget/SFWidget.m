@@ -125,8 +125,27 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     [SFUtils addConstraintsToFillParent:self];
 }
 
+
+- (BOOL) isDynamicTextSizeEnabled {
+    NSString *preferredCategory = [UIApplication sharedApplication].preferredContentSizeCategory;
+    return ![preferredCategory isEqualToString:UIContentSizeCategoryLarge];
+}
+
+- (NSString *) getCurrentDynamicTextSize {
+    NSString *preferredCategory = [UIApplication sharedApplication].preferredContentSizeCategory;
+    return preferredCategory;
+}
+
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if ([self isDynamicTextSizeEnabled]) {
+        NSLog(@"Dynamic text size is enabled.");
+        NSString *currentSize = [self getCurrentDynamicTextSize];
+        NSLog(@"Current dynamic text size: %@", currentSize);
+    } else {
+        NSLog(@"Dynamic text size is disabled.");
+    }
+    
     @try  {
         [self handleViewability:scrollView];
     } @catch (NSException *exception) {
