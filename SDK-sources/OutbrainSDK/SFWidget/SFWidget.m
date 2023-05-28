@@ -126,24 +126,27 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
 }
 
 
-- (BOOL) isDynamicTextSizeEnabled {
+- (BOOL) isDynamicTextSizeLarge {
+    NSArray *dynamicXtraLargeCategories = @[UIContentSizeCategoryExtraLarge,
+                                            UIContentSizeCategoryExtraExtraLarge,
+                                            UIContentSizeCategoryExtraExtraExtraLarge,
+                                            UIContentSizeCategoryAccessibilityMedium,
+                                            UIContentSizeCategoryAccessibilityLarge,
+                                            UIContentSizeCategoryAccessibilityExtraLarge,
+                                            UIContentSizeCategoryAccessibilityExtraExtraLarge,
+                                            UIContentSizeCategoryAccessibilityExtraExtraExtraLarge];
+    
     NSString *preferredCategory = [UIApplication sharedApplication].preferredContentSizeCategory;
-    return ![preferredCategory isEqualToString:UIContentSizeCategoryLarge];
-}
-
-- (NSString *) getCurrentDynamicTextSize {
-    NSString *preferredCategory = [UIApplication sharedApplication].preferredContentSizeCategory;
-    return preferredCategory;
+    NSLog(@"Dynamic preferredCategory: %@", preferredCategory);
+    return [dynamicXtraLargeCategories containsObject:preferredCategory];
 }
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if ([self isDynamicTextSizeEnabled]) {
-        NSLog(@"Dynamic text size is enabled.");
-        NSString *currentSize = [self getCurrentDynamicTextSize];
-        NSLog(@"Current dynamic text size: %@", currentSize);
+    if ([self isDynamicTextSizeLarge]) {
+        NSLog(@"Large Dynamic text size is enabled.");
     } else {
-        NSLog(@"Dynamic text size is disabled.");
+        NSLog(@"Large Dynamic text size is disabled.");
     }
     
     @try  {
