@@ -143,12 +143,6 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if ([self isDynamicTextSizeLarge]) {
-        NSLog(@"Large Dynamic text size is enabled.");
-    } else {
-        NSLog(@"Large Dynamic text size is disabled.");
-    }
-    
     @try  {
         [self handleViewability:scrollView];
     } @catch (NSException *exception) {
@@ -444,6 +438,9 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dosv" value: [[UIDevice currentDevice] systemVersion]]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"deviceType" value: [OBUtils deviceTypeShort]]];
+    
+    // text size (Accessibility)
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"textSize" value: [self isDynamicTextSizeLarge] ? @"large" : @"default"]];
     
     // Widget Events
     if (self.isWidgetEventsEnabled) {
