@@ -138,6 +138,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     
     NSString *preferredCategory = [UIApplication sharedApplication].preferredContentSizeCategory;
     NSLog(@"Dynamic preferredCategory: %@", preferredCategory);
+    NSLog(@"Dynamic isDynamicTextSizeLarge: %@", [dynamicXtraLargeCategories containsObject:preferredCategory] ? @"YES" : @"NO");
     return [dynamicXtraLargeCategories containsObject:preferredCategory];
 }
 
