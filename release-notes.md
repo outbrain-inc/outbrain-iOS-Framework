@@ -1,5 +1,9 @@
 # Release Notes
 
+## v4.20.0 - June 5, 2023
+
+- Feature - Bridge support users who enable "large text size" in the device settings, i.e. accessibility feature. Therefore, if we detect that "large text" is on - we pass a new parameter "textSize" to the Bridge, which handles it accordingly.
+
 ## v4.19.0 - January 19, 2023
 - Internal - add query param to all ODB and MV requests `ref=https://app-sdk.outbrain.com/`
 
