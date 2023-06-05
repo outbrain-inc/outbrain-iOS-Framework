@@ -125,6 +125,23 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     [SFUtils addConstraintsToFillParent:self];
 }
 
+
+- (BOOL) isDynamicTextSizeLarge {
+    NSArray *dynamicXtraLargeCategories = @[UIContentSizeCategoryExtraLarge,
+                                            UIContentSizeCategoryExtraExtraLarge,
+                                            UIContentSizeCategoryExtraExtraExtraLarge,
+                                            UIContentSizeCategoryAccessibilityMedium,
+                                            UIContentSizeCategoryAccessibilityLarge,
+                                            UIContentSizeCategoryAccessibilityExtraLarge,
+                                            UIContentSizeCategoryAccessibilityExtraExtraLarge,
+                                            UIContentSizeCategoryAccessibilityExtraExtraExtraLarge];
+    
+    NSString *preferredCategory = [UIApplication sharedApplication].preferredContentSizeCategory;
+    NSLog(@"Dynamic preferredCategory: %@", preferredCategory);
+    NSLog(@"Dynamic isDynamicTextSizeLarge: %@", [dynamicXtraLargeCategories containsObject:preferredCategory] ? @"YES" : @"NO");
+    return [dynamicXtraLargeCategories containsObject:preferredCategory];
+}
+
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     @try  {
@@ -422,6 +439,9 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"appName" value: appNameStr]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dosv" value: [[UIDevice currentDevice] systemVersion]]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"deviceType" value: [OBUtils deviceTypeShort]]];
+    
+    // text size (Accessibility)
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"textSize" value: [self isDynamicTextSizeLarge] ? @"large" : @"default"]];
     
     // Widget Events
     if (self.isWidgetEventsEnabled) {
