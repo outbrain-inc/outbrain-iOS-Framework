@@ -14,7 +14,7 @@
 #import "OBErrorReporting.h"
 #import "OBAppleAdIdUtil.h"
 
-@interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate>
+@interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate, WKNavigationDelegate>
 
 @property (nonatomic, assign) NSInteger currentHeight;
 @property (nonatomic, assign) BOOL isLoading;
@@ -290,6 +290,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     self.webview.scrollView.scrollEnabled = NO;
     [self.webview setOpaque:NO];
     self.webview.UIDelegate = self;
+    self.webview.navigationDelegate = self;
     [self addSubview:self.webview];
     [SFUtils addConstraintsToFillParent:self.webview];
     [self.webview setNeedsLayout];
@@ -539,6 +540,43 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     return nil;
 }
 
+#pragma mark - WKNavigationDelegate
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
+ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.targetFrame.isMainFrame) {
+        // This is a top-level navigation, not within an iframe
+        decisionHandler(WKNavigationActionPolicyAllow);
+        return;
+    } else {
+        // This is a navigation within an iframe
+        if (navigationAction.request.URL.absoluteString == nil || [navigationAction.request.URL.absoluteString isEqualToString:@"about:blank"]) {
+            NSLog(@"SFWidget: Navigation within an iframe - skipping since absoluteString is empty");
+            decisionHandler(WKNavigationActionPolicyAllow);
+            return;
+        }
+        if (navigationAction.navigationType == WKNavigationTypeOther || navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+            if ([[navigationAction.request.URL scheme] isEqualToString:@"https"] && ![[navigationAction.request.URL host] containsString:@"outbrain.com"]) {
+                NSLog(@"SFWidget - Clicked a link inside an iframe: %@", navigationAction.request.URL.absoluteString);
+                NSLog(@"SFWidget - Clicked a link inside an iframe: %@", (navigationAction.navigationType == WKNavigationTypeOther) ? @"WKNavigationTypeOther" : @"WKNavigationTypeLinkActivated");
+                // TODO propogate click
+                if (self.delegate != nil && navigationAction.request.URL != nil) {
+                    [self.delegate onRecClick: navigationAction.request.URL];
+                }
+                // Cancel navigation since we want to open the link outside of the WKWebView
+                decisionHandler(WKNavigationActionPolicyCancel);
+                return;
+            }
+            else {
+                NSLog(@"SFWidget: Navigation within an iframe skipped because navigationUrl host contains outbrain.com");
+                decisionHandler(WKNavigationActionPolicyAllow);
+                return;
+            }
+        }
+        
+        // Allow or cancel the navigation
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
+}
 
 
 @end
