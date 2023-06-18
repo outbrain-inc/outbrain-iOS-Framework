@@ -558,7 +558,8 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
             if ([[navigationAction.request.URL scheme] isEqualToString:@"https"] && ![[navigationAction.request.URL host] containsString:@"outbrain.com"]) {
                 NSLog(@"SFWidget - Clicked a link inside an iframe: %@", navigationAction.request.URL.absoluteString);
                 NSLog(@"SFWidget - Clicked a link inside an iframe: %@", (navigationAction.navigationType == WKNavigationTypeOther) ? @"WKNavigationTypeOther" : @"WKNavigationTypeLinkActivated");
-                // TODO propogate click
+                
+                // Propogate click to delegate
                 if (self.delegate != nil && navigationAction.request.URL != nil) {
                     [self.delegate onRecClick: navigationAction.request.URL];
                 }
