@@ -33,6 +33,7 @@
 
 @property (nonatomic, strong) NSMutableArray * loadedOutbrainRecommendationResponses;
 @property (nonatomic, strong) NSMutableDictionary *indexPathToOutbrainReqDict;
+@property (nonatomic, strong) NSDate *lastPostsUpdate;
 @end
 
 @implementation PostsListVC
@@ -172,7 +173,7 @@
     __block NSInteger widgetIndex = [self _widgetIndexForIndexPath:indexPath];
     typeof(self) __weak __self = self;
     Post * p = (Post *)[self.postsData firstObject];
-    OBRequest * request = [OBRequest requestWithURL:p.url widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
+    OBRequest * request = [OBRequest requestWithURL:OBDemoURL widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
     self.indexPathToOutbrainReqDict[indexPath] = request;
     
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
@@ -203,7 +204,40 @@
     return [p isKindOfClass:[OBRecommendationResponse class]];
 }
 
-- (void)refreshPostsList
+
+- (void)refreshPostsList {
+    if (self.lastPostsUpdate && [[NSDate date] timeIntervalSinceDate:self.lastPostsUpdate] < 30 && self.postsData.count > 0)
+    {
+        return;
+    }
+    
+    self.lastPostsUpdate = [NSDate date];
+    NSMutableArray *posts = [[NSMutableArray alloc] initWithCapacity:10];
+    [posts addObject: [self generatePost:@"111"]];
+    [posts addObject: [self generatePost:@"222"]];
+    [posts addObject: [self generatePost:@"333"]];
+    [posts addObject: [self generatePost:@"444"]];
+    [posts addObject: [self generatePost:@"555"]];
+
+    
+    self.postsData = posts;
+    dispatch_after(0, dispatch_get_main_queue(), ^(void){
+        [self.tableView reloadData];
+    });
+}
+
+- (Post *)generatePost:(NSString *)postId {
+    Post *p = [[Post alloc] init];
+    p.author = @"John Snow";
+    p.date = [NSDate date];
+    p.title = @"this is ttile";
+    p.summary = @"this is summary";
+    p.post_id = postId;
+    p.url = @"https://google.com";
+    return p;
+}
+
+- (void)refreshPostsListOld
 {
     NSLog(@"refreshPostsList...");
     NSDate * refreshStart = [NSDate date];
