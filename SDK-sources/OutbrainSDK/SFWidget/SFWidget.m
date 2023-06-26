@@ -181,12 +181,60 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
 
 #pragma mark - Private Methods
 
+-(void) handleViewabilitySwiftUI {
+//    NSLog(@"******************************");
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGFloat webViewHeight =  self.bounds.size.height * scale;
+
+    CGRect viewFrame = [self convertRect:self.bounds toView:nil];
+    CGRect intersection = CGRectIntersection(viewFrame, self.window.frame);
+    BOOL isViewVisible = intersection.size.height > 0;
+//    if (isViewVisible) {
+//        NSLog(@"Bridge is visible: %f", intersection.size.height);
+//    }
+//    else {
+//        NSLog(@"Bridge is NOT visible");
+//    }
+    CGFloat intersactionHeight = intersection.size.height;
+    CGFloat viewportHeight = self.window.frame.size.height;
+    
+    double distanceToContainerTop = (CGRectGetMinY(self.window.frame) - CGRectGetMinY(viewFrame)) * scale;
+    double distanceToContainerBottom = (CGRectGetMaxY(self.window.frame) - CGRectGetMinY(viewFrame)) * scale;
+    
+//    NSLog(@"distanceToContainerTop %f", distanceToContainerTop);
+//    NSLog(@"distanceToContainerBottom %f", distanceToContainerBottom);
+//    NSLog(@"******************************");
+    
+    NSInteger visibleFrom;
+    NSInteger visibleTo;
+    
+    if (isViewVisible) {
+        // webview on screen
+        if (distanceToContainerTop < 0) {
+            // top
+            visibleFrom = 0;
+            visibleTo = distanceToContainerBottom;
+        } else if (intersactionHeight < viewportHeight) {
+            // bottom
+            visibleFrom = webViewHeight - (int)intersactionHeight*scale;
+            visibleTo = webViewHeight;
+        } else {
+            // full
+            visibleFrom = distanceToContainerTop;
+            visibleTo = distanceToContainerTop + (int)intersactionHeight*scale;
+        }
+        
+//        NSLog(@"*** report viewability: visibleFrom: %d, visibleTo: %d", visibleFrom, visibleTo);
+        [self eveluateViewabilityScriptFrom:visibleFrom to:visibleTo];
+    }
+}
+
 -(void) handleViewability:(UIView *)containerView {
     CGFloat scale = [UIScreen mainScreen].scale;
     
     CGRect viewFrame = [self convertRect:self.bounds toView:nil];
     CGRect intersection = CGRectIntersection(viewFrame, containerView.frame);
-    
+        
     NSInteger intersactionHeight = (NSInteger) lroundf(intersection.size.height * scale);
     
     CGFloat containerViewHeight = containerView.frame.size.height * scale;
@@ -199,6 +247,12 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     double distanceToContainerBottom = (CGRectGetMaxY(containerView.frame) - CGRectGetMinY(viewFrame)) * scale;
     
     BOOL isViewVisible = distanceToContainerBottom > 0 && containerViewHeight != distanceToContainerBottom && intersactionHeight != 0;
+    
+    // distanceToContainerTop - when negative - the top of the feed is BELOW the TOP of the UIWindow,
+    //                          when positive - the top of the feed is ABOVE the TOP of the UIWindow
+    
+    // distanceToContainerBottom - when negative - the top of the feed is BELOW the BOTTOM of the UIWindow,
+    //                              when positive - the top of the feed is ABOVE the BOTTOM of the UIWindow
     
     NSInteger visibleFrom;
     NSInteger visibleTo;
@@ -218,6 +272,8 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
             visibleFrom = distanceToContainerTop;
             visibleTo = distanceToContainerTop + roundedContainerViewHeight;
         }
+        
+        // NSLog(@"$$$ report viewability: visibleFrom: %d, visibleTo: %d", visibleFrom, visibleTo);
         
         [self eveluateViewabilityScriptFrom:visibleFrom to:visibleTo];
     }
