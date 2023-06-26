@@ -107,10 +107,10 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
         NSTimeInterval interval = 0.5; // 500 milliseconds
         if (self.viewabilityTimer == nil) {
             self.viewabilityTimer = [NSTimer scheduledTimerWithTimeInterval:interval
-                                                              target:self
-                                                            selector:@selector(handleViewabilitySwiftUI)
-                                                            userInfo:nil
-                                                             repeats:YES];
+                                                                     target:self
+                                                                   selector:@selector(handleViewabilitySwiftUI)
+                                                                   userInfo:nil
+                                                                    repeats:YES];
         }
     }
 }
@@ -202,6 +202,17 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
 #pragma mark - Private Methods
 
 -(void) handleViewabilitySwiftUI {
+    @try  {
+        [self _handleViewabilitySwiftUI];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in SFWidget - _handleViewabilitySwiftUI() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SFWidget - _handleViewabilitySwiftUI() - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+-(void) _handleViewabilitySwiftUI {
 //    NSLog(@"******************************");
     CGFloat scale = [UIScreen mainScreen].scale;
     CGFloat webViewHeight =  self.bounds.size.height * scale;
@@ -244,7 +255,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
             visibleTo = distanceToContainerTop + (int)intersactionHeight*scale;
         }
         
-//        NSLog(@"*** report viewability: visibleFrom: %d, visibleTo: %d", visibleFrom, visibleTo);
+        // NSLog(@"*** report viewability: visibleFrom: %d, visibleTo: %d", visibleFrom, visibleTo);
         [self eveluateViewabilityScriptFrom:visibleFrom to:visibleTo];
     }
 }
