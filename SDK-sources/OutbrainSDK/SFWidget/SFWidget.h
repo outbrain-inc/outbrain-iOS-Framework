@@ -70,7 +70,18 @@ extern NSString * _Nonnull const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION;
 @property (nonatomic, strong) NSString *psub; // Additional source breakdown available for platforms.
 
 
--(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId installationKey:(NSString * _Nonnull)installationKey;
+-(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate
+                          url:(NSString * _Nonnull)url
+                     widgetId:(NSString * _Nonnull)widgetId
+              installationKey:(NSString * _Nonnull)installationKey;
+
+-(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate
+                          url:(NSString * _Nonnull)url
+                     widgetId:(NSString * _Nonnull)widgetId
+                  widgetIndex:(NSInteger)widgetIndex
+              installationKey:(NSString * _Nonnull)installationKey
+                       userId:(NSString * _Nullable)userId
+                     darkMode:(BOOL)darkMode;
 
 /**
  *  @brief configure SFWidget with the relevant params for displaying the feed
@@ -85,9 +96,18 @@ extern NSString * _Nonnull const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION;
  *  @param installationKey - the publisher "installation key" as received by the account manager in Outbrain
  *  @param userId - should be nil - unless the publisher wants to set a custom userId AND received the approval for data collection from the user.
  *  @param darkMode - should be "false" , unless the publisher wants the display the feed in "dark mode".
+ *  @param isSwiftUI - should be "true" if the Bridge is integrated inside SwiftUI
  *
  */
--(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString * _Nonnull)installationKey userId:(NSString * _Nullable)userId darkMode:(BOOL)darkMode;
+-(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate
+                          url:(NSString * _Nonnull)url
+                     widgetId:(NSString * _Nonnull)widgetId
+                  widgetIndex:(NSInteger)widgetIndex
+              installationKey:(NSString * _Nonnull)installationKey
+                       userId:(NSString * _Nullable)userId
+                     darkMode:(BOOL)darkMode
+                    isSwiftUI:(BOOL)isSwiftUI;
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 

@@ -39,6 +39,8 @@
 
 @property (nonatomic, strong) WKWebView *hiddenWebView;
 
+@property (nonatomic, strong) NSTimer *viewabilityTimer;
+
 @end
 
 NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready";
@@ -73,6 +75,10 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
 }
 
 -(void) configureWithDelegate:(id<SFWidgetDelegate>)delegate url:(NSString *)url widgetId:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString *)installationKey userId:(NSString *)userId darkMode:(BOOL)darkMode {
+    [self configureWithDelegate:delegate url:url widgetId:widgetId widgetIndex:widgetIndex installationKey:installationKey userId:userId darkMode:darkMode isSwiftUI:NO];
+}
+
+-(void) configureWithDelegate:(id<SFWidgetDelegate>)delegate url:(NSString *)url widgetId:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString *)installationKey userId:(NSString *)userId darkMode:(BOOL)darkMode isSwiftUI:(BOOL)isSwiftUI {
     self.delegate = delegate;
     self.url = url;
     self.widgetId = widgetId;
@@ -93,6 +99,18 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     
     self.messageHandler.delegate = self;
     [self configureSFWidget];
+    
+    if (isSwiftUI) {
+        // In SwiftUI we monitor Viewability in a different way because we don't get the
+        // scrollViewDidScroll delegate callback calls.
+        
+        NSTimeInterval interval = 0.5; // 500 milliseconds
+        self.viewabilityTimer = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                          target:self
+                                                        selector:@selector(handleViewabilitySwiftUI)
+                                                        userInfo:nil
+                                                         repeats:YES];
+    }
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size
@@ -379,6 +397,9 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
 
 -(void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if (self.viewabilityTimer) {
+        [self.viewabilityTimer invalidate];
+    }
 }
 
 - (void) receiveBridgeParamsNotification:(NSNotification *) notification
