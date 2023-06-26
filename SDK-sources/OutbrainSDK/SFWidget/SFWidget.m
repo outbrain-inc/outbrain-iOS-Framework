@@ -214,6 +214,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
 
 -(void) _handleViewabilitySwiftUI {
 //    NSLog(@"******************************");
+    BOOL shouldTryLoadMore = NO;
     CGFloat scale = [UIScreen mainScreen].scale;
     CGFloat webViewHeight =  self.bounds.size.height * scale;
 
@@ -247,6 +248,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
             visibleTo = distanceToContainerBottom;
         } else if (intersactionHeight < viewportHeight) {
             // bottom
+            shouldTryLoadMore = YES;
             visibleFrom = webViewHeight - (int)intersactionHeight*scale;
             visibleTo = webViewHeight;
         } else {
@@ -257,6 +259,14 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
         
         // NSLog(@"*** report viewability: visibleFrom: %d, visibleTo: %d", visibleFrom, visibleTo);
         [self eveluateViewabilityScriptFrom:visibleFrom to:visibleTo];
+    }
+    
+    // Check if need to load more
+    if (shouldTryLoadMore) {
+        if (self.isLoading || self.inTransition || self.currentHeight <= 1000) {
+            return;
+        }
+        [self loadMore];
     }
 }
 
