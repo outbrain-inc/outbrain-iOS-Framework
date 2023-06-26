@@ -105,11 +105,13 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
         // scrollViewDidScroll delegate callback calls.
         
         NSTimeInterval interval = 0.5; // 500 milliseconds
-        self.viewabilityTimer = [NSTimer scheduledTimerWithTimeInterval:interval
-                                                          target:self
-                                                        selector:@selector(handleViewabilitySwiftUI)
-                                                        userInfo:nil
-                                                         repeats:YES];
+        if (self.viewabilityTimer == nil) {
+            self.viewabilityTimer = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                              target:self
+                                                            selector:@selector(handleViewabilitySwiftUI)
+                                                            userInfo:nil
+                                                             repeats:YES];
+        }
     }
 }
 
