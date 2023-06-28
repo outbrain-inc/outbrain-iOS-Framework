@@ -1,5 +1,11 @@
 # Release Notes
 
+## v4.21.0 - June 28, 2023
+
+- Feature - support Viewability and loadMore() for Bridge SwiftUI implemenation. 
+- Feature - add support for "display ads" click (inside an iFrame)
+
+
 ## v4.20.1 - June 5, 2023
 
 - Feature - Bridge support users who enable "large text size" in the device settings, i.e. accessibility feature. Therefore, if we detect that "large text" is on - we pass a new parameter "textSize" to the Bridge, which handles it accordingly.
