@@ -27,7 +27,9 @@ struct SFWidgetWrapper: UIViewRepresentable {
     let myCustomDelegate = CustomSFWidgetDelegate()
     
     func updateUIView(_ uiView: SFWidget, context: Context) {
-        uiView.configure(with: myCustomDelegate, url: baseURL, widgetId: widgetId, installationKey: installationKey)
+        uiView.configure(with: myCustomDelegate, url: baseURL, widgetId: widgetId, widgetIndex: 0, installationKey: installationKey, userId: nil, darkMode: false, isSwiftUI: true);
+            
+                         
         myCustomDelegate.sfWidgetObservable = sfWidgetObservable
     }
     
