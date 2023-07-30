@@ -302,7 +302,6 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
 - (void) _updateAPVCacheForResponse:(OBRecommendationResponse *)response
 {
     OBSettings *responseSettings = response.settings;
-    BOOL apvReturnValue = NO;
     
     OBRequest *request = [response performSelector:@selector(getPrivateRequest)];
     if (request == nil) return; // sanity
@@ -314,7 +313,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
         return;
     }
     
-    // If apvReturnValue is false we don't want to set anything
+    // If responseSettings.apv is false we don't want to set anything
     if (responseSettings.apv == NO) return;
     
     // Finally, if we got here, we need to save the apv value to the apvCache

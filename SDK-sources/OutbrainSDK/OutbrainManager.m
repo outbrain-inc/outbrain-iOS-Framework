@@ -142,7 +142,7 @@ NSString *const USER_DEFAULT_PLIST_IS_VALID_VALUE = @"USER_DEFAULT_PLIST_IS_VALI
         // handle HTTP errors here
         if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
             NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
-            NSLog(@"reportPlistIsValidToServerIfNeeded - HTTP status code: %d", statusCode);
+            NSLog(@"reportPlistIsValidToServerIfNeeded - HTTP status code: %ld", (long)statusCode);
             if (statusCode != 200) {
                 return;
             }

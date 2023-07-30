@@ -35,12 +35,12 @@ extern NSString * const OB_VIDEO_PAUSE_NOTIFICATION;
 - (void) adChoicesClicked:(id)sender;
 - (void) outbrainLabelClicked:(id)sender;
 
-// Read more module
-- (void) readMoreButtonClicked:(id)sender;
-
 @optional
 
 - (BOOL) isVideoCurrentlyPlaying;
+
+// Read more module
+- (void) readMoreButtonClicked:(id)sender;
 
 @end
 
