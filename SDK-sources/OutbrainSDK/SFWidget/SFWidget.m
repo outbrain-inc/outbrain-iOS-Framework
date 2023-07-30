@@ -469,7 +469,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     }
     NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    NSString *widgetIndex = [NSString stringWithFormat:@"%d", self.widgetIndex];
+    NSString *widgetIndex = [NSString stringWithFormat:@"%ld", (long)self.widgetIndex];
     NSString *baseUrl = @"https://widgets.outbrain.com/reactNativeBridge/index.html";
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"BridgeUrl"]) {
         baseUrl = [[NSUserDefaults standardUserDefaults] valueForKey:@"BridgeUrl"];

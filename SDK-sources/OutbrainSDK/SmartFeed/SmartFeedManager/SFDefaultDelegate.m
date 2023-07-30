@@ -31,7 +31,9 @@
 }
 
 -(void) presentSFSafariViewController:(NSURL *_Nonnull)url {
-    SFSafariViewController *safariVC = [[SFSafariViewController alloc]initWithURL:url entersReaderIfAvailable:NO];
+    SFSafariViewControllerConfiguration *configuration = [[SFSafariViewControllerConfiguration alloc] init];
+    configuration.entersReaderIfAvailable = YES;
+    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:url configuration: configuration];
     UINavigationController *navigationController = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     [navigationController presentViewController:safariVC animated:true completion:^{}];
 }

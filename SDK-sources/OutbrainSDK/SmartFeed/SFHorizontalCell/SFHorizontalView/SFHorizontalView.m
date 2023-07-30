@@ -146,7 +146,6 @@
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     
     OBRecommendation *rec = self.sfItem.outbrainRecs[indexPath.row];
-    UIColor *shadowColor = rec.isPaidLink && (self.shadowColor != nil) ? self.shadowColor : [UIColor lightGrayColor];
     
     if (self.configureHorizontalItem) {
         self.configureHorizontalItem((SFCollectionViewCell *)cell, rec);

@@ -780,7 +780,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     else if ([cell isKindOfClass:[SFHorizontalTableViewCell class]]) {
         [self configureHorizontalTableViewCell:(SFHorizontalTableViewCell *)cell atIndexPath:indexPath];
         if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) {
-            [self configureBrandedCarouselCell:cell atIndexPath:indexPath];
+            [self configureBrandedCarouselCell:(id<SFBrandedCarouselCellCommonProps>)cell atIndexPath:indexPath];
         }
     }
     else if ([cell isKindOfClass:[SFVideoTableViewCell class]] ||
@@ -1202,7 +1202,7 @@ NSString * const kCustomUIIdentifier = @"CustomUIIdentifier";
     else if ([cell isKindOfClass:[SFHorizontalCollectionViewCell class]]) {
         [self configureHorizontalCell:cell atIndexPath:indexPath];
         if (sfItem.itemType == SFTypeBrandedCarouselWithTitle) {
-            [self configureBrandedCarouselCell:cell atIndexPath:indexPath];
+            [self configureBrandedCarouselCell:(id<SFBrandedCarouselCellCommonProps>)cell atIndexPath:indexPath];
         }
     }
     else if ([cell isKindOfClass:[SFVideoCollectionViewCell class]] ||
