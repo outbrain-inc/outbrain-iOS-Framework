@@ -32,7 +32,7 @@
 
 -(void) presentSFSafariViewController:(NSURL *_Nonnull)url {
     SFSafariViewControllerConfiguration *configuration = [[SFSafariViewControllerConfiguration alloc] init];
-    configuration.entersReaderIfAvailable = YES;
+    configuration.entersReaderIfAvailable = NO;
     SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:url configuration: configuration];
     UINavigationController *navigationController = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
     [navigationController presentViewController:safariVC animated:true completion:^{}];
