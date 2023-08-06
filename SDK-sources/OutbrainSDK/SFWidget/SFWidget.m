@@ -552,6 +552,14 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
         [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetEvents" value: @"test"]];
     }
     
+    // External ID + External Secondary ID
+    if (self.extId) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"extid" value: self.extId]];
+    }
+    if (self.extSecondaryId) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"extid2" value: self.extSecondaryId]];
+    }
+    
     if (self.userId) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"userId" value: self.userId]];
     }

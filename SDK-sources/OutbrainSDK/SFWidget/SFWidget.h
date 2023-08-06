@@ -68,7 +68,8 @@ extern NSString * _Nonnull const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION;
 @property (nonatomic, assign) BOOL usingContentUrl;
 @property (nonatomic, strong) NSString *lang; // mandatory field for portalUrl or bundleUrl
 @property (nonatomic, strong) NSString *psub; // Additional source breakdown available for platforms.
-
+@property (nonatomic, strong) NSString *extId; // external ID - optional param for the Bridge
+@property (nonatomic, strong) NSString *extSecondaryId; // external secondary ID - optional param for the Bridge
 
 -(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate
                           url:(NSString * _Nonnull)url
