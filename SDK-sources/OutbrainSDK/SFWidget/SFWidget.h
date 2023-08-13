@@ -56,13 +56,33 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 extern NSString * _Nonnull const SFWIDGET_T_PARAM_NOTIFICATION;
+extern NSString * _Nonnull const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION;
 
 
 @interface SFWidget : UIView
 
 @property (nonatomic, strong) WKWebView *webview;
 
--(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId installationKey:(NSString * _Nonnull)installationKey;
+@property (nonatomic, assign) BOOL usingPortalUrl;
+@property (nonatomic, assign) BOOL usingBundleUrl;
+@property (nonatomic, assign) BOOL usingContentUrl;
+@property (nonatomic, strong) NSString *lang; // mandatory field for portalUrl or bundleUrl
+@property (nonatomic, strong) NSString *psub; // Additional source breakdown available for platforms.
+@property (nonatomic, strong) NSString *extId; // external ID - optional param for the Bridge
+@property (nonatomic, strong) NSString *extSecondaryId; // external secondary ID - optional param for the Bridge
+
+-(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate
+                          url:(NSString * _Nonnull)url
+                     widgetId:(NSString * _Nonnull)widgetId
+              installationKey:(NSString * _Nonnull)installationKey;
+
+-(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate
+                          url:(NSString * _Nonnull)url
+                     widgetId:(NSString * _Nonnull)widgetId
+                  widgetIndex:(NSInteger)widgetIndex
+              installationKey:(NSString * _Nonnull)installationKey
+                       userId:(NSString * _Nullable)userId
+                     darkMode:(BOOL)darkMode;
 
 /**
  *  @brief configure SFWidget with the relevant params for displaying the feed
@@ -77,9 +97,18 @@ extern NSString * _Nonnull const SFWIDGET_T_PARAM_NOTIFICATION;
  *  @param installationKey - the publisher "installation key" as received by the account manager in Outbrain
  *  @param userId - should be nil - unless the publisher wants to set a custom userId AND received the approval for data collection from the user.
  *  @param darkMode - should be "false" , unless the publisher wants the display the feed in "dark mode".
+ *  @param isSwiftUI - should be "true" if the Bridge is integrated inside SwiftUI
  *
  */
--(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString * _Nonnull)installationKey userId:(NSString * _Nullable)userId darkMode:(BOOL)darkMode;
+-(void) configureWithDelegate:(id<SFWidgetDelegate> _Nonnull)delegate
+                          url:(NSString * _Nonnull)url
+                     widgetId:(NSString * _Nonnull)widgetId
+                  widgetIndex:(NSInteger)widgetIndex
+              installationKey:(NSString * _Nonnull)installationKey
+                       userId:(NSString * _Nullable)userId
+                     darkMode:(BOOL)darkMode
+                    isSwiftUI:(BOOL)isSwiftUI;
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 

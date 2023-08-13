@@ -27,6 +27,15 @@
             NSInteger newHeight = [[msgBody valueForKey:@"height"] integerValue];
             [self.delegate didHeightChanged:newHeight];
         }
+        if ([msgBody valueForKey:@"bridgeParams"]) {
+            NSString *bridgeParam = [msgBody valueForKey:@"bridgeParams"];
+            NSLog(@"SFWidgetMessageHandler received bridgeParam: %@", bridgeParam);
+            [[NSNotificationCenter defaultCenter] postNotificationName:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION object:self userInfo:@{@"bridgeParams" : bridgeParam}];
+        }
+        if ([msgBody valueForKey:@"t"]) {
+            NSString *tParam = [msgBody valueForKey:@"t"];
+            NSLog(@"SFWidgetMessageHandler received t param: %@ - Not posting notification (using bridgeParams instead)", tParam);
+        }
         if ([msgBody valueForKey:@"t"]) {
             NSString *tParam = [msgBody valueForKey:@"t"];
             NSLog(@"SFWidgetMessageHandler received t param: %@", tParam);

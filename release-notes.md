@@ -1,5 +1,26 @@
 # Release Notes
 
+## v4.21.0 - June 28, 2023
+
+- Feature - support Viewability and loadMore() for Bridge SwiftUI implemenation. 
+- Feature - add support for "display ads" click (inside an iFrame)
+
+
+## v4.20.1 - June 5, 2023
+
+- Feature - Bridge support users who enable "large text size" in the device settings, i.e. accessibility feature. Therefore, if we detect that "large text" is on - we pass a new parameter "textSize" to the Bridge, which handles it accordingly.
+
+## v4.19.0 - January 19, 2023
+- Internal - add query param to all ODB and MV requests `ref=https://app-sdk.outbrain.com/`
+
+## v4.18.0 - January 11, 2023
+- Internal - add query param to all ODB and MV requests `ref=app.sdk`
+## v4.17.0 - December 20, 2022
+
+- Internal - use `bridgeParams` to pass values between 2 Bridge widget on the same page (instead of `t` param)
+- Feature - add support for platforms API in the SDK Bridge
+
+
 ## v4.15.0 - October 31, 2022
 
 - Internal - add `deviceType` and `dosv` params to Bridge and ODB requests to improve user-agent detection.

@@ -225,7 +225,6 @@ NSString * const SFHorizontalFixedWithTitleWithVideoCellReuseId = @"SFHorizontal
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     SFItemType sfItemType = sfItem.itemType;
     const BOOL isLandscape = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
-    const BOOL isTablet = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
     
     CGFloat screenWidth = collectionView.frame.size.width;
     if (sfItemType == SFTypeGridTwoInRowNoTitle ||

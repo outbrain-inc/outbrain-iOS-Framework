@@ -14,7 +14,7 @@
 #import "OBErrorReporting.h"
 #import "OBAppleAdIdUtil.h"
 
-@interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate>
+@interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate, WKNavigationDelegate>
 
 @property (nonatomic, assign) NSInteger currentHeight;
 @property (nonatomic, assign) BOOL isLoading;
@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, assign) NSInteger widgetIndex;
 @property (nonatomic, strong) NSString *tParam;
+@property (nonatomic, strong) NSString *bridgeParams;
 @property (nonatomic, assign) BOOL darkMode;
 
 //
@@ -38,10 +39,12 @@
 
 @property (nonatomic, strong) WKWebView *hiddenWebView;
 
+@property (nonatomic, strong) NSTimer *viewabilityTimer;
+
 @end
 
-
 NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready";
+NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_Params_Ready";
 
 
 @implementation SFWidget
@@ -72,6 +75,10 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 }
 
 -(void) configureWithDelegate:(id<SFWidgetDelegate>)delegate url:(NSString *)url widgetId:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString *)installationKey userId:(NSString *)userId darkMode:(BOOL)darkMode {
+    [self configureWithDelegate:delegate url:url widgetId:widgetId widgetIndex:widgetIndex installationKey:installationKey userId:userId darkMode:darkMode isSwiftUI:NO];
+}
+
+-(void) configureWithDelegate:(id<SFWidgetDelegate>)delegate url:(NSString *)url widgetId:(NSString *)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString *)installationKey userId:(NSString *)userId darkMode:(BOOL)darkMode isSwiftUI:(BOOL)isSwiftUI {
     self.delegate = delegate;
     self.url = url;
     self.widgetId = widgetId;
@@ -92,6 +99,20 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     
     self.messageHandler.delegate = self;
     [self configureSFWidget];
+    
+    if (isSwiftUI) {
+        // In SwiftUI we monitor Viewability in a different way because we don't get the
+        // scrollViewDidScroll delegate callback calls.
+        
+        NSTimeInterval interval = 0.5; // 500 milliseconds
+        if (self.viewabilityTimer == nil) {
+            self.viewabilityTimer = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                                     target:self
+                                                                   selector:@selector(handleViewabilitySwiftUI)
+                                                                   userInfo:nil
+                                                                    repeats:YES];
+        }
+    }
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size
@@ -122,6 +143,23 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [cell.contentView addSubview:self];
     [SFUtils addConstraintsToFillParent:self];
+}
+
+
+- (BOOL) isDynamicTextSizeLarge {
+    NSArray *dynamicXtraLargeCategories = @[UIContentSizeCategoryExtraLarge,
+                                            UIContentSizeCategoryExtraExtraLarge,
+                                            UIContentSizeCategoryExtraExtraExtraLarge,
+                                            UIContentSizeCategoryAccessibilityMedium,
+                                            UIContentSizeCategoryAccessibilityLarge,
+                                            UIContentSizeCategoryAccessibilityExtraLarge,
+                                            UIContentSizeCategoryAccessibilityExtraExtraLarge,
+                                            UIContentSizeCategoryAccessibilityExtraExtraExtraLarge];
+    
+    NSString *preferredCategory = [UIApplication sharedApplication].preferredContentSizeCategory;
+    NSLog(@"Dynamic preferredCategory: %@", preferredCategory);
+    NSLog(@"Dynamic isDynamicTextSizeLarge: %@", [dynamicXtraLargeCategories containsObject:preferredCategory] ? @"YES" : @"NO");
+    return [dynamicXtraLargeCategories containsObject:preferredCategory];
 }
 
 #pragma mark - UIScrollView Delegate
@@ -163,12 +201,81 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 #pragma mark - Private Methods
 
+-(void) handleViewabilitySwiftUI {
+    @try  {
+        [self _handleViewabilitySwiftUI];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in SFWidget - _handleViewabilitySwiftUI() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in SFWidget - _handleViewabilitySwiftUI() - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+-(void) _handleViewabilitySwiftUI {
+//    NSLog(@"******************************");
+    BOOL shouldTryLoadMore = NO;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGFloat webViewHeight =  self.bounds.size.height * scale;
+
+    CGRect viewFrame = [self convertRect:self.bounds toView:nil];
+    CGRect intersection = CGRectIntersection(viewFrame, self.window.frame);
+    BOOL isViewVisible = intersection.size.height > 0;
+//    if (isViewVisible) {
+//        NSLog(@"Bridge is visible: %f", intersection.size.height);
+//    }
+//    else {
+//        NSLog(@"Bridge is NOT visible");
+//    }
+    CGFloat intersactionHeight = intersection.size.height;
+    CGFloat viewportHeight = self.window.frame.size.height;
+    
+    double distanceToContainerTop = (CGRectGetMinY(self.window.frame) - CGRectGetMinY(viewFrame)) * scale;
+    double distanceToContainerBottom = (CGRectGetMaxY(self.window.frame) - CGRectGetMinY(viewFrame)) * scale;
+    
+//    NSLog(@"distanceToContainerTop %f", distanceToContainerTop);
+//    NSLog(@"distanceToContainerBottom %f", distanceToContainerBottom);
+//    NSLog(@"******************************");
+    
+    NSInteger visibleFrom;
+    NSInteger visibleTo;
+    
+    if (isViewVisible) {
+        // webview on screen
+        if (distanceToContainerTop < 0) {
+            // top
+            visibleFrom = 0;
+            visibleTo = distanceToContainerBottom;
+        } else if (intersactionHeight < viewportHeight) {
+            // bottom
+            shouldTryLoadMore = YES;
+            visibleFrom = webViewHeight - (int)intersactionHeight*scale;
+            visibleTo = webViewHeight;
+        } else {
+            // full
+            visibleFrom = distanceToContainerTop;
+            visibleTo = distanceToContainerTop + (int)intersactionHeight*scale;
+        }
+        
+        // NSLog(@"*** report viewability: visibleFrom: %d, visibleTo: %d", visibleFrom, visibleTo);
+        [self eveluateViewabilityScriptFrom:visibleFrom to:visibleTo];
+    }
+    
+    // Check if need to load more
+    if (shouldTryLoadMore) {
+        if (self.isLoading || self.inTransition || self.currentHeight <= 1000) {
+            return;
+        }
+        [self loadMore];
+    }
+}
+
 -(void) handleViewability:(UIView *)containerView {
     CGFloat scale = [UIScreen mainScreen].scale;
     
     CGRect viewFrame = [self convertRect:self.bounds toView:nil];
     CGRect intersection = CGRectIntersection(viewFrame, containerView.frame);
-    
+        
     NSInteger intersactionHeight = (NSInteger) lroundf(intersection.size.height * scale);
     
     CGFloat containerViewHeight = containerView.frame.size.height * scale;
@@ -181,6 +288,12 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     double distanceToContainerBottom = (CGRectGetMaxY(containerView.frame) - CGRectGetMinY(viewFrame)) * scale;
     
     BOOL isViewVisible = distanceToContainerBottom > 0 && containerViewHeight != distanceToContainerBottom && intersactionHeight != 0;
+    
+    // distanceToContainerTop - when negative - the top of the feed is BELOW the TOP of the UIWindow,
+    //                          when positive - the top of the feed is ABOVE the TOP of the UIWindow
+    
+    // distanceToContainerBottom - when negative - the top of the feed is BELOW the BOTTOM of the UIWindow,
+    //                              when positive - the top of the feed is ABOVE the BOTTOM of the UIWindow
     
     NSInteger visibleFrom;
     NSInteger visibleTo;
@@ -200,6 +313,8 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
             visibleFrom = distanceToContainerTop;
             visibleTo = distanceToContainerTop + roundedContainerViewHeight;
         }
+        
+        // NSLog(@"$$$ report viewability: visibleFrom: %d, visibleTo: %d", visibleFrom, visibleTo);
         
         [self eveluateViewabilityScriptFrom:visibleFrom to:visibleTo];
     }
@@ -272,16 +387,21 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     self.webview.scrollView.scrollEnabled = NO;
     [self.webview setOpaque:NO];
     self.webview.UIDelegate = self;
+    self.webview.navigationDelegate = self;
     [self addSubview:self.webview];
     [SFUtils addConstraintsToFillParent:self.webview];
     [self.webview setNeedsLayout];
     
     if (self.widgetIndex > 0) {
-        NSLog(@"differ fetching until we'll have the \"t\" param ready");
+        NSLog(@"differ fetching until we'll have the \"t\" or \"bridgeParams\" ready");
         [[NSNotificationCenter defaultCenter] addObserver:self
-                      selector:@selector(receiveTParamNotification:)
-                      name:SFWIDGET_T_PARAM_NOTIFICATION
-                      object:nil];
+                                                 selector:@selector(receiveBridgeParamsNotification:)
+                                                     name:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(receiveTParamNotification:)
+                                                     name:SFWIDGET_T_PARAM_NOTIFICATION
+                                                   object:nil];
         return;
     }
     else {
@@ -301,6 +421,21 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
 
 -(void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if (self.viewabilityTimer) {
+        [self.viewabilityTimer invalidate];
+    }
+}
+
+- (void) receiveBridgeParamsNotification:(NSNotification *) notification
+{
+    if ([[notification name] isEqualToString:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION]) {
+        self.bridgeParams = [notification.userInfo valueForKey:@"bridgeParams"];
+        NSLog(@"Successfully received SFWIDGET_BRIDGE_PARAMS_NOTIFICATION - %@", self.bridgeParams);
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self initialLoadUrl];
+        });
+    }
 }
 
 - (void) receiveTParamNotification:(NSNotification *) notification
@@ -334,7 +469,7 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     }
     NSString *appNameStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    NSString *widgetIndex = [NSString stringWithFormat:@"%d", self.widgetIndex];
+    NSString *widgetIndex = [NSString stringWithFormat:@"%ld", (long)self.widgetIndex];
     NSString *baseUrl = @"https://widgets.outbrain.com/reactNativeBridge/index.html";
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"BridgeUrl"]) {
         baseUrl = [[NSUserDefaults standardUserDefaults] valueForKey:@"BridgeUrl"];
@@ -342,12 +477,40 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     NSURLComponents *components = [[NSURLComponents alloc] initWithString:baseUrl];
     
     NSMutableArray * newQueryItems = [NSMutableArray arrayWithCapacity:[components.queryItems count] + 1];
-    [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"widgetId" value: self.widgetId]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"idx" value: widgetIndex]];
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"installationKey" value: self.installationKey]];
+    
+    // handle URL for regualr requests and for platforms API (started Nov 2022)
+    if (self.usingBundleUrl || self.usingPortalUrl) {
+        // first verify that mandatory param "lang" is set
+        if (self.lang == nil) {
+            [NSException raise:@"OutbrainSDKError" format:@"It seems you set Bridge to run with platform API and did NOT set the mandatory \"lang\" (language) property"];
+        }
+        NSString *urlParamKey = self.usingBundleUrl ? @"bundleUrl" : @"portalUrl";
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:urlParamKey value: self.url]];
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"lang" value: self.lang]];
+        
+        if (self.psub) {
+            [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"psub" value: self.psub]];
+        }
+    }
+    else if (self.usingContentUrl) { // this is another platform API option
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"contentUrl" value: self.url]];
+        if (self.psub) {
+            [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"psub" value: self.psub]];
+        }
+    }
+    else { // this will be used 99% of time (unless publisher uses platform API)
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"permalink" value: self.url]];
+    }
+    
+    
     if (self.tParam) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"t" value: self.tParam]];
+    }
+    if (self.bridgeParams) {
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"bridgeParams" value: self.bridgeParams]];
     }
     if (self.darkMode) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"darkMode" value: @"true"]];
@@ -378,12 +541,23 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"dosv" value: [[UIDevice currentDevice] systemVersion]]];
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"deviceType" value: [OBUtils deviceTypeShort]]];
     
+    // text size (Accessibility)
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"textSize" value: [self isDynamicTextSizeLarge] ? @"large" : @"default"]];
+    
     // Widget Events
     if (self.isWidgetEventsEnabled) {
         [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetEvents" value: @"all"]];
     }
     else if (self.isWidgetEventsTestMode) {
         [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"widgetEvents" value: @"test"]];
+    }
+    
+    // External ID + External Secondary ID
+    if (self.extId) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"extid" value: self.extId]];
+    }
+    if (self.extSecondaryId) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"extid2" value: self.extSecondaryId]];
     }
     
     if (self.userId) {
@@ -474,6 +648,44 @@ NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready"
     return nil;
 }
 
+#pragma mark - WKNavigationDelegate
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
+ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.targetFrame.isMainFrame) {
+        // This is a top-level navigation, not within an iframe
+        decisionHandler(WKNavigationActionPolicyAllow);
+        return;
+    } else {
+        // This is a navigation within an iframe
+        if (navigationAction.request.URL.absoluteString == nil || [navigationAction.request.URL.absoluteString isEqualToString:@"about:blank"]) {
+            NSLog(@"SFWidget: Navigation within an iframe - skipping since absoluteString is empty");
+            decisionHandler(WKNavigationActionPolicyAllow);
+            return;
+        }
+        if (navigationAction.navigationType == WKNavigationTypeOther || navigationAction.navigationType == WKNavigationTypeLinkActivated) {
+            if ([[navigationAction.request.URL scheme] isEqualToString:@"https"] && ![[navigationAction.request.URL host] containsString:@"outbrain.com"]) {
+                NSLog(@"SFWidget - Clicked a link inside an iframe: %@", navigationAction.request.URL.absoluteString);
+                NSLog(@"SFWidget - Clicked a link inside an iframe: %@", (navigationAction.navigationType == WKNavigationTypeOther) ? @"WKNavigationTypeOther" : @"WKNavigationTypeLinkActivated");
+                
+                // Propogate click to delegate
+                if (self.delegate != nil && navigationAction.request.URL != nil) {
+                    [self.delegate onRecClick: navigationAction.request.URL];
+                }
+                // Cancel navigation since we want to open the link outside of the WKWebView
+                decisionHandler(WKNavigationActionPolicyCancel);
+                return;
+            }
+            else {
+                NSLog(@"SFWidget: Navigation within an iframe skipped because navigationUrl host contains outbrain.com");
+                decisionHandler(WKNavigationActionPolicyAllow);
+                return;
+            }
+        }
+        
+        // Allow or cancel the navigation
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
+}
 
 
 @end
