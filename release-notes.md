@@ -1,5 +1,11 @@
 # Release Notes
 
+## v4.26.0 - August 13, 2023
+
+- Feature - add support for `extid` and `extid2` for the Bridge
+- Internal - update minimum deployment and more recommendations by Xcode to 12.0 (Xcode recommendation)
+
+
 ## v4.21.0 - June 28, 2023
 
 - Feature - support Viewability and loadMore() for Bridge SwiftUI implemenation. 
