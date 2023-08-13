@@ -11,7 +11,7 @@ references:
   ios_config: &ios_config
     working_directory: ~/repo
     macos:
-      xcode: "13.1.0"
+      xcode: "13.1"
 
   # Export environment variables
   define_var_previous_release_version: &define_var_previous_release_version
