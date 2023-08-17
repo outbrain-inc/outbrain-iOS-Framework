@@ -11,7 +11,7 @@ references:
   ios_config: &ios_config
     working_directory: ~/repo
     macos:
-      xcode: "13.1.0"
+      xcode: "14.0"
 
   # Export environment variables
   define_var_previous_release_version: &define_var_previous_release_version
@@ -38,11 +38,6 @@ jobs:
               rm -fr OutbrainSDK.xcframework
             fi
           working_directory: Samples/OutbrainDemo
-            
-      - run:
-          name: Cleaing the SDK project - OBFramework
-          command: xcodebuild clean -target OBFramework
-          working_directory: SDK-sources
 
       - run:
           name: Cleaing the SDK project - OutbrainSDK
@@ -50,8 +45,8 @@ jobs:
           working_directory: SDK-sources
 
       - run:
-          name: Building the SDK project
-          command: xcodebuild -target OBFramework -UseModernBuildSystem=NO
+          name: Building the SDK XCFramework for release
+          command: ./dynamic_framework_build.sh
           working_directory: SDK-sources
 
       - run:
