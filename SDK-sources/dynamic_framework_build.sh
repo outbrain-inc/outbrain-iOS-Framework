@@ -17,6 +17,7 @@ export SF_MASTER_SCRIPT_RUNNING=1
 # 2
 # Setup some constants for use later on.
 SRCROOT=`pwd`
+BUILD_FOLDER=~/build
 TARGET_NAME="OutbrainSDK"
 FRAMEWORK_NAME="OutbrainSDK"
 SF_WRAPPER_NAME="${FRAMEWORK_NAME}.xcframework"
@@ -25,8 +26,9 @@ SF_RELEASE_DIR="${SRCROOT}/Release/"
 
 
 # If remnants from a previous build exist, delete them.
-if [ -d "${SRCROOT}/build" ]; then
-rm -rf "${SRCROOT}/build"
+if [ -d "${BUILD_FOLDER}" ]; then
+rm -rf "${BUILD_FOLDER}"
+mkdir "${BUILD_FOLDER}"
 fi
 
 if [ -d "${SRCROOT}/Release" ]; then
@@ -39,29 +41,30 @@ mkdir "${SRCROOT}/Release"
 
 # Build the framework for device and for simulator (using
 # all needed architectures).
-xcodebuild archive -scheme "${TARGET_NAME}" -destination="iOS" -sdk iphonesimulator SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${SRCROOT}/build/Release-iphonesimulator"
-xcodebuild archive -scheme "${TARGET_NAME}" -destination="iOS" -sdk iphoneos        SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${SRCROOT}/build/Release-iphoneos"
+xcodebuild archive -scheme "${TARGET_NAME}" -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${BUILD_FOLDER}/Release-iphonesimulator"
+xcodebuild archive -scheme "${TARGET_NAME}" -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES -archivePath "${BUILD_FOLDER}/Release-iphoneos"
 
+ls -l "${BUILD_FOLDER}"
 
-
-ls -l "${SRCROOT}/build/"
-
-
-# XCFramework with debug symbols - see https://pspdfkit.com/blog/2021/advances-in-xcframeworks/#built-in-support-for-bcsymbolmaps-and-dsyms
+echo "**********************************************"
+echo "xcodebuild -create-xcframework ..."
+echo "**********************************************"
 xcodebuild -create-xcframework -allow-internal-distribution \
-    -framework "${SRCROOT}/build/Release-iphoneos.xcarchive/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework" \
-    -debug-symbols "${SRCROOT}/build/Release-iphoneos.xcarchive/dSYMs/${FRAMEWORK_NAME}.framework.dSYM" \
-    -framework "${SRCROOT}/build/Release-iphonesimulator.xcarchive/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework" \
-    -debug-symbols "${SRCROOT}/build/Release-iphonesimulator.xcarchive/dSYMs/${FRAMEWORK_NAME}.framework.dSYM" \
+    -framework "${BUILD_FOLDER}/Release-iphoneos.xcarchive/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework" \
+    -debug-symbols "${BUILD_FOLDER}/Release-iphoneos.xcarchive/dSYMs/${FRAMEWORK_NAME}.framework.dSYM" \
+    -framework "${BUILD_FOLDER}/Release-iphonesimulator.xcarchive/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework" \
+    -debug-symbols "${BUILD_FOLDER}/Release-iphonesimulator.xcarchive/dSYMs/${FRAMEWORK_NAME}.framework.dSYM" \
     -output "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
 
-# 8
-# Copy the framework back for the Journal app to use
+ls -l "${SF_RELEASE_DIR}"
+
+# # 8
+# # Copy the framework back for the Journal app to use
 cp -a "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework" "${SRCROOT}/../Samples/OutbrainDemo"
 
 
-# 9
-# Delete the most recent build.
-if [ -d "${SRCROOT}/build" ]; then
-rm -rf "${SRCROOT}/build"
+# # 9
+# # Delete the most recent build.
+if [ -d "${BUILD_FOLDER}" ]; then
+rm -rf "${BUILD_FOLDER}"
 fi
