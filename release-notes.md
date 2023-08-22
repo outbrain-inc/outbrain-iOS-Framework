@@ -1,5 +1,9 @@
 # Release Notes
 
+## v4.26.0 - August 22, 2023
+
+- Feature - Bridge, add support for `extid` and `extid2` for the Bridge
+- Internal - Change CI release build to run dynamic_framework_build.sh directly and without SymbolsMap.
 ## v4.21.0 - June 28, 2023
 
 - Feature - support Viewability and loadMore() for Bridge SwiftUI implemenation. 
