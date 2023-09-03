@@ -89,6 +89,13 @@
 @property (nonatomic, copy) NSString * _Nullable externalID;
 
 /**
+ *  @brief external secondary ID is a custom parmater for the publisher to pass on to our SDK, we will include this in the ODB request
+ *          it will serve the publisher for reporting purposes.
+ *
+ **/
+@property (nonatomic, copy) NSString * _Nullable extSecondaryId;
+
+/**
  *  @brief fab is the AB test value (internal use only)
  *
  **/
