@@ -1,5 +1,9 @@
 # Release Notes
 
+## v4.27.0 - September 4, 2023
+
+- Bug fix - *display ads* support caused un-wanted navigation due to wrong click detection in iFrame (we basically reverted PR#233).
+
 ## v4.26.0 - August 22, 2023
 
 - Feature - Bridge, add support for `extid` and `extid2` for the Bridge
