@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "OutbrainSDK",
     platforms: [
-        .iOS(.v10)
+        .iOS(.v12)
     ],
     products: [
         .library(name: "OutbrainSDK", targets: ["WrapperSPMTarget"])
