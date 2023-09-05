@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.homepage            = "https://www.outbrain.com"
   s.license             = { :type => 'Proprietary', :text => 'Copyright 2018 Outbrain. All rights reserved.' }
   s.author              = { "Oded Regev" => "oregev@outbrain.com" }
-  s.platform            = :ios, "10.3"
+  s.platform            = :ios, "12.0"
   s.source              = { :git => "https://github.com/outbrain/outbrain-iOS-Framework.git", :tag => "#{s.version}" }
   s.frameworks          = "SystemConfiguration", "AdSupport", "StoreKit"
   s.requires_arc        = true
