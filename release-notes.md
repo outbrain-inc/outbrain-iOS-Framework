@@ -1,5 +1,8 @@
 # Release Notes
 
+## v4.27.1 - September 5, 2023
+
+- Remove debug symbols from xcframework build.
 ## v4.27.0 - September 4, 2023
 
 - Bug fix - *display ads* support caused un-wanted navigation due to wrong click detection in iFrame (we basically reverted PR#233).

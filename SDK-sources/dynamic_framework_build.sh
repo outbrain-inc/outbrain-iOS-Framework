@@ -51,9 +51,7 @@ echo "xcodebuild -create-xcframework ..."
 echo "**********************************************"
 xcodebuild -create-xcframework -allow-internal-distribution \
     -framework "${BUILD_FOLDER}/Release-iphoneos.xcarchive/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework" \
-    -debug-symbols "${BUILD_FOLDER}/Release-iphoneos.xcarchive/dSYMs/${FRAMEWORK_NAME}.framework.dSYM" \
     -framework "${BUILD_FOLDER}/Release-iphonesimulator.xcarchive/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework" \
-    -debug-symbols "${BUILD_FOLDER}/Release-iphonesimulator.xcarchive/dSYMs/${FRAMEWORK_NAME}.framework.dSYM" \
     -output "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
 
 ls -l "${SF_RELEASE_DIR}"
