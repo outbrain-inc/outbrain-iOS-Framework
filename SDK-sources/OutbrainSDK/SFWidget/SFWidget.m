@@ -190,6 +190,10 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     
 }
 
+-(void) toggleDarkMode:(BOOL)displayDark {
+    [self evaluateToggleDarkMode:displayDark];
+}
+
 
 -(void) enableEvents {
     self.isWidgetEventsEnabled = YES;
@@ -357,6 +361,12 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     NSLog(@"loading more --->");
     [self.webview evaluateJavaScript:@"OBR.viewHandler.loadMore(); true;" completionHandler:nil];
     [self evaluateHeightScript:500];
+}
+
+-(void) evaluateToggleDarkMode:(BOOL)displayDark {
+    NSLog(@"Toggle Darkmode");
+    NSString *script = [NSString stringWithFormat:@"OBBridge.darkModeHandler.setDarkMode(%@)", displayDark ? @"true" : @"false"];
+    [self.webview evaluateJavaScript:script completionHandler:nil];
 }
 
 
