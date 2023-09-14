@@ -128,6 +128,8 @@ extern NSString * _Nonnull const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION;
 -(void) enableEvents;
 -(void) testModeAllEvents;
 
+-(void) toggleDarkMode:(BOOL)displayDark;
+
 @end
 
 NS_ASSUME_NONNULL_END
