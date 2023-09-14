@@ -1,5 +1,9 @@
 # Release Notes
 
+## v4.28.0 - September 14, 2023
+
+- Feature - `sfWidget.toggleDarkMode(true/false)`` - instead of re-creating SFWidget.
+
 ## v4.27.1 - September 5, 2023
 
 - Remove debug symbols from xcframework build.
