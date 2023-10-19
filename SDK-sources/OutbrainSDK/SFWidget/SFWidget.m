@@ -396,6 +396,11 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     self.webview = [[WKWebView alloc] initWithFrame:self.frame configuration:webviewConf];
     self.webview.scrollView.scrollEnabled = NO;
     [self.webview setOpaque:NO];
+#ifdef DEBUG
+    if ([self.webview respondsToSelector:@selector(setInspectable:)]) {
+        [self.webview performSelector:@selector(setInspectable:) withObject:@(YES)];
+    }
+#endif
     self.webview.UIDelegate = self;
     [self addSubview:self.webview];
     [SFUtils addConstraintsToFillParent:self.webview];
