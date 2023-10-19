@@ -152,6 +152,10 @@
 		<data>
 		RIsBJ4X7MyZp7fvLqKC3KbIjjkQ=
 		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		n2gYCvfhdqqZQVOUuIEVwc0qYBA=
+		</data>
 		<key>SFBrandedCardItemCell.nib/objects-12.3+.nib</key>
 		<data>
 		pvrnLH09M0UjwFBz9E9tJt/3eVE=
@@ -673,6 +677,13 @@
 			<key>hash2</key>
 			<data>
 			nnskeJF+sV1+/zot+NR+MgGgk/kOXprwvybUBsWYWxU=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lTSQlJtxW+e4zBnKA5lekktb6z1s/Lo95OEUHJmYVZE=
 			</data>
 		</dict>
 		<key>SFBrandedCardItemCell.nib/objects-12.3+.nib</key>
