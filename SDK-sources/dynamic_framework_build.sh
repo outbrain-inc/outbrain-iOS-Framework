@@ -56,12 +56,12 @@ xcodebuild -create-xcframework -allow-internal-distribution \
 
 ls -l "${SF_RELEASE_DIR}"
 
-# Sign the framework
 echo "Signing the framework..."
-codesign --timestamp -v --sign "iPhone Distribution: OUTBRAIN INCORPORATED" OutbrainSDK.xcframework
-# Verify the signature
+codesign --timestamp -v --sign "iPhone Distribution: OUTBRAIN INCORPORATED" "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
+
 echo "Verifying the signature..."
-codesign -vvv -d OutbrainSDK.xcframework
+codesign -vvv -d "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
+
 
 # # 8
 # # Copy the framework back for the Journal app to use

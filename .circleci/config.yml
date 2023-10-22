@@ -129,6 +129,23 @@ jobs:
           working_directory: SDK-sources
 
       - run:
+          name: Set Up Code Signing
+          command: |
+            # Decode the base64-encoded P12 file
+            echo "$CERTIFICATE_P12" | base64 --decode > certificate.p12
+            # Unlock the keychain (use a custom keychain, not the login keychain)
+            security create-keychain -p "" my.keychain
+            security import certificate.p12 -k my.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+            security list-keychains -s my.keychain
+            security default-keychain -s my.keychain
+            security unlock-keychain -p "" my.keychain
+            security set-keychain-settings -t 7200 -l my.keychain
+            security list-keychains -d user
+            security find-identity -p codesigning
+            security set-key-partition-list -S apple-tool:,apple: -s -k '' my.keychain
+          working_directory: SDK-sources
+          
+      - run:
           name: Building the SDK XCFramework for release
           command: ./dynamic_framework_build.sh
           working_directory: SDK-sources
