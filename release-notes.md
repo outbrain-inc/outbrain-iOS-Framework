@@ -1,5 +1,10 @@
 # Release Notes
 
+## v4.29.0 - October 19, 2023
+
+- Other - Support for [Apple Privacy Manifest](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) file.
+
+
 ## v4.28.0 - September 14, 2023
 
 - Feature - `sfWidget.toggleDarkMode(true/false)`` - instead of re-creating SFWidget.
