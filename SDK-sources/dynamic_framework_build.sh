@@ -5,14 +5,6 @@
 # 1
 # Set bash script to exit immediately if any commands fail.
 set -e
-set +u
-# Avoid recursively calling this script.
-if [[ $SF_MASTER_SCRIPT_RUNNING ]]
-then
-    exit 0
-fi
-set -u
-export SF_MASTER_SCRIPT_RUNNING=1
 
 # 2
 # Setup some constants for use later on.
@@ -24,6 +16,23 @@ SF_WRAPPER_NAME="${FRAMEWORK_NAME}.xcframework"
 SF_RELEASE_DIR="${SRCROOT}/Release/"
 
 
+# # Initialize a variable to store the skip signing flag.
+skip_signing=false
+
+# Loop through the command-line arguments.
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --skip-signing)
+      skip_signing=true
+      shift # Consume the flag argument.
+      ;;
+    *)
+      # Handle other arguments if needed.
+      echo "Unknown option: $1"
+      exit 1
+      ;;
+  esac
+done
 
 # If remnants from a previous build exist, delete them.
 if [ -d "${BUILD_FOLDER}" ]; then
@@ -56,11 +65,16 @@ xcodebuild -create-xcframework -allow-internal-distribution \
 
 ls -l "${SF_RELEASE_DIR}"
 
-echo "Signing the framework..."
-codesign --timestamp -v --sign "iPhone Distribution: OUTBRAIN INCORPORATED" "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
+if [ "$skip_signing" = true ]; then
+    echo "Skipping signing."
+else
+    echo "Signing the framework..."
+    codesign --timestamp -v --sign "iPhone Distribution: OUTBRAIN INCORPORATED" "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
 
-echo "Verifying the signature..."
-codesign -vvv -d "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
+    echo "Verifying the signature..."
+    codesign -vvv -d "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
+fi
+
 
 
 # # 8

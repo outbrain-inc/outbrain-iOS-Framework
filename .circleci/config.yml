@@ -46,7 +46,7 @@ jobs:
 
       - run:
           name: Building the SDK XCFramework for release
-          command: ./dynamic_framework_build.sh
+          command: ./dynamic_framework_build.sh --skip-signing
           working_directory: SDK-sources
 
       - run:
