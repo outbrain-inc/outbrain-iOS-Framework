@@ -75,12 +75,14 @@ public struct OBRequestHandler {
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 // trace mode if debug
                 #if DEBUG
+                if #available(iOS 13.0, *) {
                     if let debugRes = response as? HTTPURLResponse {
                         if let traceID = debugRes.value(forHTTPHeaderField: "x-traceid") {
                             // Access the trace ID here
                             Outbrain.logger.debug("fetch recs - trace id: \(traceID)", domain: "request-handler")
                         }
                     }
+                }
                 #endif
                 
                 do {
