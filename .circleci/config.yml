@@ -59,7 +59,7 @@ jobs:
             security find-identity -p codesigning
             security set-key-partition-list -S apple-tool:,apple: -s -k '' my.keychain
           working_directory: SwiftSDK-sources
-          
+
       - run:
           name: Building the SDK XCFramework for release
           command: ./dynamic_framework_build.sh
@@ -71,7 +71,6 @@ jobs:
             xcodebuild \
             -project OutbrainSDK.xcodeproj \
             -scheme OutbrainSDK \
-            -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
             test
           working_directory: SwiftSDK-sources
