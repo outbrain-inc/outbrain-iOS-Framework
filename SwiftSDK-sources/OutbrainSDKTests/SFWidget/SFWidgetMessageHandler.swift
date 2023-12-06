@@ -8,7 +8,7 @@ class MockScriptMessage: WKScriptMessage {
     }
     
     override var body: Any {
-        return "{\"height\": 100}"
+        return "{\"height\": 100, \"sender\": \"resize\"}"
     }
 }
 
