@@ -1,7 +1,3 @@
-#https://stackoverflow.com/questions/35655698/how-to-archive-an-app-that-includes-a-custom-framework/35703033#35703033
-
-# Merge Script
-
 # 1
 # Set bash script to exit immediately if any commands fail.
 set -e
@@ -56,13 +52,20 @@ xcodebuild -create-xcframework -allow-internal-distribution \
 
 ls -l "${SF_RELEASE_DIR}"
 
-# # 8
-# # Copy the framework back for the Journal app to use
+echo "Signing the framework..."
+codesign --timestamp -v --sign "iPhone Distribution: OUTBRAIN INCORPORATED" "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
+
+echo "Verifying the signature..."
+codesign -vvv -d "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework"
+
+# 8
+# Copy the framework back for our sample app to use
 cp -a "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework" "${SRCROOT}/.."
+cp -a "${SF_RELEASE_DIR}/${FRAMEWORK_NAME}.xcframework" "${SRCROOT}/../Samples/OutbrainDemo"
 
 
-# # 9
-# # Delete the most recent build.
+# 9
+# Delete the most recent build.
 if [ -d "${BUILD_FOLDER}" ]; then
 rm -rf "${BUILD_FOLDER}"
 fi
