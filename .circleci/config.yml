@@ -191,7 +191,6 @@ jobs:
             xcodebuild \
             -project OutbrainSDK.xcodeproj \
             -scheme OutbrainSDK \
-            -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
             test
           working_directory: SwiftSDK-sources
