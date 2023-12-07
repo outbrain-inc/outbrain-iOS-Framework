@@ -30,6 +30,10 @@ jobs:
     <<: *ios_config
     steps:
       - checkout
+      
+      - run:
+          name: Fastlane Match (import Apple profile)
+          command: MATCH_PASSWORD=123456 fastlane match development --readonly
 
       - run:
           name: Clean previous OutbrainSDK.xcframework
