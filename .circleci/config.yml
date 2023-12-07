@@ -90,9 +90,8 @@ jobs:
             xcodebuild \
             -project OutbrainDemo.xcodeproj \
             -scheme SFWebView-Prod \
-            -allowProvisioningUpdates \
             -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
-            archive
+            build
           working_directory: Samples/OutbrainDemo
 
   ios_release:
