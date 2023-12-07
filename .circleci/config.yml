@@ -30,10 +30,6 @@ jobs:
     <<: *ios_config
     steps:
       - checkout
-      
-      - run:
-          name: Fastlane Match (import Apple profile)
-          command: MATCH_PASSWORD=123456 fastlane match development --readonly
 
       - run:
           name: Clean previous OutbrainSDK.xcframework
@@ -69,24 +65,28 @@ jobs:
           command: ./dynamic_framework_build.sh
           working_directory: SwiftSDK-sources
 
-      # - run:
-      #     name: Run SDK tests
-      #     command: |
-      #       xcodebuild \
-      #       -project OutbrainSDK.xcodeproj \
-      #       -scheme OutbrainSDK \
-      #       -destination 'platform=iOS Simulator,id=E474E550-3591-4632-AADF-EC1922620500' \
-      #       test
-      #     working_directory: SwiftSDK-sources
+      - run:
+          name: Run SDK tests
+          command: |
+            xcodebuild \
+            -project OutbrainSDK.xcodeproj \
+            -scheme OutbrainSDK \
+            -destination 'platform=iOS Simulator,id=E474E550-3591-4632-AADF-EC1922620500' \
+            test
+          working_directory: SwiftSDK-sources
 
-      # - run:
-      #     name: Check if framework is where we think it is
-      #     command: |
-      #       if [ ! -d "OutbrainSDK.xcframework" ]; then
-      #         echo "framework is NOT where we think it is"
-      #         exit 1
-      #       fi
-      #     working_directory: Samples/OutbrainDemo/
+      - run:
+          name: Check if framework is where we think it is
+          command: |
+            if [ ! -d "OutbrainSDK.xcframework" ]; then
+              echo "framework is NOT where we think it is"
+              exit 1
+            fi
+          working_directory: Samples/OutbrainDemo/
+
+      - run:
+          name: Fastlane Match (import Apple profile)
+          command: MATCH_PASSWORD=123456 fastlane match development --readonly
 
       - run:
           name: Build Sample Apps - SFWebView-Prod
