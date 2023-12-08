@@ -1,0 +1,9 @@
+platform :ios do
+    before_all do
+      setup_circle_ci
+    end
+end
+
+lane :certificates do
+    match(type: "development", readonly: true)
+end    

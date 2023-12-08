@@ -43,10 +43,10 @@ jobs:
           name: Cleaing the SDK project - OutbrainSDK
           command: xcodebuild clean -target OutbrainSDK
           working_directory: SwiftSDK-sources
-          
+
       - run:
           name: Fastlane Match (import Apple profile)
-          command: MATCH_PASSWORD=123456 fastlane match development --readonly
+          command: MATCH_PASSWORD=123456 fastlane certificates
 
       # - run:
       #     name: Set Up Code Signing
