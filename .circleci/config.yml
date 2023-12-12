@@ -90,14 +90,9 @@ jobs:
           working_directory: Samples/OutbrainDemo/
 
       - run:
-          name: Build Sample Apps - SFWebView-Prod
+          name: Build Sample Apps - Fastlane SFWebView-Prod
           command: |
-            xcodebuild \
-            -project OutbrainDemo.xcodeproj \
-            -scheme SFWebView-Prod \
-            -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
-            build
-          working_directory: Samples/OutbrainDemo
+            MATCH_PASSWORD=123456  fastlane build_sfwebview
 
   ios_release:
     <<: *ios_config
