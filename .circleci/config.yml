@@ -81,7 +81,7 @@ jobs:
 
       - run:
           name: Build Sample Apps - Fastlane SFWebView-Prod
-          command: MATCH_PASSWORD=123456  fastlane build_sfwebview
+          command: MATCH_PASSWORD=123456  fastlane sfwebview_prod
 
   ios_release:
     <<: *ios_config
