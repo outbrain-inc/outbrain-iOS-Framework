@@ -3,7 +3,7 @@ git_branch("certificates")
 storage_mode("git")
 
 team_id("97R2B46745")
-type("development") # The default type, can be: appstore, adhoc, enterprise or development
+type("enterprise")
 
 app_identifier(["com.outbrain.SFWebView-Prod"])
 username("odedre@gmail.com") # Your Apple Developer Portal username

@@ -8,8 +8,15 @@ lane :certificates do
     match(type: "development", readonly: true)
 end    
 
-lane :build_sfwebview do
-    match(type: "development", readonly: true)
+lane :sdk_tests do
+    run_tests(
+        project: "SwiftSDK-sources/OutbrainSDK.xcodeproj", 
+        scheme: "OutbrainSDK", 
+        devices: ["iPhone 14 Pro Max"])
+end
+
+lane :sfwebview_prod do
+    match(type: "enterprise", readonly: true)
     gym(
         project: "Samples/OutbrainDemo/OutbrainDemo.xcodeproj",
         scheme: "SFWebView-Prod",
