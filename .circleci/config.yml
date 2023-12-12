@@ -40,13 +40,9 @@ jobs:
           working_directory: Samples/OutbrainDemo
 
       - run:
-          name: Cleaing the SDK project - OutbrainSDK
+          name: Cleaning the SDK project - OutbrainSDK
           command: xcodebuild clean -target OutbrainSDK
           working_directory: SwiftSDK-sources
-
-      - run:
-          name: Fastlane Match (import Apple profile)
-          command: MATCH_PASSWORD=123456 fastlane certificates
 
       - run:
           name: Set Up Code Signing
@@ -71,16 +67,6 @@ jobs:
           working_directory: SwiftSDK-sources
 
       - run:
-          name: Run SDK tests
-          command: |
-            xcodebuild \
-            -project OutbrainSDK.xcodeproj \
-            -scheme OutbrainSDK \
-            -destination 'platform=iOS Simulator,id=E474E550-3591-4632-AADF-EC1922620500' \
-            test
-          working_directory: SwiftSDK-sources
-
-      - run:
           name: Check if framework is where we think it is
           command: |
             if [ ! -d "OutbrainSDK.xcframework" ]; then
@@ -90,9 +76,12 @@ jobs:
           working_directory: Samples/OutbrainDemo/
 
       - run:
+          name: Run SDK tests
+          command: fastlane sdk_tests
+
+      - run:
           name: Build Sample Apps - Fastlane SFWebView-Prod
-          command: |
-            MATCH_PASSWORD=123456  fastlane build_sfwebview
+          command: MATCH_PASSWORD=123456  fastlane build_sfwebview
 
   ios_release:
     <<: *ios_config
