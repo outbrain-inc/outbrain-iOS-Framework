@@ -26,6 +26,7 @@ lane :sfwebview_prod do
         export_options: {
             provisioningProfiles: {
                 "com.outbrain.SFWebView-Prod": "match InHouse com.outbrain.SFWebView-Prod"
-            }
+            },
+            certificates: ["iPhone Distribution: OUTBRAIN INCORPORATED"]
         })
 end
