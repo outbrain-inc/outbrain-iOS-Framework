@@ -12,6 +12,39 @@ references:
     working_directory: ~/repo
     macos:
       xcode: "15.0.0"
+  
+  prepare_code_signing: &prepare_code_signing
+    run:
+      name: Set Up Code Signing
+      command: |
+        # Decode the base64-encoded P12 file
+        echo "$CERTIFICATE_P12" | base64 --decode > certificate.p12
+        # Unlock the keychain (use a custom keychain, not the login keychain)
+        security create-keychain -p "" my.keychain
+        security import certificate.p12 -k my.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+        security list-keychains -s my.keychain
+        security default-keychain -s my.keychain
+        security unlock-keychain -p "" my.keychain
+        security set-keychain-settings -t 7200 -l my.keychain
+        security list-keychains -d user
+        security find-identity -p codesigning
+        security set-key-partition-list -S apple-tool:,apple: -s -k '' my.keychain
+      working_directory: SwiftSDK-sources
+
+  clean_previous_sdk_artifact: &clean_previous_sdk_artifact
+    run:
+          name: Clean previous OutbrainSDK.xcframework
+          command: |
+            if [ -d OutbrainSDK.xcframework ]; then
+              rm -fr OutbrainSDK.xcframework
+            fi
+          working_directory: Samples/OutbrainDemo
+
+  xcodeclean_sdk_project: &xcodeclean_sdk_project
+      run:
+          name: Cleaning the SDK project - OutbrainSDK
+          command: xcodebuild clean -target OutbrainSDK
+          working_directory: SwiftSDK-sources
 
   # Export environment variables
   define_var_previous_release_version: &define_var_previous_release_version
@@ -31,35 +64,11 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Clean previous OutbrainSDK.xcframework
-          command: |
-            if [ -d OutbrainSDK.xcframework ]; then
-              rm -fr OutbrainSDK.xcframework
-            fi
-          working_directory: Samples/OutbrainDemo
+      - *clean_previous_sdk_artifact
 
-      - run:
-          name: Cleaning the SDK project - OutbrainSDK
-          command: xcodebuild clean -target OutbrainSDK
-          working_directory: SwiftSDK-sources
+      - *xcocdeclean_sdk_project
 
-      - run:
-          name: Set Up Code Signing
-          command: |
-            # Decode the base64-encoded P12 file
-            echo "$CERTIFICATE_P12" | base64 --decode > certificate.p12
-            # Unlock the keychain (use a custom keychain, not the login keychain)
-            security create-keychain -p "" my.keychain
-            security import certificate.p12 -k my.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
-            security list-keychains -s my.keychain
-            security default-keychain -s my.keychain
-            security unlock-keychain -p "" my.keychain
-            security set-keychain-settings -t 7200 -l my.keychain
-            security list-keychains -d user
-            security find-identity -p codesigning
-            security set-key-partition-list -S apple-tool:,apple: -s -k '' my.keychain
-          working_directory: SwiftSDK-sources
+      - *prepare_code_signing
 
       - run:
           name: Building the SDK XCFramework for release
@@ -84,6 +93,8 @@ jobs:
           command: MATCH_PASSWORD=123456  fastlane sfwebview_prod
 
   ios_release:
+    needs:
+      - ios_default
     <<: *ios_config
     steps:
       - checkout
@@ -106,36 +117,11 @@ jobs:
           command: |
             cd scripts
             bash -x ./bump_sdk_version.sh
+      - *clean_previous_sdk_artifact
 
-      - run:
-          name: Clean previous OutbrainSDK.xcframework
-          command: |
-            if [ -d OutbrainSDK.xcframework ]; then
-              rm -fr OutbrainSDK.xcframework
-            fi
-          working_directory: Samples/OutbrainDemo
+      - *xcocdeclean_sdk_project
 
-      - run:
-          name: Cleaing the SDK project - OutbrainSDK
-          command: xcodebuild clean -target OutbrainSDK
-          working_directory: SwiftSDK-sources
-
-      - run:
-          name: Set Up Code Signing
-          command: |
-            # Decode the base64-encoded P12 file
-            echo "$CERTIFICATE_P12" | base64 --decode > certificate.p12
-            # Unlock the keychain (use a custom keychain, not the login keychain)
-            security create-keychain -p "" my.keychain
-            security import certificate.p12 -k my.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
-            security list-keychains -s my.keychain
-            security default-keychain -s my.keychain
-            security unlock-keychain -p "" my.keychain
-            security set-keychain-settings -t 7200 -l my.keychain
-            security list-keychains -d user
-            security find-identity -p codesigning
-            security set-key-partition-list -S apple-tool:,apple: -s -k '' my.keychain
-          working_directory: SwiftSDK-sources
+      - *prepare_code_signing
           
       - run:
           name: Building the SDK XCFramework for release
@@ -152,36 +138,8 @@ jobs:
           working_directory: Samples/OutbrainDemo/
 
       - run:
-          name: Build Sample Apps - Journal
-          command: |
-            xcodebuild \
-            -project OutbrainDemo.xcodeproj \
-            -scheme Journal \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
-            build
-          working_directory: Samples/OutbrainDemo
-      
-      - run:
-          name: Build Sample Apps - SmartFeed
-          command: |
-            xcodebuild \
-            -project OutbrainDemo.xcodeproj \
-            -scheme SmartFeed \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
-            build
-          working_directory: Samples/OutbrainDemo
-
-      - run:
           name: Run SDK tests
-          command: |
-            xcodebuild \
-            -project OutbrainSDK.xcodeproj \
-            -scheme OutbrainSDK \
-            -destination 'platform=iOS Simulator,id=E474E550-3591-4632-AADF-EC1922620500' \
-            test
-          working_directory: SwiftSDK-sources
+          command: fastlane sdk_tests
 
       - run:
           name: Creating OBSDK-Release dir
