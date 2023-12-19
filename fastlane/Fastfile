@@ -16,7 +16,12 @@ lane :sdk_tests do
 end
 
 lane :sfwebview_prod do
-    match(type: "enterprise", readonly: true)
+    match(
+        type: "enterprise", 
+        readonly: true,
+        keychain_name: "my.keychain",
+        keychain_password: "",
+        )
     gym(
         project: "Samples/OutbrainDemo/OutbrainDemo.xcodeproj",
         scheme: "SFWebView-Prod",

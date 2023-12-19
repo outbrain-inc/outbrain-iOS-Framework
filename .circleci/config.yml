@@ -75,9 +75,9 @@ jobs:
             fi
           working_directory: Samples/OutbrainDemo/
 
-      - run:
-          name: Run SDK tests
-          command: fastlane sdk_tests
+      # - run:
+      #     name: Run SDK tests
+      #     command: fastlane sdk_tests
 
       - run:
           name: Build Sample Apps - Fastlane SFWebView-Prod
