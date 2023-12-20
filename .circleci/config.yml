@@ -169,6 +169,7 @@ jobs:
             if [ $(echo "$RELEASE_VERSION >= 5.0.0" | bc) -eq 1 ]; then
               echo "Adding alpha to $RELEASE_VERSION"
               RELEASE_VERSION="$RELEASE_VERSION-alpha"
+              echo "RELEASE_VERSION="$RELEASE_VERSION"
               echo "export RELEASE_VERSION="$RELEASE_VERSION-alpha" >> $BASH_ENV
             fi
 
