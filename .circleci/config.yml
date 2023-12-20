@@ -178,7 +178,7 @@ jobs:
               echo "Adding alpha to $RELEASE_VERSION"
               RELEASE_VERSION="$RELEASE_VERSION-alpha"
               echo "RELEASE_VERSION="$RELEASE_VERSION"
-              echo "export RELEASE_VERSION="$RELEASE_VERSION-alpha" >> $BASH_ENV
+              echo "export RELEASE_VERSION="$RELEASE_VERSION" >> $BASH_ENV
             fi
 
       - run:
