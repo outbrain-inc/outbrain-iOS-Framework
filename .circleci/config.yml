@@ -212,6 +212,10 @@ jobs:
           name: Update developer docs Github repo outbrain/developer-docs with new SDK version
           command: |
             echo "$RELEASE_VERSION"
+            if [ $(echo "$RELEASE_VERSION >= 5.0.0" | bc) -eq 1 ]; then
+              echo "Skipping developer-docs update for version >= 5.0.0"
+              return 0
+            fi
             git clone git@github.com:outbrain/developer-docs.git
             cd developer-docs
             PREVIOUS_VERSION=`cat docs/iOS-SDK/release-notes.md | grep -m 1 "##" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | awk '{print $1}'`
@@ -248,9 +252,6 @@ jobs:
             echo "*                                                                                                       *"
             echo "* iOS Sample Apps on GCP:                                                                               *"
             echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/iOS-SampleApps.zip                       *"
-            echo "*                                                                                                       *"
-            echo "* iOS Custom UI on GCP:                                                                                 *"
-            echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/Custom-UI-iOS-SDK-Smartfeed.zip          *"
             echo "*                                                                                                       *"
             echo "*********************************************************************************************************"
 
