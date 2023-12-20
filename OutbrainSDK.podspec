@@ -11,7 +11,8 @@ Pod::Spec.new do |s|
   s.name                = "OutbrainSDK"
   s.version             = "4.29.0"
   s.summary             = "Outbrain iOS SDK for app developers"
-  s.description         = "Outbrain iOS SDK for app developers, please review our guidelines at https://developer.outbrain.com/ios-sdk-developer-guide/"
+  s.description         = "Outbrain iOS SDK for app developers, please review our guidelines at https://sdk.outbrain.com/"
+  s.documentation_url   = "https://sdk.outbrain.com/"
   s.homepage            = "https://www.outbrain.com"
   s.license             = { :type => 'Proprietary', :text => 'Copyright 2018 Outbrain. All rights reserved.' }
   s.author              = { "Oded Regev" => "oregev@outbrain.com" }
