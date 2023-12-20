@@ -208,8 +208,11 @@ jobs:
             git status
             git commit -m "update OutbrainSDK.xcframework to version $RELEASE_VERSION"
             git tag $RELEASE_VERSION
-            if [ "$ALPHA_RELEASE" -eq 0 ]; then
-              echo "This is not an alpha release, pushing to main"
+            if [ "$ALPHA_RELEASE" ]; then
+              echo "This is an alpha release, pushing to alpha branch"
+              git push origin main:ci-$RELEASE_VERSION
+            else
+              echo "This is NOT an alpha release, pushing to main"
               git push origin main
             fi
             git push origin --tags
