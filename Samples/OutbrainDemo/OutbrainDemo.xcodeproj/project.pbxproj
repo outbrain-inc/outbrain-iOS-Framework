@@ -196,6 +196,7 @@
 		E6E4A4212B136D6E00E558EB /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6E4A41C2B136D5700E558EB /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6E4A4272B136D8E00E558EB /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6E4A41C2B136D5700E558EB /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
+		E6F433F02B32F28900653B12 /* SFWebView-Prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6F433EF2B32F28900653B12 /* SFWebView-Prod-Info.plist */; };
 		E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
 		FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
@@ -357,7 +358,6 @@
 		E60DCD4F20BC3BD00023FE93 /* SmartFeed-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartFeed-Dev-Info.plist"; sourceTree = "<group>"; };
 		E60DCD5020BC3BD00023FE93 /* SmartFeed-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartFeed-Info.plist"; sourceTree = "<group>"; };
 		E61A95CB2B20981D00F33C7D /* SFWebView-Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFWebView-Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E61A95CC2B20981D00F33C7D /* SFWebView-Prod-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SFWebView-Prod-Info.plist"; path = "/Users/odedre/work/outbrain/OBSDKiOS/Samples/OutbrainDemo/SFWebView-Prod-Info.plist"; sourceTree = "<absolute>"; };
 		E61A95CE2B2098CD00F33C7D /* OutbrainSDK.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:97R2B46745:OUTBRAIN INCORPORATED"; lastKnownFileType = wrapper.xcframework; path = OutbrainSDK.xcframework; sourceTree = "<group>"; };
 		E61E6C99208384A00016D79A /* Journal-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Journal-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6CA5208386EF0016D79A /* Journal-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Journal-Dev-Info.plist"; sourceTree = "<group>"; };
@@ -454,6 +454,7 @@
 		E6D5BA5427269CD500FE921D /* CollectionTwoWidgetsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTwoWidgetsVC.swift; sourceTree = "<group>"; };
 		E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = "../../SwiftSDK-sources/OutbrainSDK.xcodeproj"; sourceTree = "<group>"; };
 		E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E6F433EF2B32F28900653B12 /* SFWebView-Prod-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "SFWebView-Prod-Info.plist"; path = "SFWebView-Prod/SFWebView-Prod-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E6FFC2C21C28489A00498168 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FC820C1119DD597F00ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -721,7 +722,6 @@
 				E69F700628991C7A005334CB /* SwiftUI-Bridge */,
 				D8B5923B186376B1009422D5 /* Frameworks */,
 				D8B5923A186376B1009422D5 /* Products */,
-				E61A95CC2B20981D00F33C7D /* SFWebView-Prod-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -931,6 +931,7 @@
 				E66B9C9226809C01006DB0AB /* Main.storyboard */,
 				E66B9C9526809C03006DB0AB /* Assets.xcassets */,
 				E66B9C9726809C03006DB0AB /* LaunchScreen.storyboard */,
+				E6F433EF2B32F28900653B12 /* SFWebView-Prod-Info.plist */,
 				E66B9C9A26809C03006DB0AB /* Info.plist */,
 			);
 			path = "SFWebView-Dev";
@@ -1299,6 +1300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6F433F02B32F28900653B12 /* SFWebView-Prod-Info.plist in Resources */,
 				E61A95C32B20981D00F33C7D /* LaunchScreen.storyboard in Resources */,
 				E61A95C42B20981D00F33C7D /* Assets.xcassets in Resources */,
 				E61A95C52B20981D00F33C7D /* Main.storyboard in Resources */,
@@ -1872,7 +1874,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 97R2B46745;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "SFWebView-Prod-Info.plist";
+				INFOPLIST_FILE = "SFWebView-Prod/SFWebView-Prod-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SFWebView-Prod";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1915,7 +1917,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 97R2B46745;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "SFWebView-Prod-Info.plist";
+				INFOPLIST_FILE = "SFWebView-Prod/SFWebView-Prod-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SFWebView-Prod";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
