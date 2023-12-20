@@ -192,11 +192,6 @@ jobs:
             git config --global user.name "Oded Regev via CircleCI"
             echo "Remove the old xcframework"
             rm -fr OutbrainSDK.xcframework
-            if [ "$ALPHA_RELEASE" ]; then
-              git add .
-              git status
-              git commit -m "remove the old xcframework"
-            endif
             echo "Copy the new xcframework"
             cp -r ../OBSDK-Release/SDK/OutbrainSDK.xcframework .
             cat OutbrainSDK.podspec
@@ -212,7 +207,7 @@ jobs:
             if [ "$ALPHA_RELEASE" -eq 0 ]; then
               echo "This is not an alpha release, pushing to main"
               git push origin main
-            endif
+            fi
             git push origin --tags
             pod trunk push OutbrainSDK.podspec
 
