@@ -197,10 +197,6 @@ jobs:
           command: cd scripts; bash -x ./upload_to_gcp_storage.sh ../OBSDK-Release/iOS-SampleApps.zip iOS-SampleApps.zip $RELEASE_VERSION 
 
       - run:
-          name: Upload Custom UI
-          command: bash -x ./scripts/update_custom_ui.sh $RELEASE_VERSION
-
-      - run:
           name: Update developer docs Github repo outbrain/developer-docs with new SDK version
           command: |
             echo "$RELEASE_VERSION"
