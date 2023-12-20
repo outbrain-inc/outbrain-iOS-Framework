@@ -164,8 +164,18 @@ jobs:
           working_directory: OBSDK-Release
 
       - run:
+          name: Add alpha to $RELEASE_VERSION if version >= 5.0.0
+          command: |
+            if [ $(echo "$RELEASE_VERSION >= 5.0.0" | bc) -eq 1 ]; then
+              echo "Adding alpha to $RELEASE_VERSION"
+              RELEASE_VERSION="$RELEASE_VERSION-alpha"
+              echo "export RELEASE_VERSION="$RELEASE_VERSION-alpha" >> $BASH_ENV
+            fi
+
+      - run:
           name: Update public Github repo outbrain/outbrain-iOS-Framework with new SDK version
           command: |
+            echo "$RELEASE_VERSION"
             git clone git@github.com:outbrain/outbrain-iOS-Framework.git
             cd outbrain-iOS-Framework
             echo "remove the old xcframework"
@@ -184,7 +194,9 @@ jobs:
             git config --global user.name "Oded Regev via CircleCI"
             git commit -m "update OutbrainSDK.xcframework to version $RELEASE_VERSION"
             git tag $RELEASE_VERSION
-            git push origin master
+            if [ $(echo "$RELEASE_VERSION < 5.0.0" | bc) -eq 1 ]; then
+              git push origin master
+            endif
             git push origin --tags
             pod trunk push OutbrainSDK.podspec
 
