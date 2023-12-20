@@ -9,12 +9,14 @@ else
 fi
 
 cd ..
-# echo ""
-# echo "- edit the plist files"
-# plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/Journal/Resources/plists/Journal-Info.plist
-# plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/SmartFeed/Resources/SmartFeed-Info.plist
-# plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/SmartFeed/Resources/SmartFeed-Dev-Info.plist
-# plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/Journal/Resources/plists/Journal-Dev-Info.plist
+echo ""
+echo "- edit the plist files"
+plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/Journal/Resources/plists/Journal-Info.plist
+plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/SmartFeed/Resources/SmartFeed-Info.plist
+plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/SmartFeed/Resources/SmartFeed-Dev-Info.plist
+plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/Journal/Resources/plists/Journal-Dev-Info.plist
+plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/SFWebView-Dev/Info.plist
+plutil -replace CFBundleShortVersionString -string $1 ./Samples/OutbrainDemo/SFWebView-Prod/SFWebView-Prod-Info.plist 
 
 echo ""
 echo "- edit the Outbrain.swift file"
