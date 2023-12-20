@@ -187,8 +187,17 @@ jobs:
             echo "$RELEASE_VERSION"
             git clone git@github.com:outbrain/outbrain-iOS-Framework.git
             cd outbrain-iOS-Framework
-            echo "remove the old xcframework"
+            git config credential.helper 'cache --timeout=120'
+            git config --global user.email "oregev@outbrain.com"
+            git config --global user.name "Oded Regev via CircleCI"
+            echo "Remove the old xcframework"
             rm -fr OutbrainSDK.xcframework
+            if [ "$ALPHA_RELEASE" ]; then
+              git add .
+              git status
+              git commit -m "remove the old xcframework"
+            endif
+            echo "Copy the new xcframework"
             cp -r ../OBSDK-Release/SDK/OutbrainSDK.xcframework .
             cat OutbrainSDK.podspec
             PREVIOUS_SDK_VERSION=`cat OutbrainSDK.podspec | grep -m 1 s.version |  cut -d "=" -f2 | cut -d \" -f2`
@@ -198,9 +207,6 @@ jobs:
             cat OutbrainSDK.podspec
             git add .
             git status
-            git config credential.helper 'cache --timeout=120'
-            git config --global user.email "oregev@outbrain.com"
-            git config --global user.name "Oded Regev via CircleCI"
             git commit -m "update OutbrainSDK.xcframework to version $RELEASE_VERSION"
             git tag $RELEASE_VERSION
             if [ "$ALPHA_RELEASE" -eq 0 ]; then
