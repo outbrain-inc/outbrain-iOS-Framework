@@ -1,0 +1,11 @@
+framework module OutbrainSDK {
+  umbrella header "OutbrainSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module OutbrainSDK.Swift {
+  header "OutbrainSDK-Swift.h"
+  requires objc
+}
