@@ -182,6 +182,10 @@ jobs:
             fi
 
       - run:
+          name: Install cocoapods
+          command: brew install cocoapods
+
+      - run:
           name: Update public Github repo outbrain/outbrain-iOS-Framework with new SDK version
           command: |
             echo "$RELEASE_VERSION"
