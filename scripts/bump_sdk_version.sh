@@ -14,11 +14,14 @@ echo "*********************"
 
 cd ..
 
-git add SDK-sources/OutbrainSDK/Outbrain.m
+git add SwiftSDK-sources/OutbrainSDK/Outbrain.swift
 git add Samples/OutbrainDemo/Journal/Resources/plists/Journal-Dev-Info.plist
 git add Samples/OutbrainDemo/Journal/Resources/plists/Journal-Info.plist
 git add Samples/OutbrainDemo/SmartFeed/Resources/SmartFeed-Dev-Info.plist
 git add Samples/OutbrainDemo/SmartFeed/Resources/SmartFeed-Info.plist
+git add Samples/OutbrainDemo/SFWebView-Dev/Info.plist
+git add Samples/OutbrainDemo/SFWebView-Prod/SFWebView-Prod-Info.plist 
+
 
 git config credential.helper 'cache --timeout=120'
 git config --global user.email "oregev@outbrain.com"

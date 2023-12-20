@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -62,6 +62,19 @@
 		E60DCD4220BC3AAD0023FE93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61E6CD32085DBD50016D79A /* Main.storyboard */; };
 		E60DCD4C20BC3B320023FE93 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
 		E60DCD4D20BC3B3A0023FE93 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
+		E61A95B82B20981D00F33C7D /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA92680A199006DB0AB /* TableVC.swift */; };
+		E61A95B92B20981D00F33C7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9C9026809C01006DB0AB /* ViewController.swift */; };
+		E61A95BA2B20981D00F33C7D /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA72680A199006DB0AB /* CollectionVC.swift */; };
+		E61A95BB2B20981D00F33C7D /* AppArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CA62680A199006DB0AB /* AppArticleCollectionViewCell.swift */; };
+		E61A95BC2B20981D00F33C7D /* ScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CB62681C7D9006DB0AB /* ScrollViewVC.swift */; };
+		E61A95BD2B20981D00F33C7D /* OBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16803F0E27CA851300C0482F /* OBViewController.swift */; };
+		E61A95BE2B20981D00F33C7D /* CollectionTwoWidgetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5BA5427269CD500FE921D /* CollectionTwoWidgetsVC.swift */; };
+		E61A95BF2B20981D00F33C7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9C8C26809C01006DB0AB /* AppDelegate.swift */; };
+		E61A95C02B20981D00F33C7D /* AppArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */; };
+		E61A95C32B20981D00F33C7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9726809C03006DB0AB /* LaunchScreen.storyboard */; };
+		E61A95C42B20981D00F33C7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9526809C03006DB0AB /* Assets.xcassets */; };
+		E61A95C52B20981D00F33C7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9226809C01006DB0AB /* Main.storyboard */; };
+		E61A95D22B209BAE00F33C7D /* OutbrainSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E61A95CE2B2098CD00F33C7D /* OutbrainSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E61E6C6B208384A00016D79A /* OBDemoDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456491885A543002B2368 /* OBDemoDataHelper.m */; };
 		E61E6C6C208384A00016D79A /* TinyPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456691885A543002B2368 /* TinyPageControl.m */; };
 		E61E6C6D208384A00016D79A /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */; };
@@ -183,6 +196,7 @@
 		E6E4A4212B136D6E00E558EB /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6E4A41C2B136D5700E558EB /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6E4A4272B136D8E00E558EB /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6E4A41C2B136D5700E558EB /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
+		E6F433F02B32F28900653B12 /* SFWebView-Prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6F433EF2B32F28900653B12 /* SFWebView-Prod-Info.plist */; };
 		E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
 		FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
@@ -236,6 +250,17 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E61A95C62B20981D00F33C7D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E61A95D22B209BAE00F33C7D /* OutbrainSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +357,8 @@
 		E60DCD4820BC3AAD0023FE93 /* SmartFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60DCD4F20BC3BD00023FE93 /* SmartFeed-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartFeed-Dev-Info.plist"; sourceTree = "<group>"; };
 		E60DCD5020BC3BD00023FE93 /* SmartFeed-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartFeed-Info.plist"; sourceTree = "<group>"; };
+		E61A95CB2B20981D00F33C7D /* SFWebView-Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFWebView-Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E61A95CE2B2098CD00F33C7D /* OutbrainSDK.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:97R2B46745:OUTBRAIN INCORPORATED"; lastKnownFileType = wrapper.xcframework; path = OutbrainSDK.xcframework; sourceTree = "<group>"; };
 		E61E6C99208384A00016D79A /* Journal-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Journal-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6CA5208386EF0016D79A /* Journal-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Journal-Dev-Info.plist"; sourceTree = "<group>"; };
 		E61E6CCD2085DBD50016D79A /* SmartFeed-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SmartFeed-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,6 +454,7 @@
 		E6D5BA5427269CD500FE921D /* CollectionTwoWidgetsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTwoWidgetsVC.swift; sourceTree = "<group>"; };
 		E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = "../../SwiftSDK-sources/OutbrainSDK.xcodeproj"; sourceTree = "<group>"; };
 		E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E6F433EF2B32F28900653B12 /* SFWebView-Prod-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "SFWebView-Prod-Info.plist"; path = "SFWebView-Prod/SFWebView-Prod-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E6FFC2C21C28489A00498168 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FC820C1119DD597F00ABAD89 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -453,6 +481,13 @@
 			files = (
 				E60DCD4D20BC3B3A0023FE93 /* AdSupport.framework in Frameworks */,
 				E60DCD4C20BC3B320023FE93 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E61A95C12B20981D00F33C7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +714,7 @@
 		D8B59230186376B1009422D5 = {
 			isa = PBXGroup;
 			children = (
+				E61A95CE2B2098CD00F33C7D /* OutbrainSDK.xcframework */,
 				E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */,
 				D83456431885A543002B2368 /* Journal */,
 				E66B9C8B26809C01006DB0AB /* SFWebView-Dev */,
@@ -698,6 +734,7 @@
 				E60DCD4820BC3AAD0023FE93 /* SmartFeed.app */,
 				E66B9C8A26809C01006DB0AB /* SFWebView-Dev.app */,
 				E69F700528991C7A005334CB /* SwiftUI-Bridge.app */,
+				E61A95CB2B20981D00F33C7D /* SFWebView-Prod.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -894,6 +931,7 @@
 				E66B9C9226809C01006DB0AB /* Main.storyboard */,
 				E66B9C9526809C03006DB0AB /* Assets.xcassets */,
 				E66B9C9726809C03006DB0AB /* LaunchScreen.storyboard */,
+				E6F433EF2B32F28900653B12 /* SFWebView-Prod-Info.plist */,
 				E66B9C9A26809C03006DB0AB /* Info.plist */,
 			);
 			path = "SFWebView-Dev";
@@ -1048,6 +1086,24 @@
 			productReference = E60DCD4820BC3AAD0023FE93 /* SmartFeed.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E61A95B42B20981D00F33C7D /* SFWebView-Prod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E61A95C82B20981D00F33C7D /* Build configuration list for PBXNativeTarget "SFWebView-Prod" */;
+			buildPhases = (
+				E61A95B72B20981D00F33C7D /* Sources */,
+				E61A95C12B20981D00F33C7D /* Frameworks */,
+				E61A95C22B20981D00F33C7D /* Resources */,
+				E61A95C62B20981D00F33C7D /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SFWebView-Prod";
+			productName = "SFWebView-Dev";
+			productReference = E61A95CB2B20981D00F33C7D /* SFWebView-Prod.app */;
+			productType = "com.apple.product-type.application";
+		};
 		E61E6C67208384A00016D79A /* Journal-Dev */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E61E6C96208384A00016D79A /* Build configuration list for PBXNativeTarget "Journal-Dev" */;
@@ -1179,6 +1235,7 @@
 				E61E6C67208384A00016D79A /* Journal-Dev */,
 				E61E6CCC2085DBD50016D79A /* SmartFeed-Dev */,
 				E66B9C8926809C01006DB0AB /* SFWebView-Dev */,
+				E61A95B42B20981D00F33C7D /* SFWebView-Prod */,
 				E69F700428991C7A005334CB /* SwiftUI-Bridge */,
 			);
 		};
@@ -1236,6 +1293,17 @@
 				E60DCD4020BC3AAD0023FE93 /* LaunchScreen.storyboard in Resources */,
 				E60DCD4120BC3AAD0023FE93 /* Assets.xcassets in Resources */,
 				E60DCD4220BC3AAD0023FE93 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E61A95C22B20981D00F33C7D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6F433F02B32F28900653B12 /* SFWebView-Prod-Info.plist in Resources */,
+				E61A95C32B20981D00F33C7D /* LaunchScreen.storyboard in Resources */,
+				E61A95C42B20981D00F33C7D /* Assets.xcassets in Resources */,
+				E61A95C52B20981D00F33C7D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,6 +1441,22 @@
 				E62729E121ECD41900C8CEFD /* OBVideoWidgetViewController.swift in Sources */,
 				E60DCD3820BC3AAD0023FE93 /* ViewController.swift in Sources */,
 				E60DCD3920BC3AAD0023FE93 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E61A95B72B20981D00F33C7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E61A95B82B20981D00F33C7D /* TableVC.swift in Sources */,
+				E61A95B92B20981D00F33C7D /* ViewController.swift in Sources */,
+				E61A95BA2B20981D00F33C7D /* CollectionVC.swift in Sources */,
+				E61A95BB2B20981D00F33C7D /* AppArticleCollectionViewCell.swift in Sources */,
+				E61A95BC2B20981D00F33C7D /* ScrollViewVC.swift in Sources */,
+				E61A95BD2B20981D00F33C7D /* OBViewController.swift in Sources */,
+				E61A95BE2B20981D00F33C7D /* CollectionTwoWidgetsVC.swift in Sources */,
+				E61A95BF2B20981D00F33C7D /* AppDelegate.swift in Sources */,
+				E61A95C02B20981D00F33C7D /* AppArticleTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1544,6 +1628,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 97R2B46745;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1599,6 +1684,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 97R2B46745;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1641,7 +1727,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 4.0.0;
 				OTHER_LDFLAGS = "-all_load";
@@ -1671,7 +1760,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 4.0.0;
 				OTHER_LDFLAGS = "-all_load";
@@ -1705,7 +1797,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
@@ -1741,16 +1836,104 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_WORKSPACE = YES;
+			};
+			name = Release;
+		};
+		E61A95C92B20981D00F33C7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Apple Development: oded regev (MP2742Y79L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: oded regev (MP2742Y79L)";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 97R2B46745;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "SFWebView-Prod/SFWebView-Prod-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SFWebView-Prod";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 5.0.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.SFWebView-Prod";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.outbrain.SFWebView-Prod";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E61A95CA2B20981D00F33C7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OUTBRAIN INCORPORATED";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OUTBRAIN INCORPORATED";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 97R2B46745;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "SFWebView-Prod/SFWebView-Prod-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SFWebView-Prod";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 5.0.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.outbrain.SFWebView-Prod";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match InHouse com.outbrain.SFWebView-Prod";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1777,7 +1960,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Dev-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 4.0.0;
 				OTHER_LDFLAGS = "-all_load";
@@ -1807,7 +1993,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Dev-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 4.0.0;
 				OTHER_LDFLAGS = "-all_load";
@@ -1837,7 +2026,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
@@ -1868,12 +2060,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1898,7 +2094,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "SFWebView-Dev/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 5.0.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1931,7 +2130,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "SFWebView-Dev/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 5.0.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1970,7 +2172,10 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 5.0.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -2012,7 +2217,10 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 5.0.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -2051,6 +2259,15 @@
 			buildConfigurations = (
 				E60DCD4620BC3AAD0023FE93 /* Debug */,
 				E60DCD4720BC3AAD0023FE93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E61A95C82B20981D00F33C7D /* Build configuration list for PBXNativeTarget "SFWebView-Prod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E61A95C92B20981D00F33C7D /* Debug */,
+				E61A95CA2B20981D00F33C7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -11,14 +11,47 @@ references:
   ios_config: &ios_config
     working_directory: ~/repo
     macos:
-      xcode: "14.0"
+      xcode: "15.0.0"
+  
+  prepare_code_signing: &prepare_code_signing
+    run:
+      name: Set Up Code Signing
+      command: |
+        # Decode the base64-encoded P12 file
+        echo "$CERTIFICATE_P12" | base64 --decode > certificate.p12
+        # Unlock the keychain (use a custom keychain, not the login keychain)
+        security create-keychain -p "" my.keychain
+        security import certificate.p12 -k my.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+        security list-keychains -s my.keychain
+        security default-keychain -s my.keychain
+        security unlock-keychain -p "" my.keychain
+        security set-keychain-settings -t 7200 -l my.keychain
+        security list-keychains -d user
+        security find-identity -p codesigning
+        security set-key-partition-list -S apple-tool:,apple: -s -k '' my.keychain
+      working_directory: SwiftSDK-sources
+
+  clean_previous_sdk_artifact: &clean_previous_sdk_artifact
+    run:
+          name: Clean previous OutbrainSDK.xcframework
+          command: |
+            if [ -d OutbrainSDK.xcframework ]; then
+              rm -fr OutbrainSDK.xcframework
+            fi
+          working_directory: Samples/OutbrainDemo
+
+  xcodeclean_sdk_project: &xcodeclean_sdk_project
+      run:
+          name: Cleaning the SDK project - OutbrainSDK
+          command: xcodebuild clean -target OutbrainSDK
+          working_directory: SwiftSDK-sources
 
   # Export environment variables
   define_var_previous_release_version: &define_var_previous_release_version
     run:
       name: Export previous version number to environment variable
-      command: echo "export PREVIOUS_SDK_VERSION=`cat Outbrain.m | grep "OB_SDK_VERSION" | cut -d "=" -f2 | cut -d \" -f2`" >> $BASH_ENV
-      working_directory: SDK-sources/OutbrainSDK/
+      command: echo "export PREVIOUS_SDK_VERSION=`cat Outbrain.swift | grep "OB_SDK_VERSION" | cut -d "=" -f2 | cut -d \" -f2`" >> $BASH_ENV
+      working_directory: SwiftSDK-sources/OutbrainSDK/
 
   define_var_release_version: &define_var_release_version
     run:
@@ -31,23 +64,16 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Clean previous OutbrainSDK.xcframework
-          command: |
-            if [ -d OutbrainSDK.xcframework ]; then
-              rm -fr OutbrainSDK.xcframework
-            fi
-          working_directory: Samples/OutbrainDemo
+      - *clean_previous_sdk_artifact
 
-      - run:
-          name: Cleaing the SDK project - OutbrainSDK
-          command: xcodebuild clean -target OutbrainSDK
-          working_directory: SDK-sources
+      - *xcodeclean_sdk_project
+
+      - *prepare_code_signing
 
       - run:
           name: Building the SDK XCFramework for release
-          command: ./dynamic_framework_build.sh --skip-signing
-          working_directory: SDK-sources
+          command: ./dynamic_framework_build.sh
+          working_directory: SwiftSDK-sources
 
       - run:
           name: Check if framework is where we think it is
@@ -59,39 +85,16 @@ jobs:
           working_directory: Samples/OutbrainDemo/
 
       - run:
-          name: Build Sample Apps - Journal
-          command: |
-            xcodebuild \
-            -project OutbrainDemo.xcodeproj \
-            -scheme Journal \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
-            build
-          working_directory: Samples/OutbrainDemo
-      
-      - run:
-          name: Build Sample Apps - SmartFeed
-          command: |
-            xcodebuild \
-            -project OutbrainDemo.xcodeproj \
-            -scheme SmartFeed \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
-            build
-          working_directory: Samples/OutbrainDemo
+          name: Run SDK tests
+          command: fastlane sdk_tests
 
       - run:
-          name: Run SDK tests
-          command: |
-            xcodebuild \
-            -project OutbrainSDK.xcodeproj \
-            -scheme OutbrainSDK \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
-            test
-          working_directory: SDK-sources
+          name: Build Sample Apps - Fastlane SFWebView-Prod
+          command: MATCH_PASSWORD=123456  fastlane sfwebview_prod
 
   ios_release:
+    needs:
+      - ios_default
     <<: *ios_config
     steps:
       - checkout
@@ -114,41 +117,16 @@ jobs:
           command: |
             cd scripts
             bash -x ./bump_sdk_version.sh
+      - *clean_previous_sdk_artifact
 
-      - run:
-          name: Clean previous OutbrainSDK.xcframework
-          command: |
-            if [ -d OutbrainSDK.xcframework ]; then
-              rm -fr OutbrainSDK.xcframework
-            fi
-          working_directory: Samples/OutbrainDemo
+      - *xcodeclean_sdk_project
 
-      - run:
-          name: Cleaing the SDK project - OutbrainSDK
-          command: xcodebuild clean -target OutbrainSDK
-          working_directory: SDK-sources
-
-      - run:
-          name: Set Up Code Signing
-          command: |
-            # Decode the base64-encoded P12 file
-            echo "$CERTIFICATE_P12" | base64 --decode > certificate.p12
-            # Unlock the keychain (use a custom keychain, not the login keychain)
-            security create-keychain -p "" my.keychain
-            security import certificate.p12 -k my.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
-            security list-keychains -s my.keychain
-            security default-keychain -s my.keychain
-            security unlock-keychain -p "" my.keychain
-            security set-keychain-settings -t 7200 -l my.keychain
-            security list-keychains -d user
-            security find-identity -p codesigning
-            security set-key-partition-list -S apple-tool:,apple: -s -k '' my.keychain
-          working_directory: SDK-sources
+      - *prepare_code_signing
           
       - run:
           name: Building the SDK XCFramework for release
           command: ./dynamic_framework_build.sh
-          working_directory: SDK-sources
+          working_directory: SwiftSDK-sources
 
       - run:
           name: Check if OutbrainSDK.xcframework is where we think it is
@@ -160,37 +138,8 @@ jobs:
           working_directory: Samples/OutbrainDemo/
 
       - run:
-          name: Build Sample Apps - Journal
-          command: |
-            xcodebuild \
-            -project OutbrainDemo.xcodeproj \
-            -scheme Journal \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
-            build
-          working_directory: Samples/OutbrainDemo
-      
-      - run:
-          name: Build Sample Apps - SmartFeed
-          command: |
-            xcodebuild \
-            -project OutbrainDemo.xcodeproj \
-            -scheme SmartFeed \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
-            build
-          working_directory: Samples/OutbrainDemo
-
-      - run:
           name: Run SDK tests
-          command: |
-            xcodebuild \
-            -project OutbrainSDK.xcodeproj \
-            -scheme OutbrainSDK \
-            -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
-            test
-          working_directory: SDK-sources
+          command: fastlane sdk_tests
 
       - run:
           name: Creating OBSDK-Release dir
@@ -215,8 +164,18 @@ jobs:
           working_directory: OBSDK-Release
 
       - run:
+          name: Add alpha to $RELEASE_VERSION if version >= 5.0.0
+          command: |
+            if [ $(echo "$RELEASE_VERSION >= 5.0.0" | bc) -eq 1 ]; then
+              echo "Adding alpha to $RELEASE_VERSION"
+              RELEASE_VERSION="$RELEASE_VERSION-alpha"
+              echo "export RELEASE_VERSION="$RELEASE_VERSION-alpha" >> $BASH_ENV
+            fi
+
+      - run:
           name: Update public Github repo outbrain/outbrain-iOS-Framework with new SDK version
           command: |
+            echo "$RELEASE_VERSION"
             git clone git@github.com:outbrain/outbrain-iOS-Framework.git
             cd outbrain-iOS-Framework
             echo "remove the old xcframework"
@@ -235,7 +194,9 @@ jobs:
             git config --global user.name "Oded Regev via CircleCI"
             git commit -m "update OutbrainSDK.xcframework to version $RELEASE_VERSION"
             git tag $RELEASE_VERSION
-            git push origin master
+            if [ $(echo "$RELEASE_VERSION < 5.0.0" | bc) -eq 1 ]; then
+              git push origin master
+            endif
             git push origin --tags
             pod trunk push OutbrainSDK.podspec
 
@@ -248,13 +209,13 @@ jobs:
           command: cd scripts; bash -x ./upload_to_gcp_storage.sh ../OBSDK-Release/iOS-SampleApps.zip iOS-SampleApps.zip $RELEASE_VERSION 
 
       - run:
-          name: Upload Custom UI
-          command: bash -x ./scripts/update_custom_ui.sh $RELEASE_VERSION
-
-      - run:
           name: Update developer docs Github repo outbrain/developer-docs with new SDK version
           command: |
             echo "$RELEASE_VERSION"
+            if [ $(echo "$RELEASE_VERSION >= 5.0.0" | bc) -eq 1 ]; then
+              echo "Skipping developer-docs update for version >= 5.0.0"
+              return 0
+            fi
             git clone git@github.com:outbrain/developer-docs.git
             cd developer-docs
             PREVIOUS_VERSION=`cat docs/iOS-SDK/release-notes.md | grep -m 1 "##" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | awk '{print $1}'`
@@ -291,9 +252,6 @@ jobs:
             echo "*                                                                                                       *"
             echo "* iOS Sample Apps on GCP:                                                                               *"
             echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/iOS-SampleApps.zip                       *"
-            echo "*                                                                                                       *"
-            echo "* iOS Custom UI on GCP:                                                                                 *"
-            echo "* https://storage.googleapis.com/outbrain-sdk/$RELEASE_VERSION/Custom-UI-iOS-SDK-Smartfeed.zip          *"
             echo "*                                                                                                       *"
             echo "*********************************************************************************************************"
 
