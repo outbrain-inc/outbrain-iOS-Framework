@@ -222,6 +222,7 @@ jobs:
               git push origin main
             fi
             git push origin --tags
+            bundle update --bundler
             bundle exec pod spec lint --verbose 
             bundle exec pod trunk push OutbrainSDK.podspec
 
