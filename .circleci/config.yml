@@ -213,7 +213,7 @@ jobs:
             fi
             git push origin --tags
             rm -rf ~/.cocoapods
-            gem install cocoapods
+            sudo gem install cocoapods
             pod --version
             pod spec lint --verbose 
             pod trunk push OutbrainSDK.podspec
