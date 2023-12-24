@@ -172,13 +172,6 @@ jobs:
           working_directory: OBSDK-Release
 
       - run:
-          name: Install cocoapods
-          command: |
-            rm -rf ~/.cocoapods
-            gem install cocoapods
-            pod --version
-            
-      - run:
           name: Add alpha to $RELEASE_VERSION if version >= 5.0.0
           command: |
             if [ "$ALPHA_RELEASE" ]; then
@@ -219,7 +212,9 @@ jobs:
               git push origin main
             fi
             git push origin --tags
-            pod cache clean --all
+            rm -rf ~/.cocoapods
+            gem install cocoapods
+            pod --version
             pod spec lint --verbose 
             pod trunk push OutbrainSDK.podspec
 
