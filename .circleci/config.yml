@@ -134,7 +134,7 @@ jobs:
       - run:
           name: Install cocoapods
           command: |
-            brew install cocoapods@1.14.2
+            brew install cocoapods
             pod --version
       
       - run:
