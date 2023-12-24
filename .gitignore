@@ -19,5 +19,7 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+vendor/
+.bundle/
 # Pods - for those of you who use CocoaPods
 Pods
