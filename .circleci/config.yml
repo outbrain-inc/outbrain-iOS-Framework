@@ -185,8 +185,8 @@ jobs:
           name: Install cocoapods
           command: |
             gem list --local | grep cocoapods
-            sudo gem uninstall cocoapods
-            sudo rm -rf ~/.cocoapods
+            gem uninstall cocoapods
+            rm -rf ~/.cocoapods
             gem install cocoapods
             pod --version
 
