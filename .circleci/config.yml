@@ -183,7 +183,12 @@ jobs:
 
       - run:
           name: Install cocoapods
-          command: brew install cocoapods
+          command: |
+            gem list --local | grep cocoapods
+            sudo gem uninstall cocoapods
+            sudo rm -rf ~/.cocoapods
+            gem install cocoapods
+            pod --version
 
       - run:
           name: Update public Github repo outbrain/outbrain-iOS-Framework with new SDK version
