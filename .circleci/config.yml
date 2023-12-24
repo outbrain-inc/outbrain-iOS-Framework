@@ -130,7 +130,13 @@ jobs:
       - *xcodeclean_sdk_project
 
       - *prepare_code_signing
-          
+      
+      - run:
+          name: Install cocoapods
+          command: |
+            brew install cocoapods@1.14.2
+            pod --version
+      
       - run:
           name: Building the SDK XCFramework for release
           command: ./dynamic_framework_build.sh
@@ -180,10 +186,6 @@ jobs:
               echo "RELEASE_VERSION="$RELEASE_VERSION"
               echo "export RELEASE_VERSION="$RELEASE_VERSION" >> $BASH_ENV
             fi
-
-      - run:
-          name: Install cocoapods
-          command: brew install cocoapods
 
       - run:
           name: Update public Github repo outbrain/outbrain-iOS-Framework with new SDK version
