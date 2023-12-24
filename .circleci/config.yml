@@ -216,6 +216,7 @@ jobs:
               git push origin main
             fi
             git push origin --tags
+            pod cache clean --all
             pod spec lint --verbose 
             pod trunk push OutbrainSDK.podspec
 
