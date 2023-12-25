@@ -1,5 +1,9 @@
 # Release Notes
 
+## v5.0.1-alpha - December 25, 2023
+
+- Major - SDK re-write from ObjC to Swift.
+
 ## v4.29.0 - October 19, 2023
 
 - Other - Support for [Apple Privacy Manifest](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) file.
