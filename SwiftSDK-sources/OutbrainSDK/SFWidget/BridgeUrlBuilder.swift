@@ -82,6 +82,16 @@ class BridgeUrlBuilder {
             newQueryItems.append(URLQueryItem(name: "ccpa", value: ccpa))
         }
         
+        //GPP
+        if let gppSections = GPPUtils.gppSections, !gppSections.isEmpty {
+            newQueryItems.append(URLQueryItem(name: "gpp_sid", value: gppSections))
+        }
+        
+        //GPP
+        if let gppString = GPPUtils.gppString, !gppString.isEmpty {
+            newQueryItems.append(URLQueryItem(name: "gpp", value: gppString))
+        }
+        
     }
     
     func addUserId(userId: String?) -> BridgeUrlBuilder {

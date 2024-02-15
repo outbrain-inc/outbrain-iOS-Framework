@@ -51,6 +51,8 @@
 		CA26CB7A2A779D6400D2C22F /* SFWidgetTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26CB792A779D6400D2C22F /* SFWidgetTableCell.swift */; };
 		CA58F6552A8D082500201A81 /* Viewability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58F6542A8D082500201A81 /* Viewability.swift */; };
 		CA7690A92A8E0582009C57BF /* JavaScriptExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7690A82A8E0582009C57BF /* JavaScriptExecutor.swift */; };
+		CAEB973B2B7E68D700DD1754 /* GPPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEB973A2B7E68D700DD1754 /* GPPUtils.swift */; };
+		CAEB973D2B7E69E300DD1754 /* GPPUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEB973C2B7E69E300DD1754 /* GPPUtilsTests.swift */; };
 		E6E4B3BD2A2381A100FE44E3 /* OutbrainSDK.docc in Sources */ = {isa = PBXBuildFile; fileRef = E6E4B3BC2A2381A100FE44E3 /* OutbrainSDK.docc */; };
 		E6E4B3C32A2381A100FE44E3 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E4B3B82A2381A100FE44E3 /* OutbrainSDK.framework */; };
 		E6E4B3C82A2381A100FE44E3 /* OutbrainSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E4B3C72A2381A100FE44E3 /* OutbrainSDKTests.swift */; };
@@ -114,6 +116,8 @@
 		CA26CB792A779D6400D2C22F /* SFWidgetTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetTableCell.swift; sourceTree = "<group>"; };
 		CA58F6542A8D082500201A81 /* Viewability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewability.swift; sourceTree = "<group>"; };
 		CA7690A82A8E0582009C57BF /* JavaScriptExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptExecutor.swift; sourceTree = "<group>"; };
+		CAEB973A2B7E68D700DD1754 /* GPPUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPPUtils.swift; sourceTree = "<group>"; };
+		CAEB973C2B7E69E300DD1754 /* GPPUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPPUtilsTests.swift; sourceTree = "<group>"; };
 		E6E4B3B82A2381A100FE44E3 /* OutbrainSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OutbrainSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E4B3BB2A2381A100FE44E3 /* OutbrainSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutbrainSDK.h; sourceTree = "<group>"; };
 		E6E4B3BC2A2381A100FE44E3 /* OutbrainSDK.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = OutbrainSDK.docc; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				5E0D6B282A41BC95008BCD06 /* GDPRUtils.swift */,
 				5E0D6B2A2A41C672008BCD06 /* DeviceModelUtil.swift */,
 				5E91D1602A56A99E00CD9AF5 /* OBLogger.swift */,
+				CAEB973A2B7E68D700DD1754 /* GPPUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				5E3FD05D2A5ED5790011C78B /* OBLoggerTests.swift */,
+				CAEB973C2B7E69E300DD1754 /* GPPUtilsTests.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -432,6 +438,7 @@
 				CA26CB6A2A7124BF00D2C22F /* BridgeUrlBuilder.swift in Sources */,
 				5E0919D62A4AFD57005A014F /* OBGlobalStatisticsData.swift in Sources */,
 				CA26CB622A6FF79A00D2C22F /* SFWidget.swift in Sources */,
+				CAEB973B2B7E68D700DD1754 /* GPPUtils.swift in Sources */,
 				5E0D6B242A418FCD008BCD06 /* OBQueueManager.swift in Sources */,
 				CA26CB682A7017D200D2C22F /* SFMessageHandlerDelegate.swift in Sources */,
 				CA26CB7A2A779D6400D2C22F /* SFWidgetTableCell.swift in Sources */,
@@ -472,6 +479,7 @@
 				5EEF0AC32A554953000E65A1 /* OBGlobalStatisticsDataTests.swift in Sources */,
 				5E91D15E2A55563000CD9AF5 /* UIViewExtensionTests.swift in Sources */,
 				5E3FD05E2A5ED5790011C78B /* OBLoggerTests.swift in Sources */,
+				CAEB973D2B7E69E300DD1754 /* GPPUtilsTests.swift in Sources */,
 				CA2646B52AADD0B1005287CB /* BridgeUrlBuilder.swift in Sources */,
 				5EEF0ABF2A55481D000E65A1 /* OBRequestTests.swift in Sources */,
 				5EEF0AC72A554A27000E65A1 /* OBQueueManagerTests.swift in Sources */,
