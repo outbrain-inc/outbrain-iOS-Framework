@@ -34,6 +34,7 @@
 		16B1F9762185DC8100023DDD /* CMPConsentToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9682185DC8100023DDD /* CMPConsentToolViewController.m */; };
 		16B1F9772185DC8100023DDD /* CMPActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9692185DC8100023DDD /* CMPActivityIndicatorView.m */; };
 		16B1F9782185DC8100023DDD /* CMPActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F9692185DC8100023DDD /* CMPActivityIndicatorView.m */; };
+		CAEB97412B83770600DD1754 /* SetParamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEB97402B83770600DD1754 /* SetParamsViewController.swift */; };
 		D8174B2F18A562BC005696C2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D8174B2E18A562BC005696C2 /* Settings.bundle */; };
 		D834566A1885A543002B2368 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456471885A543002B2368 /* Post.m */; };
 		D834566B1885A543002B2368 /* OBDemoDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456491885A543002B2368 /* OBDemoDataHelper.m */; };
@@ -333,6 +334,7 @@
 		16B1F9682185DC8100023DDD /* CMPConsentToolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPConsentToolViewController.m; sourceTree = "<group>"; };
 		16B1F9692185DC8100023DDD /* CMPActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPActivityIndicatorView.m; sourceTree = "<group>"; };
 		16B1F96A2185DC8100023DDD /* GDPRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPRViewController.h; sourceTree = "<group>"; };
+		CAEB97402B83770600DD1754 /* SetParamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetParamsViewController.swift; sourceTree = "<group>"; };
 		D8174B2E18A562BC005696C2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D83456461885A543002B2368 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		D83456471885A543002B2368 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
@@ -606,6 +608,14 @@
 				16B1F9692185DC8100023DDD /* CMPActivityIndicatorView.m */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		CAEB973E2B8376D900DD1754 /* SetParams */ = {
+			isa = PBXGroup;
+			children = (
+				CAEB97402B83770600DD1754 /* SetParamsViewController.swift */,
+			);
+			path = SetParams;
 			sourceTree = "<group>";
 		};
 		D83456431885A543002B2368 /* Journal */ = {
@@ -922,6 +932,7 @@
 		E66B9C8B26809C01006DB0AB /* SFWebView-Dev */ = {
 			isa = PBXGroup;
 			children = (
+				CAEB973E2B8376D900DD1754 /* SetParams */,
 				E66B9CB52681C7D9006DB0AB /* ScrollViewVC */,
 				E66B9CA52680A199006DB0AB /* CollectionView */,
 				E66B9CA82680A199006DB0AB /* TableView */,
@@ -1526,6 +1537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E66B9CB32680A199006DB0AB /* TableVC.swift in Sources */,
+				CAEB97412B83770600DD1754 /* SetParamsViewController.swift in Sources */,
 				E66B9C9126809C01006DB0AB /* ViewController.swift in Sources */,
 				E66B9CB22680A199006DB0AB /* CollectionVC.swift in Sources */,
 				E66B9CB12680A199006DB0AB /* AppArticleCollectionViewCell.swift in Sources */,
