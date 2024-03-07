@@ -398,6 +398,8 @@ public struct OBRequestHandler {
             addReqParam(name: "cnsnt", value: GDPRUtils.gdprV1ConsentString ?? ""),
             addReqParam(name: "cnsntv2", value: GDPRUtils.gdprV2ConsentString ?? ""),
             addReqParam(name: "ccpa", value: GDPRUtils.ccpaPrivacyString ?? ""),
+            addReqParam(name: "gpp_sid", value: GPPUtils.gppSections ?? ""),
+            addReqParam(name: "gpp", value: GPPUtils.gppString ?? ""),
         ]
         
         // add platforms params if needed or just the url if regular call

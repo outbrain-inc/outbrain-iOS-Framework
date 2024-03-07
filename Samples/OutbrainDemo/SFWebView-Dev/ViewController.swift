@@ -23,6 +23,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var customWidgetIdTextField: UITextField!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var setParams: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
