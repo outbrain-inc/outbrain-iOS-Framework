@@ -46,7 +46,7 @@ public class SFWidget: UIView {
     public var extSecondaryId: String?
     
     /**
-     Outbrain uses the odb parameter pubImpId to get the session ID/ click identifier from the publisher. There are 2 supported ways to send us the value (similar to the external ID)
+     Outbrain uses the odb parameter pubImpId to get the session ID/ click identifier from the publisher.
      */
     public var OBPubImp: String?
     /**
