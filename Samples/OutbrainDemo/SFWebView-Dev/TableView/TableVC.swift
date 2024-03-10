@@ -34,6 +34,7 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource, OB
         
         sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
         
+        sfWidget.OBPubImp = "THIS_IS_A_TEST_PARAM"
         self.sfWidget.configure(with: self, url: OBConf.baseURL, widgetId: self.widgetId, installationKey: OBConf.installationKey)
     }
     

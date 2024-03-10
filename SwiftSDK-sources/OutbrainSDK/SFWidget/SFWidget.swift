@@ -46,6 +46,10 @@ public class SFWidget: UIView {
     public var extSecondaryId: String?
     
     /**
+     Outbrain uses the odb parameter pubImpId to get the session ID/ click identifier from the publisher. There are 2 supported ways to send us the value (similar to the external ID)
+     */
+    public var OBPubImp: String?
+    /**
      Initializes a new instance of the custom view with the specified frame.
 
      - Parameter frame: A `CGRect` that defines the initial size and position of the view within its superview's coordinate system.
@@ -339,6 +343,7 @@ public class SFWidget: UIView {
             .addEvents(widgetEvents: self.isWidgetEventsEnabled ? .all: .no)
             .addExternalId(extId: self.extId)
             .addExternalSecondaryId(extid2: self.extSecondaryId)
+            .addOBPubImp(pubImpId: self.OBPubImp)
             .addUserId(userId: self.userId)
             .addWidgetIndex(index: self.widgetIndex)
             .build() {
