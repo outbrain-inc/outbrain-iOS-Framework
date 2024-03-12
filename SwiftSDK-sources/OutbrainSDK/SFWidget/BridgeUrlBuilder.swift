@@ -155,6 +155,13 @@ class BridgeUrlBuilder {
         return self
     }
     
+    func addOBPubImp(pubImpId: String?) -> BridgeUrlBuilder {
+        if let pubImpId = pubImpId {
+            newQueryItems.append(URLQueryItem(name: "pubImpId", value: pubImpId))
+        }
+        return self
+    }
+    
     func addEvents(widgetEvents: WidgetEvents?) -> BridgeUrlBuilder {
         if widgetEvents == nil || widgetEvents == .no {
             return self
