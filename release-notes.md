@@ -1,5 +1,9 @@
 # Release Notes
 
+## v5.0.2-alpha - March 13, 2024
+
+- Minor - add support for obPubImp param.
+  
 ## v5.0.1-alpha - December 25, 2023
 
 - Major - SDK re-write from ObjC to Swift.
