@@ -53,7 +53,7 @@ references:
     run:
       name: Export new version number to environment variable
       command: |
-        RELEASE_VERSION=$(cut -d '/' -f2 <<< $CIRCLE_BRANCH)
+        RELEASE_VERSION=$(echo $CIRCLE_BRANCH | cut -d '/' -f2)
         MAJOR_VERSION=$(echo "$RELEASE_VERSION" | cut -d. -f1)
         ALPHA_RELEASE=$((MAJOR_VERSION >= 5))
         echo "RELEASE_VERSION=$RELEASE_VERSION"        
