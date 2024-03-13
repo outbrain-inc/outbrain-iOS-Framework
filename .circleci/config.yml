@@ -272,10 +272,7 @@ jobs:
 workflows:
   workflow:
     jobs:
-      - ios_default:
-          filters:
-            branches:
-              ignore: /^release/.*/
+      - ios_default
 
       - ios_release:
           requires:
