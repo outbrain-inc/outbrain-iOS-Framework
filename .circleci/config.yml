@@ -97,8 +97,6 @@ jobs:
           command: MATCH_PASSWORD=123456  fastlane sfwebview_prod
 
   ios_release:
-    needs:
-      - ios_default
     <<: *ios_config
     steps:
       - checkout
@@ -280,6 +278,8 @@ workflows:
               ignore: /^release/.*/
 
       - ios_release:
+          requires:
+            - ios_default
           filters:
             branches:
               only:
