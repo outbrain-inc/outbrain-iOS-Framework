@@ -238,6 +238,7 @@ public class SFWidget: UIView {
         self.webview.scrollView.isScrollEnabled = false
         self.webview.isOpaque = false
         self.webview.uiDelegate = self
+        self.webview.navigationDelegate = self
         self.setWebViewInspectable(inspectable: SFConsts.isInspectable)
         self.addSubview(self.webview)
         BridgeUtils.addConstraintsToParentView(view: self.webview)
