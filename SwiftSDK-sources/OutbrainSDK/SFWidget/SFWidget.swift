@@ -541,7 +541,7 @@ extension SFWidget: SFMessageHandlerDelegate {
 }
 
 // MARK: WKUIDelegate
-extension SFWidget: WKUIDelegate {
+extension SFWidget: WKUIDelegate, WKNavigationDelegate {
     public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil {
             if let url = navigationAction.request.url {
@@ -549,5 +549,23 @@ extension SFWidget: WKUIDelegate {
             }
         }
         return nil
+    }
+    
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        guard let url = navigationAction.request.url, UIApplication.shared.canOpenURL(url) else {
+            decisionHandler(.allow)
+            return;
+        }
+        
+        if let targetFrame = navigationAction.targetFrame,
+           targetFrame.isMainFrame == true,
+           navigationAction.sourceFrame.isMainFrame == false,
+           url.absoluteString.contains("widgets.outbrain.com/reactNativeBridge") == false {
+            decisionHandler(.cancel)
+            self.delegate?.onRecClick(url)
+            return
+        }
+        
+        decisionHandler(.allow)
     }
 }
