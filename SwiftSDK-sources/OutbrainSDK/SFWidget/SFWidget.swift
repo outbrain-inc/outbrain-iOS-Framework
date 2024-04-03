@@ -37,6 +37,7 @@ public class SFWidget: UIView {
     var bridgeParamsObserver: NSObjectProtocol?
     var tParamObserver: NSObjectProtocol?
     var errorReporter: OBErrorReport?
+    var settings: [String: Any] = [:]
     
     /**
        External Id public value
@@ -538,11 +539,27 @@ extension SFWidget: SFMessageHandlerDelegate {
     public func onRecClick(_ url: URL) {
         self.delegate?.onRecClick(url)
     }
+    
+    public func onSettingsReceived(_ settings: [String : Any]) {
+        self.settings = settings
+    }
 }
 
 // MARK: WKUIDelegate
 extension SFWidget: WKUIDelegate, WKNavigationDelegate {
+    private func isDisplaySettingEnabled() -> Bool {
+        guard let flagSetting = self.settings["OB_BRIDGE_DISPLAY_SETTING"] as? Bool else {
+            return false
+        }
+        
+        return flagSetting == true
+    }
+    
     public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        guard isDisplaySettingEnabled() else {
+            return nil
+        }
+        
         if navigationAction.targetFrame == nil {
             if let url = navigationAction.request.url {
                 self.delegate?.onRecClick(url)
@@ -552,9 +569,11 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        guard let url = navigationAction.request.url, UIApplication.shared.canOpenURL(url) else {
+        guard isDisplaySettingEnabled(),
+              let url = navigationAction.request.url,
+              UIApplication.shared.canOpenURL(url) else {
             decisionHandler(.allow)
-            return;
+            return
         }
         
         if let targetFrame = navigationAction.targetFrame,
