@@ -100,5 +100,11 @@ class SFWidgetMessageHandler: NSObject, WKScriptMessageHandler {
             }
         }
     }
+    
+    private func handleSettingsMessage(_ msg: [String: Any]) {
+        guard let settings = msg["settings"] as? [String: Any] else { return }
+        
+        self.delegate?.onSettingsReceived(settings)
+    }
 }
 

@@ -44,5 +44,7 @@ import Foundation
      *  @param additionalData - additional data that comes with the event. For example you'll find there: "widget ID", "widget index" and "timestamp".
      */
     @objc optional func widgetEvent(_ eventName: String, additionalData: [String: Any])
+    
+    func onSettingsReceived(_ settings: [String: Any])
 
 }
