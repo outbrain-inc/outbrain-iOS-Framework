@@ -37,6 +37,7 @@ class SFWidgetMessageHandler: NSObject, WKScriptMessageHandler {
             self.handleClickMessage(msgBody)
             self.callDelegateOnValidEvents(msgBody)
             self.handleErrorMessage(msgBody)
+            self.handleSettingsMessage(msgBody)
         } catch {
             let errorMsg = "Exception in SFWidgetMessageHandler - \(error)"
             Outbrain.logger.error("SFWidgetMessageHandler - Error converting message body to data", domain: self.messageHandler)

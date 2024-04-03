@@ -548,7 +548,7 @@ extension SFWidget: SFMessageHandlerDelegate {
 // MARK: WKUIDelegate
 extension SFWidget: WKUIDelegate, WKNavigationDelegate {
     private func isDisplaySettingEnabled() -> Bool {
-        guard let flagSetting = self.settings["OB_BRIDGE_DISPLAY_SETTING"] as? Bool else {
+        guard let flagSetting = self.settings["shouldEnableBridgeDisplay"] as? Bool else {
             return false
         }
         
