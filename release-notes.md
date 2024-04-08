@@ -1,5 +1,9 @@
 # Release Notes
 
+## v5.0.3-beta - April 8, 2024
+
+- Minor - verify that "beta" is working as expected (was "alpha")
+
 ## v5.0.2-alpha - March 13, 2024
 
 - Minor - add support for obPubImp param.
