@@ -55,12 +55,12 @@ references:
       command: |
         RELEASE_VERSION=$(echo $CIRCLE_BRANCH | cut -d '/' -f2)
         MAJOR_VERSION=$(echo "$RELEASE_VERSION" | cut -d. -f1)
-        ALPHA_RELEASE=$((MAJOR_VERSION >= 5))
+        BETA_RELEASE=$((MAJOR_VERSION >= 5))
         echo "RELEASE_VERSION=$RELEASE_VERSION"        
         echo "MAJOR_VERSION=$MAJOR_VERSION"
-        echo "ALPHA_RELEASE=$ALPHA_RELEASE"
+        echo "BETA_RELEASE=$BETA_RELEASE"
         echo "export RELEASE_VERSION=$RELEASE_VERSION" >> $BASH_ENV
-        echo "export ALPHA_RELEASE=$((MAJOR_VERSION >= 5))" >> $BASH_ENV
+        echo "export BETA_RELEASE=$((MAJOR_VERSION >= 5))" >> $BASH_ENV
 
 jobs:
   ios_default:
@@ -166,11 +166,11 @@ jobs:
           working_directory: OBSDK-Release
 
       - run:
-          name: Add alpha to $RELEASE_VERSION if version >= 5.0.0
+          name: Add beta to $RELEASE_VERSION if version >= 5.0.0
           command: |
-            if [ "$ALPHA_RELEASE" ]; then
-              echo "Adding alpha to $RELEASE_VERSION"
-              RELEASE_VERSION="$RELEASE_VERSION-alpha"
+            if [ "$BETA_RELEASE" ]; then
+              echo "Adding beta to $RELEASE_VERSION"
+              RELEASE_VERSION="$RELEASE_VERSION-beta"
               echo "RELEASE_VERSION="$RELEASE_VERSION"
               echo "export RELEASE_VERSION="$RELEASE_VERSION" >> $BASH_ENV
             fi
@@ -191,7 +191,7 @@ jobs:
           name: Update developer docs Github repo outbrain/developer-docs with new SDK version
           command: |
             echo "$RELEASE_VERSION"
-            if [ "$ALPHA_RELEASE" ]; then
+            if [ "$BETA_RELEASE" ]; then
               echo "Skipping developer-docs update for version >= 5.0.0"
               exit 0
             fi
@@ -257,11 +257,11 @@ jobs:
             git status
             git commit -m "update OutbrainSDK.xcframework to version $RELEASE_VERSION"
             git tag $RELEASE_VERSION
-            if [ "$ALPHA_RELEASE" ]; then
-              echo "This is an alpha release, pushing to alpha branch"
+            if [ "$BETA_RELEASE" ]; then
+              echo "This is a beta release, pushing to beta branch"
               git push origin main:ci-$RELEASE_VERSION
             else
-              echo "This is NOT an alpha release, pushing to main"
+              echo "This is NOT a beta release, pushing to main"
               git push origin main
             fi
             git push origin --tags
