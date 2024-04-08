@@ -38,6 +38,8 @@ Check that `ios_release` passes
 
 ## Step 5
 
+### Push the version to Cocoapods
+
 In your local Mac, go to your local copy of this repo https://github.com/outbrain/outbrain-iOS-Framework 
 (if you don't have it, `git clone` it into your machine).
 
