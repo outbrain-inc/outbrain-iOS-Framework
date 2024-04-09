@@ -37,6 +37,7 @@ public class SFWidget: UIView {
     var bridgeParamsObserver: NSObjectProtocol?
     var tParamObserver: NSObjectProtocol?
     var errorReporter: OBErrorReport?
+    var settings: [String: Any] = [:]
     
     /**
        External Id public value
@@ -237,6 +238,7 @@ public class SFWidget: UIView {
         self.webview.scrollView.isScrollEnabled = false
         self.webview.isOpaque = false
         self.webview.uiDelegate = self
+        self.webview.navigationDelegate = self
         self.setWebViewInspectable(inspectable: SFConsts.isInspectable)
         self.addSubview(self.webview)
         BridgeUtils.addConstraintsToParentView(view: self.webview)
@@ -538,16 +540,48 @@ extension SFWidget: SFMessageHandlerDelegate {
     public func onRecClick(_ url: URL) {
         self.delegate?.onRecClick(url)
     }
+    
+    public func onSettingsReceived(_ settings: [String : Any]) {
+        self.settings = settings
+    }
 }
 
 // MARK: WKUIDelegate
-extension SFWidget: WKUIDelegate {
-    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+extension SFWidget: WKUIDelegate, WKNavigationDelegate {
+    private func isDisplaySettingEnabled() -> Bool {
+        guard let flagSetting = self.settings["shouldEnableBridgeDisplay"] as? Bool else {
+            return false
+        }
+        
+        return flagSetting == true
+    }
+    
+    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {        
         if navigationAction.targetFrame == nil {
             if let url = navigationAction.request.url {
                 self.delegate?.onRecClick(url)
             }
         }
         return nil
+    }
+    
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        guard isDisplaySettingEnabled(),
+              let url = navigationAction.request.url,
+              UIApplication.shared.canOpenURL(url) else {
+            decisionHandler(.allow)
+            return
+        }
+        
+        if let targetFrame = navigationAction.targetFrame,
+           targetFrame.isMainFrame == true,
+           navigationAction.sourceFrame.isMainFrame == false,
+           url.absoluteString.contains("widgets.outbrain.com/reactNativeBridge") == false {
+            decisionHandler(.cancel)
+            self.delegate?.onRecClick(url)
+            return
+        }
+        
+        decisionHandler(.allow)
     }
 }
