@@ -556,11 +556,7 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
         return flagSetting == true
     }
     
-    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        guard isDisplaySettingEnabled() else {
-            return nil
-        }
-        
+    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {        
         if navigationAction.targetFrame == nil {
             if let url = navigationAction.request.url {
                 self.delegate?.onRecClick(url)
