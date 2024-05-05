@@ -32,6 +32,22 @@ public class Outbrain {
 
     // store last apv param
     static var lastApvParam: Bool?
+    
+    // store test mode
+    static var testMode: Bool = false
+    
+    // store test RTB
+    static var testRTB: Bool = false
+    
+    // set test mode
+    public static func setTestMode(testMode: Bool) {
+        self.testMode = testMode
+    }
+    
+    // set test rtb mode
+    public static func testRTB(testRTB: Bool) {
+        self.testRTB = testRTB
+    }
 
     // init outbrain sdk with a partner key
     public static func initializeOutbrain(withPartnerKey partnerKey: String) {
@@ -54,7 +70,7 @@ public class Outbrain {
 
     // MARK: Fetch Recommendations for requsest - callback or delegate
 
-    public static func fetchRecommendations(for request: OBRequest, callback: @escaping (OBResponse) -> Void){
+    public static func fetchRecommendations(for request: OBRequest,with callback: @escaping (OBResponse) -> Void){
         logger.debug("fetchRecommendations for widgetId \(request.widgetId) & url \(String(describing: request.url))")
         // check initilized
         if let notInitilized = Outbrain.checkInitiated() {
