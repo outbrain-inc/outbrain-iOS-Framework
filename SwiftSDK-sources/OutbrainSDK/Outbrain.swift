@@ -184,5 +184,24 @@ public class Outbrain {
     public static func printLogs(domain: String? = nil) {
         self.logger.printLogs(domain: domain)
     }
+    
+    public func getOutbrainAboutURL() -> URL {
+        let base = "https://www.outbrain.com/what-is/"
+        var components = URLComponents(string: base)
+        var params = [URLQueryItem]()
+        
+        // Is opt out
+        params.append(URLQueryItem(name: "doo", value: OBAppleAdIdUtil.isOptedOut ? "true" : "false"))
+        
+        // User key + opt-out
+        let apiUserId = OBAppleAdIdUtil.isOptedOut ? "null" : OBAppleAdIdUtil.advertiserId
+        params.append(URLQueryItem(name: "advertiser_id", value: apiUserId))
+        
+        components?.queryItems = params
+        
+        return components?.url ?? URL(string: base)!
+    }
+    
+    public func openAppInstallRec(_ rec: OBRecommendation, in: UIViewController) {}
 
 }
