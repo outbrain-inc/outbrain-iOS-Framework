@@ -15,12 +15,11 @@
 		5E0D6B272A41988A008BCD06 /* OBAppleAdIdUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B262A41988A008BCD06 /* OBAppleAdIdUtil.swift */; };
 		5E0D6B292A41BC95008BCD06 /* GDPRUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B282A41BC95008BCD06 /* GDPRUtils.swift */; };
 		5E0D6B2B2A41C672008BCD06 /* DeviceModelUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B2A2A41C672008BCD06 /* DeviceModelUtil.swift */; };
-		5E0D6B2D2A41D65C008BCD06 /* OBRecImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B2C2A41D65C008BCD06 /* OBRecImage.swift */; };
+		5E0D6B2D2A41D65C008BCD06 /* OBImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B2C2A41D65C008BCD06 /* OBImageInfo.swift */; };
 		5E0D6B2F2A4334D3008BCD06 /* OBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B2E2A4334D3008BCD06 /* OBError.swift */; };
 		5E0D6B312A442DD1008BCD06 /* OBPlatformsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B302A442DD1008BCD06 /* OBPlatformsRequest.swift */; };
 		5E2465222A402B1900D6C9DF /* OBRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2465212A402B1900D6C9DF /* OBRequestHandler.swift */; };
 		5E2465252A40421600D6C9DF /* OBRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2465242A40421600D6C9DF /* OBRecommendation.swift */; };
-		5E2465272A40487A00D6C9DF /* OBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2465262A40487A00D6C9DF /* OBResponse.swift */; };
 		5E24652F2A4084C100D6C9DF /* OBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E24652E2A4084C100D6C9DF /* OBRequest.swift */; };
 		5E2465332A4099D200D6C9DF /* OBResponseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2465322A4099D200D6C9DF /* OBResponseDelegate.swift */; };
 		5E3FD05E2A5ED5790011C78B /* OBLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3FD05D2A5ED5790011C78B /* OBLoggerTests.swift */; };
@@ -30,6 +29,7 @@
 		5E625A532A4D74DD00BA6A4E /* OBErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E625A522A4D74DD00BA6A4E /* OBErrorReport.swift */; };
 		5E91D15E2A55563000CD9AF5 /* UIViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91D15D2A55563000CD9AF5 /* UIViewExtensionTests.swift */; };
 		5E91D1612A56A99E00CD9AF5 /* OBLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91D1602A56A99E00CD9AF5 /* OBLogger.swift */; };
+		5EE41C282BE7B19E0058EBA1 /* OBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE41C272BE7B19D0058EBA1 /* OBResponse.swift */; };
 		5EEF0AB62A51BB2A000E65A1 /* OBViewbailityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AB52A51BB29000E65A1 /* OBViewbailityManager.swift */; };
 		5EEF0AB82A5452A6000E65A1 /* OBViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AB72A5452A5000E65A1 /* OBViewData.swift */; };
 		5EEF0ABB2A55466D000E65A1 /* OBRecommendationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0ABA2A55466D000E65A1 /* OBRecommendationTests.swift */; };
@@ -79,12 +79,11 @@
 		5E0D6B262A41988A008BCD06 /* OBAppleAdIdUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBAppleAdIdUtil.swift; sourceTree = "<group>"; };
 		5E0D6B282A41BC95008BCD06 /* GDPRUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDPRUtils.swift; sourceTree = "<group>"; };
 		5E0D6B2A2A41C672008BCD06 /* DeviceModelUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelUtil.swift; sourceTree = "<group>"; };
-		5E0D6B2C2A41D65C008BCD06 /* OBRecImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRecImage.swift; sourceTree = "<group>"; };
+		5E0D6B2C2A41D65C008BCD06 /* OBImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBImageInfo.swift; sourceTree = "<group>"; };
 		5E0D6B2E2A4334D3008BCD06 /* OBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBError.swift; sourceTree = "<group>"; };
 		5E0D6B302A442DD1008BCD06 /* OBPlatformsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformsRequest.swift; sourceTree = "<group>"; };
 		5E2465212A402B1900D6C9DF /* OBRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestHandler.swift; sourceTree = "<group>"; };
 		5E2465242A40421600D6C9DF /* OBRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRecommendation.swift; sourceTree = "<group>"; };
-		5E2465262A40487A00D6C9DF /* OBResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBResponse.swift; sourceTree = "<group>"; };
 		5E24652E2A4084C100D6C9DF /* OBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequest.swift; sourceTree = "<group>"; };
 		5E2465322A4099D200D6C9DF /* OBResponseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBResponseDelegate.swift; sourceTree = "<group>"; };
 		5E3FD05D2A5ED5790011C78B /* OBLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBLoggerTests.swift; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		5E625A522A4D74DD00BA6A4E /* OBErrorReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBErrorReport.swift; sourceTree = "<group>"; };
 		5E91D15D2A55563000CD9AF5 /* UIViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensionTests.swift; sourceTree = "<group>"; };
 		5E91D1602A56A99E00CD9AF5 /* OBLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBLogger.swift; sourceTree = "<group>"; };
+		5EE41C272BE7B19D0058EBA1 /* OBResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBResponse.swift; sourceTree = "<group>"; };
 		5EEF0AB52A51BB29000E65A1 /* OBViewbailityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBViewbailityManager.swift; sourceTree = "<group>"; };
 		5EEF0AB72A5452A5000E65A1 /* OBViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBViewData.swift; sourceTree = "<group>"; };
 		5EEF0ABA2A55466D000E65A1 /* OBRecommendationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRecommendationTests.swift; sourceTree = "<group>"; };
@@ -173,10 +173,10 @@
 		5E2465232A4041F300D6C9DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5EE41C272BE7B19D0058EBA1 /* OBResponse.swift */,
 				5E2465242A40421600D6C9DF /* OBRecommendation.swift */,
-				5E2465262A40487A00D6C9DF /* OBResponse.swift */,
 				5E24652E2A4084C100D6C9DF /* OBRequest.swift */,
-				5E0D6B2C2A41D65C008BCD06 /* OBRecImage.swift */,
+				5E0D6B2C2A41D65C008BCD06 /* OBImageInfo.swift */,
 				5E0D6B2E2A4334D3008BCD06 /* OBError.swift */,
 				5E0D6B302A442DD1008BCD06 /* OBPlatformsRequest.swift */,
 				5E0919D12A4ACC17005A014F /* OBDisclosure.swift */,
@@ -448,11 +448,12 @@
 				5E0D6B312A442DD1008BCD06 /* OBPlatformsRequest.swift in Sources */,
 				5E0D6B292A41BC95008BCD06 /* GDPRUtils.swift in Sources */,
 				E6E4B3DC2A23828500FE44E3 /* Outbrain.swift in Sources */,
+				5EE41C282BE7B19E0058EBA1 /* OBResponse.swift in Sources */,
 				5E0D6B2F2A4334D3008BCD06 /* OBError.swift in Sources */,
 				5E91D1612A56A99E00CD9AF5 /* OBLogger.swift in Sources */,
 				5E625A512A4D6D2800BA6A4E /* OBView.swift in Sources */,
 				CA2646CE2AAF0636005287CB /* SFConsts.swift in Sources */,
-				5E0D6B2D2A41D65C008BCD06 /* OBRecImage.swift in Sources */,
+				5E0D6B2D2A41D65C008BCD06 /* OBImageInfo.swift in Sources */,
 				5EEF0AB82A5452A6000E65A1 /* OBViewData.swift in Sources */,
 				5E24652F2A4084C100D6C9DF /* OBRequest.swift in Sources */,
 				CA26CB6C2A76B18000D2C22F /* BridgeUtils.swift in Sources */,
@@ -468,7 +469,6 @@
 				5E0919DA2A4B2377005A014F /* UIViewPrecentVisible.swift in Sources */,
 				CA26CB642A7001A600D2C22F /* SFWidgetDelegate.swift in Sources */,
 				E6E4B3BD2A2381A100FE44E3 /* OutbrainSDK.docc in Sources */,
-				5E2465272A40487A00D6C9DF /* OBResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
