@@ -417,7 +417,7 @@ public class SFWidget: UIView {
         }
     }
 
-    internal func loadMore() {
+    public func loadMore() {
         self.isLoading = true
         NSLog("loading more --->")
         Outbrain.logger.debug("load-more-recs", domain: "sfWidfet-handler")

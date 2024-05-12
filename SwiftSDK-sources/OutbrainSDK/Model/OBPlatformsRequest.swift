@@ -8,11 +8,11 @@
 import Foundation
 
 public class OBPlatformsRequest: OBRequest {
-    var contentUrl: String? // content url
-    var portalUrl: String? // portal url
-    var bundleUrl: String? // bundle url
-    var lang: String? // language
-    var psub: String? // psub
+    public var contentUrl: String? // content url
+    public var portalUrl: String? // portal url
+    public var bundleUrl: String? // bundle url
+    public var lang: String? // language
+    public var psub: String? // psub
     
     // check if the request is valid
     var isValid: Bool {
@@ -34,7 +34,7 @@ public class OBPlatformsRequest: OBRequest {
         return bundleUrl != nil
     }
     
-    public init(widgetID: String, widgetIndex: String = "0", contentUrl: String? = nil, portalUrl: String? = nil, budnelUrl: String? = nil, lang: String? = nil, psub: String? = nil) {
+    public init(widgetID: String, widgetIndex: Int = 0, contentUrl: String? = nil, portalUrl: String? = nil, budnelUrl: String? = nil, lang: String? = nil, psub: String? = nil) {
         super.init(url: nil, widgetID: widgetID, widgetIndex: widgetIndex)
         self.contentUrl = contentUrl
         self.portalUrl = portalUrl

@@ -12,7 +12,7 @@ public struct OBRecommendation {
     public var origUrl: String? // original click url of the recommendation
     public var content: String? // title
     public var source: String? // source
-    public var image: OBRecImage? // image
+    public var image: OBImageInfo? // image
     public var position: String? // position
     public var author: String? // doc author
     public var publishDate: Date? // doc publish date
@@ -30,6 +30,14 @@ public struct OBRecommendation {
     public var isRTB: Bool {
         return shouldDisplayDisclosureIcon()
     }
+    
+    public var isVideo: Bool {
+        return false
+    }
+    
+    public var isAppInstall: Bool {
+        return false
+    }
 
     // check if should display disclosure icon
     func shouldDisplayDisclosureIcon() -> Bool {
@@ -37,7 +45,7 @@ public struct OBRecommendation {
         return disclosure != nil && disclosure!.imageUrl != nil && disclosure!.imageUrl!.count > 0 && disclosure!.clickUrl != nil && disclosure!.clickUrl!.count > 0
     }
     
-    init(url: String? = nil, origUrl: String? = nil, content: String? = nil, source: String? = nil, image: OBRecImage? = nil, position: String? = nil, author: String? = nil, publishDate: Date? = nil, sameSource: Bool? = nil, disclosure: OBDisclosure? = nil, pixels: [String]? = nil) {
+    init(url: String? = nil, origUrl: String? = nil, content: String? = nil, source: String? = nil, image: OBImageInfo? = nil, position: String? = nil, author: String? = nil, publishDate: Date? = nil, sameSource: Bool? = nil, disclosure: OBDisclosure? = nil, pixels: [String]? = nil) {
         self.url = url
         self.origUrl = origUrl
         self.content = content

@@ -345,7 +345,7 @@ public struct OBRequestHandler {
            let imageUrl = imageUrlDict["url"] as? String,
            let imageHeight = imageUrlDict["height"] as? Int,
            let imageWidth = imageUrlDict["width"] as? Int {
-            rec.image = OBRecImage(width: imageWidth, height: imageHeight, url: URL(string: imageUrl))
+            rec.image = OBImageInfo(width: imageWidth, height: imageHeight, url: URL(string: imageUrl))
         }
     }
 
@@ -407,6 +407,16 @@ public struct OBRequestHandler {
             self.addPlatformsQueryParams(for: &queryItems)
         } else {
             queryItems.append(addReqParam(name: "url", value: self.request.url))
+        }
+        
+        // add test mode
+        if Outbrain.testMode {
+            queryItems.append(addReqParam(name: "testMode", value: "true"))
+            
+            if Outbrain.testRTB {
+                queryItems.append(URLQueryItem(name: "fakeRec", value: "RTB-CriteoUS"))
+                queryItems.append(URLQueryItem(name: "fakeRecSize", value: "2"))
+            }
         }
         
         // filter out invliad params

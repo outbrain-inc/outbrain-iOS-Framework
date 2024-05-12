@@ -12,7 +12,7 @@ final class OBPlatformsRequestTests: XCTestCase {
     
     func testInit() {
         let widgetId = "widget123"
-        let widgetIndex = "0"
+        let widgetIndex = 0
         let contentUrl = "https://example.com/content"
         let portalUrl = "https://example.com/portal"
         let lang = "en"
@@ -22,7 +22,7 @@ final class OBPlatformsRequestTests: XCTestCase {
         
         XCTAssertEqual(request.url, nil)
         XCTAssertEqual(request.widgetId, widgetId)
-        XCTAssertEqual(request.idx, widgetIndex)
+        XCTAssertEqual(request.idx, "\(widgetIndex)")
         XCTAssertEqual(request.contentUrl, contentUrl)
         XCTAssertEqual(request.portalUrl, portalUrl)
         XCTAssertEqual(request.lang, lang)

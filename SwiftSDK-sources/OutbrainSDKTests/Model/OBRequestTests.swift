@@ -13,7 +13,7 @@ final class OBRequestTests: XCTestCase {
     func testInit() {
         let url = "https://example.com/recommendations"
         let widgetId = "widget123"
-        let widgetIndex = "0"
+        let widgetIndex = 0
         let externalId = "external123"
         let startDate = Date()
         
@@ -21,7 +21,7 @@ final class OBRequestTests: XCTestCase {
         
         XCTAssertEqual(request.url, url)
         XCTAssertEqual(request.widgetId, widgetId)
-        XCTAssertEqual(request.idx, widgetIndex)
+        XCTAssertEqual(request.idx, "\(widgetIndex)")
         XCTAssertEqual(request.externalID, externalId)
         XCTAssertEqual(request.startDate, startDate)
     }

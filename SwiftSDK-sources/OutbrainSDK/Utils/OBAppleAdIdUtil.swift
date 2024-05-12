@@ -22,6 +22,9 @@ class OBAppleAdIdUtil {
 
     // get the apple advertising id
     static var advertiserId: String {
+        if Outbrain.testMode {
+            return "F22700D5-1D49-42CC-A183-F3676526035F" // dev hack because simulator returns 0000-0000-0000-0000
+        }
         let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
         if !idfa.isEmpty {
             return idfa
