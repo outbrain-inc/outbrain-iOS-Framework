@@ -237,7 +237,7 @@ jobs:
             git tag $RELEASE_VERSION
             git push origin main
             git push origin --tags
-            pod trunk push OutbrainSDK.podspec
+            # pod trunk push OutbrainSDK.podspec
 
       - run:
           name: Upload OutbrainSDK.xcframework.zip to GCP Storage
