@@ -6,8 +6,8 @@
 	<true/>
 	<key>NSPrivacyTrackingDomains</key>
 	<array>
-		<string>t.odb.outbrain.com</string>
-		<string>t.mv.outbrain.com</string>
+		<string>t-odb.outbrain.com</string>
+		<string>t-mv.outbrain.com</string>
 	</array>
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array>
