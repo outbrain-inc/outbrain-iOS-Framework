@@ -62,7 +62,7 @@ final class OutbrainSDKTests: XCTestCase {
 
         Outbrain.WAS_INITIALIZED = false
 
-        Outbrain.fetchRecommendations(delegate, for: request)
+        Outbrain.fetchRecommendations(for: request, with: delegate)
 
         XCTAssertTrue(delegate.outbrainDidFailedCalled)
         XCTAssertNotNil(delegate.response)
@@ -75,7 +75,7 @@ final class OutbrainSDKTests: XCTestCase {
 
         Outbrain.WAS_INITIALIZED = true
         
-        Outbrain.fetchRecommendations(delegate, for: request)
+        Outbrain.fetchRecommendations(for: request, with: delegate)
 
         wait(for: [expectation], timeout: 5.0)
         XCTAssertTrue(delegate.outbrainDidReceiveResponseCalled)
@@ -106,7 +106,7 @@ final class OutbrainSDKTests: XCTestCase {
         let url = Outbrain.getOutbrainAboutURL()
         
         XCTAssertNotNil(url)
-        XCTAssertTrue(url!.absoluteString.contains("https://www.outbrain.com/what-is/"))
+        XCTAssertTrue(url.contains("https://www.outbrain.com/what-is/"))
     }
 }
 
@@ -114,7 +114,7 @@ final class OutbrainSDKTests: XCTestCase {
 class MockResponseDelegate: OBResponseDelegate {
     var outbrainDidReceiveResponseCalled = false
     var outbrainDidFailedCalled = false
-    var response: OBResponse?
+    var response: OBRecommendationResponse?
     
     let expectation: XCTestExpectation
 
@@ -122,13 +122,13 @@ class MockResponseDelegate: OBResponseDelegate {
         self.expectation = expectation
     }
 
-    func outbrainDidReceiveResponse(_ response: OBResponse) {
+    func outbrainDidReceiveResponse(withSuccess response: OBRecommendationResponse) {
         outbrainDidReceiveResponseCalled = true
         self.response = response
         expectation.fulfill()
     }
 
-    func outbrainDidFailed(_ response: OBResponse) {
+    func outbrainDidFailed(_ response: OBRecommendationResponse) {
         outbrainDidFailedCalled = true
         self.response = response
     }
