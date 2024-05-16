@@ -573,6 +573,10 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     if (self.extSecondaryId) {
         [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"extid2" value: self.extSecondaryId]];
     }
+    // pubImpId param
+    if (self.obPubImp) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"pubImpId" value: self.obPubImp]];
+    }
     
     if (self.userId) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"userId" value: self.userId]];
