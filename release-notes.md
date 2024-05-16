@@ -1,5 +1,11 @@
 # Release Notes
 
+## v4.30.0 - May 12, 2024
+
+- Other - add code sign with Outbrain account private key to XCFramework
+- Other - add privacy manifest file ([see details](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files))
+- New impl in JS code starting v4.30.0 for widget height calculation.
+
 ## v4.29.0 - October 19, 2023
 
 - Other - Support for [Apple Privacy Manifest](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) file.
