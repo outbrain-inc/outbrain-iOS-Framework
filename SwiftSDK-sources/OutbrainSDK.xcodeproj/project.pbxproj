@@ -29,7 +29,7 @@
 		5E625A532A4D74DD00BA6A4E /* OBErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E625A522A4D74DD00BA6A4E /* OBErrorReport.swift */; };
 		5E91D15E2A55563000CD9AF5 /* UIViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91D15D2A55563000CD9AF5 /* UIViewExtensionTests.swift */; };
 		5E91D1612A56A99E00CD9AF5 /* OBLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91D1602A56A99E00CD9AF5 /* OBLogger.swift */; };
-		5EE41C282BE7B19E0058EBA1 /* OBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE41C272BE7B19D0058EBA1 /* OBResponse.swift */; };
+		5EE41C282BE7B19E0058EBA1 /* OBRecommendationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE41C272BE7B19D0058EBA1 /* OBRecommendationResponse.swift */; };
 		5EEF0AB62A51BB2A000E65A1 /* OBViewbailityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AB52A51BB29000E65A1 /* OBViewbailityManager.swift */; };
 		5EEF0AB82A5452A6000E65A1 /* OBViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AB72A5452A5000E65A1 /* OBViewData.swift */; };
 		5EEF0ABB2A55466D000E65A1 /* OBRecommendationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0ABA2A55466D000E65A1 /* OBRecommendationTests.swift */; };
@@ -93,7 +93,7 @@
 		5E625A522A4D74DD00BA6A4E /* OBErrorReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBErrorReport.swift; sourceTree = "<group>"; };
 		5E91D15D2A55563000CD9AF5 /* UIViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensionTests.swift; sourceTree = "<group>"; };
 		5E91D1602A56A99E00CD9AF5 /* OBLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBLogger.swift; sourceTree = "<group>"; };
-		5EE41C272BE7B19D0058EBA1 /* OBResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBResponse.swift; sourceTree = "<group>"; };
+		5EE41C272BE7B19D0058EBA1 /* OBRecommendationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBRecommendationResponse.swift; sourceTree = "<group>"; };
 		5EEF0AB52A51BB29000E65A1 /* OBViewbailityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBViewbailityManager.swift; sourceTree = "<group>"; };
 		5EEF0AB72A5452A5000E65A1 /* OBViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBViewData.swift; sourceTree = "<group>"; };
 		5EEF0ABA2A55466D000E65A1 /* OBRecommendationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRecommendationTests.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 		5E2465232A4041F300D6C9DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5EE41C272BE7B19D0058EBA1 /* OBResponse.swift */,
+				5EE41C272BE7B19D0058EBA1 /* OBRecommendationResponse.swift */,
 				5E2465242A40421600D6C9DF /* OBRecommendation.swift */,
 				5E24652E2A4084C100D6C9DF /* OBRequest.swift */,
 				5E0D6B2C2A41D65C008BCD06 /* OBImageInfo.swift */,
@@ -448,7 +448,7 @@
 				5E0D6B312A442DD1008BCD06 /* OBPlatformsRequest.swift in Sources */,
 				5E0D6B292A41BC95008BCD06 /* GDPRUtils.swift in Sources */,
 				E6E4B3DC2A23828500FE44E3 /* Outbrain.swift in Sources */,
-				5EE41C282BE7B19E0058EBA1 /* OBResponse.swift in Sources */,
+				5EE41C282BE7B19E0058EBA1 /* OBRecommendationResponse.swift in Sources */,
 				5E0D6B2F2A4334D3008BCD06 /* OBError.swift in Sources */,
 				5E91D1612A56A99E00CD9AF5 /* OBLogger.swift in Sources */,
 				5E625A512A4D6D2800BA6A4E /* OBView.swift in Sources */,

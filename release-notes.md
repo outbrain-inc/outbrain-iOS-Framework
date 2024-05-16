@@ -1,5 +1,8 @@
 # Release Notes
 
+## v5.0.5-beta - May 12, 2024
+- Minor - add missing/fix access sdk parts from error logs
+
 ## v5.0.3-beta - April 8, 2024
 
 - Minor - verify that "beta" is working as expected (was "alpha")

@@ -34,10 +34,10 @@ public class Outbrain {
     static var lastApvParam: Bool?
     
     // store test mode
-    static var testMode: Bool = false
+    public static var testMode: Bool = false
     
     // store test RTB
-    static var testRTB: Bool = false
+    public static var testRTB: Bool = false
     
     // set test mode
     public static func setTestMode(testMode: Bool) {
@@ -70,12 +70,12 @@ public class Outbrain {
 
     // MARK: Fetch Recommendations for requsest - callback or delegate
 
-    public static func fetchRecommendations(for request: OBRequest,with callback: @escaping (OBResponse) -> Void){
+    public static func fetchRecommendations(for request: OBRequest, with callback: @escaping (OBRecommendationResponse) -> Void){
         logger.debug("fetchRecommendations for widgetId \(request.widgetId) & url \(String(describing: request.url))")
         // check initilized
         if let notInitilized = Outbrain.checkInitiated() {
             // create an empty resposen with the corresponding error
-            let failedRes = OBResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: notInitilized)
+            let failedRes = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: notInitilized)
 
             // run the cb with the error
             callback(failedRes)
@@ -90,7 +90,7 @@ public class Outbrain {
 
     }
 
-    public static func fetchRecommendations(_ delegate: OBResponseDelegate, for request: OBRequest){
+    public static func fetchRecommendations(for request: OBRequest, with delegate: OBResponseDelegate){
         logger.debug("fetchRecommendations for widgetId \(request.widgetId) & url \(String(describing: request.url))")
 
         let requestHandler = OBRequestHandler(request)
@@ -98,7 +98,7 @@ public class Outbrain {
         // check initilized
         if let notInitilized = Outbrain.checkInitiated() {
             // create an empty resposen with the corresponding error
-            let failedRes = OBResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: notInitilized)
+            let failedRes = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: notInitilized)
 
             // call the fetch failed for delegation
             requestHandler.fetchRecsFailed(delegate: delegate, response: failedRes)
@@ -152,19 +152,23 @@ public class Outbrain {
 
     // MARK: What-Is
 
-    public static func getOutbrainAboutURL() -> URL? {
+    public static func getOutbrainAboutURL() -> String {
         let baseUrl = "https://www.outbrain.com/what-is/"
 
         // enrich params with some data - oo & userId
         guard var whatisUrl = URLComponents(string: baseUrl) else {
-            return nil
+            return baseUrl
         }
         whatisUrl.queryItems = [
             URLQueryItem(name: "doo", value: OBRequestHandler.getOptedOut()),
             URLQueryItem(name: "apiUserId", value: OBRequestHandler.getApiUserId())
         ]
 
-        return whatisUrl.url
+        return whatisUrl.url?.absoluteString ?? baseUrl
+    }
+    
+    public static func getAboutURL() -> String {
+        return Outbrain.getOutbrainAboutURL()
     }
 
     // MARK: Viewability
@@ -184,24 +188,7 @@ public class Outbrain {
     public static func printLogs(domain: String? = nil) {
         self.logger.printLogs(domain: domain)
     }
-    
-    public func getOutbrainAboutURL() -> URL {
-        let base = "https://www.outbrain.com/what-is/"
-        var components = URLComponents(string: base)
-        var params = [URLQueryItem]()
-        
-        // Is opt out
-        params.append(URLQueryItem(name: "doo", value: OBAppleAdIdUtil.isOptedOut ? "true" : "false"))
-        
-        // User key + opt-out
-        let apiUserId = OBAppleAdIdUtil.isOptedOut ? "null" : OBAppleAdIdUtil.advertiserId
-        params.append(URLQueryItem(name: "advertiser_id", value: apiUserId))
-        
-        components?.queryItems = params
-        
-        return components?.url ?? URL(string: base)!
-    }
-    
-    public func openAppInstallRec(_ rec: OBRecommendation, in: UIViewController) {}
+
+    public static func openAppInstallRec(_ rec: OBRecommendation, in: UIViewController) {}
 
 }

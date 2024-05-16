@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class OBResponse {
+public class OBRecommendationResponse {
     public let request: [String: Any] // response request dictionary
     public let settings: [String: Any] // response settings dictionary
     public let viewabilityActions: OBViewabilityActions? // viewability actions urls to fire
@@ -22,5 +22,3 @@ public class OBResponse {
         self.error = error
     }
 }
-
-public class OBRecommendationResponse: OBResponse {}
