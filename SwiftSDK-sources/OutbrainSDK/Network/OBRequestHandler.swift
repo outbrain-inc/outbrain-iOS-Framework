@@ -24,7 +24,7 @@ public struct OBRequestHandler {
     // MARK: Fetch Recomendations - make http request for fetching recommendations from odb, option to pass callback or delegate that will resolve to OBResponse
     
     // callback
-    func fetchRecs(callback: @escaping (OBResponse) -> Void) {
+    func fetchRecs(callback: @escaping (OBRecommendationResponse) -> Void) {
         guard let finalUrl = buildOdbParams() else {
             return
         }
@@ -40,14 +40,14 @@ public struct OBRequestHandler {
     }
     
     // delegate on failure
-    func fetchRecsFailed(delegate: OBResponseDelegate, response: OBResponse) {
+    func fetchRecsFailed(delegate: OBResponseDelegate, response: OBRecommendationResponse) {
         guard buildOdbParams() != nil else {
             return
         }
         delegate.outbrainDidFailed(response)
     }
     
-    func performFetchTask(with url: URL, callback: @escaping (OBResponse) -> Void) {
+    func performFetchTask(with url: URL, callback: @escaping (OBRecommendationResponse) -> Void) {
         Outbrain.logger.debug("fetch recs - task added", domain: "request-handler")
         
         // init error reporting data
@@ -107,7 +107,7 @@ public struct OBRequestHandler {
     
     // MARK: Handle Response - checks if got valid response back from the server
     
-    func handleResponse(data: Data?, response: URLResponse?, error: Error?, callback: @escaping (OBResponse) throws -> Void) throws {
+    func handleResponse(data: Data?, response: URLResponse?, error: Error?, callback: @escaping (OBRecommendationResponse) throws -> Void) throws {
         // report error to widget monitor if error
         defer {
             if OBErrorReport.shared.errorMessage != nil {
@@ -123,7 +123,7 @@ public struct OBRequestHandler {
         
         Outbrain.logger.debug("fetch recs - got response", domain: "request-handler")
         // a mocked response with error to return in case of
-        var responseWithError = OBResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: nil)
+        var responseWithError = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: nil)
         
         // Request Error
         if let error = error {
@@ -214,7 +214,7 @@ public struct OBRequestHandler {
     // MARK: JSON Parsing - parsing respose from odb to a valid OBResponse struct
     
     // parse JSON response
-    func parseJsonData(with jsonData: Data) -> OBResponse? {
+    func parseJsonData(with jsonData: Data) -> OBRecommendationResponse? {
         do {
             let json = try JSONSerialization.jsonObject(with: jsonData)
             
@@ -254,7 +254,7 @@ public struct OBRequestHandler {
             }
                         
             // build final response object
-            return OBResponse(request: request, settings: settings, viewabilityActions: viewabilityActions, recommendations: recs, error: nil)
+            return OBRecommendationResponse(request: request, settings: settings, viewabilityActions: viewabilityActions, recommendations: recs, error: nil)
         } catch {
             Outbrain.logger.error("Error parsing JSON: \(error.localizedDescription)", domain: "request-handler")
             return nil

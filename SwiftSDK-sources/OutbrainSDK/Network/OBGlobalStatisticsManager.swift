@@ -21,7 +21,7 @@ public struct OBGlobalStatisticsManager {
     // MARK: Reporting
     
     // report served
-    mutating func reportServed(request: OBRequest, response: OBResponse, timestamp requestStartDate: Date) {
+    mutating func reportServed(request: OBRequest, response: OBRecommendationResponse, timestamp requestStartDate: Date) {
         // Check if viewability is enabled
         guard isGlobalStatsticsEnabled(),
               let rid = response.request["req_id"] as? String,
@@ -136,7 +136,7 @@ public struct OBGlobalStatisticsManager {
     // MARK: Pixels
     
     // Fire pixels for a response
-    func firePixels(for response: OBResponse) {
+    func firePixels(for response: OBRecommendationResponse) {
         if response.recommendations.isEmpty {
             return
         }
@@ -170,7 +170,7 @@ public struct OBGlobalStatisticsManager {
     // MARK: - Global Stattistics Settings
     
     // Check global statistics setting
-    func checkAndUpdateGlobalStatisticsSetting(_ res: OBResponse) {
+    func checkAndUpdateGlobalStatisticsSetting(_ res: OBRecommendationResponse) {
         var isEnabled = true
         
         if res.settings.isEmpty {
