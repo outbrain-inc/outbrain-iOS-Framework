@@ -406,8 +406,9 @@ public struct OBRequestHandler {
             queryItems.append(addReqParam(name: "testMode", value: "true"))
             
             if Outbrain.testRTB {
-                queryItems.append(URLQueryItem(name: "fakeRec", value: "RTB-CriteoUS"))
+                queryItems.append(URLQueryItem(name: "fakeRec", value: "RTB"))
                 queryItems.append(URLQueryItem(name: "fakeRecSize", value: "2"))
+                queryItems.append(URLQueryItem(name: "rtbEnabled", value: "true"))
             }
             
             if Outbrain.testLocation != nil {
