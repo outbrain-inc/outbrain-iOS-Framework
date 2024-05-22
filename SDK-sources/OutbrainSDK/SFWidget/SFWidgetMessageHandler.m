@@ -69,7 +69,6 @@
         }
         if ([msgBody valueForKey:@"settings"]) {
             NSDictionary *settings = [msgBody valueForKey:@"settings"];
-            NSLog(@"SFWidgetMessageHandler received settings: %@", settings);
             [self.delegate handleJSWidgetSetting:settings];
         }
         if ([msgBody valueForKey:@"errorMsg"]) {
