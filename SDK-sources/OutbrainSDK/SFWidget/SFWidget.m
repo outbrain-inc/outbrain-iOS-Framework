@@ -14,7 +14,7 @@
 #import "OBErrorReporting.h"
 #import "OBAppleAdIdUtil.h"
 
-@interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate>
+@interface SFWidget() <SFMessageHandlerDelegate, WKUIDelegate, WKNavigationDelegate>
 
 @property (nonatomic, assign) NSInteger currentHeight;
 @property (nonatomic, assign) BOOL isLoading;
@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSString *tParam;
 @property (nonatomic, strong) NSString *bridgeParams;
 @property (nonatomic, assign) BOOL darkMode;
+@property (nonatomic, assign) BOOL displayAdsSettingEnabled;
 
 //
 @property (nonatomic, weak) id<SFWidgetDelegate> delegate;
@@ -217,29 +218,29 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
 }
 
 -(void) _handleViewabilitySwiftUI {
-//    NSLog(@"******************************");
+    //    NSLog(@"******************************");
     BOOL shouldTryLoadMore = NO;
     CGFloat scale = [UIScreen mainScreen].scale;
     CGFloat webViewHeight =  self.bounds.size.height * scale;
-
+    
     CGRect viewFrame = [self convertRect:self.bounds toView:nil];
     CGRect intersection = CGRectIntersection(viewFrame, self.window.frame);
     BOOL isViewVisible = intersection.size.height > 0;
-//    if (isViewVisible) {
-//        NSLog(@"Bridge is visible: %f", intersection.size.height);
-//    }
-//    else {
-//        NSLog(@"Bridge is NOT visible");
-//    }
+    //    if (isViewVisible) {
+    //        NSLog(@"Bridge is visible: %f", intersection.size.height);
+    //    }
+    //    else {
+    //        NSLog(@"Bridge is NOT visible");
+    //    }
     CGFloat intersactionHeight = intersection.size.height;
     CGFloat viewportHeight = self.window.frame.size.height;
     
     double distanceToContainerTop = (CGRectGetMinY(self.window.frame) - CGRectGetMinY(viewFrame)) * scale;
     double distanceToContainerBottom = (CGRectGetMaxY(self.window.frame) - CGRectGetMinY(viewFrame)) * scale;
     
-//    NSLog(@"distanceToContainerTop %f", distanceToContainerTop);
-//    NSLog(@"distanceToContainerBottom %f", distanceToContainerBottom);
-//    NSLog(@"******************************");
+    //    NSLog(@"distanceToContainerTop %f", distanceToContainerTop);
+    //    NSLog(@"distanceToContainerBottom %f", distanceToContainerBottom);
+    //    NSLog(@"******************************");
     
     NSInteger visibleFrom;
     NSInteger visibleTo;
@@ -279,7 +280,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     
     CGRect viewFrame = [self convertRect:self.bounds toView:nil];
     CGRect intersection = CGRectIntersection(viewFrame, containerView.frame);
-        
+    
     NSInteger intersactionHeight = (NSInteger) lroundf(intersection.size.height * scale);
     
     CGFloat containerViewHeight = containerView.frame.size.height * scale;
@@ -330,7 +331,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     CGRect viewFrame = [self convertRect:self.bounds toView:nil];
     NSInteger webViewHeight = (NSInteger) lroundf(viewFrame.size.height * scale);
     NSInteger webViewWidth = (NSInteger) lroundf(viewFrame.size.width * scale);
-        
+    
     NSString *script = [NSString stringWithFormat:
                             @"OBBridge.viewHandler.setViewData(%ld, %ld, %ld, %ld)",
                         (long)webViewWidth, // totalWidth
@@ -382,7 +383,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
                               @"        window.webkit.messageHandlers.ReactNativeWebView.postMessage(String(data));"
                               @"    }"
                               @"}"
-                              ];
+    ];
     WKUserScript *script = [[WKUserScript alloc] initWithSource:jsInitScript injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];
     
     WKUserContentController *controller = [[WKUserContentController alloc] init];
@@ -394,6 +395,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     webviewConf.preferences = preferences;
     
     self.webview = [[WKWebView alloc] initWithFrame:self.frame configuration:webviewConf];
+    self.webview.navigationDelegate = self;
     self.webview.scrollView.scrollEnabled = NO;
     [self.webview setOpaque:NO];
 #ifdef DEBUG
@@ -630,7 +632,7 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
             NSURLSession *session = [NSURLSession sharedSession];
             NSURLSessionDataTask *dataTask = [session dataTaskWithURL:trafficURL
                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-            {
+                                              {
                 if (error) {
                     NSLog(@"Error reporting organic click: %@, error: %@", trafficURL, error);
                 }
@@ -655,6 +657,12 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     }
 }
 
+- (void) handleJSWidgetSetting:(NSDictionary *)settings {
+    if ([settings valueForKey:@"shouldEnableBridgeDisplay"]) {
+        self.displayAdsSettingEnabled = [[settings valueForKey:@"shouldEnableBridgeDisplay"] boolValue];
+    }
+}
+
 #pragma mark - WKUIDelegate
 -(WKWebView *) webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
 {
@@ -664,6 +672,39 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
         }
     }
     return nil;
+}
+
+#pragma mark - WKNavigationDelegate
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (!self.displayAdsSettingEnabled) {
+        // setting for "display ads" is false - fallback to default handler
+        decisionHandler(WKNavigationActionPolicyAllow);
+        return;
+    }
+    
+    NSURL *url = navigationAction.request.URL;
+    BOOL canOpenURL = [[UIApplication sharedApplication] canOpenURL:url];
+
+    if (!url || !canOpenURL) {
+        // url is missing or not valid - fallback to default handler
+        decisionHandler(WKNavigationActionPolicyAllow);
+        return;
+    }
+    
+    WKFrameInfo *targetFrame = navigationAction.targetFrame;
+    WKFrameInfo *sourceFrame = navigationAction.sourceFrame;
+    BOOL isMainFrameTarget = targetFrame && targetFrame.isMainFrame;
+    BOOL isNotMainFrameSource = !sourceFrame.isMainFrame;
+    BOOL containsOutbrainReactNativeBridge = [url.absoluteString containsString:@"widgets.outbrain.com/reactNativeBridge"];
+    
+    if (isMainFrameTarget && isNotMainFrameSource && !containsOutbrainReactNativeBridge) {
+        decisionHandler(WKNavigationActionPolicyCancel);
+        [self.delegate onRecClick:url];
+        return;
+    }
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
+    return;
 }
 
 @end

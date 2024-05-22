@@ -67,6 +67,11 @@
                 [self.delegate widgetEvent:eventName additionalData:eventData];
             }
         }
+        if ([msgBody valueForKey:@"settings"]) {
+            NSDictionary *settings = [msgBody valueForKey:@"settings"];
+            NSLog(@"SFWidgetMessageHandler received settings: %@", settings);
+            [self.delegate handleJSWidgetSetting:settings];
+        }
         if ([msgBody valueForKey:@"errorMsg"]) {
             NSString *errorMsg = [msgBody valueForKey:@"errorMsg"];
             errorMsg = [NSString stringWithFormat:@"Bridge: %@", errorMsg];
