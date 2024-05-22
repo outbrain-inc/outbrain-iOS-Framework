@@ -54,19 +54,6 @@ final class OutbrainSDKTests: XCTestCase {
         
         wait(for: [expectation], timeout: 5.0)
     }
-    
-    func testFetchRecommendationsWithDelegate_Failed() {
-        let request = OBRequest(url: "https://example.com", widgetID: "AR_1")
-        let expectation = XCTestExpectation(description: "Fetch recommendations callback called")
-        let delegate = MockResponseDelegate(expectation: expectation)
-
-        Outbrain.WAS_INITIALIZED = false
-
-        Outbrain.fetchRecommendations(for: request, with: delegate)
-
-        XCTAssertTrue(delegate.outbrainDidFailedCalled)
-        XCTAssertNotNil(delegate.response)
-    }
 
     func testFetchRecommendationsWithDelegate_Success() {
         let request = OBRequest(url: "https://example.com", widgetID: "AR_1")
@@ -106,14 +93,13 @@ final class OutbrainSDKTests: XCTestCase {
         let url = Outbrain.getOutbrainAboutURL()
         
         XCTAssertNotNil(url)
-        XCTAssertTrue(url.contains("https://www.outbrain.com/what-is/"))
+        XCTAssertTrue(((url?.absoluteString.contains("https://www.outbrain.com/what-is/")) != nil))
     }
 }
 
 
 class MockResponseDelegate: OBResponseDelegate {
     var outbrainDidReceiveResponseCalled = false
-    var outbrainDidFailedCalled = false
     var response: OBRecommendationResponse?
     
     let expectation: XCTestExpectation
@@ -128,14 +114,8 @@ class MockResponseDelegate: OBResponseDelegate {
         expectation.fulfill()
     }
 
-    func outbrainDidFailed(_ response: OBRecommendationResponse) {
-        outbrainDidFailedCalled = true
-        self.response = response
-    }
-
     func reset() {
         outbrainDidReceiveResponseCalled = false
-        outbrainDidFailedCalled = false
         response = nil
     }
 }

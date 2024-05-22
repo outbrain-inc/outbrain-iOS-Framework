@@ -67,4 +67,9 @@ class DeviceModelUtils {
         print("Dynamic isDynamicTextSizeLarge: \(isDynamicTextLarge ? "YES" : "NO")")
         return isDynamicTextLarge
     }
+    
+    static func isDeviceSimulator() -> Bool {
+        let deviceModel = self.deviceModel
+        return deviceModel == "Simulator"
+    }
 }

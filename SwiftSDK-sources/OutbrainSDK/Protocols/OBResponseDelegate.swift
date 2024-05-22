@@ -10,5 +10,4 @@ import Foundation
 
 public protocol OBResponseDelegate: AnyObject {
     func outbrainDidReceiveResponse(withSuccess response: OBRecommendationResponse)
-    func outbrainDidFailed(_ response: OBRecommendationResponse)
 }
