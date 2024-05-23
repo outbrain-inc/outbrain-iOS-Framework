@@ -1,5 +1,9 @@
 # Release Notes
 
+## v4.32.0 - May 23, 2024
+
+- Feature - add `SFWidget.setInfiniteWidgetsOnTheSamePage(true)` for supporting infinite widgets on the same page.
+
 ## v4.31.0 - May 22, 2024
 
 - Feature - add support for `pubImpId` ODB param.
