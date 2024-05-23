@@ -27,11 +27,9 @@ class CollectionTwoWidgetsVC : UICollectionViewController, UICollectionViewDeleg
         
         obSmartfeedWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
         obRegularWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
-        
+        SFWidget.setInfiniteWidgetsOnTheSamePage(true)
         self.obRegularWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.regularWidgetID, widgetIndex: 0, installationKey: OBConf.installationKey, userId: "F22700D5-1D49-42CC-A183-F36765261112", darkMode:true)
         
-        
-        self.obSmartfeedWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.smartFeedWidgetID, widgetIndex: 1, installationKey: OBConf.installationKey, userId: "F22700D5-1D49-42CC-A183-F36765261112", darkMode:false)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -97,6 +95,7 @@ class CollectionTwoWidgetsVC : UICollectionViewController, UICollectionViewDeleg
             }
         default:
             if let sfWidgetCell = cell as? SFWidgetCollectionCell {
+                self.obSmartfeedWidget.configure(with: self, url: OBConf.baseURL, widgetId: OBConf.smartFeedWidgetID, widgetIndex: 1, installationKey: OBConf.installationKey, userId: "F22700D5-1D49-42CC-A183-F36765261112", darkMode:false)
                 obSmartfeedWidget.willDisplay(sfWidgetCell)
             }
             break

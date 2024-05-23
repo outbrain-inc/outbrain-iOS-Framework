@@ -131,6 +131,9 @@ extern NSString * _Nonnull const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION;
 
 -(void) toggleDarkMode:(BOOL)displayDark;
 
+
++ (void) setInfiniteWidgetsOnTheSamePage:(BOOL)enable;
+
 @end
 
 NS_ASSUME_NONNULL_END

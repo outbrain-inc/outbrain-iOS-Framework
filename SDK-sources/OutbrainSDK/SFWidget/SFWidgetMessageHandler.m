@@ -36,11 +36,6 @@
             NSString *tParam = [msgBody valueForKey:@"t"];
             NSLog(@"SFWidgetMessageHandler received t param: %@ - Not posting notification (using bridgeParams instead)", tParam);
         }
-        if ([msgBody valueForKey:@"t"]) {
-            NSString *tParam = [msgBody valueForKey:@"t"];
-            NSLog(@"SFWidgetMessageHandler received t param: %@", tParam);
-            [[NSNotificationCenter defaultCenter] postNotificationName:SFWIDGET_T_PARAM_NOTIFICATION object:self userInfo:@{@"t" : tParam}];
-        }
         if ([msgBody valueForKey:@"url"]) {
             NSString *urlString = [msgBody valueForKey:@"url"];
             NSString *type = [msgBody valueForKey:@"type"];
