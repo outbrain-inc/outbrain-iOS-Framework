@@ -130,7 +130,7 @@
 		</data>
 		<key>ios-arm64/OutbrainSDK.framework/Headers/SFWidget.h</key>
 		<data>
-		b/DQQIiHm8HJTl70q4Ieocd0ozc=
+		zbWVjZsvel2mY0o5r4wEpwO9M1E=
 		</data>
 		<key>ios-arm64/OutbrainSDK.framework/Headers/SFWidgetCollectionCell.h</key>
 		<data>
@@ -154,7 +154,7 @@
 		</data>
 		<key>ios-arm64/OutbrainSDK.framework/OutbrainSDK</key>
 		<data>
-		GZdhr2h1MekZq6QKuF1NV4CF7l8=
+		83fl0meTyAvMWcUUrt/8Ay1XY3o=
 		</data>
 		<key>ios-arm64/OutbrainSDK.framework/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -554,7 +554,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/OutbrainSDK.framework/Headers/SFWidget.h</key>
 		<data>
-		b/DQQIiHm8HJTl70q4Ieocd0ozc=
+		zbWVjZsvel2mY0o5r4wEpwO9M1E=
 		</data>
 		<key>ios-arm64_x86_64-simulator/OutbrainSDK.framework/Headers/SFWidgetCollectionCell.h</key>
 		<data>
@@ -578,7 +578,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/OutbrainSDK.framework/OutbrainSDK</key>
 		<data>
-		YCxbENQ80ZPtZaY/lhXicp/+8sI=
+		oLaUDlpBW1sBTyFWy3ZB7rlK9cs=
 		</data>
 		<key>ios-arm64_x86_64-simulator/OutbrainSDK.framework/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -842,7 +842,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/OutbrainSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
-		X63SVXlBb0kkFwnaTGDg6zZunUw=
+		9u4934bWOvA31w00Qc1q2uGijuU=
 		</data>
 		<key>ios-arm64_x86_64-simulator/OutbrainSDK.framework/app_install_response.json</key>
 		<data>
@@ -1204,11 +1204,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			b/DQQIiHm8HJTl70q4Ieocd0ozc=
+			zbWVjZsvel2mY0o5r4wEpwO9M1E=
 			</data>
 			<key>hash2</key>
 			<data>
-			b2K2qCoiAA4Yx65aZscQshk9yqMu0F4rsuBOrRWFUTU=
+			0sPh0BK3A38ogm+Ex8kYy/QUeYIkCVD3kuOIYBx7L7k=
 			</data>
 		</dict>
 		<key>ios-arm64/OutbrainSDK.framework/Headers/SFWidgetCollectionCell.h</key>
@@ -1270,11 +1270,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			GZdhr2h1MekZq6QKuF1NV4CF7l8=
+			83fl0meTyAvMWcUUrt/8Ay1XY3o=
 			</data>
 			<key>hash2</key>
 			<data>
-			wHYkLMckVeJcvLTucGMG6aYTjLrYXfFHqZjG+UusSXs=
+			ak0v93UcHHJPyyyZK0To3fBBW30m3amJQCBQmSVynb8=
 			</data>
 		</dict>
 		<key>ios-arm64/OutbrainSDK.framework/PrivacyInfo.xcprivacy</key>
@@ -2370,11 +2370,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			b/DQQIiHm8HJTl70q4Ieocd0ozc=
+			zbWVjZsvel2mY0o5r4wEpwO9M1E=
 			</data>
 			<key>hash2</key>
 			<data>
-			b2K2qCoiAA4Yx65aZscQshk9yqMu0F4rsuBOrRWFUTU=
+			0sPh0BK3A38ogm+Ex8kYy/QUeYIkCVD3kuOIYBx7L7k=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/OutbrainSDK.framework/Headers/SFWidgetCollectionCell.h</key>
@@ -2436,11 +2436,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YCxbENQ80ZPtZaY/lhXicp/+8sI=
+			oLaUDlpBW1sBTyFWy3ZB7rlK9cs=
 			</data>
 			<key>hash2</key>
 			<data>
-			OBMdRsiypEX3lp/AjCk7aLGKpj+yiZhYuNNy1vQNxgo=
+			msccR1xGFgHu+MYsE5mCMmLcEnZZVcOFZNT4r4v9N0E=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/OutbrainSDK.framework/PrivacyInfo.xcprivacy</key>
@@ -3162,11 +3162,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			X63SVXlBb0kkFwnaTGDg6zZunUw=
+			9u4934bWOvA31w00Qc1q2uGijuU=
 			</data>
 			<key>hash2</key>
 			<data>
-			AA7b7oLox3XZD+0EX/bIgypY0/Yqy+CVlqFq10+bvpk=
+			5TLsw7ddEogHxiVnVbIeNaU4qk50H55gidtVqcfBzhQ=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/OutbrainSDK.framework/app_install_response.json</key>
