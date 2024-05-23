@@ -46,7 +46,8 @@
 
 NSString * const SFWIDGET_T_PARAM_NOTIFICATION     =   @"SFWidget_T_Param_Ready";
 NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_Params_Ready";
-
+static NSString *globalBridgeParams;
+static BOOL infiniteWidgetsOnTheSamePage = NO;
 
 @implementation SFWidget
 
@@ -408,19 +409,27 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     [SFUtils addConstraintsToFillParent:self.webview];
     [self.webview setNeedsLayout];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveBridgeParamsNotification:)
+                                                 name:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveTParamNotification:)
+                                                 name:SFWIDGET_T_PARAM_NOTIFICATION
+                                               object:nil];
+    
     if (self.widgetIndex > 0) {
-        NSLog(@"differ fetching until we'll have the \"t\" or \"bridgeParams\" ready");
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(receiveBridgeParamsNotification:)
-                                                     name:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION
-                                                   object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(receiveTParamNotification:)
-                                                     name:SFWIDGET_T_PARAM_NOTIFICATION
-                                                   object:nil];
+        if (infiniteWidgetsOnTheSamePage && globalBridgeParams != nil) {
+            NSLog(@"Using infiniteWidgetsOnTheSamePage flag + globalBridgeParams is available - loading immediately");
+            [self initialLoadUrl];
+        }
+        else {
+            NSLog(@"differ fetching until we'll have the \"t\" or \"bridgeParams\" ready");
+        }
         return;
     }
     else {
+        [SFWidget setGlobalBridgeParams:nil];
         [self initialLoadUrl];
     }
 }
@@ -446,20 +455,30 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
 {
     if ([[notification name] isEqualToString:SFWIDGET_BRIDGE_PARAMS_NOTIFICATION]) {
         self.bridgeParams = [notification.userInfo valueForKey:@"bridgeParams"];
+        [SFWidget setGlobalBridgeParams:self.bridgeParams];
         NSLog(@"Successfully received SFWIDGET_BRIDGE_PARAMS_NOTIFICATION - %@", self.bridgeParams);
         [[NSNotificationCenter defaultCenter] removeObserver:self];
+        if (self.widgetIndex == 0) {
+            NSLog(@"SFWIDGET_BRIDGE_PARAMS_NOTIFICATION - return on widgetIndex = 0");
+            return;
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self initialLoadUrl];
         });
     }
 }
 
+// This NSNotification can only be dispatched from the "regular SDK" (in the Bridge we will post BridgeParamsNotification)
 - (void) receiveTParamNotification:(NSNotification *) notification
 {
     if ([[notification name] isEqualToString:SFWIDGET_T_PARAM_NOTIFICATION]) {
         NSLog (@"Successfully received SFWIDGET_T_PARAM_NOTIFICATION");
         self.tParam = [notification.userInfo valueForKey:@"t"];
         [[NSNotificationCenter defaultCenter] removeObserver:self];
+        if (self.widgetIndex == 0) {
+            NSLog(@"SFWIDGET_T_PARAM_NOTIFICATION - return on widgetIndex = 0");
+            return;
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self initialLoadUrl];
         });
@@ -527,6 +546,9 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     }
     if (self.bridgeParams) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"bridgeParams" value: self.bridgeParams]];
+    }
+    if (infiniteWidgetsOnTheSamePage && globalBridgeParams != nil) {
+        [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"bridgeParams" value: globalBridgeParams]];
     }
     if (self.darkMode) {
         [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"darkMode" value: @"true"]];
@@ -661,6 +683,20 @@ NSString * const SFWIDGET_BRIDGE_PARAMS_NOTIFICATION     =   @"SFWidget_Bridge_P
     if ([settings valueForKey:@"shouldEnableBridgeDisplay"]) {
         self.displayAdsSettingEnabled = [[settings valueForKey:@"shouldEnableBridgeDisplay"] boolValue];
     }
+}
+
+#pragma mark - globalBridgeParams and infiniteWidgetsOnTheSamePage
+
++ (void)setGlobalBridgeParams:(NSString *)params {
+    globalBridgeParams = params;
+}
+
++ (NSString *)globalBridgeParams {
+    return globalBridgeParams;
+}
+
++ (void) setInfiniteWidgetsOnTheSamePage:(BOOL)enable {
+    infiniteWidgetsOnTheSamePage = enable;
 }
 
 #pragma mark - WKUIDelegate
