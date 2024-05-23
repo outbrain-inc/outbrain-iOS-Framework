@@ -1,5 +1,10 @@
 # Release Notes
 
+## v4.31.0 - May 22, 2024
+
+- Feature - add support for `pubImpId` ODB param.
+- Internal - "display ads" support with widget-settings enable\disable
+
 ## v4.30.0 - May 12, 2024
 
 - Other - add code sign with Outbrain account private key to XCFramework
