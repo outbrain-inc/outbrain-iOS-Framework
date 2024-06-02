@@ -188,21 +188,4 @@ public class Outbrain {
     public static func printLogs(domain: String? = nil) {
         self.logger.printLogs(domain: domain)
     }
-
-    public static func openAppInstallRec(_ rec: OBRecommendation, inNavController: UIViewController) {
-        let isDeviceSimulator = DeviceModelUtils.isDeviceSimulator()
-        guard !isDeviceSimulator, var reqUrl = URLComponents(string: rec.url!) else { return }
-        
-        var queryItems = reqUrl.queryItems ?? []
-        queryItems.append(URLQueryItem(name: "noRedirect", value: "true"))
-        reqUrl.queryItems = queryItems
-        
-        if let clickUrl = reqUrl.url {
-            let task = URLSession.shared.dataTask(with: clickUrl)
-            task.resume()
-        }
-
-        logger.debug("app install link clicked: \(String(describing: reqUrl.url))")
-    }
-
 }

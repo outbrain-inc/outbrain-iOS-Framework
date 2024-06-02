@@ -101,6 +101,12 @@ class BridgeUrlBuilder {
         return self
     }
     
+    func addOSTracking() -> BridgeUrlBuilder {
+        newQueryItems.append(URLQueryItem(name: "ostracking", value: !OBAppleAdIdUtil.isOptedOut ? "true" : "false"))
+        
+        return self
+    }
+    
     func addWidgetIndex(index: Int?) -> BridgeUrlBuilder {
         if let index = index, index > 0 {
             self.widgetIndex = String(index)

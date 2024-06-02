@@ -34,10 +34,6 @@ public struct OBRecommendation {
     public var isVideo: Bool {
         return false
     }
-    
-    public var isAppInstall: Bool {
-        return false
-    }
 
     // check if should display disclosure icon
     public func shouldDisplayDisclosureIcon() -> Bool {
