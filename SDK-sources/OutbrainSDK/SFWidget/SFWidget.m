@@ -569,6 +569,8 @@ static BOOL infiniteWidgetsOnTheSamePage = NO;
     if (GDPRUtils.sharedInstance.ccpaPrivacyString) {
         [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ccpa" value: GDPRUtils.sharedInstance.ccpaPrivacyString]];
     }
+    // OS tracking (for privacy manifest)
+    [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ostracking" value: ![OBAppleAdIdUtil isOptedOut] ? @"true" : @"false"]];
     
     // Additional Params (Video and more)
     [newQueryItems addObject: [[NSURLQueryItem alloc] initWithName:@"platform" value: @"ios"]];
