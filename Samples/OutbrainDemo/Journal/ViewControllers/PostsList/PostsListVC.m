@@ -54,9 +54,24 @@
     [self becomeFirstResponder];
     if (@available(iOS 14, *)) {
         [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-            NSLog(@"ATTrackingManagerAuthorizationStatus: %lu", (unsigned long)status);
-        }];
-    } 
+                    switch (status) {
+                        case ATTrackingManagerAuthorizationStatusAuthorized:
+                            NSLog(@"Tracking authorized");
+                            break;
+                        case ATTrackingManagerAuthorizationStatusDenied:
+                            NSLog(@"Tracking denied");
+                            break;
+                        case ATTrackingManagerAuthorizationStatusRestricted:
+                            NSLog(@"Tracking restricted");
+                            break;
+                        case ATTrackingManagerAuthorizationStatusNotDetermined:
+                            NSLog(@"Tracking not determined");
+                            break;
+                        default:
+                            break;
+                    }
+                }];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

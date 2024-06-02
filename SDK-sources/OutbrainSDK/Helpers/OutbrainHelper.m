@@ -18,6 +18,7 @@
 #import "OBUtils.h"
 #import "GDPRUtils.h"
 #import "SFUtils.h"
+#import "OBAppleAdIdUtil.h"
 
 @import StoreKit;
 
@@ -61,7 +62,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     NSInteger randInteger = (arc4random() % 10000);
     BOOL isPlatfromRequest = [request isKindOfClass:[OBPlatformRequest class]];
     
-    NSString *base = [NSString stringWithFormat:request.isMultivac ? @"https://mv.outbrain.com/Multivac/api/get" : @"https://odb.outbrain.com/utils/get"];
+    NSString *base = [OBAppleAdIdUtil isOptedOut] ? @"https://mv.outbrain.com/Multivac/api/get" : @"https://t-mv.outbrain.com/Multivac/api/get";
     
     if (isPlatfromRequest) {
         base = @"https://odb.outbrain.com/utils/platforms";
