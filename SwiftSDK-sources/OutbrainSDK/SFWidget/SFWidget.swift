@@ -347,6 +347,7 @@ public class SFWidget: UIView {
             .addExternalSecondaryId(extid2: self.extSecondaryId)
             .addOBPubImp(pubImpId: self.OBPubImp)
             .addUserId(userId: self.userId)
+            .addOSTracking()
             .addWidgetIndex(index: self.widgetIndex)
             .build() {
             
