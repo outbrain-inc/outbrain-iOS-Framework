@@ -65,7 +65,7 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     NSString *base = [OBAppleAdIdUtil isOptedOut] ? @"https://mv.outbrain.com/Multivac/api/get" : @"https://t-mv.outbrain.com/Multivac/api/get";
     
     if (isPlatfromRequest) {
-        base = @"https://odb.outbrain.com/utils/platforms";
+        base = [OBAppleAdIdUtil isOptedOut] ? @"https://mv.outbrain.com/Multivac/api/platforms" : @"https://t-mv.outbrain.com/Multivac/api/platforms";
     }
     
     NSURLComponents *components = [NSURLComponents componentsWithString: base];
