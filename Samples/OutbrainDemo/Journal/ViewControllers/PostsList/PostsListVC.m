@@ -189,7 +189,7 @@
 -(void) fetchOutbrainRecFor:(NSIndexPath *)indexPath {
     __block NSInteger widgetIndex = [self _widgetIndexForIndexPath:indexPath];
     typeof(self) __weak __self = self;
-    BOOL shouldTestPlatformAPI = YES;
+    BOOL shouldTestPlatformAPI = NO;
     
     Post * p = (Post *)[self.postsData firstObject];
     OBRequest * request;
