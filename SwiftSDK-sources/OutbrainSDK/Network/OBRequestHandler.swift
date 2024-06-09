@@ -39,14 +39,6 @@ public struct OBRequestHandler {
         performFetchTask(with: finalUrl, callback: delegate.outbrainDidReceiveResponse)
     }
     
-    // delegate on failure
-    func fetchRecsFailed(delegate: OBResponseDelegate, response: OBRecommendationResponse) {
-        guard buildOdbParams() != nil else {
-            return
-        }
-        delegate.outbrainDidFailed(response)
-    }
-    
     func performFetchTask(with url: URL, callback: @escaping (OBRecommendationResponse) -> Void) {
         Outbrain.logger.debug("fetch recs - task added", domain: "request-handler")
         
@@ -383,7 +375,7 @@ public struct OBRequestHandler {
             addReqParam(name: "rtbEnabled", value: "true"),
             addReqParam(name: "sk_network_version", value: OBRequestHandler.getSkNetworkVersion()),
             addReqParam(name: "app_id", value: Bundle.main.bundleIdentifier),
-            addReqParam(name: "doo", value: OBRequestHandler.getOptedOut()),
+            addReqParam(name: "doo", value: OBRequestHandler.getOptedOut() ? "true" : "false"),
             addReqParam(name: "dos", value: "ios"),
             addReqParam(name: "platform", value: "ios"),
             addReqParam(name: "dosv", value: UIDevice.current.systemVersion),
@@ -410,12 +402,17 @@ public struct OBRequestHandler {
         }
         
         // add test mode
-        if Outbrain.testMode {
+        if Outbrain.setTestMode {
             queryItems.append(addReqParam(name: "testMode", value: "true"))
             
             if Outbrain.testRTB {
-                queryItems.append(URLQueryItem(name: "fakeRec", value: "RTB-CriteoUS"))
+                queryItems.append(URLQueryItem(name: "fakeRec", value: "RTB"))
                 queryItems.append(URLQueryItem(name: "fakeRecSize", value: "2"))
+                queryItems.append(URLQueryItem(name: "rtbEnabled", value: "true"))
+            }
+            
+            if Outbrain.testLocation != nil {
+                queryItems.append(URLQueryItem(name: "location", value: Outbrain.testLocation))
             }
         }
         
@@ -493,11 +490,8 @@ public struct OBRequestHandler {
     }
     
     // populate doo - based on OS
-    static func getOptedOut() -> String {
-        if OBAppleAdIdUtil.isOptedOut {
-            return "false"
-        }
-        return "true"
+    static func getOptedOut() -> Bool {
+        return OBAppleAdIdUtil.isOptedOut
     }
     
     // populate t param from previous req

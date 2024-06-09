@@ -22,6 +22,12 @@ class BridgeUrlBuilderTests: XCTestCase {
         XCTAssertTrue(url?.absoluteString.contains("userId=\(userId)") ?? false)
     }
     
+    func testAddOSTracking() {
+        let url = urlBuilder.addOSTracking().build()
+        
+        XCTAssertTrue(url?.absoluteString.contains("ostracking=false") ?? false)
+    }
+    
     func testAddWidgetIndex() {
         let index = 1
         let url = urlBuilder.addWidgetIndex(index: index).build()

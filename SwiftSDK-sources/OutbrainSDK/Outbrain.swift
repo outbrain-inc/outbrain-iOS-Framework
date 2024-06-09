@@ -34,19 +34,20 @@ public class Outbrain {
     static var lastApvParam: Bool?
     
     // store test mode
-    public static var testMode: Bool = false
+    public static var setTestMode: Bool = false
     
     // store test RTB
     public static var testRTB: Bool = false
     
     // set test mode
-    public static func setTestMode(testMode: Bool) {
-        self.testMode = testMode
+    public static func setTestMode(_ testMode: Bool) {
+        self.setTestMode = testMode
     }
     
-    // set test rtb mode
-    public static func testRTB(testRTB: Bool) {
-        self.testRTB = testRTB
+    public static var testLocation: String?
+    
+    public static func testLocation(_ location: String?) {
+        self.testLocation = location
     }
 
     // init outbrain sdk with a partner key
@@ -100,8 +101,6 @@ public class Outbrain {
             // create an empty resposen with the corresponding error
             let failedRes = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: notInitilized)
 
-            // call the fetch failed for delegation
-            requestHandler.fetchRecsFailed(delegate: delegate, response: failedRes)
             return
         }
 
@@ -152,22 +151,23 @@ public class Outbrain {
 
     // MARK: What-Is
 
-    public static func getOutbrainAboutURL() -> String {
+    public static func getOutbrainAboutURL() -> URL? {
         let baseUrl = "https://www.outbrain.com/what-is/"
 
         // enrich params with some data - oo & userId
         guard var whatisUrl = URLComponents(string: baseUrl) else {
-            return baseUrl
+            return URL(string: baseUrl)
         }
+        
         whatisUrl.queryItems = [
-            URLQueryItem(name: "doo", value: OBRequestHandler.getOptedOut()),
+            URLQueryItem(name: "doo", value: OBRequestHandler.getOptedOut() ? "true" : "false"),
             URLQueryItem(name: "apiUserId", value: OBRequestHandler.getApiUserId())
         ]
 
-        return whatisUrl.url?.absoluteString ?? baseUrl
+        return whatisUrl.url
     }
     
-    public static func getAboutURL() -> String {
+    public static func getAboutURL() -> URL? {
         return Outbrain.getOutbrainAboutURL()
     }
 
@@ -188,7 +188,4 @@ public class Outbrain {
     public static func printLogs(domain: String? = nil) {
         self.logger.printLogs(domain: domain)
     }
-
-    public static func openAppInstallRec(_ rec: OBRecommendation, in: UIViewController) {}
-
 }

@@ -34,13 +34,9 @@ public struct OBRecommendation {
     public var isVideo: Bool {
         return false
     }
-    
-    public var isAppInstall: Bool {
-        return false
-    }
 
     // check if should display disclosure icon
-    func shouldDisplayDisclosureIcon() -> Bool {
+    public func shouldDisplayDisclosureIcon() -> Bool {
         // Check if both disclosure image and click_url exists
         return disclosure != nil && disclosure!.imageUrl != nil && disclosure!.imageUrl!.count > 0 && disclosure!.clickUrl != nil && disclosure!.clickUrl!.count > 0
     }
