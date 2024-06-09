@@ -375,7 +375,7 @@ public struct OBRequestHandler {
             addReqParam(name: "rtbEnabled", value: "true"),
             addReqParam(name: "sk_network_version", value: OBRequestHandler.getSkNetworkVersion()),
             addReqParam(name: "app_id", value: Bundle.main.bundleIdentifier),
-            addReqParam(name: "doo", value: OBRequestHandler.getOptedOut()),
+            addReqParam(name: "doo", value: OBRequestHandler.getOptedOut() ? "true" : "false"),
             addReqParam(name: "dos", value: "ios"),
             addReqParam(name: "platform", value: "ios"),
             addReqParam(name: "dosv", value: UIDevice.current.systemVersion),
@@ -490,11 +490,8 @@ public struct OBRequestHandler {
     }
     
     // populate doo - based on OS
-    static func getOptedOut() -> String {
-        if OBAppleAdIdUtil.isOptedOut {
-            return "true"
-        }
-        return "false"
+    static func getOptedOut() -> Bool {
+        return OBAppleAdIdUtil.isOptedOut
     }
     
     // populate t param from previous req
