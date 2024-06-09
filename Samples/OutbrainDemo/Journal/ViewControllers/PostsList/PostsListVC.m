@@ -189,8 +189,18 @@
 -(void) fetchOutbrainRecFor:(NSIndexPath *)indexPath {
     __block NSInteger widgetIndex = [self _widgetIndexForIndexPath:indexPath];
     typeof(self) __weak __self = self;
+    BOOL shouldTestPlatformAPI = YES;
+    
     Post * p = (Post *)[self.postsData firstObject];
-    OBRequest * request = [OBRequest requestWithURL:OBDemoURL widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
+    OBRequest * request;
+    
+    if (shouldTestPlatformAPI) {
+        request = [self prepareOutbrainBaseRequest];
+    }
+    else {
+        request = [OBRequest requestWithURL:OBDemoURL widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
+    }
+    
     self.indexPathToOutbrainReqDict[indexPath] = request;
     
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
@@ -211,6 +221,20 @@
             [__self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         });
     }];
+}
+
+- (OBRequest *) prepareOutbrainBaseRequest {
+    OBRequest * request;
+    BOOL shouldTestPlatformBundleRequest = YES;
+    [Outbrain setPartnerKey: @"DEMOP1MN24J3E1MGLQ92067LH"];
+    
+    if (shouldTestPlatformBundleRequest) {
+        request = [OBPlatformRequest requestWithBundleURL: PLATFORM_SAMPLE_BUNDLE_URL lang: @"en" widgetID: PLATFORM_SAMPLE_WIDGET_ID];
+    }
+    else {
+        request = [OBPlatformRequest requestWithPortalURL: PLATFORM_SAMPLE_PORTAL_URL lang: @"en" widgetID: PLATFORM_SAMPLE_WIDGET_ID];
+    }
+    return request;
 }
 
 - (BOOL)indexPathIsOBRecommendation:(NSIndexPath *)ip
