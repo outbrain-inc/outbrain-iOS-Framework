@@ -52,26 +52,28 @@
     UIRefreshControl * refreshControl = [self refreshControl];
     [refreshControl addTarget:self action:@selector(refreshPostsList) forControlEvents:UIControlEventValueChanged];
     [self becomeFirstResponder];
-    if (@available(iOS 14, *)) {
-        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-                    switch (status) {
-                        case ATTrackingManagerAuthorizationStatusAuthorized:
-                            NSLog(@"Tracking authorized");
-                            break;
-                        case ATTrackingManagerAuthorizationStatusDenied:
-                            NSLog(@"Tracking denied");
-                            break;
-                        case ATTrackingManagerAuthorizationStatusRestricted:
-                            NSLog(@"Tracking restricted");
-                            break;
-                        case ATTrackingManagerAuthorizationStatusNotDetermined:
-                            NSLog(@"Tracking not determined");
-                            break;
-                        default:
-                            break;
-                    }
-                }];
-    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (@available(iOS 14, *)) {
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                switch (status) {
+                    case ATTrackingManagerAuthorizationStatusAuthorized:
+                        NSLog(@"Tracking authorized");
+                        break;
+                    case ATTrackingManagerAuthorizationStatusDenied:
+                        NSLog(@"Tracking denied");
+                        break;
+                    case ATTrackingManagerAuthorizationStatusRestricted:
+                        NSLog(@"Tracking restricted");
+                        break;
+                    case ATTrackingManagerAuthorizationStatusNotDetermined:
+                        NSLog(@"Tracking not determined");
+                        break;
+                    default:
+                        break;
+                }
+            }];
+        }
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated
