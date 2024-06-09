@@ -8,6 +8,7 @@
 	<array>
 		<string>t-odb.outbrain.com</string>
 		<string>t-mv.outbrain.com</string>
+        <string>t-log.outbrainimg.com</string>
 	</array>
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array>
