@@ -160,7 +160,7 @@ public class Outbrain {
         }
         
         whatisUrl.queryItems = [
-            URLQueryItem(name: "doo", value: OBRequestHandler.getOptedOut()),
+            URLQueryItem(name: "doo", value: OBRequestHandler.getOptedOut() ? "true" : "false"),
             URLQueryItem(name: "apiUserId", value: OBRequestHandler.getApiUserId())
         ]
 
