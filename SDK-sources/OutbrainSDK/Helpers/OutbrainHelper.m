@@ -122,6 +122,8 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     
     [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"api_user_id" value: apiUserId]];
     
+    // OS Tracking
+    [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ostracking" value: [OBAppleAdIdUtil isOptedOut] ? @"false" : @"true"]];
     
     //Test mode
     if ([OutbrainManager sharedInstance].testMode) {
