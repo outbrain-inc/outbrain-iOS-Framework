@@ -161,6 +161,11 @@ class BridgeUrlBuilder {
         return self
     }
     
+    func addIsFlutter(isFlutter: Bool) -> BridgeUrlBuilder {
+        newQueryItems.append(URLQueryItem(name: "flutter", value: isFlutter ? "1" : "0"))
+        return self
+    }
+    
     func addOBPubImp(pubImpId: String?) -> BridgeUrlBuilder {
         if let pubImpId = pubImpId {
             newQueryItems.append(URLQueryItem(name: "pubImpId", value: pubImpId))

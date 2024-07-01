@@ -38,6 +38,7 @@ public class SFWidget: UIView {
     var tParamObserver: NSObjectProtocol?
     var errorReporter: OBErrorReport?
     var settings: [String: Any] = [:]
+    static var isFlutter: Bool = false;
     
     /**
        External Id public value
@@ -246,6 +247,10 @@ public class SFWidget: UIView {
         self.webview.setNeedsLayout()
 
     }
+    
+    public static func setIsFlutter(value: Bool) {
+        isFlutter = value;
+    }
 
     func updateParamsOnsamePageviewWidget() {
         Outbrain.logger.log("Delay fetching until we have the \"t\" or \"bridgeParams\" ready")
@@ -349,6 +354,7 @@ public class SFWidget: UIView {
             .addUserId(userId: self.userId)
             .addOSTracking()
             .addWidgetIndex(index: self.widgetIndex)
+            .addIsFlutter(isFlutter: SFWidget.isFlutter)
             .build() {
             
             Outbrain.logger.log("Bridge URL: \(widgetURL)")
@@ -557,7 +563,7 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
         return flagSetting == true
     }
     
-    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {        
+    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil {
             if let url = navigationAction.request.url {
                 self.delegate?.onRecClick(url)
