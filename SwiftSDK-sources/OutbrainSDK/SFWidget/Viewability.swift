@@ -6,6 +6,9 @@
 //
 
 import UIKit
+
+let LOAD_DISTANCE_THRESHOLD: CGFloat = 300
+
 struct ViewParams {
     var visibleFrom = 0
     var visibleTo = 0
@@ -57,7 +60,15 @@ struct Viewability {
             
             let viewParams = Viewability.handleViewabilitySwiftUI(sfWidget)
             if let viewParams = viewParams {
-                let shouldLoadMore = Double(self.intersectionHeight) < self.containerViewHeight
+                var shouldLoadMore = false;
+                
+                if let widget = sfWidget {
+                    let viewport = widget.convert(UIScreen.main.bounds, from: nil as UIView?)
+                    let viewportBottom = viewport.maxY
+                    
+                    shouldLoadMore = widget.currentHeight - viewportBottom < LOAD_DISTANCE_THRESHOLD
+                }
+
                 viewabilityClosure(viewParams, self.webViewWidth,  self.webViewHeight, shouldLoadMore)
                 return
             }
