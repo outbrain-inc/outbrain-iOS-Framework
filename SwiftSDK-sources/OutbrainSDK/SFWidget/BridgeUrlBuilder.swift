@@ -162,7 +162,8 @@ class BridgeUrlBuilder {
     }
     
     func addIsFlutter(isFlutter: Bool) -> BridgeUrlBuilder {
-        newQueryItems.append(URLQueryItem(name: "flutter", value: isFlutter ? "1" : "0"))
+        guard isFlutter else { return self }
+        newQueryItems.append(URLQueryItem(name: "flutter", value: "true"))
         return self
     }
     
