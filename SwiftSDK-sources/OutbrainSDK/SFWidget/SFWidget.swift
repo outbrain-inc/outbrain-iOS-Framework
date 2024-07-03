@@ -10,7 +10,7 @@ import WebKit
 
 let SFWIDGET_T_PARAM_NOTIFICATION = "SFWidget_T_Param_Ready"
 let SFWIDGET_BRIDGE_PARAMS_NOTIFICATION = "SFWidget_Bridge_Params_Ready"
-let THRESHOLD_FROM_BOTTOM: CGFloat = 1000
+let THRESHOLD_FROM_BOTTOM: CGFloat = 500
 //bottom
 public class SFWidget: UIView {
     var currentHeight: CGFloat = 0
