@@ -7,7 +7,7 @@
 
 import UIKit
 
-let LOAD_DISTANCE_THRESHOLD: CGFloat = 500
+let LOAD_DISTANCE_THRESHOLD: CGFloat = THRESHOLD_FROM_BOTTOM
 
 struct ViewParams {
     var visibleFrom = 0
