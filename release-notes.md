@@ -1,5 +1,10 @@
 # Release Notes
 
+## v5.0.10-beta - July 3, 2024
+
+- Minor - add support for Flutter, including infiniteWidgetsOnTheSamePage and globalBridgeParams
+- Minor - remove tParam notification handling in SFWidget since it is not being used anymore (BridgeParams contains it).
+
 ## v5.0.5-beta - May 12, 2024
 - Minor - add missing/fix access sdk parts from error logs
 
