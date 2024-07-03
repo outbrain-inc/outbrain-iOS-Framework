@@ -137,6 +137,9 @@ class BridgeUrlBuilder {
         if let bp = bridgeParams {
             newQueryItems.append(URLQueryItem(name: "bridgeParams", value: bp))
         }
+        if let globalBridgeParams = SFWidget.globalBridgeParams, SFWidget.infiniteWidgetsOnTheSamePage {
+            newQueryItems.append(URLQueryItem(name: "bridgeParams", value: globalBridgeParams))
+        }
         return self
     }
     

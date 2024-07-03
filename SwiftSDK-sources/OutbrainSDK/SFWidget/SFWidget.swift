@@ -39,6 +39,8 @@ public class SFWidget: UIView {
     var errorReporter: OBErrorReport?
     var settings: [String: Any] = [:]
     static var isFlutter: Bool = false;
+    public static var infiniteWidgetsOnTheSamePage: Bool = false;
+    static var globalBridgeParams: String?
     
     /**
        External Id public value
@@ -165,7 +167,22 @@ public class SFWidget: UIView {
         self.installationKey = installationKey
         self.errorReporter = OBErrorReport(url: self.url, widgetId: self.widgetId)
         self.bridgeUrlBuilder = BridgeUrlBuilder(url: self.url, widgetId: self.widgetId, installationKey: self.installationKey)
-        self.isSamePageview() ? self.updateParamsOnsamePageviewWidget() : self.initialLoadUrl()
+        self.configureBridgeNotificationHandlers()
+        
+        if self.widgetIndex > 0 {
+            if (SFWidget.globalBridgeParams != nil && SFWidget.infiniteWidgetsOnTheSamePage) {
+                // we have the "page context" already from fetching widgetIdx=0 (stored in globalBridgeParams)
+                // Therefore, we can load the widget with idx > 0 immediately
+                self.initialLoadUrl()
+            }
+            else {
+                print("differ fetching until we'll have the \"t\" or \"bridgeParams\" ready")
+            }
+        }
+        else {
+            SFWidget.globalBridgeParams = nil
+            self.initialLoadUrl()
+        }
         
         if self.isSwiftUI == true {
             self.handleSwiftUI()
@@ -270,49 +287,20 @@ public class SFWidget: UIView {
         }
     }
     
-    func updateParamsOnsamePageviewWidget() {
-        Outbrain.logger.log("Delay fetching until we have the \"t\" or \"bridgeParams\" ready")
+    func configureBridgeNotificationHandlers() {
         let bridgeParamsNotification = NSNotification.Name(rawValue: SFWIDGET_BRIDGE_PARAMS_NOTIFICATION)
-        let tParamNotification = NSNotification.Name(rawValue: SFWIDGET_T_PARAM_NOTIFICATION)
-        var tNotificationFired = false
-        var bridgeParamsNotificationFired = false
         
         self.bridgeParamsObserver = NotificationCenter.default.addObserver(forName: bridgeParamsNotification, object: nil, queue: nil) { notification in
-            bridgeParamsNotificationFired = true
+            Outbrain.logger.log("SFWidget received \"bridgeParams\" notification")
             self.receiveBridgeParamsNotification(notification)
             
-            if tNotificationFired && bridgeParamsNotificationFired {
-                DispatchQueue.main.async {
-                    self.initialLoadUrl()
-                }
+            if (self.widgetIndex == 0) {
+                // we are already loaded
+                return;
             }
-        }
-        
-        self.tParamObserver = NotificationCenter.default.addObserver(forName: tParamNotification, object: nil, queue: nil) { notification in
-            tNotificationFired = true
-            self.receiveTParamNotification(notification)
-            
-            
-            if tNotificationFired && bridgeParamsNotificationFired {
-                DispatchQueue.main.async {
-                    self.initialLoadUrl()
-                }
+            DispatchQueue.main.async {
+                self.initialLoadUrl()
             }
-            
-        }
-    }
-    
-    func receiveTParamNotification(_ notification: Notification) {
-        if notification.name.rawValue == SFWIDGET_T_PARAM_NOTIFICATION {
-            Outbrain.logger.log("Successfully received SFWIDGET_T_PARAM_NOTIFICATION")
-            if let tParam = notification.userInfo?["t"] as? String {
-                self.tParam = tParam
-            }
-            
-            if let tParamObserver = self.tParamObserver {
-                NotificationCenter.default.removeObserver(tParamObserver)
-            }
-            
         }
     }
     
@@ -320,6 +308,7 @@ public class SFWidget: UIView {
         if notification.name.rawValue == SFWIDGET_BRIDGE_PARAMS_NOTIFICATION {
             if let bridgeParams = notification.userInfo?["bridgeParams"] as? String {
                 self.bridgeParams = bridgeParams
+                SFWidget.globalBridgeParams = self.bridgeParams
             }
             Outbrain.logger.log("Successfully received SFWIDGET_BRIDGE_PARAMS_NOTIFICATION - \(String(describing: self.bridgeParams))")
             if let bridgeParamsObserver = self.bridgeParamsObserver {
@@ -448,10 +437,6 @@ public class SFWidget: UIView {
         Outbrain.logger.debug("load-more-recs", domain: "sfWidfet-handler")
         self.jsExec.loadMore()
         self.jsExec.evaluateHeight()
-    }
-    
-    private func isSamePageview() -> Bool {
-        return self.widgetIndex > 0
     }
     
     private func handleSwiftUI() {
