@@ -137,6 +137,9 @@ class BridgeUrlBuilder {
         if let bp = bridgeParams {
             newQueryItems.append(URLQueryItem(name: "bridgeParams", value: bp))
         }
+        if let globalBridgeParams = SFWidget.globalBridgeParams, SFWidget.infiniteWidgetsOnTheSamePage {
+            newQueryItems.append(URLQueryItem(name: "bridgeParams", value: globalBridgeParams))
+        }
         return self
     }
     
@@ -158,6 +161,12 @@ class BridgeUrlBuilder {
         if let extid2 = extid2 {
             newQueryItems.append(URLQueryItem(name: "extid2", value: extid2))
         }
+        return self
+    }
+    
+    func addIsFlutter(isFlutter: Bool) -> BridgeUrlBuilder {
+        guard isFlutter else { return self }
+        newQueryItems.append(URLQueryItem(name: "flutter", value: "true"))
         return self
     }
     

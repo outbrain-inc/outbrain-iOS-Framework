@@ -49,10 +49,10 @@
 		CA26CB6A2A7124BF00D2C22F /* BridgeUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26CB692A7124BF00D2C22F /* BridgeUrlBuilder.swift */; };
 		CA26CB6C2A76B18000D2C22F /* BridgeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26CB6B2A76B18000D2C22F /* BridgeUtils.swift */; };
 		CA26CB7A2A779D6400D2C22F /* SFWidgetTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26CB792A779D6400D2C22F /* SFWidgetTableCell.swift */; };
-		CA58F6552A8D082500201A81 /* Viewability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58F6542A8D082500201A81 /* Viewability.swift */; };
 		CA7690A92A8E0582009C57BF /* JavaScriptExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7690A82A8E0582009C57BF /* JavaScriptExecutor.swift */; };
 		CAEB973B2B7E68D700DD1754 /* GPPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEB973A2B7E68D700DD1754 /* GPPUtils.swift */; };
 		CAEB973D2B7E69E300DD1754 /* GPPUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEB973C2B7E69E300DD1754 /* GPPUtilsTests.swift */; };
+		E6A644A02C35516E00868269 /* ViewabilityTimerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6449F2C35516E00868269 /* ViewabilityTimerHandler.swift */; };
 		E6E4B3BD2A2381A100FE44E3 /* OutbrainSDK.docc in Sources */ = {isa = PBXBuildFile; fileRef = E6E4B3BC2A2381A100FE44E3 /* OutbrainSDK.docc */; };
 		E6E4B3C32A2381A100FE44E3 /* OutbrainSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E4B3B82A2381A100FE44E3 /* OutbrainSDK.framework */; };
 		E6E4B3C82A2381A100FE44E3 /* OutbrainSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E4B3C72A2381A100FE44E3 /* OutbrainSDKTests.swift */; };
@@ -114,10 +114,10 @@
 		CA26CB692A7124BF00D2C22F /* BridgeUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeUrlBuilder.swift; sourceTree = "<group>"; };
 		CA26CB6B2A76B18000D2C22F /* BridgeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeUtils.swift; sourceTree = "<group>"; };
 		CA26CB792A779D6400D2C22F /* SFWidgetTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetTableCell.swift; sourceTree = "<group>"; };
-		CA58F6542A8D082500201A81 /* Viewability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewability.swift; sourceTree = "<group>"; };
 		CA7690A82A8E0582009C57BF /* JavaScriptExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptExecutor.swift; sourceTree = "<group>"; };
 		CAEB973A2B7E68D700DD1754 /* GPPUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPPUtils.swift; sourceTree = "<group>"; };
 		CAEB973C2B7E69E300DD1754 /* GPPUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPPUtilsTests.swift; sourceTree = "<group>"; };
+		E6A6449F2C35516E00868269 /* ViewabilityTimerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewabilityTimerHandler.swift; sourceTree = "<group>"; };
 		E6E4B3B82A2381A100FE44E3 /* OutbrainSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OutbrainSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E4B3BB2A2381A100FE44E3 /* OutbrainSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutbrainSDK.h; sourceTree = "<group>"; };
 		E6E4B3BC2A2381A100FE44E3 /* OutbrainSDK.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = OutbrainSDK.docc; sourceTree = "<group>"; };
@@ -267,9 +267,9 @@
 				CA26CB612A6FF79A00D2C22F /* SFWidget.swift */,
 				CA26CB652A70108B00D2C22F /* SFWidgetMessageHandler.swift */,
 				CA26CB692A7124BF00D2C22F /* BridgeUrlBuilder.swift */,
+				E6A6449F2C35516E00868269 /* ViewabilityTimerHandler.swift */,
 				CA26CB6B2A76B18000D2C22F /* BridgeUtils.swift */,
 				CA26CB792A779D6400D2C22F /* SFWidgetTableCell.swift */,
-				CA58F6542A8D082500201A81 /* Viewability.swift */,
 				CA0F15852A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift */,
 				CA2646CD2AAF0636005287CB /* SFConsts.swift */,
 			);
@@ -433,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A644A02C35516E00868269 /* ViewabilityTimerHandler.swift in Sources */,
 				CA0F15862A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift in Sources */,
 				5E0919D22A4ACC17005A014F /* OBDisclosure.swift in Sources */,
 				CA26CB6A2A7124BF00D2C22F /* BridgeUrlBuilder.swift in Sources */,
@@ -458,7 +459,6 @@
 				5E24652F2A4084C100D6C9DF /* OBRequest.swift in Sources */,
 				CA26CB6C2A76B18000D2C22F /* BridgeUtils.swift in Sources */,
 				5E2465332A4099D200D6C9DF /* OBResponseDelegate.swift in Sources */,
-				CA58F6552A8D082500201A81 /* Viewability.swift in Sources */,
 				CA7690A92A8E0582009C57BF /* JavaScriptExecutor.swift in Sources */,
 				5E2465252A40421600D6C9DF /* OBRecommendation.swift in Sources */,
 				5E0D6B272A41988A008BCD06 /* OBAppleAdIdUtil.swift in Sources */,

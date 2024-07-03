@@ -57,11 +57,6 @@ class SFWidgetMessageHandler: NSObject, WKScriptMessageHandler {
         if let tParam = msg["t"] as? String {
             Outbrain.logger.debug("SFWidgetMessageHandler received t param: \(tParam) - Not posting notification (using bridgeParams instead)", domain: self.messageHandler)
         }
-        
-        if let tParam = msg["t"] as? String {
-            Outbrain.logger.debug("SFWidgetMessageHandler received t param: \(tParam)", domain: self.messageHandler)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: SFWIDGET_T_PARAM_NOTIFICATION), object: self, userInfo: ["t": tParam])
-        }
     }
     
     

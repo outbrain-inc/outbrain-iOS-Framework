@@ -10,7 +10,7 @@ import WebKit
 
 let SFWIDGET_T_PARAM_NOTIFICATION = "SFWidget_T_Param_Ready"
 let SFWIDGET_BRIDGE_PARAMS_NOTIFICATION = "SFWidget_Bridge_Params_Ready"
-let THRESHOLD_FROM_BOTTOM: CGFloat = 1000
+let THRESHOLD_FROM_BOTTOM: CGFloat = 500
 //bottom
 public class SFWidget: UIView {
     var currentHeight: CGFloat = 0
@@ -33,11 +33,14 @@ public class SFWidget: UIView {
     var jsExec: JavaScriptExecutor!
     var webview: WKWebView!
     var hiddenWebView: WKWebView?
-    var viewabilityTimer: Timer?
     var bridgeParamsObserver: NSObjectProtocol?
     var tParamObserver: NSObjectProtocol?
+    var viewabilityTimerHandler: ViewabilityTimerHandler!
     var errorReporter: OBErrorReport?
     var settings: [String: Any] = [:]
+    static var isFlutter: Bool = false;
+    public static var infiniteWidgetsOnTheSamePage: Bool = false;
+    static var globalBridgeParams: String?
     
     /**
        External Id public value
@@ -83,7 +86,8 @@ public class SFWidget: UIView {
     private func commonInit() {
         self.messageHandler = SFWidgetMessageHandler()
         self.jsExec = JavaScriptExecutor()
-        self.configureSFWidget()
+        self.viewabilityTimerHandler = ViewabilityTimerHandler()
+        self.configureSFWidget()        
         self.messageHandler.delegate = self
     }
 
@@ -157,16 +161,33 @@ public class SFWidget: UIView {
            return;
         }
 
-        self.swiftUiConfigureDone = self.isSwiftUI
         self.delegate = delegate
         self.url = url
         self.widgetId = widgetId
         self.installationKey = installationKey
         self.errorReporter = OBErrorReport(url: self.url, widgetId: self.widgetId)
         self.bridgeUrlBuilder = BridgeUrlBuilder(url: self.url, widgetId: self.widgetId, installationKey: self.installationKey)
-        self.isSamePageview() ? self.updateParamsOnsamePageviewWidget() : self.initialLoadUrl()
+        self.configureBridgeNotificationHandlers()
         
-        if self.isSwiftUI == true { self.handleSwiftUI()}
+        if self.widgetIndex > 0 {
+            if (SFWidget.globalBridgeParams != nil && SFWidget.infiniteWidgetsOnTheSamePage) {
+                // we have the "page context" already from fetching widgetIdx=0 (stored in globalBridgeParams)
+                // Therefore, we can load the widget with idx > 0 immediately
+                self.initialLoadUrl()
+            }
+            else {
+                print("differ fetching until we'll have the \"t\" or \"bridgeParams\" ready")
+            }
+        }
+        else {
+            SFWidget.globalBridgeParams = nil
+            self.initialLoadUrl()
+        }
+        
+        if self.isSwiftUI == true {
+            self.handleSwiftUI()
+            self.swiftUiConfigureDone = true
+        }
     }
 
     /**
@@ -246,50 +267,40 @@ public class SFWidget: UIView {
         self.webview.setNeedsLayout()
 
     }
+    
+    public static func setIsFlutter(value: Bool) {
+        isFlutter = value;
+    }
 
-    func updateParamsOnsamePageviewWidget() {
-        Outbrain.logger.log("Delay fetching until we have the \"t\" or \"bridgeParams\" ready")
-        let bridgeParamsNotification = NSNotification.Name(rawValue: SFWIDGET_BRIDGE_PARAMS_NOTIFICATION)
-        let tParamNotification = NSNotification.Name(rawValue: SFWIDGET_T_PARAM_NOTIFICATION)
-        var tNotificationFired = false
-        var bridgeParamsNotificationFired = false
+    public override func didMoveToWindow() {
+        super.didMoveToWindow()
         
-        self.bridgeParamsObserver = NotificationCenter.default.addObserver(forName: bridgeParamsNotification, object: nil, queue: nil) { notification in
-            bridgeParamsNotificationFired = true
-            self.receiveBridgeParamsNotification(notification)
-            
-            if tNotificationFired && bridgeParamsNotificationFired {
-                DispatchQueue.main.async {
-                    self.initialLoadUrl()
-                }
+        if self.window != nil {
+            // The view has been added to a window
+            print("View added to window")
+            if self.swiftUiConfigureDone == true {
+                self.handleSwiftUI()
             }
-        }
-        
-        self.tParamObserver = NotificationCenter.default.addObserver(forName: tParamNotification, object: nil, queue: nil) { notification in
-            tNotificationFired = true
-            self.receiveTParamNotification(notification)
-            
-            
-            if tNotificationFired && bridgeParamsNotificationFired {
-                DispatchQueue.main.async {
-                    self.initialLoadUrl()
-                }
-            }
-            
+        } else {
+            // The view has been removed from a window
+            print("View removed from window")
         }
     }
     
-    func receiveTParamNotification(_ notification: Notification) {
-        if notification.name.rawValue == SFWIDGET_T_PARAM_NOTIFICATION {
-            Outbrain.logger.log("Successfully received SFWIDGET_T_PARAM_NOTIFICATION")
-            if let tParam = notification.userInfo?["t"] as? String {
-                self.tParam = tParam
-            }
+    func configureBridgeNotificationHandlers() {
+        let bridgeParamsNotification = NSNotification.Name(rawValue: SFWIDGET_BRIDGE_PARAMS_NOTIFICATION)
+        
+        self.bridgeParamsObserver = NotificationCenter.default.addObserver(forName: bridgeParamsNotification, object: nil, queue: nil) { notification in
+            Outbrain.logger.log("SFWidget received \"bridgeParams\" notification")
+            self.receiveBridgeParamsNotification(notification)
             
-            if let tParamObserver = self.tParamObserver {
-                NotificationCenter.default.removeObserver(tParamObserver)
+            if (self.widgetIndex == 0) {
+                // we are already loaded
+                return;
             }
-            
+            DispatchQueue.main.async {
+                self.initialLoadUrl()
+            }
         }
     }
     
@@ -297,6 +308,7 @@ public class SFWidget: UIView {
         if notification.name.rawValue == SFWIDGET_BRIDGE_PARAMS_NOTIFICATION {
             if let bridgeParams = notification.userInfo?["bridgeParams"] as? String {
                 self.bridgeParams = bridgeParams
+                SFWidget.globalBridgeParams = self.bridgeParams
             }
             Outbrain.logger.log("Successfully received SFWIDGET_BRIDGE_PARAMS_NOTIFICATION - \(String(describing: self.bridgeParams))")
             if let bridgeParamsObserver = self.bridgeParamsObserver {
@@ -349,6 +361,7 @@ public class SFWidget: UIView {
             .addUserId(userId: self.userId)
             .addOSTracking()
             .addWidgetIndex(index: self.widgetIndex)
+            .addIsFlutter(isFlutter: SFWidget.isFlutter)
             .build() {
             
             Outbrain.logger.log("Bridge URL: \(widgetURL)")
@@ -390,7 +403,7 @@ public class SFWidget: UIView {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //check if this check happens from bottom or from bottom view port
         //check if we can move responsebility of load more to js bridge
-        Viewability.handleViewability(sfWidget: self, containerView: scrollView) {viewStatus, width ,height  in
+        self.viewabilityTimerHandler.handleViewability(sfWidget: self, containerView: scrollView) {viewStatus, width ,height  in
             self.jsExec.setViewData(from: viewStatus.visibleFrom, to: viewStatus.visibleTo, width: width, height: height)
         }
         
@@ -426,12 +439,8 @@ public class SFWidget: UIView {
         self.jsExec.evaluateHeight()
     }
     
-    private func isSamePageview() -> Bool {
-        return self.widgetIndex > 0
-    }
-    
     private func handleSwiftUI() {
-        Viewability.handleSwiftUI(sfWidget: self) { viewStatus, width ,height, shouldLoadMore in
+        self.viewabilityTimerHandler.handleSwiftUI(sfWidget: self) { viewStatus, width ,height, shouldLoadMore in
             self.jsExec.setViewData(from: viewStatus.visibleFrom, to: viewStatus.visibleTo, width: width, height: height)
             if (!shouldLoadMore) {
                 return
@@ -557,7 +566,7 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
         return flagSetting == true
     }
     
-    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {        
+    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil {
             if let url = navigationAction.request.url {
                 self.delegate?.onRecClick(url)
