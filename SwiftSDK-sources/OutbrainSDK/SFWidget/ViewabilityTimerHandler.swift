@@ -14,20 +14,24 @@ struct ViewParams {
     var visibleTo = 0
 }
 
-struct Viewability {
-    static var webViewHeight = 0
-    static var webViewWidth = 0
-    static var distanceToContainerTop = 0.0
-    static var intersectionHeight = 0
-    static var containerViewHeight = 0.0
-    static var roundedContainerViewHeight = 0
-    static var distanceToContainerBottom = 0
-    static var viewFrame: CGRect!
-    static var intersection: CGRect!
-    static let swiftUIInterval: TimeInterval = 3.0
-    private static var viewabilityTimer: Timer?
+class ViewabilityTimerHandler {
+    var webViewHeight = 0
+    var webViewWidth = 0
+    var distanceToContainerTop = 0.0
+    var intersectionHeight = 0
+    var containerViewHeight = 0.0
+    var roundedContainerViewHeight = 0
+    var distanceToContainerBottom = 0
+    var viewFrame: CGRect!
+    var intersection: CGRect!
+    let swiftUIInterval: TimeInterval = 3.0
+    private var viewabilityTimer: Timer?
     
-    static func handleViewability(sfWidget: SFWidget?, containerView: UIView, viewabilityClosure: @escaping (_ viewParams: ViewParams,_ width: Int,_ height: Int) -> Void) {
+    init() {
+        
+    }
+
+    func handleViewability(sfWidget: SFWidget?, containerView: UIView, viewabilityClosure: @escaping (_ viewParams: ViewParams,_ width: Int,_ height: Int) -> Void) {
         guard let widget = sfWidget, !widget.isSwiftUI else {
             return
         }
@@ -54,11 +58,14 @@ struct Viewability {
         viewabilityClosure(viewStatus, self.webViewWidth, self.webViewHeight)
     }
     
-    static func handleSwiftUI(sfWidget: SFWidget?, viewabilityClosure: @escaping (_ viewParams: ViewParams, _ width: Int,_ height: Int,_ shouldLoadMore: Bool) -> Void ) {
-        
+    func handleSwiftUI(sfWidget: SFWidget?, viewabilityClosure: @escaping (_ viewParams: ViewParams, _ width: Int,_ height: Int,_ shouldLoadMore: Bool) -> Void ) {
+        self.viewabilityTimer?.invalidate() // Invalidate any existing timer
+
         self.viewabilityTimer = Timer.scheduledTimer(withTimeInterval: self.swiftUIInterval, repeats: true) { _ in
             
-            let viewParams = Viewability.handleViewabilitySwiftUI(sfWidget)
+
+            let viewParams = self.handleViewabilitySwiftUI(sfWidget)
+            
             if let viewParams = viewParams {
                 var shouldLoadMore = false;
                 
@@ -76,7 +83,7 @@ struct Viewability {
         }
     }
     
-    private static func handleViewabilitySwiftUI(_ sfWidget: SFWidget?) -> ViewParams? {
+    private func handleViewabilitySwiftUI(_ sfWidget: SFWidget?) -> ViewParams? {
         guard let widget = sfWidget, widget.isSwiftUI, widget.window != nil else {
             return nil
         }
@@ -102,7 +109,7 @@ struct Viewability {
         
     }
     
-    private static func checkViewStatusSwiftUI(scale: Double) -> ViewParams {
+    private func checkViewStatusSwiftUI(scale: Double) -> ViewParams {
         var viewParams = ViewParams()
         // webview on screen
         if distanceToContainerTop < 0 {
@@ -125,7 +132,7 @@ struct Viewability {
         return viewParams
     }
     
-    private static func checkViewStatus() -> ViewParams {
+    private func checkViewStatus() -> ViewParams {
         var viewParams = ViewParams()
 
         if (self.distanceToContainerTop < 0 ) {

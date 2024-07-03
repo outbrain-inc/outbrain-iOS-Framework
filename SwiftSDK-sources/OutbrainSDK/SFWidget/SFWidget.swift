@@ -33,9 +33,9 @@ public class SFWidget: UIView {
     var jsExec: JavaScriptExecutor!
     var webview: WKWebView!
     var hiddenWebView: WKWebView?
-    var viewabilityTimer: Timer?
     var bridgeParamsObserver: NSObjectProtocol?
     var tParamObserver: NSObjectProtocol?
+    var viewabilityTimerHandler: ViewabilityTimerHandler!
     var errorReporter: OBErrorReport?
     var settings: [String: Any] = [:]
     static var isFlutter: Bool = false;
@@ -84,7 +84,8 @@ public class SFWidget: UIView {
     private func commonInit() {
         self.messageHandler = SFWidgetMessageHandler()
         self.jsExec = JavaScriptExecutor()
-        self.configureSFWidget()
+        self.viewabilityTimerHandler = ViewabilityTimerHandler()
+        self.configureSFWidget()        
         self.messageHandler.delegate = self
     }
 
@@ -158,7 +159,6 @@ public class SFWidget: UIView {
            return;
         }
 
-        self.swiftUiConfigureDone = self.isSwiftUI
         self.delegate = delegate
         self.url = url
         self.widgetId = widgetId
@@ -167,7 +167,10 @@ public class SFWidget: UIView {
         self.bridgeUrlBuilder = BridgeUrlBuilder(url: self.url, widgetId: self.widgetId, installationKey: self.installationKey)
         self.isSamePageview() ? self.updateParamsOnsamePageviewWidget() : self.initialLoadUrl()
         
-        if self.isSwiftUI == true { self.handleSwiftUI()}
+        if self.isSwiftUI == true {
+            self.handleSwiftUI()
+            self.swiftUiConfigureDone = true
+        }
     }
 
     /**
@@ -252,6 +255,21 @@ public class SFWidget: UIView {
         isFlutter = value;
     }
 
+    public override func didMoveToWindow() {
+        super.didMoveToWindow()
+        
+        if self.window != nil {
+            // The view has been added to a window
+            print("View added to window")
+            if self.swiftUiConfigureDone == true {
+                self.handleSwiftUI()
+            }
+        } else {
+            // The view has been removed from a window
+            print("View removed from window")
+        }
+    }
+    
     func updateParamsOnsamePageviewWidget() {
         Outbrain.logger.log("Delay fetching until we have the \"t\" or \"bridgeParams\" ready")
         let bridgeParamsNotification = NSNotification.Name(rawValue: SFWIDGET_BRIDGE_PARAMS_NOTIFICATION)
@@ -396,7 +414,7 @@ public class SFWidget: UIView {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //check if this check happens from bottom or from bottom view port
         //check if we can move responsebility of load more to js bridge
-        Viewability.handleViewability(sfWidget: self, containerView: scrollView) {viewStatus, width ,height  in
+        self.viewabilityTimerHandler.handleViewability(sfWidget: self, containerView: scrollView) {viewStatus, width ,height  in
             self.jsExec.setViewData(from: viewStatus.visibleFrom, to: viewStatus.visibleTo, width: width, height: height)
         }
         
@@ -437,7 +455,7 @@ public class SFWidget: UIView {
     }
     
     private func handleSwiftUI() {
-        Viewability.handleSwiftUI(sfWidget: self) { viewStatus, width ,height, shouldLoadMore in
+        self.viewabilityTimerHandler.handleSwiftUI(sfWidget: self) { viewStatus, width ,height, shouldLoadMore in
             self.jsExec.setViewData(from: viewStatus.visibleFrom, to: viewStatus.visibleTo, width: width, height: height)
             if (!shouldLoadMore) {
                 return
