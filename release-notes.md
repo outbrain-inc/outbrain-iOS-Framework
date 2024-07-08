@@ -1,5 +1,8 @@
 # Release Notes
 
+## v5.0.9-beta - May 12, 2024
+- Minor - align with sdk guide
+
 ## v5.0.5-beta - May 12, 2024
 - Minor - add missing/fix access sdk parts from error logs
 
