@@ -6,8 +6,33 @@
 	<true/>
 	<key>NSPrivacyTrackingDomains</key>
 	<array>
-		<string>t.odb.outbrain.com</string>
-		<string>t.mv.outbrain.com</string>
+		<string>t-odb.outbrain.com</string>
+		<string>t-mv.outbrain.com</string>
+		<string>t-log.outbrainimg.com</string>
+		<string>t-eventlog.outbrain.com</string>
+		<string>t-widgetmonitor.outbrain.com</string>
+		<string>t-my.outbrain.com</string>
+		<string>t-vt.outbrain.com</string>
+		<string>t-vt-i.outbrain.com</string>
+		<string>t-at.outbrain.com</string>
+		<string>t-at-i.outbrain.com</string>
+		<string>t-vas.outbrain.com</string>
+		<string>t-vis.outbrain.com</string>
+		<string>t-videoexternalapi.outbrain.com</string>
+		<string>t-dt.outbrain.com</string>
+		<string>t-videoevents.outbrain.com</string>
+		<string>t-libs.outbrain.com</string>
+		<string>t-mcdp-chidc2.outbrain.com</string>
+		<string>t-mcdp-nydc1.outbrain.com</string>
+		<string>t-mcdp-sadc1.outbrain.com</string>
+		<string>t-mcdp-nldc1.outbrain.com</string>
+		<string>t-paid.outbrain.com</string>
+		<string>t-traffic.outbrain.com</string>
+		<string>t-spv-chidc2.outbrain.com</string>
+		<string>t-spv-nydc1.outbrain.com</string>
+		<string>t-spv-sadc1.outbrain.com</string>
+		<string>t-spv-nldc1.outbrain.com</string>
+		<string>t-www.outbrain.com</string>
 	</array>
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array>
