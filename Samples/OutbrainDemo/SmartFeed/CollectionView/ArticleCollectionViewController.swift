@@ -15,30 +15,17 @@ import OutbrainSDK
 
 class ArticleCollectionViewController: UICollectionViewController {
     
-    private let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
-    private let textHeaderCellReuseIdentifier = "textHeaderCollectionCell"
-    private let contentCellReuseIdentifier = "contentCollectionCell"
-    private let outbrainRecCellReuseIdentifier = "outbrainRecCollectionCell"
-    private var refresher: UIRefreshControl!
-    private let itemsPerRow: CGFloat = 1
-    private let originalArticleItemsCount = 5
-    private var paramsViewModel: ParamsViewModel
-    private var smartFeedManager: SmartFeedManager!
+    let darkMode = false
+    let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
+    let textHeaderCellReuseIdentifier = "textHeaderCollectionCell"
+    let contentCellReuseIdentifier = "contentCollectionCell"
+    let outbrainRecCellReuseIdentifier = "outbrainRecCollectionCell"
+    var refresher:UIRefreshControl!
     
-    
-    init(
-        collectionViewLayout: UICollectionViewLayout,
-        paramsViewModel: ParamsViewModel
-    ) {
-        self.paramsViewModel = paramsViewModel
-        super.init(collectionViewLayout: collectionViewLayout)
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    fileprivate let itemsPerRow: CGFloat = 1
+    var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
+    let originalArticleItemsCount = 5
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +38,6 @@ class ArticleCollectionViewController: UICollectionViewController {
         self.refresher.tintColor = UIColor.blue
         self.refresher.addTarget(self, action: #selector(loadData), for: .valueChanged)
         self.collectionView!.addSubview(refresher)
-        self.collectionView.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white;
         
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization { authStatus in
@@ -94,13 +80,13 @@ class ArticleCollectionViewController: UICollectionViewController {
                 print("widgetID: \(widgetID)")
                 print("url: \(urlString)")
                 
-                //                OBConf.widgetID = widgetID;
+                OBConf.widgetID = widgetID;
                 
                 if (urlString.starts(with: "www")) {
                     urlString = "https://" + urlString
                 }
                 if (self.verifyUrl(urlString: urlString)) {
-                    //                    OBConf.baseURL = urlString
+                    OBConf.baseURL = urlString
                 }
                 else {
                     let errorAlert = UIAlertController(title: "Error", message: "URL is not valid (\(urlString))", preferredStyle: .alert)
@@ -151,14 +137,39 @@ class ArticleCollectionViewController: UICollectionViewController {
         return true
     }
     
-    private func setupSmartFeed() {
-        smartFeedManager = SmartFeedManager(
-            url: paramsViewModel.articleURL,
-            widgetID: paramsViewModel.widgetId,
-            collectionView: collectionView
-        )
-        smartFeedManager.delegate = self
-        smartFeedManager.darkMode = paramsViewModel.darkMode
+    func setupSmartFeed() {
+        guard let collectionView = self.collectionView else {
+            return
+        }
+        
+        
+        self.smartFeedManager = SmartFeedManager(url: OBConf.baseURL, widgetID: OBConf.widgetID, collectionView: collectionView)
+        
+        self.smartFeedManager.delegate = self
+        self.smartFeedManager.darkMode = self.darkMode
+        self.collectionView.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
+        
+        // self.smartFeedManager.displaySourceOnOrganicRec = true
+        // self.smartFeedManager.horizontalContainerMargin = 40.0
+        
+        // Optional
+        self.setupCustomUIForSmartFeed()
+    }
+    
+    func setupCustomUIForSmartFeed() {
+        let bundle = Bundle.main
+        let fixedhorizontalCellNib = UINib(nibName: "AppSFHorizontalFixedItemCell", bundle: bundle)
+        let carouselHorizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
+        let singleCellNib = UINib(nibName: "AppSFSingleWithTitleCollectionViewCell", bundle: bundle)
+        let headerCellNib = UINib(nibName: "AppSFCollectionViewHeaderCell", bundle: bundle)
+        
+        
+        // Example - un-comment to see how Smartfeed custom-UI works.
+        // self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleWithTitleCollectionViewCell", for: SFTypeStripWithTitle)
+        // self.smartFeedManager.register(headerCellNib, withReuseIdentifier: "AppSFCollectionViewHeaderCell", for: SFTypeSmartfeedHeader)
+        // self.smartFeedManager.register(fixedhorizontalCellNib, withReuseIdentifier: "AppSFHorizontalFixedItemCell", forWidgetId: "SFD_MAIN_5")
+        // self.smartFeedManager.register(carouselHorizontalCellNib, withReuseIdentifier: "AppSFHorizontalItemCell", forWidgetId: "SDK_SFD_5")
+        // self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleWithTitleCollectionViewCell", forWidgetId: "SDK_SFD_1")
     }
 }
 
@@ -180,7 +191,7 @@ extension ArticleCollectionViewController {
             return self.smartFeedManager.smartFeedItemsCount()
         }
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // create a new cell if needed or reuse an old one
@@ -191,17 +202,17 @@ extension ArticleCollectionViewController {
         }
         
         switch indexPath.row {
-            case 0:
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageHeaderCellReuseIdentifier,
-                                                          for: indexPath)
-            case 1:
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: textHeaderCellReuseIdentifier,
-                                                          for: indexPath)
-            case 2,3,4:
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: contentCellReuseIdentifier,
-                                                          for: indexPath)
-            default:
-                break
+        case 0:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageHeaderCellReuseIdentifier,
+                                                      for: indexPath)
+        case 1:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: textHeaderCellReuseIdentifier,
+                                                      for: indexPath)
+        case 2,3,4:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: contentCellReuseIdentifier,
+                                                      for: indexPath)
+        default:
+            break
         }
         
         return cell ?? UICollectionViewCell()
@@ -214,31 +225,32 @@ extension ArticleCollectionViewController {
             return
         }
         
+        // App Developer should configure the app cells here..
         if (indexPath.row == 1) {
             if let articleCell = cell as? AppArticleCollectionViewCell {
-                articleCell.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white
+                articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
                 articleCell.headerLabel.font = UIFont(name: articleCell.headerLabel.font!.fontName, size: CGFloat(fontSize))
-                articleCell.headerLabel.textColor = paramsViewModel.darkMode ? UIColor.white : UIColor.black
+                articleCell.headerLabel.textColor = self.darkMode ? UIColor.white : UIColor.black
                 
             }
         }
         if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4) {
             if let articleCell = cell as? AppArticleCollectionViewCell {
-                articleCell.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white
+                articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
                 articleCell.contentTextView.font = UIFont(name: articleCell.contentTextView.font!.fontName, size: CGFloat(fontSize))
-                articleCell.contentTextView.textColor = paramsViewModel.darkMode ? UIColor.white : UIColor.black
+                articleCell.contentTextView.textColor = self.darkMode ? UIColor.white : UIColor.black
             }
         }
     }
 }
 
-extension ArticleCollectionViewController : SmartFeedDelegate {
+extension ArticleCollectionViewController : SmartFeedDelegate {    
     func userTapped(on rec: OBRecommendation) {
-        print("You tapped rec \(String(describing: rec.content)).")
+        print("You tapped rec \(rec.content).")
         if rec.isAppInstall {
-            print("rec tapped: \(String(describing: rec.content)) - is App Install");
+            print("rec tapped: \(rec.content) - is App Install");
             Outbrain.openAppInstallRec(rec, in: self)
             return;
         }
@@ -280,7 +292,7 @@ extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         let width = collectionView.frame.size.width
         
         if indexPath.section == self.smartFeedManager.outbrainSectionIndex {
@@ -288,14 +300,14 @@ extension ArticleCollectionViewController : UICollectionViewDelegateFlowLayout {
         }
         
         switch indexPath.row {
-            case 0:
-                return CGSize(width: width, height: 0.5625*width)
-            case 1:
-                return CGSize(width: width, height: 0.35*width)
-            case 2,3,4:
-                return CGSize(width: width, height: 200.0)
-            default:
-                break
+        case 0:
+            return CGSize(width: width, height: 0.5625*width)
+        case 1:
+            return CGSize(width: width, height: 0.35*width)
+        case 2,3,4:
+            return CGSize(width: width, height: 200.0)
+        default:
+            break
         }
         return CGSize(width: width, height: 200.0)
     }

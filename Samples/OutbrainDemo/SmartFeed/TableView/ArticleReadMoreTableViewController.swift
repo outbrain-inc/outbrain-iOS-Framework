@@ -15,30 +15,21 @@ class ArticleReadMoreTableViewController: UIViewController, UITableViewDelegate,
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let imageHeaderCellReuseIdentifier = "imageHeaderCell"
-    private let textHeaderCellReuseIdentifier = "textHeaderCell"
-    private let contentCellReuseIdentifier = "contentHeaderCell"
-    private let originalArticleItemsCount = 6
-    private let isReadMoreModuleEnabled = true
-    private let collapsableItemCount = 3
-    private let collapsableSection = 1
-    private var outbrainIdx = 0
-    private var isLoadingOutrainRecs = false
-    private var smartFeedManager: SmartFeedManager!
-    private let paramsViewModel: ParamsViewModel
+    let darkMode = false
+    let imageHeaderCellReuseIdentifier = "imageHeaderCell"
+    let textHeaderCellReuseIdentifier = "textHeaderCell"
+    let contentCellReuseIdentifier = "contentHeaderCell"
     
+    let originalArticleItemsCount = 6
     
-    init(paramsViewModel: ParamsViewModel) {
-        self.paramsViewModel = paramsViewModel
-        super.init(nibName: nil, bundle: nil)
-    }
+    // For read more module
+    let isReadMoreModuleEnabled = true
+    let collapsableItemCount = 3
+    let collapsableSection = 1
     
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
+    var outbrainIdx = 0
+    var isLoadingOutrainRecs = false
+    var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,61 +37,52 @@ class ArticleReadMoreTableViewController: UIViewController, UITableViewDelegate,
         tableView.rowHeight = UITableView.automaticDimension
         tableView.delegate = self
         tableView.dataSource = self
-        setupSmartFeed()
+        self.setupSmartFeed()
     }
     
     func setupSmartFeed() {
-        smartFeedManager = SmartFeedManager(
-            url: paramsViewModel.articleURL,
-            widgetID: paramsViewModel.widgetId,
-            tableView: self.tableView
-        )
-        
-        smartFeedManager.delegate = self
+        self.smartFeedManager = SmartFeedManager(url: OBConf.baseURL, widgetID: OBConf.widgetID, tableView: self.tableView)
+        self.smartFeedManager.delegate = self
         if (isReadMoreModuleEnabled) {
-            smartFeedManager.setReadMoreModule()
+            self.smartFeedManager.setReadMoreModule()
         }
-        smartFeedManager.darkMode = paramsViewModel.darkMode
-        view.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white;
-        tableView.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white;
+        self.smartFeedManager.darkMode = self.darkMode
+        self.view.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
+        self.tableView.backgroundColor = self.darkMode ? UIColor.black : UIColor.white;
         
         // self.smartFeedManager.disableCellShadows = true
         // self.smartFeedManager.displaySourceOnOrganicRec = true
         // self.smartFeedManager.horizontalContainerMargin = 40.0
         
         // Optional
-        setupCustomUIForSmartFeed()
+        self.setupCustomUIForSmartFeed()
     }
     
     func setupCustomUIForSmartFeed() {
-//        let bundle = Bundle.main
+        let bundle = Bundle.main
         
         // Read more button custom UI
-//        let readMoreCellNib = UINib(nibName: "AppSFTableViewReadMoreCell", bundle: bundle)
+        let readMoreCellNib = UINib(nibName: "AppSFTableViewReadMoreCell", bundle: bundle)
         
         // self.smartFeedManager.register(readMoreCellNib, withReuseIdentifier: "AppSFTableViewReadMoreCell", for: SFTypeReadMoreButton)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        smartFeedManager.outbrainSectionIndex = 2 // update smartFeedManager with outbrain section index, must be the last one.
-        return smartFeedManager.numberOfSectionsInTableView()
+        self.smartFeedManager.outbrainSectionIndex = 2 // update smartFeedManager with outbrain section index, must be the last one.
+        return self.smartFeedManager.numberOfSectionsInTableView()
     }
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section < smartFeedManager.outbrainSectionIndex {
+        if section < self.smartFeedManager.outbrainSectionIndex {
             // For read more module
-            if section == collapsableSection {
-                return smartFeedManager.tableView(
-                    tableView,
-                    numberOfRowsInCollapsableSection: section,
-                    collapsableItemCount: collapsableItemCount
-                )
+            if section == self.collapsableSection {
+                return self.smartFeedManager.tableView(tableView, numberOfRowsInCollapsableSection: section, collapsableItemCount: self.collapsableItemCount)
             } else {
-                return originalArticleItemsCount - collapsableItemCount
+                return self.originalArticleItemsCount - self.collapsableItemCount
             }
         }
         else {
-            return smartFeedManager.smartFeedItemsCount()
+            return self.smartFeedManager.smartFeedItemsCount()
             // return 24 // Test Sky Solution
         }
     }
@@ -111,57 +93,55 @@ class ArticleReadMoreTableViewController: UIViewController, UITableViewDelegate,
         // create a new cell if needed or reuse an old one
         var cell:UITableViewCell?
         
-        if indexPath.section == smartFeedManager.outbrainSectionIndex { // Outbrain
-            return smartFeedManager.tableView(tableView, cellForRowAt: indexPath)
+        if indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
+            return self.smartFeedManager.tableView(tableView, cellForRowAt: indexPath)
         }
         
         switch (indexPath.section, indexPath.row) {
         case (0,0):
-            cell = tableView.dequeueReusableCell(withIdentifier: imageHeaderCellReuseIdentifier) as UITableViewCell?
+            cell = self.tableView.dequeueReusableCell(withIdentifier: imageHeaderCellReuseIdentifier) as UITableViewCell?
         case (0,1):
-            cell = tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell?
+            cell = self.tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell?
         case (0,2), (1,_):
-            cell = tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
+            cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
         default:
-            cell = tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
-            break
+            cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
+            break;
         }
         
         return cell ?? UITableViewCell()
     }
-    
     
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
     }
     
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        smartFeedManager.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
+        self.smartFeedManager.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
         
         // App Developer should configure the app cells here..
         if indexPath.section == 0 && indexPath.row == 1 {
             if let articleCell = cell as? AppArticleTableViewCell {
-                articleCell.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white
+                articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
                 articleCell.headerLabel.font = UIFont(name: articleCell.headerLabel.font!.fontName, size: CGFloat(fontSize))
-                articleCell.headerLabel.textColor = paramsViewModel.darkMode ? UIColor.white : UIColor.black
+                articleCell.headerLabel.textColor = self.darkMode ? UIColor.white : UIColor.black
             }
         }
         if (indexPath.section == 1 || (indexPath.section == 0 && indexPath.row == 2)) {
             if let articleCell = cell as? AppArticleTableViewCell {
-                articleCell.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white
+                articleCell.backgroundColor = self.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
                 articleCell.contentTextView.font = UIFont(name: articleCell.contentTextView.font!.fontName, size: CGFloat(fontSize))
-                articleCell.contentTextView.textColor = paramsViewModel.darkMode ? UIColor.white : UIColor.black
+                articleCell.contentTextView.textColor = self.darkMode ? UIColor.white : UIColor.black
             }
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == smartFeedManager.outbrainSectionIndex { // Outbrain
-            let height = smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
+        if indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
+            let height = self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
             return height
         }
         
@@ -190,7 +170,7 @@ extension ArticleReadMoreTableViewController : SmartFeedDelegate {
     }
     
     func userTapped(on rec: OBRecommendation) {
-        print("You tapped rec \(String(describing: rec.content)).")
+        print("You tapped rec \(rec.content).")
         guard let url = Outbrain.getUrl(rec) else {
             print("Error: no url for rec.")
             return

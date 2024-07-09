@@ -13,27 +13,16 @@ import OutbrainSDK
 
 class ArticleMidPageCollectionViewController: UICollectionViewController {
     
-    private let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
-    private let textHeaderCellReuseIdentifier = "textHeaderCollectionCell"
-    private let contentCellReuseIdentifier = "contentCollectionCell"
-    private let outbrainRecCellReuseIdentifier = "outbrainRecCollectionCell"
-    private var refresher:UIRefreshControl!
-    private var smartFeedManager:SmartFeedManager!
-    private var smartfeedIsReady = false
-    private let articleSectionItemsCount = 5
-    private let articleTotalItemsCount = 10
-    private let paramsViewModel: ParamsViewModel
+    let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
+    let textHeaderCellReuseIdentifier = "textHeaderCollectionCell"
+    let contentCellReuseIdentifier = "contentCollectionCell"
+    let outbrainRecCellReuseIdentifier = "outbrainRecCollectionCell"
+    var refresher:UIRefreshControl!
     
-    
-    init(paramsViewModel: ParamsViewModel, collectionViewLayout: UICollectionViewLayout) {
-        self.paramsViewModel = paramsViewModel
-        super.init(collectionViewLayout: collectionViewLayout)
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
+    var smartfeedIsReady = false
+    let articleSectionItemsCount = 5
+    let articleTotalItemsCount = 10
     
     
     override func viewDidLoad() {
@@ -70,11 +59,7 @@ class ArticleMidPageCollectionViewController: UICollectionViewController {
         }
         
         
-        self.smartFeedManager = SmartFeedManager(
-            url: paramsViewModel.articleURL,
-            widgetID: paramsViewModel.widgetId,
-            collectionView: collectionView
-        )
+        self.smartFeedManager = SmartFeedManager(url: OBConf.baseURL, widgetID: OBConf.widgetID, collectionView: collectionView)
         self.smartFeedManager.delegate = self
         self.smartFeedManager.isInMiddleOfScreen = true
         self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
@@ -88,11 +73,11 @@ class ArticleMidPageCollectionViewController: UICollectionViewController {
     }
     
     func setupCustomUIForSmartFeed() {
-//        let bundle = Bundle.main
-//        let fixedhorizontalCellNib = UINib(nibName: "AppSFHorizontalFixedItemCell", bundle: bundle)
-//        let carouselHorizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
-//        let singleCellNib = UINib(nibName: "AppSFSingleWithTitleCollectionViewCell", bundle: bundle)
-//        let headerCellNib = UINib(nibName: "AppSFCollectionViewHeaderCell", bundle: bundle)
+        let bundle = Bundle.main
+        let fixedhorizontalCellNib = UINib(nibName: "AppSFHorizontalFixedItemCell", bundle: bundle)
+        let carouselHorizontalCellNib = UINib(nibName: "AppSFHorizontalItemCell", bundle: bundle)
+        let singleCellNib = UINib(nibName: "AppSFSingleWithTitleCollectionViewCell", bundle: bundle)
+        let headerCellNib = UINib(nibName: "AppSFCollectionViewHeaderCell", bundle: bundle)
         
         
         // Example - un-comment to see how Smartfeed custom-UI works.
@@ -138,17 +123,17 @@ extension ArticleMidPageCollectionViewController {
         }
         
         switch indexPath.row {
-            case 0:
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageHeaderCellReuseIdentifier,
-                                                          for: indexPath)
-            case 1:
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: textHeaderCellReuseIdentifier,
-                                                          for: indexPath)
-            case 2,3,4:
-                cell = collectionView.dequeueReusableCell(withReuseIdentifier: contentCellReuseIdentifier,
-                                                          for: indexPath)
-            default:
-                break
+        case 0:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageHeaderCellReuseIdentifier,
+                                                      for: indexPath)
+        case 1:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: textHeaderCellReuseIdentifier,
+                                                      for: indexPath)
+        case 2,3,4:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: contentCellReuseIdentifier,
+                                                      for: indexPath)
+        default:
+            break
         }
         
         return cell ?? UICollectionViewCell()
@@ -182,7 +167,7 @@ extension ArticleMidPageCollectionViewController {
 
 extension ArticleMidPageCollectionViewController : SmartFeedDelegate {
     func userTapped(on rec: OBRecommendation) {
-        print("You tapped rec \(String(describing: rec.content)).")
+        print("You tapped rec \(rec.content).")
         guard let url = Outbrain.getUrl(rec) else {
             print("Error: no url for rec.")
             return
@@ -234,14 +219,14 @@ extension ArticleMidPageCollectionViewController : UICollectionViewDelegateFlowL
         }
         
         switch indexPath.row {
-            case 0:
-                return CGSize(width: width, height: 0.5625*width)
-            case 1:
-                return CGSize(width: width, height: 0.35*width)
-            case 2,3,4:
-                return CGSize(width: width, height: 200.0)
-            default:
-                break
+        case 0:
+            return CGSize(width: width, height: 0.5625*width)
+        case 1:
+            return CGSize(width: width, height: 0.35*width)
+        case 2,3,4:
+            return CGSize(width: width, height: 200.0)
+        default:
+            break
         }
         return CGSize(width: width, height: 200.0)
     }

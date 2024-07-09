@@ -16,26 +16,16 @@ class ArticleMidPageTableViewController: UIViewController, UITableViewDelegate, 
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let imageHeaderCellReuseIdentifier = "imageHeaderCell"
-    private let textHeaderCellReuseIdentifier = "textHeaderCell"
-    private let contentCellReuseIdentifier = "contentHeaderCell"
-    private var smartfeedIsReady = false
-    private let articleSectionItemsCount = 5
-    private let articleTotalItemsCount = 10
-    private var outbrainIdx = 0
-    private var isLoadingOutrainRecs = false
-    private var smartFeedManager:SmartFeedManager!
-    private let paramsViewModel: ParamsViewModel
+    let imageHeaderCellReuseIdentifier = "imageHeaderCell"
+    let textHeaderCellReuseIdentifier = "textHeaderCell"
+    let contentCellReuseIdentifier = "contentHeaderCell"
     
-    init(paramsViewModel: ParamsViewModel) {        
-        self.paramsViewModel = paramsViewModel
-        super.init(nibName: nil, bundle: nil)
-        setupSmartFeed()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var smartfeedIsReady = false
+    let articleSectionItemsCount = 5
+    let articleTotalItemsCount = 10
+    var outbrainIdx = 0
+    var isLoadingOutrainRecs = false
+    var smartFeedManager:SmartFeedManager = SmartFeedManager() // temp initilization, will be replaced in viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,30 +37,25 @@ class ArticleMidPageTableViewController: UIViewController, UITableViewDelegate, 
     }
     
     func setupSmartFeed() {
-        smartFeedManager = SmartFeedManager(
-            url: paramsViewModel.articleURL,
-            widgetID: paramsViewModel.widgetId,
-            tableView: self.tableView
-        )
-        
-        smartFeedManager.delegate = self
-        smartFeedManager.isInMiddleOfScreen = true
-        smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
-        smartFeedManager.fetchMoreRecommendations() // start fetching manually because Smartfeed is in the middle
+        self.smartFeedManager = SmartFeedManager(url: OBConf.baseURL, widgetID: OBConf.widgetID, tableView: self.tableView)
+        self.smartFeedManager.delegate = self
+        self.smartFeedManager.isInMiddleOfScreen = true
+        self.smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index
+        self.smartFeedManager.fetchMoreRecommendations() // start fetching manually because Smartfeed is in the middle
         
         // self.smartFeedManager.displaySourceOnOrganicRec = true
         // self.smartFeedManager.horizontalContainerMargin = 40.0
         
         // Optional
-        setupCustomUIForSmartFeed()
+        self.setupCustomUIForSmartFeed()
     }
     
     func setupCustomUIForSmartFeed() {
-//        let bundle = Bundle.main
-//        let fixedhorizontalCellNib = UINib(nibName: "AppSFHorizontalFixedItemCell", bundle: bundle)
-//        let singleCellNib = UINib(nibName: "AppSFSingleWithTitleTableViewCell", bundle: bundle)
-//        
-//        let headerCellNib = UINib(nibName: "AppSFTableViewHeaderCell", bundle: bundle)
+        let bundle = Bundle.main
+        let fixedhorizontalCellNib = UINib(nibName: "AppSFHorizontalFixedItemCell", bundle: bundle)
+        let singleCellNib = UINib(nibName: "AppSFSingleWithTitleTableViewCell", bundle: bundle)
+        
+        let headerCellNib = UINib(nibName: "AppSFTableViewHeaderCell", bundle: bundle)
         
         // self.smartFeedManager.register(headerCellNib, withReuseIdentifier: "AppSFTableViewHeaderCell", for: SFTypeSmartfeedHeader)
         // self.smartFeedManager.register(horizontalCellNib, withCellWithReuseIdentifier: "AppSFHorizontalItemCell",forWidgetId: "SFD_MAIN_2")
@@ -178,7 +163,7 @@ extension ArticleMidPageTableViewController : SmartFeedDelegate {
     }
     
     func userTapped(on rec: OBRecommendation) {
-        print("You tapped rec \(String(describing: rec.content)).")
+        print("You tapped rec \(rec.content).")
         guard let url = Outbrain.getUrl(rec) else {
             print("Error: no url for rec.")
             return
