@@ -1,9 +1,9 @@
 //
-//  ArticleTableViewController.swift
-//  ios-SmartFeed
+//  ArticleReadMoreTableViewController.swift
+//  OutbrainDemo
 //
-//  Created by oded regev on 1/30/18.
-//  Copyright © 2018 Outbrain. All rights reserved.
+//  Created by Alon Shprung on 30/11/2020.
+//  Copyright © 2020 Outbrain inc. All rights reserved.
 //
 
 import UIKit
@@ -11,14 +11,17 @@ import SafariServices
 
 import OutbrainSDK
 
-class ArticleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ArticleReadMoreTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
     private let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     private let textHeaderCellReuseIdentifier = "textHeaderCell"
     private let contentCellReuseIdentifier = "contentHeaderCell"
-    private let originalArticleItemsCount = 5
+    private let originalArticleItemsCount = 6
+    private let isReadMoreModuleEnabled = true
+    private let collapsableItemCount = 3
+    private let collapsableSection = 1
     private var outbrainIdx = 0
     private var isLoadingOutrainRecs = false
     private var smartFeedManager: SmartFeedManager!
@@ -27,22 +30,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     init(paramsViewModel: ParamsViewModel) {
         self.paramsViewModel = paramsViewModel
-        super.init(nibName: "ArticleTableViewController", bundle: nil)
-        
-        tableView.register(
-            .init(nibName: "ImageHeaderCell", bundle: nil),
-            forCellReuseIdentifier: imageHeaderCellReuseIdentifier
-        )
-        
-        tableView.register(
-            .init(nibName: "TextHeaderCell", bundle: nil),
-            forCellReuseIdentifier: textHeaderCellReuseIdentifier
-        )
-        
-        tableView.register(
-            .init(nibName: "ContentHeaderCell", bundle: nil),
-            forCellReuseIdentifier: contentCellReuseIdentifier
-        )
+        super.init(nibName: nil, bundle: nil)
     }
     
     
@@ -51,20 +39,27 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.delegate = self
+        tableView.dataSource = self
         setupSmartFeed()
     }
-    
     
     func setupSmartFeed() {
         smartFeedManager = SmartFeedManager(
             url: paramsViewModel.articleURL,
             widgetID: paramsViewModel.widgetId,
-            tableView: tableView
+            tableView: self.tableView
         )
         
         smartFeedManager.delegate = self
+        if (isReadMoreModuleEnabled) {
+            smartFeedManager.setReadMoreModule()
+        }
         smartFeedManager.darkMode = paramsViewModel.darkMode
         view.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white;
         tableView.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white;
@@ -77,39 +72,39 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         setupCustomUIForSmartFeed()
     }
     
-    
     func setupCustomUIForSmartFeed() {
-        //        let bundle = Bundle.main
-        //        let fixedhorizontalCellNib = UINib(nibName: "AppSFHorizontalFixedItemCell", bundle: bundle)
-        //        let singleCellNib = UINib(nibName: "AppSFSingleWithTitleTableViewCell", bundle: bundle)
-        //
-        //        let headerCellNib = UINib(nibName: "AppSFTableViewHeaderCell", bundle: bundle)
+//        let bundle = Bundle.main
         
-        // self.smartFeedManager.register(headerCellNib, withReuseIdentifier: "AppSFTableViewHeaderCell", for: SFTypeSmartfeedHeader)
-        // self.smartFeedManager.register(horizontalCellNib, withCellWithReuseIdentifier: "AppSFHorizontalItemCell",forWidgetId: "SFD_MAIN_2")
-        // self.smartFeedManager.register(fixedhorizontalCellNib, withReuseIdentifier: "AppSFHorizontalFixedItemCell", forWidgetId: "SFD_MAIN_2")
-        // self.smartFeedManager.register(singleCellNib, withReuseIdentifier: "AppSFSingleWithTitleTableViewCell", forWidgetId: "SDK_SFD_1")
+        // Read more button custom UI
+//        let readMoreCellNib = UINib(nibName: "AppSFTableViewReadMoreCell", bundle: bundle)
+        
+        // self.smartFeedManager.register(readMoreCellNib, withReuseIdentifier: "AppSFTableViewReadMoreCell", for: SFTypeReadMoreButton)
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        smartFeedManager.outbrainSectionIndex = 1 // update smartFeedManager with outbrain section index, must be the last one.
+        smartFeedManager.outbrainSectionIndex = 2 // update smartFeedManager with outbrain section index, must be the last one.
         return smartFeedManager.numberOfSectionsInTableView()
     }
-    
-    
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section < smartFeedManager.outbrainSectionIndex {
-            return originalArticleItemsCount
+            // For read more module
+            if section == collapsableSection {
+                return smartFeedManager.tableView(
+                    tableView,
+                    numberOfRowsInCollapsableSection: section,
+                    collapsableItemCount: collapsableItemCount
+                )
+            } else {
+                return originalArticleItemsCount - collapsableItemCount
+            }
         }
         else {
             return smartFeedManager.smartFeedItemsCount()
             // return 24 // Test Sky Solution
         }
     }
-    
-    
+        
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -117,19 +112,19 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         var cell:UITableViewCell?
         
         if indexPath.section == smartFeedManager.outbrainSectionIndex { // Outbrain
-            return self.smartFeedManager.tableView(tableView, cellForRowAt: indexPath)
+            return smartFeedManager.tableView(tableView, cellForRowAt: indexPath)
         }
         
-        switch indexPath.row {
-            case 0:
-                cell = tableView.dequeueReusableCell(withIdentifier: imageHeaderCellReuseIdentifier) as UITableViewCell?
-            case 1:
-                cell = tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell?
-            case 2,3,4:
-                cell = tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
-            default:
-                cell = tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
-                break;
+        switch (indexPath.section, indexPath.row) {
+        case (0,0):
+            cell = tableView.dequeueReusableCell(withIdentifier: imageHeaderCellReuseIdentifier) as UITableViewCell?
+        case (0,1):
+            cell = tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell?
+        case (0,2), (1,_):
+            cell = tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
+        default:
+            cell = tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
+            break
         }
         
         return cell ?? UITableViewCell()
@@ -146,7 +141,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         smartFeedManager.tableView(tableView, willDisplay: cell, forRowAt: indexPath)
         
         // App Developer should configure the app cells here..
-        if (indexPath.row == 1) {
+        if indexPath.section == 0 && indexPath.row == 1 {
             if let articleCell = cell as? AppArticleTableViewCell {
                 articleCell.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 30.0 : 20.0
@@ -154,8 +149,7 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
                 articleCell.headerLabel.textColor = paramsViewModel.darkMode ? UIColor.white : UIColor.black
             }
         }
-        
-        if (indexPath.row == 2 || indexPath.row == 3 || indexPath.row == 4) {
+        if (indexPath.section == 1 || (indexPath.section == 0 && indexPath.row == 2)) {
             if let articleCell = cell as? AppArticleTableViewCell {
                 articleCell.backgroundColor = paramsViewModel.darkMode ? UIColor.black : UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
@@ -165,10 +159,9 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == self.smartFeedManager.outbrainSectionIndex { // Outbrain
-            let height = self.smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
+        if indexPath.section == smartFeedManager.outbrainSectionIndex { // Outbrain
+            let height = smartFeedManager.tableView(tableView, heightForRowAt: indexPath)
             return height
         }
         
@@ -183,12 +176,12 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
                 return UIDevice.current.userInterfaceIdiom == .pad ? 200 : UITableView.automaticDimension;
             }
         }
-        
+
         return UITableView.automaticDimension;
     }
 }
 
-extension ArticleTableViewController : SmartFeedDelegate {
+extension ArticleReadMoreTableViewController : SmartFeedDelegate {
     func userTappedOnOutbrainLabeling() {
         print("You tapped on Outbrain Labeling")
         let url = Outbrain.getAboutURL()
@@ -198,12 +191,6 @@ extension ArticleTableViewController : SmartFeedDelegate {
     
     func userTapped(on rec: OBRecommendation) {
         print("You tapped rec \(String(describing: rec.content)).")
-        if rec.isAppInstall {
-            print("rec tapped: \(String(describing: rec.content)) - is App Install");
-            Outbrain.openAppInstallRec(rec, in: self)
-            return;
-        }
-        
         guard let url = Outbrain.getUrl(rec) else {
             print("Error: no url for rec.")
             return
@@ -222,36 +209,5 @@ extension ArticleTableViewController : SmartFeedDelegate {
         print("You tapped on video rec")
         let safariVC = SFSafariViewController(url: url)
         self.navigationController?.present(safariVC, animated: true, completion: nil)
-    }
-    
-    // Optional
-    func reloadItemsOnOrientationChanged() -> Bool {
-        return true
-    }
-    
-    // Optional
-    //    func carouselItemSize() -> CGSize {
-    //        return CGSize(width: 300, height: 200)
-    //    }
-}
-
-extension UIImageView {
-    func downloadedFrom(url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-            else { return }
-            DispatchQueue.main.async() {
-                self.image = image
-            }
-        }.resume()
-    }
-    func downloadedFrom(link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
-        downloadedFrom(url: url, contentMode: mode)
     }
 }

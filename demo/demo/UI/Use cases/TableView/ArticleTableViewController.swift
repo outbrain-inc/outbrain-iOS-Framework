@@ -13,7 +13,7 @@ import OutbrainSDK
 
 class ArticleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
+    private var tableView: UITableView!
     
     private let imageHeaderCellReuseIdentifier = "imageHeaderCell"
     private let textHeaderCellReuseIdentifier = "textHeaderCell"
@@ -27,8 +27,28 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
     
     init(paramsViewModel: ParamsViewModel) {
         self.paramsViewModel = paramsViewModel
-        super.init(nibName: "ArticleTableViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        setupTableView()
+        setupSmartFeed()
+    }
+    
+    
+    private func setupTableView() {
+        tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(
             .init(nibName: "ImageHeaderCell", bundle: nil),
             forCellReuseIdentifier: imageHeaderCellReuseIdentifier
@@ -43,21 +63,18 @@ class ArticleTableViewController: UIViewController, UITableViewDelegate, UITable
             .init(nibName: "ContentHeaderCell", bundle: nil),
             forCellReuseIdentifier: contentCellReuseIdentifier
         )
+        
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupSmartFeed()
-    }
-    
-    
-    func setupSmartFeed() {
+    private func setupSmartFeed() {
         smartFeedManager = SmartFeedManager(
             url: paramsViewModel.articleURL,
             widgetID: paramsViewModel.widgetId,

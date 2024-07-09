@@ -26,7 +26,7 @@ struct ConfigScreen: View {
         useCasesContent
             .navigationDestination(for: NavigationViewModel.Path.self) { path in
                 switch path {
-                    case .tableView: Text("Table View")
+                    case .tableView: BridgeInTableView(paramsViewModel: navigationViewModel.paramsViewModel)
                     case .collectionView: Text("Collection View")
                     case .swiftUI: Text("SwiftUI")
                     case .scrollView: Text("Scroll View")
