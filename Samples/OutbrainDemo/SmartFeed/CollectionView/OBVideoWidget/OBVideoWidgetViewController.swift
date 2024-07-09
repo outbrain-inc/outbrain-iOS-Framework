@@ -9,20 +9,31 @@
 
 import UIKit
 import SafariServices
-
 import OutbrainSDK
 
 class OBVideoWidgetViewController: UICollectionViewController {
     
-    let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
-    let textHeaderCellReuseIdentifier = "textHeaderCollectionCell"
-    let contentCellReuseIdentifier = "contentCollectionCell"
-    let outbrainRecCellReuseIdentifier = "outbrainRecCollectionCell"
-    
-    var refresher:UIRefreshControl!
-    var outbrainVideoWidget:OBVideoWidget? = nil
-    let originalArticleItemsCount = 6
+    private let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
+    private let textHeaderCellReuseIdentifier = "textHeaderCollectionCell"
+    private let contentCellReuseIdentifier = "contentCollectionCell"
+    private let outbrainRecCellReuseIdentifier = "outbrainRecCollectionCell"
+    private var refresher: UIRefreshControl!
+    private var outbrainVideoWidget: OBVideoWidget? = nil
+    private let originalArticleItemsCount = 6
+    private let paramsViewModel: ParamsViewModel
 
+    
+    init(paramsViewModel: ParamsViewModel) {
+        self.paramsViewModel = paramsViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +114,10 @@ extension OBVideoWidgetViewController {
         if (indexPath.row == 3) {
             if let outbrainContainerView = cell.viewWithTag(111) {
                 if (self.outbrainVideoWidget == nil) {
-                    let obRequest = OBRequest(url: OBConf.baseURL, widgetID:  "SFD_MAIN_4")
+                    let obRequest = OBRequest(
+                        url: paramsViewModel.articleURL,
+                        widgetID:  paramsViewModel.widgetId
+                    )
                     self.outbrainVideoWidget = OBVideoWidget(request: obRequest, containerView: outbrainContainerView)
                     self.outbrainVideoWidget?.delegate = self
                     self.outbrainVideoWidget?.start()
@@ -122,7 +136,7 @@ extension OBVideoWidgetViewController {
 
 extension OBVideoWidgetViewController : OBVideoWidgetDelegate {
     func userTapped(on rec: OBRecommendation) {
-        print("You tapped rec \(rec.content).")
+        print("You tapped rec \(String(describing: rec.content)).")
         guard let url = Outbrain.getUrl(rec) else {
             print("Error: no url for rec.")
             return
