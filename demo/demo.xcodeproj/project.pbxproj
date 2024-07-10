@@ -23,37 +23,21 @@
 		B1CB98BF2C3D4C0700991569 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98BE2C3D4C0700991569 /* ContentView.swift */; };
 		B1CB98C12C3D530600991569 /* ReadMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98C02C3D530600991569 /* ReadMore.swift */; };
 		B1CB98C32C3D531100991569 /* RegularSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98C22C3D531100991569 /* RegularSDK.swift */; };
-		B1CB99432C3D640F00991569 /* ContentHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB991D2C3D640F00991569 /* ContentHeaderCell.xib */; };
-		B1CB99442C3D640F00991569 /* ImageHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB991E2C3D640F00991569 /* ImageHeaderCell.xib */; };
-		B1CB99452C3D640F00991569 /* TextHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB991F2C3D640F00991569 /* TextHeaderCell.xib */; };
-		B1CB99462C3D640F00991569 /* AppSFSingleWithTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99212C3D640F00991569 /* AppSFSingleWithTitleTableViewCell.xib */; };
-		B1CB99472C3D640F00991569 /* AppSFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99222C3D640F00991569 /* AppSFTableViewCell.swift */; };
-		B1CB99482C3D640F00991569 /* AppSFTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99232C3D640F00991569 /* AppSFTableViewCell.xib */; };
-		B1CB99492C3D640F00991569 /* AppSFTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99242C3D640F00991569 /* AppSFTableViewHeaderCell.xib */; };
-		B1CB994A2C3D640F00991569 /* AppSFTableViewReadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99252C3D640F00991569 /* AppSFTableViewReadMoreCell.swift */; };
-		B1CB994B2C3D640F00991569 /* AppSFTableViewReadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99262C3D640F00991569 /* AppSFTableViewReadMoreCell.xib */; };
-		B1CB994C2C3D640F00991569 /* AppSingleWithThumbnailRTLTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99272C3D640F00991569 /* AppSingleWithThumbnailRTLTableCell.xib */; };
-		B1CB994D2C3D640F00991569 /* AppArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99292C3D640F00991569 /* AppArticleTableViewCell.swift */; };
-		B1CB994E2C3D640F00991569 /* ArticleMidPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB992A2C3D640F00991569 /* ArticleMidPageTableViewController.swift */; };
-		B1CB994F2C3D640F00991569 /* ArticleReadMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB992B2C3D640F00991569 /* ArticleReadMoreTableViewController.swift */; };
-		B1CB99502C3D640F00991569 /* ArticleStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB992C2C3D640F00991569 /* ArticleStackViewController.swift */; };
-		B1CB99512C3D640F00991569 /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB992D2C3D640F00991569 /* ArticleTableViewController.swift */; };
-		B1CB99532C3D640F00991569 /* OBVideoWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99302C3D640F00991569 /* OBVideoWidgetViewController.swift */; };
-		B1CB99542C3D640F00991569 /* AppSFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99322C3D640F00991569 /* AppSFCollectionViewCell.swift */; };
-		B1CB99552C3D640F00991569 /* AppSFCollectionViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99332C3D640F00991569 /* AppSFCollectionViewHeaderCell.xib */; };
-		B1CB99562C3D640F00991569 /* AppSFCollectionViewReadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99342C3D640F00991569 /* AppSFCollectionViewReadMoreCell.swift */; };
-		B1CB99572C3D640F00991569 /* AppSFCollectionViewReadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99352C3D640F00991569 /* AppSFCollectionViewReadMoreCell.xib */; };
-		B1CB99582C3D640F00991569 /* AppSFHorizontalFixedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99362C3D640F00991569 /* AppSFHorizontalFixedItemCell.xib */; };
-		B1CB99592C3D640F00991569 /* AppSFHorizontalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99372C3D640F00991569 /* AppSFHorizontalItemCell.swift */; };
-		B1CB995A2C3D640F00991569 /* AppSFHorizontalItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99382C3D640F00991569 /* AppSFHorizontalItemCell.xib */; };
-		B1CB995B2C3D640F00991569 /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99392C3D640F00991569 /* AppSFSingleWithTitleCollectionViewCell.xib */; };
-		B1CB995C2C3D640F00991569 /* AppSingleNoTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB993A2C3D640F00991569 /* AppSingleNoTitleCollectionViewCell.xib */; };
-		B1CB995D2C3D640F00991569 /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB993B2C3D640F00991569 /* AppSingleWithThumbnailCollectionCell.xib */; };
-		B1CB995E2C3D640F00991569 /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB993C2C3D640F00991569 /* AppSingleWithThumbnailRTLCollectionCell.xib */; };
-		B1CB995F2C3D640F00991569 /* AppArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB993E2C3D640F00991569 /* AppArticleCollectionViewCell.swift */; };
-		B1CB99602C3D640F00991569 /* ArticleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB993F2C3D640F00991569 /* ArticleCollectionViewController.swift */; };
-		B1CB99612C3D640F00991569 /* ArticleMidPageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99402C3D640F00991569 /* ArticleMidPageCollectionViewController.swift */; };
-		B1CB99622C3D640F00991569 /* ArticleReadMoreCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99412C3D640F00991569 /* ArticleReadMoreCollectionViewController.swift */; };
+		B1CB99912C3EA27000991569 /* ContentHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99862C3EA27000991569 /* ContentHeaderCell.xib */; };
+		B1CB99922C3EA27000991569 /* ImageHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99872C3EA27000991569 /* ImageHeaderCell.xib */; };
+		B1CB99932C3EA27000991569 /* TextHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99882C3EA27000991569 /* TextHeaderCell.xib */; };
+		B1CB99942C3EA27000991569 /* AppArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB998A2C3EA27000991569 /* AppArticleTableViewCell.swift */; };
+		B1CB99952C3EA27000991569 /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB998B2C3EA27000991569 /* TableVC.swift */; };
+		B1CB99962C3EA27000991569 /* ArticleContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB998D2C3EA27000991569 /* ArticleContentCollectionViewCell.swift */; };
+		B1CB99972C3EA27000991569 /* CollectionTwoWidgetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB998E2C3EA27000991569 /* CollectionTwoWidgetsVC.swift */; };
+		B1CB99982C3EA27000991569 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB998F2C3EA27000991569 /* CollectionVC.swift */; };
+		B1CB999B2C3EA41D00991569 /* ImageHeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB999A2C3EA41D00991569 /* ImageHeaderCollectionViewCell.xib */; };
+		B1CB999D2C3EA43200991569 /* ArticleHeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB999C2C3EA43200991569 /* ArticleHeaderCollectionViewCell.xib */; };
+		B1CB99A12C3EA45100991569 /* ImageHeaderCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99A02C3EA45100991569 /* ImageHeaderCollectionCell.swift */; };
+		B1CB99A52C3EA46300991569 /* ContentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99A42C3EA46300991569 /* ContentCollectionCell.swift */; };
+		B1CB99A72C3EA50200991569 /* ArticleHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99A62C3EA50200991569 /* ArticleHeaderCollectionViewCell.swift */; };
+		B1CB99A92C3EA54500991569 /* ImageHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99A82C3EA54500991569 /* ImageHeaderCollectionViewCell.swift */; };
+		B1CB99AB2C3EA94400991569 /* ArticleContentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99AA2C3EA94400991569 /* ArticleContentCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,38 +71,22 @@
 		B1CB98BE2C3D4C0700991569 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B1CB98C02C3D530600991569 /* ReadMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMore.swift; sourceTree = "<group>"; };
 		B1CB98C22C3D531100991569 /* RegularSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSDK.swift; sourceTree = "<group>"; };
-		B1CB991D2C3D640F00991569 /* ContentHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentHeaderCell.xib; sourceTree = "<group>"; };
-		B1CB991E2C3D640F00991569 /* ImageHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderCell.xib; sourceTree = "<group>"; };
-		B1CB991F2C3D640F00991569 /* TextHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextHeaderCell.xib; sourceTree = "<group>"; };
-		B1CB99212C3D640F00991569 /* AppSFSingleWithTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleTableViewCell.xib; sourceTree = "<group>"; };
-		B1CB99222C3D640F00991569 /* AppSFTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFTableViewCell.swift; sourceTree = "<group>"; };
-		B1CB99232C3D640F00991569 /* AppSFTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFTableViewCell.xib; sourceTree = "<group>"; };
-		B1CB99242C3D640F00991569 /* AppSFTableViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFTableViewHeaderCell.xib; sourceTree = "<group>"; };
-		B1CB99252C3D640F00991569 /* AppSFTableViewReadMoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFTableViewReadMoreCell.swift; sourceTree = "<group>"; };
-		B1CB99262C3D640F00991569 /* AppSFTableViewReadMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFTableViewReadMoreCell.xib; sourceTree = "<group>"; };
-		B1CB99272C3D640F00991569 /* AppSingleWithThumbnailRTLTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailRTLTableCell.xib; sourceTree = "<group>"; };
-		B1CB99292C3D640F00991569 /* AppArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppArticleTableViewCell.swift; sourceTree = "<group>"; };
-		B1CB992A2C3D640F00991569 /* ArticleMidPageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleMidPageTableViewController.swift; sourceTree = "<group>"; };
-		B1CB992B2C3D640F00991569 /* ArticleReadMoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleReadMoreTableViewController.swift; sourceTree = "<group>"; };
-		B1CB992C2C3D640F00991569 /* ArticleStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleStackViewController.swift; sourceTree = "<group>"; };
-		B1CB992D2C3D640F00991569 /* ArticleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
-		B1CB99302C3D640F00991569 /* OBVideoWidgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OBVideoWidgetViewController.swift; sourceTree = "<group>"; };
-		B1CB99322C3D640F00991569 /* AppSFCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFCollectionViewCell.swift; sourceTree = "<group>"; };
-		B1CB99332C3D640F00991569 /* AppSFCollectionViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFCollectionViewHeaderCell.xib; sourceTree = "<group>"; };
-		B1CB99342C3D640F00991569 /* AppSFCollectionViewReadMoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFCollectionViewReadMoreCell.swift; sourceTree = "<group>"; };
-		B1CB99352C3D640F00991569 /* AppSFCollectionViewReadMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFCollectionViewReadMoreCell.xib; sourceTree = "<group>"; };
-		B1CB99362C3D640F00991569 /* AppSFHorizontalFixedItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFHorizontalFixedItemCell.xib; sourceTree = "<group>"; };
-		B1CB99372C3D640F00991569 /* AppSFHorizontalItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSFHorizontalItemCell.swift; sourceTree = "<group>"; };
-		B1CB99382C3D640F00991569 /* AppSFHorizontalItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFHorizontalItemCell.xib; sourceTree = "<group>"; };
-		B1CB99392C3D640F00991569 /* AppSFSingleWithTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSFSingleWithTitleCollectionViewCell.xib; sourceTree = "<group>"; };
-		B1CB993A2C3D640F00991569 /* AppSingleNoTitleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleNoTitleCollectionViewCell.xib; sourceTree = "<group>"; };
-		B1CB993B2C3D640F00991569 /* AppSingleWithThumbnailCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailCollectionCell.xib; sourceTree = "<group>"; };
-		B1CB993C2C3D640F00991569 /* AppSingleWithThumbnailRTLCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppSingleWithThumbnailRTLCollectionCell.xib; sourceTree = "<group>"; };
-		B1CB993E2C3D640F00991569 /* AppArticleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppArticleCollectionViewCell.swift; sourceTree = "<group>"; };
-		B1CB993F2C3D640F00991569 /* ArticleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCollectionViewController.swift; sourceTree = "<group>"; };
-		B1CB99402C3D640F00991569 /* ArticleMidPageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleMidPageCollectionViewController.swift; sourceTree = "<group>"; };
-		B1CB99412C3D640F00991569 /* ArticleReadMoreCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleReadMoreCollectionViewController.swift; sourceTree = "<group>"; };
 		B1CB99632C3D671800991569 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B1CB99862C3EA27000991569 /* ContentHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentHeaderCell.xib; sourceTree = "<group>"; };
+		B1CB99872C3EA27000991569 /* ImageHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderCell.xib; sourceTree = "<group>"; };
+		B1CB99882C3EA27000991569 /* TextHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextHeaderCell.xib; sourceTree = "<group>"; };
+		B1CB998A2C3EA27000991569 /* AppArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppArticleTableViewCell.swift; sourceTree = "<group>"; };
+		B1CB998B2C3EA27000991569 /* TableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
+		B1CB998D2C3EA27000991569 /* ArticleContentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		B1CB998E2C3EA27000991569 /* CollectionTwoWidgetsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTwoWidgetsVC.swift; sourceTree = "<group>"; };
+		B1CB998F2C3EA27000991569 /* CollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		B1CB999A2C3EA41D00991569 /* ImageHeaderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageHeaderCollectionViewCell.xib; sourceTree = "<group>"; };
+		B1CB999C2C3EA43200991569 /* ArticleHeaderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleHeaderCollectionViewCell.xib; sourceTree = "<group>"; };
+		B1CB99A02C3EA45100991569 /* ImageHeaderCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHeaderCollectionCell.swift; sourceTree = "<group>"; };
+		B1CB99A42C3EA46300991569 /* ContentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionCell.swift; sourceTree = "<group>"; };
+		B1CB99A62C3EA50200991569 /* ArticleHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		B1CB99A82C3EA54500991569 /* ImageHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		B1CB99AA2C3EA94400991569 /* ArticleContentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleContentCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,8 +170,8 @@
 		B1CB98C42C3D53BF00991569 /* Use cases */ = {
 			isa = PBXGroup;
 			children = (
-				B1CB99422C3D640F00991569 /* CollectionView */,
-				B1CB992F2C3D640F00991569 /* TableView */,
+				B1CB99902C3EA27000991569 /* CollectionView */,
+				B1CB998C2C3EA27000991569 /* TableView */,
 				B1CB98B32C3D23F700991569 /* BridgeInCollectionView.swift */,
 				B1CB98B72C3D243000991569 /* BridgeInScrollView.swift */,
 				B1CB98B52C3D240000991569 /* BridgeInSwiftUI.swift */,
@@ -214,81 +182,49 @@
 			path = "Use cases";
 			sourceTree = "<group>";
 		};
-		B1CB99202C3D640F00991569 /* Cells */ = {
+		B1CB99892C3EA27000991569 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B1CB991D2C3D640F00991569 /* ContentHeaderCell.xib */,
-				B1CB991E2C3D640F00991569 /* ImageHeaderCell.xib */,
-				B1CB991F2C3D640F00991569 /* TextHeaderCell.xib */,
+				B1CB99862C3EA27000991569 /* ContentHeaderCell.xib */,
+				B1CB99872C3EA27000991569 /* ImageHeaderCell.xib */,
+				B1CB99882C3EA27000991569 /* TextHeaderCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		B1CB99282C3D640F00991569 /* SmartFeedCells */ = {
+		B1CB998C2C3EA27000991569 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				B1CB99212C3D640F00991569 /* AppSFSingleWithTitleTableViewCell.xib */,
-				B1CB99222C3D640F00991569 /* AppSFTableViewCell.swift */,
-				B1CB99232C3D640F00991569 /* AppSFTableViewCell.xib */,
-				B1CB99242C3D640F00991569 /* AppSFTableViewHeaderCell.xib */,
-				B1CB99252C3D640F00991569 /* AppSFTableViewReadMoreCell.swift */,
-				B1CB99262C3D640F00991569 /* AppSFTableViewReadMoreCell.xib */,
-				B1CB99272C3D640F00991569 /* AppSingleWithThumbnailRTLTableCell.xib */,
-			);
-			path = SmartFeedCells;
-			sourceTree = "<group>";
-		};
-		B1CB992F2C3D640F00991569 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				B1CB99202C3D640F00991569 /* Cells */,
-				B1CB99282C3D640F00991569 /* SmartFeedCells */,
-				B1CB99292C3D640F00991569 /* AppArticleTableViewCell.swift */,
-				B1CB992A2C3D640F00991569 /* ArticleMidPageTableViewController.swift */,
-				B1CB992B2C3D640F00991569 /* ArticleReadMoreTableViewController.swift */,
-				B1CB992C2C3D640F00991569 /* ArticleStackViewController.swift */,
-				B1CB992D2C3D640F00991569 /* ArticleTableViewController.swift */,
+				B1CB99892C3EA27000991569 /* Cells */,
+				B1CB998A2C3EA27000991569 /* AppArticleTableViewCell.swift */,
+				B1CB998B2C3EA27000991569 /* TableVC.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		B1CB99312C3D640F00991569 /* OBVideoWidget */ = {
+		B1CB99902C3EA27000991569 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				B1CB99302C3D640F00991569 /* OBVideoWidgetViewController.swift */,
-			);
-			path = OBVideoWidget;
-			sourceTree = "<group>";
-		};
-		B1CB993D2C3D640F00991569 /* SmartFeedCells */ = {
-			isa = PBXGroup;
-			children = (
-				B1CB99322C3D640F00991569 /* AppSFCollectionViewCell.swift */,
-				B1CB99332C3D640F00991569 /* AppSFCollectionViewHeaderCell.xib */,
-				B1CB99342C3D640F00991569 /* AppSFCollectionViewReadMoreCell.swift */,
-				B1CB99352C3D640F00991569 /* AppSFCollectionViewReadMoreCell.xib */,
-				B1CB99362C3D640F00991569 /* AppSFHorizontalFixedItemCell.xib */,
-				B1CB99372C3D640F00991569 /* AppSFHorizontalItemCell.swift */,
-				B1CB99382C3D640F00991569 /* AppSFHorizontalItemCell.xib */,
-				B1CB99392C3D640F00991569 /* AppSFSingleWithTitleCollectionViewCell.xib */,
-				B1CB993A2C3D640F00991569 /* AppSingleNoTitleCollectionViewCell.xib */,
-				B1CB993B2C3D640F00991569 /* AppSingleWithThumbnailCollectionCell.xib */,
-				B1CB993C2C3D640F00991569 /* AppSingleWithThumbnailRTLCollectionCell.xib */,
-			);
-			path = SmartFeedCells;
-			sourceTree = "<group>";
-		};
-		B1CB99422C3D640F00991569 /* CollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				B1CB99312C3D640F00991569 /* OBVideoWidget */,
-				B1CB993D2C3D640F00991569 /* SmartFeedCells */,
-				B1CB993E2C3D640F00991569 /* AppArticleCollectionViewCell.swift */,
-				B1CB993F2C3D640F00991569 /* ArticleCollectionViewController.swift */,
-				B1CB99402C3D640F00991569 /* ArticleMidPageCollectionViewController.swift */,
-				B1CB99412C3D640F00991569 /* ArticleReadMoreCollectionViewController.swift */,
+				B1CB99992C3EA41500991569 /* Cells */,
+				B1CB998F2C3EA27000991569 /* CollectionVC.swift */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		B1CB99992C3EA41500991569 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B1CB998D2C3EA27000991569 /* ArticleContentCollectionViewCell.swift */,
+				B1CB99A62C3EA50200991569 /* ArticleHeaderCollectionViewCell.swift */,
+				B1CB998E2C3EA27000991569 /* CollectionTwoWidgetsVC.swift */,
+				B1CB99A42C3EA46300991569 /* ContentCollectionCell.swift */,
+				B1CB99A02C3EA45100991569 /* ImageHeaderCollectionCell.swift */,
+				B1CB99A82C3EA54500991569 /* ImageHeaderCollectionViewCell.swift */,
+				B1CB999C2C3EA43200991569 /* ArticleHeaderCollectionViewCell.xib */,
+				B1CB999A2C3EA41D00991569 /* ImageHeaderCollectionViewCell.xib */,
+				B1CB99AA2C3EA94400991569 /* ArticleContentCollectionViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,24 +286,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1CB99452C3D640F00991569 /* TextHeaderCell.xib in Resources */,
-				B1CB99582C3D640F00991569 /* AppSFHorizontalFixedItemCell.xib in Resources */,
-				B1CB995E2C3D640F00991569 /* AppSingleWithThumbnailRTLCollectionCell.xib in Resources */,
-				B1CB99442C3D640F00991569 /* ImageHeaderCell.xib in Resources */,
+				B1CB99932C3EA27000991569 /* TextHeaderCell.xib in Resources */,
+				B1CB99922C3EA27000991569 /* ImageHeaderCell.xib in Resources */,
+				B1CB999B2C3EA41D00991569 /* ImageHeaderCollectionViewCell.xib in Resources */,
+				B1CB99AB2C3EA94400991569 /* ArticleContentCollectionViewCell.xib in Resources */,
 				B1CB98A12C3D202900991569 /* Preview Assets.xcassets in Resources */,
-				B1CB99552C3D640F00991569 /* AppSFCollectionViewHeaderCell.xib in Resources */,
-				B1CB995A2C3D640F00991569 /* AppSFHorizontalItemCell.xib in Resources */,
-				B1CB994B2C3D640F00991569 /* AppSFTableViewReadMoreCell.xib in Resources */,
-				B1CB99572C3D640F00991569 /* AppSFCollectionViewReadMoreCell.xib in Resources */,
-				B1CB995C2C3D640F00991569 /* AppSingleNoTitleCollectionViewCell.xib in Resources */,
-				B1CB995D2C3D640F00991569 /* AppSingleWithThumbnailCollectionCell.xib in Resources */,
-				B1CB99492C3D640F00991569 /* AppSFTableViewHeaderCell.xib in Resources */,
-				B1CB99482C3D640F00991569 /* AppSFTableViewCell.xib in Resources */,
-				B1CB994C2C3D640F00991569 /* AppSingleWithThumbnailRTLTableCell.xib in Resources */,
-				B1CB995B2C3D640F00991569 /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */,
-				B1CB99432C3D640F00991569 /* ContentHeaderCell.xib in Resources */,
+				B1CB999D2C3EA43200991569 /* ArticleHeaderCollectionViewCell.xib in Resources */,
+				B1CB99912C3EA27000991569 /* ContentHeaderCell.xib in Resources */,
 				B1CB989E2C3D202900991569 /* Assets.xcassets in Resources */,
-				B1CB99462C3D640F00991569 /* AppSFSingleWithTitleTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,33 +304,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1CB99942C3EA27000991569 /* AppArticleTableViewCell.swift in Sources */,
+				B1CB99A72C3EA50200991569 /* ArticleHeaderCollectionViewCell.swift in Sources */,
 				B1CB98BD2C3D4AEA00991569 /* NavigationViewModel.swift in Sources */,
 				B1CB98B62C3D240000991569 /* BridgeInSwiftUI.swift in Sources */,
 				B1CB98BB2C3D483600991569 /* ParamsViewModel.swift in Sources */,
 				B1CB98C32C3D531100991569 /* RegularSDK.swift in Sources */,
-				B1CB994E2C3D640F00991569 /* ArticleMidPageTableViewController.swift in Sources */,
-				B1CB99542C3D640F00991569 /* AppSFCollectionViewCell.swift in Sources */,
-				B1CB994A2C3D640F00991569 /* AppSFTableViewReadMoreCell.swift in Sources */,
+				B1CB99952C3EA27000991569 /* TableVC.swift in Sources */,
 				B1CB98B82C3D243000991569 /* BridgeInScrollView.swift in Sources */,
-				B1CB99562C3D640F00991569 /* AppSFCollectionViewReadMoreCell.swift in Sources */,
-				B1CB99512C3D640F00991569 /* ArticleTableViewController.swift in Sources */,
 				B1CB98B22C3D23EA00991569 /* BridgeInTableView.swift in Sources */,
-				B1CB99532C3D640F00991569 /* OBVideoWidgetViewController.swift in Sources */,
-				B1CB99592C3D640F00991569 /* AppSFHorizontalItemCell.swift in Sources */,
-				B1CB995F2C3D640F00991569 /* AppArticleCollectionViewCell.swift in Sources */,
+				B1CB99A52C3EA46300991569 /* ContentCollectionCell.swift in Sources */,
 				B1CB98B42C3D23F700991569 /* BridgeInCollectionView.swift in Sources */,
+				B1CB99982C3EA27000991569 /* CollectionVC.swift in Sources */,
 				B1CB98C12C3D530600991569 /* ReadMore.swift in Sources */,
-				B1CB99602C3D640F00991569 /* ArticleCollectionViewController.swift in Sources */,
-				B1CB99472C3D640F00991569 /* AppSFTableViewCell.swift in Sources */,
+				B1CB99962C3EA27000991569 /* ArticleContentCollectionViewCell.swift in Sources */,
 				B1CB98BF2C3D4C0700991569 /* ContentView.swift in Sources */,
-				B1CB99502C3D640F00991569 /* ArticleStackViewController.swift in Sources */,
-				B1CB99622C3D640F00991569 /* ArticleReadMoreCollectionViewController.swift in Sources */,
-				B1CB994D2C3D640F00991569 /* AppArticleTableViewCell.swift in Sources */,
 				B1CB98AE2C3D23C800991569 /* ConfigScreen.swift in Sources */,
+				B1CB99972C3EA27000991569 /* CollectionTwoWidgetsVC.swift in Sources */,
 				B1CB989A2C3D202800991569 /* demoApp.swift in Sources */,
+				B1CB99A12C3EA45100991569 /* ImageHeaderCollectionCell.swift in Sources */,
 				B1CB98B02C3D23D100991569 /* UseCasesScreen.swift in Sources */,
-				B1CB994F2C3D640F00991569 /* ArticleReadMoreTableViewController.swift in Sources */,
-				B1CB99612C3D640F00991569 /* ArticleMidPageCollectionViewController.swift in Sources */,
+				B1CB99A92C3EA54500991569 /* ImageHeaderCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +464,7 @@
 				INFOPLIST_FILE = demo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Outbrain Demo";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -579,6 +500,7 @@
 				INFOPLIST_FILE = demo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Outbrain Demo";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

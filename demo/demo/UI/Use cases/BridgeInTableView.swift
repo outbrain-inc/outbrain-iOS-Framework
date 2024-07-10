@@ -11,18 +11,18 @@ import SwiftUI
 
 struct BridgeInTableView: UIViewControllerRepresentable {
     
-    typealias UIViewControllerType = ArticleTableViewController
+    typealias UIViewControllerType = TableVC
     
     let paramsViewModel: ParamsViewModel
     
-    func makeUIViewController(context: Context) -> ArticleTableViewController {
+    func makeUIViewController(context: Context) -> TableVC {
         // Instantiate your UIKit view controller here
-        let articleVC = ArticleTableViewController(paramsViewModel: paramsViewModel)
+        let articleVC = TableVC(paramsViewModel: paramsViewModel)
         return articleVC
     }
     
     
-    func updateUIViewController(_ uiViewController: ArticleTableViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: TableVC, context: Context) {
         // Update the view controller when your SwiftUI state changes, if necessary
     }
 }

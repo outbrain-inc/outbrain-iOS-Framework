@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="textHeaderCollectionCell" id="r0B-MP-b3W" userLabel="textHeaderCollectionCell" customClass="ArticleHeaderCollectionViewCell" customModule="demo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6g-b0-zjS" userLabel="Content View">
+                        <rect key="frame" x="16" y="59" width="343" height="107"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zzl-XU-Fdo">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="107"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="  The Guardian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWa-BJ-KmV">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="51"/>
+                                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.76867508559999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Suarez: Messi Was Born Great, Ronaldo Made Himself Great" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4E0-tG-qxe">
+                                        <rect key="frame" x="0.0" y="56" width="343" height="51"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zzl-XU-Fdo" firstAttribute="top" secondItem="M6g-b0-zjS" secondAttribute="top" id="9gc-b6-bAS"/>
+                            <constraint firstAttribute="trailing" secondItem="Zzl-XU-Fdo" secondAttribute="trailing" id="KPC-eQ-7zO"/>
+                            <constraint firstItem="Zzl-XU-Fdo" firstAttribute="leading" secondItem="M6g-b0-zjS" secondAttribute="leading" id="msZ-qL-umd"/>
+                            <constraint firstAttribute="bottom" secondItem="Zzl-XU-Fdo" secondAttribute="bottom" id="scz-JF-yWa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="M6g-b0-zjS" firstAttribute="top" secondItem="r0B-MP-b3W" secondAttribute="topMargin" id="UmO-cn-LOz"/>
+                <constraint firstAttribute="trailingMargin" secondItem="M6g-b0-zjS" secondAttribute="trailing" id="cDd-jQ-Ijh"/>
+                <constraint firstItem="M6g-b0-zjS" firstAttribute="leading" secondItem="r0B-MP-b3W" secondAttribute="leadingMargin" id="gz1-j0-ecP"/>
+                <constraint firstAttribute="bottomMargin" secondItem="M6g-b0-zjS" secondAttribute="bottom" id="zA8-V2-mWx"/>
+            </constraints>
+            <connections>
+                <outlet property="headerLabel" destination="4E0-tG-qxe" id="xJc-n1-Fda"/>
+            </connections>
+            <point key="canvasLocation" x="100" y="20"/>
+        </collectionViewCell>
+    </objects>
+</document>

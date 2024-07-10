@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -534,6 +534,13 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		B1CB99852C3EA21300991569 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		D83456431885A543002B2368 /* Journal */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +880,7 @@
 		E66B9CA82680A199006DB0AB /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				B1CB99852C3EA21300991569 /* Cells */,
 				E66B9CA92680A199006DB0AB /* TableVC.swift */,
 				E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */,
 			);

@@ -27,7 +27,7 @@ struct ConfigScreen: View {
             .navigationDestination(for: NavigationViewModel.Path.self) { path in
                 switch path {
                     case .tableView: BridgeInTableView(paramsViewModel: navigationViewModel.paramsViewModel)
-                    case .collectionView: Text("Collection View")
+                    case .collectionView: BridgeInCollectionView(paramsViewModel: navigationViewModel.paramsViewModel)
                     case .swiftUI: Text("SwiftUI")
                     case .scrollView: Text("Scroll View")
                     case .regular: Text("Regular")
