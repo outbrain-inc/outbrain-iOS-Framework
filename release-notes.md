@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v5.0.11-beta - July 21, 2024
+
+- Minor - improve Viewability polling interval to 200ms (was 2 seconds)
+
 ## v5.0.10-beta - July 3, 2024
 
 - Minor - add support for Flutter, including infiniteWidgetsOnTheSamePage and globalBridgeParams
