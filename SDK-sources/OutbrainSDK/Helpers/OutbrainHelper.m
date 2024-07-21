@@ -220,6 +220,13 @@ NSString *const kVIEWABILITY_THRESHOLD = @"ViewabilityThreshold";
     if (GDPRUtils.sharedInstance.ccpaPrivacyString) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ccpa" value: GDPRUtils.sharedInstance.ccpaPrivacyString]];
     }
+    // GPP
+    if (GDPRUtils.sharedInstance.gppSectionsString && GDPRUtils.sharedInstance.gppSectionsString.length > 0) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"gpp_sid" value: GDPRUtils.sharedInstance.gppSectionsString]];
+    }
+    if (GDPRUtils.sharedInstance.gppPrivacyString && GDPRUtils.sharedInstance.gppPrivacyString.length > 0) {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"gpp" value: GDPRUtils.sharedInstance.gppPrivacyString]];
+    }
     
     // Dark Mode param (Smartfeed only)
     if (request.isSmartfeed) {
