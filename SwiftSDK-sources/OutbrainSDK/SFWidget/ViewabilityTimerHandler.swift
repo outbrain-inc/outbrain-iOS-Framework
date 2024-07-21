@@ -24,7 +24,7 @@ class ViewabilityTimerHandler {
     var distanceToContainerBottom = 0
     var viewFrame: CGRect!
     var intersection: CGRect!
-    let swiftUIInterval: TimeInterval = 3.0
+    let swiftUIInterval: TimeInterval = 0.2
     private var viewabilityTimer: Timer?
     
     init() {
