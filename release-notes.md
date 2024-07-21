@@ -1,5 +1,10 @@
 # Release Notes
 
+## v4.34.0 - July 21, 2024
+
+- Minor - add support for `gpp` and `gpp_sid` ODB params in regular widget and Bridge widget.
+
+
 ## v4.33.0 - June 16, 2024
 
 - Minor - add support for `pubImpId` ODB param in regular widget (OBRequest) as well.
