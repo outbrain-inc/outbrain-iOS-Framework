@@ -87,6 +87,9 @@ NSString * const kSDK_ERROR_REPORT_NAME = @"IOS_SDK_ERROR";
     if (self.odbRequestUrlParamValue) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"url" value: self.odbRequestUrlParamValue]];
     }
+    else {
+        [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"url" value: @"https://www.outbrain.com"]];
+    }
     if (self.sourceId) {
         [odbQueryItems addObject:[NSURLQueryItem queryItemWithName:@"sId" value: self.sourceId]];
     }
