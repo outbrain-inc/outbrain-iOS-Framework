@@ -52,11 +52,28 @@
     UIRefreshControl * refreshControl = [self refreshControl];
     [refreshControl addTarget:self action:@selector(refreshPostsList) forControlEvents:UIControlEventValueChanged];
     [self becomeFirstResponder];
-    if (@available(iOS 14, *)) {
-        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-            NSLog(@"ATTrackingManagerAuthorizationStatus: %lu", (unsigned long)status);
-        }];
-    } 
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (@available(iOS 14, *)) {
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                switch (status) {
+                    case ATTrackingManagerAuthorizationStatusAuthorized:
+                        NSLog(@"Tracking authorized");
+                        break;
+                    case ATTrackingManagerAuthorizationStatusDenied:
+                        NSLog(@"Tracking denied");
+                        break;
+                    case ATTrackingManagerAuthorizationStatusRestricted:
+                        NSLog(@"Tracking restricted");
+                        break;
+                    case ATTrackingManagerAuthorizationStatusNotDetermined:
+                        NSLog(@"Tracking not determined");
+                        break;
+                    default:
+                        break;
+                }
+            }];
+        }
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -172,8 +189,18 @@
 -(void) fetchOutbrainRecFor:(NSIndexPath *)indexPath {
     __block NSInteger widgetIndex = [self _widgetIndexForIndexPath:indexPath];
     typeof(self) __weak __self = self;
+    BOOL shouldTestPlatformAPI = NO;
+    
     Post * p = (Post *)[self.postsData firstObject];
-    OBRequest * request = [OBRequest requestWithURL:OBDemoURL widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
+    OBRequest * request;
+    
+    if (shouldTestPlatformAPI) {
+        request = [self prepareOutbrainBaseRequest];
+    }
+    else {
+        request = [OBRequest requestWithURL:OBDemoURL widgetID:OBDemoWidgetID1 widgetIndex:widgetIndex];
+    }
+    
     self.indexPathToOutbrainReqDict[indexPath] = request;
     
     [Outbrain fetchRecommendationsForRequest:request withCallback:^(OBRecommendationResponse *response) {
@@ -194,6 +221,20 @@
             [__self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         });
     }];
+}
+
+- (OBRequest *) prepareOutbrainBaseRequest {
+    OBRequest * request;
+    BOOL shouldTestPlatformBundleRequest = YES;
+    [Outbrain setPartnerKey: @"DEMOP1MN24J3E1MGLQ92067LH"];
+    
+    if (shouldTestPlatformBundleRequest) {
+        request = [OBPlatformRequest requestWithBundleURL: PLATFORM_SAMPLE_BUNDLE_URL lang: @"en" widgetID: PLATFORM_SAMPLE_WIDGET_ID];
+    }
+    else {
+        request = [OBPlatformRequest requestWithPortalURL: PLATFORM_SAMPLE_PORTAL_URL lang: @"en" widgetID: PLATFORM_SAMPLE_WIDGET_ID];
+    }
+    return request;
 }
 
 - (BOOL)indexPathIsOBRecommendation:(NSIndexPath *)ip
