@@ -13,6 +13,9 @@ NSString *const IABConsent_V2_ConsentStringKey = @"IABTCF_TCString";
 NSString *const IABConsent_ParsedVendorConsentsKey = @"IABConsent_ParsedVendorConsents";
 NSString *const IABConsent_ParsedPurposeConsentsKey = @"IABConsent_ParsedPurposeConsents";
 NSString *const IABConsent_CMPPresentKey = @"IABConsent_CMPPresent";
+NSString *const IABGPP_HDR_SectionsKey = @"IABGPP_HDR_Sections";
+NSString *const IABGPP_HDR_GppStringKey = @"IABGPP_HDR_GppString";
+
 
 @implementation GDPRUtils
 
@@ -36,6 +39,16 @@ NSString *const IABConsent_CMPPresentKey = @"IABConsent_CMPPresent";
 -(NSString *)ccpaPrivacyString {
     return [self.userDefaults objectForKey:IAB_US_Privacy_String];
 }
+
+-(NSString *)gppSectionsString {
+    return [self.userDefaults objectForKey:IABGPP_HDR_SectionsKey];
+}
+
+
+-(NSString *)gppPrivacyString {
+    return [self.userDefaults objectForKey:IABGPP_HDR_GppStringKey];
+}
+
 
 -(SubjectToGDPR)subjectToGDPR {
     NSString *subjectToGDPRAsString = [self.userDefaults objectForKey:IABConsent_SubjectToGDPRKey];
