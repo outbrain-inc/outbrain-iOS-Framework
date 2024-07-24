@@ -11,6 +11,7 @@
 #import "OBRequest.h"
 #import "OBLabel.h"
 #import "OBUtils.h"
+#import "OBErrorReporting.h"
 #import "OBAppleAdIdUtil.h"
 
 @interface ViewabilityData : NSObject
@@ -126,6 +127,17 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
 }
 
 - (NSString *) replaceDomainWithTrackingIfneeded:(NSString *)viewablityURL {
+    @try {
+        return [self _replaceDomainWithTrackingIfneeded:viewablityURL];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in _replaceDomainWithTrackingIfneeded() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in _replaceDomainWithTrackingIfneeded - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+    }
+}
+
+- (NSString *) _replaceDomainWithTrackingIfneeded:(NSString *)viewablityURL {
     if ([OBAppleAdIdUtil isOptedOut]) {
         // if the user is opted out from tracking - we will use the original URL string.
         return viewablityURL;
