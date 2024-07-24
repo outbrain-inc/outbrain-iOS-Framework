@@ -134,6 +134,7 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
         NSLog(@"Reason: %@ ",exception.reason);
         NSString *errorMsg = [NSString stringWithFormat:@"Exception in _replaceDomainWithTrackingIfneeded - %@ - reason: %@", exception.name, exception.reason];
         [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+        return nil;
     }
 }
 
