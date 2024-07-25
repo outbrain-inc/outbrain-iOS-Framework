@@ -569,6 +569,16 @@ static BOOL infiniteWidgetsOnTheSamePage = NO;
     if (GDPRUtils.sharedInstance.ccpaPrivacyString) {
         [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ccpa" value: GDPRUtils.sharedInstance.ccpaPrivacyString]];
     }
+    
+    // GPP
+    if (GDPRUtils.sharedInstance.gppSectionsString && GDPRUtils.sharedInstance.gppSectionsString.length > 0) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"gpp_sid" value: GDPRUtils.sharedInstance.gppSectionsString]];
+    }
+    if (GDPRUtils.sharedInstance.gppPrivacyString && GDPRUtils.sharedInstance.gppPrivacyString.length > 0) {
+        [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"gpp" value: GDPRUtils.sharedInstance.gppPrivacyString]];
+    }
+    
+    
     // OS tracking (for privacy manifest)
     [newQueryItems addObject:[NSURLQueryItem queryItemWithName:@"ostracking" value: ![OBAppleAdIdUtil isOptedOut] ? @"true" : @"false"]];
     

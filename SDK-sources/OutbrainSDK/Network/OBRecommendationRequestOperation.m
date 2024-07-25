@@ -55,7 +55,7 @@
     }
     OBRecommendationResponse *response = [OBRecommendationResponse contentWithPayload:responseDict[@"response"]];
     response.request = self.request;
-        
+    
     if(error)
     {
         response.error = error;
@@ -106,9 +106,9 @@
     // may want to know about it
     NSError * wrappedError = [NSError errorWithDomain:OBNetworkErrorDomain code:OBServerErrorCode
                                              userInfo:@{
-                                                        NSUnderlyingErrorKey:error,
-                                                        NSLocalizedDescriptionKey:@"There was an error retrieving your recommendations.  Please check your connection and try again"
-                                                        }];
+        NSUnderlyingErrorKey:error,
+        NSLocalizedDescriptionKey:@"There was an error retrieving your recommendations.  Please check your connection and try again"
+    }];
     return [self createResponseWithDict:nil withError:wrappedError];
 }
 
@@ -136,13 +136,22 @@
             NSString *errorMsg = [NSString stringWithFormat:@"Exception in startODBRequest() - %@ - reason: %@", exception.name, exception.reason];
             [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
         } @finally  {
-           dispatch_semaphore_signal(sema);
+            dispatch_semaphore_signal(sema);
         }
     }];
     dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 }
 
 - (void) taskCompletedWith:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error {
+    @try  {
+        [self _taskCompletedWith:data response:response error:error];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in taskCompletedWith() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+    }
+}
+    
+- (void) _taskCompletedWith:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error {
     
     OBRecommendationResponse *obRecResponse;
     
@@ -161,6 +170,12 @@
     
     obRecResponse = [self parseResponseData: data];
     
+    // Set ODB response params on OBErrorReporting for potential error reporting
+    [OBErrorReporting sharedInstance].sourceId = [[obRecResponse.responseRequest getNSNumberValueForPayloadKey:@"sid"] stringValue];
+    [OBErrorReporting sharedInstance].publisherId = [obRecResponse.responseRequest getStringValueForPayloadKey:@"pid"];
+    [OBErrorReporting sharedInstance].widgetId = obRecResponse.request.widgetId;
+    [OBErrorReporting sharedInstance].odbRequestUrlParamValue = obRecResponse.request.url;
+    
     if ([[OBViewabilityService sharedInstance] isViewabilityEnabled]) {
         [[OBViewabilityService sharedInstance] reportRecsReceived:obRecResponse timestamp:self.requestStartDate];
     }
@@ -176,16 +191,6 @@
     if ([[obRecResponse responseRequest] token]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:SFWIDGET_T_PARAM_NOTIFICATION object:self userInfo:@{@"t" : [[obRecResponse responseRequest] token]}];
     }
-    
-
-
-    // Set ODB response params on OBErrorReporting for potential error reporting
-    [OBErrorReporting sharedInstance].sourceId = [[obRecResponse.responseRequest getNSNumberValueForPayloadKey:@"sid"] stringValue];
-    [OBErrorReporting sharedInstance].publisherId = [obRecResponse.responseRequest getStringValueForPayloadKey:@"pid"];
-    [OBErrorReporting sharedInstance].widgetId = obRecResponse.request.widgetId;
-    [OBErrorReporting sharedInstance].odbRequestUrlParamValue = obRecResponse.request.url;
-    
-    
 
     [self notifyAppHandler: obRecResponse];
 }
