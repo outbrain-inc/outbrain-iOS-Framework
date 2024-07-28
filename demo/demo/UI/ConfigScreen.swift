@@ -31,8 +31,8 @@ struct ConfigScreen: View {
                 switch path {
                     case .tableView: BridgeInTableView(paramsViewModel: navigationViewModel.paramsViewModel)
                     case .collectionView: BridgeInCollectionView(paramsViewModel: navigationViewModel.paramsViewModel)
-                    case .swiftUI: BridgeInSwiftUI()
-                    case .scrollView: Text("Scroll View")
+                    case .swiftUI: BridgeInSwiftUI(params: navigationViewModel.paramsViewModel)
+                    case .scrollView: BridgeInScrollView(paramsViewModel: navigationViewModel.paramsViewModel)
                     case .regular: Text("Regular")
                     case .readMore: Text("Read More")
                     case .useCases: UseCasesScreen(navigationViewModel: navigationViewModel)

@@ -43,12 +43,12 @@ struct OutbrainWidgetView: UIViewRepresentable {
         viewModel.widget
             .configure(
                 with: context.coordinator,
-                url: "https://mobile-demo.outbrain.com",
-                widgetId: "MB_1",
+                url: viewModel.paramsViewModel.articleURL,
+                widgetId: viewModel.paramsViewModel.bridgeWidgetId,
                 widgetIndex: 0,
                 installationKey: "NANOWDGT01",
                 userId: nil,
-                darkMode: false,
+                darkMode: viewModel.paramsViewModel.darkMode,
                 isSwiftUI: false
             )
         

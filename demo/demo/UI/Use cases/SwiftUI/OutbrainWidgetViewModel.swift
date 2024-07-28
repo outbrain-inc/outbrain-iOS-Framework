@@ -10,8 +10,13 @@ import OutbrainSDK
 
 final class OutbrainWidgetViewModel: ObservableObject {
 
+    let paramsViewModel: ParamsViewModel
     let widget: SFWidget = SFWidget()
     
     @Published
     var widgetHeight: CGFloat = 800
+    
+    init(paramsViewModel: ParamsViewModel) {
+        self.paramsViewModel = paramsViewModel
+    }
 }
