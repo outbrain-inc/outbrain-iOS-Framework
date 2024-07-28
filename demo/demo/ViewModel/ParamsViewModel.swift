@@ -10,6 +10,9 @@ import Foundation
 @Observable
 class ParamsViewModel {
     var darkMode: Bool = false
-    var widgetId: String = "SFD_MAIN_2"
-    var articleURL: String = "http://mobile-demo.outbrain.com/2013/12/15/test-page-2"
+    var bridgeWidgetId: String = "MB_2"
+    var sfWidgetId: String = "MB_1"
+    var smartLogicWidgetId: String = "MB_3"
+    var regularWidgetId: String = "SFD_MAIN_2"
+    var articleURL: String = "http://mobile-demo.outbrain.com"
 }

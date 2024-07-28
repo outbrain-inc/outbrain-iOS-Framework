@@ -12,13 +12,16 @@ struct ConfigScreen: View {
     
     @StateObject var navigationViewModel: NavigationViewModel
     private var onSubmit: () -> Void
+    private var onClearCache: () -> Void
     
     init(
         navigationViewModel: NavigationViewModel,
-        onSubmit: @escaping () -> Void
+        onSubmit: @escaping () -> Void,
+        onClearCache: @escaping () -> Void
     ) {
         self._navigationViewModel = .init(wrappedValue: navigationViewModel)
         self.onSubmit = onSubmit
+        self.onClearCache = onClearCache
     }
     
     
@@ -28,7 +31,7 @@ struct ConfigScreen: View {
                 switch path {
                     case .tableView: BridgeInTableView(paramsViewModel: navigationViewModel.paramsViewModel)
                     case .collectionView: BridgeInCollectionView(paramsViewModel: navigationViewModel.paramsViewModel)
-                    case .swiftUI: Text("SwiftUI")
+                    case .swiftUI: BridgeInSwiftUI()
                     case .scrollView: Text("Scroll View")
                     case .regular: Text("Regular")
                     case .readMore: Text("Read More")
@@ -45,19 +48,58 @@ struct ConfigScreen: View {
                 Text("Dark mode")
             }
             
-            HStack {
-                Text("Widget ID")
-                    .padding(.trailing, 16)
-                TextField("", text: $navigationViewModel.paramsViewModel.widgetId)
-                    .textFieldStyle(.roundedBorder)
-            }
             
             HStack {
+                VStack(alignment: .leading) {
+                    Text("Bridge widget ID")
+                        .frame(height: 44)
+                    
+                    Text("SF widget ID")
+                        .frame(height: 44)
+                    
+                    Text("Smart logic widget ID")
+                        .frame(height: 44)
+                    
+                    Text("Regular widget ID")
+                        .frame(height: 44)
+                }
+                
+                VStack {
+                    TextField("", text: $navigationViewModel.paramsViewModel.bridgeWidgetId)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(height: 44)
+                        
+                    
+                    TextField("", text: $navigationViewModel.paramsViewModel.sfWidgetId)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(height: 44)
+                    
+                    TextField("", text: $navigationViewModel.paramsViewModel.smartLogicWidgetId)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(height: 44)
+                    
+                    TextField("", text: $navigationViewModel.paramsViewModel.regularWidgetId)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(height: 44)
+                    
+                    
+                    
+                }
+            }
+            
+            VStack(alignment: .leading) {
                 Text("Article URL")
-                    .padding(.trailing, 16)
+                
                 TextField("", text: $navigationViewModel.paramsViewModel.articleURL)
                     .textFieldStyle(.roundedBorder)
             }
+            
+            Button(action: {
+                onClearCache()
+            }, label: {
+                Text("Clear Cache")
+            })
+            .padding(.top, 16)
             
             Spacer()
             
@@ -72,5 +114,9 @@ struct ConfigScreen: View {
 }
 
 #Preview {
-    ConfigScreen(navigationViewModel: .init()) { }
+    ConfigScreen(
+        navigationViewModel: .init(),
+        onSubmit: { },
+        onClearCache: { }
+    )
 }

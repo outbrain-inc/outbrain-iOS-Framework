@@ -43,7 +43,7 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         sfWidget.configure(
             with: self,
             url: paramsViewModel.articleURL,
-            widgetId: paramsViewModel.widgetId,
+            widgetId: paramsViewModel.bridgeWidgetId,
             installationKey: "NANOWDGT01"
         )
     }
