@@ -15,6 +15,7 @@ struct demoApp: App {
         Outbrain.initializeOutbrain(withPartnerKey: "iOSSampleApp2014")
         Outbrain.setTestMode(true)
         Outbrain.testLocation("us")
+        Outbrain.testRTB(true)
     }
     
     

@@ -33,7 +33,7 @@ struct ConfigScreen: View {
                     case .collectionView: BridgeInCollectionView(paramsViewModel: navigationViewModel.paramsViewModel)
                     case .swiftUI: BridgeInSwiftUI(params: navigationViewModel.paramsViewModel)
                     case .scrollView: BridgeInScrollView(paramsViewModel: navigationViewModel.paramsViewModel)
-                    case .regular: Text("Regular")
+                    case .regular: RegularSDK(paramsViewModel: navigationViewModel.paramsViewModel)
                     case .readMore: Text("Read More")
                     case .useCases: UseCasesScreen(navigationViewModel: navigationViewModel)
                 }
