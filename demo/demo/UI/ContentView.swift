@@ -25,15 +25,7 @@ struct ContentView: View {
                     showCacheClearedAlert = true
                 }
             }
-            
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("Outbrain SDK Demo")
-                }
-            }
-            .toolbarBackground(Color.outbrainOrange, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .addNavigationBar(withTitle: "Outbrain SDK Demo")
             .alert(isPresented: $showCacheClearedAlert) {
                 Alert(
                     title: Text("Cache Cleared"),

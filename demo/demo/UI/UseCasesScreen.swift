@@ -50,22 +50,12 @@ struct UseCasesScreen: View {
                 }
             }
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Image(systemName: "arrow.backward")
-                    .onTapGesture {
-                        navigationViewModel.popLast()
-                    }
+        .addNavigationBar(
+            withTitle: "Use Cases",
+            backAction: {
+                navigationViewModel.popLast()
             }
-            
-            ToolbarItem(placement: .principal) {
-                Text("Use cases")
-            }
-        }
-        .toolbarBackground(Color.outbrainOrange, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
+        )
     }
 }
 

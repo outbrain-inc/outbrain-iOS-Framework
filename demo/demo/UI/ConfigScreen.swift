@@ -29,12 +29,33 @@ struct ConfigScreen: View {
         useCasesContent
             .navigationDestination(for: NavigationViewModel.Path.self) { path in
                 switch path {
-                    case .tableView: BridgeInTableView(paramsViewModel: navigationViewModel.paramsViewModel)
+                    case .tableView: BridgeInTableView(
+                        paramsViewModel: navigationViewModel.paramsViewModel,
+                        readMore: false
+                    )
+                    .addNavigationBar(withTitle: "Bridge In Table View") {
+                        navigationViewModel.popLast()
+                    }
                     case .collectionView: BridgeInCollectionView(paramsViewModel: navigationViewModel.paramsViewModel)
+                            .addNavigationBar(withTitle: "Bridge In Collection View") {
+                                navigationViewModel.popLast()
+                            }
                     case .swiftUI: BridgeInSwiftUI(params: navigationViewModel.paramsViewModel)
+                            .addNavigationBar(withTitle: "Bridge In SwiftUI") {
+                                navigationViewModel.popLast()
+                            }
                     case .scrollView: BridgeInScrollView(paramsViewModel: navigationViewModel.paramsViewModel)
+                            .addNavigationBar(withTitle: "Bridge In Scroll View") {
+                                navigationViewModel.popLast()
+                            }
                     case .regular: RegularSDK(paramsViewModel: navigationViewModel.paramsViewModel)
-                    case .readMore: Text("Read More")
+                            .addNavigationBar(withTitle: "Regular SDK") {
+                                navigationViewModel.popLast()
+                            }
+                    case .readMore: BridgeInTableView(paramsViewModel: navigationViewModel.paramsViewModel, readMore: true)
+                            .addNavigationBar(withTitle: "Read More") {
+                                navigationViewModel.popLast()
+                            }
                     case .useCases: UseCasesScreen(navigationViewModel: navigationViewModel)
                 }
             }
@@ -47,7 +68,6 @@ struct ConfigScreen: View {
             Toggle(isOn: $navigationViewModel.paramsViewModel.darkMode) {
                 Text("Dark mode")
             }
-            
             
             HStack {
                 VStack(alignment: .leading) {
@@ -68,7 +88,7 @@ struct ConfigScreen: View {
                     TextField("", text: $navigationViewModel.paramsViewModel.bridgeWidgetId)
                         .textFieldStyle(.roundedBorder)
                         .frame(height: 44)
-                        
+                    
                     
                     TextField("", text: $navigationViewModel.paramsViewModel.sfWidgetId)
                         .textFieldStyle(.roundedBorder)
@@ -81,9 +101,6 @@ struct ConfigScreen: View {
                     TextField("", text: $navigationViewModel.paramsViewModel.regularWidgetId)
                         .textFieldStyle(.roundedBorder)
                         .frame(height: 44)
-                    
-                    
-                    
                 }
             }
             
