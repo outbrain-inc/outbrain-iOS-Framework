@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject private var navigationViewModel: NavigationViewModel
+    @State private var showCacheClearedAlert = false
     
     init() {
         self._navigationViewModel = .init(wrappedValue: .init())
@@ -20,7 +21,9 @@ struct ContentView: View {
             ConfigScreen(navigationViewModel: navigationViewModel) {
                 navigationViewModel.push(.useCases)
             } onClearCache: {
-                
+                navigationViewModel.clearCache {
+                    showCacheClearedAlert = true
+                }
             }
             
             .navigationBarTitleDisplayMode(.inline)
@@ -31,6 +34,18 @@ struct ContentView: View {
             }
             .toolbarBackground(Color.outbrainOrange, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
+            .alert(isPresented: $showCacheClearedAlert) {
+                Alert(
+                    title: Text("Cache Cleared"),
+                    message: Text("All cached data has been successfully cleared."),
+                    dismissButton: .default(
+                        Text("Ok"),
+                        action: {
+                            showCacheClearedAlert = false
+                        }
+                    )
+                )
+            }
         }
     }
 }

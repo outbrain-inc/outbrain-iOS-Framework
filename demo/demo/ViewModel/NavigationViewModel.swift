@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import WebKit
 
 
 class NavigationViewModel: ObservableObject, Identifiable {
@@ -38,6 +39,16 @@ class NavigationViewModel: ObservableObject, Identifiable {
     func popLast() {
         DispatchQueue.main.async { [weak self] in
             self?.paths.removeLast()
+        }
+    }
+    
+    func clearCache(completion: @escaping () -> Void) {
+        let dataStore = WKWebsiteDataStore.default()
+        
+        dataStore.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            dataStore.removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), for: records) {
+                completion()
+            }
         }
     }
 }
