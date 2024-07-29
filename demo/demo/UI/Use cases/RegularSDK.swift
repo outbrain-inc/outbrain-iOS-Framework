@@ -96,6 +96,7 @@ struct RegularSDK: View {
             }
         )) {
             OBSafariView(url: $clickedUrl.wrappedValue!)
+                .ignoresSafeArea(edges: .all)
         }
     }
 }
@@ -110,38 +111,4 @@ struct RegularSDK: View {
 struct Recommendation: Identifiable {
     let id = UUID()
     let recommendation: OBRecommendation
-}
-
-
-class OBRequestSwift {
-    static func executeRequest(req: OBRequest) {
-        
-    }
-}
-
-
-struct ArticleBody: View {
-    let loremIpsem = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
-    
-    var body: some View {
-        Text(loremIpsem)
-            .font(.body)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(EdgeInsets(top: 20, leading: 5, bottom: 0, trailing: 5    ))
-    }
-}
-
-struct OBSafariView: UIViewControllerRepresentable {
-    
-    typealias UIViewControllerType = SFSafariViewController
-    
-    let url: URL
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<OBSafariView>) -> SFSafariViewController {
-        return SFSafariViewController(url: url)
-    }
-    
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<OBSafariView>) {
-        
-    }
 }

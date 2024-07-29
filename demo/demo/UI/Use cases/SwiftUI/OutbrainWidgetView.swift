@@ -11,8 +11,7 @@ import SwiftUI
 
 struct OutbrainWidgetView: UIViewRepresentable {
 
-    @ObservedObject
-    var viewModel: OutbrainWidgetViewModel
+    @ObservedObject var viewModel: OutbrainWidgetViewModel
     let scrollViewFrame: CGRect
     
     @Binding var scrollFrame: CGRect
@@ -27,8 +26,9 @@ struct OutbrainWidgetView: UIViewRepresentable {
         }
 
         // MARK: - SFWidgetDelegate
-
-        func onRecClick(_ url: URL) {}
+        func onRecClick(_ url: URL) {
+            viewModel.clickedUrl = url
+        }
 
         func didChangeHeight(_ newHeight: CGFloat) {
             self.viewModel.widgetHeight = newHeight
