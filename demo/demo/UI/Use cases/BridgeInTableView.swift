@@ -14,10 +14,11 @@ struct BridgeInTableView: UIViewControllerRepresentable {
     typealias UIViewControllerType = TableVC
     
     let paramsViewModel: ParamsViewModel
+    let readMore: Bool
     
     func makeUIViewController(context: Context) -> TableVC {
         // Instantiate your UIKit view controller here
-        let articleVC = TableVC(paramsViewModel: paramsViewModel)
+        let articleVC = TableVC(paramsViewModel: paramsViewModel, readMore: readMore)
         return articleVC
     }
     

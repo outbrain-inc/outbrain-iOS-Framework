@@ -19,13 +19,17 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let contentCellReuseIdentifier = "contentHeaderCell"
     private var sfWidget: SFWidget!
     private let originalArticleItemsCount = 6
-//    private let READ_MORE_FLAG = false
+    private var READ_MORE_FLAG: Bool
+    private let READ_MORE_OVERLAY_TAG = 1001
+    private let READ_MORE_BUTTON_TAG = 1002
+    private let READ_MORE_CELL_CONTENT_VIEW_TAG = 1003
     private let OUTBRAIN_SECTION_INDEX = 1
     private let paramsViewModel: ParamsViewModel
     
-    init(paramsViewModel: ParamsViewModel) {
+    init(paramsViewModel: ParamsViewModel, readMore: Bool) {
         self.tableView = UITableView()
         self.paramsViewModel = paramsViewModel
+        self.READ_MORE_FLAG = readMore
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -104,7 +108,7 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
             return 1
         }
         else {
-            return originalArticleItemsCount
+            return READ_MORE_FLAG ? (originalArticleItemsCount - 3) : originalArticleItemsCount
         }
     }
     
@@ -152,6 +156,9 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
                 articleCell.contentTextView.font = UIFont(name: articleCell.contentTextView.font!.fontName, size: CGFloat(fontSize))
                 articleCell.contentTextView.textColor = UIColor.black
+                if (READ_MORE_FLAG) {
+                    addReadMoreOverlayToCell(articleCell)
+                }
             }
             break
         }
@@ -173,6 +180,42 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         sfWidget.scrollViewDidScroll(scrollView)
+    }
+    
+    func addReadMoreOverlayToCell(_ cell: UITableViewCell) {
+        let customView = UIView(frame: CGRect(x: 0, y: cell.contentView.frame.height - 100, width: cell.contentView.frame.width + 20, height: 100))
+        customView.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        customView.tag = READ_MORE_OVERLAY_TAG
+        
+        // Add "Read More" button
+        let button = UIButton(type: .system)
+        button.tag = READ_MORE_BUTTON_TAG
+        button.backgroundColor = UIColor.white
+        button.frame = CGRect(x: 100, y: cell.contentView.frame.height - 80, width: cell.contentView.frame.width - 200, height: 40)
+        button.setTitle("Read More", for: .normal)
+        button.addTarget(self, action: #selector(readMoreButtonTapped(_:)), for: .touchUpInside)
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.blue.cgColor
+        button.layer.cornerRadius = 5.0
+        
+        cell.contentView.tag = READ_MORE_CELL_CONTENT_VIEW_TAG
+        cell.contentView.addSubview(customView)
+        cell.contentView.addSubview(button)
+    }
+    
+    @objc func readMoreButtonTapped(_ sender: UIButton) {
+        READ_MORE_FLAG = false
+        var parentView = sender.superview
+        while (parentView!.tag != READ_MORE_CELL_CONTENT_VIEW_TAG) {
+            parentView = parentView?.superview
+        }
+        if let customView = parentView!.viewWithTag(READ_MORE_OVERLAY_TAG),
+           let button = parentView!.viewWithTag(READ_MORE_BUTTON_TAG) {
+            customView.removeFromSuperview()
+            button.removeFromSuperview()
+        }
+        
+        tableView.reloadData()
     }
 }
 
