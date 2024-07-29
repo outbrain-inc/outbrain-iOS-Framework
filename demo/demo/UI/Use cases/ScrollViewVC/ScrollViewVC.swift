@@ -37,7 +37,7 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
         sfWidget.configure(
             with: self,
             url: paramsViewModel.articleURL,
-            widgetId: paramsViewModel.smartLogicWidgetId,
+            widgetId: paramsViewModel.bridgeWidgetId,
             widgetIndex: 0,
             installationKey: "NANOWDGT01",
             userId: nil,

@@ -45,12 +45,15 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         sfWidget = SFWidget(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 0))
         
-        sfWidget.configure(
-            with: self,
-            url: paramsViewModel.articleURL,
-            widgetId: paramsViewModel.bridgeWidgetId,
-            installationKey: "NANOWDGT01"
-        )
+        sfWidget
+            .configure(
+                with: self, url:paramsViewModel.articleURL,
+                widgetId: paramsViewModel.bridgeWidgetId,
+                widgetIndex: 0,
+                installationKey: "NANOWDGT01",
+                userId: nil,
+                darkMode: paramsViewModel.darkMode
+            )
     }
     
     private func setupTableView() {

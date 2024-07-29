@@ -44,7 +44,10 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             with: self,
             url: paramsViewModel.articleURL,
             widgetId: paramsViewModel.bridgeWidgetId,
-            installationKey: "NANOWDGT01"
+            widgetIndex: 0,
+            installationKey: "NANOWDGT01",
+            userId: nil,
+            darkMode: paramsViewModel.darkMode
         )
     }
     
