@@ -26,7 +26,7 @@ struct ConfigScreen: View {
     
     
     var body: some View {
-        useCasesContent
+        configContent
             .navigationDestination(for: NavigationViewModel.Path.self) { path in
                 switch path {
                     case .tableView: BridgeInTableView(
@@ -36,32 +36,61 @@ struct ConfigScreen: View {
                     .addNavigationBar(withTitle: "Bridge In Table View") {
                         navigationViewModel.popLast()
                     }
+                        
                     case .collectionView: BridgeInCollectionView(paramsViewModel: navigationViewModel.paramsViewModel)
                             .addNavigationBar(withTitle: "Bridge In Collection View") {
                                 navigationViewModel.popLast()
                             }
+                        
                     case .swiftUI: BridgeInSwiftUI(params: navigationViewModel.paramsViewModel)
                             .addNavigationBar(withTitle: "Bridge In SwiftUI") {
                                 navigationViewModel.popLast()
                             }
-                    case .scrollView: BridgeInScrollView(paramsViewModel: navigationViewModel.paramsViewModel)
-                            .addNavigationBar(withTitle: "Bridge In Scroll View") {
-                                navigationViewModel.popLast()
-                            }
+                        
+                    case .scrollView: BridgeInScrollView(
+                        paramsViewModel: navigationViewModel.paramsViewModel,
+                        isSmartLogic: false
+                    )
+                    .addNavigationBar(withTitle: "Bridge In Scroll View") {
+                        navigationViewModel.popLast()
+                    }
+                        
                     case .regular: RegularSDK(paramsViewModel: navigationViewModel.paramsViewModel)
                             .addNavigationBar(withTitle: "Regular SDK") {
                                 navigationViewModel.popLast()
                             }
+                        
                     case .readMore: BridgeInTableView(paramsViewModel: navigationViewModel.paramsViewModel, readMore: true)
                             .addNavigationBar(withTitle: "Read More") {
                                 navigationViewModel.popLast()
                             }
+                        
                     case .useCases: UseCasesScreen(navigationViewModel: navigationViewModel)
+                            .addNavigationBar(
+                                withTitle: "Use Cases",
+                                backAction: {
+                                    navigationViewModel.popLast()
+                                }
+                            )
+                        
+                    case .twoWidgets: BridgeInScrollViewTwoWidgets(paramsViewModel: navigationViewModel.paramsViewModel)
+                            .addNavigationBar(withTitle: "Two Widgets") {
+                                navigationViewModel.popLast()
+                            }
+                        
+                    case .smartLogic: BridgeInScrollView(
+                        paramsViewModel: navigationViewModel.paramsViewModel,
+                        isSmartLogic: false
+                    )
+                    .addNavigationBar(withTitle: "Smart Logic") {
+                        navigationViewModel.popLast()
+                    }
                 }
             }
     }
     
-    var useCasesContent: some View {
+    
+    var configContent: some View {
         VStack {
             Text("SDK Version " + String(OB_SDK_VERSION))
             

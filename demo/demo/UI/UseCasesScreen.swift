@@ -17,7 +17,9 @@ struct UseCasesScreen: View {
         "Bridge in SwiftUI",
         "Bridge in ScrollView",
         "Regular SDK",
-        "Read More"
+        "Read More",
+        "Two widgets on the same page",
+        "Smart Logic"
     ]
     
     
@@ -43,6 +45,10 @@ struct UseCasesScreen: View {
                             navigationViewModel.push(.regular)
                         case 5:
                             navigationViewModel.push(.readMore)
+                        case 6:
+                            navigationViewModel.push(.twoWidgets)
+                        case 7:
+                            navigationViewModel.push(.smartLogic)
                         default: return
                     }
                 }) {
@@ -50,12 +56,6 @@ struct UseCasesScreen: View {
                 }
             }
         }
-        .addNavigationBar(
-            withTitle: "Use Cases",
-            backAction: {
-                navigationViewModel.popLast()
-            }
-        )
     }
 }
 

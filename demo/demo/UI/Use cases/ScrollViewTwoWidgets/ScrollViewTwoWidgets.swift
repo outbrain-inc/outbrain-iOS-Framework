@@ -1,31 +1,31 @@
 //
-//  ScrollViewVC.swift
-//  SFWebView-Dev
+//  ScrollViewTwoWidgets.swift
+//  demo
 //
-//  Created by Oded Regev on 21/06/2021.
-//  Copyright © 2021 Outbrain inc. All rights reserved.
+//  Created by Leonid Lemesev on 30/07/2024.
 //
 
+import Foundation
 import UIKit
 import SafariServices
 import OutbrainSDK
 
-class ScrollViewVC : UIViewController, UIScrollViewDelegate {
+
+class ScrollViewTwoWidgets : UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var sfWidget: SFWidget!
-    @IBOutlet weak var sfWidgetHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sfWidget1: SFWidget!
+    @IBOutlet weak var sfWidget2: SFWidget!
+    @IBOutlet weak var sfWidget1HeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sfWidget2HeightConstraint: NSLayoutConstraint!
     
     private let paramsViewModel: ParamsViewModel
-    private let isSmartLogic: Bool
     
     
-    init(paramsViewModel: ParamsViewModel,
-         isSmartLogic: Bool) {
+    init(paramsViewModel: ParamsViewModel) {
         self.paramsViewModel = paramsViewModel
-        self.isSmartLogic = isSmartLogic
-        super.init(nibName: "ScrollViewVC", bundle: nil)
+        super.init(nibName: "ScrollViewTwoWidgets", bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -36,11 +36,21 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sfWidget.configure(
+        sfWidget1.configure(
             with: self,
             url: paramsViewModel.articleURL,
-            widgetId: isSmartLogic ? paramsViewModel.smartLogicWidgetId : paramsViewModel.bridgeWidgetId,
+            widgetId: paramsViewModel.bridgeWidgetId,
             widgetIndex: 0,
+            installationKey: "NANOWDGT01",
+            userId: nil,
+            darkMode: paramsViewModel.darkMode
+        )
+        
+        sfWidget2.configure(
+            with: self,
+            url: paramsViewModel.articleURL,
+            widgetId: paramsViewModel.bridgeWidgetId,
+            widgetIndex: 1,
             installationKey: "NANOWDGT01",
             userId: nil,
             darkMode: paramsViewModel.darkMode
@@ -50,7 +60,8 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        sfWidget.viewWillTransition(to: size, with: coordinator)
+        sfWidget1.viewWillTransition(to: size, with: coordinator)
+        sfWidget2.viewWillTransition(to: size, with: coordinator)
         
         coordinator.animate(alongsideTransition: nil) { [weak self] _ in
             guard let self else { return }
@@ -63,16 +74,18 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        sfWidget.scrollViewDidScroll(scrollView)
+        sfWidget1.scrollViewDidScroll(scrollView)
+        sfWidget2.scrollViewDidScroll(scrollView)
     }
 }
 
 
 // MARK: SFWidgetDelegate
-extension ScrollViewVC: SFWidgetDelegate {
+extension ScrollViewTwoWidgets: SFWidgetDelegate {
     
     func didChangeHeight() {
-        sfWidgetHeightConstraint.constant = sfWidget.getCurrentHeight()
+        sfWidget1HeightConstraint.constant = sfWidget1.getCurrentHeight()
+        sfWidget2HeightConstraint.constant = sfWidget2.getCurrentHeight()
     }
     
     func onOrganicRecClick(_ url: URL) {
@@ -90,3 +103,4 @@ extension ScrollViewVC: SFWidgetDelegate {
         print("App received widgetEvent: **\(eventName)** with data: \(additionalData)")
     }
 }
+
