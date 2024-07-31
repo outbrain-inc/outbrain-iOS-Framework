@@ -48,7 +48,7 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate, OBViewController {
 // MARK: SFWidgetDelegate
 extension ScrollViewVC: SFWidgetDelegate {
     func didChangeHeight() {
-        self.sfWidgetHeightConstraint.constant = self.sfWidget.getCurrentHeight()
+        self.sfWidgetHeightConstraint.constant = self.sfWidget.currentHeight
     }
     
     func onOrganicRecClick(_ url: URL) {

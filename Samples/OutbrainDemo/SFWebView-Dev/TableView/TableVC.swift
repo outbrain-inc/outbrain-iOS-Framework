@@ -106,7 +106,7 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource, OB
         case 2, 3, 4:
             return UIDevice.current.userInterfaceIdiom == .pad ? 200 : UITableView.automaticDimension;
         default:
-            return self.sfWidget.getCurrentHeight();
+            return self.sfWidget.currentHeight
         }
     }
     

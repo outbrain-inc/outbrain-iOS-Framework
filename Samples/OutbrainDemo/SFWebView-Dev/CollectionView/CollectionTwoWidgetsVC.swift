@@ -119,11 +119,11 @@ class CollectionTwoWidgetsVC : UICollectionViewController, UICollectionViewDeleg
             case 2,4,5:
                 return CGSize(width: width, height: 200.0)
             case 3:
-                return CGSize(width: width, height: self.obRegularWidget.getCurrentHeight())
+                return CGSize(width: width, height: self.obRegularWidget.currentHeight)
             default:
                 break
         }
-        return CGSize(width: width, height: self.obSmartfeedWidget.getCurrentHeight())
+        return CGSize(width: width, height: self.obSmartfeedWidget.currentHeight)
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
