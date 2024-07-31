@@ -1,5 +1,9 @@
 # Release Notes
 
+## v4.35.0 - July 31, 2024
+
+- Privacy Manifest - improve coverage of "tracking domains", list was updated to contain 27 domains.
+
 ## v4.34.0 - July 21, 2024
 
 - Minor - add support for `gpp` and `gpp_sid` ODB params in regular widget and Bridge widget.
