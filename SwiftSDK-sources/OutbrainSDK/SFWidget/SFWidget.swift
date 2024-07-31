@@ -39,6 +39,9 @@ public class SFWidget: UIView {
     var errorReporter: OBErrorReport?
     var settings: [String: Any] = [:]
     static var isFlutter: Bool = false;
+    static var isReactNative: Bool = false;
+    static var flutter_packageVersion: String?;
+    static var RN_packageVersion: String?;
     public static var infiniteWidgetsOnTheSamePage: Bool = false;
     static var globalBridgeParams: String?
     
@@ -268,8 +271,14 @@ public class SFWidget: UIView {
 
     }
     
-    public static func setIsFlutter(value: Bool) {
-        isFlutter = value;
+    public static func enableFlutterMode(flutter_packageVersion: String) {
+        isFlutter = true;
+        self.flutter_packageVersion = flutter_packageVersion;
+    }
+    
+    public static func enableReactNativeMode(RN_packageVersion: String) {
+        isReactNative = true;
+        self.RN_packageVersion = RN_packageVersion;
     }
 
     public override func didMoveToWindow() {
@@ -362,6 +371,9 @@ public class SFWidget: UIView {
             .addOSTracking()
             .addWidgetIndex(index: self.widgetIndex)
             .addIsFlutter(isFlutter: SFWidget.isFlutter)
+            .addIsReactNative(isReactNative: SFWidget.isReactNative)
+            .addFlutterPackageVersion(version: SFWidget.flutter_packageVersion)
+            .addReactNativePackageVersion(version: SFWidget.RN_packageVersion)
             .build() {
             
             Outbrain.logger.log("Bridge URL: \(widgetURL)")
