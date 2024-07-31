@@ -170,6 +170,24 @@ class BridgeUrlBuilder {
         return self
     }
     
+    func addFlutterPackageVersion(version: String?) -> BridgeUrlBuilder {
+        guard version != nil else { return self }
+        newQueryItems.append(URLQueryItem(name: "flutterPackageVersion", value: version))
+        return self
+    }
+    
+    func addIsReactNative(isReactNative: Bool) -> BridgeUrlBuilder {
+        guard isReactNative else { return self }
+        newQueryItems.append(URLQueryItem(name: "reactNative", value: "true"))
+        return self
+    }
+    
+    func addReactNativePackageVersion(version: String?) -> BridgeUrlBuilder {
+        guard version != nil else { return self }
+        newQueryItems.append(URLQueryItem(name: "reactNativePackageVersion", value: version))
+        return self
+    }
+    
     func addOBPubImp(pubImpId: String?) -> BridgeUrlBuilder {
         if let pubImpId = pubImpId {
             newQueryItems.append(URLQueryItem(name: "pubImpId", value: pubImpId))
