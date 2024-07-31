@@ -98,8 +98,8 @@ public class Outbrain {
 
         // check initilized
         if let notInitilized = Outbrain.checkInitiated() {
-            // create an empty resposen with the corresponding error
-            let failedRes = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: notInitilized)
+            // create an empty respose with the corresponding error
+            _ = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: notInitilized)
 
             return
         }

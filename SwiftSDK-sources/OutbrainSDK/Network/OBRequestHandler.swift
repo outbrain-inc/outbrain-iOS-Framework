@@ -115,7 +115,7 @@ public struct OBRequestHandler {
         
         Outbrain.logger.debug("fetch recs - got response", domain: "request-handler")
         // a mocked response with error to return in case of
-        var responseWithError = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: nil)
+        let responseWithError = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: nil)
         
         // Request Error
         if let error = error {
@@ -154,7 +154,7 @@ public struct OBRequestHandler {
         }
         
         // JSON Parsing Error
-        guard var response = parseJsonData(with: jsonData) else {
+        guard let response = parseJsonData(with: jsonData) else {
             responseWithError.error = OBError.nativeError(message: "Parsing failed", key: .nativeError, code: .parsingErrorCode)
             Outbrain.logger.error("fetch recs - parsing failed", domain: "request-handler")
             OBErrorReport.shared.errorMessage = "fetch recs - parsing failed"
