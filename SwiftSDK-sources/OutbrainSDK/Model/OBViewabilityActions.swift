@@ -8,6 +8,7 @@
 import Foundation
 
 public struct OBViewabilityActions {
+    
     let reportServed: String?
     let reportViewed: String?
 }

@@ -12,6 +12,7 @@ class MockScriptMessage: WKScriptMessage {
     }
 }
 
+
 class MockSFWidget: SFWidget {
     var messageHeightChangeCalled = false
     var messageHeight: CGFloat = 0.0
@@ -21,6 +22,7 @@ class MockSFWidget: SFWidget {
         messageHeight = height
     }
 }
+
 
 class SFWidgetMessageHandlerTests: XCTestCase {
     

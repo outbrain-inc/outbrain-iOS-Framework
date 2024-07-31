@@ -15,14 +15,17 @@ let IABConsent_ParsedVendorConsentsKey = "IABConsent_ParsedVendorConsents"
 let IABConsent_ParsedPurposeConsentsKey = "IABConsent_ParsedPurposeConsents"
 let IABConsent_CMPPresentKey = "IABConsent_CMPPresent"
 
-enum SubjectToGDPR: Int {
-    case unknown = -1
-    case no = 0
-    case yes = 1
-}
 
 
 class GDPRUtils {
+    
+    
+    enum SubjectToGDPR: Int {
+        case unknown = -1
+        case no = 0
+        case yes = 1
+    }
+    
     
     static var userDefaults: UserDefaults = {
         let defaults = UserDefaults.standard
@@ -48,14 +51,12 @@ class GDPRUtils {
     }
     
     static var subjectToGDPR: SubjectToGDPR {
-        if let subjectToGDPRAsString = self.userDefaults.object(forKey: IABConsent_SubjectToGDPRKey) as? String {
-            if subjectToGDPRAsString == "0" {
-                return .no
-            } else if subjectToGDPRAsString == "1" {
-                return .yes
-            } else {
-                return .unknown
-            }
+        guard let subjectToGDPRAsString = userDefaults.object(forKey: IABConsent_SubjectToGDPRKey) as? String else { return .unknown }
+        
+        if subjectToGDPRAsString == "0" {
+            return .no
+        } else if subjectToGDPRAsString == "1" {
+            return .yes
         } else {
             return .unknown
         }

@@ -9,6 +9,7 @@ import Foundation
 let IABGPP_HDR_SectionsKey = "IABGPP_HDR_Sections"
 let IABGPP_HDR_GppStringKey = "IABGPP_HDR_GppString"
 
+
 class GPPUtils {
     
     static var userDefaults: UserDefaults = {

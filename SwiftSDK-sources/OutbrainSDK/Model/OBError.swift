@@ -8,24 +8,28 @@
 import Foundation
 
 public enum OBError: Error {
-    case genericError(message: String?, key: OBErrorsKeys, code: OBErrorCode)
-    case networkError(message: String?, key: OBErrorsKeys, code: OBErrorCode)
-    case nativeError(message: String?, key: OBErrorsKeys, code: OBErrorCode)
-    case zeroRecommendationsError(message: String?, key: OBErrorsKeys, code: OBErrorCode)
+    
+    case generic(message: String?, key: OBErrorsKeys, code: OBErrorCode)
+    case network(message: String?, key: OBErrorsKeys, code: OBErrorCode)
+    case native(message: String?, key: OBErrorsKeys, code: OBErrorCode)
+    case zeroRecommendations(message: String?, key: OBErrorsKeys, code: OBErrorCode)
 }
 
+
 public enum OBErrorsKeys: String {
-    case genericError = "com.outbrain.sdk:OBGenericErrorDomain"
-    case networkError = "com.outbrain.sdk:OBNetworkErrorDomain"
-    case nativeError = "com.outbrain.sdk:OBNativeErrorDomain"
-    case zeroRecommendationsError = "com.outbrain.sdk:OBZeroRecommendationseErrorDomain"
+    
+    case generic = "com.outbrain.sdk:OBGenericErrorDomain"
+    case network = "com.outbrain.sdk:OBNetworkErrorDomain"
+    case native = "com.outbrain.sdk:OBNativeErrorDomain"
+    case zeroRecommendations = "com.outbrain.sdk:OBZeroRecommendationseErrorDomain"
 }
 
 public enum OBErrorCode: Int {
-    case genericErrorCode = 10200
-    case parsingErrorCode = 10201
-    case serverErrorCode = 10202
-    case invalidParametersErrorCode = 10203
-    case noRecommendationsErrorCode = 10204
-    case noDataErrorCode = 10205
+    
+    case generic = 10200
+    case parsing = 10201
+    case server = 10202
+    case invalidParameters = 10203
+    case noRecommendations = 10204
+    case noData = 10205
 }

@@ -11,25 +11,25 @@ import XCTest
 final class OutbrainSDKTests: XCTestCase {
     
     override func setUp() {
-        Outbrain.WAS_INITIALIZED = false
+        Outbrain.isInitialized = false
         Outbrain.partnerKey = nil
     }
         
     func testInitializeOutbrain() {
         Outbrain.initializeOutbrain(withPartnerKey: "partnerKey")
-        XCTAssertTrue(Outbrain.WAS_INITIALIZED)
+        XCTAssertTrue(Outbrain.isInitialized)
         XCTAssertEqual(Outbrain.partnerKey, "partnerKey")
     }
     
     func testCheckInitiatedNotInitialized() {
-        Outbrain.WAS_INITIALIZED = false
+        Outbrain.isInitialized = false
         let error = Outbrain.checkInitiated()
 
         switch error {
-        case .genericError(let message, _, _),
-             .networkError(let message, _, _),
-             .nativeError(let message, _, _),
-             .zeroRecommendationsError(let message, _, _):
+        case .generic(let message, _, _),
+             .network(let message, _, _),
+             .native(let message, _, _),
+             .zeroRecommendations(let message, _, _):
             XCTAssertEqual(message, "Outbrain SDK hasn't initiated with a partner key")
         case .none:
             XCTAssertTrue(false)
@@ -37,7 +37,7 @@ final class OutbrainSDKTests: XCTestCase {
     }
     
     func testCheckInitiatedInitialized() {
-        Outbrain.WAS_INITIALIZED = true
+        Outbrain.isInitialized = true
         let error = Outbrain.checkInitiated()
 
         XCTAssertNil(error)
@@ -60,7 +60,7 @@ final class OutbrainSDKTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Fetch recommendations completion")
         let delegate = MockResponseDelegate(expectation: expectation)
 
-        Outbrain.WAS_INITIALIZED = true
+        Outbrain.isInitialized = true
         
         Outbrain.fetchRecommendations(for: request, with: delegate)
 

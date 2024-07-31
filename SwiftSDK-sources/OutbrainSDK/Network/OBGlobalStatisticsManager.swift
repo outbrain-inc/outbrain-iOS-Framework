@@ -21,7 +21,11 @@ public struct OBGlobalStatisticsManager {
     // MARK: Reporting
     
     // report served
-    mutating func reportServed(request: OBRequest, response: OBRecommendationResponse, timestamp requestStartDate: Date) {
+    mutating func reportServed(
+        request: OBRequest,
+        response: OBRecommendationResponse,
+        timestamp requestStartDate: Date
+    ) {
         // Check if viewability is enabled
         guard isGlobalStatsticsEnabled(),
               let rid = response.request["req_id"] as? String,

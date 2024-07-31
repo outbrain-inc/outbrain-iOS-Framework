@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class DeviceModelUtils {
-
+    
     // get the device type
     static var deviceModel: String {
         let device = UIDevice.current
@@ -29,23 +29,22 @@ class DeviceModelUtils {
         return "Unknown"
     }
     
+    
     // get the device type short form
     static var deviceTypeShort: String {
-        let device = UIDevice.current
-        
-        switch device.userInterfaceIdiom {
-        case .phone:
-            return "mobile"
-        case .pad:
-            return "tablet"
-        case .tv:
-            return "tv"
-        case .carPlay:
-            return "car"
-        case .mac:
-            return "mac"
-        default:
-            return "unknown"
+        switch UIDevice.current.userInterfaceIdiom {
+            case .phone:
+                return "mobile"
+            case .pad:
+                return "tablet"
+            case .tv:
+                return "tv"
+            case .carPlay:
+                return "car"
+            case .mac:
+                return "mac"
+            default:
+                return "unknown"
         }
     }
     
@@ -68,8 +67,8 @@ class DeviceModelUtils {
         return isDynamicTextLarge
     }
     
+    
     static func isDeviceSimulator() -> Bool {
-        let deviceModel = self.deviceModel
         return deviceModel == "Simulator"
     }
 }

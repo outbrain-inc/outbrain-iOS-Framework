@@ -11,9 +11,7 @@ public struct OBLogger {
    
     // store all logs
     var logs: [OBLog] = []
-        
-    init() {
-    }
+    
     
     // MARK: Logging methods
     
@@ -91,6 +89,7 @@ public struct OBLogger {
     }
 }
 
+
 struct OBLog {
     let message: String
     let level: OBLogLevels
@@ -105,7 +104,7 @@ struct OBLog {
     var formattedLog: String {
         
         // get log level string
-        let logLevelString = self.logLevelString
+        let logLevelString = logLevelString
         
         // format timestamp
         let dateFormatter = DateFormatter()
@@ -114,10 +113,11 @@ struct OBLog {
         
         // format domain
         var domainStr: String = ""
-        if self.domain == nil {
-            domainStr = "[OUTBRAIN-SDK]"
+    
+        if let domain {
+            domainStr = "[OUTBRAIN-SDK-\(domain.uppercased())]"
         } else {
-            domainStr = "[OUTBRAIN-SDK-\(self.domain!.uppercased())]"
+            domainStr = "[OUTBRAIN-SDK]"
         }
 
         // return formatted log string
@@ -138,18 +138,17 @@ struct OBLog {
         }
     }
     
-    init(message: String, level: OBLogLevels, domain: String? = nil, printLog: Bool) {
+    
+    init(
+        message: String,
+        level: OBLogLevels,
+        domain: String? = nil,
+        printLog: Bool
+    ) {
         self.message = message
         self.level = level
         self.timestamp = Date() // get current timestamp
         self.printLog = printLog
         self.domain = domain
     }
-}
-
-public enum OBLogLevels: String {
-    case log
-    case debug
-    case warn
-    case error
 }

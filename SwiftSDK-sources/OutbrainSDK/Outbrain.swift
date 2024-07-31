@@ -11,106 +11,88 @@ import UIKit
 public class Outbrain {
 
     // MARK: OB Instance Variables
-
-    // current SDK version
     static let OB_SDK_VERSION = "5.0.11"
-
-    // Logger
     static var logger = OBLogger()
-
-    // Initiated flag
-    static var WAS_INITIALIZED = false
-
-    // partner key will use to resolve the publisher
-    static var partnerKey: String?
-
-    // manual set user id
+    static var isInitialized = false
+    static var partnerKey: String? // partner key will use to resolve the publisher
     static var customUserId: String?
-
-    // store last t param
     static var lastTParam: String?
-
-    // store last apv param
     static var lastApvParam: Bool?
     
-    // store test mode
     public static var setTestMode: Bool = false
-    
-    // store test RTB
     public static var testRTB: Bool = false
-    
-    // set test mode
-    public static func setTestMode(_ testMode: Bool) {
-        self.setTestMode = testMode
-    }
-    
     public static var testLocation: String?
     
-    public static func testLocation(_ location: String?) {
-        self.testLocation = location
-    }
 
     // init outbrain sdk with a partner key
     public static func initializeOutbrain(withPartnerKey partnerKey: String) {
         logger.log("Outbrain SDK initilized with partner key: \(partnerKey)")
-        if !self.WAS_INITIALIZED {
-            self.partnerKey = partnerKey
-            self.WAS_INITIALIZED = true
-        }
+        guard !isInitialized else { return }
+        
+        self.partnerKey = partnerKey
+        isInitialized = true
     }
 
+    
     // check if OutbrainSDK has initiated with a key
     public static func checkInitiated() -> OBError? {
-        if !self.WAS_INITIALIZED {
-            logger.error("Outbrain SDK hasn't initiated with a partner key")
-            let err = OBError.genericError(message: "Outbrain SDK hasn't initiated with a partner key", key: .genericError, code: .genericErrorCode)
-            return err
-        }
-        return nil
+        guard !isInitialized else { return nil }
+        
+        logger.error("Outbrain SDK hasn't initiated with a partner key")
+        let err = OBError.generic(
+            message: "Outbrain SDK hasn't initiated with a partner key",
+            key: .generic,
+            code: .generic
+        )
+        return err
     }
+    
 
     // MARK: Fetch Recommendations for requsest - callback or delegate
-
-    public static func fetchRecommendations(for request: OBRequest, with callback: @escaping (OBRecommendationResponse) -> Void){
+    public static func fetchRecommendations(
+        for request: OBRequest,
+        with callback: @escaping (OBRecommendationResponse) -> Void
+    ) {
         logger.debug("fetchRecommendations for widgetId \(request.widgetId) & url \(String(describing: request.url))")
         // check initilized
+        
+        
         if let notInitilized = Outbrain.checkInitiated() {
             // create an empty resposen with the corresponding error
-            let failedRes = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: notInitilized)
+            let failedRes = OBRecommendationResponse(
+                request: [:],
+                settings: [:],
+                viewabilityActions: nil,
+                recommendations: [],
+                error: notInitilized
+            )
 
-            // run the cb with the error
             callback(failedRes)
-
             return
         }
 
-        let requestHandler = OBRequestHandler(request)
+        
         OBQueueManager.shared.enqueueFetchRecsRequest {
-            requestHandler.fetchRecs(callback: callback)
+            OBRequestHandler(request).fetchRecs(callback: callback)
         }
-
     }
 
-    public static func fetchRecommendations(for request: OBRequest, with delegate: OBResponseDelegate){
+    
+    public static func fetchRecommendations(
+        for request: OBRequest,
+        with delegate: OBResponseDelegate
+    ) {
         logger.debug("fetchRecommendations for widgetId \(request.widgetId) & url \(String(describing: request.url))")
-
-        let requestHandler = OBRequestHandler(request)
-
-        // check initilized
-        if let notInitilized = Outbrain.checkInitiated() {
-            // create an empty respose with the corresponding error
-            _ = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: notInitilized)
-
-            return
-        }
+        
+        guard isInitialized else { return }
 
         OBQueueManager.shared.enqueueFetchRecsRequest {
-            requestHandler.fetchRecs(delegate: delegate)
+            OBRequestHandler(request).fetchRecs(delegate: delegate)
         }
     }
+    
 
     // MARK: Rec Click
-
     public static func getUrl(_ rec: OBRecommendation) -> URL? {
         logger.debug("getting click url for \(rec.isPaidLink ? "paid" : "organic") rec \(String(describing: rec.position))")
 
@@ -149,8 +131,8 @@ public class Outbrain {
         return URL(string: origUrl)
     }
 
+    
     // MARK: What-Is
-
     public static func getOutbrainAboutURL() -> URL? {
         let baseUrl = "https://www.outbrain.com/what-is/"
 
@@ -167,12 +149,13 @@ public class Outbrain {
         return whatisUrl.url
     }
     
+    
     public static func getAboutURL() -> URL? {
         return Outbrain.getOutbrainAboutURL()
     }
 
+    
     // MARK: Viewability
-
     // refresh OBLabel viewability with a new request
     public static func configureViewabilityPerListing(for view: UIView, withRec rec: OBRecommendation) {
         // start viewability chcking
@@ -182,8 +165,8 @@ public class Outbrain {
         OBViewbailityManager.shared.configureViewabilityPerListing(for: view, withRec: rec)
     }
 
+    
     // MARK: Logging
-
     // for debuging purposes, print all stored logs
     public static func printLogs(domain: String? = nil) {
         self.logger.printLogs(domain: domain)
