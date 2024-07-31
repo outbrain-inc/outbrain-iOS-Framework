@@ -11,9 +11,7 @@ import UIKit
 struct BridgeUtils {
     
     static func addConstraintsToParentView(view: UIView) {
-        guard let parentView = view.superview else {
-            return
-        }
+        guard let parentView = view.superview else { return }
         
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -27,27 +25,20 @@ struct BridgeUtils {
         view.setNeedsLayout()
     }
     
+    
     static func addConstraintsToFillParent(view: UIView) {
-        guard let parentView = view.superview else {
-            return
-        }
+        guard let parentView = view.superview else { return }
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         view.leadingAnchor.constraint(equalTo: parentView.leadingAnchor, constant: 0).isActive = true
         view.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: 0).isActive = true
         view.topAnchor.constraint(equalTo: parentView.topAnchor, constant: 0).isActive = true
         view.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: 0).isActive = true
-        
         view.setNeedsLayout()
     }
     
+    
     static func isValidURL(_ string: String) -> Bool {
-        if let _ = URL(string: string) {
-            return true
-        } else {
-            return false
-        }
+        return URL(string: string) != nil
     }
-
 }

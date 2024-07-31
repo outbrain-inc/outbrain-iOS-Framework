@@ -17,11 +17,13 @@ import Foundation
      */
     func onRecClick(_ url: URL)
     
+    
     /**
      *  @brief (Optional) called when the "feed widget" inside the WebView changed its height. Publisher might want to be notified when the SFWidget changes its height.
      *  @param newHeight - the updated height for the SFWidget
      */
     @objc optional func didChangeHeight(_ newHeight: CGFloat)
+    
     
     /**
      *  @brief (Optional) called when the "feed widget" inside the WebView changed its height. Publisher might want to be notified when the SFWidget changes its height.
@@ -30,12 +32,14 @@ import Foundation
     @available(*, deprecated, message: "Please use didChangeHeight(_ newHeight: CGFloat) instead.")
     @objc optional func didChangeHeight()
     
+    
     /**
      *  @brief (Optional) publisher may choose to "catch" clicks on "organic recommendations" in order to navigate the user to the clicked recommendation INSIDE the app (instead of the default behavior of openning the link in an external browser)
      *
      *  @param url - the organic rec "article url", i.e. the aricle url we should navigate to within the app navigation stack.
      */
     @objc optional func onOrganicRecClick(_ url: URL)
+    
     
     /**
      *  @brief (Optional) called when the JS widget inside the WKWebView dispatch widget events (for example: rendered, error, viewability, etc).

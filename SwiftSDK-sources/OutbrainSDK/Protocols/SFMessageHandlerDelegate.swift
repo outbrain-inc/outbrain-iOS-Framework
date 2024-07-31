@@ -9,6 +9,7 @@ import Foundation
 import WebKit
 
 protocol SFMessageHandlerDelegate: SFWidgetDelegate {
+    
     func messageHeightChange(_ height: CGFloat)
     func didClickOnRec(_ url: String)
     func didClickOnOrganicRec(_ url: String, orgUrl: String)

@@ -11,7 +11,7 @@ import WebKit
 class SFWidgetMessageHandler: NSObject, WKScriptMessageHandler {
     
     private let messageHandler = "message-handler"
-    internal weak var delegate: SFWidget?
+    weak var delegate: SFWidget?
     
     
     func userContentController(
@@ -19,17 +19,26 @@ class SFWidgetMessageHandler: NSObject, WKScriptMessageHandler {
         didReceive message: WKScriptMessage
     ) {
         guard message.name == "ReactNativeWebView" else {
-            Outbrain.logger.debug("SFWidgetMessageHandler - message is not ReactNativeWebView", domain: self.messageHandler)
+            Outbrain.logger.debug(
+                "SFWidgetMessageHandler - message is not ReactNativeWebView",
+                domain: messageHandler
+            )
             return
         }
         
         guard let jsonString = message.body as? String else {
-            Outbrain.logger.debug("SFWidgetMessageHandler - Invalid message body", domain: self.messageHandler)
+            Outbrain.logger.debug(
+                "SFWidgetMessageHandler - Invalid message body",
+                domain: messageHandler
+            )
             return
         }
         
         guard let data = jsonString.data(using: .utf8) else {
-            Outbrain.logger.debug("SFWidgetMessageHandler - Error converting message body to data", domain: self.messageHandler)
+            Outbrain.logger.debug(
+                "SFWidgetMessageHandler - Error converting message body to data",
+                domain: messageHandler
+            )
             return
         }
             
@@ -45,8 +54,8 @@ class SFWidgetMessageHandler: NSObject, WKScriptMessageHandler {
             handleSettingsMessage(msgBody)
         } catch {
             let errorMsg = "Exception in SFWidgetMessageHandler - \(error)"
-            Outbrain.logger.error("SFWidgetMessageHandler - Error converting message body to data", domain: self.messageHandler)
-            Outbrain.logger.error(errorMsg, domain: self.messageHandler)
+            Outbrain.logger.error("SFWidgetMessageHandler - Error converting message body to data", domain: messageHandler)
+            Outbrain.logger.error(errorMsg, domain: messageHandler)
             delegate?.errorReporter?.setMessage(message: errorMsg).reportErrorToServer()
         }
     }
@@ -57,11 +66,11 @@ class SFWidgetMessageHandler: NSObject, WKScriptMessageHandler {
         
         Outbrain.logger.debug(
             "SFWidgetMessageHandler received bridgeParam: \(bridgeParam)",
-            domain: self.messageHandler
+            domain: messageHandler
         )
         
         NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: SFWIDGET_BRIDGE_PARAMS_NOTIFICATION),
+            name: NSNotification.Name(rawValue: SFConsts.SFWIDGET_BRIDGE_PARAMS_NOTIFICATION),
             object: self,
             userInfo: ["bridgeParams": bridgeParam]
         )
@@ -86,7 +95,7 @@ class SFWidgetMessageHandler: NSObject, WKScriptMessageHandler {
         
         if let type = msg["type"] as? String, type == "organic-rec",
            let orgUrl = msg["orgUrl"] as? String {
-            self.delegate?.didClickOnOrganicRec(urlString, orgUrl: orgUrl)
+            delegate?.didClickOnOrganicRec(urlString, orgUrl: orgUrl)
             return
         }
         

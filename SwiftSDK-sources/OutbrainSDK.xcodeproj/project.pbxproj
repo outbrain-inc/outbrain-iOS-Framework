@@ -37,6 +37,8 @@
 		5EEF0AC12A5548DB000E65A1 /* OBPlatformsRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AC02A5548DB000E65A1 /* OBPlatformsRequestTests.swift */; };
 		5EEF0AC32A554953000E65A1 /* OBGlobalStatisticsDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AC22A554953000E65A1 /* OBGlobalStatisticsDataTests.swift */; };
 		5EEF0AC72A554A27000E65A1 /* OBQueueManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AC62A554A27000E65A1 /* OBQueueManagerTests.swift */; };
+		B113CC4E2C5A235C00BECDFA /* WidgetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC4D2C5A235C00BECDFA /* WidgetEvents.swift */; };
+		B113CC502C5A236D00BECDFA /* PlatformUrlType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */; };
 		CA0F15862A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F15852A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift */; };
 		CA2646B32AADB846005287CB /* SFWidgetMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2646B22AADB846005287CB /* SFWidgetMessageHandler.swift */; };
 		CA2646B52AADD0B1005287CB /* BridgeUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2646B42AADD0B1005287CB /* BridgeUrlBuilder.swift */; };
@@ -101,6 +103,8 @@
 		5EEF0AC02A5548DB000E65A1 /* OBPlatformsRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformsRequestTests.swift; sourceTree = "<group>"; };
 		5EEF0AC22A554953000E65A1 /* OBGlobalStatisticsDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBGlobalStatisticsDataTests.swift; sourceTree = "<group>"; };
 		5EEF0AC62A554A27000E65A1 /* OBQueueManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBQueueManagerTests.swift; sourceTree = "<group>"; };
+		B113CC4D2C5A235C00BECDFA /* WidgetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEvents.swift; sourceTree = "<group>"; };
+		B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformUrlType.swift; sourceTree = "<group>"; };
 		CA0F15852A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetCollectionCell.swift; sourceTree = "<group>"; };
 		CA2646B22AADB846005287CB /* SFWidgetMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetMessageHandler.swift; sourceTree = "<group>"; };
 		CA2646B42AADD0B1005287CB /* BridgeUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeUrlBuilder.swift; sourceTree = "<group>"; };
@@ -243,6 +247,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B113CC4C2C5A235200BECDFA /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				B113CC4D2C5A235C00BECDFA /* WidgetEvents.swift */,
+				B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		CA2646AF2AADA8F2005287CB /* SFWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +277,7 @@
 		CA26CB602A6FF31500D2C22F /* SFWidget */ = {
 			isa = PBXGroup;
 			children = (
+				B113CC4C2C5A235200BECDFA /* Enums */,
 				CA26CB612A6FF79A00D2C22F /* SFWidget.swift */,
 				CA26CB652A70108B00D2C22F /* SFWidgetMessageHandler.swift */,
 				CA26CB692A7124BF00D2C22F /* BridgeUrlBuilder.swift */,
@@ -435,6 +449,7 @@
 			files = (
 				E6A644A02C35516E00868269 /* ViewabilityTimerHandler.swift in Sources */,
 				CA0F15862A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift in Sources */,
+				B113CC502C5A236D00BECDFA /* PlatformUrlType.swift in Sources */,
 				5E0919D22A4ACC17005A014F /* OBDisclosure.swift in Sources */,
 				CA26CB6A2A7124BF00D2C22F /* BridgeUrlBuilder.swift in Sources */,
 				5E0919D62A4AFD57005A014F /* OBGlobalStatisticsData.swift in Sources */,
@@ -469,6 +484,7 @@
 				5E0919DA2A4B2377005A014F /* UIViewPrecentVisible.swift in Sources */,
 				CA26CB642A7001A600D2C22F /* SFWidgetDelegate.swift in Sources */,
 				E6E4B3BD2A2381A100FE44E3 /* OutbrainSDK.docc in Sources */,
+				B113CC4E2C5A235C00BECDFA /* WidgetEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

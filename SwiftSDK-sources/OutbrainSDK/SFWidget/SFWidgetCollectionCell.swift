@@ -7,6 +7,4 @@
 
 import UIKit
 
-public class SFWidgetCollectionCell: UICollectionViewCell {
-    
-}
+public class SFWidgetCollectionCell: UICollectionViewCell { }

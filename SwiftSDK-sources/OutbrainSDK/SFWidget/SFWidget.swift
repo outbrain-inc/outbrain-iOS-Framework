@@ -8,10 +8,6 @@
 import Foundation
 import WebKit
 
-let SFWIDGET_T_PARAM_NOTIFICATION = "SFWidget_T_Param_Ready"
-let SFWIDGET_BRIDGE_PARAMS_NOTIFICATION = "SFWidget_Bridge_Params_Ready"
-let THRESHOLD_FROM_BOTTOM: CGFloat = 500
-
 
 public class SFWidget: UIView {
 
@@ -302,7 +298,7 @@ public class SFWidget: UIView {
     
     
     func configureBridgeNotificationHandlers() {
-        let bridgeParamsNotification = NSNotification.Name(rawValue: SFWIDGET_BRIDGE_PARAMS_NOTIFICATION)
+        let bridgeParamsNotification = NSNotification.Name(rawValue: SFConsts.SFWIDGET_BRIDGE_PARAMS_NOTIFICATION)
         
         bridgeParamsObserver = NotificationCenter.default.addObserver(
             forName: bridgeParamsNotification,
@@ -323,7 +319,7 @@ public class SFWidget: UIView {
     
     
     func receiveBridgeParamsNotification(_ notification: Notification) {
-        if notification.name.rawValue == SFWIDGET_BRIDGE_PARAMS_NOTIFICATION {
+        if notification.name.rawValue == SFConsts.SFWIDGET_BRIDGE_PARAMS_NOTIFICATION {
             if let bridgeParams = notification.userInfo?["bridgeParams"] as? String {
                 self.bridgeParams = bridgeParams
                 SFWidget.globalBridgeParams = self.bridgeParams
@@ -374,9 +370,9 @@ public class SFWidget: UIView {
         if let widgetURL = bridgeUrlBuilder?
             .addPermalink(url: url)
             .addDarkMode(isDarkMode: darkMode)
-            .addTParam(tParam: tParam)
+            .addTParam(tParamValue: tParam)
             .addBridgeParams(bridgeParams: bridgeParams)
-            .addEvents(widgetEvents: isWidgetEventsEnabled ? .all: .no)
+            .addEvents(widgetEvents: isWidgetEventsEnabled ? .all : .omit)
             .addExternalId(extId: extId)
             .addExternalSecondaryId(extid2: extSecondaryId)
             .addOBPubImp(pubImpId: OBPubImp)
@@ -423,14 +419,14 @@ public class SFWidget: UIView {
             )
         }
         
-        if isLoading || inTransition || currentHeight <= THRESHOLD_FROM_BOTTOM {
+        if isLoading || inTransition || currentHeight <= SFConsts.THRESHOLD_FROM_BOTTOM {
             return
         }
 
         let contentOffsetY = scrollView.contentOffset.y
         let diffFromBottom = (scrollView.contentSize.height - scrollView.frame.size.height) - contentOffsetY
         
-        if diffFromBottom < THRESHOLD_FROM_BOTTOM {
+        if diffFromBottom < SFConsts.THRESHOLD_FROM_BOTTOM {
             loadMore()
         }
     }
@@ -473,7 +469,7 @@ public class SFWidget: UIView {
             
             guard shouldLoadMore else { return }
             
-            if self.isLoading || self.inTransition || self.currentHeight <= THRESHOLD_FROM_BOTTOM {
+            if self.isLoading || self.inTransition || self.currentHeight <= SFConsts.THRESHOLD_FROM_BOTTOM {
                 return
             }
             

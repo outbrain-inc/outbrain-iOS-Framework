@@ -9,6 +9,7 @@ import UIKit
 
 // Extend UIView to calculate the percent visible
 extension UIView {
+    
     // Calculate the percent visible
     func percentVisible() -> CGFloat {
         // convert view's frame to window's coordinate system
