@@ -11,7 +11,11 @@ import UIKit
 public class Outbrain {
 
     // MARK: OB Instance Variables
-    static let OB_SDK_VERSION = "5.0.11"
+
+    // current SDK version
+    static let OB_SDK_VERSION = "5.0.12"
+
+    // Logger
     static var logger = OBLogger()
     static var isInitialized = false
     static var partnerKey: String? // partner key will use to resolve the publisher

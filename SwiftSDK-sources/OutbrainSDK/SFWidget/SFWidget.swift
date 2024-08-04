@@ -292,6 +292,14 @@ public class SFWidget: UIView {
         self.RN_packageVersion = RN_packageVersion;
     }
     
+    public static func setInfiniteWidgetsOnTheSamePage(_ infiniteWidgets: Bool) {
+        infiniteWidgetsOnTheSamePage = true
+    }
+    
+    public func getCurrentHeight() -> CGFloat {
+        return currentHeight
+    }
+    
 
     public override func didMoveToWindow() {
         super.didMoveToWindow()

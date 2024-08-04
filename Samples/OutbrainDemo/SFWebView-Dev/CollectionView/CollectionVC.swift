@@ -109,7 +109,7 @@ class CollectionVC : UICollectionViewController, UICollectionViewDelegateFlowLay
             default:
                 break
         }
-        return CGSize(width: width, height: self.sfWidget.currentHeight)
+        return CGSize(width: width, height: self.sfWidget.getCurrentHeight())
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

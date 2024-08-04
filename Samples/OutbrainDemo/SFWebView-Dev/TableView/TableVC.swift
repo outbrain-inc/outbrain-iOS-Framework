@@ -22,7 +22,9 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource, OB
     
     var sfWidget: SFWidget!
     
-    let originalArticleItemsCount = 5
+    let originalArticleItemsCount = 6
+    let READ_MORE_FLAG = true
+    let OUTBRAIN_SECTION_INDEX = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,36 +47,48 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource, OB
     // MARK: UITableView methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return originalArticleItemsCount + 1
+        if (section == OUTBRAIN_SECTION_INDEX) {
+            return 1
+        }
+        else {
+            return originalArticleItemsCount
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell:UITableViewCell?
         
+        if (indexPath.section == OUTBRAIN_SECTION_INDEX) {
+            if let sfWidgetCell = self.tableView.dequeueReusableCell(withIdentifier: "SFWidgetCell") as? SFWidgetTableCell {
+                return sfWidgetCell
+            }
+        }
         switch indexPath.row {
         case 0:
             cell = self.tableView.dequeueReusableCell(withIdentifier: imageHeaderCellReuseIdentifier) as UITableViewCell?
         case 1:
             cell = self.tableView.dequeueReusableCell(withIdentifier: textHeaderCellReuseIdentifier) as UITableViewCell?
-        case 2,3,4:
-            cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
         default:
-            if let sfWidgetCell = self.tableView.dequeueReusableCell(withIdentifier: "SFWidgetCell") as? SFWidgetTableCell {
-                cell = sfWidgetCell
-            }
+            cell = self.tableView.dequeueReusableCell(withIdentifier: contentCellReuseIdentifier) as UITableViewCell?
             break;
         }
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (indexPath.section == OUTBRAIN_SECTION_INDEX) {
+            if let sfWidgetCell = cell as? SFWidgetTableCell {
+                self.sfWidget.willDisplay(sfWidgetCell)
+            }
+            return
+        }
         switch indexPath.row {
         case 0:
-            return
+            break
         case 1:
             if let articleCell = cell as? AppArticleTableViewCell {
                 articleCell.backgroundColor = UIColor.white
@@ -82,31 +96,29 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource, OB
                 articleCell.headerLabel.font = UIFont(name: articleCell.headerLabel.font!.fontName, size: CGFloat(fontSize))
                 articleCell.headerLabel.textColor = UIColor.black
             }
-        case 2,3,4:
+            break
+        default:
             if let articleCell = cell as? AppArticleTableViewCell {
                 articleCell.backgroundColor = UIColor.white
                 let fontSize = UIDevice.current.userInterfaceIdiom == .pad ? 20.0 : 15.0
                 articleCell.contentTextView.font = UIFont(name: articleCell.contentTextView.font!.fontName, size: CGFloat(fontSize))
                 articleCell.contentTextView.textColor = UIColor.black
             }
-        default:
-            if let sfWidgetCell = cell as? SFWidgetTableCell {
-                self.sfWidget.willDisplay(sfWidgetCell)
-            }
             break
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.section == OUTBRAIN_SECTION_INDEX) {
+            return self.sfWidget.getCurrentHeight()
+        }
         switch indexPath.row {
         case 0:
             return UIDevice.current.userInterfaceIdiom == .pad ? 400 : 250;
         case 1:
             return UIDevice.current.userInterfaceIdiom == .pad ? 150 : UITableView.automaticDimension;
-        case 2, 3, 4:
-            return UIDevice.current.userInterfaceIdiom == .pad ? 200 : UITableView.automaticDimension;
         default:
-            return self.sfWidget.currentHeight
+            return UIDevice.current.userInterfaceIdiom == .pad ? 200 : UITableView.automaticDimension;
         }
     }
     
