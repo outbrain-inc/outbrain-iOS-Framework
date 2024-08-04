@@ -39,7 +39,7 @@ class ScrollViewTwoWidgets : UIViewController, UIScrollViewDelegate {
         sfWidget1.configure(
             with: self,
             url: paramsViewModel.articleURL,
-            widgetId: paramsViewModel.bridgeWidgetId,
+            widgetId: paramsViewModel.bridgeWidgetId2,
             widgetIndex: 0,
             installationKey: "NANOWDGT01",
             userId: nil,

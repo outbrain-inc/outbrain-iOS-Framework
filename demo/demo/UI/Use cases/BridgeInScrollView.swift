@@ -13,13 +13,11 @@ struct BridgeInScrollView: UIViewControllerRepresentable {
     typealias UIViewControllerType = ScrollViewVC
     
     let paramsViewModel: ParamsViewModel
-    let isSmartLogic: Bool
     
     func makeUIViewController(context: Context) -> ScrollViewVC {
         // Instantiate your UIKit view controller here
         let articleVC = ScrollViewVC(
-            paramsViewModel: paramsViewModel,
-            isSmartLogic: isSmartLogic
+            paramsViewModel: paramsViewModel
         )
         return articleVC
     }

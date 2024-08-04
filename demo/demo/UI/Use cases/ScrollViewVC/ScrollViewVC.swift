@@ -18,15 +18,13 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var sfWidgetHeightConstraint: NSLayoutConstraint!
     
     private let paramsViewModel: ParamsViewModel
-    private let isSmartLogic: Bool
     
     
-    init(paramsViewModel: ParamsViewModel,
-         isSmartLogic: Bool) {
+    init(paramsViewModel: ParamsViewModel) {
         self.paramsViewModel = paramsViewModel
-        self.isSmartLogic = isSmartLogic
         super.init(nibName: "ScrollViewVC", bundle: nil)
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -39,7 +37,7 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
         sfWidget.configure(
             with: self,
             url: paramsViewModel.articleURL,
-            widgetId: isSmartLogic ? paramsViewModel.smartLogicWidgetId : paramsViewModel.bridgeWidgetId,
+            widgetId: paramsViewModel.bridgeWidgetId,
             widgetIndex: 0,
             installationKey: "NANOWDGT01",
             userId: nil,

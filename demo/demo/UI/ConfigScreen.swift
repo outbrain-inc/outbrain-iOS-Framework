@@ -47,10 +47,7 @@ struct ConfigScreen: View {
                                 navigationViewModel.popLast()
                             }
                         
-                    case .scrollView: BridgeInScrollView(
-                        paramsViewModel: navigationViewModel.paramsViewModel,
-                        isSmartLogic: false
-                    )
+                    case .scrollView: BridgeInScrollView(paramsViewModel: navigationViewModel.paramsViewModel)
                     .addNavigationBar(withTitle: "Bridge In Scroll View") {
                         navigationViewModel.popLast()
                     }
@@ -77,14 +74,6 @@ struct ConfigScreen: View {
                             .addNavigationBar(withTitle: "Two Widgets") {
                                 navigationViewModel.popLast()
                             }
-                        
-                    case .smartLogic: BridgeInScrollView(
-                        paramsViewModel: navigationViewModel.paramsViewModel,
-                        isSmartLogic: false
-                    )
-                    .addNavigationBar(withTitle: "Smart Logic") {
-                        navigationViewModel.popLast()
-                    }
                 }
             }
     }
@@ -103,13 +92,10 @@ struct ConfigScreen: View {
                     Text("Bridge widget ID")
                         .frame(height: 44)
                     
-                    Text("SF widget ID")
+                    Text("Bridge Widget ID 2")
                         .frame(height: 44)
                     
-                    Text("Smart logic widget ID")
-                        .frame(height: 44)
-                    
-                    Text("Regular widget ID")
+                    Text("Regular Widget ID")
                         .frame(height: 44)
                 }
                 
@@ -119,11 +105,7 @@ struct ConfigScreen: View {
                         .frame(height: 44)
                     
                     
-                    TextField("", text: $navigationViewModel.paramsViewModel.sfWidgetId)
-                        .textFieldStyle(.roundedBorder)
-                        .frame(height: 44)
-                    
-                    TextField("", text: $navigationViewModel.paramsViewModel.smartLogicWidgetId)
+                    TextField("", text: $navigationViewModel.paramsViewModel.bridgeWidgetId2)
                         .textFieldStyle(.roundedBorder)
                         .frame(height: 44)
                     

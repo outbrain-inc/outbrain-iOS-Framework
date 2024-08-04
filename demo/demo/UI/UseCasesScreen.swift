@@ -19,7 +19,6 @@ struct UseCasesScreen: View {
         "Regular SDK",
         "Read More",
         "Two widgets on the same page",
-        "Smart Logic"
     ]
     
     
@@ -47,8 +46,6 @@ struct UseCasesScreen: View {
                             navigationViewModel.push(.readMore)
                         case 6:
                             navigationViewModel.push(.twoWidgets)
-                        case 7:
-                            navigationViewModel.push(.smartLogic)
                         default: return
                     }
                 }) {

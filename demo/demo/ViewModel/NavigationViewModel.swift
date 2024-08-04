@@ -23,7 +23,6 @@ class NavigationViewModel: ObservableObject, Identifiable {
         case regular
         case readMore
         case twoWidgets
-        case smartLogic
     }
     
     @Published var paths = NavigationPath()
