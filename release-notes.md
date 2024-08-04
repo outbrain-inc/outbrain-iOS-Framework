@@ -1,5 +1,41 @@
 # Release Notes
 
+
+# Beta Releases
+
+## v5.0.12-beta - July 31, 2024
+
+- Internal - add suppoer for React Native and Flutter, official libraries by Outbrain.
+
+## v5.0.11-beta - July 21, 2024
+
+- Minor - improve Viewability polling interval to 200ms (was 2 seconds)
+
+## v5.0.10-beta - July 3, 2024
+
+- Minor - add support for Flutter, including infiniteWidgetsOnTheSamePage and globalBridgeParams
+- Minor - remove tParam notification handling in SFWidget since it is not being used anymore (BridgeParams contains it).
+
+## v5.0.9-beta - May 12, 2024
+- Minor - align with sdk guide
+
+## v5.0.5-beta - May 12, 2024
+- Minor - add missing/fix access sdk parts from error logs
+
+## v5.0.3-beta - April 8, 2024
+
+- Minor - verify that "beta" is working as expected (was "alpha")
+
+## v5.0.2-alpha - March 13, 2024
+
+- Minor - add support for obPubImp param.
+  
+## v5.0.1-alpha - December 25, 2023
+
+- Major - SDK re-write from ObjC to Swift.
+
+# Official Releases
+
 ## v4.35.0 - July 31, 2024
 
 - Privacy Manifest - improve coverage of "tracking domains", list was updated to contain 27 domains.

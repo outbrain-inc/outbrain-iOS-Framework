@@ -1,5 +1,6 @@
 # Xcode
 .DS_Store
+fastlane/
 build/
 OutbrainSDK.framework/
 OutbrainSDK.xcframework/
