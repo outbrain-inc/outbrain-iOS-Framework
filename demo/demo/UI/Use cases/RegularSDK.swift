@@ -78,12 +78,7 @@ struct RegularSDK: View {
             
             
             Outbrain.fetchRecommendations(for: request) { response in
-                guard let reqs = response?.recommendations else {
-                    return
-                }
-                
-                recommendations = reqs
-                    .compactMap { $0 as? OBRecommendation }
+                recommendations = response.recommendations
                     .map { .init(recommendation: $0) }
             }
         }

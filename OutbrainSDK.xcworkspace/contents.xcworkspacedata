@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SDK-sources/OutbrainSDK.xcodeproj">
+      location = "group:SwiftSDK-sources/OutbrainSDK.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:demo/demo.xcodeproj">

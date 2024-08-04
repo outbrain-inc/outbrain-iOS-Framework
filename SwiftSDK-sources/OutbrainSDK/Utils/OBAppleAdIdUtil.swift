@@ -13,7 +13,7 @@ class OBAppleAdIdUtil {
     
     // check if user has opted out of tracking
     static var isOptedOut: Bool {
-        if Outbrain.setTestMode { return false }
+        if Outbrain.testMode { return false }
         
         return ATTrackingManager.trackingAuthorizationStatus != .authorized
     }
@@ -21,7 +21,7 @@ class OBAppleAdIdUtil {
     
     // get the apple advertising id
     static var advertiserId: String {
-        if Outbrain.setTestMode {
+        if Outbrain.testMode {
             return "F22700D5-1D49-42CC-A183-F3676526035F" // dev hack because simulator returns 0000-0000-0000-0000
         }
         

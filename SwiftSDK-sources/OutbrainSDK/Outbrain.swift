@@ -23,7 +23,7 @@ public class Outbrain {
     static var lastTParam: String?
     static var lastApvParam: Bool?
     
-    public static var setTestMode: Bool = false
+    public static var testMode: Bool = false
     public static var testRTB: Bool = false
     public static var testLocation: String?
     
@@ -183,5 +183,21 @@ public class Outbrain {
     // for debuging purposes, print all stored logs
     public static func printLogs(domain: String? = nil) {
         self.logger.printLogs(domain: domain)
+    }
+    
+    
+    // MARK: - Testing
+    public static func setTestMode(_ testMode: Bool) {
+        self.testMode = testMode
+    }
+    
+    
+    public static func testRTB(_ testRTB: Bool) {
+        self.testRTB = testRTB
+    }
+    
+    
+    public static func testLocation(_ testLocation: String) {
+        self.testLocation = testLocation
     }
 }

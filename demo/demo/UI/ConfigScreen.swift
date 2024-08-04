@@ -81,7 +81,7 @@ struct ConfigScreen: View {
     
     var configContent: some View {
         VStack {
-            Text("SDK Version " + String(OB_SDK_VERSION))
+//            Text("SDK Version " + String(Outbrain.OB_SDK_VERSION))
             
             Toggle(isOn: $navigationViewModel.paramsViewModel.darkMode) {
                 Text("Dark mode")
