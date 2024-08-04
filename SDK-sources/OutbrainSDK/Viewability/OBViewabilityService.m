@@ -11,6 +11,8 @@
 #import "OBRequest.h"
 #import "OBLabel.h"
 #import "OBUtils.h"
+#import "OBErrorReporting.h"
+#import "OBAppleAdIdUtil.h"
 
 @interface ViewabilityData : NSObject
 
@@ -84,11 +86,13 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     }
     
     // NSLog(@"Outbrain reportRecsReceived: %@", widgetId);
+    NSString *reportServedUrl = response.settings.viewabilityActions.reportServedUrl;
+    NSString *reportViewedUrl = response.settings.viewabilityActions.reportViewedUrl;
     
     ViewabilityData *viewabilityData = [[ViewabilityData alloc] init];
     viewabilityData.rId = [response.responseRequest getStringValueForPayloadKey:@"req_id"];
-    viewabilityData.reportServedUrl = response.settings.viewabilityActions.reportServedUrl;
-    viewabilityData.reportViewedUrl = response.settings.viewabilityActions.reportViewedUrl;
+    viewabilityData.reportServedUrl = [self replaceDomainWithTrackingIfneeded: reportServedUrl];
+    viewabilityData.reportViewedUrl = [self replaceDomainWithTrackingIfneeded: reportViewedUrl];
     viewabilityData.requestStartDate = requestStartDate;
     viewabilityData.optedOut = response.responseRequest.optedOut;
     NSString *viewabilityKeyForRequestId = [self viewabilityKeyForRequestId:viewabilityData.rId];
@@ -120,6 +124,47 @@ float const kThirtyMinutesInSeconds = 30.0 * 60.0;
     if (matchingOblabel != nil) {
         [matchingOblabel trackViewability];
     }
+}
+
+- (NSString *) replaceDomainWithTrackingIfneeded:(NSString *)viewablityURL {
+    @try {
+        return [self _replaceDomainWithTrackingIfneeded:viewablityURL];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception in _replaceDomainWithTrackingIfneeded() - %@",exception.name);
+        NSLog(@"Reason: %@ ",exception.reason);
+        NSString *errorMsg = [NSString stringWithFormat:@"Exception in _replaceDomainWithTrackingIfneeded - %@ - reason: %@", exception.name, exception.reason];
+        [[OBErrorReporting sharedInstance] reportErrorToServer:errorMsg];
+        return nil;
+    }
+}
+
+- (NSString *) _replaceDomainWithTrackingIfneeded:(NSString *)viewablityURL {
+    if ([OBAppleAdIdUtil isOptedOut]) {
+        // if the user is opted out from tracking - we will use the original URL string.
+        return viewablityURL;
+    }
+    // Check if the input string is a valid URL
+    NSURL *url = [NSURL URLWithString:viewablityURL];
+    if (!url || !url.scheme || !url.host) {
+        NSLog(@"Error - replaceDomainWithTrackingIfneeded - invalid URL");
+        return nil;
+    }
+    
+    // Check if the URL contains the domain 'log.outbrainimg.com'
+    NSString *originalDomain = @"log.outbrainimg.com";
+    NSString *trackingDomain = @"t-log.outbrainimg.com";
+    
+    if ([url.host isEqualToString:originalDomain]) {
+        // Replace the domain in the URL string with the "tracking" domain
+        NSRange hostRange = [viewablityURL rangeOfString:originalDomain];
+        if (hostRange.location != NSNotFound) {
+            NSString *modifiedURLString = [viewablityURL stringByReplacingCharactersInRange:hostRange withString:trackingDomain];
+            return modifiedURLString;
+        }
+    }
+    
+    // If the domain is not found, return the original URL string
+    return viewablityURL;
 }
 
 -(NSURL *) viewabilityUrlWithMandatoryParams:(NSURLComponents *)components tmParam:(NSString *)tmParam isOptedOut:(BOOL)isOptedOut {

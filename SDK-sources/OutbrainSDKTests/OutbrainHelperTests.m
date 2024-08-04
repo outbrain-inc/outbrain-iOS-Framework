@@ -92,7 +92,7 @@
     
     urlComponents.query = nil;
     XCTAssertEqual(testsCount, 10);
-    XCTAssert([urlComponents.string isEqualToString:@"https://odb.outbrain.com/utils/get"]);
+    XCTAssert([urlComponents.string isEqualToString:@"https://mv.outbrain.com/Multivac/api/get"]);
 }
 
 - (void)testUrlBuilderForPlatformBundleRequest {
@@ -140,7 +140,7 @@
     
     urlComponents.query = nil;
     XCTAssertEqual(testsCount, 5);
-    XCTAssert([urlComponents.string isEqualToString:@"https://odb.outbrain.com/utils/platforms"]);
+    XCTAssert([urlComponents.string isEqualToString:@"https://mv.outbrain.com/Multivac/api/platforms"]);
 }
 
 - (void)testUrlBuilderForPlatformPortalRequest {
@@ -187,7 +187,7 @@
     
     urlComponents.query = nil;
     XCTAssertEqual(testsCount, 5);
-    XCTAssert([urlComponents.string isEqualToString:@"https://odb.outbrain.com/utils/platforms"]);
+    XCTAssert([urlComponents.string isEqualToString:@"https://mv.outbrain.com/Multivac/api/platforms"]);
 }
 
 - (void)testBuildODBWithCustomUserId {

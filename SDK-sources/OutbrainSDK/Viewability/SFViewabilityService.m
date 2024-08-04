@@ -11,7 +11,7 @@
 #import "OBNetworkManager.h"
 #import "OBViewabilityService.h"
 #import "OBErrorReporting.h"
-
+#import "OBAppleAdIdUtil.h"
 
 @interface SFViewabilityService()
 
@@ -30,6 +30,7 @@
 int const OBVIEW_DEFAULT_TAG = 12345678;
 
 NSString * const kLogViewabilityUrl = @"https://log.outbrainimg.com/api/loggerBatch/log-viewability";
+NSString * const kT_LogViewabilityUrl = @"https://t-log.outbrainimg.com/api/loggerBatch/log-viewability";
 NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@_%@";
 
 + (instancetype)sharedInstance
@@ -193,7 +194,7 @@ NSString * const kViewabilityKeyFor_requestId_position = @"OB_Viewability_Key_%@
     if ([self.itemsToReportMap count] == 0 || self.isLoading) {
         return;
     }
-    NSURL *url = [NSURL URLWithString:kLogViewabilityUrl];
+    NSURL *url = [NSURL URLWithString: [OBAppleAdIdUtil isOptedOut] ? kLogViewabilityUrl : kT_LogViewabilityUrl];
     NSArray *keys = [self.itemsToReportMap allKeys];
     self.isLoading = true;
     [[OBNetworkManager sharedManager] sendPost:url postData:[self.itemsToReportMap allValues] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {

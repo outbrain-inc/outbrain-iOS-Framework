@@ -96,6 +96,13 @@
 @property (nonatomic, copy) NSString * _Nullable extSecondaryId;
 
 /**
+ *  @brief pubImpId to get the session ID / click identifier from the publisher.
+ *
+ **/
+@property (nonatomic, copy) NSString * _Nullable obPubImp;
+
+
+/**
  *  @brief fab is the AB test value (internal use only)
  *
  **/
