@@ -83,7 +83,7 @@ class ScrollViewTwoWidgets : UIViewController, UIScrollViewDelegate {
 // MARK: SFWidgetDelegate
 extension ScrollViewTwoWidgets: SFWidgetDelegate {
     
-    func didChangeHeight() {
+    func didChangeHeight(_ newHeight: CGFloat) {
         sfWidget1HeightConstraint.constant = sfWidget1.getCurrentHeight()
         sfWidget2HeightConstraint.constant = sfWidget2.getCurrentHeight()
     }

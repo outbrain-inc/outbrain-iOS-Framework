@@ -69,7 +69,7 @@
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKb-N8-LR5" userLabel="SFWidget" customClass="SFWidget">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKb-N8-LR5" userLabel="SFWidget" customClass="SFWidget" customModule="OutbrainSDK">
                                     <rect key="frame" x="0.0" y="1122.6666666666667" width="393" height="20"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>

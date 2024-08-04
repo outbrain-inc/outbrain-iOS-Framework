@@ -64,7 +64,7 @@
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxr-gS-45b" userLabel="SFWidget" customClass="SFWidget">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxr-gS-45b" userLabel="SFWidget" customClass="SFWidget" customModule="OutbrainSDK">
                                     <rect key="frame" x="0.0" y="766.33333333333337" width="393" height="20"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -78,7 +78,7 @@
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ty-LG-J0Z" userLabel="SFWidget" customClass="SFWidget">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ty-LG-J0Z" userLabel="SFWidget" customClass="SFWidget" customModule="OutbrainSDK">
                                     <rect key="frame" x="0.0" y="1152.6666666666667" width="393" height="20"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
