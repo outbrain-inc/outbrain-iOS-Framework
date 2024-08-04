@@ -1,6 +1,10 @@
 # Release Notes
 
 
+## v5.0.12-beta - July 31, 2024
+
+- Internal - add suppoer for React Native and Flutter, official libraries by Outbrain.
+
 ## v5.0.11-beta - July 21, 2024
 
 - Minor - improve Viewability polling interval to 200ms (was 2 seconds)

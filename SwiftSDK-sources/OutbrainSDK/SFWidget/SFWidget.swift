@@ -43,6 +43,27 @@ public class SFWidget: UIView {
      Indicates that there are multiple widgets on the same content page. Has to be set only when there are multiple widgets on the same page
      */
     public static var infiniteWidgetsOnTheSamePage: Bool = false
+    var tParam: String?
+    var bridgeParams: String?
+    var darkMode: Bool = false
+    weak var delegate: SFWidgetDelegate?
+    var messageHandler: SFWidgetMessageHandler!
+    var bridgeUrlBuilder: BridgeUrlBuilder?
+    var jsExec: JavaScriptExecutor!
+    var webview: WKWebView!
+    var hiddenWebView: WKWebView?
+    var bridgeParamsObserver: NSObjectProtocol?
+    var tParamObserver: NSObjectProtocol?
+    var viewabilityTimerHandler: ViewabilityTimerHandler!
+    var errorReporter: OBErrorReport?
+    var settings: [String: Any] = [:]
+    static var isFlutter: Bool = false;
+    static var isReactNative: Bool = false;
+    static var flutter_packageVersion: String?;
+    static var RN_packageVersion: String?;
+    public static var infiniteWidgetsOnTheSamePage: Bool = false;
+    static var globalBridgeParams: String?
+  
     
     /**
        External Id public value
@@ -277,8 +298,14 @@ public class SFWidget: UIView {
     }
 
     
-    public static func setIsFlutter(value: Bool) {
-        isFlutter = value
+    public static func enableFlutterMode(flutter_packageVersion: String) {
+        isFlutter = true;
+        self.flutter_packageVersion = flutter_packageVersion;
+    }
+    
+    public static func enableReactNativeMode(RN_packageVersion: String) {
+        isReactNative = true;
+        self.RN_packageVersion = RN_packageVersion;
     }
     
 
@@ -380,6 +407,9 @@ public class SFWidget: UIView {
             .addOSTracking()
             .addWidgetIndex(index: widgetIndex)
             .addIsFlutter(isFlutter: SFWidget.isFlutter)
+            .addIsReactNative(isReactNative: SFWidget.isReactNative)
+            .addFlutterPackageVersion(version: SFWidget.flutter_packageVersion)
+            .addReactNativePackageVersion(version: SFWidget.RN_packageVersion)
             .build() {
             
             Outbrain.logger.log("Bridge URL: \(widgetURL)")
