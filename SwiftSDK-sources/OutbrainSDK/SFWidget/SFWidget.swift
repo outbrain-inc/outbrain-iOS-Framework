@@ -43,9 +43,9 @@ public class SFWidget: UIView {
      Indicates that there are multiple widgets on the same content page. Has to be set only when there are multiple widgets on the same page
      */
     public static var infiniteWidgetsOnTheSamePage: Bool = false
-    static var isReactNative: Bool = false;
-    static var flutter_packageVersion: String?;
-    static var RN_packageVersion: String?;
+    static var isReactNative: Bool = false
+    static var flutter_packageVersion: String?
+    static var RN_packageVersion: String?
 
   
     
