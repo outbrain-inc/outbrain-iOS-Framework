@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -75,7 +75,6 @@
 		E61A95C32B20981D00F33C7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9726809C03006DB0AB /* LaunchScreen.storyboard */; };
 		E61A95C42B20981D00F33C7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9526809C03006DB0AB /* Assets.xcassets */; };
 		E61A95C52B20981D00F33C7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9226809C01006DB0AB /* Main.storyboard */; };
-		E61A95D22B209BAE00F33C7D /* OutbrainSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E61A95CE2B2098CD00F33C7D /* OutbrainSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E61E6C6B208384A00016D79A /* OBDemoDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456491885A543002B2368 /* OBDemoDataHelper.m */; };
 		E61E6C6C208384A00016D79A /* TinyPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D83456691885A543002B2368 /* TinyPageControl.m */; };
 		E61E6C6D208384A00016D79A /* TopBoxPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E64366D31FAF491E00FA617E /* TopBoxPostViewCell.m */; };
@@ -194,44 +193,11 @@
 		E6A5E4071F9C869B00D894C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */; };
 		E6B684771F8A4464004F4AEF /* NewMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */; };
 		E6D5BA5727269CD500FE921D /* CollectionTwoWidgetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5BA5427269CD500FE921D /* CollectionTwoWidgetsVC.swift */; };
-		E6E4A4212B136D6E00E558EB /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6E4A41C2B136D5700E558EB /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E6E4A4272B136D8E00E558EB /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6E4A41C2B136D5700E558EB /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6E91F821D36749B00A777F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */; };
 		E6F433F02B32F28900653B12 /* SFWebView-Prod-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6F433EF2B32F28900653B12 /* SFWebView-Prod-Info.plist */; };
 		E6FFC2C31C28489A00498168 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6FFC2C21C28489A00498168 /* WebKit.framework */; };
 		FC820C1219DD597F00ABAD89 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC820C1119DD597F00ABAD89 /* AdSupport.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E6E4A41B2B136D5700E558EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E6E4B3B82A2381A100FE44E3;
-			remoteInfo = OutbrainSDK;
-		};
-		E6E4A41D2B136D5700E558EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E6E4B3C22A2381A100FE44E3;
-			remoteInfo = OutbrainSDKTests;
-		};
-		E6E4A41F2B136D6600E558EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E6E4B3B72A2381A100FE44E3;
-			remoteInfo = OutbrainSDK;
-		};
-		E6E4A4222B136D7300E558EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E6E4B3B72A2381A100FE44E3;
-			remoteInfo = OutbrainSDK;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		163A5AC827A19AF200A4B498 /* Embed Frameworks */ = {
@@ -240,7 +206,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E6E4A4212B136D6E00E558EB /* OutbrainSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,7 +226,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E61A95D22B209BAE00F33C7D /* OutbrainSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +266,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E6E4A4272B136D8E00E558EB /* OutbrainSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,7 +323,6 @@
 		E60DCD4F20BC3BD00023FE93 /* SmartFeed-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartFeed-Dev-Info.plist"; sourceTree = "<group>"; };
 		E60DCD5020BC3BD00023FE93 /* SmartFeed-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartFeed-Info.plist"; sourceTree = "<group>"; };
 		E61A95CB2B20981D00F33C7D /* SFWebView-Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFWebView-Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E61A95CE2B2098CD00F33C7D /* OutbrainSDK.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:97R2B46745:OUTBRAIN INCORPORATED"; lastKnownFileType = wrapper.xcframework; path = OutbrainSDK.xcframework; sourceTree = "<group>"; };
 		E61E6C99208384A00016D79A /* Journal-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Journal-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61E6CA5208386EF0016D79A /* Journal-Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Journal-Dev-Info.plist"; sourceTree = "<group>"; };
 		E61E6CCD2085DBD50016D79A /* SmartFeed-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SmartFeed-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -454,7 +416,6 @@
 		E6A5E4061F9C861300D894C5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6B684761F8A4464004F4AEF /* NewMainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMainStoryboard.storyboard; sourceTree = "<group>"; };
 		E6D5BA5427269CD500FE921D /* CollectionTwoWidgetsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTwoWidgetsVC.swift; sourceTree = "<group>"; };
-		E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainSDK.xcodeproj; path = "../../SwiftSDK-sources/OutbrainSDK.xcodeproj"; sourceTree = "<group>"; };
 		E6E91F811D36749B00A777F3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E6F433EF2B32F28900653B12 /* SFWebView-Prod-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "SFWebView-Prod-Info.plist"; path = "SFWebView-Prod/SFWebView-Prod-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E6FFC2C21C28489A00498168 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -724,8 +685,6 @@
 		D8B59230186376B1009422D5 = {
 			isa = PBXGroup;
 			children = (
-				E61A95CE2B2098CD00F33C7D /* OutbrainSDK.xcframework */,
-				E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */,
 				D83456431885A543002B2368 /* Journal */,
 				E66B9C8B26809C01006DB0AB /* SFWebView-Dev */,
 				E61E6CCE2085DBD50016D79A /* SmartFeed */,
@@ -1048,15 +1007,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		E6E4A4172B136D5700E558EB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E6E4A41C2B136D5700E558EB /* OutbrainSDK.framework */,
-				E6E4A41E2B136D5700E558EB /* OutbrainSDKTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1163,7 +1113,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E6E4A4202B136D6600E558EB /* PBXTargetDependency */,
 			);
 			name = "SFWebView-Dev";
 			productName = "SFWebView-Dev";
@@ -1182,7 +1131,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E6E4A4232B136D7300E558EB /* PBXTargetDependency */,
 			);
 			name = "SwiftUI-Bridge";
 			productName = "SwiftUI-Bridge";
@@ -1206,6 +1154,9 @@
 					E60DCD2D20BC3AAD0023FE93 = {
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
+					};
+					E61A95B42B20981D00F33C7D = {
+						ProvisioningStyle = Manual;
 					};
 					E61E6CCC2085DBD50016D79A = {
 						CreatedOnToolsVersion = 9.2;
@@ -1233,12 +1184,6 @@
 			mainGroup = D8B59230186376B1009422D5;
 			productRefGroup = D8B5923A186376B1009422D5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E6E4A4172B136D5700E558EB /* Products */;
-					ProjectRef = E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D8B59238186376B1009422D5 /* Journal */,
@@ -1251,23 +1196,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		E6E4A41C2B136D5700E558EB /* OutbrainSDK.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OutbrainSDK.framework;
-			remoteRef = E6E4A41B2B136D5700E558EB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E6E4A41E2B136D5700E558EB /* OutbrainSDKTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OutbrainSDKTests.xctest;
-			remoteRef = E6E4A41D2B136D5700E558EB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D8B59237186376B1009422D5 /* Resources */ = {
@@ -1562,19 +1490,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		E6E4A4202B136D6600E558EB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OutbrainSDK;
-			targetProxy = E6E4A41F2B136D6600E558EB /* PBXContainerItemProxy */;
-		};
-		E6E4A4232B136D7300E558EB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OutbrainSDK;
-			targetProxy = E6E4A4222B136D7300E558EB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		E61E6CD32085DBD50016D79A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1739,10 +1654,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 4.0.0;
 				OTHER_LDFLAGS = "-all_load";
@@ -1772,10 +1684,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 4.0.0;
 				OTHER_LDFLAGS = "-all_load";
@@ -1809,10 +1718,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
@@ -1848,17 +1754,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_WORKSPACE = YES;
@@ -1889,10 +1791,7 @@
 				INFOPLIST_FILE = "SFWebView-Prod/SFWebView-Prod-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SFWebView-Prod";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 5.0.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1932,10 +1831,7 @@
 				INFOPLIST_FILE = "SFWebView-Prod/SFWebView-Prod-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "SFWebView-Prod";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 5.0.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1972,10 +1868,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Dev-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 4.0.0;
 				OTHER_LDFLAGS = "-all_load";
@@ -2005,10 +1898,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resources/plists/Journal-Dev-Info.plist";
 				INSTALL_PATH = $HOME/Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 4.0.0;
 				OTHER_LDFLAGS = "-all_load";
@@ -2038,10 +1928,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
@@ -2072,16 +1959,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "$(SRCROOT)/SmartFeed/Resources/SmartFeed-Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.SmartFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2106,10 +1989,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "SFWebView-Dev/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 5.0.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -2142,10 +2022,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "SFWebView-Dev/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 5.0.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -2184,10 +2061,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 5.0.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -2229,10 +2103,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 5.0.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

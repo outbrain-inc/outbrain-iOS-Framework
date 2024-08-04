@@ -88,7 +88,16 @@ public class Outbrain {
     ) {
         logger.debug("fetchRecommendations for widgetId \(request.widgetId) & url \(String(describing: request.url))")
         
-        guard isInitialized else { return }
+        if let error = Outbrain.checkInitiated() {
+            delegate.outbrainDidReceiveResponse(withSuccess: .init(
+                request: [:],
+                settings: [:],
+                viewabilityActions: nil,
+                recommendations: [],
+                error: error
+            ))
+            return
+        }
 
         OBQueueManager.shared.enqueueFetchRecsRequest {
             OBRequestHandler(request).fetchRecs(delegate: delegate)
