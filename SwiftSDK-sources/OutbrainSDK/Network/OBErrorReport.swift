@@ -102,6 +102,9 @@ public struct OBErrorReport {
         if let odbRequestUrlParamValue = self.odbRequestUrlParamValue {
             odbQueryItems.append(URLQueryItem(name: "url", value: odbRequestUrlParamValue))
         }
+        else {
+            odbQueryItems.append(URLQueryItem(name: "url", value: "https://www.outbrain.com")) // Must have a default value
+        }
         if let sourceId = self.sourceId {
             odbQueryItems.append(URLQueryItem(name: "sId", value: sourceId))
         }

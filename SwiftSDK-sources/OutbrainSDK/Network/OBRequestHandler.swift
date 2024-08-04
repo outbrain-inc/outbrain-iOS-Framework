@@ -360,6 +360,10 @@ public struct OBRequestHandler {
     // odb request url builder
     func buildOdbParams() -> URL? {
         var reqUrl = URLComponents(string: isPlatformsRequest ? OB_REQUEST_HANDLER_CONSTANTS.PLATFORMS_BASE_URL : OB_REQUEST_HANDLER_CONSTANTS.ODB_BASE_URL)!
+        if (!OBAppleAdIdUtil.isOptedOut) {
+            // User allowed tracking
+            var reqUrl = URLComponents(string: isPlatformsRequest ? OB_REQUEST_HANDLER_CONSTANTS.T_PLATFORMS_BASE_URL : OB_REQUEST_HANDLER_CONSTANTS.T_ODB_BASE_URL)!
+        }
         
         // query params
         var queryItems = [
@@ -392,6 +396,7 @@ public struct OBRequestHandler {
             addReqParam(name: "ccpa", value: GDPRUtils.ccpaPrivacyString ?? ""),
             addReqParam(name: "gpp_sid", value: GPPUtils.gppSections ?? ""),
             addReqParam(name: "gpp", value: GPPUtils.gppString ?? ""),
+            addReqParam(name: "ostracking", value: !OBAppleAdIdUtil.isOptedOut ? "true" : "false")
         ]
         
         // add platforms params if needed or just the url if regular call
@@ -524,6 +529,8 @@ public struct OBRequestHandler {
 }
 
 enum OB_REQUEST_HANDLER_CONSTANTS {
-    static let ODB_BASE_URL = "https://odb.outbrain.com/utils/get/"
-    static let PLATFORMS_BASE_URL = "https://odb.outbrain.com/utils/platforms/"
+    static let ODB_BASE_URL = "https://mv.outbrain.com/Multivac/api/get/"
+    static let T_ODB_BASE_URL = "https://t-mv.outbrain.com/Multivac/api/get/"
+    static let PLATFORMS_BASE_URL = "https://mv.outbrain.com/Multivac/api/platforms/"
+    static let T_PLATFORMS_BASE_URL = "https://t-mv.outbrain.com/Multivac/api/platforms/"
 }

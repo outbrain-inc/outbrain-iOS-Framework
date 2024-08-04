@@ -167,7 +167,7 @@ public class OBViewbailityManager {
         }
         
         // create the url
-        guard let url = URL(string: OB_VIEWABILITY_CONSTANTS.LOG_VIEWABILITY_URL) else {
+        guard let url = URL(string: OBAppleAdIdUtil.isOptedOut ? OB_VIEWABILITY_CONSTANTS.LOG_VIEWABILITY_URL : OB_VIEWABILITY_CONSTANTS.T_LOG_VIEWABILITY_URL) else {
             return
         }
         
@@ -247,5 +247,6 @@ public class OBViewbailityManager {
 enum OB_VIEWABILITY_CONSTANTS  {
     static let DEFAULT_TAG = 12345678
     static let LOG_VIEWABILITY_URL = "https://log.outbrainimg.com/api/loggerBatch/log-viewability"
+    static let T_LOG_VIEWABILITY_URL = "https://t-log.outbrainimg.com/api/loggerBatch/log-viewability"
     static let VIEWABILITY_KEY_FOR_REQUEST_ID_POSITION = "OB_Viewability_Key_%@_%@"
 }
