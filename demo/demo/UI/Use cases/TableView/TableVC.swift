@@ -47,7 +47,8 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         sfWidget
             .configure(
-                with: self, url:paramsViewModel.articleURL,
+                with: self,
+                url:paramsViewModel.articleURL,
                 widgetId: paramsViewModel.bridgeWidgetId,
                 widgetIndex: 0,
                 installationKey: "NANOWDGT01",
