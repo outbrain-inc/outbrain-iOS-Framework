@@ -125,15 +125,15 @@ public struct OBGlobalStatisticsManager {
             }
             
             // enrich the URL with mandatory params
-            guard let viewabilityUrl = globalStatsticsUrlWithMandatoryParams(url: reportViewedUrl, tmParam: executionTime, isOptedOut: viewabilityData.optedOut!) else {
+            guard let viewedUrl = globalStatsticsUrlWithMandatoryParams(url: reportViewedUrl, tmParam: executionTime, isOptedOut: viewabilityData.optedOut!) else {
                 return
             }
             
             // make the request
-            let task = URLSession.shared.dataTask(with: viewabilityUrl)
+            let task = URLSession.shared.dataTask(with: viewedUrl)
             task.resume()
             
-            Outbrain.logger.debug("report recs shown - reportViewedUrl: \(viewabilityUrl)", domain: "global-statistics")
+            Outbrain.logger.debug("report recs shown - reportViewedUrl: \(viewedUrl)", domain: "global-statistics")
         }
     }
     
@@ -243,7 +243,9 @@ public struct OBGlobalStatisticsManager {
     
     // build global statistics URL with mandatory params
     func globalStatsticsUrlWithMandatoryParams(url: String, tmParam: String, isOptedOut: Bool) -> URL? {
-        guard var urlComponents = URLComponents(string: url) else { return nil }
+        guard let privacyUrl = replaceDomainWithTrackingIfNeeded(viewabilityURL: url) else { return nil }
+        
+        guard var urlComponents = URLComponents(string: privacyUrl) else { return nil }
         
         var newQueryItems = urlComponents.queryItems ?? []
         
@@ -261,6 +263,33 @@ public struct OBGlobalStatisticsManager {
         // update url components
         urlComponents.queryItems = newQueryItems
         return urlComponents.url
+    }
+    
+    func replaceDomainWithTrackingIfNeeded(viewabilityURL: String) -> String? {
+        // Check if the user is opted out from tracking
+        if OBAppleAdIdUtil.isOptedOut {
+            // If the user is opted out from tracking, return the original URL string
+            return viewabilityURL
+        }
+        
+        // Check if the input string is a valid URL
+        guard let url = URL(string: viewabilityURL), let host = url.host else {
+            print("Error - replaceDomainWithTrackingIfNeeded - invalid URL")
+            return nil
+        }
+        
+        // Check if the URL contains the domain 'log.outbrainimg.com'
+        let originalDomain = "log.outbrainimg.com"
+        let trackingDomain = "t-log.outbrainimg.com"
+        
+        if host == originalDomain {
+            // Replace the domain in the URL string with the "tracking" domain
+            let modifiedURLString = viewabilityURL.replacingOccurrences(of: originalDomain, with: trackingDomain)
+            return modifiedURLString
+        }
+        
+        // If the domain is not found, return the original URL string
+        return viewabilityURL
     }
     
     // get initialization time for request id
