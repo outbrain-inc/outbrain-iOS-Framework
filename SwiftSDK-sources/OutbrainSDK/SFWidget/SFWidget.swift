@@ -43,26 +43,10 @@ public class SFWidget: UIView {
      Indicates that there are multiple widgets on the same content page. Has to be set only when there are multiple widgets on the same page
      */
     public static var infiniteWidgetsOnTheSamePage: Bool = false
-    var tParam: String?
-    var bridgeParams: String?
-    var darkMode: Bool = false
-    weak var delegate: SFWidgetDelegate?
-    var messageHandler: SFWidgetMessageHandler!
-    var bridgeUrlBuilder: BridgeUrlBuilder?
-    var jsExec: JavaScriptExecutor!
-    var webview: WKWebView!
-    var hiddenWebView: WKWebView?
-    var bridgeParamsObserver: NSObjectProtocol?
-    var tParamObserver: NSObjectProtocol?
-    var viewabilityTimerHandler: ViewabilityTimerHandler!
-    var errorReporter: OBErrorReport?
-    var settings: [String: Any] = [:]
-    static var isFlutter: Bool = false;
     static var isReactNative: Bool = false;
     static var flutter_packageVersion: String?;
     static var RN_packageVersion: String?;
-    public static var infiniteWidgetsOnTheSamePage: Bool = false;
-    static var globalBridgeParams: String?
+
   
     
     /**
