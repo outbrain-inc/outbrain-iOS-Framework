@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) didClickOnRec:(NSString *)url;
 - (void) didClickOnOrganicRec:(NSString *)url orgUrl:(NSString *)orgUrl;
 - (void) widgetEvent:(NSString *)eventName additionalData:(NSDictionary *)additionalData;
+- (void) handleJSWidgetSetting:(NSDictionary *)settings;
 
 @end
 

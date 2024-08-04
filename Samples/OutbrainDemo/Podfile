@@ -1,0 +1,60 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '12.0'
+
+target 'Journal' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Journal
+  pod 'OutbrainSDK' , '= 5.0.6-beta'
+
+end
+
+target 'Journal-Dev' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Journal-Dev
+
+end
+
+target 'SFWebView-Dev' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SFWebView-Dev
+
+end
+
+# target 'SFWebView-Prod' do
+#   # Comment the next line if you don't want to use dynamic frameworks
+#   use_frameworks!
+
+#   # Pods for SFWebView-Prod
+#   pod 'OutbrainSDK' , '= 5.0.6-beta'
+
+# end
+
+target 'SmartFeed' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SmartFeed
+
+end
+
+target 'SmartFeed-Dev' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SmartFeed-Dev
+
+end
+
+target 'SwiftUI-Bridge' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SwiftUI-Bridge
+
+end

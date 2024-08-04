@@ -68,4 +68,8 @@ typedef NS_ENUM(NSInteger, SubjectToGDPR) {
  */
 @property (nonatomic, readonly) NSString *ccpaPrivacyString;
 
+@property (nonatomic, readonly) NSString *gppSectionsString;
+
+@property (nonatomic, readonly) NSString *gppPrivacyString;
+
 @end

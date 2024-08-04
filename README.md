@@ -25,7 +25,7 @@ We upload this project assets to GCP, in order to do it, the SDK developer shoul
 
 ## App Developer Guidelines
 
-[Outbrain SDK v3 – Documentation & Download Links](http://developer.outbrain.com/outbrain-sdk-v3-documentation-download-links/)
+[Outbrain SDK – Documentation & Download Links]([http://developer.outbrain.com/outbrain-sdk-v3-documentation-download-links/](https://sdk.outbrain.com/docs/iOS-SDK/Getting-Started/))
 
 ## Running the tests
 

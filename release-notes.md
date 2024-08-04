@@ -1,6 +1,8 @@
 # Release Notes
 
 
+# Beta Releases
+
 ## v5.0.12-beta - July 31, 2024
 
 - Internal - add suppoer for React Native and Flutter, official libraries by Outbrain.
@@ -31,6 +33,36 @@
 ## v5.0.1-alpha - December 25, 2023
 
 - Major - SDK re-write from ObjC to Swift.
+
+# Official Releases
+
+## v4.35.0 - July 31, 2024
+
+- Privacy Manifest - improve coverage of "tracking domains", list was updated to contain 27 domains.
+
+## v4.34.0 - July 21, 2024
+
+- Minor - add support for `gpp` and `gpp_sid` ODB params in regular widget and Bridge widget.
+
+
+## v4.33.0 - June 16, 2024
+
+- Minor - add support for `pubImpId` ODB param in regular widget (OBRequest) as well.
+
+## v4.32.0 - May 23, 2024
+
+- Feature - add `SFWidget.setInfiniteWidgetsOnTheSamePage(true)` for supporting infinite widgets on the same page.
+
+## v4.31.0 - May 22, 2024
+
+- Feature - add support for `pubImpId` ODB param.
+- Internal - "display ads" support with widget-settings enable\disable
+
+## v4.30.0 - May 12, 2024
+
+- Other - add code sign with Outbrain account private key to XCFramework
+- Other - add privacy manifest file ([see details](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files))
+- New impl in JS code starting v4.30.0 for widget height calculation.
 
 ## v4.29.0 - October 19, 2023
 
