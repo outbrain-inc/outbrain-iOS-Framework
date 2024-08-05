@@ -15,23 +15,12 @@ lane :sdk_tests do
         devices: ["iPhone 14 Pro Max"])
 end
 
-lane :sfwebview_prod do
-    match(
-        type: "enterprise", 
-        readonly: true,
-        keychain_name: "my.keychain",
-        keychain_password: "",
-        )
+lane :demo_prod do
     gym(
-        project: "Samples/OutbrainDemo/OutbrainDemo.xcodeproj",
-        scheme: "SFWebView-Prod",
+	workspace: "OutbrainSDK.xcworkspace",
+        scheme: "demo",
         configuration: "Release",     
         destination: "generic/platform=iOS",
-        export_method: "enterprise",
-        export_options: {
-            provisioningProfiles: {
-                "com.outbrain.SFWebView-Prod": "match InHouse com.outbrain.SFWebView-Prod"
-            },
-            certificates: ["iPhone Distribution: OUTBRAIN INCORPORATED"]
-        })
+        export_method: "enterprise"
+	)
 end

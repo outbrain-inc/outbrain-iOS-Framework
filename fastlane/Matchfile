@@ -5,7 +5,7 @@ storage_mode("git")
 team_id("97R2B46745")
 type("enterprise")
 
-app_identifier(["com.outbrain.SFWebView-Prod"])
+app_identifier(["com.outbrain.demo"])
 username("odedre@gmail.com") # Your Apple Developer Portal username
 
 # For all available options run `fastlane match --help`
