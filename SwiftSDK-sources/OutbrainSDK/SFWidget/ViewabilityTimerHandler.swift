@@ -7,12 +7,6 @@
 
 import UIKit
 
-let LOAD_DISTANCE_THRESHOLD: CGFloat = THRESHOLD_FROM_BOTTOM
-
-struct ViewParams {
-    var visibleFrom = 0
-    var visibleTo = 0
-}
 
 class ViewabilityTimerHandler {
     var webViewHeight = 0
@@ -27,87 +21,98 @@ class ViewabilityTimerHandler {
     let swiftUIInterval: TimeInterval = 0.2
     private var viewabilityTimer: Timer?
     
-    init() {
-        
+    
+    struct ViewParams {
+        var visibleFrom = 0
+        var visibleTo = 0
     }
+    
 
-    func handleViewability(sfWidget: SFWidget?, containerView: UIView, viewabilityClosure: @escaping (_ viewParams: ViewParams,_ width: Int,_ height: Int) -> Void) {
-        guard let widget = sfWidget, !widget.isSwiftUI else {
-            return
-        }
+    func handleViewability(
+        sfWidget: SFWidget?,
+        containerView: UIView,
+        viewabilityClosure: @escaping (_ viewParams: ViewParams, _ width: Int, _ height: Int) -> Void
+    ) {
+        guard let sfWidget, !sfWidget.isSwiftUI else { return }
         
         let scale = UIScreen.main.scale
         
-        self.viewFrame = widget.convert(widget.bounds, to: nil)
-        self.intersection = viewFrame.intersection(containerView.frame)
-        self.intersectionHeight = Int(round(self.intersection.size.height * scale))
-        self.containerViewHeight = containerView.frame.size.height * scale
-        self.roundedContainerViewHeight = Int(round(self.containerViewHeight))
-        self.webViewHeight = Int(round(self.viewFrame.size.height * scale))
-        self.distanceToContainerTop = (containerView.frame.minY - self.viewFrame.minY) * scale
-        self.distanceToContainerBottom = Int((containerView.frame.maxY - self.viewFrame.minY) * scale)
-        self.webViewWidth = Int(round(self.viewFrame.size.width * scale))
+        viewFrame = sfWidget.convert(sfWidget.bounds, to: nil)
+        intersection = viewFrame.intersection(containerView.frame)
+        intersectionHeight = Int(round(intersection.size.height * scale))
+        containerViewHeight = containerView.frame.size.height * scale
+        roundedContainerViewHeight = Int(round(containerViewHeight))
+        webViewHeight = Int(round(viewFrame.size.height * scale))
+        distanceToContainerTop = (containerView.frame.minY - viewFrame.minY) * scale
+        distanceToContainerBottom = Int((containerView.frame.maxY - viewFrame.minY) * scale)
+        webViewWidth = Int(round(viewFrame.size.width * scale))
         
-        let isViewVisible = self.distanceToContainerBottom > 0 && self.containerViewHeight != Double(self.distanceToContainerBottom) && self.intersectionHeight != 0
+        let isViewVisible = distanceToContainerBottom > 0
+        && containerViewHeight != Double(distanceToContainerBottom)
+        && self.intersectionHeight != 0
         
-        if !isViewVisible {
-            return
-        }
+        guard isViewVisible else { return }
         
-        let viewStatus = self.checkViewStatus()
-        viewabilityClosure(viewStatus, self.webViewWidth, self.webViewHeight)
+        let viewStatus = checkViewStatus()
+        viewabilityClosure(viewStatus, webViewWidth, webViewHeight)
     }
     
-    func handleSwiftUI(sfWidget: SFWidget?, viewabilityClosure: @escaping (_ viewParams: ViewParams, _ width: Int,_ height: Int,_ shouldLoadMore: Bool) -> Void ) {
-        self.viewabilityTimer?.invalidate() // Invalidate any existing timer
-
-        self.viewabilityTimer = Timer.scheduledTimer(withTimeInterval: self.swiftUIInterval, repeats: true) { _ in
+    
+    func handleSwiftUI(
+        sfWidget: SFWidget?,
+        viewabilityClosure: @escaping (_ viewParams: ViewParams, _ width: Int,_ height: Int,_ shouldLoadMore: Bool) -> Void
+    ) {
+        viewabilityTimer?.invalidate() // Invalidate any existing timer
+        viewabilityTimer = Timer.scheduledTimer(withTimeInterval: self.swiftUIInterval, repeats: true) { [weak self] _ in
+            guard let self else { return }
             
-
             let viewParams = self.handleViewabilitySwiftUI(sfWidget)
             
-            if let viewParams = viewParams {
-                var shouldLoadMore = false;
-                
-                if let widget = sfWidget {
-                    let viewport = widget.convert(UIScreen.main.bounds, from: nil as UIView?)
-                    let viewportBottom = viewport.maxY
-                    
-                    shouldLoadMore = widget.currentHeight - viewportBottom < LOAD_DISTANCE_THRESHOLD
-                }
-
-                viewabilityClosure(viewParams, self.webViewWidth,  self.webViewHeight, shouldLoadMore)
+            guard let viewParams else {
+                self.viewabilityTimer?.invalidate()
                 return
             }
-            self.viewabilityTimer?.invalidate()
+            
+            var shouldLoadMore = false
+            
+            if let sfWidget {
+                let viewport = sfWidget.convert(UIScreen.main.bounds, from: nil as UIView?)
+                let viewportBottom = viewport.maxY
+                
+                shouldLoadMore = sfWidget.currentHeight - viewportBottom < SFConsts.THRESHOLD_FROM_BOTTOM
+            }
+            
+            viewabilityClosure(viewParams, self.webViewWidth,  self.webViewHeight, shouldLoadMore)
         }
     }
     
+    
     private func handleViewabilitySwiftUI(_ sfWidget: SFWidget?) -> ViewParams? {
-        guard let widget = sfWidget, widget.isSwiftUI, widget.window != nil else {
+        guard let widget = sfWidget,
+              widget.isSwiftUI,
+              widget.window != nil else {
             return nil
         }
         
         let viewParams = ViewParams()
         let scale = UIScreen.main.scale
-        self.webViewHeight = Int(widget.bounds.size.height * scale)
-        self.webViewWidth = Int(widget.bounds.size.width * scale)
-        self.viewFrame = widget.convert(widget.bounds, to: nil)
-        self.intersection = viewFrame.intersection(widget.window!.frame)
-        self.intersectionHeight = Int(intersection.size.height)
-        self.containerViewHeight = Double(widget.window!.frame.size.height)
-        self.distanceToContainerTop = (widget.window!.frame.minY - viewFrame.minY) * scale
-        self.distanceToContainerBottom = Int((widget.window!.frame.maxY - viewFrame.minY) * scale)
-
         
-        if intersection.size.height == 0 {
-            return viewParams
+        webViewHeight = Int(widget.bounds.size.height * scale)
+        webViewWidth = Int(widget.bounds.size.width * scale)
+        viewFrame = widget.convert(widget.bounds, to: nil)
+        intersection = viewFrame.intersection(widget.window!.frame)
+        intersectionHeight = Int(intersection.size.height)
+        containerViewHeight = Double(widget.window!.frame.size.height)
+        distanceToContainerTop = (widget.window!.frame.minY - viewFrame.minY) * scale
+        distanceToContainerBottom = Int((widget.window!.frame.maxY - viewFrame.minY) * scale)
+
+        guard intersection.size.height > 0 else {
+            return checkViewStatusSwiftUI(scale: scale)
         }
-
         
-        return self.checkViewStatusSwiftUI(scale: scale)
-        
+        return viewParams
     }
+    
     
     private func checkViewStatusSwiftUI(scale: Double) -> ViewParams {
         var viewParams = ViewParams()
@@ -115,34 +120,35 @@ class ViewabilityTimerHandler {
         if distanceToContainerTop < 0 {
             // top
             viewParams.visibleFrom = 0
-            viewParams.visibleTo = Int(self.distanceToContainerBottom)
+            viewParams.visibleTo = Int(distanceToContainerBottom)
             return viewParams
         }
         
-        if Double(self.intersectionHeight) < self.containerViewHeight {
+        if Double(intersectionHeight) < containerViewHeight {
             // bottom
-            viewParams.visibleFrom = Int(self.webViewHeight - (self.intersectionHeight * Int(scale)))
-            viewParams.visibleTo = Int(self.webViewHeight)
+            viewParams.visibleFrom = Int(webViewHeight - (intersectionHeight * Int(scale)))
+            viewParams.visibleTo = Int(webViewHeight)
             return viewParams
         }
         
         // full
-        viewParams.visibleFrom = Int(self.distanceToContainerTop)
-        viewParams.visibleTo = Int(self.distanceToContainerTop) + Int(self.intersectionHeight * Int(scale))
+        viewParams.visibleFrom = Int(distanceToContainerTop)
+        viewParams.visibleTo = Int(distanceToContainerTop) + Int(intersectionHeight * Int(scale))
         return viewParams
     }
+    
     
     private func checkViewStatus() -> ViewParams {
         var viewParams = ViewParams()
 
-        if (self.distanceToContainerTop < 0 ) {
+        if (distanceToContainerTop < 0 ) {
             // top
             viewParams.visibleFrom = 0
-            viewParams.visibleTo = self.distanceToContainerBottom
+            viewParams.visibleTo = distanceToContainerBottom
             return viewParams
         }
         
-        if (Double(self.intersectionHeight) < self.containerViewHeight) {
+        if (Double(intersectionHeight) < containerViewHeight) {
             // bottom
             viewParams.visibleFrom = webViewHeight - intersectionHeight
             viewParams.visibleTo = webViewHeight

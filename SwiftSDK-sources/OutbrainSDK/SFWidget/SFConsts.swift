@@ -8,6 +8,11 @@
 import Foundation
 
 struct SFConsts {
-    static var bridgeUrl = "https://widgets.outbrain.com/reactNativeBridge/index.html"
-    static var isInspectable = true
+    
+    static let bridgeUrl = "https://widgets.outbrain.com/reactNativeBridge/index.html"
+    static let isInspectable = true
+    
+    static let SFWIDGET_T_PARAM_NOTIFICATION = "SFWidget_T_Param_Ready"
+    static let SFWIDGET_BRIDGE_PARAMS_NOTIFICATION = "SFWidget_Bridge_Params_Ready"
+    static let THRESHOLD_FROM_BOTTOM: CGFloat = 500
 }

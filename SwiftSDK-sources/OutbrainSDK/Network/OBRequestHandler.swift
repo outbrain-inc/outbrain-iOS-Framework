@@ -9,9 +9,11 @@ import Foundation
 import UIKit
 
 public struct OBRequestHandler {
+    
+    
     // perform odb request based on this request struct
     let request: OBRequest
-        
+    
     // if platforms getter
     var isPlatformsRequest: Bool {
         return (request as? OBPlatformsRequest) != nil
@@ -25,60 +27,60 @@ public struct OBRequestHandler {
     
     // callback
     func fetchRecs(callback: @escaping (OBRecommendationResponse) -> Void) {
-        guard let finalUrl = buildOdbParams() else {
-            return
-        }
+        guard let finalUrl = buildOdbParams() else { return }
         performFetchTask(with: finalUrl, callback: callback)
     }
-
+    
+    
     // delegate on success
     func fetchRecs(delegate: OBResponseDelegate) {
-        guard let finalUrl = buildOdbParams() else {
-            return
-        }
+        guard let finalUrl = buildOdbParams() else { return }
         performFetchTask(with: finalUrl, callback: delegate.outbrainDidReceiveResponse)
     }
+    
     
     func performFetchTask(with url: URL, callback: @escaping (OBRecommendationResponse) -> Void) {
         Outbrain.logger.debug("fetch recs - task added", domain: "request-handler")
         
         // init error reporting data
         OBErrorReport.shared.resetReport()
-        OBErrorReport.shared.odbRequestUrlParamValue = self.request.url
-        OBErrorReport.shared.widgetId = self.request.widgetId
+        OBErrorReport.shared.odbRequestUrlParamValue = request.url
+        OBErrorReport.shared.widgetId = request.widgetId
         
         // using semaphore to ensure serial execution
         let sema = DispatchSemaphore(value: 0)
         
         DispatchQueue.main.async {
             // set the request start date
-            self.request.startDate = Date()
-            
+            request.startDate = Date()
             Outbrain.logger.log("fetch recs - task started for url \(url.absoluteString)", domain: "request-handler")
-
+            
             // http call task
             var request = URLRequest(url: url)
             
             // trace mode if debug
-            #if DEBUG
-                request.setValue("true", forHTTPHeaderField: "x-trace")
-            #endif
+#if DEBUG
+            request.setValue("true", forHTTPHeaderField: "x-trace")
+#endif
             
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 // trace mode if debug
-                #if DEBUG
-                if #available(iOS 13.0, *) {
-                    if let debugRes = response as? HTTPURLResponse {
-                        if let traceID = debugRes.value(forHTTPHeaderField: "x-traceid") {
-                            // Access the trace ID here
-                            Outbrain.logger.debug("fetch recs - trace id: \(traceID)", domain: "request-handler")
-                        }
+#if DEBUG
+                if let debugRes = response as? HTTPURLResponse {
+                    if let traceID = debugRes.value(forHTTPHeaderField: "x-traceid") {
+                        // Access the trace ID here
+                        Outbrain.logger.debug("fetch recs - trace id: \(traceID)", domain: "request-handler")
                     }
                 }
-                #endif
+#endif
                 
                 do {
-                    try self.handleResponse(data: data, response: response, error: error, callback: callback)
+                    try handleResponse(
+                        data: data,
+                        response: response,
+                        error: error,
+                        callback: callback
+                    )
                 } catch {
                     Outbrain.logger.error("handle response failed: \(error)")
                 }
@@ -97,9 +99,14 @@ public struct OBRequestHandler {
         let _ = sema.wait(timeout: .distantFuture)
     }
     
-    // MARK: Handle Response - checks if got valid response back from the server
     
-    func handleResponse(data: Data?, response: URLResponse?, error: Error?, callback: @escaping (OBRecommendationResponse) throws -> Void) throws {
+    // MARK: Handle Response - checks if got valid response back from the server
+    func handleResponse(
+        data: Data?,
+        response: URLResponse?,
+        error: Error?,
+        callback: @escaping (OBRecommendationResponse) throws -> Void
+    ) throws {
         // report error to widget monitor if error
         defer {
             if OBErrorReport.shared.errorMessage != nil {
@@ -115,12 +122,21 @@ public struct OBRequestHandler {
         
         Outbrain.logger.debug("fetch recs - got response", domain: "request-handler")
         // a mocked response with error to return in case of
-        var responseWithError = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: nil)
+        let responseWithError = OBRecommendationResponse(request: [:], settings: [:], viewabilityActions: nil, recommendations: [], error: nil)
         
         // Request Error
         if let error = error {
-            responseWithError.error = OBError.networkError(message: "\(error.localizedDescription)", key: .networkError, code: .genericErrorCode)
-            Outbrain.logger.error("fetch recs - network error: \(error.localizedDescription)", domain: "request-handler")
+            responseWithError.error = OBError.network(
+                message: "\(error.localizedDescription)",
+                key: .network,
+                code: .generic
+            )
+            
+            Outbrain.logger.error(
+                "fetch recs - network error: \(error.localizedDescription)",
+                domain: "request-handler"
+            )
+            
             OBErrorReport.shared.errorMessage = "fetch recs - network error: \(error.localizedDescription)"
             try callback(responseWithError)
             return
@@ -128,8 +144,17 @@ public struct OBRequestHandler {
         
         // HTTP Invalid Error
         guard let httpResponse = response as? HTTPURLResponse else {
-            responseWithError.error = OBError.networkError(message: "Invalid HTTP Response", key: .networkError, code: .genericErrorCode)
-            Outbrain.logger.error("fetch recs - invalid HTTP Response: \(String(describing: response))", domain: "request-handler")
+            responseWithError.error = OBError.network(
+                message: "Invalid HTTP Response",
+                key: .network,
+                code: .generic
+            )
+            
+            Outbrain.logger.error(
+                "fetch recs - invalid HTTP Response: \(String(describing: response))",
+                domain: "request-handler"
+            )
+            
             OBErrorReport.shared.errorMessage = "fetch recs - invalid HTTP Response: \(String(describing: response))"
             try callback(responseWithError)
             return
@@ -138,7 +163,11 @@ public struct OBRequestHandler {
         // Check for response code errors
         if let errorResponse = handleHttpErrorResponseCode(for: httpResponse.statusCode) {
             responseWithError.error = errorResponse
-            Outbrain.logger.error("fetch recs - HTTP error: \(httpResponse.statusCode)", domain: "request-handler")
+            Outbrain.logger.error(
+                "fetch recs - HTTP error: \(httpResponse.statusCode)",
+                domain: "request-handler"
+            )
+            
             OBErrorReport.shared.errorMessage = "fetch recs - HTTP error: \(httpResponse.statusCode)"
             try callback(responseWithError)
             return
@@ -146,16 +175,30 @@ public struct OBRequestHandler {
         
         // No Data Error
         guard let jsonData = data else {
-            responseWithError.error = OBError.networkError(message: "No data received", key: .networkError, code: .noDataErrorCode)
-            Outbrain.logger.error("fetch recs - no data received", domain: "request-handler")
+            responseWithError.error = OBError.network(
+                message: "No data received",
+                key: .network,
+                code: .noData
+            )
+            
+            Outbrain.logger.error(
+                "fetch recs - no data received",
+                domain: "request-handler"
+            )
+            
             OBErrorReport.shared.errorMessage = "fetch recs - no data received"
             try callback(responseWithError)
             return
         }
         
         // JSON Parsing Error
-        guard var response = parseJsonData(with: jsonData) else {
-            responseWithError.error = OBError.nativeError(message: "Parsing failed", key: .nativeError, code: .parsingErrorCode)
+        guard let response = parseJsonData(with: jsonData) else {
+            responseWithError.error = OBError.native(
+                message: "Parsing failed",
+                key: .native,
+                code: .parsing
+            )
+            
             Outbrain.logger.error("fetch recs - parsing failed", domain: "request-handler")
             OBErrorReport.shared.errorMessage = "fetch recs - parsing failed"
             try callback(responseWithError)
@@ -166,13 +209,19 @@ public struct OBRequestHandler {
         if let pid = response.request["pid"] as? String {
             OBErrorReport.shared.publisherId = pid
         }
+        
         if let sid = response.request["sid"] as? Int {
             OBErrorReport.shared.sourceId = String(sid)
         }
-                
+        
         // no recs error
         if response.recommendations.isEmpty {
-            response.error = OBError.zeroRecommendationsError(message: "No recs", key: .zeroRecommendationsError, code: .noRecommendationsErrorCode)
+            response.error = OBError.zeroRecommendations(
+                message: "No recs",
+                key: .zeroRecommendations,
+                code: .noRecommendations
+            )
+            
             Outbrain.logger.error("fetch recs - no recs", domain: "request-handler")
         }
         
@@ -183,7 +232,10 @@ public struct OBRequestHandler {
         
         // fire served pixel
         if OBGlobalStatisticsManager.shared.isGlobalStatsticsEnabled() {
-            OBGlobalStatisticsManager.shared.reportServed(request: self.request, response: response, timestamp: self.request.startDate!)
+            OBGlobalStatisticsManager.shared.reportServed(request: request,
+                                                          response: response,
+                                                          timestamp: request.startDate ?? Date()
+            )
         }
         
         // fire pixels
@@ -193,15 +245,25 @@ public struct OBRequestHandler {
         try callback(response)
     }
     
+    
     func handleHttpErrorResponseCode(for statusCode: Int) -> OBError? {
         if (400..<500).contains(statusCode) {
-            return OBError.networkError(message: "Client Error \(statusCode)", key: .networkError, code: .invalidParametersErrorCode)
+            return OBError.network(
+                message: "Client Error \(statusCode)",
+                key: .network,
+                code: .invalidParameters
+            )
         } else if (500..<600).contains(statusCode) {
-            return OBError.networkError(message: "Server Error \(statusCode)", key: .networkError, code: .serverErrorCode)
+            return OBError.network(
+                message: "Server Error \(statusCode)",
+                key: .network,
+                code: .server
+            )
         }
         
         return nil
     }
+    
     
     // MARK: JSON Parsing - parsing respose from odb to a valid OBResponse struct
     
@@ -220,7 +282,7 @@ public struct OBRequestHandler {
             }
             
             //request id
-            let reqId = request["req_id"] as! String?
+            let reqId = request["req_id"] as? String
             
             // parse docs into recs
             var recs: [OBRecommendation] = []
@@ -231,7 +293,7 @@ public struct OBRequestHandler {
             
             // parse viewability actions
             let viewabilityActions = parseViewabilityActions(from: va)
-                        
+            
             // store t param
             if let tParam = request["t"] as? String, self.request.idx == "0" {
                 Outbrain.lastTParam = tParam
@@ -244,15 +306,25 @@ public struct OBRequestHandler {
                 Outbrain.lastApvParam = apvParam
                 Outbrain.logger.debug("got apv param: \(apvParam)", domain: "request-handler")
             }
-                        
+            
             // build final response object
-            return OBRecommendationResponse(request: request, settings: settings, viewabilityActions: viewabilityActions, recommendations: recs, error: nil)
+            return OBRecommendationResponse(
+                request: request,
+                settings: settings,
+                viewabilityActions: viewabilityActions,
+                recommendations: recs,
+                error: nil
+            )
         } catch {
-            Outbrain.logger.error("Error parsing JSON: \(error.localizedDescription)", domain: "request-handler")
+            Outbrain.logger.error(
+                "Error parsing JSON: \(error.localizedDescription)",
+                domain: "request-handler"
+            )
             return nil
         }
     }
-
+    
+    
     // parse documents dicts into recs
     func parseDocs(docs: [[String: Any]], reqId: String?) -> [OBRecommendation] {
         var recs: [OBRecommendation] = []
@@ -286,74 +358,55 @@ public struct OBRequestHandler {
         
         return recs
     }
-
+    
+    
     func extractValidProps(from doc: [String: Any], into rec: inout OBRecommendation) {
-        if let url = doc["url"] as? String {
-            rec.url = url
-        }
-        
-        if let origUrl = doc["orig_url"] as? String {
-            rec.origUrl = origUrl
-        }
-        
-        if let content = doc["content"] as? String {
-            rec.content = content
-        }
-        
-        if let source = doc["source_name"] as? String {
-            rec.source = source
-        }
-        
-        if let position = doc["pos"] as? String {
-            rec.position = position
-        }
-        
-        if let author = doc["author"] as? String {
-            rec.author = author
-        }
-        
-        if let sameSource = doc["same_source"] as? String {
-            rec.sameSource = sameSource == "true"
-        }
-        
-        if let pixels = doc["pixels"] as? [String] {
-            rec.pixels = pixels
-        }
+        rec.url = doc["url"] as? String
+        rec.origUrl = doc["orig_url"] as? String
+        rec.content = doc["content"] as? String
+        rec.source = doc["source_name"] as? String
+        rec.position = doc["pos"] as? String
+        rec.author = doc["author"] as? String
+        rec.sameSource = doc["same_source"] as? String == "true"
+        rec.pixels = doc["pixels"] as? [String]
     }
-
+    
+    
     func extractPublishDate(from doc: [String: Any], into rec: inout OBRecommendation) {
-        if let publishDate = doc["publish_date"] as? String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-            
-            if let date = dateFormatter.date(from: publishDate) {
-                rec.publishDate = date
-            }
-        }
-    }
-
-    func extractRecImage(from doc: [String: Any], into rec: inout OBRecommendation) {
-        if let imageUrlDict = doc["thumbnail"] as? [String: Any],
-           let imageUrl = imageUrlDict["url"] as? String,
-           let imageHeight = imageUrlDict["height"] as? Int,
-           let imageWidth = imageUrlDict["width"] as? Int {
-            rec.image = OBImageInfo(width: imageWidth, height: imageHeight, url: URL(string: imageUrl))
-        }
-    }
-
-    func extractDisclosure(from doc: [String: Any], into rec: inout OBRecommendation) {
-        if let disclosureDict = doc["disclosure"] as? [String: Any],
-           let imageUrl = disclosureDict["icon"] as? String,
-           let clickUrl = disclosureDict["url"] as? String {
-            rec.disclosure = OBDisclosure(imageUrl: imageUrl, clickUrl: clickUrl)
+        guard let publishDate = doc["publish_date"] as? String else { return }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        if let date = dateFormatter.date(from: publishDate) {
+            rec.publishDate = date
         }
     }
     
-    func parseViewabilityActions(from va: [String: Any] ) -> OBViewabilityActions? {
-        let reportServed = va["reportServed"] as? String
-        let reportViewed = va["reportViewed"] as? String
-        return OBViewabilityActions(reportServed: reportServed, reportViewed: reportViewed)
+    
+    func extractRecImage(from doc: [String: Any], into rec: inout OBRecommendation) {
+        guard let imageUrlDict = doc["thumbnail"] as? [String: Any],
+              let imageUrl = imageUrlDict["url"] as? String,
+              let imageHeight = imageUrlDict["height"] as? Int,
+              let imageWidth = imageUrlDict["width"] as? Int else { return }
+        rec.image = OBImageInfo(width: imageWidth, height: imageHeight, url: URL(string: imageUrl))
     }
+    
+    
+    func extractDisclosure(from doc: [String: Any], into rec: inout OBRecommendation) {
+        guard let disclosureDict = doc["disclosure"] as? [String: Any],
+              let imageUrl = disclosureDict["icon"] as? String,
+              let clickUrl = disclosureDict["url"] as? String else { return }
+        rec.disclosure = OBDisclosure(imageUrl: imageUrl, clickUrl: clickUrl)
+    }
+    
+    
+    func parseViewabilityActions(from va: [String: Any] ) -> OBViewabilityActions? {
+        return OBViewabilityActions(
+            reportServed: va["reportServed"] as? String,
+            reportViewed: va["reportViewed"] as? String
+        )
+    }
+    
     
     // MARK: Params Enrichment - build the request query params based on OBRequest
     
@@ -440,7 +493,7 @@ public struct OBRequestHandler {
         guard let platformsRequest = self.request as? OBPlatformsRequest else {
             return
         }
-         
+        
         // check if using bundle or portal url
         if platformsRequest.isUsingBundleUrl || platformsRequest.isUsingPortalUrl {
             // check that lang exists
@@ -472,13 +525,13 @@ public struct OBRequestHandler {
     // populate api_user_id from OS if the user is not opted out or customerId declared
     static func getApiUserId() -> String {
         var apiUserId: String
-
+        
         if OBAppleAdIdUtil.isOptedOut {
             apiUserId = "null"
         } else {
             apiUserId = OBAppleAdIdUtil.advertiserId
         }
-
+        
         if let customUserId = Outbrain.customUserId {
             apiUserId = customUserId
         }
@@ -505,7 +558,7 @@ public struct OBRequestHandler {
         if self.request.idx == "0" {
             return nil
         }
-
+        
         // check that we have the t param from last idx 0 call
         guard let tParam = Outbrain.lastTParam else {
             return nil

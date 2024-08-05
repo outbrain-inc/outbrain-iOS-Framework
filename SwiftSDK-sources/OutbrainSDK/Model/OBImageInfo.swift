@@ -8,6 +8,7 @@
 import Foundation
 
 public struct OBImageInfo {
+    
     public let width: Int
     public let height: Int
     public let url: URL?

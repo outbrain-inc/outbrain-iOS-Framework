@@ -8,19 +8,9 @@
 import Foundation
 import UIKit
 
-enum WidgetEvents {
-    case no
-    case testing
-    case all
-}
-
-enum PlatformUrlType {
-    case bundle(String)
-    case portal(String)
-    case content(String)
-}
 
 class BridgeUrlBuilder {
+    
     private var url: String?
     private var widgetId: String?
     private var installationKey: String?
@@ -34,21 +24,27 @@ class BridgeUrlBuilder {
     private var baseUrl = SFConsts.bridgeUrl
     
     
-    init?(url: String? = nil, widgetId: String? = nil, installationKey: String? = nil) {
-        guard let url = url, let widgetId = widgetId, let installationKey = installationKey else {
+    init?(
+        url: String? = nil,
+        widgetId: String? = nil,
+        installationKey: String? = nil
+    ) {
+        guard let url = url,
+              let widgetId = widgetId,
+              let installationKey = installationKey else {
             print("Error in getSmartfeedUrl() - missing mandatory params")
             return nil
         }
         
         if let customBaseUrl = UserDefaults.standard.value(forKey: "BridgeUrl") as? String {
-            self.baseUrl = customBaseUrl
+            baseUrl = customBaseUrl
         }
         
-        self.components = URLComponents(string: self.baseUrl)
+        components = URLComponents(string: baseUrl)
         self.url = url
         self.widgetId = widgetId
         self.installationKey = installationKey
-        self.addImplicitParams()
+        addImplicitParams()
     }
     
     
@@ -58,25 +54,26 @@ class BridgeUrlBuilder {
         
         let bundleIdentifier = Bundle.main.bundleIdentifier ?? ""
         newQueryItems.append(URLQueryItem(name: "appBundle", value: bundleIdentifier))
-        
-        self.newQueryItems.append(URLQueryItem(name: "widgetId", value: self.widgetId))
-        self.newQueryItems.append(URLQueryItem(name: "installationKey", value: self.installationKey))
-        self.newQueryItems.append(URLQueryItem(name: "platform", value: "ios"))
-        self.newQueryItems.append(URLQueryItem(name: "sdkVersion", value: Outbrain.OB_SDK_VERSION))
-        self.newQueryItems.append(URLQueryItem(name: "inApp", value: "true"))
-        self.newQueryItems.append(URLQueryItem(name: "dosv", value: UIDevice.current.systemVersion))
-        self.newQueryItems.append(URLQueryItem(name: "deviceType", value: DeviceModelUtils.deviceTypeShort))
-        self.newQueryItems.append(URLQueryItem(name: "textSize", value: DeviceModelUtils.isDynamicTextSizeLarge ? "large" : "default")) // text size (Accessibility)
-        self.newQueryItems.append(URLQueryItem(name: "viewData", value: "enabled"))
+        newQueryItems.append(URLQueryItem(name: "widgetId", value: widgetId))
+        newQueryItems.append(URLQueryItem(name: "installationKey", value: installationKey))
+        newQueryItems.append(URLQueryItem(name: "platform", value: "ios"))
+        newQueryItems.append(URLQueryItem(name: "sdkVersion", value: Outbrain.OB_SDK_VERSION))
+        newQueryItems.append(URLQueryItem(name: "inApp", value: "true"))
+        newQueryItems.append(URLQueryItem(name: "dosv", value: UIDevice.current.systemVersion))
+        newQueryItems.append(URLQueryItem(name: "deviceType", value: DeviceModelUtils.deviceTypeShort))
+        newQueryItems.append(URLQueryItem(name: "textSize", value: DeviceModelUtils.isDynamicTextSizeLarge ? "large" : "default")) // text size (Accessibility)
+        newQueryItems.append(URLQueryItem(name: "viewData", value: "enabled"))
         
         // GDPR v1
         if let cnsnt  = GDPRUtils.gdprV1ConsentString, !cnsnt.isEmpty {
             newQueryItems.append(URLQueryItem(name: "cnsnt", value:cnsnt))
         }
+        
         // GDPR v2
         if let cnsntv2  = GDPRUtils.gdprV2ConsentString, !cnsntv2.isEmpty  {
             newQueryItems.append(URLQueryItem(name: "cnsntv2", value: cnsntv2))
         }
+        
         // CCPA
         if let ccpa  = GDPRUtils.ccpaPrivacyString, !ccpa.isEmpty {
             newQueryItems.append(URLQueryItem(name: "ccpa", value: ccpa))
@@ -91,85 +88,98 @@ class BridgeUrlBuilder {
         if let gppString = GPPUtils.gppString, !gppString.isEmpty {
             newQueryItems.append(URLQueryItem(name: "gpp", value: gppString))
         }
-        
     }
     
+    
     func addUserId(userId: String?) -> BridgeUrlBuilder {
-        if let userId = userId {
-            newQueryItems.append(URLQueryItem(name: "userId", value: userId))
-        }
+        guard let userId = userId else { return self }
+        
+        newQueryItems.append(URLQueryItem(name: "userId", value: userId))
         return self
     }
     
     func addOSTracking() -> BridgeUrlBuilder {
-        newQueryItems.append(URLQueryItem(name: "ostracking", value: !OBAppleAdIdUtil.isOptedOut ? "true" : "false"))
+        newQueryItems.append(
+            URLQueryItem(
+                name: "ostracking",
+                value: !OBAppleAdIdUtil.isOptedOut ? "true" : "false"
+            )
+        )
         
         return self
     }
     
     func addWidgetIndex(index: Int?) -> BridgeUrlBuilder {
         if let index = index, index > 0 {
-            self.widgetIndex = String(index)
-            self.newQueryItems.append(URLQueryItem(name: "idx", value: self.widgetIndex))
+            widgetIndex = String(index)
+            newQueryItems.append(URLQueryItem(name: "idx", value: self.widgetIndex))
         }
         
         return self
     }
     
     func addPermalink(url: String?) -> BridgeUrlBuilder {
-        if let urlValue = url {
-            newQueryItems.append(URLQueryItem(name: "permalink", value: urlValue))
-        }
-        return self
-    }
-    
-    
-    func addTParam(tParam: String?) -> BridgeUrlBuilder {
-        if let tParamValue = tParam {
-            self.tParam = tParamValue
-            newQueryItems.append(URLQueryItem(name: "t", value: tParamValue))
-        }
+        guard let urlValue = url else { return self }
         
+        newQueryItems.append(URLQueryItem(name: "permalink", value: urlValue))
         return self
     }
+    
+    
+    func addTParam(tParamValue: String?) -> BridgeUrlBuilder {
+        guard let tParamValue else { return self }
+        
+        tParam = tParamValue
+        newQueryItems.append(URLQueryItem(name: "t", value: tParamValue))
+        return self
+    }
+    
     
     func addBridgeParams(bridgeParams: String?) -> BridgeUrlBuilder {
         if let bp = bridgeParams {
             newQueryItems.append(URLQueryItem(name: "bridgeParams", value: bp))
         }
+        
         if let globalBridgeParams = SFWidget.globalBridgeParams, SFWidget.infiniteWidgetsOnTheSamePage {
             newQueryItems.append(URLQueryItem(name: "bridgeParams", value: globalBridgeParams))
         }
+        
         return self
     }
+    
     
     func addDarkMode(isDarkMode: Bool?) -> BridgeUrlBuilder{
-        if isDarkMode == true {
-            newQueryItems.append(URLQueryItem(name: "darkMode", value: "true"))
-        }
+        guard isDarkMode == true else { return self }
+        
+        newQueryItems.append(URLQueryItem(name: "darkMode", value: "true"))
         return self
     }
+    
     
     func addExternalId(extId: String?) -> BridgeUrlBuilder {
-        if let extId = extId {
-            newQueryItems.append(URLQueryItem(name: "extid", value: extId))
-        }
+        guard let extId = extId else { return self }
+        
+        newQueryItems.append(URLQueryItem(name: "extid", value: extId))
         return self
     }
     
+    
     func addExternalSecondaryId(extid2: String?) -> BridgeUrlBuilder {
-        if let extid2 = extid2 {
-            newQueryItems.append(URLQueryItem(name: "extid2", value: extid2))
-        }
+        guard let extid2 = extid2 else { return self }
+        
+        newQueryItems.append(URLQueryItem(name: "extid2", value: extid2))
         return self
     }
+    
     
     func addIsFlutter(isFlutter: Bool) -> BridgeUrlBuilder {
         guard isFlutter else { return self }
+        
         newQueryItems.append(URLQueryItem(name: "flutter", value: "true"))
         return self
     }
     
+
     func addFlutterPackageVersion(version: String?) -> BridgeUrlBuilder {
         guard version != nil else { return self }
         newQueryItems.append(URLQueryItem(name: "flutterPackageVersion", value: version))
@@ -187,26 +197,26 @@ class BridgeUrlBuilder {
         newQueryItems.append(URLQueryItem(name: "reactNativePackageVersion", value: version))
         return self
     }
+  
     
     func addOBPubImp(pubImpId: String?) -> BridgeUrlBuilder {
-        if let pubImpId = pubImpId {
-            newQueryItems.append(URLQueryItem(name: "pubImpId", value: pubImpId))
-        }
+        guard let pubImpId = pubImpId else { return self }
+        
+        newQueryItems.append(URLQueryItem(name: "pubImpId", value: pubImpId))
         return self
     }
     
+    
     func addEvents(widgetEvents: WidgetEvents?) -> BridgeUrlBuilder {
-        if widgetEvents == nil || widgetEvents == .no {
-            return self
+        switch widgetEvents {
+            case nil, .omit:
+                break
+            case .testing:
+                newQueryItems.append(URLQueryItem(name: "widgetEvents", value: "test"))
+            case .all:
+                newQueryItems.append(URLQueryItem(name: "widgetEvents", value: "all"))
         }
         
-        // Widget Events
-        if widgetEvents == .all {
-            newQueryItems.append(URLQueryItem(name: "widgetEvents", value: "all"))
-            return self
-        }
-        
-        self.newQueryItems.append(URLQueryItem(name: "widgetEvents", value: "test"))
         return self
     }
     
@@ -217,26 +227,29 @@ class BridgeUrlBuilder {
         switch type {
         case .bundle(let url) :
             // first verify that the mandatory param "lang" is set
-            guard let lang = self.lang else {fatalError(errorMsg)}
-            self.newQueryItems.append(URLQueryItem(name: "bundleUrl", value: url))
-            self.newQueryItems.append(URLQueryItem(name: "lang", value: lang))
+            guard let lang else {fatalError(errorMsg)}
+                
+            newQueryItems.append(URLQueryItem(name: "bundleUrl", value: url))
+            newQueryItems.append(URLQueryItem(name: "lang", value: lang))
         case .portal(let url):
-            guard let lang = self.lang else {fatalError(errorMsg)}
-            self.newQueryItems.append(URLQueryItem(name: "portalUrl", value: url))
-            self.newQueryItems.append(URLQueryItem(name: "lang", value: lang))
+            guard let lang else {fatalError(errorMsg)}
+                
+            newQueryItems.append(URLQueryItem(name: "portalUrl", value: url))
+            newQueryItems.append(URLQueryItem(name: "lang", value: lang))
         case .content(let url):
-            self.newQueryItems.append(URLQueryItem(name: "contentUrl", value: url))
+            newQueryItems.append(URLQueryItem(name: "contentUrl", value: url))
         }
         
         return build()
     }
+    
     
     func build() -> URL? {
         // Remove duplicate query items based on name
         var uniqueQueryItems = [URLQueryItem]()
         var seenQueryItemNames = Set<String>()
         
-        for queryItem in newQueryItems {
+        newQueryItems.forEach { queryItem in
             if !seenQueryItemNames.contains(queryItem.name) {
                 uniqueQueryItems.append(queryItem)
                 seenQueryItemNames.insert(queryItem.name)

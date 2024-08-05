@@ -8,42 +8,46 @@
 import Foundation
 import WebKit
 
-let SFWIDGET_T_PARAM_NOTIFICATION = "SFWidget_T_Param_Ready"
-let SFWIDGET_BRIDGE_PARAMS_NOTIFICATION = "SFWidget_Bridge_Params_Ready"
-let THRESHOLD_FROM_BOTTOM: CGFloat = 500
-//bottom
+
 public class SFWidget: UIView {
-    var currentHeight: CGFloat = 0
-    var isLoading: Bool = false
-    var isWidgetEventsEnabled: Bool = false
-    var inTransition: Bool = false
-    var url: String?
-    var widgetId: String?
-    var installationKey: String?
-    var userId: String?
-    var widgetIndex: Int = 0
-    var isSwiftUI: Bool = false
+
+    public internal(set) var currentHeight: CGFloat = 0
+    internal var isLoading: Bool = false
+    internal var isWidgetEventsEnabled: Bool = false
+    internal var inTransition: Bool = false
+    internal var url: String?
+    internal var widgetId: String?
+    internal var installationKey: String?
+    internal var userId: String?
+    internal var widgetIndex: Int = 0
+    internal var isSwiftUI: Bool = false
+    internal var tParam: String?
+    internal var bridgeParams: String?
+    internal var darkMode: Bool = false
+    internal weak var delegate: SFWidgetDelegate?
+    internal var messageHandler = SFWidgetMessageHandler()
+    internal var bridgeUrlBuilder: BridgeUrlBuilder?
+    internal var jsExec = JavaScriptExecutor()
+    internal var webView: WKWebView?
+    internal var hiddenWebView: WKWebView?
+    internal var bridgeParamsObserver: NSObjectProtocol?
+    internal var tParamObserver: NSObjectProtocol?
+    internal var viewabilityTimerHandler = ViewabilityTimerHandler()
+    internal var errorReporter: OBErrorReport?
+    internal var settings: [String: Any] = [:]
+    internal static var isFlutter: Bool = false
     private lazy var swiftUiConfigureDone = false
-    var tParam: String?
-    var bridgeParams: String?
-    var darkMode: Bool = false
-    weak var delegate: SFWidgetDelegate?
-    var messageHandler: SFWidgetMessageHandler!
-    var bridgeUrlBuilder: BridgeUrlBuilder?
-    var jsExec: JavaScriptExecutor!
-    var webview: WKWebView!
-    var hiddenWebView: WKWebView?
-    var bridgeParamsObserver: NSObjectProtocol?
-    var tParamObserver: NSObjectProtocol?
-    var viewabilityTimerHandler: ViewabilityTimerHandler!
-    var errorReporter: OBErrorReport?
-    var settings: [String: Any] = [:]
-    static var isFlutter: Bool = false;
-    static var isReactNative: Bool = false;
-    static var flutter_packageVersion: String?;
-    static var RN_packageVersion: String?;
-    public static var infiniteWidgetsOnTheSamePage: Bool = false;
-    static var globalBridgeParams: String?
+    internal static var globalBridgeParams: String?
+    
+    /**
+     Indicates that there are multiple widgets on the same content page. Has to be set only when there are multiple widgets on the same page
+     */
+    public static var infiniteWidgetsOnTheSamePage: Bool = false
+    static var isReactNative: Bool = false
+    static var flutter_packageVersion: String?
+    static var RN_packageVersion: String?
+
+  
     
     /**
        External Id public value
@@ -56,6 +60,7 @@ public class SFWidget: UIView {
      Outbrain uses the odb parameter pubImpId to get the session ID/ click identifier from the publisher.
      */
     public var OBPubImp: String?
+    
     /**
      Initializes a new instance of the custom view with the specified frame.
 
@@ -72,6 +77,7 @@ public class SFWidget: UIView {
         commonInit()
     }
     
+    
     /**
      Initializes a new instance of the custom view based on data from the storyboard or a NIB file.
 
@@ -86,13 +92,6 @@ public class SFWidget: UIView {
         commonInit()
     }
     
-    private func commonInit() {
-        self.messageHandler = SFWidgetMessageHandler()
-        self.jsExec = JavaScriptExecutor()
-        self.viewabilityTimerHandler = ViewabilityTimerHandler()
-        self.configureSFWidget()        
-        self.messageHandler.delegate = self
-    }
 
     /**
      Configures the custom widget with the provided settings.
@@ -110,10 +109,25 @@ public class SFWidget: UIView {
      ```swift
      widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", installationKey: "abcdef")
      */
-    public func configure(with delegate: SFWidgetDelegate, url: String, widgetId: String, installationKey: String) {
-        self.configure(with: delegate, url: url, widgetId: widgetId, widgetIndex: 0, installationKey: installationKey, userId: nil, darkMode: false, isSwiftUI: false)
+    public func configure(
+        with delegate: SFWidgetDelegate,
+        url: String,
+        widgetId: String,
+        installationKey: String
+    ) {
+        configure(
+            with: delegate,
+            url: url,
+            widgetId: widgetId,
+            widgetIndex: 0,
+            installationKey: installationKey,
+            userId: nil,
+            darkMode: false,
+            isSwiftUI: false
+        )
     }
 
+    
     /**
      Configures the custom widget with advanced settings.
 
@@ -133,9 +147,27 @@ public class SFWidget: UIView {
      ```swift
      widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", widgetIndex: 0, installationKey: "abcdef", userId: "user123", darkMode: true)
      */
-    public func configure(with delegate: SFWidgetDelegate, url: String, widgetId: String, widgetIndex: Int, installationKey: String, userId: String?, darkMode: Bool) {
-        self.configure(with: delegate, url: url, widgetId: widgetId, widgetIndex: widgetIndex, installationKey: installationKey, userId: userId, darkMode: darkMode, isSwiftUI: false)
+    public func configure(
+        with delegate: SFWidgetDelegate,
+        url: String,
+        widgetId: String,
+        widgetIndex: Int,
+        installationKey: String,
+        userId: String?,
+        darkMode: Bool
+    ) {
+        configure(
+            with: delegate,
+            url: url,
+            widgetId: widgetId,
+            widgetIndex: widgetIndex,
+            installationKey: installationKey,
+            userId: userId,
+            darkMode: darkMode,
+            isSwiftUI: false
+        )
     }
+    
 
     /**
      Configures the custom widget with basic settings.
@@ -155,43 +187,53 @@ public class SFWidget: UIView {
      ```swift
      widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", installationKey: "abcdef")
      */
-    public func configure(with delegate: SFWidgetDelegate?,
-                   url: String,
-                   widgetId: String,
-                   installationKey: String) {
+    public func configure(
+        with delegate: SFWidgetDelegate?,
+        url: String,
+        widgetId: String,
+        installationKey: String
+    ) {
         
-        if (self.swiftUiConfigureDone) {
-           return;
+        if (swiftUiConfigureDone) {
+           return
         }
 
         self.delegate = delegate
         self.url = url
         self.widgetId = widgetId
         self.installationKey = installationKey
-        self.errorReporter = OBErrorReport(url: self.url, widgetId: self.widgetId)
-        self.bridgeUrlBuilder = BridgeUrlBuilder(url: self.url, widgetId: self.widgetId, installationKey: self.installationKey)
-        self.configureBridgeNotificationHandlers()
+        self.errorReporter = OBErrorReport(
+            url: url,
+            widgetId: widgetId
+        )
         
-        if self.widgetIndex > 0 {
+        self.bridgeUrlBuilder = BridgeUrlBuilder(
+            url: url,
+            widgetId: widgetId,
+            installationKey: installationKey
+        )
+        
+        configureBridgeNotificationHandlers()
+        
+        if widgetIndex > 0 {
             if (SFWidget.globalBridgeParams != nil && SFWidget.infiniteWidgetsOnTheSamePage) {
                 // we have the "page context" already from fetching widgetIdx=0 (stored in globalBridgeParams)
                 // Therefore, we can load the widget with idx > 0 immediately
-                self.initialLoadUrl()
-            }
-            else {
+                initialLoadUrl()
+            } else {
                 print("differ fetching until we'll have the \"t\" or \"bridgeParams\" ready")
             }
-        }
-        else {
+        } else {
             SFWidget.globalBridgeParams = nil
-            self.initialLoadUrl()
+            initialLoadUrl()
         }
         
-        if self.isSwiftUI == true {
-            self.handleSwiftUI()
-            self.swiftUiConfigureDone = true
+        if isSwiftUI == true {
+            handleSwiftUI()
+            swiftUiConfigureDone = true
         }
     }
+    
 
     /**
      Configures the custom widget with advanced settings.
@@ -215,61 +257,30 @@ public class SFWidget: UIView {
      ```swift
      widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", widgetIndex: 0, installationKey: "abcdef", userId: "user123", darkMode: true, isSwiftUI: false)
      */
-    public func configure(with delegate: SFWidgetDelegate?,
-                   url: String,
-                   widgetId: String,
-                   widgetIndex: Int,
-                   installationKey: String,
-                   userId: String?,
-                   darkMode: Bool,
-                   isSwiftUI: Bool) {
+    public func configure(
+        with delegate: SFWidgetDelegate?,
+        url: String,
+        widgetId: String,
+        widgetIndex: Int,
+        installationKey: String,
+        userId: String?,
+        darkMode: Bool,
+        isSwiftUI: Bool
+    ) {
         self.delegate = delegate
         self.widgetIndex = widgetIndex
         self.darkMode = darkMode
         self.setUserId(userId)
         self.isSwiftUI = isSwiftUI
-        self.configure(with: delegate, url: url, widgetId: widgetId, installationKey: installationKey)
+        
+        configure(
+            with: delegate,
+            url: url,
+            widgetId: widgetId,
+            installationKey: installationKey
+        )
     }
 
-    private func configureSFWidget() {
-        if self.webview != nil {
-            return
-        }
-
-        let preferences = WKPreferences()
-        let webviewConf = WKWebViewConfiguration()
-
-        let jsInitScript = """
-            window.ReactNativeWebView = {
-                postMessage: function (data) {
-                    window.webkit.messageHandlers.ReactNativeWebView.postMessage(String(data));
-                }
-            }
-            """
-
-        let script = WKUserScript(source: jsInitScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
-
-        let controller = WKUserContentController()
-        controller.add(self.messageHandler!, name: "ReactNativeWebView")
-
-        controller.addUserScript(script)
-        preferences.javaScriptEnabled = true
-        webviewConf.userContentController = controller
-        webviewConf.allowsInlineMediaPlayback = true
-        webviewConf.preferences = preferences
-
-        self.webview = WKWebView(frame: self.frame, configuration: webviewConf)
-        self.webview.scrollView.isScrollEnabled = false
-        self.webview.isOpaque = false
-        self.webview.uiDelegate = self
-        self.webview.navigationDelegate = self
-        self.setWebViewInspectable(inspectable: SFConsts.isInspectable)
-        self.addSubview(self.webview)
-        BridgeUtils.addConstraintsToParentView(view: self.webview)
-        self.jsExec.setWebView(view: self.webview)
-        self.webview.setNeedsLayout()
-
-    }
     
     public static func enableFlutterMode(flutter_packageVersion: String) {
         isFlutter = true;
@@ -280,50 +291,64 @@ public class SFWidget: UIView {
         isReactNative = true;
         self.RN_packageVersion = RN_packageVersion;
     }
+    
+    public static func setInfiniteWidgetsOnTheSamePage(_ infiniteWidgets: Bool) {
+        infiniteWidgetsOnTheSamePage = true
+    }
+    
+    public func getCurrentHeight() -> CGFloat {
+        return currentHeight
+    }
+    
 
     public override func didMoveToWindow() {
         super.didMoveToWindow()
         
-        if self.window != nil {
+        if window != nil {
             // The view has been added to a window
             print("View added to window")
-            if self.swiftUiConfigureDone == true {
-                self.handleSwiftUI()
-            }
+            guard !swiftUiConfigureDone else { return }
+            handleSwiftUI()
         } else {
             // The view has been removed from a window
             print("View removed from window")
         }
     }
     
+    
     func configureBridgeNotificationHandlers() {
-        let bridgeParamsNotification = NSNotification.Name(rawValue: SFWIDGET_BRIDGE_PARAMS_NOTIFICATION)
+        let bridgeParamsNotification = NSNotification.Name(rawValue: SFConsts.SFWIDGET_BRIDGE_PARAMS_NOTIFICATION)
         
-        self.bridgeParamsObserver = NotificationCenter.default.addObserver(forName: bridgeParamsNotification, object: nil, queue: nil) { notification in
+        bridgeParamsObserver = NotificationCenter.default.addObserver(
+            forName: bridgeParamsNotification,
+            object: nil,
+            queue: nil
+        ) { [weak self] notification in
             Outbrain.logger.log("SFWidget received \"bridgeParams\" notification")
-            self.receiveBridgeParamsNotification(notification)
+            self?.receiveBridgeParamsNotification(notification)
             
-            if (self.widgetIndex == 0) {
-                // we are already loaded
-                return;
-            }
+            // Already loaded
+            guard self?.widgetIndex != 0 else { return }
+            
             DispatchQueue.main.async {
-                self.initialLoadUrl()
+                self?.initialLoadUrl()
             }
         }
     }
     
+    
     func receiveBridgeParamsNotification(_ notification: Notification) {
-        if notification.name.rawValue == SFWIDGET_BRIDGE_PARAMS_NOTIFICATION {
+        if notification.name.rawValue == SFConsts.SFWIDGET_BRIDGE_PARAMS_NOTIFICATION {
             if let bridgeParams = notification.userInfo?["bridgeParams"] as? String {
                 self.bridgeParams = bridgeParams
                 SFWidget.globalBridgeParams = self.bridgeParams
             }
+            
             Outbrain.logger.log("Successfully received SFWIDGET_BRIDGE_PARAMS_NOTIFICATION - \(String(describing: self.bridgeParams))")
+            
             if let bridgeParamsObserver = self.bridgeParamsObserver {
                 NotificationCenter.default.removeObserver(bridgeParamsObserver)
             }
-            
         }
     }
 
@@ -331,20 +356,21 @@ public class SFWidget: UIView {
     func setWebViewInspectable(inspectable: Bool) {
 #if compiler(>=5.8) && os(iOS) && DEBUG
         if #available(iOS 16.4, *) {
-            self.webview.isInspectable = inspectable
+            webView?.isInspectable = inspectable
         }
 #endif
     }
     
+    
     func setUserId(_ userId: String?) {
-        
+#if DEBUG
         if UIDevice.current.model == "Simulator" {
             self.userId = "F22700D5-1D49-42CC-A183-F3676526035F" // dev hack to test Videos
             return
         }
+#endif
         
-        if OBAppleAdIdUtil.isOptedOut {
-            self.userId = nil
+        guard !OBAppleAdIdUtil.isOptedOut else {
             return
         }
         
@@ -358,18 +384,20 @@ public class SFWidget: UIView {
         }
     }
 
+    
     func initialLoadUrl() {
-        if let widgetURL = bridgeUrlBuilder?.addPermalink(url: self.url)
-            .addDarkMode(isDarkMode: self.darkMode)
-            .addTParam(tParam: self.tParam)
-            .addBridgeParams(bridgeParams: self.bridgeParams)
-            .addEvents(widgetEvents: self.isWidgetEventsEnabled ? .all: .no)
-            .addExternalId(extId: self.extId)
-            .addExternalSecondaryId(extid2: self.extSecondaryId)
-            .addOBPubImp(pubImpId: self.OBPubImp)
-            .addUserId(userId: self.userId)
+        if let widgetURL = bridgeUrlBuilder?
+            .addPermalink(url: url)
+            .addDarkMode(isDarkMode: darkMode)
+            .addTParam(tParamValue: tParam)
+            .addBridgeParams(bridgeParams: bridgeParams)
+            .addEvents(widgetEvents: isWidgetEventsEnabled ? .all : .omit)
+            .addExternalId(extId: extId)
+            .addExternalSecondaryId(extid2: extSecondaryId)
+            .addOBPubImp(pubImpId: OBPubImp)
+            .addUserId(userId: userId)
             .addOSTracking()
-            .addWidgetIndex(index: self.widgetIndex)
+            .addWidgetIndex(index: widgetIndex)
             .addIsFlutter(isFlutter: SFWidget.isFlutter)
             .addIsReactNative(isReactNative: SFWidget.isReactNative)
             .addFlutterPackageVersion(version: SFWidget.flutter_packageVersion)
@@ -378,87 +406,92 @@ public class SFWidget: UIView {
             
             Outbrain.logger.log("Bridge URL: \(widgetURL)")
 
-            let urlRequest = URLRequest(url: widgetURL)
-            self.webview.load(urlRequest)
-            self.webview.setNeedsLayout()
+            webView?.load(URLRequest(url: widgetURL))
+            webView?.setNeedsLayout()
         }
     }
 
-
-    public func getCurrentHeight() -> CGFloat {
-        return self.currentHeight
-    }
-
+    
     public func enableEvents() {
-        self.isWidgetEventsEnabled = true
+        isWidgetEventsEnabled = true
     }
     
-    // MARK: - toggle darkMode
-    public func toggleDarkMode(_ displayDark: Bool) {
-        self.jsExec.toggleDarkMode(displayDark)
+    
+    // MARK: - Toggle dark mode
+    public func toggleDarkMode(_ isDark: Bool) {
+        darkMode = isDark
+        jsExec.toggleDarkMode(isDark)
     }
 
-    // MARK: - UITableView
-    public func willDisplay(_ cell: SFWidgetTableCell) {
-        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-        cell.contentView.addSubview(self)
-        BridgeUtils.addConstraintsToFillParent(view: self)
-    }
-    
-    public func willDisplay(_ cell: SFWidgetCollectionCell) {
-        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-        cell.contentView.addSubview(self)
-        BridgeUtils.addConstraintsToFillParent(view: self)
-    }
-    
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //check if this check happens from bottom or from bottom view port
         //check if we can move responsebility of load more to js bridge
-        self.viewabilityTimerHandler.handleViewability(sfWidget: self, containerView: scrollView) {viewStatus, width ,height  in
-            self.jsExec.setViewData(from: viewStatus.visibleFrom, to: viewStatus.visibleTo, width: width, height: height)
+        viewabilityTimerHandler.handleViewability(
+            sfWidget: self,
+            containerView: scrollView
+        ) { [weak self] viewStatus, width ,height  in
+            guard let self else { return }
+            
+            self.jsExec.setViewData(
+                from: viewStatus.visibleFrom,
+                to: viewStatus.visibleTo,
+                width: width,
+                height: height
+            )
         }
         
-        if self.isLoading || self.inTransition || self.currentHeight <= THRESHOLD_FROM_BOTTOM {
+        if isLoading || inTransition || currentHeight <= SFConsts.THRESHOLD_FROM_BOTTOM {
             return
         }
 
         let contentOffsetY = scrollView.contentOffset.y
         let diffFromBottom = (scrollView.contentSize.height - scrollView.frame.size.height) - contentOffsetY
-        if diffFromBottom < THRESHOLD_FROM_BOTTOM {
-            self.loadMore()
+        
+        if diffFromBottom < SFConsts.THRESHOLD_FROM_BOTTOM {
+            loadMore()
         }
     }
 
+    
     // this function is used to count a "new" page view on user back action on a specific publisher (bild.de)
     public func reportPageViewOnTheSameWidget() {
         Outbrain.logger.log("Outbrain SDK reportPageViewOnTheSameWidget() is called")
         
         let webviewConf = WKWebViewConfiguration()
-        self.hiddenWebView = WKWebView(frame: self.frame, configuration: webviewConf)
+        hiddenWebView = WKWebView(
+            frame: frame,
+            configuration: webviewConf
+        )
         
-        if let widgetURL = bridgeUrlBuilder?.addPermalink(url: self.url).build() {
-            let urlRequest = URLRequest(url: widgetURL)
-            self.hiddenWebView?.load(urlRequest)
-        }
-    }
-
-    public func loadMore() {
-        self.isLoading = true
-        NSLog("loading more --->")
-        Outbrain.logger.debug("load-more-recs", domain: "sfWidfet-handler")
-        self.jsExec.loadMore()
-        self.jsExec.evaluateHeight()
+        guard let widgetURL = bridgeUrlBuilder?.addPermalink(url: self.url).build() else { return }
+        hiddenWebView?.load(URLRequest(url: widgetURL))
     }
     
+
+    public func loadMore() {
+        isLoading = true
+        NSLog("loading more --->")
+        Outbrain.logger.debug("load-more-recs", domain: "sfWidfet-handler")
+        jsExec.loadMore()
+        jsExec.evaluateHeight()
+    }
+    
+    
     private func handleSwiftUI() {
-        self.viewabilityTimerHandler.handleSwiftUI(sfWidget: self) { viewStatus, width ,height, shouldLoadMore in
-            self.jsExec.setViewData(from: viewStatus.visibleFrom, to: viewStatus.visibleTo, width: width, height: height)
-            if (!shouldLoadMore) {
-                return
-            }
+        viewabilityTimerHandler.handleSwiftUI(sfWidget: self) { [weak self] viewStatus, width ,height, shouldLoadMore in
+            guard let self else { return }
             
-            if self.isLoading || self.inTransition || self.currentHeight <= THRESHOLD_FROM_BOTTOM {
+            self.jsExec.setViewData(
+                from: viewStatus.visibleFrom,
+                to: viewStatus.visibleTo,
+                width: width,
+                height: height
+            )
+            
+            guard shouldLoadMore else { return }
+            
+            if self.isLoading || self.inTransition || self.currentHeight <= SFConsts.THRESHOLD_FROM_BOTTOM {
                 return
             }
             
@@ -466,8 +499,12 @@ public class SFWidget: UIView {
         }
     }
     
-    public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        self.inTransition = true
+    
+    public func viewWillTransition(
+        to size: CGSize,
+        with coordinator: UIViewControllerTransitionCoordinator
+    ) {
+        inTransition = true
         
         // Run after the transition is finished
         coordinator.animate(alongsideTransition: nil) { [weak self] _ in
@@ -475,7 +512,51 @@ public class SFWidget: UIView {
             self?.inTransition = false
         }
     }
+
+    
+    // MARK: - Private
+    private func commonInit() {
+        configureSFWidget()
+        messageHandler.delegate = self
+    }
+    
+    
+    private func configureSFWidget() {
+        guard webView == nil else { return }
+        
+        let preferences = WKPreferences()
+        let webviewConf = WKWebViewConfiguration()
+        let jsInitScript = """
+            window.ReactNativeWebView = {
+                postMessage: function (data) {
+                    window.webkit.messageHandlers.ReactNativeWebView.postMessage(String(data));
+                }
+            }
+            """
+        
+        let script = WKUserScript(source: jsInitScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+        let controller = WKUserContentController()
+        
+        controller.add(messageHandler, name: "ReactNativeWebView")
+        controller.addUserScript(script)
+        
+        webviewConf.userContentController = controller
+        webviewConf.allowsInlineMediaPlayback = true
+        webviewConf.preferences = preferences
+        
+        webView = WKWebView(frame: self.frame, configuration: webviewConf)
+        webView!.scrollView.isScrollEnabled = false
+        webView!.isOpaque = false
+        webView!.uiDelegate = self
+        webView!.navigationDelegate = self
+        setWebViewInspectable(inspectable: SFConsts.isInspectable)
+        addSubview(webView!)
+        BridgeUtils.addConstraintsToParentView(view: webView!)
+        jsExec.setWebView(view: webView!)
+        webView!.setNeedsLayout()
+    }
 }
+
 
 extension SFWidget: SFMessageHandlerDelegate {
     
@@ -485,62 +566,73 @@ extension SFWidget: SFMessageHandlerDelegate {
         }
     }
     
+    
     @objc func messageHeightChange(_ height: CGFloat) {
-        self.currentHeight = CGFloat(height)
-        self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.size.width, height: CGFloat(height))
-        self.setNeedsLayout()
+        currentHeight = CGFloat(height)
         
-        self.delegate?.didChangeHeight?(self.currentHeight)
-        self.delegate?.didChangeHeight?()
+        frame = CGRect(
+            x: frame.origin.x,
+            y: frame.origin.y,
+            width: frame.size.width,
+            height: CGFloat(height)
+        )
+        
+        setNeedsLayout()
+        
+        delegate?.didChangeHeight?(currentHeight)
 
-        if self.isLoading {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                self.isLoading = false
-            }
+        guard !isLoading else { return }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            self?.isLoading = false
         }
     }
 
+    
     func didClickOnRec(_ url: String) {
-        if let recURL = URL(string: url) {
-            DispatchQueue.main.async {
-                self.delegate?.onRecClick(recURL)
-            }
+        guard let recURL = URL(string: url) else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.delegate?.onRecClick(recURL)
         }
     }
+    
 
     func didClickOnOrganicRec(_ url: String, orgUrl: String) {
         guard let recURL = URL(string: url) else { return }
         guard var components = URLComponents(string: url) else { return }
         components.queryItems = (components.queryItems ?? []) + [URLQueryItem(name: "noRedirect", value: "true")]
         
-        if let trafficURL = components.url {
-            self.clickOpenRequest(for: trafficURL) { result in
-                if case .failure(let error) = result {
-                    let errorMsg = "Error reporting organic click: \(trafficURL), error: \(error)"
-                    Outbrain.logger.error(errorMsg, domain: "didClickOnOrganicRec")
-                    self.errorReporter?.setMessage(message: errorMsg).reportErrorToServer()
-                    return
+        guard let trafficURL = components.url else { return }
+        clickOpenRequest(for: trafficURL) { result in
+            if case .failure(let error) = result {
+                let errorMsg = "Error reporting organic click: \(trafficURL), error: \(error)"
+                Outbrain.logger.error(errorMsg, domain: "didClickOnOrganicRec")
+                self.errorReporter?.setMessage(message: errorMsg).reportErrorToServer()
+                return
+            }
+            
+            if let orgRecURL = URL(string: orgUrl) {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    let orgClickImplemented = self.delegate?.onOrganicRecClick != nil
+                    orgClickImplemented ? self.delegate?.onOrganicRecClick!(orgRecURL) : self.delegate?.onRecClick(recURL)
                 }
                 
-                if let orgRecURL = URL(string: orgUrl) {
-                    DispatchQueue.main.async {
-                        let orgClickImplemented = self.delegate?.onOrganicRecClick != nil
-                        orgClickImplemented ? self.delegate?.onOrganicRecClick!(orgRecURL) : self.delegate?.onRecClick(recURL)
-                    }
-
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    self.delegate?.onRecClick(recURL)
-                }
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.delegate?.onRecClick(recURL)
             }
         }
     }
+    
 
-    func clickOpenRequest(for url: URL, completionHandler: @escaping (Result<Void, Error>) -> Void) {
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: url) { (_, response, error) in
+    func clickOpenRequest(
+        for url: URL,
+        completionHandler: @escaping (Result<Void, Error>
+        ) -> Void) {
+        let dataTask = URLSession.shared.dataTask(with: url) { (_, response, error) in
             if let error = error {
                 completionHandler(.failure(error))
                 return
@@ -554,22 +646,26 @@ extension SFWidget: SFMessageHandlerDelegate {
             let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
             let error = NSError(domain: "", code: statusCode, userInfo: nil)
             completionHandler(.failure(error))
-            
         }
+        
         dataTask.resume()
     }
+    
 
     public func onRecClick(_ url: URL) {
-        self.delegate?.onRecClick(url)
+        delegate?.onRecClick(url)
     }
+    
     
     public func onSettingsReceived(_ settings: [String : Any]) {
         self.settings = settings
     }
 }
 
+
 // MARK: WKUIDelegate
 extension SFWidget: WKUIDelegate, WKNavigationDelegate {
+    
     private func isDisplaySettingEnabled() -> Bool {
         guard let flagSetting = self.settings["shouldEnableBridgeDisplay"] as? Bool else {
             return false
@@ -578,16 +674,26 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
         return flagSetting == true
     }
     
-    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        if navigationAction.targetFrame == nil {
-            if let url = navigationAction.request.url {
-                self.delegate?.onRecClick(url)
-            }
+    
+    public func webView(
+        _ webView: WKWebView,
+        createWebViewWith configuration: WKWebViewConfiguration,
+        for navigationAction: WKNavigationAction,
+        windowFeatures: WKWindowFeatures
+    ) -> WKWebView? {
+        if navigationAction.targetFrame == nil, let url = navigationAction.request.url {
+            delegate?.onRecClick(url)
         }
+        
         return nil
     }
     
-    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    
+    public func webView(
+        _ webView: WKWebView,
+        decidePolicyFor navigationAction: WKNavigationAction,
+        decisionHandler: @escaping (WKNavigationActionPolicy
+        ) -> Void) {
         guard isDisplaySettingEnabled(),
               let url = navigationAction.request.url,
               UIApplication.shared.canOpenURL(url) else {
@@ -600,10 +706,27 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
            navigationAction.sourceFrame.isMainFrame == false,
            url.absoluteString.contains("widgets.outbrain.com/reactNativeBridge") == false {
             decisionHandler(.cancel)
-            self.delegate?.onRecClick(url)
+            delegate?.onRecClick(url)
             return
         }
         
         decisionHandler(.allow)
+    }
+}
+
+
+// MARK: - UITableView
+extension SFWidget {
+    
+    public func willDisplay(_ cell: SFWidgetTableCell) {
+        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
+        cell.contentView.addSubview(self)
+        BridgeUtils.addConstraintsToFillParent(view: self)
+    }
+    
+    public func willDisplay(_ cell: SFWidgetCollectionCell) {
+        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
+        cell.contentView.addSubview(self)
+        BridgeUtils.addConstraintsToFillParent(view: self)
     }
 }
