@@ -7,7 +7,7 @@
 
 import Foundation
 
-@Observable
+
 class ParamsViewModel {
     var darkMode: Bool = false
     var bridgeWidgetId: String = "MB_1"
