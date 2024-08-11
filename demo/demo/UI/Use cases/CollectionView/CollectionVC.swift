@@ -111,7 +111,6 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             if let sfWidgetCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SFWidgetCell", for: indexPath) as? SFWidgetCollectionCell {
                 cell = sfWidgetCell
             }
-            break;
         }
         
         return cell ?? UICollectionViewCell()
@@ -177,9 +176,11 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
 }
 
+
 // MARK: SFWidgetDelegate
 extension CollectionVC: SFWidgetDelegate {
-    func didChangeHeight() {
+    
+    func didChangeHeight(_ newHeight: CGFloat) {
         collectionView.performBatchUpdates(nil, completion: nil)
     }
     
