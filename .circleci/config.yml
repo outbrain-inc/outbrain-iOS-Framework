@@ -93,8 +93,8 @@ jobs:
           command: fastlane sdk_tests
 
       - run:
-          name: Build Sample Apps - Fastlane Outbrain Demo
-          command: MATCH_PASSWORD=123456  fastlane demo_prod
+          name: Build Sample Apps - Fastlane SFWebView-Prod
+          command: MATCH_PASSWORD=123456  fastlane sfwebview_prod
 
   ios_release:
     <<: *ios_config
