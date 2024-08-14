@@ -65,6 +65,7 @@ struct RegularSDK: View {
                         .onTapGesture {
                             clickedUrl = Outbrain.getUrl(rec.recommendation)
                         }
+                        .addViewability(with: rec.recommendation)
                     }
                 }
             }

@@ -40,6 +40,7 @@
 		B113CC4E2C5A235C00BECDFA /* WidgetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC4D2C5A235C00BECDFA /* WidgetEvents.swift */; };
 		B113CC502C5A236D00BECDFA /* PlatformUrlType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */; };
 		B113CC522C5A2A1B00BECDFA /* OBLogLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */; };
+		B14770DD2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */; };
 		CA0F15862A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F15852A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift */; };
 		CA2646B32AADB846005287CB /* SFWidgetMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2646B22AADB846005287CB /* SFWidgetMessageHandler.swift */; };
 		CA2646B52AADD0B1005287CB /* BridgeUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2646B42AADD0B1005287CB /* BridgeUrlBuilder.swift */; };
@@ -107,6 +108,7 @@
 		B113CC4D2C5A235C00BECDFA /* WidgetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEvents.swift; sourceTree = "<group>"; };
 		B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformUrlType.swift; sourceTree = "<group>"; };
 		B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBLogLevels.swift; sourceTree = "<group>"; };
+		B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewabilityViewModifier.swift; sourceTree = "<group>"; };
 		CA0F15852A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetCollectionCell.swift; sourceTree = "<group>"; };
 		CA2646B22AADB846005287CB /* SFWidgetMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetMessageHandler.swift; sourceTree = "<group>"; };
 		CA2646B42AADD0B1005287CB /* BridgeUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeUrlBuilder.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				5E0919D92A4B2377005A014F /* UIViewPrecentVisible.swift */,
 				5E625A502A4D6D2800BA6A4E /* OBView.swift */,
+				B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				5E2465332A4099D200D6C9DF /* OBResponseDelegate.swift in Sources */,
 				CA7690A92A8E0582009C57BF /* JavaScriptExecutor.swift in Sources */,
 				5E2465252A40421600D6C9DF /* OBRecommendation.swift in Sources */,
+				B14770DD2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift in Sources */,
 				5E0D6B272A41988A008BCD06 /* OBAppleAdIdUtil.swift in Sources */,
 				5E0919D42A4AFCCF005A014F /* OBGlobalStatisticsManager.swift in Sources */,
 				CA26CB662A70108B00D2C22F /* SFWidgetMessageHandler.swift in Sources */,

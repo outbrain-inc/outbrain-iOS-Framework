@@ -74,6 +74,20 @@ public class OBViewbailityManager {
         let key = viewabilityKey(for: requestId, position: pos)
         obView.key = key
         
+        registerViewabilityKey(
+            key: key,
+            positions: positions,
+            requestId: requestId,
+            initializationTime: initializationTime
+        )
+    }
+    
+    func registerViewabilityKey(
+        key: String,
+        positions: [String]?,
+        requestId: String,
+        initializationTime: Date?
+    ) {
         // create the view data
         var obViewData: OBViewData = OBViewData()
         
@@ -101,8 +115,13 @@ public class OBViewbailityManager {
     // report viewability for a given OB view
     func reportViewability(for obView: OBView) {
         // verify the ob view data
-        guard let key = obView.key,
-              let obViewData = self.obViewsData[key] as? OBViewData,
+        guard let key = obView.key else { return }
+        reportViewability(for: key)
+    }
+    
+    
+    func reportViewability(for key: String) {
+        guard let obViewData = self.obViewsData[key] as? OBViewData,
               let positions = obViewData.positions,
               let requestId = obViewData.requestId,
               let initializationTime = obViewData.initializationTime else {
