@@ -16,9 +16,15 @@ lane :sdk_tests do
 end
 
 lane :sfwebview_prod do
+    match(
+        type: "enterprise", 
+        readonly: true,
+        keychain_name: "my.keychain",
+        keychain_password: "",
+        )
     gym(
-	project: "Samples/OutbrainDemo/OutbrainDemo.xcodeproj",
-	scheme: "SFWebView-Prod",
+        project: "Samples/OutbrainDemo/OutbrainDemo.xcodeproj",
+        scheme: "SFWebView-Prod",
         configuration: "Release",     
         destination: "generic/platform=iOS",
         export_method: "enterprise",
