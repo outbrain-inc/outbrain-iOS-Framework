@@ -16,7 +16,8 @@ struct UseCasesScreen: View {
         "Bridge in CollectionView",
         "Bridge in SwiftUI",
         "Bridge in ScrollView",
-        "Regular SDK",
+        "Regular SDK (SwiftUI)",
+        "Regular SDK (UIKit)",
         "Read More",
         "Two widgets on the same page",
     ]
@@ -41,10 +42,12 @@ struct UseCasesScreen: View {
                         case 3:
                             navigationViewModel.push(.scrollView)
                         case 4:
-                            navigationViewModel.push(.regular)
+                            navigationViewModel.push(.regularSwiftUI)
                         case 5:
-                            navigationViewModel.push(.readMore)
+                            navigationViewModel.push(.regularUIKit)
                         case 6:
+                            navigationViewModel.push(.readMore)
+                        case 7:
                             navigationViewModel.push(.twoWidgets)
                         default: return
                     }
