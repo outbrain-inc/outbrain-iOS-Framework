@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import AppTrackingTransparency
+import AdSupport
+
 
 struct ContentView: View {
     
@@ -37,6 +40,14 @@ struct ContentView: View {
                         }
                     )
                 )
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    ATTrackingManager.requestTrackingAuthorization { authStatus in
+                        print("user authStatus is: \(authStatus)")
+                        print("advertisingIdentifier: \(ASIdentifierManager.shared().advertisingIdentifier)")
+                    }
+                }
             }
         }
     }
