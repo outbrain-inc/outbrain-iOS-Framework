@@ -11,7 +11,7 @@ import OutbrainSDK
 import SafariServices
 
 
-struct RegularSDK: View {
+struct RegularSDKSwiftUI: View {
     
     @State private var recommendations: [Recommendation] = []
     @State private var showSafari: Bool = false
@@ -99,7 +99,7 @@ struct RegularSDK: View {
 
 
 #Preview {
-    RegularSDK(paramsViewModel: .init())
+    RegularSDKSwiftUI(paramsViewModel: .init())
 }
 
 

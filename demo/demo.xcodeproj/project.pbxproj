@@ -29,7 +29,7 @@
 		B1CB98BD2C3D4AEA00991569 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98BC2C3D4AEA00991569 /* NavigationViewModel.swift */; };
 		B1CB98BF2C3D4C0700991569 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98BE2C3D4C0700991569 /* ContentView.swift */; };
 		B1CB98C12C3D530600991569 /* ReadMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98C02C3D530600991569 /* ReadMore.swift */; };
-		B1CB98C32C3D531100991569 /* RegularSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98C22C3D531100991569 /* RegularSDK.swift */; };
+		B1CB98C32C3D531100991569 /* RegularSDKSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */; };
 		B1CB99912C3EA27000991569 /* ContentHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99862C3EA27000991569 /* ContentHeaderCell.xib */; };
 		B1CB99922C3EA27000991569 /* ImageHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99872C3EA27000991569 /* ImageHeaderCell.xib */; };
 		B1CB99932C3EA27000991569 /* TextHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99882C3EA27000991569 /* TextHeaderCell.xib */; };
@@ -49,6 +49,8 @@
 		B1CC7CD62C56292E00C4018F /* OutbrainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC7CD12C56292E00C4018F /* OutbrainWidgetView.swift */; };
 		B1CC7D012C563A4500C4018F /* ScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC7CFF2C563A4500C4018F /* ScrollViewVC.swift */; };
 		B1CC7D052C563CD100C4018F /* ScrollViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CC7D042C563CD100C4018F /* ScrollViewVC.xib */; };
+		B1F5B2582C6E082000C0FF4C /* RegularSDKUiKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F5B2572C6E082000C0FF4C /* RegularSDKUiKit.swift */; };
+		B1F5B25C2C6E096E00C0FF4C /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F5B25B2C6E096E00C0FF4C /* RecommendationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,7 +90,7 @@
 		B1CB98BC2C3D4AEA00991569 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		B1CB98BE2C3D4C0700991569 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B1CB98C02C3D530600991569 /* ReadMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMore.swift; sourceTree = "<group>"; };
-		B1CB98C22C3D531100991569 /* RegularSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSDK.swift; sourceTree = "<group>"; };
+		B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSDKSwiftUI.swift; sourceTree = "<group>"; };
 		B1CB99632C3D671800991569 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B1CB99862C3EA27000991569 /* ContentHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentHeaderCell.xib; sourceTree = "<group>"; };
 		B1CB99872C3EA27000991569 /* ImageHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderCell.xib; sourceTree = "<group>"; };
@@ -109,6 +111,8 @@
 		B1CC7CD12C56292E00C4018F /* OutbrainWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutbrainWidgetView.swift; sourceTree = "<group>"; };
 		B1CC7CFF2C563A4500C4018F /* ScrollViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewVC.swift; sourceTree = "<group>"; };
 		B1CC7D042C563CD100C4018F /* ScrollViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewVC.xib; sourceTree = "<group>"; };
+		B1F5B2572C6E082000C0FF4C /* RegularSDKUiKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSDKUiKit.swift; sourceTree = "<group>"; };
+		B1F5B25B2C6E096E00C0FF4C /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,8 +224,10 @@
 				B1CB98B72C3D243000991569 /* BridgeInScrollView.swift */,
 				B1CB98B12C3D23EA00991569 /* BridgeInTableView.swift */,
 				B1CB98C02C3D530600991569 /* ReadMore.swift */,
-				B1CB98C22C3D531100991569 /* RegularSDK.swift */,
+				B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */,
 				B113CC4A2C58EC6C00BECDFA /* BridgeInScrollViewTwoWidgets.swift */,
+				B1F5B2572C6E082000C0FF4C /* RegularSDKUiKit.swift */,
+				B1F5B25B2C6E096E00C0FF4C /* RecommendationView.swift */,
 			);
 			path = "Use cases";
 			sourceTree = "<group>";
@@ -374,12 +380,14 @@
 				B1CB99942C3EA27000991569 /* AppArticleTableViewCell.swift in Sources */,
 				B1CB99A72C3EA50200991569 /* ArticleHeaderCollectionViewCell.swift in Sources */,
 				B113CC4B2C58EC6C00BECDFA /* BridgeInScrollViewTwoWidgets.swift in Sources */,
+				B1F5B25C2C6E096E00C0FF4C /* RecommendationView.swift in Sources */,
 				B1CB98BD2C3D4AEA00991569 /* NavigationViewModel.swift in Sources */,
 				B150BDB62C527EB30039B6D6 /* NavigationBarViewModifier.swift in Sources */,
 				B1CB98B62C3D240000991569 /* BridgeInSwiftUI.swift in Sources */,
 				B1CB98BB2C3D483600991569 /* ParamsViewModel.swift in Sources */,
 				B1CC7CD62C56292E00C4018F /* OutbrainWidgetView.swift in Sources */,
-				B1CB98C32C3D531100991569 /* RegularSDK.swift in Sources */,
+				B1F5B2582C6E082000C0FF4C /* RegularSDKUiKit.swift in Sources */,
+				B1CB98C32C3D531100991569 /* RegularSDKSwiftUI.swift in Sources */,
 				B1CB99952C3EA27000991569 /* TableVC.swift in Sources */,
 				B1CB98B82C3D243000991569 /* BridgeInScrollView.swift in Sources */,
 				B1CB98B22C3D23EA00991569 /* BridgeInTableView.swift in Sources */,
