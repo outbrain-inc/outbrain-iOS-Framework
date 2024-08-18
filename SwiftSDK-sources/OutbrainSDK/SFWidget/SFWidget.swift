@@ -581,7 +581,7 @@ extension SFWidget: SFMessageHandlerDelegate {
         
         delegate?.didChangeHeight?(currentHeight)
 
-        guard !isLoading else { return }
+        guard isLoading else { return }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             self?.isLoading = false
