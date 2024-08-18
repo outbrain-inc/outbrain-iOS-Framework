@@ -117,7 +117,7 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:UITableViewCell?
+        var cell: UITableViewCell?
         
         if (indexPath.section == OUTBRAIN_SECTION_INDEX) {
             if let sfWidgetCell = self.tableView.dequeueReusableCell(withIdentifier: "SFWidgetCell") as? SFWidgetTableCell {
@@ -172,6 +172,7 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         if (indexPath.section == OUTBRAIN_SECTION_INDEX) {
             return self.sfWidget.getCurrentHeight();
         }
+        
         switch indexPath.row {
         case 0:
             return UIDevice.current.userInterfaceIdiom == .pad ? 400 : 250;
@@ -226,7 +227,8 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 // MARK: SFWidgetDelegate
 extension TableVC: SFWidgetDelegate {
-    func didChangeHeight() {
+    
+    func didChangeHeight(_ newHeight: CGFloat) {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
