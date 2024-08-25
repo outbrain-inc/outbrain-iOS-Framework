@@ -64,55 +64,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B1D458672C5FAC2F00C17164 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1D4585C2C5FAC2F00C17164 /* OutbrainDemo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D8B59239186376B1009422D5;
-			remoteInfo = Journal;
-		};
-		B1D458692C5FAC2F00C17164 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1D4585C2C5FAC2F00C17164 /* OutbrainDemo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E60DCD4820BC3AAD0023FE93;
-			remoteInfo = SmartFeed;
-		};
-		B1D4586B2C5FAC2F00C17164 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1D4585C2C5FAC2F00C17164 /* OutbrainDemo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E61E6C99208384A00016D79A;
-			remoteInfo = "Journal-Dev";
-		};
-		B1D4586D2C5FAC2F00C17164 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1D4585C2C5FAC2F00C17164 /* OutbrainDemo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E61E6CCD2085DBD50016D79A;
-			remoteInfo = "SmartFeed-Dev";
-		};
-		B1D4586F2C5FAC2F00C17164 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1D4585C2C5FAC2F00C17164 /* OutbrainDemo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E66B9C8A26809C01006DB0AB;
-			remoteInfo = "SFWebView-Dev";
-		};
-		B1D458712C5FAC2F00C17164 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1D4585C2C5FAC2F00C17164 /* OutbrainDemo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E61A95CB2B20981D00F33C7D;
-			remoteInfo = "SFWebView-Prod";
-		};
-		B1D458732C5FAC2F00C17164 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1D4585C2C5FAC2F00C17164 /* OutbrainDemo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E69F700528991C7A005334CB;
-			remoteInfo = "SwiftUI-Bridge";
-		};
 		E6E4B3C42A2381A100FE44E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E6E4B3AF2A2381A100FE44E3 /* Project object */;
@@ -156,7 +107,6 @@
 		B113CC4D2C5A235C00BECDFA /* WidgetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEvents.swift; sourceTree = "<group>"; };
 		B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformUrlType.swift; sourceTree = "<group>"; };
 		B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBLogLevels.swift; sourceTree = "<group>"; };
-		B1D4585C2C5FAC2F00C17164 /* OutbrainDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OutbrainDemo.xcodeproj; path = ../Samples/OutbrainDemo/OutbrainDemo.xcodeproj; sourceTree = "<group>"; };
 		CA0F15852A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetCollectionCell.swift; sourceTree = "<group>"; };
 		CA2646B22AADB846005287CB /* SFWidgetMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetMessageHandler.swift; sourceTree = "<group>"; };
 		CA2646B42AADD0B1005287CB /* BridgeUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeUrlBuilder.swift; sourceTree = "<group>"; };
@@ -309,20 +259,6 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		B1D4585D2C5FAC2F00C17164 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B1D458682C5FAC2F00C17164 /* Journal.app */,
-				B1D4586A2C5FAC2F00C17164 /* SmartFeed.app */,
-				B1D4586C2C5FAC2F00C17164 /* Journal-Dev.app */,
-				B1D4586E2C5FAC2F00C17164 /* SmartFeed-Dev.app */,
-				B1D458702C5FAC2F00C17164 /* SFWebView-Dev.app */,
-				B1D458722C5FAC2F00C17164 /* SFWebView-Prod.app */,
-				B1D458742C5FAC2F00C17164 /* SwiftUI-Bridge.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		CA2646AF2AADA8F2005287CB /* SFWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,7 +295,6 @@
 		E6E4B3AE2A2381A100FE44E3 = {
 			isa = PBXGroup;
 			children = (
-				B1D4585C2C5FAC2F00C17164 /* OutbrainDemo.xcodeproj */,
 				E6E4B3BA2A2381A100FE44E3 /* OutbrainSDK */,
 				E6E4B3C62A2381A100FE44E3 /* OutbrainSDKTests */,
 				E6E4B3B92A2381A100FE44E3 /* Products */,
@@ -485,12 +420,6 @@
 			mainGroup = E6E4B3AE2A2381A100FE44E3;
 			productRefGroup = E6E4B3B92A2381A100FE44E3 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = B1D4585D2C5FAC2F00C17164 /* Products */;
-					ProjectRef = B1D4585C2C5FAC2F00C17164 /* OutbrainDemo.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				E6E4B3B72A2381A100FE44E3 /* OutbrainSDK */,
@@ -498,58 +427,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		B1D458682C5FAC2F00C17164 /* Journal.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Journal.app;
-			remoteRef = B1D458672C5FAC2F00C17164 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B1D4586A2C5FAC2F00C17164 /* SmartFeed.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = SmartFeed.app;
-			remoteRef = B1D458692C5FAC2F00C17164 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B1D4586C2C5FAC2F00C17164 /* Journal-Dev.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "Journal-Dev.app";
-			remoteRef = B1D4586B2C5FAC2F00C17164 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B1D4586E2C5FAC2F00C17164 /* SmartFeed-Dev.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "SmartFeed-Dev.app";
-			remoteRef = B1D4586D2C5FAC2F00C17164 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B1D458702C5FAC2F00C17164 /* SFWebView-Dev.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "SFWebView-Dev.app";
-			remoteRef = B1D4586F2C5FAC2F00C17164 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B1D458722C5FAC2F00C17164 /* SFWebView-Prod.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "SFWebView-Prod.app";
-			remoteRef = B1D458712C5FAC2F00C17164 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B1D458742C5FAC2F00C17164 /* SwiftUI-Bridge.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "SwiftUI-Bridge.app";
-			remoteRef = B1D458732C5FAC2F00C17164 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E6E4B3B62A2381A100FE44E3 /* Resources */ = {

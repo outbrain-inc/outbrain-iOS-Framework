@@ -12,6 +12,8 @@ import WebKit
 public class SFWidget: UIView {
 
     public internal(set) var currentHeight: CGFloat = 0
+    public var webviewUrl: String?
+    var httpHandler: HttpHandler?
     internal var isLoading: Bool = false
     internal var isWidgetEventsEnabled: Bool = false
     internal var inTransition: Bool = false
@@ -280,7 +282,10 @@ public class SFWidget: UIView {
             installationKey: installationKey
         )
     }
-
+    
+    public func setHttpHandler(_ handler: HttpHandler) {
+        self.httpHandler = handler
+    }
     
     public static func enableFlutterMode(flutter_packageVersion: String) {
         isFlutter = true;
@@ -300,7 +305,7 @@ public class SFWidget: UIView {
         return currentHeight
     }
     
-
+    
     public override func didMoveToWindow() {
         super.didMoveToWindow()
         
@@ -406,6 +411,8 @@ public class SFWidget: UIView {
             
             Outbrain.logger.log("Bridge URL: \(widgetURL)")
 
+            webviewUrl = widgetURL.absoluteString
+            
             webView?.load(URLRequest(url: widgetURL))
             webView?.setNeedsLayout()
         }
@@ -527,17 +534,40 @@ public class SFWidget: UIView {
         let preferences = WKPreferences()
         let webviewConf = WKWebViewConfiguration()
         let jsInitScript = """
+            // ReactNativeWebView initialization
             window.ReactNativeWebView = {
                 postMessage: function (data) {
                     window.webkit.messageHandlers.ReactNativeWebView.postMessage(String(data));
                 }
-            }
-            """
+            };
+
+            // Fetch override
+            const originalFetch = window.fetch;
+            window.fetch = function(input, init) {
+                const url = typeof input === 'string' ? input : input.url;
+                if (url.includes('outbrain.com') || url.includes('log.outbrainimg.com')) {
+                    console.log('Fetch request is being sent:', url, init);
+                    window.webkit.messageHandlers.httpRequest.postMessage({ url: url, options: init });
+                }
+                return originalFetch.apply(this, arguments);
+            };
+        
+            // sendBeacon override
+            const originalSendBeacon = navigator.sendBeacon;
+            navigator.sendBeacon = function(url, data) {
+                if (url.includes('outbrain.com') || url.includes('log.outbrainimg.com')) {
+                    console.log('Beacon is being sent to: ' + url);
+                    window.webkit.messageHandlers.httpRequest.postMessage({url: url, options: data});
+                }
+                return originalSendBeacon.apply(this, arguments);
+            };
+        """;
         
         let script = WKUserScript(source: jsInitScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
         let controller = WKUserContentController()
         
         controller.add(messageHandler, name: "ReactNativeWebView")
+        controller.add(messageHandler, name: "httpRequest")
         controller.addUserScript(script)
         
         webviewConf.userContentController = controller
@@ -728,5 +758,12 @@ extension SFWidget {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         cell.contentView.addSubview(self)
         BridgeUtils.addConstraintsToFillParent(view: self)
+    }
+}
+
+// MARK: - For Testing
+extension SFWidget {
+    public protocol HttpHandler {
+        func handleRequest(_ type:String, request: [String: Any?])
     }
 }
