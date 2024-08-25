@@ -107,10 +107,10 @@ class ViewabilityTimerHandler {
         distanceToContainerBottom = Int((widget.window!.frame.maxY - viewFrame.minY) * scale)
 
         guard intersection.size.height > 0 else {
-            return checkViewStatusSwiftUI(scale: scale)
+            return viewParams
         }
         
-        return viewParams
+        return checkViewStatusSwiftUI(scale: scale)
     }
     
     
