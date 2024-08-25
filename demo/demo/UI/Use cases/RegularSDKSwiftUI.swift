@@ -68,6 +68,10 @@ struct RegularSDKSwiftUI: View {
                         .addViewability(with: rec.recommendation)
                     }
                 }
+                
+                ArticleBody()
+                ArticleBody()
+                ArticleBody()
             }
         }
         .onAppear {
