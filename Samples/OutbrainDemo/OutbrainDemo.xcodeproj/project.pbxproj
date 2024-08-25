@@ -961,6 +961,7 @@
 		E66B9CA82680A199006DB0AB /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				B1CB99852C3EA21300991569 /* Cells */,
 				E66B9CA92680A199006DB0AB /* TableVC.swift */,
 				E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */,
 			);
