@@ -65,8 +65,13 @@ struct RegularSDKSwiftUI: View {
                         .onTapGesture {
                             clickedUrl = Outbrain.getUrl(rec.recommendation)
                         }
+                        .addViewability(with: rec.recommendation)
                     }
                 }
+                
+                ArticleBody()
+                ArticleBody()
+                ArticleBody()
             }
         }
         .onAppear {

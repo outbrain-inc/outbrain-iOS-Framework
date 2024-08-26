@@ -188,7 +188,9 @@ public class Outbrain {
     
     // MARK: - Testing
     public static func setTestMode(_ testMode: Bool) {
+        #if DEBUG
         self.testMode = testMode
+        #endif
     }
     
     
