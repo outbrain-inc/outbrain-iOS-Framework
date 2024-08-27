@@ -528,7 +528,7 @@ public class SFWidget: UIView {
     }
     
     
-    private func configureSFWidget() {
+    func configureSFWidget() {
         guard webView == nil else { return }
         
         let preferences = WKPreferences()
@@ -540,34 +540,12 @@ public class SFWidget: UIView {
                     window.webkit.messageHandlers.ReactNativeWebView.postMessage(String(data));
                 }
             };
-
-            // Fetch override
-            const originalFetch = window.fetch;
-            window.fetch = function(input, init) {
-                const url = typeof input === 'string' ? input : input.url;
-                if (url.includes('outbrain.com') || url.includes('log.outbrainimg.com')) {
-                    console.log('Fetch request is being sent:', url, init);
-                    window.webkit.messageHandlers.httpRequest.postMessage({ url: url, options: init });
-                }
-                return originalFetch.apply(this, arguments);
-            };
-        
-            // sendBeacon override
-            const originalSendBeacon = navigator.sendBeacon;
-            navigator.sendBeacon = function(url, data) {
-                if (url.includes('outbrain.com') || url.includes('log.outbrainimg.com')) {
-                    console.log('Beacon is being sent to: ' + url);
-                    window.webkit.messageHandlers.httpRequest.postMessage({url: url, options: data});
-                }
-                return originalSendBeacon.apply(this, arguments);
-            };
         """;
         
         let script = WKUserScript(source: jsInitScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
         let controller = WKUserContentController()
         
         controller.add(messageHandler, name: "ReactNativeWebView")
-        controller.add(messageHandler, name: "httpRequest")
         controller.addUserScript(script)
         
         webviewConf.userContentController = controller
