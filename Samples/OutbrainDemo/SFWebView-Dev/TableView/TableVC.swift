@@ -110,7 +110,7 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource, OB
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.section == OUTBRAIN_SECTION_INDEX) {
-            return self.sfWidget.getCurrentHeight();
+            return self.sfWidget.getCurrentHeight()
         }
         switch indexPath.row {
         case 0:

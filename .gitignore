@@ -1,5 +1,6 @@
 # Xcode
 .DS_Store
+fastlane/
 build/
 OutbrainSDK.framework/
 OutbrainSDK.xcframework/
@@ -12,7 +13,6 @@ OutbrainSDK.xcframework/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
 !default.xcworkspace
 profile
 *.moved-aside
