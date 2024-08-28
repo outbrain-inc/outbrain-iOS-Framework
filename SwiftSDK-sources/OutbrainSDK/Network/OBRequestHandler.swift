@@ -415,7 +415,7 @@ public struct OBRequestHandler {
         var reqUrl = URLComponents(string: isPlatformsRequest ? OB_REQUEST_HANDLER_CONSTANTS.PLATFORMS_BASE_URL : OB_REQUEST_HANDLER_CONSTANTS.ODB_BASE_URL)!
         if (!OBAppleAdIdUtil.isOptedOut) {
             // User allowed tracking
-            var reqUrl = URLComponents(string: isPlatformsRequest ? OB_REQUEST_HANDLER_CONSTANTS.T_PLATFORMS_BASE_URL : OB_REQUEST_HANDLER_CONSTANTS.T_ODB_BASE_URL)!
+            reqUrl = URLComponents(string: isPlatformsRequest ? OB_REQUEST_HANDLER_CONSTANTS.T_PLATFORMS_BASE_URL : OB_REQUEST_HANDLER_CONSTANTS.T_ODB_BASE_URL)!
         }
         
         // query params
@@ -460,7 +460,7 @@ public struct OBRequestHandler {
         }
         
         // add test mode
-        if Outbrain.setTestMode {
+        if Outbrain.testMode {
             queryItems.append(addReqParam(name: "testMode", value: "true"))
             
             if Outbrain.testRTB {

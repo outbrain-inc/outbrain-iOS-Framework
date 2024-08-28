@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageHeaderCell" rowHeight="202" id="par-6I-oXb">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="202"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="par-6I-oXb" id="qVn-Rf-OMA">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="202"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="articleImage" translatesAutoresizingMaskIntoConstraints="NO" id="VAv-cu-aGj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="202"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="750" constant="200" id="iCe-U5-sPF"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="VAv-cu-aGj" firstAttribute="leading" secondItem="qVn-Rf-OMA" secondAttribute="leading" id="0uN-Ua-sqU"/>
+                    <constraint firstItem="VAv-cu-aGj" firstAttribute="centerY" secondItem="qVn-Rf-OMA" secondAttribute="centerY" id="BWH-hT-ZF6"/>
+                    <constraint firstItem="VAv-cu-aGj" firstAttribute="width" secondItem="qVn-Rf-OMA" secondAttribute="width" id="O6N-rE-a1r"/>
+                    <constraint firstAttribute="bottom" secondItem="VAv-cu-aGj" secondAttribute="bottom" id="Wby-io-N9H"/>
+                    <constraint firstAttribute="trailing" secondItem="VAv-cu-aGj" secondAttribute="trailing" id="XEB-o9-0ji"/>
+                    <constraint firstItem="VAv-cu-aGj" firstAttribute="top" secondItem="qVn-Rf-OMA" secondAttribute="top" id="bOc-EU-LLh"/>
+                    <constraint firstItem="VAv-cu-aGj" firstAttribute="centerX" secondItem="qVn-Rf-OMA" secondAttribute="centerX" id="gGa-QF-r56"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-295" y="-137"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="articleImage" width="206.66667175292969" height="138"/>
+    </resources>
+</document>
