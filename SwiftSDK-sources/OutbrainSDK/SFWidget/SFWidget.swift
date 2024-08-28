@@ -738,8 +738,6 @@ extension SFWidget {
 }
 
 // MARK: - For Testing
-extension SFWidget {
-    public protocol HttpHandler {
-        func handleRequest(_ type:String, request: [String: Any?])
-    }
+public protocol HttpHandler {
+    func handleRequest(_ type:String, request: [String: Any?])
 }
