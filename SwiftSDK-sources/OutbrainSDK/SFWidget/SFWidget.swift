@@ -12,6 +12,8 @@ import WebKit
 public class SFWidget: UIView {
 
     public internal(set) var currentHeight: CGFloat = 0
+    public var webviewUrl: String?
+    var httpHandler: HttpHandler?
     internal var isLoading: Bool = false
     internal var isWidgetEventsEnabled: Bool = false
     internal var inTransition: Bool = false
@@ -280,7 +282,10 @@ public class SFWidget: UIView {
             installationKey: installationKey
         )
     }
-
+    
+    public func setHttpHandler(_ handler: HttpHandler) {
+        self.httpHandler = handler
+    }
     
     public static func enableFlutterMode(flutter_packageVersion: String) {
         isFlutter = true;
@@ -300,7 +305,7 @@ public class SFWidget: UIView {
         return currentHeight
     }
     
-
+    
     public override func didMoveToWindow() {
         super.didMoveToWindow()
         
@@ -406,6 +411,8 @@ public class SFWidget: UIView {
             
             Outbrain.logger.log("Bridge URL: \(widgetURL)")
 
+            webviewUrl = widgetURL.absoluteString
+            
             webView?.load(URLRequest(url: widgetURL))
             webView?.setNeedsLayout()
         }
@@ -521,18 +528,19 @@ public class SFWidget: UIView {
     }
     
     
-    private func configureSFWidget() {
+    func configureSFWidget() {
         guard webView == nil else { return }
         
         let preferences = WKPreferences()
         let webviewConf = WKWebViewConfiguration()
         let jsInitScript = """
+            // ReactNativeWebView initialization
             window.ReactNativeWebView = {
                 postMessage: function (data) {
                     window.webkit.messageHandlers.ReactNativeWebView.postMessage(String(data));
                 }
-            }
-            """
+            };
+        """;
         
         let script = WKUserScript(source: jsInitScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
         let controller = WKUserContentController()
@@ -580,6 +588,8 @@ extension SFWidget: SFMessageHandlerDelegate {
         setNeedsLayout()
         
         delegate?.didChangeHeight?(currentHeight)
+
+        guard !isLoading else { return }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             self?.isLoading = false
@@ -728,3 +738,9 @@ extension SFWidget {
         BridgeUtils.addConstraintsToFillParent(view: self)
     }
 }
+
+// MARK: - For Testing
+public protocol HttpHandler: NSObjectProtocol {
+    func handleRequest(_ type:String, request: [String: Any?])
+}
+
