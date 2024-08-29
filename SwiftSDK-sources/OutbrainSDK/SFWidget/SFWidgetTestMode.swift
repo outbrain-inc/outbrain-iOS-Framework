@@ -43,7 +43,7 @@ public class SFWidgetTestMode: SFWidget {
         
         // Add an additional message handler
         let httpMessageHandler = HttpMessageHandler()
-        httpMessageHandler.delegate = self
+        httpMessageHandler.delegate = self.httpHandler
         webView.configuration.userContentController.add(httpMessageHandler, name: "httpRequest")
     }
 }

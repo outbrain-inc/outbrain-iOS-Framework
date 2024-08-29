@@ -10,7 +10,7 @@ import WebKit
 
 class HttpMessageHandler: NSObject, WKScriptMessageHandler {
     
-    weak var delegate: SFWidget?
+    weak var delegate: HttpHandler?
     
     func userContentController(
         _ userContentController: WKUserContentController,
@@ -18,38 +18,30 @@ class HttpMessageHandler: NSObject, WKScriptMessageHandler {
     ) {
         
         if message.name == "httpRequest", let messageBody = message.body as? [String: Any] {
-            if let url = messageBody["url"] as? String, let options = messageBody["options"] {
+            if let url = messageBody["url"] as? String,
+               let options = messageBody["options"],
+               let url = URL(string: url),
+               let components = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+                    
+                let host = components.host
+                let path = components.path
+                var params: [String: String] = [:]
+                components.queryItems?.forEach({ item in
+                    params[item.name] = item.value
+                })
                 
-                if let url = URL(string: url),
-                   let components = URLComponents(url: url, resolvingAgainstBaseURL: false) {
-                    
-                    let host = components.host
-                    let path = components.path
-                    var params: [String: String] = [:]
-                    if let queryItems = components.queryItems {
-                        for item in queryItems {
-                            params[item.name] = item.value
-                        }
-                    }
-                    
-                    let request: [String: Any?] = [
-                        "url": url.absoluteString,
-                        "host": host,
-                        "path": path,
-                        "query": params,
-                        "options": options
-                    ]
-                    
-                    switch host {
-                    case "log.outbrainimg.com":
-                        delegate?.httpHandler?.handleRequest("viewability", request: request)
-                        break
-                    default:
-                        break
-                    }
-                }
+                let request: [String: Any?] = [
+                    "url": url.absoluteString,
+                    "host": host,
+                    "path": path,
+                    "query": params,
+                    "options": options
+                ]
+            
+                guard host == "log.outbrainimg.com" else { return }
+                delegate?.handleRequest("viewability", request: request)
             }
-            return
         }
+        return
     }
 }

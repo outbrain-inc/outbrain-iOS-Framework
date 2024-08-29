@@ -588,6 +588,8 @@ extension SFWidget: SFMessageHandlerDelegate {
         setNeedsLayout()
         
         delegate?.didChangeHeight?(currentHeight)
+
+        guard !isLoading else { return }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             self?.isLoading = false
@@ -738,6 +740,7 @@ extension SFWidget {
 }
 
 // MARK: - For Testing
-public protocol HttpHandler {
+public protocol HttpHandler: NSObjectProtocol {
     func handleRequest(_ type:String, request: [String: Any?])
 }
+
