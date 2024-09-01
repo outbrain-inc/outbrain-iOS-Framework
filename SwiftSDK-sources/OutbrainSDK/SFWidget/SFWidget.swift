@@ -582,7 +582,13 @@ extension SFWidget: SFMessageHandlerDelegate {
         
         setNeedsLayout()
         
-        delegate?.didChangeHeight?(currentHeight)
+        if let _ = delegate?.didChangeHeight as ((CGFloat) -> Void)? {
+            // Delegate has implemented didChangeHeight(_ newHeight: CGFloat)
+            delegate?.didChangeHeight?(currentHeight)
+        } else if let _ = delegate?.didChangeHeight as (() -> Void)? {
+            // Delegate has implemented didChangeHeight()
+            delegate?.didChangeHeight?()
+        }
 
         guard !isLoading else { return }
         
