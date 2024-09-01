@@ -55,7 +55,7 @@ references:
       command: |
         RELEASE_VERSION=$(echo $CIRCLE_BRANCH | cut -d '/' -f2)
         MAJOR_VERSION=$(echo "$RELEASE_VERSION" | cut -d. -f1)
-        BETA_RELEASE=false
+        BETA_RELEASE=''
         echo "RELEASE_VERSION=$RELEASE_VERSION"        
         echo "MAJOR_VERSION=$MAJOR_VERSION"
         echo "BETA_RELEASE=$BETA_RELEASE"
