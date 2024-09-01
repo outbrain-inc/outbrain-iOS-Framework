@@ -1,5 +1,12 @@
 # Release Notes
 
+# Official Releases (Swift SDK)
+
+## v5.1.0 - September 1, 2024
+
+- Major - SDK source code is now 100% Swift (migrate away from ObjC).
+- Major - Smartfeed SDK is no longer support in the SDK.
+- Internal - add Flutter and React Native support in the SDK.
 
 # Beta Releases
 
@@ -34,7 +41,7 @@
 
 - Major - SDK re-write from ObjC to Swift.
 
-# Official Releases
+# Official Releases (ObjC)
 
 ## v4.35.0 - July 31, 2024
 
