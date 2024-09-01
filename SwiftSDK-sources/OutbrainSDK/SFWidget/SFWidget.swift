@@ -13,7 +13,6 @@ public class SFWidget: UIView {
 
     public internal(set) var currentHeight: CGFloat = 0
     public var webviewUrl: String?
-    var httpHandler: HttpHandler?
     internal var isLoading: Bool = false
     internal var isWidgetEventsEnabled: Bool = false
     internal var inTransition: Bool = false
@@ -281,10 +280,6 @@ public class SFWidget: UIView {
             widgetId: widgetId,
             installationKey: installationKey
         )
-    }
-    
-    public func setHttpHandler(_ handler: HttpHandler) {
-        self.httpHandler = handler
     }
     
     public static func enableFlutterMode(flutter_packageVersion: String) {
@@ -737,10 +732,5 @@ extension SFWidget {
         cell.contentView.addSubview(self)
         BridgeUtils.addConstraintsToFillParent(view: self)
     }
-}
-
-// MARK: - For Testing
-public protocol HttpHandler: NSObjectProtocol {
-    func handleRequest(_ type:String, request: [String: Any?])
 }
 
