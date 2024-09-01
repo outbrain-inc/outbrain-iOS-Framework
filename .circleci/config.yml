@@ -55,12 +55,12 @@ references:
       command: |
         RELEASE_VERSION=$(echo $CIRCLE_BRANCH | cut -d '/' -f2)
         MAJOR_VERSION=$(echo "$RELEASE_VERSION" | cut -d. -f1)
-        BETA_RELEASE=$((MAJOR_VERSION >= 5))
+        BETA_RELEASE=false
         echo "RELEASE_VERSION=$RELEASE_VERSION"        
         echo "MAJOR_VERSION=$MAJOR_VERSION"
         echo "BETA_RELEASE=$BETA_RELEASE"
         echo "export RELEASE_VERSION=$RELEASE_VERSION" >> $BASH_ENV
-        echo "export BETA_RELEASE=$((MAJOR_VERSION >= 5))" >> $BASH_ENV
+        echo "export BETA_RELEASE=false" >> $BASH_ENV
 
 jobs:
   ios_default:
@@ -166,9 +166,9 @@ jobs:
           working_directory: OBSDK-Release
 
       - run:
-          name: Add beta to $RELEASE_VERSION if version >= 5.0.0
+          name: Add beta to $RELEASE_VERSION if BETA_RELEASE is true
           command: |
-            if [ "$BETA_RELEASE" ]; then
+            if [ "$BETA_RELEASE" = "true" ]; then
               echo "Adding beta to $RELEASE_VERSION"
               RELEASE_VERSION="$RELEASE_VERSION-beta"
               echo "RELEASE_VERSION="$RELEASE_VERSION"
@@ -191,8 +191,8 @@ jobs:
           name: Update developer docs Github repo outbrain/developer-docs with new SDK version
           command: |
             echo "$RELEASE_VERSION"
-            if [ "$BETA_RELEASE" ]; then
-              echo "Skipping developer-docs update for version >= 5.0.0"
+            if [ "$BETA_RELEASE" = "true" ]; then
+              echo "Skipping developer-docs update for beta release"
               exit 0
             fi
             git clone git@github.com:outbrain/developer-docs.git
@@ -257,7 +257,7 @@ jobs:
             git status
             git commit -m "update OutbrainSDK.xcframework to version $RELEASE_VERSION"
             git tag $RELEASE_VERSION
-            if [ "$BETA_RELEASE" ]; then
+            if [ "$BETA_RELEASE" = "true" ]; then
               echo "This is a beta release, pushing to beta branch"
               git push origin main:ci-$RELEASE_VERSION
             else
