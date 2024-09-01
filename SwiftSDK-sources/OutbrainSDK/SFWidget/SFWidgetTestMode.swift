@@ -9,6 +9,8 @@ import Foundation
 import WebKit
 
 public class SFWidgetTestMode: SFWidget {
+    var httpMessageHandler: HttpMessageHandler?
+    
     override func configureSFWidget() {
         super.configureSFWidget()
         
@@ -42,8 +44,13 @@ public class SFWidgetTestMode: SFWidget {
         webView.configuration.userContentController.addUserScript(script)
         
         // Add an additional message handler
-        let httpMessageHandler = HttpMessageHandler()
-        httpMessageHandler.delegate = self.httpHandler
-        webView.configuration.userContentController.add(httpMessageHandler, name: "httpRequest")
+        httpMessageHandler = HttpMessageHandler()
+        webView.configuration.userContentController.add(httpMessageHandler!, name: "httpRequest")
+    }
+    
+    public func configure(with delegate: (any SFWidgetDelegate)?, url: String, widgetId: String, widgetIndex: Int, installationKey: String, userId: String?, darkMode: Bool, isSwiftUI: Bool, httpHandler: HttpHandler) {
+        super.configure(with: delegate, url: url, widgetId: widgetId, widgetIndex: widgetIndex, installationKey: installationKey, userId: userId, darkMode: darkMode, isSwiftUI: isSwiftUI)
+        
+        httpMessageHandler?.delegate = httpHandler
     }
 }

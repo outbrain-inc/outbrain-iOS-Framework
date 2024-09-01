@@ -45,3 +45,7 @@ class HttpMessageHandler: NSObject, WKScriptMessageHandler {
         return
     }
 }
+
+public protocol HttpHandler: NSObjectProtocol {
+    func handleRequest(_ type:String, request: [String: Any?])
+}
