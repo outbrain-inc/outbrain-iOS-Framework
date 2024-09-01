@@ -8,7 +8,7 @@
 
 About [Outbrain](https://www.outbrain.com/)
 
-Please make sure to review [Outbrain SDK Developers Site](https://developer.outbrain.com/outbrain-sdk-v3-documentation-download-links/)
+Please make sure to review [Outbrain SDK Developers Site](https://sdk.outbrain.com/docs/iOS-SDK/Getting-Started/)
 
 <p align="center">
   <img width="275" src="assets/iphonex-smartfeed-demo-mock.jpg" />
@@ -19,7 +19,7 @@ Please make sure to review [Outbrain SDK Developers Site](https://developer.outb
 | **Outbrain SDK**  	| **Requirements**                                     	|
 |--------------------	|------------------------------------------------------	|
 | Min OutbrainSDK   	| iOS 10.3 or higher                                      	|
-| Build OutbrainSDK   | iOS 15.0												|
+| Build OutbrainSDK   | iOS 16.0												|
 | Languages          	| Objective-C, Swift                                   	|
 | Devices            	| Any iOS compatible device: iPhones, iPads, etc.      	|
 | File Sizes         	| Outbrain adds about 100KB to your iOS release app. 	|
@@ -47,4 +47,4 @@ dependencies: [
 
 ### Follow The Official Documentation
 
-Follow the [SDK integration steps](https://developer.outbrain.com/ios-sdk-v3-developer-guide/) on our developer site.
+Follow the [SDK integration steps](https://sdk.outbrain.com/docs/iOS-SDK/Getting-Started/) on our developer site.
