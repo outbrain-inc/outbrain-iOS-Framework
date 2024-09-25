@@ -72,11 +72,6 @@ class ScrollViewTwoWidgets : UIViewController, UIScrollViewDelegate {
             )
         }
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        sfWidget1.scrollViewDidScroll(scrollView)
-        sfWidget2.scrollViewDidScroll(scrollView)
-    }
 }
 
 

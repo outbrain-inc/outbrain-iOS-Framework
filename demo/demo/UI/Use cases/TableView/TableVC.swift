@@ -183,10 +183,6 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        sfWidget.scrollViewDidScroll(scrollView)
-    }
-    
     func addReadMoreOverlayToCell(_ cell: UITableViewCell) {
         let customView = UIView(frame: CGRect(x: 0, y: cell.contentView.frame.height - 100, width: cell.contentView.frame.width + 20, height: 100))
         customView.backgroundColor = UIColor.white.withAlphaComponent(0.8)

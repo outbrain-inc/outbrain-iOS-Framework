@@ -12,9 +12,6 @@ import SwiftUI
 struct OutbrainWidgetView: UIViewRepresentable {
 
     @ObservedObject var viewModel: OutbrainWidgetViewModel
-    let scrollViewFrame: CGRect
-    
-    @Binding var scrollFrame: CGRect
     
 
     final class Coordinator: NSObject, SFWidgetDelegate {
@@ -48,23 +45,14 @@ struct OutbrainWidgetView: UIViewRepresentable {
                 widgetIndex: 0,
                 installationKey: "NANOWDGT01",
                 userId: nil,
-                darkMode: viewModel.paramsViewModel.darkMode,
-                isSwiftUI: false
+                darkMode: viewModel.paramsViewModel.darkMode
             )
         
         return viewModel.widget
     }
     
-    private func didScroll() {
-        let scrollView = UIScrollView()
-        scrollView.frame = scrollViewFrame
-        scrollView.contentSize = scrollFrame.size
-        scrollView.contentOffset = CGPoint(x: 0, y: -scrollFrame.origin.y)
-        viewModel.widget.scrollViewDidScroll(scrollView)
-    }
-
     func updateUIView(_ uiView: SFWidget, context: Context) {
-        didScroll()
+
     }
 }
 

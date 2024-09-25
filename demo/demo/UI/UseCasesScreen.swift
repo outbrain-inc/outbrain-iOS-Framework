@@ -63,7 +63,7 @@ struct UseCasesScreen: View {
     UseCasesScreen(navigationViewModel: .init())
 }
 
-extension String: Identifiable {
+extension String: @retroactive Identifiable {
     public var id: String {
         self
     }

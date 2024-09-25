@@ -107,10 +107,6 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
             )
         }
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        sfWidget.scrollViewDidScroll(scrollView)
-    }
 }
 
 
