@@ -28,7 +28,6 @@
 		B1CB98BB2C3D483600991569 /* ParamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98BA2C3D483600991569 /* ParamsViewModel.swift */; };
 		B1CB98BD2C3D4AEA00991569 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98BC2C3D4AEA00991569 /* NavigationViewModel.swift */; };
 		B1CB98BF2C3D4C0700991569 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98BE2C3D4C0700991569 /* ContentView.swift */; };
-		B1CB98C12C3D530600991569 /* ReadMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98C02C3D530600991569 /* ReadMore.swift */; };
 		B1CB98C32C3D531100991569 /* RegularSDKSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */; };
 		B1CB99912C3EA27000991569 /* ContentHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99862C3EA27000991569 /* ContentHeaderCell.xib */; };
 		B1CB99922C3EA27000991569 /* ImageHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99872C3EA27000991569 /* ImageHeaderCell.xib */; };
@@ -89,7 +88,6 @@
 		B1CB98BA2C3D483600991569 /* ParamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamsViewModel.swift; sourceTree = "<group>"; };
 		B1CB98BC2C3D4AEA00991569 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		B1CB98BE2C3D4C0700991569 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B1CB98C02C3D530600991569 /* ReadMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMore.swift; sourceTree = "<group>"; };
 		B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSDKSwiftUI.swift; sourceTree = "<group>"; };
 		B1CB99632C3D671800991569 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B1CB99862C3EA27000991569 /* ContentHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentHeaderCell.xib; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 				B1CB98B32C3D23F700991569 /* BridgeInCollectionView.swift */,
 				B1CB98B72C3D243000991569 /* BridgeInScrollView.swift */,
 				B1CB98B12C3D23EA00991569 /* BridgeInTableView.swift */,
-				B1CB98C02C3D530600991569 /* ReadMore.swift */,
 				B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */,
 				B113CC4A2C58EC6C00BECDFA /* BridgeInScrollViewTwoWidgets.swift */,
 				B1F5B2572C6E082000C0FF4C /* RegularSDKUiKit.swift */,
@@ -396,7 +393,6 @@
 				B1CB99A52C3EA46300991569 /* ContentCollectionCell.swift in Sources */,
 				B1CB98B42C3D23F700991569 /* BridgeInCollectionView.swift in Sources */,
 				B1CB99982C3EA27000991569 /* CollectionVC.swift in Sources */,
-				B1CB98C12C3D530600991569 /* ReadMore.swift in Sources */,
 				B1CB99962C3EA27000991569 /* ArticleContentCollectionViewCell.swift in Sources */,
 				B1CB98BF2C3D4C0700991569 /* ContentView.swift in Sources */,
 				B113CC492C58E95F00BECDFA /* ScrollViewTwoWidgets.swift in Sources */,
