@@ -8,7 +8,8 @@
 import UIKit
 
 
-class ViewabilityTimerHandler {
+class ViewabilityHandler {
+    
     var webViewHeight = 0
     var webViewWidth = 0
     var distanceToContainerTop = 0.0

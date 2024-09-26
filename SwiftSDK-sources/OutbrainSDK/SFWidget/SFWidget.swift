@@ -35,7 +35,7 @@ public class SFWidget: UIView {
     internal var tParamObserver: NSObjectProtocol?
     internal var errorReporter: OBErrorReport?
     internal var settings: [String: Any] = [:]
-    internal var viewabilityTimerHandler = ViewabilityTimerHandler()
+    internal var viewabilityHandler = ViewabilityHandler()
     
     private var controller: WKUserContentController?
     private weak var containerScrollView: UIScrollView?
@@ -535,7 +535,7 @@ public class SFWidget: UIView {
     
     
     private func handleViewability(_ scrollView: UIScrollView) {
-        viewabilityTimerHandler.handleViewability(
+        viewabilityHandler.handleViewability(
             sfWidget: self,
             containerView: scrollView
         ) { [weak self] viewStatus, width ,height  in
