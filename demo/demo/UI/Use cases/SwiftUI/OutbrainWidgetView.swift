@@ -9,6 +9,7 @@ import OutbrainSDK
 import SwiftUI
 
 
+
 struct OutbrainWidgetView: UIViewRepresentable {
 
     @ObservedObject var viewModel: OutbrainWidgetViewModel
@@ -31,11 +32,13 @@ struct OutbrainWidgetView: UIViewRepresentable {
             self.viewModel.widgetHeight = newHeight
         }
     }
+    
 
     func makeCoordinator() -> Coordinator {
         Coordinator(viewModel: viewModel)
     }
 
+    
     func makeUIView(context: Context) -> SFWidget {
         viewModel.widget
             .configure(
@@ -51,8 +54,7 @@ struct OutbrainWidgetView: UIViewRepresentable {
         return viewModel.widget
     }
     
-    func updateUIView(_ uiView: SFWidget, context: Context) {
-
-    }
+    
+    func updateUIView(_ uiView: SFWidget, context: Context) { }
 }
 

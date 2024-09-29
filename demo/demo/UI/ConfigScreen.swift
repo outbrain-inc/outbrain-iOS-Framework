@@ -42,15 +42,20 @@ struct ConfigScreen: View {
                                 navigationViewModel.popLast()
                             }
                         
-                    case .swiftUI: BridgeInSwiftUI(params: navigationViewModel.paramsViewModel)
+                    case .scrollView: BridgeInScrollView(paramsViewModel: navigationViewModel.paramsViewModel)
+                            .addNavigationBar(withTitle: "Bridge In Scroll View") {
+                                navigationViewModel.popLast()
+                            }
+                        
+                    case .swiftUI: BridgeInSwiftUI(paramsViewModel: navigationViewModel.paramsViewModel)
                             .addNavigationBar(withTitle: "Bridge In SwiftUI") {
                                 navigationViewModel.popLast()
                             }
                         
-                    case .scrollView: BridgeInScrollView(paramsViewModel: navigationViewModel.paramsViewModel)
-                    .addNavigationBar(withTitle: "Bridge In Scroll View") {
-                        navigationViewModel.popLast()
-                    }
+                    case .regularAndBridgeSwiftUI: RegularAndBridgeSwiftUI(paramsViewModel: navigationViewModel.paramsViewModel)
+                            .addNavigationBar(withTitle: "Regular and Bridge In SwiftUI") {
+                                navigationViewModel.popLast()
+                            }
                         
                     case .regularSwiftUI: RegularSDKSwiftUI(paramsViewModel: navigationViewModel.paramsViewModel)
                             .addNavigationBar(withTitle: "Regular SDK (SwiftUI)") {
