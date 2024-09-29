@@ -7,7 +7,7 @@ references:
   ios_config: &ios_config
     working_directory: ~/repo
     macos:
-      xcode: "15.1.0"
+      xcode: "16.0.0"
   
   prepare_code_signing: &prepare_code_signing
     run:
