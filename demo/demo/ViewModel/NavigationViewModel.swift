@@ -20,6 +20,7 @@ class NavigationViewModel: ObservableObject, Identifiable {
         case collectionView
         case scrollView
         case swiftUI
+        case regularAndBridgeSwiftUI
         case regularSwiftUI
         case regularUIKit
         case readMore

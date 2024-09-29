@@ -14,8 +14,9 @@ struct UseCasesScreen: View {
     private var useCases = [
         "Bridge in TableView",
         "Bridge in CollectionView",
-        "Bridge in SwiftUI",
         "Bridge in ScrollView",
+        "Bridge in SwiftUI",
+        "Regular + Bridge (SwiftUI)",
         "Regular SDK (SwiftUI)",
         "Regular SDK (UIKit)",
         "Read More",
@@ -38,16 +39,18 @@ struct UseCasesScreen: View {
                         case 1:
                             navigationViewModel.push(.collectionView)
                         case 2:
-                            navigationViewModel.push(.swiftUI)
-                        case 3:
                             navigationViewModel.push(.scrollView)
+                        case 3:
+                            navigationViewModel.push(.swiftUI)
                         case 4:
-                            navigationViewModel.push(.regularSwiftUI)
+                            navigationViewModel.push(.regularAndBridgeSwiftUI)
                         case 5:
-                            navigationViewModel.push(.regularUIKit)
+                            navigationViewModel.push(.regularSwiftUI)
                         case 6:
-                            navigationViewModel.push(.readMore)
+                            navigationViewModel.push(.regularUIKit)
                         case 7:
+                            navigationViewModel.push(.readMore)
+                        case 8:
                             navigationViewModel.push(.twoWidgets)
                         default: return
                     }
@@ -63,7 +66,7 @@ struct UseCasesScreen: View {
     UseCasesScreen(navigationViewModel: .init())
 }
 
-extension String: Identifiable {
+extension String: @retroactive Identifiable {
     public var id: String {
         self
     }

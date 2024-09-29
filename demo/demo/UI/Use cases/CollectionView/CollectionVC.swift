@@ -169,11 +169,6 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         return CGSize(width: width, height: sfWidget.getCurrentHeight())
     }
-    
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        sfWidget.scrollViewDidScroll(scrollView)
-    }
 }
 
 

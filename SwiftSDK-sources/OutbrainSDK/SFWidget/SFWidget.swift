@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import WebKit
+@preconcurrency import WebKit
+import UIKit
 
 
 public class SFWidget: UIView {
@@ -21,7 +22,6 @@ public class SFWidget: UIView {
     internal var installationKey: String?
     internal var userId: String?
     internal var widgetIndex: Int = 0
-    internal var isSwiftUI: Bool = false
     internal var tParam: String?
     internal var bridgeParams: String?
     internal var darkMode: Bool = false
@@ -33,11 +33,14 @@ public class SFWidget: UIView {
     internal var hiddenWebView: WKWebView?
     internal var bridgeParamsObserver: NSObjectProtocol?
     internal var tParamObserver: NSObjectProtocol?
-    internal var viewabilityTimerHandler = ViewabilityTimerHandler()
     internal var errorReporter: OBErrorReport?
     internal var settings: [String: Any] = [:]
+    internal var viewabilityHandler = ViewabilityHandler()
+    
+    private var controller: WKUserContentController?
+    private weak var containerScrollView: UIScrollView?
+    
     internal static var isFlutter: Bool = false
-    private lazy var swiftUiConfigureDone = false
     internal static var globalBridgeParams: String?
     
     /**
@@ -47,7 +50,9 @@ public class SFWidget: UIView {
     static var isReactNative: Bool = false
     static var flutter_packageVersion: String?
     static var RN_packageVersion: String?
-
+    
+    
+    private static let contentOffsetKey = "contentOffset"
   
     
     /**
@@ -123,8 +128,7 @@ public class SFWidget: UIView {
             widgetIndex: 0,
             installationKey: installationKey,
             userId: nil,
-            darkMode: false,
-            isSwiftUI: false
+            darkMode: false
         )
     }
 
@@ -149,7 +153,7 @@ public class SFWidget: UIView {
      widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", widgetIndex: 0, installationKey: "abcdef", userId: "user123", darkMode: true)
      */
     public func configure(
-        with delegate: SFWidgetDelegate,
+        with delegate: SFWidgetDelegate?,
         url: String,
         widgetId: String,
         widgetIndex: Int,
@@ -157,15 +161,16 @@ public class SFWidget: UIView {
         userId: String?,
         darkMode: Bool
     ) {
+        self.delegate = delegate
+        self.widgetIndex = widgetIndex
+        self.darkMode = darkMode
+        self.setUserId(userId)
+        
         configure(
             with: delegate,
             url: url,
             widgetId: widgetId,
-            widgetIndex: widgetIndex,
-            installationKey: installationKey,
-            userId: userId,
-            darkMode: darkMode,
-            isSwiftUI: false
+            installationKey: installationKey
         )
     }
     
@@ -194,11 +199,6 @@ public class SFWidget: UIView {
         widgetId: String,
         installationKey: String
     ) {
-        
-        if (swiftUiConfigureDone) {
-           return
-        }
-
         self.delegate = delegate
         self.url = url
         self.widgetId = widgetId
@@ -228,11 +228,6 @@ public class SFWidget: UIView {
             SFWidget.globalBridgeParams = nil
             initialLoadUrl()
         }
-        
-        if isSwiftUI == true {
-            handleSwiftUI()
-            swiftUiConfigureDone = true
-        }
     }
     
 
@@ -256,8 +251,10 @@ public class SFWidget: UIView {
 
      Usage Example:
      ```swift
-     widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", widgetIndex: 0, installationKey: "abcdef", userId: "user123", darkMode: true, isSwiftUI: false)
+     widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", widgetIndex: 0, installationKey: "abcdef", userId: "user123", darkMode: true)
      */
+    
+    @available(*, deprecated, message: "Please use configure(with delegate: SFWidgetDelegate?, url: String, widgetId: String, widgetIndex: Int, installationKey: String, userId: String?, darkMode: Bool)  instead.")
     public func configure(
         with delegate: SFWidgetDelegate?,
         url: String,
@@ -268,17 +265,14 @@ public class SFWidget: UIView {
         darkMode: Bool,
         isSwiftUI: Bool
     ) {
-        self.delegate = delegate
-        self.widgetIndex = widgetIndex
-        self.darkMode = darkMode
-        self.setUserId(userId)
-        self.isSwiftUI = isSwiftUI
-        
         configure(
             with: delegate,
             url: url,
             widgetId: widgetId,
-            installationKey: installationKey
+            widgetIndex: widgetIndex,
+            installationKey: installationKey,
+            userId: userId,
+            darkMode: darkMode
         )
     }
     
@@ -304,14 +298,15 @@ public class SFWidget: UIView {
     public override func didMoveToWindow() {
         super.didMoveToWindow()
         
-        if window != nil {
-            // The view has been added to a window
-            print("View added to window")
-            guard !swiftUiConfigureDone else { return }
-            handleSwiftUI()
+        if superview != nil {
+            if let scrollView = findFirstScrollView(in: superview) {
+                // Add KVO observer for the contentOffset property
+                containerScrollView = scrollView
+                containerScrollView?.addObserver(self, forKeyPath: SFWidget.contentOffsetKey, options: .new, context: nil)
+            }
         } else {
-            // The view has been removed from a window
-            print("View removed from window")
+            // Remove KVO observer when the scroll view is removed from its superview
+            containerScrollView?.removeObserver(self, forKeyPath: SFWidget.contentOffsetKey)
         }
     }
     
@@ -426,33 +421,9 @@ public class SFWidget: UIView {
     }
 
     
+    @available(*, deprecated, message: "Please remove any calls to this method.")
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //check if this check happens from bottom or from bottom view port
-        //check if we can move responsebility of load more to js bridge
-        viewabilityTimerHandler.handleViewability(
-            sfWidget: self,
-            containerView: scrollView
-        ) { [weak self] viewStatus, width ,height  in
-            guard let self else { return }
-            
-            self.jsExec.setViewData(
-                from: viewStatus.visibleFrom,
-                to: viewStatus.visibleTo,
-                width: width,
-                height: height
-            )
-        }
-        
-        if isLoading || inTransition || currentHeight <= SFConsts.THRESHOLD_FROM_BOTTOM {
-            return
-        }
-
-        let contentOffsetY = scrollView.contentOffset.y
-        let diffFromBottom = (scrollView.contentSize.height - scrollView.frame.size.height) - contentOffsetY
-        
-        if diffFromBottom < SFConsts.THRESHOLD_FROM_BOTTOM {
-            loadMore()
-        }
+        // NO-OP
     }
 
     
@@ -480,24 +451,28 @@ public class SFWidget: UIView {
     }
     
     
-    private func handleSwiftUI() {
-        viewabilityTimerHandler.handleSwiftUI(sfWidget: self) { [weak self] viewStatus, width ,height, shouldLoadMore in
-            guard let self else { return }
-            
-            self.jsExec.setViewData(
-                from: viewStatus.visibleFrom,
-                to: viewStatus.visibleTo,
-                width: width,
-                height: height
-            )
-            
-            guard shouldLoadMore else { return }
-            
-            if self.isLoading || self.inTransition || self.currentHeight <= SFConsts.THRESHOLD_FROM_BOTTOM {
-                return
-            }
-            
-            self.loadMore()
+    deinit {
+        // Remove KVO observer when the widget is deallocated
+        containerScrollView?.removeObserver(self, forKeyPath: SFWidget.contentOffsetKey)
+        containerScrollView = nil
+        
+        // Clean up message handlers otherwise the messageHandler stays in memory after the widget is destroyed
+        controller?.removeAllScriptMessageHandlers()
+    }
+    
+    
+    // Observe changes to the contentOffset property
+    public override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey : Any]?,
+        context: UnsafeMutableRawPointer?
+    ) {
+        if keyPath == SFWidget.contentOffsetKey,
+           let scrollView = object as? UIScrollView {
+            // Handle content offset changes
+            handleViewability(scrollView)
+            handleLoadMore(scrollView)
         }
     }
     
@@ -538,12 +513,11 @@ public class SFWidget: UIView {
         """;
         
         let script = WKUserScript(source: jsInitScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
-        let controller = WKUserContentController()
+        controller = WKUserContentController()
+        controller!.add(messageHandler, name: "ReactNativeWebView")
+        controller!.addUserScript(script)
         
-        controller.add(messageHandler, name: "ReactNativeWebView")
-        controller.addUserScript(script)
-        
-        webviewConf.userContentController = controller
+        webviewConf.userContentController = controller!
         webviewConf.allowsInlineMediaPlayback = true
         webviewConf.preferences = preferences
         
@@ -557,6 +531,37 @@ public class SFWidget: UIView {
         BridgeUtils.addConstraintsToParentView(view: webView!)
         jsExec.setWebView(view: webView!)
         webView!.setNeedsLayout()
+    }
+    
+    
+    private func handleViewability(_ scrollView: UIScrollView) {
+        viewabilityHandler.handleViewability(
+            sfWidget: self,
+            containerView: scrollView
+        ) { [weak self] viewStatus, width ,height  in
+            guard let self else { return }
+            
+            self.jsExec.setViewData(
+                from: viewStatus.visibleFrom,
+                to: viewStatus.visibleTo,
+                width: width,
+                height: height
+            )
+        }
+    }
+    
+    
+    private func handleLoadMore(_ scrollView: UIScrollView) {
+        if isLoading || inTransition || currentHeight <= SFConsts.THRESHOLD_FROM_BOTTOM {
+            return
+        }
+        
+        let contentOffsetY = scrollView.contentOffset.y
+        let diffFromBottom = (scrollView.contentSize.height - scrollView.frame.size.height) - contentOffsetY
+        
+        if diffFromBottom < SFConsts.THRESHOLD_FROM_BOTTOM {
+            loadMore()
+        }
     }
 }
 
@@ -590,7 +595,7 @@ extension SFWidget: SFMessageHandlerDelegate {
             delegate?.didChangeHeight?()
         }
 
-        guard !isLoading else { return }
+        guard isLoading else { return }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             self?.isLoading = false
@@ -740,3 +745,18 @@ extension SFWidget {
     }
 }
 
+
+
+internal func findFirstScrollView(in view: UIView?) -> UIScrollView? {
+    guard let view else { return nil }
+    var currentView: UIView? = view
+    
+    while let superview = currentView?.superview {
+        if let scrollView = superview as? UIScrollView {
+            return scrollView
+        }
+        currentView = superview
+    }
+    
+    return nil
+}

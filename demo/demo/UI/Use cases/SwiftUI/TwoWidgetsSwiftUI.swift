@@ -1,13 +1,17 @@
 //
-//  BridgeInSwiftUI.swift
+//  TwoWidgetsSwiftuI.swift
 //  demo
 //
-//  Created by Leonid Lemesev on 09/07/2024.
+//  Created by Leonid Lemesev on 26/09/2024.
 //
 
-import SwiftUI
 
-struct BridgeInSwiftUI: View {
+import SwiftUI
+import OutbrainSDK
+
+
+
+struct TwoWidgetsSwiftuI: View {
     
     let paramsViewModel: ParamsViewModel
     
@@ -46,7 +50,7 @@ struct BridgeInSwiftUI: View {
                     ArticleBody()
                     
                     OutbrainWidgetView(viewModel: viewModel)
-                        .frame(height: viewModel.widgetHeight)
+                    .frame(height: viewModel.widgetHeight)
                 }
                 
             }
@@ -63,8 +67,4 @@ struct BridgeInSwiftUI: View {
                 .ignoresSafeArea(edges: .all)
         }
     }
-}
-
-#Preview {
-    BridgeInSwiftUI(paramsViewModel: .init())
 }
