@@ -12,7 +12,7 @@ lane :sdk_tests do
     run_tests(
         project: "SwiftSDK-sources/OutbrainSDK.xcodeproj", 
         scheme: "OutbrainSDK", 
-        devices: ["iPhone 14 Pro Max"])
+        devices: ["iPhone 16"])
 end
 
 lane :sfwebview_prod do
