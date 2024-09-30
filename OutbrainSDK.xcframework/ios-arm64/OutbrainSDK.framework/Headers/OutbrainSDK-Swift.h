@@ -302,6 +302,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 @class NSCoder;
+@class NSString;
 
 SWIFT_CLASS("_TtC11OutbrainSDK8SFWidget")
 @interface SFWidget : UIView
@@ -325,6 +326,7 @@ SWIFT_CLASS("_TtC11OutbrainSDK8SFWidget")
 ///
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (void)didMoveToWindow;
+- (void)observeValueForKeyPath:(NSString * _Nullable)keyPath ofObject:(id _Nullable)object change:(NSDictionary<NSKeyValueChangeKey, id> * _Nullable)change context:(void * _Nullable)context;
 @end
 
 
@@ -339,7 +341,6 @@ SWIFT_CLASS("_TtC11OutbrainSDK8SFWidget")
 @end
 
 @class NSURL;
-@class NSString;
 
 SWIFT_PROTOCOL("_TtP11OutbrainSDK16SFWidgetDelegate_")
 @protocol SFWidgetDelegate

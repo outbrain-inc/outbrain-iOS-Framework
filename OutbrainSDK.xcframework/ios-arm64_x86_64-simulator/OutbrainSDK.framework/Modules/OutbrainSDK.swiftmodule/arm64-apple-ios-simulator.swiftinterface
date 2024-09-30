@@ -47,8 +47,9 @@ public struct OBGlobalStatisticsData {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @_Concurrency.MainActor(unsafe) public func configure(with delegate: any OutbrainSDK.SFWidgetDelegate, url: Swift.String, widgetId: Swift.String, installationKey: Swift.String)
-  @_Concurrency.MainActor(unsafe) public func configure(with delegate: any OutbrainSDK.SFWidgetDelegate, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool)
   @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, installationKey: Swift.String)
+  @available(*, deprecated, message: "Please use configure(with delegate: SFWidgetDelegate?, url: String, widgetId: String, widgetIndex: Int, installationKey: String, userId: String?, darkMode: Bool)  instead.")
   @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool, isSwiftUI: Swift.Bool)
   @_Concurrency.MainActor(unsafe) public static func enableFlutterMode(flutter_packageVersion: Swift.String)
   @_Concurrency.MainActor(unsafe) public static func enableReactNativeMode(RN_packageVersion: Swift.String)
@@ -57,11 +58,13 @@ public struct OBGlobalStatisticsData {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMoveToWindow()
   @_Concurrency.MainActor(unsafe) public func enableEvents()
   @_Concurrency.MainActor(unsafe) public func toggleDarkMode(_ isDark: Swift.Bool)
+  @available(*, deprecated, message: "Please remove any calls to this method.")
   @_Concurrency.MainActor(unsafe) public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
   @_Concurrency.MainActor(unsafe) public func reportPageViewOnTheSameWidget()
   @_Concurrency.MainActor(unsafe) public func loadMore()
-  @_Concurrency.MainActor(unsafe) public func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: any UIKit.UIViewControllerTransitionCoordinator)
   @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+  @_Concurrency.MainActor(unsafe) public func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: any UIKit.UIViewControllerTransitionCoordinator)
 }
 extension OutbrainSDK.SFWidget {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onRecClick(_ url: Foundation.URL)
@@ -97,6 +100,7 @@ public class OBPlatformsRequest : OutbrainSDK.OBRequest {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class Outbrain {
+  public static let OB_SDK_VERSION: Swift.String
   public static var testMode: Swift.Bool
   public static var testRTB: Swift.Bool
   public static var testLocation: Swift.String?
