@@ -8,7 +8,7 @@
 
 About [Outbrain](https://www.outbrain.com/)
 
-Please make sure to review [Outbrain SDK Developers Site](https://developer.outbrain.com/outbrain-sdk-v3-documentation-download-links/)
+Please make sure to review [Outbrain SDK Developers Site](https://sdk.outbrain.com/docs/iOS-SDK/Getting-Started/)
 
 <p align="center">
   <img width="275" src="assets/iphonex-smartfeed-demo-mock.jpg" />
