@@ -397,6 +397,7 @@ public class SFWidget: UIView {
             .addIsReactNative(isReactNative: SFWidget.isReactNative)
             .addFlutterPackageVersion(version: SFWidget.flutter_packageVersion)
             .addReactNativePackageVersion(version: SFWidget.RN_packageVersion)
+            .addClientType(isFlutter: SFWidget.isFlutter, isReactNative: SFWidget.isReactNative)
             .build() {
             
             Outbrain.logger.log("Bridge URL: \(widgetURL)")

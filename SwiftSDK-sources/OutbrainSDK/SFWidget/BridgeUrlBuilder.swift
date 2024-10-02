@@ -221,6 +221,18 @@ class BridgeUrlBuilder {
     }
     
     
+    func addClientType(isFlutter: Bool, isReactNative: Bool) -> BridgeUrlBuilder {
+        if isFlutter {
+            newQueryItems.append(URLQueryItem(name: "clientType", value: "SDK-FL-I"))
+        } else if isReactNative {
+            newQueryItems.append(URLQueryItem(name: "clientType", value: "SDK-RN-I"))
+        } else {
+            newQueryItems.append(URLQueryItem(name: "clientType", value: "SDK-BR-I"))
+        }
+        return self
+    }
+    
+    
     func buildPlatformUrl(for type: PlatformUrlType) -> URL? {
         //how to use: addQueryItems(for: .content(url))
         let errorMsg = "OutbrainSDKError: It seems you set Bridge to run with platform API and did NOT set the mandatory \"lang\" (language) property"
