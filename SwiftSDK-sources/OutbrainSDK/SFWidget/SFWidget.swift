@@ -53,6 +53,7 @@ public class SFWidget: UIView {
     
     
     private static let contentOffsetKey = "contentOffset"
+    private static let displayTestUserAgentAddition = "Outbrain/displayAdsVerifier"
   
     
     /**
@@ -521,11 +522,16 @@ public class SFWidget: UIView {
         webviewConf.allowsInlineMediaPlayback = true
         webviewConf.preferences = preferences
         
+        if Outbrain.testDisplay, let userAgent = WKWebView().value(forKey: "userAgent") as? String {
+            webviewConf.applicationNameForUserAgent = userAgent + SFWidget.displayTestUserAgentAddition
+        }
+        
         webView = WKWebView(frame: self.frame, configuration: webviewConf)
         webView!.scrollView.isScrollEnabled = false
         webView!.isOpaque = false
         webView!.uiDelegate = self
         webView!.navigationDelegate = self
+        
         setWebViewInspectable(inspectable: SFConsts.isInspectable)
         addSubview(webView!)
         BridgeUtils.addConstraintsToParentView(view: webView!)

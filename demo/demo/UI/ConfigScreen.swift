@@ -93,6 +93,14 @@ struct ConfigScreen: View {
         VStack {
             Text("SDK Version " + String(Outbrain.OB_SDK_VERSION))
             
+            
+            Toggle(isOn: $navigationViewModel.paramsViewModel.displayTest) {
+                Text("Display test")
+            }
+            .onChange(of: navigationViewModel.paramsViewModel.displayTest) { value in
+                Outbrain.testDisplay(value)
+            }
+            
             Toggle(isOn: $navigationViewModel.paramsViewModel.darkMode) {
                 Text("Dark mode")
             }
