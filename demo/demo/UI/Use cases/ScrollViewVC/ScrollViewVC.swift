@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import OutbrainSDK
 
-class ScrollViewVC : UIViewController, UIScrollViewDelegate {
+class ScrollViewVC : UIViewController, UIScrollViewDelegate, UIKitContentPage {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -18,13 +18,15 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var sfWidget: SFWidget!
     @IBOutlet weak var sfWidgetHeightConstraint: NSLayoutConstraint!
     
+    private let navigationViewModel: NavigationViewModel
     private let paramsViewModel: ParamsViewModel
     private let isRegular: Bool
     
     
-    init(paramsViewModel: ParamsViewModel, isRegular: Bool = false) {
-        self.paramsViewModel = paramsViewModel
-        self.isRegular = isRegular
+    required init(navigationViewModel: NavigationViewModel, params: [String : Bool]?) {
+        self.navigationViewModel = navigationViewModel
+        self.paramsViewModel = navigationViewModel.paramsViewModel
+        self.isRegular = params?["isRegular"] ?? false
         super.init(nibName: "ScrollViewVC", bundle: nil)
     }
     
@@ -118,9 +120,9 @@ extension ScrollViewVC: SFWidgetDelegate {
     }
     
     func onOrganicRecClick(_ url: URL) {
-        // handle click on organic url
-        let safariVC = SFSafariViewController(url: url)
-        navigationController?.present(safariVC, animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?.navigationViewModel.push(self?.isRegular == true ? .regularUIKit : .scrollView)
+        }
     }
     
     func onRecClick(_ url: URL) {

@@ -11,7 +11,7 @@ import SafariServices
 import OutbrainSDK
 
 
-class ScrollViewTwoWidgets : UIViewController, UIScrollViewDelegate {
+class ScrollViewTwoWidgets : UIViewController, UIScrollViewDelegate, UIKitContentPage {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -20,13 +20,16 @@ class ScrollViewTwoWidgets : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var sfWidget1HeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var sfWidget2HeightConstraint: NSLayoutConstraint!
     
+    private let navigationViewModel: NavigationViewModel
     private let paramsViewModel: ParamsViewModel
     
     
-    init(paramsViewModel: ParamsViewModel) {
-        self.paramsViewModel = paramsViewModel
+    required init(navigationViewModel: NavigationViewModel, params: [String : Bool]?) {
+        self.navigationViewModel = navigationViewModel
+        self.paramsViewModel = navigationViewModel.paramsViewModel
         super.init(nibName: "ScrollViewTwoWidgets", bundle: nil)
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -84,9 +87,9 @@ extension ScrollViewTwoWidgets: SFWidgetDelegate {
     }
     
     func onOrganicRecClick(_ url: URL) {
-        // handle click on organic url
-        let safariVC = SFSafariViewController(url: url)
-        navigationController?.present(safariVC, animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?.navigationViewModel.push(.twoWidgets)
+        }
     }
     
     func onRecClick(_ url: URL) {

@@ -11,9 +11,10 @@
 		B113CC392C57BAB400BECDFA /* OBSafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC382C57BAB400BECDFA /* OBSafariView.swift */; };
 		B113CC472C58E95500BECDFA /* ScrollViewTwoWidgets.xib in Resources */ = {isa = PBXBuildFile; fileRef = B113CC462C58E95500BECDFA /* ScrollViewTwoWidgets.xib */; };
 		B113CC492C58E95F00BECDFA /* ScrollViewTwoWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC482C58E95F00BECDFA /* ScrollViewTwoWidgets.swift */; };
-		B113CC4B2C58EC6C00BECDFA /* BridgeInScrollViewTwoWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC4A2C58EC6C00BECDFA /* BridgeInScrollViewTwoWidgets.swift */; };
 		B150BDB32C5279E80039B6D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B150BDB22C5279E80039B6D6 /* Extensions.swift */; };
 		B150BDB62C527EB30039B6D6 /* NavigationBarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B150BDB52C527EB30039B6D6 /* NavigationBarViewModifier.swift */; };
+		B17A622B2CB3DFEB009B7891 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A622A2CB3DFE9009B7891 /* Protocols.swift */; };
+		B17A622D2CB3E0EE009B7891 /* ContentPageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A622C2CB3E0ED009B7891 /* ContentPageRepresentable.swift */; };
 		B1BFCA262CA54C61008C59DA /* Regular+BridgeSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFCA252CA54C52008C59DA /* Regular+BridgeSwiftUI.swift */; };
 		B1BFCA282CA54F12008C59DA /* TwoWidgetsSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFCA272CA54F0E008C59DA /* TwoWidgetsSwiftUI.swift */; };
 		B1CB989A2C3D202800991569 /* demoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98992C3D202800991569 /* demoApp.swift */; };
@@ -23,10 +24,7 @@
 		B1CB98AA2C3D20A300991569 /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1CB98A82C3D20A300991569 /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B1CB98AE2C3D23C800991569 /* ConfigScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98AD2C3D23C800991569 /* ConfigScreen.swift */; };
 		B1CB98B02C3D23D100991569 /* UseCasesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98AF2C3D23D100991569 /* UseCasesScreen.swift */; };
-		B1CB98B22C3D23EA00991569 /* BridgeInTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98B12C3D23EA00991569 /* BridgeInTableView.swift */; };
-		B1CB98B42C3D23F700991569 /* BridgeInCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98B32C3D23F700991569 /* BridgeInCollectionView.swift */; };
 		B1CB98B62C3D240000991569 /* BridgeInSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98B52C3D240000991569 /* BridgeInSwiftUI.swift */; };
-		B1CB98B82C3D243000991569 /* BridgeInScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98B72C3D243000991569 /* BridgeInScrollView.swift */; };
 		B1CB98BB2C3D483600991569 /* ParamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98BA2C3D483600991569 /* ParamsViewModel.swift */; };
 		B1CB98BD2C3D4AEA00991569 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98BC2C3D4AEA00991569 /* NavigationViewModel.swift */; };
 		B1CB98BF2C3D4C0700991569 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98BE2C3D4C0700991569 /* ContentView.swift */; };
@@ -50,7 +48,6 @@
 		B1CC7CD62C56292E00C4018F /* OutbrainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC7CD12C56292E00C4018F /* OutbrainWidgetView.swift */; };
 		B1CC7D012C563A4500C4018F /* ScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC7CFF2C563A4500C4018F /* ScrollViewVC.swift */; };
 		B1CC7D052C563CD100C4018F /* ScrollViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CC7D042C563CD100C4018F /* ScrollViewVC.xib */; };
-		B1F5B2582C6E082000C0FF4C /* RegularSDKUiKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F5B2572C6E082000C0FF4C /* RegularSDKUiKit.swift */; };
 		B1F5B25C2C6E096E00C0FF4C /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F5B25B2C6E096E00C0FF4C /* RecommendationView.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,9 +70,10 @@
 		B113CC382C57BAB400BECDFA /* OBSafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBSafariView.swift; sourceTree = "<group>"; };
 		B113CC462C58E95500BECDFA /* ScrollViewTwoWidgets.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewTwoWidgets.xib; sourceTree = "<group>"; };
 		B113CC482C58E95F00BECDFA /* ScrollViewTwoWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewTwoWidgets.swift; sourceTree = "<group>"; };
-		B113CC4A2C58EC6C00BECDFA /* BridgeInScrollViewTwoWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeInScrollViewTwoWidgets.swift; sourceTree = "<group>"; };
 		B150BDB22C5279E80039B6D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B150BDB52C527EB30039B6D6 /* NavigationBarViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModifier.swift; sourceTree = "<group>"; };
+		B17A622A2CB3DFE9009B7891 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		B17A622C2CB3E0ED009B7891 /* ContentPageRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPageRepresentable.swift; sourceTree = "<group>"; };
 		B1BFCA252CA54C52008C59DA /* Regular+BridgeSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Regular+BridgeSwiftUI.swift"; sourceTree = "<group>"; };
 		B1BFCA272CA54F0E008C59DA /* TwoWidgetsSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWidgetsSwiftUI.swift; sourceTree = "<group>"; };
 		B1CB98962C3D202800991569 /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,10 +83,7 @@
 		B1CB98A82C3D20A300991569 /* OutbrainSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OutbrainSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1CB98AD2C3D23C800991569 /* ConfigScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigScreen.swift; sourceTree = "<group>"; };
 		B1CB98AF2C3D23D100991569 /* UseCasesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesScreen.swift; sourceTree = "<group>"; };
-		B1CB98B12C3D23EA00991569 /* BridgeInTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeInTableView.swift; sourceTree = "<group>"; };
-		B1CB98B32C3D23F700991569 /* BridgeInCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeInCollectionView.swift; sourceTree = "<group>"; };
 		B1CB98B52C3D240000991569 /* BridgeInSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeInSwiftUI.swift; sourceTree = "<group>"; };
-		B1CB98B72C3D243000991569 /* BridgeInScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeInScrollView.swift; sourceTree = "<group>"; };
 		B1CB98BA2C3D483600991569 /* ParamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamsViewModel.swift; sourceTree = "<group>"; };
 		B1CB98BC2C3D4AEA00991569 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		B1CB98BE2C3D4C0700991569 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,7 +108,6 @@
 		B1CC7CD12C56292E00C4018F /* OutbrainWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutbrainWidgetView.swift; sourceTree = "<group>"; };
 		B1CC7CFF2C563A4500C4018F /* ScrollViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewVC.swift; sourceTree = "<group>"; };
 		B1CC7D042C563CD100C4018F /* ScrollViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewVC.xib; sourceTree = "<group>"; };
-		B1F5B2572C6E082000C0FF4C /* RegularSDKUiKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularSDKUiKit.swift; sourceTree = "<group>"; };
 		B1F5B25B2C6E096E00C0FF4C /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +189,7 @@
 		B1CB98AC2C3D23A900991569 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B17A622A2CB3DFE9009B7891 /* Protocols.swift */,
 				B150BDB42C527EA40039B6D6 /* ViewModifiers */,
 				B1CB98C42C3D53BF00991569 /* Use cases */,
 				B1CB98AD2C3D23C800991569 /* ConfigScreen.swift */,
@@ -217,17 +212,13 @@
 		B1CB98C42C3D53BF00991569 /* Use cases */ = {
 			isa = PBXGroup;
 			children = (
+				B17A622C2CB3E0ED009B7891 /* ContentPageRepresentable.swift */,
 				B113CC452C58E93500BECDFA /* ScrollViewTwoWidgets */,
 				B1CC7D002C563A4500C4018F /* ScrollViewVC */,
 				B1CC7CCD2C56291200C4018F /* SwiftUI */,
 				B1CB99902C3EA27000991569 /* CollectionView */,
 				B1CB998C2C3EA27000991569 /* TableView */,
-				B1CB98B32C3D23F700991569 /* BridgeInCollectionView.swift */,
-				B1CB98B72C3D243000991569 /* BridgeInScrollView.swift */,
-				B1CB98B12C3D23EA00991569 /* BridgeInTableView.swift */,
 				B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */,
-				B113CC4A2C58EC6C00BECDFA /* BridgeInScrollViewTwoWidgets.swift */,
-				B1F5B2572C6E082000C0FF4C /* RegularSDKUiKit.swift */,
 				B1F5B25B2C6E096E00C0FF4C /* RecommendationView.swift */,
 			);
 			path = "Use cases";
@@ -382,24 +373,21 @@
 			files = (
 				B1CB99942C3EA27000991569 /* AppArticleTableViewCell.swift in Sources */,
 				B1CB99A72C3EA50200991569 /* ArticleHeaderCollectionViewCell.swift in Sources */,
-				B113CC4B2C58EC6C00BECDFA /* BridgeInScrollViewTwoWidgets.swift in Sources */,
 				B1F5B25C2C6E096E00C0FF4C /* RecommendationView.swift in Sources */,
 				B1CB98BD2C3D4AEA00991569 /* NavigationViewModel.swift in Sources */,
 				B150BDB62C527EB30039B6D6 /* NavigationBarViewModifier.swift in Sources */,
 				B1CB98B62C3D240000991569 /* BridgeInSwiftUI.swift in Sources */,
 				B1CB98BB2C3D483600991569 /* ParamsViewModel.swift in Sources */,
 				B1CC7CD62C56292E00C4018F /* OutbrainWidgetView.swift in Sources */,
-				B1F5B2582C6E082000C0FF4C /* RegularSDKUiKit.swift in Sources */,
 				B1CB98C32C3D531100991569 /* RegularSDKSwiftUI.swift in Sources */,
 				B1BFCA262CA54C61008C59DA /* Regular+BridgeSwiftUI.swift in Sources */,
 				B1CB99952C3EA27000991569 /* TableVC.swift in Sources */,
-				B1CB98B82C3D243000991569 /* BridgeInScrollView.swift in Sources */,
 				B1BFCA282CA54F12008C59DA /* TwoWidgetsSwiftUI.swift in Sources */,
-				B1CB98B22C3D23EA00991569 /* BridgeInTableView.swift in Sources */,
+				B17A622B2CB3DFEB009B7891 /* Protocols.swift in Sources */,
+				B17A622D2CB3E0EE009B7891 /* ContentPageRepresentable.swift in Sources */,
 				B113CC392C57BAB400BECDFA /* OBSafariView.swift in Sources */,
 				B150BDB32C5279E80039B6D6 /* Extensions.swift in Sources */,
 				B1CB99A52C3EA46300991569 /* ContentCollectionCell.swift in Sources */,
-				B1CB98B42C3D23F700991569 /* BridgeInCollectionView.swift in Sources */,
 				B1CB99982C3EA27000991569 /* CollectionVC.swift in Sources */,
 				B1CB99962C3EA27000991569 /* ArticleContentCollectionViewCell.swift in Sources */,
 				B1CB98BF2C3D4C0700991569 /* ContentView.swift in Sources */,
