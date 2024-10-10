@@ -9,21 +9,21 @@ import SwiftUI
 
 struct BridgeInSwiftUI: View {
     
-    let paramsViewModel: ParamsViewModel
+    private let navigationViewModel: NavigationViewModel
     
     @StateObject
     private var viewModel: OutbrainWidgetViewModel
     
     
-    init(paramsViewModel: ParamsViewModel) {
-        self.paramsViewModel = paramsViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(paramsViewModel: paramsViewModel))
+    init(navigationViewModel: NavigationViewModel) {
+        self.navigationViewModel = navigationViewModel
+        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
     }
     
     var body: some View {
         ScrollView {
             ZStack {
-                LazyVStack {
+                VStack {
                     Image("articleImage", bundle: Bundle.main)
                         .resizable()
                         .aspectRatio(16/9, contentMode: .fill)
@@ -66,5 +66,5 @@ struct BridgeInSwiftUI: View {
 }
 
 #Preview {
-    BridgeInSwiftUI(paramsViewModel: .init())
+    BridgeInSwiftUI(navigationViewModel: .init())
 }

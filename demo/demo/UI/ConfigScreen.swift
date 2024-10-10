@@ -47,12 +47,12 @@ struct ConfigScreen: View {
                                 navigationViewModel.popLast()
                             }
                         
-                    case .swiftUI: BridgeInSwiftUI(paramsViewModel: navigationViewModel.paramsViewModel)
+                    case .swiftUI: BridgeInSwiftUI(navigationViewModel: navigationViewModel)
                             .addNavigationBar(withTitle: "Bridge In SwiftUI") {
                                 navigationViewModel.popLast()
                             }
                         
-                    case .regularAndBridgeSwiftUI: RegularAndBridgeSwiftUI(paramsViewModel: navigationViewModel.paramsViewModel)
+                    case .regularAndBridgeSwiftUI: RegularAndBridgeSwiftUI(navigationViewModel: navigationViewModel)
                             .addNavigationBar(withTitle: "Regular and Bridge In SwiftUI") {
                                 navigationViewModel.popLast()
                             }
@@ -85,6 +85,11 @@ struct ConfigScreen: View {
                         
                     case .twoWidgets: ContentPageRepresentable<ScrollViewTwoWidgets>(navigationViewModel: navigationViewModel)
                             .addNavigationBar(withTitle: "Two Widgets") {
+                                navigationViewModel.popLast()
+                            }
+                        
+                    case .twoWidgetsSwiftUI: TwoWidgetsSwiftuI(navigationViewModel: navigationViewModel)
+                            .addNavigationBar(withTitle: "Two Widgets (SwiftUI)") {
                                 navigationViewModel.popLast()
                             }
                 }

@@ -12,7 +12,7 @@ import OutbrainSDK
 struct RegularAndBridgeSwiftUI: View {
     
     
-    let paramsViewModel: ParamsViewModel
+    private let navigationViewModel: NavigationViewModel
     
     @State private var recommendations: [Recommendation] = []
     
@@ -20,16 +20,16 @@ struct RegularAndBridgeSwiftUI: View {
     private var viewModel: OutbrainWidgetViewModel
     
     
-    init(paramsViewModel: ParamsViewModel) {
-        self.paramsViewModel = paramsViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(paramsViewModel: paramsViewModel))
+    init(navigationViewModel: NavigationViewModel) {
+        self.navigationViewModel = navigationViewModel
+        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
     }
     
     
     var body: some View {
         ScrollView {
             ZStack {
-                LazyVStack {
+                VStack {
                     Image("articleImage", bundle: Bundle.main)
                         .resizable()
                         .aspectRatio(16/9, contentMode: .fill)
@@ -80,7 +80,7 @@ struct RegularAndBridgeSwiftUI: View {
                     ArticleBody()
                     
                     
-                    OutbrainWidgetView(viewModel: viewModel)
+                    OutbrainWidgetView(viewModel: viewModel, isRegular: true)
                         .frame(height: viewModel.widgetHeight)
                 }
                 
@@ -88,8 +88,8 @@ struct RegularAndBridgeSwiftUI: View {
         }
         .onAppear {
             let request = OBRequest(
-                url: paramsViewModel.articleURL,
-                widgetID: paramsViewModel.regularWidgetId,
+                url: navigationViewModel.paramsViewModel.articleURL,
+                widgetID: navigationViewModel.paramsViewModel.regularWidgetId,
                 widgetIndex: 0
             )
             
@@ -115,5 +115,5 @@ struct RegularAndBridgeSwiftUI: View {
 
 
 #Preview {
-    RegularAndBridgeSwiftUI(paramsViewModel: .init())
+    RegularAndBridgeSwiftUI(navigationViewModel: .init())
 }
