@@ -382,7 +382,7 @@ public class SFWidget: UIView {
 
     
     func initialLoadUrl() {
-        if let widgetURL = bridgeUrlBuilder?
+        let widgetURL = bridgeUrlBuilder?
             .addPermalink(url: url)
             .addDarkMode(isDarkMode: darkMode)
             .addTParam(tParamValue: tParam)
@@ -398,16 +398,16 @@ public class SFWidget: UIView {
             .addIsReactNative(isReactNative: SFWidget.isReactNative)
             .addFlutterPackageVersion(version: SFWidget.flutter_packageVersion)
             .addReactNativePackageVersion(version: SFWidget.RN_packageVersion)
-            .addClientType(isFlutter: SFWidget.isFlutter, isReactNative: SFWidget.isReactNative)
-            .build() {
+            .build()
             
-            Outbrain.logger.log("Bridge URL: \(widgetURL)")
-
-            webviewUrl = widgetURL.absoluteString
-            
-            webView?.load(URLRequest(url: widgetURL))
-            webView?.setNeedsLayout()
-        }
+        guard let widgetURL else { return }
+        
+        Outbrain.logger.log("Bridge URL: \(widgetURL)")
+        
+        webviewUrl = widgetURL.absoluteString
+        
+        webView?.load(URLRequest(url: widgetURL))
+        webView?.setNeedsLayout()
     }
 
     
