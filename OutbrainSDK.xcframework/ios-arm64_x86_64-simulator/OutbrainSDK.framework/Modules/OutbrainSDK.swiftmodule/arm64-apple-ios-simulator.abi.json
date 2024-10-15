@@ -3872,6 +3872,106 @@
           },
           {
             "kind": "Var",
+            "name": "testDisplay",
+            "printedName": "testDisplay",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11OutbrainSDK0A0C11testDisplaySbvpZ",
+            "mangledName": "$s11OutbrainSDK0A0C11testDisplaySbvpZ",
+            "moduleName": "OutbrainSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OutbrainSDK0A0C11testDisplaySbvgZ",
+                "mangledName": "$s11OutbrainSDK0A0C11testDisplaySbvgZ",
+                "moduleName": "OutbrainSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OutbrainSDK0A0C11testDisplaySbvsZ",
+                "mangledName": "$s11OutbrainSDK0A0C11testDisplaySbvsZ",
+                "moduleName": "OutbrainSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OutbrainSDK0A0C11testDisplaySbvMZ",
+                "mangledName": "$s11OutbrainSDK0A0C11testDisplaySbvMZ",
+                "moduleName": "OutbrainSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "testLocation",
             "printedName": "testLocation",
             "children": [
@@ -4387,6 +4487,34 @@
             "declKind": "Func",
             "usr": "s:11OutbrainSDK0A0C12testLocationyySSFZ",
             "mangledName": "$s11OutbrainSDK0A0C12testLocationyySSFZ",
+            "moduleName": "OutbrainSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "testDisplay",
+            "printedName": "testDisplay(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11OutbrainSDK0A0C11testDisplayyySbFZ",
+            "mangledName": "$s11OutbrainSDK0A0C11testDisplayyySbFZ",
             "moduleName": "OutbrainSDK",
             "static": true,
             "declAttributes": [
@@ -10088,346 +10216,318 @@
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "kind": "StringLiteral",
+      "offset": 1952,
+      "length": 29,
+      "value": "\"Outbrain\/displayAdsVerifier\""
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "IntegerLiteral",
-      "offset": 4670,
+      "offset": 4754,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 4766,
+      "offset": 4850,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "IntegerLiteral",
-      "offset": 8098,
+      "offset": 8182,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 8462,
+      "offset": 8546,
       "length": 70,
       "value": "\"differ fetching until we'll have the \"t\" or \"bridgeParams\" ready\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 10966,
+      "offset": 11050,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 11143,
+      "offset": 11227,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 11333,
+      "offset": 11417,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 12513,
+      "offset": 12597,
       "length": 49,
       "value": "\"SFWidget received \"bridgeParams\" notification\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "IntegerLiteral",
-      "offset": 12710,
+      "offset": 12794,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 13077,
+      "offset": 13161,
       "length": 14,
       "value": "\"bridgeParams\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 13278,
+      "offset": 13362,
       "length": 102,
       "value": "\"Successfully received SFWIDGET_BRIDGE_PARAMS_NOTIFICATION - \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 13379,
+      "offset": 13463,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 14264,
+      "offset": 14348,
       "length": 6,
       "value": "\"null\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 15297,
+      "offset": 15425,
       "length": 26,
       "value": "\"Bridge URL: \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 15322,
+      "offset": 15450,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 15568,
+      "offset": 15678,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 16111,
+      "offset": 16221,
       "length": 56,
       "value": "\"Outbrain SDK reportPageViewOnTheSameWidget() is called\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 16565,
+      "offset": 16675,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 16584,
+      "offset": 16694,
       "length": 19,
       "value": "\"loading more --->\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 16635,
+      "offset": 16745,
       "length": 16,
       "value": "\"load-more-recs\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 16661,
+      "offset": 16771,
       "length": 18,
       "value": "\"sfWidfet-handler\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 17804,
+      "offset": 17914,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 18014,
+      "offset": 18124,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 18385,
+      "offset": 18495,
       "length": 282,
       "value": "\"    \/\/ ReactNativeWebView initialization\n    window.ReactNativeWebView = {\n        postMessage: function (data) {\n            window.webkit.messageHandlers.ReactNativeWebView.postMessage(String(data));\n        }\n    };\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 18785,
+      "offset": 18895,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 18884,
+      "offset": 18994,
       "length": 20,
       "value": "\"ReactNativeWebView\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 19061,
+      "offset": 19171,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "kind": "StringLiteral",
+      "offset": 19306,
+      "length": 11,
+      "value": "\"userAgent\""
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 19242,
+      "offset": 19576,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 19276,
+      "offset": 19610,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "FloatLiteral",
-      "offset": 21669,
+      "offset": 22012,
       "length": 3,
       "value": "1.5"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 21721,
+      "offset": 22064,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "Array",
-      "offset": 22223,
+      "offset": 22566,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 22249,
+      "offset": 22592,
       "length": 12,
       "value": "\"noRedirect\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 22270,
+      "offset": 22613,
       "length": 6,
       "value": "\"true\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 22486,
+      "offset": 22829,
       "length": 63,
       "value": "\"Error reporting organic click: \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 22531,
+      "offset": 22874,
       "length": 1,
       "value": "\", error: \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 22548,
+      "offset": 22891,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 22606,
+      "offset": 22949,
       "length": 22,
       "value": "\"didClickOnOrganicRec\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "IntegerLiteral",
-      "offset": 23780,
+      "offset": 24123,
       "length": 3,
       "value": "200"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "IntegerLiteral",
-      "offset": 23786,
+      "offset": 24129,
       "length": 3,
       "value": "300"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "IntegerLiteral",
-      "offset": 23992,
+      "offset": 24335,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 24035,
+      "offset": 24378,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 24558,
-      "length": 27,
-      "value": "\"shouldEnableBridgeDisplay\""
-    },
-    {
-      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
-      "kind": "BooleanLiteral",
-      "offset": 24622,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
-      "kind": "BooleanLiteral",
-      "offset": 24677,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
-      "kind": "BooleanLiteral",
-      "offset": 25635,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
-      "kind": "BooleanLiteral",
-      "offset": 25696,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
-      "kind": "StringLiteral",
-      "offset": 25742,
+      "offset": 25806,
       "length": 40,
       "value": "\"widgets.outbrain.com\/reactNativeBridge\""
-    },
-    {
-      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
-      "kind": "BooleanLiteral",
-      "offset": 25787,
-      "length": 5,
-      "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GPPUtils.swift",
@@ -11531,175 +11631,189 @@
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 17988,
+      "offset": 17770,
+      "length": 12,
+      "value": "\"clientType\""
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 17791,
+      "length": 4,
+      "value": "\"10\""
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 18046,
       "length": 5,
       "value": "\"url\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 18144,
+      "offset": 18202,
       "length": 10,
       "value": "\"testMode\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 18163,
+      "offset": 18221,
       "length": 6,
       "value": "\"true\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 18272,
+      "offset": 18330,
       "length": 9,
       "value": "\"fakeRec\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 18290,
+      "offset": 18348,
       "length": 5,
       "value": "\"RTB\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 18351,
+      "offset": 18409,
       "length": 13,
       "value": "\"fakeRecSize\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 18373,
+      "offset": 18431,
       "length": 3,
       "value": "\"2\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 18432,
+      "offset": 18490,
       "length": 12,
       "value": "\"rtbEnabled\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 18453,
+      "offset": 18511,
       "length": 6,
       "value": "\"true\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 18588,
+      "offset": 18646,
       "length": 10,
       "value": "\"location\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 19594,
+      "offset": 19652,
       "length": 48,
       "value": "\"lang is mandatory when using platforms request\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 19850,
+      "offset": 19908,
       "length": 11,
       "value": "\"bundleUrl\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 19864,
+      "offset": 19922,
       "length": 11,
       "value": "\"portalUrl\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 20200,
+      "offset": 20258,
       "length": 6,
       "value": "\"lang\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 20326,
+      "offset": 20384,
       "length": 12,
       "value": "\"contentUrl\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 20527,
+      "offset": 20585,
       "length": 6,
       "value": "\"psub\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 20805,
+      "offset": 20863,
       "length": 6,
       "value": "\"null\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 21186,
+      "offset": 21244,
       "length": 5,
       "value": "\"2.0\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 21217,
+      "offset": 21275,
       "length": 5,
       "value": "\"1.0\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 21528,
+      "offset": 21586,
       "length": 3,
       "value": "\"0\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 22115,
+      "offset": 22173,
       "length": 6,
       "value": "\"true\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 22208,
+      "offset": 22266,
       "length": 43,
       "value": "\"https:\/\/mv.outbrain.com\/Multivac\/api\/get\/\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 22284,
+      "offset": 22342,
       "length": 45,
       "value": "\"https:\/\/t-mv.outbrain.com\/Multivac\/api\/get\/\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 22366,
+      "offset": 22424,
       "length": 49,
       "value": "\"https:\/\/mv.outbrain.com\/Multivac\/api\/platforms\/\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 22454,
+      "offset": 22512,
       "length": 51,
       "value": "\"https:\/\/t-mv.outbrain.com\/Multivac\/api\/platforms\/\""
     },
@@ -12009,7 +12123,7 @@
       "kind": "StringLiteral",
       "offset": 247,
       "length": 7,
-      "value": "\"5.2.0\""
+      "value": "\"5.2.1\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
@@ -12034,232 +12148,239 @@
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
+      "kind": "BooleanLiteral",
+      "offset": 669,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 819,
+      "offset": 867,
       "length": 57,
       "value": "\"Outbrain SDK initilized with partner key: \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 875,
+      "offset": 923,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "BooleanLiteral",
-      "offset": 993,
+      "offset": 1041,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 1196,
+      "offset": 1244,
       "length": 50,
       "value": "\"Outbrain SDK hasn't initiated with a partner key\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 1304,
+      "offset": 1352,
       "length": 50,
       "value": "\"Outbrain SDK hasn't initiated with a partner key\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 1696,
+      "offset": 1744,
       "length": 96,
       "value": "\"fetchRecommendations for widgetId \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 1750,
+      "offset": 1798,
       "length": 1,
       "value": "\" & url \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 1791,
+      "offset": 1839,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "Dictionary",
-      "offset": 2047,
+      "offset": 2095,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "Dictionary",
-      "offset": 2078,
+      "offset": 2126,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "Array",
-      "offset": 2157,
+      "offset": 2205,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 2578,
+      "offset": 2626,
       "length": 96,
       "value": "\"fetchRecommendations for widgetId \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 2632,
+      "offset": 2680,
       "length": 1,
       "value": "\" & url \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 2673,
+      "offset": 2721,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "Dictionary",
-      "offset": 2829,
+      "offset": 2877,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "Dictionary",
-      "offset": 2860,
+      "offset": 2908,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "Array",
-      "offset": 2939,
+      "offset": 2987,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 3272,
+      "offset": 3320,
       "length": 102,
       "value": "\"getting click url for \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 3314,
+      "offset": 3362,
       "length": 6,
       "value": "\"paid\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 3323,
+      "offset": 3371,
       "length": 9,
       "value": "\"organic\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 3333,
+      "offset": 3381,
       "length": 3,
       "value": "\" rec \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 3373,
+      "offset": 3421,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "Array",
-      "offset": 3901,
+      "offset": 3949,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 3949,
+      "offset": 3997,
       "length": 12,
       "value": "\"noRedirect\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 3970,
+      "offset": 4018,
       "length": 6,
       "value": "\"true\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 4207,
+      "offset": 4255,
       "length": 57,
       "value": "\"organic link clicked: \""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 4263,
+      "offset": 4311,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 4440,
+      "offset": 4488,
       "length": 35,
       "value": "\"https:\/\/www.outbrain.com\/what-is\/\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 4722,
+      "offset": 4770,
       "length": 5,
       "value": "\"doo\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 4769,
+      "offset": 4817,
       "length": 6,
       "value": "\"true\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 4778,
+      "offset": 4826,
       "length": 7,
       "value": "\"false\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
-      "offset": 4819,
+      "offset": 4867,
       "length": 11,
       "value": "\"apiUserId\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "IntegerLiteral",
-      "offset": 5331,
+      "offset": 5379,
       "length": 4,
       "value": "2000"
     },

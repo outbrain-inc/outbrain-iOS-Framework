@@ -103,6 +103,7 @@ public class OBPlatformsRequest : OutbrainSDK.OBRequest {
   public static let OB_SDK_VERSION: Swift.String
   public static var testMode: Swift.Bool
   public static var testRTB: Swift.Bool
+  public static var testDisplay: Swift.Bool
   public static var testLocation: Swift.String?
   public static func initializeOutbrain(withPartnerKey partnerKey: Swift.String)
   public static func checkInitiated() -> OutbrainSDK.OBError?
@@ -116,6 +117,7 @@ public class OBPlatformsRequest : OutbrainSDK.OBRequest {
   public static func setTestMode(_ testMode: Swift.Bool)
   public static func testRTB(_ testRTB: Swift.Bool)
   public static func testLocation(_ testLocation: Swift.String)
+  public static func testDisplay(_ testDisplay: Swift.Bool)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class OBRecommendationResponse {
