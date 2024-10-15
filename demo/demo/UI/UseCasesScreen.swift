@@ -21,6 +21,7 @@ struct UseCasesScreen: View {
         "Regular SDK (UIKit)",
         "Read More",
         "Two widgets on the same page",
+        "Two widgets (SwiftUI)"
     ]
     
     
@@ -52,6 +53,8 @@ struct UseCasesScreen: View {
                             navigationViewModel.push(.readMore)
                         case 8:
                             navigationViewModel.push(.twoWidgets)
+                        case 9:
+                            navigationViewModel.push(.twoWidgetsSwiftUI)
                         default: return
                     }
                 }) {

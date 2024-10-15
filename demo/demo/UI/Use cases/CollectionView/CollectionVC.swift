@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import OutbrainSDK
 
-class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIKitContentPage {
     
     private var collectionView: UICollectionView
     private let imageHeaderCellReuseIdentifier = "imageHeaderCollectionCell"
@@ -19,14 +19,15 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     private var sfWidget: SFWidget!
     private let originalArticleItemsCount = 5
     private let paramsViewModel: ParamsViewModel
+    private let navigationViewModel: NavigationViewModel
     
-    init(paramsViewModel: ParamsViewModel) {
+    
+    required init(navigationViewModel: NavigationViewModel, params: [String : Bool]?) {
         collectionView = .init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        self.paramsViewModel = paramsViewModel
+        self.navigationViewModel = navigationViewModel
+        self.paramsViewModel = navigationViewModel.paramsViewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -180,9 +181,9 @@ extension CollectionVC: SFWidgetDelegate {
     }
     
     func onOrganicRecClick(_ url: URL) {
-        // handle click on organic url
-        let safariVC = SFSafariViewController(url: url)
-        self.navigationController?.present(safariVC, animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?.navigationViewModel.push(.collectionView)
+        }
     }
     
     func onRecClick(_ url: URL) {

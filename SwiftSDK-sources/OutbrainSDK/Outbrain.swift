@@ -13,7 +13,7 @@ public class Outbrain {
     // MARK: OB Instance Variables
 
     // current SDK version
-    public static let OB_SDK_VERSION = "5.2.0"
+    public static let OB_SDK_VERSION = "5.2.1"
 
     // Logger
     static var logger = OBLogger()
@@ -25,6 +25,7 @@ public class Outbrain {
     
     public static var testMode: Bool = false
     public static var testRTB: Bool = false
+    public static var testDisplay: Bool = false
     public static var testLocation: String?
     
 
@@ -201,5 +202,9 @@ public class Outbrain {
     
     public static func testLocation(_ testLocation: String) {
         self.testLocation = testLocation
+    }
+    
+    public static func testDisplay(_ testDisplay: Bool) {
+        self.testDisplay = testDisplay
     }
 }

@@ -29,30 +29,30 @@ struct ConfigScreen: View {
         configContent
             .navigationDestination(for: NavigationViewModel.Path.self) { path in
                 switch path {
-                    case .tableView: BridgeInTableView(
-                        paramsViewModel: navigationViewModel.paramsViewModel,
-                        readMore: false
+                    case .tableView: ContentPageRepresentable<TableVC>(
+                        navigationViewModel: navigationViewModel,
+                        params: ["readMore": false]
                     )
                     .addNavigationBar(withTitle: "Bridge In Table View") {
                         navigationViewModel.popLast()
                     }
                         
-                    case .collectionView: BridgeInCollectionView(paramsViewModel: navigationViewModel.paramsViewModel)
+                    case .collectionView: ContentPageRepresentable<CollectionVC>(navigationViewModel: navigationViewModel)
                             .addNavigationBar(withTitle: "Bridge In Collection View") {
                                 navigationViewModel.popLast()
                             }
                         
-                    case .scrollView: BridgeInScrollView(paramsViewModel: navigationViewModel.paramsViewModel)
+                    case .scrollView: ContentPageRepresentable<ScrollViewVC>(navigationViewModel: navigationViewModel)
                             .addNavigationBar(withTitle: "Bridge In Scroll View") {
                                 navigationViewModel.popLast()
                             }
                         
-                    case .swiftUI: BridgeInSwiftUI(paramsViewModel: navigationViewModel.paramsViewModel)
+                    case .swiftUI: BridgeInSwiftUI(navigationViewModel: navigationViewModel)
                             .addNavigationBar(withTitle: "Bridge In SwiftUI") {
                                 navigationViewModel.popLast()
                             }
                         
-                    case .regularAndBridgeSwiftUI: RegularAndBridgeSwiftUI(paramsViewModel: navigationViewModel.paramsViewModel)
+                    case .regularAndBridgeSwiftUI: RegularAndBridgeSwiftUI(navigationViewModel: navigationViewModel)
                             .addNavigationBar(withTitle: "Regular and Bridge In SwiftUI") {
                                 navigationViewModel.popLast()
                             }
@@ -62,26 +62,34 @@ struct ConfigScreen: View {
                                 navigationViewModel.popLast()
                             }
                         
-                    case .regularUIKit: RegularInUIKit(paramsViewModel: navigationViewModel.paramsViewModel)
-                            .addNavigationBar(withTitle: "Regular SDK (UIKit)") {
-                                navigationViewModel.popLast()
-                            }
+                    case .regularUIKit: ContentPageRepresentable<ScrollViewVC>(
+                        navigationViewModel: navigationViewModel,
+                        params: ["isRegular": true]
+                    )
+                    .addNavigationBar(withTitle: "Regular SDK (UIKit)") {
+                        navigationViewModel.popLast()
+                    }
                         
-                    case .readMore: BridgeInTableView(paramsViewModel: navigationViewModel.paramsViewModel, readMore: true)
-                            .addNavigationBar(withTitle: "Read More") {
-                                navigationViewModel.popLast()
-                            }
+                    case .readMore: ContentPageRepresentable<TableVC>(
+                        navigationViewModel: navigationViewModel,
+                        params: ["readMore": true]
+                    )
+                    .addNavigationBar(withTitle: "Read More") {
+                        navigationViewModel.popLast()
+                    }
                         
                     case .useCases: UseCasesScreen(navigationViewModel: navigationViewModel)
-                            .addNavigationBar(
-                                withTitle: "Use Cases",
-                                backAction: {
-                                    navigationViewModel.popLast()
-                                }
-                            )
+                            .addNavigationBar(withTitle: "Use Cases") {
+                                navigationViewModel.popLast()
+                            }
                         
-                    case .twoWidgets: BridgeInScrollViewTwoWidgets(paramsViewModel: navigationViewModel.paramsViewModel)
+                    case .twoWidgets: ContentPageRepresentable<ScrollViewTwoWidgets>(navigationViewModel: navigationViewModel)
                             .addNavigationBar(withTitle: "Two Widgets") {
+                                navigationViewModel.popLast()
+                            }
+                        
+                    case .twoWidgetsSwiftUI: TwoWidgetsSwiftuI(navigationViewModel: navigationViewModel)
+                            .addNavigationBar(withTitle: "Two Widgets (SwiftUI)") {
                                 navigationViewModel.popLast()
                             }
                 }
@@ -92,6 +100,14 @@ struct ConfigScreen: View {
     var configContent: some View {
         VStack {
             Text("SDK Version " + String(Outbrain.OB_SDK_VERSION))
+            
+            
+            Toggle(isOn: $navigationViewModel.paramsViewModel.displayTest) {
+                Text("Display test")
+            }
+            .onChange(of: navigationViewModel.paramsViewModel.displayTest) { value in
+                Outbrain.testDisplay(value)
+            }
             
             Toggle(isOn: $navigationViewModel.paramsViewModel.darkMode) {
                 Text("Dark mode")

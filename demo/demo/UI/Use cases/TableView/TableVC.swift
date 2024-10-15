@@ -11,7 +11,7 @@ import WebKit
 import SafariServices
 import OutbrainSDK
 
-class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource, UIKitContentPage {
     
     private var tableView: UITableView
     private let imageHeaderCellReuseIdentifier = "imageHeaderCell"
@@ -25,14 +25,17 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let READ_MORE_CELL_CONTENT_VIEW_TAG = 1003
     private let OUTBRAIN_SECTION_INDEX = 1
     private let paramsViewModel: ParamsViewModel
+    private let navigationViewModel: NavigationViewModel
     
-    init(paramsViewModel: ParamsViewModel, readMore: Bool) {
+    
+    required init(navigationViewModel: NavigationViewModel, params: [String : Bool]?) {
         self.tableView = UITableView()
-        self.paramsViewModel = paramsViewModel
-        self.READ_MORE_FLAG = readMore
+        self.navigationViewModel = navigationViewModel
+        self.paramsViewModel = navigationViewModel.paramsViewModel
+        self.READ_MORE_FLAG = params?["readMore"] ?? false
+        
         super.init(nibName: nil, bundle: nil)
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -230,9 +233,9 @@ extension TableVC: SFWidgetDelegate {
     }
     
     func onOrganicRecClick(_ url: URL) {
-        // handle click on organic url
-        let safariVC = SFSafariViewController(url: url)
-        self.navigationController?.present(safariVC, animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?.navigationViewModel.push(self?.READ_MORE_FLAG == true ? .readMore : .tableView)
+        }
     }
     
     func onRecClick(_ url: URL) {

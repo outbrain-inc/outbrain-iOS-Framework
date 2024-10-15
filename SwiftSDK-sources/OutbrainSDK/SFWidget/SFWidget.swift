@@ -53,6 +53,7 @@ public class SFWidget: UIView {
     
     
     private static let contentOffsetKey = "contentOffset"
+    private static let displayTestUserAgentAddition = "Outbrain/displayAdsVerifier"
   
     
     /**
@@ -381,7 +382,7 @@ public class SFWidget: UIView {
 
     
     func initialLoadUrl() {
-        if let widgetURL = bridgeUrlBuilder?
+        let widgetURL = bridgeUrlBuilder?
             .addPermalink(url: url)
             .addDarkMode(isDarkMode: darkMode)
             .addTParam(tParamValue: tParam)
@@ -397,16 +398,16 @@ public class SFWidget: UIView {
             .addIsReactNative(isReactNative: SFWidget.isReactNative)
             .addFlutterPackageVersion(version: SFWidget.flutter_packageVersion)
             .addReactNativePackageVersion(version: SFWidget.RN_packageVersion)
-            .addClientType(isFlutter: SFWidget.isFlutter, isReactNative: SFWidget.isReactNative)
-            .build() {
+            .build()
             
-            Outbrain.logger.log("Bridge URL: \(widgetURL)")
-
-            webviewUrl = widgetURL.absoluteString
-            
-            webView?.load(URLRequest(url: widgetURL))
-            webView?.setNeedsLayout()
-        }
+        guard let widgetURL else { return }
+        
+        Outbrain.logger.log("Bridge URL: \(widgetURL)")
+        
+        webviewUrl = widgetURL.absoluteString
+        
+        webView?.load(URLRequest(url: widgetURL))
+        webView?.setNeedsLayout()
     }
 
     
@@ -522,11 +523,16 @@ public class SFWidget: UIView {
         webviewConf.allowsInlineMediaPlayback = true
         webviewConf.preferences = preferences
         
+        if Outbrain.testDisplay, let userAgent = WKWebView().value(forKey: "userAgent") as? String {
+            webviewConf.applicationNameForUserAgent = userAgent + SFWidget.displayTestUserAgentAddition
+        }
+        
         webView = WKWebView(frame: self.frame, configuration: webviewConf)
         webView!.scrollView.isScrollEnabled = false
         webView!.isOpaque = false
         webView!.uiDelegate = self
         webView!.navigationDelegate = self
+        
         setWebViewInspectable(inspectable: SFConsts.isInspectable)
         addSubview(webView!)
         BridgeUtils.addConstraintsToParentView(view: webView!)
@@ -681,14 +687,6 @@ extension SFWidget: SFMessageHandlerDelegate {
 // MARK: WKUIDelegate
 extension SFWidget: WKUIDelegate, WKNavigationDelegate {
     
-    private func isDisplaySettingEnabled() -> Bool {
-        guard let flagSetting = self.settings["shouldEnableBridgeDisplay"] as? Bool else {
-            return false
-        }
-        
-        return flagSetting == true
-    }
-    
     
     public func webView(
         _ webView: WKWebView,
@@ -696,7 +694,8 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
         for navigationAction: WKNavigationAction,
         windowFeatures: WKWindowFeatures
     ) -> WKWebView? {
-        if navigationAction.targetFrame == nil, let url = navigationAction.request.url {
+        if navigationAction.targetFrame == nil,
+           let url = navigationAction.request.url {
             delegate?.onRecClick(url)
         }
         
@@ -709,17 +708,16 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
         decidePolicyFor navigationAction: WKNavigationAction,
         decisionHandler: @escaping (WKNavigationActionPolicy
         ) -> Void) {
-        guard isDisplaySettingEnabled(),
-              let url = navigationAction.request.url,
+        guard let url = navigationAction.request.url,
               UIApplication.shared.canOpenURL(url) else {
             decisionHandler(.allow)
             return
         }
         
         if let targetFrame = navigationAction.targetFrame,
-           targetFrame.isMainFrame == true,
-           navigationAction.sourceFrame.isMainFrame == false,
-           url.absoluteString.contains("widgets.outbrain.com/reactNativeBridge") == false {
+           targetFrame.isMainFrame,
+           !navigationAction.sourceFrame.isMainFrame,
+           !url.absoluteString.contains("widgets.outbrain.com/reactNativeBridge") {
             decisionHandler(.cancel)
             delegate?.onRecClick(url)
             return

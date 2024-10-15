@@ -450,7 +450,7 @@ public struct OBRequestHandler {
             addReqParam(name: "gpp_sid", value: GPPUtils.gppSections ?? ""),
             addReqParam(name: "gpp", value: GPPUtils.gppString ?? ""),
             addReqParam(name: "ostracking", value: !OBAppleAdIdUtil.isOptedOut ? "true" : "false"),
-            addReqParam(name: "clientType", value: "SDK-RG-I")
+            addReqParam(name: "clientType", value: "10")
         ]
         
         // add platforms params if needed or just the url if regular call

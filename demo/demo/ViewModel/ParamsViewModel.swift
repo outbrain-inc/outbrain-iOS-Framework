@@ -9,6 +9,7 @@ import Foundation
 
 
 class ParamsViewModel {
+    var displayTest: Bool = false
     var darkMode: Bool = false
     var bridgeWidgetId: String = "MB_1"
     var bridgeWidgetId2: String = "MB_2"

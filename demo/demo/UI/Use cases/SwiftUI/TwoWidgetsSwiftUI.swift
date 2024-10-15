@@ -13,21 +13,25 @@ import OutbrainSDK
 
 struct TwoWidgetsSwiftuI: View {
     
-    let paramsViewModel: ParamsViewModel
+    private let navigationViewModel: NavigationViewModel
     
     @StateObject
     private var viewModel: OutbrainWidgetViewModel
     
+    @State
+    private var viewModel2: OutbrainWidgetViewModel
     
-    init(paramsViewModel: ParamsViewModel) {
-        self.paramsViewModel = paramsViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(paramsViewModel: paramsViewModel))
+    
+    init(navigationViewModel: NavigationViewModel) {
+        self.navigationViewModel = navigationViewModel
+        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
+        self._viewModel2 = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
     }
     
     var body: some View {
         ScrollView {
             ZStack {
-                LazyVStack {
+                VStack {
                     Image("articleImage", bundle: Bundle.main)
                         .resizable()
                         .aspectRatio(16/9, contentMode: .fill)
@@ -49,7 +53,22 @@ struct TwoWidgetsSwiftuI: View {
                     ArticleBody()
                     ArticleBody()
                     
-                    OutbrainWidgetView(viewModel: viewModel)
+                    OutbrainWidgetView(
+                        viewModel: viewModel,
+                        twoWidgets: true,
+                        widgetIndex: 0
+                    )
+                    .frame(height: viewModel.widgetHeight)
+                    
+                    
+                    ArticleBody()
+                    ArticleBody()
+                    
+                    OutbrainWidgetView(
+                        viewModel: viewModel2,
+                        twoWidgets: true,
+                        widgetIndex: 1
+                    )
                     .frame(height: viewModel.widgetHeight)
                 }
                 

@@ -2,6 +2,14 @@
 
 # Official Releases (Swift SDK)
 
+## v5.2.1 - October 15, 2044
+ - [Internal] Minor - Additional troubleshooting tools (Display test)
+ - [Internal] Minor - Added client type reporting to regular SDK
+
+## v5.2.0 - September 30, 2024
+ - Minor - Added automatic viewability handling for SFWidget. The scrollViewDidScroll method is now deprecated and is not needed anymore. The solution also works for SwiftUI
+ - Fix - Fixed an issue with load more when feed wasn't loading more recommendations after one extension.
+
 ## v5.1.1 - September 1, 2024
 
 - Major - SDK source code is now 100% Swift (migrate away from ObjC).
