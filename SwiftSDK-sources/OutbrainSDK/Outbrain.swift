@@ -13,7 +13,7 @@ public class Outbrain {
     // MARK: OB Instance Variables
 
     // current SDK version
-    public static let OB_SDK_VERSION = "5.2.0"
+    public static let OB_SDK_VERSION = "5.2.1"
 
     // Logger
     static var logger = OBLogger()
