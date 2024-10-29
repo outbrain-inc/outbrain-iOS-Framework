@@ -42,6 +42,7 @@ public class SFWidget: UIView {
     
     internal static var isFlutter: Bool = false
     internal static var globalBridgeParams: String?
+    internal static var organicUrl: String?
     
     /**
      Indicates that there are multiple widgets on the same content page. Has to be set only when there are multiple widgets on the same page
@@ -406,8 +407,11 @@ public class SFWidget: UIView {
             .addIsReactNative(isReactNative: SFWidget.isReactNative)
             .addFlutterPackageVersion(version: SFWidget.flutter_packageVersion)
             .addReactNativePackageVersion(version: SFWidget.RN_packageVersion)
+            .addReferrer(SFWidget.organicUrl?.contains(url ?? "") == true)
             .build()
             
+        SFWidget.organicUrl = nil
+        
         guard let widgetURL else { return }
         
         Outbrain.logger.log("Bridge URL: \(widgetURL)")
@@ -642,6 +646,8 @@ extension SFWidget: SFMessageHandlerDelegate {
             if let orgRecURL = URL(string: orgUrl) {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
+                    SFWidget.organicUrl = url
+                    
                     let orgClickImplemented = self.delegate?.onOrganicRecClick != nil
                     orgClickImplemented ? self.delegate?.onOrganicRecClick!(orgRecURL) : self.delegate?.onRecClick(recURL)
                 }
