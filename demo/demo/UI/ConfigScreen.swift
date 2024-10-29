@@ -92,6 +92,11 @@ struct ConfigScreen: View {
                             .addNavigationBar(withTitle: "Two Widgets (SwiftUI)") {
                                 navigationViewModel.popLast()
                             }
+                        
+                    case .organic(let url): OrganicReferrerUseCase(navigationViewModel: navigationViewModel, organicUrl: url)
+                            .addNavigationBar(withTitle: "Organic Referrer") {
+                                navigationViewModel.popLast()
+                            }
                 }
             }
     }

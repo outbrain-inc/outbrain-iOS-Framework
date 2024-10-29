@@ -17,17 +17,21 @@ struct OutbrainWidgetView: UIViewRepresentable {
     private let widgetIndex: Int
     private let widgetId: String
     let isRegular: Bool
+    let organicUrl: String?
+    
     
     init(
         viewModel: OutbrainWidgetViewModel,
         isRegular: Bool = false,
         twoWidgets: Bool = false,
-        widgetIndex: Int = 0
+        widgetIndex: Int = 0,
+        organicUrl: String? = nil
     ) {
         self.viewModel = viewModel
         self.isRegular = isRegular
         self.twoWidgets = twoWidgets
         self.widgetIndex = widgetIndex
+        self.organicUrl = organicUrl
         
         if twoWidgets && widgetIndex == 0 {
             self.widgetId = viewModel.navigationViewModel.paramsViewModel.bridgeWidgetId2
@@ -90,7 +94,7 @@ struct OutbrainWidgetView: UIViewRepresentable {
         viewModel.widget
             .configure(
                 with: context.coordinator,
-                url: viewModel.navigationViewModel.paramsViewModel.articleURL,
+                url: organicUrl ?? viewModel.navigationViewModel.paramsViewModel.articleURL,
                 widgetId: viewModel.navigationViewModel.paramsViewModel.bridgeWidgetId,
                 widgetIndex: widgetIndex,
                 installationKey: "NANOWDGT01",

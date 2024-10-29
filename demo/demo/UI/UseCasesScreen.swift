@@ -21,7 +21,8 @@ struct UseCasesScreen: View {
         "Regular SDK (UIKit)",
         "Read More",
         "Two widgets on the same page",
-        "Two widgets (SwiftUI)"
+        "Two widgets (SwiftUI)",
+        "Organic URL Referrer"
     ]
     
     
@@ -55,6 +56,8 @@ struct UseCasesScreen: View {
                             navigationViewModel.push(.twoWidgets)
                         case 9:
                             navigationViewModel.push(.twoWidgetsSwiftUI)
+                        case 10:
+                            navigationViewModel.push(.organic(nil))
                         default: return
                     }
                 }) {
