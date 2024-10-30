@@ -53,7 +53,11 @@ struct OrganicReferrerUseCase: View {
                     ArticleBody()
                     ArticleBody()
                     
-                    OutbrainWidgetView(viewModel: viewModel, organicUrl: organicUrl)
+                    OutbrainWidgetView(
+                        viewModel: viewModel,
+                        isOrganic: true,
+                        organicUrl: organicUrl
+                    )
                         .frame(height: viewModel.widgetHeight)
                 }
                 

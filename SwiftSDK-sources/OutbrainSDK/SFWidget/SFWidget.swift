@@ -646,10 +646,14 @@ extension SFWidget: SFMessageHandlerDelegate {
             if let orgRecURL = URL(string: orgUrl) {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
-                    SFWidget.organicUrl = url
                     
                     let orgClickImplemented = self.delegate?.onOrganicRecClick != nil
-                    orgClickImplemented ? self.delegate?.onOrganicRecClick!(orgRecURL) : self.delegate?.onRecClick(recURL)
+                    if orgClickImplemented {
+                        SFWidget.organicUrl = orgUrl
+                        self.delegate?.onOrganicRecClick!(orgRecURL)
+                    } else {
+                        self.delegate?.onRecClick(recURL)
+                    }
                 }
                 
                 return

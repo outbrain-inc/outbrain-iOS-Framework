@@ -17,6 +17,7 @@ struct OutbrainWidgetView: UIViewRepresentable {
     private let widgetIndex: Int
     private let widgetId: String
     let isRegular: Bool
+    let isOrganic: Bool
     let organicUrl: String?
     
     
@@ -24,12 +25,14 @@ struct OutbrainWidgetView: UIViewRepresentable {
         viewModel: OutbrainWidgetViewModel,
         isRegular: Bool = false,
         twoWidgets: Bool = false,
+        isOrganic: Bool = false,
         widgetIndex: Int = 0,
         organicUrl: String? = nil
     ) {
         self.viewModel = viewModel
         self.isRegular = isRegular
         self.twoWidgets = twoWidgets
+        self.isOrganic = isOrganic
         self.widgetIndex = widgetIndex
         self.organicUrl = organicUrl
         
@@ -46,15 +49,19 @@ struct OutbrainWidgetView: UIViewRepresentable {
         private let viewModel: OutbrainWidgetViewModel
         private let twoWidgets: Bool
         private let isRegular: Bool
+        private let isOrganic: Bool
+        
 
         init(
             viewModel: OutbrainWidgetViewModel,
             twoWidgets: Bool,
-            isRegular: Bool
+            isRegular: Bool,
+            isOrganic: Bool
         ) {
             self.viewModel = viewModel
             self.twoWidgets = twoWidgets
             self.isRegular = isRegular
+            self.isOrganic = isOrganic
         }
 
         // MARK: - SFWidgetDelegate
@@ -69,6 +76,8 @@ struct OutbrainWidgetView: UIViewRepresentable {
                     self?.viewModel.navigationViewModel.push(.regularAndBridgeSwiftUI)
                 } else if self?.twoWidgets == true {
                     self?.viewModel.navigationViewModel.push(.twoWidgetsSwiftUI)
+                } else if self?.isOrganic == true {
+                    self?.viewModel.navigationViewModel.push(.organic(url.absoluteString))
                 } else {
                     self?.viewModel.navigationViewModel.push(.swiftUI)
                 }
@@ -85,7 +94,8 @@ struct OutbrainWidgetView: UIViewRepresentable {
         Coordinator(
             viewModel: viewModel,
             twoWidgets: twoWidgets,
-            isRegular: isRegular
+            isRegular: isRegular,
+            isOrganic: isOrganic
         )
     }
 
