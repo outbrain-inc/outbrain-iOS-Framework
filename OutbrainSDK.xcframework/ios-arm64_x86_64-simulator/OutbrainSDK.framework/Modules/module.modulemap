@@ -4,8 +4,3 @@ framework module OutbrainSDK {
 
   module * { export * }
 }
-
-module OutbrainSDK.Swift {
-  header "OutbrainSDK-Swift.h"
-  requires objc
-}
