@@ -8,8 +8,8 @@
 
 #import "TopBoxPostViewCell.h"
 #import "Post.h"
-
 #import "OBDemoDataHelper.h"
+#import <OutbrainSDK/OutbrainSDK-Swift.h>
 
 @interface TopBoxPostViewCell () <OBResponseDelegate, UIGestureRecognizerDelegate>
 
@@ -123,7 +123,6 @@ const CGFloat kTopBoxHeight = 100.0;
     
     self.mainScrollView.delegate = nil;
     OBRequest * request = [OBRequest requestWithURL:self.post.url widgetID:OBDemoWidgetID1];
-    [self.obHorizontalWidget setOBRequest:request];
     [Outbrain fetchRecommendationsForRequest:request withDelegate:self];
 }
 

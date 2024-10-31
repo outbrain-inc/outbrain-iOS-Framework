@@ -167,6 +167,7 @@
 		E64F603F212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F603D212C35FF008BBDFB /* AppSFSingleWithTitleCollectionViewCell.xib */; };
 		E64F6041212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */; };
 		E64F6042212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64F6040212C36B1008BBDFB /* AppSingleWithThumbnailCollectionCell.xib */; };
+		E65C18002CD3B77200DC96DB /* OutbrainSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6E4A41C2B136D5700E558EB /* OutbrainSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E66B9C8D26809C01006DB0AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9C8C26809C01006DB0AB /* AppDelegate.swift */; };
 		E66B9C9126809C01006DB0AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B9C9026809C01006DB0AB /* ViewController.swift */; };
 		E66B9C9426809C01006DB0AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66B9C9226809C01006DB0AB /* Main.storyboard */; };
@@ -203,6 +204,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E65C17FD2CD3B76E00DC96DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E6E4B3B72A2381A100FE44E3;
+			remoteInfo = OutbrainSDK;
+		};
 		E6E4A41B2B136D5700E558EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E6E4A4162B136D5700E558EB /* OutbrainSDK.xcodeproj */;
@@ -282,6 +290,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E65C18002CD3B77200DC96DB /* OutbrainSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -961,7 +970,6 @@
 		E66B9CA82680A199006DB0AB /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				B1CB99852C3EA21300991569 /* Cells */,
 				E66B9CA92680A199006DB0AB /* TableVC.swift */,
 				E66B9CAA2680A199006DB0AB /* AppArticleTableViewCell.swift */,
 			);
@@ -1128,6 +1136,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E65C17FE2CD3B76E00DC96DB /* PBXTargetDependency */,
 			);
 			name = "Journal-Dev";
 			productName = OutbrainDemo;
@@ -1564,6 +1573,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E65C17FE2CD3B76E00DC96DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OutbrainSDK;
+			targetProxy = E65C17FD2CD3B76E00DC96DB /* PBXContainerItemProxy */;
+		};
 		E6E4A4202B136D6600E558EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OutbrainSDK;

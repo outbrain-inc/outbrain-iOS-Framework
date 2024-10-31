@@ -7,13 +7,13 @@
 
 import Foundation
 
-public class OBPlatformsRequest: OBRequest {
+@objc public class OBPlatformRequest: OBRequest {
     
-    public var contentUrl: String? // content url
-    public var portalUrl: String? // portal url
-    public var bundleUrl: String? // bundle url
-    public var lang: String? // language
-    public var psub: String? // psub
+    @objc public var contentUrl: String? // content url
+    @objc public var portalUrl: String? // portal url
+    @objc public var bundleUrl: String? // bundle url
+    @objc public var lang: String? // language
+    @objc public var psub: String? // psub
     
     // check if the request is valid
     var isValid: Bool {
@@ -41,15 +41,33 @@ public class OBPlatformsRequest: OBRequest {
         widgetIndex: Int = 0,
         contentUrl: String? = nil,
         portalUrl: String? = nil,
-        budnelUrl: String? = nil,
+        bundelUrl: String? = nil,
         lang: String? = nil,
         psub: String? = nil
     ) {
         super.init(url: nil, widgetID: widgetID, widgetIndex: widgetIndex)
         self.contentUrl = contentUrl
         self.portalUrl = portalUrl
-        self.bundleUrl = budnelUrl
+        self.bundleUrl = bundelUrl
         self.lang = lang
         self.psub = psub
+    }
+    
+    // Objective-C compatible factory method for `requestWithBundleURL:lang:widgetID:`
+    @objc public static func requestWithBundleURL(_ bundleUrl: String, lang: String, widgetID: String) -> OBPlatformRequest {
+        return OBPlatformRequest(
+            widgetID: widgetID,
+            bundelUrl: bundleUrl,
+            lang: lang
+        )
+    }
+
+    // Objective-C compatible factory method for `requestWithPortalURL:lang:widgetID:`
+    @objc public static func requestWithPortalURL(_ portalUrl: String, lang: String, widgetID: String) -> OBPlatformRequest {
+        return OBPlatformRequest(
+            widgetID: widgetID,
+            portalUrl: portalUrl,
+            lang: lang
+        )
     }
 }

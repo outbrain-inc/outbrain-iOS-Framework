@@ -10,7 +10,7 @@
 #import "Post.h"
 #import "OBAppDelegate.h"
 #import "OBHorizontalWidget.h"
-#import <OutbrainSDK/OutbrainSDK.h>
+#import <OutbrainSDK/OutbrainSDK-Swift.h>
 
 #import "OBDemoDataHelper.h"
 
@@ -128,7 +128,7 @@
     UIScrollView * sv = self.mainScrollView;
     sv.delegate = self;
 
-    if (response.request.widgetIndex == 0) {
+    if (response.request[@"widgetIndex"] == 0) {
         self.outbrainClassicView.recommendationResponse = response;
         
         // The next 3 lines calculate the new frame height for outbrainClassicView according to the server response

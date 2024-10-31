@@ -8,29 +8,29 @@
 import Foundation
 import UIKit
 
-public class Outbrain {
+@objc public class Outbrain: NSObject {
 
     // MARK: OB Instance Variables
 
     // current SDK version
-    public static let OB_SDK_VERSION = "5.2.1"
+    @objc public static let OB_SDK_VERSION = "5.2.1"
 
     // Logger
     static var logger = OBLogger()
-    static var isInitialized = false
-    static var partnerKey: String? // partner key will use to resolve the publisher
-    static var customUserId: String?
-    static var lastTParam: String?
+    @objc static var isInitialized = false
+    @objc public static var partnerKey: String? // partner key will use to resolve the publisher
+    @objc static var customUserId: String?
+    @objc static var lastTParam: String?
     static var lastApvParam: Bool?
     
     public static var testMode: Bool = false
-    public static var testRTB: Bool = false
-    public static var testDisplay: Bool = false
-    public static var testLocation: String?
+    @objc public static var testRTB: Bool = false
+    @objc public static var testDisplay: Bool = false
+    @objc public static var testLocation: String?
     
 
     // init outbrain sdk with a partner key
-    public static func initializeOutbrain(withPartnerKey partnerKey: String) {
+    @objc public static func initializeOutbrain(withPartnerKey partnerKey: String) {
         logger.log("Outbrain SDK initilized with partner key: \(partnerKey)")
         guard !isInitialized else { return }
         
@@ -40,11 +40,11 @@ public class Outbrain {
 
     
     // check if OutbrainSDK has initiated with a key
-    public static func checkInitiated() -> OBError? {
+    @objc public static func checkInitiated() -> OBError? {
         guard !isInitialized else { return nil }
         
         logger.error("Outbrain SDK hasn't initiated with a partner key")
-        let err = OBError.generic(
+        let err = OBError.genericError(
             message: "Outbrain SDK hasn't initiated with a partner key",
             key: .generic,
             code: .generic
@@ -54,6 +54,7 @@ public class Outbrain {
     
 
     // MARK: Fetch Recommendations for requsest - callback or delegate
+    @objc(fetchRecommendationsForRequest:withCallback:)
     public static func fetchRecommendations(
         for request: OBRequest,
         with callback: @escaping (OBRecommendationResponse) -> Void
@@ -82,7 +83,7 @@ public class Outbrain {
         }
     }
 
-    
+    @objc(fetchRecommendationsForRequest:withDelegate:) 
     public static func fetchRecommendations(
         for request: OBRequest,
         with delegate: OBResponseDelegate
@@ -107,7 +108,7 @@ public class Outbrain {
     
 
     // MARK: Rec Click
-    public static func getUrl(_ rec: OBRecommendation) -> URL? {
+    @objc public static func getUrl(_ rec: OBRecommendation) -> URL? {
         logger.debug("getting click url for \(rec.isPaidLink ? "paid" : "organic") rec \(String(describing: rec.position))")
 
         // rec url
@@ -147,7 +148,7 @@ public class Outbrain {
 
     
     // MARK: What-Is
-    public static func getOutbrainAboutURL() -> URL? {
+    @objc public static func getOutbrainAboutURL() -> URL? {
         let baseUrl = "https://www.outbrain.com/what-is/"
 
         // enrich params with some data - oo & userId
@@ -164,14 +165,14 @@ public class Outbrain {
     }
     
     
-    public static func getAboutURL() -> URL? {
+    @objc public static func getAboutURL() -> URL? {
         return Outbrain.getOutbrainAboutURL()
     }
 
     
     // MARK: Viewability
     // refresh OBLabel viewability with a new request
-    public static func configureViewabilityPerListing(for view: UIView, withRec rec: OBRecommendation) {
+    @objc public static func configureViewabilityPerListing(for view: UIView, withRec rec: OBRecommendation) {
         // start viewability chcking
         OBViewbailityManager.shared.startReportViewability(withTimeInterval: 2000)
 
@@ -182,29 +183,33 @@ public class Outbrain {
     
     // MARK: Logging
     // for debuging purposes, print all stored logs
-    public static func printLogs(domain: String? = nil) {
+    @objc public static func printLogs(domain: String? = nil) {
         self.logger.printLogs(domain: domain)
     }
     
     
     // MARK: - Testing
-    public static func setTestMode(_ testMode: Bool) {
+    @objc public static func setTestMode(_ testMode: Bool) {
         #if DEBUG
         self.testMode = testMode
         #endif
     }
     
+//    @objc public static func setPartnerKey(_ partnerKey: String) {
+//        self.partnerKey = partnerKey;
+//    }
     
-    public static func testRTB(_ testRTB: Bool) {
+    
+    @objc public static func testRTB(_ testRTB: Bool) {
         self.testRTB = testRTB
     }
     
     
-    public static func testLocation(_ testLocation: String) {
+    @objc public static func testLocation(_ testLocation: String) {
         self.testLocation = testLocation
     }
     
-    public static func testDisplay(_ testDisplay: Bool) {
+    @objc public static func testDisplay(_ testDisplay: Bool) {
         self.testDisplay = testDisplay
     }
 }

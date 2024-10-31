@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/CAShapeLayer.h>
 #import <QuartzCore/CAAnimation.h>
-#import <OutbrainSDK/Outbrain.h>
 #import "OBWidgetViewProtocol.h"
+#import <OutbrainSDK/OutbrainSDK-Swift.h>
 
 @class OBRecommendation;
 @class OBRecommendationResponse;

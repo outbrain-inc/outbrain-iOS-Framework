@@ -218,7 +218,7 @@ public struct OBGlobalStatisticsManager {
     }
     
     // get global statistics key for url
-    func globalStatsticsKey(forUrl url: String, widgetId: String, widgetIndex: String) -> String {
+    func globalStatsticsKey(forUrl url: String, widgetId: String, widgetIndex: Int) -> String {
         let urlHash = url.hashValue
         return String(format: GS_KEYS.URL_HASH_WIDGET_ID, urlHash, widgetId, widgetIndex)
     }
@@ -228,7 +228,7 @@ public struct OBGlobalStatisticsManager {
         var url = request.url
         
         // if platforms request - check if using bundle, content or portal url
-        if let platformsRequest = request as? OBPlatformsRequest {
+        if let platformsRequest = request as? OBPlatformRequest {
             if platformsRequest.isUsingBundleUrl {
                 url = platformsRequest.bundleUrl
             } else if platformsRequest.isUsingContentUrl {
@@ -238,7 +238,7 @@ public struct OBGlobalStatisticsManager {
             }
         }
         
-        return globalStatsticsKey(forUrl: url!, widgetId: request.widgetId, widgetIndex: request.idx!)
+        return globalStatsticsKey(forUrl: url!, widgetId: request.widgetId, widgetIndex: request.widgetIndex)
     }
     
     // build global statistics URL with mandatory params

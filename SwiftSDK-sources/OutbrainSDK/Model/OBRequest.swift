@@ -7,15 +7,15 @@
 
 import Foundation
 
-public class OBRequest {
+@objc public class OBRequest: NSObject {
     
-    public var url: String? // url to fetch the recommendations
-    public var widgetId: String // widget id
-    public var idx: String? // widget index
-    public var externalID: String? // external id
-    public var startDate: Date? // start date
+    @objc public var url: String? // url to fetch the recommendations
+    @objc public var widgetId: String // widget id
+    @objc public var widgetIndex: Int // widget index
+    @objc public var externalID: String? // external id
+    @objc public var startDate: Date? // start date
     
-    public init(
+    @objc public init(
         url: String?,
         widgetID: String,
         widgetIndex: Int = 0,
@@ -24,8 +24,16 @@ public class OBRequest {
     ) {
         self.url = url
         self.widgetId = widgetID
-        self.idx = "\(widgetIndex)"
+        self.widgetIndex = widgetIndex
         self.externalID = externalID
         self.startDate = startDate
+    }
+    
+    @objc public static func requestWithURL(_ url: String?, widgetID: String) -> OBRequest {
+        return OBRequest(url: url, widgetID: widgetID)
+    }
+    
+    @objc public static func requestWithURL(_ url: String?, widgetID: String, widgetIndex: Int) -> OBRequest {
+        return OBRequest(url: url, widgetID: widgetID, widgetIndex: widgetIndex)
     }
 }

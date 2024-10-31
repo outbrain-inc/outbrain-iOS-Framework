@@ -23,10 +23,6 @@
 
 @implementation OBRecommendationSlideCell
 
--(void) setOBRequest:(OBRequest *)obRequest {
-    [self.obHorizontalWidget setOBRequest:obRequest];
-}
-
 -(void) setRecommendationResponse:(OBRecommendationResponse *)recommendationResponse {
     self.obHorizontalWidget.recommendationResponse = recommendationResponse;
 }

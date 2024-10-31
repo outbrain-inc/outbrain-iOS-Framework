@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class OBView: UIView {
+@objc public class OBView: UIView {
     
     internal var viewVisibleTimer: Timer? // Timer to track viewability
     var key: String? // Viewability key
@@ -95,7 +95,7 @@ class OBView: UIView {
     }
     
     
-    override func removeFromSuperview() {
+    @objc public override func removeFromSuperview() {
         // Stop the viewability timer
         viewVisibleTimer?.invalidate()
         

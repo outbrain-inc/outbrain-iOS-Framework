@@ -7,30 +7,30 @@
 
 import Foundation
 
-public struct OBRecommendation {
+@objc public class OBRecommendation: NSObject {
     
-    public var url: String? // click url of the recommendation
-    public var origUrl: String? // original click url of the recommendation
-    public var content: String? // title
-    public var source: String? // source
-    public var image: OBImageInfo? // image
-    public var position: String? // position
-    public var author: String? // doc author
-    public var publishDate: Date? // doc publish date
-    public var sameSource: Bool? // is same source
-    public var disclosure: OBDisclosure? // disclosure object
-    public var pixels: [String]? // pixels to fire
-    public var reqId: String? // request id, used for viewability loggin
+    @objc public  var url: String? // click url of the recommendation
+    @objc public  var origUrl: String? // original click url of the recommendation
+    @objc public  var content: String? // title
+    @objc public  var source: String? // source
+    @objc public  var image: OBImageInfo? // image
+    @objc public  var position: String? // position
+    @objc public  var author: String? // doc author
+    @objc public  var publishDate: Date? // doc publish date
+    @objc public  var sameSource: Bool // is same source
+    @objc public  var disclosure: OBDisclosure? // disclosure object
+    @objc public  var pixels: [String]? // pixels to fire
+    @objc public  var reqId: String? // request id, used for viewability loggin
     
     // check if the recommendation is a paid link
-    public var isPaidLink: Bool { return url!.contains("paid.outbrain.com") }
+    @objc public  var isPaidLink: Bool { return url!.contains("paid.outbrain.com") }
     
     // check if the recommendation is a RTB ad
-    public var isRTB: Bool { return shouldDisplayDisclosureIcon() }
-    public var isVideo: Bool { return false }
+    @objc public  var isRTB: Bool { return shouldDisplayDisclosureIcon() }
+    @objc public  var isVideo: Bool { return false }
 
     // check if should display disclosure icon
-    public func shouldDisplayDisclosureIcon() -> Bool {
+    @objc public  func shouldDisplayDisclosureIcon() -> Bool {
         // Check if both disclosure image and click_url exists
         return disclosure != nil 
         && disclosure!.imageUrl != nil
@@ -61,7 +61,7 @@ public struct OBRecommendation {
         self.position = position
         self.author = author
         self.publishDate = publishDate
-        self.sameSource = sameSource
+        self.sameSource = sameSource ?? false
         self.disclosure = disclosure
         self.pixels = pixels
     }

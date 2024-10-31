@@ -16,7 +16,7 @@ public struct OBRequestHandler {
     
     // if platforms getter
     var isPlatformsRequest: Bool {
-        return (request as? OBPlatformsRequest) != nil
+        return (request as? OBPlatformRequest) != nil
     }
     
     init(_ request: OBRequest) {
@@ -115,7 +115,7 @@ public struct OBRequestHandler {
         }
         
         // reset t & apv params
-        if request.idx == "0" {
+        if request.widgetIndex == 0 {
             Outbrain.lastTParam = nil
             Outbrain.lastApvParam = nil
         }
@@ -126,8 +126,8 @@ public struct OBRequestHandler {
         
         // Request Error
         if let error = error {
-            responseWithError.error = OBError.network(
-                message: "\(error.localizedDescription)",
+            responseWithError.error = OBError.networkError(
+                message: error.localizedDescription,
                 key: .network,
                 code: .generic
             )
@@ -144,7 +144,7 @@ public struct OBRequestHandler {
         
         // HTTP Invalid Error
         guard let httpResponse = response as? HTTPURLResponse else {
-            responseWithError.error = OBError.network(
+            responseWithError.error = OBError.networkError(
                 message: "Invalid HTTP Response",
                 key: .network,
                 code: .generic
@@ -175,7 +175,7 @@ public struct OBRequestHandler {
         
         // No Data Error
         guard let jsonData = data else {
-            responseWithError.error = OBError.network(
+            responseWithError.error = OBError.networkError(
                 message: "No data received",
                 key: .network,
                 code: .noData
@@ -193,7 +193,7 @@ public struct OBRequestHandler {
         
         // JSON Parsing Error
         guard let response = parseJsonData(with: jsonData) else {
-            responseWithError.error = OBError.native(
+            responseWithError.error = OBError.nativeError(
                 message: "Parsing failed",
                 key: .native,
                 code: .parsing
@@ -216,7 +216,7 @@ public struct OBRequestHandler {
         
         // no recs error
         if response.recommendations.isEmpty {
-            response.error = OBError.zeroRecommendations(
+            response.error = OBError.zeroRecommendationsError(
                 message: "No recs",
                 key: .zeroRecommendations,
                 code: .noRecommendations
@@ -248,13 +248,13 @@ public struct OBRequestHandler {
     
     func handleHttpErrorResponseCode(for statusCode: Int) -> OBError? {
         if (400..<500).contains(statusCode) {
-            return OBError.network(
+            return OBError.networkError(
                 message: "Client Error \(statusCode)",
                 key: .network,
                 code: .invalidParameters
             )
         } else if (500..<600).contains(statusCode) {
-            return OBError.network(
+            return OBError.networkError(
                 message: "Server Error \(statusCode)",
                 key: .network,
                 code: .server
@@ -295,7 +295,7 @@ public struct OBRequestHandler {
             let viewabilityActions = parseViewabilityActions(from: va)
             
             // store t param
-            if let tParam = request["t"] as? String, self.request.idx == "0" {
+            if let tParam = request["t"] as? String, self.request.widgetIndex == 0 {
                 Outbrain.lastTParam = tParam
                 Outbrain.logger.debug("got T param: \(tParam)", domain: "request-handler")
             }
@@ -401,10 +401,7 @@ public struct OBRequestHandler {
     
     
     func parseViewabilityActions(from va: [String: Any] ) -> OBViewabilityActions? {
-        return OBViewabilityActions(
-            reportServed: va["reportServed"] as? String,
-            reportViewed: va["reportViewed"] as? String
-        )
+        return OBViewabilityActions(reportServed: va["reportServed"] as? String, reportViewed: va["reportViewed"] as? String)
     }
     
     
@@ -425,7 +422,7 @@ public struct OBRequestHandler {
             addReqParam(name: "app_ver", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""),
             addReqParam(name: "rand", value: String(describing: Int.random(in: 0..<10000))),
             addReqParam(name: "widgetJSId", value: self.request.widgetId),
-            addReqParam(name: "idx", value: self.request.idx),
+            addReqParam(name: "idx", value: "\(self.request.widgetIndex)"),
             addReqParam(name: "format", value: "vjnc"),
             addReqParam(name: "api_user_id", value: OBRequestHandler.getApiUserId()),
             addReqParam(name: "installationType", value: "ios_sdk"),
@@ -491,7 +488,7 @@ public struct OBRequestHandler {
     
     // platforms request, add the relevant params
     func addPlatformsQueryParams(for queryItems: inout [URLQueryItem?]) {
-        guard let platformsRequest = self.request as? OBPlatformsRequest else {
+        guard let platformsRequest = self.request as? OBPlatformRequest else {
             return
         }
         
@@ -556,7 +553,7 @@ public struct OBRequestHandler {
     // populate t param from previous req
     func getTParam() -> String? {
         // if it's the first widget on page, no t param yet
-        if self.request.idx == "0" {
+        if self.request.widgetIndex == 0 {
             return nil
         }
         

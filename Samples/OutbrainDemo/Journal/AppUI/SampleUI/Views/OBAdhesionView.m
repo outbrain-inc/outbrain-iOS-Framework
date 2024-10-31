@@ -9,7 +9,7 @@
 #import "OBAdhesionView.h"
 #import "OBDemoDataHelper.h"
 
-#import <OutbrainSDK/OutbrainSDK.h>
+#import <OutbrainSDK/OutbrainSDK-Swift.h>
 
 #define ARROW_HEIGHT 9.f
 #define BOTTOM_PADDING_AMOUNT 100.f // Some padding to go to the bottom for when we're `tugging` up
@@ -467,16 +467,6 @@
         highlightLine.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [container addSubview:highlightLine];
         
-        OBLabel * widgetHeaderLabel = [OBLabel new];
-        widgetHeaderLabel.backgroundColor = [UIColor clearColor];
-        widgetHeaderLabel.textColor = UIColor.orangeColor;
-        widgetHeaderLabel.font = [UIFont boldSystemFontOfSize:14];
-        widgetHeaderLabel.text = @"Recommended to you";
-        [widgetHeaderLabel sizeToFit];
-        widgetHeaderLabel.center = CGPointMake(10.f + (widgetHeaderLabel.frame.size.width/2.f), container.bounds.size.height / 2.f);
-        [container addSubview:widgetHeaderLabel];
-        [Outbrain registerOBLabel:widgetHeaderLabel withOBRequest:self.obRequest];
-        
         [container.layer addSublayer:self.arrowLayer];
         
         brandingImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -488,8 +478,6 @@
         r.origin.y = (container.frame.size.height - r.size.height) / 2.f;
         r.origin.x = (container.frame.size.width - r.size.width - 5.f);
         brandingImageButton.frame = r;
-        brandingImageButton.center = CGPointMake(brandingImageButton.frame.size.width / 2,
-                                                 widgetHeaderLabel.center.y);
         [container addSubview:brandingImageButton];
     }
     
