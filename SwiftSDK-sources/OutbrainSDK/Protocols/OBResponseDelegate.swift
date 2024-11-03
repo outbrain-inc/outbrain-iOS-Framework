@@ -8,7 +8,7 @@
 import Foundation
 
 
-public protocol OBResponseDelegate: AnyObject {
+@objc public protocol OBResponseDelegate: AnyObject {
     
     func outbrainDidReceiveResponse(withSuccess response: OBRecommendationResponse)
 }

@@ -8,6 +8,7 @@
 
 #import "OBInterstitialHeroGridView.h"
 #import "OBDemoDataHelper.h"
+#import <OutbrainSDK/OutbrainSDK-Swift.h>
 
 
 #define INDY_TAG    102030

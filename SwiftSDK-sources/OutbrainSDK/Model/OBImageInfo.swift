@@ -7,9 +7,15 @@
 
 import Foundation
 
-public struct OBImageInfo {
+@objc public class OBImageInfo: NSObject {
     
-    public let width: Int
-    public let height: Int
-    public let url: URL?
+    @objc public let width: Int
+    @objc public let height: Int
+    @objc public let url: URL?
+    
+    init(width: Int, height: Int, url: URL?) {
+        self.width = width
+        self.height = height
+        self.url = url
+    }
 }

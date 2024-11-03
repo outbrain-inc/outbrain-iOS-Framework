@@ -32,14 +32,6 @@
 @property (nonatomic, weak) IBOutlet id <OBWidgetViewDelegate> widgetDelegate;
 
 
-/**
- *  Discussion:
- *      Set this to allow Viewability feature to work with OBRecommendationSlideCell
- *      @param obRequest - The OBRequest to be associated with this OBLabel
- *
- **/
--(void) setOBRequest:(OBRequest *)obRequest;
-
 
 
 @end

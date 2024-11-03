@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct OBRecommendation {
+@objcMembers public class OBRecommendation: NSObject {
     
     public var url: String? // click url of the recommendation
     public var origUrl: String? // original click url of the recommendation
@@ -17,7 +17,7 @@ public struct OBRecommendation {
     public var position: String? // position
     public var author: String? // doc author
     public var publishDate: Date? // doc publish date
-    public var sameSource: Bool? // is same source
+    public var sameSource: Bool // is same source
     public var disclosure: OBDisclosure? // disclosure object
     public var pixels: [String]? // pixels to fire
     public var reqId: String? // request id, used for viewability loggin
@@ -61,7 +61,7 @@ public struct OBRecommendation {
         self.position = position
         self.author = author
         self.publishDate = publishDate
-        self.sameSource = sameSource
+        self.sameSource = sameSource ?? false
         self.disclosure = disclosure
         self.pixels = pixels
     }

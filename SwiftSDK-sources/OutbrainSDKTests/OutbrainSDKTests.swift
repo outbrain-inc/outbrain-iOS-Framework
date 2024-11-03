@@ -23,17 +23,12 @@ final class OutbrainSDKTests: XCTestCase {
     
     func testCheckInitiatedNotInitialized() {
         Outbrain.isInitialized = false
-        let error = Outbrain.checkInitiated()
-
-        switch error {
-        case .generic(let message, _, _),
-             .network(let message, _, _),
-             .native(let message, _, _),
-             .zeroRecommendations(let message, _, _):
-            XCTAssertEqual(message, "Outbrain SDK hasn't initiated with a partner key")
-        case .none:
-            XCTAssertTrue(false)
+        guard let error = Outbrain.checkInitiated() else {
+            XCTAssertFalse(true)
+            return
         }
+        
+        XCTAssertEqual(error.message, "Outbrain SDK hasn't initiated with a partner key")
     }
     
     func testCheckInitiatedInitialized() {

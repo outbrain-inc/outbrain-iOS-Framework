@@ -8,7 +8,7 @@
 import XCTest
 
 @testable import OutbrainSDK
-final class OBPlatformsRequestTests: XCTestCase {
+final class OBPlatformRequestTests: XCTestCase {
     
     func testInit() {
         let widgetId = "widget123"
@@ -18,11 +18,11 @@ final class OBPlatformsRequestTests: XCTestCase {
         let lang = "en"
         let psub = "sub123"
         
-        let request = OBPlatformsRequest(widgetID: widgetId, widgetIndex: widgetIndex, contentUrl: contentUrl, portalUrl: portalUrl, lang: lang, psub: psub)
+        let request = OBPlatformRequest(widgetID: widgetId, widgetIndex: widgetIndex, contentUrl: contentUrl, portalUrl: portalUrl, lang: lang, psub: psub)
         
         XCTAssertEqual(request.url, nil)
         XCTAssertEqual(request.widgetId, widgetId)
-        XCTAssertEqual(request.idx, "\(widgetIndex)")
+        XCTAssertEqual(request.widgetIndex, widgetIndex)
         XCTAssertEqual(request.contentUrl, contentUrl)
         XCTAssertEqual(request.portalUrl, portalUrl)
         XCTAssertEqual(request.lang, lang)
@@ -30,11 +30,11 @@ final class OBPlatformsRequestTests: XCTestCase {
     }
     
     func testIsValid() {
-        let validRequest = OBPlatformsRequest(widgetID: "widget123", contentUrl: "https://example.com/content", lang: "en")
-        let invalidRequest1 = OBPlatformsRequest(widgetID: "widget123", contentUrl: nil, lang: "en")
-        let invalidRequest2 = OBPlatformsRequest(widgetID: "widget123", contentUrl: "https://example.com/content", lang: nil)
-        let invalidRequest3 = OBPlatformsRequest(widgetID: "widget123", contentUrl: nil, lang: nil)
-        
+        let validRequest = OBPlatformRequest(widgetID: "widget123", contentUrl: "https://example.com/content", lang: "en")
+        let invalidRequest1 = OBPlatformRequest(widgetID: "widget123", contentUrl: nil, lang: "en")
+        let invalidRequest2 = OBPlatformRequest(widgetID: "widget123", contentUrl: "https://example.com/content", lang: nil)
+        let invalidRequest3 = OBPlatformRequest(widgetID: "widget123", contentUrl: nil, lang: nil)
+    
         XCTAssertTrue(validRequest.isValid)
         XCTAssertFalse(invalidRequest1.isValid)
         XCTAssertFalse(invalidRequest2.isValid)
