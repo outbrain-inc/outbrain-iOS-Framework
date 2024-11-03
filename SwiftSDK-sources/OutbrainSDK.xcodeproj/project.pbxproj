@@ -36,7 +36,7 @@
 		5EEF0AB82A5452A6000E65A1 /* OBViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AB72A5452A5000E65A1 /* OBViewData.swift */; };
 		5EEF0ABB2A55466D000E65A1 /* OBRecommendationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0ABA2A55466D000E65A1 /* OBRecommendationTests.swift */; };
 		5EEF0ABF2A55481D000E65A1 /* OBRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0ABE2A55481D000E65A1 /* OBRequestTests.swift */; };
-		5EEF0AC12A5548DB000E65A1 /* OBPlatformsRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AC02A5548DB000E65A1 /* OBPlatformsRequestTests.swift */; };
+		5EEF0AC12A5548DB000E65A1 /* OBPlatformRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AC02A5548DB000E65A1 /* OBPlatformRequestTests.swift */; };
 		5EEF0AC32A554953000E65A1 /* OBGlobalStatisticsDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AC22A554953000E65A1 /* OBGlobalStatisticsDataTests.swift */; };
 		5EEF0AC72A554A27000E65A1 /* OBQueueManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF0AC62A554A27000E65A1 /* OBQueueManagerTests.swift */; };
 		B113CC4E2C5A235C00BECDFA /* WidgetEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC4D2C5A235C00BECDFA /* WidgetEvents.swift */; };
@@ -106,7 +106,7 @@
 		5EEF0AB72A5452A5000E65A1 /* OBViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBViewData.swift; sourceTree = "<group>"; };
 		5EEF0ABA2A55466D000E65A1 /* OBRecommendationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRecommendationTests.swift; sourceTree = "<group>"; };
 		5EEF0ABE2A55481D000E65A1 /* OBRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestTests.swift; sourceTree = "<group>"; };
-		5EEF0AC02A5548DB000E65A1 /* OBPlatformsRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformsRequestTests.swift; sourceTree = "<group>"; };
+		5EEF0AC02A5548DB000E65A1 /* OBPlatformRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformRequestTests.swift; sourceTree = "<group>"; };
 		5EEF0AC22A554953000E65A1 /* OBGlobalStatisticsDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBGlobalStatisticsDataTests.swift; sourceTree = "<group>"; };
 		5EEF0AC62A554A27000E65A1 /* OBQueueManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBQueueManagerTests.swift; sourceTree = "<group>"; };
 		B113CC4D2C5A235C00BECDFA /* WidgetEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEvents.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 				5E91D15D2A55563000CD9AF5 /* UIViewExtensionTests.swift */,
 				5EEF0ABA2A55466D000E65A1 /* OBRecommendationTests.swift */,
 				5EEF0ABE2A55481D000E65A1 /* OBRequestTests.swift */,
-				5EEF0AC02A5548DB000E65A1 /* OBPlatformsRequestTests.swift */,
+				5EEF0AC02A5548DB000E65A1 /* OBPlatformRequestTests.swift */,
 				5EEF0AC22A554953000E65A1 /* OBGlobalStatisticsDataTests.swift */,
 			);
 			path = Model;
@@ -515,7 +515,7 @@
 				CA2646B52AADD0B1005287CB /* BridgeUrlBuilder.swift in Sources */,
 				5EEF0ABF2A55481D000E65A1 /* OBRequestTests.swift in Sources */,
 				5EEF0AC72A554A27000E65A1 /* OBQueueManagerTests.swift in Sources */,
-				5EEF0AC12A5548DB000E65A1 /* OBPlatformsRequestTests.swift in Sources */,
+				5EEF0AC12A5548DB000E65A1 /* OBPlatformRequestTests.swift in Sources */,
 				5E3FD0612A5ED8460011C78B /* OBViewTests.swift in Sources */,
 				E6E4B3C82A2381A100FE44E3 /* OutbrainSDKTests.swift in Sources */,
 				CA2646B32AADB846005287CB /* SFWidgetMessageHandler.swift in Sources */,
