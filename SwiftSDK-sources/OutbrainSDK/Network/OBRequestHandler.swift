@@ -126,9 +126,8 @@ public struct OBRequestHandler {
         
         // Request Error
         if let error = error {
-            responseWithError.error = OBError.networkError(
+            responseWithError.error = OBError.network(
                 message: error.localizedDescription,
-                key: .network,
                 code: .generic
             )
             
@@ -144,9 +143,8 @@ public struct OBRequestHandler {
         
         // HTTP Invalid Error
         guard let httpResponse = response as? HTTPURLResponse else {
-            responseWithError.error = OBError.networkError(
+            responseWithError.error = OBError.network(
                 message: "Invalid HTTP Response",
-                key: .network,
                 code: .generic
             )
             
@@ -175,9 +173,8 @@ public struct OBRequestHandler {
         
         // No Data Error
         guard let jsonData = data else {
-            responseWithError.error = OBError.networkError(
+            responseWithError.error = OBError.network(
                 message: "No data received",
-                key: .network,
                 code: .noData
             )
             
@@ -193,9 +190,8 @@ public struct OBRequestHandler {
         
         // JSON Parsing Error
         guard let response = parseJsonData(with: jsonData) else {
-            responseWithError.error = OBError.nativeError(
+            responseWithError.error = OBError.native(
                 message: "Parsing failed",
-                key: .native,
                 code: .parsing
             )
             
@@ -216,9 +212,8 @@ public struct OBRequestHandler {
         
         // no recs error
         if response.recommendations.isEmpty {
-            response.error = OBError.zeroRecommendationsError(
+            response.error = OBError.zeroRecommendations(
                 message: "No recs",
-                key: .zeroRecommendations,
                 code: .noRecommendations
             )
             
@@ -248,15 +243,13 @@ public struct OBRequestHandler {
     
     func handleHttpErrorResponseCode(for statusCode: Int) -> OBError? {
         if (400..<500).contains(statusCode) {
-            return OBError.networkError(
+            return OBError.network(
                 message: "Client Error \(statusCode)",
-                key: .network,
                 code: .invalidParameters
             )
         } else if (500..<600).contains(statusCode) {
-            return OBError.networkError(
+            return OBError.network(
                 message: "Server Error \(statusCode)",
-                key: .network,
                 code: .server
             )
         }

@@ -14,6 +14,8 @@ import UIKit
 
     @objc public internal(set) var currentHeight: CGFloat = 0
     @objc public var webviewUrl: String?
+    @objc public static var infiniteWidgetsOnTheSamePage: Bool = false
+    
     internal var isLoading: Bool = false
     internal var isWidgetEventsEnabled: Bool = false
     internal var inTransition: Bool = false
@@ -33,7 +35,7 @@ import UIKit
     internal var hiddenWebView: WKWebView?
     internal var bridgeParamsObserver: NSObjectProtocol?
     internal var tParamObserver: NSObjectProtocol?
-    internal var errorReporter: OBErrorReport?
+    internal var errorReport: OBErrorReport?
     internal var settings: [String: Any] = [:]
     internal var viewabilityHandler = ViewabilityHandler()
     
@@ -46,7 +48,7 @@ import UIKit
     /**
      Indicates that there are multiple widgets on the same content page. Has to be set only when there are multiple widgets on the same page
      */
-    @objc public static var infiniteWidgetsOnTheSamePage: Bool = false
+    
     static var isReactNative: Bool = false
     static var flutter_packageVersion: String?
     static var RN_packageVersion: String?
@@ -167,7 +169,7 @@ import UIKit
         self.darkMode = darkMode
         self.setUserId(userId)
         
-        __configure(
+        internalConfigure(
             with: delegate,
             url: url,
             widgetId: widgetId,
@@ -194,7 +196,7 @@ import UIKit
      ```swift
      widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", installationKey: "abcdef")
      */
-    func __configure(
+    func internalConfigure(
         with delegate: SFWidgetDelegate?,
         url: String,
         widgetId: String,
@@ -204,7 +206,7 @@ import UIKit
         self.url = url
         self.widgetId = widgetId
         self.installationKey = installationKey
-        self.errorReporter = OBErrorReport(
+        self.errorReport = OBErrorReport(
             url: url,
             widgetId: widgetId
         )
@@ -624,7 +626,7 @@ extension SFWidget: SFMessageHandlerDelegate {
             if case .failure(let error) = result {
                 let errorMsg = "Error reporting organic click: \(trafficURL), error: \(error)"
                 Outbrain.logger.error(errorMsg, domain: "didClickOnOrganicRec")
-                self.errorReporter?.setMessage(message: errorMsg).reportErrorToServer()
+                self.errorReport?.setMessage(message: errorMsg).reportErrorToServer()
                 return
             }
             

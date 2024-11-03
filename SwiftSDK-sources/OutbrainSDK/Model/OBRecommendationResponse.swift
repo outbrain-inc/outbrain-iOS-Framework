@@ -7,13 +7,14 @@
 
 import Foundation
 
-@objc public class OBRecommendationResponse: NSObject {
+@objcMembers public class OBRecommendationResponse: NSObject {
     
-    @objc public let request: [String: Any] // response request dictionary
-    @objc public let settings: [String: Any] // response settings dictionary
-    @objc public let viewabilityActions: OBViewabilityActions? // viewability actions urls to fire
-    @objc public let recommendations: [OBRecommendation] // array of recommendations
-    @objc public var error: OBError? // error object
+    public let request: [String: Any] // response request dictionary
+    public let settings: [String: Any] // response settings dictionary
+    public let viewabilityActions: OBViewabilityActions? // viewability actions urls to fire
+    public let recommendations: [OBRecommendation] // array of recommendations
+    public var error: OBError? // error object
+    
     
     init(
         request: [String : Any],

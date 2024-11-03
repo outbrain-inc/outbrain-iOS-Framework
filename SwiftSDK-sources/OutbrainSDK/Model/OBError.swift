@@ -13,25 +13,6 @@ import Foundation
     case zeroRecommendations
 }
 
-@objc public enum OBErrorsKeys: Int {
-    case generic = 0
-    case network
-    case native
-    case zeroRecommendations
-    
-    public var domain: String {
-        switch self {
-        case .generic:
-            return "com.outbrain.sdk:OBGenericErrorDomain"
-        case .network:
-            return "com.outbrain.sdk:OBNetworkErrorDomain"
-        case .native:
-            return "com.outbrain.sdk:OBNativeErrorDomain"
-        case .zeroRecommendations:
-            return "com.outbrain.sdk:OBZeroRecommendationseErrorDomain"
-        }
-    }
-}
 
 @objc public enum OBErrorCode: Int {
     case generic = 10200
@@ -42,32 +23,33 @@ import Foundation
     case noData = 10205
 }
 
-@objc public class OBError: NSObject {
-    @objc public let type: OBErrorType
-    @objc public let message: String?
-    @objc public let key: OBErrorsKeys
-    @objc public let code: OBErrorCode
 
-    @objc public init(type: OBErrorType, message: String?, key: OBErrorsKeys, code: OBErrorCode) {
+@objcMembers public class OBError: NSObject {
+    
+    public let type: OBErrorType
+    public let message: String?
+    public let code: OBErrorCode
+    
+    
+    public init(type: OBErrorType, message: String?, code: OBErrorCode) {
         self.type = type
         self.message = message
-        self.key = key
         self.code = code
     }
-
-    @objc public static func genericError(message: String?, key: OBErrorsKeys, code: OBErrorCode) -> OBError {
-        return OBError(type: .generic, message: message, key: key, code: code)
+    
+    public static func generic(message: String?, code: OBErrorCode) -> OBError {
+        return OBError(type: .generic, message: message, code: code)
     }
-
-    @objc public static func networkError(message: String?, key: OBErrorsKeys, code: OBErrorCode) -> OBError {
-        return OBError(type: .network, message: message, key: key, code: code)
+    
+    public static func network(message: String?, code: OBErrorCode) -> OBError {
+        return OBError(type: .network, message: message, code: code)
     }
-
-    @objc public static func nativeError(message: String?, key: OBErrorsKeys, code: OBErrorCode) -> OBError {
-        return OBError(type: .native, message: message, key: key, code: code)
+    
+    public static func native(message: String?, code: OBErrorCode) -> OBError {
+        return OBError(type: .native, message: message, code: code)
     }
-
-    @objc public static func zeroRecommendationsError(message: String?, key: OBErrorsKeys, code: OBErrorCode) -> OBError {
-        return OBError(type: .zeroRecommendations, message: message, key: key, code: code)
+    
+    public static func zeroRecommendations(message: String?, code: OBErrorCode) -> OBError {
+        return OBError(type: .zeroRecommendations, message: message, code: code)
     }
 }

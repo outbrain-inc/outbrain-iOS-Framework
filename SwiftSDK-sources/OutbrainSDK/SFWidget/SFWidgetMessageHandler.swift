@@ -56,7 +56,7 @@ class SFWidgetMessageHandler: NSObject, WKScriptMessageHandler {
             let errorMsg = "Exception in SFWidgetMessageHandler - \(error)"
             Outbrain.logger.error("SFWidgetMessageHandler - Error converting message body to data", domain: messageHandler)
             Outbrain.logger.error(errorMsg, domain: messageHandler)
-            delegate?.errorReporter?.setMessage(message: errorMsg).reportErrorToServer()
+            delegate?.errorReport?.setMessage(message: errorMsg).reportErrorToServer()
         }
     }
     
@@ -107,7 +107,7 @@ class SFWidgetMessageHandler: NSObject, WKScriptMessageHandler {
         guard let errorMsg = msg["errorMsg"] as? String else { return }
         
         let errorMsgWithPrefix = "Bridge: \(errorMsg)"
-        delegate?.errorReporter?.setMessage(message: errorMsgWithPrefix).reportErrorToServer()
+        delegate?.errorReport?.setMessage(message: errorMsgWithPrefix).reportErrorToServer()
     }
     
     

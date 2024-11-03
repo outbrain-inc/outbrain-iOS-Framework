@@ -41,14 +41,14 @@ import Foundation
         widgetIndex: Int = 0,
         contentUrl: String? = nil,
         portalUrl: String? = nil,
-        bundelUrl: String? = nil,
+        bundleUrl: String? = nil,
         lang: String? = nil,
         psub: String? = nil
     ) {
         super.init(url: nil, widgetID: widgetID, widgetIndex: widgetIndex)
         self.contentUrl = contentUrl
         self.portalUrl = portalUrl
-        self.bundleUrl = bundelUrl
+        self.bundleUrl = bundleUrl
         self.lang = lang
         self.psub = psub
     }
@@ -57,7 +57,7 @@ import Foundation
     @objc public static func requestWithBundleURL(_ bundleUrl: String, lang: String, widgetID: String) -> OBPlatformRequest {
         return OBPlatformRequest(
             widgetID: widgetID,
-            bundelUrl: bundleUrl,
+            bundleUrl: bundleUrl,
             lang: lang
         )
     }

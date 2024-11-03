@@ -17,13 +17,13 @@ import UIKit
 
     // Logger
     static var logger = OBLogger()
-    @objc static var isInitialized = false
-    @objc public static var partnerKey: String? // partner key will use to resolve the publisher
-    @objc static var customUserId: String?
-    @objc static var lastTParam: String?
     static var lastApvParam: Bool?
+    static var isInitialized = false
+    static var customUserId: String?
+    static var lastTParam: String?
     
-    public static var testMode: Bool = false
+    @objc public static var partnerKey: String? // partner key will use to resolve the publisher
+    @objc public static var testMode: Bool = false
     @objc public static var testRTB: Bool = false
     @objc public static var testDisplay: Bool = false
     @objc public static var testLocation: String?
@@ -44,9 +44,8 @@ import UIKit
         guard !isInitialized else { return nil }
         
         logger.error("Outbrain SDK hasn't initiated with a partner key")
-        let err = OBError.genericError(
+        let err = OBError.generic(
             message: "Outbrain SDK hasn't initiated with a partner key",
-            key: .generic,
             code: .generic
         )
         return err
@@ -189,17 +188,6 @@ import UIKit
     
     
     // MARK: - Testing
-    @objc public static func setTestMode(_ testMode: Bool) {
-        #if DEBUG
-        self.testMode = testMode
-        #endif
-    }
-    
-//    @objc public static func setPartnerKey(_ partnerKey: String) {
-//        self.partnerKey = partnerKey;
-//    }
-    
-    
     @objc public static func testRTB(_ testRTB: Bool) {
         self.testRTB = testRTB
     }
