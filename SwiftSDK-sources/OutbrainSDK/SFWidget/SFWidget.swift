@@ -293,20 +293,27 @@ import UIKit
         return currentHeight
     }
     
-    
-    @objc public override func didMoveToWindow() {
-        super.didMoveToWindow()
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
         
         if superview != nil {
-            if let scrollView = findFirstScrollView(in: superview) {
-                // Add KVO observer for the contentOffset property
-                containerScrollView = scrollView
-                containerScrollView?.addObserver(self, forKeyPath: SFWidget.contentOffsetKey, options: .new, context: nil)
-            }
+            guard let scrollView = findFirstScrollView(in: superview), containerScrollView == nil else { return }
+            addContrentOffsetObserver(to: scrollView)
         } else {
             // Remove KVO observer when the scroll view is removed from its superview
-            containerScrollView?.removeObserver(self, forKeyPath: SFWidget.contentOffsetKey)
+            removeContentOffsetObserver()
         }
+    }
+    
+    
+    private func addContrentOffsetObserver(to scrollView: UIScrollView) {
+        containerScrollView = scrollView
+        containerScrollView?.addObserver(self, forKeyPath: SFWidget.contentOffsetKey, options: .new, context: nil)
+    }
+    
+    private func removeContentOffsetObserver() {
+        containerScrollView?.removeObserver(self, forKeyPath: SFWidget.contentOffsetKey)
+        containerScrollView = nil
     }
     
     
@@ -453,8 +460,7 @@ import UIKit
     
     deinit {
         // Remove KVO observer when the widget is deallocated
-        containerScrollView?.removeObserver(self, forKeyPath: SFWidget.contentOffsetKey)
-        containerScrollView = nil
+        removeContentOffsetObserver()
         
         // Clean up message handlers otherwise the messageHandler stays in memory after the widget is destroyed
         controller?.removeAllScriptMessageHandlers()
