@@ -26,6 +26,7 @@ class NavigationViewModel: ObservableObject, Identifiable {
         case readMore
         case twoWidgets
         case twoWidgetsSwiftUI
+        case organic(String?)
     }
     
     @Published var paths = NavigationPath()

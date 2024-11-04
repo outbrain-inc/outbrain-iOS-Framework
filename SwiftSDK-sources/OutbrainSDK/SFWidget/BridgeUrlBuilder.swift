@@ -198,6 +198,11 @@ class BridgeUrlBuilder {
         return self
     }
   
+    func addReferrer(_ shouldAdd: Bool) -> BridgeUrlBuilder {
+        guard shouldAdd else { return self }
+        newQueryItems.append(URLQueryItem(name: "overrideOrganicRef", value: "true"))
+        return self
+    }
     
     func addOBPubImp(pubImpId: String?) -> BridgeUrlBuilder {
         guard let pubImpId = pubImpId else { return self }
