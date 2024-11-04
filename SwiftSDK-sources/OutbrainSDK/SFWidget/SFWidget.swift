@@ -294,14 +294,23 @@ import UIKit
         return currentHeight
     }
     
-    public override func didMoveToSuperview() {
-        super.didMoveToSuperview()
+    public override func didMoveToWindow() {
+        super.didMoveToWindow()
         
         if superview != nil {
             guard let scrollView = findFirstScrollView(in: superview), containerScrollView == nil else { return }
             addContrentOffsetObserver(to: scrollView)
         } else {
             // Remove KVO observer when the scroll view is removed from its superview
+            removeContentOffsetObserver()
+        }
+    }
+    
+    
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        if superview == nil {
             removeContentOffsetObserver()
         }
     }
