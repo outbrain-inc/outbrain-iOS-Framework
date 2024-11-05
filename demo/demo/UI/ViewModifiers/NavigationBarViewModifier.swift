@@ -10,6 +10,7 @@ import SwiftUI
 
 
 struct NavigationBarViewModifier: ViewModifier {
+    
     let title: String
     let backAction: (() -> Void)?
     
@@ -38,6 +39,32 @@ struct NavigationBarViewModifier: ViewModifier {
 }
 
 
+struct TrailingActionNavigationBarViewModifier: ViewModifier {
+    
+    let title: String
+    let trailingActionName: String
+    let trailingAction: (() -> Void)
+    
+    
+    func body(content: Content) -> some View {
+        content
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(title)
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: trailingAction, label: { Text(trailingActionName) })
+                    
+                }
+            }
+            .toolbarBackground(Color.outbrainOrange, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+    }
+}
+
 extension View {
     func addNavigationBar(
         withTitle title: String,
@@ -50,4 +77,19 @@ extension View {
             )
         )
     }
+    
+    func addTrailingActionBar(
+        withTitle title: String,
+        trailingActionName: String,
+        trailingAction: @escaping (() -> Void)
+    ) -> some View {
+        self.modifier(
+            TrailingActionNavigationBarViewModifier(
+                title: title,
+                trailingActionName: trailingActionName,
+                trailingAction: trailingAction
+            )
+        )
+    }
 }
+
