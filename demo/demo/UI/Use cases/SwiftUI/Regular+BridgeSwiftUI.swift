@@ -94,9 +94,13 @@ struct RegularAndBridgeSwiftUI: View {
             )
             
             
-            Outbrain.fetchRecommendations(for: request) { response in
-                recommendations = response.recommendations
-                    .map { .init(recommendation: $0) }
+            Task {
+                guard let obRecs = try? await Outbrain.fetchRecommendations(for: request) else { return }
+                recommendations = obRecs.map { .init(recommendation: $0) }
+                //            Outbrain.fetchRecommendations(for: request) { response in
+                //                recommendations = response.recommendations
+                //                    .map { .init(recommendation: $0) }
+                //            }
             }
         }
         .fullScreenCover(isPresented: .init(

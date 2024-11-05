@@ -105,6 +105,11 @@ import UIKit
         }
     }
     
+    
+    public static func fetchRecommendations(for request: OBRequest) async throws -> [OBRecommendation] {
+        return try await OBRequestHandler(request).fetchRecs()
+    }
+    
 
     // MARK: Rec Click
     @objc public static func getUrl(_ rec: OBRecommendation) -> URL? {
