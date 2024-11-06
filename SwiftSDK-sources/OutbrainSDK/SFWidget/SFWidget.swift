@@ -558,10 +558,10 @@ import UIKit
     }
     
     
-    private func handleViewability(_ scrollView: UIScrollView) {
+    private func handleViewability(_ view: UIView) {
         viewabilityHandler.handleViewability(
             sfWidget: self,
-            containerView: scrollView
+            containerView: view
         ) { [weak self] viewStatus, width ,height  in
             guard let self else { return }
             
@@ -619,6 +619,12 @@ extension SFWidget: SFMessageHandlerDelegate {
             delegate?.didChangeHeight?()
         }
 
+        
+        if containerScrollView == nil, superview != nil, let window = window {
+            handleViewability(window)
+        }
+        
+        
         guard isLoading else { return }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
@@ -754,12 +760,16 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
 // MARK: - UITableView
 extension SFWidget {
     
+    
+    @objc(willDisplayCell:)
     public func willDisplay(_ cell: SFWidgetTableCell) {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         cell.contentView.addSubview(self)
         BridgeUtils.addConstraintsToFillParent(view: self)
     }
     
+    
+    @objc(willDisplayCollectionViewCell:)
     public func willDisplay(_ cell: SFWidgetCollectionCell) {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         cell.contentView.addSubview(self)
