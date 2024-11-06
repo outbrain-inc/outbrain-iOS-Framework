@@ -11,13 +11,18 @@ import OutbrainSDK
 final class OutbrainWidgetViewModel: ObservableObject {
 
     let navigationViewModel: NavigationViewModel
+    let paramsViewModel: ParamsViewModel
     let widget: SFWidget = SFWidget()
     
     @Published var clickedUrl: URL? = nil
     @Published var widgetHeight: CGFloat = 800
     
     
-    init(navigationViewModel: NavigationViewModel) {
+    init(
+        navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel
+    ) {
         self.navigationViewModel = navigationViewModel
+        self.paramsViewModel = paramsViewModel
     }
 }

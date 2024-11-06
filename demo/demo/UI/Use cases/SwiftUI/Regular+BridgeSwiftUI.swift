@@ -20,9 +20,13 @@ struct RegularAndBridgeSwiftUI: View {
     private var viewModel: OutbrainWidgetViewModel
     
     
-    init(navigationViewModel: NavigationViewModel) {
+    init(
+        navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel
+    ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
+        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel,
+                                                                      paramsViewModel: paramsViewModel))
     }
     
     
@@ -88,8 +92,8 @@ struct RegularAndBridgeSwiftUI: View {
         }
         .onAppear {
             let request = OBRequest(
-                url: navigationViewModel.paramsViewModel.articleURL,
-                widgetID: navigationViewModel.paramsViewModel.regularWidgetId,
+                url: viewModel.paramsViewModel.articleURL,
+                widgetID: viewModel.paramsViewModel.regularWidgetId,
                 widgetIndex: 0
             )
             
@@ -115,5 +119,5 @@ struct RegularAndBridgeSwiftUI: View {
 
 
 #Preview {
-    RegularAndBridgeSwiftUI(navigationViewModel: .init())
+    RegularAndBridgeSwiftUI(navigationViewModel: .init(), paramsViewModel: .init())
 }

@@ -37,9 +37,9 @@ struct OutbrainWidgetView: UIViewRepresentable {
         self.organicUrl = organicUrl
         
         if twoWidgets && widgetIndex == 0 {
-            self.widgetId = viewModel.navigationViewModel.paramsViewModel.bridgeWidgetId2
+            self.widgetId = viewModel.paramsViewModel.bridgeWidgetId2
         } else {
-            self.widgetId = viewModel.navigationViewModel.paramsViewModel.bridgeWidgetId
+            self.widgetId = viewModel.paramsViewModel.bridgeWidgetId
         }
     }
     
@@ -104,12 +104,12 @@ struct OutbrainWidgetView: UIViewRepresentable {
         viewModel.widget
             .configure(
                 with: context.coordinator,
-                url: organicUrl ?? viewModel.navigationViewModel.paramsViewModel.articleURL,
-                widgetId: viewModel.navigationViewModel.paramsViewModel.bridgeWidgetId,
+                url: organicUrl ?? viewModel.paramsViewModel.articleURL,
+                widgetId: viewModel.paramsViewModel.bridgeWidgetId,
                 widgetIndex: widgetIndex,
                 installationKey: "NANOWDGT01",
                 userId: nil,
-                darkMode: viewModel.navigationViewModel.paramsViewModel.darkMode
+                darkMode: viewModel.paramsViewModel.darkMode
             )
         
         return viewModel.widget

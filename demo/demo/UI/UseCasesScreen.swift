@@ -22,7 +22,8 @@ struct UseCasesScreen: View {
         "Read More",
         "Two widgets on the same page",
         "Two widgets (SwiftUI)",
-        "Organic URL Referrer"
+        "Organic URL Referrer",
+        "Static Widget (No scroll)"
     ]
     
     
@@ -58,6 +59,8 @@ struct UseCasesScreen: View {
                             navigationViewModel.push(.twoWidgetsSwiftUI)
                         case 10:
                             navigationViewModel.push(.organic(nil))
+                        case 11:
+                            navigationViewModel.push(.staticWidget)
                         default: return
                     }
                 }) {

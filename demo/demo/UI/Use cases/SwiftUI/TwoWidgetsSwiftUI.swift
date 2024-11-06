@@ -22,10 +22,13 @@ struct TwoWidgetsSwiftuI: View {
     private var viewModel2: OutbrainWidgetViewModel
     
     
-    init(navigationViewModel: NavigationViewModel) {
+    init(
+        navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel
+    ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
-        self._viewModel2 = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
+        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
+        self._viewModel2 = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
     }
     
     var body: some View {
