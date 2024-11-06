@@ -19,9 +19,10 @@ import UIKit
     static var logger = OBLogger()
     static var lastApvParam: Bool?
     static var isInitialized = false
-    static var customUserId: String?
     static var lastTParam: String?
     
+    
+    @objc public static var customUserId: String?
     @objc public static var partnerKey: String? // partner key will use to resolve the publisher
     @objc public static var testMode: Bool = false
     @objc public static var testRTB: Bool = false
