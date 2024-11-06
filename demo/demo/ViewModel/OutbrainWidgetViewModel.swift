@@ -15,7 +15,7 @@ final class OutbrainWidgetViewModel: ObservableObject {
     let widget: SFWidget = SFWidget()
     
     @Published var clickedUrl: URL? = nil
-    @Published var widgetHeight: CGFloat = 800
+    @Published var widgetHeight: CGFloat = 0
     
     
     init(

@@ -61,7 +61,7 @@ struct TwoWidgetsSwiftuI: View {
                         twoWidgets: true,
                         widgetIndex: 0
                     )
-                    .frame(height: viewModel.widgetHeight)
+                    .frame(height: $viewModel.widgetHeight.wrappedValue)
                     
                     
                     ArticleBody()
@@ -72,7 +72,7 @@ struct TwoWidgetsSwiftuI: View {
                         twoWidgets: true,
                         widgetIndex: 1
                     )
-                    .frame(height: viewModel.widgetHeight)
+                    .frame(height: $viewModel2.widgetHeight.wrappedValue)
                 }
                 
             }

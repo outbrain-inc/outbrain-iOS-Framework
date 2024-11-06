@@ -56,7 +56,9 @@ struct TrailingActionNavigationBarViewModifier: ViewModifier {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: trailingAction, label: { Text(trailingActionName) })
+                    Button(action: trailingAction, label: {
+                        Text(trailingActionName)
+                    })
                     
                 }
             }
