@@ -620,7 +620,7 @@ extension SFWidget: SFMessageHandlerDelegate {
         }
 
         
-        if containerScrollView == nil, superview != nil, let window = window {
+        if height > 0 && containerScrollView == nil, superview != nil, let window = window {
             handleViewability(window)
         }
         
