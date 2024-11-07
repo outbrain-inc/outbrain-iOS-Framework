@@ -18,7 +18,7 @@ struct TwoWidgetsSwiftuI: View {
     @StateObject
     private var viewModel: OutbrainWidgetViewModel
     
-    @State
+    @StateObject
     private var viewModel2: OutbrainWidgetViewModel
     
     
@@ -86,6 +86,17 @@ struct TwoWidgetsSwiftuI: View {
             }
         )) {
             OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
+                .ignoresSafeArea(edges: .all)
+        }
+        .fullScreenCover(isPresented: .init(
+            get: { viewModel2.clickedUrl != nil },
+            set: { value in
+                if !value {
+                    viewModel2.clickedUrl = nil
+                }
+            }
+        )) {
+            OBSafariView(url: $viewModel2.clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }
