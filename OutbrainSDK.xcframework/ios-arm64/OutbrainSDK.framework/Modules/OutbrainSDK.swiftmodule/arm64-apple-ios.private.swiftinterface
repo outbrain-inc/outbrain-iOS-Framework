@@ -29,54 +29,54 @@ public enum OBLogLevels : Swift.String {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
-public struct OBDisclosure {
-  public var imageUrl: Swift.String?
-  public var clickUrl: Swift.String?
+@_hasMissingDesignatedInitializers @objc public class OBDisclosure : ObjectiveC.NSObject {
+  @objc public var imageUrl: Swift.String?
+  @objc public var clickUrl: Swift.String?
+  @objc deinit
 }
 public struct OBGlobalStatisticsData {
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SFWidget : UIKit.UIView {
-  @_Concurrency.MainActor(unsafe) public var currentHeight: CoreFoundation.CGFloat {
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class SFWidget : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) public var currentHeight: CoreFoundation.CGFloat {
     get
   }
-  @_Concurrency.MainActor(unsafe) public var webviewUrl: Swift.String?
-  @_Concurrency.MainActor(unsafe) public static var infiniteWidgetsOnTheSamePage: Swift.Bool
-  @_Concurrency.MainActor(unsafe) public var extId: Swift.String?
-  @_Concurrency.MainActor(unsafe) public var extSecondaryId: Swift.String?
-  @_Concurrency.MainActor(unsafe) public var OBPubImp: Swift.String?
+  @objc @_Concurrency.MainActor(unsafe) public var webviewUrl: Swift.String?
+  @objc @_Concurrency.MainActor(unsafe) public static var infiniteWidgetsOnTheSamePage: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var extId: Swift.String?
+  @objc @_Concurrency.MainActor(unsafe) public var extSecondaryId: Swift.String?
+  @objc @_Concurrency.MainActor(unsafe) public var OBPubImp: Swift.String?
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @_Concurrency.MainActor(unsafe) public func configure(with delegate: any OutbrainSDK.SFWidgetDelegate, url: Swift.String, widgetId: Swift.String, installationKey: Swift.String)
-  @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, installationKey: Swift.String)
+  @objc @_Concurrency.MainActor(unsafe) public func configure(with delegate: any OutbrainSDK.SFWidgetDelegate, url: Swift.String, widgetId: Swift.String, installationKey: Swift.String)
+  @objc @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool)
   @available(*, deprecated, message: "Please use configure(with delegate: SFWidgetDelegate?, url: String, widgetId: String, widgetIndex: Int, installationKey: String, userId: String?, darkMode: Bool)  instead.")
-  @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool, isSwiftUI: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) public static func enableFlutterMode(flutter_packageVersion: Swift.String)
-  @_Concurrency.MainActor(unsafe) public static func enableReactNativeMode(RN_packageVersion: Swift.String)
-  @_Concurrency.MainActor(unsafe) public static func setInfiniteWidgetsOnTheSamePage(_ infiniteWidgets: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) public func getCurrentHeight() -> CoreFoundation.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool, isSwiftUI: Swift.Bool)
+  @objc @_Concurrency.MainActor(unsafe) public static func enableFlutterMode(flutter_packageVersion: Swift.String)
+  @objc @_Concurrency.MainActor(unsafe) public static func enableReactNativeMode(RN_packageVersion: Swift.String)
+  @objc @_Concurrency.MainActor(unsafe) public func getCurrentHeight() -> CoreFoundation.CGFloat
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMoveToWindow()
-  @_Concurrency.MainActor(unsafe) public func enableEvents()
-  @_Concurrency.MainActor(unsafe) public func toggleDarkMode(_ isDark: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMoveToSuperview()
+  @objc @_Concurrency.MainActor(unsafe) public func enableEvents()
+  @objc @_Concurrency.MainActor(unsafe) public func toggleDarkMode(_ isDark: Swift.Bool)
   @available(*, deprecated, message: "Please remove any calls to this method.")
-  @_Concurrency.MainActor(unsafe) public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
-  @_Concurrency.MainActor(unsafe) public func reportPageViewOnTheSameWidget()
-  @_Concurrency.MainActor(unsafe) public func loadMore()
+  @objc @_Concurrency.MainActor(unsafe) public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+  @objc @_Concurrency.MainActor(unsafe) public func reportPageViewOnTheSameWidget()
+  @objc @_Concurrency.MainActor(unsafe) public func loadMore()
   @objc deinit
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
-  @_Concurrency.MainActor(unsafe) public func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: any UIKit.UIViewControllerTransitionCoordinator)
+  @objc @_Concurrency.MainActor(unsafe) public func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: any UIKit.UIViewControllerTransitionCoordinator)
 }
 extension OutbrainSDK.SFWidget {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onRecClick(_ url: Foundation.URL)
-  @_Concurrency.MainActor(unsafe) public func onSettingsReceived(_ settings: [Swift.String : Any])
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSettingsReceived(_ settings: [Swift.String : Any])
 }
 extension OutbrainSDK.SFWidget : WebKit.WKUIDelegate, WebKit.WKNavigationDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, createWebViewWith configuration: WebKit.WKWebViewConfiguration, for navigationAction: WebKit.WKNavigationAction, windowFeatures: WebKit.WKWindowFeatures) -> WebKit.WKWebView?
   @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, decidePolicyFor navigationAction: WebKit.WKNavigationAction, decisionHandler: @escaping (WebKit.WKNavigationActionPolicy) -> Swift.Void)
 }
 extension OutbrainSDK.SFWidget {
-  @_Concurrency.MainActor(unsafe) public func willDisplay(_ cell: OutbrainSDK.SFWidgetTableCell)
-  @_Concurrency.MainActor(unsafe) public func willDisplay(_ cell: OutbrainSDK.SFWidgetCollectionCell)
+  @objc(willDisplayCell:) @_Concurrency.MainActor(unsafe) dynamic public func willDisplay(_ cell: OutbrainSDK.SFWidgetTableCell)
+  @objc(willDisplayCollectionViewCell:) @_Concurrency.MainActor(unsafe) dynamic public func willDisplay(_ cell: OutbrainSDK.SFWidgetCollectionCell)
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SFWidgetTableCell : UIKit.UITableViewCell {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
@@ -88,44 +88,49 @@ extension OutbrainSDK.SFWidget {
 }
 public struct OBRequestHandler {
 }
-public struct OBViewabilityActions {
-}
-public class OBPlatformsRequest : OutbrainSDK.OBRequest {
-  public var contentUrl: Swift.String?
-  public var portalUrl: Swift.String?
-  public var bundleUrl: Swift.String?
-  public var lang: Swift.String?
-  public var psub: Swift.String?
-  public init(widgetID: Swift.String, widgetIndex: Swift.Int = 0, contentUrl: Swift.String? = nil, portalUrl: Swift.String? = nil, budnelUrl: Swift.String? = nil, lang: Swift.String? = nil, psub: Swift.String? = nil)
+@_hasMissingDesignatedInitializers @objc public class OBViewabilityActions : ObjectiveC.NSObject {
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class Outbrain {
-  public static let OB_SDK_VERSION: Swift.String
-  public static var testMode: Swift.Bool
-  public static var testRTB: Swift.Bool
-  public static var testDisplay: Swift.Bool
-  public static var testLocation: Swift.String?
-  public static func initializeOutbrain(withPartnerKey partnerKey: Swift.String)
-  public static func checkInitiated() -> OutbrainSDK.OBError?
-  public static func fetchRecommendations(for request: OutbrainSDK.OBRequest, with callback: @escaping (OutbrainSDK.OBRecommendationResponse) -> Swift.Void)
-  public static func fetchRecommendations(for request: OutbrainSDK.OBRequest, with delegate: any OutbrainSDK.OBResponseDelegate)
-  public static func getUrl(_ rec: OutbrainSDK.OBRecommendation) -> Foundation.URL?
-  public static func getOutbrainAboutURL() -> Foundation.URL?
-  public static func getAboutURL() -> Foundation.URL?
-  public static func configureViewabilityPerListing(for view: UIKit.UIView, withRec rec: OutbrainSDK.OBRecommendation)
-  public static func printLogs(domain: Swift.String? = nil)
-  public static func setTestMode(_ testMode: Swift.Bool)
-  public static func testRTB(_ testRTB: Swift.Bool)
-  public static func testLocation(_ testLocation: Swift.String)
-  public static func testDisplay(_ testDisplay: Swift.Bool)
+@objc public class OBPlatformRequest : OutbrainSDK.OBRequest {
+  @objc public var contentUrl: Swift.String?
+  @objc public var portalUrl: Swift.String?
+  @objc public var bundleUrl: Swift.String?
+  @objc public var lang: Swift.String?
+  @objc public var psub: Swift.String?
+  @objc public init(widgetID: Swift.String, widgetIndex: Swift.Int = 0, contentUrl: Swift.String? = nil, portalUrl: Swift.String? = nil, bundleUrl: Swift.String? = nil, lang: Swift.String? = nil, psub: Swift.String? = nil)
+  @objc public static func requestWithBundleURL(_ bundleUrl: Swift.String, lang: Swift.String, widgetID: Swift.String) -> OutbrainSDK.OBPlatformRequest
+  @objc public static func requestWithPortalURL(_ portalUrl: Swift.String, lang: Swift.String, widgetID: Swift.String) -> OutbrainSDK.OBPlatformRequest
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class OBRecommendationResponse {
-  final public let request: [Swift.String : Any]
-  final public let settings: [Swift.String : Any]
-  final public let viewabilityActions: OutbrainSDK.OBViewabilityActions?
-  final public let recommendations: [OutbrainSDK.OBRecommendation]
-  public var error: (any Swift.Error)?
+@_inheritsConvenienceInitializers @objc public class Outbrain : ObjectiveC.NSObject {
+  @objc public static let OB_SDK_VERSION: Swift.String
+  @objc public static var customUserId: Swift.String?
+  @objc public static var partnerKey: Swift.String?
+  @objc public static var testMode: Swift.Bool
+  @objc public static var testRTB: Swift.Bool
+  @objc public static var testDisplay: Swift.Bool
+  @objc public static var testLocation: Swift.String?
+  @objc public static func initializeOutbrain(withPartnerKey partnerKey: Swift.String)
+  @objc public static func checkInitiated() -> OutbrainSDK.OBError?
+  @objc(fetchRecommendationsForRequest:withCallback:) public static func fetchRecommendations(for request: OutbrainSDK.OBRequest, with callback: @escaping (OutbrainSDK.OBRecommendationResponse) -> Swift.Void)
+  @objc(fetchRecommendationsForRequest:withDelegate:) public static func fetchRecommendations(for request: OutbrainSDK.OBRequest, with delegate: any OutbrainSDK.OBResponseDelegate)
+  @objc public static func getUrl(_ rec: OutbrainSDK.OBRecommendation) -> Foundation.URL?
+  @objc public static func getOutbrainAboutURL() -> Foundation.URL?
+  @objc public static func getAboutURL() -> Foundation.URL?
+  @objc public static func configureViewabilityPerListing(for view: UIKit.UIView, withRec rec: OutbrainSDK.OBRecommendation)
+  @objc public static func printLogs(domain: Swift.String? = nil)
+  @objc public static func testRTB(_ testRTB: Swift.Bool)
+  @objc public static func testLocation(_ testLocation: Swift.String)
+  @objc public static func testDisplay(_ testDisplay: Swift.Bool)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class OBRecommendationResponse : ObjectiveC.NSObject {
+  @objc final public let request: [Swift.String : Any]
+  @objc final public let settings: [Swift.String : Any]
+  @objc final public let viewabilityActions: OutbrainSDK.OBViewabilityActions?
+  @objc final public let recommendations: [OutbrainSDK.OBRecommendation]
+  @objc public var error: OutbrainSDK.OBError?
   @objc deinit
 }
 public protocol HttpHandler : ObjectiveC.NSObjectProtocol {
@@ -137,35 +142,40 @@ public protocol HttpHandler : ObjectiveC.NSObjectProtocol {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
-public enum OBError : Swift.Error {
-  case generic(message: Swift.String?, key: OutbrainSDK.OBErrorsKeys, code: OutbrainSDK.OBErrorCode)
-  case network(message: Swift.String?, key: OutbrainSDK.OBErrorsKeys, code: OutbrainSDK.OBErrorCode)
-  case native(message: Swift.String?, key: OutbrainSDK.OBErrorsKeys, code: OutbrainSDK.OBErrorCode)
-  case zeroRecommendations(message: Swift.String?, key: OutbrainSDK.OBErrorsKeys, code: OutbrainSDK.OBErrorCode)
-}
-public enum OBErrorsKeys : Swift.String {
-  case generic
+@objc public enum OBErrorType : Swift.Int {
+  case generic = 0
   case network
   case native
   case zeroRecommendations
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
-public enum OBErrorCode : Swift.Int {
-  case generic
-  case parsing
-  case server
-  case invalidParameters
-  case noRecommendations
-  case noData
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
+}
+@objc public enum OBErrorCode : Swift.Int {
+  case generic = 10200
+  case parsing = 10201
+  case server = 10202
+  case invalidParameters = 10203
+  case noRecommendations = 10204
+  case noData = 10205
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @objcMembers public class OBError : ObjectiveC.NSObject {
+  @objc final public let type: OutbrainSDK.OBErrorType
+  @objc final public let message: Swift.String?
+  @objc final public let code: OutbrainSDK.OBErrorCode
+  @objc public init(type: OutbrainSDK.OBErrorType, message: Swift.String?, code: OutbrainSDK.OBErrorCode)
+  @objc public static func generic(message: Swift.String?, code: OutbrainSDK.OBErrorCode) -> OutbrainSDK.OBError
+  @objc public static func network(message: Swift.String?, code: OutbrainSDK.OBErrorCode) -> OutbrainSDK.OBError
+  @objc public static func native(message: Swift.String?, code: OutbrainSDK.OBErrorCode) -> OutbrainSDK.OBError
+  @objc public static func zeroRecommendations(message: Swift.String?, code: OutbrainSDK.OBErrorCode) -> OutbrainSDK.OBError
+  @objc deinit
 }
 public struct OBLogger {
   public mutating func log(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
@@ -174,48 +184,56 @@ public struct OBLogger {
   public mutating func error(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
   public func printLogs(domain: Swift.String? = nil)
 }
-public struct OBImageInfo {
-  public let width: Swift.Int
-  public let height: Swift.Int
-  public let url: Foundation.URL?
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class OBView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func removeFromSuperview()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class OBImageInfo : ObjectiveC.NSObject {
+  @objc final public let width: Swift.Int
+  @objc final public let height: Swift.Int
+  @objc final public let url: Foundation.URL?
+  @objc deinit
 }
 public struct OBViewData {
 }
-public class OBRequest {
-  public var url: Swift.String?
-  public var widgetId: Swift.String
-  public var idx: Swift.String?
-  public var externalID: Swift.String?
-  public var startDate: Foundation.Date?
-  public init(url: Swift.String?, widgetID: Swift.String, widgetIndex: Swift.Int = 0, externalID: Swift.String? = nil, startDate: Foundation.Date? = nil)
+@objc @objcMembers public class OBRequest : ObjectiveC.NSObject {
+  @objc public var url: Swift.String?
+  @objc public var widgetId: Swift.String
+  @objc public var widgetIndex: Swift.Int
+  @objc public var externalID: Swift.String?
+  @objc public var startDate: Foundation.Date?
+  @objc public init(url: Swift.String?, widgetID: Swift.String, widgetIndex: Swift.Int = 0, externalID: Swift.String? = nil, startDate: Foundation.Date? = nil)
+  @objc public static func requestWithURL(_ url: Swift.String?, widgetID: Swift.String) -> OutbrainSDK.OBRequest
+  @objc public static func requestWithURL(_ url: Swift.String?, widgetID: Swift.String, widgetIndex: Swift.Int) -> OutbrainSDK.OBRequest
   @objc deinit
 }
-public protocol OBResponseDelegate : AnyObject {
-  func outbrainDidReceiveResponse(withSuccess response: OutbrainSDK.OBRecommendationResponse)
+@objc public protocol OBResponseDelegate {
+  @objc func outbrainDidReceiveResponse(withSuccess response: OutbrainSDK.OBRecommendationResponse)
 }
-public struct OBRecommendation {
-  public var url: Swift.String?
-  public var origUrl: Swift.String?
-  public var content: Swift.String?
-  public var source: Swift.String?
-  public var image: OutbrainSDK.OBImageInfo?
-  public var position: Swift.String?
-  public var author: Swift.String?
-  public var publishDate: Foundation.Date?
-  public var sameSource: Swift.Bool?
-  public var disclosure: OutbrainSDK.OBDisclosure?
-  public var pixels: [Swift.String]?
-  public var reqId: Swift.String?
-  public var isPaidLink: Swift.Bool {
-    get
+@objc @_hasMissingDesignatedInitializers @objcMembers public class OBRecommendation : ObjectiveC.NSObject {
+  @objc public var url: Swift.String?
+  @objc public var origUrl: Swift.String?
+  @objc public var content: Swift.String?
+  @objc public var source: Swift.String?
+  @objc public var image: OutbrainSDK.OBImageInfo?
+  @objc public var position: Swift.String?
+  @objc public var author: Swift.String?
+  @objc public var publishDate: Foundation.Date?
+  @objc public var sameSource: Swift.Bool
+  @objc public var disclosure: OutbrainSDK.OBDisclosure?
+  @objc public var pixels: [Swift.String]?
+  @objc public var reqId: Swift.String?
+  @objc public var isPaidLink: Swift.Bool {
+    @objc get
   }
-  public var isRTB: Swift.Bool {
-    get
+  @objc public var isRTB: Swift.Bool {
+    @objc get
   }
-  public var isVideo: Swift.Bool {
-    get
+  @objc public var isVideo: Swift.Bool {
+    @objc get
   }
-  public func shouldDisplayDisclosureIcon() -> Swift.Bool
+  @objc public func shouldDisplayDisclosureIcon() -> Swift.Bool
+  @objc deinit
 }
 @available(iOS 15.0, *)
 extension SwiftUI.View {
@@ -244,9 +262,9 @@ extension OutbrainSDK.OBLogLevels : Swift.Equatable {}
 extension OutbrainSDK.OBLogLevels : Swift.Hashable {}
 extension OutbrainSDK.OBLogLevels : Swift.RawRepresentable {}
 extension OutbrainSDK.SFWidget : OutbrainSDK.SFWidgetDelegate {}
-extension OutbrainSDK.OBErrorsKeys : Swift.Equatable {}
-extension OutbrainSDK.OBErrorsKeys : Swift.Hashable {}
-extension OutbrainSDK.OBErrorsKeys : Swift.RawRepresentable {}
+extension OutbrainSDK.OBErrorType : Swift.Equatable {}
+extension OutbrainSDK.OBErrorType : Swift.Hashable {}
+extension OutbrainSDK.OBErrorType : Swift.RawRepresentable {}
 extension OutbrainSDK.OBErrorCode : Swift.Equatable {}
 extension OutbrainSDK.OBErrorCode : Swift.Hashable {}
 extension OutbrainSDK.OBErrorCode : Swift.RawRepresentable {}
