@@ -19,10 +19,8 @@
 		5E0D6B2B2A41C672008BCD06 /* DeviceModelUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B2A2A41C672008BCD06 /* DeviceModelUtil.swift */; };
 		5E0D6B2D2A41D65C008BCD06 /* OBImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B2C2A41D65C008BCD06 /* OBImageInfo.swift */; };
 		5E0D6B2F2A4334D3008BCD06 /* OBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B2E2A4334D3008BCD06 /* OBError.swift */; };
-		5E0D6B312A442DD1008BCD06 /* OBPlatformRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0D6B302A442DD1008BCD06 /* OBPlatformRequest.swift */; };
 		5E2465222A402B1900D6C9DF /* OBRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2465212A402B1900D6C9DF /* OBRequestHandler.swift */; };
 		5E2465252A40421600D6C9DF /* OBRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2465242A40421600D6C9DF /* OBRecommendation.swift */; };
-		5E24652F2A4084C100D6C9DF /* OBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E24652E2A4084C100D6C9DF /* OBRequest.swift */; };
 		5E2465332A4099D200D6C9DF /* OBResponseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2465322A4099D200D6C9DF /* OBResponseDelegate.swift */; };
 		5E3FD05E2A5ED5790011C78B /* OBLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3FD05D2A5ED5790011C78B /* OBLoggerTests.swift */; };
 		5E3FD0612A5ED8460011C78B /* OBViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3FD0602A5ED8460011C78B /* OBViewTests.swift */; };
@@ -43,6 +41,9 @@
 		B113CC502C5A236D00BECDFA /* PlatformUrlType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */; };
 		B113CC522C5A2A1B00BECDFA /* OBLogLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */; };
 		B14770DD2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */; };
+		B1FEE6F72CDCD96300F851C9 /* OBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEE6F42CDCD96300F851C9 /* OBRequest.swift */; };
+		B1FEE6F82CDCD96300F851C9 /* OBRequestURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEE6F52CDCD96300F851C9 /* OBRequestURLProtocol.swift */; };
+		B1FEE6F92CDCD96300F851C9 /* OBPlatformRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEE6F32CDCD96300F851C9 /* OBPlatformRequest.swift */; };
 		CA0F15862A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F15852A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift */; };
 		CA2646B32AADB846005287CB /* SFWidgetMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2646B22AADB846005287CB /* SFWidgetMessageHandler.swift */; };
 		CA2646B52AADD0B1005287CB /* BridgeUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2646B42AADD0B1005287CB /* BridgeUrlBuilder.swift */; };
@@ -89,10 +90,8 @@
 		5E0D6B2A2A41C672008BCD06 /* DeviceModelUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelUtil.swift; sourceTree = "<group>"; };
 		5E0D6B2C2A41D65C008BCD06 /* OBImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBImageInfo.swift; sourceTree = "<group>"; };
 		5E0D6B2E2A4334D3008BCD06 /* OBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBError.swift; sourceTree = "<group>"; };
-		5E0D6B302A442DD1008BCD06 /* OBPlatformRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformRequest.swift; sourceTree = "<group>"; };
 		5E2465212A402B1900D6C9DF /* OBRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestHandler.swift; sourceTree = "<group>"; };
 		5E2465242A40421600D6C9DF /* OBRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRecommendation.swift; sourceTree = "<group>"; };
-		5E24652E2A4084C100D6C9DF /* OBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequest.swift; sourceTree = "<group>"; };
 		5E2465322A4099D200D6C9DF /* OBResponseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBResponseDelegate.swift; sourceTree = "<group>"; };
 		5E3FD05D2A5ED5790011C78B /* OBLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBLoggerTests.swift; sourceTree = "<group>"; };
 		5E3FD0602A5ED8460011C78B /* OBViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBViewTests.swift; sourceTree = "<group>"; };
@@ -113,6 +112,9 @@
 		B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformUrlType.swift; sourceTree = "<group>"; };
 		B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBLogLevels.swift; sourceTree = "<group>"; };
 		B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewabilityViewModifier.swift; sourceTree = "<group>"; };
+		B1FEE6F32CDCD96300F851C9 /* OBPlatformRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformRequest.swift; sourceTree = "<group>"; };
+		B1FEE6F42CDCD96300F851C9 /* OBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequest.swift; sourceTree = "<group>"; };
+		B1FEE6F52CDCD96300F851C9 /* OBRequestURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestURLProtocol.swift; sourceTree = "<group>"; };
 		CA0F15852A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetCollectionCell.swift; sourceTree = "<group>"; };
 		CA2646B22AADB846005287CB /* SFWidgetMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetMessageHandler.swift; sourceTree = "<group>"; };
 		CA2646B42AADD0B1005287CB /* BridgeUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeUrlBuilder.swift; sourceTree = "<group>"; };
@@ -187,14 +189,13 @@
 			children = (
 				5EE41C272BE7B19D0058EBA1 /* OBRecommendationResponse.swift */,
 				5E2465242A40421600D6C9DF /* OBRecommendation.swift */,
-				5E24652E2A4084C100D6C9DF /* OBRequest.swift */,
 				5E0D6B2C2A41D65C008BCD06 /* OBImageInfo.swift */,
 				5E0D6B2E2A4334D3008BCD06 /* OBError.swift */,
-				5E0D6B302A442DD1008BCD06 /* OBPlatformRequest.swift */,
 				5E0919D12A4ACC17005A014F /* OBDisclosure.swift */,
 				5E0919D52A4AFD57005A014F /* OBGlobalStatisticsData.swift */,
 				5E625A4C2A4C1A4A00BA6A4E /* OBViewabilityActions.swift */,
 				5EEF0AB72A5452A5000E65A1 /* OBViewData.swift */,
+				B1FEE6F62CDCD96300F851C9 /* OBRequest */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +265,16 @@
 				B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		B1FEE6F62CDCD96300F851C9 /* OBRequest */ = {
+			isa = PBXGroup;
+			children = (
+				B1FEE6F32CDCD96300F851C9 /* OBPlatformRequest.swift */,
+				B1FEE6F42CDCD96300F851C9 /* OBRequest.swift */,
+				B1FEE6F52CDCD96300F851C9 /* OBRequestURLProtocol.swift */,
+			);
+			path = OBRequest;
 			sourceTree = "<group>";
 		};
 		CA2646AF2AADA8F2005287CB /* SFWidget */ = {
@@ -474,19 +485,20 @@
 				5E2465222A402B1900D6C9DF /* OBRequestHandler.swift in Sources */,
 				5E625A4D2A4C1A4A00BA6A4E /* OBViewabilityActions.swift in Sources */,
 				5E0D6B2B2A41C672008BCD06 /* DeviceModelUtil.swift in Sources */,
-				5E0D6B312A442DD1008BCD06 /* OBPlatformRequest.swift in Sources */,
 				5E0D6B292A41BC95008BCD06 /* GDPRUtils.swift in Sources */,
 				E6E4B3DC2A23828500FE44E3 /* Outbrain.swift in Sources */,
 				5EE41C282BE7B19E0058EBA1 /* OBRecommendationResponse.swift in Sources */,
 				0BE321CB2C7DEE17004B2861 /* HttpMessageHandler.swift in Sources */,
 				0BE321C92C7DEBC7004B2861 /* SFWidgetTestMode.swift in Sources */,
+				B1FEE6F72CDCD96300F851C9 /* OBRequest.swift in Sources */,
+				B1FEE6F82CDCD96300F851C9 /* OBRequestURLProtocol.swift in Sources */,
+				B1FEE6F92CDCD96300F851C9 /* OBPlatformRequest.swift in Sources */,
 				5E0D6B2F2A4334D3008BCD06 /* OBError.swift in Sources */,
 				5E91D1612A56A99E00CD9AF5 /* OBLogger.swift in Sources */,
 				5E625A512A4D6D2800BA6A4E /* OBView.swift in Sources */,
 				CA2646CE2AAF0636005287CB /* SFConsts.swift in Sources */,
 				5E0D6B2D2A41D65C008BCD06 /* OBImageInfo.swift in Sources */,
 				5EEF0AB82A5452A6000E65A1 /* OBViewData.swift in Sources */,
-				5E24652F2A4084C100D6C9DF /* OBRequest.swift in Sources */,
 				CA26CB6C2A76B18000D2C22F /* BridgeUtils.swift in Sources */,
 				5E2465332A4099D200D6C9DF /* OBResponseDelegate.swift in Sources */,
 				CA7690A92A8E0582009C57BF /* JavaScriptExecutor.swift in Sources */,

@@ -220,7 +220,6 @@
 				B1CC7CCD2C56291200C4018F /* SwiftUI */,
 				B1CB99902C3EA27000991569 /* CollectionView */,
 				B1CB998C2C3EA27000991569 /* TableView */,
-				B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */,
 				B1F5B25B2C6E096E00C0FF4C /* RecommendationView.swift */,
 			);
 			path = "Use cases";
@@ -274,6 +273,7 @@
 		B1CC7CCD2C56291200C4018F /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */,
 				B1F3F5982CD10E8B00BC152B /* OrganicReferrerUseCase.swift */,
 				B1BFCA272CA54F0E008C59DA /* TwoWidgetsSwiftUI.swift */,
 				B1BFCA252CA54C52008C59DA /* Regular+BridgeSwiftUI.swift */,

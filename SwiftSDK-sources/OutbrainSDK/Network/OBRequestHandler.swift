@@ -20,18 +20,39 @@ public struct OBRequestHandler {
     
     // MARK: Fetch Recomendations - make http request for fetching recommendations from odb, option to pass callback or delegate that will resolve to OBResponse
     func fetchRecs(callback: @escaping (OBRecommendationResponse) -> Void) {
-        guard let finalUrl = request.buildOdbParams()?.url else { return }
-        performFetchTask(with: finalUrl, callback: callback)
+        guard request.buildOdbParams() != nil else { return }
+        
+        Task {
+            do {
+                let recs = try await fetchRecsAsync()
+                callback(recs)
+            } catch {
+                callback(.init(
+                    request: [:],
+                    settings: [:],
+                    viewabilityActions: nil,
+                    recommendations: [],
+                    error: error as? OBError)
+                )
+            }
+        }
     }
     
     
     func fetchRecs(delegate: OBResponseDelegate) {
-        guard let finalUrl = request.buildOdbParams()?.url else { return }
-        performFetchTask(with: finalUrl, callback: delegate.outbrainDidReceiveResponse)
+        guard request.buildOdbParams() != nil else { return }
+        Task {
+            do {
+                let recs = try await fetchRecsAsync()
+                delegate.outbrainDidReceiveResponse(withSuccess: recs)
+            } catch {
+                delegate.outbrainFailedToReceiveResposne(withError: error as? OBError)
+            }
+        }
     }
     
     
-    func fetchRecs() async throws -> [OBRecommendation] {
+    func fetchRecsAsync() async throws -> OBRecommendationResponse {
         guard let url = request.buildOdbParams()?.url else {
             throw OBError.native(message: "Failed to build ODB URL", code: .invalidParameters)
         }
@@ -148,7 +169,7 @@ public struct OBRequestHandler {
             }
             
             OBGlobalStatisticsManager.shared.firePixels(for: response)
-            return response.recommendations
+            return response
         } catch {
             Outbrain.logger.error(
                 "fetch recs async - network error: \(error.localizedDescription)",
@@ -158,78 +179,16 @@ public struct OBRequestHandler {
             OBErrorReport.shared.errorMessage = "fetch recs async - network error: \(error.localizedDescription)"
         }
         
-        return []
-    }
-    
-    
-    func performFetchTask(with url: URL, callback: @escaping (OBRecommendationResponse) -> Void) {
-        Outbrain.logger.debug("fetch recs - task added", domain: "request-handler")
         
-        // init error reporting data
-        OBErrorReport.shared.resetReport()
-        OBErrorReport.shared.odbRequestUrlParamValue = request.url
-        OBErrorReport.shared.widgetId = request.widgetId
-        
-        // using semaphore to ensure serial execution
-        let sema = DispatchSemaphore(value: 0)
-        
-        DispatchQueue.main.async {
-            // set the request start date
-            request.startDate = Date()
-            Outbrain.logger.log("fetch recs - task started for url \(url.absoluteString)", domain: "request-handler")
-            
-            // http call task
-            var request = URLRequest(url: url)
-            
-            // trace mode if debug
-#if DEBUG
-            request.setValue("true", forHTTPHeaderField: "x-trace")
-#endif
-            
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                // trace mode if debug
-#if DEBUG
-                if let debugRes = response as? HTTPURLResponse {
-                    if let traceID = debugRes.value(forHTTPHeaderField: "x-traceid") {
-                        // Access the trace ID here
-                        Outbrain.logger.debug("fetch recs - trace id: \(traceID)", domain: "request-handler")
-                    }
-                }
-#endif
-                
-                do {
-                    try handleResponse(
-                        data: data,
-                        response: response,
-                        error: error,
-                        callback: callback
-                    )
-                } catch {
-                    Outbrain.logger.error("handle response failed: \(error)")
-                }
-                
-                // send semaphore signal to proceed to the next operation
-                sema.signal()
-                
-                Outbrain.logger.debug("fetch recs - task finished", domain: "request-handler")
-            }
-            
-            // make the http call
-            task.resume()
-        }
-        
-        // wait for the next operation
-        let _ = sema.wait(timeout: .distantFuture)
+        return .init(request: [:], settings: [:], viewabilityActions: nil, recommendations: [])
     }
     
     
     // MARK: Handle Response - checks if got valid response back from the server
-    func handleResponse(
+    private func handleResponse(
         data: Data?,
         response: URLResponse?,
-        error: Error?,
-        callback: @escaping (OBRecommendationResponse) throws -> Void
-    ) throws {
+        error: Error?) throws -> OBRecommendationResponse {
         // report error to widget monitor if error
         defer {
             if OBErrorReport.shared.errorMessage != nil {
@@ -260,8 +219,7 @@ public struct OBRequestHandler {
             )
             
             OBErrorReport.shared.errorMessage = "fetch recs - network error: \(error.localizedDescription)"
-            try callback(responseWithError)
-            return
+            return responseWithError
         }
         
         // HTTP Invalid Error
@@ -277,8 +235,7 @@ public struct OBRequestHandler {
             )
             
             OBErrorReport.shared.errorMessage = "fetch recs - invalid HTTP Response: \(String(describing: response))"
-            try callback(responseWithError)
-            return
+            return responseWithError
         }
         
         // Check for response code errors
@@ -290,8 +247,7 @@ public struct OBRequestHandler {
             )
             
             OBErrorReport.shared.errorMessage = "fetch recs - HTTP error: \(httpResponse.statusCode)"
-            try callback(responseWithError)
-            return
+            return responseWithError
         }
         
         // No Data Error
@@ -307,8 +263,7 @@ public struct OBRequestHandler {
             )
             
             OBErrorReport.shared.errorMessage = "fetch recs - no data received"
-            try callback(responseWithError)
-            return
+            return responseWithError
         }
         
         // JSON Parsing Error
@@ -320,8 +275,7 @@ public struct OBRequestHandler {
             
             Outbrain.logger.error("fetch recs - parsing failed", domain: "request-handler")
             OBErrorReport.shared.errorMessage = "fetch recs - parsing failed"
-            try callback(responseWithError)
-            return
+            return responseWithError
         }
         
         // Error reporting poplate details in case of later one error
@@ -360,7 +314,7 @@ public struct OBRequestHandler {
         OBGlobalStatisticsManager.shared.firePixels(for: response)
         
         // invoke callback with parsed recs
-        try callback(response)
+        return response
     }
     
     

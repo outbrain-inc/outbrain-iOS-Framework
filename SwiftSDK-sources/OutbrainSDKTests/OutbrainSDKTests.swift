@@ -96,6 +96,7 @@ final class OutbrainSDKTests: XCTestCase {
 class MockResponseDelegate: OBResponseDelegate {
     var outbrainDidReceiveResponseCalled = false
     var response: OBRecommendationResponse?
+    var error: OBError?
     
     let expectation: XCTestExpectation
 
@@ -106,6 +107,12 @@ class MockResponseDelegate: OBResponseDelegate {
     func outbrainDidReceiveResponse(withSuccess response: OBRecommendationResponse) {
         outbrainDidReceiveResponseCalled = true
         self.response = response
+        expectation.fulfill()
+    }
+    
+    func outbrainFailedToReceiveResposne(withError error: OBError?) {
+        outbrainDidReceiveResponseCalled = true
+        self.error = error
         expectation.fulfill()
     }
 

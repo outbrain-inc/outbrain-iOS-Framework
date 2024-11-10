@@ -107,7 +107,7 @@ import UIKit
     
     
     public static func fetchRecommendations(for request: OBRequest) async throws -> [OBRecommendation] {
-        return try await OBRequestHandler(request).fetchRecs()
+        return try await OBRequestHandler(request).fetchRecsAsync().recommendations
     }
     
 
