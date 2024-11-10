@@ -14,7 +14,7 @@ struct ContentView: View {
     
     @StateObject private var navigationViewModel: NavigationViewModel
     @State private var showCacheClearedAlert = false
-    @State private var showGDPR = false
+
     
     init() {
         self._navigationViewModel = .init(wrappedValue: .init())
@@ -29,9 +29,7 @@ struct ContentView: View {
                     showCacheClearedAlert = true
                 }
             }
-            .addTrailingActionBar(withTitle: "Outbrain SDK Demo", trailingActionName: "GDPR", trailingAction: {
-                showGDPR = true
-            })
+            .addNavigationBar(withTitle: "Outbrain SDK Demo")
             .alert(isPresented: $showCacheClearedAlert) {
                 Alert(
                     title: Text("Cache Cleared"),
@@ -44,9 +42,6 @@ struct ContentView: View {
                     )
                 )
             }
-            .sheet(isPresented: $showGDPR, content: {
-                GdprRequestScreen { showGDPR = false }
-            })
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     ATTrackingManager.requestTrackingAuthorization { authStatus in

@@ -154,6 +154,19 @@ struct ConfigScreen: View {
                 Text("Dark mode")
             }
             
+            Toggle(isOn: $paramsViewModel.fakeConsent) {
+                Text("Send Fake GDPR Consent")
+            }
+            .onChange(of: paramsViewModel.fakeConsent) { oldValue in
+                if paramsViewModel.fakeConsent {
+                    UserDefaults.standard.set("CQH36sAQH36sAAHABBENBOFsAP_gAABAAAqIJ1NF7C7fbXFicX53YPsEcY1fxdAKosQwBAAJg2wByBJQsIwElmAxNAXgBiAKGAIAIGRBAQJlCADABUAAYAAAIyDMIAAQARAIIqAEgAARQEAICABjGQkAEAAYgGIAAEAAmQoEABqoUEBAgAAgIEAAIAAhAICBAgGIACEgQAAYAQAIwmgAAQAAIAAAEAAEAFAMEEBAAAEAAIACBAAMIAABAAAAMUgAwABBUQdABgACCohCADAAEFRCUAGAAIKiBIAMAAQVELQAYAAgqIAA.f_wAAAgAAAAA", forKey: "IABTCF_TCString")
+                    UserDefaults.standard.synchronize()
+                } else {
+                    UserDefaults.standard.removeObject(forKey: "IABTCF_TCString")
+                }
+            }
+            
+            
             HStack {
                 VStack(alignment: .leading) {
                     Text("Bridge widget ID")
