@@ -2,6 +2,14 @@
 
 # Official Releases (Swift SDK)
 
+## v5.3.0 - November 11, 2024
+
+ - Added Objectve-C support - SDK can now be used in pure Objective-C projects
+ - Added automatic viewability solution to SFWidget with static placement (outside of any sort of scroll view)
+ - Added missing privacy manifest
+ - Fixed rare cases of crashes caused by automatic viewability reporting
+ - Added Organic referrer reporting
+
 ## v5.2.1 - October 15, 2044
  - [Internal] Minor - Additional troubleshooting tools (Display test)
  - [Internal] Minor - Added client type reporting to regular SDK
