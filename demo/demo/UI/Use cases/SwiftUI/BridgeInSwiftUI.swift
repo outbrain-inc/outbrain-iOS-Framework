@@ -15,10 +15,15 @@ struct BridgeInSwiftUI: View {
     private var viewModel: OutbrainWidgetViewModel
     
     
-    init(navigationViewModel: NavigationViewModel) {
+    
+    init(
+        navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel
+    ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
+        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
     }
+    
     
     var body: some View {
         ScrollView {
@@ -66,5 +71,5 @@ struct BridgeInSwiftUI: View {
 }
 
 #Preview {
-    BridgeInSwiftUI(navigationViewModel: .init())
+    BridgeInSwiftUI(navigationViewModel: .init(), paramsViewModel: .init())
 }

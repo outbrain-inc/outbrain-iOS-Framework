@@ -19,6 +19,7 @@ struct OutbrainWidgetView: UIViewRepresentable {
     let isRegular: Bool
     let isOrganic: Bool
     let organicUrl: String?
+    let isStatic: Bool
     
     
     init(
@@ -26,6 +27,7 @@ struct OutbrainWidgetView: UIViewRepresentable {
         isRegular: Bool = false,
         twoWidgets: Bool = false,
         isOrganic: Bool = false,
+        isStatic: Bool = false,
         widgetIndex: Int = 0,
         organicUrl: String? = nil
     ) {
@@ -35,11 +37,14 @@ struct OutbrainWidgetView: UIViewRepresentable {
         self.isOrganic = isOrganic
         self.widgetIndex = widgetIndex
         self.organicUrl = organicUrl
+        self.isStatic = isStatic
         
         if twoWidgets && widgetIndex == 0 {
-            self.widgetId = viewModel.navigationViewModel.paramsViewModel.bridgeWidgetId2
+            self.widgetId = viewModel.paramsViewModel.bridgeWidgetId2
+        } else if isStatic {
+            self.widgetId = viewModel.paramsViewModel.staticWidgetId
         } else {
-            self.widgetId = viewModel.navigationViewModel.paramsViewModel.bridgeWidgetId
+            self.widgetId = viewModel.paramsViewModel.bridgeWidgetId
         }
     }
     
@@ -104,12 +109,12 @@ struct OutbrainWidgetView: UIViewRepresentable {
         viewModel.widget
             .configure(
                 with: context.coordinator,
-                url: organicUrl ?? viewModel.navigationViewModel.paramsViewModel.articleURL,
-                widgetId: viewModel.navigationViewModel.paramsViewModel.bridgeWidgetId,
+                url: organicUrl ?? viewModel.paramsViewModel.articleURL,
+                widgetId: widgetId,
                 widgetIndex: widgetIndex,
                 installationKey: "NANOWDGT01",
                 userId: nil,
-                darkMode: viewModel.navigationViewModel.paramsViewModel.darkMode
+                darkMode: viewModel.paramsViewModel.darkMode
             )
         
         return viewModel.widget

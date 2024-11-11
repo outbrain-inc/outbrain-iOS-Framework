@@ -294,14 +294,23 @@ import UIKit
         return currentHeight
     }
     
-    public override func didMoveToSuperview() {
-        super.didMoveToSuperview()
+    public override func didMoveToWindow() {
+        super.didMoveToWindow()
         
         if superview != nil {
             guard let scrollView = findFirstScrollView(in: superview), containerScrollView == nil else { return }
             addContrentOffsetObserver(to: scrollView)
         } else {
             // Remove KVO observer when the scroll view is removed from its superview
+            removeContentOffsetObserver()
+        }
+    }
+    
+    
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        if superview == nil {
             removeContentOffsetObserver()
         }
     }
@@ -549,10 +558,10 @@ import UIKit
     }
     
     
-    private func handleViewability(_ scrollView: UIScrollView) {
+    private func handleViewability(_ view: UIView) {
         viewabilityHandler.handleViewability(
             sfWidget: self,
-            containerView: scrollView
+            containerView: view
         ) { [weak self] viewStatus, width ,height  in
             guard let self else { return }
             
@@ -610,6 +619,12 @@ extension SFWidget: SFMessageHandlerDelegate {
             delegate?.didChangeHeight?()
         }
 
+        
+        if height > 0 && containerScrollView == nil, superview != nil, let window = window {
+            handleViewability(window)
+        }
+        
+        
         guard isLoading else { return }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
@@ -745,12 +760,16 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
 // MARK: - UITableView
 extension SFWidget {
     
+    
+    @objc(willDisplayCell:)
     public func willDisplay(_ cell: SFWidgetTableCell) {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         cell.contentView.addSubview(self)
         BridgeUtils.addConstraintsToFillParent(view: self)
     }
     
+    
+    @objc(willDisplayCollectionViewCell:)
     public func willDisplay(_ cell: SFWidgetCollectionCell) {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         cell.contentView.addSubview(self)

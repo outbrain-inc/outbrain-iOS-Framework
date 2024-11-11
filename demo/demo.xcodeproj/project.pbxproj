@@ -50,6 +50,7 @@
 		B1CC7D052C563CD100C4018F /* ScrollViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CC7D042C563CD100C4018F /* ScrollViewVC.xib */; };
 		B1F3F5992CD10E9200BC152B /* OrganicReferrerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F3F5982CD10E8B00BC152B /* OrganicReferrerUseCase.swift */; };
 		B1F5B25C2C6E096E00C0FF4C /* RecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F5B25B2C6E096E00C0FF4C /* RecommendationView.swift */; };
+		B1FEE6F02CDA56AA00F851C9 /* StaticWidgetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEE6EF2CDA56A300F851C9 /* StaticWidgetUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -111,6 +112,7 @@
 		B1CC7D042C563CD100C4018F /* ScrollViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewVC.xib; sourceTree = "<group>"; };
 		B1F3F5982CD10E8B00BC152B /* OrganicReferrerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganicReferrerUseCase.swift; sourceTree = "<group>"; };
 		B1F5B25B2C6E096E00C0FF4C /* RecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationView.swift; sourceTree = "<group>"; };
+		B1FEE6EF2CDA56A300F851C9 /* StaticWidgetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgetUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 		B1CB98B92C3D482B00991569 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B1CC7CD02C56292D00C4018F /* OutbrainWidgetViewModel.swift */,
 				B1CB98BA2C3D483600991569 /* ParamsViewModel.swift */,
 				B1CB98BC2C3D4AEA00991569 /* NavigationViewModel.swift */,
 			);
@@ -220,7 +223,6 @@
 				B1CC7CCD2C56291200C4018F /* SwiftUI */,
 				B1CB99902C3EA27000991569 /* CollectionView */,
 				B1CB998C2C3EA27000991569 /* TableView */,
-				B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */,
 				B1F5B25B2C6E096E00C0FF4C /* RecommendationView.swift */,
 			);
 			path = "Use cases";
@@ -274,11 +276,12 @@
 		B1CC7CCD2C56291200C4018F /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */,
+				B1FEE6EF2CDA56A300F851C9 /* StaticWidgetUseCase.swift */,
 				B1F3F5982CD10E8B00BC152B /* OrganicReferrerUseCase.swift */,
 				B1BFCA272CA54F0E008C59DA /* TwoWidgetsSwiftUI.swift */,
 				B1BFCA252CA54C52008C59DA /* Regular+BridgeSwiftUI.swift */,
 				B1CC7CD12C56292E00C4018F /* OutbrainWidgetView.swift */,
-				B1CC7CD02C56292D00C4018F /* OutbrainWidgetViewModel.swift */,
 				B1CB98B52C3D240000991569 /* BridgeInSwiftUI.swift */,
 				B113CC362C57B91000BECDFA /* ArticleBody.swift */,
 				B113CC382C57BAB400BECDFA /* OBSafariView.swift */,
@@ -340,6 +343,8 @@
 				Base,
 			);
 			mainGroup = B1CB988D2C3D202800991569;
+			packageReferences = (
+			);
 			productRefGroup = B1CB98972C3D202800991569 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -386,6 +391,7 @@
 				B1CB98C32C3D531100991569 /* RegularSDKSwiftUI.swift in Sources */,
 				B1BFCA262CA54C61008C59DA /* Regular+BridgeSwiftUI.swift in Sources */,
 				B1CB99952C3EA27000991569 /* TableVC.swift in Sources */,
+				B1FEE6F02CDA56AA00F851C9 /* StaticWidgetUseCase.swift in Sources */,
 				B1BFCA282CA54F12008C59DA /* TwoWidgetsSwiftUI.swift in Sources */,
 				B17A622B2CB3DFEB009B7891 /* Protocols.swift in Sources */,
 				B17A622D2CB3E0EE009B7891 /* ContentPageRepresentable.swift in Sources */,
@@ -554,7 +560,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -591,7 +597,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.outbrain.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

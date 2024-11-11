@@ -12,13 +12,16 @@ struct ContentPageRepresentable<T: UIKitContentPage>: UIViewControllerRepresenta
     
     typealias UIViewControllerType = T
     let navigationViewModel: NavigationViewModel
+    let paramsViewModel: ParamsViewModel
     let params: [String: Bool]?
     
     init(
         navigationViewModel: NavigationViewModel,
-        params: [String : Bool]? = nil
+        paramsViewModel: ParamsViewModel,
+        params: [String: Bool]? = nil
     ) {
         self.navigationViewModel = navigationViewModel
+        self.paramsViewModel = paramsViewModel
         self.params = params
     }
     
@@ -27,6 +30,7 @@ struct ContentPageRepresentable<T: UIKitContentPage>: UIViewControllerRepresenta
         // Instantiate your UIKit view controller here
         let articleVC = T.init(
             navigationViewModel: navigationViewModel,
+            paramsViewModel: paramsViewModel,
             params: params
         )
         

@@ -24,9 +24,13 @@ class ScrollViewTwoWidgets : UIViewController, UIScrollViewDelegate, UIKitConten
     private let paramsViewModel: ParamsViewModel
     
     
-    required init(navigationViewModel: NavigationViewModel, params: [String : Bool]?) {
+    required init(
+        navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel,
+        params: [String: Bool]?
+    ) {
         self.navigationViewModel = navigationViewModel
-        self.paramsViewModel = navigationViewModel.paramsViewModel
+        self.paramsViewModel = paramsViewModel
         super.init(nibName: "ScrollViewTwoWidgets", bundle: nil)
     }
     

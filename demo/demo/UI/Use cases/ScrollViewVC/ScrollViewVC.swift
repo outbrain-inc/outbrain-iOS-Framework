@@ -23,9 +23,13 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate, UIKitContentPage {
     private let isRegular: Bool
     
     
-    required init(navigationViewModel: NavigationViewModel, params: [String : Bool]?) {
+    required init(
+        navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel,
+        params: [String : Bool]?
+    ) {
         self.navigationViewModel = navigationViewModel
-        self.paramsViewModel = navigationViewModel.paramsViewModel
+        self.paramsViewModel = paramsViewModel
         self.isRegular = params?["isRegular"] ?? false
         super.init(nibName: "ScrollViewVC", bundle: nil)
     }
