@@ -56,7 +56,7 @@ import UIKit
     @objc(fetchRecommendationsForRequest:withCallback:)
     public static func fetchRecommendations(
         for request: OBRequest,
-        with callback: @escaping (OBRecommendationResponse) -> Void
+        with callback: ((OBRecommendationResponse) -> Void)?
     ) {
         logger.debug("fetchRecommendations for widgetId \(request.widgetId) & url \(String(describing: request.url))")
         // check initilized
@@ -72,7 +72,7 @@ import UIKit
                 error: notInitilized
             )
 
-            callback(failedRes)
+            callback?(failedRes)
             return
         }
 

@@ -26,15 +26,15 @@ public struct OBRequestHandler {
     
     
     // MARK: Fetch Recomendations - make http request for fetching recommendations from odb, option to pass callback or delegate that will resolve to OBResponse
-    func fetchRecs(callback: @escaping (OBRecommendationResponse) -> Void) {
+    func fetchRecs(callback: ((OBRecommendationResponse) -> Void)?) {
         guard requestUrlBuilder.buildOdbParams() != nil else { return }
         
         Task {
             do {
                 let recs = try await fetchRecsAsync()
-                callback(recs)
+                callback?(recs)
             } catch {
-                callback(.init(
+                callback?(.init(
                     request: [:],
                     settings: [:],
                     viewabilityActions: nil,
