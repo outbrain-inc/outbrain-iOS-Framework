@@ -16,17 +16,17 @@ class OBRequestHandlerTests: XCTestCase {
     var mockDelegate: MockDelegate? = nil
 
     
-    override func setUp() async throws {
-        try await super.setUp()
+    override func setUp() {
+        super.setUp()
         URLProtocol.registerClass(MockUrlProtocol.self)
     }
     
     
-    override func tearDown() async throws {
-        try await super.tearDown()
+    override func tearDown() {
         URLProtocol.unregisterClass(MockUrlProtocol.self)
         MockUrlProtocol.calledHosts.removeAll()
         MockUrlProtocol.mockResponses.removeAll()
+        super.tearDown()
     }
     
     
@@ -128,6 +128,7 @@ class OBRequestHandlerTests: XCTestCase {
             let _ = try await sut?.fetchRecsAsync()
         } catch {
             // Then
+            sleep(1)
             XCTAssertNotNil(error)
             XCTAssert(error is OBError)
             XCTAssert((error as! OBError).code == .generic)
@@ -146,6 +147,7 @@ class OBRequestHandlerTests: XCTestCase {
             let _ = try await sut?.fetchRecsAsync()
         } catch {
             // Then
+            sleep(1)
             XCTAssertNotNil(error)
             XCTAssert(error is OBError)
             XCTAssert((error as! OBError).code == .invalidParameters)
@@ -164,6 +166,7 @@ class OBRequestHandlerTests: XCTestCase {
             let _ = try await sut?.fetchRecsAsync()
         } catch {
             // Then
+            sleep(1)
             XCTAssertNotNil(error)
             XCTAssert(error is OBError)
             XCTAssert((error as! OBError).code == .server)
@@ -182,6 +185,7 @@ class OBRequestHandlerTests: XCTestCase {
             let _ = try await sut?.fetchRecsAsync()
         } catch {
             // Then
+            sleep(1)
             XCTAssertNotNil(error)
             XCTAssert(error is OBError)
             XCTAssert((error as! OBError).type == .zeroRecommendations)
@@ -200,6 +204,7 @@ class OBRequestHandlerTests: XCTestCase {
             let _ = try await sut?.fetchRecsAsync()
         } catch {
             // Then
+            sleep(1)
             XCTAssertNotNil(error)
             XCTAssert(error is OBError)
             XCTAssert((error as! OBError).type == .native)
