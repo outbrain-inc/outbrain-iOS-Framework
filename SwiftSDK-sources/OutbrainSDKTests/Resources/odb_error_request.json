@@ -1,0 +1,22 @@
+outbrain.returnedError({
+  "response": {
+    "exec_time": 1,
+    "timestamp": 1603623898769,
+    "status": {
+      "id": 2001,
+      "content": "Bad Request, invalid value for required parameter",
+      "detailed": "Initialization of ODB request failed due to missing argument: com.outbrain.protocol.exceptions.ArgumentException: Unknown partner Status:[ST_INVALID_PARAMTER_VALUE] Parameter:[key,iOSSamleApp2014]"
+    },
+    "request": {
+      "sid": 0,
+      "wnid": -1,
+      "req_id": "699bd8a104679a9693ff50dac855d9ba",
+      "gl": "EHJ5cmazSLOTWIx5eIJXlA",
+      "vid": 0
+    },
+    "settings": {
+      "stopRater": true,
+      "stopWidget": true
+    }
+  }
+})

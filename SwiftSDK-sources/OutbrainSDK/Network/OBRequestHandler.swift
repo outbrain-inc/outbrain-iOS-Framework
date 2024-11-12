@@ -11,16 +11,23 @@ import Foundation
 public struct OBRequestHandler {
     
     private let request: OBRequest
+    private let requestUrlBuilder: OBRequestUrlBuilderProtocol
     
     
     init(_ request: OBRequest) {
         self.request = request
+        
+        if let platformRequest = request as? OBPlatformRequest {
+            requestUrlBuilder = OBPlatformRequestUrlBuilder(platformRequest: platformRequest)
+        } else {
+            requestUrlBuilder = OBRequestUrlBuilder(request: request)
+        }
     }
     
     
     // MARK: Fetch Recomendations - make http request for fetching recommendations from odb, option to pass callback or delegate that will resolve to OBResponse
     func fetchRecs(callback: @escaping (OBRecommendationResponse) -> Void) {
-        guard request.buildOdbParams() != nil else { return }
+        guard requestUrlBuilder.buildOdbParams() != nil else { return }
         
         Task {
             do {
@@ -40,7 +47,7 @@ public struct OBRequestHandler {
     
     
     func fetchRecs(delegate: OBResponseDelegate) {
-        guard request.buildOdbParams() != nil else { return }
+        guard requestUrlBuilder.buildOdbParams() != nil else { return }
         Task {
             do {
                 let recs = try await fetchRecsAsync()
@@ -53,7 +60,7 @@ public struct OBRequestHandler {
     
     
     func fetchRecsAsync() async throws -> OBRecommendationResponse {
-        guard let url = request.buildOdbParams()?.url else {
+        guard let url = requestUrlBuilder.buildOdbParams()?.url else {
             throw OBError.native(message: "Failed to build ODB URL", code: .invalidParameters)
         }
         
@@ -177,10 +184,13 @@ public struct OBRequestHandler {
             )
             
             OBErrorReport.shared.errorMessage = "fetch recs async - network error: \(error.localizedDescription)"
+            
+            if error is OBError {
+                throw error
+            } else {
+                throw OBError.network(message: "fetch recs async - network error: \(error.localizedDescription)", code: .network)
+            }
         }
-        
-        
-        return .init(request: [:], settings: [:], viewabilityActions: nil, recommendations: [])
     }
     
     

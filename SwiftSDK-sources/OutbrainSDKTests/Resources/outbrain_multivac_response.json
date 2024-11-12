@@ -1,0 +1,374 @@
+{
+    "cards": [
+        {
+            "cardType": "widget",
+            "response": {
+                "exec_time": 110,
+                "timestamp": 1602416890427,
+                "status": {
+                    "id": 0,
+                    "content": "Request succeeded"
+                },
+                "request": {
+                    "lang": "en",
+                    "idx": "1",
+                    "lastIdx": "0",
+                    "lastCardIdx": "0",
+                    "did": "2715921295",
+                    "pid": "4737",
+                    "lsd": "98a3b045-4289-4513-accf-08105f8b4cf6",
+                    "enu": "bYAyW2LPh_WDsSvjohAUT9ciicj-eKRxhZHEv5gcBb-8x_9v8vB9DilKdZZMJNdR",
+                    "api_user_id": "98a3b045-4289-4513-accf-08105f8b4cf6",
+                    "t": "OGM2OTUxYjNiZDcyOTZlYWE1MzQwZGFkM2M0YjQ3NDM=",
+                    "pvId": "8c6951b3bd7296eaa5340dad3c4b4743",
+                    "pad": "1",
+                    "org": "0",
+                    "abTestVal": "no_abtest",
+                    "obRecsAbtestAndVars": "832-2554,834-2566,596-1902,838-2586,822-2522,811-2475,699-2320",
+                    "widgetJsId": "SDK_SFD_1",
+                    "readerPlatform": "desktop",
+                    "isHttps": "true",
+                    "rtbEnabled": "true",
+                    "rtbTest": "false",
+                    "rtbBidTestMode": "false",
+                    "rtbTestRecsNum": "0",
+                    "amplifyEnabled": "true",
+                    "fid": "1117",
+                    "gdpr": "0",
+                    "fCard": "1",
+                    "feedIdx": "0",
+                    "feedVersion": "1",
+                    "pcer": "p=67UZhE3rUB6pGwD6_UJYwUg4rNUfg2Is9qyY9frkB9c&c=39ef8217&v=3",
+                    "sid": 5291479,
+                    "wnid": 1144,
+                    "req_id": "2e0850a4bb0aed9b3c8f8c61e7260047",
+                    "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+                    "vid": 0
+                },
+                "documents": {
+                    "total_count": 1,
+                    "count": 1,
+                    "doc": [
+                        {
+                            "on-viewed": [
+                                "https://log.outbrainimg.com/loggerServices/log-viewability?requestId=2e0850a4bb0aed9b3c8f8c61e7260047&position=0"
+                            ],
+                            "source_name": "PostFun",
+                            "same_source": "false",
+                            "source_display_name": "PostFun",
+                            "pc_id": 162767930,
+                            "adv_name": "Hive_PostFun_SA_PartnersProgram",
+                            "publish_date": "2018-12-12 20:52",
+                            "orig_url": "https://www.postfun.com/incredible/what-these-fishermen-found-on-an-iceberg-left-them-stunned-in-disbelief/?utm_campaign=fdx-d-us-c-0-dup-200416-pu-ob-c7-a1&utm_term=eyJpdSI6ImY3ZTY1OTEyM2M2NTJkMjhlYzM0MzE1MGI2MzQ2MzA0OTBjNTFlOGYzNDQ4MmZiZmY4YTJmOTBmYTA5MDE4ZmMiLCJ3Ijo2MSwiaCI6NjEsImQiOjEuMCwiY3MiOjAsImYiOjB9.jpg&utm_source=ob&utm_medium=$section_id$-ob&utm_content=00d381aaed5052f95dbd3f3343d8244d7c&utm_cpc=$cpc$",
+                            "rec-cats": [
+                                1806
+                            ],
+                            "ads_type": 1,
+                            "rec_en_did": "4v0y2L3zWNPhEfkjkJ9lNw",
+                            "url": "https://paid.outbrain.com/network/redir?p=9Da6nhT5HQ_xOgYltLe_VRyvkybYLU7ZHBxbpGOfOjo0VztBEDo6Tu83ZXe6YRlFu0jn2SPecBS4uXYSKh_GQ7vr82ZyaXUhuLN_7zWjjAiPGCwnLA-I6rdja4qbcM6WwPqO6tOadif0tui1pqMgVpDuZcLy7QXiwHGjsC2ywe2_-sovU1N4L7hKkHMZHP7WLEdVIVmX8cqgur2Lc3IfGnt8Sv9G4dvjpl1DeDgPN9lEKGzgE23XdNGbvtEjkwCVa6G7dZmr2XbABycA42Hi_x-eOzkOBrcOWy4C2ADa_zB3cmDD5RIceOUq93jP47GIsTppyEAI7u8IpfJpy1wlm0idnc-BwAy6D5_NxHuZInumfOVk9Pto6Y3LtoFtVzQKQKGe8fMDBI_fYUR1hSBxXmDZkHhrYaWYaOtF0gJWYW8MAMFxB6-pluWmF9qHERNBHKVAf6RX3AsR09u2KLQ1iZoM3pAgWvwjx0mpKwqjFMULwaKYazFE8ivnUe5K3Qtnebtp69LevBs8uOIszfCRrSMHlxlfL4WknlexrwMKcjG7iRZY91FAtBCh3GlW-F--Kd2MUVir73-mYxNixjMgZDTiwNSH4ZNKH-c_xQeVAS7TK5_gts8lX-cMZYPkGRJ1w8KtxvdcomJ6Wj0e6SnYHgsH9gmNI8mf3CCq8MEFiq_LczJoB7vaftZxpTlTW1ABJn0zia7JlyW349JcCng-f9Bc7qmGQEaejLpe4lfsk03eXq2iFKYLXqnPSDCDmS_aHEbQ8IpyBbO53TIStEOA9viac3vA09RevFhYzVka9vs2hNmyxMbi9qMmstuIcHZMQZmRAdVtdal44-u6PxyjvLCXbkB5wP5WAvwqhgB5GAk6kVt8kLx-G5Gk1tNrQXok5i8WFok5LsmatWEtCGQ7ItUFWbAmjgfO0pyqVl7GwV7R_i4b9M6P1Fg40-yYgJTeansIstbU70kAyRuxGry2neWH4nNc_gydtYMErcKEl0bwpVi6uXeQduHY7lvja4w-4S1bN2ERdMC2_D18jzwIcviJgemoCbW4wLeNbA2jdEj3FEmH4fz3U8TgEAf2uEsl7OpbXLe3pRaevVTWhWE14EbLGUUXw4o5Av_soabDYfBMdmd_ktT5lm1H5SH4bG3v_R4VBPnmYD9T8ocRXwpFd7mk4jnAhDOteOMZnpHskhqa9aQNH_OtemnaonNodTgSQUVKfs_HEwaEbpTPQZwQd8HRIWAou9GuNQQA3WWwvjw&c=9aca2e23&v=3",
+                            "author": "",
+                            "content": "[Pics] Fishermen See Animal Sitting On Iceberg, Then Look Again",
+                            "pc_cmp_id": 1012032182,
+                            "pos": "0",
+                            "ttid": 3,
+                            "advId": "96729",
+                            "creativeFormat": "Standard",
+                            "thumbnail": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImY3ZTY1OTEyM2M2NTJkMjhlYzM0MzE1MGI2MzQ2MzA0OTBjNTFlOGYzNDQ4MmZiZmY4YTJmOTBmYTA5MDE4ZmMiLCJ3Ijo0MDAsImgiOjIyNSwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp",
+                                "width": 400,
+                                "height": 225,
+                                "imageImpressionType": "DOCUMENT_IMAGE"
+                            },
+                            "appflow": {
+                                "shouldOpenInExternalBrowser": "true"
+                            }
+                        }
+                    ]
+                },
+                "settings": {
+                    "flagPublisherZappingFeature": true,
+                    "MaxAnimatedGifs": 1,
+                    "excludeSameSource": true,
+                    "isLimitedRecommend": false,
+                    "recMode": "sdk_sfd_1_column",
+                    "apv": true,
+                    "listingsViewability": true,
+                    "sdk_sf_shadow_color": "#ffa500",
+                    "ImpressionPixelsSupported": "false",
+                    "globalWidgetStatistics": true,
+                    "ImpressionTrackersSupported": "false",
+                    "title_similarity.return_rejected_ads_when_no_fill": true,
+                    "com.outbrain.paid.recentAdvertisersConstraint.numO": 3,
+                    "InstallationType": "mobile-app-sdk"
+                },
+                "viewability_actions": {
+                    "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=2e0850a4bb0aed9b3c8f8c61e7260047&pvId=8c6951b3bd7296eaa5340dad3c4b4743&sid=5291479&pid=4737&idx=1&wId=1144&pad=1&org=0&tm=0&eT=0",
+                    "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=2e0850a4bb0aed9b3c8f8c61e7260047&pvId=8c6951b3bd7296eaa5340dad3c4b4743&sid=5291479&pid=4737&idx=1&wId=1144&pad=1&org=0&tm=0&eT=3"
+                }
+            }
+        },
+        {
+            "cardType": "widget",
+            "response": {
+                "exec_time": 47,
+                "timestamp": 1602416890546,
+                "status": {
+                    "id": 0,
+                    "content": "Request succeeded"
+                },
+                "request": {
+                    "lang": "en",
+                    "idx": "2",
+                    "lastIdx": "0",
+                    "lastCardIdx": "0",
+                    "did": "2715921295",
+                    "pid": "4737",
+                    "lsd": "98a3b045-4289-4513-accf-08105f8b4cf6",
+                    "enu": "bYAyW2LPh_WDsSvjohAUT9ciicj-eKRxhZHEv5gcBb-8x_9v8vB9DilKdZZMJNdR",
+                    "api_user_id": "98a3b045-4289-4513-accf-08105f8b4cf6",
+                    "t": "OGM2OTUxYjNiZDcyOTZlYWE1MzQwZGFkM2M0YjQ3NDM=",
+                    "pvId": "8c6951b3bd7296eaa5340dad3c4b4743",
+                    "pad": "0",
+                    "org": "2",
+                    "abTestVal": "no_abtest",
+                    "widgetJsId": "SDK_SFD_2",
+                    "readerPlatform": "desktop",
+                    "isHttps": "true",
+                    "rtbEnabled": "true",
+                    "rtbTest": "false",
+                    "rtbBidTestMode": "false",
+                    "rtbTestRecsNum": "0",
+                    "amplifyEnabled": "true",
+                    "fid": "1117",
+                    "gdpr": "0",
+                    "fCard": "2",
+                    "feedIdx": "0",
+                    "feedVersion": "1",
+                    "pcer": "p=67UZhE3rUB6pGwD6_UJYwUg4rNUfg2Is9qyY9frkB9c&c=39ef8217&v=3",
+                    "sid": 5291479,
+                    "wnid": 1145,
+                    "req_id": "503f180e7aed82cd0e4e455cd4750d86",
+                    "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+                    "vid": 0
+                },
+                "documents": {
+                    "total_count": 2,
+                    "count": 2,
+                    "doc": [
+                        {
+                            "on-viewed": [
+                                "https://log.outbrainimg.com/loggerServices/log-viewability?requestId=503f180e7aed82cd0e4e455cd4750d86&position=0"
+                            ],
+                            "source_name": "Sky Sports",
+                            "same_source": "false",
+                            "source_display_name": "Sky Sports",
+                            "explain": "reasonType=DEFAULT, , , isClickable=false, reasonCtaText=, reasonText=suggested for you",
+                            "pub_id": "2256",
+                            "source_id": "5449284",
+                            "publish_date": "1969-12-31 19:00",
+                            "orig_url": "https://www.skysports.com/football/news/11730/6841049/black-out-scare-for-latics",
+                            "desc": "Oldham defender Paul Black gave manager Paul Dickov an injury scare during Monday's goalless draw with Tranmere.",
+                            "rec-cats": [
+                                1912
+                            ],
+                            "ads_type": 2,
+                            "rec_en_did": "CBE4eZegETqdkdLj0VYVXQ",
+                            "url": "https://traffic.outbrain.com/network/redir?p=CAeW-caC4q2qh6iuX9rG-yOJqwvPXCg7BHgWZ-BrmHl9gPP4hpi0Cs4ALTLVLdFbcJLH27kQKS7rsQprwY5ce-2h74qalr2DxLCX6hZRiAC6pmWlYSHUgkkrHyVKc4BY8Ww2NsjjISYREyr5BAwJWziTX4xxr9gEst6aA8AWVvYYt5S6ifLOlr8rer6gwUZiZ-EzrwPDK_yg4a5uCNSaFcSTLisVUxmntaIbSPnyc9TzoRgOqYkVgLcOr2IQb97-rW-4FTW_SsNW2CDCc2LJ0nSGPwxfp9ZhAjU2TaULMf1zCnxbD0f7eYyXp93VUkXO8TY-vBmC3P9IWQNEEMEcrB7ScV4O7PrEkr_WNSNn6M9vQGbJ8T-xkwdHyfFK-ZX3rS7khD302fxNElM8wyTxc86Ujeb3zljnQ87Lsu4GsWdcJFhNgng7gitvlfyfsIcVnOQ1RpJgIo3LA8v2iYgqKRmy-zszcnT-1vhmmvyjJyTv2vvsHhU3z2d8QSYt5uM_r5ZezF_8itgbenDrkrTBHNZJKyWX-6kHcscMs-xHz7KtAh_8-RU1JULa6o7sBSQLYoSB2UUcxhTIb0hoYLRgKNgkHJOZ2CCy2U3wZ1cUN4dwzgBtK1ghMUwiNZi2HQoVhQAZwCLWfbVCrYmLF_IjJDjPvLB2AckDacsV9kkoSdUEXCmmcL6Tz3lNnYzC_7tG-jDxF-fFlHhrZaiHX-Mg1_gxeh2Vy5Iz2R--uCH5H4XFeTxO4P4vmzSKFe58b1eACCH1JpEomsC8czmBT3wC3dPcdM6zOva5CjaY-dPFFhJLUtjCs88N-dHXlIti_ijl416SOF6BGnSw-6kU_Sd2_8wuDxPzGqaJKADWcqCxLvM&c=839cfcd&v=3",
+                            "content": "Black-out scare for Latics",
+                            "pos": "0",
+                            "ttid": 4,
+                            "rec-iab-cats": [
+                                1700
+                            ],
+                            "thumbnail": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImI5ZTA4MGJmODUzMWVkMDZjYzg4YzMzMTZkZTI0OTVmMDVlOTI2ZWFiMjFhYzZiZGJlOWI3NmFhNmI2MTc1YWYiLCJ3IjozMDAsImgiOjIyMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp",
+                                "width": 300,
+                                "height": 220,
+                                "imageImpressionType": "DOCUMENT_IMAGE"
+                            },
+                            "logo": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjA0MGRiODk2NDgyMWRlNzgxODZiZTRkNzZjMGFiNzA2MGM5YTNlMzZjOTY4YmRlZTUxMjVhZjEwMWU1YzNjY2YiLCJ3Ijo0MywiaCI6MTAsImQiOjIuMCwiY3MiOjAsImYiOjJ9.png",
+                                "width": "43",
+                                "height": "10"
+                            },
+                            "reason": {
+                                "text": "suggested for you",
+                                "type": "0",
+                                "clickable": "false"
+                            }
+                        },
+                        {
+                            "on-viewed": [
+                                "https://log.outbrainimg.com/loggerServices/log-viewability?requestId=503f180e7aed82cd0e4e455cd4750d86&position=1"
+                            ],
+                            "source_name": "Sky Sports",
+                            "same_source": "false",
+                            "source_display_name": "Sky Sports",
+                            "explain": "reasonType=DEFAULT, , , isClickable=false, reasonCtaText=, reasonText=suggested for you",
+                            "pub_id": "2256",
+                            "source_id": "5449284",
+                            "publish_date": "1969-12-31 19:00",
+                            "orig_url": "https://www.skysports.com/football/news/3396144/alves-delight-at-goals",
+                            "desc": "Middlesbrough star Afonso Alves was delighted with his double salvo against Manchester United.",
+                            "rec-cats": [
+                                1912
+                            ],
+                            "ads_type": 2,
+                            "rec_en_did": "dKMXg9AJqvxGVefxSmYf_Q",
+                            "url": "https://traffic.outbrain.com/network/redir?p=FHgyfwKxRsXyCs0FI-FW90hO9ba6m03oT1nfWxlUNN5Fi4t-X1Aw7eyI1ebLaiL5GcX8CM1lBVhq7MFIGh7LnEjGC_fzRSpSSDuPdwBBNleEErqfBtDrDtikrKc1y7ooo8pGRBRqGl-ZDxyw4d5E7rhmAPsFUMqhBfNaK4dwGXCrohmfT206gG-KOUQiAzPT2FxJgusGNwOUy39rmlw6W89RXBRtmu7D9PtBqs5ZOq5KNXse3UfbeGB89neMTdqQrsG7OXWzTqghSq7yVNxDJjtjrJcQqd-OZ8DIN2fTYl9grLPs3cZWaM9wqq9eOTlc2MlPkz94LVP8wl3UHs64CIHW54nhDvlYRmcchcBH3fxRBnkDZ3JjwTa3HDBKRbKQey5IGoLa6Ne2JLRm8IeVTeaEy_coRGBwFSVFRHRQxRjkhbcZMKGjUSSScklyOeT38QatTUml40i1VttrdLqbTqudo7plFict-nWRAnMAQukHIc5uazz0ZFtAdrSBo55jSOwpiH-uaV_x7sC5R_qCRiHUp5ANtmkOznUQPuxs0hQV_t8Y53YI8vXLIYh8uGQZP2b95LkYqvSGacSdMDERy_ZkFJfZgqkVSdPamuiH0vrtdJdcOulbN2v-0MnkXCsfjRA0iBquuy8xeBxC0nXMN0c4g6QiE3ye4gQ8FQxrnNN4QJxoAMC4XCsRIuJDHbpF5MYnqtS3Bxisk1UvF3lBlPj4lmeOORPc2DOQh9_ACfnLHGdpIUmguH0ucbCQcIkDcghscXiIPX1jLfqCGSpdOWCvjLIEtTjf0YbLo-HNr1JntP_aySBaS1SO1OnyxL4ct-50sU0A9IO1Hku2oV76QJmpd_tJvRk4XFdd_RSEtOU&c=59bd984a&v=3",
+                            "author": "By Graeme Bailey",
+                            "content": "Alves delight at goals",
+                            "pos": "1",
+                            "ttid": 4,
+                            "rec-iab-cats": [
+                                1700
+                            ],
+                            "thumbnail": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6ImU2ZDdiZTIyZmI0MzRlY2FhOTY0NDdmMGVmNmJkZjViNzcyOTYyNGRkMWU5NmEyN2U0MTkzNzU1ZjZlNzhiMmMiLCJ3IjozMDAsImgiOjIyMCwiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp",
+                                "width": 300,
+                                "height": 220,
+                                "imageImpressionType": "DOCUMENT_IMAGE"
+                            },
+                            "logo": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjA0MGRiODk2NDgyMWRlNzgxODZiZTRkNzZjMGFiNzA2MGM5YTNlMzZjOTY4YmRlZTUxMjVhZjEwMWU1YzNjY2YiLCJ3Ijo0MywiaCI6MTAsImQiOjIuMCwiY3MiOjAsImYiOjJ9.png",
+                                "width": "43",
+                                "height": "10"
+                            },
+                            "reason": {
+                                "text": "suggested for you",
+                                "type": "0",
+                                "clickable": "false"
+                            }
+                        }
+                    ]
+                },
+                "settings": {
+                    "flagPublisherZappingFeature": true,
+                    "excludeSameSource": true,
+                    "isLimitedRecommend": false,
+                    "recMode": "sdk_sfd_thumbnails",
+                    "globalWidgetStatistics": true,
+                    "apv": false,
+                    "listingsViewability": true,
+                    "ImpressionTrackersSupported": "false",
+                    "sdk_sf_shadow_color": "#ffa500",
+                    "com.outbrain.paid.recentAdvertisersConstraint.numO": 3,
+                    "InstallationType": "mobile-app-sdk",
+                    "ImpressionPixelsSupported": "false"
+                },
+                "viewability_actions": {
+                    "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=503f180e7aed82cd0e4e455cd4750d86&pvId=8c6951b3bd7296eaa5340dad3c4b4743&sid=5291479&pid=4737&idx=2&wId=1145&pad=0&org=2&tm=0&eT=0",
+                    "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=503f180e7aed82cd0e4e455cd4750d86&pvId=8c6951b3bd7296eaa5340dad3c4b4743&sid=5291479&pid=4737&idx=2&wId=1145&pad=0&org=2&tm=0&eT=3"
+                }
+            }
+        },
+        {
+            "cardType": "widget",
+            "response": {
+                "exec_time": 101,
+                "timestamp": 1602416890608,
+                "status": {
+                    "id": 0,
+                    "content": "Request succeeded"
+                },
+                "request": {
+                    "lang": "en",
+                    "idx": "3",
+                    "lastIdx": "0",
+                    "lastCardIdx": "0",
+                    "did": "2715921295",
+                    "pid": "4737",
+                    "lsd": "98a3b045-4289-4513-accf-08105f8b4cf6",
+                    "enu": "bYAyW2LPh_WDsSvjohAUT9ciicj-eKRxhZHEv5gcBb-8x_9v8vB9DilKdZZMJNdR",
+                    "api_user_id": "98a3b045-4289-4513-accf-08105f8b4cf6",
+                    "t": "OGM2OTUxYjNiZDcyOTZlYWE1MzQwZGFkM2M0YjQ3NDM=",
+                    "pvId": "8c6951b3bd7296eaa5340dad3c4b4743",
+                    "pad": "1",
+                    "org": "0",
+                    "abTestVal": "no_abtest",
+                    "obRecsAbtestAndVars": "832-2554,834-2566,596-1902,838-2586,822-2522,811-2475,699-2320",
+                    "widgetJsId": "SDK_SFD_3",
+                    "readerPlatform": "desktop",
+                    "isHttps": "true",
+                    "rtbEnabled": "true",
+                    "rtbTest": "false",
+                    "rtbBidTestMode": "false",
+                    "rtbTestRecsNum": "0",
+                    "amplifyEnabled": "true",
+                    "fid": "1117",
+                    "gdpr": "0",
+                    "fCard": "3",
+                    "feedIdx": "0",
+                    "feedVersion": "1",
+                    "pcer": "p=5ZnetQt1KNC_ntdxF6k2pECn47Uqfj3syyRkDbOZwrU&c=1075e84c&v=3",
+                    "sid": 5291479,
+                    "wnid": 1146,
+                    "req_id": "10477ba1c8dcfd4acaa1f706e26ef628",
+                    "gl": "gitdl9OoE0zDZV3Fi9iNFA",
+                    "vid": 0
+                },
+                "documents": {
+                    "total_count": 1,
+                    "count": 1,
+                    "doc": [
+                        {
+                            "on-viewed": [
+                                "https://log.outbrainimg.com/loggerServices/log-viewability?requestId=10477ba1c8dcfd4acaa1f706e26ef628&position=0"
+                            ],
+                            "source_name": "pelosiforcongress.org",
+                            "same_source": "false",
+                            "source_display_name": "pelosiforcongress.org",
+                            "pc_id": 179383652,
+                            "adv_name": "Nancy Pelosi (Sapphire Strategies)",
+                            "publish_date": "2020-07-15 00:00",
+                            "orig_url": "https://secure.actblue.com/donate/npoutbrain?refcode=sapphire_ads_202007_outbrain_d2d_mcconnell",
+                            "rec-cats": [
+                                1708
+                            ],
+                            "ads_type": 1,
+                            "rec_en_did": "vbDFwPXXb1O_LrqTYl1jPQ",
+                            "url": "https://paid.outbrain.com/network/redir?p=pwPfk4wB6NLLnIM7FJpmcshSLi6gemAqXr3mJ4FOFy_Q9RwXYMMgn5rPO-cb7jEzIGTHvt4LmumH1sRSSuE7ExvQb8Ws_NgIQ1Tdy0Ve24xtWpGs_iYwlTmaXMWC7BQfeQojEEoZCOJbjU_GH_NeP-OujARlQr2L93B-Ka8X6pkXxvzv7cBHmDNGOMguvK7addyt4O8L9pq0fD4EkchbEoGQzhr7M3ayku81rd0Aq62j6mFMSffV5fxoVz7WNFgidiamXSGXGSh7bKI-KUyF7JyoX6WfpBbkkspNgSfrRPup_N22Sk2EhnjAR5BLtPVJLByyYWMsjJncyRufrMC8fS-ZrEgZsx9LhLI1rZzQ5kn6EzSrbi8kUOKb9uJvgPdbd_Me5Kqt5C2WES1jF2HQqEVMDUTuXLr5OBfpAtsFdoKlR4fyiZGpJqB5--oNLpeaJvyN-XWRxHAkX80OQyJwMpCv8uutgdYUD_ol0VK7AUUg_82iL9sQ13zutSuv4f6F8NnblA6IJyNPzAoB6MGVN3D0Obq5kdmh2-ED134HzR6Je9tdrN-QvLLOyxkhs0PKkKn8VCWTw2ZuKPgTMqO0kc3zD4PjkbG5T232ll3lC2gGQLZFbbhZ0zlIkbycYwINCtjGFWNb0QRnMeHZhQ-EpVDMUr-Nsd8JqpBU3zMfqACgfb9_31iEwvGwk8s4H-12UZD5xRk6BRrOv3cNw-yHKXzqdY-xhB57hdZGKt9S9i7G85I5thabk5yeyrY0dWX10Q_tNBO8wl8i2G0B_tCGZxb96vgwQfomgbQlLOUayenOcDDZUSsljVsNCifHPYp1cETC90P47ANvm7cGLhbn7vviYZEqnpnJCvZTKTe81Rwv1r54oU9HPiihh5AssXL0UQUxlFeugm06QiojI88tICh6ensbZYG_X5w7Twl2RqvQHwpv0vKmHNhvvzfd573tdIlArz_u5KWOYgfP6oq2cjz1Bh-qP50-ATkSV8fozJrA10BJBbuFa3FfrWEXUOcg2UKtJk50B6G4FHScSX2bSNgQHUcfg_Zah3ry2wWiNa4fo0QPbqG2BHng6gdTeP8QbmAP3nQ1-9iS57wowxEvqknOHFfWH3LGJBaEPA-uCyuMRvvr6vbll8qpbp0dxMSxrsW5yxWITm5UzMWU2oVSckZmoevvfuuX4i2TKPuAnAcOmfOK3gWn8qTsnCb4aq7RiG-I2sNrnfYkDhkd2CYqDZl-XWYeuSvlKukg0NdTxJ_wwCYWz2-D9oR3yfVvzjmC&c=5b2b1f2c&v=3",
+                            "author": "",
+                            "content": "New poll: Mitch McConnell is trailing Amy McGrath. Chip in to defeat him.",
+                            "pc_cmp_id": 1013288095,
+                            "pos": "0",
+                            "ttid": 3,
+                            "advId": "50618251",
+                            "creativeFormat": "Standard",
+                            "thumbnail": {
+                                "url": "https://images.outbrainimg.com/transform/v3/eyJpdSI6IjgzYzI0Njk5MTc1ZjI4YzljOTIzNjczMGNhZDNmNDY0NDVkMGRiNGIzZjkwMmI1ZWQ0ZDNjOTM5OTg5ZGFjYTIiLCJ3Ijo2MDAsImgiOjMzNywiZCI6MS41LCJjcyI6MCwiZiI6NH0.webp",
+                                "width": 600,
+                                "height": 337,
+                                "imageImpressionType": "DOCUMENT_IMAGE"
+                            },
+                            "appflow": {
+                                "shouldOpenInExternalBrowser": "true"
+                            }
+                        }
+                    ]
+                },
+                "settings": {
+                    "flagPublisherZappingFeature": true,
+                    "excludeSameSource": true,
+                    "isLimitedRecommend": false,
+                    "recMode": "sdk_sfd_1_column",
+                    "apv": true,
+                    "listingsViewability": true,
+                    "nanoOrganicsHeader": "Sponsored Links",
+                    "sdk_sf_shadow_color": "#ffa500",
+                    "ImpressionPixelsSupported": "false",
+                    "globalWidgetStatistics": true,
+                    "ImpressionTrackersSupported": "false",
+                    "com.outbrain.paid.recentAdvertisersConstraint.numO": 3,
+                    "InstallationType": "mobile-app-sdk"
+                },
+                "viewability_actions": {
+                    "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=10477ba1c8dcfd4acaa1f706e26ef628&pvId=8c6951b3bd7296eaa5340dad3c4b4743&sid=5291479&pid=4737&idx=3&wId=1146&pad=1&org=0&tm=0&eT=0",
+                    "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=10477ba1c8dcfd4acaa1f706e26ef628&pvId=8c6951b3bd7296eaa5340dad3c4b4743&sid=5291479&pid=4737&idx=3&wId=1146&pad=1&org=0&tm=0&eT=3"
+                }
+            }
+        }
+    ],
+    "feedIdx": "0",
+    "hasMore": "true"
+}

@@ -1,0 +1,52 @@
+{
+  "response": {
+    "exec_time": 50,
+    "timestamp": 1497525415889,
+    "status": {
+      "id": 0,
+      "content": "Request succeeded"
+    },
+    "request": {
+      "lang": "en",
+      "idx": "0",
+      "did": "720627693",
+      "pid": "4737",
+      "lsd": "10e0fb73-2e3e-41be-92c0-f633f9383d46",
+      "enu": "iW6-wp8JaU6TYdyQsAUlhCtZUTUGyHGl0dhNub-z8z2w-Msl3b0uqGI8AHT9KNtH",
+      "api_user_id": "D19A3A3F-8E1F-4E3D-B2BB-D61A75733DEA",
+      "t": "MV85ZGQyOGUwY2M1MTVmNWMyMDRkMTdkMDg3ZTBhMGVlOV8w",
+      "pvId": "9dd28e0cc515f5c204d17d087e0a0ee9",
+      "pad": "5",
+      "org": "1",
+      "abTestVal": "10364-51695",
+      "obRecsAbtestAndVars": "373-1079,426-1320,378-1101,394-1160,396-1162",
+      "widgetJsId": "APP_1",
+      "readerPlatform": "desktop",
+      "sid": 5291479,
+      "wnid": 140,
+      "req_id": "9dd28e0cc515f5c204d17d087e0a0ee9",
+      "gl": "Lmh4LbF5Bj8uwm_0yxXY3g",
+      "ref": 0,
+      "oo": false
+    },
+    "documents": {
+      "total_count": 0,
+      "count": 0,
+      "doc": []
+    },
+    "settings": {
+      "flagPublisherZappingFeature": true,
+      "defaultRecNumber": 6,
+      "cwvReportingEnable": true,
+      "recMode": "odb_strip",
+      "globalWidgetStatistics": true,
+      "apv": true,
+      "cwvReportingThreshold": 70,
+      "InstallationType": "other"
+    },
+    "viewability_actions": {
+        "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=a7a219ee9e20fc846946341d3ebd6d75&pvId=67a059883e4d0384383343623b5155cd&sid=5291479&pid=4737&idx=3&wId=1146&pad=1&org=0&tm=0&eT=0",
+        "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=a7a219ee9e20fc846946341d3ebd6d75&pvId=67a059883e4d0384383343623b5155cd&sid=5291479&pid=4737&idx=3&wId=1146&pad=1&org=0&tm=0&eT=3"
+    }
+  }
+}
