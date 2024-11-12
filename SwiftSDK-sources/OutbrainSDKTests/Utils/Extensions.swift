@@ -32,14 +32,14 @@ extension Data {
 extension HTTPURLResponse {
     
     static func valid() -> HTTPURLResponse {
-        return HTTPURLResponse(url: URL("https://mv.outbrain.com")!,
+        return HTTPURLResponse(url: URL(string: "https://mv.outbrain.com")!,
                                statusCode: 200,
                                httpVersion: nil,
                                headerFields: nil)!
     }
     
     static func invalid(code: Int) -> HTTPURLResponse {
-        return HTTPURLResponse(url: URL("https://mv.outbrain.com")!,
+        return HTTPURLResponse(url: URL(string: "https://mv.outbrain.com")!,
                                statusCode: code,
                                httpVersion: nil,
                                headerFields: nil)!
