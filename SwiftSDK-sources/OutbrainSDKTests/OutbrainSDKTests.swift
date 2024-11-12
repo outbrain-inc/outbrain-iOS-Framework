@@ -51,16 +51,17 @@ final class OutbrainSDKTests: XCTestCase {
     }
 
     func testFetchRecommendationsWithDelegate_Success() {
+        URLProtocol.registerClass(MockUrlProtocol.self)
+        MockUrlProtocol.mockResponses = ["mv.outbrain.com": (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)]
+        
         let request = OBRequest(url: "https://example.com", widgetID: "AR_1")
         let expectation = XCTestExpectation(description: "Fetch recommendations completion")
         let delegate = MockResponseDelegate(expectation: expectation)
 
         Outbrain.isInitialized = true
-        
         Outbrain.fetchRecommendations(for: request, with: delegate)
 
         wait(for: [expectation], timeout: 5.0)
-        XCTAssertTrue(delegate.outbrainDidReceiveResponseCalled)
         XCTAssertNotNil(delegate.response)
     }
     
@@ -94,7 +95,7 @@ final class OutbrainSDKTests: XCTestCase {
 
 
 class MockResponseDelegate: OBResponseDelegate {
-    var outbrainDidReceiveResponseCalled = false
+    
     var response: OBRecommendationResponse?
     var error: OBError?
     
@@ -105,19 +106,16 @@ class MockResponseDelegate: OBResponseDelegate {
     }
 
     func outbrainDidReceiveResponse(withSuccess response: OBRecommendationResponse) {
-        outbrainDidReceiveResponseCalled = true
         self.response = response
         expectation.fulfill()
     }
     
     func outbrainFailedToReceiveResposne(withError error: OBError?) {
-        outbrainDidReceiveResponseCalled = true
         self.error = error
         expectation.fulfill()
     }
 
     func reset() {
-        outbrainDidReceiveResponseCalled = false
         response = nil
     }
 }

@@ -114,6 +114,7 @@ class OBRequestHandlerTests: XCTestCase {
         XCTAssertNil(mockDelegate?.response)
         XCTAssertNotNil(mockDelegate?.error)
         XCTAssertTrue(mockDelegate?.error?.code == .network)
+        sleep(1)
         XCTAssertTrue(MockUrlProtocol.calledHosts.contains("widgetmonitor.outbrain.com"))
     }
     
@@ -257,52 +258,6 @@ class OBRequestHandlerTests: XCTestCase {
 }
 
 
-
-class MockUrlProtocol: URLProtocol {
-    
-    static var mockResponses: [String: (Data?, URLResponse?, Error?)] = [:]
-    static var calledHosts: [String] = []
-    
-    
-    override class func canInit(with request: URLRequest) -> Bool {
-        return true
-    }
-    
-    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
-        return request
-    }
-    
-    override func startLoading() {
-        guard let url = request.url, let host = url.host else {
-            return
-        }
-        
-        
-        MockUrlProtocol.calledHosts.append(host)
-        
-        // Retrieve the mock response
-        if let (data, response, error) = MockUrlProtocol.mockResponses[host] {
-            if let error = error {
-                client?.urlProtocol(self, didFailWithError: error)
-            } else {
-                if let response = response {
-                    client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-                }
-                if let data = data {
-                    client?.urlProtocol(self, didLoad: data)
-                }
-            }
-        }
-        client?.urlProtocolDidFinishLoading(self)
-    }
-    
-    
-    override func stopLoading() {
-        
-    }
-}
-
-
 class MockDelegate: OBResponseDelegate {
     
     let expectation: XCTestExpectation
@@ -325,43 +280,4 @@ class MockDelegate: OBResponseDelegate {
         self.expectation.fulfill()
     }
     
-}
-
-
-extension Data {
-    
-    static func loadJSON(from filename: String) -> Data? {
-        
-        guard let url = Bundle(for: OBRequestHandlerTests.self).url(forResource: filename, withExtension: "json") else {
-            print("Failed to locate JSON file: \(filename).json")
-            return nil
-        }
-        
-        do {
-            // Load the data from the file
-            let data = try Data(contentsOf: url)
-            return data
-        } catch {
-            print("Failed to load JSON data: \(error.localizedDescription)")
-            return nil
-        }
-    }
-}
-
-
-extension HTTPURLResponse {
-    
-    static func valid() -> HTTPURLResponse {
-        return HTTPURLResponse(url: URL("https://mv.outbrain.com")!,
-                        statusCode: 200,
-                        httpVersion: nil,
-                        headerFields: nil)!
-    }
-    
-    static func invalid(code: Int) -> HTTPURLResponse {
-        return HTTPURLResponse(url: URL("https://mv.outbrain.com")!,
-                               statusCode: code,
-                               httpVersion: nil,
-                               headerFields: nil)!
-    }
 }

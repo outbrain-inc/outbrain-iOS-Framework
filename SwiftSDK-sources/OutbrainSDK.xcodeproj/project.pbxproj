@@ -41,6 +41,8 @@
 		B113CC502C5A236D00BECDFA /* PlatformUrlType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */; };
 		B113CC522C5A2A1B00BECDFA /* OBLogLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */; };
 		B14770DD2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */; };
+		B166F9D52CE3A9E70083D6EB /* MockUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166F9D42CE3A9E70083D6EB /* MockUrlProtocol.swift */; };
+		B166F9D72CE3AACD0083D6EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166F9D62CE3AACB0083D6EB /* Extensions.swift */; };
 		B1AF3CA22CE2277B005AAA94 /* OBRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */; };
 		B1AF3CA62CE22821005AAA94 /* OBPlatformRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA52CE22819005AAA94 /* OBPlatformRequestUrlBuilder.swift */; };
 		B1AF3CA82CE22B56005AAA94 /* OBRequestUrlBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA72CE22B55005AAA94 /* OBRequestUrlBuilderProtocol.swift */; };
@@ -126,6 +128,8 @@
 		B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformUrlType.swift; sourceTree = "<group>"; };
 		B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBLogLevels.swift; sourceTree = "<group>"; };
 		B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewabilityViewModifier.swift; sourceTree = "<group>"; };
+		B166F9D42CE3A9E70083D6EB /* MockUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlProtocol.swift; sourceTree = "<group>"; };
+		B166F9D62CE3AACB0083D6EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilder.swift; sourceTree = "<group>"; };
 		B1AF3CA52CE22819005AAA94 /* OBPlatformRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformRequestUrlBuilder.swift; sourceTree = "<group>"; };
 		B1AF3CA72CE22B55005AAA94 /* OBRequestUrlBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilderProtocol.swift; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 		5E3FD05C2A5ED53E0011C78B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B166F9D62CE3AACB0083D6EB /* Extensions.swift */,
+				B166F9D42CE3A9E70083D6EB /* MockUrlProtocol.swift */,
 				5E3FD05D2A5ED5790011C78B /* OBLoggerTests.swift */,
 				CAEB973C2B7E69E300DD1754 /* GPPUtilsTests.swift */,
 			);
@@ -587,10 +593,12 @@
 				B1AF3CAA2CE22CFC005AAA94 /* OBRequestHandlerTests.swift in Sources */,
 				CAEB973D2B7E69E300DD1754 /* GPPUtilsTests.swift in Sources */,
 				CA2646B52AADD0B1005287CB /* BridgeUrlBuilder.swift in Sources */,
+				B166F9D52CE3A9E70083D6EB /* MockUrlProtocol.swift in Sources */,
 				5EEF0ABF2A55481D000E65A1 /* OBRequestTests.swift in Sources */,
 				5EEF0AC72A554A27000E65A1 /* OBQueueManagerTests.swift in Sources */,
 				5EEF0AC12A5548DB000E65A1 /* OBPlatformRequestTests.swift in Sources */,
 				5E3FD0612A5ED8460011C78B /* OBViewTests.swift in Sources */,
+				B166F9D72CE3AACD0083D6EB /* Extensions.swift in Sources */,
 				E6E4B3C82A2381A100FE44E3 /* OutbrainSDKTests.swift in Sources */,
 				CA2646B32AADB846005287CB /* SFWidgetMessageHandler.swift in Sources */,
 				CA2646CC2AAEECD5005287CB /* SFWidget.swift in Sources */,
