@@ -57,6 +57,7 @@
 		B1AF3CDF2CE22DEE005AAA94 /* obrecommendation_response.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CAF2CE22DEE005AAA94 /* obrecommendation_response.json */; };
 		B1AF3CE12CE399C3005AAA94 /* odb_response_no_recs.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CE02CE399C3005AAA94 /* odb_response_no_recs.json */; };
 		B1AF3CE32CE39A70005AAA94 /* odb_response_parsing_error.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CE22CE39A70005AAA94 /* odb_response_parsing_error.json */; };
+		B1BEF4FA2CE496610013622E /* MockResponseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BEF4F92CE496600013622E /* MockResponseDelegate.swift */; };
 		B1FEE6F72CDCD96300F851C9 /* OBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEE6F42CDCD96300F851C9 /* OBRequest.swift */; };
 		B1FEE6F82CDCD96300F851C9 /* OBRequestURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEE6F52CDCD96300F851C9 /* OBRequestURLProtocol.swift */; };
 		B1FEE6F92CDCD96300F851C9 /* OBPlatformRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEE6F32CDCD96300F851C9 /* OBPlatformRequest.swift */; };
@@ -144,6 +145,7 @@
 		B1AF3CC52CE22DEE005AAA94 /* viewability_actions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = viewability_actions.json; sourceTree = "<group>"; };
 		B1AF3CE02CE399C3005AAA94 /* odb_response_no_recs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = odb_response_no_recs.json; sourceTree = "<group>"; };
 		B1AF3CE22CE39A70005AAA94 /* odb_response_parsing_error.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = odb_response_parsing_error.json; sourceTree = "<group>"; };
+		B1BEF4F92CE496600013622E /* MockResponseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponseDelegate.swift; sourceTree = "<group>"; };
 		B1FEE6F32CDCD96300F851C9 /* OBPlatformRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformRequest.swift; sourceTree = "<group>"; };
 		B1FEE6F42CDCD96300F851C9 /* OBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequest.swift; sourceTree = "<group>"; };
 		B1FEE6F52CDCD96300F851C9 /* OBRequestURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestURLProtocol.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 		5EEF0AB92A554658000E65A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B1BEF4F92CE496600013622E /* MockResponseDelegate.swift */,
 				5E91D15D2A55563000CD9AF5 /* UIViewExtensionTests.swift */,
 				5EEF0ABA2A55466D000E65A1 /* OBRecommendationTests.swift */,
 				5EEF0ABE2A55481D000E65A1 /* OBRequestTests.swift */,
@@ -594,6 +597,7 @@
 				CAEB973D2B7E69E300DD1754 /* GPPUtilsTests.swift in Sources */,
 				CA2646B52AADD0B1005287CB /* BridgeUrlBuilder.swift in Sources */,
 				B166F9D52CE3A9E70083D6EB /* MockUrlProtocol.swift in Sources */,
+				B1BEF4FA2CE496610013622E /* MockResponseDelegate.swift in Sources */,
 				5EEF0ABF2A55481D000E65A1 /* OBRequestTests.swift in Sources */,
 				5EEF0AC72A554A27000E65A1 /* OBQueueManagerTests.swift in Sources */,
 				5EEF0AC12A5548DB000E65A1 /* OBPlatformRequestTests.swift in Sources */,

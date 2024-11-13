@@ -117,30 +117,3 @@ final class OutbrainSDKTests: XCTestCase {
         XCTAssertTrue(((url?.absoluteString.contains("https://www.outbrain.com/what-is/")) != nil))
     }
 }
-
-
-class MockResponseDelegate: OBResponseDelegate {
-    
-    var response: OBRecommendationResponse?
-    var error: OBError?
-    
-    let expectation: XCTestExpectation
-
-    init(expectation: XCTestExpectation) {
-        self.expectation = expectation
-    }
-
-    func outbrainDidReceiveResponse(withSuccess response: OBRecommendationResponse) {
-        self.response = response
-        expectation.fulfill()
-    }
-    
-    func outbrainFailedToReceiveResposne(withError error: OBError?) {
-        self.error = error
-        expectation.fulfill()
-    }
-
-    func reset() {
-        response = nil
-    }
-}

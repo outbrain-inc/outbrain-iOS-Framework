@@ -13,7 +13,7 @@ class OBRequestHandlerTests: XCTestCase {
     var sut: OBRequestHandler? = nil
     var obRequest: OBRequest? = nil
     var obResponseDelegate: OBResponseDelegate? = nil
-    var mockDelegate: MockDelegate? = nil
+    var mockDelegate: MockResponseDelegate? = nil
 
     
     override func setUp() {
@@ -73,6 +73,7 @@ class OBRequestHandlerTests: XCTestCase {
         XCTAssertNotNil(testResponse)
         XCTAssertNotNil(testResponse?.error)
         XCTAssertEqual(testResponse!.error!.code, .network)
+        sleep(2)
         XCTAssertTrue(MockUrlProtocol.calledHosts.contains("widgetmonitor.outbrain.com"))
     }
     
@@ -82,7 +83,7 @@ class OBRequestHandlerTests: XCTestCase {
         MockUrlProtocol.mockResponses = ["mv.outbrain.com": (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)]
         sut = OBRequestHandler(OBRequest(url: "http://mobile-demo.outbrain.com", widgetID: "SDK_1"))
         let expectation = XCTestExpectation(description: "Fetch recs")
-        mockDelegate = MockDelegate(expectation: expectation)
+        mockDelegate = MockResponseDelegate(expectation: expectation)
         
         
         // When
@@ -102,7 +103,7 @@ class OBRequestHandlerTests: XCTestCase {
         MockUrlProtocol.mockResponses = ["mv.outbrain.com": (nil, URLResponse(), NSError(domain: "MockErrorDomain", code: 500, userInfo: [NSLocalizedDescriptionKey: "Mock server error"]))]
         sut = OBRequestHandler(OBRequest(url: "http://mobile-demo.outbrain.com", widgetID: "SDK_1"))
         let expectation = XCTestExpectation(description: "Fetch recs")
-        mockDelegate = MockDelegate(expectation: expectation)
+        mockDelegate = MockResponseDelegate(expectation: expectation)
         
         
         // When
@@ -272,29 +273,4 @@ class OBRequestHandlerTests: XCTestCase {
         XCTAssertFalse(testResponse!.recommendations.isEmpty)
         XCTAssertTrue(MockUrlProtocol.calledHosts.contains("log.outbrainimg.com"))
     }
-}
-
-
-class MockDelegate: OBResponseDelegate {
-    
-    let expectation: XCTestExpectation
-    var response: OBRecommendationResponse?
-    var error: OBError?
-    
-    
-    init(expectation: XCTestExpectation) {
-        self.expectation = expectation
-    }
-    
-    
-    func outbrainDidReceiveResponse(withSuccess response: OBRecommendationResponse) {
-        self.response = response
-        self.expectation.fulfill()
-    }
-    
-    func outbrainFailedToReceiveResposne(withError error: OBError?) {
-        self.error = error
-        self.expectation.fulfill()
-    }
-    
 }
