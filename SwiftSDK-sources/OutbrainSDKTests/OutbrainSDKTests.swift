@@ -14,7 +14,14 @@ final class OutbrainSDKTests: XCTestCase {
         Outbrain.isInitialized = false
         Outbrain.partnerKey = nil
     }
-        
+    
+    override class func tearDown() {
+        URLProtocol.unregisterClass(MockUrlProtocol.self)
+        MockUrlProtocol.calledHosts.removeAll()
+        MockUrlProtocol.mockResponses.removeAll()
+        super.tearDown()
+    }
+    
     func testInitializeOutbrain() {
         Outbrain.initializeOutbrain(withPartnerKey: "partnerKey")
         XCTAssertTrue(Outbrain.isInitialized)
