@@ -63,6 +63,24 @@ final class OutbrainSDKTests: XCTestCase {
 
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(delegate.response)
+        XCTAssertFalse(delegate.response!.recommendations.isEmpty)
+    }
+    
+    func testFetchRecsAsync() async throws {
+        // Given
+        URLProtocol.registerClass(MockUrlProtocol.self)
+        MockUrlProtocol.mockResponses = ["mv.outbrain.com": (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)]
+        
+        
+        
+        // When
+        let response = try await Outbrain.fetchRecommendations(for: OBRequest(url: "http://mobile-demo.outbrain.com", widgetID: "SDK_1"))
+        
+        
+        //Then
+        XCTAssertNotNil(response)
+        XCTAssertFalse(response.isEmpty)
+        XCTAssertTrue(MockUrlProtocol.calledHosts.contains("log.outbrainimg.com"))
     }
     
     func testGetUrl() {

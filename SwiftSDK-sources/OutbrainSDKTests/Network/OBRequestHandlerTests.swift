@@ -233,6 +233,23 @@ class OBRequestHandlerTests: XCTestCase {
     }
     
     
+    func testFetchRecsAsync() async throws {
+        // Given
+        MockUrlProtocol.mockResponses = ["mv.outbrain.com": (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)]
+        sut = OBRequestHandler(OBRequest(url: "http://mobile-demo.outbrain.com", widgetID: "SDK_1"))
+        
+        
+        // When
+        let response = try await sut?.fetchRecsAsync()
+        
+        
+        //Then
+        XCTAssertNotNil(response)
+        XCTAssertNil(response!.error)
+        XCTAssertTrue(MockUrlProtocol.calledHosts.contains("log.outbrainimg.com"))
+    }
+    
+    
     func testPixelsFired() {
         // Given
         MockUrlProtocol.mockResponses = ["mv.outbrain.com": (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)]
