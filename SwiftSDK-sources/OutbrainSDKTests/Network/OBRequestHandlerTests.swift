@@ -247,6 +247,7 @@ class OBRequestHandlerTests: XCTestCase {
         //Then
         XCTAssertNotNil(response)
         XCTAssertNil(response!.error)
+        sleep(2)
         XCTAssertTrue(MockUrlProtocol.calledHosts.contains("log.outbrainimg.com"))
     }
     
