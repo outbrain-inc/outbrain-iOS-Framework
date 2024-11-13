@@ -26,6 +26,7 @@ class OBRequestHandlerTests: XCTestCase {
         URLProtocol.unregisterClass(MockUrlProtocol.self)
         MockUrlProtocol.calledHosts.removeAll()
         MockUrlProtocol.mockResponses.removeAll()
+        Outbrain.testMode = false
         super.tearDown()
     }
     
@@ -252,9 +253,32 @@ class OBRequestHandlerTests: XCTestCase {
     }
     
     
+    func testOptedInFetchRecs() async throws {
+        // Given
+        Outbrain.testMode = true
+        MockUrlProtocol.mockResponses = ["t-mv.outbrain.com": (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)]
+        sut = OBRequestHandler(OBRequest(url: "http://mobile-demo.outbrain.com", widgetID: "SDK_1"))
+        
+        
+        // When
+        let response = try await sut?.fetchRecsAsync()
+        
+        
+        //Then
+        XCTAssertNotNil(response)
+        XCTAssertNil(response!.error)
+        sleep(2)
+        XCTAssertFalse(MockUrlProtocol.calledHosts.contains("mv.outbrain.com"))
+        XCTAssertFalse(MockUrlProtocol.calledHosts.contains("log.outbrainimg.com"))
+        XCTAssertTrue(MockUrlProtocol.calledHosts.contains("t-mv.outbrain.com"))
+        XCTAssertTrue(MockUrlProtocol.calledHosts.contains("t-log.outbrainimg.com"))
+    }
+    
+    
     func testPixelsFired() {
         // Given
-        MockUrlProtocol.mockResponses = ["mv.outbrain.com": (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)]
+        Outbrain.testMode = false
+        MockUrlProtocol.mockResponses["mv.outbrain.com"] = (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)
         sut = OBRequestHandler(OBRequest(url: "http://mobile-demo.outbrain.com", widgetID: "SDK_1"))
         let expectation = XCTestExpectation(description: "Fetch recs callback")
         var testResponse: OBRecommendationResponse? = nil

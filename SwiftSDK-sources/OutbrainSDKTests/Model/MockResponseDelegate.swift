@@ -33,5 +33,6 @@ class MockResponseDelegate: OBResponseDelegate {
     
     func reset() {
         response = nil
+        error = nil
     }
 }

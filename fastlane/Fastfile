@@ -10,9 +10,13 @@ end
 
 lane :sdk_tests do
     run_tests(
+	build_for_testing: false,
+	prelaunch_simulator: true,
+	reset_simulator: true,
+	clean: true,
         project: "SwiftSDK-sources/OutbrainSDK.xcodeproj", 
         scheme: "OutbrainSDK", 
-        devices: ["iPhone 14 Pro Max"])
+        devices: ["iPhone 14 Pro Max (17.5)"])
 end
 
 lane :sfwebview_prod do

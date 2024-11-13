@@ -226,7 +226,7 @@ import UIKit
                 // Therefore, we can load the widget with idx > 0 immediately
                 initialLoadUrl()
             } else {
-                print("differ fetching until we'll have the \"t\" or \"bridgeParams\" ready")
+                print("deferring fetching until we'll have the \"t\" or \"bridgeParams\" ready")
             }
         } else {
             SFWidget.globalBridgeParams = nil
