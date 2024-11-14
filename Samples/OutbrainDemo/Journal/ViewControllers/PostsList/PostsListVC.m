@@ -16,7 +16,8 @@
 #import "PostsSwipeVC.h"
 #import "OBDemoDataHelper.h"
 
-#import <OutbrainSDK/OutbrainSDK.h>
+#import <OutbrainSDK/OutbrainSDK-Swift.h>
+
 @import AppTrackingTransparency;
 
 
@@ -216,7 +217,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Finally we got a valid response.  We should go insert the data into the table list
-            [__self.loadedOutbrainRecommendationResponses replaceObjectAtIndex:response.request.widgetIndex withObject:response];
+            [__self.loadedOutbrainRecommendationResponses replaceObjectAtIndex:response.request[@"widgetIndex"] withObject:response];
             [__self.postsData insertObject:response atIndex:indexPath.row];
             [__self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         });
@@ -226,6 +227,7 @@
 - (OBRequest *) prepareOutbrainBaseRequest {
     OBRequest * request;
     BOOL shouldTestPlatformBundleRequest = YES;
+    
     [Outbrain setPartnerKey: @"DEMOP1MN24J3E1MGLQ92067LH"];
     
     if (shouldTestPlatformBundleRequest) {
@@ -327,7 +329,6 @@
         Post * p = (Post *)[self.postsData firstObject];
         slideCell.recommendationResponse = res;
         slideCell.widgetDelegate = self;
-        [slideCell setOBRequest:self.indexPathToOutbrainReqDict[indexPath]];
         
         return;
     }
@@ -389,13 +390,7 @@
 #pragma mark - OBWidgetView delegate
 
 - (void)widgetView:(id<OBWidgetViewProtocol>)widgetView tappedRecommendation:(OBRecommendation *)recommendation
-{
-    
-    if ([recommendation isAppInstall]) {
-        [Outbrain openAppInstallRec:recommendation inNavController:self.navigationController];
-        return;
-    }
-    
+{    
     // First report the click to the SDK and receive the URL to open.
     NSURL * url = [Outbrain getUrl:recommendation];
     

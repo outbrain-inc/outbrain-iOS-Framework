@@ -26,12 +26,11 @@ class NavigationViewModel: ObservableObject, Identifiable {
         case readMore
         case twoWidgets
         case twoWidgetsSwiftUI
+        case organic(String?)
+        case staticWidget
     }
     
     @Published var paths = NavigationPath()
-    
-    lazy var paramsViewModel: ParamsViewModel = { .init() }()
-    
     
     
     func push(_ path: Path) {

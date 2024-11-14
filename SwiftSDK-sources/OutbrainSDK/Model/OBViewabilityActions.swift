@@ -7,8 +7,13 @@
 
 import Foundation
 
-public struct OBViewabilityActions {
+@objc public class OBViewabilityActions: NSObject {
     
     let reportServed: String?
     let reportViewed: String?
+    
+    init(reportServed: String?, reportViewed: String?) {
+        self.reportServed = reportServed
+        self.reportViewed = reportViewed
+    }
 }

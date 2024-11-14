@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 
 
-public class SFWidget: UIView {
+@objc public class SFWidget: UIView {
 
-    public internal(set) var currentHeight: CGFloat = 0
-    public var webviewUrl: String?
+    @objc public internal(set) var currentHeight: CGFloat = 0
+    @objc public var webviewUrl: String?
+    @objc public static var infiniteWidgetsOnTheSamePage: Bool = false
+    
     internal var isLoading: Bool = false
     internal var isWidgetEventsEnabled: Bool = false
     internal var inTransition: Bool = false
@@ -33,7 +35,7 @@ public class SFWidget: UIView {
     internal var hiddenWebView: WKWebView?
     internal var bridgeParamsObserver: NSObjectProtocol?
     internal var tParamObserver: NSObjectProtocol?
-    internal var errorReporter: OBErrorReport?
+    internal var errorReport: OBErrorReport?
     internal var settings: [String: Any] = [:]
     internal var viewabilityHandler = ViewabilityHandler()
     
@@ -42,11 +44,12 @@ public class SFWidget: UIView {
     
     internal static var isFlutter: Bool = false
     internal static var globalBridgeParams: String?
+    internal static var organicUrl: String?
     
     /**
      Indicates that there are multiple widgets on the same content page. Has to be set only when there are multiple widgets on the same page
      */
-    public static var infiniteWidgetsOnTheSamePage: Bool = false
+    
     static var isReactNative: Bool = false
     static var flutter_packageVersion: String?
     static var RN_packageVersion: String?
@@ -60,13 +63,13 @@ public class SFWidget: UIView {
        External Id public value
        app developer should set "external ID" and the optional "secondary external ID" as shown below:
      */
-    public var extId: String?
-    public var extSecondaryId: String?
+    @objc public var extId: String?
+    @objc public var extSecondaryId: String?
     
     /**
      Outbrain uses the odb parameter pubImpId to get the session ID/ click identifier from the publisher.
      */
-    public var OBPubImp: String?
+    @objc public var OBPubImp: String?
     
     /**
      Initializes a new instance of the custom view with the specified frame.
@@ -79,7 +82,7 @@ public class SFWidget: UIView {
 
      let customView = CustomView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
      **/
-    public override init(frame: CGRect) {
+    @objc public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
@@ -94,7 +97,7 @@ public class SFWidget: UIView {
 
      - Important: You should not override this initializer unless necessary.
      **/
-    public required init?(coder: NSCoder) {
+    @objc public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
@@ -116,7 +119,7 @@ public class SFWidget: UIView {
      ```swift
      widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", installationKey: "abcdef")
      */
-    public func configure(
+    @objc public func configure(
         with delegate: SFWidgetDelegate,
         url: String,
         widgetId: String,
@@ -153,7 +156,7 @@ public class SFWidget: UIView {
      ```swift
      widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", widgetIndex: 0, installationKey: "abcdef", userId: "user123", darkMode: true)
      */
-    public func configure(
+    @objc public func configure(
         with delegate: SFWidgetDelegate?,
         url: String,
         widgetId: String,
@@ -167,7 +170,7 @@ public class SFWidget: UIView {
         self.darkMode = darkMode
         self.setUserId(userId)
         
-        configure(
+        internalConfigure(
             with: delegate,
             url: url,
             widgetId: widgetId,
@@ -194,7 +197,7 @@ public class SFWidget: UIView {
      ```swift
      widget.configure(with: myDelegate, url: "https://example.com/page1", widgetId: "MB_3", installationKey: "abcdef")
      */
-    public func configure(
+    func internalConfigure(
         with delegate: SFWidgetDelegate?,
         url: String,
         widgetId: String,
@@ -204,7 +207,7 @@ public class SFWidget: UIView {
         self.url = url
         self.widgetId = widgetId
         self.installationKey = installationKey
-        self.errorReporter = OBErrorReport(
+        self.errorReport = OBErrorReport(
             url: url,
             widgetId: widgetId
         )
@@ -256,7 +259,7 @@ public class SFWidget: UIView {
      */
     
     @available(*, deprecated, message: "Please use configure(with delegate: SFWidgetDelegate?, url: String, widgetId: String, widgetIndex: Int, installationKey: String, userId: String?, darkMode: Bool)  instead.")
-    public func configure(
+    @objc public func configure(
         with delegate: SFWidgetDelegate?,
         url: String,
         widgetId: String,
@@ -277,38 +280,50 @@ public class SFWidget: UIView {
         )
     }
     
-    public static func enableFlutterMode(flutter_packageVersion: String) {
+    @objc public static func enableFlutterMode(flutter_packageVersion: String) {
         isFlutter = true;
         self.flutter_packageVersion = flutter_packageVersion;
     }
     
-    public static func enableReactNativeMode(RN_packageVersion: String) {
+    @objc public static func enableReactNativeMode(RN_packageVersion: String) {
         isReactNative = true;
         self.RN_packageVersion = RN_packageVersion;
     }
     
-    public static func setInfiniteWidgetsOnTheSamePage(_ infiniteWidgets: Bool) {
-        infiniteWidgetsOnTheSamePage = true
-    }
-    
-    public func getCurrentHeight() -> CGFloat {
+    @objc public func getCurrentHeight() -> CGFloat {
         return currentHeight
     }
-    
     
     public override func didMoveToWindow() {
         super.didMoveToWindow()
         
         if superview != nil {
-            if let scrollView = findFirstScrollView(in: superview) {
-                // Add KVO observer for the contentOffset property
-                containerScrollView = scrollView
-                containerScrollView?.addObserver(self, forKeyPath: SFWidget.contentOffsetKey, options: .new, context: nil)
-            }
+            guard let scrollView = findFirstScrollView(in: superview), containerScrollView == nil else { return }
+            addContrentOffsetObserver(to: scrollView)
         } else {
             // Remove KVO observer when the scroll view is removed from its superview
-            containerScrollView?.removeObserver(self, forKeyPath: SFWidget.contentOffsetKey)
+            removeContentOffsetObserver()
         }
+    }
+    
+    
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        if superview == nil {
+            removeContentOffsetObserver()
+        }
+    }
+    
+    
+    private func addContrentOffsetObserver(to scrollView: UIScrollView) {
+        containerScrollView = scrollView
+        containerScrollView?.addObserver(self, forKeyPath: SFWidget.contentOffsetKey, options: .new, context: nil)
+    }
+    
+    private func removeContentOffsetObserver() {
+        containerScrollView?.removeObserver(self, forKeyPath: SFWidget.contentOffsetKey)
+        containerScrollView = nil
     }
     
     
@@ -398,8 +413,11 @@ public class SFWidget: UIView {
             .addIsReactNative(isReactNative: SFWidget.isReactNative)
             .addFlutterPackageVersion(version: SFWidget.flutter_packageVersion)
             .addReactNativePackageVersion(version: SFWidget.RN_packageVersion)
+            .addReferrer(SFWidget.organicUrl?.contains(url ?? "") == true)
             .build()
             
+        SFWidget.organicUrl = nil
+        
         guard let widgetURL else { return }
         
         Outbrain.logger.log("Bridge URL: \(widgetURL)")
@@ -411,26 +429,26 @@ public class SFWidget: UIView {
     }
 
     
-    public func enableEvents() {
+    @objc public func enableEvents() {
         isWidgetEventsEnabled = true
     }
     
     
     // MARK: - Toggle dark mode
-    public func toggleDarkMode(_ isDark: Bool) {
+    @objc public func toggleDarkMode(_ isDark: Bool) {
         darkMode = isDark
         jsExec.toggleDarkMode(isDark)
     }
 
     
     @available(*, deprecated, message: "Please remove any calls to this method.")
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    @objc public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // NO-OP
     }
 
     
     // this function is used to count a "new" page view on user back action on a specific publisher (bild.de)
-    public func reportPageViewOnTheSameWidget() {
+    @objc public func reportPageViewOnTheSameWidget() {
         Outbrain.logger.log("Outbrain SDK reportPageViewOnTheSameWidget() is called")
         
         let webviewConf = WKWebViewConfiguration()
@@ -444,7 +462,7 @@ public class SFWidget: UIView {
     }
     
 
-    public func loadMore() {
+    @objc public func loadMore() {
         isLoading = true
         NSLog("loading more --->")
         Outbrain.logger.debug("load-more-recs", domain: "sfWidfet-handler")
@@ -455,8 +473,7 @@ public class SFWidget: UIView {
     
     deinit {
         // Remove KVO observer when the widget is deallocated
-        containerScrollView?.removeObserver(self, forKeyPath: SFWidget.contentOffsetKey)
-        containerScrollView = nil
+        removeContentOffsetObserver()
         
         // Clean up message handlers otherwise the messageHandler stays in memory after the widget is destroyed
         controller?.removeAllScriptMessageHandlers()
@@ -464,7 +481,7 @@ public class SFWidget: UIView {
     
     
     // Observe changes to the contentOffset property
-    public override func observeValue(
+    @objc public override func observeValue(
         forKeyPath keyPath: String?,
         of object: Any?,
         change: [NSKeyValueChangeKey : Any]?,
@@ -479,7 +496,7 @@ public class SFWidget: UIView {
     }
     
     
-    public func viewWillTransition(
+    @objc public func viewWillTransition(
         to size: CGSize,
         with coordinator: UIViewControllerTransitionCoordinator
     ) {
@@ -541,10 +558,10 @@ public class SFWidget: UIView {
     }
     
     
-    private func handleViewability(_ scrollView: UIScrollView) {
+    private func handleViewability(_ view: UIView) {
         viewabilityHandler.handleViewability(
             sfWidget: self,
-            containerView: scrollView
+            containerView: view
         ) { [weak self] viewStatus, width ,height  in
             guard let self else { return }
             
@@ -602,6 +619,12 @@ extension SFWidget: SFMessageHandlerDelegate {
             delegate?.didChangeHeight?()
         }
 
+        
+        if height > 0 && containerScrollView == nil, superview != nil, let window = window {
+            handleViewability(window)
+        }
+        
+        
         guard isLoading else { return }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
@@ -628,15 +651,21 @@ extension SFWidget: SFMessageHandlerDelegate {
             if case .failure(let error) = result {
                 let errorMsg = "Error reporting organic click: \(trafficURL), error: \(error)"
                 Outbrain.logger.error(errorMsg, domain: "didClickOnOrganicRec")
-                self.errorReporter?.setMessage(message: errorMsg).reportErrorToServer()
+                self.errorReport?.setMessage(message: errorMsg).reportErrorToServer()
                 return
             }
             
             if let orgRecURL = URL(string: orgUrl) {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
+                    
                     let orgClickImplemented = self.delegate?.onOrganicRecClick != nil
-                    orgClickImplemented ? self.delegate?.onOrganicRecClick!(orgRecURL) : self.delegate?.onRecClick(recURL)
+                    if orgClickImplemented {
+                        SFWidget.organicUrl = orgUrl
+                        self.delegate?.onOrganicRecClick!(orgRecURL)
+                    } else {
+                        self.delegate?.onRecClick(recURL)
+                    }
                 }
                 
                 return
@@ -673,12 +702,12 @@ extension SFWidget: SFMessageHandlerDelegate {
     }
     
 
-    public func onRecClick(_ url: URL) {
+    @objc public func onRecClick(_ url: URL) {
         delegate?.onRecClick(url)
     }
     
     
-    public func onSettingsReceived(_ settings: [String : Any]) {
+    @objc public func onSettingsReceived(_ settings: [String : Any]) {
         self.settings = settings
     }
 }
@@ -731,12 +760,16 @@ extension SFWidget: WKUIDelegate, WKNavigationDelegate {
 // MARK: - UITableView
 extension SFWidget {
     
+    
+    @objc(willDisplayCell:)
     public func willDisplay(_ cell: SFWidgetTableCell) {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         cell.contentView.addSubview(self)
         BridgeUtils.addConstraintsToFillParent(view: self)
     }
     
+    
+    @objc(willDisplayCollectionViewCell:)
     public func willDisplay(_ cell: SFWidgetCollectionCell) {
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         cell.contentView.addSubview(self)

@@ -1,25 +1,19 @@
 //
-//  TwoWidgetsSwiftuI.swift
+//  StaticWidgetUseCase.swift
 //  demo
 //
-//  Created by Leonid Lemesev on 26/09/2024.
+//  Created by Leonid Lemesev on 05/11/2024.
 //
 
-
 import SwiftUI
-import OutbrainSDK
 
 
-
-struct TwoWidgetsSwiftuI: View {
+struct StaticWidgetUseCase: View {
     
     private let navigationViewModel: NavigationViewModel
     
     @StateObject
     private var viewModel: OutbrainWidgetViewModel
-    
-    @StateObject
-    private var viewModel2: OutbrainWidgetViewModel
     
     
     init(
@@ -28,12 +22,12 @@ struct TwoWidgetsSwiftuI: View {
     ) {
         self.navigationViewModel = navigationViewModel
         self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
-        self._viewModel2 = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
     }
     
+    
     var body: some View {
-        ScrollView {
-            ZStack {
+        VStack {
+            ScrollView {
                 VStack {
                     Image("articleImage", bundle: Bundle.main)
                         .resizable()
@@ -55,27 +49,15 @@ struct TwoWidgetsSwiftuI: View {
                     
                     ArticleBody()
                     ArticleBody()
-                    
-                    OutbrainWidgetView(
-                        viewModel: viewModel,
-                        twoWidgets: true,
-                        widgetIndex: 0
-                    )
-                    .frame(height: $viewModel.widgetHeight.wrappedValue)
-                    
-                    
-                    ArticleBody()
-                    ArticleBody()
-                    
-                    OutbrainWidgetView(
-                        viewModel: viewModel2,
-                        twoWidgets: true,
-                        widgetIndex: 1
-                    )
-                    .frame(height: $viewModel2.widgetHeight.wrappedValue)
                 }
-                
             }
+            
+            OutbrainWidgetView(
+                viewModel: viewModel,
+                isStatic: true,
+                widgetIndex: 0
+            )
+            .frame(height: 50)
         }
         .fullScreenCover(isPresented: .init(
             get: { viewModel.clickedUrl != nil },
@@ -86,17 +68,6 @@ struct TwoWidgetsSwiftuI: View {
             }
         )) {
             OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
-        }
-        .fullScreenCover(isPresented: .init(
-            get: { viewModel2.clickedUrl != nil },
-            set: { value in
-                if !value {
-                    viewModel2.clickedUrl = nil
-                }
-            }
-        )) {
-            OBSafariView(url: $viewModel2.clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }

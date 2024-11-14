@@ -66,7 +66,7 @@ class BridgeUrlBuilder {
         
         // GDPR v1
         if let cnsnt  = GDPRUtils.gdprV1ConsentString, !cnsnt.isEmpty {
-            newQueryItems.append(URLQueryItem(name: "cnsnt", value:cnsnt))
+            newQueryItems.append(URLQueryItem(name: "cnsnt", value: cnsnt))
         }
         
         // GDPR v2
@@ -198,6 +198,11 @@ class BridgeUrlBuilder {
         return self
     }
   
+    func addReferrer(_ shouldAdd: Bool) -> BridgeUrlBuilder {
+        guard shouldAdd else { return self }
+        newQueryItems.append(URLQueryItem(name: "overrideOrganicRef", value: "true"))
+        return self
+    }
     
     func addOBPubImp(pubImpId: String?) -> BridgeUrlBuilder {
         guard let pubImpId = pubImpId else { return self }

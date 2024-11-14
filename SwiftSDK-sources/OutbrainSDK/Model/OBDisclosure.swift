@@ -7,10 +7,10 @@
 
 import Foundation
 
-public struct OBDisclosure {
+@objc public class OBDisclosure: NSObject {
     
-    public var imageUrl: String? // disclosure image url
-    public var clickUrl: String? // disclosure click url
+    @objc public var imageUrl: String? // disclosure image url
+    @objc public var clickUrl: String? // disclosure click url
     
     
     init(imageUrl: String? = nil, clickUrl: String? = nil) {

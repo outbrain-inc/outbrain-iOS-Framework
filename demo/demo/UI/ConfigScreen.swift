@@ -14,6 +14,9 @@ struct ConfigScreen: View {
     private var onSubmit: () -> Void
     private var onClearCache: () -> Void
     
+    @State
+    var paramsViewModel: ParamsViewModel = { .init() }()
+    
     init(
         navigationViewModel: NavigationViewModel,
         onSubmit: @escaping () -> Void,
@@ -31,39 +34,53 @@ struct ConfigScreen: View {
                 switch path {
                     case .tableView: ContentPageRepresentable<TableVC>(
                         navigationViewModel: navigationViewModel,
+                        paramsViewModel: .init(),
                         params: ["readMore": false]
                     )
                     .addNavigationBar(withTitle: "Bridge In Table View") {
                         navigationViewModel.popLast()
                     }
                         
-                    case .collectionView: ContentPageRepresentable<CollectionVC>(navigationViewModel: navigationViewModel)
-                            .addNavigationBar(withTitle: "Bridge In Collection View") {
-                                navigationViewModel.popLast()
-                            }
+                    case .collectionView: ContentPageRepresentable<CollectionVC>(
+                        navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel
+                    )
+                    .addNavigationBar(withTitle: "Bridge In Collection View") {
+                        navigationViewModel.popLast()
+                    }
                         
-                    case .scrollView: ContentPageRepresentable<ScrollViewVC>(navigationViewModel: navigationViewModel)
-                            .addNavigationBar(withTitle: "Bridge In Scroll View") {
-                                navigationViewModel.popLast()
-                            }
+                    case .scrollView: ContentPageRepresentable<ScrollViewVC>(
+                        navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel
+                    )
+                    .addNavigationBar(withTitle: "Bridge In Scroll View") {
+                        navigationViewModel.popLast()
+                    }
                         
-                    case .swiftUI: BridgeInSwiftUI(navigationViewModel: navigationViewModel)
-                            .addNavigationBar(withTitle: "Bridge In SwiftUI") {
-                                navigationViewModel.popLast()
-                            }
+                    case .swiftUI: BridgeInSwiftUI(
+                        navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel
+                    )
+                    .addNavigationBar(withTitle: "Bridge In SwiftUI") {
+                        navigationViewModel.popLast()
+                    }
                         
-                    case .regularAndBridgeSwiftUI: RegularAndBridgeSwiftUI(navigationViewModel: navigationViewModel)
-                            .addNavigationBar(withTitle: "Regular and Bridge In SwiftUI") {
-                                navigationViewModel.popLast()
-                            }
+                    case .regularAndBridgeSwiftUI: RegularAndBridgeSwiftUI(
+                        navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel
+                    )
+                    .addNavigationBar(withTitle: "Regular and Bridge In SwiftUI") {
+                        navigationViewModel.popLast()
+                    }
                         
-                    case .regularSwiftUI: RegularSDKSwiftUI(paramsViewModel: navigationViewModel.paramsViewModel)
+                    case .regularSwiftUI: RegularSDKSwiftUI(paramsViewModel: paramsViewModel)
                             .addNavigationBar(withTitle: "Regular SDK (SwiftUI)") {
                                 navigationViewModel.popLast()
                             }
                         
                     case .regularUIKit: ContentPageRepresentable<ScrollViewVC>(
                         navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel,
                         params: ["isRegular": true]
                     )
                     .addNavigationBar(withTitle: "Regular SDK (UIKit)") {
@@ -72,6 +89,7 @@ struct ConfigScreen: View {
                         
                     case .readMore: ContentPageRepresentable<TableVC>(
                         navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel,
                         params: ["readMore": true]
                     )
                     .addNavigationBar(withTitle: "Read More") {
@@ -83,15 +101,38 @@ struct ConfigScreen: View {
                                 navigationViewModel.popLast()
                             }
                         
-                    case .twoWidgets: ContentPageRepresentable<ScrollViewTwoWidgets>(navigationViewModel: navigationViewModel)
-                            .addNavigationBar(withTitle: "Two Widgets") {
-                                navigationViewModel.popLast()
-                            }
+                    case .twoWidgets: ContentPageRepresentable<ScrollViewTwoWidgets>(
+                        navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel
+                    )
+                    .addNavigationBar(withTitle: "Two Widgets") {
+                        navigationViewModel.popLast()
+                    }
                         
-                    case .twoWidgetsSwiftUI: TwoWidgetsSwiftuI(navigationViewModel: navigationViewModel)
-                            .addNavigationBar(withTitle: "Two Widgets (SwiftUI)") {
-                                navigationViewModel.popLast()
-                            }
+                    case .twoWidgetsSwiftUI: TwoWidgetsSwiftuI(
+                        navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel
+                    )
+                    .addNavigationBar(withTitle: "Two Widgets (SwiftUI)") {
+                        navigationViewModel.popLast()
+                    }
+                        
+                    case .organic(let url): OrganicReferrerUseCase(
+                        navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel,
+                        organicUrl: url
+                    )
+                    .addNavigationBar(withTitle: "Organic Referrer") {
+                        navigationViewModel.popLast()
+                    }
+                        
+                    case .staticWidget: StaticWidgetUseCase(
+                        navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel
+                    )
+                    .addNavigationBar(withTitle: "Static Widget") {
+                        navigationViewModel.popLast()
+                    }
                 }
             }
     }
@@ -102,16 +143,29 @@ struct ConfigScreen: View {
             Text("SDK Version " + String(Outbrain.OB_SDK_VERSION))
             
             
-            Toggle(isOn: $navigationViewModel.paramsViewModel.displayTest) {
+            Toggle(isOn: $paramsViewModel.displayTest) {
                 Text("Display test")
             }
-            .onChange(of: navigationViewModel.paramsViewModel.displayTest) { value in
+            .onChange(of: paramsViewModel.displayTest) { value in
                 Outbrain.testDisplay(value)
             }
             
-            Toggle(isOn: $navigationViewModel.paramsViewModel.darkMode) {
+            Toggle(isOn: $paramsViewModel.darkMode) {
                 Text("Dark mode")
             }
+            
+            Toggle(isOn: $paramsViewModel.fakeConsent) {
+                Text("Send Fake GDPR Consent")
+            }
+            .onChange(of: paramsViewModel.fakeConsent) { oldValue in
+                if paramsViewModel.fakeConsent {
+                    UserDefaults.standard.set("CQH36sAQH36sAAHABBENBOFsAP_gAABAAAqIJ1NF7C7fbXFicX53YPsEcY1fxdAKosQwBAAJg2wByBJQsIwElmAxNAXgBiAKGAIAIGRBAQJlCADABUAAYAAAIyDMIAAQARAIIqAEgAARQEAICABjGQkAEAAYgGIAAEAAmQoEABqoUEBAgAAgIEAAIAAhAICBAgGIACEgQAAYAQAIwmgAAQAAIAAAEAAEAFAMEEBAAAEAAIACBAAMIAABAAAAMUgAwABBUQdABgACCohCADAAEFRCUAGAAIKiBIAMAAQVELQAYAAgqIAA.f_wAAAgAAAAA", forKey: "IABTCF_TCString")
+                    UserDefaults.standard.synchronize()
+                } else {
+                    UserDefaults.standard.removeObject(forKey: "IABTCF_TCString")
+                }
+            }
+            
             
             HStack {
                 VStack(alignment: .leading) {
@@ -126,16 +180,16 @@ struct ConfigScreen: View {
                 }
                 
                 VStack {
-                    TextField("", text: $navigationViewModel.paramsViewModel.bridgeWidgetId)
+                    TextField("", text: $paramsViewModel.bridgeWidgetId)
                         .textFieldStyle(.roundedBorder)
                         .frame(height: 44)
                     
                     
-                    TextField("", text: $navigationViewModel.paramsViewModel.bridgeWidgetId2)
+                    TextField("", text: $paramsViewModel.bridgeWidgetId2)
                         .textFieldStyle(.roundedBorder)
                         .frame(height: 44)
                     
-                    TextField("", text: $navigationViewModel.paramsViewModel.regularWidgetId)
+                    TextField("", text: $paramsViewModel.regularWidgetId)
                         .textFieldStyle(.roundedBorder)
                         .frame(height: 44)
                 }
@@ -144,7 +198,7 @@ struct ConfigScreen: View {
             VStack(alignment: .leading) {
                 Text("Article URL")
                 
-                TextField("", text: $navigationViewModel.paramsViewModel.articleURL)
+                TextField("", text: $paramsViewModel.articleURL)
                     .textFieldStyle(.roundedBorder)
             }
             

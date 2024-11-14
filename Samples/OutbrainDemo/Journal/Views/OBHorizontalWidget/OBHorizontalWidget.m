@@ -9,7 +9,7 @@
 #import "OBHorizontalWidget.h"
 #import "OBHorizontalWidgetCell.h"
 #import "OBDemoDataHelper.h"
-#import <OutbrainSDK/OutbrainSDK.h>
+#import <OutbrainSDK/OutbrainSDK-Swift.h>
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -18,7 +18,6 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *outbrainBrandingView;
-@property (weak, nonatomic) IBOutlet OBLabel *recommendedByLabel;
 
 
 @end
@@ -66,11 +65,6 @@
     _recommendationResponse = recommendationResponse;
     
     [self.collectionView reloadData];
-}
-
-#pragma mark - Viewability
--(void) setOBRequest:(OBRequest *)obRequest {
-    [Outbrain registerOBLabel:self.recommendedByLabel withOBRequest:obRequest];
 }
 
 #pragma - IBActions

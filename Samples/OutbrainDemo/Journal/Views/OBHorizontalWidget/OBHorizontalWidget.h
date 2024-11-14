@@ -27,13 +27,5 @@
  **/
 @property (nonatomic, strong) OBRecommendationResponse *recommendationResponse;
 
-/**
- *  Discussion:
- *      Set this to allow Viewability feature to work with OBHorizontalWidget
- *      @param obRequest - The OBRequest to be associated with this OBLabel
- *
- **/
--(void) setOBRequest:(OBRequest *)obRequest;
-
 
 @end

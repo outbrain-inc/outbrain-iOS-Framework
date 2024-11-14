@@ -1,34 +1,32 @@
 //
-//  TwoWidgetsSwiftuI.swift
+//  OrganicReferrerUseCase.swift
 //  demo
 //
-//  Created by Leonid Lemesev on 26/09/2024.
+//  Created by Leonid Lemesev on 29/10/2024.
 //
-
 
 import SwiftUI
 import OutbrainSDK
 
 
 
-struct TwoWidgetsSwiftuI: View {
+struct OrganicReferrerUseCase: View {
     
     private let navigationViewModel: NavigationViewModel
+    private let organicUrl: String?
     
     @StateObject
     private var viewModel: OutbrainWidgetViewModel
     
-    @StateObject
-    private var viewModel2: OutbrainWidgetViewModel
-    
     
     init(
         navigationViewModel: NavigationViewModel,
-        paramsViewModel: ParamsViewModel
+        paramsViewModel: ParamsViewModel,
+        organicUrl: String?
     ) {
         self.navigationViewModel = navigationViewModel
+        self.organicUrl = organicUrl
         self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
-        self._viewModel2 = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
     }
     
     var body: some View {
@@ -58,21 +56,10 @@ struct TwoWidgetsSwiftuI: View {
                     
                     OutbrainWidgetView(
                         viewModel: viewModel,
-                        twoWidgets: true,
-                        widgetIndex: 0
+                        isOrganic: true,
+                        organicUrl: organicUrl
                     )
-                    .frame(height: $viewModel.widgetHeight.wrappedValue)
-                    
-                    
-                    ArticleBody()
-                    ArticleBody()
-                    
-                    OutbrainWidgetView(
-                        viewModel: viewModel2,
-                        twoWidgets: true,
-                        widgetIndex: 1
-                    )
-                    .frame(height: $viewModel2.widgetHeight.wrappedValue)
+                        .frame(height: viewModel.widgetHeight)
                 }
                 
             }
@@ -86,17 +73,6 @@ struct TwoWidgetsSwiftuI: View {
             }
         )) {
             OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
-        }
-        .fullScreenCover(isPresented: .init(
-            get: { viewModel2.clickedUrl != nil },
-            set: { value in
-                if !value {
-                    viewModel2.clickedUrl = nil
-                }
-            }
-        )) {
-            OBSafariView(url: $viewModel2.clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }

@@ -21,7 +21,7 @@ final class OBRequestTests: XCTestCase {
         
         XCTAssertEqual(request.url, url)
         XCTAssertEqual(request.widgetId, widgetId)
-        XCTAssertEqual(request.idx, "\(widgetIndex)")
+        XCTAssertEqual(request.widgetIndex, widgetIndex)
         XCTAssertEqual(request.externalID, externalId)
         XCTAssertEqual(request.startDate, startDate)
     }
@@ -32,7 +32,7 @@ final class OBRequestTests: XCTestCase {
         
         XCTAssertNil(request.url)
         XCTAssertEqual(request.widgetId, widgetId)
-        XCTAssertEqual(request.idx, "0")
+        XCTAssertEqual(request.widgetIndex, 0)
         XCTAssertNil(request.externalID)
         XCTAssertNil(request.startDate)
     }
