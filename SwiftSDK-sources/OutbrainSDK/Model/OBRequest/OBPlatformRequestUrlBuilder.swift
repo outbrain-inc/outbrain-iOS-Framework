@@ -22,6 +22,12 @@ struct OBPlatformRequestUrlBuilder: OBRequestUrlBuilderProtocol {
     func buildOdbParams() -> URLComponents? {
         var queryItems = buildDefaultQueryItems()
         
+        
+        if platformRequest.bundleUrl == nil && platformRequest.portalUrl == nil && platformRequest.contentUrl == nil {
+            Outbrain.logger.error("bundleUrl, portalUrl or contentUrl are mandatory when using platforms request")
+            return nil
+        }
+        
         if platformRequest.isUsingBundleUrl || platformRequest.isUsingPortalUrl {
             guard let lang = platformRequest.lang else {
                 Outbrain.logger.error("lang is mandatory when using platforms request")

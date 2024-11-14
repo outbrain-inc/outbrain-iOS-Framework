@@ -93,7 +93,7 @@ extension OBRequestUrlBuilderProtocol {
     
     
     func getTParam() -> String? {
-        guard request.widgetIndex > 0, let tParam = Outbrain.lastTParam  else { return nil }
+        guard request.widgetIndex > 0, let tParam = Outbrain.lastTParam else { return nil }
         return tParam
     }
     

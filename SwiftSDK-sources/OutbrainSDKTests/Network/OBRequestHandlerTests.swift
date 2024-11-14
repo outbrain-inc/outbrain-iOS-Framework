@@ -299,4 +299,20 @@ class OBRequestHandlerTests: XCTestCase {
         sleep(2)
         XCTAssertTrue(MockUrlProtocol.calledHosts.contains("log.outbrainimg.com"))
     }
+    
+    
+    func testPlatformRequestSuccess() async throws {
+        // Given
+        MockUrlProtocol.mockResponses["mv.outbrain.com"] = (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)
+        sut = OBRequestHandler(OBPlatformRequest(widgetID: "SDK_1", contentUrl: "https://outbrain.com", lang: "en"))
+        
+        // When
+        let response = try await sut?.fetchRecsAsync()
+        
+        //Then
+        XCTAssertNotNil(response)
+        XCTAssertNil(response!.error)
+        sleep(2)
+        XCTAssertTrue(MockUrlProtocol.calledHosts.contains("log.outbrainimg.com"))
+    }
 }
