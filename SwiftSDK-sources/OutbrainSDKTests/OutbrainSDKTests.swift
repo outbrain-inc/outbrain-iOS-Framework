@@ -10,11 +10,23 @@ import XCTest
 
 final class OutbrainSDKTests: XCTestCase {
     
+    var delegate: MockResponseDelegate?
+
+    
+    
     override func setUp() {
+        super.setUp()
         Outbrain.isInitialized = false
         Outbrain.partnerKey = nil
     }
-        
+    
+    override class func tearDown() {
+        URLProtocol.unregisterClass(MockUrlProtocol.self)
+        MockUrlProtocol.calledHosts.removeAll()
+        MockUrlProtocol.mockResponses.removeAll()
+        super.tearDown()
+    }
+    
     func testInitializeOutbrain() {
         Outbrain.initializeOutbrain(withPartnerKey: "partnerKey")
         XCTAssertTrue(Outbrain.isInitialized)
@@ -39,29 +51,56 @@ final class OutbrainSDKTests: XCTestCase {
     }
     
     func testFetchRecommendationsWithCallback() {
+        URLProtocol.registerClass(MockUrlProtocol.self)
+        MockUrlProtocol.mockResponses["mv.outbrain.com"] = (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)
         let request = OBRequest(url: "https://example.com", widgetID: "AR_1")
         let expectation = XCTestExpectation(description: "Fetch recommendations callback called")
+        Outbrain.isInitialized = true
         
         Outbrain.fetchRecommendations(for: request) { response in
             XCTAssertNotNil(response)
+            XCTAssertFalse(response.recommendations.isEmpty)
+            sleep(2)
+            XCTAssertTrue(MockUrlProtocol.calledHosts.contains("log.outbrainimg.com"))
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 5.0)
+        wait(for: [expectation], timeout: 3.0)
     }
 
     func testFetchRecommendationsWithDelegate_Success() {
+        URLProtocol.registerClass(MockUrlProtocol.self)
+        MockUrlProtocol.mockResponses["mv.outbrain.com"] = (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)
+        Outbrain.isInitialized = true
         let request = OBRequest(url: "https://example.com", widgetID: "AR_1")
         let expectation = XCTestExpectation(description: "Fetch recommendations completion")
-        let delegate = MockResponseDelegate(expectation: expectation)
+        delegate = MockResponseDelegate(expectation: expectation)
 
         Outbrain.isInitialized = true
-        
-        Outbrain.fetchRecommendations(for: request, with: delegate)
+        Outbrain.fetchRecommendations(for: request, with: delegate!)
 
-        wait(for: [expectation], timeout: 5.0)
-        XCTAssertTrue(delegate.outbrainDidReceiveResponseCalled)
-        XCTAssertNotNil(delegate.response)
+        wait(for: [expectation], timeout: 2.0)
+        XCTAssertNotNil(delegate!.response)
+        XCTAssertFalse(delegate!.response!.recommendations.isEmpty)
+        sleep(2)
+        XCTAssertTrue(MockUrlProtocol.calledHosts.contains("log.outbrainimg.com"))
+    }
+    
+    func testFetchRecsAsync() async throws {
+        // Given
+        URLProtocol.registerClass(MockUrlProtocol.self)
+        MockUrlProtocol.mockResponses["mv.outbrain.com"] = (Data.loadJSON(from: "odb_response_base"), HTTPURLResponse.valid(), nil)
+        MockUrlProtocol.mockResponses["log.outbrainimg.com"] = (nil, HTTPURLResponse.valid(), nil)
+        
+        // When
+        let response = try await Outbrain.fetchRecommendations(for: OBRequest(url: "http://mobile-demo.outbrain.com", widgetID: "SDK_1"))
+        
+        
+        //Then
+        XCTAssertNotNil(response)
+        XCTAssertFalse(response.isEmpty)
+        sleep(2)
+        XCTAssertTrue(MockUrlProtocol.calledHosts.contains("log.outbrainimg.com"))
     }
     
     func testGetUrl() {
@@ -89,28 +128,5 @@ final class OutbrainSDKTests: XCTestCase {
         
         XCTAssertNotNil(url)
         XCTAssertTrue(((url?.absoluteString.contains("https://www.outbrain.com/what-is/")) != nil))
-    }
-}
-
-
-class MockResponseDelegate: OBResponseDelegate {
-    var outbrainDidReceiveResponseCalled = false
-    var response: OBRecommendationResponse?
-    
-    let expectation: XCTestExpectation
-
-    init(expectation: XCTestExpectation) {
-        self.expectation = expectation
-    }
-
-    func outbrainDidReceiveResponse(withSuccess response: OBRecommendationResponse) {
-        outbrainDidReceiveResponseCalled = true
-        self.response = response
-        expectation.fulfill()
-    }
-
-    func reset() {
-        outbrainDidReceiveResponseCalled = false
-        response = nil
     }
 }

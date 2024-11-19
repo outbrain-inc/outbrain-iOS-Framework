@@ -1,0 +1,213 @@
+{
+  "response": {
+    "exec_time": 50,
+    "timestamp": 1497525415889,
+    "status": {
+      "id": 0,
+      "content": "Request succeeded"
+    },
+    "request": {
+      "lang": "en",
+      "idx": "0",
+      "did": "720627693",
+      "pid": "4737",
+      "lsd": "10e0fb73-2e3e-41be-92c0-f633f9383d46",
+      "enu": "iW6-wp8JaU6TYdyQsAUlhCtZUTUGyHGl0dhNub-z8z2w-Msl3b0uqGI8AHT9KNtH",
+      "api_user_id": "D19A3A3F-8E1F-4E3D-B2BB-D61A75733DEA",
+      "t": "MV85ZGQyOGUwY2M1MTVmNWMyMDRkMTdkMDg3ZTBhMGVlOV8w",
+      "pvId": "9dd28e0cc515f5c204d17d087e0a0ee9",
+      "pad": "5",
+      "org": "1",
+      "abTestVal": "10364-51695",
+      "obRecsAbtestAndVars": "373-1079,426-1320,378-1101,394-1160,396-1162",
+      "widgetJsId": "APP_1",
+      "readerPlatform": "desktop",
+      "sid": 5291479,
+      "wnid": 140,
+      "req_id": "9dd28e0cc515f5c204d17d087e0a0ee9",
+      "gl": "Lmh4LbF5Bj8uwm_0yxXY3g",
+      "ref": 0,
+      "oo": false
+    },
+    "documents": {
+      "total_count": 6,
+      "count": 6,
+      "doc": [
+        {
+          "source_name": "Vimeo",
+          "same_source": "false",
+          "source_display_name": "Vimeo",
+          "pc_id": 78263174,
+          "adv_name": "Mcdonalds (TMF Israel)",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "https://vimeo.com/214360045?quality=1080p&autoplay=1&utm_source=outbrain&utm_medium=referral",
+          "rec-cats": [
+            1100,
+            1505,
+            1506
+          ],
+          "ads_type": 1,
+          "rec_en_did": "dSzP-qmRmpQgVC3CGK7IBA",
+          "url": "http://paid.outbrain.com/network/redir?p=nF3zy78eVYpbevNxzcTTOxIvTMcuCMtu-BobNYcWRZm_RBamgx0Ar1f9ebsILSiLmctwZmlvTJAQruRApjBAZPNCp6izCzcscui2-edOSNmEOPFYEgukOuNNa8nuN6NjXrMjtO4AkP_nMAicEEyEZe3gI8r3OkWGs6qXdueiRXZ8f7wa34I6zpxb3HuHqz7TyTYsPFO4gv0zEqOIgnpG3dgrfI2ZxeGp6kcLXJrwpoNJlJ8UPeF0A7fFLZcVZFjpciQrNCq4hD2l51zHic9FSW_MK1hXJqa3-dp79e-I-3E44NisulKbB2VwuN4az2CUDdpVvrqoeCc0h5_jLBS61edcOgHyc4uF1GFlIU6kgF1dmep3A_zqebjP9gn7PCNoxJIiMAwX2jm8n_3i9H1kx2MoFneL3yPM3v45TLQd8AiMWO8kzf4gNRisATyVkNZC2Nt2UgGzY4D3PBiEOE_LWqED1GF8hWMJeeSyXRj3PpJJx2SntLVTNlOZutoLwMfVX0Y1obvGJiiZuJI-eAWOjX1qD0MXimx6anRuHRP09Tyxw15IIWPsIoNbfng-faNczMObtPZKz0_hyYSs-O6pS-89s22ut4Dgw4_iJ1NZWo7xxmqQkh9ulaS2SpLO-yG0jh70cwbtJj0gnIsRhmzwvppgpWg3cej3cz4G2PDFxNcqFxFPwyN9Y3C6XjaR1Oa_6IciQ0U_jsxc9sBe83znojpaXhEfdqoPFyWSVaEKSToRTnOpRJ4Mtqn1MC57kwlqefe5LdBtFm7feqZ_mwlnRzGVLcyVC5d2drPP9yFXm5Ngpeyg0UuE18QH_Zw6hRI7tgZnQAhPhz7AkHG215nW6b2yACU2KhFTorNPG8o6lRVn0H0Hmw2u3-ZTF4qBgsrW3QGoEixRilyC6fsyV4RLDQ&c=e1a6d7c1&v=3",
+          "author": "",
+          "content": "מחפשים את ההמבורגר המושלם? כך תרכיבו אותו בעצמכם",
+          "pc_cmp_id": 1000467131,
+          "pos": "0",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/Imaginarium/api/uuid/a67b7d3a227ebce2ecd865bb600cb52073dc4d1d79494c5437b9bc9da0fa5b49/200/200/2.0",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "From the Grapevine",
+          "same_source": "false",
+          "source_display_name": "From the Grapevine",
+          "pc_id": 75822157,
+          "adv_name": "Grapevine (Grapevine IL)",
+          "publish_date": "2017-03-02 14:18",
+          "orig_url": "https://www.fromthegrapevine.com/arts/shuki-levy-power-rangers-creator",
+          "rec-cats": [
+            1408
+          ],
+          "ads_type": 1,
+          "rec_en_did": "QNuMTBrtvIgL_v7VvtABRQ",
+          "url": "http://paid.outbrain.com/network/redir?p=22371a3dNEuB1POkLU3QE4bw-anvxU-A6ks3PQ96HR6fFt-qtNvcSk_48Hyesyhw30FIx-r2jKqyTz5FM_clWJVJcQB-wfQ3KEp_jtQk6V06cGyzXOlXUGQe9I_PkmeJyQ2TUHqM-7nfX83lusSSHC1i7zqxJmUmwx2opq1ieTmqubYE_6tTMUgrJ0LIZSklFW1caNhQmZ4-eEIC9NUPJ10gYgLpUxDOOdzlQfLrLVsokyxlXxJ0jswFaOOdVIKVi45jYDZbPhhS9A8sIxAOgiwXkY8XBLhhZywBi9AJ00iKPYHlMQdDgxgvmp84wlRgnCKOY1sXNgxENbgyOWbnTgOyZJctIsZPgpPe1MeeY2k-EIvudfMzgIzqRdyoliKxhSFMQ4WW8ZqBjDr-PASPM9FaLAu1W_VqVQm88gcQhb9weYeS1ZUdtWzR6XPhQvs4-YUXTHQSTGanbb0_e1uigIxaV0mRgfEznOjb6f0FdrNVld8VCYfGj09ETWANxFdwU0NfEQMMKxYNlxJO60feJmskoBODzC11QAfMILCsh5epXL9gukkiQs3epa2plHRRjzdca-_umPVzxo2hQVYCtXoDq9jLUbt5zQZ9aKEXZ21YruCVD_7MmMIsPfGl93lkHPHR6MlIR_LvciSGT_8yH9yljZVuCi8NxZFYVlO73H1zKDXdC4_IoWrVwiiFVMkn-OjXfLmxcgkP1HnwYbZMdTpQDBTuPnhEDp4ZZn1QpCPTAd5DltQen1hoA1OkhhDKZukivdQaYJHZ-cgvE52qaqr4ZTHhQYgAj4o3CHuM_xtQ-xU-H0jXkCinnQiP0KVrxHqt5UDTIrQhc3u6onwxJrpLklksy1jOs90608JgCVYehppc_J7PbLKdD9mWgHrV&c=2fea7f8c&v=3",
+          "author": "",
+          "content": "What ever happened to Shuki Levy?",
+          "pc_cmp_id": 1000374526,
+          "pos": "1",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/Imaginarium/api/uuid/9eeb809a6f2e4f5361276467f08e652f6c5af31a2608e93bcf1fa84ced78a9d0/200/200/1.0",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "Outbrain | Mobile Demo",
+          "same_source": "true",
+          "source_display_name": "Outbrain | Mobile Demo",
+          "publish_date": "2014-01-26 00:00",
+          "orig_url": "http://mobile-demo.outbrain.com/2014/01/26/dont-tell-me-what-to-do-the-consequence-of-pushy-content-headlines/",
+          "desc": "Don’t Tell me What to do!: The Consequence of Pushy Content Headlines",
+          "rec-cats": [
+            1211
+          ],
+          "ads_type": 2,
+          "rec_en_did": "MWkFKI46sgvsaODJYbVIMQ",
+          "url": "http://traffic.outbrain.com/network/redir?p=2Pr9qbsFGKbVddo6VbVyn3lmn7MyzRRG7wSg3ddJke1AZ1BTNdSCqTY6hxQkyaqKvMZZgF-gG7KRIbsKaTm8hIN6NMLnBu2cGcvry-QvsyHoNu3jjWiT7B83Llkzf2jTmCPB_TVcH80vXqKfmb-SAfw-qRHxHQwUQdItbDppcWyygUWSP-uSAEt_VE65A3K4l-KF3gnrng5QBhJE06ROfMcEeVq1sl0jKBQYIwfyyMlbXN4rZQvJOdrWhsgtKAox78elRknvyG2sALa-HtL1jxcBFPinuRzJePrJJagasNx6LgwRco4LmqUibSQgo8ocGtr1R6eE4hbp0u-huiGM1zCArqRh306ZC-G4RW9j1lAxGvmcWn2HuFhm6pr2cdvpcFVioIwDcfdhFzeVhr_EJ6-UopURaS2s4QW8Ks70QEJJDyHLik_9Ra6qT3bzumoN5CcTNRFa2PXi2S0B_lVMJ2fbIxEbNuBL7436aaC0phrRt9-_HowFE6Qu8swIJbavPIxcG2LbTHCj4D6_T5Bi1_yJuRXQX951KKKFl8mWjU2k8EVkctt3Ji4jAfB0NI2n54zCHVgpiXDdun6k98mbYTEBAQ9RfvddY_R2yk-r6Faj1kzOkj2per4ADjpvPEmr14feiZgFzqInhy6xZoIuhckzU5oBuciXzg8P3e2bRDQ2aMysd-UbkQdkw-FytrXVTTYbzWWiIOW-4Bhhol6QiHKkI7YIWWyo4heI7bNeInSmxjNnEjhd85wDvRCgGe85&c=7d365655&v=3",
+          "author": "uriel elster",
+          "content": "Don’t Tell me What to do!: The Consequence of Pushy Content Headlines",
+          "pos": "2",
+          "ttid": 4,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/Imaginarium/api/uuid/37f84ee6727fa36f45fc4d10b0fe1b9c3041b33db37dd3a5732bb7ba0bc419f3/200/200/1.0",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "From the Grapevine",
+          "same_source": "false",
+          "source_display_name": "From the Grapevine",
+          "pc_id": 75606785,
+          "adv_name": "Grapevine (Grapevine IL)",
+          "publish_date": "2017-02-27 12:00",
+          "orig_url": "https://www.fromthegrapevine.com/israeli-kitchen/recipes/lemon-parmesan-brussels-sprouts",
+          "rec-cats": [
+            1808
+          ],
+          "ads_type": 1,
+          "rec_en_did": "v0fZW9M5mlMfjKCJX7ofgg",
+          "url": "http://paid.outbrain.com/network/redir?p=mV9TGNp_fYwzbJia1_TBP_caHNFUYh7FesH1F2zV2kNuYn_gnK0pNVzK_Ezr-2R2ax9mNXzeEkK-U-QZNAop_JbV-WDt1j78GRjPCcSLbxrs9xfelMMtj0OZkUVCiJApaaP1THzbVRTe8ZjFhw9NC7qPnLZRB8qYqY3KM2jJjLavcgJKyNvTnlHCgveGJyVP1u4boc4M62kGbD4apmfUVxCGe3CE4nUSFQE8Vb_7ou5Oo6v3FvYYmsX9rimfy8wQEuG2OITjAACl-WPOfyj1598DzJO4RoSArSACPkTZwgRrO3eP4MljBU1S_Ts51UdNhRwYsK1ETKGuszcMy6f1fITQbqrliA6-303H3eZOVDAHjZAqODYJhLdAPOTkBudi8KuGUEDWeKT7SA5c5RepEcvgHFUQd-li80-yeLV3kmZ156OcMfJE0qxSgKgyf157UThfpPimy0XzQTMz1UgmGX5Q7ov1hSZAiXC-VDa6jbt2TuF5gKnGLbV_OIRgC01m0PNleIUCCL6HZEcK6zTanJnc4lI1BnM3XuGzxrOz0CPcp4z9lVknSIUD_ER26mHMde-4TP0coziXdVvfhwr0davmGPO57tsyu_NGpqTCwyFoK0Y7ifURiWN0nuXCNP6PICZFxGsDj490iQZ7oyT6PV0rnyRwEkNBu8V_YUpsV4RySpvfk6z1YoCpCgmSzsAkoaPJCHpiD6vZn97KRjaadRHqoX6rEYq-VTu1CBAvzP02QwebOJzrvK4Kx1EnbZIu6X9-Jxjq-OWp4Ngls0P3yg2VVhq15y8fZ3FRf798xpD7Lnw4oMWPi913g9Hx0Re2V-Lxd6NiFrHjG0PFlSbFSRm6fpFXElbFHgm9mo5W4aUI_eOdcW8Ej5plVrMqAQKZ&c=99f24b45&v=3",
+          "author": "",
+          "content": "Lemon parmesan Brussels sprouts",
+          "pc_cmp_id": 1000374526,
+          "pos": "3",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/Imaginarium/api/uuid/7aecf5b78b10ce883cc4fa35e2a616e806aba492c2b7bcd0aa64e565f0b5f7f9/200/200/1.0",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "Mansion Global",
+          "same_source": "false",
+          "source_display_name": "Mansion Global",
+          "pc_id": 80849674,
+          "adv_name": "Mansion Global (Wall Street Journal)",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "http://www.mansionglobal.com/articles/65528-prime-rentals-in-london-s-surrounding-areas-still-in-strong-demand?mod=mansion_global_articles_en_wsj_home&mod=mansiongl_edit_outbrain_Dec",
+          "rec-cats": [
+            1205,
+            1602,
+            2100
+          ],
+          "ads_type": 1,
+          "rec_en_did": "dDyQf-PO1xofrq_dzLInJw",
+          "url": "http://paid.outbrain.com/network/redir?p=-_s0vvZvlf5sQTU-LqrJq7-ccQ4gsYAQ5Wb-sVT1KKxwjI3SKTntHn-uOCntSzGa1qtcKtS0L3705l64uqrfbU3j46joKsjpKQpSomSeJ-C48GUHUlhRiVDVLWgkS3Drau4m3SQbv4hDn95xOoKmHbzTEnNFL0uWw7RmwUYOTPbJ1XgIg6iZIzdmtZOplwGifaNIjuPBPjcbsdXz7yc4bzxUEHN540G9DcnUhkoY-kdllyKG9Rgxo0iBpgRZKcez9v-Sf5sp5bUNLtX_pPU9OwJVfQnlLWsTkBdm9B_nNLStaJtchTx8I33Op4FwalXFa6O7nMvpjHNY50rp-_af98GRN5xpqQdbVMfv4KgZ75CAN1_ZdfZ2xvm_q2hwPQ7n1B3qdDLSeHGt0TjIl4LVW8slC7Iex-DW386-v2KWNAEwWAVHjiSHGbUphSLCmIVdKQMtEfjtforfkBw3JHDb3VnY_maNhxiAYfngS4huQZ1sjY3Wd2L58ORVo3cOqv9n3suz0WXVoOzvX78DzZYh8lTiKoo8ZG1nHaec0p82h-8fMHj-LkYdIKrc5kqoswJKd0Wdv8b7lP65UgptuH9OEQXDFbEin6hsaNQBBi9FCVTZjZLtYmi0F7FJBnJATc1AKYjwpWHSo3OMa9BUe2VRwC01PFJ2Dxd2E2ke1LRRdm-QAZ8X6QUzwzww1I3Bo0pwTnuc3R4jcZF7eUNUezTQXFzk7eN4QhBDCh9kk3Pad91p0L0bN7SUr_P-oy-8BkxFlbNaVUd-Y7DtpqSPUVRiQNURdlV9Y6FnzWVvXl5DvbDep25e6rqvoQ4jNEBBYU-vEhX4SYrF233OQ_PQDh3Z8CaTnVi2PMVlvyJKLbKR-TeyagNWHU4X3-trEiIbg7enAgii6G1fnIEjhABj4yePAA&c=e7022591&v=3",
+          "author": "",
+          "content": "Prime Rentals in London’s Surrounding Areas Still in Strong Demand",
+          "pc_cmp_id": 1000091297,
+          "pos": "4",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/Imaginarium/api/uuid/426b9a62d677eed45b43185ada8210c95289ec56167b78b8080813c59fcac4ae/200/200/1.0",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        },
+        {
+          "source_name": "Mansion Global",
+          "same_source": "false",
+          "source_display_name": "Mansion Global",
+          "pc_id": 80854539,
+          "adv_name": "Mansion Global (Wall Street Journal)",
+          "publish_date": "1969-12-31 19:00",
+          "orig_url": "http://www.mansionglobal.com/articles/65575-seven-manhattan-condos-have-surpassed-1b-in-first-time-sales?mod=mansion_global_articles_en_wsj_home&mod=mansiongl_edit_outbrain_Dec",
+          "rec-cats": [
+            1602,
+            2100,
+            1205
+          ],
+          "ads_type": 1,
+          "rec_en_did": "SY0fezvZ06ES6uDPF6OAng",
+          "url": "http://paid.outbrain.com/network/redir?p=zR-8uBejDJ3nqaQRYQ-REpQ0alIzn3Vgoc4m8lSMwY7YrvsLvgXnYjymGksZPg_TgpGEMjJqXWQIbJpcrGTxIgLthKVuoha-lMuF6J9gm4465FC1hPLA8dT_coBCGnJfw56PN7YNc05Y5GKGp2ZvTDFVo_gaICNgEt61eR3xybONKN3ghrRgBU7aP53renpU94k3mTzI6UuK1XLBu-nI80u0SLaXiNJjeNfuvuxGwdPpUqL8npNCoRgh2rfUCv3xBUAYjDikbrQJ5c94LzF3YbYh4hzrBnv98mSyRRJiRyPLSXYXURiJzbDHEPUNLk2vl9pqTN9zHCfJhpJWugbA529KYt3-9vYgZ2ovEZcQu1cEfSWDxxGry7Qyrkn5sbcjKTv4M1_S7lpDNL0LyBYSMxdlvKatUU3Kh5agCxBgvTIKMs89AG48bT3EEfkV-Gf1tU66d7df37gZnuzc3EdnrmsbQj9xf3ngscxNPVlY__FE3xzzCY6U9Qyd5bVu0GpOi2T6g7xP3d2E6eVOIiEKeg-SS8IdnHz7YcnHlN9u0oHMsKdVJ1c-_a6BFvreha_HDbMovReAnwf3TwPIaCDy1rCXRptBpasWMGucG0vNIRb9QGZvjzOJiDAo4NzAjz9DsnAAFXMGILF8iQU-WnaI8hLS00kbQP_0NPSckeQ33Q2DwXJLQCc7F7PbfLOpnzyXxpTL66STQp_6GY5IblGELHXwVeex5momdd97O6AMny3ZvQHwGV1Lc64j3haSn_YlIBXX7rja4jke7Fi5s7hkdhzqi9H12ZwQ_rEIi6jRF5Lti9uSULzy9VHCjaN2cyJQJ2Sy4GWPUISlNvimmgWVAG7bHjVtbo5JwtM9n_2uTQ2ACBmovY9q0ObC84c5Wqt0j_NZmLZm1eKzbDuPnclcVA&c=14ae303b&v=3",
+          "author": "",
+          "content": "Seven Manhattan Condos Have Surpassed $1B in First-Time Sales",
+          "pc_cmp_id": 1000091297,
+          "pos": "5",
+          "ttid": 3,
+          "thumbnail": {
+            "url": "http://images.outbrain.com/Imaginarium/api/uuid/48f434b217662440b45fbefa937346ef1eb77d7d20601c55bb45ba93044483c8/200/200/1.0",
+            "width": 200,
+            "height": 200,
+            "imageImpressionType": "DOCUMENT_IMAGE"
+          }
+        }
+      ]
+    },
+    "settings": {
+      "flagPublisherZappingFeature": true,
+      "defaultRecNumber": 6,
+      "cwvReportingEnable": true,
+      "recMode": "odb_strip",
+      "globalWidgetStatistics": true,
+      "apv": true,
+      "cwvReportingThreshold": 70,
+      "InstallationType": "other"
+    },
+    "viewability_actions": {
+        "reportServed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=a7a219ee9e20fc846946341d3ebd6d75&pvId=67a059883e4d0384383343623b5155cd&sid=5291479&pid=4737&idx=3&wId=1146&pad=1&org=0&tm=0&eT=0",
+        "reportViewed": "https://log.outbrainimg.com/loggerServices/widgetGlobalEvent?rId=a7a219ee9e20fc846946341d3ebd6d75&pvId=67a059883e4d0384383343623b5155cd&sid=5291479&pid=4737&idx=3&wId=1146&pad=1&org=0&tm=0&eT=3"
+    }
+  }
+}

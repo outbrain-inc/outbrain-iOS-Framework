@@ -21,10 +21,11 @@ import Foundation
     case invalidParameters = 10203
     case noRecommendations = 10204
     case noData = 10205
+    case network = 10206
 }
 
 
-@objcMembers public class OBError: NSObject {
+@objcMembers public class OBError: NSObject, Error {
     
     public let type: OBErrorType
     public let message: String?

@@ -81,10 +81,13 @@ struct RegularSDKSwiftUI: View {
                 widgetIndex: 0
             )
             
-            
-            Outbrain.fetchRecommendations(for: request) { response in
-                recommendations = response.recommendations
-                    .map { .init(recommendation: $0) }
+            Task {
+                do {
+                    let recs = try await Outbrain.fetchRecommendations(for: request)
+                    recommendations = recs.map { .init(recommendation: $0) }
+                } catch {
+                    print("Error fetching recommendations: \(error)")
+                }
             }
         }
         .fullScreenCover(isPresented: .init(

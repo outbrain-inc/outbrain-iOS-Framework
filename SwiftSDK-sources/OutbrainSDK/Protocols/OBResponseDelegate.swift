@@ -11,4 +11,6 @@ import Foundation
 @objc public protocol OBResponseDelegate: AnyObject {
     
     func outbrainDidReceiveResponse(withSuccess response: OBRecommendationResponse)
+    
+    func outbrainFailedToReceiveResposne(withError error: OBError?)
 }

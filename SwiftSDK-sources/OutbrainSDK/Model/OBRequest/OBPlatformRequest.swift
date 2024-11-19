@@ -9,28 +9,25 @@ import Foundation
 
 @objc public class OBPlatformRequest: OBRequest {
     
-    @objc public var contentUrl: String? // content url
-    @objc public var portalUrl: String? // portal url
-    @objc public var bundleUrl: String? // bundle url
-    @objc public var lang: String? // language
-    @objc public var psub: String? // psub
+    @objc public var contentUrl: String?
+    @objc public var portalUrl: String?
+    @objc public var bundleUrl: String?
+    @objc public var lang: String?
+    @objc public var psub: String?
     
-    // check if the request is valid
+    
     var isValid: Bool {
         return (contentUrl != nil || portalUrl != nil) && lang != nil
     }
     
-    // check if using content url
     var isUsingContentUrl: Bool {
         return contentUrl != nil
     }
     
-    // check if using portal url
     var isUsingPortalUrl: Bool {
         return portalUrl != nil
     }
     
-    // check if using bundle url
     var isUsingBundleUrl: Bool {
         return bundleUrl != nil
     }
@@ -52,6 +49,7 @@ import Foundation
         self.lang = lang
         self.psub = psub
     }
+    
     
     // Objective-C compatible factory method for `requestWithBundleURL:lang:widgetID:`
     @objc public static func requestWithBundleURL(_ bundleUrl: String, lang: String, widgetID: String) -> OBPlatformRequest {

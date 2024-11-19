@@ -33,48 +33,45 @@ struct TwoWidgetsSwiftuI: View {
     
     var body: some View {
         ScrollView {
-            ZStack {
-                VStack {
-                    Image("articleImage", bundle: Bundle.main)
-                        .resizable()
-                        .aspectRatio(16/9, contentMode: .fill)
-                    
-                    Text("The Guardian")
-                        .padding()
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .frame(height: 80.0)
-                        .background(.blue)
-                        .foregroundColor(.white)
-                    
-                    Text("Suarez: Messi Was Born Great, Ronaldo Made Himself Great")
-                        .font(.system(size: 24))
-                        .fontWeight(.medium)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(EdgeInsets(top: 20, leading: 5, bottom: 20, trailing: 0))
-                    
-                    ArticleBody()
-                    ArticleBody()
-                    
-                    OutbrainWidgetView(
-                        viewModel: viewModel,
-                        twoWidgets: true,
-                        widgetIndex: 0
-                    )
-                    .frame(height: $viewModel.widgetHeight.wrappedValue)
-                    
-                    
-                    ArticleBody()
-                    ArticleBody()
-                    
-                    OutbrainWidgetView(
-                        viewModel: viewModel2,
-                        twoWidgets: true,
-                        widgetIndex: 1
-                    )
-                    .frame(height: $viewModel2.widgetHeight.wrappedValue)
-                }
+            VStack {
+                Image("articleImage", bundle: Bundle.main)
+                    .resizable()
+                    .aspectRatio(16/9, contentMode: .fill)
                 
+                Text("The Guardian")
+                    .padding()
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(height: 80.0)
+                    .background(.blue)
+                    .foregroundColor(.white)
+                
+                Text("Suarez: Messi Was Born Great, Ronaldo Made Himself Great")
+                    .font(.system(size: 24))
+                    .fontWeight(.medium)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(EdgeInsets(top: 20, leading: 5, bottom: 20, trailing: 0))
+                
+                ArticleBody()
+                ArticleBody()
+                
+                OutbrainWidgetView(
+                    viewModel: viewModel,
+                    twoWidgets: true,
+                    widgetIndex: 0
+                )
+                .frame(height: viewModel.widgetHeight)
+                
+                
+                ArticleBody()
+                ArticleBody()
+                
+                OutbrainWidgetView(
+                    viewModel: viewModel2,
+                    twoWidgets: true,
+                    widgetIndex: 1
+                )
+                .frame(height: viewModel2.widgetHeight)
             }
         }
         .fullScreenCover(isPresented: .init(

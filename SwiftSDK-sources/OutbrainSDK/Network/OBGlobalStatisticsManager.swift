@@ -44,38 +44,42 @@ public struct OBGlobalStatisticsManager {
         )
         
         // Add the viewability data object to the map
-        let viewabilityKeyForRequestId = self.globalStatsticsKey(forRequestId: rid)
+        let viewabilityKeyForRequestId = globalStatsticsKey(forRequestId: rid)
         self.globalStatisticsDataMap[viewabilityKeyForRequestId] = viewabilityData
         
-        // Add the viewability key to the request id map
-        let viewabilityKeyForOBRequest = self.globalStatsticsKey(forRequest: request)
-        self.obLabelkeyToRequestIdKeyMap[viewabilityKeyForOBRequest] = viewabilityKeyForRequestId
-        
-        // take timestamp
-        let timeNow = Date()
-        
-        // calculate time to process request
-        let timeIntervalSinceRequestStart = timeNow.timeIntervalSince(requestStartDate)
-        
-        // convert to milliseconds
-        let timeToProcessRequest = String(Int(timeIntervalSinceRequestStart * 1000))
-        
-        // check report served URL
-        if viewabilityData.reportServedUrl == nil {
-            Outbrain.logger.error("report recs received - reportServedUrl is nil", domain: "global-statistics")
-            return
+        do {
+            // Add the viewability key to the request id map
+            let viewabilityKeyForOBRequest = try globalStatsticsKey(forRequest: request)
+            obLabelkeyToRequestIdKeyMap[viewabilityKeyForOBRequest] = viewabilityKeyForRequestId
+            
+            // take timestamp
+            let timeNow = Date()
+            
+            // calculate time to process request
+            let timeIntervalSinceRequestStart = timeNow.timeIntervalSince(requestStartDate)
+            
+            // convert to milliseconds
+            let timeToProcessRequest = String(Int(timeIntervalSinceRequestStart * 1000))
+            
+            // check report served URL
+            if viewabilityData.reportServedUrl == nil {
+                Outbrain.logger.error("report recs received - reportServedUrl is nil", domain: "global-statistics")
+                return
+            }
+            
+            // if served url does not exist, return
+            guard let servedUrl = globalStatsticsUrlWithMandatoryParams(url: viewabilityData.reportServedUrl!, tmParam: timeToProcessRequest, isOptedOut: viewabilityData.optedOut!) else {
+                return
+            }
+            
+            // create the request
+            let task = URLSession.shared.dataTask(with: servedUrl)
+            task.resume()
+            
+            Outbrain.logger.debug("report recs received - servedUrl: \(servedUrl)", domain: "global-statistics")
+        } catch {
+            Outbrain.logger.error((error as? OBError)?.message ?? "Failed to report served for request \(request.widgetId)")
         }
-        
-        // if served url does not exist, return
-        guard let servedUrl = globalStatsticsUrlWithMandatoryParams(url: viewabilityData.reportServedUrl!, tmParam: timeToProcessRequest, isOptedOut: viewabilityData.optedOut!) else {
-            return
-        }
-                
-        // create the request
-        let task = URLSession.shared.dataTask(with: servedUrl)
-        task.resume()
-        
-        Outbrain.logger.debug("report recs received - servedUrl: \(servedUrl)", domain: "global-statistics")
     }
     
     // report viewed for request id
@@ -224,21 +228,19 @@ public struct OBGlobalStatisticsManager {
     }
     
     // get global statistics key for request
-    func globalStatsticsKey(forRequest request: OBRequest) -> String {
+    func globalStatsticsKey(forRequest request: OBRequest) throws -> String {
         var url = request.url
         
         // if platforms request - check if using bundle, content or portal url
         if let platformsRequest = request as? OBPlatformRequest {
-            if platformsRequest.isUsingBundleUrl {
-                url = platformsRequest.bundleUrl
-            } else if platformsRequest.isUsingContentUrl {
-                url = platformsRequest.contentUrl
-            } else if platformsRequest.isUsingPortalUrl {
-                url = platformsRequest.portalUrl
-            }
+            url = platformsRequest.bundleUrl ?? platformsRequest.contentUrl ?? platformsRequest.portalUrl
         }
         
-        return globalStatsticsKey(forUrl: url!, widgetId: request.widgetId, widgetIndex: request.widgetIndex)
+        guard let url else {
+            throw OBError.generic(message: "Missing Platform request URL", code: .invalidParameters)
+        }
+        
+        return globalStatsticsKey(forUrl: url, widgetId: request.widgetId, widgetIndex: request.widgetIndex)
     }
     
     // build global statistics URL with mandatory params

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 
 @objcMembers public class OBRequest: NSObject {
     
@@ -15,7 +17,11 @@ import Foundation
     public var externalID: String? // external id
     public var startDate: Date? // start date
     
+    var isPlatformsRequest: Bool {
+        return (self as? OBPlatformRequest) != nil
+    }
     
+
     public init(
         url: String?,
         widgetID: String,
@@ -38,3 +44,4 @@ import Foundation
         return OBRequest(url: url, widgetID: widgetID, widgetIndex: widgetIndex)
     }
 }
+

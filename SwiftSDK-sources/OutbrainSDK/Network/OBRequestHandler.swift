@@ -6,107 +6,199 @@
 //
 
 import Foundation
-import UIKit
+
 
 public struct OBRequestHandler {
     
+    private let request: OBRequest
+    private let requestUrlBuilder: OBRequestUrlBuilderProtocol
     
-    // perform odb request based on this request struct
-    let request: OBRequest
-    
-    // if platforms getter
-    var isPlatformsRequest: Bool {
-        return (request as? OBPlatformRequest) != nil
-    }
     
     init(_ request: OBRequest) {
         self.request = request
+        
+        if let platformRequest = request as? OBPlatformRequest {
+            requestUrlBuilder = OBPlatformRequestUrlBuilder(platformRequest: platformRequest)
+        } else {
+            requestUrlBuilder = OBRequestUrlBuilder(request: request)
+        }
     }
+    
     
     // MARK: Fetch Recomendations - make http request for fetching recommendations from odb, option to pass callback or delegate that will resolve to OBResponse
-    
-    // callback
-    func fetchRecs(callback: @escaping (OBRecommendationResponse) -> Void) {
-        guard let finalUrl = buildOdbParams() else { return }
-        performFetchTask(with: finalUrl, callback: callback)
+    func fetchRecs(callback: ((OBRecommendationResponse) -> Void)?) {
+        guard requestUrlBuilder.buildOdbParams() != nil else { return }
+        
+        Task {
+            do {
+                let recs = try await fetchRecsAsync()
+                callback?(recs)
+            } catch {
+                callback?(.init(
+                    request: [:],
+                    settings: [:],
+                    viewabilityActions: nil,
+                    recommendations: [],
+                    error: error as? OBError)
+                )
+            }
+        }
     }
     
     
-    // delegate on success
     func fetchRecs(delegate: OBResponseDelegate) {
-        guard let finalUrl = buildOdbParams() else { return }
-        performFetchTask(with: finalUrl, callback: delegate.outbrainDidReceiveResponse)
+        guard requestUrlBuilder.buildOdbParams() != nil else { return }
+        Task {
+            do {
+                let recs = try await fetchRecsAsync()
+                delegate.outbrainDidReceiveResponse(withSuccess: recs)
+            } catch {
+                delegate.outbrainFailedToReceiveResposne(withError: error as? OBError)
+            }
+        }
     }
     
     
-    func performFetchTask(with url: URL, callback: @escaping (OBRecommendationResponse) -> Void) {
-        Outbrain.logger.debug("fetch recs - task added", domain: "request-handler")
+    func fetchRecsAsync() async throws -> OBRecommendationResponse {
+        guard let url = requestUrlBuilder.buildOdbParams()?.url else {
+            throw OBError.native(message: "Failed to build ODB URL", code: .invalidParameters)
+        }
+        
+        defer {
+            if OBErrorReport.shared.errorMessage != nil {
+                OBErrorReport.shared.reportErrorToServer()
+            }
+        }
+        
+        Outbrain.logger.debug("fetch recs async - started fetch", domain: "request-handler")
         
         // init error reporting data
         OBErrorReport.shared.resetReport()
         OBErrorReport.shared.odbRequestUrlParamValue = request.url
         OBErrorReport.shared.widgetId = request.widgetId
         
-        // using semaphore to ensure serial execution
-        let sema = DispatchSemaphore(value: 0)
+        request.startDate = Date()
+        Outbrain.logger.log("fetch recs - async fetch started for url \(url.absoluteString)", domain: "request-handler")
         
-        DispatchQueue.main.async {
-            // set the request start date
-            request.startDate = Date()
-            Outbrain.logger.log("fetch recs - task started for url \(url.absoluteString)", domain: "request-handler")
-            
-            // http call task
-            var request = URLRequest(url: url)
-            
-            // trace mode if debug
+        
+        var urlRequest = URLRequest(url: url)
+        
 #if DEBUG
-            request.setValue("true", forHTTPHeaderField: "x-trace")
+        urlRequest.setValue("true", forHTTPHeaderField: "x-trace")
+#endif
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+            
+#if DEBUG
+            if let debugRes = response as? HTTPURLResponse {
+                if let traceID = debugRes.value(forHTTPHeaderField: "x-traceid") {
+                    // Access the trace ID here
+                    Outbrain.logger.debug("fetch recs async - trace id: \(traceID)", domain: "request-handler")
+                }
+            }
 #endif
             
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                // trace mode if debug
-#if DEBUG
-                if let debugRes = response as? HTTPURLResponse {
-                    if let traceID = debugRes.value(forHTTPHeaderField: "x-traceid") {
-                        // Access the trace ID here
-                        Outbrain.logger.debug("fetch recs - trace id: \(traceID)", domain: "request-handler")
-                    }
-                }
-#endif
-                
-                do {
-                    try handleResponse(
-                        data: data,
-                        response: response,
-                        error: error,
-                        callback: callback
-                    )
-                } catch {
-                    Outbrain.logger.error("handle response failed: \(error)")
-                }
-                
-                // send semaphore signal to proceed to the next operation
-                sema.signal()
-                
-                Outbrain.logger.debug("fetch recs - task finished", domain: "request-handler")
+            guard let httpResponse = response as? HTTPURLResponse else {
+                let errorMessage = "fetch recs async - invalid HTTP Response: \(String(describing: response))"
+                Outbrain.logger.error(errorMessage, domain: "request-handler")
+                OBErrorReport.shared.errorMessage = errorMessage
+                throw OBError.network(message: errorMessage, code: .generic)
             }
             
-            // make the http call
-            task.resume()
+
+            if let responseCodeError = handleHttpErrorResponseCode(for: httpResponse.statusCode) {
+                let errorMessage = "fetch recs async - HTTP error: \(httpResponse.statusCode)"
+                Outbrain.logger.error(errorMessage, domain: "request-handler")
+                OBErrorReport.shared.errorMessage = errorMessage
+                throw responseCodeError
+            }
+            
+            
+            guard !data.isEmpty else {
+                let error = OBError.zeroRecommendations(
+                    message: "No data received",
+                    code: .noData
+                )
+                
+                Outbrain.logger.error(
+                    "fetch recs async - no data received",
+                    domain: "request-handler"
+                )
+                
+                OBErrorReport.shared.errorMessage = "fetch recs async - no data received"
+                throw error
+            }
+            
+            
+            // JSON Parsing Error
+            guard let response = parseJsonData(with: data) else {
+                let error = OBError.native(
+                    message: "Parsing failed",
+                    code: .parsing
+                )
+                
+                let errorMessage = "fetch recs async - parsing failed"
+                Outbrain.logger.error(errorMessage, domain: "request-handler")
+                OBErrorReport.shared.errorMessage = errorMessage
+                throw error
+            }
+            
+            
+            // Error reporting poplate details in case of later one error
+            if let pid = response.request["pid"] as? String {
+                OBErrorReport.shared.publisherId = pid
+            }
+            
+            if let sid = response.request["sid"] as? Int {
+                OBErrorReport.shared.sourceId = String(sid)
+            }
+            
+            // no recs error
+            if response.recommendations.isEmpty {
+                response.error = OBError.zeroRecommendations(
+                    message: "No recs",
+                    code: .noRecommendations
+                )
+                
+                Outbrain.logger.error("fetch recs - no recs", domain: "request-handler")
+            }
+            
+            Outbrain.logger.log("fetch recs - done, response: \(response)", domain: "request-handler")
+            
+            OBGlobalStatisticsManager.shared.checkAndUpdateGlobalStatisticsSetting(response)
+            
+            if OBGlobalStatisticsManager.shared.isGlobalStatsticsEnabled() {
+                OBGlobalStatisticsManager.shared.reportServed(request: request,
+                                                              response: response,
+                                                              timestamp: request.startDate ?? Date()
+                )
+            }
+            
+            OBGlobalStatisticsManager.shared.firePixels(for: response)
+            return response
+        } catch {
+            Outbrain.logger.error(
+                "fetch recs async - network error: \(error.localizedDescription)",
+                domain: "request-handler"
+            )
+            
+            OBErrorReport.shared.errorMessage = "fetch recs async - network error: \(error.localizedDescription)"
+            
+            if error is OBError {
+                throw error
+            } else {
+                throw OBError.network(message: "fetch recs async - network error: \(error.localizedDescription)", code: .network)
+            }
         }
-        
-        // wait for the next operation
-        let _ = sema.wait(timeout: .distantFuture)
     }
     
     
     // MARK: Handle Response - checks if got valid response back from the server
-    func handleResponse(
+    private func handleResponse(
         data: Data?,
         response: URLResponse?,
-        error: Error?,
-        callback: @escaping (OBRecommendationResponse) throws -> Void
-    ) throws {
+        error: Error?) throws -> OBRecommendationResponse {
         // report error to widget monitor if error
         defer {
             if OBErrorReport.shared.errorMessage != nil {
@@ -137,8 +229,7 @@ public struct OBRequestHandler {
             )
             
             OBErrorReport.shared.errorMessage = "fetch recs - network error: \(error.localizedDescription)"
-            try callback(responseWithError)
-            return
+            return responseWithError
         }
         
         // HTTP Invalid Error
@@ -154,8 +245,7 @@ public struct OBRequestHandler {
             )
             
             OBErrorReport.shared.errorMessage = "fetch recs - invalid HTTP Response: \(String(describing: response))"
-            try callback(responseWithError)
-            return
+            return responseWithError
         }
         
         // Check for response code errors
@@ -167,8 +257,7 @@ public struct OBRequestHandler {
             )
             
             OBErrorReport.shared.errorMessage = "fetch recs - HTTP error: \(httpResponse.statusCode)"
-            try callback(responseWithError)
-            return
+            return responseWithError
         }
         
         // No Data Error
@@ -184,8 +273,7 @@ public struct OBRequestHandler {
             )
             
             OBErrorReport.shared.errorMessage = "fetch recs - no data received"
-            try callback(responseWithError)
-            return
+            return responseWithError
         }
         
         // JSON Parsing Error
@@ -197,8 +285,7 @@ public struct OBRequestHandler {
             
             Outbrain.logger.error("fetch recs - parsing failed", domain: "request-handler")
             OBErrorReport.shared.errorMessage = "fetch recs - parsing failed"
-            try callback(responseWithError)
-            return
+            return responseWithError
         }
         
         // Error reporting poplate details in case of later one error
@@ -237,7 +324,7 @@ public struct OBRequestHandler {
         OBGlobalStatisticsManager.shared.firePixels(for: response)
         
         // invoke callback with parsed recs
-        try callback(response)
+        return response
     }
     
     
@@ -399,119 +486,11 @@ public struct OBRequestHandler {
     
     
     // MARK: Params Enrichment - build the request query params based on OBRequest
-    
-    // odb request url builder
-    func buildOdbParams() -> URL? {
-        var reqUrl = URLComponents(string: isPlatformsRequest ? OB_REQUEST_HANDLER_CONSTANTS.PLATFORMS_BASE_URL : OB_REQUEST_HANDLER_CONSTANTS.ODB_BASE_URL)!
-        if (!OBAppleAdIdUtil.isOptedOut) {
-            // User allowed tracking
-            reqUrl = URLComponents(string: isPlatformsRequest ? OB_REQUEST_HANDLER_CONSTANTS.T_PLATFORMS_BASE_URL : OB_REQUEST_HANDLER_CONSTANTS.T_ODB_BASE_URL)!
-        }
-        
-        // query params
-        var queryItems = [
-            addReqParam(name: "key", value: Outbrain.partnerKey),
-            addReqParam(name: "version", value: Outbrain.OB_SDK_VERSION),
-            addReqParam(name: "app_ver", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""),
-            addReqParam(name: "rand", value: String(describing: Int.random(in: 0..<10000))),
-            addReqParam(name: "widgetJSId", value: self.request.widgetId),
-            addReqParam(name: "idx", value: "\(self.request.widgetIndex)"),
-            addReqParam(name: "format", value: "vjnc"),
-            addReqParam(name: "api_user_id", value: OBRequestHandler.getApiUserId()),
-            addReqParam(name: "installationType", value: "ios_sdk"),
-            addReqParam(name: "rtbEnabled", value: "true"),
-            addReqParam(name: "sk_network_version", value: OBRequestHandler.getSkNetworkVersion()),
-            addReqParam(name: "app_id", value: Bundle.main.bundleIdentifier),
-            addReqParam(name: "doo", value: OBRequestHandler.getOptedOut() ? "true" : "false"),
-            addReqParam(name: "dos", value: "ios"),
-            addReqParam(name: "platform", value: "ios"),
-            addReqParam(name: "dosv", value: UIDevice.current.systemVersion),
-            addReqParam(name: "dm", value: DeviceModelUtils.deviceModel),
-            addReqParam(name: "deviceType", value: DeviceModelUtils.deviceTypeShort),
-            addReqParam(name: "va", value: "true"),
-            addReqParam(name: "t", value: getTParam()),
-            addReqParam(name: "apv", value: getApvParam()),
-            addReqParam(name: "secured", value: "true"),
-            addReqParam(name: "ref", value: "https://app-sdk.outbrain.com/"),
-            addReqParam(name: "extid", value: self.request.externalID),
-            addReqParam(name: "cnsnt", value: GDPRUtils.gdprV1ConsentString ?? ""),
-            addReqParam(name: "cnsntv2", value: GDPRUtils.gdprV2ConsentString ?? ""),
-            addReqParam(name: "ccpa", value: GDPRUtils.ccpaPrivacyString ?? ""),
-            addReqParam(name: "gpp_sid", value: GPPUtils.gppSections ?? ""),
-            addReqParam(name: "gpp", value: GPPUtils.gppString ?? ""),
-            addReqParam(name: "ostracking", value: !OBAppleAdIdUtil.isOptedOut ? "true" : "false"),
-            addReqParam(name: "clientType", value: "10")
-        ]
-        
-        // add platforms params if needed or just the url if regular call
-        if isPlatformsRequest {
-            self.addPlatformsQueryParams(for: &queryItems)
-        } else {
-            queryItems.append(addReqParam(name: "url", value: self.request.url))
-        }
-        
-        // add test mode
-        if Outbrain.testMode {
-            queryItems.append(addReqParam(name: "testMode", value: "true"))
-            
-            if Outbrain.testRTB {
-                queryItems.append(URLQueryItem(name: "fakeRec", value: "RTB"))
-                queryItems.append(URLQueryItem(name: "fakeRecSize", value: "2"))
-                queryItems.append(URLQueryItem(name: "rtbEnabled", value: "true"))
-            }
-            
-            if Outbrain.testLocation != nil {
-                queryItems.append(URLQueryItem(name: "location", value: Outbrain.testLocation))
-            }
-        }
-        
-        // filter out invliad params
-        reqUrl.queryItems = queryItems.compactMap { $0 }
-        
-        return reqUrl.url
-    }
-    
+
     // add param to request, if invalid/empty string will return nill
-    func addReqParam(name: String, value: String?) -> URLQueryItem? {
-        if value == nil || value!.isEmpty {
-            return nil
-        }
-        return URLQueryItem(name: name, value: value!)
-    }
     
-    // platforms request, add the relevant params
-    func addPlatformsQueryParams(for queryItems: inout [URLQueryItem?]) {
-        guard let platformsRequest = self.request as? OBPlatformRequest else {
-            return
-        }
-        
-        // check if using bundle or portal url
-        if platformsRequest.isUsingBundleUrl || platformsRequest.isUsingPortalUrl {
-            // check that lang exists
-            guard let lang = platformsRequest.lang else {
-                Outbrain.logger.error("lang is mandatory when using platforms request")
-                // should we throw an error here?
-                return
-            }
-            
-            // determine which param to add
-            let parmKey = platformsRequest.isUsingBundleUrl ? "bundleUrl" : "portalUrl"
-            let paramVal = platformsRequest.isUsingBundleUrl ? platformsRequest.bundleUrl : platformsRequest.portalUrl
-            
-            // add param
-            queryItems.append(addReqParam(name: parmKey, value: paramVal)!)
-            
-            // add lang param
-            queryItems.append(addReqParam(name: "lang", value: lang)!)
-        } else if platformsRequest.isUsingContentUrl {
-            queryItems.append(addReqParam(name: "contentUrl", value: platformsRequest.contentUrl)!)
-        }
-        
-        // add psub param if exists
-        if let psub = platformsRequest.psub {
-            queryItems.append(addReqParam(name: "psub", value: psub)!)
-        }
-    }
+    
+    
     
     // populate api_user_id from OS if the user is not opted out or customerId declared
     static func getApiUserId() -> String {
@@ -542,39 +521,4 @@ public struct OBRequestHandler {
     static func getOptedOut() -> Bool {
         return OBAppleAdIdUtil.isOptedOut
     }
-    
-    // populate t param from previous req
-    func getTParam() -> String? {
-        // if it's the first widget on page, no t param yet
-        if self.request.widgetIndex == 0 {
-            return nil
-        }
-        
-        // check that we have the t param from last idx 0 call
-        guard let tParam = Outbrain.lastTParam else {
-            return nil
-        }
-        
-        // return the stored t param
-        return tParam
-    }
-    
-    // populate apv param from previous req
-    func getApvParam() -> String? {
-        // check that we have the apv param from last idx 0 call
-        guard let apvParam = Outbrain.lastApvParam else {
-            return nil
-        }
-        
-        // return the stored apv param
-        return apvParam ? "true" : nil
-    }
-    
-}
-
-enum OB_REQUEST_HANDLER_CONSTANTS {
-    static let ODB_BASE_URL = "https://mv.outbrain.com/Multivac/api/get/"
-    static let T_ODB_BASE_URL = "https://t-mv.outbrain.com/Multivac/api/get/"
-    static let PLATFORMS_BASE_URL = "https://mv.outbrain.com/Multivac/api/platforms/"
-    static let T_PLATFORMS_BASE_URL = "https://t-mv.outbrain.com/Multivac/api/platforms/"
 }
