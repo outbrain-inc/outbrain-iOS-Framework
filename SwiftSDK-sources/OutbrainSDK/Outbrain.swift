@@ -13,7 +13,7 @@ import UIKit
     // MARK: OB Instance Variables
 
     // current SDK version
-    @objc public static let OB_SDK_VERSION = "5.3.0"
+    @objc public static let OB_SDK_VERSION = "5.3.1"
 
     // Logger
     static var logger = OBLogger()
