@@ -41,6 +41,7 @@
 		B113CC502C5A236D00BECDFA /* PlatformUrlType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */; };
 		B113CC522C5A2A1B00BECDFA /* OBLogLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */; };
 		B14770DD2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */; };
+		B1FEE6EE2CDA552600F851C9 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B1FEE6ED2CDA552600F851C9 /* PrivacyInfo.xcprivacy */; };
 		B166F9D52CE3A9E70083D6EB /* MockUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166F9D42CE3A9E70083D6EB /* MockUrlProtocol.swift */; };
 		B166F9D72CE3AACD0083D6EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166F9D62CE3AACB0083D6EB /* Extensions.swift */; };
 		B1AF3CA22CE2277B005AAA94 /* OBRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */; };
@@ -129,6 +130,7 @@
 		B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformUrlType.swift; sourceTree = "<group>"; };
 		B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBLogLevels.swift; sourceTree = "<group>"; };
 		B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewabilityViewModifier.swift; sourceTree = "<group>"; };
+		B1FEE6ED2CDA552600F851C9 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B166F9D42CE3A9E70083D6EB /* MockUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlProtocol.swift; sourceTree = "<group>"; };
 		B166F9D62CE3AACB0083D6EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilder.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 		E6E4B3BA2A2381A100FE44E3 /* OutbrainSDK */ = {
 			isa = PBXGroup;
 			children = (
+				B1FEE6ED2CDA552600F851C9 /* PrivacyInfo.xcprivacy */,
 				B113CC4C2C5A235200BECDFA /* Enums */,
 				CA26CB602A6FF31500D2C22F /* SFWidget */,
 				5E605BA72A5BEBBD00B8B96C /* View */,
@@ -510,6 +513,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1FEE6EE2CDA552600F851C9 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

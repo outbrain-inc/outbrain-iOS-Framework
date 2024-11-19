@@ -28,10 +28,14 @@ class TableVC : UIViewController, UITableViewDelegate, UITableViewDataSource, UI
     private let navigationViewModel: NavigationViewModel
     
     
-    required init(navigationViewModel: NavigationViewModel, params: [String : Bool]?) {
+    required init(
+        navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel,
+        params: [String: Bool]?
+    ) {
         self.tableView = UITableView()
         self.navigationViewModel = navigationViewModel
-        self.paramsViewModel = navigationViewModel.paramsViewModel
+        self.paramsViewModel = paramsViewModel
         self.READ_MORE_FLAG = params?["readMore"] ?? false
         
         super.init(nibName: nil, bundle: nil)

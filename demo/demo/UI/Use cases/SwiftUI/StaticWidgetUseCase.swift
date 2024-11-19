@@ -1,19 +1,19 @@
 //
-//  BridgeInSwiftUI.swift
+//  StaticWidgetUseCase.swift
 //  demo
 //
-//  Created by Leonid Lemesev on 09/07/2024.
+//  Created by Leonid Lemesev on 05/11/2024.
 //
 
 import SwiftUI
 
-struct BridgeInSwiftUI: View {
+
+struct StaticWidgetUseCase: View {
     
     private let navigationViewModel: NavigationViewModel
     
     @StateObject
     private var viewModel: OutbrainWidgetViewModel
-    
     
     
     init(
@@ -26,8 +26,8 @@ struct BridgeInSwiftUI: View {
     
     
     var body: some View {
-        ScrollView {
-            ZStack {
+        VStack {
+            ScrollView {
                 VStack {
                     Image("articleImage", bundle: Bundle.main)
                         .resizable()
@@ -49,12 +49,15 @@ struct BridgeInSwiftUI: View {
                     
                     ArticleBody()
                     ArticleBody()
-                    
-                    OutbrainWidgetView(viewModel: viewModel)
-                        .frame(height: viewModel.widgetHeight)
                 }
-                
             }
+            
+            OutbrainWidgetView(
+                viewModel: viewModel,
+                isStatic: true,
+                widgetIndex: 0
+            )
+            .frame(height: 50)
         }
         .fullScreenCover(isPresented: .init(
             get: { viewModel.clickedUrl != nil },
@@ -68,8 +71,4 @@ struct BridgeInSwiftUI: View {
                 .ignoresSafeArea(edges: .all)
         }
     }
-}
-
-#Preview {
-    BridgeInSwiftUI(navigationViewModel: .init(), paramsViewModel: .init())
 }

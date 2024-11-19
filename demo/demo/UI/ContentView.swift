@@ -14,6 +14,7 @@ struct ContentView: View {
     
     @StateObject private var navigationViewModel: NavigationViewModel
     @State private var showCacheClearedAlert = false
+
     
     init() {
         self._navigationViewModel = .init(wrappedValue: .init())

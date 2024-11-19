@@ -66,7 +66,7 @@ class BridgeUrlBuilder {
         
         // GDPR v1
         if let cnsnt  = GDPRUtils.gdprV1ConsentString, !cnsnt.isEmpty {
-            newQueryItems.append(URLQueryItem(name: "cnsnt", value:cnsnt))
+            newQueryItems.append(URLQueryItem(name: "cnsnt", value: cnsnt))
         }
         
         // GDPR v2

@@ -22,10 +22,13 @@ struct TwoWidgetsSwiftuI: View {
     private var viewModel2: OutbrainWidgetViewModel
     
     
-    init(navigationViewModel: NavigationViewModel) {
+    init(
+        navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel
+    ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
-        self._viewModel2 = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
+        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
+        self._viewModel2 = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
     }
     
     var body: some View {
@@ -80,6 +83,17 @@ struct TwoWidgetsSwiftuI: View {
             }
         )) {
             OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
+                .ignoresSafeArea(edges: .all)
+        }
+        .fullScreenCover(isPresented: .init(
+            get: { viewModel2.clickedUrl != nil },
+            set: { value in
+                if !value {
+                    viewModel2.clickedUrl = nil
+                }
+            }
+        )) {
+            OBSafariView(url: $viewModel2.clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }

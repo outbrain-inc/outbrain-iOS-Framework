@@ -10,5 +10,9 @@ import UIKit
 
 protocol UIKitContentPage: UIViewController {
     
-    init(navigationViewModel: NavigationViewModel, params: [String: Bool]?)
+    init(
+        navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel,
+        params: [String: Bool]?
+    )
 }

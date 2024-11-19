@@ -22,10 +22,14 @@ class CollectionVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     private let navigationViewModel: NavigationViewModel
     
     
-    required init(navigationViewModel: NavigationViewModel, params: [String : Bool]?) {
+    required init(
+        navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel,
+        params: [String: Bool]?
+    ) {
         collectionView = .init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         self.navigationViewModel = navigationViewModel
-        self.paramsViewModel = navigationViewModel.paramsViewModel
+        self.paramsViewModel = paramsViewModel
         super.init(nibName: nil, bundle: nil)
     }
     

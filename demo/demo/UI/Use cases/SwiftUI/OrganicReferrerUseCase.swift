@@ -21,11 +21,12 @@ struct OrganicReferrerUseCase: View {
     
     init(
         navigationViewModel: NavigationViewModel,
+        paramsViewModel: ParamsViewModel,
         organicUrl: String?
     ) {
         self.navigationViewModel = navigationViewModel
         self.organicUrl = organicUrl
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel))
+        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
     }
     
     var body: some View {
