@@ -41,24 +41,17 @@
 		B113CC502C5A236D00BECDFA /* PlatformUrlType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */; };
 		B113CC522C5A2A1B00BECDFA /* OBLogLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */; };
 		B14770DD2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */; };
-		B1FEE6EE2CDA552600F851C9 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B1FEE6ED2CDA552600F851C9 /* PrivacyInfo.xcprivacy */; };
 		B166F9D52CE3A9E70083D6EB /* MockUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166F9D42CE3A9E70083D6EB /* MockUrlProtocol.swift */; };
 		B166F9D72CE3AACD0083D6EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166F9D62CE3AACB0083D6EB /* Extensions.swift */; };
 		B1AF3CA22CE2277B005AAA94 /* OBRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */; };
 		B1AF3CA62CE22821005AAA94 /* OBPlatformRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA52CE22819005AAA94 /* OBPlatformRequestUrlBuilder.swift */; };
 		B1AF3CA82CE22B56005AAA94 /* OBRequestUrlBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA72CE22B55005AAA94 /* OBRequestUrlBuilderProtocol.swift */; };
 		B1AF3CAA2CE22CFC005AAA94 /* OBRequestHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA92CE22CF8005AAA94 /* OBRequestHandlerTests.swift */; };
-		B1AF3CC82CE22DEE005AAA94 /* viewability_actions.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CC52CE22DEE005AAA94 /* viewability_actions.json */; };
-		B1AF3CCA2CE22DEE005AAA94 /* rec_with_html_encoded_title_1.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CB32CE22DEE005AAA94 /* rec_with_html_encoded_title_1.json */; };
-		B1AF3CCE2CE22DEE005AAA94 /* rec_with_html_encoded_title_3.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CB52CE22DEE005AAA94 /* rec_with_html_encoded_title_3.json */; };
-		B1AF3CD42CE22DEE005AAA94 /* odb_error_request.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CB02CE22DEE005AAA94 /* odb_error_request.json */; };
-		B1AF3CD52CE22DEE005AAA94 /* rec_with_html_encoded_title_2.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CB42CE22DEE005AAA94 /* rec_with_html_encoded_title_2.json */; };
 		B1AF3CDB2CE22DEE005AAA94 /* odb_response_base.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CB12CE22DEE005AAA94 /* odb_response_base.json */; };
-		B1AF3CDE2CE22DEE005AAA94 /* outbrain_multivac_response.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CB22CE22DEE005AAA94 /* outbrain_multivac_response.json */; };
-		B1AF3CDF2CE22DEE005AAA94 /* obrecommendation_response.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CAF2CE22DEE005AAA94 /* obrecommendation_response.json */; };
 		B1AF3CE12CE399C3005AAA94 /* odb_response_no_recs.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CE02CE399C3005AAA94 /* odb_response_no_recs.json */; };
 		B1AF3CE32CE39A70005AAA94 /* odb_response_parsing_error.json in Resources */ = {isa = PBXBuildFile; fileRef = B1AF3CE22CE39A70005AAA94 /* odb_response_parsing_error.json */; };
 		B1BEF4FA2CE496610013622E /* MockResponseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BEF4F92CE496600013622E /* MockResponseDelegate.swift */; };
+		B1FEE6EE2CDA552600F851C9 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B1FEE6ED2CDA552600F851C9 /* PrivacyInfo.xcprivacy */; };
 		B1FEE6F72CDCD96300F851C9 /* OBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEE6F42CDCD96300F851C9 /* OBRequest.swift */; };
 		B1FEE6F82CDCD96300F851C9 /* OBRequestURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEE6F52CDCD96300F851C9 /* OBRequestURLProtocol.swift */; };
 		B1FEE6F92CDCD96300F851C9 /* OBPlatformRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEE6F32CDCD96300F851C9 /* OBPlatformRequest.swift */; };
@@ -130,24 +123,17 @@
 		B113CC4F2C5A236D00BECDFA /* PlatformUrlType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformUrlType.swift; sourceTree = "<group>"; };
 		B113CC512C5A2A1B00BECDFA /* OBLogLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBLogLevels.swift; sourceTree = "<group>"; };
 		B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewabilityViewModifier.swift; sourceTree = "<group>"; };
-		B1FEE6ED2CDA552600F851C9 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B166F9D42CE3A9E70083D6EB /* MockUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlProtocol.swift; sourceTree = "<group>"; };
 		B166F9D62CE3AACB0083D6EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilder.swift; sourceTree = "<group>"; };
 		B1AF3CA52CE22819005AAA94 /* OBPlatformRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformRequestUrlBuilder.swift; sourceTree = "<group>"; };
 		B1AF3CA72CE22B55005AAA94 /* OBRequestUrlBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilderProtocol.swift; sourceTree = "<group>"; };
 		B1AF3CA92CE22CF8005AAA94 /* OBRequestHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestHandlerTests.swift; sourceTree = "<group>"; };
-		B1AF3CAF2CE22DEE005AAA94 /* obrecommendation_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = obrecommendation_response.json; sourceTree = "<group>"; };
-		B1AF3CB02CE22DEE005AAA94 /* odb_error_request.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = odb_error_request.json; sourceTree = "<group>"; };
 		B1AF3CB12CE22DEE005AAA94 /* odb_response_base.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = odb_response_base.json; sourceTree = "<group>"; };
-		B1AF3CB22CE22DEE005AAA94 /* outbrain_multivac_response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = outbrain_multivac_response.json; sourceTree = "<group>"; };
-		B1AF3CB32CE22DEE005AAA94 /* rec_with_html_encoded_title_1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = rec_with_html_encoded_title_1.json; sourceTree = "<group>"; };
-		B1AF3CB42CE22DEE005AAA94 /* rec_with_html_encoded_title_2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = rec_with_html_encoded_title_2.json; sourceTree = "<group>"; };
-		B1AF3CB52CE22DEE005AAA94 /* rec_with_html_encoded_title_3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = rec_with_html_encoded_title_3.json; sourceTree = "<group>"; };
-		B1AF3CC52CE22DEE005AAA94 /* viewability_actions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = viewability_actions.json; sourceTree = "<group>"; };
 		B1AF3CE02CE399C3005AAA94 /* odb_response_no_recs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = odb_response_no_recs.json; sourceTree = "<group>"; };
 		B1AF3CE22CE39A70005AAA94 /* odb_response_parsing_error.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = odb_response_parsing_error.json; sourceTree = "<group>"; };
 		B1BEF4F92CE496600013622E /* MockResponseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResponseDelegate.swift; sourceTree = "<group>"; };
+		B1FEE6ED2CDA552600F851C9 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B1FEE6F32CDCD96300F851C9 /* OBPlatformRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformRequest.swift; sourceTree = "<group>"; };
 		B1FEE6F42CDCD96300F851C9 /* OBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequest.swift; sourceTree = "<group>"; };
 		B1FEE6F52CDCD96300F851C9 /* OBRequestURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestURLProtocol.swift; sourceTree = "<group>"; };
@@ -309,16 +295,9 @@
 		B1AF3CAB2CE22DD1005AAA94 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B1AF3CAF2CE22DEE005AAA94 /* obrecommendation_response.json */,
-				B1AF3CB02CE22DEE005AAA94 /* odb_error_request.json */,
 				B1AF3CB12CE22DEE005AAA94 /* odb_response_base.json */,
 				B1AF3CE02CE399C3005AAA94 /* odb_response_no_recs.json */,
 				B1AF3CE22CE39A70005AAA94 /* odb_response_parsing_error.json */,
-				B1AF3CB22CE22DEE005AAA94 /* outbrain_multivac_response.json */,
-				B1AF3CB32CE22DEE005AAA94 /* rec_with_html_encoded_title_1.json */,
-				B1AF3CB42CE22DEE005AAA94 /* rec_with_html_encoded_title_2.json */,
-				B1AF3CB52CE22DEE005AAA94 /* rec_with_html_encoded_title_3.json */,
-				B1AF3CC52CE22DEE005AAA94 /* viewability_actions.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -521,16 +500,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1AF3CC82CE22DEE005AAA94 /* viewability_actions.json in Resources */,
-				B1AF3CCA2CE22DEE005AAA94 /* rec_with_html_encoded_title_1.json in Resources */,
 				B1AF3CE12CE399C3005AAA94 /* odb_response_no_recs.json in Resources */,
-				B1AF3CCE2CE22DEE005AAA94 /* rec_with_html_encoded_title_3.json in Resources */,
 				B1AF3CE32CE39A70005AAA94 /* odb_response_parsing_error.json in Resources */,
-				B1AF3CD42CE22DEE005AAA94 /* odb_error_request.json in Resources */,
-				B1AF3CD52CE22DEE005AAA94 /* rec_with_html_encoded_title_2.json in Resources */,
 				B1AF3CDB2CE22DEE005AAA94 /* odb_response_base.json in Resources */,
-				B1AF3CDE2CE22DEE005AAA94 /* outbrain_multivac_response.json in Resources */,
-				B1AF3CDF2CE22DEE005AAA94 /* obrecommendation_response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
