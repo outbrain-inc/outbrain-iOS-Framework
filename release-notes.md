@@ -2,6 +2,10 @@
 
 # Official Releases (Swift SDK)
 
+## v5.3.1 - November 19, 2024
+
+ - Added async/await method to fetch Regular recommendations
+
 ## v5.3.0 - November 11, 2024
 
  - Added Objectve-C support - SDK can now be used in pure Objective-C projects
