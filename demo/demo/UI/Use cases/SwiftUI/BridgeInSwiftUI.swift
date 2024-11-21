@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import OutbrainSDK
+
 
 struct BridgeInSwiftUI: View {
     
     private let navigationViewModel: NavigationViewModel
     
-    @StateObject
-    private var viewModel: OutbrainWidgetViewModel
-    
+    @State var clickedUrl: URL?
+
+    private let paramsViewModel: ParamsViewModel
     
     
     init(
@@ -21,13 +23,13 @@ struct BridgeInSwiftUI: View {
         paramsViewModel: ParamsViewModel
     ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
+        self.paramsViewModel = paramsViewModel
     }
     
     
     var body: some View {
         ScrollView {
-            ZStack {
+            
                 VStack {
                     Image("articleImage", bundle: Bundle.main)
                         .resizable()
@@ -50,21 +52,30 @@ struct BridgeInSwiftUI: View {
                     ArticleBody()
                     ArticleBody()
                     
-                    OutbrainWidgetView(viewModel: viewModel)
-                        .frame(height: viewModel.widgetHeight)
+                    OutbrainWidgetView(
+                        url: paramsViewModel.articleURL,
+                        widgetId: paramsViewModel.bridgeWidgetId,
+                        widgetIndex: 0,
+                        installationKey: "NANOWDGT01",
+                        userId: nil,
+                        darkMode: paramsViewModel.darkMode, onRecClick: { url in
+                            clickedUrl = url
+                        }) { url in
+                            DispatchQueue.main.async {
+                                navigationViewModel.push(.swiftUI)
+                            }
+                        }
                 }
-                
-            }
         }
         .fullScreenCover(isPresented: .init(
-            get: { viewModel.clickedUrl != nil },
+            get: { clickedUrl != nil },
             set: { value in
                 if !value {
-                    viewModel.clickedUrl = nil
+                    clickedUrl = nil
                 }
             }
         )) {
-            OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
+            OBSafariView(url: $clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }

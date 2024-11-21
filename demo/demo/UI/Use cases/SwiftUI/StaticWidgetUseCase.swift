@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import OutbrainSDK
 
 
 struct StaticWidgetUseCase: View {
     
     private let navigationViewModel: NavigationViewModel
     
-    @StateObject
-    private var viewModel: OutbrainWidgetViewModel
+    @State var clickedUrl: URL?
+    
+    private let paramsViewModel: ParamsViewModel
     
     
     init(
@@ -21,7 +23,7 @@ struct StaticWidgetUseCase: View {
         paramsViewModel: ParamsViewModel
     ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
+        self.paramsViewModel = paramsViewModel
     }
     
     
@@ -52,22 +54,31 @@ struct StaticWidgetUseCase: View {
                 }
             }
             
+            
             OutbrainWidgetView(
-                viewModel: viewModel,
-                isStatic: true,
-                widgetIndex: 0
-            )
-            .frame(height: 50)
+                url: paramsViewModel.articleURL,
+                widgetId: paramsViewModel.staticWidgetId,
+                widgetIndex: 0,
+                installationKey: "NANOWDGT01",
+                userId: nil,
+                darkMode: paramsViewModel.darkMode,
+                onRecClick: { url in
+                    clickedUrl = url
+                }) { url in
+                    navigationViewModel.push(.staticWidget)
+                }
+                .frame(height: 50)
+            
         }
         .fullScreenCover(isPresented: .init(
-            get: { viewModel.clickedUrl != nil },
+            get: { clickedUrl != nil },
             set: { value in
                 if !value {
-                    viewModel.clickedUrl = nil
+                    clickedUrl = nil
                 }
             }
         )) {
-            OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
+            OBSafariView(url: $clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }

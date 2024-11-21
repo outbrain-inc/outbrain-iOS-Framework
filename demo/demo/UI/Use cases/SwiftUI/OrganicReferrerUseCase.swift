@@ -14,10 +14,8 @@ struct OrganicReferrerUseCase: View {
     
     private let navigationViewModel: NavigationViewModel
     private let organicUrl: String?
-    
-    @StateObject
-    private var viewModel: OutbrainWidgetViewModel
-    
+    private let paramsViewModel: ParamsViewModel
+    @State var clickedUrl: URL?
     
     init(
         navigationViewModel: NavigationViewModel,
@@ -26,7 +24,7 @@ struct OrganicReferrerUseCase: View {
     ) {
         self.navigationViewModel = navigationViewModel
         self.organicUrl = organicUrl
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
+        self.paramsViewModel = paramsViewModel
     }
     
     var body: some View {
@@ -54,25 +52,32 @@ struct OrganicReferrerUseCase: View {
                     ArticleBody()
                     ArticleBody()
                     
+                    
                     OutbrainWidgetView(
-                        viewModel: viewModel,
-                        isOrganic: true,
-                        organicUrl: organicUrl
-                    )
-                        .frame(height: viewModel.widgetHeight)
+                        url: paramsViewModel.articleURL,
+                        widgetId: paramsViewModel.bridgeWidgetId2,
+                        widgetIndex: 0,
+                        installationKey: "NANOWDGT01",
+                        userId: nil,
+                        darkMode: paramsViewModel.darkMode,
+                        onRecClick: { url in
+                            clickedUrl = url
+                        }, onOrganicRecClick: { url in
+                            navigationViewModel.push(.organic(url.absoluteString))
+                        })
                 }
                 
             }
         }
         .fullScreenCover(isPresented: .init(
-            get: { viewModel.clickedUrl != nil },
+            get: { clickedUrl != nil },
             set: { value in
                 if !value {
-                    viewModel.clickedUrl = nil
+                    clickedUrl = nil
                 }
             }
         )) {
-            OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
+            OBSafariView(url: $clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }

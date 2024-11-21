@@ -18,6 +18,8 @@ struct RegularSDKSwiftUI: View {
     @State private var clickedUrl: URL? = nil
     
     let paramsViewModel: ParamsViewModel
+    let navigationViewModel: NavigationViewModel
+    
     
     var body: some View {
         ScrollView(.vertical) {
@@ -63,7 +65,11 @@ struct RegularSDKSwiftUI: View {
                             }
                         }
                         .onTapGesture {
-                            clickedUrl = Outbrain.getUrl(rec.recommendation)
+                            if rec.recommendation.isPaidLink {
+                                clickedUrl = Outbrain.getUrl(rec.recommendation)
+                            } else {
+                                navigationViewModel.push(.regularAndBridgeSwiftUI)
+                            }
                         }
                         .addViewability(with: rec.recommendation)
                     }
@@ -104,11 +110,6 @@ struct RegularSDKSwiftUI: View {
     }
 }
 
-
-
-#Preview {
-    RegularSDKSwiftUI(paramsViewModel: .init())
-}
 
 
 struct Recommendation: Identifiable {

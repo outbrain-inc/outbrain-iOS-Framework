@@ -44,8 +44,6 @@
 		B1CB99A72C3EA50200991569 /* ArticleHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99A62C3EA50200991569 /* ArticleHeaderCollectionViewCell.swift */; };
 		B1CB99A92C3EA54500991569 /* ImageHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB99A82C3EA54500991569 /* ImageHeaderCollectionViewCell.swift */; };
 		B1CB99AB2C3EA94400991569 /* ArticleContentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CB99AA2C3EA94400991569 /* ArticleContentCollectionViewCell.xib */; };
-		B1CC7CD52C56292E00C4018F /* OutbrainWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC7CD02C56292D00C4018F /* OutbrainWidgetViewModel.swift */; };
-		B1CC7CD62C56292E00C4018F /* OutbrainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC7CD12C56292E00C4018F /* OutbrainWidgetView.swift */; };
 		B1CC7D012C563A4500C4018F /* ScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC7CFF2C563A4500C4018F /* ScrollViewVC.swift */; };
 		B1CC7D052C563CD100C4018F /* ScrollViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1CC7D042C563CD100C4018F /* ScrollViewVC.xib */; };
 		B1F3F5992CD10E9200BC152B /* OrganicReferrerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F3F5982CD10E8B00BC152B /* OrganicReferrerUseCase.swift */; };
@@ -106,8 +104,6 @@
 		B1CB99A62C3EA50200991569 /* ArticleHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1CB99A82C3EA54500991569 /* ImageHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1CB99AA2C3EA94400991569 /* ArticleContentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleContentCollectionViewCell.xib; sourceTree = "<group>"; };
-		B1CC7CD02C56292D00C4018F /* OutbrainWidgetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutbrainWidgetViewModel.swift; sourceTree = "<group>"; };
-		B1CC7CD12C56292E00C4018F /* OutbrainWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutbrainWidgetView.swift; sourceTree = "<group>"; };
 		B1CC7CFF2C563A4500C4018F /* ScrollViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewVC.swift; sourceTree = "<group>"; };
 		B1CC7D042C563CD100C4018F /* ScrollViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewVC.xib; sourceTree = "<group>"; };
 		B1F3F5982CD10E8B00BC152B /* OrganicReferrerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganicReferrerUseCase.swift; sourceTree = "<group>"; };
@@ -207,7 +203,6 @@
 		B1CB98B92C3D482B00991569 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B1CC7CD02C56292D00C4018F /* OutbrainWidgetViewModel.swift */,
 				B1CB98BA2C3D483600991569 /* ParamsViewModel.swift */,
 				B1CB98BC2C3D4AEA00991569 /* NavigationViewModel.swift */,
 			);
@@ -281,7 +276,6 @@
 				B1F3F5982CD10E8B00BC152B /* OrganicReferrerUseCase.swift */,
 				B1BFCA272CA54F0E008C59DA /* TwoWidgetsSwiftUI.swift */,
 				B1BFCA252CA54C52008C59DA /* Regular+BridgeSwiftUI.swift */,
-				B1CC7CD12C56292E00C4018F /* OutbrainWidgetView.swift */,
 				B1CB98B52C3D240000991569 /* BridgeInSwiftUI.swift */,
 				B113CC362C57B91000BECDFA /* ArticleBody.swift */,
 				B113CC382C57BAB400BECDFA /* OBSafariView.swift */,
@@ -387,7 +381,6 @@
 				B1CB98B62C3D240000991569 /* BridgeInSwiftUI.swift in Sources */,
 				B1CB98BB2C3D483600991569 /* ParamsViewModel.swift in Sources */,
 				B1F3F5992CD10E9200BC152B /* OrganicReferrerUseCase.swift in Sources */,
-				B1CC7CD62C56292E00C4018F /* OutbrainWidgetView.swift in Sources */,
 				B1CB98C32C3D531100991569 /* RegularSDKSwiftUI.swift in Sources */,
 				B1BFCA262CA54C61008C59DA /* Regular+BridgeSwiftUI.swift in Sources */,
 				B1CB99952C3EA27000991569 /* TableVC.swift in Sources */,
@@ -404,7 +397,6 @@
 				B113CC492C58E95F00BECDFA /* ScrollViewTwoWidgets.swift in Sources */,
 				B1CB98AE2C3D23C800991569 /* ConfigScreen.swift in Sources */,
 				B1CB99972C3EA27000991569 /* CollectionTwoWidgetsVC.swift in Sources */,
-				B1CC7CD52C56292E00C4018F /* OutbrainWidgetViewModel.swift in Sources */,
 				B1CB989A2C3D202800991569 /* demoApp.swift in Sources */,
 				B1CB99A12C3EA45100991569 /* ImageHeaderCollectionCell.swift in Sources */,
 				B1CB98B02C3D23D100991569 /* UseCasesScreen.swift in Sources */,

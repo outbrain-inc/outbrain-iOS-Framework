@@ -73,7 +73,10 @@ struct ConfigScreen: View {
                         navigationViewModel.popLast()
                     }
                         
-                    case .regularSwiftUI: RegularSDKSwiftUI(paramsViewModel: paramsViewModel)
+                    case .regularSwiftUI: RegularSDKSwiftUI(
+                        paramsViewModel: paramsViewModel,
+                        navigationViewModel: navigationViewModel
+                    )
                             .addNavigationBar(withTitle: "Regular SDK (SwiftUI)") {
                                 navigationViewModel.popLast()
                             }

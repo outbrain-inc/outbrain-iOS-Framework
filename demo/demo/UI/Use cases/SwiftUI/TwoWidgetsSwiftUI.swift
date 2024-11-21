@@ -15,11 +15,9 @@ struct TwoWidgetsSwiftuI: View {
     
     private let navigationViewModel: NavigationViewModel
     
-    @StateObject
-    private var viewModel: OutbrainWidgetViewModel
+    private let paramsViewModel: ParamsViewModel
     
-    @StateObject
-    private var viewModel2: OutbrainWidgetViewModel
+    @State var clickedUrl: URL?
     
     
     init(
@@ -27,8 +25,7 @@ struct TwoWidgetsSwiftuI: View {
         paramsViewModel: ParamsViewModel
     ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
-        self._viewModel2 = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
+        self.paramsViewModel = paramsViewModel
     }
     
     var body: some View {
@@ -56,44 +53,56 @@ struct TwoWidgetsSwiftuI: View {
                 ArticleBody()
                 
                 OutbrainWidgetView(
-                    viewModel: viewModel,
-                    twoWidgets: true,
-                    widgetIndex: 0
-                )
-                .frame(height: viewModel.widgetHeight)
+                    url: paramsViewModel.articleURL,
+                    widgetId: paramsViewModel.bridgeWidgetId2,
+                    widgetIndex: 0,
+                    installationKey: "NANOWDGT01",
+                    userId: nil,
+                    darkMode: paramsViewModel.darkMode,
+                    onRecClick: { url in
+                        clickedUrl = url
+                    }) { url in
+                        navigationViewModel.push(.twoWidgetsSwiftUI)
+                    }
                 
                 
                 ArticleBody()
                 ArticleBody()
                 
                 OutbrainWidgetView(
-                    viewModel: viewModel2,
-                    twoWidgets: true,
-                    widgetIndex: 1
-                )
-                .frame(height: viewModel2.widgetHeight)
+                    url: paramsViewModel.articleURL,
+                    widgetId: paramsViewModel.bridgeWidgetId,
+                    widgetIndex: 1,
+                    installationKey: "NANOWDGT01",
+                    userId: nil,
+                    darkMode: paramsViewModel.darkMode,
+                    onRecClick: { url in
+                        clickedUrl = url
+                    }) { url in
+                        navigationViewModel.push(.twoWidgetsSwiftUI)
+                    }
             }
         }
         .fullScreenCover(isPresented: .init(
-            get: { viewModel.clickedUrl != nil },
+            get: { clickedUrl != nil },
             set: { value in
                 if !value {
-                    viewModel.clickedUrl = nil
+                    clickedUrl = nil
                 }
             }
         )) {
-            OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
+            OBSafariView(url: $clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
         .fullScreenCover(isPresented: .init(
-            get: { viewModel2.clickedUrl != nil },
+            get: { clickedUrl != nil },
             set: { value in
                 if !value {
-                    viewModel2.clickedUrl = nil
+                    clickedUrl = nil
                 }
             }
         )) {
-            OBSafariView(url: $viewModel2.clickedUrl.wrappedValue!)
+            OBSafariView(url: $clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }
