@@ -108,7 +108,7 @@ class SFWidgetTests: XCTestCase {
             installationKey: "installationKey"
         )
         
-        XCTAssertEqual(sfWidget.url, "https://example.com")
+        XCTAssertEqual(sfWidget.articleUrl, "https://example.com")
         XCTAssertEqual(sfWidget.widgetId, "widgetId")
         XCTAssertEqual(sfWidget.installationKey, "installationKey")
     }
@@ -160,7 +160,7 @@ class SFWidgetTests: XCTestCase {
             darkMode: true
         )
         
-        XCTAssertEqual(sfWidget.url, "https://example.com")
+        XCTAssertEqual(sfWidget.articleUrl, "https://example.com")
         XCTAssertEqual(sfWidget.widgetId, "widgetId")
         XCTAssertEqual(sfWidget.installationKey, "installationKey")
         // user is opted-out - userId will be nil
@@ -180,7 +180,7 @@ class SFWidgetTests: XCTestCase {
         
         sfWidget.loadMore()
         
-        XCTAssertTrue(sfWidget.isLoading)
+        XCTAssertTrue(sfWidget.isLoadingRecs)
     }
     
     

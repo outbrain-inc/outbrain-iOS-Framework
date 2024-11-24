@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct UseCasesScreen: View {
     
     @StateObject private var navigationViewModel: NavigationViewModel
@@ -23,7 +24,9 @@ struct UseCasesScreen: View {
         "Two widgets on the same page",
         "Two widgets (SwiftUI)",
         "Organic URL Referrer",
-        "Static Widget (No scroll)"
+        "Static Widget (No scroll)",
+        "Swipeability Control (UIKit)",
+        "Swipeability Control (SwiftUI)"
     ]
     
     
@@ -61,6 +64,10 @@ struct UseCasesScreen: View {
                             navigationViewModel.push(.organic(nil))
                         case 11:
                             navigationViewModel.push(.staticWidget)
+                        case 12:
+                            navigationViewModel.push(.swipeabilityControl)
+                        case 13:
+                            navigationViewModel.push(.swipeabilityControlSwiftUI)
                         default: return
                     }
                 }) {

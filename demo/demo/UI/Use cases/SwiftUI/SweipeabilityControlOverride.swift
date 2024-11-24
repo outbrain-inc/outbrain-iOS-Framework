@@ -1,19 +1,20 @@
 //
-//  BridgeInSwiftUI.swift
+//  SweipeabilityControlOverride.swift
 //  demo
 //
-//  Created by Leonid Lemesev on 09/07/2024.
+//  Created by Leonid Lemesev on 24/11/2024.
 //
 
 import SwiftUI
+import OutbrainSDK
 
-struct BridgeInSwiftUI: View {
+
+struct SweipeabilityControlOverride: View {
     
     private let navigationViewModel: NavigationViewModel
     
     @StateObject
     private var viewModel: OutbrainWidgetViewModel
-    
     
     
     init(
@@ -53,6 +54,19 @@ struct BridgeInSwiftUI: View {
                     .frame(height: viewModel.widgetHeight)
             }
         }
+        .gesture(
+            DragGesture()
+                .onEnded { value in
+                    // Determine the swipe direction
+                    if value.translation.width > 0 {
+                        // Right swipe
+                        navigationViewModel.popLast()
+                    } else if value.translation.width < 0 {
+                        // Left swipe
+                        navigationViewModel.push(.swipeabilityControlSwiftUI)
+                    }
+                }
+        )
         .fullScreenCover(isPresented: .init(
             get: { viewModel.clickedUrl != nil },
             set: { value in
@@ -65,8 +79,4 @@ struct BridgeInSwiftUI: View {
                 .ignoresSafeArea(edges: .all)
         }
     }
-}
-
-#Preview {
-    BridgeInSwiftUI(navigationViewModel: .init(), paramsViewModel: .init())
 }

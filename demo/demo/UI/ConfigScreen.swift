@@ -133,6 +133,24 @@ struct ConfigScreen: View {
                     .addNavigationBar(withTitle: "Static Widget") {
                         navigationViewModel.popLast()
                     }
+                        
+                    case .swipeabilityControl: ContentPageRepresentable<ScrollViewVC>(
+                        navigationViewModel: navigationViewModel,
+                        paramsViewModel: paramsViewModel,
+                        params: ["horizontalSwipes": true]
+                    )
+                    .addNavigationBar(withTitle: "Swipeability Control") {
+                        navigationViewModel.popLast()
+                    }
+                        
+                    case .swipeabilityControlSwiftUI:
+                        SweipeabilityControlOverride(
+                            navigationViewModel: navigationViewModel,
+                            paramsViewModel: paramsViewModel
+                        )
+                        .addNavigationBar(withTitle: "Swipeability Control SwiftUI") {
+                            navigationViewModel.popLast()
+                        }
                 }
             }
     }

@@ -43,6 +43,8 @@
 		B14770DD2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */; };
 		B166F9D52CE3A9E70083D6EB /* MockUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166F9D42CE3A9E70083D6EB /* MockUrlProtocol.swift */; };
 		B166F9D72CE3AACD0083D6EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166F9D62CE3AACB0083D6EB /* Extensions.swift */; };
+		B17AD29D2CF377FC00A40D9E /* SFWidgetWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD29C2CF377FA00A40D9E /* SFWidgetWebView.swift */; };
+		B17AD29F2CF3782E00A40D9E /* SDKHorizontalSwipeControlOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD29E2CF3782D00A40D9E /* SDKHorizontalSwipeControlOverride.swift */; };
 		B1AF3CA22CE2277B005AAA94 /* OBRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */; };
 		B1AF3CA62CE22821005AAA94 /* OBPlatformRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA52CE22819005AAA94 /* OBPlatformRequestUrlBuilder.swift */; };
 		B1AF3CA82CE22B56005AAA94 /* OBRequestUrlBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA72CE22B55005AAA94 /* OBRequestUrlBuilderProtocol.swift */; };
@@ -125,6 +127,8 @@
 		B14770DC2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewabilityViewModifier.swift; sourceTree = "<group>"; };
 		B166F9D42CE3A9E70083D6EB /* MockUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlProtocol.swift; sourceTree = "<group>"; };
 		B166F9D62CE3AACB0083D6EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B17AD29C2CF377FA00A40D9E /* SFWidgetWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetWebView.swift; sourceTree = "<group>"; };
+		B17AD29E2CF3782D00A40D9E /* SDKHorizontalSwipeControlOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKHorizontalSwipeControlOverride.swift; sourceTree = "<group>"; };
 		B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilder.swift; sourceTree = "<group>"; };
 		B1AF3CA52CE22819005AAA94 /* OBPlatformRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformRequestUrlBuilder.swift; sourceTree = "<group>"; };
 		B1AF3CA72CE22B55005AAA94 /* OBRequestUrlBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilderProtocol.swift; sourceTree = "<group>"; };
@@ -335,6 +339,8 @@
 		CA26CB602A6FF31500D2C22F /* SFWidget */ = {
 			isa = PBXGroup;
 			children = (
+				B17AD29E2CF3782D00A40D9E /* SDKHorizontalSwipeControlOverride.swift */,
+				B17AD29C2CF377FA00A40D9E /* SFWidgetWebView.swift */,
 				CA26CB612A6FF79A00D2C22F /* SFWidget.swift */,
 				0BE321C82C7DEBC7004B2861 /* SFWidgetTestMode.swift */,
 				CA26CB652A70108B00D2C22F /* SFWidgetMessageHandler.swift */,
@@ -548,9 +554,11 @@
 				CA7690A92A8E0582009C57BF /* JavaScriptExecutor.swift in Sources */,
 				5E2465252A40421600D6C9DF /* OBRecommendation.swift in Sources */,
 				B14770DD2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift in Sources */,
+				B17AD29D2CF377FC00A40D9E /* SFWidgetWebView.swift in Sources */,
 				5E0D6B272A41988A008BCD06 /* OBAppleAdIdUtil.swift in Sources */,
 				B1AF3CA62CE22821005AAA94 /* OBPlatformRequestUrlBuilder.swift in Sources */,
 				5E0919D42A4AFCCF005A014F /* OBGlobalStatisticsManager.swift in Sources */,
+				B17AD29F2CF3782E00A40D9E /* SDKHorizontalSwipeControlOverride.swift in Sources */,
 				CA26CB662A70108B00D2C22F /* SFWidgetMessageHandler.swift in Sources */,
 				5EEF0AB62A51BB2A000E65A1 /* OBViewbailityManager.swift in Sources */,
 				5E625A532A4D74DD00BA6A4E /* OBErrorReport.swift in Sources */,
