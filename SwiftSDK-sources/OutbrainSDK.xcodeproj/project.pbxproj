@@ -45,6 +45,11 @@
 		B166F9D72CE3AACD0083D6EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166F9D62CE3AACB0083D6EB /* Extensions.swift */; };
 		B17AD29D2CF377FC00A40D9E /* SFWidgetWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD29C2CF377FA00A40D9E /* SFWidgetWebView.swift */; };
 		B17AD29F2CF3782E00A40D9E /* SDKHorizontalSwipeControlOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD29E2CF3782D00A40D9E /* SDKHorizontalSwipeControlOverride.swift */; };
+		B17AD2912CEF460400A40D9E /* OutbrainWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD2902CEF45F500A40D9E /* OutbrainWidgetView.swift */; };
+		B17AD2932CEF466E00A40D9E /* SFWidgetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD2922CEF466A00A40D9E /* SFWidgetConfig.swift */; };
+		B17AD2972CEF704500A40D9E /* OutbrainWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD2962CEF704400A40D9E /* OutbrainWidgetViewModel.swift */; };
+		B17AD2992CEF705A00A40D9E /* OutbrainWidgetUIViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD2982CEF705900A40D9E /* OutbrainWidgetUIViewRepresentable.swift */; };
+		B17AD2A12CF5E1A700A40D9E /* OutbrainSafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD2A02CF5E1A700A40D9E /* OutbrainSafariView.swift */; };
 		B1AF3CA22CE2277B005AAA94 /* OBRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */; };
 		B1AF3CA62CE22821005AAA94 /* OBPlatformRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA52CE22819005AAA94 /* OBPlatformRequestUrlBuilder.swift */; };
 		B1AF3CA82CE22B56005AAA94 /* OBRequestUrlBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA72CE22B55005AAA94 /* OBRequestUrlBuilderProtocol.swift */; };
@@ -129,6 +134,11 @@
 		B166F9D62CE3AACB0083D6EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B17AD29C2CF377FA00A40D9E /* SFWidgetWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetWebView.swift; sourceTree = "<group>"; };
 		B17AD29E2CF3782D00A40D9E /* SDKHorizontalSwipeControlOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKHorizontalSwipeControlOverride.swift; sourceTree = "<group>"; };
+		B17AD2902CEF45F500A40D9E /* OutbrainWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutbrainWidgetView.swift; sourceTree = "<group>"; };
+		B17AD2922CEF466A00A40D9E /* SFWidgetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetConfig.swift; sourceTree = "<group>"; };
+		B17AD2962CEF704400A40D9E /* OutbrainWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutbrainWidgetViewModel.swift; sourceTree = "<group>"; };
+		B17AD2982CEF705900A40D9E /* OutbrainWidgetUIViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutbrainWidgetUIViewRepresentable.swift; sourceTree = "<group>"; };
+		B17AD2A02CF5E1A700A40D9E /* OutbrainSafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutbrainSafariView.swift; sourceTree = "<group>"; };
 		B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilder.swift; sourceTree = "<group>"; };
 		B1AF3CA52CE22819005AAA94 /* OBPlatformRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformRequestUrlBuilder.swift; sourceTree = "<group>"; };
 		B1AF3CA72CE22B55005AAA94 /* OBRequestUrlBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilderProtocol.swift; sourceTree = "<group>"; };
@@ -296,6 +306,18 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		B17AD2952CEF703C00A40D9E /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				B17AD2A02CF5E1A700A40D9E /* OutbrainSafariView.swift */,
+				B17AD2922CEF466A00A40D9E /* SFWidgetConfig.swift */,
+				B17AD2902CEF45F500A40D9E /* OutbrainWidgetView.swift */,
+				B17AD2982CEF705900A40D9E /* OutbrainWidgetUIViewRepresentable.swift */,
+				B17AD2962CEF704400A40D9E /* OutbrainWidgetViewModel.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		B1AF3CAB2CE22DD1005AAA94 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +363,7 @@
 			children = (
 				B17AD29E2CF3782D00A40D9E /* SDKHorizontalSwipeControlOverride.swift */,
 				B17AD29C2CF377FA00A40D9E /* SFWidgetWebView.swift */,
+				B17AD2952CEF703C00A40D9E /* SwiftUI */,
 				CA26CB612A6FF79A00D2C22F /* SFWidget.swift */,
 				0BE321C82C7DEBC7004B2861 /* SFWidgetTestMode.swift */,
 				CA26CB652A70108B00D2C22F /* SFWidgetMessageHandler.swift */,
@@ -521,6 +544,7 @@
 			files = (
 				B113CC522C5A2A1B00BECDFA /* OBLogLevels.swift in Sources */,
 				E6A644A02C35516E00868269 /* ViewabilityHandler.swift in Sources */,
+				B17AD2932CEF466E00A40D9E /* SFWidgetConfig.swift in Sources */,
 				B1AF3CA82CE22B56005AAA94 /* OBRequestUrlBuilderProtocol.swift in Sources */,
 				CA0F15862A9E2D0500AD5B04 /* SFWidgetCollectionCell.swift in Sources */,
 				B113CC502C5A236D00BECDFA /* PlatformUrlType.swift in Sources */,
@@ -531,6 +555,7 @@
 				CAEB973B2B7E68D700DD1754 /* GPPUtils.swift in Sources */,
 				5E0D6B242A418FCD008BCD06 /* OBQueueManager.swift in Sources */,
 				CA26CB682A7017D200D2C22F /* SFMessageHandlerDelegate.swift in Sources */,
+				B17AD2A12CF5E1A700A40D9E /* OutbrainSafariView.swift in Sources */,
 				CA26CB7A2A779D6400D2C22F /* SFWidgetTableCell.swift in Sources */,
 				5E2465222A402B1900D6C9DF /* OBRequestHandler.swift in Sources */,
 				5E625A4D2A4C1A4A00BA6A4E /* OBViewabilityActions.swift in Sources */,
@@ -547,11 +572,14 @@
 				5E91D1612A56A99E00CD9AF5 /* OBLogger.swift in Sources */,
 				5E625A512A4D6D2800BA6A4E /* OBView.swift in Sources */,
 				CA2646CE2AAF0636005287CB /* SFConsts.swift in Sources */,
+				B17AD2992CEF705A00A40D9E /* OutbrainWidgetUIViewRepresentable.swift in Sources */,
 				5E0D6B2D2A41D65C008BCD06 /* OBImageInfo.swift in Sources */,
+				B17AD2912CEF460400A40D9E /* OutbrainWidgetView.swift in Sources */,
 				5EEF0AB82A5452A6000E65A1 /* OBViewData.swift in Sources */,
 				CA26CB6C2A76B18000D2C22F /* BridgeUtils.swift in Sources */,
 				5E2465332A4099D200D6C9DF /* OBResponseDelegate.swift in Sources */,
 				CA7690A92A8E0582009C57BF /* JavaScriptExecutor.swift in Sources */,
+				B17AD2972CEF704500A40D9E /* OutbrainWidgetViewModel.swift in Sources */,
 				5E2465252A40421600D6C9DF /* OBRecommendation.swift in Sources */,
 				B14770DD2C6C735100555457 /* SwiftUIViewabilityViewModifier.swift in Sources */,
 				B17AD29D2CF377FC00A40D9E /* SFWidgetWebView.swift in Sources */,

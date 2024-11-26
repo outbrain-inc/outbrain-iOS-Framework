@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
+import OutbrainSDK
 
 
 struct StaticWidgetUseCase: View {
     
     private let navigationViewModel: NavigationViewModel
-    
-    @StateObject
-    private var viewModel: OutbrainWidgetViewModel
+    private let paramsViewModel: ParamsViewModel
     
     
     init(
@@ -21,7 +20,7 @@ struct StaticWidgetUseCase: View {
         paramsViewModel: ParamsViewModel
     ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
+        self.paramsViewModel = paramsViewModel
     }
     
     
@@ -52,23 +51,16 @@ struct StaticWidgetUseCase: View {
                 }
             }
             
+            
             OutbrainWidgetView(
-                viewModel: viewModel,
-                isStatic: true,
-                widgetIndex: 0
-            )
-            .frame(height: 50)
-        }
-        .fullScreenCover(isPresented: .init(
-            get: { viewModel.clickedUrl != nil },
-            set: { value in
-                if !value {
-                    viewModel.clickedUrl = nil
+                url: paramsViewModel.articleURL,
+                widgetId: paramsViewModel.staticWidgetId,
+                widgetIndex: 0,
+                installationKey: "NANOWDGT01",
+                darkMode: paramsViewModel.darkMode) { url in
+                    navigationViewModel.push(.staticWidget)
                 }
-            }
-        )) {
-            OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
+                .frame(height: 50)
         }
     }
 }

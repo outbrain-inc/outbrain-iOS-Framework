@@ -16,8 +16,9 @@ struct RegularAndBridgeSwiftUI: View {
     
     @State private var recommendations: [Recommendation] = []
     
-    @StateObject
-    private var viewModel: OutbrainWidgetViewModel
+    @State var clickedUrl: URL?
+    
+    private let paramsViewModel: ParamsViewModel
     
     
     init(
@@ -25,8 +26,7 @@ struct RegularAndBridgeSwiftUI: View {
         paramsViewModel: ParamsViewModel
     ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel,
-                                                                      paramsViewModel: paramsViewModel))
+        self.paramsViewModel = paramsViewModel
     }
     
     
@@ -74,7 +74,11 @@ struct RegularAndBridgeSwiftUI: View {
                                 }
                             }
                             .onTapGesture {
-                                viewModel.clickedUrl = Outbrain.getUrl(rec.recommendation)
+                                if rec.recommendation.isPaidLink {
+                                    clickedUrl = Outbrain.getUrl(rec.recommendation)
+                                } else {
+                                    navigationViewModel.push(.regularAndBridgeSwiftUI)
+                                }
                             }
                             .addViewability(with: rec.recommendation)
                         }
@@ -84,16 +88,21 @@ struct RegularAndBridgeSwiftUI: View {
                     ArticleBody()
                     
                     
-                    OutbrainWidgetView(viewModel: viewModel, isRegular: true)
-                        .frame(height: viewModel.widgetHeight)
+                    OutbrainWidgetView(
+                        url: paramsViewModel.articleURL,
+                        widgetId: paramsViewModel.bridgeWidgetId,
+                        widgetIndex: 0,
+                        installationKey: "NANOWDGT01",
+                        darkMode: paramsViewModel.darkMode) { url in
+                            navigationViewModel.push(.regularAndBridgeSwiftUI)
+                        }
                 }
-                
             }
         }
         .onAppear {
             let request = OBRequest(
-                url: viewModel.paramsViewModel.articleURL,
-                widgetID: viewModel.paramsViewModel.regularWidgetId,
+                url: paramsViewModel.articleURL,
+                widgetID: paramsViewModel.regularWidgetId,
                 widgetIndex: 0
             )
             
@@ -101,21 +110,17 @@ struct RegularAndBridgeSwiftUI: View {
             Task {
                 guard let obRecs = try? await Outbrain.fetchRecommendations(for: request) else { return }
                 recommendations = obRecs.map { .init(recommendation: $0) }
-                //            Outbrain.fetchRecommendations(for: request) { response in
-                //                recommendations = response.recommendations
-                //                    .map { .init(recommendation: $0) }
-                //            }
             }
         }
         .fullScreenCover(isPresented: .init(
-            get: { viewModel.clickedUrl != nil },
+            get: { clickedUrl != nil },
             set: { value in
                 if !value {
-                    viewModel.clickedUrl = nil
+                    clickedUrl = nil
                 }
             }
         )) {
-            OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
+            OutbrainSafariView(url: $clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }

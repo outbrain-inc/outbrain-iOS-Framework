@@ -14,9 +14,7 @@ struct OrganicReferrerUseCase: View {
     
     private let navigationViewModel: NavigationViewModel
     private let organicUrl: String?
-    
-    @StateObject
-    private var viewModel: OutbrainWidgetViewModel
+    private let paramsViewModel: ParamsViewModel
     
     
     init(
@@ -26,8 +24,9 @@ struct OrganicReferrerUseCase: View {
     ) {
         self.navigationViewModel = navigationViewModel
         self.organicUrl = organicUrl
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
+        self.paramsViewModel = paramsViewModel
     }
+    
     
     var body: some View {
         ScrollView {
@@ -54,26 +53,18 @@ struct OrganicReferrerUseCase: View {
                     ArticleBody()
                     ArticleBody()
                     
+                    
                     OutbrainWidgetView(
-                        viewModel: viewModel,
-                        isOrganic: true,
-                        organicUrl: organicUrl
-                    )
-                        .frame(height: viewModel.widgetHeight)
-                }
-                
-            }
-        }
-        .fullScreenCover(isPresented: .init(
-            get: { viewModel.clickedUrl != nil },
-            set: { value in
-                if !value {
-                    viewModel.clickedUrl = nil
+                        url: paramsViewModel.articleURL,
+                        widgetId: paramsViewModel.bridgeWidgetId2,
+                        widgetIndex: 0,
+                        installationKey: "NANOWDGT01",
+                        darkMode: paramsViewModel.darkMode,
+                        onOrganicRecClick: { url in
+                            navigationViewModel.push(.organic(url.absoluteString))
+                        })
                 }
             }
-        )) {
-            OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
         }
     }
 }

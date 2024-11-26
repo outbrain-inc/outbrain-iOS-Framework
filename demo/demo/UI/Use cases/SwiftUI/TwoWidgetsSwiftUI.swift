@@ -14,12 +14,7 @@ import OutbrainSDK
 struct TwoWidgetsSwiftuI: View {
     
     private let navigationViewModel: NavigationViewModel
-    
-    @StateObject
-    private var viewModel: OutbrainWidgetViewModel
-    
-    @StateObject
-    private var viewModel2: OutbrainWidgetViewModel
+    private let paramsViewModel: ParamsViewModel
     
     
     init(
@@ -27,9 +22,10 @@ struct TwoWidgetsSwiftuI: View {
         paramsViewModel: ParamsViewModel
     ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
-        self._viewModel2 = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
+        self.paramsViewModel = paramsViewModel
+        SFWidget.infiniteWidgetsOnTheSamePage = true
     }
+    
     
     var body: some View {
         ScrollView {
@@ -56,45 +52,27 @@ struct TwoWidgetsSwiftuI: View {
                 ArticleBody()
                 
                 OutbrainWidgetView(
-                    viewModel: viewModel,
-                    twoWidgets: true,
-                    widgetIndex: 0
-                )
-                .frame(height: viewModel.widgetHeight)
+                    url: paramsViewModel.articleURL,
+                    widgetId: paramsViewModel.bridgeWidgetId2,
+                    widgetIndex: 0,
+                    installationKey: "NANOWDGT01",
+                    darkMode: paramsViewModel.darkMode) { url in
+                        navigationViewModel.push(.twoWidgetsSwiftUI)
+                    }
                 
                 
                 ArticleBody()
                 ArticleBody()
                 
                 OutbrainWidgetView(
-                    viewModel: viewModel2,
-                    twoWidgets: true,
-                    widgetIndex: 1
-                )
-                .frame(height: viewModel2.widgetHeight)
+                    url: paramsViewModel.articleURL,
+                    widgetId: paramsViewModel.bridgeWidgetId,
+                    widgetIndex: 1,
+                    installationKey: "NANOWDGT01",
+                    darkMode: paramsViewModel.darkMode) { url in
+                        navigationViewModel.push(.twoWidgetsSwiftUI)
+                    }
             }
-        }
-        .fullScreenCover(isPresented: .init(
-            get: { viewModel.clickedUrl != nil },
-            set: { value in
-                if !value {
-                    viewModel.clickedUrl = nil
-                }
-            }
-        )) {
-            OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
-        }
-        .fullScreenCover(isPresented: .init(
-            get: { viewModel2.clickedUrl != nil },
-            set: { value in
-                if !value {
-                    viewModel2.clickedUrl = nil
-                }
-            }
-        )) {
-            OBSafariView(url: $viewModel2.clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
         }
     }
 }
