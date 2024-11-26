@@ -402,7 +402,7 @@ import UIKit
             .addDarkMode(isDarkMode: darkMode)
             .addTParam(tParamValue: tParam)
             .addBridgeParams(bridgeParams: bridgeParams)
-            .addEvents(widgetEvents: isWidgetEventsEnabled ? .all : .omit)
+            .addEvents(widgetEvents: Outbrain.testMode ? .testing : isWidgetEventsEnabled ? .all : .omit)
             .addExternalId(extId: extId)
             .addExternalSecondaryId(extid2: extSecondaryId)
             .addOBPubImp(pubImpId: OBPubImp)

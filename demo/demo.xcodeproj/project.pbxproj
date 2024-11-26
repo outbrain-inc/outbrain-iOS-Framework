@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B113CC372C57B91000BECDFA /* ArticleBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC362C57B91000BECDFA /* ArticleBody.swift */; };
-		B113CC392C57BAB400BECDFA /* OBSafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC382C57BAB400BECDFA /* OBSafariView.swift */; };
 		B113CC472C58E95500BECDFA /* ScrollViewTwoWidgets.xib in Resources */ = {isa = PBXBuildFile; fileRef = B113CC462C58E95500BECDFA /* ScrollViewTwoWidgets.xib */; };
 		B113CC492C58E95F00BECDFA /* ScrollViewTwoWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113CC482C58E95F00BECDFA /* ScrollViewTwoWidgets.swift */; };
 		B150BDB32C5279E80039B6D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B150BDB22C5279E80039B6D6 /* Extensions.swift */; };
@@ -67,7 +66,6 @@
 
 /* Begin PBXFileReference section */
 		B113CC362C57B91000BECDFA /* ArticleBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleBody.swift; sourceTree = "<group>"; };
-		B113CC382C57BAB400BECDFA /* OBSafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBSafariView.swift; sourceTree = "<group>"; };
 		B113CC462C58E95500BECDFA /* ScrollViewTwoWidgets.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollViewTwoWidgets.xib; sourceTree = "<group>"; };
 		B113CC482C58E95F00BECDFA /* ScrollViewTwoWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewTwoWidgets.swift; sourceTree = "<group>"; };
 		B150BDB22C5279E80039B6D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -278,7 +276,6 @@
 				B1BFCA252CA54C52008C59DA /* Regular+BridgeSwiftUI.swift */,
 				B1CB98B52C3D240000991569 /* BridgeInSwiftUI.swift */,
 				B113CC362C57B91000BECDFA /* ArticleBody.swift */,
-				B113CC382C57BAB400BECDFA /* OBSafariView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -388,7 +385,6 @@
 				B1BFCA282CA54F12008C59DA /* TwoWidgetsSwiftUI.swift in Sources */,
 				B17A622B2CB3DFEB009B7891 /* Protocols.swift in Sources */,
 				B17A622D2CB3E0EE009B7891 /* ContentPageRepresentable.swift in Sources */,
-				B113CC392C57BAB400BECDFA /* OBSafariView.swift in Sources */,
 				B150BDB32C5279E80039B6D6 /* Extensions.swift in Sources */,
 				B1CB99A52C3EA46300991569 /* ContentCollectionCell.swift in Sources */,
 				B1CB99982C3EA27000991569 /* CollectionVC.swift in Sources */,

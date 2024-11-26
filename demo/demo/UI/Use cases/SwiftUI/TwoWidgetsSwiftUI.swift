@@ -14,10 +14,7 @@ import OutbrainSDK
 struct TwoWidgetsSwiftuI: View {
     
     private let navigationViewModel: NavigationViewModel
-    
     private let paramsViewModel: ParamsViewModel
-    
-    @State var clickedUrl: URL?
     
     
     init(
@@ -26,7 +23,9 @@ struct TwoWidgetsSwiftuI: View {
     ) {
         self.navigationViewModel = navigationViewModel
         self.paramsViewModel = paramsViewModel
+        SFWidget.infiniteWidgetsOnTheSamePage = true
     }
+    
     
     var body: some View {
         ScrollView {
@@ -57,11 +56,7 @@ struct TwoWidgetsSwiftuI: View {
                     widgetId: paramsViewModel.bridgeWidgetId2,
                     widgetIndex: 0,
                     installationKey: "NANOWDGT01",
-                    userId: nil,
-                    darkMode: paramsViewModel.darkMode,
-                    onRecClick: { url in
-                        clickedUrl = url
-                    }) { url in
+                    darkMode: paramsViewModel.darkMode) { url in
                         navigationViewModel.push(.twoWidgetsSwiftUI)
                     }
                 
@@ -74,36 +69,10 @@ struct TwoWidgetsSwiftuI: View {
                     widgetId: paramsViewModel.bridgeWidgetId,
                     widgetIndex: 1,
                     installationKey: "NANOWDGT01",
-                    userId: nil,
-                    darkMode: paramsViewModel.darkMode,
-                    onRecClick: { url in
-                        clickedUrl = url
-                    }) { url in
+                    darkMode: paramsViewModel.darkMode) { url in
                         navigationViewModel.push(.twoWidgetsSwiftUI)
                     }
             }
-        }
-        .fullScreenCover(isPresented: .init(
-            get: { clickedUrl != nil },
-            set: { value in
-                if !value {
-                    clickedUrl = nil
-                }
-            }
-        )) {
-            OBSafariView(url: $clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
-        }
-        .fullScreenCover(isPresented: .init(
-            get: { clickedUrl != nil },
-            set: { value in
-                if !value {
-                    clickedUrl = nil
-                }
-            }
-        )) {
-            OBSafariView(url: $clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
         }
     }
 }

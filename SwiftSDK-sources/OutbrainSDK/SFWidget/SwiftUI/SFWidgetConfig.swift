@@ -13,4 +13,7 @@ struct SFWidgetConfig {
     let installationKey: String
     let userId: String?
     let darkMode: Bool
+    let extId: String?
+    let extSecondaryId: String?
+    let OBPubImp: String?
 }

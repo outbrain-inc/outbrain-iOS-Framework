@@ -12,7 +12,6 @@ import SwiftUI
 struct OutbrainWidgetUIViewRepresentable: UIViewRepresentable {
     
     @ObservedObject var viewModel: OutbrainWidgetViewModel
-    
     let config: SFWidgetConfig
     
     
@@ -32,12 +31,16 @@ struct OutbrainWidgetUIViewRepresentable: UIViewRepresentable {
         
         init(viewModel: OutbrainWidgetViewModel) {
             self.viewModel = viewModel
+            
+            if viewModel.onWidgetEvent != nil {
+                viewModel.widget.enableEvents()
+            }
         }
         
         
         // MARK: - SFWidgetDelegate
         func onRecClick(_ url: URL) {
-            viewModel.onRecClick?(url)
+            viewModel.clickedUrl = url
         }
         
         
@@ -73,6 +76,10 @@ struct OutbrainWidgetUIViewRepresentable: UIViewRepresentable {
                 userId: config.userId,
                 darkMode: config.darkMode
             )
+        
+        viewModel.widget.extId = config.extId
+        viewModel.widget.extSecondaryId = config.extSecondaryId
+        viewModel.widget.OBPubImp = config.OBPubImp
         
         return viewModel.widget
     }

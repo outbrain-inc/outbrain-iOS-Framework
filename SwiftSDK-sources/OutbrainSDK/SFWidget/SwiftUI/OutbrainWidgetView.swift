@@ -11,23 +11,28 @@ import SwiftUI
 public struct OutbrainWidgetView: View {
     
     @StateObject var viewModel: OutbrainWidgetViewModel
-
+    
     let url: String
     let widgetId: String
     let widgetIndex: Int
     let installationKey: String
     let userId: String?
     let darkMode: Bool
-
+    let extId: String?
+    let extSecondaryId: String?
+    let OBPubImp: String?
+    
     
     public init(
         url: String,
         widgetId: String,
         widgetIndex: Int,
         installationKey: String,
-        userId: String?,
-        darkMode: Bool,
-        onRecClick: ((URL) -> Void)?,
+        userId: String? = nil,
+        darkMode: Bool = false,
+        extId: String? = nil,
+        extSecondaryId: String? = nil,
+        OBPubImp: String? = nil,
         onOrganicRecClick: ((URL) -> Void)? = nil,
         onWidgetEvent: ((String, [String: Any]) -> Void)? = nil
     ) {
@@ -37,15 +42,18 @@ public struct OutbrainWidgetView: View {
         self.installationKey = installationKey
         self.userId = userId
         self.darkMode = darkMode
+        self.extId = extId
+        self.extSecondaryId = extSecondaryId
+        self.OBPubImp = OBPubImp
+        
         self._viewModel = .init(
             wrappedValue: .init(
-                onRecClick: onRecClick,
                 onOrganicRecClick: onOrganicRecClick,
                 onWidgetEvent: onWidgetEvent
             )
         )
     }
-
+    
     
     public var body: some View {
         OutbrainWidgetUIViewRepresentable(
@@ -56,9 +64,23 @@ public struct OutbrainWidgetView: View {
                 widgetIndex: widgetIndex,
                 installationKey: installationKey,
                 userId: userId,
-                darkMode: darkMode
+                darkMode: darkMode,
+                extId: extId,
+                extSecondaryId: extSecondaryId,
+                OBPubImp: OBPubImp
             )
         )
-            .frame(height: viewModel.widgetHeight)
+        .frame(height: viewModel.widgetHeight)
+        .fullScreenCover(isPresented: .init(
+            get: { viewModel.clickedUrl != nil },
+            set: { value in
+                if !value {
+                    viewModel.clickedUrl = nil
+                }
+            }
+        )) {
+            OutbrainSafariView(url: $viewModel.clickedUrl.wrappedValue!)
+                .ignoresSafeArea(edges: .all)
+        }
     }
 }

@@ -15,7 +15,7 @@ struct OrganicReferrerUseCase: View {
     private let navigationViewModel: NavigationViewModel
     private let organicUrl: String?
     private let paramsViewModel: ParamsViewModel
-    @State var clickedUrl: URL?
+    
     
     init(
         navigationViewModel: NavigationViewModel,
@@ -26,6 +26,7 @@ struct OrganicReferrerUseCase: View {
         self.organicUrl = organicUrl
         self.paramsViewModel = paramsViewModel
     }
+    
     
     var body: some View {
         ScrollView {
@@ -58,27 +59,12 @@ struct OrganicReferrerUseCase: View {
                         widgetId: paramsViewModel.bridgeWidgetId2,
                         widgetIndex: 0,
                         installationKey: "NANOWDGT01",
-                        userId: nil,
                         darkMode: paramsViewModel.darkMode,
-                        onRecClick: { url in
-                            clickedUrl = url
-                        }, onOrganicRecClick: { url in
+                        onOrganicRecClick: { url in
                             navigationViewModel.push(.organic(url.absoluteString))
                         })
                 }
-                
             }
-        }
-        .fullScreenCover(isPresented: .init(
-            get: { clickedUrl != nil },
-            set: { value in
-                if !value {
-                    clickedUrl = nil
-                }
-            }
-        )) {
-            OBSafariView(url: $clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
         }
     }
 }

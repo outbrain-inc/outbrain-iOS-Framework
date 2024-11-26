@@ -104,7 +104,7 @@ struct RegularSDKSwiftUI: View {
                 }
             }
         )) {
-            OBSafariView(url: $clickedUrl.wrappedValue!)
+            OutbrainSafariView(url: $clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }

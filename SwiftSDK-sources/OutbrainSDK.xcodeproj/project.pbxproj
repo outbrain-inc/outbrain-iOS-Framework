@@ -47,6 +47,7 @@
 		B17AD2932CEF466E00A40D9E /* SFWidgetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD2922CEF466A00A40D9E /* SFWidgetConfig.swift */; };
 		B17AD2972CEF704500A40D9E /* OutbrainWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD2962CEF704400A40D9E /* OutbrainWidgetViewModel.swift */; };
 		B17AD2992CEF705A00A40D9E /* OutbrainWidgetUIViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD2982CEF705900A40D9E /* OutbrainWidgetUIViewRepresentable.swift */; };
+		B17AD2A12CF5E1A700A40D9E /* OutbrainSafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD2A02CF5E1A700A40D9E /* OutbrainSafariView.swift */; };
 		B1AF3CA22CE2277B005AAA94 /* OBRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */; };
 		B1AF3CA62CE22821005AAA94 /* OBPlatformRequestUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA52CE22819005AAA94 /* OBPlatformRequestUrlBuilder.swift */; };
 		B1AF3CA82CE22B56005AAA94 /* OBRequestUrlBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF3CA72CE22B55005AAA94 /* OBRequestUrlBuilderProtocol.swift */; };
@@ -133,6 +134,7 @@
 		B17AD2922CEF466A00A40D9E /* SFWidgetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFWidgetConfig.swift; sourceTree = "<group>"; };
 		B17AD2962CEF704400A40D9E /* OutbrainWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutbrainWidgetViewModel.swift; sourceTree = "<group>"; };
 		B17AD2982CEF705900A40D9E /* OutbrainWidgetUIViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutbrainWidgetUIViewRepresentable.swift; sourceTree = "<group>"; };
+		B17AD2A02CF5E1A700A40D9E /* OutbrainSafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutbrainSafariView.swift; sourceTree = "<group>"; };
 		B1AF3CA12CE2277A005AAA94 /* OBRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilder.swift; sourceTree = "<group>"; };
 		B1AF3CA52CE22819005AAA94 /* OBPlatformRequestUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBPlatformRequestUrlBuilder.swift; sourceTree = "<group>"; };
 		B1AF3CA72CE22B55005AAA94 /* OBRequestUrlBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestUrlBuilderProtocol.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 		B17AD2952CEF703C00A40D9E /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B17AD2A02CF5E1A700A40D9E /* OutbrainSafariView.swift */,
 				B17AD2922CEF466A00A40D9E /* SFWidgetConfig.swift */,
 				B17AD2902CEF45F500A40D9E /* OutbrainWidgetView.swift */,
 				B17AD2982CEF705900A40D9E /* OutbrainWidgetUIViewRepresentable.swift */,
@@ -546,6 +549,7 @@
 				CAEB973B2B7E68D700DD1754 /* GPPUtils.swift in Sources */,
 				5E0D6B242A418FCD008BCD06 /* OBQueueManager.swift in Sources */,
 				CA26CB682A7017D200D2C22F /* SFMessageHandlerDelegate.swift in Sources */,
+				B17AD2A12CF5E1A700A40D9E /* OutbrainSafariView.swift in Sources */,
 				CA26CB7A2A779D6400D2C22F /* SFWidgetTableCell.swift in Sources */,
 				5E2465222A402B1900D6C9DF /* OBRequestHandler.swift in Sources */,
 				5E625A4D2A4C1A4A00BA6A4E /* OBViewabilityActions.swift in Sources */,

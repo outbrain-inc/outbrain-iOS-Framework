@@ -93,11 +93,7 @@ struct RegularAndBridgeSwiftUI: View {
                         widgetId: paramsViewModel.bridgeWidgetId,
                         widgetIndex: 0,
                         installationKey: "NANOWDGT01",
-                        userId: nil,
-                        darkMode: paramsViewModel.darkMode,
-                        onRecClick: { url in
-                            clickedUrl = url
-                        }) { url in
+                        darkMode: paramsViewModel.darkMode) { url in
                             navigationViewModel.push(.regularAndBridgeSwiftUI)
                         }
                 }
@@ -124,7 +120,7 @@ struct RegularAndBridgeSwiftUI: View {
                 }
             }
         )) {
-            OBSafariView(url: $clickedUrl.wrappedValue!)
+            OutbrainSafariView(url: $clickedUrl.wrappedValue!)
                 .ignoresSafeArea(edges: .all)
         }
     }

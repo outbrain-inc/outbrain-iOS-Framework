@@ -12,9 +12,6 @@ import OutbrainSDK
 struct StaticWidgetUseCase: View {
     
     private let navigationViewModel: NavigationViewModel
-    
-    @State var clickedUrl: URL?
-    
     private let paramsViewModel: ParamsViewModel
     
     
@@ -60,26 +57,10 @@ struct StaticWidgetUseCase: View {
                 widgetId: paramsViewModel.staticWidgetId,
                 widgetIndex: 0,
                 installationKey: "NANOWDGT01",
-                userId: nil,
-                darkMode: paramsViewModel.darkMode,
-                onRecClick: { url in
-                    clickedUrl = url
-                }) { url in
+                darkMode: paramsViewModel.darkMode) { url in
                     navigationViewModel.push(.staticWidget)
                 }
                 .frame(height: 50)
-            
-        }
-        .fullScreenCover(isPresented: .init(
-            get: { clickedUrl != nil },
-            set: { value in
-                if !value {
-                    clickedUrl = nil
-                }
-            }
-        )) {
-            OBSafariView(url: $clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
         }
     }
 }

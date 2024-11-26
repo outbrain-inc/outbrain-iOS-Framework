@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import OutbrainSDK
+
 
 struct UseCasesScreen: View {
     
@@ -67,6 +69,9 @@ struct UseCasesScreen: View {
                     Text(element)
                 }
             }
+        }
+        .onAppear {
+            SFWidget.infiniteWidgetsOnTheSamePage = false
         }
     }
 }
