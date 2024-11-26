@@ -11,7 +11,8 @@ import UIKit
 
 internal class SFWidgetWebView: WKWebView, UIGestureRecognizerDelegate {
     
-    var panGesture: UIPanGestureRecognizer?
+    private var panGesture: UIPanGestureRecognizer?
+    private var isHorizontalSwipe = false
     
     
     func enableSwipeOverride() {
@@ -28,17 +29,17 @@ internal class SFWidgetWebView: WKWebView, UIGestureRecognizerDelegate {
     }
     
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        // Check if the gesture recognizer is a pan gesture
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
         if let panGesture = gestureRecognizer as? UIPanGestureRecognizer {
-            // Determine the direction of the pan gesture
             let translation = panGesture.translation(in: self)
             if abs(translation.x) > abs(translation.y) {
-                // Intercept horizontal swipes
-                return false // Prevent the web view from recognizing horizontal swipes
+                return false
             }
         }
-        return true // Allow other gestures to be recognized simultaneously
+        return true
     }
     
     
@@ -46,20 +47,23 @@ internal class SFWidgetWebView: WKWebView, UIGestureRecognizerDelegate {
         let translation = gesture.translation(in: self)
         
         switch gesture.state {
-            case .changed:
-                // Check if the gesture is primarily vertical
-                if abs(translation.y) > abs(translation.x) {
-                    // Allow vertical scrolling
-                } else {
-                    // Handle horizontal gestures (e.g., swiping left/right)
-                    gesture.isEnabled = false // Disable the gesture temporarily
-                    gesture.isEnabled = true // Re-enable to allow further gestures
-                }
-            case .ended, .cancelled:
-                // Handle the end of the gesture if needed
+            case .began:
                 break
+            case .changed:
+                isHorizontalSwipe = abs(translation.x) > abs(translation.y) // Check swipe direction
+            case .ended, .cancelled:
+                isHorizontalSwipe = false
             default:
                 break
         }
+    }
+    
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if isHorizontalSwipe {
+            return self // Return self to handle touches in this view
+        }
+        
+        return super.hitTest(point, with: event)
     }
 }

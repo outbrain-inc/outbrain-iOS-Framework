@@ -550,6 +550,7 @@ import UIKit
         webView!.isOpaque = false
         webView!.uiDelegate = self
         webView!.navigationDelegate = self
+        webView!.allowsLinkPreview = false
         
         setWebViewInspectable(inspectable: SFConsts.isInspectable)
         addSubview(webView!)
