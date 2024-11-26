@@ -12,9 +12,7 @@ import OutbrainSDK
 struct SweipeabilityControlOverride: View {
     
     private let navigationViewModel: NavigationViewModel
-    
-    @StateObject
-    private var viewModel: OutbrainWidgetViewModel
+    private let paramsViewModel: ParamsViewModel
     
     
     init(
@@ -22,7 +20,7 @@ struct SweipeabilityControlOverride: View {
         paramsViewModel: ParamsViewModel
     ) {
         self.navigationViewModel = navigationViewModel
-        self._viewModel = .init(wrappedValue: OutbrainWidgetViewModel(navigationViewModel: navigationViewModel, paramsViewModel: paramsViewModel))
+        self.paramsViewModel = paramsViewModel
     }
     
     
@@ -50,8 +48,16 @@ struct SweipeabilityControlOverride: View {
                 ArticleBody()
                 ArticleBody()
                 
-                OutbrainWidgetView(viewModel: viewModel)
-                    .frame(height: viewModel.widgetHeight)
+                OutbrainWidgetView(
+                    url: paramsViewModel.articleURL,
+                    widgetId: paramsViewModel.bridgeWidgetId,
+                    widgetIndex: 0,
+                    installationKey: "NANOWDGT01",
+                    darkMode: paramsViewModel.darkMode) { url in
+                        DispatchQueue.main.async {
+                            navigationViewModel.push(.swiftUI)
+                        }
+                    }
             }
         }
         .gesture(
@@ -67,16 +73,5 @@ struct SweipeabilityControlOverride: View {
                     }
                 }
         )
-        .fullScreenCover(isPresented: .init(
-            get: { viewModel.clickedUrl != nil },
-            set: { value in
-                if !value {
-                    viewModel.clickedUrl = nil
-                }
-            }
-        )) {
-            OBSafariView(url: $viewModel.clickedUrl.wrappedValue!)
-                .ignoresSafeArea(edges: .all)
-        }
     }
 }
