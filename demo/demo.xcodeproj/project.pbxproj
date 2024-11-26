@@ -14,6 +14,7 @@
 		B150BDB62C527EB30039B6D6 /* NavigationBarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B150BDB52C527EB30039B6D6 /* NavigationBarViewModifier.swift */; };
 		B17A622B2CB3DFEB009B7891 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A622A2CB3DFE9009B7891 /* Protocols.swift */; };
 		B17A622D2CB3E0EE009B7891 /* ContentPageRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17A622C2CB3E0ED009B7891 /* ContentPageRepresentable.swift */; };
+		B17AD29B2CF34B5400A40D9E /* SweipeabilityControlOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AD29A2CF34B4C00A40D9E /* SweipeabilityControlOverride.swift */; };
 		B1BFCA262CA54C61008C59DA /* Regular+BridgeSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFCA252CA54C52008C59DA /* Regular+BridgeSwiftUI.swift */; };
 		B1BFCA282CA54F12008C59DA /* TwoWidgetsSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFCA272CA54F0E008C59DA /* TwoWidgetsSwiftUI.swift */; };
 		B1CB989A2C3D202800991569 /* demoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CB98992C3D202800991569 /* demoApp.swift */; };
@@ -72,6 +73,7 @@
 		B150BDB52C527EB30039B6D6 /* NavigationBarViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModifier.swift; sourceTree = "<group>"; };
 		B17A622A2CB3DFE9009B7891 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		B17A622C2CB3E0ED009B7891 /* ContentPageRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPageRepresentable.swift; sourceTree = "<group>"; };
+		B17AD29A2CF34B4C00A40D9E /* SweipeabilityControlOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweipeabilityControlOverride.swift; sourceTree = "<group>"; };
 		B1BFCA252CA54C52008C59DA /* Regular+BridgeSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Regular+BridgeSwiftUI.swift"; sourceTree = "<group>"; };
 		B1BFCA272CA54F0E008C59DA /* TwoWidgetsSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWidgetsSwiftUI.swift; sourceTree = "<group>"; };
 		B1CB98962C3D202800991569 /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +271,7 @@
 		B1CC7CCD2C56291200C4018F /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B17AD29A2CF34B4C00A40D9E /* SweipeabilityControlOverride.swift */,
 				B1CB98C22C3D531100991569 /* RegularSDKSwiftUI.swift */,
 				B1FEE6EF2CDA56A300F851C9 /* StaticWidgetUseCase.swift */,
 				B1F3F5982CD10E8B00BC152B /* OrganicReferrerUseCase.swift */,
@@ -382,6 +385,7 @@
 				B1BFCA262CA54C61008C59DA /* Regular+BridgeSwiftUI.swift in Sources */,
 				B1CB99952C3EA27000991569 /* TableVC.swift in Sources */,
 				B1FEE6F02CDA56AA00F851C9 /* StaticWidgetUseCase.swift in Sources */,
+				B17AD29B2CF34B5400A40D9E /* SweipeabilityControlOverride.swift in Sources */,
 				B1BFCA282CA54F12008C59DA /* TwoWidgetsSwiftUI.swift in Sources */,
 				B17A622B2CB3DFEB009B7891 /* Protocols.swift in Sources */,
 				B17A622D2CB3E0EE009B7891 /* ContentPageRepresentable.swift in Sources */,
@@ -530,7 +534,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"demo/Preview Content\"";
 				DEVELOPMENT_TEAM = 97R2B46745;
 				ENABLE_PREVIEWS = YES;
@@ -567,7 +571,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"demo/Preview Content\"";
 				DEVELOPMENT_TEAM = 97R2B46745;
 				ENABLE_PREVIEWS = YES;

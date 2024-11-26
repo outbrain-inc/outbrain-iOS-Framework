@@ -28,6 +28,8 @@ class NavigationViewModel: ObservableObject, Identifiable {
         case twoWidgetsSwiftUI
         case organic(String?)
         case staticWidget
+        case swipeabilityControl
+        case swipeabilityControlSwiftUI
     }
     
     @Published var paths = NavigationPath()

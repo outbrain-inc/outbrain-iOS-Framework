@@ -16,10 +16,10 @@ import UIKit
     @objc public var webviewUrl: String?
     @objc public static var infiniteWidgetsOnTheSamePage: Bool = false
     
-    internal var isLoading: Bool = false
+    internal var isLoadingRecs: Bool = false
     internal var isWidgetEventsEnabled: Bool = false
     internal var inTransition: Bool = false
-    internal var url: String?
+    internal var articleUrl: String?
     internal var widgetId: String?
     internal var installationKey: String?
     internal var userId: String?
@@ -31,7 +31,7 @@ import UIKit
     internal var messageHandler = SFWidgetMessageHandler()
     internal var bridgeUrlBuilder: BridgeUrlBuilder?
     internal var jsExec = JavaScriptExecutor()
-    internal var webView: WKWebView?
+    internal var webView: SFWidgetWebView?
     internal var hiddenWebView: WKWebView?
     internal var bridgeParamsObserver: NSObjectProtocol?
     internal var tParamObserver: NSObjectProtocol?
@@ -39,6 +39,7 @@ import UIKit
     internal var settings: [String: Any] = [:]
     internal var viewabilityHandler = ViewabilityHandler()
     
+    private var initialTouchPoint: CGPoint = .zero
     private var controller: WKUserContentController?
     private weak var containerScrollView: UIScrollView?
     
@@ -204,7 +205,7 @@ import UIKit
         installationKey: String
     ) {
         self.delegate = delegate
-        self.url = url
+        self.articleUrl = url
         self.widgetId = widgetId
         self.installationKey = installationKey
         self.errorReport = OBErrorReport(
@@ -398,7 +399,7 @@ import UIKit
     
     func initialLoadUrl() {
         let widgetURL = bridgeUrlBuilder?
-            .addPermalink(url: url)
+            .addPermalink(url: articleUrl)
             .addDarkMode(isDarkMode: darkMode)
             .addTParam(tParamValue: tParam)
             .addBridgeParams(bridgeParams: bridgeParams)
@@ -413,7 +414,7 @@ import UIKit
             .addIsReactNative(isReactNative: SFWidget.isReactNative)
             .addFlutterPackageVersion(version: SFWidget.flutter_packageVersion)
             .addReactNativePackageVersion(version: SFWidget.RN_packageVersion)
-            .addReferrer(SFWidget.organicUrl?.contains(url ?? "") == true)
+            .addReferrer(SFWidget.organicUrl?.contains(articleUrl ?? "") == true)
             .build()
             
         SFWidget.organicUrl = nil
@@ -457,13 +458,13 @@ import UIKit
             configuration: webviewConf
         )
         
-        guard let widgetURL = bridgeUrlBuilder?.addPermalink(url: self.url).build() else { return }
+        guard let widgetURL = bridgeUrlBuilder?.addPermalink(url: self.articleUrl).build() else { return }
         hiddenWebView?.load(URLRequest(url: widgetURL))
     }
     
 
     @objc public func loadMore() {
-        isLoading = true
+        isLoadingRecs = true
         NSLog("loading more --->")
         Outbrain.logger.debug("load-more-recs", domain: "sfWidfet-handler")
         jsExec.loadMore()
@@ -544,11 +545,12 @@ import UIKit
             webviewConf.applicationNameForUserAgent = userAgent + SFWidget.displayTestUserAgentAddition
         }
         
-        webView = WKWebView(frame: self.frame, configuration: webviewConf)
+        webView = SFWidgetWebView(frame: self.frame, configuration: webviewConf)
         webView!.scrollView.isScrollEnabled = false
         webView!.isOpaque = false
         webView!.uiDelegate = self
         webView!.navigationDelegate = self
+        webView!.allowsLinkPreview = false
         
         setWebViewInspectable(inspectable: SFConsts.isInspectable)
         addSubview(webView!)
@@ -576,7 +578,7 @@ import UIKit
     
     
     private func handleLoadMore(_ scrollView: UIScrollView) {
-        if isLoading || inTransition || currentHeight <= SFConsts.THRESHOLD_FROM_BOTTOM {
+        if isLoadingRecs || inTransition || currentHeight <= SFConsts.THRESHOLD_FROM_BOTTOM {
             return
         }
         
@@ -625,10 +627,10 @@ extension SFWidget: SFMessageHandlerDelegate {
         }
         
         
-        guard isLoading else { return }
+        guard isLoadingRecs else { return }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            self?.isLoading = false
+            self?.isLoadingRecs = false
         }
     }
 
@@ -709,6 +711,13 @@ extension SFWidget: SFMessageHandlerDelegate {
     
     @objc public func onSettingsReceived(_ settings: [String : Any]) {
         self.settings = settings
+        
+        if let override = settings["SDKHorizontalSwipeControlOverride"] as? String {
+            let override = SDKHorizontalSwipeControlOverride(rawValue: override)
+            if override == .all || override == .iOS {
+                webView?.enableSwipeOverride()
+            }
+        }
     }
 }
 
