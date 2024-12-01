@@ -1,17 +1,15 @@
 //
-//  TwoWidgetsSwiftuI.swift
+//  SweipeabilityControlOverride.swift
 //  demo
 //
-//  Created by Leonid Lemesev on 26/09/2024.
+//  Created by Leonid Lemesev on 24/11/2024.
 //
-
 
 import SwiftUI
 import OutbrainSDK
 
 
-
-struct TwoWidgetsSwiftuI: View {
+struct SweipeabilityControlOverride: View {
     
     private let navigationViewModel: NavigationViewModel
     private let paramsViewModel: ParamsViewModel
@@ -23,7 +21,6 @@ struct TwoWidgetsSwiftuI: View {
     ) {
         self.navigationViewModel = navigationViewModel
         self.paramsViewModel = paramsViewModel
-        SFWidget.infiniteWidgetsOnTheSamePage = true
     }
     
     
@@ -53,26 +50,28 @@ struct TwoWidgetsSwiftuI: View {
                 
                 OutbrainWidgetView(
                     url: paramsViewModel.articleURL,
-                    widgetId: paramsViewModel.bridgeWidgetId2,
+                    widgetId: paramsViewModel.bridgeWidgetId,
                     widgetIndex: 0,
                     installationKey: "NANOWDGT01",
                     darkMode: paramsViewModel.darkMode) { url in
-                        navigationViewModel.push(.twoWidgetsSwiftUI)
-                    }
-                
-                
-                ArticleBody()
-                ArticleBody()
-                
-                OutbrainWidgetView(
-                    url: paramsViewModel.articleURL,
-                    widgetId: paramsViewModel.bridgeWidgetId,
-                    widgetIndex: 1,
-                    installationKey: "NANOWDGT01",
-                    darkMode: paramsViewModel.darkMode) { url in
-                        navigationViewModel.push(.twoWidgetsSwiftUI)
+                        DispatchQueue.main.async {
+                            navigationViewModel.push(.swiftUI)
+                        }
                     }
             }
         }
+        .gesture(
+            DragGesture()
+                .onEnded { value in
+                    // Determine the swipe direction
+                    if value.translation.width > 0 {
+                        // Right swipe
+                        navigationViewModel.popLast()
+                    } else if value.translation.width < 0 {
+                        // Left swipe
+                        navigationViewModel.push(.swipeabilityControlSwiftUI)
+                    }
+                }
+        )
     }
 }

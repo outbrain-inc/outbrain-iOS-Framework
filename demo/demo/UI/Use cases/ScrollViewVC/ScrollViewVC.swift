@@ -21,6 +21,7 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate, UIKitContentPage {
     private let navigationViewModel: NavigationViewModel
     private let paramsViewModel: ParamsViewModel
     private let isRegular: Bool
+    private let horizontalSwipes: Bool
     
     
     required init(
@@ -31,6 +32,7 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate, UIKitContentPage {
         self.navigationViewModel = navigationViewModel
         self.paramsViewModel = paramsViewModel
         self.isRegular = params?["isRegular"] ?? false
+        self.horizontalSwipes = params?["horizontalSwipes"] ?? false
         super.init(nibName: "ScrollViewVC", bundle: nil)
     }
     
@@ -42,6 +44,18 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate, UIKitContentPage {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        if horizontalSwipes {
+            let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+            swipeLeft.direction = .left
+            self.scrollView.addGestureRecognizer(swipeLeft)
+            
+            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+            swipeRight.direction = .right
+            self.scrollView.addGestureRecognizer(swipeRight)
+        }
+        
         
         if isRegular {
             sfWidgetHeightConstraint.constant = 0
@@ -92,6 +106,17 @@ class ScrollViewVC : UIViewController, UIScrollViewDelegate, UIKitContentPage {
     }
     
     
+    @objc private func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
+        switch gesture.direction {
+            case .left:
+                navigationViewModel.push(.swipeabilityControl)
+            case .right:
+                navigationViewModel.popLast()
+            default:
+                break
+        }
+    }
+    
     
     @objc func recClick(urlString: String?) {
         guard let urlString, let url = URL(string: urlString) else { return }
@@ -125,7 +150,13 @@ extension ScrollViewVC: SFWidgetDelegate {
     
     func onOrganicRecClick(_ url: URL) {
         DispatchQueue.main.async { [weak self] in
-            self?.navigationViewModel.push(self?.isRegular == true ? .regularUIKit : .scrollView)
+            guard let self else { return }
+            
+            if self.horizontalSwipes {
+                self.navigationViewModel.push(.swipeabilityControl)
+            } else {
+                self.navigationViewModel.push(self.isRegular == true ? .regularUIKit : .scrollView)
+            }
         }
     }
     
