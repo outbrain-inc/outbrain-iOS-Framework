@@ -2,6 +2,11 @@
 
 # Official Releases (Swift SDK)
 
+## v5.3.2 - December 3, 2024
+
+- Added Swipeability control
+- Added SwiftUI ready to use component
+
 ## v5.3.1 - November 19, 2024
 
  - Added async/await method to fetch Regular recommendations
