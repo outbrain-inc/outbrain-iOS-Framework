@@ -70,11 +70,11 @@ class OBRequestHandlerTests: XCTestCase {
         
         
         // Then
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 2.0)
         XCTAssertNotNil(testResponse)
         XCTAssertNotNil(testResponse?.error)
         XCTAssertEqual(testResponse!.error!.code, .network)
-        sleep(2)
+        sleep(1)
         XCTAssertTrue(MockUrlProtocol.calledHosts.contains("widgetmonitor.outbrain.com"))
     }
     
