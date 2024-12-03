@@ -6,6 +6,7 @@ import AdSupport
 import AppTrackingTransparency
 import Foundation
 @_exported import OutbrainSDK
+import SafariServices
 import Swift
 import SwiftUI
 import UIKit
@@ -77,6 +78,21 @@ extension OutbrainSDK.SFWidget : WebKit.WKUIDelegate, WebKit.WKNavigationDelegat
 extension OutbrainSDK.SFWidget {
   @objc(willDisplayCell:) @_Concurrency.MainActor @preconcurrency dynamic public func willDisplay(_ cell: OutbrainSDK.SFWidgetTableCell)
   @objc(willDisplayCollectionViewCell:) @_Concurrency.MainActor @preconcurrency dynamic public func willDisplay(_ cell: OutbrainSDK.SFWidgetCollectionCell)
+}
+@_Concurrency.MainActor @preconcurrency public struct OutbrainSafariView : SwiftUI.UIViewControllerRepresentable {
+  @_Concurrency.MainActor @preconcurrency public init(url: Foundation.URL)
+  @_Concurrency.MainActor @preconcurrency public func makeUIViewController(context: SwiftUI.UIViewControllerRepresentableContext<OutbrainSDK.OutbrainSafariView>) -> SafariServices.SFSafariViewController
+  @_Concurrency.MainActor @preconcurrency public func updateUIViewController(_ uiViewController: SafariServices.SFSafariViewController, context: SwiftUI.UIViewControllerRepresentableContext<OutbrainSDK.OutbrainSafariView>)
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias Body = Swift.Never
+  @available(iOS 13.0, tvOS 13.0, *)
+  @available(watchOS, unavailable)
+  @available(macOS, unavailable)
+  public typealias Coordinator = Swift.Void
+  @available(iOS 13.0, tvOS 13.0, *)
+  @available(watchOS, unavailable)
+  @available(macOS, unavailable)
+  public typealias UIViewControllerType = SafariServices.SFSafariViewController
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class SFWidgetTableCell : UIKit.UITableViewCell {
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func awakeFromNib()
@@ -207,6 +223,14 @@ public struct OBLogger {
   @objc final public let url: Foundation.URL?
   @objc deinit
 }
+@_Concurrency.MainActor @preconcurrency public struct OutbrainWidgetView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String? = nil, darkMode: Swift.Bool = false, extId: Swift.String? = nil, extSecondaryId: Swift.String? = nil, OBPubImp: Swift.String? = nil, onOrganicRecClick: ((Foundation.URL) -> Swift.Void)? = nil, onWidgetEvent: ((Swift.String, [Swift.String : Any]) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s11OutbrainSDK0A10WidgetViewV4bodyQrvp", 0) __
+}
 public struct OBViewData {
 }
 @objc public protocol OBResponseDelegate {
@@ -265,9 +289,11 @@ extension OutbrainSDK.OBLogLevels : Swift.Equatable {}
 extension OutbrainSDK.OBLogLevels : Swift.Hashable {}
 extension OutbrainSDK.OBLogLevels : Swift.RawRepresentable {}
 extension OutbrainSDK.SFWidget : OutbrainSDK.SFWidgetDelegate {}
+extension OutbrainSDK.OutbrainSafariView : Swift.Sendable {}
 extension OutbrainSDK.OBErrorType : Swift.Equatable {}
 extension OutbrainSDK.OBErrorType : Swift.Hashable {}
 extension OutbrainSDK.OBErrorType : Swift.RawRepresentable {}
 extension OutbrainSDK.OBErrorCode : Swift.Equatable {}
 extension OutbrainSDK.OBErrorCode : Swift.Hashable {}
 extension OutbrainSDK.OBErrorCode : Swift.RawRepresentable {}
+extension OutbrainSDK.OutbrainWidgetView : Swift.Sendable {}
