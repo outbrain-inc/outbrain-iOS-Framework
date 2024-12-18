@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/OutbrainSDK-Swift.h</key>
 		<data>
-		GuZ0kUs25XuYeotg7DM6X+SKwY0=
+		INF5si6zF+253UlGjowd7Cl9EO4=
 		</data>
 		<key>Headers/OutbrainSDK.h</key>
 		<data>
@@ -14,47 +14,47 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Qz2a/+/5erLf2VrEwYON3HbaBR8=
+		W35M1jCcVrDmpG0ZzpdMek4tkug=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		B4R2koga4RSfu1cWqsj6Xrg9/2w=
+		lI/QNCwGQM23dtzPfYrwfNxFzGY=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		sH49rvmXslrjDD4LvaaH3M2A9G4=
+		2JSq1vlEAcxY2BFXplW7MyHlzd8=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		19cKnvbPVH0/roOQJia6Cia88u8=
+		PDU6IWULpohIfOBChkEok08obd0=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		sH49rvmXslrjDD4LvaaH3M2A9G4=
+		2JSq1vlEAcxY2BFXplW7MyHlzd8=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		WraTAl5/U4+xyZjaXDbOSWqckZo=
+		LJyX33HEpiV+RmFn3ezF8p76xL0=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		B4R2koga4RSfu1cWqsj6Xrg9/2w=
+		lI/QNCwGQM23dtzPfYrwfNxFzGY=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		UWUUBf/Ft1m0XpL/Mu5VRut61ts=
+		QO6TKwUY2PT9w9oRubEpN3+Y6qg=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		zsk/uEvw6mSIDBPm5KIxzoFCjUU=
+		vF9ZKWbfcHj2UC+tMmgMKPKksik=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		UWUUBf/Ft1m0XpL/Mu5VRut61ts=
+		QO6TKwUY2PT9w9oRubEpN3+Y6qg=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Rpf1gdAqlsjOQM/EfFJNztQtqHk=
+		v9O97fy1imWKFbLhYHSY48DTO3o=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -71,7 +71,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BTnr2ToEBSq1fikI3nVPdx1yAdFRkLWsmLwisWyB1rk=
+			+E1zYb1zNUkQj1/rDWcgoWpqOls0i8ra3Jqby4slWW4=
 			</data>
 		</dict>
 		<key>Headers/OutbrainSDK.h</key>
@@ -85,70 +85,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wS4arTdxS2ucLj7io0er35KC8+90PeI0W6l31cq8Ttw=
+			GmPnOLd+UHkajTviBpT3xxqhgvzqOVh7apssegT+Niw=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SVk+ugLdWfn3ZaSvBeiuGpcpXWzdEgaJOlXrgFPtL6c=
+			ei+qZDiz/cCfmZ0u7Zoa/bT7YPR7/3Jo2q4AJ1FIGOc=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VGS+ElJpfRZZisKq1craMQuhuQBnyErfPp7fBSGca8k=
+			y6zgYNYH+5GwBhtnZmGGgW9ChGuB5+nifA7qSmi5rF0=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SVk+ugLdWfn3ZaSvBeiuGpcpXWzdEgaJOlXrgFPtL6c=
+			ei+qZDiz/cCfmZ0u7Zoa/bT7YPR7/3Jo2q4AJ1FIGOc=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XdGcN69ay58Rh1/oCjDHnn5Th7HjKFVN1Iwj56a8j20=
+			t4QVAMvow3aNY36dV8FLzC9dt8TC1kLmMKH+7MlP/KA=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wS4arTdxS2ucLj7io0er35KC8+90PeI0W6l31cq8Ttw=
+			GmPnOLd+UHkajTviBpT3xxqhgvzqOVh7apssegT+Niw=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3ELlZjwvkhPjRZnmtaSuP/Pk3dkN0VLpScd7EaxKTco=
+			tMIPU3g9c0SXyVldLV1hiukujUjW61rICD+AZ/+ad6o=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			A+E1L1R1IIjHVEbrwNePqU7jYuxavKjtYdJmc4hp2hQ=
+			ND/+89K1U5p+85PGhiUvYaCLAPOvnvIxLw78EdcSNT8=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3ELlZjwvkhPjRZnmtaSuP/Pk3dkN0VLpScd7EaxKTco=
+			tMIPU3g9c0SXyVldLV1hiukujUjW61rICD+AZ/+ad6o=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5xWU/80yX3DOsW+i9ArzRAaE7EOo5KfQtQCb/inHomc=
+			ep5ql+RKG51NL6pkDgcQqElbC34OJaddQFVTjhJD+XQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
