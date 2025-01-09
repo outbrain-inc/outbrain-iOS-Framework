@@ -3,6 +3,7 @@
 // swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name OutbrainSDK
 import AdSupport
 import AppTrackingTransparency
+import Combine
 import Foundation
 @_exported import OutbrainSDK
 import SafariServices
@@ -200,12 +201,13 @@ public protocol HttpHandler : ObjectiveC.NSObjectProtocol {
   @objc public static func zeroRecommendations(message: Swift.String?, code: OutbrainSDK.OBErrorCode) -> OutbrainSDK.OBError
   @objc deinit
 }
-public struct OBLogger {
-  public mutating func log(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
-  public mutating func debug(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
-  public mutating func warn(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
-  public mutating func error(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
+@_hasMissingDesignatedInitializers public class OBLogger {
+  public func log(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
+  public func debug(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
+  public func warn(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
+  public func error(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
   public func printLogs(domain: Swift.String? = nil)
+  @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class OBView : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func removeFromSuperview()
@@ -218,6 +220,9 @@ public struct OBLogger {
   @objc deinit
 }
 @_Concurrency.MainActor(unsafe) public struct OutbrainWidgetView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var widgetHeight: CoreFoundation.CGFloat {
+    get
+  }
   @_Concurrency.MainActor(unsafe) public init(url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String? = nil, darkMode: Swift.Bool = false, extId: Swift.String? = nil, extSecondaryId: Swift.String? = nil, OBPubImp: Swift.String? = nil, onOrganicRecClick: ((Foundation.URL) -> Swift.Void)? = nil, onWidgetEvent: ((Swift.String, [Swift.String : Any]) -> Swift.Void)? = nil)
   @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
     get
@@ -255,20 +260,27 @@ public struct OBViewData {
   @objc public func shouldDisplayDisclosureIcon() -> Swift.Bool
   @objc deinit
 }
+final public class OutbrainWidgetViewModel : Combine.ObservableObject {
+  final public var widgetView: OutbrainSDK.OutbrainWidgetView?
+  public init(createWidget: Swift.Bool = true, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String? = nil, darkMode: Swift.Bool = false, extId: Swift.String? = nil, extSecondaryId: Swift.String? = nil, OBPubImp: Swift.String? = nil, onOrganicRecClick: ((Foundation.URL) -> Swift.Void)? = nil, onWidgetEvent: ((Swift.String, [Swift.String : Any]) -> Swift.Void)? = nil)
+  final public func createWidgetView()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
 @available(iOS 15.0, *)
 extension SwiftUI.View {
   public func addViewability(with recommendation: OutbrainSDK.OBRecommendation) -> some SwiftUI.View
   
 }
-public struct OBGlobalStatisticsManager {
+@_hasMissingDesignatedInitializers public class OBGlobalStatisticsManager {
   public static var shared: OutbrainSDK.OBGlobalStatisticsManager
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers public class OBViewbailityManager {
   public static let shared: OutbrainSDK.OBViewbailityManager
   @objc deinit
 }
 public struct OBErrorReport {
-  public init(url: Swift.String?, widgetId: Swift.String?)
 }
 @objc public protocol SFWidgetDelegate {
   @objc func onRecClick(_ url: Foundation.URL)
