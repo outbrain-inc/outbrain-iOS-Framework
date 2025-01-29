@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.description         = "Outbrain iOS SDK for app developers, please review our guidelines at https://sdk.outbrain.com/"
   s.documentation_url   = "https://sdk.outbrain.com/"
   s.homepage            = "https://www.outbrain.com"
-  s.license             = { :type => 'Proprietary', :text => 'Copyright 2024 Outbrain. All rights reserved.' }
+  s.license             = { :type => 'Proprietary', :text => 'Copyright 2025 Outbrain. All rights reserved.' }
   s.author              = { "Oded Regev" => "oregev@outbrain.com" }
   s.platform            = :ios, "14.0"
   s.source              = { :git => "https://github.com/outbrain/outbrain-iOS-Framework.git", :tag => "#{s.version}" }
@@ -23,5 +23,6 @@ Pod::Spec.new do |s|
   s.preserve_paths      = "OutbrainSDK.xcframework"
   s.vendored_frameworks = "OutbrainSDK.xcframework"
   s.exclude_files       = ""
+  s.resource_bundles    = { "OutbrainSDK" => ["OutbrainSDK.xcframework/ios-arm64/OutbrainSDK.framework/PrivacyInfo.xcprivacy"] }
 
 end
