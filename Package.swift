@@ -9,10 +9,7 @@ let package = Package(
     products: [
         .library(name: "OutbrainSDK", targets: ["WrapperSPMTarget"])
     ],
-    dependencies: [
-        // Here we define our package's external dependencies
-        // and from where they can be fetched:
-    ],
+    dependencies: [],
     targets: [
         .binaryTarget(
             name: "OutbrainSDK",
@@ -22,7 +19,8 @@ let package = Package(
             name: "WrapperSPMTarget",
             dependencies: [
                 .target(name: "OutbrainSDK", condition: .when(platforms: .some([.iOS])))
-            ]
+            ],
+            resources: [.copy("Resources/PrivacyInfo.xcprivacy")]
         )
     ]
 )
