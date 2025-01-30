@@ -8,7 +8,7 @@
 	<array>
 		<string>t-odb.outbrain.com</string>
 		<string>t-mv.outbrain.com</string>
-        <string>t-log.outbrainimg.com</string>
+		<string>t-log.outbrainimg.com</string>
 		<string>t-eventlog.outbrain.com</string>
 		<string>t-widgetmonitor.outbrain.com</string>
 		<string>t-my.outbrain.com</string>
@@ -33,6 +33,7 @@
 		<string>t-spv-sadc1.outbrain.com</string>
 		<string>t-spv-nldc1.outbrain.com</string>
 		<string>t-www.outbrain.com</string>
+		<string>t-vas.outbrain.com/aps </string>
 	</array>
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array>

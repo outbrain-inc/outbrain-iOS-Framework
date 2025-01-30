@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
-// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name OutbrainSDK
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OutbrainSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import AdSupport
 import AppTrackingTransparency
 import Combine
@@ -30,10 +31,12 @@ public enum OBLogLevels : Swift.String {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc public class OBDisclosure : ObjectiveC.NSObject {
+@objc @objcMembers public class OBDisclosure : ObjectiveC.NSObject, Swift.Decodable {
   @objc public var imageUrl: Swift.String?
   @objc public var clickUrl: Swift.String?
+  @objc public init(imageUrl: Swift.String? = nil, clickUrl: Swift.String? = nil)
   @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
 }
 public struct OBGlobalStatisticsData {
 }
@@ -97,7 +100,10 @@ public struct OutbrainSafariView : SwiftUI.UIViewControllerRepresentable {
 }
 public struct OBRequestHandler {
 }
-@_hasMissingDesignatedInitializers @objc public class OBViewabilityActions : ObjectiveC.NSObject {
+@objc @_hasMissingDesignatedInitializers @objcMembers public class OBViewabilityActions : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let reportServed: Swift.String?
+  @objc final public let reportViewed: Swift.String?
+  required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc public class Outbrain : ObjectiveC.NSObject {
@@ -126,12 +132,13 @@ public struct OBRequestHandler {
   @objc override dynamic public init()
   @objc deinit
 }
-@objc @_hasMissingDesignatedInitializers @objcMembers public class OBRecommendationResponse : ObjectiveC.NSObject {
+@objc @_hasMissingDesignatedInitializers @objcMembers public class OBRecommendationResponse : ObjectiveC.NSObject, Swift.Decodable {
   @objc final public let request: [Swift.String : Any]
   @objc final public let settings: [Swift.String : Any]
   @objc final public let viewabilityActions: OutbrainSDK.OBViewabilityActions?
   @objc final public let recommendations: [OutbrainSDK.OBRecommendation]
   @objc public var error: OutbrainSDK.OBError?
+  required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 public protocol HttpHandler : ObjectiveC.NSObjectProtocol {
@@ -165,7 +172,7 @@ public protocol HttpHandler : ObjectiveC.NSObjectProtocol {
   @objc public static func requestWithPortalURL(_ portalUrl: Swift.String, lang: Swift.String, widgetID: Swift.String) -> OutbrainSDK.OBPlatformRequest
   @objc deinit
 }
-@objc public enum OBErrorType : Swift.Int {
+@objc public enum OBErrorType : Swift.Int, Swift.Sendable {
   case generic = 0
   case network
   case native
@@ -176,7 +183,7 @@ public protocol HttpHandler : ObjectiveC.NSObjectProtocol {
     get
   }
 }
-@objc public enum OBErrorCode : Swift.Int {
+@objc public enum OBErrorCode : Swift.Int, Swift.Sendable {
   case generic = 10200
   case parsing = 10201
   case server = 10202
@@ -201,23 +208,23 @@ public protocol HttpHandler : ObjectiveC.NSObjectProtocol {
   @objc public static func zeroRecommendations(message: Swift.String?, code: OutbrainSDK.OBErrorCode) -> OutbrainSDK.OBError
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class OBLogger {
-  public func log(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
-  public func debug(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
-  public func warn(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
-  public func error(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
-  public func printLogs(domain: Swift.String? = nil)
+@_hasMissingDesignatedInitializers final public class OBLogger {
+  final public func log(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
+  final public func debug(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
+  final public func warn(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
+  final public func error(_ message: Swift.String, domain: Swift.String? = nil, printLog: Swift.Bool = true)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class OBView : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func removeFromSuperview()
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc public class OBImageInfo : ObjectiveC.NSObject {
+@objc @objcMembers public class OBImageInfo : ObjectiveC.NSObject, Swift.Decodable {
   @objc final public let width: Swift.Int
   @objc final public let height: Swift.Int
   @objc final public let url: Foundation.URL?
   @objc deinit
+  required public init(from decoder: any Swift.Decoder) throws
 }
 @_Concurrency.MainActor(unsafe) public struct OutbrainWidgetView : SwiftUI.View {
   @_Concurrency.MainActor(unsafe) public var widgetHeight: CoreFoundation.CGFloat {
@@ -235,7 +242,7 @@ public struct OBViewData {
   @objc func outbrainDidReceiveResponse(withSuccess response: OutbrainSDK.OBRecommendationResponse)
   @objc func outbrainFailedToReceiveResposne(withError error: OutbrainSDK.OBError?)
 }
-@objc @_hasMissingDesignatedInitializers @objcMembers public class OBRecommendation : ObjectiveC.NSObject {
+@objc @_hasMissingDesignatedInitializers @objcMembers public class OBRecommendation : ObjectiveC.NSObject, Swift.Decodable {
   @objc public var url: Swift.String?
   @objc public var origUrl: Swift.String?
   @objc public var content: Swift.String?
@@ -258,6 +265,7 @@ public struct OBViewData {
     @objc get
   }
   @objc public func shouldDisplayDisclosureIcon() -> Swift.Bool
+  required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 final public class OutbrainWidgetViewModel : Combine.ObservableObject {
@@ -276,12 +284,25 @@ extension SwiftUI.View {
   public static var shared: OutbrainSDK.OBGlobalStatisticsManager
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class OBViewbailityManager {
-  public static let shared: OutbrainSDK.OBViewbailityManager
+#if compiler(>=5.3) && $Actors
+@_hasMissingDesignatedInitializers public actor OBViewabilityManager {
+  public static let shared: OutbrainSDK.OBViewabilityManager
   @objc deinit
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  @_semantics("defaultActor") nonisolated final public var unownedExecutor: _Concurrency.UnownedSerialExecutor {
+    get
+  }
 }
-public struct OBErrorReport {
+#endif
+#if compiler(>=5.3) && $Actors
+@_hasMissingDesignatedInitializers public actor OBErrorReport {
+  @objc deinit
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  @_semantics("defaultActor") nonisolated final public var unownedExecutor: _Concurrency.UnownedSerialExecutor {
+    get
+  }
 }
+#endif
 @objc public protocol SFWidgetDelegate {
   @objc func onRecClick(_ url: Foundation.URL)
   @objc optional func didChangeHeight(_ newHeight: CoreFoundation.CGFloat)
