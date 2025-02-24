@@ -18,8 +18,8 @@ Please make sure to review [Outbrain SDK Developers Site](https://sdk.outbrain.c
 
 | **Outbrain SDK**  	| **Requirements**                                     	|
 |--------------------	|------------------------------------------------------	|
-| Min OutbrainSDK   	| iOS 10.3 or higher                                      	|
-| Build OutbrainSDK   | iOS 16.0												|
+| Min OutbrainSDK   	| iOS 14.0 or higher                                      	|
+| Build OutbrainSDK   | iOS 17.0												|
 | Languages          	| Objective-C, Swift                                   	|
 | Devices            	| Any iOS compatible device: iPhones, iPads, etc.      	|
 | File Sizes         	| Outbrain adds about 100KB to your iOS release app. 	|
