@@ -605,6 +605,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL infiniteWidgetsOnTheSameP
 - (void)viewWillTransitionTo:(CGSize)size with:(id <UIViewControllerTransitionCoordinator> _Nonnull)coordinator;
 @end
 
+
 @class SFWidgetTableCell;
 @class SFWidgetCollectionCell;
 

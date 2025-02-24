@@ -605,6 +605,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL infiniteWidgetsOnTheSameP
 - (void)viewWillTransitionTo:(CGSize)size with:(id <UIViewControllerTransitionCoordinator> _Nonnull)coordinator;
 @end
 
+
 @class SFWidgetTableCell;
 @class SFWidgetCollectionCell;
 
@@ -1291,6 +1292,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL infiniteWidgetsOnTheSameP
 - (void)observeValueForKeyPath:(NSString * _Nullable)keyPath ofObject:(id _Nullable)object change:(NSDictionary<NSKeyValueChangeKey, id> * _Nullable)change context:(void * _Nullable)context;
 - (void)viewWillTransitionTo:(CGSize)size with:(id <UIViewControllerTransitionCoordinator> _Nonnull)coordinator;
 @end
+
 
 @class SFWidgetTableCell;
 @class SFWidgetCollectionCell;

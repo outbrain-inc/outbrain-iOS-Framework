@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/OutbrainSDK-Swift.h</key>
 		<data>
-		z3vCTRzqiX2xo4ij9zmFlroYss8=
+		Lc5v7VovVzD7P7NrQS8VVyImcfI=
 		</data>
 		<key>Headers/OutbrainSDK.h</key>
 		<data>
@@ -18,11 +18,11 @@
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		5NVQmVflbNHNw5aqCi/xWdLbjOk=
+		TZq74OZInGJDop0zS9V/2p14STI=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		buZwVk021kVTTIwQb6jagRkD1yc=
+		fpaOp6BxWMPhSBrjbOc7seHCg84=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -30,19 +30,19 @@
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		buZwVk021kVTTIwQb6jagRkD1yc=
+		fpaOp6BxWMPhSBrjbOc7seHCg84=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		nku9s+z6WpcTxlN2i8keKK4hlD4=
+		v2WpU+qtlo0Y+x0EXDnu4Ao2QoI=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		5NVQmVflbNHNw5aqCi/xWdLbjOk=
+		TZq74OZInGJDop0zS9V/2p14STI=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		f7Hed8EFLrfz0uYjJqmmWgc42Rg=
+		qXnfOqZEmaFP5x7HzDUL2eYrULo=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		f7Hed8EFLrfz0uYjJqmmWgc42Rg=
+		qXnfOqZEmaFP5x7HzDUL2eYrULo=
 		</data>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		DkCxfQY/3RVqGYybORUgsXNTXmY=
+		+VJn38drq3nbA7ODzyeX0pTDPqc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -71,7 +71,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AbdjQNheY+xNC2JmG7ECQu18zY0gUDtA+f8WO4vhISY=
+			CTU2ID04qvltxZWuochmIIjknpP7PEb5QFeICEHT3ss=
 			</data>
 		</dict>
 		<key>Headers/OutbrainSDK.h</key>
@@ -85,14 +85,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			x0RUxiN/jhKlLCjWnhXj95NeWWeykoILDZDxwJtJr7Y=
+			0ptYxWAf+Wq71UAgjFtgGHLhbLlWULWa0U13m259pSE=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SoKyJHpRgaefJ+VrxD4Thy6TQv1BjYQQQxbQ0y/Fcw4=
+			SkJlNHDDGjDUm1tXL0Sek8PkyGP8gk/nDJu9xjdj6jI=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -106,28 +106,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SoKyJHpRgaefJ+VrxD4Thy6TQv1BjYQQQxbQ0y/Fcw4=
+			SkJlNHDDGjDUm1tXL0Sek8PkyGP8gk/nDJu9xjdj6jI=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XG6ncSkx8UztYFJI7VDPRyNtkwV9go7exOtTiyXG3QY=
+			fdppZyBdhcFc5+BoU/+Ylgwh9gVi/Ng7wknEtdr/Eak=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			x0RUxiN/jhKlLCjWnhXj95NeWWeykoILDZDxwJtJr7Y=
+			0ptYxWAf+Wq71UAgjFtgGHLhbLlWULWa0U13m259pSE=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vfESNZiM8R/q8RjOHPYfAk4g/bm7bx4b3ahkMS5tAsc=
+			k1UfkRHZzU4++2tmctu+BpttJJ5Kub2LoY5mBrz9LEg=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -141,14 +141,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vfESNZiM8R/q8RjOHPYfAk4g/bm7bx4b3ahkMS5tAsc=
+			k1UfkRHZzU4++2tmctu+BpttJJ5Kub2LoY5mBrz9LEg=
 			</data>
 		</dict>
 		<key>Modules/OutbrainSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			V2miNAFbuU8HEc2YmqEGiN9OwqLiDXwe+RHtzfVEipQ=
+			y3LvA04Zcr2yghYp2M7B5MnfVPEc64gzwbef5c0ky2k=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

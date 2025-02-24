@@ -40,7 +40,10 @@ public enum OBLogLevels : Swift.String {
 }
 public struct OBGlobalStatisticsData {
 }
-@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class SFWidget : UIKit.UIView {
+public protocol GoogleBannerViewDelegate : AnyObject {
+  func reportGoogleAdEvent(event: Swift.String, payload: [Swift.String : Any])
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class SFWidget : UIKit.UIView, OutbrainSDK.GoogleBannerViewDelegate {
   @objc @_Concurrency.MainActor(unsafe) public var currentHeight: CoreFoundation.CGFloat {
     get
   }
@@ -81,6 +84,9 @@ extension OutbrainSDK.SFWidget : WebKit.WKUIDelegate, WebKit.WKNavigationDelegat
 extension OutbrainSDK.SFWidget {
   @objc(willDisplayCell:) @_Concurrency.MainActor(unsafe) dynamic public func willDisplay(_ cell: OutbrainSDK.SFWidgetTableCell)
   @objc(willDisplayCollectionViewCell:) @_Concurrency.MainActor(unsafe) dynamic public func willDisplay(_ cell: OutbrainSDK.SFWidgetCollectionCell)
+}
+extension OutbrainSDK.SFWidget {
+  @_Concurrency.MainActor(unsafe) public func reportGoogleAdEvent(event: Swift.String, payload: [Swift.String : Any])
 }
 public struct OutbrainSafariView : SwiftUI.UIViewControllerRepresentable {
   public init(url: Foundation.URL)
@@ -242,6 +248,11 @@ public struct OBViewData {
   @objc func outbrainDidReceiveResponse(withSuccess response: OutbrainSDK.OBRecommendationResponse)
   @objc func outbrainFailedToReceiveResposne(withError error: OutbrainSDK.OBError?)
 }
+public protocol GoogleBannerViewProtocol : UIKit.UIView {
+  func tryToLoadGoogleAds(adTag: Swift.String, yOffset: CoreFoundation.CGFloat, adWidth: CoreFoundation.CGFloat, widgetIdx: Swift.Int)
+  var rootViewController: UIKit.UIViewController? { get set }
+  var delegate: (any OutbrainSDK.GoogleBannerViewDelegate)? { get set }
+}
 @objc @_hasMissingDesignatedInitializers @objcMembers public class OBRecommendation : ObjectiveC.NSObject, Swift.Decodable {
   @objc public var url: Swift.String?
   @objc public var origUrl: Swift.String?
@@ -310,6 +321,9 @@ extension SwiftUI.View {
   @objc optional func didChangeHeight()
   @objc optional func onOrganicRecClick(_ url: Foundation.URL)
   @objc optional func widgetEvent(_ eventName: Swift.String, additionalData: [Swift.String : Any])
+}
+@_hasMissingDesignatedInitializers public class GoogleBannerFactory {
+  @objc deinit
 }
 extension OutbrainSDK.OBLogLevels : Swift.Equatable {}
 extension OutbrainSDK.OBLogLevels : Swift.Hashable {}
