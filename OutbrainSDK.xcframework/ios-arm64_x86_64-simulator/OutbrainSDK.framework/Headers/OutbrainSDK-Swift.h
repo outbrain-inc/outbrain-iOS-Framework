@@ -479,6 +479,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable tes
 + (NSURL * _Nullable)getOutbrainAboutURL SWIFT_WARN_UNUSED_RESULT;
 + (NSURL * _Nullable)getAboutURL SWIFT_WARN_UNUSED_RESULT;
 + (void)configureViewabilityPerListingFor:(UIView * _Nonnull)view withRec:(OBRecommendation * _Nonnull)rec;
++ (void)showExploreMoreOnExploreMoreDismissed:(void (^ _Nullable)(void))onExploreMoreDismissed;
 + (void)printLogsWithDomain:(NSString * _Nullable)domain;
 + (void)testRTB:(BOOL)testRTB;
 + (void)testLocation:(NSString * _Nonnull)testLocation;
@@ -563,7 +564,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL infiniteWidgetsOnTheSameP
 ///
 /// \param darkMode A boolean indicating whether the widget should be displayed in dark mode.
 ///
-- (void)configureWith:(id <SFWidgetDelegate> _Nullable)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString * _Nonnull)installationKey userId:(NSString * _Nullable)userId darkMode:(BOOL)darkMode;
+- (void)configureWith:(id <SFWidgetDelegate> _Nullable)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString * _Nonnull)installationKey userId:(NSString * _Nullable)userId darkMode:(BOOL)darkMode isExploreMore:(BOOL)isExploreMore;
 /// Configures the custom widget with advanced settings.
 /// Use this method to configure the custom widget with advanced settings. You can specify the delegate, URL, widget ID, installation key, widget index, user ID, dark mode, and SwiftUI integration.
 /// If you do not provide a delegate, certain widget interactions may not be handled. The user ID, dark mode, and SwiftUI integration are optional and can be omitted if not needed.
@@ -619,17 +620,27 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL infiniteWidgetsOnTheSameP
 @class WKNavigationAction;
 @class WKWindowFeatures;
 
+SWIFT_AVAILABILITY(ios,introduced=16.0)
 @interface SFWidget (SWIFT_EXTENSION(OutbrainSDK)) <WKNavigationDelegate, WKUIDelegate>
 - (WKWebView * _Nullable)webView:(WKWebView * _Nonnull)webView createWebViewWithConfiguration:(WKWebViewConfiguration * _Nonnull)configuration forNavigationAction:(WKNavigationAction * _Nonnull)navigationAction windowFeatures:(WKWindowFeatures * _Nonnull)windowFeatures SWIFT_WARN_UNUSED_RESULT;
 - (void)webView:(WKWebView * _Nonnull)webView decidePolicyForNavigationAction:(WKNavigationAction * _Nonnull)navigationAction decisionHandler:(void (^ _Nonnull)(WKNavigationActionPolicy))decisionHandler;
 @end
 
 
-SWIFT_PROTOCOL("_TtP11OutbrainSDK16SFWidgetDelegate_")
-@protocol SFWidgetDelegate
+SWIFT_PROTOCOL("_TtP11OutbrainSDK25SFWidgetRecsClickDelegate_")
+@protocol SFWidgetRecsClickDelegate
 /// @brief called on recommendation “click” inside the feed. Publisher should open the URL in an external browser.
 /// @param url - the “click URL” of the recommendation, the publisher should open the URL in an external browser.
 - (void)onRecClick:(NSURL * _Nonnull)url;
+@optional
+/// @brief (Optional) publisher may choose to “catch” clicks on “organic recommendations” in order to navigate the user to the clicked recommendation INSIDE the app (instead of the default behavior of openning the link in an external browser)
+/// @param url - the organic rec “article url”, i.e. the aricle url we should navigate to within the app navigation stack.
+- (void)onOrganicRecClick:(NSURL * _Nonnull)url;
+@end
+
+
+SWIFT_PROTOCOL("_TtP11OutbrainSDK16SFWidgetDelegate_")
+@protocol SFWidgetDelegate <SFWidgetRecsClickDelegate>
 @optional
 /// @brief (Optional) called when the “feed widget” inside the WebView changed its height. Publisher might want to be notified when the SFWidget changes its height.
 /// @param newHeight - the updated height for the SFWidget
@@ -637,9 +648,6 @@ SWIFT_PROTOCOL("_TtP11OutbrainSDK16SFWidgetDelegate_")
 /// @brief (Optional) called when the “feed widget” inside the WebView changed its height. Publisher might want to be notified when the SFWidget changes its height.
 /// @deprecated - please use didChangeHeight:(CGFloat) newHeight
 - (void)didChangeHeight SWIFT_DEPRECATED_MSG("Please use didChangeHeight(_ newHeight: CGFloat) instead.");
-/// @brief (Optional) publisher may choose to “catch” clicks on “organic recommendations” in order to navigate the user to the clicked recommendation INSIDE the app (instead of the default behavior of openning the link in an external browser)
-/// @param url - the organic rec “article url”, i.e. the aricle url we should navigate to within the app navigation stack.
-- (void)onOrganicRecClick:(NSURL * _Nonnull)url;
 /// @brief (Optional) called when the JS widget inside the WKWebView dispatch widget events (for example: rendered, error, viewability, etc).
 /// it should be implemented only if the publisher would like to manually keep track of widget events.
 /// @param eventName - the name of the event being dispatched
@@ -659,6 +667,7 @@ SWIFT_CLASS("_TtC11OutbrainSDK22SFWidgetCollectionCell")
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 
@@ -1167,6 +1176,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable tes
 + (NSURL * _Nullable)getOutbrainAboutURL SWIFT_WARN_UNUSED_RESULT;
 + (NSURL * _Nullable)getAboutURL SWIFT_WARN_UNUSED_RESULT;
 + (void)configureViewabilityPerListingFor:(UIView * _Nonnull)view withRec:(OBRecommendation * _Nonnull)rec;
++ (void)showExploreMoreOnExploreMoreDismissed:(void (^ _Nullable)(void))onExploreMoreDismissed;
 + (void)printLogsWithDomain:(NSString * _Nullable)domain;
 + (void)testRTB:(BOOL)testRTB;
 + (void)testLocation:(NSString * _Nonnull)testLocation;
@@ -1251,7 +1261,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL infiniteWidgetsOnTheSameP
 ///
 /// \param darkMode A boolean indicating whether the widget should be displayed in dark mode.
 ///
-- (void)configureWith:(id <SFWidgetDelegate> _Nullable)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString * _Nonnull)installationKey userId:(NSString * _Nullable)userId darkMode:(BOOL)darkMode;
+- (void)configureWith:(id <SFWidgetDelegate> _Nullable)delegate url:(NSString * _Nonnull)url widgetId:(NSString * _Nonnull)widgetId widgetIndex:(NSInteger)widgetIndex installationKey:(NSString * _Nonnull)installationKey userId:(NSString * _Nullable)userId darkMode:(BOOL)darkMode isExploreMore:(BOOL)isExploreMore;
 /// Configures the custom widget with advanced settings.
 /// Use this method to configure the custom widget with advanced settings. You can specify the delegate, URL, widget ID, installation key, widget index, user ID, dark mode, and SwiftUI integration.
 /// If you do not provide a delegate, certain widget interactions may not be handled. The user ID, dark mode, and SwiftUI integration are optional and can be omitted if not needed.
@@ -1307,17 +1317,27 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL infiniteWidgetsOnTheSameP
 @class WKNavigationAction;
 @class WKWindowFeatures;
 
+SWIFT_AVAILABILITY(ios,introduced=16.0)
 @interface SFWidget (SWIFT_EXTENSION(OutbrainSDK)) <WKNavigationDelegate, WKUIDelegate>
 - (WKWebView * _Nullable)webView:(WKWebView * _Nonnull)webView createWebViewWithConfiguration:(WKWebViewConfiguration * _Nonnull)configuration forNavigationAction:(WKNavigationAction * _Nonnull)navigationAction windowFeatures:(WKWindowFeatures * _Nonnull)windowFeatures SWIFT_WARN_UNUSED_RESULT;
 - (void)webView:(WKWebView * _Nonnull)webView decidePolicyForNavigationAction:(WKNavigationAction * _Nonnull)navigationAction decisionHandler:(void (^ _Nonnull)(WKNavigationActionPolicy))decisionHandler;
 @end
 
 
-SWIFT_PROTOCOL("_TtP11OutbrainSDK16SFWidgetDelegate_")
-@protocol SFWidgetDelegate
+SWIFT_PROTOCOL("_TtP11OutbrainSDK25SFWidgetRecsClickDelegate_")
+@protocol SFWidgetRecsClickDelegate
 /// @brief called on recommendation “click” inside the feed. Publisher should open the URL in an external browser.
 /// @param url - the “click URL” of the recommendation, the publisher should open the URL in an external browser.
 - (void)onRecClick:(NSURL * _Nonnull)url;
+@optional
+/// @brief (Optional) publisher may choose to “catch” clicks on “organic recommendations” in order to navigate the user to the clicked recommendation INSIDE the app (instead of the default behavior of openning the link in an external browser)
+/// @param url - the organic rec “article url”, i.e. the aricle url we should navigate to within the app navigation stack.
+- (void)onOrganicRecClick:(NSURL * _Nonnull)url;
+@end
+
+
+SWIFT_PROTOCOL("_TtP11OutbrainSDK16SFWidgetDelegate_")
+@protocol SFWidgetDelegate <SFWidgetRecsClickDelegate>
 @optional
 /// @brief (Optional) called when the “feed widget” inside the WebView changed its height. Publisher might want to be notified when the SFWidget changes its height.
 /// @param newHeight - the updated height for the SFWidget
@@ -1325,9 +1345,6 @@ SWIFT_PROTOCOL("_TtP11OutbrainSDK16SFWidgetDelegate_")
 /// @brief (Optional) called when the “feed widget” inside the WebView changed its height. Publisher might want to be notified when the SFWidget changes its height.
 /// @deprecated - please use didChangeHeight:(CGFloat) newHeight
 - (void)didChangeHeight SWIFT_DEPRECATED_MSG("Please use didChangeHeight(_ newHeight: CGFloat) instead.");
-/// @brief (Optional) publisher may choose to “catch” clicks on “organic recommendations” in order to navigate the user to the clicked recommendation INSIDE the app (instead of the default behavior of openning the link in an external browser)
-/// @param url - the organic rec “article url”, i.e. the aricle url we should navigate to within the app navigation stack.
-- (void)onOrganicRecClick:(NSURL * _Nonnull)url;
 /// @brief (Optional) called when the JS widget inside the WKWebView dispatch widget events (for example: rendered, error, viewability, etc).
 /// it should be implemented only if the publisher would like to manually keep track of widget events.
 /// @param eventName - the name of the event being dispatched
@@ -1347,6 +1364,7 @@ SWIFT_CLASS("_TtC11OutbrainSDK22SFWidgetCollectionCell")
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 

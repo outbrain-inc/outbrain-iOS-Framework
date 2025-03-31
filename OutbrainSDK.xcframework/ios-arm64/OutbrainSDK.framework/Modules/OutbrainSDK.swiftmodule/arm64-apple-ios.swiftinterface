@@ -42,7 +42,7 @@ public struct OBGlobalStatisticsData {
 public protocol GoogleBannerViewDelegate : AnyObject {
   func reportGoogleAdEvent(event: Swift.String, payload: [Swift.String : Any])
 }
-@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class SFWidget : UIKit.UIView, OutbrainSDK.GoogleBannerViewDelegate {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class SFWidget : UIKit.UIView, OutbrainSDK.GoogleBannerViewDelegate {
   @objc @_Concurrency.MainActor(unsafe) public var currentHeight: CoreFoundation.CGFloat {
     get
   }
@@ -54,7 +54,7 @@ public protocol GoogleBannerViewDelegate : AnyObject {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc @_Concurrency.MainActor(unsafe) public func configure(with delegate: any OutbrainSDK.SFWidgetDelegate, url: Swift.String, widgetId: Swift.String, installationKey: Swift.String)
-  @objc @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool)
+  @objc @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool, isExploreMore: Swift.Bool = false)
   @available(*, deprecated, message: "Please use configure(with delegate: SFWidgetDelegate?, url: String, widgetId: String, widgetIndex: Int, installationKey: String, userId: String?, darkMode: Bool)  instead.")
   @objc @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool, isSwiftUI: Swift.Bool)
   @objc @_Concurrency.MainActor(unsafe) public static func enableFlutterMode(flutter_packageVersion: Swift.String)
@@ -76,6 +76,7 @@ extension OutbrainSDK.SFWidget {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func onRecClick(_ url: Foundation.URL)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func onSettingsReceived(_ settings: [Swift.String : Any])
 }
+@available(iOS 16.0, *)
 extension OutbrainSDK.SFWidget : WebKit.WKUIDelegate, WebKit.WKNavigationDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, createWebViewWith configuration: WebKit.WKWebViewConfiguration, for navigationAction: WebKit.WKNavigationAction, windowFeatures: WebKit.WKWindowFeatures) -> WebKit.WKWebView?
   @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, decidePolicyFor navigationAction: WebKit.WKNavigationAction, decisionHandler: @escaping (WebKit.WKNavigationActionPolicy) -> Swift.Void)
@@ -130,6 +131,7 @@ public struct OBRequestHandler {
   @objc public static func getOutbrainAboutURL() -> Foundation.URL?
   @objc public static func getAboutURL() -> Foundation.URL?
   @objc public static func configureViewabilityPerListing(for view: UIKit.UIView, withRec rec: OutbrainSDK.OBRecommendation)
+  @objc public static func showExploreMore(onExploreMoreDismissed: (() -> Swift.Void)?)
   @objc public static func printLogs(domain: Swift.String? = nil)
   @objc public static func testRTB(_ testRTB: Swift.Bool)
   @objc public static func testLocation(_ testLocation: Swift.String)
@@ -149,7 +151,7 @@ public struct OBRequestHandler {
 public protocol HttpHandler : ObjectiveC.NSObjectProtocol {
   func handleRequest(_ type: Swift.String, request: [Swift.String : Any?])
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SFWidgetTestMode : OutbrainSDK.SFWidget {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class SFWidgetTestMode : OutbrainSDK.SFWidget {
   @_Concurrency.MainActor(unsafe) public func configure(with delegate: (any OutbrainSDK.SFWidgetDelegate)?, url: Swift.String, widgetId: Swift.String, widgetIndex: Swift.Int, installationKey: Swift.String, userId: Swift.String?, darkMode: Swift.Bool, isSwiftUI: Swift.Bool, httpHandler: any OutbrainSDK.HttpHandler)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -290,6 +292,10 @@ extension SwiftUI.View {
   public func addViewability(with recommendation: OutbrainSDK.OBRecommendation) -> some SwiftUI.View
   
 }
+@objc public protocol SFWidgetRecsClickDelegate {
+  @objc func onRecClick(_ url: Foundation.URL)
+  @objc optional func onOrganicRecClick(_ url: Foundation.URL)
+}
 @_hasMissingDesignatedInitializers public class OBGlobalStatisticsManager {
   public static var shared: OutbrainSDK.OBGlobalStatisticsManager
   @objc deinit
@@ -313,12 +319,10 @@ extension SwiftUI.View {
   }
 }
 #endif
-@objc public protocol SFWidgetDelegate {
-  @objc func onRecClick(_ url: Foundation.URL)
+@objc public protocol SFWidgetDelegate : OutbrainSDK.SFWidgetRecsClickDelegate {
   @objc optional func didChangeHeight(_ newHeight: CoreFoundation.CGFloat)
   @available(*, deprecated, message: "Please use didChangeHeight(_ newHeight: CGFloat) instead.")
   @objc optional func didChangeHeight()
-  @objc optional func onOrganicRecClick(_ url: Foundation.URL)
   @objc optional func widgetEvent(_ eventName: Swift.String, additionalData: [Swift.String : Any])
 }
 @_hasMissingDesignatedInitializers public class GoogleBannerFactory {

@@ -6,6 +6,16 @@
     "children": [
       {
         "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "OutbrainSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -285,16 +295,6 @@
             "usr": "s:SY",
             "mangledName": "$sSY"
           }
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "OutbrainSDK",
-        "declAttributes": [
-          "RawDocComment"
         ]
       },
       {
@@ -1808,7 +1808,7 @@
           {
             "kind": "Function",
             "name": "configure",
-            "printedName": "configure(with:url:widgetId:widgetIndex:installationKey:userId:darkMode:)",
+            "printedName": "configure(with:url:widgetId:widgetIndex:installationKey:userId:darkMode:isExploreMore:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1872,13 +1872,20 @@
                 "name": "Bool",
                 "printedName": "Swift.Bool",
                 "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@OutbrainSDK@objc(cs)SFWidget(im)configureWith:url:widgetId:widgetIndex:installationKey:userId:darkMode:",
-            "mangledName": "$s11OutbrainSDK8SFWidgetC9configure4with3url8widgetId0G5Index15installationKey04userH08darkModeyAA0C8Delegate_pSg_S2SSiS2SSgSbtF",
+            "usr": "c:@M@OutbrainSDK@objc(cs)SFWidget(im)configureWith:url:widgetId:widgetIndex:installationKey:userId:darkMode:isExploreMore:",
+            "mangledName": "$s11OutbrainSDK8SFWidgetC9configure4with3url8widgetId0G5Index15installationKey04userH08darkMode13isExploreMoreyAA0C8Delegate_pSg_S2SSiS2SSgS2btF",
             "moduleName": "OutbrainSDK",
-            "objc_name": "configureWith:url:widgetId:widgetIndex:installationKey:userId:darkMode:",
+            "objc_name": "configureWith:url:widgetId:widgetIndex:installationKey:userId:darkMode:isExploreMore:",
             "declAttributes": [
               "Custom",
               "AccessControl",
@@ -2678,6 +2685,7 @@
           "ObjC"
         ],
         "superclassUsr": "c:objc(cs)UIView",
+        "hasMissingDesignatedInitializers": true,
         "inheritsConvenienceInitializers": true,
         "superclassNames": [
           "UIKit.UIView",
@@ -2768,6 +2776,13 @@
             "printedName": "SFWidgetDelegate",
             "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetDelegate",
             "mangledName": "$s11OutbrainSDK16SFWidgetDelegateP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SFWidgetRecsClickDelegate",
+            "printedName": "SFWidgetRecsClickDelegate",
+            "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetRecsClickDelegate",
+            "mangledName": "$s11OutbrainSDK25SFWidgetRecsClickDelegateP"
           }
         ]
       },
@@ -4688,6 +4703,56 @@
           },
           {
             "kind": "Function",
+            "name": "showExploreMore",
+            "printedName": "showExploreMore(onExploreMoreDismissed:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@OutbrainSDK@objc(cs)Outbrain(cm)showExploreMoreOnExploreMoreDismissed:",
+            "mangledName": "$s11OutbrainSDK0A0C15showExploreMore02ondE9DismissedyyycSg_tFZ",
+            "moduleName": "OutbrainSDK",
+            "static": true,
+            "objc_name": "showExploreMoreOnExploreMoreDismissed:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "printLogs",
             "printedName": "printLogs(domain:)",
             "children": [
@@ -5736,6 +5801,7 @@
           "ObjC"
         ],
         "superclassUsr": "c:@M@OutbrainSDK@objc(cs)SFWidget",
+        "hasMissingDesignatedInitializers": true,
         "inheritsConvenienceInitializers": true,
         "superclassNames": [
           "OutbrainSDK.SFWidget",
@@ -5827,6 +5893,13 @@
             "printedName": "SFWidgetDelegate",
             "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetDelegate",
             "mangledName": "$s11OutbrainSDK16SFWidgetDelegateP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SFWidgetRecsClickDelegate",
+            "printedName": "SFWidgetRecsClickDelegate",
+            "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetRecsClickDelegate",
+            "mangledName": "$s11OutbrainSDK25SFWidgetRecsClickDelegateP"
           }
         ]
       },
@@ -12466,6 +12539,96 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "SFWidgetRecsClickDelegate",
+        "printedName": "SFWidgetRecsClickDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "onRecClick",
+            "printedName": "onRecClick(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetRecsClickDelegate(im)onRecClick:",
+            "mangledName": "$s11OutbrainSDK25SFWidgetRecsClickDelegateP05onRecE0yy10Foundation3URLVF",
+            "moduleName": "OutbrainSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.SFWidgetRecsClickDelegate>",
+            "sugared_genericSig": "<Self where Self : OutbrainSDK.SFWidgetRecsClickDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onOrganicRecClick",
+            "printedName": "onOrganicRecClick(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetRecsClickDelegate(im)onOrganicRecClick:",
+            "mangledName": "$s11OutbrainSDK25SFWidgetRecsClickDelegateP012onOrganicRecE0yy10Foundation3URLVF",
+            "moduleName": "OutbrainSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.SFWidgetRecsClickDelegate>",
+            "sugared_genericSig": "<Self where Self : OutbrainSDK.SFWidgetRecsClickDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "Optional",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetRecsClickDelegate",
+        "mangledName": "$s11OutbrainSDK25SFWidgetRecsClickDelegateP",
+        "moduleName": "OutbrainSDK",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OutbrainSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "Import",
         "name": "AdSupport",
         "printedName": "AdSupport",
@@ -12906,6 +13069,33 @@
       },
       {
         "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "OutbrainSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "OutbrainSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "OutbrainSDK"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -12919,37 +13109,6 @@
         "name": "SFWidgetDelegate",
         "printedName": "SFWidgetDelegate",
         "children": [
-          {
-            "kind": "Function",
-            "name": "onRecClick",
-            "printedName": "onRecClick(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "URL",
-                "printedName": "Foundation.URL",
-                "usr": "s:10Foundation3URLV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetDelegate(im)onRecClick:",
-            "mangledName": "$s11OutbrainSDK16SFWidgetDelegateP10onRecClickyy10Foundation3URLVF",
-            "moduleName": "OutbrainSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.SFWidgetDelegate>",
-            "sugared_genericSig": "<Self where Self : OutbrainSDK.SFWidgetDelegate>",
-            "protocolReq": true,
-            "declAttributes": [
-              "RawDocComment",
-              "ObjC"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
           {
             "kind": "Function",
             "name": "didChangeHeight",
@@ -13012,38 +13171,6 @@
           },
           {
             "kind": "Function",
-            "name": "onOrganicRecClick",
-            "printedName": "onOrganicRecClick(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "URL",
-                "printedName": "Foundation.URL",
-                "usr": "s:10Foundation3URLV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetDelegate(im)onOrganicRecClick:",
-            "mangledName": "$s11OutbrainSDK16SFWidgetDelegateP17onOrganicRecClickyy10Foundation3URLVF",
-            "moduleName": "OutbrainSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.SFWidgetDelegate>",
-            "sugared_genericSig": "<Self where Self : OutbrainSDK.SFWidgetDelegate>",
-            "protocolReq": true,
-            "declAttributes": [
-              "Optional",
-              "ObjC",
-              "RawDocComment"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
             "name": "widgetEvent",
             "printedName": "widgetEvent(_:additionalData:)",
             "children": [
@@ -13098,17 +13225,36 @@
         "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetDelegate",
         "mangledName": "$s11OutbrainSDK16SFWidgetDelegateP",
         "moduleName": "OutbrainSDK",
-        "genericSig": "<τ_0_0 : AnyObject>",
-        "sugared_genericSig": "<Self : AnyObject>",
+        "genericSig": "<τ_0_0 : OutbrainSDK.SFWidgetRecsClickDelegate>",
+        "sugared_genericSig": "<Self : OutbrainSDK.SFWidgetRecsClickDelegate>",
         "declAttributes": [
           "AccessControl",
           "ObjC"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "SFWidgetRecsClickDelegate",
+            "printedName": "SFWidgetRecsClickDelegate",
+            "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetRecsClickDelegate",
+            "mangledName": "$s11OutbrainSDK25SFWidgetRecsClickDelegateP"
+          }
         ]
       },
       {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OutbrainSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
         "declKind": "Import",
         "moduleName": "OutbrainSDK",
         "declAttributes": [
@@ -13205,1169 +13351,1288 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/ViewabilityHandler.swift",
-      "kind": "IntegerLiteral",
-      "offset": 161,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/ViewabilityHandler.swift",
-      "kind": "IntegerLiteral",
-      "offset": 186,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/ViewabilityHandler.swift",
-      "kind": "FloatLiteral",
-      "offset": 221,
-      "length": 3,
-      "value": "0.0"
-    },
-    {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/ViewabilityHandler.swift",
-      "kind": "IntegerLiteral",
-      "offset": 254,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/ViewabilityHandler.swift",
-      "kind": "FloatLiteral",
-      "offset": 286,
-      "length": 3,
-      "value": "0.0"
-    },
-    {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/ViewabilityHandler.swift",
-      "kind": "IntegerLiteral",
-      "offset": 327,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/ViewabilityHandler.swift",
-      "kind": "IntegerLiteral",
-      "offset": 365,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/ViewabilityHandler.swift",
-      "kind": "FloatLiteral",
-      "offset": 464,
-      "length": 3,
-      "value": "0.2"
-    },
-    {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/ViewabilityHandler.swift",
-      "kind": "IntegerLiteral",
-      "offset": 528,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/ViewabilityHandler.swift",
-      "kind": "IntegerLiteral",
-      "offset": 554,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBDisclosure.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBDisclosure.swift",
       "kind": "StringLiteral",
       "offset": 319,
       "length": 10,
       "value": "\"imageUrl\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBDisclosure.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBDisclosure.swift",
       "kind": "StringLiteral",
       "offset": 354,
       "length": 10,
       "value": "\"clickUrl\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBDisclosure.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBDisclosure.swift",
       "kind": "StringLiteral",
       "offset": 319,
       "length": 10,
       "value": "\"imageUrl\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBDisclosure.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBDisclosure.swift",
       "kind": "StringLiteral",
       "offset": 354,
       "length": 10,
       "value": "\"clickUrl\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBDisclosure.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBDisclosure.swift",
       "kind": "StringLiteral",
       "offset": 137,
       "length": 12,
       "value": "\"OutbrainSDK.OBDisclosure\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/BridgeUrlBuilder.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/BridgeUrlBuilder.swift",
       "kind": "Array",
       "offset": 526,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/BridgeUrlBuilder.swift",
+      "kind": "BooleanLiteral",
+      "offset": 740,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/BridgeUrlBuilder.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1444,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "IntegerLiteral",
       "offset": 421,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
       "offset": 529,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
       "offset": 579,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
       "offset": 632,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
       "offset": 676,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "IntegerLiteral",
       "offset": 865,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
       "offset": 973,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "Dictionary",
       "offset": 1364,
       "length": 3,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 1867,
+      "offset": 1707,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 2173,
+      "offset": 1869,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2175,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 2320,
+      "offset": 2322,
       "length": 15,
       "value": "\"contentOffset\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 2390,
+      "offset": 2392,
       "length": 29,
       "value": "\"Outbrain\/displayAdsVerifier\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GPPUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6820,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7491,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GPPUtils.swift",
       "kind": "StringLiteral",
       "offset": 93,
       "length": 21,
       "value": "\"IABGPP_HDR_Sections\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GPPUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GPPUtils.swift",
       "kind": "StringLiteral",
       "offset": 145,
       "length": 22,
       "value": "\"IABGPP_HDR_GppString\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GPPUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GPPUtils.swift",
       "kind": "StringLiteral",
       "offset": 357,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GPPUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GPPUtils.swift",
       "kind": "StringLiteral",
       "offset": 398,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBViewabilityActions.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBViewabilityActions.swift",
       "kind": "StringLiteral",
       "offset": 145,
       "length": 20,
       "value": "\"OutbrainSDK.OBViewabilityActions\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "StringLiteral",
       "offset": 136,
       "length": 21,
       "value": "\"IABUSPrivacy_String\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "StringLiteral",
       "offset": 192,
       "length": 26,
       "value": "\"IABConsent_SubjectToGDPR\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "StringLiteral",
       "offset": 256,
       "length": 26,
       "value": "\"IABConsent_ConsentString\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "StringLiteral",
       "offset": 320,
       "length": 17,
       "value": "\"IABTCF_TCString\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "StringLiteral",
       "offset": 379,
       "length": 33,
       "value": "\"IABConsent_ParsedVendorConsents\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "StringLiteral",
       "offset": 455,
       "length": 34,
       "value": "\"IABConsent_ParsedPurposeConsents\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "StringLiteral",
       "offset": 521,
       "length": 23,
       "value": "\"IABConsent_CMPPresent\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "IntegerLiteral",
       "offset": 629,
       "length": 2,
       "value": "-1"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "IntegerLiteral",
       "offset": 650,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "IntegerLiteral",
       "offset": 671,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "IntegerLiteral",
       "offset": 629,
       "length": 1,
       "value": "-1"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "IntegerLiteral",
       "offset": 650,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "IntegerLiteral",
       "offset": 671,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "IntegerLiteral",
       "offset": 629,
       "length": 1,
       "value": "-1"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "IntegerLiteral",
       "offset": 650,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "IntegerLiteral",
       "offset": 671,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "StringLiteral",
       "offset": 862,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "StringLiteral",
       "offset": 910,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "StringLiteral",
       "offset": 949,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/GDPRUtils.swift",
       "kind": "BooleanLiteral",
       "offset": 1007,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "StringLiteral",
       "offset": 269,
       "length": 7,
-      "value": "\"5.4.0\""
+      "value": "\"5.4.1\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "BooleanLiteral",
       "offset": 358,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "BooleanLiteral",
-      "offset": 1123,
+      "offset": 1189,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "BooleanLiteral",
-      "offset": 1173,
+      "offset": 1239,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "BooleanLiteral",
-      "offset": 1227,
+      "offset": 1293,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendationResponse.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendationResponse.swift",
       "kind": "StringLiteral",
       "offset": 612,
       "length": 21,
       "value": "\"viewability_actions\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendationResponse.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendationResponse.swift",
       "kind": "StringLiteral",
       "offset": 612,
       "length": 21,
       "value": "\"viewability_actions\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendationResponse.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendationResponse.swift",
       "kind": "StringLiteral",
       "offset": 763,
       "length": 13,
       "value": "\"total_count\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendationResponse.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendationResponse.swift",
       "kind": "StringLiteral",
       "offset": 763,
       "length": 13,
       "value": "\"total_count\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendationResponse.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendationResponse.swift",
       "kind": "StringLiteral",
       "offset": 133,
       "length": 24,
       "value": "\"OutbrainSDK.OBRecommendationResponse\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRequest\/OBRequest.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRequest\/OBRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 623,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRequest\/OBRequest.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRequest\/OBRequest.swift",
       "kind": "StringLiteral",
       "offset": 148,
       "length": 9,
       "value": "\"OutbrainSDK.OBRequest\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRequest\/OBPlatformRequest.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRequest\/OBPlatformRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 783,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRequest\/OBPlatformRequest.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRequest\/OBPlatformRequest.swift",
       "kind": "StringLiteral",
       "offset": 136,
       "length": 17,
       "value": "\"OutbrainSDK.OBPlatformRequest\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 171,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 182,
       "length": 7,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 199,
       "length": 6,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 215,
       "length": 19,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 171,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 182,
       "length": 7,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 199,
       "length": 6,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 215,
       "length": 19,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 305,
       "length": 5,
       "value": "10200"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 330,
       "length": 5,
       "value": "10201"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 354,
       "length": 5,
       "value": "10202"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 389,
       "length": 5,
       "value": "10203"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 424,
       "length": 5,
       "value": "10204"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 448,
       "length": 5,
       "value": "10205"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 473,
       "length": 5,
       "value": "10206"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 305,
       "length": 5,
       "value": "10200"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 330,
       "length": 5,
       "value": "10201"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 354,
       "length": 5,
       "value": "10202"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 389,
       "length": 5,
       "value": "10203"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 424,
       "length": 5,
       "value": "10204"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 448,
       "length": 5,
       "value": "10205"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "IntegerLiteral",
       "offset": 473,
       "length": 5,
       "value": "10206"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBError.swift",
       "kind": "StringLiteral",
       "offset": 509,
       "length": 7,
       "value": "\"OutbrainSDK.OBError\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
       "kind": "Array",
       "offset": 166,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
       "kind": "StringLiteral",
       "offset": 206,
       "length": 22,
       "value": "\"com.outbrain.sdk.log\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
       "kind": "BooleanLiteral",
       "offset": 348,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
       "kind": "BooleanLiteral",
       "offset": 542,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
       "kind": "BooleanLiteral",
       "offset": 737,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
       "kind": "BooleanLiteral",
       "offset": 932,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBLogger.swift",
       "kind": "BooleanLiteral",
       "offset": 2581,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/View\/OBView.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/View\/OBView.swift",
       "kind": "FloatLiteral",
       "offset": 3637,
       "length": 3,
       "value": "0.1"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/View\/OBView.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/View\/OBView.swift",
       "kind": "IntegerLiteral",
       "offset": 3703,
       "length": 4,
       "value": "1000"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFConsts.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFConsts.swift",
       "kind": "StringLiteral",
       "offset": 155,
       "length": 59,
       "value": "\"https:\/\/widgets.outbrain.com\/reactNativeBridge\/index.html\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFConsts.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFConsts.swift",
       "kind": "BooleanLiteral",
       "offset": 246,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFConsts.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFConsts.swift",
       "kind": "StringLiteral",
       "offset": 303,
       "length": 24,
       "value": "\"SFWidget_T_Param_Ready\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFConsts.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFConsts.swift",
       "kind": "StringLiteral",
       "offset": 381,
       "length": 30,
       "value": "\"SFWidget_Bridge_Params_Ready\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFConsts.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFConsts.swift",
       "kind": "IntegerLiteral",
       "offset": 460,
       "length": 3,
       "value": "500"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/OutbrainWidgetUIViewRepresentable.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/OutbrainWidgetUIViewRepresentable.swift",
       "kind": "StringLiteral",
       "offset": 1590,
       "length": 11,
       "value": "\"OutbrainSDK.Coordinator\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/OutbrainWidgetView.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/OutbrainWidgetView.swift",
       "kind": "BooleanLiteral",
       "offset": 595,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/SFWidgetViewModel.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/SFWidgetViewModel.swift",
       "kind": "IntegerLiteral",
       "offset": 229,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1592,
       "length": 10,
       "value": "\"orig_url\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1646,
       "length": 13,
       "value": "\"source_name\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1681,
       "length": 11,
       "value": "\"thumbnail\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1717,
       "length": 5,
       "value": "\"pos\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1794,
       "length": 14,
       "value": "\"publish_date\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1835,
       "length": 13,
       "value": "\"same_source\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1592,
       "length": 10,
       "value": "\"orig_url\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1646,
       "length": 13,
       "value": "\"source_name\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1681,
       "length": 11,
       "value": "\"thumbnail\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1717,
       "length": 5,
       "value": "\"pos\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1794,
       "length": 14,
       "value": "\"publish_date\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 1835,
       "length": 13,
       "value": "\"same_source\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Model\/OBRecommendation.swift",
       "kind": "StringLiteral",
       "offset": 141,
       "length": 16,
       "value": "\"OutbrainSDK.OBRecommendation\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/OutbrainWidgetViewModel.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/OutbrainWidgetViewModel.swift",
       "kind": "BooleanLiteral",
       "offset": 667,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/OutbrainWidgetViewModel.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/OutbrainWidgetViewModel.swift",
       "kind": "BooleanLiteral",
       "offset": 835,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/View\/SwiftUIViewabilityViewModifier.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/View\/SwiftUIViewabilityViewModifier.swift",
       "kind": "BooleanLiteral",
       "offset": 332,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/View\/SwiftUIViewabilityViewModifier.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/View\/SwiftUIViewabilityViewModifier.swift",
       "kind": "BooleanLiteral",
       "offset": 2882,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetWebView.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetWebView.swift",
       "kind": "BooleanLiteral",
       "offset": 292,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBAppleAdIdUtil.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/ViewParams.swift",
+      "kind": "IntegerLiteral",
+      "offset": 144,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/ViewParams.swift",
+      "kind": "IntegerLiteral",
+      "offset": 163,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/ViewParams.swift",
+      "kind": "IntegerLiteral",
+      "offset": 187,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/ViewParams.swift",
+      "kind": "IntegerLiteral",
+      "offset": 209,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Utils\/OBAppleAdIdUtil.swift",
       "kind": "StringLiteral",
       "offset": 244,
       "length": 36,
       "value": "\"com.outbrain.OBAppleAdIdUtil.queue\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
       "kind": "FloatLiteral",
       "offset": 160,
       "length": 4,
       "value": "30.0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
       "kind": "FloatLiteral",
       "offset": 167,
       "length": 4,
       "value": "60.0"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
       "kind": "Dictionary",
       "offset": 342,
       "length": 3,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
       "kind": "Dictionary",
       "offset": 406,
       "length": 3,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
       "kind": "Array",
       "offset": 460,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
       "kind": "StringLiteral",
       "offset": 12756,
       "length": 28,
       "value": "\"globalStatisticsEnabledKey\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
       "kind": "StringLiteral",
       "offset": 12812,
       "length": 30,
       "value": "\"globalStatisticsThresholdKey\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
       "kind": "StringLiteral",
       "offset": 12879,
       "length": 31,
       "value": "\"OB_Viewability_Key_%lu_%@_%ld\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBGlobalStatisticsManager.swift",
       "kind": "StringLiteral",
       "offset": 12935,
       "length": 23,
       "value": "\"OB_Viewability_Key_%@\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
       "kind": "StringLiteral",
       "offset": 180,
       "length": 3,
       "value": "\"0\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
       "kind": "StringLiteral",
       "offset": 199,
       "length": 3,
       "value": "\"1\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
       "kind": "StringLiteral",
       "offset": 222,
       "length": 3,
       "value": "\"2\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
       "kind": "StringLiteral",
       "offset": 241,
       "length": 3,
       "value": "\"3\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
       "kind": "StringLiteral",
       "offset": 180,
       "length": 3,
       "value": "\"0\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
       "kind": "StringLiteral",
       "offset": 199,
       "length": 3,
       "value": "\"1\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
       "kind": "StringLiteral",
       "offset": 222,
       "length": 3,
       "value": "\"2\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SDKHorizontalSwipeControlOverride.swift",
       "kind": "StringLiteral",
       "offset": 241,
       "length": 3,
       "value": "\"3\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
       "offset": 421,
       "length": 9,
       "value": "\"yOffset\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
       "offset": 457,
       "length": 11,
       "value": "\"widgetIdx\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
       "offset": 491,
       "length": 5,
       "value": "\"tag\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
       "offset": 521,
       "length": 7,
       "value": "\"width\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
       "offset": 421,
       "length": 9,
       "value": "\"yOffset\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
       "offset": 457,
       "length": 11,
       "value": "\"widgetIdx\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
       "offset": 491,
       "length": 5,
       "value": "\"tag\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
       "offset": 521,
       "length": 7,
       "value": "\"width\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
       "offset": 642,
       "length": 17,
       "value": "\"message-handler\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
       "offset": 545,
       "length": 22,
       "value": "\"OutbrainSDK.SFWidgetMessageHandler\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreSettings.swift",
+      "kind": "StringLiteral",
+      "offset": 377,
+      "length": 30,
+      "value": "\"exploreMoreAppFrequencyCount\""
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreSettings.swift",
+      "kind": "StringLiteral",
+      "offset": 438,
+      "length": 33,
+      "value": "\"exploreMoreAppFrequencyInterval\""
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreSettings.swift",
+      "kind": "StringLiteral",
+      "offset": 377,
+      "length": 30,
+      "value": "\"exploreMoreAppFrequencyCount\""
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreSettings.swift",
+      "kind": "StringLiteral",
+      "offset": 438,
+      "length": 33,
+      "value": "\"exploreMoreAppFrequencyInterval\""
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreSettings.swift",
+      "kind": "IntegerLiteral",
+      "offset": 558,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreSettings.swift",
+      "kind": "IntegerLiteral",
+      "offset": 585,
+      "length": 3,
+      "value": "300"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
       "kind": "Dictionary",
       "offset": 334,
       "length": 3,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
       "kind": "Dictionary",
       "offset": 388,
       "length": 3,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
       "kind": "Dictionary",
       "offset": 445,
       "length": 3,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
       "kind": "BooleanLiteral",
       "offset": 483,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
       "kind": "BooleanLiteral",
       "offset": 522,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
       "kind": "IntegerLiteral",
       "offset": 6549,
       "length": 8,
       "value": "12345678"
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
       "kind": "StringLiteral",
       "offset": 6595,
       "length": 61,
       "value": "\"https:\/\/log.outbrainimg.com\/api\/loggerBatch\/log-viewability\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
       "kind": "StringLiteral",
       "offset": 6696,
       "length": 63,
       "value": "\"https:\/\/t-log.outbrainimg.com\/api\/loggerBatch\/log-viewability\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBViewabilityManager.swift",
       "kind": "StringLiteral",
       "offset": 6817,
       "length": 26,
       "value": "\"OB_Viewability_Key_%@_%@\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBErrorReport.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBErrorReport.swift",
       "kind": "StringLiteral",
       "offset": 485,
       "length": 28,
       "value": "\"CFBundleShortVersionString\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBErrorReport.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBErrorReport.swift",
       "kind": "StringLiteral",
       "offset": 529,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBErrorReport.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBErrorReport.swift",
       "kind": "StringLiteral",
       "offset": 4342,
       "length": 66,
       "value": "\"https:\/\/widgetmonitor.outbrain.com\/WidgetErrorMonitor\/api\/report\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBErrorReport.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Network\/OBErrorReport.swift",
       "kind": "StringLiteral",
       "offset": 4442,
       "length": 15,
       "value": "\"IOS_SDK_ERROR\""
     },
     {
-      "filePath": "\/Users\/llemesev\/work\/iOS-sdk\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/GoogleBannerFactory.swift",
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreFullScreenView.swift",
+      "kind": "StringLiteral",
+      "offset": 128,
+      "length": 25,
+      "value": "\"OutbrainSDK.ExploreMoreFullScreenView\""
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreContainer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 427,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreContainer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 574,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreContainer.swift",
+      "kind": "StringLiteral",
+      "offset": 735,
+      "length": 31,
+      "value": "\"OB.ExploreMoreContainer.queue\""
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreContainer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4129,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/SFWidgetViewabilityHandler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 206,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/SFWidgetViewabilityHandler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 231,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/SFWidgetViewabilityHandler.swift",
+      "kind": "FloatLiteral",
+      "offset": 266,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/SFWidgetViewabilityHandler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 299,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/SFWidgetViewabilityHandler.swift",
+      "kind": "FloatLiteral",
+      "offset": 331,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/SFWidgetViewabilityHandler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 372,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Viewability\/SFWidgetViewabilityHandler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 410,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/GoogleBannerFactory.swift",
       "kind": "StringLiteral",
       "offset": 184,
       "length": 18,
