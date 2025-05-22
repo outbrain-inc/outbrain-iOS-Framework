@@ -1223,6 +1223,124 @@
           },
           {
             "kind": "Var",
+            "name": "webView",
+            "printedName": "webView",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OutbrainSDK.SFWidgetWebView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SFWidgetWebView",
+                    "printedName": "OutbrainSDK.SFWidgetWebView",
+                    "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetWebView"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@OutbrainSDK@objc(cs)SFWidget(py)webView",
+            "mangledName": "$s11OutbrainSDK8SFWidgetC7webViewAA0c3WebE0CSgvp",
+            "moduleName": "OutbrainSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "OutbrainSDK.SFWidgetWebView?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SFWidgetWebView",
+                        "printedName": "OutbrainSDK.SFWidgetWebView",
+                        "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetWebView"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OutbrainSDK@objc(cs)SFWidget(im)webView",
+                "mangledName": "$s11OutbrainSDK8SFWidgetC7webViewAA0c3WebE0CSgvg",
+                "moduleName": "OutbrainSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "OutbrainSDK.SFWidgetWebView?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SFWidgetWebView",
+                        "printedName": "OutbrainSDK.SFWidgetWebView",
+                        "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetWebView"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OutbrainSDK@objc(cs)SFWidget(im)setWebView:",
+                "mangledName": "$s11OutbrainSDK8SFWidgetC7webViewAA0c3WebE0CSgvs",
+                "moduleName": "OutbrainSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OutbrainSDK8SFWidgetC7webViewAA0c3WebE0CSgvM",
+                "mangledName": "$s11OutbrainSDK8SFWidgetC7webViewAA0c3WebE0CSgvM",
+                "moduleName": "OutbrainSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "infiniteWidgetsOnTheSamePage",
             "printedName": "infiniteWidgetsOnTheSamePage",
             "children": [
@@ -3671,6 +3789,106 @@
                   "ObjC"
                 ],
                 "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isInitialized",
+            "printedName": "isInitialized",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11OutbrainSDK0A0C13isInitializedSbvpZ",
+            "mangledName": "$s11OutbrainSDK0A0C13isInitializedSbvpZ",
+            "moduleName": "OutbrainSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OutbrainSDK0A0C13isInitializedSbvgZ",
+                "mangledName": "$s11OutbrainSDK0A0C13isInitializedSbvgZ",
+                "moduleName": "OutbrainSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OutbrainSDK0A0C13isInitializedSbvsZ",
+                "mangledName": "$s11OutbrainSDK0A0C13isInitializedSbvsZ",
+                "moduleName": "OutbrainSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OutbrainSDK0A0C13isInitializedSbvMZ",
+                "mangledName": "$s11OutbrainSDK0A0C13isInitializedSbvMZ",
+                "moduleName": "OutbrainSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
               }
             ]
           },
@@ -10047,303 +10265,12 @@
       },
       {
         "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "OutbrainSDK",
         "declAttributes": [
           "RawDocComment"
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "GoogleBannerViewProtocol",
-        "printedName": "GoogleBannerViewProtocol",
-        "children": [
-          {
-            "kind": "Function",
-            "name": "tryToLoadGoogleAds",
-            "printedName": "tryToLoadGoogleAds(adTag:yOffset:adWidth:widgetIdx:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CGFloat",
-                "printedName": "CoreGraphics.CGFloat",
-                "usr": "s:14CoreFoundation7CGFloatV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CGFloat",
-                "printedName": "CoreGraphics.CGFloat",
-                "usr": "s:14CoreFoundation7CGFloatV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:11OutbrainSDK24GoogleBannerViewProtocolP09tryToLoadC3Ads5adTag7yOffset0K5Width9widgetIdxySS_14CoreFoundation7CGFloatVAKSitF",
-            "mangledName": "$s11OutbrainSDK24GoogleBannerViewProtocolP09tryToLoadC3Ads5adTag7yOffset0K5Width9widgetIdxySS_12CoreGraphics7CGFloatVAKSitF",
-            "moduleName": "OutbrainSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.GoogleBannerViewProtocol>",
-            "sugared_genericSig": "<Self where Self : OutbrainSDK.GoogleBannerViewProtocol>",
-            "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Var",
-            "name": "rootViewController",
-            "printedName": "rootViewController",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "UIKit.UIViewController?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UIViewController",
-                    "printedName": "UIKit.UIViewController",
-                    "usr": "c:objc(cs)UIViewController"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:11OutbrainSDK24GoogleBannerViewProtocolP04rootE10ControllerSo06UIViewH0CSgvp",
-            "mangledName": "$s11OutbrainSDK24GoogleBannerViewProtocolP04rootE10ControllerSo06UIViewH0CSgvp",
-            "moduleName": "OutbrainSDK",
-            "protocolReq": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "UIKit.UIViewController?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "UIViewController",
-                        "printedName": "UIKit.UIViewController",
-                        "usr": "c:objc(cs)UIViewController"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11OutbrainSDK24GoogleBannerViewProtocolP04rootE10ControllerSo06UIViewH0CSgvg",
-                "mangledName": "$s11OutbrainSDK24GoogleBannerViewProtocolP04rootE10ControllerSo06UIViewH0CSgvg",
-                "moduleName": "OutbrainSDK",
-                "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.GoogleBannerViewProtocol>",
-                "sugared_genericSig": "<Self where Self : OutbrainSDK.GoogleBannerViewProtocol>",
-                "protocolReq": true,
-                "reqNewWitnessTableEntry": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "UIKit.UIViewController?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "UIViewController",
-                        "printedName": "UIKit.UIViewController",
-                        "usr": "c:objc(cs)UIViewController"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11OutbrainSDK24GoogleBannerViewProtocolP04rootE10ControllerSo06UIViewH0CSgvs",
-                "mangledName": "$s11OutbrainSDK24GoogleBannerViewProtocolP04rootE10ControllerSo06UIViewH0CSgvs",
-                "moduleName": "OutbrainSDK",
-                "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.GoogleBannerViewProtocol>",
-                "sugared_genericSig": "<Self where Self : OutbrainSDK.GoogleBannerViewProtocol>",
-                "protocolReq": true,
-                "reqNewWitnessTableEntry": true,
-                "accessorKind": "set"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Modify",
-                "printedName": "Modify()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11OutbrainSDK24GoogleBannerViewProtocolP04rootE10ControllerSo06UIViewH0CSgvM",
-                "mangledName": "$s11OutbrainSDK24GoogleBannerViewProtocolP04rootE10ControllerSo06UIViewH0CSgvM",
-                "moduleName": "OutbrainSDK",
-                "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.GoogleBannerViewProtocol>",
-                "sugared_genericSig": "<Self where Self : OutbrainSDK.GoogleBannerViewProtocol>",
-                "protocolReq": true,
-                "implicit": true,
-                "reqNewWitnessTableEntry": true,
-                "accessorKind": "_modify"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "delegate",
-            "printedName": "delegate",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "(any OutbrainSDK.GoogleBannerViewDelegate)?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GoogleBannerViewDelegate",
-                    "printedName": "any OutbrainSDK.GoogleBannerViewDelegate",
-                    "usr": "s:11OutbrainSDK24GoogleBannerViewDelegateP"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:11OutbrainSDK24GoogleBannerViewProtocolP8delegateAA0cdE8Delegate_pSgvp",
-            "mangledName": "$s11OutbrainSDK24GoogleBannerViewProtocolP8delegateAA0cdE8Delegate_pSgvp",
-            "moduleName": "OutbrainSDK",
-            "protocolReq": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any OutbrainSDK.GoogleBannerViewDelegate)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "GoogleBannerViewDelegate",
-                        "printedName": "any OutbrainSDK.GoogleBannerViewDelegate",
-                        "usr": "s:11OutbrainSDK24GoogleBannerViewDelegateP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11OutbrainSDK24GoogleBannerViewProtocolP8delegateAA0cdE8Delegate_pSgvg",
-                "mangledName": "$s11OutbrainSDK24GoogleBannerViewProtocolP8delegateAA0cdE8Delegate_pSgvg",
-                "moduleName": "OutbrainSDK",
-                "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.GoogleBannerViewProtocol>",
-                "sugared_genericSig": "<Self where Self : OutbrainSDK.GoogleBannerViewProtocol>",
-                "protocolReq": true,
-                "reqNewWitnessTableEntry": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any OutbrainSDK.GoogleBannerViewDelegate)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "GoogleBannerViewDelegate",
-                        "printedName": "any OutbrainSDK.GoogleBannerViewDelegate",
-                        "usr": "s:11OutbrainSDK24GoogleBannerViewDelegateP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11OutbrainSDK24GoogleBannerViewProtocolP8delegateAA0cdE8Delegate_pSgvs",
-                "mangledName": "$s11OutbrainSDK24GoogleBannerViewProtocolP8delegateAA0cdE8Delegate_pSgvs",
-                "moduleName": "OutbrainSDK",
-                "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.GoogleBannerViewProtocol>",
-                "sugared_genericSig": "<Self where Self : OutbrainSDK.GoogleBannerViewProtocol>",
-                "protocolReq": true,
-                "reqNewWitnessTableEntry": true,
-                "accessorKind": "set"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Modify",
-                "printedName": "Modify()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:11OutbrainSDK24GoogleBannerViewProtocolP8delegateAA0cdE8Delegate_pSgvM",
-                "mangledName": "$s11OutbrainSDK24GoogleBannerViewProtocolP8delegateAA0cdE8Delegate_pSgvM",
-                "moduleName": "OutbrainSDK",
-                "genericSig": "<τ_0_0 where τ_0_0 : OutbrainSDK.GoogleBannerViewProtocol>",
-                "sugared_genericSig": "<Self where Self : OutbrainSDK.GoogleBannerViewProtocol>",
-                "protocolReq": true,
-                "implicit": true,
-                "reqNewWitnessTableEntry": true,
-                "accessorKind": "_modify"
-              }
-            ]
-          }
-        ],
-        "declKind": "Protocol",
-        "usr": "s:11OutbrainSDK24GoogleBannerViewProtocolP",
-        "mangledName": "$s11OutbrainSDK24GoogleBannerViewProtocolP",
-        "moduleName": "OutbrainSDK",
-        "genericSig": "<τ_0_0 : UIKit.UIView>",
-        "sugared_genericSig": "<Self : UIKit.UIView>",
-        "declAttributes": [
-          "AccessControl"
         ]
       },
       {
@@ -10351,9 +10278,232 @@
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
+        "moduleName": "OutbrainSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "OutbrainSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SFWidgetPolling",
+        "printedName": "SFWidgetPolling",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "didMoveToWindow",
+            "printedName": "didMoveToWindow()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetPolling(im)didMoveToWindow",
+            "mangledName": "$s11OutbrainSDK15SFWidgetPollingC15didMoveToWindowyyF",
+            "moduleName": "OutbrainSDK",
+            "overriding": true,
+            "objc_name": "didMoveToWindow",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(frame:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SFWidgetPolling",
+                "printedName": "OutbrainSDK.SFWidgetPolling",
+                "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetPolling"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetPolling(im)initWithFrame:",
+            "mangledName": "$s11OutbrainSDK15SFWidgetPollingC5frameACSo6CGRectV_tcfc",
+            "moduleName": "OutbrainSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithFrame:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OutbrainSDK.SFWidgetPolling?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SFWidgetPolling",
+                    "printedName": "OutbrainSDK.SFWidgetPolling",
+                    "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetPolling"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetPolling(im)initWithCoder:",
+            "mangledName": "$s11OutbrainSDK15SFWidgetPollingC5coderACSgSo7NSCoderC_tcfc",
+            "moduleName": "OutbrainSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetPolling",
+        "mangledName": "$s11OutbrainSDK15SFWidgetPollingC",
         "moduleName": "OutbrainSDK",
         "declAttributes": [
-          "RawDocComment"
+          "Custom",
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:@M@OutbrainSDK@objc(cs)SFWidget",
+        "hasMissingDesignatedInitializers": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "OutbrainSDK.SFWidget",
+          "UIKit.UIView",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "GoogleBannerViewDelegate",
+            "printedName": "GoogleBannerViewDelegate",
+            "usr": "s:11OutbrainSDK24GoogleBannerViewDelegateP",
+            "mangledName": "$s11OutbrainSDK24GoogleBannerViewDelegateP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "__DefaultCustomPlaygroundQuickLookable",
+            "printedName": "__DefaultCustomPlaygroundQuickLookable",
+            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
+            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SFWidgetDelegate",
+            "printedName": "SFWidgetDelegate",
+            "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetDelegate",
+            "mangledName": "$s11OutbrainSDK16SFWidgetDelegateP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SFWidgetRecsClickDelegate",
+            "printedName": "SFWidgetRecsClickDelegate",
+            "usr": "c:@M@OutbrainSDK@objc(pl)SFWidgetRecsClickDelegate",
+            "mangledName": "$s11OutbrainSDK25SFWidgetRecsClickDelegateP"
+          }
         ]
       },
       {
@@ -12529,6 +12679,273 @@
         "moduleName": "OutbrainSDK"
       },
       {
+        "kind": "TypeDecl",
+        "name": "SFWidgetWebView",
+        "printedName": "SFWidgetWebView",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "gestureRecognizer",
+            "printedName": "gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetWebView(im)gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:",
+            "mangledName": "$s11OutbrainSDK15SFWidgetWebViewC17gestureRecognizer_33shouldRecognizeSimultaneouslyWithSbSo09UIGestureG0C_AGtF",
+            "moduleName": "OutbrainSDK",
+            "objc_name": "gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:",
+            "declAttributes": [
+              "ObjC",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hitTest",
+            "printedName": "hitTest(_:with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIView",
+                    "printedName": "UIKit.UIView",
+                    "usr": "c:objc(cs)UIView"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIEvent?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIEvent",
+                    "printedName": "UIKit.UIEvent",
+                    "usr": "c:objc(cs)UIEvent"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetWebView(im)hitTest:withEvent:",
+            "mangledName": "$s11OutbrainSDK15SFWidgetWebViewC7hitTest_4withSo6UIViewCSgSo7CGPointV_So7UIEventCSgtF",
+            "moduleName": "OutbrainSDK",
+            "overriding": true,
+            "objc_name": "hitTest:withEvent:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(frame:configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SFWidgetWebView",
+                "printedName": "OutbrainSDK.SFWidgetWebView",
+                "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetWebView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WKWebViewConfiguration",
+                "printedName": "WebKit.WKWebViewConfiguration",
+                "usr": "c:objc(cs)WKWebViewConfiguration"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetWebView(im)initWithFrame:configuration:",
+            "mangledName": "$s11OutbrainSDK15SFWidgetWebViewC5frame13configurationACSo6CGRectV_So05WKWebE13ConfigurationCtcfc",
+            "moduleName": "OutbrainSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithFrame:configuration:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OutbrainSDK.SFWidgetWebView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SFWidgetWebView",
+                    "printedName": "OutbrainSDK.SFWidgetWebView",
+                    "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetWebView"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetWebView(im)initWithCoder:",
+            "mangledName": "$s11OutbrainSDK15SFWidgetWebViewC5coderACSgSo7NSCoderC_tcfc",
+            "moduleName": "OutbrainSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@OutbrainSDK@objc(cs)SFWidgetWebView",
+        "mangledName": "$s11OutbrainSDK15SFWidgetWebViewC",
+        "moduleName": "OutbrainSDK",
+        "declAttributes": [
+          "Custom",
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)WKWebView",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "WebKit.WKWebView",
+          "UIKit.UIView",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "__DefaultCustomPlaygroundQuickLookable",
+            "printedName": "__DefaultCustomPlaygroundQuickLookable",
+            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
+            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -13262,29 +13679,6 @@
         ]
       },
       {
-        "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "OutbrainSDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "GoogleBannerFactory",
-        "printedName": "GoogleBannerFactory",
-        "declKind": "Class",
-        "usr": "s:11OutbrainSDK19GoogleBannerFactoryC",
-        "mangledName": "$s11OutbrainSDK19GoogleBannerFactoryC",
-        "moduleName": "OutbrainSDK",
-        "declAttributes": [
-          "AccessControl"
-        ],
-        "hasMissingDesignatedInitializers": true
-      },
-      {
         "kind": "TypeDecl",
         "name": "View",
         "printedName": "View",
@@ -13416,98 +13810,98 @@
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 529,
+      "offset": 576,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 579,
+      "offset": 626,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 632,
+      "offset": 679,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 676,
+      "offset": 723,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "IntegerLiteral",
-      "offset": 865,
+      "offset": 912,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 973,
+      "offset": 1020,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "Dictionary",
-      "offset": 1364,
+      "offset": 1368,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 1707,
+      "offset": 1544,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 1869,
+      "offset": 1706,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 2175,
+      "offset": 2012,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 2322,
+      "offset": 2159,
       "length": 15,
       "value": "\"contentOffset\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 2392,
+      "offset": 2229,
       "length": 29,
       "value": "\"Outbrain\/displayAdsVerifier\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 6820,
+      "offset": 6657,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 7491,
+      "offset": 7328,
       "length": 5,
       "value": "false"
     },
@@ -13691,33 +14085,33 @@
       "kind": "StringLiteral",
       "offset": 269,
       "length": 7,
-      "value": "\"5.4.1\""
+      "value": "\"5.4.2\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "BooleanLiteral",
-      "offset": 358,
+      "offset": 365,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "BooleanLiteral",
-      "offset": 1189,
+      "offset": 1196,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "BooleanLiteral",
-      "offset": 1239,
+      "offset": 1246,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
       "kind": "BooleanLiteral",
-      "offset": 1293,
+      "offset": 1300,
       "length": 5,
       "value": "false"
     },
@@ -14058,6 +14452,20 @@
       "value": "false"
     },
     {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetPolling.swift",
+      "kind": "FloatLiteral",
+      "offset": 198,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetPolling.swift",
+      "kind": "IntegerLiteral",
+      "offset": 273,
+      "length": 1,
+      "value": "0"
+    },
+    {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SwiftUI\/SFWidgetViewModel.swift",
       "kind": "IntegerLiteral",
       "offset": 229,
@@ -14186,7 +14594,7 @@
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetWebView.swift",
       "kind": "BooleanLiteral",
-      "offset": 292,
+      "offset": 290,
       "length": 5,
       "value": "false"
     },
@@ -14578,7 +14986,7 @@
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/Explore More\/ExploreMoreContainer.swift",
       "kind": "BooleanLiteral",
-      "offset": 4129,
+      "offset": 4211,
       "length": 4,
       "value": "true"
     },
@@ -14630,13 +15038,6 @@
       "offset": 410,
       "length": 1,
       "value": "0"
-    },
-    {
-      "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/GoogleBannerFactory.swift",
-      "kind": "StringLiteral",
-      "offset": 184,
-      "length": 18,
-      "value": "\"GoogleBannerView\""
     }
   ]
 }

@@ -47,6 +47,7 @@ public protocol GoogleBannerViewDelegate : AnyObject {
     get
   }
   @objc @_Concurrency.MainActor(unsafe) public var webviewUrl: Swift.String?
+  @objc @_Concurrency.MainActor(unsafe) public var webView: OutbrainSDK.SFWidgetWebView?
   @objc @_Concurrency.MainActor(unsafe) public static var infiniteWidgetsOnTheSamePage: Swift.Bool
   @objc @_Concurrency.MainActor(unsafe) public var extId: Swift.String?
   @objc @_Concurrency.MainActor(unsafe) public var extSecondaryId: Swift.String?
@@ -114,6 +115,7 @@ public struct OBRequestHandler {
 }
 @_inheritsConvenienceInitializers @objc public class Outbrain : ObjectiveC.NSObject {
   @objc public static let OB_SDK_VERSION: Swift.String
+  public static var isInitialized: Swift.Bool
   @objc public static var customUserId: Swift.String?
   @objc public static var partnerKey: Swift.String?
   @objc public static var testMode: Swift.Bool
@@ -249,10 +251,11 @@ public struct OBViewData {
   @objc func outbrainDidReceiveResponse(withSuccess response: OutbrainSDK.OBRecommendationResponse)
   @objc func outbrainFailedToReceiveResposne(withError error: OutbrainSDK.OBError?)
 }
-public protocol GoogleBannerViewProtocol : UIKit.UIView {
-  func tryToLoadGoogleAds(adTag: Swift.String, yOffset: CoreFoundation.CGFloat, adWidth: CoreFoundation.CGFloat, widgetIdx: Swift.Int)
-  var rootViewController: UIKit.UIViewController? { get set }
-  var delegate: (any OutbrainSDK.GoogleBannerViewDelegate)? { get set }
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class SFWidgetPolling : OutbrainSDK.SFWidget {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMoveToWindow()
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
 }
 @objc @_hasMissingDesignatedInitializers @objcMembers public class OBRecommendation : ObjectiveC.NSObject, Swift.Decodable {
   @objc public var url: Swift.String?
@@ -292,6 +295,13 @@ extension SwiftUI.View {
   public func addViewability(with recommendation: OutbrainSDK.OBRecommendation) -> some SwiftUI.View
   
 }
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SFWidgetWebView : WebKit.WKWebView, UIKit.UIGestureRecognizerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIKit.UIGestureRecognizer) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func hitTest(_ point: CoreFoundation.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect, configuration: WebKit.WKWebViewConfiguration)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
 @objc public protocol SFWidgetRecsClickDelegate {
   @objc func onRecClick(_ url: Foundation.URL)
   @objc optional func onOrganicRecClick(_ url: Foundation.URL)
@@ -324,9 +334,6 @@ extension SwiftUI.View {
   @available(*, deprecated, message: "Please use didChangeHeight(_ newHeight: CGFloat) instead.")
   @objc optional func didChangeHeight()
   @objc optional func widgetEvent(_ eventName: Swift.String, additionalData: [Swift.String : Any])
-}
-@_hasMissingDesignatedInitializers public class GoogleBannerFactory {
-  @objc deinit
 }
 extension OutbrainSDK.OBLogLevels : Swift.Equatable {}
 extension OutbrainSDK.OBLogLevels : Swift.Hashable {}

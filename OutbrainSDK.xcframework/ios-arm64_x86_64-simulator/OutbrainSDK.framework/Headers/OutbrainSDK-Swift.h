@@ -487,6 +487,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable tes
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class SFWidgetWebView;
 @protocol SFWidgetDelegate;
 @class UIScrollView;
 @protocol UIViewControllerTransitionCoordinator;
@@ -495,6 +496,7 @@ SWIFT_CLASS("_TtC11OutbrainSDK8SFWidget")
 @interface SFWidget : UIView
 @property (nonatomic, readonly) CGFloat currentHeight;
 @property (nonatomic, copy) NSString * _Nullable webviewUrl;
+@property (nonatomic, strong) SFWidgetWebView * _Nullable webView;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL infiniteWidgetsOnTheSamePage;)
 + (BOOL)infiniteWidgetsOnTheSamePage SWIFT_WARN_UNUSED_RESULT;
 + (void)setInfiniteWidgetsOnTheSamePage:(BOOL)value;
@@ -670,6 +672,14 @@ SWIFT_CLASS("_TtC11OutbrainSDK22SFWidgetCollectionCell")
 
 
 
+SWIFT_CLASS("_TtC11OutbrainSDK15SFWidgetPolling")
+@interface SFWidgetPolling : SFWidget
+- (void)didMoveToWindow;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 SWIFT_CLASS("_TtC11OutbrainSDK17SFWidgetTableCell")
 @interface SFWidgetTableCell : UITableViewCell
@@ -683,6 +693,17 @@ SWIFT_CLASS("_TtC11OutbrainSDK17SFWidgetTableCell")
 SWIFT_CLASS("_TtC11OutbrainSDK16SFWidgetTestMode")
 @interface SFWidgetTestMode : SFWidget
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIGestureRecognizer;
+@class UIEvent;
+
+SWIFT_CLASS("_TtC11OutbrainSDK15SFWidgetWebView")
+@interface SFWidgetWebView : WKWebView <UIGestureRecognizerDelegate>
+- (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)otherGestureRecognizer SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)hitTest:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration * _Nonnull)configuration OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1184,6 +1205,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable tes
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class SFWidgetWebView;
 @protocol SFWidgetDelegate;
 @class UIScrollView;
 @protocol UIViewControllerTransitionCoordinator;
@@ -1192,6 +1214,7 @@ SWIFT_CLASS("_TtC11OutbrainSDK8SFWidget")
 @interface SFWidget : UIView
 @property (nonatomic, readonly) CGFloat currentHeight;
 @property (nonatomic, copy) NSString * _Nullable webviewUrl;
+@property (nonatomic, strong) SFWidgetWebView * _Nullable webView;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL infiniteWidgetsOnTheSamePage;)
 + (BOOL)infiniteWidgetsOnTheSamePage SWIFT_WARN_UNUSED_RESULT;
 + (void)setInfiniteWidgetsOnTheSamePage:(BOOL)value;
@@ -1367,6 +1390,14 @@ SWIFT_CLASS("_TtC11OutbrainSDK22SFWidgetCollectionCell")
 
 
 
+SWIFT_CLASS("_TtC11OutbrainSDK15SFWidgetPolling")
+@interface SFWidgetPolling : SFWidget
+- (void)didMoveToWindow;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 SWIFT_CLASS("_TtC11OutbrainSDK17SFWidgetTableCell")
 @interface SFWidgetTableCell : UITableViewCell
@@ -1380,6 +1411,17 @@ SWIFT_CLASS("_TtC11OutbrainSDK17SFWidgetTableCell")
 SWIFT_CLASS("_TtC11OutbrainSDK16SFWidgetTestMode")
 @interface SFWidgetTestMode : SFWidget
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIGestureRecognizer;
+@class UIEvent;
+
+SWIFT_CLASS("_TtC11OutbrainSDK15SFWidgetWebView")
+@interface SFWidgetWebView : WKWebView <UIGestureRecognizerDelegate>
+- (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)otherGestureRecognizer SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)hitTest:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration * _Nonnull)configuration OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
