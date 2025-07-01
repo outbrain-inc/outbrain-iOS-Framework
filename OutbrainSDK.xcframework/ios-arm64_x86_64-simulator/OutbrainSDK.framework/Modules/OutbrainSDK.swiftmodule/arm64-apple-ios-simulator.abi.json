@@ -13506,6 +13506,23 @@
       },
       {
         "kind": "Import",
+        "name": "WebKit",
+        "printedName": "WebKit",
+        "declKind": "Import",
+        "moduleName": "OutbrainSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "OutbrainSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "Combine",
         "printedName": "Combine",
         "declKind": "Import",
@@ -13866,42 +13883,42 @@
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 1706,
+      "offset": 1786,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 2012,
+      "offset": 2092,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 2159,
+      "offset": 2239,
       "length": 15,
       "value": "\"contentOffset\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "StringLiteral",
-      "offset": 2229,
+      "offset": 2309,
       "length": 29,
       "value": "\"Outbrain\/displayAdsVerifier\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 6657,
+      "offset": 6737,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidget.swift",
       "kind": "BooleanLiteral",
-      "offset": 7328,
+      "offset": 7408,
       "length": 5,
       "value": "false"
     },
@@ -14085,7 +14102,7 @@
       "kind": "StringLiteral",
       "offset": 269,
       "length": 7,
-      "value": "\"5.4.2\""
+      "value": "\"5.4.3\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
@@ -14762,21 +14779,21 @@
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
-      "offset": 457,
+      "offset": 456,
       "length": 11,
       "value": "\"widgetIdx\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
-      "offset": 491,
+      "offset": 489,
       "length": 5,
       "value": "\"tag\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
-      "offset": 521,
+      "offset": 518,
       "length": 7,
       "value": "\"width\""
     },
@@ -14790,35 +14807,35 @@
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
-      "offset": 457,
+      "offset": 456,
       "length": 11,
       "value": "\"widgetIdx\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
-      "offset": 491,
+      "offset": 489,
       "length": 5,
       "value": "\"tag\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
-      "offset": 521,
+      "offset": 518,
       "length": 7,
       "value": "\"width\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
-      "offset": 642,
+      "offset": 638,
       "length": 17,
       "value": "\"message-handler\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/SFWidget\/SFWidgetMessageHandler.swift",
       "kind": "StringLiteral",
-      "offset": 545,
+      "offset": 541,
       "length": 22,
       "value": "\"OutbrainSDK.SFWidgetMessageHandler\""
     },
