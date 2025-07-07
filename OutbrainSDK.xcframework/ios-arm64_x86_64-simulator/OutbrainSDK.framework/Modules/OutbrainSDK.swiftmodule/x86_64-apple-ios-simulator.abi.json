@@ -14102,7 +14102,7 @@
       "kind": "StringLiteral",
       "offset": 269,
       "length": 7,
-      "value": "\"5.4.3\""
+      "value": "\"5.4.4\""
     },
     {
       "filePath": "\/Users\/distiller\/repo\/SwiftSDK-sources\/OutbrainSDK\/Outbrain.swift",
